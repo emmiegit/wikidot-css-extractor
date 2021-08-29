@@ -184,6 +184,7 @@ class Crawler:
                 return await coro()
             except (KeyboardInterrupt, GeneratorExit, SystemExit):
                 raise
+                sys.exit(1)
             except:
                 print("Error fetching pages from Crom:")
                 print(traceback.format_exc())
