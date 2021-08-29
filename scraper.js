@@ -32,6 +32,10 @@ async function scrape(page, url, delayMs) {
       return undefined;
     }
 
+    const pageTitle = await page.evalulate(() => (
+      document.querySelector('#page-title').innerHTML
+    ));
+
     // Click "+ options" button
     await page.waitForSelector('#more-options-button');
     await page.focus('#more-options-button');
@@ -72,7 +76,7 @@ async function scrape(page, url, delayMs) {
       styles.push(match[1]);
     }
 
-    return { pageSource, styles };
+    return { pageSource, pageTitle, styles };
   } catch (error) {
     console.error(error);
     throw error;
