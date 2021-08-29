@@ -172,7 +172,9 @@ class Crawler:
         # For each classes field, it splits along spaces to get each one separately.
         # It then uses itertools.chain() to effectively flatten this 'list of lists'.
         # We then explicitly convert it into a list since it's technically still an iterator.
-        return list(itertools.chain(classes[1].split(' ') for classes in REGEX_CLASSES.finditer(source)))
+        classes_lists = [classes[1].split(' ') for classes in REGEX_CLASSES.finditer(source)]
+
+        return list(itertools.chain(*classes_lists))
 
     @staticmethod
     async def retry(coro):
