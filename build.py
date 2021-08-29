@@ -56,7 +56,7 @@ def load_pages(path):
 
     # Schema:
     # { slug: { pageSource: string, styles: string[] } }
-    # - or -
+    #  - or -
     # { slug: { error: string } }
 
     with open(path) as file:
@@ -67,7 +67,9 @@ def load_pages(path):
             'slug': slug,
             'title': value['pageTitle'],
             'source': value['pageSource'],
-            'styles': value['styles'],
+            'module_styles': value['moduleStyles'],
+            'inline_styles': value['inlineStyles'],
+            'classes': value['classes'],
         }
         for slug, value in data.items()
         if value.get('error') is None

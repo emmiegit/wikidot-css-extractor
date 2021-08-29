@@ -1,11 +1,11 @@
-{% macro plural_count(collection, word) %}
-  {{- plural(collection|length, word) -}}
+{% macro plural_count(collection, word, ending='s') %}
+  {{- plural(collection|length, word, ending) -}}
 {% endmacro %}
 
-{% macro plural(count, word) %}
+{% macro plural(count, word, ending='s') %}
   {# For printing strings like "12 apples", where the 's' depends on the count's value #}
   {{- count|commaify }} {{ word -}}
   {%- if count != 1 -%}
-    s
+    {{- ending -}}
   {%- endif -%}
 {% endmacro %}
