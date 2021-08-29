@@ -6,6 +6,7 @@ import json
 import os
 import re
 import traceback
+from dateutil.parser import isoparse
 from pprint import pprint
 
 import aiohttp
@@ -46,6 +47,7 @@ CROM_QUERY = """
                 wikidotInfo {
                     title,
                     category,
+                    createdAt,
                     wikidotId,
                     source,
                 }
@@ -162,6 +164,7 @@ class Crawler:
             'slug': slug,
             'title': wikidot_info['title'],
             'category': wikidot_info['category'],
+            'created_at': isoparse(wikidot_info['createdAt']),
             'wikidot_page_id': wikidot_info['wikidotId'],
             'source': source,
             'module_styles': module_styles,
@@ -217,7 +220,8 @@ class Crawler:
                     if page is not None:
                         # Check existing page
                         if slug in self.pages:
-                            print(f"! Found duplicate page (slug '{slug}')")
+                            created_at = page['created_at']
+                            print(f"! Found duplicate page (slug '{slug}', created '{created_at}')")
 
                             if self.pages[slug] != page:
                                 print("! Pages don't match:")
