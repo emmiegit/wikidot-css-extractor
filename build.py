@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import json
+import os
 
 import jinja2
 
@@ -31,8 +32,10 @@ def build_html(pages):
     return html_pages
 
 def write_html(html_pages):
+    os.makedirs('output', exist_ok=True)
+
     for name, html in html_pages.items():
-        with open(f"{name}.html", 'w') as file:
+        with open(f"output/{name}.html", 'w') as file:
             file.write(html)
 
 def load_pages(path):
