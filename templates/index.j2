@@ -49,44 +49,23 @@
 
   {# ------ #}
 
-  <details>
-    <summary>Includes</summary>
+  <h2 class="header">Inclusions</h2>
+  <p>
+    There are {{ includes|length }} unique included pages in use across the SCP Wiki.
+    The 10 most common are:
+  </p>
 
-    <p>
-      A list of which pages are included most often by other pages.
-    </p>
-
-    <h2 class="header">Includes</h2>
-    <ul class="includes-count">
-      {% for include, count in includes %}
-        {% if count > 1 %}
-          <li>
-            {{ plural(count, 'inclusion') }}
-            {{- anchor('include', include) }}
-
-            <pre><code>{{ include }}</code></pre>
-          </li>
-        {% endif %}
-      {% endfor %}
-
-      <li class="no-bullet">
-        <details>
-          <summary>Unique</summary>
-
-          {% for include, count in includes %}
-            {% if count == 1 %}
-              <li>
-                {{ plural(count, 'inclusion') }}
-                {{- anchor('include', include) }}
-
-                <pre><code>{{ include }}</code></pre>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </details>
+  <ul>
+    {% for include, count in includes[:10] %}
+      <li>
+        <pre><code>{{ include }}</code></pre>
       </li>
-    </ul>
-  </details>
+    {% endfor %}
+  </ul>
+
+  <p>
+    See the full list: <a href="/wikidot-css-scraper/includes.html">Included Pages</a>.
+  </p>
 
   {# ------ #}
 
