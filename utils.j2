@@ -1,7 +1,11 @@
-{% macro plural(count, word) -%}
+{% macro plural(count, word) %}
   {# For printing strings like "12 apples", where the 's' depends on the count's value #}
-  {{- format(count, ',d') }} {{ word -}}
+  {{- commaify(count) }} {{ word -}}
   {%- if count != 1 -%}
     s
   {%- endif -%}
-{%- endmacro %}
+{% endmacro %}
+
+{% macro commaify(value) %}
+  {{- format(int(value, ',d')) -}}
+{% endmacro %}
