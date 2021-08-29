@@ -59,7 +59,7 @@ def load_pages(path):
     def page_key(page):
         slug = page['slug']
         if slug.startswith('scp-'):
-            return slug[4:].zfill(4)
+            return slug[4:].zfill(10)
         else:
             return slug
 
