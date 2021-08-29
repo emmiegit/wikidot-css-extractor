@@ -1,0 +1,53 @@
+{% extends 'base.j2' %}
+
+{% from 'utils.j2' import anchor, plural %}
+
+{% block title %}SCP Wiki Inline Modules{% endblock %}
+
+{# Helper macros #}
+
+{% macro build_list_item(operator, value) %}
+  {% for class, count in classes %}
+    {% if cmp(count, operator, value) %}
+      <li>
+        {{ plural(count, 'occurrence') }}
+        {{- anchor('inline', style|sha1) }}
+
+        <pre><code>{{ style }}</code></pre>
+      </li>
+    {% endif %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro build_list_collapsible(value) %}
+  <li class="no-bullet">
+    <details>
+      <summary>Only {{ plural(value, 'occurrence') }}</summary>
+
+      {{ build_list_item('==', value) }}
+    </details>
+  </li>
+{% endmacro %}
+
+{% macro build_list(value) %}
+  {{ build_list('>', value) }}
+
+  {% for n in reversed(range(1, value + 1)) %}
+    {{ build_list_collapsible(n) }}
+  {% endfor %}
+{% endmacro %}
+
+{# Actual body #}
+
+{% block body %}
+  <h1 class="title">Used CSS Classes</h1>
+
+  <p>
+    A deduplicated list of inline styling found in various blocks across all pages.
+  </p>
+
+  <h2 class="header">CSS Classes</h2>
+  <ul class="css-classes-count">
+    {{ build_list(5) }}
+  </ul>
+{% endblock %}

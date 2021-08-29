@@ -28,45 +28,26 @@
 
   {# ------ #}
 
-  <details>
-    <summary>Inline Styles</summary>
+  <h2 class="header">Inline Styles</h2>
+  <p>
+    There are {{ inline_styles|length }} unique inline stylings
+    across the SCP Wiki.
+    The 10 most common are:
+  </p>
 
-    <p>
-      A deduplicated list of inline styling found in various blocks across all pages.
-    </p>
-
-    <ul class="inline-styles-count">
-      {% for style, count in inline_styles %}
-        {% if count > 1 %}
-          <li>
-            {{ plural(count, 'occurrence') }}
-            {{- anchor('inline', style|sha1) }}
-
-            <pre><code>{{ style }}</code></pre>
-          </li>
-        {% endif %}
-      {% endfor %}
-
-      <li class="no-bullet">
-        <details>
-          <summary>Unique</summary>
-
-          <ul class="inline-styles-count">
-            {% for style, count in inline_styles %}
-              {% if count == 1 %}
-                <li>
-                  {{ plural(count, 'occurrence') }}
-                  {{- anchor('inline-uniq', style|sha1) }}
-
-                  <pre><code>{{ style }}</code></pre>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </details>
+  <ul>
+    {% for style, count in inline_styles[:10] %}
+      <li>
+        <pre><code>{{ style }}</code></pre>
       </li>
-    </ul>
-  </details>
+    {% endfor %}
+  </ul>
+
+  <p>
+    See the full list: <a href="/wikidot-css-scraper/inline-css.html">Inline CSS</a>.
+  </p>
+
+  {# ------ #}
 
   <details>
     <summary>Includes</summary>
