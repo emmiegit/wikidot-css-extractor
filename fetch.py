@@ -202,11 +202,12 @@ class Crawler:
     async def fetch_all(self):
         has_next_page = True
         last_slug = Container()
+        last_created_at = Container()
         last_page_count = 0
 
         async with aiohttp.ClientSession() as session:
             async def pull_pages():
-                print(f"+ Requesting next batch of pages (last page '{last_slug.get()}')")
+                print(f"+ Requesting next batch of pages (last page '{last_slug.get(), created {last_created_at}}')")
 
                 # Make request
                 edges, has_next_page = await self.next_pages(session)
@@ -215,6 +216,7 @@ class Crawler:
                 for edge in edges:
                     page, slug = self.process_edge(edge)
                     last_slug.set(slug)
+                    last_created_at.set(page['created_at'])
 
                     if page is not None:
                         # Check existing page
