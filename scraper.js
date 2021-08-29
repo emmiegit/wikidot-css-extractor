@@ -34,7 +34,7 @@ async function scrape(page, url, delayMs) {
     }
 
     const pageTitle = await page.evaluate(() => (
-      document.querySelector('#page-title').innerHTML.strip()
+      document.querySelector('#page-title').innerText.trim()
     ));
 
     // Click "+ options" button
