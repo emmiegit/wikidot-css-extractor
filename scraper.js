@@ -6,7 +6,7 @@ const puppeteer = require('puppeteer');
 const BASE_URL = 'https://scp-wiki.wikidot.com/'
 
 const REGEX_MODULE_CSS = /\[\[module +css\]\]\n(.+)\n\[\[\/module\]\]/gmi;
-const REGEX_INLINE_CSS = /style="(.+)"/gi;
+const REGEX_INLINE_CSS = /style="(.+?)"/gi;
 
 const STYLES_FILENAME = 'output/extracted-styles.json';
 
