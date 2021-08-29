@@ -207,7 +207,7 @@ class Crawler:
 
         async with aiohttp.ClientSession() as session:
             async def pull_pages():
-                print(f"+ Requesting next batch of pages (last page '{last_slug.get(), created {last_created_at}}')")
+                print(f"+ Requesting next batch of pages (last page '{last_slug.get()}, created {last_created_at}')")
 
                 # Make request
                 edges, has_next_page = await self.next_pages(session)
