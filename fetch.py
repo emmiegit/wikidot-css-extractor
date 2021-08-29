@@ -167,6 +167,7 @@ class Crawler:
     async def fetch_all(self):
         has_next_page = True
         last_slug = None
+        last_notice = 0
 
         async with aiohttp.ClientSession() as session:
             while has_next_page:
@@ -183,6 +184,12 @@ class Crawler:
                 # Save progress
                 self.save()
                 last_slug = slug
+
+                # Notify if we've hit a milestone
+                total_pages = len(self.pages)
+                if total_pages - last_notice >= 1000:
+                    print(f"Now at {total_pages:,} saved pages")
+                    last_notice = total_pages
 
         return self.pages
 
