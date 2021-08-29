@@ -119,6 +119,22 @@ class Crawler:
         self.cursor = page_info['endCursor']
         return pages['edges'], has_next_page
 
+    @staticmethod
+    def process_edge(edge):
+        node = edge['node']
+        wikidot_info = node['wikidotInfo']
+        url = node['url']
+        slug = REGEX_WIKIDOT_URL.match(url)[2]
+
+        return {
+            'url': url,
+            'slug': slug,
+            'title': wikidot_info['title'],
+            'category': wikidot_info['category'],
+            'wikidot_page_id': wikidot_info['wikidotId'],
+            'source': wikidot_info['source'],
+        }
+
     async def fetch_all(self):
         has_next_page = True
         last_slug = None
@@ -132,19 +148,7 @@ class Crawler:
 
                 # Parse out results
                 for edge in edges:
-                    node = edge['node']
-                    wikidot_info = node['wikidotInfo']
-                    url = node['url']
-                    slug = REGEX_WIKIDOT_URL.match(url)[2]
-
-                    self.pages[slug] = {
-                        'url': url,
-                        'slug': slug,
-                        'title': wikidot_info['title'],
-                        'category': wikidot_info['category'],
-                        'wikidot_page_id': wikidot_info['wikidotId'],
-                        'source': wikidot_info['source'],
-                    }
+                    self.pages[slug] = self.process_edge(edge)
 
                 # Save progress
                 self.save()
