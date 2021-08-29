@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import hashlib
 import json
 import os
 from collections import defaultdict, namedtuple
@@ -19,6 +20,7 @@ def build_html(pages, counts):
     )
     env.globals['now'] = datetime.utcnow
     env.filters['commaify'] = lambda number: format(number, ',d')
+    env.filters['sha1'] = lambda data: hashlib.sha1(data.encode('utf-8')).hexdigest()
 
     html_pages = {}
 
