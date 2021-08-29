@@ -213,6 +213,16 @@ class Crawler:
                     last_slug.set(slug)
 
                     if page is not None:
+                        # Check existing page
+                        if slug in self.pages:
+                            print(f"! Found duplicate page (slug '{slug}')")
+
+                            if self.pages[slug] != page:
+                                print("! Pages don't match:")
+                                print(f"! Old: {self.pages[slug]}")
+                                print(f"! New: {page}")
+
+                        # Save in the record
                         self.pages[slug] = page
 
             while has_next_page:
