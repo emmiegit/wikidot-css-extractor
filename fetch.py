@@ -181,15 +181,16 @@ class Crawler:
                     page, slug = self.process_edge(edge)
                     self.pages[slug] = page
 
-                # Save progress
-                self.save()
-                last_slug = slug
-
-                # Notify if we've hit a milestone
+                # Save periodically
+                # We don't save after every hit, unlike in the scraper,
+                # because Crom is a lot faster and we don't want to thrash our disk.
                 total_pages = len(self.pages)
-                if total_pages - last_notice >= 1000:
+                if total_pages - last_notice >= 500:
+                    self.save()
                     print(f"Now at {total_pages:,} saved pages")
                     last_notice = total_pages
+
+                last_slug = slug
 
         return self.pages
 
