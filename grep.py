@@ -129,6 +129,8 @@ def print_match_page(slug, matches):
         print_line_matches(match)
         print()
 
+    print()
+
 def print_grep_results(page_matches, compact):
     print_match = print_match_compact if compact else print_match_page
 
