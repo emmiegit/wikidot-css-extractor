@@ -2,14 +2,14 @@
 
 import asyncio
 import json
-import re
 import os
+import re
 
 import aiohttp
 
 OUTPUT_FILENAME = 'output/results.json'
 
-REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+\.wikidot\.com/(.+)$')
+REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+)\.wikidot\.com/(.+)$')
 REGEX_MODULE_CSS = re.compile(r'\[\[module +css\]\]\n(.+?)\n\[\[/module\]\]', re.IGNORECASE | re.DOTALL)
 REGEX_INLINE_CSS = re.compile(r'style="(.+?)"[^\]]*?\]\]', re.MULTILINE | re.IGNORECASE)
 REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
@@ -123,7 +123,7 @@ class Crawler:
         has_next_page = True
         last_slug = None
 
-        await with aiohttp.ClientSession() as session:
+        async with aiohttp.ClientSession() as session:
             while has_next_page:
                 print(f"+ Requesting next batch of pages (last page '{last_slug}')")
 
@@ -154,11 +154,10 @@ class Crawler:
 if __name__ == '__main__':
     crawler = Crawler()
 
-    try:
+    if os.path.exists(OUTPUT_FILENAME):
         crawler.load()
         print("Loaded previous crawler state")
-    except error:
-        print(f"Unable to load previous crawler state: {error}")
-        print("Starting fresh")
+    else:
+        print("No previous crawler state, starting fresh")
 
     asyncio.run(crawler.fetch_all())
