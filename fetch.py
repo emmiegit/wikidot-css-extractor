@@ -182,7 +182,7 @@ class Crawler:
         for _ in range(CROM_RETRIES):
             try:
                 return await coro()
-            except (KeyboardInterrupt, SystemExit):
+            except (KeyboardInterrupt, GeneratorExit, SystemExit):
                 raise
             except:
                 print("Error fetching pages from Crom:")
