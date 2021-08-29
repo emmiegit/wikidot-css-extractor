@@ -130,44 +130,23 @@
     </ul>
   </details>
 
-  <details>
-    <summary>CSS Class Names</summary>
+  <h2 class="header">CSS Classes</h2>
+  <p>
+    There are {{ classes|length }} unique CSS classes in use across the SCP Wiki.
+    The most 10 common are:
+  </p>
 
-    <p>
-      A list of CSS class names found used throughout the sites.
-    </p>
-
-    <h2 class="header">CSS Classes</h2>
-    <ul class="css-classes-count">
-      {% for class, count in classes %}
-        {% if count > 1 %}
-          <li>
-            {{ plural(count, 'usage') }}
-            {{- anchor('class', class) }}
-
-            <pre><code>{{ class }}</code></pre>
-          </li>
-        {% endif %}
-      {% endfor %}
-
-      <li class="no-bullet">
-        <details>
-          <summary>Unique</summary>
-
-          {% for class, count in classes %}
-            {% if count == 1 %}
-              <li>
-                {{ plural(count, 'usage') }}
-                {{- anchor('class', class) }}
-
-                <pre><code>{{ class }}</code></pre>
-              </li>
-            {% endif %}
-          {% endfor %}
-        </details>
+  <ul>
+    {% for class, count in classes[:10] %}
+      <li>
+        <pre><code>{{ class }}</code></pre>
       </li>
-    </ul>
-  </details>
+    {% endfor %}
+  </ul>
+
+  <p>
+    See the full list: <a href="/wikidot-css-scraper/classes.html">CSS Classes</a>.
+  </p>
 
   <details>
     <summary>Pages</summary>
