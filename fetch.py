@@ -179,7 +179,7 @@ class Crawler:
         # Retry loop
         for _ in range(CROM_RETRIES):
             try:
-                return await coro
+                return await coro()
             except:
                 print("Error fetching pages from Crom:")
                 print(traceback.format_exc())
@@ -208,7 +208,7 @@ class Crawler:
                     last_slug.set(slug)
 
             while has_next_page:
-                await self.retry(pull_pages())
+                await self.retry(pull_pages)
 
                 # Save periodically
                 # We don't save after every hit, unlike in the scraper,
