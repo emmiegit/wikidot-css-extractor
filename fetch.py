@@ -6,6 +6,7 @@ import json
 import os
 import re
 import traceback
+from dateutils.parse import isoparse
 from pprint import pprint
 
 import aiohttp
@@ -59,6 +60,10 @@ CROM_QUERY = """
     }
 }
 """
+
+def format_date(iso_date):
+    date = isoparse(iso_date)
+    return f"{date.year}/{date.month}/{d.day}"
 
 class Container:
     __slots__ = ("value",)
@@ -210,7 +215,8 @@ class Crawler:
 
         async with aiohttp.ClientSession() as session:
             async def pull_pages():
-                print(f"+ Requesting next batch of pages (last page '{last_slug}', created {last_created_at})")
+                created_at = format_date(last_created_at.get())
+                print(f"+ Requesting next batch of pages (last page '{last_slug}', created {created_at})")
 
                 # Make request
                 edges, has_next_page = await self.next_pages(session)
@@ -224,7 +230,7 @@ class Crawler:
                     if page is not None:
                         # Check existing page
                         if slug in self.pages:
-                            created_at = page['created_at']
+                            created_at = format_date(page['created_at'])
                             print(f"! Found duplicate page (slug '{slug}', created '{created_at}')")
 
                             if self.pages[slug] != page:
