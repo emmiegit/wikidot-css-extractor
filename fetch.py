@@ -18,7 +18,7 @@ REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 
 CROM_ENDPOINT = "https://api.crom.avn.sh/"
 CROM_SITES = ["http://scp-wiki.wikidot.com/"]
-CROM_RETRIES = 5
+CROM_RETRIES = 3
 CROM_HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
     "Content-Type": "application/json",
