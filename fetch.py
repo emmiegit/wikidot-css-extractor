@@ -17,7 +17,6 @@ REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 
 CROM_ENDPOINT = "https://api.crom.avn.sh/"
 CROM_SITES = ["http://scp-wiki.wikidot.com/"]
-CROM_IGNORE_TAGS = ["redirect"]
 CROM_RETRIES = 5
 CROM_HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
@@ -30,7 +29,6 @@ CROM_QUERY = """
     pages(
         filter: {
             anyBaseUrl: $anyBaseUrl,
-            notTag: $notTag,
         },
         sort: {
             order: ASC,
