@@ -9,7 +9,7 @@ const REGEX_MODULE_CSS = /\[\[module +css\]\]\n(.+?)\n\[\[\/module\]\]/gmis;
 const REGEX_INLINE_CSS = /style="(.+?)"[^\]]*?\]\]/gi;
 const REGEX_CLASSES = /class="([^\]]+?)"/gi;
 
-const STYLES_FILENAME = 'output/results.json';
+const OUTPUT_FILENAME = 'output/results.json';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -94,7 +94,7 @@ async function scrape(page, url, delayMs) {
 
 async function readStyles() {
   try {
-    const stylesJSON = await fs.readFile(STYLES_FILENAME);
+    const stylesJSON = await fs.readFile(OUTPUT_FILENAME);
     const styles = JSON.parse(stylesJSON);
     console.log(`Loaded ${Object.keys(styles).length} styles...`);
     return styles;
@@ -110,7 +110,7 @@ async function main() {
 
   async function saveStyles() {
     const json = JSON.stringify(extractedStyles, null, 4);
-    await fs.writeFile(STYLES_FILENAME, json);
+    await fs.writeFile(OUTPUT_FILENAME, json);
   }
 
   function scpSlug(number) {
