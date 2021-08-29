@@ -7,28 +7,34 @@
 {% block body %}
   <h1 class="title">Extracted Styles</h1>
 
-  <h2 class="title">Pages</h2>
-  <ul class="page-list">
-    {% for page in pages %}
-      <li>
-        <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a> &ndash;
-        {{ plural_count(page.styles, 'style') }},
-        {{ plural_count(page.source, 'character') }} of page source
-      </li>
-    {% endfor %}
-  </ul>
+  <details>
+    <summary>Pages</summary>
 
-  <h2 class="title">Styles</h2>
-  <p>
-    This is a deduplicated list of stylings found across all scraped pages, along with the number of occurrences for each.
-  </p>
+    <ul class="page-list">
+      {% for page in pages %}
+        <li>
+          <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a> &ndash;
+          {{ plural_count(page.styles, 'style') }},
+          {{ plural_count(page.source, 'character') }} of page source
+        </li>
+      {% endfor %}
+    </ul>
+  </details>
 
-  <ul class="style-list">
-    {% for style, count in styles %}
-      <li>
-        {{ plural(count, 'style') }}
-        <pre><code>{{ style }}</code></pre>
-      </li>
-    {% endfor %}
-  </ul>
+  <details>
+    <summary>Styles</summary>
+
+    <p>
+      This is a deduplicated list of stylings found across all scraped pages, along with the number of occurrences for each.
+    </p>
+
+    <ul class="style-list">
+      {% for style, count in styles %}
+        <li>
+          {{ plural(count, 'style') }}
+          <pre><code>{{ style }}</code></pre>
+        </li>
+      {% endfor %}
+    </ul>
+  </details>
 {% endblock %}
