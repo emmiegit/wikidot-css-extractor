@@ -14,8 +14,8 @@ OUTPUT_FILENAME = 'output/results.json'
 REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+)\.wikidot\.com/(.+)$')
 REGEX_MODULE_CSS = re.compile(r'\[\[module +css\]\]\n(.+?)\n\[\[/module\]\]', re.IGNORECASE | re.DOTALL)
 REGEX_INLINE_CSS = re.compile(r'style="(.+?)"[^\]]*?\]\]', re.MULTILINE | re.IGNORECASE)
-REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 REGEX_INCLUDES = re.compile(r'\[\[include +([^ \n]+)(?: |\]\])', re.MULTILINE | re.IGNORECASE)
+REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 
 CROM_ENDPOINT = "https://api.crom.avn.sh/"
 CROM_SITES = ["http://scp-wiki.wikidot.com/"]
@@ -151,8 +151,8 @@ class Crawler:
 
         module_styles = REGEX_MODULE_CSS.findall(source)
         inline_styles = REGEX_INLINE_CSS.findall(source)
-        classes = Crawler.get_css_classes(source)
         includes = REGEX_INCLUDES.findall(source)
+        classes = Crawler.get_css_classes(source)
 
         # Build and page object
         page = {
@@ -164,8 +164,8 @@ class Crawler:
             'source': source,
             'module_styles': module_styles,
             'inline_styles': inline_styles,
-            'classes': classes,
             'includes': includes,
+            'classes': classes,
         }
 
         return page, slug

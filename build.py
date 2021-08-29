@@ -86,11 +86,11 @@ def deduplicate_items(pages):
         for style in page['inline_styles']:
             inline_styles_count[style] += 1
 
-        for klass in page['classes']:
-            classes_count[klass] += 1
-
         for include in page['includes']:
             includes_count[include] += 1
+
+        for klass in page['classes']:
+            classes_count[klass] += 1
 
     def convert(counts):
         items = [(item, count) for item, count in counts.items()]
@@ -100,14 +100,14 @@ def deduplicate_items(pages):
 
     module_styles = convert(module_styles_count)
     inline_styles = convert(inline_styles_count)
-    classes = convert(classes_count)
     includes = convert(includes_count)
+    classes = convert(classes_count)
 
     return CountedItems(
         module_styles=module_styles,
         inline_styles=inline_styles,
-        classes=classes,
         includes=includes,
+        classes=classes,
     )
 
 if __name__ == '__main__':
