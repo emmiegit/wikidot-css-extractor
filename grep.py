@@ -41,7 +41,13 @@ def eprint(message):
 
     print(message, file=sys.stderr)
 
-# Main functions
+def load(path):
+    with open(path) as file:
+        data = json.load(file)
+
+    return data['pages']
+
+# Search
 
 def grep(regex, pages, options):
     if options.invert:
@@ -72,26 +78,26 @@ def grep(regex, pages, options):
 
     return page_matches
 
-def print_match_compact(slug, matches):
-    parts = []
+# Printing results
 
+def print_filename(slug):
     if USE_COLOR:
-        # Add file info
-        parts.extend((
-            Fore.MAGENTA,
-            slug,
-            Fore.RESET,
-            ':',
-            Fore.GREEN,
-            str(match.line_number),
-            Fore.RESET,
-            ':',
-        ))
+        print(f"{Fore.MAGENTA}{slug}{Fore.RESET}:", end='')
+    else:
+        print(f"{slug}:", end='')
 
+def print_line_no(line_number):
+    if USE_COLOR:
+        print(f"{Fore.GREEN}{line_number}{Fore.RESET}:", end='')
+    else:
+        print(f"{line_number}:", end='')
+
+def print_line_matches(match):
+    if USE_COLOR:
         # Slice out matches
         index = 0
         for start, end in match.spans:
-            parts.extend((
+            message = ''.join((
                 # Before
                 match.line_content[index:start],
 
@@ -102,21 +108,26 @@ def print_match_compact(slug, matches):
                 Style.RESET_ALL,
             ))
 
-        # Remainder of the line
-        parts.append(match.line_content[end:])
+            print(message, end='')
     else:
-        parts.extend((
-            slug,
-            ':',
-            match.line_number,
-            ':',
-            match.line_content,
-        ))
+        print(match.line_content, end='')
 
-    print(''.join(parts))
+
+def print_match_compact(slug, matches):
+    for match in matches:
+        print_filename(slug)
+        print_line_no(match.line_number)
+        print_line_matches(match)
+        print()
 
 def print_match_page(slug, matches):
-    ...
+    print_filename(slug)
+    print()
+
+    for match in matches:
+        print_line_no(match.line_number)
+        print_line_matches(match)
+        print()
 
 def print_grep_results(page_matches, compact):
     print_match = print_match_compact if compact else print_match_page
@@ -125,11 +136,6 @@ def print_grep_results(page_matches, compact):
         print_match(slug, matches)
 
 
-def load(path):
-    with open(path) as file:
-        data = json.load(file)
-
-    return data['pages']
 
 if __name__ == '__main__':
     argparser = ArgumentParser(description="grep for wikidot sites")
