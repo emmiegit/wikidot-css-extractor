@@ -121,7 +121,7 @@ class Crawler:
         self.cursor = page_info['endCursor']
         return pages['edges'], has_next_page
 
-    async def next_pages(self, coro):
+    async def next_pages(self, session):
         for _ in range(CROM_RETRIES):
             try:
                 return await self.next_pages_direct(session)
