@@ -87,6 +87,7 @@ def deduplicate_styles(pages):
         styles.append((style, count))
 
     styles.sort(key=lambda item: item[1])
+    styles.reverse()
     return styles
 
 if __name__ == '__main__':
