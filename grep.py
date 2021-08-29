@@ -84,12 +84,14 @@ if __name__ == '__main__':
     argparser.add_argument(
         "-i",
         "--ignore-case",
+        action="store_true",
         default=False,
         help="Whether to ignore case when searching",
     )
     argparser.add_argument(
         "-v",
         "--invert-match",
+        action="store_true",
         default=False,
         help="Invert the sense of matching, selecting all lines which don't match",
     )
