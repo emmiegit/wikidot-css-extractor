@@ -12,7 +12,7 @@ SEARCH_FILENAME = 'output/results.json'
 USE_COLOR = None
 
 RegexOptions = namedtuple('RegexOptions', ('invert', 'flags'))
-Match = namedtuple('Match', ('slug', 'line_number', 'line_content', 'span'))
+Match = namedtuple('Match', ('slug', 'line_number', 'line_content', 'spans'))
 
 # Utility functions
 
@@ -37,7 +37,7 @@ def get_regex_options(args):
 
 def eprint(message):
     if USE_COLOR:
-        message = f"{Fore.RED}{message}{Style.RESET_ALL}"
+        message = f"{Fore.RED}{message}{Style.RESET}"
 
     print(message, file=sys.stderr)
 
@@ -47,31 +47,74 @@ def grep(regex, pages, options):
     if options.invert:
         def line_matches(line):
             match = regex.search(line)
-            return (0, 0) if match is None else None
+            return (0, 0) if match is None else ()
     else:
         def line_matches(line):
-            match = regex.search(line)
-            return None if match is None else match.span()
+            return [match.span() for match in regex.finditer(line)]
 
     matches = []
 
     for slug, page in pages.items():
         lines = page['source'].split('\n')
         for i, line in enumerate(lines):
-            span = line_matches(line)
-            if span is not None:
+            spans = line_matches(line)
+            if spans:
                 matches.append(Match(
                     slug=slug,
                     line_number=i,
                     line_content=line,
-                    span=span,
+                    spans=spans,
                 ))
 
     return matches
 
 def print_grep_results(matches):
-    # TODO
-    print(matches)
+    parts = []
+
+    for match in matches:
+        parts.clear()
+
+        assert match.spans, "Span list is empty"
+
+        if USE_COLOR:
+            # Add file info
+            parts.extend((
+                Fore.MAGENTA,
+                match.slug,
+                Fore.RESET,
+                ':',
+                Fore.GREEN,
+                str(match.line_number),
+                Fore.RESET,
+                ':',
+            ))
+
+            # Slice out matches
+            index = 0
+            for start, end in match.spans:
+                parts.extend((
+                    # Before
+                    match.line_content[index:start],
+
+                    # Match
+                    Fore.CYAN,
+                    Style.BRIGHT,
+                    match.line_content[start:end],
+                    Style.RESET_ALL,
+                ))
+
+            # Remainder of the line
+            parts.append(match.line_content[end:])
+        else:
+            parts.extend((
+                match.slug,
+                ':',
+                match.line_number,
+                ':',
+                match.line_content,
+            ))
+
+        print(''.join(parts))
 
 def load(path):
     with open(path) as file:
