@@ -108,7 +108,6 @@ class Crawler:
     async def next_pages(self, session):
         variables = {
             "$anyBaseUrl": CROM_SITES,
-            "$notTag": CROM_IGNORE_TAGS,
             "$cursor": self.cursor,
         }
 
