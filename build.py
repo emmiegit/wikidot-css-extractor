@@ -7,7 +7,7 @@ from datetime import datetime
 
 import jinja2
 
-STYLES_FILENAME = 'output/extracted-styles.json'
+STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
 
 CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes'))

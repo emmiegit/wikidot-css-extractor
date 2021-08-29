@@ -9,7 +9,7 @@ const REGEX_MODULE_CSS = /\[\[module +css\]\]\n(.+?)\n\[\[\/module\]\]/gmis;
 const REGEX_INLINE_CSS = /style="(.+?)"[^\]]*?\]\]/gi;
 const REGEX_CLASSES = /class="([^\]]+?)"/gi;
 
-const STYLES_FILENAME = 'output/extracted-styles.json';
+const STYLES_FILENAME = 'output/results.json';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
