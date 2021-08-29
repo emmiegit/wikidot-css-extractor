@@ -94,6 +94,8 @@ def print_line_no(line_number):
 
 def print_line_matches(match):
     if USE_COLOR:
+        assert match.spans, "Spans list is empty"
+
         # Slice out matches
         index = 0
         for start, end in match.spans:
