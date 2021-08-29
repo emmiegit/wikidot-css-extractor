@@ -1,5 +1,7 @@
 {% extends 'base.j2' %}
 
+{% from 'utils.j2' import plural %}
+
 {% block title %}SCP Wiki Extracted Styles{% endblock %}
 
 {% block body %}
@@ -9,9 +11,12 @@
     {% for page in pages %}
       <li>
         {% if page.error %}
-          <span class="page-missing">{{ title }}</span> &mdash; <code>{{ page.error }}</code>
+          <span class="page-missing">{{ title }}</span>
+          &mdash; <code>{{ page.error }}</code>
         {% else %}
           <a href="/{{ slug }}.html">{{ title }}</a>
+          &mdash; {{ plural(len(page.styles), 'style') }},
+          {{ plural(len(page.source)), 'character') }} of page source
         {% endif %}
       </li>
     {% endfor %}

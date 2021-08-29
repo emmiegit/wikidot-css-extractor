@@ -25,7 +25,7 @@ def build_html(pages):
             html_pages[slug] = page_template.render(
                 slug=slug,
                 title=slug.upper(), # TODO: actually scrape this from pages
-                page_source=page['source'],
+                source=page['source'],
                 styles=page['styles'],
             )
 
