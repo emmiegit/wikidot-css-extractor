@@ -13,7 +13,7 @@ def build_html(pages):
         autoescape=jinja2.select_autoescape(),
     )
 
-    template = env.get_template('page')
+    template = env.get_template('page.j2')
     return template.render(pages=pages)
 
 def load_pages(path):
