@@ -140,10 +140,11 @@ class Crawler:
         node = edge['node']
         url = node['url']
         slug = REGEX_WIKIDOT_URL.match(url)[2]
-        source = wikidot_info['source']
 
         # Scrape styling from page source
         wikidot_info = node['wikidotInfo']
+        source = wikidot_info['source']
+
         module_styles = REGEX_MODULE_CSS.findall(source)
         inline_styles = REGEX_INLINE_CSS.findall(source)
         classes = REGEX_CLASSES.findall(source)
