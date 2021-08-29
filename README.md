@@ -1,8 +1,8 @@
-# wikidot-css-scraper
+# wikidot-css-extractor
 
 An ad hoc system to pull CSS from pages on the SCP Wiki (though it could be adapted to work on any site supported by Crom). It looks for both inline styling (e.g. `style="color: red;"`), CSS modules (i.e. `[[module CSS]]`), as well as any CSS classes referenced. In the absence of proper Wikidot tools to understand what styling is used on a site, this can help fill that gap.
 
-**You can see the collected data here: https://ammongit.github.io/wikidot-css-scraper/**
+**You can see the collected data here: https://ammongit.github.io/wikidot-css-extractor/**
 
 ### Utilization
 
