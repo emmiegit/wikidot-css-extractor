@@ -4,6 +4,7 @@ import asyncio
 import json
 import os
 import re
+import traceback
 
 import aiohttp
 
@@ -17,6 +18,7 @@ REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 CROM_ENDPOINT = "https://api.crom.avn.sh/"
 CROM_SITES = ["http://scp-wiki.wikidot.com/"]
 CROM_IGNORE_TAGS = ["redirect"]
+CROM_RETRIES = 5
 CROM_HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
     "Content-Type": "application/json",
@@ -104,7 +106,7 @@ class Crawler:
 
             return json_body['data']
 
-    async def next_pages(self, session):
+    async def next_pages_direct(self, session):
         variables = {
             "$anyBaseUrl": CROM_SITES,
             "$notTag": CROM_IGNORE_TAGS,
@@ -119,20 +121,41 @@ class Crawler:
         self.cursor = page_info['endCursor']
         return pages['edges'], has_next_page
 
+    async def next_pages(self, coro):
+        for _ in range(CROM_RETRIES):
+            try:
+                return await self.next_pages_direct(session)
+            except:
+                print("Error fetching pages from Crom:")
+                print(traceback.format_exc())
+
+        raise RuntimeError("Repeatedly failed to query Crom! Failing")
+
     @staticmethod
     def process_edge(edge):
+        # Extract fields
         node = edge['node']
-        wikidot_info = node['wikidotInfo']
         url = node['url']
         slug = REGEX_WIKIDOT_URL.match(url)[2]
+        source = wikidot_info['source']
 
+        # Scrape styling from page source
+        wikidot_info = node['wikidotInfo']
+        module_styles = REGEX_MODULE_CSS.findall(source)
+        inline_styles = REGEX_INLINE_CSS.findall(source)
+        classes = REGEX_CLASSES.findall(source)
+
+        # Return page object
         return {
             'url': url,
             'slug': slug,
             'title': wikidot_info['title'],
             'category': wikidot_info['category'],
             'wikidot_page_id': wikidot_info['wikidotId'],
-            'source': wikidot_info['source'],
+            'source': source,
+            'module_styles': module_styles,
+            'inline_styles': inline_styles,
+            'classes': classes,
         }
 
     async def fetch_all(self):
