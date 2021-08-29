@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-88">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-scraper">
+
+  {% include 'style.j2' %}
+
+  <title>SCP Wiki Extracted Styles</title>
+</head>
+<body>
+<div id="container">
+  {% foreach page in pages %}
+    <div class="page">
+      <h1 class="page-name">
+        <a name="{{ page.slug }}">
+          {{ page.slug|upper }}
+        </a>
+      </h1>
+
+      <details>
+        <summary>List of styles</summary>
+
+        <ul class="page-styles">
+          {% foreach style in page.styles %}
+            <li>
+              <code>{{ style }}</code>
+            </li>
+          {% endfor %}
+        </ul>
+      </details>
+
+      <details>
+        <summary>Page source</summary>
+
+        <textarea class="page-source" readonly>
+          {{ page.source }}
+        </textarea>
+      </details>
+    </div>
+  {% endfor %}
+</div>
+</body>
+</html>
