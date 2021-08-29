@@ -1,14 +1,14 @@
 {% extends 'base.j2' %}
 
-{% from 'utils.j2' import plural_count %}
+{% from 'utils.j2' import plural, plural_count %}
 
 {% block title %}SCP Wiki Extracted Styles{% endblock %}
 
 {% block body %}
-  <h1 class="pages-name">Extracted Styles</h1>
+  <h1 class="title">Extracted Styles</h1>
 
-  <h2 class="pages-header">Pages</h2>
-  <ul class="pages-list">
+  <h2 class="title">Pages</h2>
+  <ul class="page-list">
     {% for page in pages %}
       <li>
         <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a> &ndash;
@@ -18,10 +18,17 @@
     {% endfor %}
   </ul>
 
-  <h2 class="pages-header">Styles</h2>
+  <h2 class="title">Styles</h2>
   <p>
     This is a deduplicated list of stylings found across all scraped pages, along with the number of occurrences for each.
   </p>
 
-  TODO
+  <ul class="style-list">
+    {% for style, count in styles %}
+      <li>
+        {{ plural(count, 'style') }}
+        <pre><code>{{ style }}</code></pre>
+      </li>
+    {% endfor %}
+  </ul>
 {% endblock %}
