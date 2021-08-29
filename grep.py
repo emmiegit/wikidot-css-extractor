@@ -109,6 +109,9 @@ def print_line_matches(match):
             ))
 
             print(message, end='')
+
+        # After
+        print(match.line_content[end:], end='')
     else:
         print(match.line_content, end='')
 
@@ -136,8 +139,6 @@ def print_grep_results(page_matches, compact):
 
     for slug, matches in page_matches.items():
         print_match(slug, matches)
-
-
 
 if __name__ == '__main__':
     argparser = ArgumentParser(description="grep for wikidot sites")
