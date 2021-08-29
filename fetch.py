@@ -137,7 +137,7 @@ class Crawler:
                     url = node['url']
                     slug = REGEX_WIKIDOT_URL.match(url)[2]
 
-                    pages[slug] = {
+                    self.pages[slug] = {
                         'url': url,
                         'slug': slug,
                         'title': wikidot_info['title'],
