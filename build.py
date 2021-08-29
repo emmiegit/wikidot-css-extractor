@@ -21,7 +21,7 @@ def load_pages(path):
     # { slug: { pageSource: string, styles: string[] } }
 
     with open(path) as file:
-        data = json.load(path)
+        data = json.load(file)
 
     return [
         {
@@ -30,6 +30,7 @@ def load_pages(path):
             'styles': value['styles'],
         }
         for slug, value in data.items()
+        if value.get('error') is None
     ]
 
 if __name__ == '__main__':
