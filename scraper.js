@@ -33,7 +33,7 @@ async function scrape(page, url, delayMs) {
       return undefined;
     }
 
-    const pageTitle = await page.evalulate(() => (
+    const pageTitle = await page.evaluate(() => (
       document.querySelector('#page-title').innerHTML
     ));
 
