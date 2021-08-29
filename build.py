@@ -20,7 +20,7 @@ def build_html(pages):
     index_template = env.get_template('index.j2')
 
     for page in pages:
-        if page['error'] is not None:
+        if page['error'] is None:
             slug = page['slug']
             html_pages[slug] = page_template.render(
                 slug=slug,

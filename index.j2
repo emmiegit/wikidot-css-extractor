@@ -8,7 +8,11 @@
   <ul class="pages-list">
     {% for page in pages %}
       <li>
-        <a href="/{{ slug }}.html">{{ title }}</a>
+        {% if page.error %}
+          <span class="page-missing">{{ title }}</span> &mdash; <code>{{ page.error }}</code>
+        {% else %}
+          <a href="/{{ slug }}.html">{{ title }}</a>
+        {% endif %}
       </li>
     {% endfor %}
   </ul>
