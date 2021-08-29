@@ -6,7 +6,7 @@ import json
 import os
 import re
 import traceback
-from dateutils.parse import isoparse
+from dateutil.parser import isoparse
 from pprint import pprint
 
 import aiohttp
