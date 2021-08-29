@@ -4,26 +4,18 @@
 
 {% block body %}
   <div class="page">
-    <h1 class="page-name">
-      <a name="{{ slug }}">{{ title }}</a>
-    </h1>
+    <h1 class="page-name">{{ title }}</h1>
 
-    <details>
-      <summary>List of styles</summary>
+    <h2 class="page-header">Styles</h2>
+    <ul class="page-styles">
+      {% for style in styles %}
+        <li>
+          <code>{{ style }}</code>
+        </li>
+      {% endfor %}
+    </ul>
 
-      <ul class="page-styles">
-        {% for style in styles %}
-          <li>
-            <code>{{ style }}</code>
-          </li>
-        {% endfor %}
-      </ul>
-    </details>
-
-    <details>
-      <summary>Page source</summary>
-
-      <pre><textarea class="page-source" readonly>{{ source }}</textarea></pre>
-    </details>
+    <h2 class="page-header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>{{ source }}</textarea></pre>
   </div>
 {% endblock %}
