@@ -134,8 +134,7 @@ class Crawler:
 
         raise RuntimeError("Repeatedly failed to query Crom! Failing")
 
-    @staticmethod
-    def process_edge(edge):
+    def process_edge(self, edge):
         # Extract fields
         node = edge['node']
         url = node['url']
@@ -150,7 +149,7 @@ class Crawler:
         classes = REGEX_CLASSES.findall(source)
 
         # Return page object
-        return {
+        self.pages[slug] = {
             'url': url,
             'slug': slug,
             'title': wikidot_info['title'],
@@ -175,7 +174,7 @@ class Crawler:
 
                 # Parse out results
                 for edge in edges:
-                    self.pages[slug] = self.process_edge(edge)
+                    self.process_edge(edge)
 
                 # Save progress
                 self.save()
