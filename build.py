@@ -56,7 +56,7 @@ def load_pages(path):
         }
         for slug, value in data.items()
     ]
-    pages.sort(key=lambda page: page.slug)
+    pages.sort(key=lambda page: page['slug'])
 
     return pages
 
