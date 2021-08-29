@@ -176,13 +176,13 @@ class Crawler:
 
         return list(itertools.chain(*classes_lists))
 
-    @staticmethod
-    async def retry(coro):
+    async def retry(self, coro):
         # Retry loop
         for _ in range(CROM_RETRIES):
             try:
                 return await coro()
             except (KeyboardInterrupt, GeneratorExit, SystemExit):
+                self.save()
                 raise
                 sys.exit(1)
             except:
