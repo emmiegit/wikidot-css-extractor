@@ -184,8 +184,10 @@ class Crawler:
                 print("Error fetching pages from Crom:")
                 print(traceback.format_exc())
                 print()
+
             print("Making another attempt...")
-        print("Giving up!")
+
+        raise RuntimeError("Repeatedly failed to query Crom! Failing")
 
     async def fetch_all(self):
         has_next_page = True
