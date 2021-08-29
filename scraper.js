@@ -58,12 +58,12 @@ async function scrape(page, url, delayMs) {
       }
 
       return pageSourceElement.innerHTML
-        .replace(/<br>/g, '')
+        .replace(/<br>/g, '') // Newlines are already present in the source
         .replace(/&nbsp;/g, ' ')
         .replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
         .replace(/&amp;/g, '&')
-        .replace(/^\n\t/, '');
+        .replace(/^\n\t/, ''); // It starts with a newline and a tab for some reason
     });
 
     // Extract CSS
