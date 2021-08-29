@@ -26,9 +26,9 @@
         {% for page in pages %}
           <tr>
             <td>
-              {{ anchor('page', page.slug) }}
-
               <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a>
+
+              {{ anchor('page', page.slug) }}
             </td>
 
             <td>
@@ -56,9 +56,9 @@
     <ul class="module-styles-count">
       {% for style, count in module_styles %}
         <li>
+          {{ plural(count, 'occurrence') }}
           {{ anchor('module', loop.index) }}
 
-          {{ plural(count, 'occurrence') }}
           <pre><code>{{ style }}</code></pre>
         </li>
       {% endfor %}
@@ -68,9 +68,9 @@
     <ul class="inline-styles-count">
       {% for style, count in inline_styles %}
         <li>
+          {{ plural(count, 'occurrence') }}
           {{ anchor('inline', loop.index) }}
 
-          {{ plural(count, 'occurrence') }}
           <pre><code>{{ style }}</code></pre>
         </li>
       {% endfor %}
@@ -80,9 +80,9 @@
     <ul class="css-classes-count">
       {% for class, count in classes %}
         <li>
+          {{ plural(count, 'usage') }}
           {{ anchor('class', loop.index) }}
 
-          {{ plural(count, 'usage') }}
           <pre><code>{{ class }}</code></pre>
         </li>
       {% endfor %}
