@@ -3,6 +3,7 @@
 import json
 import os
 from collections import defaultdict
+from datetime import datetime
 
 import jinja2
 
@@ -14,6 +15,7 @@ def build_html(pages, styles):
         loader=jinja2.FileSystemLoader('.'),
         autoescape=True,
     )
+    env.globals['now'] = datetime.utcnow
     env.filters['commaify'] = lambda number: format(number, ',d')
 
     html_pages = {}
