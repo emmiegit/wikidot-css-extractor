@@ -146,7 +146,7 @@ class Crawler:
         if source is None:
             # This can happen sometimes, for some reason
             # It's obviously a problem, so let's just catch it here explicitly
-            raise ValueError(f"Page source for {url} was null!")
+            return None, slug
 
         module_styles = REGEX_MODULE_CSS.findall(source)
         inline_styles = REGEX_INLINE_CSS.findall(source)
@@ -204,8 +204,10 @@ class Crawler:
                 # Parse out results
                 for edge in edges:
                     page, slug = self.process_edge(edge)
-                    self.pages[slug] = page
                     last_slug.set(slug)
+
+                    if page is not None:
+                        self.pages[slug] = page
 
             while has_next_page:
                 await self.retry(pull_pages)
