@@ -143,6 +143,11 @@ class Crawler:
         wikidot_info = node['wikidotInfo']
         source = wikidot_info['source']
 
+        if source is None:
+            # This can happen sometimes, for some reason
+            # It's obviously a problem, so let's just catch it here explicitly
+            raise ValueError(f"Page source for {url} was null!")
+
         module_styles = REGEX_MODULE_CSS.findall(source)
         inline_styles = REGEX_INLINE_CSS.findall(source)
         classes = itertools.chain(classes.split(' ') for classes in REGEX_CLASSES.finditer(source))
