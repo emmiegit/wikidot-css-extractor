@@ -150,7 +150,7 @@ class Crawler:
 
         module_styles = REGEX_MODULE_CSS.findall(source)
         inline_styles = REGEX_INLINE_CSS.findall(source)
-        classes = itertools.chain(classes.split(' ') for classes in REGEX_CLASSES.finditer(source))
+        classes = Crawler.get_css_classes(source)
 
         # Build and page object
         page = {
@@ -166,6 +166,13 @@ class Crawler:
         }
 
         return page, slug
+
+    @staticmethod
+    def get_css_classes(source):
+        # For each classes field, it splits along spaces to get each one separately.
+        # It then uses itertools.chain() to effectively flatten this 'list of lists'.
+        # We then explicitly convert it into a list since it's technically still an iterator.
+        return list(itertools.chain(classes[1].split(' ') for classes in REGEX_CLASSES.finditer(source)))
 
     @staticmethod
     async def retry(coro):
