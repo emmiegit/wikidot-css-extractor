@@ -11,7 +11,7 @@ import jinja2
 STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
 
-CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes'))
+CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes', 'includes'))
 
 def build_html(pages, counts):
     env = jinja2.Environment(
@@ -77,6 +77,7 @@ def deduplicate_items(pages):
     module_styles_count = defaultdict(int)
     inline_styles_count = defaultdict(int)
     classes_count = defaultdict(int)
+    includes_count = defaultdict(int)
 
     for page in pages:
         for style in page['module_styles']:
@@ -88,6 +89,9 @@ def deduplicate_items(pages):
         for klass in page['classes']:
             classes_count[klass] += 1
 
+        for include in page['includes']:
+            includes_count[include] += 1
+
     def convert(counts):
         items = [(item, count) for item, count in counts.items()]
         items.sort(key=lambda item: item[1])
@@ -97,11 +101,13 @@ def deduplicate_items(pages):
     module_styles = convert(module_styles_count)
     inline_styles = convert(inline_styles_count)
     classes = convert(classes_count)
+    includes = convert(includes_count)
 
     return CountedItems(
         module_styles=module_styles,
         inline_styles=inline_styles,
         classes=classes,
+        includes=includes,
     )
 
 if __name__ == '__main__':
