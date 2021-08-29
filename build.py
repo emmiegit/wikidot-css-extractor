@@ -2,13 +2,14 @@
 
 import json
 import os
+from collections import defaultdict
 
 import jinja2
 
 STYLES_FILENAME = 'output/extracted-styles.json'
 OUTPUT_HTML = 'index.html'
 
-def build_html(pages):
+def build_html(pages, styles):
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader('.'),
         autoescape=True,
@@ -32,7 +33,7 @@ def build_html(pages):
         )
 
     print("Generating index...")
-    html_pages['index'] = index_template.render(pages=pages)
+    html_pages['index'] = index_template.render(pages=pages, styles=styles)
     return html_pages
 
 def write_html(html_pages):
@@ -73,7 +74,21 @@ def load_pages(path):
 
     return pages
 
+def deduplicate_styles(pages):
+    styles_count = defaultdict(int)
+    for page in pages:
+        for style in page['styles']:
+            styles_count[style] += 1
+
+    styles = []
+    for style, count in styles_count.items():
+        styles.append((style, count))
+
+    styles.sort(key=lambda item: item[1])
+    return styles
+
 if __name__ == '__main__':
     pages = load_pages(STYLES_FILENAME)
-    generated_html = build_html(pages)
+    styles = deduplicate_styles(pages)
+    generated_html = build_html(pages, styles)
     write_html(generated_html)
