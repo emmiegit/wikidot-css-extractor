@@ -183,8 +183,10 @@ class Crawler:
                     page, slug = self.process_edge(edge)
                     self.pages[slug] = page
 
+                return slug
+
             while has_next_page:
-                await self.retry(pull_pages())
+                last_slug = await self.retry(pull_pages())
 
                 # Save periodically
                 # We don't save after every hit, unlike in the scraper,
@@ -194,8 +196,6 @@ class Crawler:
                     self.save()
                     print(f"Now at {total_pages:,} saved pages")
                     last_notice = total_pages
-
-                last_slug = slug
 
         return self.pages
 
