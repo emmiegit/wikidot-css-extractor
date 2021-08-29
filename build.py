@@ -63,26 +63,10 @@ def load_pages(path):
         else:
             return slug
 
-    # Schema:
-    # { slug: { pageSource: string, styles: string[] } }
-    #  - or -
-    # { slug: { error: string } }
-
     with open(path) as file:
         data = json.load(file)
 
-    pages = [
-        {
-            'slug': slug,
-            'title': value['pageTitle'],
-            'source': value['pageSource'],
-            'module_styles': value['moduleStyles'],
-            'inline_styles': value['inlineStyles'],
-            'classes': value['classes'],
-        }
-        for slug, value in data.items()
-        if value.get('error') is None
-    ]
+    pages = list(data['pages'].values())
     pages.sort(key=page_key)
 
     return pages
