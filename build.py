@@ -14,7 +14,7 @@ CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'cl
 
 def build_html(pages, counts):
     env = jinja2.Environment(
-        loader=jinja2.FileSystemLoader('.'),
+        loader=jinja2.FileSystemLoader('templates'),
         autoescape=True,
     )
     env.globals['now'] = datetime.utcnow
