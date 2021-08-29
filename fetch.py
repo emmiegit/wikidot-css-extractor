@@ -62,6 +62,9 @@ CROM_QUERY = """
 """
 
 def format_date(iso_date):
+    if iso_date is None:
+        return 'None'
+
     date = isoparse(iso_date)
     return f"{date.year}/{date.month}/{d.day}"
 
