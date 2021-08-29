@@ -106,7 +106,7 @@ class Crawler:
 
             return json_body['data']
 
-    async def next_pages_direct(self, session):
+    async def next_pages(self, session):
         variables = {
             "$anyBaseUrl": CROM_SITES,
             "$notTag": CROM_IGNORE_TAGS,
@@ -120,19 +120,6 @@ class Crawler:
         has_next_page = page_info['hasNextPage']
         self.cursor = page_info['endCursor']
         return pages['edges'], has_next_page
-
-    async def next_pages(self, session):
-        for _ in range(CROM_RETRIES):
-            try:
-                return await self.next_pages_direct(session)
-            except:
-                print("Error fetching pages from Crom:")
-                print(traceback.format_exc())
-                print()
-
-            print("Making another attempt...")
-
-        raise RuntimeError("Repeatedly failed to query Crom! Failing")
 
     @staticmethod
     def process_edge(edge):
@@ -164,13 +151,28 @@ class Crawler:
 
         return page, slug
 
+    @staticmethod
+    async def retry(coro):
+        # Retry loop
+        for _ in range(CROM_RETRIES):
+            try:
+                return await coro
+            except:
+                print("Error fetching pages from Crom:")
+                print(traceback.format_exc())
+                print()
+
+            print("Making another attempt...")
+
+        raise RuntimeError("Repeatedly failed to query Crom! Failing")
+
     async def fetch_all(self):
         has_next_page = True
         last_slug = None
         last_notice = 0
 
         async with aiohttp.ClientSession() as session:
-            while has_next_page:
+            async def pull_pages():
                 print(f"+ Requesting next batch of pages (last page '{last_slug}')")
 
                 # Make request
@@ -180,6 +182,9 @@ class Crawler:
                 for edge in edges:
                     page, slug = self.process_edge(edge)
                     self.pages[slug] = page
+
+            while has_next_page:
+                await self.retry(pull_pages())
 
                 # Save periodically
                 # We don't save after every hit, unlike in the scraper,
