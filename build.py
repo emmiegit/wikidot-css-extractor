@@ -19,8 +19,9 @@ def build_html(pages):
     page_template = env.get_template('page.j2')
     index_template = env.get_template('index.j2')
 
-    for slug, page in pages.items():
+    for page in pages:
         if page['error'] is not None:
+            slug = page['slug']
             html_pages[slug] = page_template.render(
                 slug=slug,
                 title=slug.upper(), # TODO: actually scrape this from pages
