@@ -1,6 +1,6 @@
 {% extends 'base.j2' %}
 
-{% from 'utils.j2' import plural %}
+{% from 'utils.j2' import plural_count %}
 
 {% block title %}SCP Wiki Extracted Styles{% endblock %}
 
@@ -15,8 +15,8 @@
           &mdash; <code>{{ page.error }}</code>
         {% else %}
           <a href="/{{ slug }}.html">{{ title }}</a>
-          &mdash; {{ plural(len(page.styles), 'style') }},
-          {{ plural(len(page.source), 'character') }} of page source
+          &mdash; {{ plural_count(page.styles, 'style') }},
+          {{ plural_count(page.source, 'character') }} of page source
         {% endif %}
       </li>
     {% endfor %}
