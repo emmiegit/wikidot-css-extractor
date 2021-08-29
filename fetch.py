@@ -166,12 +166,11 @@ class Crawler:
 
     async def fetch_all(self):
         has_next_page = True
-        last_slug = None
-        last_notice = 0
+        last = [None, 0] # [last_slug, last_page_count]
 
         async with aiohttp.ClientSession() as session:
             async def pull_pages():
-                print(f"+ Requesting next batch of pages (last page '{last_slug}')")
+                print(f"+ Requesting next batch of pages (last page '{last[0]}')")
 
                 # Make request
                 edges, has_next_page = await self.next_pages(session)
@@ -180,17 +179,16 @@ class Crawler:
                 for edge in edges:
                     page, slug = self.process_edge(edge)
                     self.pages[slug] = page
-
-                return slug
+                    last[0] = slug
 
             while has_next_page:
-                last_slug = await self.retry(pull_pages())
+                await self.retry(pull_pages())
 
                 # Save periodically
                 # We don't save after every hit, unlike in the scraper,
                 # because Crom is a lot faster and we don't want to thrash our disk.
                 total_pages = len(self.pages)
-                if total_pages - last_notice >= 500:
+                if total_pages - last[1] >= 500:
                     self.save()
                     print(f"Now at {total_pages:,} saved pages")
                     last_notice = total_pages
