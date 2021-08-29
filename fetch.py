@@ -6,6 +6,7 @@ import json
 import os
 import re
 import traceback
+from pprint import pprint
 
 import aiohttp
 
@@ -219,8 +220,8 @@ class Crawler:
 
                             if self.pages[slug] != page:
                                 print("! Pages don't match:")
-                                print(f"! Old: {self.pages[slug]}")
-                                print(f"! New: {page}")
+                                pprint(f"Old: {self.pages[slug]}")
+                                pprint(f"New: {page}")
 
                         # Save in the record
                         self.pages[slug] = page
