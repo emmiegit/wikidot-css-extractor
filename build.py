@@ -36,6 +36,9 @@ def build_html(pages, counts):
     html_pages = {}
 
     page_template = env.get_template('page.j2')
+    module_styles_template = env.get_template('module-css.j2')
+    inline_styles_template = env.get_template('inline-css.j2')
+    classes_template = env.get_template('classes.j2')
     index_template = env.get_template('index.j2')
 
     for page in pages:
@@ -51,13 +54,21 @@ def build_html(pages, counts):
             classes=page['classes'],
         )
 
+    print("Generating detail pages...")
+    html_pages['module-css'] = module_styles_template.render(styles=counts.module_styles)
+    html_pages['inline-css'] = inline_styles_template.render(styles=counts.inline_styles)
+    html_pages['includes'] = includes_template.render(includes=counts.includes)
+    html_pages['classes'] = classes_template.render(classes=counts.classes)
+
     print("Generating index...")
     html_pages['index'] = index_template.render(
         pages=pages,
         module_styles=counts.module_styles,
         inline_styles=counts.inline_styles,
+        includes=counts.includes,
         classes=counts.classes,
     )
+
     return html_pages
 
 def write_html(html_pages):
