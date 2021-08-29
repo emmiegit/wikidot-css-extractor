@@ -8,16 +8,27 @@ from datetime import datetime
 
 import jinja2
 
+CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes', 'includes'))
+
 STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
 
-CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes', 'includes'))
+COMPARISON_FUNCTIONS = {
+    '>': lambda x, y: x > y,
+    '<': lambda x, y: x < y,
+    '>=': lambda x, y: x >= y,
+    '<=': lambda x, y: x <= y,
+    '==': lambda x, y: x == y,
+    '!=': lambda x, y: x != y,
+}
+
 
 def build_html(pages, counts):
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader('templates'),
         autoescape=True,
     )
+    env.globals['cmp'] = lambda x, operator, y: COMPARISON_FUNCTIONS[operator](x, y)
     env.globals['now'] = datetime.utcnow
     env.filters['commaify'] = lambda number: format(number, ',d')
     env.filters['sha1'] = lambda data: hashlib.sha1(data.encode('utf-8')).hexdigest()
