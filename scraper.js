@@ -7,6 +7,7 @@ const BASE_URL = 'https://scp-wiki.wikidot.com/'
 
 const REGEX_MODULE_CSS = /\[\[module +css\]\]\n(.+)\n\[\[\/module\]\]/gmi;
 const REGEX_INLINE_CSS = /style="(.+?)"[^\]]*?\]\]/gi;
+const REGEX_CLASSES = /class="([^\]]+?)"/gi;
 
 const STYLES_FILENAME = 'output/extracted-styles.json';
 
@@ -66,17 +67,25 @@ async function scrape(page, url, delayMs) {
     });
 
     // Extract CSS
-    const styles = [];
-
+    const moduleStyles = [];
     for (const match of pageSource.matchAll(REGEX_MODULE_CSS)) {
-      styles.push(match[1]);
+      moduleStyles.push(match[1]);
     }
 
+    const inlineStyles = [];
     for (const match of pageSource.matchAll(REGEX_INLINE_CSS)) {
       styles.push(match[1]);
     }
 
-    return { pageSource, pageTitle, styles };
+    const classes = [];
+    for (const match of pageSource.matchAll(REGEX_CLASSES)) {
+      const klasses = match[1].split(' ');
+      for (const klass of klasses) {
+        classes.push(klass);
+      }
+    }
+
+    return { pageSource, pageTitle, moduleStyles, inlineStyles, classes };
   } catch (error) {
     console.error(error);
     throw error;
