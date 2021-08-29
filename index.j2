@@ -31,14 +31,35 @@
     <summary>Styles</summary>
 
     <p>
-      This is a deduplicated list of stylings found across all scraped pages.
+      This is a deduplicated list of items found across all scraped pages.
     </p>
 
-    <ul class="style-list">
-      {% for style, count in styles %}
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles-count">
+      {% for style, count in module_styles %}
         <li>
           {{ plural(count, 'occurrence') }}
           <pre><code>{{ style }}</code></pre>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles-count">
+      {% for style, count in inline_styles %}
+        <li>
+          {{ plural(count, 'occurrence') }}
+          <pre><code>{{ style }}</code></pre>
+        </li>
+      {% endfor %}
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes-count">
+      {% for class, count in classes %}
+        <li>
+          {{ plural(count, 'usage') }}
+          <pre><code>{{ class }}</code></pre>
         </li>
       {% endfor %}
     </ul>
