@@ -133,16 +133,17 @@ class Crawler:
                 # Parse out results
                 for edge in edges:
                     node = edge['node']
+                    wikidot_info = node['wikidotInfo']
                     url = node['url']
                     slug = REGEX_WIKIDOT_URL.match(url)[2]
 
                     pages[slug] = {
                         'url': url,
                         'slug': slug,
-                        'title': node['title'],
-                        'category': node['category'],
-                        'wikidot_page_id': node['wikidotId'],
-                        'source': node['source'],
+                        'title': wikidot_info['title'],
+                        'category': wikidot_info['category'],
+                        'wikidot_page_id': wikidot_info['wikidotId'],
+                        'source': wikidot_info['source'],
                     }
 
                 # Save progress
