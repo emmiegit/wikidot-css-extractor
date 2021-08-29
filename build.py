@@ -11,7 +11,7 @@ OUTPUT_HTML = 'index.html'
 def build_html(pages):
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader('.'),
-        autoescape=jinja2.select_autoescape(),
+        autoescape=True,
     )
     env.filters['commaify'] = lambda number: format(number, ',d')
 
