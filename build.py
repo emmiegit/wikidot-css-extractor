@@ -5,7 +5,7 @@ import os
 
 import jinja2
 
-STYLES_FILENAME = 'extracted-styles.json'
+STYLES_FILENAME = 'output/extracted-styles.json'
 OUTPUT_HTML = 'index.html'
 
 def build_html(pages):

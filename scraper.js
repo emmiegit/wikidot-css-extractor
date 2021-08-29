@@ -8,7 +8,7 @@ const BASE_URL = 'https://scp-wiki.wikidot.com/'
 const REGEX_MODULE_CSS = /\[\[module +css\]\]\n(.+)\n\[\[\/module\]\]/gmi;
 const REGEX_INLINE_CSS = /style="(.+)"/gi;
 
-const STYLES_FILENAME = 'extracted-styles.json';
+const STYLES_FILENAME = 'output/extracted-styles.json';
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
