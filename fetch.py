@@ -66,7 +66,7 @@ def format_date(iso_date):
         return 'None'
 
     date = isoparse(iso_date)
-    return f"{date.year}/{date.month}/{d.day}"
+    return f"{date.year}/{date.month}/{date.day}"
 
 class Container:
     __slots__ = ("value",)
