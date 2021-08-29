@@ -92,6 +92,45 @@
   </details>
 
   <details>
+    <summary>Includes</summary>
+
+    <p>
+      A list of which pages are included most often by other pages.
+    </p>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes-count">
+      {% for include, count in includes %}
+        {% if count > 1 %}
+          <li>
+            {{ plural(count, 'inclusion') }}
+            {{- anchor('include', include) }}
+
+            <pre><code>{{ include }}</code></pre>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      <li class="no-bullet">
+        <details>
+          <summary>Unique</summary>
+
+          {% for include, count in includes %}
+            {% if count == 1 %}
+              <li>
+                {{ plural(count, 'inclusion') }}
+                {{- anchor('include', include) }}
+
+                <pre><code>{{ include }}</code></pre>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </details>
+      </li>
+    </ul>
+  </details>
+
+  <details>
     <summary>CSS Class Names</summary>
 
     <p>
