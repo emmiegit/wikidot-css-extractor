@@ -11,31 +11,35 @@
     <summary>Pages</summary>
 
     <table class="page-list">
-      <tr>
-        <th>Link</th>
-        <th>Slug</th>
-        <th>Module Styles</th>
-        <th>Inline Styles</th>
-        <th>CSS Classes</th>
-        <th>Wikitext Length (characters)</th>
-      </tr>
-
-      {% for page in pages %}
+      <thead>
         <tr>
-          <td>
-            <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a>
-          </td>
-
-          <td>
-            <code>{{ page.slug }}</code>
-          </td>
-
-          <td>{{ plural_count(page.module_styles, 'style') }}</td>
-          <td>{{ plural_count(page.inline_styles, 'style') }}</td>
-          <td>{{ plural_count(page.classes, 'class', 'es') }}</td>
-          <td>{{ page.source | length | commaify }}</td>
+          <th scope="col">Link</th>
+          <th scope="col">Slug</th>
+          <th scope="col">Module Styles</th>
+          <th scope="col">Inline Styles</th>
+          <th scope="col">CSS Classes</th>
+          <th scope="col">Wikitext Length (characters)</th>
         </tr>
-      {% endfor %}
+      </thead>
+
+      <tbody>
+        {% for page in pages %}
+          <tr>
+            <td>
+              <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a>
+            </td>
+
+            <td>
+              <code>{{ page.slug }}</code>
+            </td>
+
+            <td>{{ plural_count(page.module_styles, 'style') }}</td>
+            <td>{{ plural_count(page.inline_styles, 'style') }}</td>
+            <td>{{ plural_count(page.classes, 'class', 'es') }}</td>
+            <td>{{ page.source | length | commaify }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
     </table>
   </details>
 
