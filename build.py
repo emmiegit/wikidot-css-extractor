@@ -13,6 +13,7 @@ def build_html(pages):
         loader=jinja2.FileSystemLoader('.'),
         autoescape=jinja2.select_autoescape(),
     )
+    env.filters['commaify'] = lambda number: format(number, ',d')
 
     html_pages = {}
 
@@ -20,14 +21,13 @@ def build_html(pages):
     index_template = env.get_template('index.j2')
 
     for page in pages:
-        if page['error'] is None:
-            slug = page['slug']
-            html_pages[slug] = page_template.render(
-                slug=slug,
-                title=slug.upper(), # TODO: actually scrape this from pages
-                source=page['source'],
-                styles=page['styles'],
-            )
+        slug = page['slug']
+        html_pages[slug] = page_template.render(
+            slug=slug,
+            title=page['title'],
+            source=page['source'],
+            styles=page['styles'],
+        )
 
     html_pages['index'] = index_template.render(pages=pages)
     return html_pages
@@ -40,6 +40,13 @@ def write_html(html_pages):
             file.write(html)
 
 def load_pages(path):
+    def page_key(page):
+        slug = page['slug']
+        if slug.startswith('scp-'):
+            return slug[4:].zfill(4)
+        else:
+            return slug
+
     # Schema:
     # { slug: { pageSource: string, styles: string[] } }
     # - or -
@@ -51,13 +58,14 @@ def load_pages(path):
     pages = [
         {
             'slug': slug,
-            'source': value.get('pageSource'),
-            'styles': value.get('styles'),
-            'error': value.get('error'),
+            'title': value['pageTitle'],
+            'source': value['pageSource'],
+            'styles': value['styles'],
         }
         for slug, value in data.items()
+        if value.get('error') is None
     ]
-    pages.sort(key=lambda page: page['slug'])
+    pages.sort(key=page_key)
 
     return pages
 

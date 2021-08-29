@@ -10,14 +10,9 @@
   <ul class="pages-list">
     {% for page in pages %}
       <li>
-        {% if page.error %}
-          <span class="page-missing">{{ title }}</span>
-          &mdash; <code>{{ page.error }}</code>
-        {% else %}
-          <a href="/{{ slug }}.html">{{ title }}</a>
-          &mdash; {{ plural_count(page.styles, 'style') }},
-          {{ plural_count(page.source, 'character') }} of page source
-        {% endif %}
+        <a href="/{{ page.slug }}.html">{{ page.title }}</a> &mdash;
+        {{ plural_count(page.styles, 'style') }},
+        {{ plural_count(page.source, 'character') }} of page source
       </li>
     {% endfor %}
   </ul>
