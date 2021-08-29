@@ -16,13 +16,38 @@
 
     <ul class="module-styles-count">
       {% for style, count in module_styles %}
-        <li>
-          {{ plural(count, 'occurrence') }}
-          {{- anchor('module', loop.index) }}
+        {% if count > 1 %}
+          <li>
+            {{ plural(count, 'occurrence') }}
+            {{- anchor('module', loop.index) }}
 
-          <pre><code>{{ style }}</code></pre>
-        </li>
+            <pre><code>{{ style }}</code></pre>
+          </li>
+        {% endif %}
       {% endfor %}
+
+      <li class="no-bullet">
+        {#
+         # Since there are a lot of styles which are only used once,
+         # have a separate collapsible for them.
+         #}
+        <details>
+          <summary>Unique</summary>
+
+          <ul class="module-styles-count">
+            {% for style, count in module_styles %}
+              {% if count == 1 %}
+                <li>
+                  {{ plural(count, 'occurrence') }}
+                  {{- anchor('module-uniq', loop.index) }}
+
+                  <pre><code>{{ style }}</code></pre>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </details>
+      </li>
     </ul>
   </details>
 
@@ -35,13 +60,34 @@
 
     <ul class="inline-styles-count">
       {% for style, count in inline_styles %}
-        <li>
-          {{ plural(count, 'occurrence') }}
-          {{- anchor('inline', loop.index) }}
+        {% if count > 1 %}
+          <li>
+            {{ plural(count, 'occurrence') }}
+            {{- anchor('inline', loop.index) }}
 
-          <pre><code>{{ style }}</code></pre>
-        </li>
+            <pre><code>{{ style }}</code></pre>
+          </li>
+        {% endif %}
       {% endfor %}
+
+      <li class="no-bullet">
+        <details>
+          <summary>Unique</summary>
+
+          <ul class="inline-styles-count">
+            {% for style, count in inline_styles %}
+              {% if count == 1 %}
+                <li>
+                  {{ plural(count, 'occurrence') }}
+                  {{- anchor('inline-uniq', loop.index) }}
+
+                  <pre><code>{{ style }}</code></pre>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </details>
+      </li>
     </ul>
   </details>
 
@@ -55,13 +101,32 @@
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes-count">
       {% for class, count in classes %}
-        <li>
-          {{ plural(count, 'usage') }}
-          {{- anchor('class', loop.index) }}
+        {% if count > 1 %}
+          <li>
+            {{ plural(count, 'usage') }}
+            {{- anchor('class', loop.index) }}
 
-          <pre><code>{{ class }}</code></pre>
-        </li>
+            <pre><code>{{ class }}</code></pre>
+          </li>
+        {% endif %}
       {% endfor %}
+
+      <li class="no-bullet">
+        <details>
+          <summary>Unique</summary>
+
+          {% for class, count in classes %}
+            {% if count == 1 %}
+              <li>
+                {{ plural(count, 'usage') }}
+                {{- anchor('class', loop.index) }}
+
+                <pre><code>{{ class }}</code></pre>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </details>
+      </li>
     </ul>
   </details>
 
