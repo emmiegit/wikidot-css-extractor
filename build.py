@@ -22,6 +22,8 @@ def build_html(pages):
 
     for page in pages:
         slug = page['slug']
+
+        print(f"Generating page for {slug}...")
         html_pages[slug] = page_template.render(
             slug=slug,
             title=page['title'],
@@ -29,12 +31,14 @@ def build_html(pages):
             styles=page['styles'],
         )
 
+    print("Generating index...")
     html_pages['index'] = index_template.render(pages=pages)
     return html_pages
 
 def write_html(html_pages):
     os.makedirs('output', exist_ok=True)
 
+    print("Writing files...")
     for name, html in html_pages.items():
         with open(f"output/{name}.html", 'w') as file:
             file.write(html)
