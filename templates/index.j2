@@ -58,7 +58,11 @@
     <ul class="module-styles-count">
       {% for style, count in module_styles %}
         <li>
-          {{ plural(count, 'occurrence') }}
+          <a href="#module-{{ loop.index }}" class="jump">¶</a>
+
+          <a name="#module-{{ loop.index }}">
+            {{ plural(count, 'occurrence') }}
+          </a>
           <pre><code>{{ style }}</code></pre>
         </li>
       {% endfor %}
@@ -68,8 +72,12 @@
     <ul class="inline-styles-count">
       {% for style, count in inline_styles %}
         <li>
-          {{ plural(count, 'occurrence') }}
-          <pre><code>{{ style }}</code></pre>
+          <a href="#inline-{{ loop.index }}" class="jump">¶</a>
+
+          <a name="#inline-{{ loop.index }}">
+            {{ plural(count, 'occurrence') }}
+            <pre><code>{{ style }}</code></pre>
+          </a>
         </li>
       {% endfor %}
     </ul>
@@ -78,8 +86,12 @@
     <ul class="css-classes-count">
       {% for class, count in classes %}
         <li>
-          {{ plural(count, 'usage') }}
-          <pre><code>{{ class }}</code></pre>
+          <a href="#class-{{ loop.index }}" class="jump">¶</a>
+
+          <a name="#class-{{ loop.index }}">
+            {{ plural(count, 'usage') }}
+            <pre><code>{{ class }}</code></pre>
+          </a>
         </li>
       {% endfor %}
     </ul>
