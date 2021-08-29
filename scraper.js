@@ -57,7 +57,8 @@ async function scrape(page, url, delayMs) {
         .replace(/&nbsp;/g, ' ')
         .replace(/&lt;/g, '<')
         .replace(/&gt;/g, '>')
-        .replace(/&amp;/g, '&');
+        .replace(/&amp;/g, '&')
+        .replace(/^\n\t/, '');
     });
 
     // Extract CSS
