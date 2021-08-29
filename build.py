@@ -31,7 +31,7 @@ def build_html(pages, counts):
         slug = page['slug']
 
         print(f"Generating page for {slug}...")
-        html_pages[slug] = page_template.render(
+        html_pages[f'pages/{slug}'] = page_template.render(
             slug=slug,
             title=page['title'],
             source=page['source'],
