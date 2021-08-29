@@ -134,7 +134,8 @@ class Crawler:
 
         raise RuntimeError("Repeatedly failed to query Crom! Failing")
 
-    def process_edge(self, edge):
+    @staticmethod
+    def process_edge(edge):
         # Extract fields
         node = edge['node']
         url = node['url']
@@ -148,8 +149,8 @@ class Crawler:
         inline_styles = REGEX_INLINE_CSS.findall(source)
         classes = REGEX_CLASSES.findall(source)
 
-        # Return page object
-        self.pages[slug] = {
+        # Build and page object
+        page = {
             'url': url,
             'slug': slug,
             'title': wikidot_info['title'],
@@ -160,6 +161,8 @@ class Crawler:
             'inline_styles': inline_styles,
             'classes': classes,
         }
+
+        return page, slug
 
     async def fetch_all(self):
         has_next_page = True
@@ -174,7 +177,8 @@ class Crawler:
 
                 # Parse out results
                 for edge in edges:
-                    self.process_edge(edge)
+                    page, slug = self.process_edge(edge)
+                    self.pages[slug] = page
 
                 # Save progress
                 self.save()
