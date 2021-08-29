@@ -6,8 +6,8 @@ set -eux
 
 git checkout gh-pages
 cp output/*.html .
-cp output/extracted-styles.json .
-git add *.html extracted-styles.json
+cp output/results.json .
+git add *.html results.json
 git commit -m 'Update generated files.'
 git push
 git checkout -
