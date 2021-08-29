@@ -8,48 +8,6 @@
   <h1 class="title">Extracted Styles</h1>
 
   <details>
-    <summary>Pages</summary>
-
-    <table class="page-list">
-      <caption>
-        A listing of all pages on the site, along with a summary
-        of the properties being extracted here.
-      </caption>
-
-      <thead>
-        <tr>
-          <th scope="col">Title / Link</th>
-          <th scope="col">Slug</th>
-          <th scope="col">Module Styles</th>
-          <th scope="col">Inline Styles</th>
-          <th scope="col">CSS Classes</th>
-          <th scope="col">Wikitext Length (characters)</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {% for page in pages %}
-          <tr>
-            <td>
-              <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a>
-              {{- anchor('page', page.slug) }}
-            </td>
-
-            <td>
-              <code>{{ page.slug }}</code>
-            </td>
-
-            <td class="number">{{ page.module_styles|length|commaify }}</td>
-            <td class="number">{{ page.inline_styles|length|commaify }}</td>
-            <td class="number">{{ page.classes|length|commaify }}</td>
-            <td class="number">{{ page.source|length|commaify }}</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </details>
-
-  <details>
     <summary>Module Styles</summary>
 
     <p>
@@ -105,6 +63,48 @@
         </li>
       {% endfor %}
     </ul>
+  </details>
+
+  <details>
+    <summary>Pages</summary>
+
+    <table class="page-list">
+      <caption>
+        A listing of all pages on the site, along with a summary
+        of the properties being extracted here.
+      </caption>
+
+      <thead>
+        <tr>
+          <th scope="col">Title / Link</th>
+          <th scope="col">Slug</th>
+          <th scope="col">Module Styles</th>
+          <th scope="col">Inline Styles</th>
+          <th scope="col">CSS Classes</th>
+          <th scope="col">Wikitext Length (characters)</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for page in pages %}
+          <tr>
+            <td>
+              <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a>
+              {{- anchor('page', page.slug) }}
+            </td>
+
+            <td>
+              <code>{{ page.slug }}</code>
+            </td>
+
+            <td class="number">{{ page.module_styles|length|commaify }}</td>
+            <td class="number">{{ page.inline_styles|length|commaify }}</td>
+            <td class="number">{{ page.classes|length|commaify }}</td>
+            <td class="number">{{ page.source|length|commaify }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
   </details>
 
   <details>
