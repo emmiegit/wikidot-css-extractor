@@ -10,21 +10,33 @@
   <details>
     <summary>Pages</summary>
 
-    <ul class="page-list">
+    <table class="page-list">
+      <tr>
+        <th>Link</th>
+        <th>Slug</th>
+        <th>Module Styles</th>
+        <th>Inline Styles</th>
+        <th>CSS Classes</th>
+        <th>Wikitext Length (characters)</th>
+      </tr>
+
       {% for page in pages %}
-        <li>
-          <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a> &ndash;
-          <span class="page-info">
-            [
-            {{ plural_count(page.module_styles, 'module style') }} |
-            {{ plural_count(page.inline_styles, 'inline style') }} |
-            {{ plural_count(page.classes, 'CSS class', 'es') }} |
-            {{ plural_count(page.source, 'character') }} of page source
-            ]
-          </span>
-        </li>
+        <tr>
+          <td>
+            <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a>
+          </td>
+
+          <td>
+            <code>{{ page.slug }}</code>
+          </td>
+
+          <td>{{ plural_count(page.module_styles, 'style') }}</td>
+          <td>{{ plural_count(page.inline_styles, 'style') }}</td>
+          <td>{{ plural_count(page.classes, 'class', 'es') }}</td>
+          <td>{{ page.source | length | commaify }}</td>
+        </tr>
       {% endfor %}
-    </ul>
+    </table>
   </details>
 
   <details>
