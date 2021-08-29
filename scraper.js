@@ -74,7 +74,7 @@ async function scrape(page, url, delayMs) {
 
     const inlineStyles = [];
     for (const match of pageSource.matchAll(REGEX_INLINE_CSS)) {
-      styles.push(match[1]);
+      inlineStyles.push(match[1]);
     }
 
     const classes = [];
