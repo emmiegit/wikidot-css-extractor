@@ -12,7 +12,7 @@ SEARCH_FILENAME = 'output/results.json'
 USE_COLOR = None
 
 RegexOptions = namedtuple('RegexOptions', ('invert', 'flags'))
-Match = namedtuple('Match', ('slug', 'line_number', 'line_content', 'spans'))
+Match = namedtuple('Match', ('line_number', 'line_content', 'spans'))
 
 # Utility functions
 
@@ -52,69 +52,78 @@ def grep(regex, pages, options):
         def line_matches(line):
             return [match.span() for match in regex.finditer(line)]
 
-    matches = []
+    page_matches = {}
 
     for slug, page in pages.items():
         lines = page['source'].split('\n')
+
+        matches = []
         for i, line in enumerate(lines):
             spans = line_matches(line)
             if spans:
                 matches.append(Match(
-                    slug=slug,
                     line_number=i,
                     line_content=line,
                     spans=spans,
                 ))
 
-    return matches
+        if matches:
+            page_matches[slug] = matches
 
-def print_grep_results(matches):
+    return page_matches
+
+def print_match_compact(slug, matches):
     parts = []
 
-    for match in matches:
-        parts.clear()
+    if USE_COLOR:
+        # Add file info
+        parts.extend((
+            Fore.MAGENTA,
+            slug,
+            Fore.RESET,
+            ':',
+            Fore.GREEN,
+            str(match.line_number),
+            Fore.RESET,
+            ':',
+        ))
 
-        assert match.spans, "Span list is empty"
-
-        if USE_COLOR:
-            # Add file info
+        # Slice out matches
+        index = 0
+        for start, end in match.spans:
             parts.extend((
-                Fore.MAGENTA,
-                match.slug,
-                Fore.RESET,
-                ':',
-                Fore.GREEN,
-                str(match.line_number),
-                Fore.RESET,
-                ':',
+                # Before
+                match.line_content[index:start],
+
+                # Match
+                Fore.CYAN,
+                Style.BRIGHT,
+                match.line_content[start:end],
+                Style.RESET_ALL,
             ))
 
-            # Slice out matches
-            index = 0
-            for start, end in match.spans:
-                parts.extend((
-                    # Before
-                    match.line_content[index:start],
+        # Remainder of the line
+        parts.append(match.line_content[end:])
+    else:
+        parts.extend((
+            slug,
+            ':',
+            match.line_number,
+            ':',
+            match.line_content,
+        ))
 
-                    # Match
-                    Fore.CYAN,
-                    Style.BRIGHT,
-                    match.line_content[start:end],
-                    Style.RESET_ALL,
-                ))
+    print(''.join(parts))
 
-            # Remainder of the line
-            parts.append(match.line_content[end:])
-        else:
-            parts.extend((
-                match.slug,
-                ':',
-                match.line_number,
-                ':',
-                match.line_content,
-            ))
+def print_match_page(slug, matches):
+    ...
 
-        print(''.join(parts))
+def print_grep_results(page_matches, compact):
+    print_match = print_match_compact if compact else print_match_page
+
+    for slug, matches in page_matches.items():
+        print_match(slug, matches)
+
 
 def load(path):
     with open(path) as file:
@@ -137,6 +146,12 @@ if __name__ == '__main__':
         action="store_true",
         default=False,
         help="Invert the sense of matching, selecting all lines which don't match",
+    )
+    argparser.add_argument(
+        "--compact",
+        action="store_true",
+        default=False,
+        help="Whether to display the results in compact / line mode",
     )
     argparser.add_argument(
         "--color",
@@ -172,4 +187,4 @@ if __name__ == '__main__':
         sys.exit(1)
 
     results = grep(regex, pages, options)
-    print_grep_results(results)
+    print_grep_results(results, args.compact)
