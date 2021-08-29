@@ -128,6 +128,9 @@ class Crawler:
             except:
                 print("Error fetching pages from Crom:")
                 print(traceback.format_exc())
+                print()
+
+            print("Making another attempt...")
 
         raise RuntimeError("Repeatedly failed to query Crom! Failing")
 
