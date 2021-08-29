@@ -6,6 +6,7 @@ import json
 import os
 import re
 import traceback
+from datetime import datetime
 from dateutil.parser import isoparse
 from pprint import pprint
 
@@ -61,6 +62,12 @@ CROM_QUERY = """
 }
 """
 
+def serialize_value(value):
+    if isinstance(value, datetime):
+        return serialize_value(value.isoformat())
+    else:
+        return json.dumps(value)
+
 class Container:
     __slots__ = ("value",)
 
@@ -111,7 +118,7 @@ class Crawler:
 
     async def raw_request(self, session, query, variables):
         for key, value in variables.items():
-            query = query.replace(key, json.dumps(value))
+            query = query.replace(key, serialize_value(value))
 
         payload = json.dumps({ 'query': query }).encode('utf-8')
 
