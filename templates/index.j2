@@ -1,6 +1,6 @@
 {% extends 'base.j2' %}
 
-{% from 'utils.j2' import plural, plural_count %}
+{% from 'utils.j2' import anchor, plural %}
 
 {% block title %}SCP Wiki Extracted Styles{% endblock %}
 
@@ -26,11 +26,9 @@
         {% for page in pages %}
           <tr>
             <td>
-              <a href="#page-{{ page.slug }}" class="jump">¶</a>
+              {{ anchor('page', page.slug) }}
 
-              <a name="page-{{ page.slug }}" href="/wikidot-css-scraper/{{ page.slug }}.html">
-                {{ page.title }}
-              </a>
+              <a href="/wikidot-css-scraper/{{ page.slug }}.html">{{ page.title }}</a>
             </td>
 
             <td>
@@ -58,11 +56,9 @@
     <ul class="module-styles-count">
       {% for style, count in module_styles %}
         <li>
-          <a href="#module-{{ loop.index }}" class="jump">¶</a>
+          {{ anchor('module', loop.index) }}
 
-          <a name="#module-{{ loop.index }}">
-            {{ plural(count, 'occurrence') }}
-          </a>
+          {{ plural(count, 'occurrence') }}
           <pre><code>{{ style }}</code></pre>
         </li>
       {% endfor %}
@@ -72,12 +68,10 @@
     <ul class="inline-styles-count">
       {% for style, count in inline_styles %}
         <li>
-          <a href="#inline-{{ loop.index }}" class="jump">¶</a>
+          {{ anchor('inline', loop.index) }}
 
-          <a name="#inline-{{ loop.index }}">
-            {{ plural(count, 'occurrence') }}
-            <pre><code>{{ style }}</code></pre>
-          </a>
+          {{ plural(count, 'occurrence') }}
+          <pre><code>{{ style }}</code></pre>
         </li>
       {% endfor %}
     </ul>
@@ -86,12 +80,10 @@
     <ul class="css-classes-count">
       {% for class, count in classes %}
         <li>
-          <a href="#class-{{ loop.index }}" class="jump">¶</a>
+          {{ anchor('class', loop.index) }}
 
-          <a name="#class-{{ loop.index }}">
-            {{ plural(count, 'usage') }}
-            <pre><code>{{ class }}</code></pre>
-          </a>
+          {{ plural(count, 'usage') }}
+          <pre><code>{{ class }}</code></pre>
         </li>
       {% endfor %}
     </ul>
