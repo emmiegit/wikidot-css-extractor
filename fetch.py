@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import asyncio
+import itertools
 import json
 import os
 import re
@@ -144,7 +145,7 @@ class Crawler:
 
         module_styles = REGEX_MODULE_CSS.findall(source)
         inline_styles = REGEX_INLINE_CSS.findall(source)
-        classes = REGEX_CLASSES.findall(source)
+        classes = itertools.chain(classes.split(' ') for classes in REGEX_CLASSES.finditer(source))
 
         # Build and page object
         page = {
