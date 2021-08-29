@@ -11,6 +11,7 @@ This repository has a few scripts:
 * `fetch.py` retrieves all page sources via the Crom API, retrieves styles, and writes them to `extracted-styles.json`
 * `build.py` builds a static HTML page which contains the scraped information in a readable way. Presently this information is hosted on this repository's GitHub pages site.
 * `publish.sh` takes the data created by `fetch.js` and `build.py` and pushes them to the `gh-pages` branch. You can do this manually, if you prefer.
+* `grep.py` permits searching over all pages, as if using `grep` over a Wikidot site.
 
 Previously it made use of these scripts:
 
