@@ -33,8 +33,8 @@ def build_html(pages, counts):
             slug=slug,
             title=page['title'],
             source=page['source'],
-            module_styles=page['moduleStyles'],
-            inline_styles=page['inlineStyles'],
+            module_styles=page['module_styles'],
+            inline_styles=page['inline_styles'],
             classes=page['classes'],
         )
 
@@ -77,10 +77,10 @@ def deduplicate_items(pages):
     classes_count = defaultdict(int)
 
     for page in pages:
-        for style in page['moduleStyles']:
+        for style in page['module_styles']:
             module_styles_count[style] += 1
 
-        for style in page['inlineStyles']:
+        for style in page['inline_styles']:
             inline_styles_count[style] += 1
 
         for klass in page['classes']:
