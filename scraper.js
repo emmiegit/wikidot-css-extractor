@@ -100,7 +100,7 @@ async function readStyles() {
     return styles;
   } catch (error) {
     console.log('Cannot load pre-existing styles.');
-    return;
+    return {};
   }
 }
 
