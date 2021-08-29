@@ -91,6 +91,7 @@ class Crawler:
 
         with open(self.path, 'w') as file:
             json.dump(data, file, indent=4)
+            file.write('\n')
 
     async def raw_request(self, session, query, variables):
         for key, value in variables.items():
