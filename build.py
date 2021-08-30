@@ -13,6 +13,7 @@ CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'cl
 
 STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
+CURRENT_SITE = 'scp-wiki'
 
 INCLUDE_REGEX = re.compile(r'^(?::([a-z0-9\-]+):)?([a-z0-9\-:]+)$')
 SCP_SLUG_REGEX = re.compile(r'^scp-([0-9]+)(.*)$')
@@ -33,7 +34,7 @@ def get_include_url(include):
 
     site, page = match.groups()
     if site is None:
-        site = 'scp-wiki'
+        site = CURRENT_SITE
 
     return f"https://{site}.wikidot.com/{page}"
 
@@ -151,6 +152,8 @@ def deduplicate_items(pages):
         items.reverse()
         return items
 
+    site_includes = includes_by_site(pages['includes'])
+
     module_styles = convert(module_styles_count)
     inline_styles = convert(inline_styles_count)
     includes = convert(includes_count)
@@ -160,11 +163,26 @@ def deduplicate_items(pages):
         module_styles=module_styles,
         inline_styles=inline_styles,
         includes=includes,
+        site_includes=site_includes,
         classes=classes,
     )
+
+def includes_by_site(includes):
+    site_includes = defaultdict(lambda: defaultdict(int))
+
+    for include in includes:
+        match = INCLUDE_REGEX.match(include)
+        if match is None:
+            continue
+
+        site, page = match.groups()
+        if site is None:
+            site = CURRENT_SITE
+        site_includes[site][page] += 1
+    return site_includes
 
 if __name__ == '__main__':
     pages = load_pages(STYLES_FILENAME)
     counts = deduplicate_items(pages)
-    generated_html = build_html(pages, counts)
+    generated_html = build_html(pages, counts, site_includes)
     write_html(generated_html)
