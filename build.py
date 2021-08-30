@@ -112,7 +112,7 @@ def load_pages(path):
         else:
             number = int(match[1])
             suffix = match[2]
-            return f"scp-{number:07}{suffix}"
+            return f"\0scp-{number:07}{suffix}"
 
     with open(path) as file:
         data = json.load(file)
