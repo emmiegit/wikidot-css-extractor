@@ -186,7 +186,7 @@ def includes_by_site(includes_count):
         if site is None:
             site = CURRENT_SITE
 
-        site_includes_count[site][include] += 1
+        site_includes_count[site][include] += count
 
     return site_includes_count
 
