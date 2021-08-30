@@ -3,6 +3,7 @@
 import hashlib
 import json
 import os
+import re
 from collections import defaultdict, namedtuple
 from datetime import datetime
 
@@ -13,6 +14,8 @@ CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'cl
 STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
 
+INCLUDE_REGEX = re.compile(r'^(?::([a-z0-9\-]+):)?([a-z0-9\-:]+)$')
+
 COMPARISON_FUNCTIONS = {
     '>': lambda x, y: x > y,
     '<': lambda x, y: x < y,
@@ -22,6 +25,17 @@ COMPARISON_FUNCTIONS = {
     '!=': lambda x, y: x != y,
 }
 
+def get_include_url(include):
+    match = INCLUDE_REGEX.match(include)
+    if match is None:
+        return None
+
+    site, page = match.groups()
+    if site is None:
+        site = 'scp-wiki'
+
+    return f"https://{site}.wikidot.com/{pagae}"
+
 
 def build_html(pages, counts):
     # Build jinja environment and helpers
@@ -30,6 +44,7 @@ def build_html(pages, counts):
         autoescape=True,
     )
     env.globals['cmp'] = lambda x, operator, y: COMPARISON_FUNCTIONS[operator](x, y)
+    env.globals['get_include_url'] = get_include_url
     env.globals['now'] = datetime.utcnow
     env.filters['commaify'] = lambda number: format(number, ',d')
     env.filters['reverse'] = reversed
