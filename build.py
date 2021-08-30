@@ -31,6 +31,7 @@ def build_html(pages, counts):
     env.globals['cmp'] = lambda x, operator, y: COMPARISON_FUNCTIONS[operator](x, y)
     env.globals['now'] = datetime.utcnow
     env.filters['commaify'] = lambda number: format(number, ',d')
+    env.filters['reverse'] = reversed
     env.filters['sha1'] = lambda data: hashlib.sha1(data.encode('utf-8')).hexdigest()
 
     html_pages = {}
