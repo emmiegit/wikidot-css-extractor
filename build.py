@@ -41,6 +41,7 @@ def build_html(pages, counts):
     inline_styles_template = env.get_template('inline-css.j2')
     includes_template = env.get_template('includes.j2')
     classes_template = env.get_template('classes.j2')
+    pages_index_template = env.get_template('pages_index.j2')
     index_template = env.get_template('index.j2')
 
     # Build HTML
@@ -64,6 +65,7 @@ def build_html(pages, counts):
     html_pages['inline-css'] = inline_styles_template.render(styles=counts.inline_styles)
     html_pages['includes'] = includes_template.render(includes=counts.includes)
     html_pages['classes'] = classes_template.render(classes=counts.classes)
+    html_pages['pages/index'] = pages_index_template.render(pages=pages)
 
     print("Generating index...")
     html_pages['index'] = index_template.render(
