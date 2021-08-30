@@ -2,6 +2,8 @@
 set -eux
 
 [[ -f output/results.json ]]
+[[ -f output/index.html ]]
+[[ -f output/pages/index.html ]]
 [[ -f output/pages/scp-001.html ]]
 
 git checkout gh-pages
