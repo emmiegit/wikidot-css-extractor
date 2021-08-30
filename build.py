@@ -164,6 +164,7 @@ def deduplicate_items(pages):
     site_includes = ((site, convert(pages)) for site, pages in site_includes_count.items())
     site_includes = [(site, sum(count for _, count in pages), pages) for site, pages in site_includes]
     site_includes.sort(key=lambda item: item[1])
+    site_includes.reverse()
 
     return CountedItems(
         module_styles=module_styles,
