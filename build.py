@@ -106,6 +106,9 @@ def write_html(html_pages):
 def load_pages(path):
     def page_key(page):
         slug = page['slug']
+        if slug.startswith('adult:'):
+            return page_key(slug[6:])
+
         match = SCP_SLUG_REGEX.match(slug)
         if match is None:
             return slug
