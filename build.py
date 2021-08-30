@@ -129,6 +129,8 @@ def load_pages(path):
     return pages
 
 def deduplicate_items(pages):
+    print("Processing data...")
+
     module_styles_count = defaultdict(list)
     inline_styles_count = defaultdict(list)
     classes_count = defaultdict(list)
