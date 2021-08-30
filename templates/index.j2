@@ -98,6 +98,20 @@
     {% endfor %}
   </ol>
 
+  <p>
+    Includes are pulled from {{ site_includes|length|commaify }} unique sites.
+    The top 10 most common are:
+  </p>
+
+  <ol>
+    {% for site, count, includes in site_includes[:10] %}
+      <li>
+        (found {{ count|commaify }})
+        <code>{{ site }}</code>
+      </li>
+    {% endfor %}
+  </ol>
+
   {# ------ #}
 
   <h2 class="header">

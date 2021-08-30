@@ -9,7 +9,7 @@ from datetime import datetime
 
 import jinja2
 
-CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes', 'includes'))
+CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes', 'includes', 'site_includes'))
 
 STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
@@ -91,6 +91,7 @@ def build_html(pages, counts):
         module_styles=counts.module_styles,
         inline_styles=counts.inline_styles,
         includes=counts.includes,
+        site_includes=counts.site_includes,
         classes=counts.classes,
     )
 
@@ -152,12 +153,17 @@ def deduplicate_items(pages):
         items.reverse()
         return items
 
-    site_includes = includes_by_site(pages['includes'])
-
     module_styles = convert(module_styles_count)
     inline_styles = convert(inline_styles_count)
     includes = convert(includes_count)
     classes = convert(classes_count)
+
+    # This is more complicated than convert(),
+    # since we need to fold both by sites and then pages within them.
+    site_includes_count = includes_by_site(includes_count)
+    site_includes = ((site, convert(pages)) for site, pages in site_includes_count.items())
+    site_includes = [(site, sum(count for _, count in pages), pages) for site, pages in site_includes]
+    site_includes.sort(key=lambda item: item[1])
 
     return CountedItems(
         module_styles=module_styles,
@@ -167,10 +173,10 @@ def deduplicate_items(pages):
         classes=classes,
     )
 
-def includes_by_site(includes):
-    site_includes = defaultdict(lambda: defaultdict(int))
+def includes_by_site(includes_count):
+    site_includes_count = defaultdict(lambda: defaultdict(int))
 
-    for include in includes:
+    for include, count in includes_count.items():
         match = INCLUDE_REGEX.match(include)
         if match is None:
             continue
@@ -178,11 +184,13 @@ def includes_by_site(includes):
         site, page = match.groups()
         if site is None:
             site = CURRENT_SITE
-        site_includes[site][page] += 1
-    return site_includes
+
+        site_includes_count[site][page] += 1
+
+    return site_includes_count
 
 if __name__ == '__main__':
     pages = load_pages(STYLES_FILENAME)
     counts = deduplicate_items(pages)
-    generated_html = build_html(pages, counts, site_includes)
+    generated_html = build_html(pages, counts)
     write_html(generated_html)
