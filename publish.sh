@@ -8,6 +8,8 @@ function on_exit() {
 	rm -rf "$temp_dir"
 }
 
+trap on_exit EXIT SIGINT SIGTERM
+
 # Execution
 set -x
 
