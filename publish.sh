@@ -9,6 +9,6 @@ set -eux
 git checkout gh-pages
 cp -a output/*.html output/pages output/results.json .
 git add *.html pages/ results.json
-git commit -m 'Update generated files.' --allow-empty
+git commit -m 'Update generated files.'
 git push
 git checkout -
