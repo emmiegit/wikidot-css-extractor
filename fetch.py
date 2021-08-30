@@ -7,7 +7,6 @@ import os
 import re
 import traceback
 from dateutil.parser import isoparse
-from pprint import pprint
 
 import aiohttp
 
@@ -231,15 +230,9 @@ class Crawler:
                     last_created_at.set(page['created_at'])
 
                     if page is not None:
-                        # Check existing page
                         if slug in self.pages:
-                            created_at = format_date(page.get('created_at'))
-                            print(f"! Found duplicate page (slug '{slug}', created '{created_at}')")
-
-                            if self.pages[slug] != page:
-                                print("! Pages don't match:")
-                                pprint(f"Old: {self.pages[slug]}")
-                                pprint(f"New: {page}")
+                            # Hit the end, terminate fetching
+                            break
 
                         # Save in the record
                         self.pages[slug] = page
@@ -256,6 +249,7 @@ class Crawler:
                     print(f"Now at {total_pages:,} saved pages")
                     last_page_count = total_pages
 
+        self.save()
         return self.pages
 
 if __name__ == '__main__':
