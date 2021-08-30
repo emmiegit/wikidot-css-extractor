@@ -15,7 +15,7 @@ STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
 CURRENT_SITE = 'scp-wiki'
 
-INCLUDE_REGEX = re.compile(r'^(?::([a-z0-9\-]+):)?([a-z0-9\-:]+)$', re.IGNORECASE)
+INCLUDE_REGEX = re.compile(r'^(?::([a-z0-9\-]+):)?([a-z0-9\-:_]+)$', re.IGNORECASE)
 SCP_SLUG_REGEX = re.compile(r'^scp-([0-9]+)(.*)$')
 
 COMPARISON_FUNCTIONS = {
