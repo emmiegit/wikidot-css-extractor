@@ -15,6 +15,7 @@ STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
 
 INCLUDE_REGEX = re.compile(r'^(?::([a-z0-9\-]+):)?([a-z0-9\-:]+)$')
+SCP_SLUG_REGEX = re.compile(r'^scp-([0-9]+)(.*)$')
 
 COMPARISON_FUNCTIONS = {
     '>': lambda x, y: x > y,
@@ -105,10 +106,11 @@ def write_html(html_pages):
 def load_pages(path):
     def page_key(page):
         slug = page['slug']
-        if slug.startswith('scp-'):
-            return slug[4:].zfill(10)
-        else:
+        match = SCP_SLUG_REGEX.match(slug)
+        if match is None:
             return slug
+        else:
+            return f"{slug}{match[1].zfill(10)}{match[2]}"
 
     with open(path) as file:
         data = json.load(file)
