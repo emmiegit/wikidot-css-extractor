@@ -57,6 +57,7 @@ def build_html(pages, counts):
             source=page['source'],
             module_styles=page['module_styles'],
             inline_styles=page['inline_styles'],
+            includes=page['includes'],
             classes=page['classes'],
         )
 
