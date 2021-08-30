@@ -231,10 +231,6 @@ class Crawler:
                 # Make request
                 edges, has_next_page = await self.next_pages(session)
 
-                # Out of pages
-                if not edges:
-                    break
-
                 # Parse out results
                 for edge in edges:
                     page, slug = self.process_edge(edge)
@@ -244,8 +240,10 @@ class Crawler:
                     if page is not None:
                         self.pages[slug] = page
 
+                return has_next_page
+
             while has_next_page:
-                await self.retry(pull_pages)
+                has_next_page = await self.retry(pull_pages)
 
                 # Save periodically
                 # We don't save after every hit, unlike in the scraper,
