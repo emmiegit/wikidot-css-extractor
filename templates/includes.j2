@@ -1,6 +1,6 @@
 {% extends 'base.j2' %}
 
-{% from 'utils.j2' import anchor, plural %}
+{% from 'utils.j2' import anchor, plural, include_link %}
 
 {% block title %}SCP Wiki Inclusions{% endblock %}
 
@@ -13,7 +13,7 @@
         {{ plural(count, 'inclusion') }}
         {{- anchor('include', include|urlencode) }}
 
-        <pre class="code"><code>{{ style }}</code></pre>
+        {{ include_link(include) }}
       </li>
     {% endif %}
   {% endfor %}
