@@ -254,6 +254,8 @@ class Crawler:
                     print(f"Now at {total_pages:,} saved pages")
                     last_page_count = total_pages
 
+            print("Hit the end, finished!")
+
         self.save()
         return self.pages
 
