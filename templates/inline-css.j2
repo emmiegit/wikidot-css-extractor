@@ -7,13 +7,23 @@
 {# Helper macros #}
 
 {% macro build_list_item(operator, value) %}
-  {% for style, count in styles %}
+  {% for style, pages, count in styles %}
     {% if cmp(count, operator, value) %}
       <li>
         {{ plural(count, 'occurrence') }}
         {{- anchor('inline', style|sha1) }}
 
         <pre class="code"><code>{{ style }}</code></pre>
+
+        <details>
+          <summary>Pages using this styling</summary>
+
+          <ul>
+            {% for page in pages %}
+              <li><code>{{ page }}</code></li>
+            {% endfor %}
+          </ul>
+        </details>
       </li>
     {% endif %}
   {% endfor %}
