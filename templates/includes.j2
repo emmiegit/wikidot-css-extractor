@@ -6,7 +6,7 @@
 
 {# Helper macros #}
 
-{% macro build_list_item(operator, value) %}
+{% macro build_list_item(operator, value, includes) %}
   {% for include, count in includes %}
     {% if cmp(count, operator, value) %}
       <li>
@@ -19,14 +19,14 @@
   {% endfor %}
 {% endmacro %}
 
-{% macro build_list(value) %}
-  {{ build_list_item('>=', value) }}
+{% macro build_list(value, includes) %}
+  {{ build_list_item('>=', value, includes) }}
 
   <li class="no-bullet">
     <details>
       <summary>Uncommon (less than {{ value }})</summary>
 
-      {{ build_list_item('<', value) }}
+      {{ build_list_item('<', value, includes) }}
     </details>
   </li>
 {% endmacro %}
@@ -40,7 +40,27 @@
     A deduplicated list of included pages found across all pages.
   </p>
 
-  <ul class="includes-count">
-    {{ build_list(11) }}
-  </ul>
+  <details>
+    <summary>By individual include</summary>
+
+    <ol class="includes-count">
+      {{ build_list(11, includes) }}
+    </ol>
+  </details>
+
+  <details>
+    <summary>By site</summary>
+
+    <ol class="includes-count">
+      {% for site, count, includes in site_includes %}
+        <li>
+          Site: <code>{{ site }}</code> ({{ plural(count, 'inclusion') }} total)
+
+          <ol class="includes-count">
+            {{ build_list(5, includes) }}
+          </ol>
+        </li>
+      {% endfor %}
+    </ol>
+  </details>
 {% endblock %}
