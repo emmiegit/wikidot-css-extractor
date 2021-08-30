@@ -110,7 +110,9 @@ def load_pages(path):
         if match is None:
             return slug
         else:
-            return f"{slug}{match[1].zfill(10)}{match[2]}"
+            number = int(match[1])
+            suffix = match[2]
+            return f"scp-{number:07}{suffix}"
 
     with open(path) as file:
         data = json.load(file)
