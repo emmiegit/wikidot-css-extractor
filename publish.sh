@@ -5,8 +5,8 @@ set -eux
 [[ -f output/pages/scp-001.html ]]
 
 git checkout gh-pages
-cp -a output/pages output/results.json .
-git add pages/ results.json
+cp -a output/*.html output/pages output/results.json .
+git add *.html pages/ results.json
 git commit -m 'Update generated files.' --allow-empty
 git push
 git checkout -
