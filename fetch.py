@@ -152,7 +152,9 @@ class Crawler:
         page_info = pages['pageInfo']
 
         has_next_page = page_info['hasNextPage']
-        self.cursor = page_info['endCursor']
+        if has_next_page:
+            self.cursor = page_info['endCursor']
+
         return pages['edges'], has_next_page
 
     @staticmethod
