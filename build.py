@@ -24,6 +24,7 @@ COMPARISON_FUNCTIONS = {
 
 
 def build_html(pages, counts):
+    # Build jinja environment and helpers
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader('templates'),
         autoescape=True,
@@ -34,14 +35,16 @@ def build_html(pages, counts):
     env.filters['reverse'] = reversed
     env.filters['sha1'] = lambda data: hashlib.sha1(data.encode('utf-8')).hexdigest()
 
-    html_pages = {}
-
+    # Get templates
     page_template = env.get_template('page.j2')
     module_styles_template = env.get_template('module-css.j2')
     inline_styles_template = env.get_template('inline-css.j2')
     includes_template = env.get_template('includes.j2')
     classes_template = env.get_template('classes.j2')
     index_template = env.get_template('index.j2')
+
+    # Build HTML
+    html_pages = {}
 
     for page in pages:
         slug = page['slug']
