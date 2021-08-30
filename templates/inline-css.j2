@@ -7,7 +7,7 @@
 {# Helper macros #}
 
 {% macro build_list_item(operator, value) %}
-  {% for class, count in classes %}
+  {% for style, count in styles %}
     {% if cmp(count, operator, value) %}
       <li>
         {{ plural(count, 'occurrence') }}
@@ -19,22 +19,16 @@
   {% endfor %}
 {% endmacro %}
 
-{% macro build_list_collapsible(value) %}
-  <li class="no-bullet">
-    <details>
-      <summary>Only {{ plural(value, 'occurrence') }}</summary>
-
-      {{ build_list_item('==', value) }}
-    </details>
-  </li>
-{% endmacro %}
-
 {% macro build_list(value) %}
   {{ build_list_item('>', value) }}
 
-  {% for n in range(1, value + 1)|reverse %}
-    {{ build_list_collapsible(n) }}
-  {% endfor %}
+  <li class="no-bullet">
+    <details>
+      <summary>Uncommon (less than {{ value }})</summary>
+
+      {{ build_list_item('<=', value) }}
+    </details>
+  </li>
 {% endmacro %}
 
 {# Actual body #}
