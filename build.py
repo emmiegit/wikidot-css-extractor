@@ -39,6 +39,7 @@ def build_html(pages, counts):
     page_template = env.get_template('page.j2')
     module_styles_template = env.get_template('module-css.j2')
     inline_styles_template = env.get_template('inline-css.j2')
+    includes_template = env.get_template('includes.j2')
     classes_template = env.get_template('classes.j2')
     index_template = env.get_template('index.j2')
 
