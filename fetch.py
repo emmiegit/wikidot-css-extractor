@@ -35,7 +35,7 @@ CROM_QUERY = """
             anyBaseUrl: $anyBaseUrl,
             wikidotInfo: {
                 createdAt: {
-                    gte: $lastCreatedAt,
+                    gt: $lastCreatedAt,
                 },
             },
         },
@@ -231,6 +231,10 @@ class Crawler:
                 # Make request
                 edges, has_next_page = await self.next_pages(session)
 
+                # Out of pages
+                if not edges:
+                    break
+
                 # Parse out results
                 for edge in edges:
                     page, slug = self.process_edge(edge)
@@ -238,11 +242,6 @@ class Crawler:
                     self.last_created_at = page['created_at']
 
                     if page is not None:
-                        if slug in self.pages:
-                            # Hit the end, terminate fetching
-                            break
-
-                        # Save in the record
                         self.pages[slug] = page
 
             while has_next_page:
