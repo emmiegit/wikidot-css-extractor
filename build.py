@@ -129,27 +129,29 @@ def load_pages(path):
     return pages
 
 def deduplicate_items(pages):
-    module_styles_count = defaultdict(int)
-    inline_styles_count = defaultdict(int)
-    classes_count = defaultdict(int)
-    includes_count = defaultdict(int)
+    module_styles_count = defaultdict(list)
+    inline_styles_count = defaultdict(list)
+    classes_count = defaultdict(list)
+    includes_count = defaultdict(list)
 
     for page in pages:
+        slug = page['slug']
+
         for style in page['module_styles']:
-            module_styles_count[style] += 1
+            module_styles_count[style].append(slug)
 
         for style in page['inline_styles']:
-            inline_styles_count[style] += 1
+            inline_styles_count[style].append(slug)
 
         for include in page['includes']:
-            includes_count[include] += 1
+            includes_count[include].append(slug)
 
         for klass in page['classes']:
-            classes_count[klass] += 1
+            classes_count[klass].append(slug)
 
     def convert(counts):
-        items = [(item, count) for item, count in counts.items()]
-        items.sort(key=lambda item: item[1])
+        items = [(item, pages, len(pages)) for item, pages in counts.items()]
+        items.sort(key=lambda item: item[2])
         items.reverse()
         return items
 
@@ -162,7 +164,7 @@ def deduplicate_items(pages):
     # since we need to fold both by sites and then pages within them.
     site_includes_count = includes_by_site(includes_count)
     site_includes = ((site, convert(pages)) for site, pages in site_includes_count.items())
-    site_includes = [(site, sum(count for _, count in pages), pages) for site, pages in site_includes]
+    site_includes = [(site, sum(count for _, _, count in pages), pages) for site, pages in site_includes]
     site_includes.sort(key=lambda item: item[1])
     site_includes.reverse()
 
@@ -175,9 +177,9 @@ def deduplicate_items(pages):
     )
 
 def includes_by_site(includes_count):
-    site_includes_count = defaultdict(lambda: defaultdict(int))
+    site_includes_count = defaultdict(lambda: defaultdict(list))
 
-    for include, count in includes_count.items():
+    for include, slugs in includes_count.items():
         match = INCLUDE_REGEX.match(include)
         if match is None:
             continue
@@ -186,7 +188,7 @@ def includes_by_site(includes_count):
         if site is None:
             site = CURRENT_SITE
 
-        site_includes_count[site][include] += count
+        site_includes_count[site][include].extend(slugs)
 
     return site_includes_count
 
