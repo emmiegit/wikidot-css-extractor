@@ -233,7 +233,7 @@ class Crawler:
                     if page is not None:
                         # Check existing page
                         if slug in self.pages:
-                            created_at = format_date(page['created_at'])
+                            created_at = format_date(page.get('created_at'))
                             print(f"! Found duplicate page (slug '{slug}', created '{created_at}')")
 
                             if self.pages[slug] != page:
