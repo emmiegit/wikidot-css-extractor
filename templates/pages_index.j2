@@ -2,6 +2,12 @@
 
 {% from 'utils.j2' import anchor, plural %}
 
+{% macro too_big(collection, bound) %}
+  {%- if collection|length >= bound -%}
+    alert
+  {%- endif -%}
+{% endmacro %}
+
 {% block title %}SCP Wiki Extracted Pages{% endblock %}
 
 {% block body %}
@@ -36,10 +42,21 @@
             <code>{{ page.slug }}</code>
           </td>
 
-          <td class="number">{{ page.module_styles|length|commaify }}</td>
-          <td class="number">{{ page.inline_styles|length|commaify }}</td>
-          <td class="number">{{ page.classes|length|commaify }}</td>
-          <td class="number">{{ page.source|length|commaify }}</td>
+          <td class="number {{- too_big(page.module_styles, 3) }}">
+            {{ page.module_styles|length|commaify }}
+          </td>
+
+          <td class="number {{- too_big(page.inline_styles, 10) }}">
+            {{ page.inline_styles|length|commaify }}
+          </td>
+
+          <td class="number {{- too_big(page.classes, 10) }}">
+            {{ page.classes|length|commaify }}
+          </td>
+
+          <td class="number {{- too_big(page.source, 10000) }}">
+            {{ page.source|length|commaify }}
+          </td>
         </tr>
       {% endfor %}
     </tbody>
