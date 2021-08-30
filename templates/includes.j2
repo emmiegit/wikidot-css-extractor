@@ -7,13 +7,23 @@
 {# Helper macros #}
 
 {% macro build_list_item(operator, value, includes) %}
-  {% for include, count in includes %}
+  {% for include, pages, count in includes %}
     {% if cmp(count, operator, value) %}
       <li>
         {{ plural(count, 'inclusion') }}
         {{- anchor('include', include|urlencode) }}
 
         {{ include_link(include) }}
+
+        <details>
+          <summary>Pages including this</summary>
+
+          <ul>
+            {% for page in pages %}
+              <li><code>{{ page }}</code></li>
+            {% endfor %}
+          </ul>
+        </details>
       </li>
     {% endif %}
   {% endfor %}
