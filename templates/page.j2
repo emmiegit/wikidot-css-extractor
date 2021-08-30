@@ -1,5 +1,7 @@
 {% extends 'base.j2' %}
 
+{% from 'utils.j2' import include_link %}
+
 {% block title %}{{ title }}{% endblock %}
 
 {% block body %}
@@ -35,13 +37,9 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       {% for include in includes %}
-        <li>
-          <pre><code>{{ include }}</code></pre>
-        </li>
+        <li>{{ include_link(include) }}</li>
       {% else %}
-        <li>
-          (none)
-        </li>
+        <li>(none)</li>
       {% endfor %}
     </ul>
 

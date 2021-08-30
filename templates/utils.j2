@@ -13,3 +13,13 @@
     {{- ending -}}
   {%- endif -%}
 {% endmacro %}
+
+{% macro include_link(include) %}
+  {% set url = get_include_url(include) %}
+
+  {% if url %}
+    <a href="{{ url }}"><code>{{ include }}</code></a>
+  {% else %}
+    <code>{{ include }}</code>
+  {% endif %}
+{% endmacro %}

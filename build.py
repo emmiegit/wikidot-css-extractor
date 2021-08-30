@@ -34,7 +34,7 @@ def get_include_url(include):
     if site is None:
         site = 'scp-wiki'
 
-    return f"https://{site}.wikidot.com/{pagae}"
+    return f"https://{site}.wikidot.com/{page}"
 
 
 def build_html(pages, counts):

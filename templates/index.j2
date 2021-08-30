@@ -1,6 +1,6 @@
 {% extends 'base.j2' %}
 
-{% from 'utils.j2' import anchor, plural %}
+{% from 'utils.j2' import anchor, plural, include_link %}
 
 {% block title %}SCP Wiki Style Statistics{% endblock %}
 
@@ -89,9 +89,7 @@
 
   <ol>
     {% for include, count in includes[:10] %}
-      <li>
-        <pre><code>{{ include }}</code></pre>
-      </li>
+      <li>{{ include_link(include) }}</li>
     {% endfor %}
   </ol>
 
