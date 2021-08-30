@@ -35,7 +35,7 @@ CROM_QUERY = """
             anyBaseUrl: $anyBaseUrl,
             wikidotInfo: {
                 createdAt: {
-                    gt: $lastCreatedAt,
+                    gte: $lastCreatedAt,
                 },
             },
         },
