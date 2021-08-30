@@ -33,6 +33,11 @@ CROM_QUERY = """
     pages(
         filter: {
             anyBaseUrl: $anyBaseUrl,
+            wikidotInfo: {
+                createdAt: {
+                    gte: $lastCreatedAt,
+                },
+            },
         },
         sort: {
             order: ASC,
@@ -97,6 +102,7 @@ class CromError(RuntimeError):
 class Crawler:
     def __init__(self):
         self.cursor = None
+        self.last_created_at = None
         self.pages = {}
         self.path = OUTPUT_FILENAME
 
@@ -105,12 +111,14 @@ class Crawler:
             data = json.load(file)
 
         self.cursor = data['cursor']
+        self.last_created_at = data['last_created_at']
         self.pages = data['pages']
         self.path = path
 
     def save(self):
         data = {
             'cursor': self.cursor,
+            'last_created_at': self.last_created_at,
             'pages': self.pages,
         }
 
@@ -135,6 +143,7 @@ class Crawler:
     async def next_pages(self, session):
         variables = {
             "$anyBaseUrl": CROM_SITES,
+            "$lastCreatedAt": self.last_created_at,
             "$cursor": self.cursor,
         }
 
@@ -212,12 +221,11 @@ class Crawler:
     async def fetch_all(self):
         has_next_page = True
         last_slug = Container()
-        last_created_at = Container()
         last_page_count = 0
 
         async with aiohttp.ClientSession() as session:
             async def pull_pages():
-                created_at = format_date(last_created_at.get())
+                created_at = format_date(self.last_created_at)
                 print(f"+ Requesting next batch of pages (last page '{last_slug}', created {created_at})")
 
                 # Make request
