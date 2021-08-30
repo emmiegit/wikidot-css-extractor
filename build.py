@@ -107,7 +107,8 @@ def load_pages(path):
     def page_key(page):
         slug = page['slug']
         if slug.startswith('adult:'):
-            return page_key(slug[6:])
+            # Fake page object
+            return page_key({ 'slug': slug[6:] })
 
         match = SCP_SLUG_REGEX.match(slug)
         if match is None:
