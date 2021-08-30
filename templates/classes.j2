@@ -7,13 +7,23 @@
 {# Helper macros #}
 
 {% macro build_list_item(operator, value) %}
-  {% for class, count in classes %}
+  {% for class, pages, count in classes %}
     {% if cmp(count, operator, value) %}
       <li>
         {{ plural(count, 'usage') }}
         {{- anchor('class', class) }}
 
         <pre class="code"><code>{{ class }}</code></pre>
+
+        <details>
+          <summary>Pages using this CSS class</summary>
+
+          <ul>
+            {% for page in pages %}
+              <li><code>{{ page }}</code></li>
+            {% endfor %}
+          </ul>
+        </details>
       </li>
     {% endif %}
   {% endfor %}
