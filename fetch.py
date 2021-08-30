@@ -235,7 +235,7 @@ class Crawler:
                 for edge in edges:
                     page, slug = self.process_edge(edge)
                     last_slug.set(slug)
-                    last_created_at.set(page['created_at'])
+                    self.last_created_at = page['created_at']
 
                     if page is not None:
                         if slug in self.pages:
