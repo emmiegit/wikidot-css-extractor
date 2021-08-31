@@ -68,6 +68,7 @@ def build_html(pages, counts):
     env.globals['cmp'] = lambda x, operator, y: COMPARISON_FUNCTIONS[operator](x, y)
     env.globals['get_page_url'] = get_page_url
     env.globals['get_include_url'] = get_include_url
+    env.globals['page_key'] = page_slug_key
     env.globals['now'] = datetime.utcnow
     env.filters['commaify'] = lambda number: format(number, ',d')
     env.filters['reverse'] = reversed
