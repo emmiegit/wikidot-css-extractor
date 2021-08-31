@@ -14,10 +14,15 @@
   {%- endif -%}
 {% endmacro %}
 
+{% macro info_link(slug) %}
+  (<a href="/wikidot-css-extractor/pages/{{ slug }}.html">info</a>)
+{% endmacro %}
+
 {% macro page_link(slug) %}
   {% set url = get_page_url(slug) %}
 
   <a href="{{ url }}" target="_blank"><code>{{ slug }}</code></a>
+  {{ info_link(slug) }}
 {% endmacro %}
 
 {% macro include_link(include) %}
@@ -31,6 +36,6 @@
   {% endif %}
 
   {% if local_slug %}
-    (<a href="/wikidot-css-extractor/pages/{{ local_slug }}.html">info</a>)
+    {{ info_link(local_slug) }}
   {% endif %}
 {% endmacro %}
