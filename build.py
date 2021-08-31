@@ -126,26 +126,25 @@ def write_html(html_pages):
         with open(f"output/{name}.html", 'w') as file:
             file.write(html)
 
+def page_slug_key(slug):
+    if slug.startswith('adult:'):
+        # Fake page object
+        return page_slug_key(slug[6:])
+
+    match = SCP_SLUG_REGEX.match(slug)
+    if match is None:
+        return slug
+    else:
+        number = int(match[1])
+        suffix = match[2]
+        return f"scp-{number:07}{suffix}"
+
 def load_pages(path):
-    def page_key(page):
-        slug = page['slug']
-        if slug.startswith('adult:'):
-            # Fake page object
-            return page_key({ 'slug': slug[6:] })
-
-        match = SCP_SLUG_REGEX.match(slug)
-        if match is None:
-            return slug
-        else:
-            number = int(match[1])
-            suffix = match[2]
-            return f"scp-{number:07}{suffix}"
-
     with open(path) as file:
         data = json.load(file)
 
     pages = list(data['pages'].values())
-    pages.sort(key=page_key)
+    pages.sort(key=lambda page: page_slug_key(page['slug']))
 
     return pages
 
