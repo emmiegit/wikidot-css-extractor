@@ -3,9 +3,11 @@
 {% from 'utils.j2' import anchor, plural %}
 
 {% macro too_big(collection, bound) %}
-  {%- if collection|length >= bound -%}
-    alert
-  {%- endif -%}
+  {% if collection|length >= bound %}
+    <span class="alert">{{ caller() }}</span>
+  {% else %}
+    {{ caller() }}
+  {% endif %}
 {% endmacro %}
 
 {% block title %}SCP Wiki Extracted Pages{% endblock %}
@@ -42,20 +44,28 @@
             <code>{{ page.slug }}</code>
           </td>
 
-          <td class="number {{ too_big(page.module_styles, 3) }}">
-            {{ page.module_styles|length|commaify }}
+          <td class="number" data-sort="{{ page.module_styles|length }}">
+            {% call too_big(page.module_styles, 3) %}
+              {{ page.module_styles|length|commaify }}
+            {% endcall%}
           </td>
 
-          <td class="number {{ too_big(page.inline_styles, 10) }}">
-            {{ page.inline_styles|length|commaify }}
+          <td class="number" data-sort="{{ page.inline_styles|length }}">
+            {% call too_big(page.inline_styles, 10) %}
+              {{ page.inline_styles|length|commaify }}
+            {% endcall %}
           </td>
 
-          <td class="number {{ too_big(page.classes, 10) }}">
-            {{ page.classes|length|commaify }}
+          <td class="number" data-sort="{{ page.classes|length }}">
+            {% call too_big(page.classes, 10) %}
+              {{ page.classes|length|commaify }}
+            {% endcall %}
           </td>
 
-          <td class="number {{ too_big(page.source, 20000) }}">
-            {{ page.source|length|commaify }}
+          <td class="number" data-sort="{{ page.source|length }}">
+            {% call too_big(page.source, 200000) %}
+              {{ page.source|length|commaify }}
+            {% endcall %}
           </td>
         </tr>
       {% endfor %}
