@@ -38,6 +38,23 @@ def get_include_url(include):
 
     return f"https://{site}.wikidot.com/{page}"
 
+class MultiList(list):
+    """
+    Like a multiset, but preserves insertion order.
+    Assumes input data is sorted.
+
+    Internally, a list where each element is [item, count].
+    """
+
+    def append(self, item):
+        if self and self[-1][0] == item:
+            self[-1][1] += 1
+        else:
+            super().append([item, 1])
+
+    def extend(self, items):
+        for item in items:
+            self.append(item)
 
 def build_html(pages, counts):
     # Build jinja environment and helpers
@@ -131,10 +148,10 @@ def load_pages(path):
 def deduplicate_items(pages):
     print("Processing data...")
 
-    module_styles_count = defaultdict(list)
-    inline_styles_count = defaultdict(list)
-    classes_count = defaultdict(list)
-    includes_count = defaultdict(list)
+    module_styles_count = defaultdict(MultiList)
+    inline_styles_count = defaultdict(MultiList)
+    classes_count = defaultdict(MultiList)
+    includes_count = defaultdict(MultiList)
 
     for page in pages:
         slug = page['slug']
@@ -179,7 +196,7 @@ def deduplicate_items(pages):
     )
 
 def includes_by_site(includes_count):
-    site_includes_count = defaultdict(lambda: defaultdict(list))
+    site_includes_count = defaultdict(lambda: defaultdict(MultiList))
 
     for include, slugs in includes_count.items():
         match = INCLUDE_REGEX.match(include)
