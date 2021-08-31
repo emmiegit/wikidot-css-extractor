@@ -129,7 +129,6 @@ def write_html(html_pages):
 
 def page_slug_key(slug):
     if slug.startswith('adult:'):
-        # Fake page object
         return page_slug_key(slug[6:])
 
     match = SCP_SLUG_REGEX.match(slug)
