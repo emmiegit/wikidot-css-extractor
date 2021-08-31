@@ -19,9 +19,13 @@
           <summary>Pages including this</summary>
 
           <ul>
-            {% for page in pages %}
+            {% for page, count in pages %}
               <li>
-                <code>{{ page }}</code>
+                {{ page_link(page) }}
+
+                {% if count > 1 %}
+                  ({{ count }})
+                {% endif %}
               </li>
             {% endfor %}
           </ul>
