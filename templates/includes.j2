@@ -70,11 +70,15 @@
     <ol class="includes-count">
       {% for site, includes, count in site_includes %}
         <li>
-          Site: <code>{{ site }}</code> ({{ plural(count, 'inclusion') }} total)
+          <details>
+            <summary>
+              Site: <code>{{ site }}</code> ({{ plural(count, 'inclusion') }} total)
+            </summary>
 
-          <ol class="includes-sublist">
-            {{ build_list(5, includes) }}
-          </ol>
+            <ol class="includes-sublist">
+              {{ build_list(5, includes) }}
+            </ol>
+          </details>
         </li>
       {% endfor %}
     </ol>
