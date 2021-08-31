@@ -1,10 +1,9 @@
 function initTableSort() {
-  var element = document.getElementById('page-list');
-  if (element === null) {
-    alert("No table element found!");
-    return;
-  }
+  var tableElement = document.getElementById('page-list');
+  new Tablesort(tableElement, { descending: true });
 
-  console.info("Initializing tablesort for " + element);
-  new Tablesort(element, { descending: true });
+  var noticeElement = document.getElementById('table-sort-notice');
+  noticeElement.remove();
+
+  console.info("Initializing tablesort for " + tableElement);
 }
