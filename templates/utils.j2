@@ -22,10 +22,15 @@
 
 {% macro include_link(include) %}
   {% set url = get_include_url(include) %}
+  {% set local_slug = get_local_include_slug(include) %}
 
   {% if url %}
     <a href="{{ url }}" target="_blank"><code>{{ include }}</code></a>
   {% else %}
     <code>{{ include }}</code>
+  {% endif %}
+
+  {% if local_slug %}
+    (<a href="/wikidot-css-extractor/pages/{{ local_slug }}.html">info</a>)
   {% endif %}
 {% endmacro %}

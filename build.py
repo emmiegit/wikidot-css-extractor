@@ -41,6 +41,17 @@ def get_include_url(include):
 
     return f"https://{site}.wikidot.com/{page}"
 
+def get_local_include_slug(include):
+    match = INCLUDE_REGEX.match(include)
+    if match is None:
+        return None
+
+    site, page = match.groups()
+    if site != CURRENT_SITE:
+        return None
+
+    return page
+
 class MultiList(list):
     """
     Like a multiset, but preserves insertion order.
@@ -68,6 +79,7 @@ def build_html(pages, counts):
     env.globals['cmp'] = lambda x, operator, y: COMPARISON_FUNCTIONS[operator](x, y)
     env.globals['get_page_url'] = get_page_url
     env.globals['get_include_url'] = get_include_url
+    env.globals['get_local_include_slug'] = get_local_include_slug
     env.globals['page_key'] = page_slug_key
     env.globals['now'] = datetime.utcnow
     env.filters['commaify'] = lambda number: format(number, ',d')
