@@ -199,7 +199,7 @@ def deduplicate_items(pages):
                     include_count += count
                     include_entries.append((slug, count))
 
-                include_entries.sort(key=lambda item: item[2])
+                include_entries.sort(key=lambda item: item[1])
                 include_entries.reverse()
 
                 site_count += count
