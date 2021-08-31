@@ -4,6 +4,6 @@ setTimeout(100, function() {
   if (element !== null) {
     // Actually initialize the table sorting
     console.info("Initializing tablesort for " + element);
-    new Tablesort(element);
+    new Tablesort(element, { descending: true });
   }
 });
