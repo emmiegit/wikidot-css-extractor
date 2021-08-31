@@ -18,7 +18,7 @@ set -x
 [[ -f output/pages/index.html ]]
 [[ -f output/pages/scp-001.html ]]
 
-cp -a output/*.html output/pages output/results.json "$temp_dir"
+cp -a static output/*.html output/pages output/results.json "$temp_dir"
 git checkout gh-pages
 cp -a "$temp_dir"/* .
 git add .
