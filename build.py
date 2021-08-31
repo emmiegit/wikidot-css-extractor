@@ -27,6 +27,9 @@ COMPARISON_FUNCTIONS = {
     '!=': lambda x, y: x != y,
 }
 
+def get_page_url(slug):
+    return f"https://{CURRENT_SITE}.wikidot.com/{slug}"
+
 def get_include_url(include):
     match = INCLUDE_REGEX.match(include)
     if match is None:
@@ -63,6 +66,7 @@ def build_html(pages, counts):
         autoescape=True,
     )
     env.globals['cmp'] = lambda x, operator, y: COMPARISON_FUNCTIONS[operator](x, y)
+    env.globals['get_page_url'] = get_page_url
     env.globals['get_include_url'] = get_include_url
     env.globals['now'] = datetime.utcnow
     env.filters['commaify'] = lambda number: format(number, ',d')

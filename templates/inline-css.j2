@@ -1,6 +1,6 @@
 {% extends 'base.j2' %}
 
-{% from 'utils.j2' import anchor, plural %}
+{% from 'utils.j2' import anchor, plural, page_link %}
 
 {% block title %}SCP Wiki Inline Modules{% endblock %}
 
@@ -20,11 +20,13 @@
 
           <ul>
             {% for page, count in pages %}
-              <li><code>{{ page }}</code></li>
+              <li>
+                {{ page_link(page) }}
 
-              {% if count > 1 %}
-                ({{ count }})
-              {% endif %}
+                {% if count > 1 %}
+                  ({{ count }})
+                {% endif %}
+              </li>
             {% endfor %}
           </ul>
         </details>
