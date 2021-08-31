@@ -86,10 +86,10 @@ def build_html(pages, counts):
     # Build HTML
     html_pages = {}
 
+    print(f"Generating {len(pages)} individual pages...")
     for page in pages:
         slug = page['slug']
 
-        print(f"Generating page for {slug}...")
         html_pages[f'pages/{slug}'] = page_template.render(
             slug=slug,
             title=page['title'],
