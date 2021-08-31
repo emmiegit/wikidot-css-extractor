@@ -178,18 +178,39 @@ def deduplicate_items(pages):
         items.reverse()
         return items
 
+    # This is more complicated than convert(),
+    # since we need to fold both by sites and then pages within them.
+    #
+    # This uses an imperative loop rather than functional mappings
+    # because they were getting really messy and hard to understand.
+
+    def convert_site_includes():
+        site_includes_count = includes_by_site(includes_count)
+        entries = []
+
+        for site, includes in site_includes_count.items():
+            site_entries = []
+            site_count = 0
+
+            for include, pages in includes.items():
+                include_entries = []
+
+                for slug, count in pages:
+                    include_entries.append((slug, count))
+                    site_count += count
+
+                site_entries.append((include, include_entries))
+            entries.append((site, site_count, site_entries))
+
+        entries.sort(key=lambda item: item[1])
+        entries.reverse()
+        return entries
+
     module_styles = convert(module_styles_count)
     inline_styles = convert(inline_styles_count)
     includes = convert(includes_count)
+    site_includes = convert_site_includes()
     classes = convert(classes_count)
-
-    # This is more complicated than convert(),
-    # since we need to fold both by sites and then pages within them.
-    site_includes_count = includes_by_site(includes_count)
-    site_includes = ((site, convert(pages)) for site, pages in site_includes_count.items())
-    site_includes = [(site, sum(count for _, _, count in pages), pages) for site, pages in site_includes]
-    site_includes.sort(key=lambda item: item[1])
-    site_includes.reverse()
 
     return CountedItems(
         module_styles=module_styles,
@@ -200,7 +221,7 @@ def deduplicate_items(pages):
     )
 
 def includes_by_site(includes_count):
-    site_includes_count = defaultdict(lambda: defaultdict(MultiList))
+    site_includes_count = defaultdict(lambda: defaultdict(list))
 
     for include, slugs in includes_count.items():
         match = INCLUDE_REGEX.match(include)
