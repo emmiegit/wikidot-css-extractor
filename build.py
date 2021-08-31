@@ -16,7 +16,7 @@ OUTPUT_HTML = 'index.html'
 CURRENT_SITE = 'scp-wiki'
 
 INCLUDE_REGEX = re.compile(r'^(?::([a-z0-9\-]+):)?([a-z0-9\-:_]+)$', re.IGNORECASE)
-SCP_SLUG_REGEX = re.compile(r'^scp-([0-9]+)(.*)$')
+SCP_SLUG_REGEX = re.compile(r'^scp-([0-9]+)(.*)$', re.IGNORECASE)
 
 COMPARISON_FUNCTIONS = {
     '>': lambda x, y: x > y,
