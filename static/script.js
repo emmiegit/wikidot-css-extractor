@@ -1,9 +1,10 @@
-// Wait a bit first
-setTimeout(100, function() {
+function initTableSort() {
   var element = document.getElementById('page-list');
-  if (element !== null) {
-    // Actually initialize the table sorting
-    console.info("Initializing tablesort for " + element);
-    new Tablesort(element, { descending: true });
+  if (element === null) {
+    alert("No table element found!");
+    return;
   }
-});
+
+  console.info("Initializing tablesort for " + element);
+  new Tablesort(element, { descending: true });
+}
