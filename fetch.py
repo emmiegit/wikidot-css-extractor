@@ -10,9 +10,8 @@ from dateutil.parser import isoparse
 
 import aiohttp
 
-from config import Config
+from config import Configuration
 
-OUTPUT_FILENAME = 'output/results.json'
 SAVE_PAGE_OFFSET = 100
 
 REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+)\.wikidot\.com/(.+)$')
@@ -22,7 +21,6 @@ REGEX_INCLUDES = re.compile(r'\[\[include +([a-z0-9:\-_]+?)(?: |\]\])', re.MULTI
 REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 
 CROM_ENDPOINT = "https://api.crom.avn.sh/"
-CROM_SITES = ["http://scp-wiki.wikidot.com/"]
 CROM_RETRIES = 3
 CROM_HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
@@ -102,20 +100,20 @@ class CromError(RuntimeError):
             return errors
 
 class Crawler:
-    def __init__(self):
+    def __init__(self, config):
+        self.config = config
         self.cursor = None
         self.last_created_at = None
         self.pages = {}
-        self.path = OUTPUT_FILENAME
+        self.path = config.output_path
 
-    def load(self, path=OUTPUT_FILENAME):
+    def load(self):
         with open(path) as file:
             data = json.load(file)
 
         self.cursor = data['cursor']
         self.last_created_at = data['last_created_at']
         self.pages = data['pages']
-        self.path = path
 
     def save(self):
         data = {
@@ -144,7 +142,7 @@ class Crawler:
 
     async def next_pages(self, session):
         variables = {
-            "$anyBaseUrl": CROM_SITES,
+            "$anyBaseUrl": self.config.crom_base_urls,
             "$lastCreatedAt": self.last_created_at,
             "$cursor": self.cursor,
         }
@@ -264,10 +262,11 @@ class Crawler:
         return self.pages
 
 if __name__ == '__main__':
-    crawler = Crawler()
+    config = Configuration()
+    crawler = Crawler(config)
 
-    if os.path.exists(OUTPUT_FILENAME):
-        crawler.load()
+    if os.path.exists(config.output_path):
+        crawler.load(config.output_path)
         print("Loaded previous crawler state")
     else:
         print("No previous crawler state, starting fresh")

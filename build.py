@@ -9,11 +9,10 @@ from datetime import datetime
 
 import jinja2
 
-from config import Config
+from config import Configuration
 
 CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes', 'includes', 'site_includes'))
 
-STYLES_FILENAME = 'output/results.json'
 OUTPUT_HTML = 'index.html'
 CURRENT_SITE = 'scp-wiki'
 
@@ -259,7 +258,8 @@ def includes_by_site(includes_count):
     return site_includes_count
 
 if __name__ == '__main__':
-    pages = load_pages(STYLES_FILENAME)
+    config = Configuration()
+    pages = load_pages(config.output_path)
     counts = deduplicate_items(pages)
     generated_html = build_html(pages, counts)
     write_html(generated_html)

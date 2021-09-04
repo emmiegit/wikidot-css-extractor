@@ -1,12 +1,18 @@
+import os
 from functools import cached_property
 
 import toml
 
+DEFAULT_CONFIG_PATH = "config.toml"
 
-class Config:
-    def __init__(self, path):
+class Configuration:
+    def __init__(self, path=DEFAULT_CONFIG_PATH):
         with open(path) as file:
             self.data = toml.load(file)
+
+    @cached_property
+    def output_path(self):
+        return os.path.join('output', self.data['output-path'])
 
     @cached_property
     def save_page_offset(self):
