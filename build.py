@@ -9,6 +9,8 @@ from datetime import datetime
 
 import jinja2
 
+from config import Config
+
 CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes', 'includes', 'site_includes'))
 
 STYLES_FILENAME = 'output/results.json'

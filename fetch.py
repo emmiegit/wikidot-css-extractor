@@ -10,6 +10,8 @@ from dateutil.parser import isoparse
 
 import aiohttp
 
+from config import Config
+
 OUTPUT_FILENAME = 'output/results.json'
 SAVE_PAGE_OFFSET = 100
 
