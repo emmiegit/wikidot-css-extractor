@@ -13,7 +13,6 @@ trap on_exit EXIT SIGINT SIGTERM
 # Execution
 set -x
 
-[[ -f output/results.json ]]
 [[ -f output/index.html ]]
 [[ -f output/pages/index.html ]]
 [[ -f output/pages/scp-001.html ]]
