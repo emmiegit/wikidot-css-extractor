@@ -13,8 +13,7 @@ from config import Configuration
 
 CountedItems = namedtuple('CountedItems', ('module_styles', 'inline_styles', 'classes', 'includes', 'site_includes'))
 
-OUTPUT_HTML = 'index.html'
-CURRENT_SITE = 'scp-wiki'
+DEFAULT_SITE = None
 
 INCLUDE_REGEX = re.compile(r'^(?::([a-z0-9\-]+):)?([a-z0-9\-:_]+)$', re.IGNORECASE)
 SCP_SLUG_REGEX = re.compile(r'^scp-([0-9]+)(.*)$', re.IGNORECASE)
@@ -29,7 +28,7 @@ COMPARISON_FUNCTIONS = {
 }
 
 def get_page_url(slug):
-    return f"https://{CURRENT_SITE}.wikidot.com/{slug}"
+    return f"https://{DEFAULT_SITE}.wikidot.com/{slug}"
 
 def get_include_url(include):
     match = INCLUDE_REGEX.match(include)
@@ -38,7 +37,7 @@ def get_include_url(include):
 
     site, page = match.groups()
     if site is None:
-        site = CURRENT_SITE
+        site = DEFAULT_SITE
 
     return f"https://{site}.wikidot.com/{page}"
 
@@ -48,7 +47,7 @@ def get_local_include_slug(include):
         return None
 
     site, page = match.groups()
-    if site != CURRENT_SITE:
+    if site != DEFAULT_SITE:
         return None
 
     return page
@@ -251,14 +250,20 @@ def includes_by_site(includes_count):
 
         site, page = match.groups()
         if site is None:
-            site = CURRENT_SITE
+            site = DEFAULT_SITE
 
         site_includes_count[site][include].extend(slugs)
 
     return site_includes_count
 
+def set_current_site(config):
+    global DEFAULT_SITE
+
+    DEFAULT_SITE = config.default_site
+
 if __name__ == '__main__':
     config = Configuration()
+    set_current_site(config)
     pages = load_pages(config.output_path)
     counts = deduplicate_items(pages)
     generated_html = build_html(pages, counts)
