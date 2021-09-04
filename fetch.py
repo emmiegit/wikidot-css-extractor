@@ -12,8 +12,6 @@ import aiohttp
 
 from config import Configuration
 
-SAVE_PAGE_OFFSET = 100
-
 REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+)\.wikidot\.com/(.+)$')
 REGEX_MODULE_CSS = re.compile(r'\[\[module +css\]\]\n(.+?)\n\[\[/module\]\]', re.IGNORECASE | re.DOTALL)
 REGEX_INLINE_CSS = re.compile(r'style="(.+?)"[^\]]*?\]\]', re.MULTILINE | re.IGNORECASE)
@@ -251,7 +249,7 @@ class Crawler:
                 # We don't save after every hit, unlike in the scraper,
                 # because Crom is a lot faster and we don't want to thrash our disk.
                 total_pages = len(self.pages)
-                if total_pages - last_page_count >= SAVE_PAGE_OFFSET:
+                if total_pages - last_page_count >= self.config.save_page_offset:
                     self.save()
                     print(f"Now at {total_pages:,} saved pages")
                     last_page_count = total_pages
