@@ -25,6 +25,6 @@ cp -a static output/*.html output/pages  "$temp_dir"
 git checkout gh-pages
 cp -a "$temp_dir"/* .
 git add .
-git commit -m "Update generated files. ($date)"
+git commit -m "Update generated files ($date)."
 git push
 git checkout -
