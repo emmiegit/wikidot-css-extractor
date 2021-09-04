@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-88">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <style>
+  /* Headers */
+  h1 {
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Veradana', Arial, sans-serif;
+    padding-right: 1em;
+    padding-bottom: 0.2em;
+    margin: 0.25em 0.25em 0.75em 0.25em;
+  }
+
+  /* Collapsibles */
+  details summary {
+    font-family: 'Veradana', Arial, sans-serif;
+  }
+
+  /* Links */
+  a {
+    color: #04a;
+    text-decoration: underline;
+    transition: color .2s;
+  }
+
+  a:hover {
+    color: #04f;
+  }
+
+  a:visited {
+    color: #44a;
+  }
+
+  a code {
+    background-color: inherit;
+    padding: inherit;
+  }
+
+  a.jump {
+    text-decoration: none;
+    font-size: 0.7em;
+    vertical-align: super;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    border: 1px solid black;
+    padding: 0.2em;
+  }
+
+  thead th {
+    background-color: #bbb;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #eee;
+  }
+
+  td.number {
+    text-align: right;
+  }
+
+  /* Lists */
+  li.no-bullet {
+    list-style: none;
+  }
+
+  /* Code */
+  code {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #ddd;
+    padding: 0.25em 0.5em 0.25em 0.5em;
+  }
+
+  /* Elements */
+  .page-source {
+    width: 100%;
+    height: 80vh;
+  }
+
+  div#footer {
+    border-top: 1px solid #ccc;
+    padding-top: 0.25em;
+    margin-top: 2em;
+  }
+</style>
+
+  <title>Fade In</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Fade In</h1>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--code/component%3Afade-in/1);
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/component%3Afade-in/{$speed}&#34;);</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>border: 1px solid #ddd; padding: 1em;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(https://scp-wiki.wdfiles.com/local--code/component%3Afade-in/1);
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/component%3Afade-in/{$speed}&#34;);
+[[/module]]
+
+[[iftags +component]]
+[[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
++ What this is
+
+A component that makes everything on the page smoothly fade in, instead of appearing instantly when the page loads.
+
+The fade can also be staggered, with each thing on the page appearing one by one instead of all at once.
+
++ Usage
+
+On any wiki:
+
+[[div class=&#34;code&#34;]]
+@@[[include :scp-wiki:component:fade-in speed=1]]@@
+[[/div]]
+
+speed=1: everything appears at the same time
+speed=2: everything appears 0.5s after the last thing
+speed=3: everything appears 0.25s after the last thing
+
++ Caveats
+
+The fade-in effect will only apply to elements that are direct children of #page-content. It won&#39;t apply to nested elements (e.g. stuff inside a blockquote or a div) or other parts of the page (e.g the sidebar).
+
+//(You can use this to your advantage if there are other animations on your page that would conflict (e.g [[[component:acs-animation | ACS Animation]]]) by simply wrapping the problematic animated element in a div.)//
+
+It also only applies to the first 15 elements on the page, and everything else after that will appear at the same time. This is enough for a smooth load-in experience when a reader opens the page, but if they want to scroll right to the bottom, they&#39;re able to do that without having to wait very long.
+[[/div]]
+-----
+
++ Source code
+
+[[code type=&#34;css&#34;]]
+@media screen and (prefers-reduced-motion: no-preference) {
+  #page-title, #breadcrumbs, #page-content &gt; * {
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+  }
+}
+
+#page-title { animation-delay: 0s; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(0,30px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0,0);
+  }
+}
+
+:root {
+  --fade-in-delay: 0s;
+}
+
+#page-content &gt; :nth-child(1) { animation-delay: calc(1 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(2) { animation-delay: calc(2 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(3) { animation-delay: calc(3 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(4) { animation-delay: calc(4 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(5) { animation-delay: calc(5 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(6) { animation-delay: calc(6 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(7) { animation-delay: calc(7 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(8) { animation-delay: calc(8 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(9) { animation-delay: calc(9 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(10) { animation-delay: calc(10 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(11) { animation-delay: calc(11 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(12) { animation-delay: calc(12 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(13) { animation-delay: calc(13 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(14) { animation-delay: calc(14 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(15) { animation-delay: calc(15 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(n+15) { animation-delay: calc(16 * var(--fade-in-delay)); }
+[[/code]]
+
+[[code type=&#34;css&#34;]]
+:root {
+   --fade-in-delay: 0.5s;
+}
+[[/code]]
+
+[[code type=&#34;css&#34;]]
+:root {
+  --fade-in-delay: 0.25s;
+}
+[[/code]]
+
+[[/iftags]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2021-08-30 00:40:51.805986.</em>
+  
+</div>
+</body>

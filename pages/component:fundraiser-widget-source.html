@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Fundraiser Widget Source</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Fundraiser Widget Source</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:fundraiser-widget-source" target="_blank">Fundraiser Widget Source</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>
+/* Black Highlighter Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,900;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&amp;display=swap&#39;);
+
+/* GoFundMe Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Spartan:wght@400;700&amp;display=swap&#39;);
+
+/* IndieGoGo Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,900;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;900&amp;display=swap&#39;);
+
+/* Kickstarter Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&amp;display=swap&#39;);
+
+/* Ko-Fi Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;display=swap&#39;);
+
+:root {
+
+/* Widget Typefaces */
+--fr-title-font: verdana, arial, helvetica, sans-serif;
+--fr-body-font: verdana, arial, helvetica, sans-serif;
+--fr-logo-font: verdana, arial, helvetica, sans-serif;
+
+/* BHL Title Typeface, used for the title link when BHL= true */
+
+/* Widget Base Colors */
+--fr-widget-bg-color: 255, 255, 255;
+--fr-widget-border-color: 102, 0, 0;
+
+/* Title Link Text Colors */
+--fr-title-color: 187, 0, 17; /* hsv: 355°, 100%, 73% */
+--fr-title-hover: 212, 0, 18; /* hsv: 355°, 100%, 83% */
+
+/* Title Button Colors when Inactive, when title_button= true */
+--fr-title-btn-color: 187, 0, 17;
+--fr-title-btn-color-border: 102, 0, 0;
+--fr-title-btn-color-bg1: 255, 240, 240;
+--fr-title-btn-color-bg2: 247, 233, 236;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+
+/* Title Button Colors when Hovered Over, when title_button= true */
+--fr-title-btn-hover: 212, 0, 18;
+--fr-title-btn-hover-border: 102, 0, 0;
+--fr-title-btn-hover-bg1: 204, 192, 192;
+--fr-title-btn-hover-bg2: 196, 185, 188;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+
+/* Title Button Sliding Hover Overlay, when title_button= true &amp; shape= BHL */
+--fr-title-btn-accent: 133, 0, 5;
+
+/* Progress Bar Colors */
+--fr-progress-bar-color: 102, 0, 0;
+--fr-progress-bar-bg-color: 230, 246, 239;
+
+/* Text Color of the current Amount Raised */
+--fr-progress-text-color: 102, 0, 0;
+
+/* Text Color of the rest of the Progress Message */
+--fr-progress-goal-color: 150, 150, 150;
+
+/* Text Color of the Description */
+--fr-description-color: 50, 50, 50;
+
+/* Donate Button Colors when Inactive */
+--fr-donate-color: 170, 0, 17; /* hsv: 354°, 100%, 67% */
+--fr-donate-color-border: 102, 0, 0;
+--fr-donate-color-bg1: 255, 240, 240; /* hsv: 0°, 6%, 100% */
+--fr-donate-color-bg2: 247, 233, 236; /* hsv: 345°, 6%, 97% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+  
+/* Donate Button Colors when Hovered Over */
+--fr-donate-hover: 196, 0, 20;  /* hsv: 354°, 100%, 77% */
+--fr-donate-hover-border: 102, 0, 0;
+--fr-donate-hover-bg1: 204, 192, 192; /* hsv: 0°, 6%, 80% */
+--fr-donate-hover-bg2: 196, 185, 188; /* hsv: 345°, 6%, 77% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+
+/* Donate Button Sliding Hover Overlay, when shape= BHL */
+--fr-donate-accent: 133, 0, 5;
+
+/* Text Color of the &#34;Logo&#34; next to the Donate Button */
+--fr-logo-color: 0, 73, 119;
+
+}
+
+/* Black Highlighter Theme Color Scheme, 
+with fallback values based on the core BHL color scheme. */
+
+.fr-widget.theme-fr-Black-Highlighter,
+.fr-widget.theme-fr-Black-highlighter,
+.fr-widget.theme-fr-BLACK-HIGHLIGHTER,
+.fr-widget.theme-fr-black-highlighter,
+.fr-widget.theme-fr-BlackHighlighter,
+.fr-widget.theme-fr-Blackhighlighter,
+.fr-widget.theme-fr-BLACKHIGHLIGHTER,
+.fr-widget.theme-fr-blackhighlighter,
+.fr-widget.theme-fr-BHL,
+.fr-widget.theme-fr-Bhl,
+.fr-widget.theme-fr-bhl {
+--fr-title-font: var(--title-font, Inter), Poppins, Franklin Gothic Medium, Franklin Gothic, 
+    ITC Franklin Gothic, &#34;Helvetica Neue&#34;, &#34;Helvetica&#34;, Arial, sans-serif;
+--fr-body-font: var(--body-font, Inter), Raleway, Arimo, Verdana, Geneva, &#34;Helvetica Neue&#34;, 
+    &#34;Helvetica&#34;, Arial, sans-serif;
+--fr-logo-font: Orbitron, Verdana, Geneva, sans-serif;
+--fr-widget-bg-color: var(--swatch-secondary-color, 245, 245, 245), .25;
+--fr-widget-border-color: var(--swatch-tertiary-color, 170, 170, 170);
+--fr-title-color: var(--swatch-text-dark, 40, 40, 40);
+--fr-title-hover: var(--swatch-text-general, 60, 60, 60);
+--fr-title-btn-color: var(--swatch-menutxt-general-color, 30, 30, 30);
+--fr-title-btn-color-border: var(--swatch-border-color, 30, 30, 30);
+--fr-title-btn-color-bg1: var(--swatch-primary-darker, 100, 46, 44), .15;
+--fr-title-btn-color-bg2: var(--swatch-primary-darkest, 100, 3, 15), .15;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: var(--swatch-menutxt-dark-color, 15, 15, 15);
+--fr-title-btn-hover-border: var(--swatch-border-color, 30, 30, 30);
+--fr-title-btn-hover-bg1: var(--swatch-primary-darker, 100, 46, 44), .35;
+--fr-title-btn-hover-bg2: var(--swatch-primary-darkest, 100, 3, 15), .35;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: var(--bright-accent, 133, 0, 5);
+--fr-progress-bar-color: var(--bright-accent, 133, 0, 5);
+--fr-progress-bar-bg-color: var(--pale-accent, 230, 40, 60), .25;
+--fr-progress-text-color: var(--swatch-important-text, 133, 0, 5);
+--fr-progress-goal-color: var(--swatch-text-general, 15, 15, 15), .5;
+--fr-description-color: var(--swatch-text-general, 15, 15, 15);
+--fr-donate-color: var(--swatch-menutxt-general-color, 30, 30, 30);
+--fr-donate-color-border: var(--swatch-border-color, 30, 30, 30);
+--fr-donate-color-bg1: var(--swatch-primary-darker, 100, 46, 44), .15;
+--fr-donate-color-bg2: var(--swatch-primary-darkest, 100, 3, 15), .15;
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: var(--swatch-menutxt-dark-color, 15, 15, 15);
+--fr-donate-hover-border: var(--swatch-border-color, 30, 30, 30);
+--fr-donate-hover-bg1: var(--swatch-primary-darker, 100, 46, 44), .35;
+--fr-donate-hover-bg2: var(--swatch-primary-darkest, 100, 3, 15), .35;
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: var(--bright-accent, 133, 0, 5);
+--fr-logo-color: var(--alt-accent, 221, 102, 17);
+}
+
+/* GoFundMe Theme Color Scheme */
+
+.fr-widget.theme-fr-GoFundMe,
+.fr-widget.theme-fr-Gofundme,
+.fr-widget.theme-fr-GOFUNDME,
+.fr-widget.theme-fr-gofundme,
+.fr-widget.theme-fr-GFM,
+.fr-widget.theme-fr-Gfm,
+.fr-widget.theme-fr-gfm {
+--fr-title-font: Lato, Trebuchet, Arial, sans-serif;
+--fr-body-font: Lato, Trebuchet, Arial, sans-serif;
+--fr-logo-font: Spartan, Helvetica, Arial, sans-serif;
+--fr-widget-bg-color: 255, 255, 255;
+--fr-widget-border-color: 200, 200, 200;
+--fr-title-color: 40, 40, 40;
+--fr-title-hover: 60, 60, 60;
+--fr-title-btn-color: 40, 40, 40;
+--fr-title-btn-color-border: 192, 103, 40;
+--fr-title-btn-color-bg1: 253, 186, 51;
+--fr-title-btn-color-bg2: 245, 127, 49;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: 60, 60, 60;
+--fr-title-btn-hover-border: 140, 75, 29;
+--fr-title-btn-hover-bg1: 201, 147, 40;
+--fr-title-btn-hover-bg2: 194, 101, 39;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: 233, 233, 25;
+--fr-progress-bar-color: 2, 169, 91;
+--fr-progress-bar-bg-color: 230, 246, 239;
+--fr-progress-text-color: 0, 0, 0;
+--fr-progress-goal-color: 118, 118, 118;
+--fr-description-color: 0, 0, 0;
+--fr-donate-color: 40, 40, 40;
+--fr-donate-color-border: 192, 103, 40; /* hsv: 25°, 79%, 75% */
+--fr-donate-color-bg1: 253, 186, 51; /* hsv: 40°, 80%, 99% */
+--fr-donate-color-bg2: 245, 127, 49; /* hsv: 24°, 80%, 96% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: 60, 60, 60;
+--fr-donate-hover-border: 140, 75, 29; /* hsv: 25°, 79%, 55% */
+--fr-donate-hover-bg1: 201, 147, 40; /* hsv: 40°, 80%, 79% */
+--fr-donate-hover-bg2: 194, 101, 39; /* hsv: 24°, 80%, 76% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: 233, 233, 25;
+--fr-logo-color: 2, 169, 91;
+}
+
+/* IndieGoGo Theme Color Scheme */
+
+.fr-widget.theme-fr-IndieGoGo,
+.fr-widget.theme-fr-Indiegogo,
+.fr-widget.theme-fr-INDIEGOGO,
+.fr-widget.theme-fr-indiegogo,
+.fr-widget.theme-fr-IGG,
+.fr-widget.theme-fr-Igg,
+.fr-widget.theme-fr-igg {
+--fr-title-font: Source Sans Pro, Trebuchet, Arial, sans-serif;
+--fr-body-font: Source Sans Pro, Trebuchet, Arial, sans-serif;
+--fr-logo-font: Titillium Web, Trebuchet, Arial, sans-serif;
+--fr-widget-bg-color: 255, 255, 255;
+--fr-widget-border-color: 200, 200, 200;
+--fr-title-color: 42, 42, 42;
+--fr-title-hover: 62, 62, 62;
+--fr-title-btn-color: 255, 255, 255;
+--fr-title-btn-color-border: 168, 13, 124;
+--fr-title-btn-color-bg1: 229, 16, 117;
+--fr-title-btn-color-bg2: 222, 16, 167;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: 255, 255, 255;
+--fr-title-btn-hover-border: 117, 9, 87;
+--fr-title-btn-hover-bg1: 207, 12, 103;
+--fr-title-btn-hover-bg2: 199, 12, 149;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: 133, 50, 95;
+--fr-progress-bar-color: 52, 202, 150;
+--fr-progress-bar-bg-color: 221, 221, 221;
+--fr-progress-text-color: 42, 42, 42;
+--fr-progress-goal-color: 42, 42, 42;
+--fr-description-color: 42, 42, 42;
+--fr-donate-color: 255, 255, 255;
+--fr-donate-color-border: 168, 13, 124; /* hsv: 317°, 92%, 66% */
+--fr-donate-color-bg1: 229, 16, 117; /* hsv: 332°, 93%, 90% */
+--fr-donate-color-bg2: 222, 16, 167; /* hsv: 316°, 93%, 87% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: 255, 255, 255;
+--fr-donate-hover-border: 117, 9, 87; /* hsv: 317°, 92%, 46% */
+--fr-donate-hover-bg1: 207, 12, 103; /* hsv: 332°, 94%, 81% */
+--fr-donate-hover-bg2: 199, 12, 149; /* hsv: 316°, 94%, 78% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: 133, 50, 95;
+--fr-logo-color: 229, 16, 117;
+}
+
+/* Kickstarter Theme Color Scheme */
+
+.fr-widget.theme-fr-KickStarter,
+.fr-widget.theme-fr-Kickstarter,
+.fr-widget.theme-fr-KICKSTARTER,
+.fr-widget.theme-fr-kickstarter,
+.fr-widget.theme-fr-KS,
+.fr-widget.theme-fr-Ks,
+.fr-widget.theme-fr-ks {
+--fr-title-font: Roboto, Helvetica, Arial, sans-serif;
+--fr-body-font: Roboto, Helvetica, Arial, sans-serif;
+--fr-logo-font: Sniglet, classic-comic, Comic Sans MS, Comic Sans, cursive;
+--fr-widget-bg-color: 251, 250, 250;
+--fr-widget-border-color: 200, 200, 200;
+--fr-title-color: 40, 40, 40;
+--fr-title-hover: 60, 60, 60;
+--fr-title-btn-color: 255, 255, 255;
+--fr-title-btn-color-border: 1, 74, 30;
+--fr-title-btn-color-bg1: 2, 136, 88;
+--fr-title-btn-color-bg2: 1, 128, 50;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: 255, 255, 255;
+--fr-title-btn-hover-border: 1, 26, 10;
+--fr-title-btn-hover-bg1: 1, 87, 56;
+--fr-title-btn-hover-bg2: 1, 79, 30;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: 0, 133, 5;
+--fr-progress-bar-color: 0, 158, 116;
+--fr-progress-bar-bg-color: 232, 232, 232;
+--fr-progress-text-color: 0, 158, 116;
+--fr-progress-goal-color: 101, 105, 105;
+--fr-description-color: 40, 40, 40;
+--fr-donate-color: 255, 255, 255;
+--fr-donate-color-border: 1, 74, 30; /* hsv: 144°, 98%, 29% */
+--fr-donate-color-bg1: 2, 136, 88; /* hsv: 159°, 99%, 53% */
+--fr-donate-color-bg2: 1, 128, 50; /* hsv: 143°, 99%, 50% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: 255, 255, 255;
+--fr-donate-hover-border: 1, 26, 10; /* hsv: 143°, 98%, 10% */
+--fr-donate-hover-bg1: 1, 87, 56; /* hsv: 158°, 99%, 34% */
+--fr-donate-hover-bg2: 1, 79, 30; /* hsv: 142°, 99%, 31% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: 0, 133, 5;
+--fr-logo-color: 5, 206, 120;
+}
+
+/* Ko-Fi Theme Color Scheme */
+
+.fr-widget.theme-fr-Ko-Fi,
+.fr-widget.theme-fr-Ko-fi,
+.fr-widget.theme-fr-KO-FI,
+.fr-widget.theme-fr-ko-fi,
+.fr-widget.theme-fr-KoFi,
+.fr-widget.theme-fr-Kofi,
+.fr-widget.theme-fr-KOFI,
+.fr-widget.theme-fr-kofi {
+--fr-title-font: Quicksand, Ubuntu, Helvetica, Century Gothic, sans-serif;
+--fr-body-font: Quicksand, Ubuntu, Helvetica, Century Gothic, sans-serif;
+--fr-title-font: Nunito, Arial, sans-serif;
+--kofi-title-bg1: 41, 171, 224; /* 197°, 82%, 88% */
+--kofi-title-bg2: 39, 214, 217; /* 181°, 82%, 85% */
+--kofi-title-border: 27, 78, 140; /* 213°, 81%, 55% */
+--kofi-btn-color: 255, 255, 255;
+--kofi-btn-hover: 245, 245, 245;
+--fr-widget-bg-color: 255, 255, 255;
+--fr-widget-border-color: 200, 200, 200;
+--fr-title-color: var(--kofi-title-bg1);
+--fr-title-hover: var(--kofi-title-bg1), .85;
+--fr-title-btn-color: var(--kofi-btn-color);
+--fr-title-btn-color-border: var(--kofi-title-border);
+--fr-title-btn-color-bg1: var(--kofi-title-bg1);
+--fr-title-btn-color-bg2: var(--kofi-title-bg2);
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: var(--kofi-btn-hover);
+--fr-title-btn-hover-border: var(--kofi-title-border), .85;
+--fr-title-btn-hover-bg1: var(--kofi-title-bg1), .85;
+--fr-title-btn-hover-bg2: var(--kofi-title-bg2), .85;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: 0, 5, 133;
+--fr-progress-bar-color: 205, 175, 25;
+--fr-progress-bar-bg-color: 240, 240, 240;
+--fr-progress-text-color: 38, 39, 42;
+--fr-progress-goal-color: 100, 101, 104;
+--fr-description-color: 38, 39, 42;
+--fr-donate-color: var(--kofi-btn-color);
+--fr-donate-color-border: 196, 107, 75; /* hsv: 16°, 62%, 77% */
+--fr-donate-color-bg1: 255, 95, 95; /* hsv: 0°, 63%, 100% */
+--fr-donate-color-bg2: 255, 135, 95; /* hsv: 15°, 63%, 97% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: var(--kofi-btn-hover);
+--fr-donate-hover-border: 145, 79, 55; /* hsv: 16°, 62%, 57% */
+--fr-donate-hover-bg1: 196, 73, 73; /* hsv: 0°, 63%, 80% */
+--fr-donate-hover-bg2: 196, 104, 73; /* hsv: 15°, 63%, 77% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: 133, 0, 5;
+--fr-logo-color: 59, 202, 159;
+}
+
+/* Widget CSS Code */
+
+.fr-widget {
+  background-color: rgb(var(--fr-widget-bg-color));
+  border: 1px solid rgb(var(--fr-widget-border-color));
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgb(var(--fr-widget-border-color), 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 480px;
+  overflow: hidden;
+  font-family: var(--fr-body-font);
+}
+.shape-fr-BHL.fr-widget,
+.shape-fr-bhl.fr-widget {
+  border-radius: 0;
+  box-shadow: none;
+}
+.fr-image {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+.fr-image img {
+  width: 100%;
+}
+.fr-image.img-fr-none {
+  display: none;
+}
+.fr-title {
+  font-family: var(--fr-title-font);
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.25;
+  padding: .5rem 1rem;
+}
+.shape-fr-BHL.fr-title,
+.shape-fr-bhl.fr-title {
+  padding: .5rem .5rem;
+}
+.fr-title a {
+  color: rgb(var(--fr-title-color));
+  text-decoration: none;
+  margin-bottom: .5rem;
+  margin-top: 0;
+}
+.fr-title.tb-fr-true a {
+  color: rgb(var(--fr-title-btn-color));
+  background: var(--fr-title-btn-color-gradient);
+  border: 1px solid rgb(var(--fr-title-btn-color-border));
+}
+.fr-title a:hover {
+  color: rgb(var(--fr-title-hover));
+}
+.fr-title.tb-fr-true a:hover {
+  color: rgb(var(--fr-title-btn-hover));
+  background: var(--fr-title-btn-hover-gradient);
+  border: 1px solid rgb(var(--fr-title-btn-hover-border));
+}
+.fr-title.tb-fr-true {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.fr-title.tb-fr-true a {
+  background-clip: padding-box;
+  border-radius: .75rem;
+  padding: 1rem 2rem;
+  margin-bottom: .25rem;
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+  max-width: 30rem;
+  width: 100%;
+  display: flex;
+  flex-grow: 2;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 80ms cubic-bezier(.4, 0, .2, 1);
+  overflow: hidden;
+}
+.shape-fr-BHL.fr-title.tb-fr-true a,
+.shape-fr-bhl.fr-title.tb-fr-true a {
+  border-radius: 0;
+}
+.shape-fr-BHL.fr-title.tb-fr-true a::before,
+.shape-fr-bhl.fr-title.tb-fr-true a::before {
+  content: &#34; &#34;;
+  width: 125%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(var(--fr-title-btn-accent), .25);
+  opacity: 1;
+  z-index: 1;
+  transform: translateX(calc(-100% - 4rem));
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  clip-path: polygon(0.00% 0.00%, 100% 0px, 90% 100%, 0px 100%);
+}
+.shape-fr-BHL.fr-title.tb-fr-true a:hover::before,
+.shape-fr-bhl.fr-title.tb-fr-true a:hover::before {
+  transform: translateX(-1rem);
+}
+.fr-title span.fr-title-text {
+  display: inline-flex;
+  align-content: flex-start;
+  vertical-align: top;
+  z-index: 2;
+}
+.fr-title.icon-fr-true span.fr-title-text::before {
+  content: &#34; &#34;;
+  background-image: url(&#34;{$title_icon_url}&#34;);
+  background-repeat: no-repeat;
+  background-size: 2rem 2rem;
+  background-position: center;
+  margin-right: .5rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  z-index: 2;
+  animation: {$title_icon_anim};
+}
+.fr-content {
+  padding: 0 1rem;
+}
+.shape-fr-BHL.fr-content,
+.shape-fr-bhl.fr-content {
+  padding: 0 .5rem;
+}
+.fr-progress-cont {
+  margin-bottom: .5rem;
+}
+.fr-prog-bar-cont {
+  margin-bottom: .5rem;
+  margin-top: .25rem;
+  background-color: rgb(var(--fr-progress-bar-bg-color));
+  border-radius: .125rem;
+  max-width: 100%;
+}
+.fr-prog-bar {
+  background: rgb(var(--fr-progress-bar-color));
+  border-radius: .125rem;
+  display: inline-block;
+  height: .5rem;
+  max-width: 100%;
+}
+.shape-fr-BHL.fr-prog-bar-cont,
+.shape-fr-bhl.fr-prog-bar-cont {
+  border-radius: 0;
+}
+.shape-fr-BHL.fr-prog-bar,
+.shape-fr-bhl.fr-prog-bar {
+  border-radius: 0;
+}
+.fr-prog-text {
+  color: rgb(var(--fr-progress-text-color));
+  display: flex;
+  font-family: var(--fr-title-font);
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: .8;
+  margin-bottom: .25rem;
+  margin-top: .25rem;
+}
+.fr-prog-goal {
+  color: rgb(var(--fr-progress-goal-color));
+  font-family: var(--fr-body-font);
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.21;
+  display: flex;
+  padding-left: .5rem;
+}
+.fr-desc {
+  color: rgb(var(--fr-description-color));
+  margin-bottom: .5rem;
+}
+.fr-desc p {
+  margin: .25em 0;
+}
+.hide-fr-desc-true {
+  display: none;
+}
+.fr-button-cont {
+  align-items: center;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.shape-fr-BHL.fr-button-cont,
+.shape-fr-bhl.fr-button-cont {
+  margin-bottom: .5rem;
+}
+.hide-fr-donate-true {
+  display: none;
+}
+.fr-button-cont a {
+  background: var(--fr-donate-color-gradient);
+  background-clip: padding-box;
+  border: 1px solid rgb(var(--fr-donate-color-border));
+  border-radius: .5rem;
+  box-shadow: 0 6px 14px rgb(0 0 0 / 10%);
+  color: rgb(var(--fr-donate-color));
+  font-family: var(--fr-title-font);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+  position: relative;
+  max-width: 12rem;
+  white-space: nowrap;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding: .75rem 1rem;
+  display: flex;
+  flex-grow: 2;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 80ms cubic-bezier(.4, 0, .2, 1);
+  overflow: hidden;
+}
+.fr-button-cont a:hover {
+  background: var(--fr-donate-hover-gradient);
+  border: 1px solid rgb(var(--fr-donate-hover-border));
+  color: rgb(var(--fr-donate-hover));
+}
+.shape-fr-BHL.fr-button-cont a,
+.shape-fr-bhl.fr-button-cont a {
+  border-radius: 0;
+  box-shadow: none;
+}
+.shape-fr-BHL.fr-button-cont a::before,
+.shape-fr-bhl.fr-button-cont a::before {
+  content: &#34; &#34;;
+  display: inline;
+  width: 125%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(var(--fr-donate-accent), .25);
+  opacity: 1;
+  z-index: 1;
+  transform: translateX(calc(-100% - 4rem));
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  clip-path: polygon(0.00% 0.00%, 100% 0px, 90% 100%, 0px 100%);
+}
+.shape-fr-BHL.fr-button-cont a:hover::before,
+.shape-fr-bhl.fr-button-cont a:hover::before {
+  transform: translate(-1rem);
+}
+.fr-button-backup {
+  display: none!important;
+}
+.fr-button-backup.donate-fr-none {
+  display: flex!important;
+}
+.fr-button-donate.donate-fr-none {
+  display: none!important;
+}
+.fr-button-cont span.fr-button-text {
+  display: inline-flex;
+  align-content: flex-start;
+  vertical-align: top;
+  z-index: 2;
+}
+.fr-button-cont.icon-fr-true span.fr-button-text::before {
+  content: &#34; &#34;;
+  background-image: url(&#34;{$donate_icon_url}&#34;);
+  background-repeat: no-repeat;
+  background-size: 1.5rem 1.5rem;
+  background-position: center;
+  margin-right: .5rem;
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: 2;
+  animation: {$donate_icon_anim};
+}
+.fr-logo {
+  color: rgb(var(--fr-logo-color));
+  height: 2rem;
+  width: 7.5rem;
+  overflow: hidden;
+  margin-left: 1rem!important;
+  font-family: var(--fr-logo-font);
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+@keyframes icon-wiggle {
+    0% {transform:rotate(0) scale(1)}
+   60% {transform:rotate(0) scale(1)}
+   75% {transform:rotate(0) scale(1.12)}
+   80% {transform:rotate(0) scale(1.1)}
+   84% {transform:rotate(-10deg) scale(1.1)}
+   88% {transform:rotate(10deg) scale(1.1)}
+   92% {transform:rotate(-10deg) scale(1.1)}
+   96% {transform:rotate(10deg) scale(1.1)}
+  100% {transform:rotate(0) scale(1)}
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display:[[#ifexpr {$goal} &gt; 0 | block | none]];</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: calc({$amt} / {$goal} * 100%);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: inline-flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:[[#ifexpr {$amt} &lt; 0 | inline | none]];</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: inline-flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:[[#ifexpr {$goal} &lt; 0 | inline | none]];</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>padding-left:0.25rem;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>fr-widget</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>theme-fr-{$theme}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tb-fr-{$title_button}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>img-fr-{$image_url}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+      tb-fr-{$title_button}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-fr-{$title_icon_show}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-title-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-content</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-progress-cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-prog-bar-cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-prog-bar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-prog-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-neg-before</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig-huge</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig-reg</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig12-10</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig9-8</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig9</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig8</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig7</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig6-5</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig5</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig4</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig3-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig-tiny</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-prog-goal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-neg-before</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig-huge</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig-reg</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig12-10</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig9-8</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig9</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig8</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig7</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig6-5</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig5</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig4</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig3-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-fig-tiny</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hide-fr-desc-{$hide_desc}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-button-cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+        hide-fr-donate-{$hide_donate}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-fr-{$donate_icon_show}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-button-donate</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>donate-fr-{$donate_url}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-button-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-button-backup</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>donate-fr-{$donate_url}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-button-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-logo</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+
+/* Black Highlighter Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:wght@400;900&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,900;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&amp;display=swap&#39;);
+
+/* GoFundMe Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Spartan:wght@400;700&amp;display=swap&#39;);
+
+/* IndieGoGo Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,900;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;900&amp;display=swap&#39;);
+
+/* Kickstarter Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&amp;display=swap&#39;);
+
+/* Ko-Fi Theme Typefaces */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;display=swap&#39;);
+
+:root {
+
+/* Widget Typefaces */
+--fr-title-font: verdana, arial, helvetica, sans-serif;
+--fr-body-font: verdana, arial, helvetica, sans-serif;
+--fr-logo-font: verdana, arial, helvetica, sans-serif;
+
+/* BHL Title Typeface, used for the title link when BHL= true */
+
+/* Widget Base Colors */
+--fr-widget-bg-color: 255, 255, 255;
+--fr-widget-border-color: 102, 0, 0;
+
+/* Title Link Text Colors */
+--fr-title-color: 187, 0, 17; /* hsv: 355°, 100%, 73% */
+--fr-title-hover: 212, 0, 18; /* hsv: 355°, 100%, 83% */
+
+/* Title Button Colors when Inactive, when title_button= true */
+--fr-title-btn-color: 187, 0, 17;
+--fr-title-btn-color-border: 102, 0, 0;
+--fr-title-btn-color-bg1: 255, 240, 240;
+--fr-title-btn-color-bg2: 247, 233, 236;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+
+/* Title Button Colors when Hovered Over, when title_button= true */
+--fr-title-btn-hover: 212, 0, 18;
+--fr-title-btn-hover-border: 102, 0, 0;
+--fr-title-btn-hover-bg1: 204, 192, 192;
+--fr-title-btn-hover-bg2: 196, 185, 188;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+
+/* Title Button Sliding Hover Overlay, when title_button= true &amp; shape= BHL */
+--fr-title-btn-accent: 133, 0, 5;
+
+/* Progress Bar Colors */
+--fr-progress-bar-color: 102, 0, 0;
+--fr-progress-bar-bg-color: 230, 246, 239;
+
+/* Text Color of the current Amount Raised */
+--fr-progress-text-color: 102, 0, 0;
+
+/* Text Color of the rest of the Progress Message */
+--fr-progress-goal-color: 150, 150, 150;
+
+/* Text Color of the Description */
+--fr-description-color: 50, 50, 50;
+
+/* Donate Button Colors when Inactive */
+--fr-donate-color: 170, 0, 17; /* hsv: 354°, 100%, 67% */
+--fr-donate-color-border: 102, 0, 0;
+--fr-donate-color-bg1: 255, 240, 240; /* hsv: 0°, 6%, 100% */
+--fr-donate-color-bg2: 247, 233, 236; /* hsv: 345°, 6%, 97% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+  
+/* Donate Button Colors when Hovered Over */
+--fr-donate-hover: 196, 0, 20;  /* hsv: 354°, 100%, 77% */
+--fr-donate-hover-border: 102, 0, 0;
+--fr-donate-hover-bg1: 204, 192, 192; /* hsv: 0°, 6%, 80% */
+--fr-donate-hover-bg2: 196, 185, 188; /* hsv: 345°, 6%, 77% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+
+/* Donate Button Sliding Hover Overlay, when shape= BHL */
+--fr-donate-accent: 133, 0, 5;
+
+/* Text Color of the &#34;Logo&#34; next to the Donate Button */
+--fr-logo-color: 0, 73, 119;
+
+}
+
+/* Black Highlighter Theme Color Scheme, 
+with fallback values based on the core BHL color scheme. */
+
+.fr-widget.theme-fr-Black-Highlighter,
+.fr-widget.theme-fr-Black-highlighter,
+.fr-widget.theme-fr-BLACK-HIGHLIGHTER,
+.fr-widget.theme-fr-black-highlighter,
+.fr-widget.theme-fr-BlackHighlighter,
+.fr-widget.theme-fr-Blackhighlighter,
+.fr-widget.theme-fr-BLACKHIGHLIGHTER,
+.fr-widget.theme-fr-blackhighlighter,
+.fr-widget.theme-fr-BHL,
+.fr-widget.theme-fr-Bhl,
+.fr-widget.theme-fr-bhl {
+--fr-title-font: var(--title-font, Inter), Poppins, Franklin Gothic Medium, Franklin Gothic, 
+    ITC Franklin Gothic, &#34;Helvetica Neue&#34;, &#34;Helvetica&#34;, Arial, sans-serif;
+--fr-body-font: var(--body-font, Inter), Raleway, Arimo, Verdana, Geneva, &#34;Helvetica Neue&#34;, 
+    &#34;Helvetica&#34;, Arial, sans-serif;
+--fr-logo-font: Orbitron, Verdana, Geneva, sans-serif;
+--fr-widget-bg-color: var(--swatch-secondary-color, 245, 245, 245), .25;
+--fr-widget-border-color: var(--swatch-tertiary-color, 170, 170, 170);
+--fr-title-color: var(--swatch-text-dark, 40, 40, 40);
+--fr-title-hover: var(--swatch-text-general, 60, 60, 60);
+--fr-title-btn-color: var(--swatch-menutxt-general-color, 30, 30, 30);
+--fr-title-btn-color-border: var(--swatch-border-color, 30, 30, 30);
+--fr-title-btn-color-bg1: var(--swatch-primary-darker, 100, 46, 44), .15;
+--fr-title-btn-color-bg2: var(--swatch-primary-darkest, 100, 3, 15), .15;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: var(--swatch-menutxt-dark-color, 15, 15, 15);
+--fr-title-btn-hover-border: var(--swatch-border-color, 30, 30, 30);
+--fr-title-btn-hover-bg1: var(--swatch-primary-darker, 100, 46, 44), .35;
+--fr-title-btn-hover-bg2: var(--swatch-primary-darkest, 100, 3, 15), .35;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: var(--bright-accent, 133, 0, 5);
+--fr-progress-bar-color: var(--bright-accent, 133, 0, 5);
+--fr-progress-bar-bg-color: var(--pale-accent, 230, 40, 60), .25;
+--fr-progress-text-color: var(--swatch-important-text, 133, 0, 5);
+--fr-progress-goal-color: var(--swatch-text-general, 15, 15, 15), .5;
+--fr-description-color: var(--swatch-text-general, 15, 15, 15);
+--fr-donate-color: var(--swatch-menutxt-general-color, 30, 30, 30);
+--fr-donate-color-border: var(--swatch-border-color, 30, 30, 30);
+--fr-donate-color-bg1: var(--swatch-primary-darker, 100, 46, 44), .15;
+--fr-donate-color-bg2: var(--swatch-primary-darkest, 100, 3, 15), .15;
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: var(--swatch-menutxt-dark-color, 15, 15, 15);
+--fr-donate-hover-border: var(--swatch-border-color, 30, 30, 30);
+--fr-donate-hover-bg1: var(--swatch-primary-darker, 100, 46, 44), .35;
+--fr-donate-hover-bg2: var(--swatch-primary-darkest, 100, 3, 15), .35;
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: var(--bright-accent, 133, 0, 5);
+--fr-logo-color: var(--alt-accent, 221, 102, 17);
+}
+
+/* GoFundMe Theme Color Scheme */
+
+.fr-widget.theme-fr-GoFundMe,
+.fr-widget.theme-fr-Gofundme,
+.fr-widget.theme-fr-GOFUNDME,
+.fr-widget.theme-fr-gofundme,
+.fr-widget.theme-fr-GFM,
+.fr-widget.theme-fr-Gfm,
+.fr-widget.theme-fr-gfm {
+--fr-title-font: Lato, Trebuchet, Arial, sans-serif;
+--fr-body-font: Lato, Trebuchet, Arial, sans-serif;
+--fr-logo-font: Spartan, Helvetica, Arial, sans-serif;
+--fr-widget-bg-color: 255, 255, 255;
+--fr-widget-border-color: 200, 200, 200;
+--fr-title-color: 40, 40, 40;
+--fr-title-hover: 60, 60, 60;
+--fr-title-btn-color: 40, 40, 40;
+--fr-title-btn-color-border: 192, 103, 40;
+--fr-title-btn-color-bg1: 253, 186, 51;
+--fr-title-btn-color-bg2: 245, 127, 49;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: 60, 60, 60;
+--fr-title-btn-hover-border: 140, 75, 29;
+--fr-title-btn-hover-bg1: 201, 147, 40;
+--fr-title-btn-hover-bg2: 194, 101, 39;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: 233, 233, 25;
+--fr-progress-bar-color: 2, 169, 91;
+--fr-progress-bar-bg-color: 230, 246, 239;
+--fr-progress-text-color: 0, 0, 0;
+--fr-progress-goal-color: 118, 118, 118;
+--fr-description-color: 0, 0, 0;
+--fr-donate-color: 40, 40, 40;
+--fr-donate-color-border: 192, 103, 40; /* hsv: 25°, 79%, 75% */
+--fr-donate-color-bg1: 253, 186, 51; /* hsv: 40°, 80%, 99% */
+--fr-donate-color-bg2: 245, 127, 49; /* hsv: 24°, 80%, 96% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: 60, 60, 60;
+--fr-donate-hover-border: 140, 75, 29; /* hsv: 25°, 79%, 55% */
+--fr-donate-hover-bg1: 201, 147, 40; /* hsv: 40°, 80%, 79% */
+--fr-donate-hover-bg2: 194, 101, 39; /* hsv: 24°, 80%, 76% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: 233, 233, 25;
+--fr-logo-color: 2, 169, 91;
+}
+
+/* IndieGoGo Theme Color Scheme */
+
+.fr-widget.theme-fr-IndieGoGo,
+.fr-widget.theme-fr-Indiegogo,
+.fr-widget.theme-fr-INDIEGOGO,
+.fr-widget.theme-fr-indiegogo,
+.fr-widget.theme-fr-IGG,
+.fr-widget.theme-fr-Igg,
+.fr-widget.theme-fr-igg {
+--fr-title-font: Source Sans Pro, Trebuchet, Arial, sans-serif;
+--fr-body-font: Source Sans Pro, Trebuchet, Arial, sans-serif;
+--fr-logo-font: Titillium Web, Trebuchet, Arial, sans-serif;
+--fr-widget-bg-color: 255, 255, 255;
+--fr-widget-border-color: 200, 200, 200;
+--fr-title-color: 42, 42, 42;
+--fr-title-hover: 62, 62, 62;
+--fr-title-btn-color: 255, 255, 255;
+--fr-title-btn-color-border: 168, 13, 124;
+--fr-title-btn-color-bg1: 229, 16, 117;
+--fr-title-btn-color-bg2: 222, 16, 167;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: 255, 255, 255;
+--fr-title-btn-hover-border: 117, 9, 87;
+--fr-title-btn-hover-bg1: 207, 12, 103;
+--fr-title-btn-hover-bg2: 199, 12, 149;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: 133, 50, 95;
+--fr-progress-bar-color: 52, 202, 150;
+--fr-progress-bar-bg-color: 221, 221, 221;
+--fr-progress-text-color: 42, 42, 42;
+--fr-progress-goal-color: 42, 42, 42;
+--fr-description-color: 42, 42, 42;
+--fr-donate-color: 255, 255, 255;
+--fr-donate-color-border: 168, 13, 124; /* hsv: 317°, 92%, 66% */
+--fr-donate-color-bg1: 229, 16, 117; /* hsv: 332°, 93%, 90% */
+--fr-donate-color-bg2: 222, 16, 167; /* hsv: 316°, 93%, 87% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: 255, 255, 255;
+--fr-donate-hover-border: 117, 9, 87; /* hsv: 317°, 92%, 46% */
+--fr-donate-hover-bg1: 207, 12, 103; /* hsv: 332°, 94%, 81% */
+--fr-donate-hover-bg2: 199, 12, 149; /* hsv: 316°, 94%, 78% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: 133, 50, 95;
+--fr-logo-color: 229, 16, 117;
+}
+
+/* Kickstarter Theme Color Scheme */
+
+.fr-widget.theme-fr-KickStarter,
+.fr-widget.theme-fr-Kickstarter,
+.fr-widget.theme-fr-KICKSTARTER,
+.fr-widget.theme-fr-kickstarter,
+.fr-widget.theme-fr-KS,
+.fr-widget.theme-fr-Ks,
+.fr-widget.theme-fr-ks {
+--fr-title-font: Roboto, Helvetica, Arial, sans-serif;
+--fr-body-font: Roboto, Helvetica, Arial, sans-serif;
+--fr-logo-font: Sniglet, classic-comic, Comic Sans MS, Comic Sans, cursive;
+--fr-widget-bg-color: 251, 250, 250;
+--fr-widget-border-color: 200, 200, 200;
+--fr-title-color: 40, 40, 40;
+--fr-title-hover: 60, 60, 60;
+--fr-title-btn-color: 255, 255, 255;
+--fr-title-btn-color-border: 1, 74, 30;
+--fr-title-btn-color-bg1: 2, 136, 88;
+--fr-title-btn-color-bg2: 1, 128, 50;
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: 255, 255, 255;
+--fr-title-btn-hover-border: 1, 26, 10;
+--fr-title-btn-hover-bg1: 1, 87, 56;
+--fr-title-btn-hover-bg2: 1, 79, 30;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: 0, 133, 5;
+--fr-progress-bar-color: 0, 158, 116;
+--fr-progress-bar-bg-color: 232, 232, 232;
+--fr-progress-text-color: 0, 158, 116;
+--fr-progress-goal-color: 101, 105, 105;
+--fr-description-color: 40, 40, 40;
+--fr-donate-color: 255, 255, 255;
+--fr-donate-color-border: 1, 74, 30; /* hsv: 144°, 98%, 29% */
+--fr-donate-color-bg1: 2, 136, 88; /* hsv: 159°, 99%, 53% */
+--fr-donate-color-bg2: 1, 128, 50; /* hsv: 143°, 99%, 50% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: 255, 255, 255;
+--fr-donate-hover-border: 1, 26, 10; /* hsv: 143°, 98%, 10% */
+--fr-donate-hover-bg1: 1, 87, 56; /* hsv: 158°, 99%, 34% */
+--fr-donate-hover-bg2: 1, 79, 30; /* hsv: 142°, 99%, 31% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: 0, 133, 5;
+--fr-logo-color: 5, 206, 120;
+}
+
+/* Ko-Fi Theme Color Scheme */
+
+.fr-widget.theme-fr-Ko-Fi,
+.fr-widget.theme-fr-Ko-fi,
+.fr-widget.theme-fr-KO-FI,
+.fr-widget.theme-fr-ko-fi,
+.fr-widget.theme-fr-KoFi,
+.fr-widget.theme-fr-Kofi,
+.fr-widget.theme-fr-KOFI,
+.fr-widget.theme-fr-kofi {
+--fr-title-font: Quicksand, Ubuntu, Helvetica, Century Gothic, sans-serif;
+--fr-body-font: Quicksand, Ubuntu, Helvetica, Century Gothic, sans-serif;
+--fr-title-font: Nunito, Arial, sans-serif;
+--kofi-title-bg1: 41, 171, 224; /* 197°, 82%, 88% */
+--kofi-title-bg2: 39, 214, 217; /* 181°, 82%, 85% */
+--kofi-title-border: 27, 78, 140; /* 213°, 81%, 55% */
+--kofi-btn-color: 255, 255, 255;
+--kofi-btn-hover: 245, 245, 245;
+--fr-widget-bg-color: 255, 255, 255;
+--fr-widget-border-color: 200, 200, 200;
+--fr-title-color: var(--kofi-title-bg1);
+--fr-title-hover: var(--kofi-title-bg1), .85;
+--fr-title-btn-color: var(--kofi-btn-color);
+--fr-title-btn-color-border: var(--kofi-title-border);
+--fr-title-btn-color-bg1: var(--kofi-title-bg1);
+--fr-title-btn-color-bg2: var(--kofi-title-bg2);
+--fr-title-btn-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-color-bg1)) 40%,
+  rgb(var(--fr-title-btn-color-bg2)) 140%);
+--fr-title-btn-hover: var(--kofi-btn-hover);
+--fr-title-btn-hover-border: var(--kofi-title-border), .85;
+--fr-title-btn-hover-bg1: var(--kofi-title-bg1), .85;
+--fr-title-btn-hover-bg2: var(--kofi-title-bg2), .85;
+--fr-title-btn-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-title-btn-hover-bg1)) 40%,
+  rgb(var(--fr-title-btn-hover-bg2)) 140%);
+--fr-title-btn-accent: 0, 5, 133;
+--fr-progress-bar-color: 205, 175, 25;
+--fr-progress-bar-bg-color: 240, 240, 240;
+--fr-progress-text-color: 38, 39, 42;
+--fr-progress-goal-color: 100, 101, 104;
+--fr-description-color: 38, 39, 42;
+--fr-donate-color: var(--kofi-btn-color);
+--fr-donate-color-border: 196, 107, 75; /* hsv: 16°, 62%, 77% */
+--fr-donate-color-bg1: 255, 95, 95; /* hsv: 0°, 63%, 100% */
+--fr-donate-color-bg2: 255, 135, 95; /* hsv: 15°, 63%, 97% */
+--fr-donate-color-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-color-bg1)) 40%,
+  rgb(var(--fr-donate-color-bg2)) 140%);
+--fr-donate-hover: var(--kofi-btn-hover);
+--fr-donate-hover-border: 145, 79, 55; /* hsv: 16°, 62%, 57% */
+--fr-donate-hover-bg1: 196, 73, 73; /* hsv: 0°, 63%, 80% */
+--fr-donate-hover-bg2: 196, 104, 73; /* hsv: 15°, 63%, 77% */
+--fr-donate-hover-gradient: linear-gradient(180deg,
+  rgb(var(--fr-donate-hover-bg1)) 40%,
+  rgb(var(--fr-donate-hover-bg2)) 140%);
+--fr-donate-accent: 133, 0, 5;
+--fr-logo-color: 59, 202, 159;
+}
+
+/* Widget CSS Code */
+
+.fr-widget {
+  background-color: rgb(var(--fr-widget-bg-color));
+  border: 1px solid rgb(var(--fr-widget-border-color));
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgb(var(--fr-widget-border-color), 0.5);
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 480px;
+  overflow: hidden;
+  font-family: var(--fr-body-font);
+}
+.shape-fr-BHL.fr-widget,
+.shape-fr-bhl.fr-widget {
+  border-radius: 0;
+  box-shadow: none;
+}
+.fr-image {
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: .5rem;
+}
+.fr-image img {
+  width: 100%;
+}
+.fr-image.img-fr-none {
+  display: none;
+}
+.fr-title {
+  font-family: var(--fr-title-font);
+  font-size: 1.5rem;
+  font-weight: 900;
+  line-height: 1.25;
+  padding: .5rem 1rem;
+}
+.shape-fr-BHL.fr-title,
+.shape-fr-bhl.fr-title {
+  padding: .5rem .5rem;
+}
+.fr-title a {
+  color: rgb(var(--fr-title-color));
+  text-decoration: none;
+  margin-bottom: .5rem;
+  margin-top: 0;
+}
+.fr-title.tb-fr-true a {
+  color: rgb(var(--fr-title-btn-color));
+  background: var(--fr-title-btn-color-gradient);
+  border: 1px solid rgb(var(--fr-title-btn-color-border));
+}
+.fr-title a:hover {
+  color: rgb(var(--fr-title-hover));
+}
+.fr-title.tb-fr-true a:hover {
+  color: rgb(var(--fr-title-btn-hover));
+  background: var(--fr-title-btn-hover-gradient);
+  border: 1px solid rgb(var(--fr-title-btn-hover-border));
+}
+.fr-title.tb-fr-true {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.fr-title.tb-fr-true a {
+  background-clip: padding-box;
+  border-radius: .75rem;
+  padding: 1rem 2rem;
+  margin-bottom: .25rem;
+  margin-left: 0;
+  margin-right: 0;
+  position: relative;
+  max-width: 30rem;
+  width: 100%;
+  display: flex;
+  flex-grow: 2;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 80ms cubic-bezier(.4, 0, .2, 1);
+  overflow: hidden;
+}
+.shape-fr-BHL.fr-title.tb-fr-true a,
+.shape-fr-bhl.fr-title.tb-fr-true a {
+  border-radius: 0;
+}
+.shape-fr-BHL.fr-title.tb-fr-true a::before,
+.shape-fr-bhl.fr-title.tb-fr-true a::before {
+  content: &#34; &#34;;
+  width: 125%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(var(--fr-title-btn-accent), .25);
+  opacity: 1;
+  z-index: 1;
+  transform: translateX(calc(-100% - 4rem));
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  clip-path: polygon(0.00% 0.00%, 100% 0px, 90% 100%, 0px 100%);
+}
+.shape-fr-BHL.fr-title.tb-fr-true a:hover::before,
+.shape-fr-bhl.fr-title.tb-fr-true a:hover::before {
+  transform: translateX(-1rem);
+}
+.fr-title span.fr-title-text {
+  display: inline-flex;
+  align-content: flex-start;
+  vertical-align: top;
+  z-index: 2;
+}
+.fr-title.icon-fr-true span.fr-title-text::before {
+  content: &#34; &#34;;
+  background-image: url(&#34;{$title_icon_url}&#34;);
+  background-repeat: no-repeat;
+  background-size: 2rem 2rem;
+  background-position: center;
+  margin-right: .5rem;
+  display: inline-block;
+  height: 2rem;
+  width: 2rem;
+  z-index: 2;
+  animation: {$title_icon_anim};
+}
+.fr-content {
+  padding: 0 1rem;
+}
+.shape-fr-BHL.fr-content,
+.shape-fr-bhl.fr-content {
+  padding: 0 .5rem;
+}
+.fr-progress-cont {
+  margin-bottom: .5rem;
+}
+.fr-prog-bar-cont {
+  margin-bottom: .5rem;
+  margin-top: .25rem;
+  background-color: rgb(var(--fr-progress-bar-bg-color));
+  border-radius: .125rem;
+  max-width: 100%;
+}
+.fr-prog-bar {
+  background: rgb(var(--fr-progress-bar-color));
+  border-radius: .125rem;
+  display: inline-block;
+  height: .5rem;
+  max-width: 100%;
+}
+.shape-fr-BHL.fr-prog-bar-cont,
+.shape-fr-bhl.fr-prog-bar-cont {
+  border-radius: 0;
+}
+.shape-fr-BHL.fr-prog-bar,
+.shape-fr-bhl.fr-prog-bar {
+  border-radius: 0;
+}
+.fr-prog-text {
+  color: rgb(var(--fr-progress-text-color));
+  display: flex;
+  font-family: var(--fr-title-font);
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: .8;
+  margin-bottom: .25rem;
+  margin-top: .25rem;
+}
+.fr-prog-goal {
+  color: rgb(var(--fr-progress-goal-color));
+  font-family: var(--fr-body-font);
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: 1.21;
+  display: flex;
+  padding-left: .5rem;
+}
+.fr-desc {
+  color: rgb(var(--fr-description-color));
+  margin-bottom: .5rem;
+}
+.fr-desc p {
+  margin: .25em 0;
+}
+.hide-fr-desc-true {
+  display: none;
+}
+.fr-button-cont {
+  align-items: center;
+  display: flex;
+  margin-bottom: 1rem;
+}
+.shape-fr-BHL.fr-button-cont,
+.shape-fr-bhl.fr-button-cont {
+  margin-bottom: .5rem;
+}
+.hide-fr-donate-true {
+  display: none;
+}
+.fr-button-cont a {
+  background: var(--fr-donate-color-gradient);
+  background-clip: padding-box;
+  border: 1px solid rgb(var(--fr-donate-color-border));
+  border-radius: .5rem;
+  box-shadow: 0 6px 14px rgb(0 0 0 / 10%);
+  color: rgb(var(--fr-donate-color));
+  font-family: var(--fr-title-font);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: .02em;
+  position: relative;
+  max-width: 12rem;
+  white-space: nowrap;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding: .75rem 1rem;
+  display: flex;
+  flex-grow: 2;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 80ms cubic-bezier(.4, 0, .2, 1);
+  overflow: hidden;
+}
+.fr-button-cont a:hover {
+  background: var(--fr-donate-hover-gradient);
+  border: 1px solid rgb(var(--fr-donate-hover-border));
+  color: rgb(var(--fr-donate-hover));
+}
+.shape-fr-BHL.fr-button-cont a,
+.shape-fr-bhl.fr-button-cont a {
+  border-radius: 0;
+  box-shadow: none;
+}
+.shape-fr-BHL.fr-button-cont a::before,
+.shape-fr-bhl.fr-button-cont a::before {
+  content: &#34; &#34;;
+  display: inline;
+  width: 125%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgb(var(--fr-donate-accent), .25);
+  opacity: 1;
+  z-index: 1;
+  transform: translateX(calc(-100% - 4rem));
+  transition: transform 500ms cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+  clip-path: polygon(0.00% 0.00%, 100% 0px, 90% 100%, 0px 100%);
+}
+.shape-fr-BHL.fr-button-cont a:hover::before,
+.shape-fr-bhl.fr-button-cont a:hover::before {
+  transform: translate(-1rem);
+}
+.fr-button-backup {
+  display: none!important;
+}
+.fr-button-backup.donate-fr-none {
+  display: flex!important;
+}
+.fr-button-donate.donate-fr-none {
+  display: none!important;
+}
+.fr-button-cont span.fr-button-text {
+  display: inline-flex;
+  align-content: flex-start;
+  vertical-align: top;
+  z-index: 2;
+}
+.fr-button-cont.icon-fr-true span.fr-button-text::before {
+  content: &#34; &#34;;
+  background-image: url(&#34;{$donate_icon_url}&#34;);
+  background-repeat: no-repeat;
+  background-size: 1.5rem 1.5rem;
+  background-position: center;
+  margin-right: .5rem;
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  z-index: 2;
+  animation: {$donate_icon_anim};
+}
+.fr-logo {
+  color: rgb(var(--fr-logo-color));
+  height: 2rem;
+  width: 7.5rem;
+  overflow: hidden;
+  margin-left: 1rem!important;
+  font-family: var(--fr-logo-font);
+  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+@keyframes icon-wiggle {
+    0% {transform:rotate(0) scale(1)}
+   60% {transform:rotate(0) scale(1)}
+   75% {transform:rotate(0) scale(1.12)}
+   80% {transform:rotate(0) scale(1.1)}
+   84% {transform:rotate(-10deg) scale(1.1)}
+   88% {transform:rotate(10deg) scale(1.1)}
+   92% {transform:rotate(-10deg) scale(1.1)}
+   96% {transform:rotate(10deg) scale(1.1)}
+  100% {transform:rotate(0) scale(1)}
+}
+[[/module]]
+
+[[div class=&#34;fr-widget shape-fr-{$shape} {$aux_class} theme-fr-{$theme} tb-fr-{$title_button}&#34;]]
+  [[div class=&#34;fr-image shape-fr-{$shape} {$aux_class} img-fr-{$image_url}&#34;]]
+    [[image {$image_url} link=&#34;*{$main_url}&#34;]]
+  [[/div]]
+  [[div_ class=&#34;fr-title shape-fr-{$shape} {$aux_class} 
+      tb-fr-{$title_button} icon-fr-{$title_icon_show}&#34;]]
+    [[a target=&#34;_blank&#34; href=&#34;{$main_url}&#34;]] \
+      [[span class=&#34;fr-title-text shape-fr-{$shape} {$aux_class}&#34;]]{$title}[[/span]] \
+    [[/a]]
+  [[/div]]
+  [[div_ class=&#34;fr-content shape-fr-{$shape} {$aux_class}&#34;]]
+    [[div_ class=&#34;fr-progress-cont shape-fr-{$shape} {$aux_class}&#34; 
+           style=&#34;display:[[#ifexpr {$goal} &gt; 0 | block | none]];&#34;]]
+      [[div_ class=&#34;fr-prog-bar-cont shape-fr-{$shape} {$aux_class}&#34;]]
+        [[span class=&#34;fr-prog-bar shape-fr-{$shape} {$aux_class}&#34; 
+               style=&#34;width: calc({$amt} / {$goal} * 100%);&#34;]]
+        [[/span]]
+      [[/div]]
+      [[div_ class=&#34;fr-prog-text shape-fr-{$shape} {$aux_class}&#34; style=&#34;display: inline-flex;&#34;]]
+  [[span class=&#34;fr-neg-before&#34; style=&#34;display:[[#ifexpr {$amt} &lt; 0 | inline | none]];&#34;]]- \
+  [[/span]]{$curr_sym} \
+  [[span class=&#34;fr-fig-huge&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000,000 --]
+    [[#ifexpr abs({$amt}) &lt; 1000000000000 | none | inline]];&#34;]] \
+    [[#expr abs({$amt}) ]] \
+  [[/span]] \
+  [[span class=&#34;fr-fig-reg&#34; style=&#34;display:[!-- if amt &lt; 1,000,000,000,000 --]
+    [[#ifexpr abs({$amt}) &lt; 1000000000000 | inline-flex | none]];&#34;]] \
+    [!-- Section 000,XXX,XXX,XXX.xxx --] \
+    [[span class=&#34;fr-fig12-10&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000 --]
+      [[#ifexpr abs({$amt}) &lt; 1000000000 | none | inline]];&#34;]] \
+      [[#expr (abs({$amt}) - abs({$amt}) % 1000000000) / 1000000000 ]]{$num_sep} \
+    [[/span]] \
+    [!-- Section XXX,000,XXX,XXX.xxx --] \
+    [[span class=&#34;fr-fig9-8&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000 --]
+      [[#ifexpr abs({$amt}) &lt; 1000000000 | none | inline-flex]];&#34;]] \
+      [[span class=&#34;fr-fig9&#34; style=&#34;display:[!-- if amt == X,0XX,XXX,XXX --]
+        [[#ifexpr (abs({$amt}) % 1000000000) &lt; 100000000 | inline | none]];&#34;]] 0 [[/span]] \
+      [[span class=&#34;fr-fig8&#34; style=&#34;display:[!-- if amt == X,X0X,XXX,XXX --]
+        [[#ifexpr (abs({$amt}) % 1000000000) &lt; 10000000 | inline | none]];&#34;]] 0 [[/span]] \
+    [[/span]] \
+    [[span class=&#34;fr-fig7&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000 --]
+      [[#ifexpr abs({$amt}) &lt; 1000000000 | none | inline]];&#34;]] \
+      [[#expr (abs({$amt}) % 1000000000 - abs({$amt}) % 1000000) / 1000000 ]]{$num_sep} \
+    [[/span]] \
+    [!-- Section XXX,XXX,000,XXX.xxx --] \
+    [[span class=&#34;fr-fig6-5&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000 --]
+      [[#ifexpr abs({$amt}) &lt; 1000000 | none | inline-flex]];&#34;]] \
+      [[span class=&#34;fr-fig6&#34; style=&#34;display:[!-- if amt == X,0XX,XXX --]
+        [[#ifexpr (abs({$amt}) % 1000000) &lt; 100000 | inline | none]];&#34;]] 0 [[/span]] \
+      [[span class=&#34;fr-fig5&#34; style=&#34;display:[!-- if amt == X,X0X,XXX --]
+        [[#ifexpr (abs({$amt}) % 1000000) &lt; 10000 | inline | none]];&#34;]] 0 [[/span]] \
+    [[/span]] \
+    [[span class=&#34;fr-fig4&#34; style=&#34;display:[!-- if amt &gt;= 1,000 --]
+      [[#ifexpr abs({$amt}) &lt; 1000 | none | inline]];&#34;]] \
+      [[#expr (abs({$amt}) % 1000000 - abs({$amt}) % 1000) / 1000 ]]{$num_sep} \
+    [[/span]] \
+    [!-- Section XXX,XXX,XXX,000.xxx --] \
+    [[span class=&#34;fr-fig3-2&#34; style=&#34;display:[!-- if amt &gt;= 1,000 --]
+      [[#ifexpr abs({$amt}) &lt; 1000 | none | inline-flex]];&#34;]] \
+      [[span class=&#34;fr-fig3&#34; style=&#34;display:[!-- if amt == X,0XX --]
+        [[#ifexpr (abs({$amt}) % 1000) &lt; 100 | inline | none]];&#34;]] 0 [[/span]] \
+      [[span class=&#34;fr-fig2&#34; style=&#34;display:[!-- if amt == X,X0X --]
+        [[#ifexpr (abs({$amt}) % 1000) &lt; 10 | inline | none]];&#34;]] 0 [[/span]] \
+    [[/span]] \
+    [[span class=&#34;fr-fig1&#34; style=&#34;display:[!-- if amt &gt;= 1.0e-12 --]
+      [[#ifexpr abs({$amt}) &lt; 0.000000000001 | none | inline]];&#34;]] \
+      [[#expr abs({$amt}) % 1000 - abs({$amt}) % 1 ]] \
+    [[/span]] \
+    [[span class=&#34;fr-fig-tiny&#34; style=&#34;display:[!-- if amt &lt; 1.0e-12 --]
+      [[#ifexpr abs({$amt}) &lt; 0.000000000001 | inline | none]];&#34;]] \
+      [[#expr abs({$amt}) ]] \
+    [[/span]] \
+  [[/span]] \
+        [[span class=&#34;fr-prog-goal shape-fr-{$shape} {$aux_class}&#34; 
+               style=&#34;display: inline-flex;&#34;]] raised of \
+  [[span class=&#34;fr-neg-before&#34; style=&#34;display:[[#ifexpr {$goal} &lt; 0 | inline | none]];&#34;]]- \
+  [[/span]]{$curr_sym} \
+  [[span class=&#34;fr-fig-huge&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000,000 --]
+    [[#ifexpr abs({$goal}) &lt; 1000000000000 | none | inline]];&#34;]] \
+    [[#expr abs({$goal}) ]] \
+  [[/span]] \
+  [[span class=&#34;fr-fig-reg&#34; style=&#34;display:[!-- if amt &lt; 1,000,000,000,000 --]
+    [[#ifexpr abs({$goal}) &lt; 1000000000000 | inline-flex | none]];&#34;]] \
+    [!-- Section 000,XXX,XXX,XXX.xxx --] \
+    [[span class=&#34;fr-fig12-10&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000 --]
+      [[#ifexpr abs({$goal}) &lt; 1000000000 | none | inline]];&#34;]] \
+      [[#expr (abs({$goal}) - abs({$goal}) % 1000000000) / 1000000000 ]]{$num_sep} \
+    [[/span]] \
+    [!-- Section XXX,000,XXX,XXX.xxx --] \
+    [[span class=&#34;fr-fig9-8&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000 --]
+      [[#ifexpr abs({$goal}) &lt; 1000000000 | none | inline-flex]];&#34;]] \
+      [[span class=&#34;fr-fig9&#34; style=&#34;display:[!-- if amt == X,0XX,XXX,XXX --]
+        [[#ifexpr (abs({$goal}) % 1000000000) &lt; 100000000 | inline | none]];&#34;]] 0 [[/span]] \
+      [[span class=&#34;fr-fig8&#34; style=&#34;display:[!-- if amt == X,X0X,XXX,XXX --]
+        [[#ifexpr (abs({$goal}) % 1000000000) &lt; 10000000 | inline | none]];&#34;]] 0 [[/span]] \
+    [[/span]] \
+    [[span class=&#34;fr-fig7&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000 --]
+      [[#ifexpr abs({$goal}) &lt; 1000000000 | none | inline]];&#34;]] \
+      [[#expr (abs({$goal}) % 1000000000 - abs({$goal}) % 1000000) / 1000000 ]]{$num_sep} \
+    [[/span]] \
+    [!-- Section XXX,XXX,000,XXX.xxx --] \
+    [[span class=&#34;fr-fig6-5&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000 --]
+      [[#ifexpr abs({$goal}) &lt; 1000000 | none | inline-flex]];&#34;]] \
+      [[span class=&#34;fr-fig6&#34; style=&#34;display:[!-- if amt == X,0XX,XXX --]
+        [[#ifexpr (abs({$goal}) % 1000000) &lt; 100000 | inline | none]];&#34;]] 0 [[/span]] \
+      [[span class=&#34;fr-fig5&#34; style=&#34;display:[!-- if amt == X,X0X,XXX --]
+        [[#ifexpr (abs({$goal}) % 1000000) &lt; 10000 | inline | none]];&#34;]] 0 [[/span]] \
+    [[/span]] \
+    [[span class=&#34;fr-fig4&#34; style=&#34;display:[!-- if amt &gt;= 1,000 --]
+      [[#ifexpr abs({$goal}) &lt; 1000 | none | inline]];&#34;]] \
+      [[#expr (abs({$goal}) % 1000000 - abs({$goal}) % 1000) / 1000 ]]{$num_sep} \
+    [[/span]] \
+    [!-- Section XXX,XXX,XXX,000.xxx --] \
+    [[span class=&#34;fr-fig3-2&#34; style=&#34;display:[!-- if amt &gt;= 1,000 --]
+      [[#ifexpr abs({$goal}) &lt; 1000 | none | inline-flex]];&#34;]] \
+      [[span class=&#34;fr-fig3&#34; style=&#34;display:[!-- if amt == X,0XX --]
+        [[#ifexpr (abs({$goal}) % 1000) &lt; 100 | inline | none]];&#34;]] 0 [[/span]] \
+      [[span class=&#34;fr-fig2&#34; style=&#34;display:[!-- if amt == X,X0X --]
+        [[#ifexpr (abs({$goal}) % 1000) &lt; 10 | inline | none]];&#34;]] 0 [[/span]] \
+    [[/span]] \
+    [[span class=&#34;fr-fig1&#34; style=&#34;display:[!-- if amt &gt;= 1.0e-12 --]
+      [[#ifexpr abs({$goal}) &lt; 0.000000000001 | none | inline]];&#34;]] \
+      [[#expr abs({$goal}) % 1000 - abs({$goal}) % 1 ]] \
+    [[/span]] \
+    [[span class=&#34;fr-fig-tiny&#34; style=&#34;display:[!-- if amt &lt; 1.0e-12 --]
+      [[#ifexpr abs({$goal}) &lt; 0.000000000001 | inline | none]];&#34;]] \
+      [[#expr abs({$goal}) ]] \
+    [[/span]] \
+  [[/span]] \
+          [[span style=&#34;padding-left:0.25rem;&#34;]]goal![[/span]] \
+        [[/span]]
+      [[/div]]
+    [[/div]]
+    [[div class=&#34;fr-desc shape-fr-{$shape} {$aux_class} hide-fr-desc-{$hide_desc}&#34;]]
+      {$description}
+    [[/div]]
+    [[div_ class=&#34;fr-button-cont shape-fr-{$shape} {$aux_class} 
+        hide-fr-donate-{$hide_donate} icon-fr-{$donate_icon_show}&#34;]]
+      [[a target=&#34;_blank&#34; href=&#34;{$donate_url}&#34; 
+          class=&#34;fr-button-donate shape-fr-{$shape} {$aux_class} donate-fr-{$donate_url}&#34;]] \
+        [[span class=&#34;fr-button-text shape-fr-{$shape} {$aux_class}&#34;]]Donate Now[[/span]] \
+      [[/a]] \
+      [[a target=&#34;_blank&#34; href=&#34;{$main_url}&#34; 
+          class=&#34;fr-button-backup shape-fr-{$shape} {$aux_class} donate-fr-{$donate_url}&#34;]] \
+        [[span class=&#34;fr-button-text shape-fr-{$shape} {$aux_class}&#34;]]Donate Now[[/span]] \
+      [[/a]] \
+      [[span class=&#34;fr-logo shape-fr-{$shape} {$aux_class}&#34;]]{$logo_text}[[/span]]
+    [[/div]]
+  [[/div]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2021-09-04 21:54:40.381515.</em>
+  
+</div>
+</body>

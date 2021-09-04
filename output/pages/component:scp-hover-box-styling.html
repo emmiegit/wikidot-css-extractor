@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-88">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <style>
+  /* Headers */
+  h1 {
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Veradana', Arial, sans-serif;
+    padding-right: 1em;
+    padding-bottom: 0.2em;
+    margin: 0.25em 0.25em 0.75em 0.25em;
+  }
+
+  /* Collapsibles */
+  details summary {
+    font-family: 'Veradana', Arial, sans-serif;
+  }
+
+  /* Links */
+  a {
+    color: #04a;
+    text-decoration: underline;
+    transition: color .2s;
+  }
+
+  a:hover {
+    color: #04f;
+  }
+
+  a:visited {
+    color: #44a;
+  }
+
+  a code {
+    background-color: inherit;
+    padding: inherit;
+  }
+
+  a.jump {
+    text-decoration: none;
+    font-size: 0.7em;
+    vertical-align: super;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    border: 1px solid black;
+    padding: 0.2em;
+  }
+
+  thead th {
+    background-color: #bbb;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #eee;
+  }
+
+  td.number {
+    text-align: right;
+  }
+
+  /* Lists */
+  li.no-bullet {
+    list-style: none;
+  }
+
+  /* Code */
+  code {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #ddd;
+    padding: 0.25em 0.5em 0.25em 0.5em;
+  }
+
+  /* Elements */
+  .page-source {
+    width: 100%;
+    height: 80vh;
+  }
+
+  div#footer {
+    border-top: 1px solid #ccc;
+    padding-top: 0.25em;
+    margin-top: 2em;
+  }
+</style>
+
+  <title>SCP Hover Box Styling</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">SCP Hover Box Styling</h1>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>@import url(&#34;https://use.typekit.net/fmm4kex.css&#34;);
+
+.scp-hover-box {
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scp-hover-box::before {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: &#34; &#34;;
+    box-sizing: content-box;
+    top: 0;
+    left: 0;
+    transition: 
+    	border 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    	top 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    	left 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    	background 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scp-hover-box:hover::before {
+    box-sizing: content-box;
+}
+
+.scp-hover-box::before,
+.scp-hover-box div.container, 
+.scp-hover-box div.header {
+    clip-path: polygon(
+    		0% var(--notch-size, 0), 
+    		var(--notch-size) 0%, 
+    		calc(100% - var(--notch-size, 0)) 0%, 
+    		100% var(--notch-size, 0), 
+    		100% calc(100% - var(--notch-size, 0)), 
+    		calc(100% - var(--notch-size, 0)) 100%, 
+    		var(--notch-size, 0) 100%, 
+    		0% calc(100% - var(--notch-size, 0))
+    );
+}
+
+div.scp-hover-box * {
+    box-sizing: border-box;
+}
+
+div.scp-hover-box .container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: var(--body-width-on-desktop) !important;
+    box-sizing: border-box;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 4rem;
+}
+
+div.scp-hover-box .container::before,
+div.scp-hover-box .container::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    height: 0.125rem;
+    width: 100%;
+    max-width: var(--body-width-on-desktop, 65rem) !important;
+    z-index: -1;
+}
+
+div.scp-hover-box .container::before {
+    top: 0;
+}
+
+div.scp-hover-box .container::after {
+    bottom: 0;
+}
+
+div.scp-hover-box .container:hover &gt; * &gt; *::before,
+div.scp-hover-box .container:hover &gt; * &gt; *::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.scp-hover-box .container:hover &gt; * &gt; * &gt; *::before,
+div.scp-hover-box .container:hover &gt; * &gt; * &gt; *::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.scp-hover-box .container &gt; *::before,
+div.scp-hover-box .container &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 0.125rem;
+    z-index: -1;
+}
+
+div.scp-hover-box .container &gt; *::before {
+    left: 0;
+}
+
+div.scp-hover-box .container &gt; *::after {
+    right: 0;
+}
+
+div.scp-hover-box .container &gt; * &gt; *::before,
+div.scp-hover-box .container &gt; * &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    z-index: 9;
+    height: 0.125rem;
+    width: 100%;
+}
+
+div.scp-hover-box .container &gt; * &gt; *::before {
+    top: 0;
+    -webkit-transform: translate3d(-105%, 0, 0);
+    transform: translate3d(-105%, 0, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; *::after {
+    bottom: 0;
+    -webkit-transform: translate3d(105%, 0, 0);
+    transform: translate3d(105%, 0, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::before,
+div.scp-hover-box .container &gt; * &gt; * &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    height: 100%;
+    width: 0.125rem;
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::before {
+    left: 0;
+    -webkit-transform: translate3d(0, 105%, 0);
+    transform: translate3d(0, 105%, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::after {
+    right: 0;
+    -webkit-transform: translate3d(0, -105%, 0);
+    transform: translate3d(0, -105%, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box div.container div:not(.sub-title):not(.title) {
+    width: 100%;
+}
+
+div.scp-hover-box div.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    letter-spacing: 0.05em;
+}
+
+div.scp-hover-box div.title &gt; a, 
+div.scp-hover-box div.sub-title &gt; a,
+div.scp-hover-box div.title,
+div.scp-hover-box div.sub-title {
+    display: flex;
+    margin: 0;
+    width: unset;
+    max-width: unset;
+    flex-grow: 2;
+    flex-shrink: 2;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.scp-hover-box div.title &gt; a,
+div.scp-hover-box div.sub-title &gt; a {
+    font-size: 150%;
+    font-family: var(--title-font, proxima-nova-extra-condensed);
+    width: 100%;
+    padding: 0.5em;
+    line-height: 1em;
+    align-items: center;
+    will-change: transform;
+}
+
+div.scp-hover-box div.title &gt; a:hover,
+div.scp-hover-box div.sub-title &gt; a:hover {
+    text-decoration: none;
+}
+
+div.scp-hover-box div.title &gt; a {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+div.scp-hover-box div.sub-title &gt; a {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+div.scp-hover-box div.blerb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    flex-shrink: 0;
+    min-height: 4em;
+    padding: 0.75em;
+    text-align: center;
+}
+
+.blerb br {
+    display: none;
+}
+
+.blerb *:not(:last-child) {
+    margin-bottom: 0.25em;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code> @import url(&#34;https://use.typekit.net/fmm4kex.css&#34;);
+
+.scp-hover-box {
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scp-hover-box::before {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: &#34; &#34;;
+    box-sizing: content-box;
+    top: 0;
+    left: 0;
+    transition: 
+    	border 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    	top 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    	left 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    	background 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scp-hover-box:hover::before {
+    box-sizing: content-box;
+}
+
+.scp-hover-box::before,
+.scp-hover-box div.container, 
+.scp-hover-box div.header {
+    clip-path: polygon(
+    		0% var(--notch-size), 
+    		var(--notch-size) 0%, 
+    		calc(100% - var(--notch-size)) 0%, 
+    		100% var(--notch-size), 
+    		100% calc(100% - var(--notch-size)), 
+    		calc(100% - var(--notch-size)) 100%, 
+    		var(--notch-size) 100%, 
+    		0% calc(100% - var(--notch-size))
+    );
+}
+
+div.scp-hover-box * {
+    box-sizing: border-box;
+}
+
+div.scp-hover-box .container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: var(--body-width-on-desktop, 65rem) !important;
+    box-sizing: border-box;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 4rem;
+}
+
+div.scp-hover-box .container::before,
+div.scp-hover-box .container::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    height: 0.125rem;
+    width: 100%;
+    max-width: var(--body-width-on-desktop, 65rem) !important;
+    z-index: -1;
+}
+
+div.scp-hover-box .container::before {
+    top: 0;
+}
+
+div.scp-hover-box .container::after {
+    bottom: 0;
+}
+
+div.scp-hover-box .container:hover &gt; * &gt; *::before,
+div.scp-hover-box .container:hover &gt; * &gt; *::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.scp-hover-box .container:hover &gt; * &gt; * &gt; *::before,
+div.scp-hover-box .container:hover &gt; * &gt; * &gt; *::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.scp-hover-box .container &gt; *::before,
+div.scp-hover-box .container &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 0.125rem;
+    z-index: -1;
+}
+
+div.scp-hover-box .container &gt; *::before {
+    left: 0;
+}
+
+div.scp-hover-box .container &gt; *::after {
+    right: 0;
+}
+
+div.scp-hover-box .container &gt; * &gt; *::before,
+div.scp-hover-box .container &gt; * &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    z-index: 9;
+    height: 0.125rem;
+    width: 100%;
+}
+
+div.scp-hover-box .container &gt; * &gt; *::before {
+    top: 0;
+    -webkit-transform: translate3d(-105%, 0, 0);
+    transform: translate3d(-105%, 0, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; *::after {
+    bottom: 0;
+    -webkit-transform: translate3d(105%, 0, 0);
+    transform: translate3d(105%, 0, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::before,
+div.scp-hover-box .container &gt; * &gt; * &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    height: 100%;
+    width: 0.125rem;
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::before {
+    left: 0;
+    -webkit-transform: translate3d(0, 105%, 0);
+    transform: translate3d(0, 105%, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::after {
+    right: 0;
+    -webkit-transform: translate3d(0, -105%, 0);
+    transform: translate3d(0, -105%, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box div.container div:not(.sub-title):not(.title) {
+    width: 100%;
+}
+
+div.scp-hover-box div.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    letter-spacing: 0.05em;
+}
+
+div.scp-hover-box div.title &gt; a, 
+div.scp-hover-box div.sub-title &gt; a,
+div.scp-hover-box div.title,
+div.scp-hover-box div.sub-title {
+    display: flex;
+    margin: 0;
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.scp-hover-box div.title &gt; a,
+div.scp-hover-box div.sub-title &gt; a {
+    font-size: 150%;
+    font-family: var(--title-font, proxima-nova-extra-condensed);
+    width: 100%;
+    padding: 0.5em;
+    line-height: 1em;
+    align-items: center;
+}
+
+div.scp-hover-box div.title &gt; a:hover,
+div.scp-hover-box div.sub-title &gt; a:hover {
+    text-decoration: none;
+}
+
+div.scp-hover-box div.title &gt; a {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+div.scp-hover-box div.sub-title &gt; a {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+div.scp-hover-box div.blerb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    flex-shrink: 0;
+    min-height: 4em;
+    padding: 0.75em;
+    text-align: center;
+}
+
+.blerb br {
+    display: none;
+}
+
+.blerb *:not(:last-child) {
+    margin-bottom: 0.25em;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[iftags -component-backend]]
+[[module css]]
+@import url(&#34;https://use.typekit.net/fmm4kex.css&#34;);
+
+.scp-hover-box {
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scp-hover-box::before {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: &#34; &#34;;
+    box-sizing: content-box;
+    top: 0;
+    left: 0;
+    transition: 
+    	border 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    	top 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    	left 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    	background 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scp-hover-box:hover::before {
+    box-sizing: content-box;
+}
+
+.scp-hover-box::before,
+.scp-hover-box div.container, 
+.scp-hover-box div.header {
+    clip-path: polygon(
+    		0% var(--notch-size, 0), 
+    		var(--notch-size) 0%, 
+    		calc(100% - var(--notch-size, 0)) 0%, 
+    		100% var(--notch-size, 0), 
+    		100% calc(100% - var(--notch-size, 0)), 
+    		calc(100% - var(--notch-size, 0)) 100%, 
+    		var(--notch-size, 0) 100%, 
+    		0% calc(100% - var(--notch-size, 0))
+    );
+}
+
+div.scp-hover-box * {
+    box-sizing: border-box;
+}
+
+div.scp-hover-box .container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: var(--body-width-on-desktop) !important;
+    box-sizing: border-box;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 4rem;
+}
+
+div.scp-hover-box .container::before,
+div.scp-hover-box .container::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    height: 0.125rem;
+    width: 100%;
+    max-width: var(--body-width-on-desktop, 65rem) !important;
+    z-index: -1;
+}
+
+div.scp-hover-box .container::before {
+    top: 0;
+}
+
+div.scp-hover-box .container::after {
+    bottom: 0;
+}
+
+div.scp-hover-box .container:hover &gt; * &gt; *::before,
+div.scp-hover-box .container:hover &gt; * &gt; *::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.scp-hover-box .container:hover &gt; * &gt; * &gt; *::before,
+div.scp-hover-box .container:hover &gt; * &gt; * &gt; *::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.scp-hover-box .container &gt; *::before,
+div.scp-hover-box .container &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 0.125rem;
+    z-index: -1;
+}
+
+div.scp-hover-box .container &gt; *::before {
+    left: 0;
+}
+
+div.scp-hover-box .container &gt; *::after {
+    right: 0;
+}
+
+div.scp-hover-box .container &gt; * &gt; *::before,
+div.scp-hover-box .container &gt; * &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    z-index: 9;
+    height: 0.125rem;
+    width: 100%;
+}
+
+div.scp-hover-box .container &gt; * &gt; *::before {
+    top: 0;
+    -webkit-transform: translate3d(-105%, 0, 0);
+    transform: translate3d(-105%, 0, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; *::after {
+    bottom: 0;
+    -webkit-transform: translate3d(105%, 0, 0);
+    transform: translate3d(105%, 0, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::before,
+div.scp-hover-box .container &gt; * &gt; * &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    height: 100%;
+    width: 0.125rem;
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::before {
+    left: 0;
+    -webkit-transform: translate3d(0, 105%, 0);
+    transform: translate3d(0, 105%, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::after {
+    right: 0;
+    -webkit-transform: translate3d(0, -105%, 0);
+    transform: translate3d(0, -105%, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box div.container div:not(.sub-title):not(.title) {
+    width: 100%;
+}
+
+div.scp-hover-box div.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    letter-spacing: 0.05em;
+}
+
+div.scp-hover-box div.title &gt; a, 
+div.scp-hover-box div.sub-title &gt; a,
+div.scp-hover-box div.title,
+div.scp-hover-box div.sub-title {
+    display: flex;
+    margin: 0;
+    width: unset;
+    max-width: unset;
+    flex-grow: 2;
+    flex-shrink: 2;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.scp-hover-box div.title &gt; a,
+div.scp-hover-box div.sub-title &gt; a {
+    font-size: 150%;
+    font-family: var(--title-font, proxima-nova-extra-condensed);
+    width: 100%;
+    padding: 0.5em;
+    line-height: 1em;
+    align-items: center;
+    will-change: transform;
+}
+
+div.scp-hover-box div.title &gt; a:hover,
+div.scp-hover-box div.sub-title &gt; a:hover {
+    text-decoration: none;
+}
+
+div.scp-hover-box div.title &gt; a {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+div.scp-hover-box div.sub-title &gt; a {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+div.scp-hover-box div.blerb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    flex-shrink: 0;
+    min-height: 4em;
+    padding: 0.75em;
+    text-align: center;
+}
+
+.blerb br {
+    display: none;
+}
+
+.blerb *:not(:last-child) {
+    margin-bottom: 0.25em;
+}
+[[/module]]
+[[/iftags]]
+
+[[iftags +component-backend]]
+[[=]]
+**[[size 2em]][https://scp-wiki.wikidot.com/component:scp-hover-box &gt;&gt;Go here to see what this is for&lt;&lt;][[/size]]**
+[[/=]]
+[[code]]
+[[module css]]
+ @import url(&#34;https://use.typekit.net/fmm4kex.css&#34;);
+
+.scp-hover-box {
+    width: 85%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scp-hover-box::before {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    content: &#34; &#34;;
+    box-sizing: content-box;
+    top: 0;
+    left: 0;
+    transition: 
+    	border 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    	top 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
+    	left 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    	background 1s 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scp-hover-box:hover::before {
+    box-sizing: content-box;
+}
+
+.scp-hover-box::before,
+.scp-hover-box div.container, 
+.scp-hover-box div.header {
+    clip-path: polygon(
+    		0% var(--notch-size), 
+    		var(--notch-size) 0%, 
+    		calc(100% - var(--notch-size)) 0%, 
+    		100% var(--notch-size), 
+    		100% calc(100% - var(--notch-size)), 
+    		calc(100% - var(--notch-size)) 100%, 
+    		var(--notch-size) 100%, 
+    		0% calc(100% - var(--notch-size))
+    );
+}
+
+div.scp-hover-box * {
+    box-sizing: border-box;
+}
+
+div.scp-hover-box .container {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: var(--body-width-on-desktop, 65rem) !important;
+    box-sizing: border-box;
+    transition: background-color 0.8s cubic-bezier(0.4, 0, 0.2, 1), color 1s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 4rem;
+}
+
+div.scp-hover-box .container::before,
+div.scp-hover-box .container::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    height: 0.125rem;
+    width: 100%;
+    max-width: var(--body-width-on-desktop, 65rem) !important;
+    z-index: -1;
+}
+
+div.scp-hover-box .container::before {
+    top: 0;
+}
+
+div.scp-hover-box .container::after {
+    bottom: 0;
+}
+
+div.scp-hover-box .container:hover &gt; * &gt; *::before,
+div.scp-hover-box .container:hover &gt; * &gt; *::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.scp-hover-box .container:hover &gt; * &gt; * &gt; *::before,
+div.scp-hover-box .container:hover &gt; * &gt; * &gt; *::after {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+div.scp-hover-box .container &gt; *::before,
+div.scp-hover-box .container &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 0.125rem;
+    z-index: -1;
+}
+
+div.scp-hover-box .container &gt; *::before {
+    left: 0;
+}
+
+div.scp-hover-box .container &gt; *::after {
+    right: 0;
+}
+
+div.scp-hover-box .container &gt; * &gt; *::before,
+div.scp-hover-box .container &gt; * &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    z-index: 9;
+    height: 0.125rem;
+    width: 100%;
+}
+
+div.scp-hover-box .container &gt; * &gt; *::before {
+    top: 0;
+    -webkit-transform: translate3d(-105%, 0, 0);
+    transform: translate3d(-105%, 0, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; *::after {
+    bottom: 0;
+    -webkit-transform: translate3d(105%, 0, 0);
+    transform: translate3d(105%, 0, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::before,
+div.scp-hover-box .container &gt; * &gt; * &gt; *::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0;
+    z-index: 9;
+    height: 100%;
+    width: 0.125rem;
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::before {
+    left: 0;
+    -webkit-transform: translate3d(0, 105%, 0);
+    transform: translate3d(0, 105%, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box .container &gt; * &gt; * &gt; *::after {
+    right: 0;
+    -webkit-transform: translate3d(0, -105%, 0);
+    transform: translate3d(0, -105%, 0);
+    transition: -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), -webkit-transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div.scp-hover-box div.container div:not(.sub-title):not(.title) {
+    width: 100%;
+}
+
+div.scp-hover-box div.header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    letter-spacing: 0.05em;
+}
+
+div.scp-hover-box div.title &gt; a, 
+div.scp-hover-box div.sub-title &gt; a,
+div.scp-hover-box div.title,
+div.scp-hover-box div.sub-title {
+    display: flex;
+    margin: 0;
+    flex-basis: 50%;
+    flex-grow: 1;
+    flex-shrink: 1;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+div.scp-hover-box div.title &gt; a,
+div.scp-hover-box div.sub-title &gt; a {
+    font-size: 150%;
+    font-family: var(--title-font, proxima-nova-extra-condensed);
+    width: 100%;
+    padding: 0.5em;
+    line-height: 1em;
+    align-items: center;
+}
+
+div.scp-hover-box div.title &gt; a:hover,
+div.scp-hover-box div.sub-title &gt; a:hover {
+    text-decoration: none;
+}
+
+div.scp-hover-box div.title &gt; a {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+div.scp-hover-box div.sub-title &gt; a {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+div.scp-hover-box div.blerb {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    flex-shrink: 0;
+    min-height: 4em;
+    padding: 0.75em;
+    text-align: center;
+}
+
+.blerb br {
+    display: none;
+}
+
+.blerb *:not(:last-child) {
+    margin-bottom: 0.25em;
+}
+[[/module]]
+[[/code]]
+[[/iftags]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2021-08-30 00:40:51.820364.</em>
+  
+</div>
+</body>

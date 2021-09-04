@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>SCP-4948</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">SCP-4948</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/scp-4948" target="_blank">SCP-4948</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>float:right; margin:0 2em 1em 2em; width:321px; border:0;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/more-by:notgull" target="_blank"><code>more-by:notgull</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>wiki-content-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>footer-wikiwalk-nav</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
+[[div style=&#34;float:right; margin:0 2em 1em 2em; width:321px; border:0;&#34;]]
+[[html]]
+&lt;style type=&#34;text/css&#34;&gt;
+body
+{
+    font-family: verdana,arial,helvetica,sans-serif;
+    font-size: 0.82em;
+}
+table.wiki-content-table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin: 0.5em auto;
+}
+table.wiki-content-table td{
+    border: 1px solid #888;
+    padding: 0.3em 0.7em;
+}
+table.wiki-content-table th{
+    border: 1px solid #888;
+    padding: 0.3em 0.7em;
+    background-color: #EEE;
+}
+&lt;/style&gt;
+&lt;table class=&#34;wiki-content-table&#34;&gt;
+&lt;tbody&gt;&lt;tr&gt;
+&lt;td&gt;
+&lt;img id=&#34;door&#34; src=&#34;http://www.scp-wiki.net/local--files/scp-4948/ajar3.png&#34; alt=&#34;&#34; class=&#34;image&#34; width=&#34;300&#34;&gt;
+&lt;script language=&#34;JavaScript&#34;&gt;
+var roots = [&#34;http://www.scp-wiki.net/local--files/scp-4948/ajar&#34;, &#34;.png&#34;];
+var lastBackoff = 7.5;
+var iterations = 0;
+var currentIndex = 3;
+
+function getNextBackoff() {
+    var nextBackoff = lastBackoff;
+    
+    // the idea behind this is that you average reader will take about 7.5 seconds to get into the
+    // article, then they notice the image changing, they stare at the image for a while, but then
+    // return to reading
+    // backoff is represented by 7.5 + 2log(x  + 2), where x is the number of times we&#39;ve asked
+    // for the backoff
+    lastBackoff = 7.5 + (2 * Math.log(iterations + 2));
+    iterations += 1;
+
+    return nextBackoff * 1000;
+}
+
+function randomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function coinFlip() {
+    if (Math.floor(Math.random() * 2) == 0)
+        return -1;
+    else
+        return 1;
+}
+
+function switchImage() {
+    // figure out the next index
+    // only adjust the image slightly for iterators less than 8, go full ham after
+    if (iterations &lt; 8) {
+        while (true) {
+            currentIndex += coinFlip();
+            if (currentIndex &lt; 1) {
+                currentIndex = 1;
+            } else if (currentIndex &gt; 6) {
+                currentIndex = 6;
+            } else {
+                 break;
+            }
+        }
+    } else {
+        currentIndex = randomRange(1, 6);
+    }
+
+    document.getElementById(&#34;door&#34;).src = roots[0] + currentIndex + roots[1];
+
+    // set timeout for when this function is activated again
+    setTimeout(function() {
+        swtichImage();
+    }, getNextBackoff());
+}
+
+window.onload = function() {
+    setTimeout(function() { switchImage(); }, getNextBackoff());
+};
+&lt;/script&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;sup&gt;If you feel dread or anxiety after viewing this image, or if you see any unexpected entities, please consult your on-site psychiatrist.&lt;/sup&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+[[/html]]
+[[/div]]
+
+**Item #:** SCP-4948
+
+**Object Class:** Memetic
+
+**Containment Class:** Neutralized
+
+**Special Containment Procedures (Defunct):** Civilians affected by SCP-4948 are to be brought to Testing Chamber #127 at Adjunct Site-4948. The door to Chamber #127 is to be left slightly ajar for two minutes before verification of remediation and return to populace.
+
+**Description:** SCP-4948 is the phenomenon of sudden and irrational paranoia of closing doors. It is unknown how SCP-4948 is developed; it is heavily suspected that proximity to those affected by SCP-4948 is a factor.
+
+SCP-4948 begins with slight, unexplained dread at the sight of doors closing. Eventually, this becomes full terror, and the feeling of need to escape the room if possible.
+
+If unable to leave a room with a closing or ajar door, affected personnel will report increased darkness in the room and more jagged and aggressive geometry. After approximately two minutes, the subject will calm, and SCP-4948 will cease to affect them.
+
+**History:** SCP-4948 was first noted after it  had begun to affect citizens of the town of Nightford, Minnesota, a small forest hamlet that was investigated after a disappearance of a local family. It was found that all doors within the home of the family had been removed. No traces of the family in question were found.
+
+A local hotel was converted into Adjunct Site-4948 to treat the populace and Foundation personnel that begun exhibiting symptoms of SCP-4948. During treatment, most subjects would hide themselves in the corner of the testing chamber until cessation of SCP-4948&#39;s effects. During this period of time, recording instruments picked up barely audible whispers, along with whimpering from the subjects. From 08/31/2018 to 09/20/2018, over 300 personnel were treated for SCP-4948, with all treatments deemed successful. As such, SCP-4948 has been declared Neutralized.
+
+Of note is the final neutralization of SCP-4948, in the case of Dr. Warner. This neutralization lasted five minutes instead of two, and was ended with Dr. Warner approaching the door and getting onto his knees and begging to the door to not &#34;take it away from [him]&#34;. This was followed by a two-hour period of unconsciousness, after which Dr. Warner reported being cured.
+
+Personnel at Adjunct Site-4948 have reported that Testing Chamber #127 has smelled of rotting meat. This was found to be due to multiple doors made up of organic materials that have appeared within the chamber. Attempts to remove these doors from the chamber have failed. The chamber has since been filled with concrete.
+
+[[footnoteblock]]
+
+[[include more-by:notgull]]
+
+[[div class=&#34;footer-wikiwalk-nav&#34;]]
+[[=]]
+&lt;&lt; [[[SCP-4947]]] | SCP-4948 | [[[SCP-4949]]] &gt;&gt;
+[[/=]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2021-09-04 21:54:42.776287.</em>
+  
+</div>
+</body>

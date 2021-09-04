@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-88">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <style>
+  /* Headers */
+  h1 {
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Veradana', Arial, sans-serif;
+    padding-right: 1em;
+    padding-bottom: 0.2em;
+    margin: 0.25em 0.25em 0.75em 0.25em;
+  }
+
+  /* Collapsibles */
+  details summary {
+    font-family: 'Veradana', Arial, sans-serif;
+  }
+
+  /* Links */
+  a {
+    color: #04a;
+    text-decoration: underline;
+    transition: color .2s;
+  }
+
+  a:hover {
+    color: #04f;
+  }
+
+  a:visited {
+    color: #44a;
+  }
+
+  a code {
+    background-color: inherit;
+    padding: inherit;
+  }
+
+  a.jump {
+    text-decoration: none;
+    font-size: 0.7em;
+    vertical-align: super;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    border: 1px solid black;
+    padding: 0.2em;
+  }
+
+  thead th {
+    background-color: #bbb;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #eee;
+  }
+
+  td.number {
+    text-align: right;
+  }
+
+  /* Lists */
+  li.no-bullet {
+    list-style: none;
+  }
+
+  /* Code */
+  code {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #ddd;
+    padding: 0.25em 0.5em 0.25em 0.5em;
+  }
+
+  /* Elements */
+  .page-source {
+    width: 100%;
+    height: 80vh;
+  }
+
+  div#footer {
+    border-top: 1px solid #ccc;
+    padding-top: 0.25em;
+    margin-top: 2em;
+  }
+</style>
+
+  <title>ACS Animation</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">ACS Animation</h1>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>border: solid 2px #ededed; padding: 0.5rem; margin: 4px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: monospace; font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: monospace; font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: monospace; font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[iftags +component]]
+
+[[div style=&#34;border: solid 2px #ededed; padding: 0.5rem; margin: 4px;&#34;]]
+
+This is a component that animates the **[[[anomaly-classification-system-guide|ACS header]]]** upon loading.
+
+++ How to use:
+
+Put this in anywhere in the article:
+
+[[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
+@@[[include :scp-wiki:component:acs-animation]]@@
+[[/div]]
+
+And you&#39;re done!
+
+//Example:// **[[[SCP-5935|]]]**
+
+@@ @@
+-----
+
+++ Note:
+
+- Two variables, //@@--timeScale@@// and //@@--timeDelay@@//, control the timings of the animation. For example:
+
+[[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
+@@[[module CSS]]@@
+:root {
+@@    --timeScale: 2;@@
+@@    --timeDelay: 0.5s;@@
+}
+@@[[/module]]@@ 
+[[/div]]
+
+//@@--timeScale@@// slows down the entire animation by a factor of 2, and //@@--timeDelay@@// delays the starting point of the animation by half a second. Default values are 1 and 0s, respectively.
+
+To change the default values, put the above after the {{[[include]]}}. //@@--timeDelay@@// is recommended if the ACS isn&#39;t the first content element, or you&#39;re using it in conjunction with other animation modules (a la **[[[component:fade-in|]]]**.)
+
+@@ @@
+
+- Likely incompatible with other types of ACS headers*.
+
+*To use with [[*user PeppersGhost]]&#39;s [[[component:acs-peppo-lite|ACS Lite]]], add the following patch after the {{[[include]]}}:
+
+[[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
+@@[[module CSS]]@@
+@@/*-- ACS Lite Animation Compatibility Patch --*/@@
+.anom-bar &gt; .bottom-box::before { display: none; }
+.anom-bar &gt; .bottom-box { box-shadow: none!important; }
+div.diamond-part { clip-path: none; animation: none; box-shadow: none!important; }
+@media (max-width: 480px) {
+    div.top-right-box { clip-path: polygon(0% -30%, 100% -30%, 100% 130%, 0% 130%); }
+}
+@@[[/module]]@@
+[[/div]]
+
+@@ @@
+
+- Inspired by the works of [[*user AnAnomalousWriter]].
+
+[[/div]]
+
+-----
+
+++ Source Code:
+
+[[/iftags]]
+
+[[div [[iftags -component]]style=&#34;display: none&#34;[[/iftags]]]]
+[[module CSS show=&#34;true&#34;]]
+
+:root {
+    --timeScale: 1;
+    --timeDelay: 0s;
+}
+ 
+/* Converting middle divider from box-shadow to ::before pseudo-element */
+.anom-bar &gt; .bottom-box { box-shadow: none!important; }
+.anom-bar &gt; .bottom-box::before {
+    position: absolute;
+    content: &#34; &#34;;
+    width: 100%;
+    height: 0.5rem;
+    background-color: rgb(var(--black-monochrome, 12, 12, 12));
+    transform: translateY(-0.74rem);
+}
+ 
+/* DIVIDER */
+.anom-bar &gt; .bottom-box::before {
+    animation-name: divider;
+    animation-duration: calc(0.74s * var(--timeScale));
+    animation-delay: calc(0.1s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.32,.38,.39,.94);
+    animation-fill-mode: backwards;
+}
+ 
+/* CLASSIFIED LEVEL BARS */
+div.top-center-box  &gt; * {
+    animation-name: bar;
+    animation-duration: calc(0.45s * var(--timeScale));
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+}
+div.top-center-box &gt; :nth-child(1) { animation-delay: calc(0.2s * var(--timeScale) + var(--timeDelay)); }
+div.top-center-box &gt; :nth-child(2) { animation-delay: calc(0.32s * var(--timeScale) + var(--timeDelay)); }
+div.top-center-box &gt; :nth-child(3) { animation-delay: calc(0.45s * var(--timeScale) + var(--timeDelay)); }
+div.top-center-box &gt; :nth-child(4) { animation-delay: calc(0.61s * var(--timeScale) + var(--timeDelay)); }
+div.top-center-box &gt; :nth-child(5) { animation-delay: calc(0.75s * var(--timeScale) + var(--timeDelay)); }
+div.top-center-box &gt; :nth-child(6) { animation-delay: calc(0.95s * var(--timeScale) + var(--timeDelay)); }
+ 
+/* TOP TEXT */
+div.top-left-box, div.top-right-box {
+    clip-path: polygon( 0% -50%, 150% -50%, 150% 100%, 0% 100%);
+}
+ 
+div.top-left-box &gt; *, div.top-right-box &gt; * {
+    position: relative;
+    animation-name: bottomup;
+    animation-duration: calc(0.65s * var(--timeScale));
+    animation-delay: calc(0.5s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+}
+ 
+
+/*-----------------------------------*/
+/*-----------------------------------*/
+
+
+/* CONTAINMENT, DISRUPTION, RISK CLASSES */
+div.text-part &gt; * {
+    clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    animation-name: expand2;
+    animation-duration: calc(0.5s * var(--timeScale));
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.12,.41,.27,.99);
+    animation-fill-mode: backwards;
+}
+div.text-part &gt; :nth-child(1) {
+    animation-name: expand1;
+}
+div.text-part &gt; :nth-child(1) { animation-delay: calc(0.6s * var(--timeScale) + var(--timeDelay)); }
+div.text-part &gt; :nth-child(2) { animation-delay: calc(0.75s * var(--timeScale) + var(--timeDelay)); }
+div.text-part &gt; :nth-child(3) { animation-delay: calc(0.86s * var(--timeScale) + var(--timeDelay)); }
+ 
+div.main-class::before, div.main-class::after {
+    animation-name: iconslide;
+    animation-duration: calc(0.45s * var(--timeScale));
+    animation-delay: calc(0.8s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.12,.41,.27,.99);
+    animation-fill-mode: backwards;
+}
+ /* BOTTOM TEXT */
+div.main-class &gt; *,  div.disrupt-class &gt; *, div.risk-class &gt; * {
+    white-space: nowrap;
+    animation-name: flowIn;
+    animation-duration: calc(0.42s * var(--timeScale));
+    animation-delay: calc(0.75s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: ease-out;
+    animation-fill-mode: backwards;
+}
+ 
+
+/*-----------------------------------*/
+/*-----------------------------------*/
+
+
+/* DIAMOND */
+div.arrows {
+    animation-name: arrowspin;
+    animation-duration: calc(0.7s * var(--timeScale));
+    animation-delay: calc(0.6s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.12,.41,.27,.99);
+    animation-fill-mode: backwards;
+}
+ 
+div.quadrants &gt; * {
+    animation-name: fade;
+    animation-duration: calc(0.3s * var(--timeScale));
+    animation-delay: calc(1.4s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.12,.41,.27,.99);
+    animation-fill-mode: backwards;
+}
+ 
+div.top-icon, div.right-icon, div.left-icon, div.bottom-icon {
+    animation-name: nodegrow;
+    animation-duration: calc(0.4s * var(--timeScale));
+    animation-delay: calc(1.4s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.12,.41,.27,.99);
+    animation-fill-mode: backwards;
+}
+div.diamond-part {
+    clip-path: polygon( -10% 0.37%, 120% 0.37%, 120% 100%, -10% 100%);
+    animation-name: diamondBorder;
+    animation-duration: calc(0.8s * var(--timeScale));
+    animation-delay: calc(0.5s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.32,.38,.39,.94);
+    animation-fill-mode: backwards;
+    will-change: box-shadow;
+}
+ 
+/* MOBILE QUERY */
+@media (max-width: 480px ) {
+    .anom-bar &gt; .bottom-box::before {
+        display:none;
+    }
+    .anom-bar &gt; .bottom-box {
+        box-shadow: 0 -0.5rem 0 0 rgb(var(--black-monochrome, 12, 12, 12))!important;
+    }
+    div.top-center-box  &gt; * {
+        animation-name: bar-mobile;
+        animation-duration: calc(0.9s * var(--timeScale));
+    }
+    div.top-center-box &gt; :nth-child(1) { animation-delay: calc(0.1s * var(--timeScale) + var(--timeDelay)); }
+    div.top-center-box &gt; :nth-child(2) { animation-delay: calc(0.2s * var(--timeScale) + var(--timeDelay)); }
+    div.top-center-box &gt; :nth-child(3) { animation-delay: calc(0.3s * var(--timeScale) + var(--timeDelay)); }
+    div.top-center-box &gt; :nth-child(4) { animation-delay: calc(0.4s * var(--timeScale) + var(--timeDelay)); }
+    div.top-center-box &gt; :nth-child(5) { animation-delay: calc(0.5s * var(--timeScale) + var(--timeDelay)); }
+    div.top-center-box &gt; :nth-child(6) { animation-delay: calc(0.6s * var(--timeScale) + var(--timeDelay)); }
+ 
+}
+
+/*--- Motion Accessibility ---*/
+@media (prefers-reduced-motion) {
+    div.anom-bar-container { --timeScale: 0!important; }
+}
+ 
+/*-------------------------*/
+ 
+@keyframes divider {
+    from { max-width: 0%;  }
+    to { max-width: 100%; }
+}
+ 
+@keyframes bar {
+    from { max-width: 0%; }
+    to { max-width: 100%; }
+}
+@keyframes bar-mobile {
+    from { max-height: 0%; }
+    to { max-height: 100%; }
+}
+ 
+@keyframes bottomup {
+    from { top: 100px; }
+    to { top: 0; }
+}
+ 
+@keyframes expand1 {
+    from { opacity: 0; clip-path: inset(0 calc(100% - 0.75rem) 0 0); }
+    to { opacity: 1; clip-path: inset(0); }
+}
+@keyframes iconslide {
+    from { opacity: 0; transform: translateX(-5rem); }
+    to { opacity: 1; transform: translateX(0); }
+}
+ 
+@keyframes expand2 {
+    from { opacity: 0; width: 1%; }
+    to { opacity: 1; width: calc(100% - 0.25rem); }
+}
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+ 
+@keyframes flowIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+ 
+@keyframes arrowspin {
+    from { clip-path: circle(0%); transform: rotate(135deg); }
+    to { clip-path: circle(75%); transform: rotate(0deg); }
+}
+@keyframes nodegrow {
+    from { transform: scale(0);}
+    to {  transform: scale(1);}
+}
+@keyframes diamondBorder {
+    from { box-shadow: -0.5rem -20rem 0 0 rgb(var(--black-monochrome, 12, 12, 12)); }
+    to { box-shadow: -0.5rem 0 0 0 rgb(var(--black-monochrome, 12, 12, 12)); }
+}
+
+[[/module]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2021-08-30 00:40:51.793727.</em>
+  
+</div>
+</body>

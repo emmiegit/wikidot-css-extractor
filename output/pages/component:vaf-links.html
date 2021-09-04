@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-88">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <style>
+  /* Headers */
+  h1 {
+    display: inline-block;
+    border-bottom: 1px solid #ccc;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Veradana', Arial, sans-serif;
+    padding-right: 1em;
+    padding-bottom: 0.2em;
+    margin: 0.25em 0.25em 0.75em 0.25em;
+  }
+
+  /* Collapsibles */
+  details summary {
+    font-family: 'Veradana', Arial, sans-serif;
+  }
+
+  /* Links */
+  a {
+    color: #04a;
+    text-decoration: underline;
+    transition: color .2s;
+  }
+
+  a:hover {
+    color: #04f;
+  }
+
+  a:visited {
+    color: #44a;
+  }
+
+  a code {
+    background-color: inherit;
+    padding: inherit;
+  }
+
+  a.jump {
+    text-decoration: none;
+    font-size: 0.7em;
+    vertical-align: super;
+  }
+
+  /* Tables */
+  table {
+    width: 100%;
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    border: 1px solid black;
+    padding: 0.2em;
+  }
+
+  thead th {
+    background-color: #bbb;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #eee;
+  }
+
+  td.number {
+    text-align: right;
+  }
+
+  /* Lists */
+  li.no-bullet {
+    list-style: none;
+  }
+
+  /* Code */
+  code {
+    display: inline-block;
+    border-radius: 5px;
+    background-color: #ddd;
+    padding: 0.25em 0.5em 0.25em 0.5em;
+  }
+
+  /* Elements */
+  .page-source {
+    width: 100%;
+    height: 80vh;
+  }
+
+  div#footer {
+    border-top: 1px solid #ccc;
+    padding-top: 0.25em;
+    margin-top: 2em;
+  }
+</style>
+
+  <title>Vaf Links</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Vaf Links</h1>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>td { vertical-align: top; }
+td strong { white-space: nowrap; }
+.options table.wiki-content-table td { border: none; padding: 0.7em 1em; }</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>@import url(&#39;https://fonts.googleapis.com/css?family=Berkshire+Swash&#39;);
+#page-content .navigation-links a[href=&#34;/&#34;],
+#page-content .navigation-links a:visited[href=&#34;/&#34;],
+#page-content .navigation-links a:hover[href=&#34;/&#34;] {
+    text-decoration: none;
+    color: #2e023a;
+    pointer-events: none;
+    cursor: text;
+}
+.navigation-links.hub {
+    display: none;
+}
+.navigation-links.first .previous {
+    display: none;
+}
+.navigation-links.last .next {
+    display: none;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: block;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>options</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>navigation-links</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$position}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>previous</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>next</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>link-to-with</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>link-to-without</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[iftags +component]]
+[[module CSS]]
+td { vertical-align: top; }
+td strong { white-space: nowrap; }
+.options table.wiki-content-table td { border: none; padding: 0.7em 1em; }
+[[/module]]
+
+This component is used on [[[vend-a-friend|Vend-a-Friend]]] articles. It does two things:
+
+# Add a link that turns the Wondertainment Theme on or off.
+# Automate the creation of navigation links.
+
+This component applies the [[[theme:wondertainment|Wondertainment Theme]]] to a page, and imports the Berkshire Swash font, but is not a theme itself.
+
+Made by [[*user Croquembouche]] at the request of [[*user DarkStuff]], in 2018.
+
++ Usage
+
+Wherever you want the navigation links and theme toggle to appear, add this:
+
+[[div class=&#34;code&#34;]]
+@@[[include :scp-wiki:component:vaf-links@@
+| position=middle
+| previous-page=
+| previous-page-name=
+| next-page=
+| next-page-name=
+]]
+[[/div]]
+
+Any CSS that would override the Wondertainment theme must be placed below this. Other CSS can be placed anywhere.
+
+-----
+
+Replace the variables in this with the names of the pages that you need to link to.
+
+[[div class=&#34;options&#34;]]
+|| **position** || The position of this page in its series. Either &#34;first&#34;, &#34;middle&#34;, &#34;last&#34; or &#34;hub&#34;. _
+//&#34;first&#34; will show the hub and next page links.// _
+//&#34;middle&#34; will show the hub, previous page and next page links.// _
+//&#34;last&#34; will show the hub and previous page links.// _
+//&#34;hub&#34; will show no links at all.// ||
+|| **previous-page** || The relative URL (or &#39;fullname&#39;) of the previous page in the series. _
+//If there is no previous page, set **position** to &#34;first&#34;.// ||
+|| **previous-page-name** || The title of the previous page in the series. _
+//If there is no previous page, set **position** to &#34;first&#34;.// ||
+|| **next-page** || The relative URL (or &#39;fullname&#39;) of the next page in the series. _
+//If there is no next page, set **position** to &#34;last&#34;.// ||
+|| **next-page-name** || The title of the next page in the series. _
+//If there is no next page, set **position** to &#34;last&#34;.// ||
+[[/div]]
+
+If you don&#39;t want any navigation links, set **position** to &#34;hub&#34; and don&#39;t even include the other parameters.
+
+If the URL of any page is set to just &#34;/&#34;, then the link will appear as normal unclickable text and you can put whatever you want there.
+[[/iftags]]
+
+[[module CSS]]
+@import url(&#39;https://fonts.googleapis.com/css?family=Berkshire+Swash&#39;);
+#page-content .navigation-links a[href=&#34;/&#34;],
+#page-content .navigation-links a:visited[href=&#34;/&#34;],
+#page-content .navigation-links a:hover[href=&#34;/&#34;] {
+    text-decoration: none;
+    color: #2e023a;
+    pointer-events: none;
+    cursor: text;
+}
+.navigation-links.hub {
+    display: none;
+}
+.navigation-links.first .previous {
+    display: none;
+}
+.navigation-links.last .next {
+    display: none;
+}
+[[/module]]
+
+[[div class=&#34;navigation-links {$position}&#34;]]
+[[=]]
+**[[span class=&#34;previous&#34;]]&lt;&lt; [[[{$previous-page}|{$previous-page-name}]]] | [[/span]][[[Vend-a-Friend|Vend-a-Friend Hub]]][[span class=&#34;next&#34;]] | [[[{$next-page}|{$next-page-name}]]] &gt;&gt;[[/span]]**
+[[/=]]
+[[/div]]
+
+-----
+
+[[module ListPages fullname=&#34;=&#34;]]
+[[div class=&#34;link-to-with&#34; style=&#34;display: block;&#34;]]
+&gt; [/%%fullname%%/offset/0 w/ Wondertainment Theme]
+[[/div]]
+[[div class=&#34;link-to-without&#34; style=&#34;display: none;&#34;]]
+&gt; [/%%fullname%%/offset/1 w/o Wondertainment Theme]
+[[/div]]
+[[/module]]
+
+[[module ListPages category=&#34;component&#34; limit=&#34;1&#34; name=&#34;vaf-theme&#34; offset=&#34;@URL|0&#34;]]
+%%content%%
+[[/module]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2021-08-30 00:40:51.822256.</em>
+  
+</div>
+</body>

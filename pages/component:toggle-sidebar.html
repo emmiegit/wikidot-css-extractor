@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Toggle Sidebar</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Toggle Sidebar</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar" target="_blank">Toggle Sidebar</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>border: solid 2px #ededed; padding: 0.5rem; margin: 4px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar" target="_blank"><code>:scp-wiki:component:toggle-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[iftags +component]]
+[[div style=&#34;border: solid 2px #ededed; padding: 0.5rem; margin: 4px;&#34;]]
+This is a component to make the mobile sidebar button active on desktop-size screen.
+To use, put the following:
+
+&gt; @@[[include :scp-wiki:component:toggle-sidebar]]@@
+
+If used with a theme, it&#39;s recommended to put said theme after this {{[[include]]}}.
+
+//(Use [[[component:toggle-sidebar-bhl|this version]]] by [[*user Woedenaz]] if you&#39;re using Black Highlighter)//
+
+[[/div]]
+
+----
+
+[[/iftags]]
+
+[[div [[iftags -component]]style=&#34;display: none&#34;[[/iftags]]]]
+[[module CSS show=&#34;true&#34;]]
+
+/* source: http://ah-sandbox.wikidot.com/component:collapsible-sidebar-x1 */
+
+#top-bar .open-menu a {
+        position: fixed;
+        top: 0.5em;
+        left: 0.5em;
+        z-index: 5;
+        font-family: &#39;Nanum Gothic&#39;, san-serif;
+        font-size: 30px;
+        font-weight: 700;
+        width: 30px;
+        height: 30px;
+        line-height: 0.9em;
+        text-align: center;
+        border: 0.2em solid #888;
+        background-color: #fff;
+        border-radius: 3em;
+        color: #888;
+}
+
+@media (min-width: 768px) {
+
+    #top-bar .mobile-top-bar {
+        display: block;
+    }
+
+    #top-bar .mobile-top-bar li {
+        display: none;
+    }
+ 
+    #main-content {
+        max-width: 708px;
+        margin: 0 auto;
+        padding: 0;
+        transition: max-width 0.2s ease-in-out;
+    }
+ 
+    #side-bar {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: -20em;
+        width: 17.75em;
+        height: 100%;
+        margin: 0;
+        overflow-y: auto;
+        z-index: 10;
+        padding: 1em 1em 0 1em;
+        background-color: rgba(0,0,0,0.1);
+        transition: left 0.4s ease-in-out;
+
+        scrollbar-width: thin;
+    }
+
+    #side-bar:target {
+        left: 0;
+    }
+
+     #top-bar .close-menu {
+        margin-left: 19.75em;
+        opacity: 0;
+    }
+    #side-bar:target .close-menu {
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
+
+    #top-bar .open-menu a:hover {
+        text-decoration: none;
+    }
+}
+
+
+@supports selector(:focus-within) {
+
+@media (min-width: 768px) {
+    #top-bar .open-menu a {
+        pointer-events: none;
+    }
+    #side-bar:not(:target) .close-menu {
+        display: block;
+        pointer-events: none;
+        user-select: none;
+        z-index: -1;
+    }
+
+    /* This pseudo-element is meant to overlay the regular sidebar button
+    so the fixed positioning (top, left, right and/or bottom) has to match */
+
+    #side-bar .close-menu::before {
+        content: &#34;&#34;;
+        position: fixed;
+        z-index: 5;
+        display: block;
+
+        top: 0.5em;
+        left: 0.5em;
+
+        border: 0.2em solid transparent;
+        width: 30px;
+        height: 30px;
+        font-size: 30px;
+        line-height: 0.9em;
+
+        pointer-events: all;
+        cursor: pointer;
+    }
+    #side-bar:focus-within {
+        left: 0;
+    }
+    #side-bar:focus-within .close-menu::before {
+        pointer-events: none;
+    }
+}
+
+}
+
+[[/module]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2021-09-04 21:54:40.406146.</em>
+  
+</div>
+</body>
