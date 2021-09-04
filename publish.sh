@@ -2,6 +2,7 @@
 set -eu
 
 # Setup
+date="$(date +'%B %d, %Y %I:%M:%S %p')"
 temp_dir="$(mktemp -d)"
 
 function on_exit() {
@@ -24,6 +25,6 @@ cp -a static output/*.html output/pages  "$temp_dir"
 git checkout gh-pages
 cp -a "$temp_dir"/* .
 git add .
-git commit -m 'Update generated files.'
+git commit -m "Update generated files. ($date)"
 git push
 git checkout -
