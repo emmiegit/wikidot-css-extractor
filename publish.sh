@@ -18,7 +18,10 @@ set -x
 [[ -f output/pages/index.html ]]
 [[ -f output/pages/scp-001.html ]]
 
-cp -a static output/*.html output/pages output/results.json "$temp_dir"
+# NOTE: we aren't copying the JSON file,
+# it's too big and we don't want to use GitHub LFS
+
+cp -a static output/*.html output/pages  "$temp_dir"
 git checkout gh-pages
 cp -a "$temp_dir"/* .
 git add .
