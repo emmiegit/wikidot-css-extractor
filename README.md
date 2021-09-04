@@ -4,6 +4,8 @@ An ad hoc system to pull style and component info from pages on the SCP Wiki. It
 
 It looks for inline styling, CSS modules, included pages, and CSS classes. In the absence of proper Wikidot tools to understand what styling is used on a site, this can help fill that gap.
 
+Requires Python 3.8+.
+
 **You can see the collected data here: https://ammongit.github.io/wikidot-css-extractor/**
 
 ### Utilization
