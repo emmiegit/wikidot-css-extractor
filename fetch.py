@@ -42,6 +42,7 @@ CROM_QUERY = """
             order: ASC,
             key: CREATED_AT,
         },
+        first: 100,
         after: $cursor,
     ) {
         edges {
