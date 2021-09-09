@@ -107,7 +107,7 @@ class Crawler:
         self.pages = {}
         self.path = config.output_path
 
-    def load(self):
+    def load(self, path):
         with open(path) as file:
             data = json.load(file)
 
