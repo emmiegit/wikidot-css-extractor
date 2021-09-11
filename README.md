@@ -8,11 +8,76 @@ Requires Python 3.8+.
 
 **You can see the collected data here: https://ammongit.github.io/wikidot-css-extractor/**
 
-### Utilization
+### Execution
+
+First, you need to install all the Python dependencies:
+
+```
+$ pip install -r requirements.txt
+```
+
+Then you need to edit `config.toml` to have the settings appropriate for your site.
+Usually this is just editing `sites` to have the Wikidot names for your site. (e.g. `fondationscp` for FR)
+
+For any of the other tools to work, you will want a downloaded local copy of all the page sources.
+You pull this using `fetch.py`. This can take several minutes, depending on the size of your site.
+
+```
+$ ./fetch.py
+```
+
+There will now be a JSON file in `output/` with the filename specified in `config.toml` (default `output/results.json`).
+
+If you are interested in searching through the gathered JSON data, you can use `grep.py`. (See also: [grep](https://en.wikipedia.org/wiki/Grep))  
+Here is its usage information:
+
+```
+usage: grep.py [-h] [-i] [-v] [--compact] [--color {always,never,auto}] pattern [path]
+
+grep for wikidot sites
+
+positional arguments:
+  pattern               The regular expression to search for
+  path                  The file containing page sources to look through
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -i, --ignore-case     Whether to ignore case when searching
+  -v, --invert-match    Invert the sense of matching, selecting all lines which don't match
+  --compact             Whether to display the results in compact / line mode
+  --color {always,never,auto}, --colour {always,never,auto}
+                        Whether to use colors to highlight results
+```
+
+An example would be:
+
+```
+$ ./grep.py -i 'module redirect'
+```
+
+Which would find all instances of "module redirect" across all pages, case-insensitively.
+
+To generate the HTML report visible, run the builder:
+
+```
+$ ./build.py
+```
+
+The generated HTML files are in `output/`.
+
+If this repository is a fork, and you can push to it, you can publish a [GitHub Pages](https://pages.github.com/) site using:
+
+```
+$ ./publish.sh
+```
+
+This may take some time due to the size of the files. The large JSON blob (`output/results.json`) is _not_ uploaded.
+
+### Composition
 
 This repository has a few scripts:
 
-* `fetch.py` retrieves all page sources via the Crom API, retrieves styles, and writes them to `extracted-styles.json`
+* `fetch.py` retrieves all page sources via the Crom API, extracting styles and other information.
 * `build.py` builds a static HTML page which contains the scraped information in a readable way. Presently this information is hosted on this repository's GitHub pages site.
 * `publish.sh` takes the data created by `fetch.js` and `build.py` and pushes them to the `gh-pages` branch. You can do this manually, if you prefer.
 * `grep.py` permits searching over all pages, as if using `grep` over a Wikidot site.
