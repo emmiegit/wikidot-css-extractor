@@ -7,7 +7,7 @@ from argparse import ArgumentParser
 from collections import namedtuple
 from functools import partial
 
-from colorama import Fore, Back, Style
+from colorama import Fore, Style
 
 SEARCH_FILENAME = 'output/results.json'
 USE_COLOR = None
