@@ -5,6 +5,7 @@ import re
 import sys
 from argparse import ArgumentParser
 from collections import namedtuple
+from functools import partial
 
 from colorama import Fore, Back, Style
 
@@ -13,6 +14,9 @@ USE_COLOR = None
 
 RegexOptions = namedtuple('RegexOptions', ('invert', 'flags'))
 Match = namedtuple('Match', ('line_number', 'line_content', 'spans'))
+
+# Always open files using UTF-8
+open = partial(open, encoding='utf-8')
 
 # Utility functions
 

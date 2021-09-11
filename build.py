@@ -6,6 +6,7 @@ import os
 import re
 from collections import defaultdict, namedtuple
 from datetime import datetime
+from functools import partial
 
 import jinja2
 
@@ -26,6 +27,9 @@ COMPARISON_FUNCTIONS = {
     '==': lambda x, y: x == y,
     '!=': lambda x, y: x != y,
 }
+
+# Always open files using UTF-8
+open = partial(open, encoding='utf-8')
 
 def get_page_url(slug):
     return f"https://{DEFAULT_SITE}.wikidot.com/{slug}"
