@@ -531,13 +531,19 @@ with fallback values based on the core BHL color scheme. */
 .shape-fr-bhl.fr-title.tb-fr-true a:hover::before {
   transform: translateX(-1rem);
 }
-.fr-title span.fr-title-text {
+.fr-title-text {
   display: inline-flex;
   align-content: flex-start;
   vertical-align: top;
   z-index: 2;
 }
-.fr-title.icon-fr-true span.fr-title-text::before {
+.fr-title-icon {
+  display: none;
+}
+.fr-title-icon span {
+  display: none;
+}
+.fr-title-icon.icon-fr-{$title_icon_name} {
   content: &#34; &#34;;
   background-image: url(&#34;{$title_icon_url}&#34;);
   background-repeat: no-repeat;
@@ -691,13 +697,19 @@ with fallback values based on the core BHL color scheme. */
 .fr-button-donate.donate-fr-none {
   display: none!important;
 }
-.fr-button-cont span.fr-button-text {
+.fr-button-text {
   display: inline-flex;
   align-content: flex-start;
   vertical-align: top;
   z-index: 2;
 }
-.fr-button-cont.icon-fr-true span.fr-button-text::before {
+.fr-button-icon {
+  display: none;
+}
+.fr-button-icon span {
+  display: none;
+}
+.fr-button-icon.icon-fr-{$donate_icon_name} {
   content: &#34; &#34;;
   background-image: url(&#34;{$donate_icon_url}&#34;);
   background-repeat: no-repeat;
@@ -835,7 +847,20 @@ with fallback values based on the core BHL color scheme. */
         </li>
       
         <li>
-          <pre><code>icon-fr-{$title_icon_show}</code></pre>
+          <pre><code>fr-title-icon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+                                    icon-fr-{$title_icon_name}</code></pre>
         </li>
       
         <li>
@@ -1092,10 +1117,6 @@ with fallback values based on the core BHL color scheme. */
         </li>
       
         <li>
-          <pre><code>icon-fr-{$donate_icon_show}</code></pre>
-        </li>
-      
-        <li>
           <pre><code>fr-button-donate</code></pre>
         </li>
       
@@ -1109,6 +1130,23 @@ with fallback values based on the core BHL color scheme. */
       
         <li>
           <pre><code>donate-fr-{$donate_url}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-button-icon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+                                        icon-fr-{$donate_icon_name}</code></pre>
         </li>
       
         <li>
@@ -1137,6 +1175,23 @@ with fallback values based on the core BHL color scheme. */
       
         <li>
           <pre><code>donate-fr-{$donate_url}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fr-button-icon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shape-fr-{$shape}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$aux_class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+                                        icon-fr-{$donate_icon_name}</code></pre>
         </li>
       
         <li>
@@ -1669,13 +1724,19 @@ with fallback values based on the core BHL color scheme. */
 .shape-fr-bhl.fr-title.tb-fr-true a:hover::before {
   transform: translateX(-1rem);
 }
-.fr-title span.fr-title-text {
+.fr-title-text {
   display: inline-flex;
   align-content: flex-start;
   vertical-align: top;
   z-index: 2;
 }
-.fr-title.icon-fr-true span.fr-title-text::before {
+.fr-title-icon {
+  display: none;
+}
+.fr-title-icon span {
+  display: none;
+}
+.fr-title-icon.icon-fr-{$title_icon_name} {
   content: &#34; &#34;;
   background-image: url(&#34;{$title_icon_url}&#34;);
   background-repeat: no-repeat;
@@ -1829,13 +1890,19 @@ with fallback values based on the core BHL color scheme. */
 .fr-button-donate.donate-fr-none {
   display: none!important;
 }
-.fr-button-cont span.fr-button-text {
+.fr-button-text {
   display: inline-flex;
   align-content: flex-start;
   vertical-align: top;
   z-index: 2;
 }
-.fr-button-cont.icon-fr-true span.fr-button-text::before {
+.fr-button-icon {
+  display: none;
+}
+.fr-button-icon span {
+  display: none;
+}
+.fr-button-icon.icon-fr-{$donate_icon_name} {
   content: &#34; &#34;;
   background-image: url(&#34;{$donate_icon_url}&#34;);
   background-repeat: no-repeat;
@@ -1879,8 +1946,10 @@ with fallback values based on the core BHL color scheme. */
     [[image {$image_url} link=&#34;*{$main_url}&#34;]]
   [[/div]]
   [[div_ class=&#34;fr-title shape-fr-{$shape} {$aux_class} 
-      tb-fr-{$title_button} icon-fr-{$title_icon_show}&#34;]]
+      tb-fr-{$title_button}&#34;]]
     [[a target=&#34;_blank&#34; href=&#34;{$main_url}&#34;]] \
+      [[span class=&#34;fr-title-icon shape-fr-{$shape} {$aux_class} 
+                                    icon-fr-{$title_icon_name}&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]] \
       [[span class=&#34;fr-title-text shape-fr-{$shape} {$aux_class}&#34;]]{$title}[[/span]] \
     [[/a]]
   [[/div]]
@@ -2011,13 +2080,17 @@ with fallback values based on the core BHL color scheme. */
       {$description}
     [[/div]]
     [[div_ class=&#34;fr-button-cont shape-fr-{$shape} {$aux_class} 
-        hide-fr-donate-{$hide_donate} icon-fr-{$donate_icon_show}&#34;]]
+        hide-fr-donate-{$hide_donate}&#34;]]
       [[a target=&#34;_blank&#34; href=&#34;{$donate_url}&#34; 
           class=&#34;fr-button-donate shape-fr-{$shape} {$aux_class} donate-fr-{$donate_url}&#34;]] \
+        [[span class=&#34;fr-button-icon shape-fr-{$shape} {$aux_class} 
+                                        icon-fr-{$donate_icon_name}&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]] \
         [[span class=&#34;fr-button-text shape-fr-{$shape} {$aux_class}&#34;]]Donate Now[[/span]] \
       [[/a]] \
       [[a target=&#34;_blank&#34; href=&#34;{$main_url}&#34; 
           class=&#34;fr-button-backup shape-fr-{$shape} {$aux_class} donate-fr-{$donate_url}&#34;]] \
+        [[span class=&#34;fr-button-icon shape-fr-{$shape} {$aux_class} 
+                                        icon-fr-{$donate_icon_name}&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]] \
         [[span class=&#34;fr-button-text shape-fr-{$shape} {$aux_class}&#34;]]Donate Now[[/span]] \
       [[/a]] \
       [[span class=&#34;fr-logo shape-fr-{$shape} {$aux_class}&#34;]]{$logo_text}[[/span]]
@@ -2030,7 +2103,7 @@ with fallback values based on the core BHL color scheme. */
 
 <div id="footer">
   
-    <em>Last updated 2021-09-04 23:36:38.216071.</em>
+    <em>Last updated 2021-09-18 19:41:41.658519.</em>
   
 </div>
 </body>

@@ -57,8 +57,6 @@ Please set the above code **__AFTER__** the ACS code in order for ACS to properl
 &gt; [[include :scp-wiki:theme:black-highlighter-theme]]
 &gt; [[include :scp-wiki:theme:jakstyle]]
 
-**__PLEASE DO NOT USE PEPPO LITE WITH THIS THEME__** -- it will most likely break, unless you know how to revert the white borders to make them transparent. If that sounds alien to you, just don&#39;t use it.
-
 + WHAT&#39;S DIFFERENT?
 
 What are you, fucking blind? A lot&#39;s different. But, if you need a detailed list of things that I&#39;ve changed, here you go:
@@ -197,6 +195,7 @@ This is a long tab. It contains a lot of text.
     --swatch-background: var(--dark-accent);
     --swatch-menutxt-general-color: var(--bright-accent);
     --swatch-menubg-black-color: var(--dark-gray-monochrome);
+    --barColour: var(dark-accent);
 
     --logo-image: url(&#39;https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg&#39;);
     --lgurl: var(--logo-image);
@@ -321,10 +320,6 @@ This is a long tab. It contains a lot of text.
     pointer-events: auto !important;
 }
 
-#skrollr-body&gt;a {
-    display: none;
-}
-
 body {
     color: rgb(var(--bright-accent));
 }
@@ -340,11 +335,59 @@ body {
     }
 }
 
-a,
+ 
+#page-content a:not([href*=&#34;user&#34;]):not([href*=&#34;javascript:;&#34;]):not(.fa-info):not([href*=&#34;http://www.scp-wiki.net/classification-committee-memo&#34;]):not([href=&#34;http://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34;]):not([href=&#34;/classification-committee-memo&#34;]) {
+    padding: 0.15em;
+    margin: -0.15em;
+    color: inherit;
+    box-decoration-break: clone;
+    box-shadow: inset 0 -0.125rem 0 0rem rgba(var(--bright-accent));
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), color 200ms cubic-bezier(0.4, 0.0, 0.2, 1), padding 200ms cubic-bezier(0.4, 0.0, 0.2, 1), margin 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+ 
+#page-content a:not([href*=&#34;user&#34;]):not([href*=&#34;javascript:;&#34;]):not([href*=&#34;http://www.scp-wiki.net/classification-committee-memo&#34;]):not([href=&#34;http://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34;]):not([href=&#34;/classification-committee-memo&#34;]):not(.fa-info):hover {
+    padding: 0.3em 0.25em 0.2em 0.25em;
+    margin: -0.25em;
+    box-shadow: inset 0 -1.5em 0 0 rgba(var(--bright-accent));
+    text-decoration: none;
+    color: rgb(var(--dark-accent))
+}
+
+a {
+    color: inherit;
+}
+ 
+a:hover {
+    color: inherit;
+}
+ 
+a.close-menu {
+    background-color: transparent;
+}
+ 
 a:visited {
-    padding: 0 0.125rem;
-    background-color: rgb(var(--bright-accent));
-    color: rgb(var(--dark-accent));
+    color: inherit;
+}
+ 
+.scp-image-block a {
+     box-shadow:none;
+}
+
+a.collapsible-block-link {
+    padding: 0.15em;
+    margin: -0.15em;
+    color: inherit;
+    box-decoration-break: clone;
+    box-shadow: inset 0 -0.125rem 0 0rem rgba(var(--bright-accent));
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), color 200ms cubic-bezier(0.4, 0.0, 0.2, 1), padding 200ms cubic-bezier(0.4, 0.0, 0.2, 1), margin 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+a.collapsible-block-link:hover {
+    padding: 0.3em 0.25em 0.2em 0.25em;
+    margin: -0.25em;
+    box-shadow: inset 0 -1.5em 0 0 rgba(var(--bright-accent));
+    text-decoration: none;
+    color: rgb(var(--dark-accent))
 }
 
 #breadcrumbs a, #breadcrumbs a:visited, .pseudocrumbs a, .pseudocrumbs a:visited {
@@ -366,16 +409,6 @@ a.close-menu {
     background-color: transparent;
 }
 
-a.newpage {
-    background-color: rgb(var(--bright-accent));
-    color: rgb(var(--dark-accent));
-}
-
-a.newpage:hover {
-    background-color: transparent;
-    color: var(--bright-accent);
-    text-decoration: none;
-}
 
 ::-moz-selection {
     background: rgb(var(--bright-accent),0.25);
@@ -430,12 +463,12 @@ a.newpage:hover {
     background-color: rgba(var(--dark-gray-monochrome)) !important;
 }
 
-#side-bar div.menu-item&gt;a {
+#side-bar div.menu-item&gt;a, #side-bar div.menu-item&gt;a:visited {
     color: rgb(var(--bright-accent));
 }
 
-#side-bar div.menu-item&gt;a:visited {
-    color: rgb(var(--bright-accent));
+#side-bar div.menu-item&gt;a:hover {
+    color: rgb(var(--dark-accent));
 }
 
 .side-block.media a {
@@ -465,9 +498,6 @@ a.newpage:hover {
     color: rgb(var(--bright-accent));
 }
 
-span.printuser {
-    color: rgb(var(--swatch-menutxt-light-color));
-}
 
 #login-status .printuser {
     background-color: transparent;
@@ -759,7 +789,8 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
 }
 
 .acs-hybrid-text-bar&gt;a {
-    background-color: transparent
+    background-color: transparent;
+    color: transparent;
 }
 
 .acs-hybrid-text-bar&gt;.acs-clear&gt;.clearance-level-text::after {
@@ -816,11 +847,6 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
 
 .authorbox {
     filter: drop-shadow(0 0 3px rgba(228, 228, 228));
-}
-
-.printuser {
-    background-color: rgb(var(--bright-accent));
-    color: rgb(var(--dark-accent));
 }
 
 .printuser a {
@@ -1080,8 +1106,6 @@ Please set the above code **__AFTER__** the ACS code in order for ACS to properl
 &gt; [[include :scp-wiki:theme:black-highlighter-theme]]
 &gt; [[include :scp-wiki:theme:jakstyle]]
 
-**__PLEASE DO NOT USE PEPPO LITE WITH THIS THEME__** -- it will most likely break, unless you know how to revert the white borders to make them transparent. If that sounds alien to you, just don&#39;t use it.
-
 + WHAT&#39;S DIFFERENT?
 
 What are you, fucking blind? A lot&#39;s different. But, if you need a detailed list of things that I&#39;ve changed, here you go:
@@ -1220,6 +1244,7 @@ This is a long tab. It contains a lot of text.
     --swatch-background: var(--dark-accent);
     --swatch-menutxt-general-color: var(--bright-accent);
     --swatch-menubg-black-color: var(--dark-gray-monochrome);
+    --barColour: var(dark-accent);
 
     --logo-image: url(&#39;https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg&#39;);
     --lgurl: var(--logo-image);
@@ -1344,10 +1369,6 @@ This is a long tab. It contains a lot of text.
     pointer-events: auto !important;
 }
 
-#skrollr-body&gt;a {
-    display: none;
-}
-
 body {
     color: rgb(var(--bright-accent));
 }
@@ -1363,11 +1384,59 @@ body {
     }
 }
 
-a,
+ 
+#page-content a:not([href*=&#34;user&#34;]):not([href*=&#34;javascript:;&#34;]):not(.fa-info):not([href*=&#34;http://www.scp-wiki.net/classification-committee-memo&#34;]):not([href=&#34;http://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34;]):not([href=&#34;/classification-committee-memo&#34;]) {
+    padding: 0.15em;
+    margin: -0.15em;
+    color: inherit;
+    box-decoration-break: clone;
+    box-shadow: inset 0 -0.125rem 0 0rem rgba(var(--bright-accent));
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), color 200ms cubic-bezier(0.4, 0.0, 0.2, 1), padding 200ms cubic-bezier(0.4, 0.0, 0.2, 1), margin 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+ 
+#page-content a:not([href*=&#34;user&#34;]):not([href*=&#34;javascript:;&#34;]):not([href*=&#34;http://www.scp-wiki.net/classification-committee-memo&#34;]):not([href=&#34;http://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34;]):not([href=&#34;/classification-committee-memo&#34;]):not(.fa-info):hover {
+    padding: 0.3em 0.25em 0.2em 0.25em;
+    margin: -0.25em;
+    box-shadow: inset 0 -1.5em 0 0 rgba(var(--bright-accent));
+    text-decoration: none;
+    color: rgb(var(--dark-accent))
+}
+
+a {
+    color: inherit;
+}
+ 
+a:hover {
+    color: inherit;
+}
+ 
+a.close-menu {
+    background-color: transparent;
+}
+ 
 a:visited {
-    padding: 0 0.125rem;
-    background-color: rgb(var(--bright-accent));
-    color: rgb(var(--dark-accent));
+    color: inherit;
+}
+ 
+.scp-image-block a {
+     box-shadow:none;
+}
+
+a.collapsible-block-link {
+    padding: 0.15em;
+    margin: -0.15em;
+    color: inherit;
+    box-decoration-break: clone;
+    box-shadow: inset 0 -0.125rem 0 0rem rgba(var(--bright-accent));
+    transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), color 200ms cubic-bezier(0.4, 0.0, 0.2, 1), padding 200ms cubic-bezier(0.4, 0.0, 0.2, 1), margin 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+a.collapsible-block-link:hover {
+    padding: 0.3em 0.25em 0.2em 0.25em;
+    margin: -0.25em;
+    box-shadow: inset 0 -1.5em 0 0 rgba(var(--bright-accent));
+    text-decoration: none;
+    color: rgb(var(--dark-accent))
 }
 
 #breadcrumbs a, #breadcrumbs a:visited, .pseudocrumbs a, .pseudocrumbs a:visited {
@@ -1389,16 +1458,6 @@ a.close-menu {
     background-color: transparent;
 }
 
-a.newpage {
-    background-color: rgb(var(--bright-accent));
-    color: rgb(var(--dark-accent));
-}
-
-a.newpage:hover {
-    background-color: transparent;
-    color: var(--bright-accent);
-    text-decoration: none;
-}
 
 ::-moz-selection {
     background: rgb(var(--bright-accent),0.25);
@@ -1453,12 +1512,12 @@ a.newpage:hover {
     background-color: rgba(var(--dark-gray-monochrome)) !important;
 }
 
-#side-bar div.menu-item&gt;a {
+#side-bar div.menu-item&gt;a, #side-bar div.menu-item&gt;a:visited {
     color: rgb(var(--bright-accent));
 }
 
-#side-bar div.menu-item&gt;a:visited {
-    color: rgb(var(--bright-accent));
+#side-bar div.menu-item&gt;a:hover {
+    color: rgb(var(--dark-accent));
 }
 
 .side-block.media a {
@@ -1488,9 +1547,6 @@ a.newpage:hover {
     color: rgb(var(--bright-accent));
 }
 
-span.printuser {
-    color: rgb(var(--swatch-menutxt-light-color));
-}
 
 #login-status .printuser {
     background-color: transparent;
@@ -1782,7 +1838,8 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
 }
 
 .acs-hybrid-text-bar&gt;a {
-    background-color: transparent
+    background-color: transparent;
+    color: transparent;
 }
 
 .acs-hybrid-text-bar&gt;.acs-clear&gt;.clearance-level-text::after {
@@ -1841,11 +1898,6 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     filter: drop-shadow(0 0 3px rgba(228, 228, 228));
 }
 
-.printuser {
-    background-color: rgb(var(--bright-accent));
-    color: rgb(var(--dark-accent));
-}
-
 .printuser a {
     margin-right: -0.0625rem;
     background-color: none;
@@ -1889,7 +1941,7 @@ table.page-files th {
 
 <div id="footer">
   
-    <em>Last updated 2021-09-04 23:36:41.421882.</em>
+    <em>Last updated 2021-09-18 19:41:44.922193.</em>
   
 </div>
 </body>
