@@ -149,6 +149,15 @@ def print_grep_results(page_matches, compact):
 if __name__ == '__main__':
     argparser = ArgumentParser(description="grep for wikidot sites")
     argparser.add_argument(
+        "-F",
+        "--fixed",
+        "--fixed-string",
+        action="store_true",
+        default=False,
+        dest="fixed_string",
+        help="Search for a string literal rather than a regular expression",
+    )
+    argparser.add_argument(
         "-i",
         "--ignore-case",
         action="store_true",
@@ -190,7 +199,12 @@ if __name__ == '__main__':
     USE_COLOR = get_color_use(args.color)
 
     try:
-        regex = re.compile(args.pattern, options.flags)
+        pattern = args.pattern
+
+        if args.fixed_string:
+            pattern = re.escape(pattern)
+
+        regex = re.compile(pattern, options.flags)
     except re.error as error:
         eprint(f"Invalid regular expression: {error}")
         sys.exit(1)
