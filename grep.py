@@ -9,7 +9,7 @@ from functools import partial
 
 from colorama import Fore, Style
 
-SEARCH_FILENAME = 'output/results.json'
+WIKIDOT_SITE_REGEX = re.compile(r"^https?://([^\.]+)\.wikidot\.com/.+")
 USE_COLOR = None
 
 RegexOptions = namedtuple('RegexOptions', ('invert', 'flags'))
@@ -78,17 +78,18 @@ def grep(regex, pages, options):
                 ))
 
         if matches:
-            page_matches[slug] = matches
+            site = WIKIDOT_SITE_REGEX.match(page['url'])[1]
+            page_matches[(site, slug)] = matches
 
     return page_matches
 
 # Printing results
 
-def print_filename(slug):
+def print_filename(site, slug):
     if USE_COLOR:
-        print(f"{Fore.MAGENTA}{slug}{Fore.RESET}:", end='')
+        print(f"({Fore.BLUE}{site}{Fore.RESET}) {Fore.MAGENTA}{slug}{Fore.RESET}:", end='')
     else:
-        print(f"{slug}:", end='')
+        print(f"({site}) {slug}:", end='')
 
 def print_line_no(line_number):
     if USE_COLOR:
@@ -122,15 +123,15 @@ def print_line_matches(match):
         print(match.line_content, end='')
 
 
-def print_match_compact(slug, matches):
+def print_match_compact(site, slug, matches):
     for match in matches:
-        print_filename(slug)
+        print_filename(site, slug)
         print_line_no(match.line_number)
         print_line_matches(match)
         print()
 
-def print_match_page(slug, matches):
-    print_filename(slug)
+def print_match_page(site, slug, matches):
+    print_filename(site, slug)
     print()
 
     for match in matches:
@@ -143,8 +144,8 @@ def print_match_page(slug, matches):
 def print_grep_results(page_matches, compact):
     print_match = print_match_compact if compact else print_match_page
 
-    for slug, matches in page_matches.items():
-        print_match(slug, matches)
+    for (site, slug), matches in page_matches.items():
+        print_match(site, slug, matches)
 
 if __name__ == '__main__':
     argparser = ArgumentParser(description="grep for wikidot sites")
@@ -191,7 +192,7 @@ if __name__ == '__main__':
     argparser.add_argument(
         "path",
         nargs="?",
-        default=SEARCH_FILENAME,
+        default="output/results.json",
         help="The file containing page sources to look through",
     )
     args = argparser.parse_args()
