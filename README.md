@@ -19,6 +19,8 @@ $ pip install -r requirements.txt
 ```
 
 Then you need to edit `config.toml` to have the settings appropriate for your site.
+You can see `config-en.toml` for an example with EN, or `config-all.toml` that pulls all sites.
+The file must be copied or symlinked to `config.toml` to work.
 Usually this is just editing `sites` to have the Wikidot names for your site. (e.g. `fondationscp` for FR)
 
 #### Fetch
