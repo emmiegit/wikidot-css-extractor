@@ -98,17 +98,17 @@ Contents for your &#34;component:theme&#34; page:
 
 Within the code block, you may include custom styling meant for your sandbox, such as a different header image.
 
-See http://scp-sandbox-3.wikidot.com/component:theme as an example for how this is implemented.
+See https://scp-sandbox-3.wikidot.com/component:theme as an example for how this is implemented.
 [[/div]]
 
 [[div class=&#34;blockquote&#34;]]
 + Instructions for SCP Translation Sites
 
 To use this theme for your Wikidot site, please follow these instructions:
-# Copy all files attached to this page.
+# From the files attached to this page, copy &#34;body_bg.png&#34;, &#34;font-bauhaus.css&#34;, &#34;logo.png&#34; and &#34;panel-bg-gradient-reverse.png&#34;.
 # Create a page named &#34;component:theme&#34; on your site. You should lock this page.
-# Upload all attached files to that page.
-# Copy the code on this page to your &#34;component:theme&#34; page. Rename all &#34;scp-wiki.net&#34; instances with your Wikidot site URL.
+# Upload all copied files to that page.
+# Copy the code on this page to your &#34;component:theme&#34; page. Rename all &#34;https://scp-wiki.wdfiles.com&#34; instances with the equivalent for your Wikidot site URL.
 # In the Site Manager for your site, go to **Appearances &amp; Behavior**, **Themes**, then select the **External** tab, and enter @@&#34;https://your-site-name.wdfiles.com/local--code/component:theme/1&#34;@@.
 # Copy the [[[nav:side|Side Bar]]] and/or [[[nav:top|Top Bar]]] if you wish to use the new format for those. Note that the bullet icons are attached to the side bar page as well.
 # Copy the [[[main|Front Page]]] template, including attached files.
@@ -284,7 +284,7 @@ sup {
     box-shadow: inset 1px 1px 3px rgba(0, 0, 0, .8);
 }
 
-#search-top-box-form input[type=submit] {
+#search-top-box-form input[type=&#39;submit&#39;] {
     border: solid 1px #999;
     border-radius: 5px;
     padding: 2px 5px;
@@ -297,8 +297,8 @@ sup {
     cursor: pointer;
 }
 
-#search-top-box-form input[type=submit]:hover,
-#search-top-box-form input[type=submit]:focus {
+#search-top-box-form input[type=&#39;submit&#39;]:hover,
+#search-top-box-form input[type=&#39;submit&#39;]:focus {
     border: solid 1px #fff;
     color: #fff;
     text-shadow: 0 0 1px rgba(255, 255, 255, .25);
@@ -410,7 +410,7 @@ sup {
     border: solid 1px #666;
     box-shadow: 0 2px 6px rgba(0, 0, 0, .5);
     border-top: 0;
-    border-width: 0 1px 1px 1px;
+    border-width: 0 1px;
     width: auto;
 }
 
@@ -418,11 +418,12 @@ sup {
     border-left: solid 1px rgba(64, 64, 64, .1);
     border-right: solid 1px rgba(64, 64, 64, .1);
     text-decoration: none;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    line-height: 1px;
-    max-height: 1px;
-    overflow: hidden;
+    padding: 0.25em min(.75vw, 1em);
+}
+
+#top-bar .top-bar &gt; ul &gt; li &gt; a,
+#top-bar .mobile-top-bar &gt; ul &gt; li &gt; a {
+    font-weight: bold;
 }
 
 #top-bar ul li.sfhover a,
@@ -502,7 +503,7 @@ sup {
 }
 
 #side-bar .side-block.resources {
-    background: #fff0f0;
+    background: #e7f7e9; /* Changed from #fff0f0 */
 }
 
 #side-bar .side-area {
@@ -523,11 +524,15 @@ sup {
     margin: 0;
 }
 
-#side-bar div.menu-item {
+#side-bar .menu-item {
     margin: 2px 0;
 }
 
-#side-bar div.menu-item img {
+#side-bar .menu-item.small {
+    font-size: 90%; /* For sidebar item with smaller text, like SCP series links */
+}
+
+#side-bar .menu-item img {
     width: 13px;
     height: 13px;
     border: 0;
@@ -536,29 +541,25 @@ sup {
     bottom: -2px;
 }
 
-#side-bar div.menu-item a {
+#side-bar .menu-item a {
     font-weight: bold;
 }
 
-#side-bar div.menu-item.inactive img {
+#side-bar .menu-item.inactive img {
     opacity: .25;
 }
 
-#side-bar div.menu-item.inactive a {
+#side-bar .menu-item.inactive a {
     color: #999;
 }
 
-#side-bar div.menu-item .sub-text {
+#side-bar .menu-item .sub-text {
     font-size: 80%;
     color: #666;
 }
 
-#side-bar .collapsible-block-folded {
-    background: url(&#39;https://scp-wiki.wdfiles.com/local--files/nav:side/expand.png&#39;) 0 2px no-repeat;
-}
-
 #side-bar .collapsible-block-link {
-    margin-left: 15px;
+    margin-left: 0;
     font-weight: bold;
 }
 
@@ -569,6 +570,7 @@ sup {
 #side-bar .collapsible-block-unfolded-link .collapsible-block-link {
     margin-top: 10px;
     margin-bottom: 5px;
+    margin-left: 15px;
     font-size: 8pt;
     color: #600;
 }
@@ -580,7 +582,7 @@ sup {
 
 #side-bar ul {
     list-style-type: none;
-    padding: 0 5px 0;
+    padding: 0 5px;
 }
 
 /* CONTENT */
@@ -854,7 +856,7 @@ div.sexy-box div.image-container img {
 .scp-image-block.block-right {
     float: right;
     clear: right;
-    margin: 0 2em 1em 2em;
+    margin: 0 2em 1em;
 }
 
 .scp-image-block.block-left {
@@ -890,6 +892,11 @@ div.sexy-box div.image-container img {
 .scp-image-block .scp-image-caption &gt; p {
     margin: 0;
     padding: 0 10px;
+}
+
+/* Collapsible Link */
+#page-content a.collapsible-block-link {
+    overflow-wrap: anywhere;
 }
 
 /* Wikiwalk Navigation */
@@ -993,7 +1000,7 @@ div.sexy-box div.image-container img {
 
 .tags::before {
     content: &#39;&#39;;
-    padding: 0 1px 3px 1px;
+    padding: 0 1px 3px;
     float: left;
     position: relative;
     top: -3px;
@@ -1111,7 +1118,7 @@ div.curved {
 }
 
 /* For FireFox */
-@-moz-document url-prefix() {
+@-moz-document &#39;url-prefix&#39;() {
     .emph {
     	/* For the environments which comply with CSS3. */
     	font-family: monospace;
@@ -1140,36 +1147,6 @@ div.curved {
     }
 }
 
-/* viewport */
-
-@viewport {
-    width: device-width;
-    zoom: 1;
-}
-
-/* IE viewport */
-@-ms-viewport {
-    width: device-width;
-    zoom: 1;
-}
-
-/* opera viewport */
-@-o-viewport {
-    width: device-width;
-    zoom: 1;
-}
-
-/* chrome viewport - maybe it isn&#39;t work... */
-@-webkit-viewport {
-    width: device-width;
-    zoom: 1;
-}
-
-/* firefox viewport - maybe it isn&#39;t work too... */
-@-moz-viewport {
-    width: device-width;
-    zoom: 1;
-}
 
 /* webkit scrollbar */
 ::-webkit-scrollbar {
@@ -1341,10 +1318,6 @@ img, embed, video, object, iframe, table {
     .mobile-top-bar {
     	width: 100%;
     }
-
-    #top-bar li a {
-    	padding: 10px .5em;
-    }
 }
 
 /* Note Media Query */
@@ -1354,7 +1327,7 @@ img, embed, video, object, iframe, table {
     }
 
     #main-content {
-    	margin: 0 2em 0 2em;
+    	margin: 0 2em;
     }
 
     #header, .mobile-top-bar {
@@ -1472,7 +1445,7 @@ img, embed, video, object, iframe, table {
     	margin: 0 4em 0 20em;
     }
 
-    #header, #top-bar #side-bar {
+    #header, #top-bar, #side-bar {
     	max-width: 100%;
     }
 
@@ -1604,7 +1577,7 @@ img, embed, video, object, iframe, table {
     	background-color: rgb(184, 134, 134);
     	overflow-y: auto;
     	z-index: 10;
-    	padding: 1em 1em 0 1em;
+    	padding: 1em 1em 0;
     	-webkit-transition: left .5s ease-in-out .1s;
     	-moz-transition: left .5s ease-in-out .1s;
     	-ms-transition: left .5s ease-in-out .1s;
@@ -1652,7 +1625,7 @@ div.scpnet-interwiki-wrapper {
 }
 
 iframe.scpnet-interwiki-frame {
-    height: 350px;
+    height: 400px;
     width: 17em;
     border: none;
 }
@@ -1704,7 +1677,7 @@ div.preview {
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:41.682789.</em>
+    <em>Last updated 2022-03-14 20:25:53.204760.</em>
   
 </div>
 </body>

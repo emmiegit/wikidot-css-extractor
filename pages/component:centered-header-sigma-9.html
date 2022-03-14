@@ -44,6 +44,10 @@
     <ul class="inline-styles">
       
         <li>
+          <pre><code>font-family: &#39;Montserrat&#39;, sans-serif;</code></pre>
+        </li>
+      
+        <li>
           <pre><code>display: none</code></pre>
         </li>
       
@@ -115,6 +119,22 @@
         </li>
       
         <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>terminal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>terminal</code></pre>
+        </li>
+      
+        <li>
           <pre><code>templateInfo</code></pre>
         </li>
       
@@ -150,7 +170,7 @@
 Licensed under [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0].
 ----
 **How to Use:**
-[#toc1 Click Here]
+[#toc2 Click Here]
 [[/note]]
 
 @@ @@
@@ -160,12 +180,9 @@ Licensed under [https://creativecommons.org/licenses/by-sa/3.0/ CC BY-SA 3.0].
 + What Is This?
 [[/=]]
 ----
-This is a component that introduces a new header design to **Sigma-9**. It is forked from [[[*https://scp-wiki.wikidot.com/theme:penumbra|Penumbra Theme]]] by [[*user EstrellaYoshte]]. It is designed to:
+This is a component that introduces a new centered header design to **Sigma-9**. It is forked from [[[*https://scp-wiki.wikidot.com/theme:penumbra|Penumbra Theme]]] by [[*user EstrellaYoshte]].
 
-* Be centered.
-* Have no {{text-shadow}}s or {{box-shadow}}s.
-
-It is __**recommended**__ you use this component in tandem with [[[*https://scp-wiki.wikidot.com/component:toggle-sidebar|Toggle Sidebar]]].
+I __**recommend**__ using this component in tandem with [[[*https://scp-wiki.wikidot.com/component:toggle-sidebar|Toggle Sidebar]]].
 
 This component is __**incompatible**__ with Black Highlighter. [[[*https://scp-wiki.wikidot.com/component:centered-header-bhl|Centered Header BHL can be found here.]]]
 [[/div]]
@@ -185,7 +202,7 @@ To use this component, please paste the following syntax onto the top of your pa
 
 @@ @@
 
-You may alter the header, sub-header, header colour, sub-header colour, and header logo as you see fit. Just paste this syntax //after// the {{include}}, then style it accordingly:
+You may alter the header-title, header-subtitle, header-title colour, header-subtitle colour, and header logo as you see fit. Just paste this syntax //after// the {{include}}, then style it accordingly:
 
 [[div class=&#34;code terminal&#34;]]
 **##var(--c-keyword)|[[module##** ##var(--c-builtin)|CSS##**##var(--c-keyword)|]]##**
@@ -199,13 +216,31 @@ You may alter the header, sub-header, header colour, sub-header colour, and head
 **##var(--c-keyword)|[[/module]]##**
 [[/div]]
 
+The default __header-title__ and __header-subtitle__ font is [[span style=&#34;font-family: &#39;Montserrat&#39;, sans-serif;&#34;]]Montserrat[[/span]].
+
+If you wish to keep your page&#39;s //original// __header-title__ font, add this code:
+
+[[div class=&#34;code terminal&#34;]]
+@@ @@##var(--c-symbol)|#header h1 a::before##{
+@@     @@##var(--c-builtin)|font-family##: ##var(--c-value)|unset##;
+}
+[[/div]]
+
+If you wish to keep your page&#39;s //original// __header-subtitle__ font, add this code:
+
+[[div class=&#34;code terminal&#34;]]
+@@ @@##var(--c-symbol)|#header h2::before##{
+@@     @@##var(--c-builtin)|font-family##: ##var(--c-value)|unset##;
+}
+[[/div]]
+
 The default __titleColor__ is [[span style=&#34;display: inline-block;
      width: 1em;
      height: 1em;
      vertical-align: middle;
-     background-color: hsl(0, 0%, 93%);
-     border: 3px solid hsl(0, 0%, 83%);&#34;]]
-[[/span]] {{hsl(0, 0%, 93%)}}.
+     background-color: hsl(0, 0%, 95%);
+     border: 3px solid hsl(0, 0%, 85%);&#34;]]
+[[/span]] {{hsl(0, 0%, 95%)}}.
 The default __subtitleColor__ is [[span style=&#34;display: inline-block;
      width: 1em;
      height: 1em;
@@ -214,7 +249,7 @@ The default __subtitleColor__ is [[span style=&#34;display: inline-block;
      border: 3px solid hsl(60, 62%, 75%);&#34;]]
 [[/span]] {{hsl(60, 62%, 85%)}}.
 
-You may omit these two fields if you wish to keep the original colours.
+If you wish to keep the //original// title colours, you may omit these two fields entirely.
 
 You can also choose to have no logo:
 
@@ -226,7 +261,7 @@ You can also choose to have no logo:
 
 @@ @@
 
-Because this component takes a different approach to designing the header, logo components (like [[[*https://scp-wiki.wikidot.com/component:scp-pride|SCP Pride Template]]], [[[*http://scp-wiki.wikidot.com/component:pride-highlighter|Pride Highlighter]]], and [[[*https://scp-wiki.wikidot.com/theme:calibri-logos|Calibri&#39;s Mega Cool Alternate SCP Logos Page]]]) won&#39;t work here as intended. If you //do// wish to use logos from one of the pages linked, please instead view their &#34;Files&#34; sections, then link the desired logo image directly.
+Because this component takes a different approach to designing the header, logo components (like [[[*https://scp-wiki.wikidot.com/component:scp-pride|SCP Pride Template]]], [[[*http://scp-wiki.wikidot.com/component:pride-highlighter|Pride Highlighter]]], and [[[*https://scp-wiki.wikidot.com/theme:calibri-logos|Calibri&#39;s Mega Cool Alternate SCP Logos]]]) won&#39;t work here as intended. If you //do// wish to use logos from one of the pages I just linked, please instead view their &#34;Files&#34; sections, then link the desired logo image directly.
 
 @@ @@
 
@@ -267,7 +302,7 @@ Because this component takes a different approach to designing the header, logo 
 
 /* ---- VARS ---- */
  :root{
-     --titleColor: hsl(0, 0%, 93%);
+     --titleColor: hsl(0, 0%, 95%);
      --subtitleColor: hsl(60, 62%, 85%);
      --lgurl: url(https://scp-wiki.wdfiles.com/local--files/component%3Acentered-header-sigma-9/logo.svg);
 }
@@ -289,7 +324,7 @@ Because this component takes a different approach to designing the header, logo 
      background-repeat: no-repeat;
      background-size: auto 8rem;
 
-     opacity: .45;
+     opacity: .35;
      pointer-events: none;
      z-index: -1;
 }
@@ -321,9 +356,15 @@ Because this component takes a different approach to designing the header, logo 
      text-shadow: none;
 }
  #header h1 a::before{
+     position: relative;
+     bottom: .15em;
+
      color: var(--titleColor);
 }
  #header h2::before{
+     position: relative;
+     bottom: .3em;
+
      color: var(--subtitleColor);
 }
 
@@ -331,13 +372,13 @@ Because this component takes a different approach to designing the header, logo 
  #header h1 a::before{
      content: var(--header-title, &#34;SCP FOUNDATION&#34;);
 
-     font-size: 120%;
+     font-size: 115%;
      font-weight: bold;
 }
  #header h2::before{
-     content: var(--header-subtitle, &#34;SECURE, CONTAIN, PROTECT&#34;);
+     content: var(--header-subtitle, &#34;SECURE - CONTAIN - PROTECT&#34;);
 
-     font-size: 125%;
+     font-size: 130%;
      font-weight: 600;
 }
 
@@ -374,7 +415,6 @@ Because this component takes a different approach to designing the header, logo 
  #top-bar{
      display: flex;
      justify-content: center;
-     top: 8.8rem;
      right: 0;
 }
  #top-bar ul li ul{
@@ -384,7 +424,14 @@ Because this component takes a different approach to designing the header, logo 
 }
 
 /* ---- PAGE TITLE ---- */
+ .meta-title,
  #page-title{
+     text-align: center;
+}
+
+/* ---- BREADCRUMBS ---- */
+ .pseudocrumbs,
+ #breadcrumbs{
      text-align: center;
 }
 
@@ -415,7 +462,7 @@ Because this component takes a different approach to designing the header, logo 
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:41.648025.</em>
+    <em>Last updated 2022-03-14 20:25:53.167614.</em>
   
 </div>
 </body>

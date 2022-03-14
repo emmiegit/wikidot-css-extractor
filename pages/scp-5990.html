@@ -29,21 +29,47 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code> body{
-     --barColour:hsl(0, 0%, 0%) 
+          <pre><code>/* HEADER */
+ :root{
+    --strong-red: hsl(0, 100%, 42%);
+    --fnColor: var(--strong-red);
 }
- .footnotes-footer{
-     display:none;
+ #page-title{
+     display: none;
+}
+ body{
+     --barColour: hsl(0, 0%, 0%);
+}
+ .meta-title{
+     color: hsl(0, 0%, 0%);
+}
+ .meta-title,
+ .pseudocrumbs{
+     text-align: center;
+}
+
+/* COLLAPSIBLES */
+ #page-content .collapsible-block-link{
+     padding-bottom: 1px;
+     color: var(--strong-red);
+     border-bottom: 1px solid var(--strong-red);
+     text-decoration: none;
+}
+ #page-content .collapsible-block-link:hover{
+     border-bottom: 1px solid var(--strong-red);
+     border-bottom-width: 2px;
 }
  #page-content .collapsible-block-folded a.collapsible-block-link{
      animation: blink .8s ease-in-out infinite alternate;
 }
  @keyframes blink{
      0%{
-        color: transparent;
+          color: transparent;
+          border-bottom-color: transparent;
     }
      50%, 100%{
-        color: hsl(0, 100%, 42%);
+          color: var(--strong-red);
+          border-bottom-color: var(--strong-red);
     }
 }
  .licensebox .collapsible-block-link{
@@ -57,7 +83,7 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>display: none;</code></pre>
         </li>
       
     </ul>
@@ -94,6 +120,23 @@
     
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/theme:broken-masquerade.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:betterfootnotes" target="_blank"><code>:scp-wiki:component:betterfootnotes</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:betterfootnotes.html" target="_blank">info</a>]
   </span>
 
   
@@ -156,7 +199,47 @@
     <ul class="css-classes">
       
         <li>
+          <pre><code>anchor</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>authorbox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>pseudocrumbs</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
+        </li>
+      
+        <li>
           <pre><code>lite-heading</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
         </li>
       
         <li>
@@ -165,6 +248,14 @@
       
         <li>
           <pre><code>o5-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
         </li>
       
         <li>
@@ -182,25 +273,54 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:flopstyle]]
+    <pre><textarea class="page-source" readonly>[[div style=&#34;display: none;&#34;]]
+[[include :scp-wiki:theme:flopstyle]]
+[[/div]]
 [[include :scp-wiki:theme:broken-masquerade]]
+[[include :scp-wiki:component:betterfootnotes]]
 
 [[module CSS]]
- body{
-     --barColour:hsl(0, 0%, 0%) 
+/* HEADER */
+ :root{
+    --strong-red: hsl(0, 100%, 42%);
+    --fnColor: var(--strong-red);
 }
- .footnotes-footer{
-     display:none;
+ #page-title{
+     display: none;
+}
+ body{
+     --barColour: hsl(0, 0%, 0%);
+}
+ .meta-title{
+     color: hsl(0, 0%, 0%);
+}
+ .meta-title,
+ .pseudocrumbs{
+     text-align: center;
+}
+
+/* COLLAPSIBLES */
+ #page-content .collapsible-block-link{
+     padding-bottom: 1px;
+     color: var(--strong-red);
+     border-bottom: 1px solid var(--strong-red);
+     text-decoration: none;
+}
+ #page-content .collapsible-block-link:hover{
+     border-bottom: 1px solid var(--strong-red);
+     border-bottom-width: 2px;
 }
  #page-content .collapsible-block-folded a.collapsible-block-link{
      animation: blink .8s ease-in-out infinite alternate;
 }
  @keyframes blink{
      0%{
-        color: transparent;
+          color: transparent;
+          border-bottom-color: transparent;
     }
      50%, 100%{
-        color: hsl(0, 100%, 42%);
+          color: var(--strong-red);
+          border-bottom-color: var(--strong-red);
     }
 }
  .licensebox .collapsible-block-link{
@@ -208,10 +328,21 @@
 }
 [[/module]]
 
+[[div class=&#34;anchor&#34;]]
+[[div class=&#34;authorbox&#34;]]
+[[module ListPages name=&#34;=&#34;]]
+||~ %%title%% ||
+||= **Author:** %%created_by_linked%% ||
+||~ Published on %%created_at|%d %b %Y%% ||
+[[/module]]
+||= **&lt;&lt; [*https://youtu.be/Ugajy7IfHJw Audio Version] &gt;&gt;** ||
+[[/div]]
+[[/div]]
+
 [[include :scp-wiki:component:info-ayers
 |lang=en
 |page=scp-5990
-|authorPage=http://scp-wiki.wikidot.com/floppyphoenix
+|authorPage=/floppyphoenix
 |comments=**SCP-5990:** Out of my head, out of my mind 
 **Author:** [[*user Lt Flops]] 
 **Published on 9 Mar 2020** 
@@ -219,9 +350,19 @@
 [[include :scp-wiki:more-by:lt-flops]]
 [[/div]]
 
-[[&gt;]]
+[[=]]
 [[module Rate]]
-[[/&gt;]]
+[[/=]]
+
+@@ @@
+
+[[div class=&#34;meta-title&#34;]]
+SCP-5990
+[[/div]]
+
+[[div class=&#34;pseudocrumbs&#34;]]
+[[[canon-hub|Canon Hub]]] &gt;&gt; [[[broken-masquerade-hub|Broken Masquerade Hub]]] &gt;&gt; SCP-5990
+[[/div]]
 
 [[include :scp-wiki:component:flops-header
 |item=5990
@@ -238,7 +379,7 @@ There is currently no known means of ensuring total containment of SCP-5990 with
 ----
 **Description:** SCP-5990 is an occurrence wherein the human mind and its corresponding physical housing (the brain) undergo a rapid, anomalous expansion.
 
-SCP-5990 occurs when prolonged stress and other triggers[[footnote]]For a full list of known triggers, contact your RAISA liaison.[[/footnote]] create a critical emotional mass within an individual&#39;s mind. This can lead to an intense mental fallout that most commonly causes migraines in the affected person. On the extreme end, this leads to brain aneurysm, the rapid swelling of nervous tissue to many times its baseline size, and cascading psychic surges among other unaccounted for anomalies. SCP-5990 is extremely rare, currently affecting ~71 000 persons per year,[[footnote]]One case per 100 000 persons per year, with a 1.1% increase in incidence per year since the mid-1980s.[[/footnote]] with one in 500 incidents being fatalities.
+SCP-5990 occurs when prolonged stress and other triggers[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]For a full list of known triggers, contact your RAISA liaison.[[/span]] create a critical emotional mass within an individual&#39;s mind. This can lead to an [[[SCP-5043|intense mental fallout]]] that most commonly causes migraines in the affected person. On the extreme end, this leads to brain aneurysm, the rapid swelling of nervous tissue to many times its baseline size, and cascading psychic surges among other unaccounted for anomalies. SCP-5990 is extremely rare, currently affecting ~71 000 persons per year,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]One case per 100 000 persons per year, with a 1.1% increase in incidence per year since the mid-1980s.[[/span]] with one in 500 incidents being fatalities.
 
 [[div class=&#34;lite-heading&#34;]]
 ----
@@ -252,7 +393,7 @@ The following is an abridged list of major SCP-5990 events in chronological orde
 
 || **Background** ||
 
-In the 1976 draft of the DSM-III,[[footnote]]The //Diagnostic and Statistical Manual of Mental Disorders, 3rd Edition//.[[/footnote]] the American Psychiatric Association first declares “rapid subconscious expansion” a rare psychological phenomenon. The World Parahealth Organization (WPO) undergoes an extensive investigation into the phenomenon and observes significant mental flareups in clinical trials over four years.
+In the 1976 draft of the DSM-III,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]The //Diagnostic and Statistical Manual of Mental Disorders, 3rd Edition//.[[/span]] the American Psychiatric Association first declares “rapid subconscious expansion” a rare psychological phenomenon. The World Parahealth Organization (WPO) undergoes an extensive investigation into the phenomenon and observes significant mental flareups in clinical trials over four years.
 
 By 1980, they conclude that the phenomenon is anomalous, with a variable probability of damaging the shared human psychosphere after each occurrence.
 
@@ -270,13 +411,13 @@ Amid the 2008 Recession, the United States&#39; paranormal market suffers a sign
 
 The WPO leaks several uncensored documents to the Foundation in secret. After verifying the source, the Foundation designates the phenomenon as “{{SCP-5990}}.”
 
-All future SCP-5990 incidents under the purview of the Foundation Medical Department are covered up as non-anomalous mental illness causing a variety of physical symptoms.
+All future SCP-5990 incidents under the purview of the Foundation Medical Department are covered up as non-anomalous mental illnesses causing a variety of physical symptoms.
 
 @@ @@
 
 ||~ 1 January 2010 ||
 
-Portland resident Fabian Keanes, a Group of Interest 004C “Church of Maxwellism” adherent, celebrates New Years while under the influence of a black market Maxwellist drug. The drug — known by its street name “overcloxia” — stimulates cranial augmentations to temporarily improve mental performance and reaction time and create euphoria. The drug has side-effects that may cause overheating of both the body and brain. In its comedown, it throttles brain processing speeds.
+Portland resident Fabian Keanes, a Group of Interest 004C “[[[church-of-the-broken-god-hub|Church of Maxwellism]]]” adherent, celebrates New Years while under the influence of a black market Maxwellist drug. The drug — known by its street name “overcloxia” — stimulates cranial augmentations to temporarily improve mental performance and reaction time and create euphoria. The drug has side-effects that may cause overheating of both the body and brain. In its comedown, it throttles brain processing speeds.
 
 Keanes overdoses on overcloxia, causing their brain to undergo SCP-5990, which short-circuits their augmentations. Electrical impulses arc from their cerebellum and raze the building around them, setting their cranium ablaze and injuring 12 people in the surrounding townhouse complex. Keanes is declared clinically dead at 01:47 AM PST.
 
@@ -316,7 +457,7 @@ At the last banquet, nine officials — six men and three women — are 
 
 ||~ 10 May 2015 ||
 
-SCP-5990 trends upward in frequency after the consumer expansion of “Mindscaping” in the post-Veil world. Mindscaping is a burgeoning New Age industry involving psycho–oneiric mechanisms that can create a shared imagined space, referred to as a “mindscape.” Mindscapes are mass inter-connected communes that can be inhabited on a mental level, differing from Oneiric Collectives in that they can be accessed both in waking and in sleep.
+SCP-5990 trends upwards in frequency after the consumer expansion of “Mindscaping” in the post-Veil world. Mindscaping is a burgeoning New Age industry involving psycho–oneiric mechanisms that can create a shared imagined space, referred to as a “mindscape.” Mindscapes are mass inter-connected communes that can be inhabited on a mental level, differing from Oneiric Collectives in that they can be accessed both in waking and in sleep.
 
 A mindscape can inhabit a space as small as a single human brain, which itself can undergo a one-time SCP-5990 explosion fuelled by up to 150 external psychic connections.
 
@@ -327,8 +468,11 @@ The emergence of Mindscaping, alongside increased social upheaval in low-income 
 @@ @@
 
 [[div class=&#34;centered&#34;]]
-[[collapsible show=&#34;»MEMETIC GEAS REQUIRED«&#34; hide=&#34;«LVL. 5 CREDENTIALS ACCEPTED»&#34;]]
+[[collapsible show=&#34;+ MEMETIC GEAS REQUIRED +&#34; hide=&#34;− LVL. 5 CREDENTIALS ACCEPTED −&#34;]]
 [[/div]]
+
+@@ @@
+@@ @@
 
 [[&lt;]]
 On 9 March 2020 at 0600 hours, the Overseer Council holds an emergency meeting at Site-01. After the meeting, O5-6 is recorded communicating with an unknown party via mobile phone. A transcript is as follows.
@@ -340,7 +484,7 @@ On 9 March 2020 at 0600 hours, the Overseer Council holds an emergency meeting a
 
 @@[@@//Pause.//@@]@@
 
-**O5-6:** I hear ya&#39;. I just don&#39;t get why they all can&#39;t pipe the hell down sometime, y&#39;know? There just, there ain&#39;t no need for that to happen. After throwin&#39; the blame on &#39;im the whole time, she lost &#39;er damned mind and jumped &#39;im like a mouse, beat &#39;im senseless, an&#39; then he just got up and walked out. And we didn&#39;t call off the meet&#39;in or nothin&#39;. Everyone just left. Bunch of children is what they are, but what can I do, y&#39;know?
+**O5-6:** I hear ya&#39;. I just don&#39;t get why they all can&#39;t pipe the hell down sometime, y&#39;know? There&#39;s just, there ain&#39;t no need for that to happen. After throwin&#39; the blame on &#39;im the whole time, she lost &#39;er damned mind and jumped &#39;im like a mouse, beat &#39;im senseless, an&#39; then he just got up and walked out. And we didn&#39;t call off the meet&#39;in or nothin&#39;. Everyone just left. Bunch of children is what they are, but what can I do, y&#39;know?
 
 @@[@@//Pause.//@@]@@
 
@@ -348,7 +492,7 @@ On 9 March 2020 at 0600 hours, the Overseer Council holds an emergency meeting a
 
 @@[@@//Pause.//@@]@@
 
-**O5-6:** We should — what? Toss &#39;er in a shack?[[footnote]]This is believed to reference the SHACC or Standard Humanoid Anomaly Containment Cell.[[/footnote]] @@[@@//He laughs.//@@]@@ Oh yeah, that&#39;d do it. That&#39;d really do it. Just don&#39;t look &#39;er in the eye, or you&#39;ll change into stone.
+**O5-6:** We should — what? Toss &#39;er in a shack?[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]This is believed to reference the SHACC or Standard Humanoid Anomaly Containment Cell.[[/span]] @@[@@//He laughs.//@@]@@ Oh yeah, that&#39;d do it. That&#39;d really do it. Just don&#39;t look &#39;er in the eye, or you&#39;ll change into stone.
 
 @@[@@//Pause.//@@]@@
 
@@ -369,8 +513,6 @@ After this, O5-6 slips a hand in his coat, removes a cigar, and lights it. Minut
 
 @@ @@
 @@ @@
-
-[[footnoteblock]]
 
 [[div class=&#34;footing&#34;]]
 [[/div]]
@@ -393,7 +535,7 @@ After this, O5-6 slips a hand in his coat, removes a cigar, and lights it. Minut
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:44.439896.</em>
+    <em>Last updated 2022-03-14 20:25:56.198615.</em>
   
 </div>
 </body>

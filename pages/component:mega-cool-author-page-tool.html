@@ -14,15 +14,15 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Mega Cool Author Page Tool Ver. 1.2.0</title>
+  <title>Mega Cool Author Page Tool Ver. 1.3.0</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Mega Cool Author Page Tool Ver. 1.2.0</h1>
+    <h1 class="title">Mega Cool Author Page Tool Ver. 1.3.0</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank">Mega Cool Author Page Tool Ver. 1.2.0</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank">Mega Cool Author Page Tool Ver. 1.3.0</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
@@ -150,6 +150,18 @@
 .no-translation.no{
  display:inherit;
 }
+
+.not-scp-un.uli{
+ display:none;
+}
+
+.scp-un{
+ display:none;
+}
+
+.scp-un.uli{
+ display:inherit;
+}
 </code></pre>
         </li>
       
@@ -266,6 +278,40 @@
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
       
         <li>
   
@@ -432,6 +478,23 @@
     
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/more-by:calibold" target="_blank"><code>:scp-wiki:more-by:calibold</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/more-by:calibold.html" target="_blank">info</a>]
   </span>
 
   
@@ -755,6 +818,22 @@
         </li>
       
         <li>
+          <pre><code>not-scp-un</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$uli}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-un</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$uli}</code></pre>
+        </li>
+      
+        <li>
           <pre><code>content-section</code></pre>
         </li>
       
@@ -984,6 +1063,18 @@
  display:inherit;
 }
 
+.not-scp-un.uli{
+ display:none;
+}
+
+.scp-un{
+ display:none;
+}
+
+.scp-un.uli{
+ display:inherit;
+}
+
 [[/module]]
 
 [[iftags +component]]
@@ -991,6 +1082,18 @@
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
+
+[[include :scp-wiki:component:author-label-source start=--
+|name=Calibold
+|no-right-margin=*]]
+[[=]]
+[[module ListPages range=&#34;.&#34;]]
+**%%title%%**
+[[/module]]
+
+**[[[Calibri Bold&#39;s Mega Cool Author Page|Calibold&#39;s Mega Cool Author Page]]]**
+[[/=]]
+[[include :scp-wiki:component:author-label-source end=--]]
 
 + Introduction
 
@@ -1177,9 +1280,11 @@ Then, include this piece of code for every one of your foreign articles:
 &gt; @@|translation=@@
 &gt; @@|language=@@
 &gt; @@|author-language=@@
+&gt; @@|uli=@@
+&gt; @@|category=@@
 &gt; @@]]@@
 
-**|name=** The name of the article. Again, not the title, but the name from the URL link.
+**|name=** The name of the article. Again, not the title, but the name from the URL link. If your page is hosted on the [http://scp-un.wikidot.com/ Underrepresented Languages Incubator], then only include the portion of the URL //after// the page category. For instance, if your page slug is &#34;la:scp-la-xxx,&#34; then you would only include &#34;scp-la-xxx&#34;.
 
 **|title=** This is where the actual //title// goes.
 
@@ -1190,6 +1295,10 @@ Then, include this piece of code for every one of your foreign articles:
 **|language=** The name of the language the original article is in. For example, if you&#39;re including an article from the -FR branch, put &#34;French&#34;.
 
 **|author-language=** The language branch abbreviation that your author page is hosted on.
+
+**|uli=** If your page is hosted on the [http://scp-un.wikidot.com/ Underrepresented Languages Incubator], then put &#34;uli&#34;. Otherwise, leave this portion blank.
+
+**|category=** If your page is hosted on the [http://scp-un.wikidot.com/ Underrepresented Languages Incubator], then put in the category of your page; for instance, if your page slug is &#34;la:scp-la-xxx,&#34; then you would include &#34;la&#34;. Otherwise, leave this portion blank.
 
 The reason for all these variables is to ensure that the one things that //does// work, the translation module, will fully function properly. Since ListPages can&#39;t access other sites, a lot more stuff has to be put in manually.
 
@@ -1353,7 +1462,11 @@ Alternatively, if you want to include a complete page description, here&#39;s ho
 
 [[/div]]
 
-If you are have any issues or concerns with this tool, send a Wikidot PM to [[*user Calibri Bold]], or leave a comment on this page! Good luck, and happy skipping!
+If you are have any issues or concerns with this tool, send a Wikidot PM to [[*user Calibold]], or leave a comment on this page! Good luck, and happy skipping!
+
+[[footnoteblock]]
+
+[[include :scp-wiki:more-by:calibold]]
 
 [[/iftags]]
 
@@ -1587,7 +1700,7 @@ If you are have any issues or concerns with this tool, send a Wikidot PM to [[*u
 [!-- {$inc-foreign}
 
 [[div class=&#34;content-box {$shadow}&#34;]]
-++ **[http://{$branch}.wikidot.com/{$name} {$title}]**
+++ **[[span class=&#34;not-scp-un {$uli}&#34;]][http://{$branch}.wikidot.com/{$name} {$title}][[/span]][[span class=&#34;scp-un {$uli}&#34;]][http://{$branch}.wikidot.com/{$category}:{$name} {$title}][[/span]]**
 [[div class=&#34;content-section&#34;]]
 ------
 [[div_ class=&#34;available-translation {$translation}&#34;]]
@@ -1713,7 +1826,7 @@ If you are have any issues or concerns with this tool, send a Wikidot PM to [[*u
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:41.670090.</em>
+    <em>Last updated 2022-03-14 20:25:53.191069.</em>
   
 </div>
 </body>

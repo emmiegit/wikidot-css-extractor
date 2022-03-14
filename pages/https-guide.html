@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>HTTPS Conversion Guide</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">HTTPS Conversion Guide</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/https-guide" target="_blank">HTTPS Conversion Guide</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>code, tt {
+    padding: .2em .4em;
+    line-height: 1.8em;
+    background-color: rgba(182, 186, 192, 0.4);
+    border-radius: 6px;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
+[[f&lt;toc]]
+~~~~
+
+[[module CSS]]
+code, tt {
+    padding: .2em .4em;
+    line-height: 1.8em;
+    background-color: rgba(182, 186, 192, 0.4);
+    border-radius: 6px;
+}
+[[/module]]
+
+Per the [[[Technical Content Policy]]], all links on-site should be HTTPS, and fixing them is considered an allowable edit, in the same vein as typos. However, due to Wikidot limitations, it&#39;s possible to accidentally create links which are invalid, leading to poor user experience when individuals encounter them. This guide aims to clarify how exactly links should be HTTPS-ized.
+
+++ Domains
+
+The site has three domains which refer to the EN SCP Wiki:
+* {{scp-wiki.net}}
+* {{scpwiki.com}}
+* {{scp-wiki.wikidot.com}}
+
+The first is the old, deprecated domain which was previously used until the official domain [http://05command.wikidot.com/forum/t-13563189/discussion:domain-transition-scpwiki-com was changed to scpwiki.com following a staff discussion]. These should always be replaced.
+
+The second is our current, official domain. **It is always acceptable to use this in links**, provided it is HTTPS (i.e. {{@@https://scpwiki.com/@@}}). However, because of Wikidot&#39;s limitations surrounding HTTPS, for now this redirects to the Wikidot domain.
+
+The third is Wikidot&#39;s domain, {{@@https://scp-wiki.wikidot.com/@@}}. As mentioned, this is currently in use because Wikidot only supports HTTPS for subdomains (i.e. {{*.wikidot.com}}). These are also acceptable to use, but for formal public-facing contexts (e.g. announcements by IO), the official domain should be preferred.
+
+++ Links
+
+Wikidot, annoyingly, has two kinds of links:
+
+[https://www.wikidot.com/doc-wiki-syntax:links#internal Triple-bracket links] permit specifying a local page just via its slug. It comes in the format {{@@[[[page-slug-name | Link label]]]@@}}, however, if the label is the same as the slug (after normalization), you only need to specify that. For instance: {{@@[[[SCP-1000]]]@@}}, or {{@@[[[Site Rules]]]@@}}. **These local links should be preferred for pages on the main site.** These are the only kinds of links which appear in backlinks, and also preserve the current domain and protocol.
+
+[https://www.wikidot.com/doc-wiki-syntax:links#urls Single-bracket links] are needed for absolute URLs, such as forum links, pages with parameters (e.g. offset pages), on other Wikidot sites, or elsewhere on the internet. These take the form {{@@[https://en.wikipedia.org/wiki/SCP_Foundation SCP Foundation]@@}}. (Note the lack of pipe between the link and the label)
+
+The latter are useful for relative links on the same site, by removing the domain part of the URL. For instance an offset link (e.g. {{@@https://scp-wiki.wikidot.com/scp-4447/offset/1@@}}) can be expressed simply as {{@@/scp-4447/offset/1@@}}. Similarly for forum threads: {{@@/forum/c-1113520/announcements@@}}.
+
+So for these:
+* The link {{@@[https://scp-wiki.wikidot.com/scp-4447/offset/1 Next revision]@@}} would become {{@@[/scp-4447/offset/1 Next revision]@@}}.
+* The link {{@@[https://scp-wiki.wikidot.com/forum/c-1113520/announcements Announcements]@@}} would become {{@@[/forum/c-1113520/announcements Announcements]@@}}.
+
+++ Files
+
+Like links, file URLs may also need to be converted. This is especially pertinent, since many browsers warn or block resources loaded over HTTP if you are using an HTTPS connection. Thankfully, all {{wdfiles.com}} (where Wikidot stores its files) URLs support HTTPS, even if the main site doesn&#39;t have it enabled.
+
+The easiest way to get the proper (wdfiles.com) link for a file is to open it in a new tab, and copy the URL that you are redirected to, and ensure it is HTTPS. An example of such a URL is https://scp-wiki.wdfiles.com/local--files/scp-001/fractal-mka.jpeg (note the {{wdfiles.com}} domain).
+
+++ Code
+
+Similar to files, you should prefer the {{wdfiles.com}} link for code. Instead of {{@@https://scpwiki.com/component:theme/code/1@@}}, use {{@@https://scp-wiki.wdfiles.com/local--code/component%3Atheme/1@@}}. (You can access this easily by visiting the URL and having it do its redirection)
+
+Note that, per the [[[CSS Policy]]], use of {{@import}} for themes is disallowed, instead {{@@[[include]]@@}} should be used instead. {{@import}} is only permitted for HTML blocks or other non-Wikidot contexts.
+
+++ Word of Warning
+
+Some URLs, despite being HTTPS, **are not valid**. Please be careful to not create these, as they **do not work** and instead the reader&#39;s browser will show them a very scary warning.
+
+* {{@@https://scp-wiki.net@@}} ❌
+* {{@@https://www.scp-wiki.net@@}} ❌ 
+* {{@@https://www.scp-wiki.wikidot.com@@}} ❌
+
+Only {{@@scpwiki.com@@}} and {{@@scp-wiki.wikidot.com@@}} (with nothing in front of it) are valid for HTTPS.
+
+If you see any of these invalid links on a page, please change them.
+
+++ Converting to HTTPS
+
+The questions you should ask yourself when seeing a links are:
+* Can this be expressed as a local, triple-bracket link? (e.g. a link to SCP-1000)
+* Can this be expressed as a relative link? (e.g. a link to an offset page or forum thread)
+* Is this a link to a different Wikidot site? In this case you probably need to leave it as-is. (e.g. a link to O5 Command)
+* If this is an external link, is it HTTPS? Any modern website will support HTTPS. (e.g. a link to Google or Wikipedia)
+
+With all of this background, here is a reference reference of example bad inputs, and what to change them to.
+
+||~ Original ||~ Replacement ||
+|| {{@@[http://scp-wiki.net/scp-1000 SCP-1000]@@}} || {{@@[[[SCP-1000]]]@@}} ||
+|| {{@@[[[http://scpwiki.com/scp-1000|SCP-1000]]@@}} || {{@@[[[SCP-1000]]]@@}} ||
+|| {{@@[http://scp-wiki.net/scp-173 a particular statue]@@}} || {{@@[[[scp-173 | a particular statue]]]@@}} ||
+|| {{@@[http://scp-wiki.net/scp-4447/offset/1 Next page]@@}} || {{@@[/scp-4447/offset/1 Next page]@@}} ||
+|| {{@@[http://scp-wiki.net/forum/t-1016035/help-i-made-a-thread-here Forum Help]@@}} || {{@@[/forum/t-1016035/help-i-made-a-thread-here Forum Help]@@}} ||
+|| {{@@[[image http://scpwiki.com/local--files/scp-001/fractal-mka.jpeg]]@@}} || {{@@[[image https://scp-wiki.wdfiles.com/local--files/scp-001/fractal-mka.jpeg]]@@}} ||
+|| {{@@http://scp-wiki.net/some-page/code/1@@}} || {{@@https://scp-wiki.wdfiles.com/local--code/some-page/1@@}} ||
+|| {{@@http://scp-wiki.wikidot.com/some-page/code/2@@}} || {{@@https://scp-wiki.wdfiles.com/local--code/some-page/2@@}} ||
+|| {{@@[http://google.com/ Search]@@}} || {{@@[https://google.com/ Search]@@}} ||
+|| {{@@[http://05command.wikidot.com/site-charter Site Charter]@@}} || Leave as-is (off-site) ||
+
+You can also use [https://is.gd/mN8TaH this substitution tool] to help you.
+
+If you have any questions, feel free to consult the [http://05command.wikidot.com/technical-staff-main Technical Team].</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-03-14 20:25:53.907871.</em>
+  
+</div>
+</body>

@@ -41,22 +41,6 @@
 &gt; }
 &gt; [[/module]]
 
-+ IF USING ACS
-
-Please set the above code **__AFTER__** the ACS code in order for ACS to properly display. For example:
-
-&gt; [[include :scp-wiki:component:anomaly-class- bar-source
-&gt; |item-number= XXXX
-&gt; |clearance= 1
-&gt; |container-class= euclid
-&gt; |secondary-class= none
-&gt; |disruption-class= keneq
-&gt; |risk-class= danger
-&gt; ]]
-&gt; @&lt;&gt;@
-&gt; [[include :scp-wiki:theme:black-highlighter-theme]]
-&gt; [[include :scp-wiki:theme:jakstyle]]
-
 + WHAT&#39;S DIFFERENT?
 
 What are you, fucking blind? A lot&#39;s different. But, if you need a detailed list of things that I&#39;ve changed, here you go:
@@ -182,12 +166,12 @@ This is a long tab. It contains a lot of text.
 :root {
     --header-title: &#34;SCP FOUNDATION&#34;;
 
-    --dark-accent: 20, 22, 24;
-    --pale-accent: 228, 228, 228;
-    --bright-accent: 228, 228, 228;
+    --dark-accent: 33, 35, 37;
+    --pale-accent: 205, 205, 205;
+    --bright-accent: 205, 205, 209;
     --light-gray-monochrome: 84, 84, 84;
-    --dark-gray-monochrome: 48, 48, 52;
-    --black-monochrome: 20, 22, 24;
+    --dark-gray-monochrome: 56, 56, 60;
+    --black-monochrome: 33, 35, 37;
     --medium-accent: var(--bright-accent);
     --tab-border-color: var(--dark-accent);
     --rating-module-button-color: var(--bright-accent);
@@ -195,7 +179,7 @@ This is a long tab. It contains a lot of text.
     --swatch-background: var(--dark-accent);
     --swatch-menutxt-general-color: var(--bright-accent);
     --swatch-menubg-black-color: var(--dark-gray-monochrome);
-    --barColour: var(dark-accent);
+    --barColour: #232527;
 
     --logo-image: url(&#39;https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg&#39;);
     --lgurl: var(--logo-image);
@@ -242,7 +226,6 @@ This is a long tab. It contains a lot of text.
     --toggle-button-bg: rgb(var(--dark-accent));
     --toggle-border-color: rgb(var(--dark-gray-monochrome));
     --toggle-icon-color: rgb(var(--bright-accent));
-    --clip-
 }
 
 #header {
@@ -282,7 +265,7 @@ This is a long tab. It contains a lot of text.
     --topmenu-hover-border-color: var(--swatch-primary),0.5;
 
     	/* ===DROPDOWN MENU=== */
-    --dropdown-bg-color: var(--swatch-alternate-color), 0.9;
+    --dropdown-bg-color: var(--dark-gray-monochrome);
     --dropdown-border-color: var(--swatch-primary-darkest), 0.9;
 }
 
@@ -576,13 +559,21 @@ div.blockquote {
     color: rgb(var(--bright-accent));
 }
 
-#page-content div.b-tables table.wiki-content-table td, #page-content div.b-tables table.wiki-content-table th, #page-content table.wiki-content-table td, #page-content table.wiki-content-table th {
-    border: .0625rem solid rgba(var(--dark-gray-monochrome)) !important;
+#page-content .blockquote div.b-tables table.wiki-content-table th, #page-content .blockquote table.wiki-content-table th {
+    background: rgb(var(--bright-accent));
+    color: rgb(var(--dark-accent));
+    border: 0.0625rem solid rgba(var(--bright-accent))!important;
+}
+#page-content .blockquote table.wiki-content-table td {
+    border: 0.0625rem solid rgba(var(--bright-accent))!important;
 }
 
 #page-content div.b-tables table.wiki-content-table th, #page-content table.wiki-content-table th {
     background: rgb(var(--dark-gray-monochrome));
+    color: rgb(var(--white-accent));
+    --tables-border: var(--dark-gray-monochrome);
 }
+
 
 textarea,
 input.text,
@@ -635,19 +626,19 @@ div.note,
     mix-blend-mode: lighten;
 }
 
-.scp-image-block {
-    box-shadow: none;
-}
-
 .image-block .image-caption, .scp-image-block .scp-image-caption {
     box-shadow: none;
-    border: 1px solid rgb(var(--dark-acccent));
+     border: none;
     background-color: rgb(var(--dark-gray-monochrome));
     color: rgb(var(--bright-accent));
 }
 
 .scp-image-block a {
     background-color: transparent;
+}
+
+.scp-image-block {
+    box-shadow: .0225rem .0835rem .0725rem .0925rem rgb(var(--dark-accent));
 }
 
 .footnote {
@@ -691,7 +682,7 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
 }
 
 .paged a:visited, .pager a {
-    color: rgb(var(--dark-accent));
+    color: rgb(var(--bright-accent));
 }
 
 .printuser img.small {
@@ -745,19 +736,6 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     padding: 0.5rem 0 0;
 }
 
-.danger-diamond&gt;.arrows,
-.anom-bar&gt;.bottom-box::before {
-    background-color: rgb(var(--bright-accent));
-}
-
-.anom-bar&gt;.bottom-box {
-    box-shadow: 0 -0.5rem 0 0 rgb(var(--bright-accent));
-}
-
-.bottom-box&gt;.diamond-part {
-    box-shadow: -0.5rem 0 0 0 rgb(var(--bright-accent));
-}
-
 .acs-hybrid-text-bar&gt;.acs-clear&gt;.clearance-level-text::before {
     color: rgba(var(--bright-accent), 1);
 }
@@ -788,6 +766,10 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     background: rgb(var(--dark-accent));
 }
 
+#page-content .info-container a.collapsible-block-link:hover {
+    box-shadow: inset 0 -1.5em 0 0 rgba(var(--dark-accent));
+}
+
 .acs-hybrid-text-bar&gt;a {
     background-color: transparent;
     color: transparent;
@@ -810,29 +792,6 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
 .danger-diamond a:hover {
     background-color: transparent;
     color: rgba(0, 0, 0, 0);
-}
-
-.fnnum {
-    background-color: rgb(var(--bright-accent));
-}
-
-.fnnum::after {
-    color: #141618;
-}
-
-.fnnum:hover {
-    background-color: transparent;
-}
-
-.fncon {
-    border: 0.125rem solid rgb(var(--bright-accent));
-    background: rgb(var(--dark-accent));
-}
-
-.fncon::before {
-    border: 0.125rem solid rgb(var(--bright-accent));
-    background-color: #141618;
-    color: #e4e4e4;
 }
 
 .authorlink-wrapper &gt; a {
@@ -910,57 +869,6 @@ table.page-files th {
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:jakstyle" target="_blank"><code>:scp-wiki:theme:jakstyle</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:jakstyle.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:anomaly-class-" target="_blank"><code>:scp-wiki:component:anomaly-class-</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:anomaly-class-.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
       
         <li>
   
@@ -1090,22 +998,6 @@ To edit the header, subheader, and background image, please use the following co
 &gt; }
 &gt; [[/module]]
 
-+ IF USING ACS
-
-Please set the above code **__AFTER__** the ACS code in order for ACS to properly display. For example:
-
-&gt; [[include :scp-wiki:component:anomaly-class- bar-source
-&gt; |item-number= XXXX
-&gt; |clearance= 1
-&gt; |container-class= euclid
-&gt; |secondary-class= none
-&gt; |disruption-class= keneq
-&gt; |risk-class= danger
-&gt; ]]
-&gt; @&lt;&gt;@
-&gt; [[include :scp-wiki:theme:black-highlighter-theme]]
-&gt; [[include :scp-wiki:theme:jakstyle]]
-
 + WHAT&#39;S DIFFERENT?
 
 What are you, fucking blind? A lot&#39;s different. But, if you need a detailed list of things that I&#39;ve changed, here you go:
@@ -1231,12 +1123,12 @@ This is a long tab. It contains a lot of text.
 :root {
     --header-title: &#34;SCP FOUNDATION&#34;;
 
-    --dark-accent: 20, 22, 24;
-    --pale-accent: 228, 228, 228;
-    --bright-accent: 228, 228, 228;
+    --dark-accent: 33, 35, 37;
+    --pale-accent: 205, 205, 205;
+    --bright-accent: 205, 205, 209;
     --light-gray-monochrome: 84, 84, 84;
-    --dark-gray-monochrome: 48, 48, 52;
-    --black-monochrome: 20, 22, 24;
+    --dark-gray-monochrome: 56, 56, 60;
+    --black-monochrome: 33, 35, 37;
     --medium-accent: var(--bright-accent);
     --tab-border-color: var(--dark-accent);
     --rating-module-button-color: var(--bright-accent);
@@ -1244,7 +1136,7 @@ This is a long tab. It contains a lot of text.
     --swatch-background: var(--dark-accent);
     --swatch-menutxt-general-color: var(--bright-accent);
     --swatch-menubg-black-color: var(--dark-gray-monochrome);
-    --barColour: var(dark-accent);
+    --barColour: #232527;
 
     --logo-image: url(&#39;https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg&#39;);
     --lgurl: var(--logo-image);
@@ -1291,7 +1183,6 @@ This is a long tab. It contains a lot of text.
     --toggle-button-bg: rgb(var(--dark-accent));
     --toggle-border-color: rgb(var(--dark-gray-monochrome));
     --toggle-icon-color: rgb(var(--bright-accent));
-    --clip-
 }
 
 #header {
@@ -1331,7 +1222,7 @@ This is a long tab. It contains a lot of text.
     --topmenu-hover-border-color: var(--swatch-primary),0.5;
 
     	/* ===DROPDOWN MENU=== */
-    --dropdown-bg-color: var(--swatch-alternate-color), 0.9;
+    --dropdown-bg-color: var(--dark-gray-monochrome);
     --dropdown-border-color: var(--swatch-primary-darkest), 0.9;
 }
 
@@ -1625,13 +1516,21 @@ div.blockquote {
     color: rgb(var(--bright-accent));
 }
 
-#page-content div.b-tables table.wiki-content-table td, #page-content div.b-tables table.wiki-content-table th, #page-content table.wiki-content-table td, #page-content table.wiki-content-table th {
-    border: .0625rem solid rgba(var(--dark-gray-monochrome)) !important;
+#page-content .blockquote div.b-tables table.wiki-content-table th, #page-content .blockquote table.wiki-content-table th {
+    background: rgb(var(--bright-accent));
+    color: rgb(var(--dark-accent));
+    border: 0.0625rem solid rgba(var(--bright-accent))!important;
+}
+#page-content .blockquote table.wiki-content-table td {
+    border: 0.0625rem solid rgba(var(--bright-accent))!important;
 }
 
 #page-content div.b-tables table.wiki-content-table th, #page-content table.wiki-content-table th {
     background: rgb(var(--dark-gray-monochrome));
+    color: rgb(var(--white-accent));
+    --tables-border: var(--dark-gray-monochrome);
 }
+
 
 textarea,
 input.text,
@@ -1684,19 +1583,19 @@ div.note,
     mix-blend-mode: lighten;
 }
 
-.scp-image-block {
-    box-shadow: none;
-}
-
 .image-block .image-caption, .scp-image-block .scp-image-caption {
     box-shadow: none;
-    border: 1px solid rgb(var(--dark-acccent));
+     border: none;
     background-color: rgb(var(--dark-gray-monochrome));
     color: rgb(var(--bright-accent));
 }
 
 .scp-image-block a {
     background-color: transparent;
+}
+
+.scp-image-block {
+    box-shadow: .0225rem .0835rem .0725rem .0925rem rgb(var(--dark-accent));
 }
 
 .footnote {
@@ -1740,7 +1639,7 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
 }
 
 .paged a:visited, .pager a {
-    color: rgb(var(--dark-accent));
+    color: rgb(var(--bright-accent));
 }
 
 .printuser img.small {
@@ -1794,19 +1693,6 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     padding: 0.5rem 0 0;
 }
 
-.danger-diamond&gt;.arrows,
-.anom-bar&gt;.bottom-box::before {
-    background-color: rgb(var(--bright-accent));
-}
-
-.anom-bar&gt;.bottom-box {
-    box-shadow: 0 -0.5rem 0 0 rgb(var(--bright-accent));
-}
-
-.bottom-box&gt;.diamond-part {
-    box-shadow: -0.5rem 0 0 0 rgb(var(--bright-accent));
-}
-
 .acs-hybrid-text-bar&gt;.acs-clear&gt;.clearance-level-text::before {
     color: rgba(var(--bright-accent), 1);
 }
@@ -1837,6 +1723,10 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     background: rgb(var(--dark-accent));
 }
 
+#page-content .info-container a.collapsible-block-link:hover {
+    box-shadow: inset 0 -1.5em 0 0 rgba(var(--dark-accent));
+}
+
 .acs-hybrid-text-bar&gt;a {
     background-color: transparent;
     color: transparent;
@@ -1859,29 +1749,6 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
 .danger-diamond a:hover {
     background-color: transparent;
     color: rgba(0, 0, 0, 0);
-}
-
-.fnnum {
-    background-color: rgb(var(--bright-accent));
-}
-
-.fnnum::after {
-    color: #141618;
-}
-
-.fnnum:hover {
-    background-color: transparent;
-}
-
-.fncon {
-    border: 0.125rem solid rgb(var(--bright-accent));
-    background: rgb(var(--dark-accent));
-}
-
-.fncon::before {
-    border: 0.125rem solid rgb(var(--bright-accent));
-    background-color: #141618;
-    color: #e4e4e4;
 }
 
 .authorlink-wrapper &gt; a {
@@ -1941,7 +1808,7 @@ table.page-files th {
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:44.922193.</em>
+    <em>Last updated 2022-03-14 20:25:56.904561.</em>
   
 </div>
 </body>

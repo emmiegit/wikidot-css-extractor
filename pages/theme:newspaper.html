@@ -38,10 +38,6 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>text-align: center</code></pre>
-        </li>
-      
-        <li>
           <pre><code>width:48.5%;</code></pre>
         </li>
       
@@ -103,10 +99,6 @@
 
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes">
-      
-        <li>
-          <pre><code>pseudocrumbs</code></pre>
-        </li>
       
         <li>
           <pre><code>s-title</code></pre>
@@ -225,10 +217,6 @@
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[iftags +theme]]
 
-[[div class=&#34;pseudocrumbs&#34; style=&#34;text-align: center&#34;]]
-**« [[[news-04-2021|April 2021]]] | __[[[news-05-2021|May 2021]]]__ | [[[news-06-2021|June 2021]]] »**
-[[/div]]
-
 [[&gt;]]
 [[module rate]]
 [[/&gt;]]
@@ -279,7 +267,7 @@ The SCP Logo itself is a product of the SCP Foundation Wiki and is licensed unde
 
 [[span class=&#34;placard&#34;]]placard span[[/span]]
 
-[[include component:image-block name= https://scp-wiki.wikidot.com/local--files/theme:monotypical/newslogo.png|caption=Image.|width=240px]]
+[[include component:image-block name= https://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newslogo.png|caption=Image.|width=240px]]
 
 
 [[/collapsible]]
@@ -391,7 +379,7 @@ This is also a long tab. It contains a lot of text.
 @@ @@
 
 [[=]]
-[[span class=&#34;hover&#34;]][[span]]//S. D. Locke&#39;s Proposal - When Day Breaks//[[/span]][[image http://olicus.wikidot.com/local--files/items/001_whenDayBreaks.PNG link=&#34;http://scp-wiki.wikidot.com/olicus-art&#34; style=&#34;width:48.5%;&#34;]][[/span]]
+[[span class=&#34;hover&#34;]][[span]]//S. D. Locke&#39;s Proposal - When Day Breaks//[[/span]][[image https://olicus.wdfiles.com/local--files/items/001_whenDayBreaks.PNG link=&#34;https://scp-wiki.wikidot.com/olicus-art&#34; style=&#34;width:48.5%;&#34;]][[/span]]
 [[/=]]
 
 [[code]]
@@ -559,8 +547,8 @@ The body font is Kulim Park.
 
 :root {
     --accentColor: #E5062B;
-    --lgurl: url(&#34;http://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newslogo.png&#34;);
-    --bgurl: url(&#34;http://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newshead.png&#34;);
+    --lgurl: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newslogo.png&#34;);
+    --bgurl: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newshead.png&#34;);
 
 
     --primaryBackgroundColor: #f3f3f3;
@@ -597,6 +585,9 @@ code {
 
 a:not(.rate-box-with-credit-button a, .page-rate-widget-box a, yui-nav a) {
     color: var(--accentColor);
+}
+a:not(.rate-box-with-credit-button a, .page-rate-widget-box a, yui-nav a):visited {
+   filter: brightness(0.75);
 }
 
 #page-content div {
@@ -653,7 +644,7 @@ div#extra-div-1 {
     margin: 0 auto;
 
 }
-#header h2 { 
+#header h2 {
 margin-top: 6.5rem;
     font-size: 0.75rem;
     font-style: italic;
@@ -1338,8 +1329,27 @@ blockquote::after, div.blockquote::after {
 #toc-list {
     font-family: var(--header-font);
 }
+
+
+#toc-list &gt; div { position: relative; }
+#toc-list &gt; div:not([style*=&#34;margin-left: 1em;&#34;], [style*=&#34;margin-left: 2em;&#34;]) { display: none; }
 #toc-list &gt; div[style*=&#34;margin-left: 1em;&#34;] { margin-left: 0.5em!important; }
-#toc-list &gt; div:not([style*=&#34;margin-left: 1em;&#34;]) { display: none; }
+#toc-list &gt; div[style*=&#34;1em&#34;]::before {
+    content: &#34;•&#34;;
+    display: inline-block;
+    position: absolute;
+    left: -0.75em;
+    color: var(--accentColor);
+}
+#toc-list &gt; div[style*=&#34;margin-left: 2em;&#34;] { margin-left: 1.5em!important; font-size: 95%; }
+#toc-list &gt; div[style*=&#34;2em&#34;]::before {
+    content: &#34;┖&#34;;
+    display: inline-block;
+    position: absolute;
+    left: -1.25em;
+    color: var(--accentColor);
+    transform: scaleY(1.5);
+}
 
 .scp-image-block {
     border: solid 8px var(--primaryBackgroundColor);
@@ -1862,15 +1872,6 @@ a.action-area-close:hover {
     display: contents;
 }
 
-#toc-list &gt; div { position: relative; }
-#toc-list &gt; div[style*=&#34;1em&#34;]::before {
-    content: &#34;•&#34;;
-    display: inline-block;
-    position: absolute;
-    left: -0.75em;
-    color: var(--accentColor);
-}
-
 
 @media (max-width: 1340px) {
     .anchor {
@@ -1945,13 +1946,6 @@ a.action-area-close:hover {
 }
 
 
-/* ---- INTERWIKI ---- */
-
-.scpnet-interwiki-frame{
-    filter: invert(100%) grayscale(100%) contrast(75%);
-}
-
-
 /* ---- MOBiLE QUERY ---- */
 @media (max-width: 767px) {
 
@@ -2007,7 +2001,7 @@ a.action-area-close:hover {
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:44.927913.</em>
+    <em>Last updated 2022-03-14 20:25:56.910557.</em>
   
 </div>
 </body>

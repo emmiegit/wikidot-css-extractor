@@ -155,7 +155,7 @@ If you&#39;re using The Lounge, click SkipIRC at the top to switch to the server
 
 This will be the password you use to log on to the chat in the future, so make sure it&#39;s something you will remember. When you&#39;re ready, hit Enter.
 
-If you did everything right, you&#39;ll see a message appear from NickServ (Nickname Services) that reads, **{{An email containing nickname activation instructions has been sent to (email) If you do not complete registration within one day, your nickname will expire.}}**. This can take a couple of minutes to arrive, and has been known to end up in spam or junk mail occasionally, so please take a look there as well. When you find it and confirm the verification code as instructed, your nick will be registered! Please note registrations expire after 90 days of not having identified to that nick.
+If you did everything right, you&#39;ll see a message appear from NickServ (Nickname Services) that reads, **{{An email containing nickname activation instructions has been sent to (email) If you do not complete registration within one day, your nickname will expire.}}**. This can take a couple of minutes to arrive, and has been known to end up in spam or junk mail occasionally, so please check those folders. If your mail provider has a search feature, try searching for SkipIRC. When you find it and confirm the verification code as instructed, your nick will be registered! Please note registrations expire after one year (365 days) of not having identified to that nick.
 
 [[collapsible show=&#34;+ If your client is stating that it is unable to recognize the commands you are inputting, please click here.&#34; hide=&#34;- Close&#34;]]
 [[=]]
@@ -256,7 +256,7 @@ It is the responsibility of each chat user to know what is or is not acceptable 
 
 The following are some specific things to avoid. This doesn&#39;t include every possible offense and if you&#39;re not sure whether you&#39;re about to break a rule, ask rather than finding out the hard way.
 
-* **Bigotry** Bigotry will not be tolerated. This includes bigotry based on race, nationality, sexual orientation, and gender identity. Users expressing bigoted views may be permanently banned without prior warning.
+* **Bigotry**: Bigotry will not be tolerated. This includes bigotry based on race, nationality, sexual orientation, and gender identity. Users expressing bigoted views may be permanently banned without prior warning.
 * **Trolling**: Acting deliberately inflammatory. If you&#39;re doing it, you know you&#39;re doing it. If ops believe you&#39;re trolling and you don&#39;t think so, then you need to rethink your behavior. This includes targeting people or a group of people based on their gender, sexuality, race, etc.
 * **Harassment**: Asking for pictures, pressuring discussion of sex lives, etc. PMing or repeatedly talking to a user who has asked you to stop talking to them. You can be banned from the SkipIRC network altogether for this.
 * **Creepiness**: Making others uncomfortable by behaving in a way that would be socially inappropriate if done in public.
@@ -264,7 +264,7 @@ The following are some specific things to avoid. This doesn&#39;t include every 
 * **Spamming.** You can be banned from the SkipIRC network altogether for this.
 * **Brigades**: Do not use #Site19 as a base for bothering people on other sites. No one cares. Do not use #Site19 to get an SCP you hate downvoted. You&#39;ll be banned.
 * **Being Annoying/Disruptive:** If an OP says you&#39;re being annoying, //listen// and try to improve. Being annoying isn&#39;t entirely against the rules, //but you can still be banned for it// if it gets bad enough. Example offenses here include (but are not limited to) derailing chat, over-proselytizing your opinions, being incoherent, antagonizing others, roleplaying, backseat modding, typing in &#34;zalgo&#34; text, and the use of slurs. This includes racist, sexist, and sexual-oriented slurs, as well as slurs and sayings targeting the mentally disabled or differently abled such as //retard//, //spaz//, or //ree//.
-* **Pronounbot-fuckery:** Adding joke pronouns to Secretary_Helen is one of the quickest ways to earn a one-week ban. See the &#34;Chatbots&#34; tab for more information.
+* **Pronounbot-fuckery:** Adding joke pronouns to NickServ is one of the quickest ways to earn a one-week ban. See the &#34;Pronouns&#34; tab for more information.
 * **Sockpuppeting and ban evasion:** You can, within reason, have multiple chat nicks, but you can&#39;t pretend to be your brother just because you did something stupid. Ban evasion is obviously not allowed. Users should note that frequently attempting to join the chat during a ban might be viewed as de facto ban evasion, if you do it enough to be disruptive.
 
 ++ NSFW
@@ -300,12 +300,45 @@ Please also note that while banned users **may** enter 17 to appeal or ask genui
 Bans will generally appear in the [*http://05command.wikidot.com/forum/c-82389/chat-users Chat Users Forum] on the 05 Command site.
 [[/tab]]
 
+[[tab Pronouns]]
+SkipIRC now has support for pronouns and gender identity information. This feature is exclusive to SkipIRC and was written by [[*user Kufat]]; any issues should be reported to him.
+
+++ Setting pronouns and gender
+
+Once you&#39;ve registered your nick, you can set your gender with **{{/ns gender}}** and pronouns with **{{/ns pronouns}}**. These will be visible to all users. Use of this feature is optional.
+
+The **{{/ns gender}}** command takes any number of words in a freeform format, e.g. if ExampleUser uses the command **{{/ns gender masculine non-binary}}** would be displayed as &#34;ExampleUser identifies as masculine non-binary&#34;. You can use one word or a phrase as you prefer. To clear your gender info, use the command **{{/ns gender}}** without any arguments.
+
+Setting pronouns is accomplished similarly. **{{/ns pronouns}}** takes a list of one or more pronouns, separated by **spaces** (not commas or slashes). There is also support for accepted and unaccepted pronouns, similar to what Secretary_Helen provides. For example, the masculine non-binary user described above might input:
+
+[[code]]
+/ns pronouns they them theirs
+/ns pronouns accepted he him his
+/ns pronouns unaccepted she her hers
+[[/code]]
+
+which would then be displayed as:
+
+[[code]]
+ExampleUser uses these pronouns: they, them, theirs
+ExampleUser accepts these pronouns: he, him, his
+ExampleUser does NOT accept these pronouns: she, her, hers
+[[/code]]
+
+Note that commas are displayed in the output; do not type them into the NickServ command. Additionally, subsequent pronoun commands will overwrite the previous value rather than add to it. You can clear each type of pronoun by typing {{/ns pronouns}}, {{/ns pronouns accepted}}, and/or {{/ns pronouns unaccepted}} respectively.
+
+Inputting joke pronouns (&#39;helicopter&#39;, &#39;meme&#39;, etc.) is a tempbannable offense, usually 1 (one) week to start. Don&#39;t do it: it&#39;s offensive to many and irritating to most. This is a very firmly enforced rule.
+
+++ Viewing other users&#39; pronoun/gender info
+
+The easiest way to view other users&#39; information is with the {{/whois}} command, e.g. {{/whois Kufat}}. Some clients including Mibbit and the mobile version of IRCCloud are unable to display extra whois information. If your client has this issue, you may also use {{/ns info}} to see a user&#39;s configured pronoun and gender details, e.g. {{/ns info Kufat}}.
+
+[[/tab]]
+
 [[tab Staff and Bots]]
 + Secretary_Helen
 
-Secretary_Helen is #site19&#39;s primary bot. Helen is maintained by [[*user DrMagnus]]. When in #site19, you may use Helen as a reference and general tool for a variety of purposes. Additionally, Helen can remember the pronouns that chat members use and/or accept. You may add your own pronouns to the bot, or use a command to check the pronouns of other members. A list of Helen&#39;s commands can be found [http://helenbot.wikidot.com/usage here].
-
-Inputting joke pronouns (&#39;helicopter&#39;, &#39;meme&#39;, etc.) is a tempbannable offense, usually 1 (one) week to start. Don&#39;t screw with the pronoun bot: it&#39;s offensive to many and irritating to most. This is a very firmly enforced rule.
+Secretary_Helen is #site19&#39;s primary bot. Helen is maintained by [[*user DrMagnus]]. When in #site19, you may use Helen as a reference and general tool for a variety of purposes. 
 
 If you want to check multiple pages at once, always use a PM to Helen. Do not flood the bot, even in PMs, as this can cause crashing.
 
@@ -315,27 +348,26 @@ If you want to check multiple pages at once, always use a PM to Helen. Do not fl
 
 ||~ **Name** ||~ **Chat Status** ||~ **Wiki Status** ||
 || [[*user Dexanote]] || Chat Admin/IRC Operator || Wiki Admin ||
+|| [[*user LilyFlower]] / Lily || Chat Admin/IRC Operator || Wiki Moderator ||
 || [[*user ProcyonLotor]] / Corvus || Chat Admin/IRC Operator || Wiki Moderator ||
-|| [[*user Quikngruvn]] / Teratophobia / Scordatura || Chat Admin (Semi-active) || Wiki Admin ||
-|| [[*user SoullessSingularity]] / Soulless || Chat Admin || Wiki Admin ||
+|| [[*user Quikngruvn]] / Teratophobia / Scordatura || Chat Admin (Inactive) || Wiki Admin ||
+|| [[*user SoullessSingularity]] / Soulless || Chat Admin (Inactive) || Wiki Admin ||
 || [[*user thedeadlymoose]] || Chat Admin (Inactive) || Wiki Admin ||
-|| [[*user Tuomey Tombstone]] / Tuomey / Nuke_Fury / Tombstone || Chat Admin/IRC Operator || Wiki Moderator ||
+|| [[*user Tuomey Tombstone]] / Tuomey / Nuke_Fury / Tombstone || Chat Admin/IRC Operator (Inactive) || Wiki Moderator ||
 
 + Chat Operators (Ops)
 
 ||~ **Name** ||~ **Chat Status** ||~ **Wiki Status** ||
-|| [[*user Athenodora]] / Dora / Athena_Grey || Chat Operator || Wiki User ||
-|| [[*user ChaoSera]] || Chat Operator || Wiki Moderator ||
+|| [[*user Athenodora]] / Dora / Athena_Grey || Chat Operator/IRC Operator || Wiki User ||
+|| [[*user ChaoSera]] || Chat Operator/IRC Operator || Wiki Moderator ||
 || [[*user Crashington]] || Chat Operator || Wiki Junior Staff ||
 || [[*user DrAkimoto]] || Chat Operator || Wiki Staff ||
+|| [[*user DrBleep]] || Chat Operator/IRC Operator || Wiki Admin ||
 || [[*user DrKens]] || Chat Operator || Wiki User ||
-|| [[*user flagsam]] / CuteGirl || Chat Half-Op || Wiki Junior Staff ||
+|| [[*user flagsam]] / CuteGirl || Chat Operator || Wiki Junior Staff ||
 || [[*user Gee0765]] || Chat Operator || Wiki Moderator ||
-|| [[*user LilyFlower]] / Lily || Chat Operator || Wiki Moderator ||
 || [[*user ManyMeats]] || Chat Operator || Wiki Admin ||
 || [[*user MrAnakinSpecter]] || Chat Operator || Wiki Staff ||
-|| [[*user stormfallen]] || Chat Operator || Wiki Junior Staff ||
-|| [[*user taylor_itkin]] / taylor_IOStkin || Chat Operator || Wiki User ||
 || [[*user TheMightyMcB]] || Chat Operator || Wiki Moderator ||
 || [[*user TyGently]] || Chat Operator || Wiki User ||
 || [[*user weizhong]] / whyzhong || Chat Operator || Wiki Staff ||
@@ -344,7 +376,7 @@ If you want to check multiple pages at once, always use a PM to Helen. Do not fl
 
 ||~ **Name** ||~ **Chat Status** ||~ **Wiki Status** ||
 || [[*user Doctor Fullham]] / DrFullham || Chat Half-Op || Wiki Junior Staff ||
-|| [[*user Joreth]] || Chat Half-Op || Wiki Staff ||
+|| [[*user tawnyowljones]] || Chat Half-Op || Wiki Staff ||
 || [[*user WarFang]] || Chat Half-Op || Wiki User ||
 
 [[/tab]]
@@ -368,14 +400,14 @@ Other standalone IRC clients can be used to connect to SkipIRC. Chat staff proba
 
 [[/tab]]
 [[tab About SkipIRC]]
-The Wiki maintains its own network of IRC servers for its users, running the latest stable versions of [*https://www.inspircd.org/ InspIRCd] and [*https://atheme.github.io/ Atheme]. We have written several guides for users to cover the new features of SkipIRC.
+[*https://skipirc.miraheze.org/wiki/ SkipIRC] is a small IRC network that was originally founded by the SCP Foundation and is now administered by [[*user Kufat]] and a staff of current and retired SCP Foundation staff members. We have written several guides for users to cover the new features of SkipIRC.
 
 [*http://05command.wikidot.com/skipirc:user-guide SkipIRC - User Guide]
 [*http://05command.wikidot.com/skipirc:op-guide SkipIRC - Op Guide]
 
-SkipIRC employs standard security measures such as port scanning, open proxy detection, and checking client IP addresses against DNS blacklists. Client IP addresses are masked for normal display purposes and are only visible to network-level staff. While staff members monitor connections, nick registrations, etc., they do not (and cannot) snoop on private conversations or channels that they are not in.
+SkipIRC employs standard security measures such as port scanning, open proxy detection, and checking client IP addresses against DNS blacklists. Client IP addresses are masked for normal display purposes and are only visible to network-level staff. While staff members monitor connections, nick registrations, etc., they do not (and cannot) snoop on private conversations or channels that they are not in. SkipIRC staff coordinate with Wiki admins as needed.
 
-The network is a fleet of 7 servers spread across the world. Running them is not free, each one costs $3-4 a month to run. Wiki users like you help keep them running by sponsoring a server. Doing so entitles you to a small message in this table. You may not use this message for anything that could be construed as plugging, and all messages are subject to approval. This is supposed to just be a silly thing, it would be great if we didn&#39;t need more rules than this.
+The network is a fleet of 7 servers spread across the world. [!-- Temporarily removed Running them is not free, each one costs $3-4 a month to run. Wiki users like you help keep them running by sponsoring a server. Doing so entitles you to a small message in this table. You may not use this message for anything that could be construed as plugging, and all messages are subject to approval. This is supposed to just be a silly thing, it would be great if we didn&#39;t need more rules than this. --] Each server is sponsored by a Wiki user:
 
 ||~ Server ||~ Sponsored By ||~ A Word From Our Sponsor: ||
 || Blackjack (Virginia) || [[*user weizhong]] || There were rats in the souffle again ||
@@ -387,7 +419,9 @@ The network is a fleet of 7 servers spread across the world. Running them is not
 || O5 Command (Tokyo) || [[*user TSATPWTCOTTTADC]] || Your message here! ||
 ||||||~ If a server is Available for sponsorship, you may sponsor it via [*https://patreon.com/scpcafe Patreon] via the &#34;SkipIRC: Friend of [server]&#34; tier, or via [*https://ko-fi.com/bluesoul Ko-fi] if you&#39;d rather make a one-time contribution. |||
 
-Please note we are not accepting applications for new servers at this time. The network is more than strong enough for our userbase as it is. If there are no published openings for sponsorship please __do not__ attempt to donate above and beyond; this is intended solely to cover costs.
+Sponsorships are currently closed.
+
+If you have any questions about SkipIRC, please contact Kufat at kufat@kufat.net or on SkipIRC itself in #help or #site17.
 [[/tab]]
 [[/tabview]]
 
@@ -403,7 +437,7 @@ If you are having issues connecting, please go to the staff chat client [http://
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:41.610369.</em>
+    <em>Last updated 2022-03-14 20:25:53.128013.</em>
   
 </div>
 </body>

@@ -29,102 +29,217 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>#page-title { display: none; }
-.feature-block {
-    height: 230px;
-}
-.feature-block .panel-body {
-    height: 160px;
-    overflow-y: hidden;
-}
-.feature-block .feature-title {
-    font-size: 120%;
-    font-weight: bold;
-}
-.feature-block .feature-subtitle {
-    font-size: 90%;
+          <pre><code>/* ---- VARIABLES ---- */
+:root{
+    /* Tabview Content Background */
+     --very-pale-blue: hsl(205, 100%, 97%);
+    /* [SELECTED] */
+     --dark-blue: hsl(205, 44%, 48%);
+    /* [HOVER] */
+     --dark-moderate-blue: hsl(205, 49%, 32%);
+
+    /* Border Type 1 */
+     --dark-grayish-blue: hsl(205, 3%, 52%);
+    /* Border Type 2 */
+     --very-dark-blue: hsl(205, 94%, 20%);
+
+    /* [SELECTED] + [HOVER] text color */
+     --very-light-grey: hsl(0, 0%, 95%);
+    /* [UNSELECTED] text color */
+     --very-dark-grey: hsl(0, 0%, 05%);
 }
 
-.feature-block .feature-title &gt; p,
-.feature-block .feature-subtitle &gt; p {
-    margin: 0;
+/* ---- HEADER ---- */
+ #page-title{
+     display: none;
+}
+ .page-rate-widget-box{
+     margin-right: 0;
+}
+ a, body, span{
+     word-break: unset;
 }
 
-.news-block .panel-body {
-    padding: 0;
-}
-.news-block .panel-body .alternate {
-    padding: 5px 10px;
-}
-.news-block .news-title {
-    font-weight: bold;
-    font-size: 110%;
-    margin-bottom: 5px;
-    color: #633;
-}
-.news-block .news-content {
-    margin: 5px 0;
-}
-.news-block .news-title &gt; p,
-.news-block .news-content &gt; p {
-    margin: 0px !important;
-    margin-block-start: 0em !important;
-    margin-block-end: 0em !important;
+/* ---- FEATURES | [LISTPAGES] ---- */
+ .list-pages-item p{
+     margin-block-start: 0 !important;
 }
 
-.list-pages-item p {
-    margin: 0px !important;
-    margin-block-start: 0px !important;
-    margin-block-end: 0px !important;
+/* ---- FEATURES | [TOP ROW] ---- */
+ .feature-block{
+     margin: 1rem auto;
+     display: flex;
+     flex-wrap: wrap;
+     grid-gap: 1.4rem;
+     align-items: stretch;
+}
+ .content-panel{
+     border: solid 1px var(--dark-grayish-blue);
+     background-color: var(--dark-blue);
+}
+.content-panel .panel-body{
+    background: var(--very-pale-blue) url(http://www.scp-wiki.net/local--files/component:theme/panel-bg-gradient-reverse.png) bottom repeat-x;
+}
+ .content-panel .panel-footer{
+     color: var(--very-pale-blue);
+}
+ .feature-block .content-panel{
+     flex-basis: 17.5rem;
+     flex-grow: 1;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+}
+ .feature-block .content-panel .panel-body{
+    /* To make the content height take up all available space */
+     flex-grow: 1;
+     padding: .125rem 1rem;
+     overflow-y: hidden;
+}
+ .feature-block .feature-title{
+     margin: .5em 0 .4em;
+     padding: 0;
+     letter-spacing: 1px;
+     font-size: 120%;
+     font-weight: bold;
+}
+ .feature-block .feature-subtitle{
+     font-size: 90%;
+     margin-top: -1em;
+     display: block;
 }
 
-.spc-page-block .panel-body {
-    padding: 0;
+/* ---- FEATURES | [SECOND ROW] ---- */
+ .news-block{
+     margin: 1.5rem auto;
 }
-.spc-page-entry {
-    padding: 5px 10px;
+ .news-block .panel-body{
+     padding: 0;
 }
-.spc-page-entry:nth-child(even),
-.alternate:nth-child(even) {
-    background-color: #fff;
-    border-top: solid 1px #eeeee0;
-    border-bottom: solid 1px #eeeee0;
+ .news-block .panel-body .alternate{
+     padding: 5px 10px;
 }
-.spc-page-entry div &gt; p {
-    margin: 0;
+ .news-block .news-title{
+     font-weight: bold;
+     font-size: 110%;
+     margin-bottom: 5px;
+     color: hsl(205, 33%, 30%);
 }
-.spc-page-entry .spc-page-title {
-    font-weight: bold;
-    font-size: 110%;
+ .news-block .news-content{
+     margin: 5px 0;
 }
-.spc-page-entry .spc-page-title img {
-    width: 16px;
-    height: 11px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.5);
-}
-.spc-page-entry .spc-page-description {
-    font-size: 90%;
-    font-style: italic;
-    margin: 5px 20px;
-}
-.spc-page-entry {
-    margin: 5px 0;
-    padding: 0px 0px 5px 0px;
-}
-.spc-page-footer {
-    font-size: #333;
-    font-size: 80%;
-    margin: 5px 0;
-}
-.content-panel .panel-body {
-    background: #fff9f0 url(http://www.scp-wiki.net/local--files/component:theme/panel-bg-gradient-reverse.png) bottom repeat-x;
-    /* box-shadow: 1px 2px 3px rgba(0,0,0,.2) inset; */
+ .news-block .news-title &gt; p,
+ .news-block .news-content &gt; p{
+     margin: 0 !important;
+     margin-block-start: 0 !important;
+     margin-block-end: 0 !important;
 }
 
-.spc-page-entry table tr:nth-child(even){
-    background-color: #fff;
+/* ---- YUI TAB BASE ---- */
+ .yui-navset .yui-nav a,.yui-navset .yui-navset-top .yui-nav a{background-color:inherit;background-image:inherit}.yui-navset .yui-nav a:hover,.yui-navset .yui-nav a:focus{background:inherit;text-decoration:inherit}.yui-navset .yui-nav .selected a,.yui-navset .yui-nav .selected a:focus,.yui-navset .yui-nav .selected a:hover{color:inherit;background:inherit}.yui-navset .yui-nav,.yui-navset .yui-navset-top .yui-nav{border-color:inherit}.yui-navset li{line-height:inherit}
+ 
+/* ---- YUI TAB CUSTOMIZATION ----
+ * Adapted From &#39;Black Highlighter Theme&#39;
+**/
+ .yui-navset *{
+     transition:
+          color 80ms cubic-bezier(.4, 0, .2, 1),
+          background-color 80ms cubic-bezier(.4, 0, .2, 1);
 }
-</code></pre>
+ .yui-navset .yui-nav,
+ .yui-navset .yui-navset-top .yui-nav{
+     display: flex;
+     flex-wrap: wrap;
+     width: calc(100% - .125rem);
+     margin: 0 auto;
+     border-color: var(--dark-blue);
+     box-shadow: 0 calc(.0625rem * 5) 0 0 var(--very-dark-blue);
+}
+ .yui-navset .yui-nav li a,
+ .yui-navset-top .yui-nav li a,
+ .yui-navset-bottom .yui-nav li a{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+}
+ .yui-navset .yui-nav a,
+/* ---- Link Modifier ---- */
+ .yui-navset .yui-navset-top .yui-nav a{
+     color: var(--very-dark-grey);
+    /* ---- Tab Background Colour | [UNSELECTED] ---- */
+     background-color: var(--very-light-grey);
+    /* -------- */
+     background-image: none;
+     border: unset;
+}
+ .yui-navset .yui-nav a:hover,
+ .yui-navset .yui-nav a:focus{
+     color: var(--very-light-grey);
+    /* ---- Tab Background Colour | [HOVER] ---- */
+     background: var(--dark-moderate-blue);
+    /* -------- */
+}
+ .yui-navset .yui-nav li,
+/* ---- Listitem Modifier ---- */
+ .yui-navset .yui-navset-top .yui-nav li{
+     position: relative;
+     display: flex;
+     flex-grow: 2;
+     max-width: 100%;
+     margin: 0;
+     padding: 0;
+     background-color: var(--dark-blue);
+     box-shadow: 0 0 0 .0625rem var(--very-dark-blue);
+}
+ .yui-navset .yui-nav li em{
+     border: unset;
+}
+ .yui-navset .yui-nav a em,
+ .yui-navset .yui-navset-top .yui-nav a em{
+     padding: .35em .75em;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
+}
+ .yui-navset .yui-nav .selected,
+/* ---- Selection Modifier ---- */
+ .yui-navset .yui-navset-top .yui-nav .selected{
+     flex-grow: 2;
+     margin: 0;
+     padding: 0;
+     color: var(--very-light-grey);
+    /* ---- Tab Background Colour | [SELECTED] ---- */
+     background: var(--dark-blue);
+    /* -------- */
+}
+ .yui-navset .yui-nav .selected a,
+ .yui-navset .yui-nav .selected a em{
+     border: var(--very-dark-blue);
+}
+ .yui-navset .yui-nav .selected a{
+     width: 100%;
+     color: var(--very-light-grey) !important;
+     background-image: none;
+}
+ .yui-navset .yui-nav .selected a:focus,
+ .yui-navset .yui-nav .selected a:active{
+     color: var(--very-light-grey);
+     background-color: var(--dark-blue);
+}
+ .yui-navset .yui-nav .selected a:hover{
+     cursor: default;
+}
+ .yui-navset .yui-content{
+    /* ---- Content Background ---- */
+     background-color: var(--very-pale-blue);
+    /* -------- */
+}
+ .yui-navset .yui-content,
+ .yui-navset .yui-navset-top .yui-content{
+     padding: .5em;
+     border-color: var(--dark-grayish-blue);
+}</code></pre>
         </li>
       
     </ul>
@@ -133,7 +248,11 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>text-align: center; color: #0e7dcd;</code></pre>
+          <pre><code>display: none;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align: center; color: hsl(205, 87%, 43%);</code></pre>
         </li>
       
         <li>
@@ -141,33 +260,42 @@
         </li>
       
         <li>
-          <pre><code>margin:0px; margin-block-start:0em;</code></pre>
+          <pre><code>margin: 0; margin-block-start: 0;</code></pre>
         </li>
       
         <li>
-          <pre><code>vertical-align: top; padding: 5px 10px; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #eeeee0;</code></pre>
+          <pre><code>margin-bottom: 1.5rem;</code></pre>
         </li>
       
         <li>
-          <pre><code>vertical-align: top; padding: 5px 10px; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #eeeee0;</code></pre>
+          <pre><code>border: solid 1px #999; background: lightblue; padding: 5px; margin-bottom: 10px;</code></pre>
         </li>
       
         <li>
-          <pre><code>vertical-align: top; padding: 5px 10px; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #eeeee0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; padding: 5px 10px; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #eeeee0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>border-width:0</code></pre>
+          <pre><code>font-size: 80%; text-align: center;</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar" target="_blank"><code>:scp-wiki:component:toggle-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
       
         <li>
   
@@ -181,6 +309,23 @@
     
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/theme:spc.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
   </span>
 
   
@@ -224,10 +369,6 @@
         </li>
       
         <li>
-          <pre><code>left-column</code></pre>
-        </li>
-      
-        <li>
           <pre><code>panel-heading</code></pre>
         </li>
       
@@ -249,70 +390,6 @@
       
         <li>
           <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-heading</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-body</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>feature-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>feature-subtitle</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>feature-block</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>left-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-heading</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-body</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>feature-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>feature-subtitle</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
         </li>
       
         <li>
@@ -356,7 +433,15 @@
         </li>
       
         <li>
-          <pre><code>unmargined</code></pre>
+          <pre><code>news-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>news-content</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>alternate</code></pre>
         </li>
       
         <li>
@@ -372,10 +457,6 @@
         </li>
       
         <li>
-          <pre><code>unmargined</code></pre>
-        </li>
-      
-        <li>
           <pre><code>news-title</code></pre>
         </li>
       
@@ -388,191 +469,11 @@
         </li>
       
         <li>
-          <pre><code>unmargined</code></pre>
-        </li>
-      
-        <li>
           <pre><code>news-title</code></pre>
         </li>
       
         <li>
           <pre><code>news-content</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>alternate</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>unmargined</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>news-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>news-content</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-block</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-heading</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-body</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-entry</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table-alt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-description</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-block</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-heading</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-body</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-entry</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table-alt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-description</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-block</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-heading</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-body</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-entry</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table-alt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-description</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-block</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-heading</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-body</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-entry</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table-alt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-description</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>spc-page-footer</code></pre>
         </li>
       
         <li>
@@ -582,426 +483,606 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[=]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:toggle-sidebar]]
+[[include :scp-wiki:theme:spc]]
+
+[[module CSS]]
+/* ---- VARIABLES ---- */
+:root{
+    /* Tabview Content Background */
+     --very-pale-blue: hsl(205, 100%, 97%);
+    /* [SELECTED] */
+     --dark-blue: hsl(205, 44%, 48%);
+    /* [HOVER] */
+     --dark-moderate-blue: hsl(205, 49%, 32%);
+
+    /* Border Type 1 */
+     --dark-grayish-blue: hsl(205, 3%, 52%);
+    /* Border Type 2 */
+     --very-dark-blue: hsl(205, 94%, 20%);
+
+    /* [SELECTED] + [HOVER] text color */
+     --very-light-grey: hsl(0, 0%, 95%);
+    /* [UNSELECTED] text color */
+     --very-dark-grey: hsl(0, 0%, 05%);
+}
+
+/* ---- HEADER ---- */
+ #page-title{
+     display: none;
+}
+ .page-rate-widget-box{
+     margin-right: 0;
+}
+ a, body, span{
+     word-break: unset;
+}
+
+/* ---- FEATURES | [LISTPAGES] ---- */
+ .list-pages-item p{
+     margin-block-start: 0 !important;
+}
+
+/* ---- FEATURES | [TOP ROW] ---- */
+ .feature-block{
+     margin: 1rem auto;
+     display: flex;
+     flex-wrap: wrap;
+     grid-gap: 1.4rem;
+     align-items: stretch;
+}
+ .content-panel{
+     border: solid 1px var(--dark-grayish-blue);
+     background-color: var(--dark-blue);
+}
+.content-panel .panel-body{
+    background: var(--very-pale-blue) url(http://www.scp-wiki.net/local--files/component:theme/panel-bg-gradient-reverse.png) bottom repeat-x;
+}
+ .content-panel .panel-footer{
+     color: var(--very-pale-blue);
+}
+ .feature-block .content-panel{
+     flex-basis: 17.5rem;
+     flex-grow: 1;
+     margin: 0 auto;
+     display: flex;
+     flex-direction: column;
+}
+ .feature-block .content-panel .panel-body{
+    /* To make the content height take up all available space */
+     flex-grow: 1;
+     padding: .125rem 1rem;
+     overflow-y: hidden;
+}
+ .feature-block .feature-title{
+     margin: .5em 0 .4em;
+     padding: 0;
+     letter-spacing: 1px;
+     font-size: 120%;
+     font-weight: bold;
+}
+ .feature-block .feature-subtitle{
+     font-size: 90%;
+     margin-top: -1em;
+     display: block;
+}
+
+/* ---- FEATURES | [SECOND ROW] ---- */
+ .news-block{
+     margin: 1.5rem auto;
+}
+ .news-block .panel-body{
+     padding: 0;
+}
+ .news-block .panel-body .alternate{
+     padding: 5px 10px;
+}
+ .news-block .news-title{
+     font-weight: bold;
+     font-size: 110%;
+     margin-bottom: 5px;
+     color: hsl(205, 33%, 30%);
+}
+ .news-block .news-content{
+     margin: 5px 0;
+}
+ .news-block .news-title &gt; p,
+ .news-block .news-content &gt; p{
+     margin: 0 !important;
+     margin-block-start: 0 !important;
+     margin-block-end: 0 !important;
+}
+
+/* ---- YUI TAB BASE ---- */
+ .yui-navset .yui-nav a,.yui-navset .yui-navset-top .yui-nav a{background-color:inherit;background-image:inherit}.yui-navset .yui-nav a:hover,.yui-navset .yui-nav a:focus{background:inherit;text-decoration:inherit}.yui-navset .yui-nav .selected a,.yui-navset .yui-nav .selected a:focus,.yui-navset .yui-nav .selected a:hover{color:inherit;background:inherit}.yui-navset .yui-nav,.yui-navset .yui-navset-top .yui-nav{border-color:inherit}.yui-navset li{line-height:inherit}
+ 
+/* ---- YUI TAB CUSTOMIZATION ----
+ * Adapted From &#39;Black Highlighter Theme&#39;
+**/
+ .yui-navset *{
+     transition:
+          color 80ms cubic-bezier(.4, 0, .2, 1),
+          background-color 80ms cubic-bezier(.4, 0, .2, 1);
+}
+ .yui-navset .yui-nav,
+ .yui-navset .yui-navset-top .yui-nav{
+     display: flex;
+     flex-wrap: wrap;
+     width: calc(100% - .125rem);
+     margin: 0 auto;
+     border-color: var(--dark-blue);
+     box-shadow: 0 calc(.0625rem * 5) 0 0 var(--very-dark-blue);
+}
+ .yui-navset .yui-nav li a,
+ .yui-navset-top .yui-nav li a,
+ .yui-navset-bottom .yui-nav li a{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+}
+ .yui-navset .yui-nav a,
+/* ---- Link Modifier ---- */
+ .yui-navset .yui-navset-top .yui-nav a{
+     color: var(--very-dark-grey);
+    /* ---- Tab Background Colour | [UNSELECTED] ---- */
+     background-color: var(--very-light-grey);
+    /* -------- */
+     background-image: none;
+     border: unset;
+}
+ .yui-navset .yui-nav a:hover,
+ .yui-navset .yui-nav a:focus{
+     color: var(--very-light-grey);
+    /* ---- Tab Background Colour | [HOVER] ---- */
+     background: var(--dark-moderate-blue);
+    /* -------- */
+}
+ .yui-navset .yui-nav li,
+/* ---- Listitem Modifier ---- */
+ .yui-navset .yui-navset-top .yui-nav li{
+     position: relative;
+     display: flex;
+     flex-grow: 2;
+     max-width: 100%;
+     margin: 0;
+     padding: 0;
+     background-color: var(--dark-blue);
+     box-shadow: 0 0 0 .0625rem var(--very-dark-blue);
+}
+ .yui-navset .yui-nav li em{
+     border: unset;
+}
+ .yui-navset .yui-nav a em,
+ .yui-navset .yui-navset-top .yui-nav a em{
+     padding: .35em .75em;
+     text-overflow: ellipsis;
+     overflow: hidden;
+     white-space: nowrap;
+}
+ .yui-navset .yui-nav .selected,
+/* ---- Selection Modifier ---- */
+ .yui-navset .yui-navset-top .yui-nav .selected{
+     flex-grow: 2;
+     margin: 0;
+     padding: 0;
+     color: var(--very-light-grey);
+    /* ---- Tab Background Colour | [SELECTED] ---- */
+     background: var(--dark-blue);
+    /* -------- */
+}
+ .yui-navset .yui-nav .selected a,
+ .yui-navset .yui-nav .selected a em{
+     border: var(--very-dark-blue);
+}
+ .yui-navset .yui-nav .selected a{
+     width: 100%;
+     color: var(--very-light-grey) !important;
+     background-image: none;
+}
+ .yui-navset .yui-nav .selected a:focus,
+ .yui-navset .yui-nav .selected a:active{
+     color: var(--very-light-grey);
+     background-color: var(--dark-blue);
+}
+ .yui-navset .yui-nav .selected a:hover{
+     cursor: default;
+}
+ .yui-navset .yui-content{
+    /* ---- Content Background ---- */
+     background-color: var(--very-pale-blue);
+    /* -------- */
+}
+ .yui-navset .yui-content,
+ .yui-navset .yui-navset-top .yui-content{
+     padding: .5em;
+     border-color: var(--dark-grayish-blue);
+}
+[[/module]]
+
 [!-- This image acts as a thumbnail. --]
-[[image https://scp-wiki.wdfiles.com/local--files/main/logo_250.png width=&#34;0&#34; height=&#34;0&#34;]]
-[[/=]]
+[[div style=&#34;display: none;&#34;]]
+[[include component:image-block
+|name=https://scp-wiki.wdfiles.com/local--files/spc-001/SPCLogo50.png
+|caption=.]]
+[[/div]]
 
 [!-- This is the header --]
-[[div style=&#34;text-align: center; color: #0e7dcd;&#34;]]
-[[div class=&#34;unmargined&#34;]]
-WARNING: THE SHARK PUNCHING CENTER DATABASE IS 
-[[/div]]
-[[div class=&#34;unmargined&#34; style=&#34;font-size: 400%; font-weight: bold; margin: 2px 0 5px;&#34;]]
-CLASSIFIED
-[[/div]]
-[[div class=&#34;unmargined&#34;]]
-ACCESS BY SELACHIAN SYMPATHIZERS IS STRICTLY PROHIBITED
-PERPETRATORS WILL BE PUMMELED, TICKLED, AND EATEN
-[[/div]]
+
+[[div style=&#34;text-align: center; color: hsl(205, 87%, 43%);&#34;]]
+    [[div class=&#34;unmargined&#34;]]
+        WARNING: THE SHARK PUNCHING CENTER DATABASE IS
+    [[/div]]
+    [[div class=&#34;unmargined&#34; style=&#34;font-size: 400%; font-weight: bold; margin: 2px 0 5px;&#34;]]
+        CLASSIFIED
+    [[/div]]
+    [[div class=&#34;unmargined&#34;]]
+        ACCESS BY SELACHIAN SYMPATHIZERS IS STRICTLY PROHIBITED
+        PERPETRATORS WILL BE PUMMELED, TICKLED, AND EATEN
+    [[/div]]
 [[/div]]
 
 [[div class=&#34;content-panel centered standalone&#34;]]
-
-
 [[/div]]
 
+~~~~
 
 [!-- Top row of featured articles --]
 
 [[div class=&#34;feature-block&#34;]]
 [!-- Top left feature --]
-    [[div class=&#34;content-panel left-column&#34;]]
+
+    [[div class=&#34;content-panel&#34;]]
         [[div class=&#34;panel-heading&#34;]]
             Featured SPC
         [[/div]]
+
         [[div class=&#34;panel-body&#34;]]
 [[module listpages tags=&#34;_shark-punching-center -tale&#34; limit=&#34;1&#34; order=&#34;random&#34;]]
-           [[div class=&#34;feature-title&#34;]]
+            [[div class=&#34;feature-title&#34;]]
                 %%title_linked%%
             [[/div]]
             [[div class=&#34;feature-subtitle&#34;]]
                 by %%created_by_linked%%
             [[/div]]
-            //%%preview(150)%%//
+
+            //%%preview(280)%%//
+
 [[/module]]
         [[/div]]
+
         [[div class=&#34;panel-footer&#34;]]
-Featured SPC Archive
-[[/div]]
-[[/div]]
-[!-- Top right feature --]
-    [[div class=&#34;content-panel right-column&#34;]]
-        [[div class=&#34;panel-heading&#34;]]
-            Featured Tale
+            Featured SPC Archive
         [[/div]]
+    [[/div]]
+
+[!-- Top right feature --]
+
+    [[div class=&#34;content-panel&#34;]]
+        [[div class=&#34;panel-heading&#34;]]
+            Featured Shark Tale
+        [[/div]]
+
         [[div class=&#34;panel-body&#34;]]
 [[module listpages tags=&#34;shark-punching-center +tale&#34; limit=&#34;1&#34; order=&#34;random&#34;]]
-           [[div class=&#34;feature-title&#34;]]
+            [[div class=&#34;feature-title&#34;]]
                 %%title_linked%%
             [[/div]]
             [[div class=&#34;feature-subtitle&#34;]]
                 by %%created_by_linked%%
             [[/div]]
-            //%%preview(150)%%//
+
+            //%%preview(280)%%//
+
 [[/module]]
+        [[/div]]
+
+        [[div class=&#34;panel-footer&#34;]]
+            Featured Shark Tale Archive
+        [[/div]]
+    [[/div]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-Featured Tale Archive
-[[/div]]
-[[/div]]
-[[/div]]
+
+~~~~
 
 [!-- Second row of features --]
-[[div class=&#34;feature-block&#34;]]
-
-[[div class=&#34;content-panel left-column&#34;]]
-[[div class=&#34;panel-heading&#34;]]
-Featured GoI Format document
-[[/div]]
-[[div class=&#34;panel-body&#34;]]
-[[module listpages tags=&#34;scp goi-format +shark-punching-center -_shark-punching-center&#34; limit=&#34;1&#34; order=&#34;random&#34;]]
-           [[div class=&#34;feature-title&#34;]]
-                %%title_linked%%
-            [[/div]]
-            [[div class=&#34;feature-subtitle&#34;]]
-                by %%created_by_linked%%
-            [[/div]]
-            //%%preview(150)%%//
-[[/module]]
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-Featured GoI Format Archive
-[[/div]]
-[[/div]]
-
-[[div class=&#34;content-panel right-column&#34;]]
-[[div class=&#34;panel-heading&#34;]]
-The Best SPC Page of All Time
-[[/div]]
-[[div class=&#34;panel-body&#34;]]
-[[module listpages tags=&#34;shark-punching-center&#34; limit=&#34;1&#34; order=&#34;random&#34;]]
-           [[div class=&#34;feature-title&#34;]]
-                %%title_linked%%
-            [[/div]]
-            [[div class=&#34;feature-subtitle&#34;]]
-                by %%created_by_linked%%
-            [[/div]]
-            //%%preview(150)%%//
-[[/module]]
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-Event Featured Archive
-[[/div]]
-[[/div]]
-[[/div]]
 
 [[div class=&#34;news-block content-panel&#34;]]
-[[div class=&#34;panel-heading&#34;]]
-News
-[[/div]]
-[[div class=&#34;panel-body&#34;]]
 
-[!-- PLEASE LIMIT THE PAGE TO FIVE NEWS ARTICLES --]
-[!-- Pretty sure the five-page limit was specifically for the old template. -Quik --]
-[!-- Troy was here. Moose is deadly. Zyn does not approve of calling others ugly. Esko is a bear. Light&#39;s just radiant. Roget is the actual worst. Drew is the Bear Overlord. A Kaktus is a desert plant. Lurkd is hiding under your chair. Decibelle is a princess~ Silber is better than bronze. ARD is bizarre.--]
+    [[div class=&#34;panel-heading&#34;]]
+        News
+    [[/div]]
 
-[[div class=&#34;alternate unmargined&#34;]]
-[[div class=&#34;news-title&#34;]]
-[[module ListPages limit=&#34;1&#34; category=&#34;*&#34; order=&#34;updated_at desc&#34; style=&#34;margin:0px; margin-block-start:0em;&#34;]]
-%%updated_at|%B %d, %Y%%
+    [[div class=&#34;panel-body&#34;]]
+
+        [[div class=&#34;alternate&#34;]]
+            [[div class=&#34;news-title&#34;]]
+[[module ListPages limit=&#34;1&#34; category=&#34;*&#34; order=&#34;updated_at desc&#34; style=&#34;margin: 0; margin-block-start: 0;&#34;]]
+                %%updated_at|%B %d, %Y%%
 [[/module]]
-[[/div]]
-[[div class=&#34;news-content&#34;]]
+            [[/div]]
+            [[div class=&#34;news-content&#34;]]
+A decades-long internal investigation has confirmed longstanding suspicions that sharks are still, in fact, super awful.
+            [[/div]]
+        [[/div]]
 
-A decades-long internal investigation has confirmed longstanding suspicions that sharks are still, in fact, super awful. 
-
-[[/div]]
-[[/div]]
-
-[[div class=&#34;alternate unmargined&#34;]]
-[[div class=&#34;news-title&#34;]]
-June 23, 1999
-[[/div]]
-[[div class=&#34;news-content&#34;]]
-
+        [[div class=&#34;alternate&#34;]]
+            [[div class=&#34;news-title&#34;]]
+                June 23, 1999
+            [[/div]]
+            [[div class=&#34;news-content&#34;]]
 Transdimensional data corruption has caused numerous unwanted files to manifest on SPC servers. The source of the intrusion appears to be the &#34;Secure Contain Protect Foundation&#34;, a parallel entity from an alternate plane of existence, probably. Despite the inherently absurd nature of the SCP, they seem to consider //us// to be a joke. I&#39;d like to see them try telling that to my //nine dead grandmothers//.
+            [[/div]]
+        [[/div]]
 
-[[/div]]
-[[/div]]
+        [[div class=&#34;alternate&#34;]]
+            [[div class=&#34;news-title&#34;]]
+                March 3, 1942
+            [[/div]]
+            [[div class=&#34;news-content&#34;]]
+Gee, this sure is a //lot// of war right here.
+            [[/div]]
+        [[/div]]
 
-[[div class=&#34;alternate unmargined&#34;]]
-[[div class=&#34;news-title&#34;]]
-March 3, 1942
-[[/div]]
-[[div class=&#34;news-content&#34;]]
-
-Gee, this sure is a //lot// of war right here. 
-
-[[/div]]
-[[/div]]
-
-
-[[div class=&#34;alternate unmargined&#34;]]
-[[div class=&#34;news-title&#34;]]
-October 12, 1893
-[[/div]]
-[[div class=&#34;news-content&#34;]]
-
-__BREAKING NEWS!__ Empirical evidence has been uncovered which irrefutably proves that sharks are super awful. Personnel are advised to endouble their fisticuff engagement as they sally forth against the selachian scoundrels. Show &#39;em what for, chaps! Ods bodkins and sakes alive! 
-
-[[/div]]
-[[/div]]
+        [[div class=&#34;alternate&#34;]]
+            [[div class=&#34;news-title&#34;]]
+                October 12, 1893
+            [[/div]]
+            [[div class=&#34;news-content&#34;]]
+__BREAKING NEWS!__ Empirical evidence has been uncovered which irrefutably proves that sharks are super awful. Personnel are advised to endouble their fisticuff engagement as they sally forth against the selachian scoundrels. Show &#39;em what for, chaps! Ods bodkins and sakes alive!
+            [[/div]]
+        [[/div]]
 
 
+    [[/div]]
 
+    [[div class=&#34;panel-footer&#34;]]
+        Archived News
+    [[/div]]
 
-
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-Archived News
-[[/div]]
 [[/div]]
 
-----
+[[tabview]]
 
-[[div class=&#34;spc-page-block content-panel&#34;]]
-[[div class=&#34;panel-heading&#34;]]
-Documents
-[[/div]]
-[[div class=&#34;panel-body&#34;]]
-[[div class=&#34;spc-page-entry&#34;]]
-[[module listpages tags=&#34;_shark-punching-center -tale -joke -scp -hub&#34; perPage=&#34;5&#34; order=&#34;created_at desc&#34; prependLine=&#34;[[table]]&#34; appendLine=&#34;[[/table]]&#34; separate=&#34;false&#34;]]
-[[row class=&#34;table-alt&#34;]][[cell style=&#34;vertical-align: top; padding: 5px 10px; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #eeeee0;&#34;]]
-[[div class=&#34;spc-page-title&#34;]]
-%%title_linked%%
-[[/div]]
-[[div class=&#34;spc-page-description&#34;]]
-%%preview(300)%%
-[[/div]]
-[[div class=&#34;spc-page-footer&#34;]]
-Author(s) -- %%created_by_linked%%
-[[/div]]
-[[/cell]][[/row]]
+[[tab SPC Files]]
+[[module ListPages order=&#34;title&#34; limit=&#34;100&#34; tags=&#34;+_shark-punching-center -tale -joke -scp -hub&#34; separate=&#34;no&#34; perPage=&#34;100&#34;]]
+* %%title_linked%%
 [[/module]]
-[[/div]]
+[[/tab]]
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-  [!-- Placeholder --]
-[[/div]]
-[[/div]]
-
-[[div class=&#34;spc-page-block content-panel&#34;]]
-[[div class=&#34;panel-heading&#34;]]
-Tales
-[[/div]]
-[[div class=&#34;panel-body&#34;]]
-
-[[div class=&#34;spc-page-entry&#34;]]
-[[module listpages tags=&#34;shark-punching-center +tale -scp -hub -joke&#34; perPage=&#34;5&#34; order=&#34;created_at desc&#34; prependLine=&#34;[[table]]&#34; appendLine=&#34;[[/table]]&#34; separate=&#34;false&#34;]]
-[[row class=&#34;table-alt&#34;]][[cell style=&#34;vertical-align: top; padding: 5px 10px; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #eeeee0;&#34;]]
-[[div class=&#34;spc-page-title&#34;]]
-%%title_linked%%
-[[/div]]
-[[div class=&#34;spc-page-description&#34;]]
-%%preview(300)%%
-[[/div]]
-[[div class=&#34;spc-page-footer&#34;]]
-Author(s) -- %%created_by_linked%%
-[[/div]]
-[[/cell]][[/row]]
+[[tab Tales of Glorious Pugilism]]
+[[module ListPages order=&#34;title&#34; limit=&#34;100&#34; tags=&#34;shark-punching-center +tale -scp -hub -joke&#34; separate=&#34;no&#34; perPage=&#34;100&#34;]]
+* %%title_linked%%
 [[/module]]
-[[/div]]
+[[/tab]]
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-  [!-- Placeholder --]
-[[/div]]
-[[/div]]
-
-[[div class=&#34;spc-page-block content-panel&#34;]]
-[[div class=&#34;panel-heading&#34;]]
-Foundation Universe
-[[/div]]
-[[div class=&#34;panel-body&#34;]]
-
-[[div class=&#34;spc-page-entry&#34;]]
-[[module listpages tags=&#34;scp goi-format +shark-punching-center -_shark-punching-center -joke -hub&#34; perPage=&#34;5&#34; order=&#34;created_at desc&#34; prependLine=&#34;[[table]]&#34; appendLine=&#34;[[/table]]&#34; separate=&#34;false&#34;]]
-[[row class=&#34;table-alt&#34;]][[cell style=&#34;vertical-align: top; padding: 5px 10px; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #eeeee0;&#34;]]
-[[div class=&#34;spc-page-title&#34;]]
-%%title_linked%%
-[[/div]]
-[[div class=&#34;spc-page-description&#34;]]
-%%preview(300)%%
-[[/div]]
-[[div class=&#34;spc-page-footer&#34;]]
-Author(s) -- %%created_by_linked%%
-[[/div]]
-[[/cell]][[/row]]
+[[tab Extradimensional Data Corruption]]
+[[module ListPages order=&#34;title&#34; limit=&#34;100&#34; tags=&#34;scp goi-format +shark-punching-center -_shark-punching-center -joke -hub&#34; separate=&#34;no&#34; perPage=&#34;100&#34;]]
+* %%title_linked%%
 [[/module]]
-[[/div]]
+[[/tab]]
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-  [!-- Placeholder --]
-[[/div]]
-[[/div]]
-
-
-[[div class=&#34;spc-page-block content-panel&#34;]]
-[[div class=&#34;panel-heading&#34;]]
-Jokes
-[[/div]]
-[[div class=&#34;panel-body&#34;]]
-
-[[div class=&#34;spc-page-entry&#34;]]
-[[module listpages tags=&#34;+shark-punching-center +joke -tale&#34; perPage=&#34;5&#34; order=&#34;created_at desc&#34; prependLine=&#34;[[table]]&#34; appendLine=&#34;[[/table]]&#34; separate=&#34;false&#34;]]
-[[row class=&#34;table-alt&#34;]][[cell style=&#34;vertical-align: top; padding: 5px 10px; border-style: solid; border-width: 0px 0px 1px 0px; border-color: #eeeee0;&#34;]]
-[[div class=&#34;spc-page-title&#34;]]
-%%title_linked%%
-[[/div]]
-[[div class=&#34;spc-page-description&#34;]]
-%%preview(300)%%
-[[/div]]
-[[div class=&#34;spc-page-footer&#34;]]
-Author(s) -- %%created_by_linked%%
-[[/div]]
-[[/cell]][[/row]]
+[[tab Mockery.]]
+[[module ListPages order=&#34;title&#34; limit=&#34;100&#34; tags=&#34;+shark-punching-center +joke -tale&#34; separate=&#34;no&#34; perPage=&#34;100&#34;]]
+* %%title_linked%%
 [[/module]]
+[[/tab]]
+
+[[tab Okay, but seriously though—What is the SPC?]]
+The Shark Punching Center, the Selachiosk Pungix Combin, the Centre -- whatever they&#39;re referred to as, they&#39;re a GoI that punches sharks that was born from the typo of SPC.
+
+Much like the SCP Foundation itself, the SPC has no one single canon, but rather a series of loosely connected documents. All of them have one thing in common: a monomania for punching sharks. Beyond that, go wild. Some SPCs are set in the Foundationverse itself. Some are set in a full-on alternate universe with a full implied alternate history.
+
+There are three main &#39;philosophies&#39; when it comes to the SPC, with significant overlap.
+
+The earliest approach, and still the most common, is jokes about shark punching. They&#39;re just a group of random people with no real characterization other than punching sharks. I don&#39;t have much to say about this beyond that. If you need a shark punched or a random act of violence against something or someone that resembles a shark, use the SPC. No one will question it. It&#39;s time tested, and people have done it with great success before.
+
+The next approach is a focus on the sheer absurdity of the existence of people whose life&#39;s work is to punch sharks. The prime example of this would be [[*user S D Locke]]&#39;s [[[SPC-2935-J]]]. This is pushing the idea to the extreme. These people will do //anything// to punch sharks, and the multiverse is more than willing to grant them the opportunity to do so. An alternate approach is [[[Critter Profile: Wobbles!]]], where an agent of the SPC infiltrates a wildlife shelter. It&#39;s ridiculous and unexpected, as opposed to mere violence. And of course, [[*user PeppersGhost]]&#39;s SPC-001 proposal, which answers the question of what happens when there are no more sharks to punch.
+
+The final approach is jokes about shark punching but as a backdrop for cosmic horror. This approach originated with Djoric in [[[SCP-1449]]], where the existence of the SPC arose from the death of an incredibly important cosmic shark and so reality became horrifically wrong.
+
+This last approach is what [[*User MrWrong]] embraced and revived when he created the SPC GoI format for [[[SPC-2615]]] and [[[SPC-2000]]], and it was similarly adopted by [[*user sirpudding]] in [[[SPC-140]]] and [[[SPC-682]]] and [[*user LORDXVNV]] in [[[SPC-1258]]] and [[[SPC-1981]]]. These articles take a darker view of the SPC--that they don&#39;t punch sharks because they //want// to, but because they //have// to. In this iteration, it&#39;s usually referred to as the Centre. (They don&#39;t like to say &#34;shark&#34;.)
+
+[[[SPC-507]]] embraces the alternate worldbuilding set up in [[[SPC-140]]] and [[[SPC-1258]]], while [[[SPC-3733]]] embraces the undertone of horror. These are people in a bizarre world, one that compels them to punch sharks.
+
+It sounds absurd, and it is.
+
+But imagine if you knew, with 100% certainty, that your life&#39;s sole purpose was to punch sharks.
+
+You would laugh so you would not cry.
+[[/tab]]
+
+[[/tabview]]
+
+[[div style=&#34;margin-bottom: 1.5rem;&#34;]]
 [[/div]]
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-  [!-- Placeholder --]
-[[/div]]
-[[/div]]
+[[tabview]]
 
------
-[[size 90%]]The SPC theme was created by PeppersGhost based on **Sigma-9** by [[user Aelanna]], 
-and used under the Creative Commons Attribution-SharkAlike 3.0 license ([[[https://creativecommons.org/licenses/by-sa/3.0/ |CC-BY-SA]]]).
-[[/size]]
-[[html]]
-&lt;a rel=&#34;license&#34; href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;&lt;img alt=&#34;Creative Commons License&#34; style=&#34;border-width:0&#34; src=&#34;https://i.creativecommons.org/l/by-sa/3.0/88x31.png&#34; /&gt;&lt;/a&gt;&lt;/a&gt;
-[[/html]]
-@@@@
-[[&gt;]]
-[[module Rate]]
-[[/&gt;]]
-@@@@
-@@@@
+[[tab How to Write an SPC Format]]
+If you think you have a hilarious joke about punching sharks and you want to put it into SPC form, feel free to ignore all the below.
+
+As MrWrong (creator of the SPC GoI format) put it, an SPC is a &#34;comic book elseworlds&#34; of an SCP mainlist file. An SPC format is meant to outline the capabilities and effectiveness of any given project, anomalous or combined or otherwise, in punching sharks. Instead of //containment//, the format features the //weaponization// of an SCP with the goal of punching sharks or making the punching of sharks easier or more convenient.
+
+I believe a core element SPC is humor. All SPC articles need to be at least a little bit funny. The entire GoI arises from a typo. Losing sight of that weakens the point of using the GoI. At the same time, the best SPCs, in my opinion, go beyond the mere joke of &#39;haha punch shark&#39;. Look at [[[SPC-140]]], for example. These people want to punch sharks so desperately that they&#39;re willing to risk the Daevite Empire taking over the world in exchange for better shark punching techniques.
+
+[[[SPC-2000]]] demonstrates the contrast of this approach. The grand reset button of [[[SCP-2000]]] is instead reduced to a machine for making more sharks, so there will always be sharks to punch. It&#39;s dry anticlimax. [[[SPC-993]]] has Bobble the Clown turned into Bobble the Clown Shark, going from a villain to a victim in the same breath.
+
+What these 3 things have in common is //contrast//. They show just how stark the difference between the Foundation and the Shark Punching Centre&#39;s approach to anomalies/&#39;Deviant&#39; technologies/techniques is.
+
+An SPC in this mold should be funny, but that humor should come as much from the subversion of expectations as the imagery of punching a shark.
+[[/tab]]
+
+[[tab Stock Characters and GoIs]]
+As I&#39;ve stressed, the SPC has no real canon, or even several incredibly contradictory canons. However, way back when MrWrong, sirpudding, and I (LORDXVNV) had a dream of a single unified cosmic horror SPC, I threw together this list of alternate universe GoIs for the universe of the SPC, most of which were created in [[[SPC-1258]]]. The star of the show, of course, is the Sharkic Empire, which was created in [[[SPC-140]]].
+
+The most important crucial parts of SPC lore in this list are the Sharkic Kingdoms, the Liberated Cetacean Union, and Marshall, Carter, and Shark. The rest have at most one-off mentions.
+
+++ Sharkicism
+
+Sharkicism as a whole can be divided into two main groups: Abyssal Sharkicism and Surface Sharkicism. While the two share a name and a theology, only Abyssal Sharkicism has any real power.
+
+Sharkicists are dedicated to the direct worship of SPC-001. They originated in the now-sunken city-state of Adytum.
+
+**Surface Sharkicism**
+Sharkicists who live primarily on dry land have almost nothing in common with their abyssal cousins. Many of them are essentially baseline humans who find the theology or aesthetics of the Abyssal Sharkicists appealing.
+
+**Abyssal Sharkicism**
+Adherents to Abyssal Sharkicism control over 90% of the world&#39;s oceans, and have done so since approximately 1500 BCE. Abyssal Sharkicists are almost universally CYAN ABYSS entities -- bizarre human-shark hybrids -- though some individuals have been observed to have appearances closer to baseline humanity. Many Abyssal Sharkicists incorporate biology from other marine life, such as octopi, anglerfish, and other terrors of the deep.
+
+While Abyssal Sharkicists as a whole possess a shared goal, Sharkic substates have formed over the course of the centuries.
+
+Known CYAN ABYSS substates and their locations are as follows:
+
+* Atlantos, Western Atlantic Ocean
+* Salmonari Kingdoms of Pannonia, Eastern Europe
+* Varuna State, Indian Ocean
+* Confederation of Adytum&#39;s Lakes, Lakes of Central Asia
+
+**The Marianas Treaty**
+The Marianas Treaty of 1968 was established at the end of the Second Benthic War, and dictates the terms of interaction between Abyssal Sharkic societies and terrestrial societies. Roughly 95% of all terrestrial nation-states and an unquantified majority of Sharkic states are signatories as well. The Centre is not a signatory of the treaty and as such does not need to adhere to its points; however, several other NGOs with a significant oceanic presence accepted the terms.
+
+The most significant points of the treaty are as follows.
+
+* A ban on baseline human military and scientific use of deep-ocean waters, defined as 100 km beyond the end of the continental shelf, unless previously approved by the CYAN ABYSS government of the relevant area. Recreational expeditions are exempted.
+* A cessation of CYAN ABYSS attacks and abductions from signatory terrestrial states. Vessels in deep-ocean waters are not protected.
+ * License for Navigations Unseen (NU) inspectors to enter Sharkic waters to ensure adherence to the above.
+* A CYAN ABYSS representative at any organization with an oceanic presence, possessing full voting rights and veto power over any action involving naval deployment.
+
+++ Liberated Cetacean Union
+
+See [[[SPC-1258]]]. Basically, they&#39;re dolphin and whale people. Many of them have joined the SPC as full on agents, as seen in [[[SPC-507]]] and [[[SPC-179]]].
+
+++ Marshal, Carter, and Shark Ltd
+
+Marshall, Carter, and Dark, but since this is the SPC verse, Mr. Dark is an evil shark from beyond nature instead of being an evil humanoid beyond nature. They don&#39;t show up a lot, but it&#39;s fairly consistent that Mr. Shark was overthrown in a coup totally not backed by the SPC. The company is currently trying to rebrand as &#39;Marshall and Carter Ltd.&#39;.
+
+Whereabouts of Mr. Shark are unknown.
+
+++ Boatswains of the Cog of God
+
+A widespread and orthodox religion. Boatswains believe that the Planet Earth is a ship (specifically a Cog) sailing on a celestial ocean (some more literally than others), and that God (the captain) has chosen them as the petty officers entrusted with keeping good order among His crew.
+
+The Johnson Heresy, or the Johnsonists, are an American heresy based in the state of Deseret. They believe that God&#39;s true name is YAT, and that he is akin to the admiral of a fleet. Those who have lived virtuous lives of service are rewarded with great wealth, a doctrine known as the &#34;Commission Gospel&#34;. High-ranking members of the Johnsonists are known for their elaborate luxury recreational craft.
+
+++ Great American Watchmen
+
+An association of individuals dedicated to the preservation of American fine arts and cultural purity, the GAW encounters an abnormally high amount of Deviant art. Founded as a secret society in the early days of the UAS and dissolving and reforming countless times since, the GAW&#39;s current headquarters are in California. The Centre believes that some members of the GAW produce Deviant art as a form of appreciation of American culture and history.
+
+++ Navigations Unseen (NU)
+
+The esoteric arm of the Global Organization of Countries, the Navigations Unseen&#39;s mission is to use and understand Deviant phenomena for the betterment of humanity. Founded during the First Benthic War, the NU was crucial in preventing the extinction of baseline humanity at the hands of the Sharkic Empires. Under the stipulations of the Marianas Treaty, the NU is one of the few organizations with the power to conduct expeditions in deep-sea locations without unilateral approval from the GOC.
+
+While not opposed to the Centre&#39;s mission, the NU does not consider SPC-001 a major priority and is primarily oriented around the preservation and improvement of human lives. As a naval and scientific enterprise under the auspices of the GOC, the NU&#39;s view on Selachian threats is fundamentally one of documentation.
+
+++ Prometheus/Poseidon Laboratories
+
+A Deviant technology conglomerate, Prometheus Laboratories is involved in Deviant technology trade worldwide since the 20th century. Many Centre researchers have approached Prometheus Laboratories to produce Deviant technology devices that the Centre refuses to fund, essentially becoming the unofficial R&amp;D branch of the Centre.
+
+Although Prometheus Laboratories was proposed to be merged with the Centre, all such propositions were denied. This was believed to ensure status quo, and to prevent the loss of an unofficial R&amp;D branch that ultimately aided the Centre&#39;s interests.
+
+[[*user Lt Flops]] substituted out this group for Poseidon Laboratories in [[[SPC-507]]], which ultimately, I think fits better.
+
+++ SCP Foundation
+
+An extra-dimensional organisation focused on the containment of all Deviant technologies; it has notably interfered with Centre operations on multiple occasions. Most notably, the SCP Foundation&#39;s **Department of Extra-Universal Affairs** has funded a schism within the Centre – causing sceptical personnel to oppose the Centre under the banner of **Containment Initiative**.
+
+Ultimately, the extra-dimensional origins of the SCP Foundation have caused most dissenters to return and re-pledge their loyalty to the Centre. Despite that, the &#34;SCP Foundation&#34; is speculated to be dangerous and will be dealt with harshly.
+
+++ World Wildlife Foundation
+
+A mysterious organization, possibly funded by the Global Coalition of Countries, dedicated to speciating, conserving, and preserving wildlife. The WWF is known for having &#34;Species Conservation Preserves&#34;, in which they house wildlife. They are believed to be responsible for preventing the beginning of a fifth mass extinction event. Their public fronts are concerned primarily with the preservation of all wildlife, but rumors suggest that they have a special interest in collecting Deviant wildlife, possibly for weaponization purposes. While uncanny similarities exist between the WWF and the SCP Foundation, reliable intelligence indicates that the two organizations do not collude.
+
+The presence of the WWF, the SCP Foundation, and the Centre in this timeline is almost certainly a result of SPC-001 interference.
+
+Though if I&#39;m being honest, it&#39;s funnier if Fae and Tim Wilson are the shadowy controllers of an all-powerful wildlife conservation organization, so I&#39;ve started using Wilson&#39;s Wildlife Foundation recently.
+
+++ Union of American States&#39; Center for Institutionalized Impacting (UASCII)
+
+A proto-Centre organization existing in the Union of American States before the Second Benthic War. Not much information exists beyond black-boxes or pieces of paper pummelled into pulp. It is known, however, that the UASCII engaged in highly controversial Deviant experiments, as funded by the Union to protect humans against all Sharkic threats, real or imagined.
+
+There is some scant evidence that suggests their reasons for engaging in selachian pugilism are drastically different from those of the modern Centre.
+
+++ The Serpent&#39;s Hand
+
+The Serpent&#39;s Hand is multiversal, so they&#39;re literally just the Serpent&#39;s Hand. Except they know that most universes aren&#39;t farces based on a pun.
+[[/tab]]
+
+[[tab SPC Jargon]]
+Here, I define some terms common to SPC in the darker timeline.
+++++ CICAPOCO
+The &#34;CENTRAL INTELLIGENCE COORDINATION AND PROJECTS OPERATION COMMAND OFFICE&#34;. Think of it like the SPC&#39;s equivalent of RAISA.
+++++ ORACLE
+The equivalent of the O5 Council, but they&#39;re far more public with their identities. Beyond that, details vary. Also, they hate sharks too.
+++++ The Mistaken Beast
+This was MrWrong&#39;s original idea for SPC-001 -- the shark that caused the SPC to exist. Metafictionally, it was the typo of SPC as opposed to SCP. It was never written, unfortunately.
+++++ Marine Fighting Team
+The equivalent of a Mobile Task Force, but focused entirely on -- you guessed it -- punching sharks.
+++++ Deviant
+In the Centreverse, the word &#34;Deviant&#34; replaces the word &#34;anomalous&#34; in many capacities.
+
+Beyond that, there&#39;s practically nothing. Slap together two words, one that&#39;s a color and one that&#39;s a noun, and you&#39;ve got a codename for a Centre project.
+[[/tab]]
+
+[[tab Format Outline]]
+**CICAPOCO header:** CICAPOCO is the Centre&#39;s equivalent to RAISA. The CICAPOCO header should describe the status of the current project i.e., ACTIVE, TERMINATED, or ON HIATUS. Be brief.
+
+[[collapsible show=&#34;CICAPOCO header code]]
+
+[[code]]
+[[div style=&#34;border: solid 1px #999; background: lightblue; padding: 5px; margin-bottom: 10px;&#34;]]
 [[=]]
-**[[[http://scp-sandbox-3.wikidot.com/collab:spc-hub-2|&#34;Okay, but seriously though—what is the SPC?&#34;]]]**
+++++ NOTICE FROM THE CENTRAL INTELLIGENCE COORDINATION AND PROJECTS OPERATION COMMAND OFFICE
+----
 [[/=]]
-@@@@
-@@@@
-@@@@
-[[include :scp-wiki:theme:spc]]
-[[module CSS]]
-#page-title { display: none; }
-.feature-block {
-    height: 230px;
-}
-.feature-block .panel-body {
-    height: 160px;
-    overflow-y: hidden;
-}
-.feature-block .feature-title {
-    font-size: 120%;
-    font-weight: bold;
-}
-.feature-block .feature-subtitle {
-    font-size: 90%;
-}
+[[/div]]
+[[/code]]
 
-.feature-block .feature-title &gt; p,
-.feature-block .feature-subtitle &gt; p {
-    margin: 0;
-}
+[[/collapsible]]
 
-.news-block .panel-body {
-    padding: 0;
-}
-.news-block .panel-body .alternate {
-    padding: 5px 10px;
-}
-.news-block .news-title {
-    font-weight: bold;
-    font-size: 110%;
-    margin-bottom: 5px;
-    color: #633;
-}
-.news-block .news-content {
-    margin: 5px 0;
-}
-.news-block .news-title &gt; p,
-.news-block .news-content &gt; p {
-    margin: 0px !important;
-    margin-block-start: 0em !important;
-    margin-block-end: 0em !important;
-}
+**Project #:** SPC Number
 
-.list-pages-item p {
-    margin: 0px !important;
-    margin-block-start: 0px !important;
-    margin-block-end: 0px !important;
-}
+**Selachian Pugnātorial Capabilities:** This section should describe how your anomaly punches/helps with punching sharks.
 
-.spc-page-block .panel-body {
-    padding: 0;
-}
-.spc-page-entry {
-    padding: 5px 10px;
-}
-.spc-page-entry:nth-child(even),
-.alternate:nth-child(even) {
-    background-color: #fff;
-    border-top: solid 1px #eeeee0;
-    border-bottom: solid 1px #eeeee0;
-}
-.spc-page-entry div &gt; p {
-    margin: 0;
-}
-.spc-page-entry .spc-page-title {
-    font-weight: bold;
-    font-size: 110%;
-}
-.spc-page-entry .spc-page-title img {
-    width: 16px;
-    height: 11px;
-    box-shadow: 0 1px 3px rgba(0,0,0,.5);
-}
-.spc-page-entry .spc-page-description {
-    font-size: 90%;
-    font-style: italic;
-    margin: 5px 20px;
-}
-.spc-page-entry {
-    margin: 5px 0;
-    padding: 0px 0px 5px 0px;
-}
-.spc-page-footer {
-    font-size: #333;
-    font-size: 80%;
-    margin: 5px 0;
-}
-.content-panel .panel-body {
-    background: #fff9f0 url(http://www.scp-wiki.net/local--files/component:theme/panel-bg-gradient-reverse.png) bottom repeat-x;
-    /* box-shadow: 1px 2px 3px rgba(0,0,0,.2) inset; */
-}
+**Project Component(s):** Essentially the description. Describe the parts of the SPC. (Alternatively: Specific Project Components).
 
-.spc-page-entry table tr:nth-child(even){
-    background-color: #fff;
-}
+Beyond that, the format can be adapted to your needs e.g., an Augmentation Summary to describe how non-anomalous objects became made anomalous in order to punch sharks better or an Enhancement Summary that describes how something useful for punching sharks was made even better. Another common inclusion is a Deployment Record, which describes how the SPC was used in the field. The sky&#39;s the limit.
+[[/tab]]
 
-[[/module]]</textarea></pre>
+[[/tabview]]
+
+@@ @@
+----
+[[div_ style=&#34;font-size: 80%; text-align: center;&#34;]]
+The SPC theme was created by PeppersGhost based on **Sigma-9** by [[user Aelanna]],
+and used under the [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)] license.
+[[/div]]
+@@ @@
+@@ @@
+@@ @@
+[[=]]
+[[module Rate]]
+[[/=]]
+@@ @@
+@@ @@
+@@ @@
+----
+@@ @@
+
+[[=]]
+[[include :scp-wiki:component:license-box
+|author=PeppersGhost, MrWrong, LORDXVNV, Lt Flops]]
+[[include :scp-wiki:component:license-box-end]]
+[[/=]]
+
+@@ @@</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:44.656826.</em>
+    <em>Last updated 2022-03-14 20:25:56.606151.</em>
   
 </div>
 </body>

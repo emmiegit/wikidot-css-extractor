@@ -113,8 +113,62 @@ CountStepper = 1;
 LeadingZero = true;
 DisplayFormat = &#34;PROTOCOL LAST UPDATED %%D%% DAYS AGO&#34;;
 FinishMessage = &#34;Reclamation Awaits.&#34;;
+
+function calcage(secs, num1, num2) {
+    s = ((Math.floor(secs / num1)) % num2).toString();
+    if (LeadingZero &amp;&amp; s.length &lt; 2)
+        s = &#34;0&#34; + s;
+    return &#34;&lt;b&gt;&#34; + s + &#34;&lt;/b&gt;&#34;;
+}
+
+function CountBack(secs) {
+    if (secs &lt; 0) {
+        document.getElementById(&#34;cntdwn&#34;).innerHTML = FinishMessage;
+        return;
+    }
+    DisplayStr = DisplayFormat.replace(/%%D%%/g, calcage(secs, 86400, 100000));
+    DisplayStr = DisplayStr.replace(/%%H%%/g, calcage(secs, 3600, 24));
+    DisplayStr = DisplayStr.replace(/%%M%%/g, calcage(secs, 60, 60));
+    DisplayStr = DisplayStr.replace(/%%S%%/g, calcage(secs, 1, 60));
+    document.getElementById(&#34;cntdwn&#34;).innerHTML = DisplayStr;
+    if (CountActive)
+        setTimeout(&#34;CountBack(&#34; + (secs + CountStepper) + &#34;)&#34;, SetTimeOutPeriod);
+}
+
+function putspan(backcolor, forecolor) {
+    document.write(&#34;&lt;span id=&#39;cntdwn&#39; style=&#39;background-color:&#34; + backcolor +
+        &#34;; color:&#34; + forecolor + &#34;&#39;&gt;&lt;/span&gt;&#34;);
+}
+if (typeof(BackColor) == &#34;undefined&#34;)
+    BackColor = &#34;white&#34;;
+if (typeof(ForeColor) == &#34;undefined&#34;)
+    ForeColor = &#34;black&#34;;
+if (typeof(TargetDate) == &#34;undefined&#34;)
+    TargetDate = &#34;12/31/2020 5:00 AM&#34;;
+if (typeof(DisplayFormat) == &#34;undefined&#34;)
+    DisplayFormat = &#34;%%D%% Days, %%H%% Hours, %%M%% Minutes, %%S%% Seconds.&#34;;
+if (typeof(CountActive) == &#34;undefined&#34;)
+    CountActive = true;
+if (typeof(FinishMessage) == &#34;undefined&#34;)
+    FinishMessage = &#34;&#34;;
+if (typeof(CountStepper) != &#34;number&#34;)
+    CountStepper = -1;
+if (typeof(LeadingZero) == &#34;undefined&#34;)
+    LeadingZero = true;
+CountStepper = Math.ceil(CountStepper);
+if (CountStepper == 0)
+    CountActive = false;
+var SetTimeOutPeriod = (Math.abs(CountStepper) - 1) * 1000 + 990;
+putspan(BackColor, ForeColor);
+var dthen = new Date(TargetDate);
+var dnow = new Date();
+if (CountStepper &gt; 0)
+    ddiff = new Date(dnow - dthen);
+else
+    ddiff = new Date(dthen - dnow);
+gsecs = Math.floor(ddiff.valueOf() / 1000);
+CountBack(gsecs);
 &lt;/script&gt;
-&lt;script language=&#34;JavaScript&#34; src=&#34;http://scripts.hashemian.com/js/countdown.js&#34;&gt;&lt;/script&gt;
 [[/html]]
 
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
@@ -128,7 +182,7 @@ FinishMessage = &#34;Reclamation Awaits.&#34;;
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:43.173162.</em>
+    <em>Last updated 2022-03-14 20:25:54.882091.</em>
   
 </div>
 </body>

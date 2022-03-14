@@ -100,7 +100,7 @@ If used with a theme, it&#39;s recommended to put said theme after this {{[[incl
 [[module CSS show=&#34;true&#34;]]
 
 /* source: http://ah-sandbox.wikidot.com/component:collapsible-sidebar-x1 */
-
+ 
 #top-bar .open-menu a {
         position: fixed;
         top: 0.5em;
@@ -118,13 +118,13 @@ If used with a theme, it&#39;s recommended to put said theme after this {{[[incl
         border-radius: 3em;
         color: #888;
 }
-
+ 
 @media (min-width: 768px) {
-
+ 
     #top-bar .mobile-top-bar {
         display: block;
     }
-
+ 
     #top-bar .mobile-top-bar li {
         display: none;
     }
@@ -149,18 +149,17 @@ If used with a theme, it&#39;s recommended to put said theme after this {{[[incl
         padding: 1em 1em 0 1em;
         background-color: rgba(0,0,0,0.1);
         transition: left 0.4s ease-in-out;
-
+ 
         scrollbar-width: thin;
     }
-
+ 
     #side-bar:target {
         left: 0;
     }
-
-     #top-bar .close-menu {
-        margin-left: 19.75em;
-        opacity: 0;
+    #side-bar:focus-within:not(:target) {
+        left: 0;
     }
+ 
     #side-bar:target .close-menu {
         display: block;
         position: fixed;
@@ -168,18 +167,19 @@ If used with a theme, it&#39;s recommended to put said theme after this {{[[incl
         height: 100%;
         top: 0;
         left: 0;
+        margin-left: 19.75em;
+        opacity: 0;
         z-index: -1;
+        visibility: visible;
     }
-
+    #side-bar:not(:target) .close-menu { display: none; }
+ 
     #top-bar .open-menu a:hover {
         text-decoration: none;
     }
-}
-
-
-@supports selector(:focus-within) {
-
-@media (min-width: 768px) {
+ 
+    /* FIREFOX-SPECIFIC COMPATIBILITY METHOD */
+    @supports (-moz-appearance:none) {
     #top-bar .open-menu a {
         pointer-events: none;
     }
@@ -187,27 +187,26 @@ If used with a theme, it&#39;s recommended to put said theme after this {{[[incl
         display: block;
         pointer-events: none;
         user-select: none;
-        z-index: -1;
     }
-
+ 
     /* This pseudo-element is meant to overlay the regular sidebar button
     so the fixed positioning (top, left, right and/or bottom) has to match */
-
+ 
     #side-bar .close-menu::before {
         content: &#34;&#34;;
         position: fixed;
         z-index: 5;
         display: block;
-
+ 
         top: 0.5em;
         left: 0.5em;
-
+ 
         border: 0.2em solid transparent;
         width: 30px;
         height: 30px;
         font-size: 30px;
         line-height: 0.9em;
-
+ 
         pointer-events: all;
         cursor: pointer;
     }
@@ -217,8 +216,7 @@ If used with a theme, it&#39;s recommended to put said theme after this {{[[incl
     #side-bar:focus-within .close-menu::before {
         pointer-events: none;
     }
-}
-
+    }
 }
 
 [[/module]]
@@ -229,7 +227,7 @@ If used with a theme, it&#39;s recommended to put said theme after this {{[[incl
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:41.683412.</em>
+    <em>Last updated 2022-03-14 20:25:53.205402.</em>
   
 </div>
 </body>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Mapping Component Backend</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Mapping Component Backend</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:mapping-source" target="_blank">Mapping Component Backend</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/component:mapping-source/1&#34;);</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>left: {$x}%; top: {$y}%; height: {$size}vmin; width: {$size}vmin;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size: {$font-size}vmin;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: {$sx}%; height: {$sy}%;[!-- --][!-- {$highlighter}]background-color: black;[!-- --][!-- {$secmap}] left: {$x}%; top: {$y}%; position: absolute;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>{$textclass}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>maparea</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>secmap</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[!-- {$code}]
+[[module CSS]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/component:mapping-source/1&#34;);
+[[/module]]
+[!-- --]
+
+[[iftags +component-backend]]
+[[code type=&#34;css&#34;]]
+@import url(&#39;https://fonts.googleapis.com/css2?family=Bungee&amp;display=swap&#39;);
+
+/* DEFAULT VALUES */
+
+div[style*=&#34;$size&#34;] {
+    height: 1.5vmin;
+    width: 1.5vmin;
+}
+
+div[class*=&#34;$textclass&#34;] {
+    display: none;
+}
+
+/* ICON SUBTITLES */
+
+.subtitlemap {
+    position: absolute;
+    color: #3d3d3d;
+    pointer-events: none;
+    font-size: 1vmin !important;
+    font-style: italic;
+    transition: 0.3s font-size;
+    left: 50%;
+    transform: translate(-50%, 0);
+    display: block;
+    max-width: none !important;
+    text-align: center;
+}
+
+.enlarge:hover .subtitlemap {
+    font-size: 0.4vmin !important;
+    transition: 0.15s font-size;
+}
+
+/* LEGENDS */
+
+.mainmap .subtitle {
+    position: absolute;
+    background-color: #e2e2e2;
+    border: solid 1px;
+    bottom: 0;
+}
+
+.mainmap .subtitle table.wiki-content-table {
+    margin: .5vmin;
+    min-width: 10vmin;
+    width: fit-content;
+}
+
+.mainmap .subtitle tr {
+    border-bottom: solid 1px gray;
+}
+
+.mainmap .subtitle tr td {
+    font-size: 0.8em;
+    font-weight: bold;
+    border: 0 !important;
+    padding: .25vmin;
+}
+
+.mainmap .subtitle tr:first-child td:first-child:hover {
+   transform: scale(1);
+}
+
+.mainmap .subtitle tr td:first-child {
+    max-width: 3vmin;
+    width: 3vmin;
+    transition: all .2s;
+}
+
+.mainmap .subtitle tr td:first-child:hover {
+   transform: scale(5);
+   z-index: 2;
+}
+
+.mainmap .subtitle tr td:nth-child(2) {
+    text-align: right;
+}
+
+/* ICON NUMBER */
+
+.numbermap {
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-shadow: -0.1px 0 white, 0 0.1px white, 0.1px 0 white, 0 -0.11px white;
+    color: #202020;
+    font-size: 0.3vmin;
+}
+
+.numbermap p {
+    height: 100%;
+    display: inline-block;
+    transform: translatey(40%);
+}
+
+/* MAPS */
+
+.mainmap {
+   display: table;
+   height: auto;
+   width: auto;
+   position: relative;
+}
+
+.secmap {
+   height: 0vw;
+   width: 0vw;
+   max-width: none !important;
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   z-index: 10;
+   opacity: 0;
+   transition: all 0.3s;
+}
+
+.maparea {
+   position: absolute;
+   z-index: 1;
+}
+
+.maparea:hover + .secmap {
+   height: 75vmin;
+   width: 75vmin;
+   opacity: 1;
+   transition: all 0.3s;
+}
+
+.secmap:hover {
+   height: 75vmin;
+   width: 75vmin;
+   opacity: 1;
+   transition: all 0.3s;
+   z-index: 2;
+}
+
+/* ENLARGE ICONS */
+
+.enlarge {
+    height: 1.5vmin;
+    width: 1.5vmin;
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    transform: translate(-50%, -50%);
+    transition: all 0.2s;
+    position: absolute;
+}
+
+.secmap .enlarge {
+    pointer-events: none;
+}
+
+.secmap:hover .enlarge {
+    pointer-events: auto;
+}
+
+.enlarge:hover {
+   transform: translate(-50%, -50%) scale(7.5);
+   z-index: 2;
+}
+
+.enlarge p {
+   margin: 0;
+}
+[[/code]]
+[[/iftags]]
+
+[!-- {$facility}]
+[[div class=&#34;enlarge [!-- --][!-- {$specialcase}]{$specialclass}[!-- --][!-- {$facility}]&#34; style=&#34;left: {$x}%; top: {$y}%; height: {$size}vmin; width: {$size}vmin;&#34;]]
+[[image {$image}]]
+[!-- --]
+[[div class=&#34;{$textclass}&#34; style=&#34;font-size: {$font-size}vmin;&#34;]]
+{$text}
+[[/div]]
+[!-- {$facility}]
+[[/div]]
+[!-- --]
+[!-- {$secmap}]
+[[div class=&#34;maparea&#34; style=&#34;width: {$sx}%; height: {$sy}%;[!-- --][!-- {$highlighter}]background-color: black;[!-- --][!-- {$secmap}] left: {$x}%; top: {$y}%; position: absolute;&#34;]]
+[[/div]]
+[[div class=&#34;secmap&#34;]]
+[[image {$image}]]
+[!-- --]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-03-14 20:25:53.190078.</em>
+  
+</div>
+</body>

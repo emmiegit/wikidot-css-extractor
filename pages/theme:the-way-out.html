@@ -31,7 +31,6 @@
         <li>
           <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
-
 #page-title {
     text-align: center !important;
     font-family: var(--header-font);
@@ -44,10 +43,6 @@
   white-space: nowrap;
   }
  }</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Athe-way-out/1&#34;);</code></pre>
         </li>
       
     </ul>
@@ -77,6 +72,10 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -135,6 +134,23 @@
   
 </li>
       
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
@@ -163,7 +179,6 @@
 [[module css]]
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
-
 #page-title {
     text-align: center !important;
     font-family: var(--header-font);
@@ -328,9 +343,11 @@ weed lmao
 [[/=]]
 
 -----
-
+[[/iftags]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
 [[collapsible hideLocation=&#34;both&#34; show=&#34;+ Theme Code&#34; hide=&#34;- Close&#34;]]
-[[code type=&#34;css&#34;]]
+[[module CSS show=&#34;true&#34;]]
 
 /*
     The Way Out Theme
@@ -339,10 +356,6 @@ weed lmao
     Based on Black Highlighter Theme created by Woedenaz and Croquembouche.
     The O5 Command logo was created by djkaktus. Licensed under CC BY SA 3.0.
 */
-
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/normalize.min.css&#34;);
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/black-highlighter.min.css&#34;);
-
 /* Fonts */
 
 @import url(&#39;https://fonts.googleapis.com/css?family=Lato:400,900|PT+Mono|Poppins:600,800&#39;);
@@ -369,6 +382,11 @@ weed lmao
     --header-font: &#39;Poppins&#39;, sans-serif;
     --title-font: &#39;Poppins&#39;, sans-serif;
     --mono-font: &#34;PT Mono&#34;, &#34;Andale Mono&#34;, &#34;Courier New&#34;, Courier, monospace;
+
+      /* ========================== Stylistic Sets        |    Any:     0 OR 1     */
+    --ss01: 0;
+    --ss02: 0;
+    --ss03: 0;
 
     /* Standard Colors */
     --white-monochrome: 252, 252, 252;
@@ -404,18 +422,7 @@ weed lmao
     
     /* Primary Menu Colors */
     --swatch-menubg-color: var(--gray-monochrome);
-    --swatch-menubg-light-color: var(--gray-monochrome);
-    --swatch-menubg-medium-color: var(--gray-monochrome);
-    --swatch-menubg-medium-dark-color: var(--black-monochrome);
-    --swatch-menubg-dark-color: var(--dark-gray-monochrome);
-    --swatch-menubg-black-color: var(--black-monochrome);
-    --swatch-menubg-hover-color: var(--gray-monochrome);
-    --swatch-menutxt-dark-color: var(--white-monochrome);
-    --swatch-menutxt-light-color: var(--white-monochrome);
-    --swatch-border-color: var(--black-monochrome);
     /* Primary Header Colors */
-    --swatch-headerh1-color: var(--white-monochrome);
-    --swatch-headerh2-color: var(--white-monochrome);
     --swatch-topmenu-border-color: var(--dark-gray-monochrome);
     --swatch-topmenu-bg-color: var(--dark-gray-monochrome);
     
@@ -490,98 +497,32 @@ weed lmao
 
     --background-gradient-color: 12, 36, 54;
     --background-gradient-distance: 40rem;
-
-    /* Dynamic Font Sizing */
-    /* This set of vars will make the base font size vary with screen width */
-    /* base font size ranges */
-    --unitless-min-font-size: 0.8;
-    --unitless-max-font-size: 1;
-    /* base viewport size ranges */
-    --unitless-min-viewport: 768;
-    --unitless-max-viewport: 900;
-    /* base line height size ranges */
-    --min-lineheight: 1.2;
-    --max-lineheight: 1.5;
-    /* calculating size differences */
-    --font-size-difference: calc(var(--unitless-max-font-size) - var(--unitless-min-font-size));
-    --lineheight-difference: calc(var(--max-lineheight) - var(--min-lineheight));
-    --viewport-range-difference: calc(var(--unitless-max-viewport) - var(--unitless-min-viewport));
-    --min-viewport-difference: calc(100vw - (var(--unitless-min-viewport) * 1px));
-    /* responsive fluid type formula */
-    --font-calc: calc((var(--unitless-min-font-size) * 1rem) + var(--font-size-difference) * var(--min-viewport-difference) / var(--viewport-range-difference));
-    --line-calc: calc(var(--min-lineheight) + var(--lineheight-difference) * var(--min-viewport-difference) / var(--viewport-range-difference));
-    /* final values */
-    --base-font-size: var(--font-calc);
-    --base-line-height: var(--line-calc);
 }
 
-#side-bar div.menu-item a,
-#side-bar div.menu-item .text,
-#side-bar div.menu-item a:visited,
-#side-bar div.menu-item a:active {
-        color: white;
-}
-
-.scp-image-block {
-   color: rgb(var(--white-monochrome));
-}
-#side-bar div.menu-item .sub-text {
-   color: rgb(var(--white-monochrome));
-}
-#login-status {
-   color: rgb(var(--medium-accent));
-}
-blockquote {
-    background-color: rgb(var(--light-gray-monochrome));
-}
-
-.yui-navset .yui-nav li a em, .yui-navset-top .yui-nav li a em, .yui-navset-bottom .yui-nav li a em {
-   color: white;
-}
-.code {
-  background-color: rgb(var(--light-gray-monochrome)) !important;
-}
 iframe.scpnet-interwiki-frame {
         filter: invert(0.8) saturate(0.25) hue-rotate(50deg);
 }
-@media only screen and (max-width: 768px) {
-    #header h1 a,
-    #header h2 span {
-        margin-left: 7.75rem;
-        margin-top: 0.35em;
-    }
- 
-    #header h1 a {
-        line-height: 1;
-    }
- 
-    #header h2 span {
-        margin-top: -webkit-calc(5.5rem + var(--offset-from-page-top));
-        margin-top: calc(5.5rem + var(--offset-from-page-top));
-    }
-}
+
 #header {
     filter: drop-shadow(.042rem .042rem .042rem rgb(150,150,150));
 }
+
 @media only screen and (max-width: 768px) {
     #header {
         background-position: calc(7.4rem - var(--size)) calc(((var(--size) * -1) + 7.5rem + var(--y-offset)) / 2);
     }
 }
-[[/code]]
-[[/collapsible]]
-[[/iftags]]
 
-[[module css]]
-@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Athe-way-out/1&#34;);
-[[/module]]</textarea></pre>
+[[/module]]
+[[/collapsible]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:44.941241.</em>
+    <em>Last updated 2022-03-14 20:25:56.925431.</em>
   
 </div>
 </body>

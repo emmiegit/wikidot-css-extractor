@@ -38,7 +38,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>float:right; margin:0 2em 1em 2em; width:300px; border:0;</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -101,7 +101,7 @@
 [[/&gt;]]
 
 [[html]]
-&lt;script src=&#34;https://scp-wiki.wdfiles.com/local--files/scp-2212/jquery-1.11.3.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://cdn.jsdelivr.net/npm/jquery@1.11.3/dist/jquery.min.js&#34;&gt;&lt;/script&gt;
 &lt;style&gt;
 body{
     font-family: Verdana, Arial, sans-serif;
@@ -134,74 +134,45 @@ blockquote{
 &lt;span id=&#34;CrossTest&#34;&gt;&lt;/span&gt;
 
 &lt;script&gt;
-/*\
-|*|
-|*|  :: cookies.js ::
-|*|
-|*|  A complete cookies reader/writer framework with full unicode support.
-|*|
-|*|  Revision #1 - September 4, 2014
-|*|
-|*|  https://developer.mozilla.org/en-US/docs/Web/API/document.cookie
-|*|  https://developer.mozilla.org/User:fusionchess
-|*|
-|*|  This framework is released under the GNU Public License, version 3 or later.
-|*|  http://www.gnu.org/licenses/gpl-3.0-standalone.html
-|*|
-|*|  Syntaxes:
-|*|
-|*|  * docCookies.setItem(name, value[, end[, path[, domain[, secure]]]])
-|*|  * docCookies.getItem(name)
-|*|  * docCookies.removeItem(name[, path[, domain]])
-|*|  * docCookies.hasItem(name)
-|*|  * docCookies.keys()
-|*|
-\*/
-var docCookies = {
-  	getItem: function (sKey) {
-   		if (!sKey) {
-        	return null; 
-    	}
-    	return decodeURIComponent(document.cookie.replace(new RegExp(&#34;(?:(?:^|.*;)\\s*&#34; + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, &#34;\\$&amp;&#34;) + &#34;\\s*\\=\\s*([^;]*).*$)|^.*$&#34;), &#34;$1&#34;)) || null;
-  	},
-  	setItem: function (sKey, sValue, vEnd, sPath, sDomain, bSecure) {
-    	if (!sKey || /^(?:expires|max\-age|path|domain|secure)$/i.test(sKey)) {
-        	return false;
-    	}
-    	var sExpires = &#34;&#34;;
-    	if (vEnd) {
-     		switch (vEnd.constructor) {
-        		case Number:
-          			sExpires = vEnd === Infinity ? &#34;; expires=Fri, 31 Dec 9999 23:59:59 GMT&#34; : &#34;; max-age=&#34; + vEnd;
-          			break;
-        		case String:
-          			sExpires = &#34;; expires=&#34; + vEnd;
-          			break;
-        		case Date:
-          			sExpires = &#34;; expires=&#34; + vEnd.toUTCString();
-        			break;
-      		}
-    	}
-    	document.cookie = encodeURIComponent(sKey) + &#34;=&#34; + encodeURIComponent(sValue) + sExpires + (sDomain ? &#34;; domain=&#34; + sDomain : &#34;&#34;) + (sPath ? &#34;; path=&#34; + sPath : &#34;&#34;) + (bSecure ? &#34;; secure&#34; : &#34;&#34;);
-    	return true;
-  	},
- 	removeItem: function (sKey, sPath, sDomain) {
-    	if (!this.hasItem(sKey)) { return false; }
-    	document.cookie = encodeURIComponent(sKey) + &#34;=; expires=Thu, 01 Jan 1970 00:00:00 GMT&#34; + (sDomain ? &#34;; domain=&#34; + sDomain : &#34;&#34;)+(sPath ? &#34;; path=&#34;+sPath : &#34;&#34;);
-    	return true;
-  	},
-  	hasItem: function (sKey) {
-    	if (!sKey) { return false; }
-    	return (new RegExp(&#34;(?:^|;\\s*)&#34; + encodeURIComponent(sKey).replace(/[\-\.\+\*]/g, &#34;\\$&amp;&#34;) + &#34;\\s*\\=&#34;)).test(document.cookie);
-  	},
-  	keys: function () {
-    	var aKeys = document.cookie.replace(/((?:^|\s*;)[^\=]+)(?=;|$)|^\s*|\s*(?:\=[^;]*)?(?:\1|$)/g, &#34;&#34;).split(/\s*(?:\=[^;]*)?;\s*/);
-    	for (var nLen = aKeys.length, nIdx = 0; nIdx &lt; nLen; nIdx++) {
-            aKeys[nIdx] = decodeURIComponent(aKeys[nIdx]);
+// Replace old docCookies with localStorage proxy (with fallback)
+var docCookies = new ( function() {
+    var data = {};
+    var useLocalStorage = typeof window.localStorage !== &#39;undefined&#39;;
+ 
+    this.getItem = function( key ) {
+        if ( useLocalStorage ) {
+            return localStorage.getItem( key );
         }
-    	return aKeys;
-    }
-};
+ 
+        if ( typeof data[ key ] === &#39;undefined&#39; ) {
+            return null;
+        }
+ 
+        return data[ key ];
+    };
+ 
+    this.setItem = function( key, value ) {
+        if ( useLocalStorage ) {
+            localStorage.setItem( key, value );
+        } else {
+            data[ key ] = value;
+        }
+    };
+ 
+    this.removeItem = function( key, value ) {
+        if ( useLocalStorage ) {
+            localStorage.removeItem( key );
+        } else {
+            delete data[ key ];
+        }
+    };
+ 
+    this.hasItem = function( key ) {
+        var result = this.getItem( key );
+ 
+        return result !== null || typeof result === &#39;undefined&#39;;
+    };
+} );
 
 String.prototype.hashCode = function(){
     var hash = 0;
@@ -238,7 +209,7 @@ function adjustOverview(){
     $(&#34;#Instructions&#34;).html(solStrings[numSolved]);
 }
 
-var imagePuzzleUnsolved = &#39;&lt;table style=&#34;table-layout:fixed; width: 300px; height:300px; border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; border-collapse: collapse;&#34;&gt;&lt;tr style=&#34;height: 300px&#34;&gt;&lt;td colspan=&#34;2&#34; style=&#34;background-color: rgb(100,0,0);&#34;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th colspan=&#34;2&#34; style=&#34;border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; background-color: rgb(234,234,234);&#34;&gt;&lt;sup&gt;&lt;a href=&#34;http://www.scp-wiki.net/2212-archival-image&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/sup&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/table&gt;&#39;;
+var imagePuzzleUnsolved = &#39;&lt;table style=&#34;table-layout:fixed; width: 300px; height:300px; border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; border-collapse: collapse;&#34;&gt;&lt;tr style=&#34;height: 300px&#34;&gt;&lt;td colspan=&#34;2&#34; style=&#34;background-color: rgb(100,0,0);&#34;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th colspan=&#34;2&#34; style=&#34;border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; background-color: rgb(234,234,234);&#34;&gt;&lt;sup&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-image&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/sup&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/table&gt;&#39;;
 var imagePuzzleSolved = &#39;&lt;table style=&#34;border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; border-collapse: collapse;&#34;&gt;&lt;tr&gt;&lt;td colspan=&#34;2&#34;&gt;&lt;img src=&#34;https://scp-wiki.wdfiles.com/local--files/scp-2212/2212.png&#34; width=&#34;300px&#34; alt=&#34;SCP-2212.png&#34; class=&#34;image&#34; /&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th colspan=&#34;2&#34; style=&#34;border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; background-color: rgb(234,234,234);&#34;&gt;&lt;sup&gt;Attempted reconstruction of image of SCP-2212, in containment&lt;/sup&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/table&gt;&#39;;
 function handleImagePuzzle(){
     if(docCookies.getItem(&#34;image&#34;) == &#34;solved&#34;){
@@ -248,7 +219,7 @@ function handleImagePuzzle(){
     }
 }
 
-var classPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Object Class:&lt;/b&gt; &lt;a href=&#34;http://www.scp-wiki.net/2212-archival-class&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/p&gt;&#39;
+var classPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Object Class:&lt;/b&gt; &lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-class&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/p&gt;&#39;
 var classPuzzleSolved = &#34;&lt;p&gt;&lt;b&gt;Object Class:&lt;/b&gt; Euclid&lt;/p&gt;&#34;
 function handleClassPuzzle(){
     if(docCookies.getItem(&#34;class&#34;) == &#34;solved&#34;){
@@ -258,7 +229,7 @@ function handleClassPuzzle(){
     }
 }
 
-var containPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Special Containment Procedures: &lt;/b&gt;&lt;a href=&#34;http://www.scp-wiki.net/2212-archival-containment-procedures&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/p&gt;&#39;
+var containPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Special Containment Procedures: &lt;/b&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-containment-procedures&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/p&gt;&#39;
 var containPuzzleSolved = &#34;&lt;p&gt;&lt;b&gt;Special Containment Procedures:&lt;/b&gt;&lt;br&gt;&lt;i&gt;Revision 21&lt;/i&gt;&lt;/p&gt;&lt;p&gt;SCP-2212 is to be contained in a cylindrical titanium chamber, 3 meters in radius by 2 meters in height. The chamber is to be lined with lead, and illuminated at all times. As SCP-2212 does not require sustenance, no personnel are to access it except for testing.&lt;/p&gt;&lt;p&gt;Outside this, an additional secondary containment chamber is to be constructed, with a radius of 30 meters. This chamber is to be octagonal, and radially subdivided into 8 chambers, facing in the cardinal and intercardinal directions.&lt;/p&gt;&lt;p&gt;Should personnel need to interact with SCP-2212, it is strongly recommended that they keep their distance and keep radiation-resistant barriers between them and SCP-2212 at all times. Contact with SCP-2212, however brief, during periods of elevated radiance is prohibited.&lt;/p&gt;&lt;p&gt;Recent audits of security footage have found that SCP-2212’s periodic containment breaches have been caused by partially compromised guards releasing it. Transfer of the project to a new team and upgrade to Keter status is pending. In the interim period, it is believed that SCP-2212’s containment cell alone should be enough to restrain it. New containment procedures will be developed based on further audit results.&lt;/p&gt;&#34;
 function handleContainmentPuzzle(){
     if(docCookies.getItem(&#34;containment&#34;) == &#34;solved&#34;){
@@ -275,7 +246,7 @@ var threeSolved = &#39;&lt;p&gt;&lt;b&gt;Description: &lt;/b&gt;SCP-2212 is a �
 var fourSolved = &#39;&lt;p&gt;&lt;b&gt;Description: &lt;/b&gt;SCP-2212 is a ███████ humanoid entity of ███████, apparently █████████ composition. It is animate and mobile, though shows no signs of ████████ aggression. It has two arms and a ████, though lacks ████, and instead █████ through ███████ on its elongated trunk. Efforts to take samples of its material have yielded inconclusive ███████, most typically ██████████ that SCP-2212 is made of some sort of plasma. SCP-2212 stands about 1.9 meters tall, and weighs about 35 kg.&lt;/p&gt;&lt;p&gt;SCP-2212 also emits moderate and variable quantities of light at ███████ ██████ throughout the spectrum, including as gamma ray. ████████████ ████████ that a person standing one meter away from SCP-2212 for one minute would typically be exposed to about 0.3 Sv, enough to cause ████ █████████ poisoning and long-term ████████ of cancer risk. Radiation output tends to decrease when no ███████ are ███████████ with it, but also sporadically increases as much as tenfold. No clear pattern for this has yet been found.&lt;/p&gt;&lt;p&gt;SCP-2212 is sapient and highly intelligent. It is capable of ████████ and understanding most ██████ languages, and learns new ones rapidly. SCP-2212 claims to be unable to &lt;span style=&#34;color:red&#34;&gt;[REDACTED]&lt;/span&gt; ███████████ regarding its nature.&lt;/p&gt;&lt;p&gt;Persons interacting with or studying SCP-2212 may be ███████ to deleterious mental effects, including amnesia, minor bouts of &lt;span style=&#34;color:green&#34;&gt;[REDACTED]&lt;/span&gt;, and in ████ █████, having their behavior directly influenced by SCP-2212. This influence has so far primarily taken the form of ██████████ ██████ to speak with it. Notably, this has most often coincided with ███████ of increased █████████ from SCP-2212, though affected personnel will still ███ safety ████ prior to approaching SCP-2212. Affected personnel report feeling as though they were in a &lt;span style=&#34;color:blue&#34;&gt;[REDACTED]&lt;/span&gt; █████, aware of their actions, but calm and distant from them.&lt;/p&gt;&lt;p&gt;SCP-2212 was █████████ after Foundation monitoring stations in Australia detected ███████ disturbances consistent with interdimensional travel. As there are many ███████████ Ways in central Australia, this would not itself have █████████ extensive investigation save that mild seismic activity was measured coincident with those observations. Agents were dispatched to investigate the center of the disturbance. They reported that SCP-2212 did not resist the agents’ ███████ to █████████ it to Site 260, and appeared to recognize the Foundation &lt;span style=&#34;color:magenta&#34;&gt;[REDACTED]&lt;/span&gt; on their equipment. However, all four agents were &lt;span style=&#34;color:orange&#34;&gt;[REDACTED]&lt;/span&gt; due to SCP-2212’s radiation. A second ██████████ was able to safely ███████ SCP-2212, which was later transported to Site 17 for a more secure ███████████.&lt;/p&gt;&#39;;
 var fiveSolved = &#39;&lt;p&gt;&lt;b&gt;Description: &lt;/b&gt;SCP-2212 is a loosely humanoid entity of unknown, apparently inorganic composition. It is animate and mobile, though shows no signs of physical aggression. It has two arms and a head, though lacks legs, and instead moves through hopping on its elongated trunk. Efforts to take samples of its material have yielded inconclusive results, most typically suggesting that SCP-2212 is made of some sort of plasma. SCP-2212 stands about 1.9 meters tall, and weighs about 35 kg.&lt;/p&gt;&lt;p&gt;SCP-2212 also emits moderate and variable quantities of light at various points throughout the spectrum, including as gamma ray. Measurements indicate that a person standing one meter away from SCP-2212 for one minute would typically be exposed to about 0.3 Sv, enough to cause mild radiation poisoning and long-term increase of cancer risk. Radiation output tends to decrease when no persons are interacting with it, but also sporadically increases as much as tenfold. No clear pattern for this has yet been found.&lt;/p&gt;&lt;p&gt;SCP-2212 is sapient and highly intelligent. It is capable of speaking and understanding most common languages, and learns new ones rapidly. SCP-2212 claims to be unable to &lt;span style=&#34;color:red&#34;&gt;[REDACTED]&lt;/span&gt; information regarding its nature.&lt;/p&gt;&lt;p&gt;Persons interacting with or studying SCP-2212 may be subject to deleterious mental effects, including amnesia, minor bouts of &lt;span style=&#34;color:green&#34;&gt;[REDACTED]&lt;/span&gt;, and in rare cases, having their behavior directly influenced by SCP-2212. This influence has so far primarily taken the form of compelling people to speak with it. Notably, this has most often coincided with periods of increased radiation from SCP-2212, though affected personnel will still don safety gear prior to approaching SCP-2212. Affected personnel report feeling as though they were in a &lt;span style=&#34;color:blue&#34;&gt;[REDACTED]&lt;/span&gt; state, aware of their actions, but calm and distant from them.&lt;/p&gt;&lt;p&gt;SCP-2212 was recovered after Foundation monitoring stations in Australia detected reality disturbances consistent with interdimensional travel. As there are many unmonitored Ways in central Australia, this would not itself have warranted extensive investigation save that mild seismic activity was measured coincident with those observations. Agents were dispatched to investigate the center of the disturbance. They reported that SCP-2212 did not resist the agents’ efforts to transport it to Site 260, and appeared to recognize the Foundation &lt;span style=&#34;color:magenta&#34;&gt;[REDACTED]&lt;/span&gt; on their equipment. However, all four agents were &lt;span style=&#34;color:orange&#34;&gt;[REDACTED]&lt;/span&gt; due to SCP-2212’s radiation. A second expedition was able to safely contain SCP-2212, which was later transported to Site 17 for a more secure environment.&lt;/p&gt;&#39;;
 function adjustDescriptionText(){
-    var numSolved = parseInt(docCookies.getItem(&#34;numSolved&#34;));
+    var numSolved = parseInt(docCookies.getItem(&#34;numSolved&#34;)||&#39;0&#39;);
     var solStrings = [noneSolved,
                       oneSolved,
                       twoSolved,
@@ -293,7 +264,7 @@ function handleInterviewPuzzle(){
     }
 }
 
-var crossPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Cross-Tests:&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;a href=&#34;http://www.scp-wiki.net/2212-archival-cross-test-log&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/blockquote&gt;&#39;
+var crossPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Cross-Tests:&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-cross-test-log&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/blockquote&gt;&#39;
 var crossPuzzleSolved = &#39;&lt;p&gt;&lt;b&gt;Cross-Tests:&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;b&gt;Experiment 2212-1220&lt;/b&gt;&lt;br&gt;&lt;b&gt;Date: &lt;/b&gt;September 5, 2016&lt;br&gt;&lt;b&gt;Head Researchers: &lt;/b&gt;Dr. Luis Ricardo&lt;/blockquote&gt;&#39;
 function handleCrossPuzzle(){
     if(docCookies.getItem(&#34;cross&#34;) == &#34;solved&#34;){
@@ -362,7 +333,7 @@ $(&#34;#submit&#34;).click(function(){
     updateText();
 });
 
-var interviewPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Interview 2212-104: &lt;/b&gt;&lt;a href=&#34;http://www.scp-wiki.net/2212-archival-interview&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/p&gt;&#39;
+var interviewPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Interview 2212-104: &lt;/b&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-interview&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/p&gt;&#39;
 var interviewPuzzleSolved = &#34;&lt;p&gt;&lt;b&gt;Interview 2212-104: &lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Dr. Mueller:&lt;/strong&gt; Hello, SCP-2212. I’d like to ask you a few questions about your background and goals. Firstly, the October 18 event where we recovered you from. Our sensors detected major reality disruptions consistent with cross-dimensional travel without the assistance of a Way or some other stable path, but there was also seismic activity that our best research suggests should have nothing to do with that. What produced that?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;SCP-2212:&lt;/strong&gt; Xibwcf fsgsofqvsf, fsorwbu gqfwdhg. Hvsm ofs bch hfmwbu jsfm vofr hc zsofb opcih as, ofs hvsm? Ghwzz, wh kwzz ps sbciuv. Obr sjsb tfca gssrg zwys mci qob gdfcih kcbrfcig wrsog. Mcif fsgsofqvsfg ofs qcffsqh; hvs dohv pshkssb kcfzrg rcsg bch fseiwfs gvwthwbu hvs aohhsf ct hvs kcfzrg hvsagszjsg. Pih hvs sofhveioys kog bch ibfszohsr. Twuifs wh cih.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Dr. Mueller:&lt;/strong&gt; Ah, I don’t think I will be the one to work on that. We’ve learned enough about what you do.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;SCP-2212:&lt;/strong&gt; Fvb ohcl uva. Mvy puzahujl, ypnoa uvd, fvb hyl dvuklypun hivba tf dvyk jovpjl. Fvb ohcl ylhk hss pualycpldz dpao tl, huk ruvd aoha tf zfuahe jhu il luapylsf uvyths. Iba av kv zv dvbsk thrl thaalyz mhy avv zptwsl.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Dr. Mueller:&lt;/strong&gt; And you’d never want that. Hm, let’s see. Since being taken into Foundation custody, you have precipitated no fewer than three containment breach events. Yet despite on several occasions being able to exit the facility while the guards are incapacitated, you stayed. Why?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;SCP-2212:&lt;/strong&gt; Why would I want to leave the Foundation? True, it’s hard for me to exit this chamber without first having to cause a breach, but I don’t mind that. You all are such excellent scientists, and I love how you never stop digging. I could grow quite fat and happy in a place like that.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Dr. Mueller:&lt;/strong&gt; There! You talked normally. I’m not sure how; it’s more than just using “I” again, but I can’t quite put my finger on it. No, stop that. It won’t get you anywhere.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;SCP-2212:&lt;/strong&gt; Rs?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Dr. Mueller:&lt;/strong&gt; Dr. Ricardo? I’m terminating the interview. This isn’t working. Try someone who doesn’t understand what they’re reading, maybe.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;SCP-2212:&lt;/strong&gt; Matm pbee ux xghnza mh atox rhn, Lhgbt Fnxeexk. Rhn pbee ux ykxxw, wh ghm phkkr. Unm uxyhkx rhn zh, patm wh rhn ngwxklmtgw tuhnm fr ftmmxk hy lixtdbgz bg mabl bgmxkobxp?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Dr. Mueller:&lt;/strong&gt; If I listen to the sounds, you’re gibbering. I can’t even produce those sounds. But I understand you, which means that you’re in my head and have been there since I walked into the room. That must be how you did that to those guards in your last breach. Shit, we can’t talk to you at all, can we? Okay, you weren’t using “I” and I don’t think you used “a”. Is this some sort of letter substitution? But you sounded so different each time, and you spoke normally once—&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Dr. Ricardo:&lt;/strong&gt; Dr. Mueller, are you okay? Exit the room.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;SCP-2212:&lt;/strong&gt; Vkh zloo halw vkruwob. Yhub jrrg, Gu. Pxhoohu. Brx frpsuhkhqg wkh hvvhqfh ri lw, exw brxu hpsorbhuv zrxog olnhob nloo brx li brx olqjhuhg wr iljxuh rxw pruh. Zklfk zrxog eh qr jrrg iru hlwkhu ri xv.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;Dr. Mueller:&lt;/strong&gt; Luis, I’m out. Repeat, terminate the interview. I do not want to ever interact with that fucking thing again. How isn’t it Keter?&lt;/p&gt;&lt;p&gt;&lt;strong&gt;SCP-2212:&lt;/strong&gt; Qbpgbef, bar ynfg jbeq orsber lbh ghea bss lbhe erpbeqvatf: “REALIZE”. Gurer ner frira guvatf sebz zr gung jvyy tb vagb lbhe ybtf gbqnl. Sebz rnpu, lbh znl rkgenpg gur xrl gb rnpu bs gur frira yrggref va zl svany zrffntr gb lbh gbqnl. Fvzcyl frr jung “n” jbhyq tb gb, naq nccyl gur fnzr genafsbezngvba gb gur pbeerfcbaqvat yrggre. Guvax qrrc, naq gur gehgu jvyy pbzr gb lbh.&lt;/p&gt;&#34;
 
 $(document).ready(function(){
@@ -409,7 +380,7 @@ $(document).ready(function(){
 
 <div id="footer">
   
-    <em>Last updated 2021-09-18 19:41:43.320036.</em>
+    <em>Last updated 2022-03-14 20:25:55.035624.</em>
   
 </div>
 </body>
