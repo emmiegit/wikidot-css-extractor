@@ -29,16 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Akiryu-labs-theme/1&#39;);
-@import url(&#39;https://fonts.googleapis.com/css?family=Bungee+Shade&amp;display=swap&#39;);
-
-.unmargined {
-    background-color: #3B5C0A!important;
-    border: solid 1px #3B5C0A!important;
-    border-radius: 1px!important;
-    box-shadow: none!important;
-}
-</code></pre>
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Akiryu-labs-theme/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -80,16 +71,13 @@
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[module CSS]]
 @import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Akiryu-labs-theme/1&#39;);
-@import url(&#39;https://fonts.googleapis.com/css?family=Bungee+Shade&amp;display=swap&#39;);
-
-.unmargined {
-    background-color: #3B5C0A!important;
-    border: solid 1px #3B5C0A!important;
-    border-radius: 1px!important;
-    box-shadow: none!important;
-}
-
 [[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Akiryu-labs-theme/1
+]]
+
 
 [[iftags +theme]]
 
@@ -103,6 +91,9 @@ To put this theme on your page:
 ----
 ----
 [[code type=&#34;css&#34;]]
+@import url(&#39;https://fonts.googleapis.com/css?family=Bungee+Shade&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css?family=Bebas+Neue&amp;display=swap&#39;);
+
 /*
     Kiryu Labs Theme
     [2020 Wikidot Theme]
@@ -111,7 +102,6 @@ To put this theme on your page:
     Built for Zyn, #ARTEXCHANGE2019 - Merry (semi-late) Christmas!
 */
 
-@import url(&#39;https://fonts.googleapis.com/css?family=Bebas+Neue&amp;display=swap&#39;);
 /* RECOLOR THE TITLE */
 h1, #page-title {
     color: #6C7F41;}
@@ -146,10 +136,13 @@ div#container-wrap {
     background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:kiryu-labs-theme/kiryubody.png&#39;) top left repeat-x;
 }
  
-#side-bar a:visited { 
+#side-bar a:visited,
+#interwiki a:visited { 
     color: #148c14;
 }
-#side-bar .side-block {
+
+#side-bar .side-block,
+#interwiki .side-block {
     padding: 10px;
     border: 2px solid #3B5C0A;
     border-radius: 1px;
@@ -159,18 +152,15 @@ div#container-wrap {
     color: black;
 }
 
-.side-block .menu-item &gt; .image {
+#interwiki .menu-item img {
     filter: hue-rotate(100deg);
 }
 
-#side-bar .heading {
+#side-bar .heading,
+#interwiki .heading {
     color: #3B5C0A;
     border-bottom: dotted 1px #3B5C0A;
     font-size: 10pt;
-}
-
-iframe {
-    border: none;
 }
 
 #header {
@@ -334,7 +324,7 @@ iframe {
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.569936.</em>
+    <em>Last updated 2022-05-18 15:46:28.170786.</em>
   
 </div>
 </body>

@@ -29,7 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aword-processor/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -38,30 +38,13 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          (none)
         </li>
       
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:word-processor" target="_blank"><code>:scp-wiki:theme:word-processor</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:word-processor.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
       
         <li>
   
@@ -80,6 +63,23 @@
   
 </li>
       
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:word-processor" target="_blank"><code>:scp-wiki:theme:word-processor</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:word-processor.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
@@ -92,7 +92,18 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +theme]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aword-processor/1&#39;);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aword-processor/1
+]]
+
+[[include :scp-wiki:component:collapsible-sidebar]]
+
+[[iftags +theme]]
 [[&gt;]]
 **Rating:**
 [[module Rate]]
@@ -109,12 +120,8 @@ This id, used with {{@@[[div id=&#34;blink-bar&#34;]]@@}} puts a blinking-bar at
 [[/div]]
 
 Please note that this theme is not designed to work with many standard page elements, such as blockquotes, tables, tabs or info modules. Image components are supported, but cannot be placed directly underneath a rating module.
-[[/iftags]]
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[include :scp-wiki:component:collapsible-sidebar]]
-
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @import url(&#39;https://fonts.googleapis.com/css2?family=Baloo+Bhaina+2:wght@500&amp;display=swap&#39;);
 
 /* ---------------------------------
@@ -144,7 +151,7 @@ h1,
 }
 
 /* Creates the page effect of the body. */
-#main-content {
+div#main-content {
     margin-top: 2em;
     background: white;
     box-shadow: 3px 3px 3px rgba(0,0,0,.2);
@@ -246,19 +253,23 @@ body {
 
 /* -------------- SIDE-BAR -------------- */
 /* See also: the Collapsible Side-Bar Component, included in this theme */
-#side-bar .side-block {
+#side-bar .side-block,
+#interwiki .side-block {
     border: none;
     box-shadow: none;
     background: transparent !important;
 }
 
-#side-bar .heading {
+#side-bar .heading,
+#interwiki .heading {
     color: #333;
     border-color: #333;
 }
 
 #side-bar a,
-#side-bar a:visited {
+#interwiki a,
+#side-bar a:visited,
+#interwiki a:visited {
     color: #666;
 }
 
@@ -274,9 +285,12 @@ body {
     color: #666;
 }
 
+#interwiki .menu-item img {
+    visibility: hidden;
+}
 
-iframe.scpnet-interwiki-frame {
-    filter: saturate(0%);
+#interwiki body {
+    background-image: none;
 }
 
 /* -------------- MOBILE SIDE-BAR -------------- */
@@ -424,20 +438,20 @@ iframe.scpnet-interwiki-frame {
     left: 1px;
 }
 
-@keyframes blink{
+@keyframes blink {
     to {
         opacity: .0;
     }
 }
-[[/module]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.593945.</em>
+    <em>Last updated 2022-05-18 15:46:28.197886.</em>
   
 </div>
 </body>

@@ -45,13 +45,17 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Awilderness/1&#39;);</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -279,10 +283,8 @@ Close the border by putting the following at the end of all inner elements:
 [[/div]]
 
 ----
-[[/iftags]]
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 @import url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Awilderness/national-park-full.css&#34;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Dosis:wght@200&amp;display=swap&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Comfortaa:wght@600&amp;display=swap&#39;);
@@ -297,8 +299,6 @@ Close the border by putting the following at the end of all inner elements:
 https://nationalparktypeface.com/
  
 */
-
-@supports(--css:variables) {
 
 :root {
 /* Intro */
@@ -352,7 +352,8 @@ https://nationalparktypeface.com/
     --ui-icon-hover-bg: var(--gray-monochrome);
 }
 
-#side-bar {
+#side-bar,
+#interwiki {
     --sidebar-links-text: var(--wilson-text);
     --sideblock-heading-text-color: var(--wilson-text);
     --sideblock-heading-bg-color: var(--wilson-subtitle);
@@ -403,24 +404,23 @@ https://nationalparktypeface.com/
 }
 
 /* Side Bar */
-#side-bar .heading {
+#side-bar .heading,
+#interwiki .heading {
     align-items: center;
     justify-content: flex-end;
     padding-right: 0.313em;
 }
 
-#side-bar .heading p {
+#side-bar .heading p,
+#interwiki .heading p {
     font-family: var(--national-park-heavy);
 }
 
 #side-bar div.menu-item .text, 
-#side-bar div.menu-item a:any-link {
+#side-bar div.menu-item a:any-link,
+#interwiki div.menu-item .text,
+#interwiki div.menu-item a:any-link {
      font-family: var(--national-park);
-}
-
-iframe.scpnet-interwiki-frame {
-  filter: hue-rotate(140deg) brightness(150%);
-  -webkit-filter: hue-rotate(140deg) brightness(150%);
 }
 
 /* Page Rating Module */
@@ -474,7 +474,6 @@ hr {
    background-color: rgb(var(--wilson-header));
    color: white; border-color: rgb(var(--wilson-text));
 }
-}
 
 /* Wilson&#39;s Divs */
 /* Wilson&#39;s Divs placed outside supports @supports(--css:variables) to ensure most crucial part of theme remains visually intact if fallback occurs. */
@@ -506,8 +505,8 @@ div.wilson-body {
     background: rgb(209, 237, 154);
     padding: 1em;
 }
-[[/module]]
-[[/div]]
+[[/code]]
+[[/iftags]]
 
 &gt;[[ift{$transpride}gs -theme]]
 &gt;[[iftags]]
@@ -517,14 +516,23 @@ div.wilson-body {
 }
 [[/module]]
 &gt;[[/iftags]]
-&gt;[[/ift{$transpride}gs]]</textarea></pre>
+&gt;[[/ift{$transpride}gs]]
+
+[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Awilderness/1&#39;);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Awilderness/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.593142.</em>
+    <em>Last updated 2022-05-18 15:46:28.197027.</em>
   
 </div>
 </body>

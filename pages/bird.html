@@ -29,55 +29,80 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* SITE HEADER */
- #page-content span,
- #page-content a{
-     font-weight: bold;
+          <pre><code>/* HEADER */
+ :root{
+   --header-title: &#34;The Avian Division&#34;;
+   --header-subtitle: &#34;Until we return to The Nest&#34;;
+   --lgurl: url(https://scp-wiki.wdfiles.com/local--files/bird/avdiv_white.png);
 }
- #header h1 a,
- #header h2 span{
-     color: transparent;
-     text-shadow: none;
+
+ div#container-wrap{
+     background-image: url(https://scp-wiki.wikidot.com/local--files/bird/avdiv_body_bg.png);
 }
- #header h1 a::before{
-     content: &#34;The Avian Division&#34;;
+
+ #header h1 a::before,
+ #header h2::before{
      font-family: &#34;Verdana&#34;, sans-serif;
 }
- #header h2 span::before{
-     content: &#34;Until we return to The Nest&#34;;
+
+ #page-title,
+ #breadcrumbs{
+     display: none;
+}
+
+ .meta-title{
+     color: hsl(45, 98%, 28%);
+}
+
+ #page-content a,
+ #page-content span{
+     font-weight: bold;
 }
 
 /* INFO BAR */
- body{ --barColour: hsl(45, 89%, 40%); }
- .info-container .collapsible-block-unfolded{ background: hsl(0, 0%, 100%); }
- #u-author_block{ display: none; }
+ body{
+     --barColour: hsl(45, 89%, 40%);
+}
+
+ .info-container .collapsible-block-unfolded{
+     background: hsl(0, 0%, 100%);
+}
+
+ #u-author_block{
+     display: none;
+}
 
 /* PAGE RATING */
  .page-rate-widget-box .rate-points{
-     background-color: hsl(45, 89%, 40%) !important;
+     background: hsl(45, 89%, 40%) !important;
      border: 1px solid hsl(45, 89%, 40%);
 }
+
  .page-rate-widget-box .rateup,
  .page-rate-widget-box .ratedown{
-     background-color: hsl(45, 100%, 97%);
-     border-top: 1px solid hsl(45, 89%, 40%);
-     border-bottom: 1px solid hsl(45, 89%, 40%);
+     background: hsl(45, 100%, 97%);
+     border-color: hsl(45, 89%, 40%);
 }
+
+ .page-rate-widget-box .cancel{
+     background: hsl(45, 89%, 40%);
+     border: 1px solid hsl(45, 89%, 40%);
+}
+
  .page-rate-widget-box .rateup a,
  .page-rate-widget-box .ratedown a{
      color: hsl(45, 89%, 40%);
 }
- .page-rate-widget-box .cancel{
-     background-color: hsl(45, 89%, 40%);
-     border: 1px solid hsl(45, 89%, 40%);
-}
+
  .page-rate-widget-box .cancel a{
      color: hsl(45, 76%, 67%);
 }
+
  .page-rate-widget-box .rateup a:hover,
  .page-rate-widget-box .ratedown a:hover{
      background: hsl(45, 89%, 40%);
 }
+
  .page-rate-widget-box .cancel a:hover{
      color: hsl(45, 100%, 97%);
      background: hsl(45, 89%, 40%);
@@ -85,21 +110,27 @@
 
 /* DIV BLOCKS */
  .header-image{
-     margin: .5em 0;
+     margin-bottom: .25rem;
+
      background: hsl(0, 0%, 100%);
      border: 2px solid hsl(0, 0%, 5%);
+
      font-size: 80%;
      font-weight: bold;
      text-align: center;
 }
+
  .showcase{
-     padding: 0 .5em;
+     padding: 0 1rem;
+
      background: hsl(0, 0%, 100%);
      border: 2px solid hsl(0, 0%, 5%);
 }
+
  .showcase hr{
      border-top: 2px solid hsl(45, 100%, 55%);
 }
+
  .scm{
     margin-bottom: 4%;
 }
@@ -110,40 +141,73 @@
      padding: 0 1.7em;
 
      background:
-       linear-gradient(to bottom,
-               transparent,
-            hsl(45, 100%, 55%),
-            hsl(45, 100%, 55%),
-             hsl(0, 0%, 100%));
+        linear-gradient(to bottom,
+          transparent,
+          hsl(45, 100%, 55%),
+          hsl(45, 100%, 55%),
+          hsl(0, 0%, 100%));
 }
 
 /* TABLES */
  blockquote,
+ .blockquote,
  .article blockquote,
  .continued blockquote{
-     margin: 1.2em;
-     padding: 0;
-     background: hsl(0, 0%, 100%);
+     background: 0;
      border: 1px solid hsl(45, 100%, 55%);
 }
+
+ blockquote,
+ .blockquote{
+     border-width: 2px;
+}
+
+ .article blockquote,
+ .continued blockquote{
+     padding-right: 0;
+     padding-left: 0;
+
+     border-left-width: 2px;
+}
+
+ .article blockquote{
+     border-top-width: 2px;
+}
+
  .article table.wiki-content-table,
  .continued table.wiki-content-table{
      width: 100%;
      margin: 0 0 -1px;
 }
- .article table.wiki-content-table th,
- .continued table.wiki-content-table th{
-     padding: 0;
-     border: 1px solid hsl(45, 100%, 55%);
-     font-weight: normal;
-}
+
  .article table.wiki-content-table td,
  .continued table.wiki-content-table td{
-     border: 1px solid hsl(45, 100%, 55%);
+     border-color: hsl(45, 100%, 55%);
      border-right: 0;
 }
+
  .continued table.wiki-content-table td{
      border-top: 0;
+}
+
+/* FAKE AUTHOR BLOCK */
+ .fakeblock a{
+     display: inline;
+     padding: .8em;
+
+     color: hsl(0, 0%, 5%);
+     background: hsl(45, 100%, 92%);
+     border: .15rem outset hsl(45, 79%, 50%);
+     transition:
+        -webkit-backdrop-filter .3s,
+        backdrop-filter .3s,
+        background .3s;
+}
+
+ .fakeblock a:hover{
+     background: var(--barColour);
+
+     text-decoration: none;
 }</code></pre>
         </li>
       
@@ -153,23 +217,19 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none;</code></pre>
+          <pre><code>display: none</code></pre>
         </li>
       
         <li>
-          <pre><code>color: hsl(270, 100%, 55%);</code></pre>
+          <pre><code>color: hsl(270, 100%, 55%)</code></pre>
         </li>
       
         <li>
-          <pre><code>color: hsl(270, 100%, 55%);</code></pre>
+          <pre><code>font-size: 80%; text-align: center</code></pre>
         </li>
       
         <li>
-          <pre><code>font-size: 80%; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>font-size: 120%;</code></pre>
+          <pre><code>font-size: 120%</code></pre>
         </li>
       
     </ul>
@@ -189,6 +249,23 @@
     
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/theme:flopstyle.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:centered-header-sigma-9" target="_blank"><code>:scp-wiki:component:centered-header-sigma-9</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:centered-header-sigma-9.html" target="_blank">info</a>]
   </span>
 
   
@@ -245,6 +322,40 @@
   
 </li>
       
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
@@ -263,6 +374,14 @@
         </li>
       
         <li>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>pseudocrumbs</code></pre>
+        </li>
+      
+        <li>
           <pre><code>header-image</code></pre>
         </li>
       
@@ -319,6 +438,18 @@
         </li>
       
         <li>
+          <pre><code>scm</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>showcase</code></pre>
+        </li>
+      
+        <li>
           <pre><code>article</code></pre>
         </li>
       
@@ -340,6 +471,18 @@
       
         <li>
           <pre><code>header-image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>footing</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fakeblock</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>centered</code></pre>
         </li>
       
     </ul>
@@ -348,60 +491,86 @@
     <pre><textarea class="page-source" readonly>[[include component:preview
 |text=Yes, your new colleague is a seagull. The world is a weird place. Welcome to the Foundation. --//Researcher Calvin//]]
 
-[[div style=&#34;display: none;&#34;]]
+[[div style=&#34;display: none&#34;]]
 [[include :scp-wiki:theme:flopstyle]]
 [[/div]]
+[[include :scp-wiki:component:centered-header-sigma-9]]
 
 [[module CSS]]
-/* SITE HEADER */
- #page-content span,
- #page-content a{
-     font-weight: bold;
+/* HEADER */
+ :root{
+   --header-title: &#34;The Avian Division&#34;;
+   --header-subtitle: &#34;Until we return to The Nest&#34;;
+   --lgurl: url(https://scp-wiki.wdfiles.com/local--files/bird/avdiv_white.png);
 }
- #header h1 a,
- #header h2 span{
-     color: transparent;
-     text-shadow: none;
+
+ div#container-wrap{
+     background-image: url(https://scp-wiki.wikidot.com/local--files/bird/avdiv_body_bg.png);
 }
- #header h1 a::before{
-     content: &#34;The Avian Division&#34;;
+
+ #header h1 a::before,
+ #header h2::before{
      font-family: &#34;Verdana&#34;, sans-serif;
 }
- #header h2 span::before{
-     content: &#34;Until we return to The Nest&#34;;
+
+ #page-title,
+ #breadcrumbs{
+     display: none;
+}
+
+ .meta-title{
+     color: hsl(45, 98%, 28%);
+}
+
+ #page-content a,
+ #page-content span{
+     font-weight: bold;
 }
 
 /* INFO BAR */
- body{ --barColour: hsl(45, 89%, 40%); }
- .info-container .collapsible-block-unfolded{ background: hsl(0, 0%, 100%); }
- #u-author_block{ display: none; }
+ body{
+     --barColour: hsl(45, 89%, 40%);
+}
+
+ .info-container .collapsible-block-unfolded{
+     background: hsl(0, 0%, 100%);
+}
+
+ #u-author_block{
+     display: none;
+}
 
 /* PAGE RATING */
  .page-rate-widget-box .rate-points{
-     background-color: hsl(45, 89%, 40%) !important;
+     background: hsl(45, 89%, 40%) !important;
      border: 1px solid hsl(45, 89%, 40%);
 }
+
  .page-rate-widget-box .rateup,
  .page-rate-widget-box .ratedown{
-     background-color: hsl(45, 100%, 97%);
-     border-top: 1px solid hsl(45, 89%, 40%);
-     border-bottom: 1px solid hsl(45, 89%, 40%);
+     background: hsl(45, 100%, 97%);
+     border-color: hsl(45, 89%, 40%);
 }
+
+ .page-rate-widget-box .cancel{
+     background: hsl(45, 89%, 40%);
+     border: 1px solid hsl(45, 89%, 40%);
+}
+
  .page-rate-widget-box .rateup a,
  .page-rate-widget-box .ratedown a{
      color: hsl(45, 89%, 40%);
 }
- .page-rate-widget-box .cancel{
-     background-color: hsl(45, 89%, 40%);
-     border: 1px solid hsl(45, 89%, 40%);
-}
+
  .page-rate-widget-box .cancel a{
      color: hsl(45, 76%, 67%);
 }
+
  .page-rate-widget-box .rateup a:hover,
  .page-rate-widget-box .ratedown a:hover{
      background: hsl(45, 89%, 40%);
 }
+
  .page-rate-widget-box .cancel a:hover{
      color: hsl(45, 100%, 97%);
      background: hsl(45, 89%, 40%);
@@ -409,21 +578,27 @@
 
 /* DIV BLOCKS */
  .header-image{
-     margin: .5em 0;
+     margin-bottom: .25rem;
+
      background: hsl(0, 0%, 100%);
      border: 2px solid hsl(0, 0%, 5%);
+
      font-size: 80%;
      font-weight: bold;
      text-align: center;
 }
+
  .showcase{
-     padding: 0 .5em;
+     padding: 0 1rem;
+
      background: hsl(0, 0%, 100%);
      border: 2px solid hsl(0, 0%, 5%);
 }
+
  .showcase hr{
      border-top: 2px solid hsl(45, 100%, 55%);
 }
+
  .scm{
     margin-bottom: 4%;
 }
@@ -434,52 +609,84 @@
      padding: 0 1.7em;
 
      background:
-       linear-gradient(to bottom,
-               transparent,
-            hsl(45, 100%, 55%),
-            hsl(45, 100%, 55%),
-             hsl(0, 0%, 100%));
+        linear-gradient(to bottom,
+          transparent,
+          hsl(45, 100%, 55%),
+          hsl(45, 100%, 55%),
+          hsl(0, 0%, 100%));
 }
 
 /* TABLES */
  blockquote,
+ .blockquote,
  .article blockquote,
  .continued blockquote{
-     margin: 1.2em;
-     padding: 0;
-     background: hsl(0, 0%, 100%);
+     background: 0;
      border: 1px solid hsl(45, 100%, 55%);
 }
+
+ blockquote,
+ .blockquote{
+     border-width: 2px;
+}
+
+ .article blockquote,
+ .continued blockquote{
+     padding-right: 0;
+     padding-left: 0;
+
+     border-left-width: 2px;
+}
+
+ .article blockquote{
+     border-top-width: 2px;
+}
+
  .article table.wiki-content-table,
  .continued table.wiki-content-table{
      width: 100%;
      margin: 0 0 -1px;
 }
- .article table.wiki-content-table th,
- .continued table.wiki-content-table th{
-     padding: 0;
-     border: 1px solid hsl(45, 100%, 55%);
-     font-weight: normal;
-}
+
  .article table.wiki-content-table td,
  .continued table.wiki-content-table td{
-     border: 1px solid hsl(45, 100%, 55%);
+     border-color: hsl(45, 100%, 55%);
      border-right: 0;
 }
+
  .continued table.wiki-content-table td{
      border-top: 0;
+}
+
+/* FAKE AUTHOR BLOCK */
+ .fakeblock a{
+     display: inline;
+     padding: .8em;
+
+     color: hsl(0, 0%, 5%);
+     background: hsl(45, 100%, 92%);
+     border: .15rem outset hsl(45, 79%, 50%);
+     transition:
+        -webkit-backdrop-filter .3s,
+        backdrop-filter .3s,
+        background .3s;
+}
+
+ .fakeblock a:hover{
+     background: var(--barColour);
+
+     text-decoration: none;
 }
 [[/module]]
 
 [[div class=&#34;anchor&#34;]]
 [[div class=&#34;authorbox&#34;]]
-
 [[module ListPages name=&#34;=&#34;]]
 ||~ %%title%% ||
-||= **Authors:** [[*user Lt Flops]] and [[*user notgull]] ||
+||= **By:** [[*user Lt Flops]] _
+&amp; [[*user notgull]] ||
 ||~ Published on %%created_at|%d %b %Y%% ||
 [[/module]]
-
 [[/div]]
 [[/div]]
 
@@ -487,19 +694,26 @@
 [[include :scp-wiki:component:info-ayers
 |lang=en
 |page=bird
-|authorPage= 
 |comments=**Team Bird Hub** (Series Hub) 
-A **Series** created for the **[*http://scp-wiki.wikidot.com/doomsday-contest 2018 Doomsday Contest]**. 
+A **Series Hub** created for the **[*/doomsday-contest 2018 Doomsday Contest]**. 
 **Published on 19 May 2018**]]
 
-[[&gt;]]
+[[=]]
 [[module rate]]
-[[/&gt;]]
+[[/=]]
 
 @@ @@
 
+[[div class=&#34;meta-title&#34;]]
+Team Bird Hub
+[[/div]]
+
+[[div class=&#34;pseudocrumbs&#34;]]
+[[[foundation-tales|Tales Hub]]] &gt;&gt; [[[Series Archive]]] &gt;&gt; Team Bird Hub
+[[/div]]
+
 [[div class=&#34;header-image&#34;]]
-[[image http://scp-wiki.wdfiles.com/local--files/bird/teambird2.jpg]]
+[[image https://scp-wiki.wdfiles.com/local--files/bird/teambird2.jpg]]
 [[/div]]
 
 [[div class=&#34;header-image&#34;]]
@@ -529,7 +743,7 @@ Because somehow, Egyptian gods, the SPC universe, mysterious soul-vacuum devices
 |float=true
 |align=right
 |width=150px
-|url=http://scp-wiki.wdfiles.com/local--files/task-forces/Eta4.png
+|url=https://scp-wiki.wdfiles.com/local--files/task-forces/Eta4.png
 |add-caption=true
 |caption=Eta-4 “Begone Thoth”
 ]]
@@ -596,23 +810,23 @@ Medila help us all.
 [[div class=&#34;showcase scm&#34;]]
 ----
 ++ INTERMISSION
-++++ Stories From the Team Bird Multiverse
++++ Stories From the Team Bird Multiverse
 ----
 [[div class=&#34;continued&#34;]]
 &gt; |||| **GOI Format:** [[[corncrake-of-destiny|The Corncrake Of Destiny]]] || by [[*user Uncle Nicolini]] ||
 &gt; |||| [[[scp-4688|SCP-4688: Manipulative Bike Helmets]]] || by [[*user Mew-ltiverse]] and [[*user notgull]] ||
 &gt; |||| **Tale:** [[[erics-journal|Eric&#39;s Journal]]] || by [[*user Mew-ltiverse]] and [[*user notgull]] ||
 &gt; |||| **Tale:** [[[a-given-purpose|A Given Purpose]]] || by [[*user CelesteKara]] ||
-&gt; |||| [[span style=&#34;color: hsl(270, 100%, 55%);&#34;]]**[LATEST]**[[/span]] **Tale:** [[[bird-review|Bill Reviews: The Bird Is The Word]]] || by [[*user YellowISlol]] ||
-&gt; |||| [[span style=&#34;color: hsl(270, 100%, 55%);&#34;]]**[LATEST]**[[/span]] **Wanderers&#39; Library Entry:** [[[http://wanderers-library.wikidot.com/home-bittersweet-home-or-free-as-a-bird|From the Journals of Agent Hopper: Home Bittersweet Home (or Free as a Bird)]]] || by [[*user Nykacolaquantum]] ||
+&gt; |||| **Tale:** [[[bird-review|Bill Reviews: The Bird Is The Word]]] || by [[*user YellowISlol]] ||
+&gt; |||| **Wanderers&#39; Library Entry:** [[[http://wanderers-library.wikidot.com/home-bittersweet-home-or-free-as-a-bird|From the Journals of Agent Hopper: Home Bittersweet Home (or Free as a Bird)]]] || by [[*user Nykacolaquantum]] ||
 [[/div]]
 [[/div]]
 
-[[div class=&#34;showcase&#34;]]
+[[div class=&#34;showcase scm&#34;]]
 ----
 ++ SEASON TWO
 ++ “BIRDEMIC 2: SHOCK AND TERROR”
-++++ A Team Bird Anthology
++++ A Team Bird Anthology
 ----
 [[div class=&#34;article&#34;]]
 &gt; |||| **Tale:** [[[the-scent-of-a-toaster|The Scent of a Toaster]]] || by [[*user notgull]] ||
@@ -626,17 +840,28 @@ Medila help us all.
 [[/div]]
 [[/div]]
 
+[[div class=&#34;showcase&#34;]]
+----
+++ SEASON THREE
+++ “THE SKY MAY BE”
++++ 10,000 Years After the Apocalypse
+----
+[[div class=&#34;article&#34;]]
+&gt; |||| [[span style=&#34;color: hsl(270, 100%, 55%)&#34;]]**[LATEST]**[[/span]] **Tale:** [[[Chasing Suns]]] || by [[*user notgull]] ||
+[[/div]]
+[[/div]]
+
 ++ --
 
 [[div class=&#34;showcase scm&#34;]]
 ----
-++ TEAM BIRD ART PAGE
+++ [[[team-bird-art-page|TEAM BIRD ART PAGE]]]
 ++++ By the magnificent [[*user CelesteKara]]!
 ----
 [[include component:image-block
 |align=center
 |width=500px
-|name=https://i.imgur.com/1H5YkQA.png |
+|name=https://i.imgur.com/1H5YkQA.png
 |caption=EE-3570 by [[*user CelesteKara]]]]
 
 +++ @@&gt;@@ [[[team-bird-art-page|Check it out!]]] @@&lt;@@
@@ -662,7 +887,7 @@ If you do have the time, however, we heavily recommend reading the rest of the m
 @@ @@
 ++ __THE AVIAN DIVISION CREST__
 
-[[image http://scp-wiki.wdfiles.com/local--files/desk-of-junior-designer-s-yvonne/avdiv.png width=&#34;75%&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/desk-of-junior-designer-s-yvonne/avdiv.png width=&#34;75%&#34;]]
 [[/div]]
 
 [[div class=&#34;header-image&#34;]]
@@ -679,24 +904,65 @@ Avian Division logo design by the awesome [[*user EstrellaYoshte]]!
 ,,Hub created by [[*user Lt Flops]] and [[*user notgull]].,,
 ,,Select artwork created by [[*user Mendelssohn]], [[*user CelesteKara]], and [[*user EstrellaYoshte]].,,
 ,,TEAM BIRD BEST TEAM,,
+
+@@ @@
+
+[[div class=&#34;footing&#34;]]
+[[/div]]
 [[/div]]
 
 [[include :scp-wiki:more-by:notgull]]
-[[div style=&#34;font-size: 80%; text-align: center;&#34;]]
+
+[[div style=&#34;font-size: 80%; text-align: center&#34;]]
 [[collapsible show=&#34;More by Lt Flops&#34; hide=&#34;More by Lt Flops&#34;]]
-[[div style=&#34;font-size: 120%;&#34;]]
+[[div style=&#34;font-size: 120%&#34;]]
 [[include :scp-wiki:more-by:lt-flops]]
-▸ [[[floppyphoenix|Lt Flops&#39; Author Page]]] ◂
+[[div class=&#34;fakeblock&#34;]]
+**[[[floppyphoenix|▸ Lt Flops&#39; Author Page ◂]]]**
+[[/div]]
 [[/div]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[/div]]
+
+@@ @@
+
+[[div class=&#34;centered&#34;]]
+[[include :scp-wiki:component:license-box]]
+[[&lt;]]
+=====
+&gt; **Filename:** [https://scp-wiki.wdfiles.com/local--files/desk-of-junior-designer-s-yvonne/avdiv.png avdiv.png], [https://scp-wiki.wikidot.com/local--files/bird/avdiv_white.png avdiv_white.png], [https://scp-wiki.wikidot.com/local--files/bird/avian-division-logo-transparent.png avian-division-logo-transparent.png]
+&gt; **Author:** [[*user EstrellaYoshte]]
+&gt; **License:** [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
+&gt; **Source Link:** Self
+
+&gt; **Filename:** [https://scp-wiki.wdfiles.com/local--files/bird/teambird2.jpg teambird2.jpg]
+&gt; **Author:** [[*user Mendelssohn]]
+&gt; **License:** [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
+&gt; **Source Link:** Self
+
+&gt; **Filename:** [https://scp-wiki.wdfiles.com/local--files/task-forces/Eta4.png Eta4.png]
+&gt; **Name:** MTF Eta-4 (&#34;Begone Thoth&#34;)
+&gt; **Author:** [[*user Lt Flops]]
+&gt; **License:** [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
+&gt; **Source Link:** [[[task-forces|Mobile Task Forces - SCP Foundation]]]
+
+&gt; **Filename:** [https://i.imgur.com/1H5YkQA.png 1H5YkQA.png]
+&gt; **Author:** [[*user CelesteKara]]
+&gt; **License:** [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
+&gt; **Source Link:** [[[team-bird-art-page|Team Bird Art Page - SCP Foundation]]]
+=====
+[[/&lt;]]
+[[include :scp-wiki:component:license-box-end]]
+[[/div]]
+
+@@ @@</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:53.795737.</em>
+    <em>Last updated 2022-05-18 15:46:23.823928.</em>
   
 </div>
 </body>

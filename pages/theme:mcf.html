@@ -29,6 +29,10 @@
     <ul class="module-styles">
       
         <li>
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Amcf/1&#39;);</code></pre>
+        </li>
+      
+        <li>
           <pre><code>#u-theme-page-image .scp-image-block.block-right {
      background: #092200;
 }</code></pre>
@@ -40,7 +44,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -110,7 +114,17 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +theme]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Amcf/1&#39;);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Amcf/1
+]]
+
+
+[[iftags +theme]]
 [[&gt;]]
 **Rating:**
 [[module Rate]]
@@ -150,10 +164,8 @@ First tab.
 Second tab.
 [[/tab]]
 [[/tabview]]
-[[/iftags]]
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 @import url(https://scp-wiki.wdfiles.com/local--files/theme%3Amcf/quantico.css);
 @import url(https://scp-wiki.wdfiles.com/local--files/theme%3Amcf/sansation.css);
 
@@ -186,7 +198,8 @@ a.newpage {
     color: #74a512;
 }
  
-#side-bar a:visited {
+#side-bar a:visited,
+#interwiki a:visited {
     color: #4f7942;
 }
  
@@ -272,11 +285,13 @@ div#container-wrap {
 }
  
 /* SIDE MENU */
-#side-bar {
+#side-bar,
+#interwiki {
     font-family: quanticoregular, sans-serif;
 }
 
-#side-bar .side-block {
+#side-bar .side-block,
+#interwiki .side-block {
     border: 1px solid #198b19;
     box-shadow: 0 2px 6px rgba(0,30,0,.5);
     background: #f5fffa;
@@ -287,7 +302,8 @@ div#container-wrap {
     background: #f5fffa;
 }
 
-#side-bar .heading {
+#side-bar .heading,
+#interwiki .heading {
     color: #006c00;
     border-bottom: solid 1px #006c00;
 }
@@ -302,9 +318,8 @@ div#container-wrap {
     color: #4f7942;
 }
 
-.side-block .menu-item &gt; .image {
+#interwiki .menu-item img {
     filter: hue-rotate(140deg) brightness(150%);
-    -webkit-filter: hue-rotate(140deg) brightness(150%);
 }
 
 /* YUI-TABS */
@@ -445,15 +460,15 @@ div.sexy-box div.image-container img {
         background-position: 1em;
     }
 }
-[[/module]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.572430.</em>
+    <em>Last updated 2022-05-18 15:46:28.173434.</em>
   
 </div>
 </body>

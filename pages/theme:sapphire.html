@@ -29,6 +29,10 @@
     <ul class="module-styles">
       
         <li>
+          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--code/theme%3Asapphire/1);</code></pre>
+        </li>
+      
+        <li>
           <pre><code>/* ---- PRESENTATION ---- */
 .templateInfo {
     margin: 1em 0;
@@ -49,10 +53,6 @@
       
         <li>
           <pre><code>margin-right: 2em;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -227,7 +227,16 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +theme]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(https://scp-wiki.wdfiles.com/local--code/theme%3Asapphire/1);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+|priority=1
+|theme=https://scp-wiki.wdfiles.com/local--code/theme%3Asapphire/1
+]]
+
+[[iftags +theme]]
 [[module CSS]]
 /* ---- PRESENTATION ---- */
 .templateInfo {
@@ -452,11 +461,14 @@ Finally, close the background, border, &amp; font by putting the following at th
 +* Source Code
 [[/=]]
 [[/div]]
-[[/iftags]]
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[module CSS show=&#34;true&#34;]]
-@import url(&#39;https://fonts.googleapis.com/css?family=Tinos&amp;display=swap&#39;);
+[[=]]
+[[collapsible show=&#34;▷ Show Code ◁&#34; hide=&#34;△ Hide Code △&#34;]]
+[[/=]]
+[[&lt;]]
+
+[[code type=&#34;CSS&#34;]]
+@import url(https://fonts.googleapis.com/css?family=Tinos&amp;display=swap);
 
 /* SAPPHIRE Theme
  * [2019 Wikidot Theme]
@@ -742,7 +754,7 @@ div#container-wrap {
      margin: 2px 0;
 }
  #side-bar .collapsible-block-folded {
-     background: url(https://scp-wiki.wdfiles.com/local--files/theme%3Asapphire/sapphire-expand.png) 0 2px no-repeat;
+     background: none;
 }
  #side-bar .collapsible-block-unfolded-link {
      border-bottom: solid 1px #333;
@@ -908,9 +920,20 @@ div#container-wrap {
 }
 
 /*INTERWIKI */
- .scpnet-interwiki-frame {
-     filter: hue-rotate(236deg) saturate(50%) brightness(111%);
+ #interwiki body{
+     overflow: hidden;
 }
+ #interwiki .side-block{
+     background: hsl(127, 50%, 94%);
+     border-color: var(--dark);
+     border-radius: 0;
+     box-shadow: 0 2px 6px hsla(0, 0%, 40%, .5);
+}
+ #interwiki .heading{
+     color: var(--dark);
+     border-color: var(--sapphire);
+}
+
 
 /* SAPPHIRE FORMAT */
  .sapphire-block {
@@ -969,15 +992,17 @@ div#container-wrap {
          margin: 0.5em;
     }
 }
-[[/module]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/&lt;]]
+[[/collapsible]]
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.582371.</em>
+    <em>Last updated 2022-05-18 15:46:28.185170.</em>
   
 </div>
 </body>

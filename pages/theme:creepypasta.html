@@ -29,7 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Acreepypasta/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -38,7 +38,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -86,8 +86,17 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Acreepypasta/1&#39;);
+[[/module]]
 
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Acreepypasta/1
+]]
+
+
+[[iftags +theme]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -100,7 +109,7 @@ To import this theme to your page, put the following anywhere inside it:
 @@[[include :scp-wiki:theme:creepypasta]]@@
 [[/div]]
 
-The standard CSS @import method won&#39;t work. This is intentional (thanks to [[*user stormbreath]] for providing the CSS code!). Importing the theme using @@[[include]]@@ adds your page to a list of Backlinks. This is useful for seeing what pages would be affected when this theme is updated, and allows any errors caused by that to be noticed and corrected much faster.
+Importing the theme using @@[[include]]@@ adds your page to a list of Backlinks. This is useful for seeing what pages would be affected when this theme is updated, and allows any errors caused by that to be noticed and corrected much faster.
 
 You can view any page&#39;s Backlinks by clicking &#34;+ Options&#34; at the bottom of the page, then &#34;Backlinks&#34;.
 
@@ -197,7 +206,7 @@ This is a long tab. It contains a lot of text.
 ||||already ||
 
 
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 @import url(&#39;https://fonts.googleapis.com/css?family=PT+Mono&amp;display=swap&#39;);
  
 /*
@@ -283,11 +292,14 @@ div#header h2:after {
 /* SIDE-BAR */
  
 div#side-bar a,
-div#side-bar a:visited {
+div#side-bar a:visited,
+#interwiki a,
+#interwiki a:visited {
     color: var(--fg-dark);
 }
  
-div#side-bar div.side-block {
+div#side-bar div.side-block,
+#interwiki div.side-block {
     background: rgb(24, 24, 24);
     border: 1px solid #ffe087;
     box-shadow: 0 2px 6px #404040;
@@ -299,6 +311,7 @@ div#side-bar div.side-block.resources {
 }
  
 div#side-bar div.side-block div.heading,
+#interwiki div.side-block div.heading,
 div#side-bar .collapsible-block-unfolded-link,
 div#side-bar .collapsible-block-unfolded-link .collapsible-block-link {
     color: rgb(255, 224, 135);
@@ -308,11 +321,9 @@ div#side-bar .collapsible-block-unfolded-link .collapsible-block-link {
 #side-bar .collapsible-block-unfolded-link .collapsible-block-link:hover {
     color: var(--fg-dark);
 }
- 
-/* Recolors the image bullet points in the side-bar */
- 
+  
 /* Recolors the Translation Module */
-div.scpnet-interwiki-wrapper {
+#interwiki .menu-item img {
     filter: hue-rotate(230deg) invert(100%);
 }
  
@@ -639,16 +650,16 @@ hr {
         color: var(--bg-light);
   }
 }
-[[/module]]
+[[/code]]
 
-[[/div]]</textarea></pre>
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.558522.</em>
+    <em>Last updated 2022-05-18 15:46:28.155480.</em>
   
 </div>
 </body>

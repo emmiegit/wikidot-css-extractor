@@ -29,7 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ajust-girly-things/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -38,7 +38,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -108,7 +108,16 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +theme]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ajust-girly-things/1&#39;);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Ajust-girly-things/1
+]]
+
+[[iftags +theme]]
 [[&gt;]]
 **Rating:**
 [[module Rate]]
@@ -144,10 +153,8 @@ First tab.
 Second tab.
 [[/tab]]
 [[/tabview]]
-[[/iftags]]
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 @import url(&#39;https://fonts.googleapis.com/css2?family=Lobster&amp;display=swap&#39;);
 
 /* ---------------------------------
@@ -298,14 +305,16 @@ body {
 }
 
 /* -------------- SIDE-BAR -------------- */
-#side-bar .side-block {
+#side-bar .side-block,
+#interwiki .side-block {
     border: 1px solid hsl(335, 90%, 25%);
     box-shadow: 0 2px 6px rgba(121, 6, 54,.5);
     color: hsl(335, 90%, 25%);
     background: hsl(335, 100%, 98%);
 }
  
-#side-bar .heading {
+#side-bar .heading,
+#interwiki .heading {
     color: hsl(335, 90%, 25%);
     border-bottom: solid 1px hsl(335, 90%, 25%);
 }
@@ -316,6 +325,10 @@ body {
  
 #side-bar .side-block.resources {
     background-color: hsl(335, 90%, 95%);
+}
+
+#interwiki .side-block {
+    background: hsl(335, 85%, 95%);
 }
 
 #side-bar .collapsible-block-unfolded-link {
@@ -331,10 +344,8 @@ body {
 }
 
 
-.side-block .menu-item &gt; .image,
-iframe.scpnet-interwiki-frame {
-    filter: hue-rotate(340deg) brightness(130%);    
-    -webkit-filter: hue-rotate(340deg) brightness(130%);
+#interwiki .menu-item img {
+    filter: hue-rotate(340deg);    
 }
 
 /* -------------- FOOTER -------------- */
@@ -346,6 +357,7 @@ iframe.scpnet-interwiki-frame {
 /* -------------- LINKS -------------- */
 a,
 #side-bar a:visited,
+#interwiki a:visited,
 #top-bar ul li.sfhover a,
 #top-bar ul li:hover a,
 #login-status ul a,
@@ -492,15 +504,15 @@ div.blockquote,
          color: hsl(335, 100%, 85%);
     }
 }
-[[/module]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.569711.</em>
+    <em>Last updated 2022-05-18 15:46:28.170591.</em>
   
 </div>
 </body>

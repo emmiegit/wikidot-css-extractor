@@ -29,6 +29,10 @@
     <ul class="module-styles">
       
         <li>
+          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--code/theme%3Aclassic/1);</code></pre>
+        </li>
+      
+        <li>
           <pre><code>/* ---- PRESENTATION ---- */
 .templateInfo {
     margin: 1em 0;
@@ -45,10 +49,6 @@
       
         <li>
           <pre><code>width: 8em;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -143,7 +143,16 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +theme]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(https://scp-wiki.wdfiles.com/local--code/theme%3Aclassic/1);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+|priority=1
+|theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aclassic/1
+]]
+
+[[iftags +theme]]
 [[module CSS]]
 /* ---- PRESENTATION ---- */
 .templateInfo {
@@ -300,10 +309,13 @@ Tab content
 +* Source Code
 [[/=]]
 [[/div]]
-[[/iftags]]
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[module CSS show=&#34;true&#34;]]
+[[=]]
+[[collapsible show=&#34;▷ Show Code ◁&#34; hide=&#34;△ Hide Code △&#34;]]
+[[/=]]
+[[&lt;]]
+
+[[code type=&#34;CSS&#34;]]
 /* Classic SCP Foundation Theme
  * [2020 Wikidot Theme]
  * Created by Lt Flops
@@ -586,11 +598,21 @@ Tab content
 }
 
 /* --- INTERWIKI --- */
- iframe.scpnet-interwiki-frame{
-     position: relative;
-     width: 17em;
-     margin-left: .313em;
-     background-color: transparent;
+ #interwiki body{
+     overflow: hidden;
+}
+ #interwiki .side-block{
+     background: hsl(127, 50%, 94%);
+     border: 0;
+     border-radius: 0;
+     box-shadow: none;
+}
+ #interwiki .heading{
+     margin: 0;
+     padding-left: 0;
+
+     color: hsl(0, 0%, 5%);
+     border-color: hsl(0, 0%, 67%);
 }
 
 /* --- SELECTION --- */
@@ -623,15 +645,17 @@ Tab content
           left: 0;
      }
 }
-[[/module]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/&lt;]]
+[[/collapsible]]
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.555488.</em>
+    <em>Last updated 2022-05-18 15:46:28.152311.</em>
   
 </div>
 </body>

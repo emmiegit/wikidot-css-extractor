@@ -29,7 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aminimal/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -102,7 +102,16 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +theme]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aminimal/1&#39;);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aminimal/1
+]]
+
+[[iftags +theme]]
 [[&gt;]]
 **Rating:**
 [[module Rate]]
@@ -140,10 +149,8 @@ First tab.
 Second tab.
 [[/tab]]
 [[/tabview]]
-[[/iftags]]
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 /*
     None CSS with Left Beef
     [2019 Wikidot Theme]
@@ -163,11 +170,13 @@ a.newpage {
      color: #0B0080;
 }
 
-#side-bar a {
+#side-bar a,
+#interwiki a {
      color: black
 }
 
-#side-bar a:visited {
+#side-bar a:visited,
+#interwiki a:visited {
      color: black;
 }
 
@@ -197,6 +206,7 @@ div#extra-div-1 {
     background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aminimal/minimal.svg&#39;);
     background-size: 6rem;
 }
+
 @media (max-width: 580px) and (min-width: 480px) {
     #header {
         background-position: 0.5em 4.5em;
@@ -216,29 +226,22 @@ div#extra-div-1 {
     text-shadow: none;
 }
  
-#header h1 a::before {
-    content: &#34;{$title}&#34;;
-    color: black;
-}
-
 #header h2 span {
     color: transparent;
     text-shadow: none;
 }
-#header h2 span::before {
-    content: &#34;{$subtitle}&#34;;
-    color: black;
-}
 
 /* SIDE-BAR */
-#side-bar .side-block {
+#side-bar .side-block,
+#interwiki .side-block {
     background-color: white !important;
     border-color: transparent;
     border-radius: 0px;
     box-shadow: none;
 }
 
-#side-bar .heading {
+#side-bar .heading,
+#interwiki .heading {
     color: black;
     border-bottom: solid 1px black;
 }
@@ -254,7 +257,6 @@ div#extra-div-1 {
     }
 }
 
-
 #side-bar .collapsible-block-unfolded-link {
     border-bottom: solid 1px black;
 }
@@ -264,10 +266,8 @@ div#extra-div-1 {
     color: black;
 }
 
-#side-bar img,
-iframe.scpnet-interwiki-frame {
+#interwiki .menu-item img{
     filter: grayscale(100%) saturate(0%);
-    -webkit-filter: grayscale(100%) saturate(0%);
 }
 
 /* TOP-BAR */
@@ -491,6 +491,23 @@ div.blockquote,
 .yui-navset-left .yui-content {
     border-left-color: #b7a9a9; /* different border color */
 }
+[[/code]]
+[[/iftags]]
+
+[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
+[[module CSS show=&#34;true&#34;]]
+/* These two arguments are in a quirked-up CSS Module (rather than the main code block) so users can feed Wikidot variables into them. */
+
+#header h1 a::before {
+    content: &#34;{$title}&#34;;
+    color: black;
+}
+
+#header h2 span::before {
+    content: &#34;{$subtitle}&#34;;
+    color: black;
+}
+
 [[/module]]
 [[/div]]</textarea></pre>
   </div>
@@ -499,7 +516,7 @@ div.blockquote,
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.573112.</em>
+    <em>Last updated 2022-05-18 15:46:28.174120.</em>
   
 </div>
 </body>

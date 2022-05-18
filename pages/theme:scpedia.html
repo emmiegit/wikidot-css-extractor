@@ -29,7 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ascpedia/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -38,7 +38,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -359,11 +359,8 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 [[footnoteblock]]
 
 [[span class=&#34;s-title&#34;]]Source Code:[[/span]]
-[[/iftags]]
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[collapsible show=&#34;+ Open&#34; hide=&#34;- Close&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 /*
     SCPedia Theme
     [2021 Wikidot Theme]
@@ -378,14 +375,23 @@ Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium dolor
 /* ---- BASE ---- */
 
 @media (min-width: 768px) {
-    #content-wrap { margin: 2em 0 0 1em; }
-    #main-content {
-         width: calc(100vw - 24rem);
-         margin: 0 2em 0 22em;
+    #content-wrap {
+        margin: 2em 0 0;
+        max-width: 100%;
     }
-    #header, #top-bar {
-         width: calc(100% - 4.4rem);
-         max-width: calc(100% - 4.4rem);
+    #main-content {
+        width: calc(100% - 22em - 3rem);
+        margin: 0 0 0 22em;
+        box-sizing: border-box;
+    }
+    #header {
+         width: calc(100% - 6rem);
+         max-width: calc(100% - 6rem);
+    }
+    #top-bar {
+        width: 100%;
+        max-width: 100%;
+        right: 0;
     }
 }
 
@@ -444,7 +450,7 @@ div#extra-div-1 {
     background: var(--lgurl);
     background-size: contain;
     background-repeat: no-repeat;
-    background-position: 3.25rem 50%;
+    background-position: 2.5rem 50%;
     z-index: -1;
 }
 
@@ -491,7 +497,10 @@ div#extra-div-2::after {
     div#extra-div-2::before, div#extra-div-2::after { display: none; }
 }
 
-#login-status { color: #54595D; }
+#login-status { 
+    color: #54595D;
+    right: 0;
+}
 #login-status a, #login-status ul a, #login-status ul a:hover { color: #0645AD; }
 #account-topbutton{ border: solid 1px #0645AD; }
 
@@ -499,6 +508,7 @@ div#extra-div-2::after {
 /* ---- SEARCH ---- */
 div#search-top-box {
     top: 2.1rem;
+    right: -1px;
 }
 div#search-top-box form {
     display: flex;
@@ -926,6 +936,35 @@ blockquote, div.blockquote, #toc {
     margin-left: auto; margin-right: auto;
     box-sizing: border-box;
 }
+#page-content #toc {
+    min-width: 13.25em;
+    max-width: 30em;
+    padding: 0.625em 0.5em;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+#toc .title {
+    order: 0;
+    padding: 0;
+}
+#toc-action-bar {
+    order: 1;
+    width: max-content;
+    font-size: 90%;
+    margin-left: 0.25em;
+}
+#toc-action-bar::before { content: &#34;[&#34;; }
+#toc-action-bar::after { content: &#34;]&#34;; }
+#toc-list {
+    order: 2;
+    flex-basis: 100%;
+    line-height: 1.375;
+    margin: 0.375em 0 0 0;
+}
 @media (max-width: 767px) {
     blockquote, div.blockquote, #toc { width: 96%; }
 }
@@ -1114,16 +1153,19 @@ div#action-area h1 {
     --lgurl: url(&#34;http://scp-wiki.wdfiles.com/local--files/theme%3Ascpedia/raisa.png&#34;);
 }
 
-[[/module]]
-[[/collapsible]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/iftags]]
+
+[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ascpedia/1&#39;);
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.585182.</em>
+    <em>Last updated 2022-05-18 15:46:28.187813.</em>
   
 </div>
 </body>

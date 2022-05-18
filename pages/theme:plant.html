@@ -29,7 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aplant/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -38,7 +38,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -69,7 +69,17 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aplant/1&#39;);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aplant/1
+]]
+
+
+[[iftags +theme]]
 
 [[&gt;]]
 **Rating:**
@@ -86,7 +96,7 @@ To use this theme, put the following syntax on any page:
 
 [# Unvisited Link] ([/theme:plant Visited Link])
 
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 @import url(&#39;https://fonts.googleapis.com/css?family=Short+Stack&#39;);
  
 /*
@@ -104,12 +114,14 @@ h1, #page-title {
 }
 
 a,
+#interwiki a:visited,
 #side-bar a:visited,
 #top-bar ul li.sfhover a,
 #top-bar ul li:hover a,
 #login-status ul a {
     color: #0b0;
 }
+
 a.newpage {
     color: #6d6;
 }
@@ -163,12 +175,14 @@ div#container-wrap {
 }
  
 /* SIDE MENU */
-#side-bar .side-block {
+#side-bar .side-block,
+#interwiki .side-block {
     border: 1px solid #060;
     box-shadow: 0 2px 6px rgba(0,102,0,.5);
 }
  
-#side-bar .heading {
+#side-bar .heading,
+#interwiki .heading {
     color: #060;
     border-bottom: solid 1px #060;
 }
@@ -176,9 +190,11 @@ div#container-wrap {
 #side-bar .collapsible-block-unfolded-link {
     border-bottom: solid 1px #060;
 }
+
 #side-bar .collapsible-block-unfolded-link .collapsible-block-link {
     color: #060;
 }
+
 #side-bar .collapsible-block-unfolded-link .collapsible-block-link:hover {
     color: #0b0;
 }
@@ -190,20 +206,22 @@ div#container-wrap {
      }
 }
  
-.side-block .menu-item &gt; .image,
-iframe.scpnet-interwiki-frame {
-    -webkit-filter: hue-rotate(140deg) brightness(220%);
-    filter: hue-rotate(140deg) brightness(220%);
+#interwiki .menu-item img {
+    filter: hue-rotate(140deg);
 }
 
 #side-bar .side-block.media {
-     background-color: #e5ffe5;
+     background-color: #a2dba2;
 }
  
 #side-bar .side-block.resources {
      background-color: #f0fff0;
 }
-  
+ 
+#interwiki .side-block {
+     background: #e0fddd;
+}
+
 /* FOOTER */
 #footer {
     background: #242;
@@ -280,15 +298,15 @@ iframe.scpnet-interwiki-frame {
 .yui-navset .yui-nav a:focus {
     background-image: url(https://scp-wiki.wdfiles.com/local--files/theme%3Aplant/tabs.png);
 }
-[[/module]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.579562.</em>
+    <em>Last updated 2022-05-18 15:46:28.181818.</em>
   
 </div>
 </body>

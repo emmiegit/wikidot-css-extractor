@@ -37,12 +37,15 @@
    --subtitleColor: hsl(0, 0%, 91%);
    --lgurl: url(https://scp-wiki.wikidot.com/local--files/theme:pataphysics/pataphysicslogo-ani.svg);
 }
+
  #page-title{
      display: none;
 }
+
  #header::before{
      opacity: .7;
 }
+
  #header h1 a::before{
      text-shadow:
           -1.75px -1.75px hsl(0, 0%, 5%),
@@ -54,6 +57,7 @@
           -1.75px  1.75px hsl(0, 0%, 5%),
           -1.75px  0   hsl(0, 0%, 5%);
 }
+
  #header h2::before{
      text-shadow:
           -1px -1px hsl(0, 0%, 5%),
@@ -65,13 +69,15 @@
           -1px  1px hsl(0, 0%, 5%),
           -1px  0   hsl(0, 0%, 5%);
 }
- #header #header-extra-div-1::before{
-     content: none;
+
+ #header-extra-div-1::before{
+      display: none;
 }
 
 /* GENERAL */
  .heather{
      color: hsl(332, 93%, 44%);
+
      font-weight: bold;
      word-break: unset;
 }
@@ -79,105 +85,131 @@
 /* TERMINAL */
  .terminal{
      background-color: hsl(268, 39%, 20%);
+     background-image:   /* black shadow at the top of the terminal */
+        radial-gradient(
+          ellipse 1000% 100% at 50% 90%,
+          transparent,
+          hsl(268, 33%, 10%));
      border: 3px solid hsl(0, 0%, 73%);
-     border-radius: .976em;
+     border-radius: 1rem;
+     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);   /* shadow around the terminal */
 
+     overflow: hidden;   /* prevents scanline from forming a scrollwheel */
      text-align: center;
-
-/* black shadow at the top of the terminal */
-     background-image: radial-gradient(ellipse 1000% 100% at 50% 90%, transparent, hsl(268, 33%, 10%));
-
-/* shadow around the terminal */
-     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);
-
-/* prevents scanline from forming a scrollwheel */
-     overflow: hidden;
 }
+
  .terminal hr{
      height: 2px;
 
-     background: 1px solid hsla(0, 0%, 90%, .9);
+     background: 1px solid hsl(0, 0%, 81%);
 }
+
  .scanline{
      position: relative;
      height: 3.659em;
      margin-top: -40%;
 
-     background: linear-gradient(to bottom, hsla(240, 19%, 27%, 0), hsla(240, 33%, 33%, .1));
+     background:
+        linear-gradient(
+          hsla(240, 19%, 27%, 0),
+          hsla(240, 33%, 33%, .1));
 
-     pointer-events: none;
      animation: scan 5s linear 0s infinite;
-
-/* Safari 4.0 - 8.0 */
      -moz-animation: scan 5s linear 0s infinite;
      -webkit-animation: scan 5s linear 0s infinite;
+     pointer-events: none;
 }
+
+ @-webkit-keyframes scan{   /* SAFARI 4.0 - 8.0 */
+     from{
+          transform: translateY(-10%);
+    }
+     to{
+          transform: translateY(2000%);
+    }
+}
+
  .terminal-text{
-     padding: 34% 3em 0;
+     padding: 34% 3rem 0;
 
-     color: hsla(0, 0%, 90%, .9);
+     color: hsl(0, 0%, 81%);
 
-     font-family: &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
-     font-size: 110%;
-}
-
-/* Safari 4.0 - 8.0 */
- @-webkit-keyframes scan{
-     from{ transform: translateY(-10%); }
-     to{ transform: translateY(2000%); }
+     font: 115% &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
 }
 
 /* FAKE LINKS */
  .fake-link{
-     color: hsla(0, 0%, 90%, .9);
+     color: hsl(0, 0%, 81%);
 
      cursor: pointer;
 }
+
  .fake-link :hover{
      position: relative;
      left: 25%;
      width: 50%;
 
-     background: linear-gradient(to right, hsla(0, 0%, 0%, 0), hsl(259, 100%, 75%), hsl(259, 100%, 75%), hsla(0, 0%, 0%, 0));
      color: hsl(268, 76%, 13%);
+     background:
+        linear-gradient(
+          to right,
+          hsla(0, 0%, 0%, 0),
+          hsl(259, 100%, 75%),
+          hsl(259, 100%, 75%),
+          hsla(0, 0%, 0%, 0));
 }
- .fake-link :hover::before{ content: &#34;▷ &#34;; }
+
+ .fake-link :hover::before{
+     content: &#34;▷ &#34;;
+}
+
  .escape{
-     color: hsla(0, 0%, 90%, .9);
+     color: hsl(0, 0%, 81%);
 
      cursor: pointer;
 }
- .escape :hover span{ display: none; }
- .escape :hover::before{ content:&#34;▷ THERE IS NO ESCAPE&#34;; }
 
-/* DIV BLOCKS */
- .pata{
-     background-color: hsl(268, 39%, 13%);
-     border: 3px solid hsl(0, 0%, 73%);
-     border-radius: .976em;
-
-     text-align: center;
-
-/* black shadow at the top of the terminal */
-     background-image: radial-gradient(ellipse 1000% 100% at 50% 90%, transparent, hsl(268, 33%, 10%));
-
-/* shadow around the terminal */
-     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);
-
-/* text */
-     padding: 0 3em;
-
-     color: hsla(0, 0%, 90%, .9);
-
-     font-family: &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
-     font-size: 110%;
+ .escape :hover span{
+     display: none;
 }
- .pata a{ color: hsl(272, 93%, 65%) !important; }
+
+ .escape :hover::before{
+     content:&#34;▷ THERE IS NO ESCAPE&#34;;
+}
+
+/* FORMATTING */
+ .pata{
+     background-color: hsl(268, 39%, 20%);
+     background-image:   /* black shadow at the top of the terminal */
+        radial-gradient(
+          ellipse 1000% 100% at 50% 90%,
+          transparent,
+          hsl(268, 33%, 10%));
+     border: 3px solid hsl(0, 0%, 73%);
+     border-radius: 1rem;
+     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);   /* shadow around the terminal */
+
+     overflow: hidden;   /* prevents scanline from forming a scrollwheel */
+
+   /* text */
+     padding: 0 3rem;
+
+     color: hsl(0, 0%, 81%);
+
+     font: 115% &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
+     text-align: center;
+}
+
+ .pata a{
+     color: hsl(268, 81%, 65%);
+}
+
  h4{
-     color: hsl(9, 91%, 68%);
+     color: hsl(9, 91%, 71%);
 
      animation: vibrate linear 100ms 100000;
 }
+
  @keyframes vibrate{
      0%{ transform: translate3d(0, 0, 0); }
      10%{ transform: translate3d(2px, 0, 0); }
@@ -186,13 +218,11 @@
      40%{ transform: translate3d(-2px, 0, 0); }
      50%{ transform: translate3d(-2px, -2px, 0); }
 }
+
  .additive{
-     font-size: 150%;
+     font-size: 155%;
      font-style: italic;
-     font-weight: bold;
-     word-wrap: break-word;
-     white-space: normal;
-     line-height: 18.05px;
+     line-height: .8;
 }</code></pre>
         </li>
       
@@ -368,6 +398,10 @@
       
         <li>
           <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>pseudocrumbs</code></pre>
         </li>
       
         <li>
@@ -806,12 +840,15 @@
    --subtitleColor: hsl(0, 0%, 91%);
    --lgurl: url(https://scp-wiki.wikidot.com/local--files/theme:pataphysics/pataphysicslogo-ani.svg);
 }
+
  #page-title{
      display: none;
 }
+
  #header::before{
      opacity: .7;
 }
+
  #header h1 a::before{
      text-shadow:
           -1.75px -1.75px hsl(0, 0%, 5%),
@@ -823,6 +860,7 @@
           -1.75px  1.75px hsl(0, 0%, 5%),
           -1.75px  0   hsl(0, 0%, 5%);
 }
+
  #header h2::before{
      text-shadow:
           -1px -1px hsl(0, 0%, 5%),
@@ -834,13 +872,15 @@
           -1px  1px hsl(0, 0%, 5%),
           -1px  0   hsl(0, 0%, 5%);
 }
- #header #header-extra-div-1::before{
-     content: none;
+
+ #header-extra-div-1::before{
+      display: none;
 }
 
 /* GENERAL */
  .heather{
      color: hsl(332, 93%, 44%);
+
      font-weight: bold;
      word-break: unset;
 }
@@ -848,105 +888,131 @@
 /* TERMINAL */
  .terminal{
      background-color: hsl(268, 39%, 20%);
+     background-image:   /* black shadow at the top of the terminal */
+        radial-gradient(
+          ellipse 1000% 100% at 50% 90%,
+          transparent,
+          hsl(268, 33%, 10%));
      border: 3px solid hsl(0, 0%, 73%);
-     border-radius: .976em;
+     border-radius: 1rem;
+     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);   /* shadow around the terminal */
 
+     overflow: hidden;   /* prevents scanline from forming a scrollwheel */
      text-align: center;
-
-/* black shadow at the top of the terminal */
-     background-image: radial-gradient(ellipse 1000% 100% at 50% 90%, transparent, hsl(268, 33%, 10%));
-
-/* shadow around the terminal */
-     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);
-
-/* prevents scanline from forming a scrollwheel */
-     overflow: hidden;
 }
+
  .terminal hr{
      height: 2px;
 
-     background: 1px solid hsla(0, 0%, 90%, .9);
+     background: 1px solid hsl(0, 0%, 81%);
 }
+
  .scanline{
      position: relative;
      height: 3.659em;
      margin-top: -40%;
 
-     background: linear-gradient(to bottom, hsla(240, 19%, 27%, 0), hsla(240, 33%, 33%, .1));
+     background:
+        linear-gradient(
+          hsla(240, 19%, 27%, 0),
+          hsla(240, 33%, 33%, .1));
 
-     pointer-events: none;
      animation: scan 5s linear 0s infinite;
-
-/* Safari 4.0 - 8.0 */
      -moz-animation: scan 5s linear 0s infinite;
      -webkit-animation: scan 5s linear 0s infinite;
+     pointer-events: none;
 }
+
+ @-webkit-keyframes scan{   /* SAFARI 4.0 - 8.0 */
+     from{
+          transform: translateY(-10%);
+    }
+     to{
+          transform: translateY(2000%);
+    }
+}
+
  .terminal-text{
-     padding: 34% 3em 0;
+     padding: 34% 3rem 0;
 
-     color: hsla(0, 0%, 90%, .9);
+     color: hsl(0, 0%, 81%);
 
-     font-family: &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
-     font-size: 110%;
-}
-
-/* Safari 4.0 - 8.0 */
- @-webkit-keyframes scan{
-     from{ transform: translateY(-10%); }
-     to{ transform: translateY(2000%); }
+     font: 115% &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
 }
 
 /* FAKE LINKS */
  .fake-link{
-     color: hsla(0, 0%, 90%, .9);
+     color: hsl(0, 0%, 81%);
 
      cursor: pointer;
 }
+
  .fake-link :hover{
      position: relative;
      left: 25%;
      width: 50%;
 
-     background: linear-gradient(to right, hsla(0, 0%, 0%, 0), hsl(259, 100%, 75%), hsl(259, 100%, 75%), hsla(0, 0%, 0%, 0));
      color: hsl(268, 76%, 13%);
+     background:
+        linear-gradient(
+          to right,
+          hsla(0, 0%, 0%, 0),
+          hsl(259, 100%, 75%),
+          hsl(259, 100%, 75%),
+          hsla(0, 0%, 0%, 0));
 }
- .fake-link :hover::before{ content: &#34;▷ &#34;; }
+
+ .fake-link :hover::before{
+     content: &#34;▷ &#34;;
+}
+
  .escape{
-     color: hsla(0, 0%, 90%, .9);
+     color: hsl(0, 0%, 81%);
 
      cursor: pointer;
 }
- .escape :hover span{ display: none; }
- .escape :hover::before{ content:&#34;▷ THERE IS NO ESCAPE&#34;; }
 
-/* DIV BLOCKS */
- .pata{
-     background-color: hsl(268, 39%, 13%);
-     border: 3px solid hsl(0, 0%, 73%);
-     border-radius: .976em;
-
-     text-align: center;
-
-/* black shadow at the top of the terminal */
-     background-image: radial-gradient(ellipse 1000% 100% at 50% 90%, transparent, hsl(268, 33%, 10%));
-
-/* shadow around the terminal */
-     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);
-
-/* text */
-     padding: 0 3em;
-
-     color: hsla(0, 0%, 90%, .9);
-
-     font-family: &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
-     font-size: 110%;
+ .escape :hover span{
+     display: none;
 }
- .pata a{ color: hsl(272, 93%, 65%) !important; }
+
+ .escape :hover::before{
+     content:&#34;▷ THERE IS NO ESCAPE&#34;;
+}
+
+/* FORMATTING */
+ .pata{
+     background-color: hsl(268, 39%, 20%);
+     background-image:   /* black shadow at the top of the terminal */
+        radial-gradient(
+          ellipse 1000% 100% at 50% 90%,
+          transparent,
+          hsl(268, 33%, 10%));
+     border: 3px solid hsl(0, 0%, 73%);
+     border-radius: 1rem;
+     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);   /* shadow around the terminal */
+
+     overflow: hidden;   /* prevents scanline from forming a scrollwheel */
+
+   /* text */
+     padding: 0 3rem;
+
+     color: hsl(0, 0%, 81%);
+
+     font: 115% &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
+     text-align: center;
+}
+
+ .pata a{
+     color: hsl(268, 81%, 65%);
+}
+
  h4{
-     color: hsl(9, 91%, 68%);
+     color: hsl(9, 91%, 71%);
 
      animation: vibrate linear 100ms 100000;
 }
+
  @keyframes vibrate{
      0%{ transform: translate3d(0, 0, 0); }
      10%{ transform: translate3d(2px, 0, 0); }
@@ -955,13 +1021,11 @@
      40%{ transform: translate3d(-2px, 0, 0); }
      50%{ transform: translate3d(-2px, -2px, 0); }
 }
+
  .additive{
-     font-size: 150%;
+     font-size: 155%;
      font-style: italic;
-     font-weight: bold;
-     word-wrap: break-word;
-     white-space: normal;
-     line-height: 18.05px;
+     line-height: .8;
 }
 [[/module]]
 
@@ -986,6 +1050,10 @@ This Tale is part of the **Void Dancer** Series.
 
 [[div class=&#34;meta-title&#34;]]
 A Scene From a Meme(-ory)
+[[/div]]
+
+[[div class=&#34;pseudocrumbs&#34;]]
+[[[foundation-tales|Tales Hub]]] &gt;&gt; [[[Series Archive]]] &gt;&gt; [[[Void Dancer Hub]]] &gt;&gt; A Scene From a Meme
 [[/div]]
 
 @@ @@
@@ -1447,7 +1515,7 @@ And so, she followed him, down to **The Void**&#39;s cyber café. Hoping that th
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:53.568978.</em>
+    <em>Last updated 2022-05-18 15:46:23.580452.</em>
   
 </div>
 </body>

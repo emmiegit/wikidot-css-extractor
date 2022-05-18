@@ -29,71 +29,213 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;http://scp-wiki.wikidot.com/component:theme/code/1&#39;);
+          <pre><code>#page-title { display: none; }
 
-#page-title { display: none; }
-#page-content a.newpage {color: #333}
+:root {
+    --ct_col_tab-menu-text: black;
+    --ct_col_tab-menu-bg-selected-txt: black;
+    --int-tabs-transition: 250ms ease-in-out;
+}
 
-.content-panel .content-type-title &gt; h3 {
-   margin: 0;
+.newest-translations &gt; div:nth-child(1) &gt; p {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1px 1fr 1px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1px;
+    grid-auto-rows: auto;
+    height: 100%;
+    margin-top: 0;
 }
-.content-panel .content-type-title h3 {
-   font-size: 120%;
-   font-weight: bold;
-   padding: 5px 20px;
-   color: #FFFFFF;
+
+.newest-translations &gt; div:nth-child(1) &gt; p &gt; a {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0.25em;
+    text-align: center;
+    word-break: inherit !important;
 }
-.content-panel .content-type-title {
-   background-color: #a6a6a6;
-   border-radius: 9px 9px 0 0;
-   box-shadow: inset 0 10px 10px rgba(255,255,255,0.1), inset 0 10px 20px rgba(255,255,255,0.25), 0 1px 3px rgba(0,0,0,0.15);
+
+.newest-translations &gt; div:nth-child(1) br {
+    display: none;
 }
-.content-panel .content-type-options{
-   padding: 0 20px;
+
+.tab-box {
+    border: 1px solid #a3a3a3;
+    border-radius: 5px;
+    padding: 0.4rem;
 }
-.content-panel .content-type-options ul {
+
+.yui-navset .yui-content {
+    background-color: white;
+    border: none;
+}
+
+.yui-navset .yui-content .content-type-options {
+   padding: 0 2rem;
+}
+.yui-navset .yui-content .content-type-options ul {
    padding-left: 1.5em;
    margin-top: 0.15em;
    margin-left: 0;
 }
-.content-panel .content-type-options p {
+
+.yui-navset .yui-content .content-type-options p {
    margin-bottom: 0;
    margin-top: 0;
 }
-.content-panel .panel-footer {
-   background-color: #a6a6a6;
-   color: #fcfdfb;
-   font-weight: normal;
-   text-align: center;
-   padding: 1px 0px;
-   border-radius: 0px 0px 9px 9px;
-   padding-left: 20px;
-   box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
-}
-.content-panel .panel-footer a {
-   color: #fcfdfb;
-   text-decoration: underline;
-}
-.content-panel .image-container{
-   padding-bottom: 0.15em;
+.yui-navset .yui-nav,
+.yui-navset .yui-navset-top .yui-nav {
+    border-color: white;
 }
 
-h3 {
-   color: #fcfdfb;
-   text-shadow: 1px 1px 2px rgba(0,0,0,.35);
+.yui-navset .yui-nav a em,
+.yui-navset .yui-navset-top .yui-nav a em {
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    text-shadow: -1px 0 white,
+                        0 1px white,
+                        1px 0 white,
+                        0 -1px white,  
+                        -1px -1px white,  
+                        -1px 1px white,  
+                        1px -1px white,  
+                        1px 1px white;
+    transition: var(--int-tabs-transition);
 }
-h3 a, h3 a:visited {
-   color: #fcfdfb;
-   text-shadow: 1px 1px 2px rgba(0,0,0,.35);
+.yui-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 0.45rem;
+}
+.yui-navset .yui-nav li, .yui-navset .yui-navset-top .yui-nav li {
+    flex-basis: 7rem;
+    flex-grow: 1;
+    min-width: max-content;
+    margin: 0;
+}
+.yui-navset .yui-nav .selected, .yui-navset .yui-navset-top .yui-nav .selected {
+    margin: 0;
+}
+.yui-navset .yui-nav a,
+.yui-navset .yui-navset-top .yui-nav a {
+    border: 1px solid #a3a3a3;
+    border-radius: 5px;
+}
+.yui-navset .yui-nav a,
+.yui-navset .yui-navset-top .yui-nav a,
+.yui-navset .yui-nav a:hover,
+.yui-navset .yui-nav a:focus,
+.yui-navset .yui-nav .selected a,
+.yui-navset .yui-nav .selected a:hover,
+.yui-navset .yui-nav .selected a:focus {
+    background: var(--logo) center/contain no-repeat;
+    transition: var(--int-tabs-transition);
+    background-color: white;
+    box-sizing: border-box;
 }
 
-.ul_no-margin {
-    margin: 0;
-    padding: 0;
+.yui-navset .yui-nav a:is(:hover, :focus) {
+    transform: scale(1.15);
+    z-index: 1;
 }
-.ul_no-margin ul {
+.yui-navset .yui-nav .selected a {
+    box-shadow: 0 0 0 0.1rem black;
+}
+.yui-navset .yui-nav .selected a:is(:hover, :focus) {
+    transform: none;
+}
+.yui-nav &gt; li &gt; a::before {
+    content: &#34;&#34;;
+    position: absolute;
+    inset: 0;
+    transition: var(--int-tabs-transition);
+}
+.yui-nav &gt; li:hover &gt; a::before {
+    background-color: rgba(0 0 0 / 6%);
+}
+
+.yui-navset .yui-nav .selected a em {
+    padding: 0.25em .75em;
+}
+.yui-navset .yui-nav li a,
+.yui-navset-top .yui-nav li a,
+.yui-navset-bottom .yui-nav li a {
     margin: 0;
-    padding: 0;
+    padding-top: calc(0.25rem + 0.125vw);
+    padding-bottom: calc(0.25rem + 0.125vw);
+    width: 100%;
+}
+
+.yui-nav &gt; li:nth-child(1) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-int-full-400.png);
+}
+.yui-nav &gt; li:nth-child(2) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ru.svg);
+}
+.yui-nav &gt; li:nth-child(3) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ko-400.png);
+}
+.yui-nav &gt; li:nth-child(4) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-cn-400.png);
+}
+.yui-nav &gt; li:nth-child(5) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-fr-400.png);
+}
+.yui-nav &gt; li:nth-child(6) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-pl.svg);
+}
+.yui-nav &gt; li:nth-child(7) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-es.svg);
+}
+.yui-nav &gt; li:nth-child(8) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-th.svg);
+}
+.yui-nav &gt; li:nth-child(9) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-jp.svg);
+}
+.yui-nav &gt; li:nth-child(10) &gt; a {
+    --logo: url(http://scp-int.wdfiles.com/local--files/main/scp-logo-dach-400.png);
+}
+.yui-nav &gt; li:nth-child(11) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-it.svg);
+}
+.yui-nav &gt; li:nth-child(12) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ua.svg);
+}
+.yui-nav &gt; li:nth-child(13) &gt; a {
+    --logo: url(https://scp-wiki.wdfiles.com/local--files/scp-international/scp-logo-pt-400.png);
+}
+.yui-nav &gt; li:nth-child(14) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-cs.svg);
+}
+.yui-nav &gt; li:nth-child(15) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-zh.svg);
+}
+.yui-nav &gt; li:nth-child(16) &gt; a {
+    --logo: url(http://scp-int.wdfiles.com/local--files/main/scp-logo-vn-400.png);
+}
+.yui-nav &gt; li:nth-child(17) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-int-full-400.png);
 }</code></pre>
         </li>
       
@@ -103,23 +245,11 @@ h3 a, h3 a:visited {
     <ul class="inline-styles">
       
         <li>
-          <pre><code>height:34px;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>height:34px;</code></pre>
-        </li>
-      
-        <li>
           <pre><code>color:#d00</code></pre>
         </li>
       
         <li>
           <pre><code>color:#d00</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 15px 20px</code></pre>
         </li>
       
     </ul>
@@ -135,19 +265,15 @@ h3 a, h3 a:visited {
     <ul class="css-classes">
       
         <li>
-          <pre><code>content-panel</code></pre>
+          <pre><code>tab-box</code></pre>
         </li>
       
         <li>
-          <pre><code>left-column</code></pre>
+          <pre><code>newest-translations</code></pre>
         </li>
       
         <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>tab-box</code></pre>
         </li>
       
         <li>
@@ -155,23 +281,7 @@ h3 a, h3 a:visited {
         </li>
       
         <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>content-type-options</code></pre>
         </li>
       
         <li>
@@ -187,23 +297,7 @@ h3 a, h3 a:visited {
         </li>
       
         <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>left-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>content-type-options</code></pre>
         </li>
       
         <li>
@@ -211,23 +305,7 @@ h3 a, h3 a:visited {
         </li>
       
         <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>content-type-options</code></pre>
         </li>
       
         <li>
@@ -235,23 +313,7 @@ h3 a, h3 a:visited {
         </li>
       
         <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>left-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>content-type-options</code></pre>
         </li>
       
         <li>
@@ -259,23 +321,7 @@ h3 a, h3 a:visited {
         </li>
       
         <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>content-type-options</code></pre>
         </li>
       
         <li>
@@ -283,23 +329,7 @@ h3 a, h3 a:visited {
         </li>
       
         <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>left-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>content-type-options</code></pre>
         </li>
       
         <li>
@@ -307,23 +337,7 @@ h3 a, h3 a:visited {
         </li>
       
         <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>content-type-options</code></pre>
         </li>
       
         <li>
@@ -331,143 +345,7 @@ h3 a, h3 a:visited {
         </li>
       
         <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>left-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
-        </li>
-      
-        <li>
           <pre><code>content-type-options</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-options</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>left-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-options</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-options</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>left-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-options</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>panel-footer</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-column</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-title</code></pre>
         </li>
       
         <li>
@@ -478,174 +356,270 @@ h3 a, h3 a:visited {
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[=]]
-[[image scp-logo-int.png width=&#34;0&#34; height=&#34;0&#34;]]
 +* [[size 125%]]Welcome to the International Branches Hub[[/size]]
 
-++* The contents of this page are currently [CLASSIFIED].
++++* The contents of this page are currently [CLASSIFIED].
 
-**Personnel are reminded that while this hub is classified as Security Clearance Level 1, most files within this hub are subject to various classifications, and that verified credentials will be necessary to access those files.**
-
------
+**Personnel are reminded that while this hub is classified as Security Clearance Level 1, files within this hub are subject to various classifications, and verified credentials will be necessary to access those files.**
 [[/=]]
+-----
 
-The International Branches hub contains lists of translated SCP articles, tales and other articles from all the different branches.
-[[==]]
-&gt; Although the SCP Foundation has had numerous national branches for decades and even centuries, little is known about them and the SCPs they secure, contain and protect. While every local employee of each branch knows how lots of SCPs from the mother-Foundation are contained, the lack of knowledge of the SCPs each branch contains is not only a major security risk, it prevents the branches from effectively working together.
-&gt; 
-&gt; With this in mind, the International Translation Archive of the SCP Foundation was founded. A storage for translations into English to easily be accessed by English-speakers and to be translated into other languages. For matters of security, information, and collaboration.
-&gt; 
-&gt; --Dr. ████
-[[/==]]
-[[f&gt;toc]]
+The International Branches Hub lists articles from other branches of the SCP Foundation that have been translated into English. Most of these translations were originally posted on the [http://scp-int.wikidot.com/scp-international International Translation Archive] of the SCP-Foundation (SCP-INT), a site where members of various branches post translations in English to make them available to an international audience. The pages listed on this hub are only a small selection of the content available on the International Translation Archive, and we encourage you to go there to check out a much larger number of translated articles.
 
-The translations from international branches were originally posted on the [http://scp-int.wikidot.com/ International Translation Archive of the SCP-Foundation], a site where authors and users of the branches translate their content to English, to make it available for users all over the world, and for translations to other languages. The pages in this hub have been double-checked by the Archive&#39;s Review Team, and have been selected by the Archives staff to be shown here, and are extended over time. The links in this hub each lead to a page embedding the page from the Archive, so you see the Archive&#39;s original, but your rating and comments remain on this wiki.
+It&#39;s worth noting that branches are named for their language, not their nationality. While you may be reading this on the &#34;English branch&#34; (SCP-EN), that doesn&#39;t mean everyone here is from England, and the same is true for the other branches!
 
-When reading, rating and commenting these pages, please keep in mind that some of the branches have own backgrounds and a different view of the Foundation, so their writing style and the head-canon of the authors may vary strongly from what you are used to on this site, and may appear exotic. However, feedback and pointing out spelling mistakes is appreciated.
+When reading, rating and commenting these pages, keep in mind that some branches have their own background for the Foundation, which may be different to what you&#39;re used to. Feedback, questions and corrections to spelling and grammar are just as welcome here as they are on the rest of the site.
 
-~~~~
 
+[[collapsible show=&#34;Want to add a translation to the list?&#34; hide=&#34;Here&#39;s what you need to know:&#34;]]
+Any translations posted on the English Language SCP wiki can be linked from this page by adding them to the appropriate section. Feel free to [http://05command.wikidot.com/staff-list contact staff] or ask on the [http://scp-int.wikidot.com/chat-guidelines INT Discord] if you have any questions.
+
+Translations should be posted by either the author or the translator, and all authors and translators must be credited (either on the discussion page, or in the article using components like the [[[component:info-ayers| Info Bar]]], [[[info:start| Info Module]]] or [[[component:license-box|License Box]]]). You will also need to message a member of staff to ensure that the article&#39;s [[[Attribution Metadata]]] lists both the author and the translator.
+
+Translations posted to this wiki should have the same URL address as the original article, although titles should usually be translated into English. Although it has been done in the past, translations shouldn&#39;t be posted as mainlist SCPs.
+
+Translations should be added to the appropriate list below and be tagged with &#34;international&#34; and a Language Code tag (such as _ru or _cn), plus any other tags that apply. Generally, this will be the same as the tags on the original article, translated into English, but tags that are not listed on the [http://05command.wikidot.com/tech-hub-tag-list EN Tag List] will need be removed. If posting a translation from a branch that doesn&#39;t have a Language Code tag yet, message a member of the [http://05command.wikidot.com/technical-staff-main Technical Team] and they&#39;ll add it to the list.
+
+We recommend receiving critique on the quality of any translation from someone fluent in English before posting here. Minor errors may be overlooked, but poorly worded translations are likely to be downvoted.
+[[/collapsible]]
 
 ----
 
-[[div class=&#34;content-panel left-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://scpfoundation.ru/ SCP-RU :: Фонд SCP]
+[[=]]
+++ Newest Translations
+[[/=]]
+[[div class=&#34;tab-box&#34;]]
+[[div class=&#34;newest-translations&#34;]]
+
+[[module ListPages tags=&#34;+international&#34; perPage=&#34;6&#34; limit=&#34;6&#34; order=&#34;created_at desc&#34; separate=&#34;false&#34;]]
+%%title_linked%%
+[[/module]]
 [[/div]]
+[[/div]]
+
+----
+
+[[=]]
+++ List of International Branches
+[[/=]]
+
+[[div class=&#34;tab-box&#34;]]
+[[tabview]]
+
+[[tab INT]]
+[[=]]
++ [http://scp-int.wikidot.com/int-hub International Collaborations (SCP-INT)]
+[[/=]]
+[[=image https://scp-wiki.wdfiles.com/local--files/scp-international/scp-logo-int.png height=&#34;150px&#34;]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-ru-400.png height=&#34;100px&#34;]]
+
 **SCPs**
+* [[[SCP-005-INT]]] - The Arc
+* [[[SCP-006-INT]]] - Mediterranean
+* [[[SCP-007-INT]]] - Oneiric
+
+For more collaborations between authors from multiple branches, visit the [http://scp-int.wikidot.com/int-hub Hub for International Collaborations].
+[[/div]]
+[[/tab]]
+
+[[tab Russian]]
+[[=]]
++ [http://scp-int.wikidot.com/ru-hub Russian-Speaking Branch (SCP-RU)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ru-400.png height=&#34;150px&#34;]]
+[[/=]]
+[[div class=&#34;content-type-options&#34;]]
+[[&lt;]]
+**SCPs**
+* [[[swelling-of-the-worlds| Arbelict&#39;s Proposal]]] - You Are The Anomaly, Tumor Of The Worlds
 * [[[SCP-1040-RU]]] - Upgraded SVD
 * [[[SCP-1092-RU]]] - Web of Words
 * [[[SCP-1238-RU]]] - The Twist Brothers
 * [[[SCP-1340-RU]]] - Midnight Transmission
 * [[[SCP-1399-RU]]] - Awake, Again
 
+[[collapsible show=&#34;SCP-RU posted as EN SCPs&#34; hide=&#34;Posted as EN SCPs:&#34;]]
+* [[[SCP-206]]] (SCP-206-RU) - Traveler
+* [[[SCP-1138]]] - Book of Letters
+* [[[SCP-2195]]] (SCP-2195-RU) - Sons of the Nation
+* [[[SCP-2470]]] (SCP-1001-RU) - The Void Singularity
+* [[[SCP-5240]]] (SCP-1380-RU) - Vergussenheit, the City of the Forgotten
+* [[[SCP-6260]]] (SCP-1339-RU) - They came from Scipio-44
+[[/collapsible]]
+@@@@
+
+**Explained SCPs**
+* [[[SCP-1329-RU-EX]]]
+
+**Joke SCPs**
+* [[[SCP-1150-J]]] - The Budget Hole
+
 **Tales**
+* [[[A Broken Machine]]]
 * [[[class-d-recruiting|]]]
+* [[[document-48116-88-son-of-the-earth|Document 48116-88 (&#34;Son of the Earth&#34;)]]]
+* [[[Memory]]]
+* [[[thunder-perfect-mind| Perfect Mind]]]
+* [[[Rebranding]]]
 * [[[They|They!]]]
+* [[[The Truth About 447]]]
+* [[[Time]]]
+* [[[Successful Cooperation And Partnership]]]
 * [[[tribunal|Statute on SCP Foundation Internal Tribunal Department]]]
+* [[[Unusual]]]
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-See also: [http://scp-int.wikidot.com/ru-hub Hub of SCP-RU] in the Translation Archive.
-[[/div]]
-[[/div]]
+**Essays**
+* [[[list-of-foundation-s-internal-departments| Internal Departments]]]
+* [[[s7-apcs-guide| S7-APCS Classification System]]]
 
-[[div class=&#34;content-panel right-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://ko.scp-wiki.net/ SCP-KO :: SCP 재단]
+For more translations from the Russian Branch, visit the [http://scp-int.wikidot.com/ru-hub RU Hub] on the [http://scp-int.wikidot.com Translation Archive].
+[[/&lt;]]
 [[/div]]
+[[/tab]]
+
+[[tab Korean]]
+[[=]]
++ [http://scp-int.wikidot.com/ko-hub Korean Branch (SCP-KO)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ko-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-ko-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[SCP-071-KO]]] - Streetlight tree
+* [[[SCP-149-KO]]] - CC BY-NC-ND
+* [[[SCP-188-KO]]] - Heart of the Earth
+* [[[SCP-503-KO]]] - Normalcy Classification System
 * [[[SCP-521-KO]]] - What is Seeing?
 * [[[SCP-600-KO]]] - [[span class=&#34;fa fa-tree&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]]
+* [[[SCP-621-KO]]] - I will live on ██ 
 * [[[SCP-750-KO]]] - Revenant Soldier
+* [[[SCP-824-KO]]] - 22×6×10^^23^^ drops of water
+* [[[SCP-825-KO]]] - Sokcho Tongkeun Mulhoe Restaurant
+* [[[SCP-877-KO]]] - B████d B████s
+
+[[collapsible show=&#34;SCP-KO posted as EN SCPs&#34; hide=&#34;Posted as EN SCPs:&#34;]]
+* [[[SCP-4194]]] (formerly SCP-094-KO) - All That Falls Has Wings
+[[/collapsible]]
+@@@@
 
 **Tales**
 * [[[no-problem|]]]
+* [[[O5-GOC]]]
 * [[[the-pale-people|Palple]]]
+* [[[scp-825-ko-1|]]]
 
 **Secure Facilities Location**
 * [[[secure-facility-dossier-site-64k|]]]
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-See also: [http://scp-int.wikidot.com/ko-hub Hub of SCP-KO] in the Translation Archive.
-[[/div]]
-[[/div]]
+**GoI Formats**
+* [[[the-lizard-adapting-endlessly-6gjqg-jt8xh-wobu2|]]]
 
-~~~~
-
-[[div class=&#34;content-panel left-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://scp-wiki-cn.wikidot.com/ SCP-CN :: 基金会]
+For more translations from the Korean Branch, visit the [http://scp-int.wikidot.com/ko-hub KO Hub] on the [http://scp-int.wikidot.com Translation Archive].
+[[/&lt;]]
 [[/div]]
+[[/tab]]
+
+[[tab Chinese]]
+[[=]]
++ [http://scp-int.wikidot.com/cn-hub Chinese-Speaking Branch (SCP-CN)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-cn-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-cn-400.png height=&#34;100px&#34;]]
+[[&lt;]]
 **SCPs**
+* [[[SCP-CN-666]]] - We Hold the Bottom Line
 * [[[SCP-CN-675]]] - The Great Kyet Khaewt Device
 * [[[SCP-CN-767]]] - Chart Syndrome
+* [[[SCP-CN-985]]] - Exam Shark
 * [[[SCP-CN-999]]] - //Spreading your wings//
+* [[[SCP-CN-1109]]] - Project Longinus
+* [[[SCP-CN-1500]]] - pʰoʃma
+
+[[collapsible show=&#34;SCP-CN posted as EN SCPs&#34; hide=&#34;Posted as EN SCPs:&#34;]]
+* [[[SCP-5814]]] (Re_spectator&#39;s proposal) - Substitution Reaction
+* [[[SCP-6470]]] (SCP-CN-2469) - Omnipresent
+[[/collapsible]]
+@@@@
 
 **Joke-SCPs**
 * [[[SCP-CN-2000-J]]] - Foundation&#39;s Bizarre Black-Technologies
+* [[[SCP-CN-20210401-J]]] - Super Tom!
 
 **Tales**
+* [[[2521-escaped| ⚠︎ ⬤⬤|⬤⬤⬤⬤⬤|⬤⬤|⬤? ⚠︎]]]
+* [[[Immolation]]]
 * [[[Oblivious]]]
 * [[[Falling Into Stars]]]
 
+For more translations from the Chinese Branch, visit the [http://scp-int.wikidot.com/cn-hub CN Hub].
+[[/&lt;]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/cn-hub Hub of SCP-CN] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+[[/tab]]
 
-[[div class=&#34;content-panel right-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34; style=&#34;height:34px;&#34;]]
-+++ [http://fondationscp.wikidot.com/ SCP-FR :: La Fondation]
-[[/div]]
+[[tab French]]
+[[=]]
++ [http://scp-int.wikidot.com/fr-hub French-Speaking Branch (SCP-FR)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-fr-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-fr-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[proposition-du-dr-gray| Dr Gray&#39;s Proposal]]] - Not All Angels Have Wings
 * [[[SCP-024-FR]]] - ``U can Totali swalo Dat&#39;&#39;
 * [[[SCP-054-FR]]] - Blue Fear
 * [[[SCP-185-FR]]] - Kinetic Inverter
+* [[[SCP-227-FR]]] - Horoscomaton
 * [[[SCP-236-FR]]] - The Perfect Parry To An Imaginary Threat
 * [[[SCP-281-FR]]] - The Day The Earth Stopped [[size 40%]]Being Flat[[/size]]
 * [[[SCP-335-FR]]] - Lacrymodjinn
 
 **Tales**
-* [[[humanisme-et-esthetique|]]] 
+* [[[humanisme-et-esthetique|]]]
 * [[[djinn-tonic|]]]
 
 **GoI-Hubs**
 * [[[saphir-centre|]]]
 
+For more translations from the French Branch, visit the [http://scp-int.wikidot.com/fr-hub FR Hub].
+[[/&lt;]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/fr-hub Hub of SCP-FR] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+[[/tab]]
 
-~~~~
-
-[[div class=&#34;content-panel left-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://scp-pl.wikidot.com/ SCP-PL :: Fundacja]
-[[/div]]
+[[tab Polish]]
+[[=]]
++ [http://scp-int.wikidot.com/pl-hub Polish-Speaking Branch (SCP-PL)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-pl-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-pl-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[SCP-PL-052]]] - Subtemporal Bracer
 * [[[SCP-PL-066]]] - Trapdoor in a storeroom
 * [[[SCP-PL-067]]] - The dog that leapt through time
 * [[[SCP-PL-078]]] - Earrings of Instant Meetup
 * [[[SCP-PL-126]]] - The Union of Earth Socialist Republics
+* [[[SCP-PL-253]]] - ##green|**WHAT IN THE KENTUCKY FRIED FUCK**##
+
+**Joke-SCPs**
+* [[[SCP-PL-KOT-J]]] - It&#39;s a social experiment
 
 **Tales**
 * [[[rzeczywistosc|]]]
+* [[[historia-polskiego-projektu-przechowawczego|]]]
 * [[[czym-sa-obiekty-konspiracyjne|]]]
 * [[[bo-wszyscy-juz-zgineli|Cause everyone already died]]]
 
+For more translations from the Polish Branch, visit the [http://scp-int.wikidot.com/pl-hub PL Hub].
+[[/&lt;]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/pl-hub Hub of SCP-PL] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+[[/tab]]
 
-[[div class=&#34;content-panel right-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://lafundacionscp.wikidot.com/ SCP-ES :: La Fundación SCP]
-[[/div]]
+[[tab Spanish]]
+[[=]]
++ [http://scp-int.wikidot.com/es-hub Spanish-Speaking Branch (SCP-ES)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-es-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-es-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[SCP-ES-019]]] - Apocalyptic Headphones
 * [[[SCP-ES-029]]] - Massive Mechanical Obitus
@@ -653,7 +627,15 @@ See also: [http://scp-int.wikidot.com/ko-hub Hub of SCP-KO] in the Translation A
 * [[[SCP-ES-100]]] - For your safety, please use the stairs.
 * [[[SCP-ES-105]]] - Stargazing the Other Stars
 * [[[SCP-ES-122]]] - greatGreenishGreenery v1.01
+* [[[SCP-ES-158]]] - And the Potatoes Took Over the Earth
 * [[[SCP-ES-100-EX]]] - Mother Nature
+* [[[SCP-ES-234]]] - Detective Marw, Private Eye
+
+[[collapsible show=&#34;SCP-ES posted as EN SCPs&#34; hide=&#34;Posted as EN SCPs:&#34;]]
+* [[[SCP-179]]] (SCP-ES-026) - Sauelsuesor
+* [[[SCP-2104]]] (SCP-ES-004) - The King by the Tree
+[[/collapsible]]
+@@@@
 
 **Joke-SCPs**
 * [[[scp-no-me-importa|]]] - I don&#39;t care
@@ -661,26 +643,26 @@ See also: [http://scp-int.wikidot.com/ko-hub Hub of SCP-KO] in the Translation A
 
 **Tales**
 * [[[evolucion|]]]
+* [[[Nx-14]]]
+* [[[el-gato-y-el-mono|The Cat and the Monkey]]]
 
 **GoI Formats**
 * [[[peligro-igniciervos|Danger: Incinideer!]]]
 * [[[doctor-muerte|Herman Fuller Presents: The Doctor of Death]]]
+* [[[somnovacuidad|Somnovacuity]]]
 
+For more translations from the Spanish Branch, visit the [http://scp-int.wikidot.com/es-hub ES Hub].
+[[/&lt;]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/es-hub Hub of SCP-ES] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+[[/tab]]
 
-~~~~
-
-[[div class=&#34;content-panel left-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34; style=&#34;height:34px;&#34;]]
-+++ [http://scp-th.wikidot.com/ SCP-TH :: สถาบัน]
-[[/div]]
+[[tab Thai]]
+[[=]]
++ [http://scp-int.wikidot.com/th-hub Thai Branch (SCP-TH)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-th-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-th-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[SCP-072-TH]]] - The Castle Guards
 * [[[SCP-901-TH]]] - The Giant Head
@@ -691,25 +673,28 @@ See also: [http://scp-int.wikidot.com/ko-hub Hub of SCP-KO] in the Translation A
 **Tales**
 * [[[7-ghost-story-in-the-site-29|]]]
 
+For more translations from the Thai Branch, visit the [http://scp-int.wikidot.com/th-hub TH Hub].
+[[/&lt;]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/th-hub Hub of SCP-TH] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+[[/tab]]
 
-[[div class=&#34;content-panel right-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://ja.scp-wiki.net/ SCP-JP :: SCP財団]
-[[/div]]
+[[tab Japanese]]
+[[=]]
++ [http://scp-int.wikidot.com/jp-hub Japanese Branch (SCP-JP)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-jp-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-jp-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[SCP-040-JP]]] - There is a cat.
 * [[[SCP-100-JP]]] - Attic Room Space
 * [[[SCP-161-JP]]] - Eyling Inability
 * [[[SCP-280-JP]]] - A Shrinking Space-Time Anomaly
 * [[[SCP-488-JP]]] - [[span style=&#34;color:#d00&#34;]]W[[/span]]erew[[span style=&#34;color:#d00&#34;]]olves[[/span]]
+* [[[SCP-2955-JP]]] - Septette for the Dead CN-Aniki
+
+**Joke-SCPs**
+* [[[scp-bonito-jp-j|SCP-Shrimp-JP-J]]] - ＞ A saury ＜
 
 **Tales**
 * [[[silent-forest-ikuragunkan|]]]
@@ -720,21 +705,18 @@ See also: [http://scp-int.wikidot.com/ko-hub Hub of SCP-KO] in the Translation A
 **Hubs**
 * [[[groups-of-interest-jp|Groups of Interest-JP]]]
 
+For more translations from the Japanese Branch, visit the [http://scp-int.wikidot.com/JP-hub JP Hub].
+[[/&lt;]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/jp-hub Hub of SCP-JP] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+[[/tab]]
 
-~~~~
-
-[[div class=&#34;content-panel left-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://scp-wiki-de.wikidot.com/ SCP-DE :: SCP auf Deutsch]
-[[/div]]
+[[tab German]]
+[[=]]
++ [http://scp-int.wikidot.com/de-hub German-Speaking Branch (SCP-DE)]
+[[=image http://scp-wiki-de.wdfiles.com/local--files/scp-foundation-in-deutschland-portal/scp-logo-dach-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-de-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[SCP-011-DE]]] - Hello!
 * [[[SCP-018-DE]]] - The Permit
@@ -743,65 +725,83 @@ See also: [http://scp-int.wikidot.com/ko-hub Hub of SCP-KO] in the Translation A
 * [[[SCP-125-DE]]] - The Imprisoned Regent
 * [[[SCP-149-DE]]] - The Spirit of Ruin
 * [[[SCP-150-DE]]] - Die Verteidiger
+* [[[SCP-208-DE]]] - St. Caesarius Hospital
 
 **Joke-SCPs**
+* [[[SCP-027-DE-J]]] - The big bad tap hen
 * [[[SCP-055-DE-J]]] - **LARGE HAM!**
+
+**Tales**
+* [[[ein-mahl-nach-naelkae-art|A Meal à la Nälkä]]]
+* [[[das-taegliche-leben-mit-einer-ausserirdischen|Everyday Life With An Extraterrestrial Girl]]]
+* [[[Goodbye Leninocchio]]]
+* [[[iris-dark-girls-night-1| Iris Dark Girls Night: The Beginning of a Wonderful Friendship]]]
+* [[[nexus-1-1|The Punishment of a God, Part 1]]]
+* [[[nexus-1-2|The Punishment of a God, Part 2]]]
+* [[[nexus-1-3|The Punishment of a God, Part 3]]]
 
 **GoI Hubs**
 * [[[magierakademie-hub|Mages Academy Hub]]]
 
+For more translations from the German Branch, visit the [http://scp-int.wikidot.com/de-hub DE Hub].
+[[/&lt;]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/de-hub Hub of SCP-DE] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+[[/tab]]
 
-[[div class=&#34;content-panel right-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://fondazionescp.wikidot.com SCP-IT :: Fondazione SCP]
-[[/div]]
+[[tab Italian]]
+[[=]]
++ [http://scp-int.wikidot.com/it-hub Italian Branch (SCP-IT)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-it-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-it-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[scp-001-it-graf|SCP-001-IT/GRAF]]] - The Dragon of Revelation
 * [[[SCP-015-IT]]] - The Boogeyman
 * [[[SCP-019-IT]]] - E-15 Chimera
 * [[[SCP-032-IT]]] - //Haruspex//
 * [[[SCP-037-IT]]] - Subtle Vibration
+* [[[SCP-042-IT]]] - The Answer
+* [[[SCP-079-IT]]] - //Locus Amoenus//
+* [[[SCP-082-IT]]] - The Helmet of Knowledge 
+* [[[SCP-130-IT]]] - The Gang of Broken Dreams
 
+**Joke-SCPs**
+* [[[SCP-002-IT-J]]] - The Doctor-Destroyer
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/it-hub Hub of SCP-IT] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+**GoI Hubs**
+* [[[hub-madao|MADAO HUB]]]
 
-~~~~
-
-[[div class=&#34;content-panel left-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://scp-ukrainian.wikidot.com/ SCP-UA :: Фонд SCP]
+For more translations from the Italian Branch, visit the [http://scp-int.wikidot.com/it-hub IT Hub].
+[[/&lt;]]
 [[/div]]
+[[/tab]]
+
+[[tab Ukrainian]]
+[[=]]
++ [http://scp-int.wikidot.com/ua-hub Ukrainian Branch (SCP-UA)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ua-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-ua-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[SCP-069-UA]]] - Cast-iron charcoal iron
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/ua-hub Hub of SCP-UA] in the Translation Archive.,,
-[[/div]]
-[[/div]]
+**Explained SCPs**
+* [[[SCP-2014-UA-EX]]] - SCP-2014-RU
 
-[[div class=&#34;content-panel right-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://scp-pt-br.wikidot.com/ SCP-PT-BR :: Fundação SCP]
+For more translations from the Ukrainian Branch, visit the [http://scp-int.wikidot.com/ua-hub UA Hub].
+[[/&lt;]]
 [[/div]]
+[[/tab]]
+
+[[tab Portuguese ]]
+[[=]]
++ [http://scp-int.wikidot.com/pt-hub Portuguese-Speaking Branch (SCP-PT)]
+[[=image http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-pt-400.png height=&#34;150px&#34;]]
+[[/=]]
 [[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-pt-400.png height=&#34;100px&#34;]]
-
+[[&lt;]]
 **SCPs**
 * [[[SCP-002-PT]]] - Women&#39;s Magazine
 * [[[SCP-011-PT]]] - //Victoria stella//
@@ -814,108 +814,281 @@ See also: [http://scp-int.wikidot.com/ko-hub Hub of SCP-KO] in the Translation A
 **GoI Formats**
 * [[[incriveis-sapatos-ozwalds|The Incredible Ozwald&#39;s Shoes]]]
 
+For more translations from the Portuguese Branch, visit the [http://scp-int.wikidot.com/pt-hub PT Hub] on the [http://scp-int.wikidot.com Translation Archive].
+[[/&lt;]]
 [[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/pt-hub Hub of SCP-PT-BR] in the Translation Archive.,,
+[[/tab]]
+
+[[tab Czech]]
+[[=]]
++ [http://scp-int.wikidot.com/cs-hub Czech Branch (SCP-CS)]
+[[/=]]
+[[=image http://scp-int.wdfiles.com/local--files/cs-hub/SCP-CS.png height=&#34;150px&#34;]]
+[[div class=&#34;content-type-options&#34;]]
+For translations from the Czech Branch, visit the [http://scp-int.wikidot.com/cs-hub CS Hub] on the [http://scp-int.wikidot.com Translation Archive].
 [[/div]]
+[[/tab]]
+
+[[tab Tr. Chinese]]
+[[=]]
++ [http://scp-int.wikidot.com/zh-hub Traditional Chinese Branch (SCP-ZH)]
+[[/=]]
+[[=image http://scp-int.wdfiles.com/local--files/main/scp-logo-zh-400.png height=&#34;150px&#34;]]
+[[div class=&#34;content-type-options&#34;]]
+
+**SCPs**
+* [[[SCP-ZH-024|]]]
+* [[[SCP-ZH-048]]] - Sword &amp; Sorcery and //Tea &amp; Magic Hands//
+
+
+For translations from the Traditional Chinese Branch, visit the [http://scp-int.wikidot.com/zh-hub ZH-TR Hub].
+[[/div]]
+[[/tab]]
+
+[[tab Vietnamese]]
+[[=]]
++ [http://scp-int.wikidot.com/vn-hub Vietnamese Branch (SCP-VN)]
+[[/=]]
+[[=image http://scp-int.wdfiles.com/local--files/main/scp-logo-vn-400.png height=&#34;150px&#34;]]
+[[div class=&#34;content-type-options&#34;]]
+For translations from the Vietnamese Branch, visit the [http://scp-int.wikidot.com/vn-hub VN Hub].
+[[/div]]
+[[/tab]]
+
+[[tab Other]]
+[[=]]
++ [http://scp-int.wikidot.com/other-hub Other Branches]
+[[/=]]
+[[=image https://scp-wiki.wdfiles.com/local--files/scp-international/scp-logo-int.png height=&#34;150px&#34;]]
+[[div class=&#34;content-type-options&#34;]]
+
+**Greek Branch (SCP-EL)**
+* [[[protasi-tou-ags| SCP-001-EL - AGS&#39;s Proposal]]]
+
+For translations from unofficial branches, visit the [http://scp-int.wikidot.com/other-hub Hub of the Other Branches].
+[[/div]]
+[[/tab]]
+
+[[/tabview]]
+
 [[/div]]
 
 ~~~~
 
-[[div class=&#34;content-panel left-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ [http://scp-int.wikidot.com/int-label SCP-INT :: Crossbranch Collabs]
-[[/div]]
-[[div class=&#34;content-type-options&#34;]]
-[[=image scp-logo-int.png height=&#34;100px&#34;]]
++ Creating a new branch
 
-**SCPs**
-* [[[SCP-005-INT]]] - The Arc
-* [[[SCP-007-INT]]] - Oneiric
+Check [http://05command.wikidot.com/ambassador-main the international Ambassador Team hub] for a complete overview of the known official and unofficial branches.
 
-[[/div]]
-[[div class=&#34;panel-footer&#34;]]
-,,See also: [http://scp-int.wikidot.com/other-hub Hub of other branches] in the Translation Archive.,,
-[[/div]]
-[[/div]]
-
-[[div class=&#34;content-panel right-column standalone&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-+++ Notes
-[[/div]]
-[[div class=&#34;content-type-options&#34; style=&#34;padding: 15px 20px&#34;]]
-//All translations to English can be found in the [http://scp-int.wikidot.com/int-hub General Hub] of the Translation Archive.//
-
-You are speaking a language that is not yet represented by a branch? Check [http://05command.wikidot.com/ambassador-main/ this page] for a complete overview of the known official and unofficial branches. Still no branch for your language? Check [http://www.scp-wiki.net/how-to-create-a-branch-of-the-scp-foundation this guide] to learn how to create a branch of the Foundation yourself, and for alternatives to create a whole new Wiki!
-[[/div]]
-[[/div]]
+Wish to create a branch for your language? See the full guide: [[[how-to-create-a-branch-of-the-scp-foundation | ]]]
 
 [[module CSS]]
-@import url(&#39;http://scp-wiki.wikidot.com/component:theme/code/1&#39;);
-
 #page-title { display: none; }
-#page-content a.newpage {color: #333}
 
-.content-panel .content-type-title &gt; h3 {
-   margin: 0;
+:root {
+    --ct_col_tab-menu-text: black;
+    --ct_col_tab-menu-bg-selected-txt: black;
+    --int-tabs-transition: 250ms ease-in-out;
 }
-.content-panel .content-type-title h3 {
-   font-size: 120%;
-   font-weight: bold;
-   padding: 5px 20px;
-   color: #FFFFFF;
+
+.newest-translations &gt; div:nth-child(1) &gt; p {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr 1px 1fr 1px 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1px;
+    grid-auto-rows: auto;
+    height: 100%;
+    margin-top: 0;
 }
-.content-panel .content-type-title {
-   background-color: #a6a6a6;
-   border-radius: 9px 9px 0 0;
-   box-shadow: inset 0 10px 10px rgba(255,255,255,0.1), inset 0 10px 20px rgba(255,255,255,0.25), 0 1px 3px rgba(0,0,0,0.15);
+
+.newest-translations &gt; div:nth-child(1) &gt; p &gt; a {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+       -moz-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+       -moz-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 0.25em;
+    text-align: center;
+    word-break: inherit !important;
 }
-.content-panel .content-type-options{
-   padding: 0 20px;
+
+.newest-translations &gt; div:nth-child(1) br {
+    display: none;
 }
-.content-panel .content-type-options ul {
+
+.tab-box {
+    border: 1px solid #a3a3a3;
+    border-radius: 5px;
+    padding: 0.4rem;
+}
+
+.yui-navset .yui-content {
+    background-color: white;
+    border: none;
+}
+
+.yui-navset .yui-content .content-type-options {
+   padding: 0 2rem;
+}
+.yui-navset .yui-content .content-type-options ul {
    padding-left: 1.5em;
    margin-top: 0.15em;
    margin-left: 0;
 }
-.content-panel .content-type-options p {
+
+.yui-navset .yui-content .content-type-options p {
    margin-bottom: 0;
    margin-top: 0;
 }
-.content-panel .panel-footer {
-   background-color: #a6a6a6;
-   color: #fcfdfb;
-   font-weight: normal;
-   text-align: center;
-   padding: 1px 0px;
-   border-radius: 0px 0px 9px 9px;
-   padding-left: 20px;
-   box-shadow: 0 -1px 3px rgba(0,0,0,0.1);
-}
-.content-panel .panel-footer a {
-   color: #fcfdfb;
-   text-decoration: underline;
-}
-.content-panel .image-container{
-   padding-bottom: 0.15em;
+.yui-navset .yui-nav,
+.yui-navset .yui-navset-top .yui-nav {
+    border-color: white;
 }
 
-h3 {
-   color: #fcfdfb;
-   text-shadow: 1px 1px 2px rgba(0,0,0,.35);
+.yui-navset .yui-nav a em,
+.yui-navset .yui-navset-top .yui-nav a em {
+    text-align: center;
+    border: none;
+    font-size: 1rem;
+    font-weight: bold;
+    color: black;
+    text-shadow: -1px 0 white,
+                        0 1px white,
+                        1px 0 white,
+                        0 -1px white,  
+                        -1px -1px white,  
+                        -1px 1px white,  
+                        1px -1px white,  
+                        1px 1px white;
+    transition: var(--int-tabs-transition);
 }
-h3 a, h3 a:visited {
-   color: #fcfdfb;
-   text-shadow: 1px 1px 2px rgba(0,0,0,.35);
+.yui-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 0.45rem;
+}
+.yui-navset .yui-nav li, .yui-navset .yui-navset-top .yui-nav li {
+    flex-basis: 7rem;
+    flex-grow: 1;
+    min-width: max-content;
+    margin: 0;
+}
+.yui-navset .yui-nav .selected, .yui-navset .yui-navset-top .yui-nav .selected {
+    margin: 0;
+}
+.yui-navset .yui-nav a,
+.yui-navset .yui-navset-top .yui-nav a {
+    border: 1px solid #a3a3a3;
+    border-radius: 5px;
+}
+.yui-navset .yui-nav a,
+.yui-navset .yui-navset-top .yui-nav a,
+.yui-navset .yui-nav a:hover,
+.yui-navset .yui-nav a:focus,
+.yui-navset .yui-nav .selected a,
+.yui-navset .yui-nav .selected a:hover,
+.yui-navset .yui-nav .selected a:focus {
+    background: var(--logo) center/contain no-repeat;
+    transition: var(--int-tabs-transition);
+    background-color: white;
+    box-sizing: border-box;
 }
 
-.ul_no-margin {
-    margin: 0;
-    padding: 0;
+.yui-navset .yui-nav a:is(:hover, :focus) {
+    transform: scale(1.15);
+    z-index: 1;
 }
-.ul_no-margin ul {
+.yui-navset .yui-nav .selected a {
+    box-shadow: 0 0 0 0.1rem black;
+}
+.yui-navset .yui-nav .selected a:is(:hover, :focus) {
+    transform: none;
+}
+.yui-nav &gt; li &gt; a::before {
+    content: &#34;&#34;;
+    position: absolute;
+    inset: 0;
+    transition: var(--int-tabs-transition);
+}
+.yui-nav &gt; li:hover &gt; a::before {
+    background-color: rgba(0 0 0 / 6%);
+}
+
+.yui-navset .yui-nav .selected a em {
+    padding: 0.25em .75em;
+}
+.yui-navset .yui-nav li a,
+.yui-navset-top .yui-nav li a,
+.yui-navset-bottom .yui-nav li a {
     margin: 0;
-    padding: 0;
+    padding-top: calc(0.25rem + 0.125vw);
+    padding-bottom: calc(0.25rem + 0.125vw);
+    width: 100%;
+}
+
+.yui-nav &gt; li:nth-child(1) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-int-full-400.png);
+}
+.yui-nav &gt; li:nth-child(2) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ru.svg);
+}
+.yui-nav &gt; li:nth-child(3) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ko-400.png);
+}
+.yui-nav &gt; li:nth-child(4) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-cn-400.png);
+}
+.yui-nav &gt; li:nth-child(5) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-fr-400.png);
+}
+.yui-nav &gt; li:nth-child(6) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-pl.svg);
+}
+.yui-nav &gt; li:nth-child(7) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-es.svg);
+}
+.yui-nav &gt; li:nth-child(8) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-th.svg);
+}
+.yui-nav &gt; li:nth-child(9) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-jp.svg);
+}
+.yui-nav &gt; li:nth-child(10) &gt; a {
+    --logo: url(http://scp-int.wdfiles.com/local--files/main/scp-logo-dach-400.png);
+}
+.yui-nav &gt; li:nth-child(11) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-it.svg);
+}
+.yui-nav &gt; li:nth-child(12) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-ua.svg);
+}
+.yui-nav &gt; li:nth-child(13) &gt; a {
+    --logo: url(https://scp-wiki.wdfiles.com/local--files/scp-international/scp-logo-pt-400.png);
+}
+.yui-nav &gt; li:nth-child(14) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-cs.svg);
+}
+.yui-nav &gt; li:nth-child(15) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-zh.svg);
+}
+.yui-nav &gt; li:nth-child(16) &gt; a {
+    --logo: url(http://scp-int.wdfiles.com/local--files/main/scp-logo-vn-400.png);
+}
+.yui-nav &gt; li:nth-child(17) &gt; a {
+    --logo: url(http://o5command-int.wdfiles.com/local--files/tech-team:graphic-templates/scp-logo-int-full-400.png);
 }
 [[/module]]</textarea></pre>
   </div>
@@ -924,7 +1097,7 @@ h3 a, h3 a:visited {
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.164245.</em>
+    <em>Last updated 2022-05-18 15:46:27.667878.</em>
   
 </div>
 </body>

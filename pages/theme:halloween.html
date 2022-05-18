@@ -89,6 +89,12 @@
     <pre><textarea class="page-source" readonly>[[module css]]
 @import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Ahalloween/3&#34;);
 [[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Ahalloween/3
+]]
+
 [[iftags +theme]]
 
 [[&gt;]]
@@ -203,30 +209,32 @@ div#page-title {
     color: var(--fg-accent);
 }
 
-a, #side-bar a {
+a {
     color: var(--fg-accent);
     transition: 0.2s;
 }
 
-#side-bar a {
+#side-bar a,
+#interwiki a {
     color: var(--fg-accent-2)
 }
  
-a:visited, #side-bar a:visited {
+a:visited {
     color: var(--fg-accent-dark);    
 }
 
-#side-bar a:visited {
+#side-bar a:visited,
+#interwiki a:visited {
     color: var(--fg-accent-2-dark)
 }
  
-a:hover, #side-bar a:hover,
-a:focus, #side-bar a:focus {
+a:hover,
+a:focus {
     color: var(--fg-accent-light);
 }
  
-#side-bar a:hover,
-#side-bar a:focus {
+#side-bar a:hover, #interwiki a:hover,
+#side-bar a:focus, #interwiki a:focus {
     color: var(--fg-accent-2-light);
 }
 
@@ -326,7 +334,8 @@ ins {
 
 /* side bar */
 
-#side-bar .side-block {
+#side-bar .side-block,
+#interwiki .side-block {
     background-color: transparent !important;
 
     border: 1px solid var(--fg-accent-2-light);
@@ -334,16 +343,19 @@ ins {
     box-shadow: 0 2px 6px var(--fg-accent-2-dark);
 }
 
-#side-bar .heading {
+#side-bar .heading, 
+#interwiki .heading {
     color: var(--fg-accent-2-light);
     border-bottom: 1px solid var(--fg-accent-2-light);
 }
 
-#side-bar .menu-item img {
+#side-bar .menu-item img,
+#interwiki .menu-item img {
     display: none;
 }
 
-#side-bar .menu-item::before {
+#side-bar .menu-item::before,
+#interwiki .menu-item::before {
     display: inline;
     position: relative;
     top: -1px;
@@ -352,20 +364,20 @@ ins {
     color: var(--fg-accent-2-dark);
 }
 
-/* side bar: social media links workaround */
-
-#side-bar .side-block[style=&#34;background-color: #e5e5ff;&#34;] .menu-item::before {
-    content: &#34;&#34;;
+#side-bar .collapsible-block-unfolded-link {
+    border-bottom: 1px solid var(--fg-accent-2-light);
+}
+ 
+#side-bar .collapsible-block-unfolded-link .collapsible-block-link {
+    color: var(--fg-accent-2-light);
+}
+ 
+#side-bar .collapsible-block-unfolded-link .collapsible-block-link:hover {
+    color: var(--fg-accent-2);
 }
 
-#side-bar .side-block[style=&#34;background-color: #e5e5ff;&#34;] img {
-    display: inline;
-}
-
-/* side bar: user resources workaround */
-
-#side-bar .side-block[style=&#34;background-color: #fff0f0;&#34;] div:nth-child(2) {
-    display: none;
+#interwiki body {
+    background-image: none;
 }
 
 /* rating module */
@@ -686,14 +698,6 @@ div.buttons input:hover, div.buttons input:focus {
     color: var(--fg);
 }
 
-iframe.scpnet-interwiki-frame {
-    filter: invert(1) hue-rotate(85deg) saturate(13) brightness(80%);
-}
-
-iframe.html-block-iframe {
-    filter: invert(1);
-}
-
 div[style=&#34;text-align: center; color: #600;&#34;] {
     color: var(--fg-accent) !important;
 }
@@ -721,7 +725,7 @@ div[style=&#34;text-align: center; color: #600;&#34;] {
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:57.565985.</em>
+    <em>Last updated 2022-05-18 15:46:28.166574.</em>
   
 </div>
 </body>

@@ -63,6 +63,7 @@
    --background-black: 0, 0, 0;
    --alternate-white: 255, 255, 255;
    --profondo-rosso: 255, 0, 0;
+   --suspiria: 201, 0, 0;
    --blood-red: 166, 0, 0;
    --dried-blood: 130, 0, 0;
 
@@ -86,6 +87,7 @@
    --swatch-text-dark: var(--blood-red);
    --swatch-text-light: var(--profondo-rosso);
    --swatch-important-text: var(--blood-red);
+   --swatch-text-secondary-color: var(--suspiria);
 
    --background-gradient-color: var(--background-black);
    --header-gradient-color-bottom: var(--background-black);
@@ -96,15 +98,22 @@
 
    --sidebar-transition-timing: 0.8s ease-in-out 0.1s;
 
-   --link-color: var(--blood-red);
-   --newpage-color: var(--blood-red);
    --hover-link-color: var(--profondo-rosso);
+   --newpage-color: var(--suspiria);
+   --link-color: var(--suspiria);
+    --visited-link-color: var(--dried-blood);
 
     --ui-button-bg: var(--background-black);
     --ui-button-txt: var(--profondo-rosso);
     --ui-button-hover-bg: var(--blood-red);
     --ui-button-hover-txt: var(--background-black);
     --ui-button-hover-outline: var(--background-black);
+}
+
+hr {
+   border-top: .0625rem solid rgba(var(--profondo-rosso), 1);
+   color: rgb(var(--profondo-rosso));
+   background-color: rgb(var(--profondo-rosso));
 }
 
 #main-content {
@@ -114,6 +123,9 @@
    --ui-icon-bg: var(--background-black);
    --ui-icon-hover-color: var(--background-black);
    --ui-icon-hover-bg: var(--blood-red);
+
+   --pagetags-title-text: var(--profondo-rosso);
+   --pagetags-text-color: var(--suspiria);
 }
 
 #page-title {
@@ -139,14 +151,29 @@
     --dropdown-bg-color: var(--background-black);
     --dropdown-border-color: var(--profondo-rosso);
     --dropdown-links-color: var(--profondo-rosso);
-    --dropdown-links-bg-color: 0,0,0,0; /* Transparent */
+    --dropdown-links-bg-color: 0,0,0,0; 
     --dropdown-links-hover-color: var(--background-black);
-    --dropdown-links-hover-bg-color: var(--dried-blood);
+    --dropdown-links-hover-bg-color: var(--blood-red);
 }
 
-#side-bar{
-    --sidebar-links-hover-text-color: var(--background-black);
+#side-bar, #interwiki{
+   font-weight: bold;
 
+   --sidebar-links-hover-text-color: var(--background-black);
+   --sideblock-heading-text-color: var(--suspiria);
+
+   --sidebar-collapsible-fld-link-color: var(--profondo-rosso);
+   --sidebar-collapsible-ufld-link-color: var(--profondo-rosso);
+
+   --sidebar-collapsible-fld-link-hover-color: var(--background-black);
+   --sidebar-collapsible-fld-arrow-hover-color: var(--background-black);
+
+   --sidebar-collapsible-ufld-link-hover-color: var(--background-black);
+   --sidebar-collapsible-ufld-arrow-hover-color: var(--background-black);
+}
+
+#interwiki .heading {
+   color: rgb(var(--blood-red));
 }
 
 ::-webkit-scrollbar {
@@ -190,8 +217,27 @@
 
 #footer {
     color: rgb(var(--profondo-rosso,66,66,72));
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/*-----------------------------------------------*/
+/* Widebox for Large Elements */
+.widebox {
+   width: 40vw;
+   max-width: 40vw !important;
+   position: relative;
+   left: calc(-20vw + 50%);
 }
-</code></pre>
+
+@media screen and (max-width: 640px) {
+  .widebox {
+    width: 100vw;
+    max-width: 100vw !important;
+    left: calc(-50vw + 50%);
+  }
+}
+/*-----------------------------------------------*/</code></pre>
         </li>
       
     </ul>
@@ -246,30 +292,13 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-wiki:component:toggle-sidebar-bhl</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar-bhl.html" target="_blank">info</a>]
   </span>
 
   
@@ -298,16 +327,18 @@
     <ul class="css-classes">
       
         <li>
-          (none)
+          <pre><code>widebox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>widebox</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
-[[include :scp-wiki:component:bhl-dark-sidebar]]
-
-[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
 
 [[module css]]
 
@@ -344,6 +375,7 @@
    --background-black: 0, 0, 0;
    --alternate-white: 255, 255, 255;
    --profondo-rosso: 255, 0, 0;
+   --suspiria: 201, 0, 0;
    --blood-red: 166, 0, 0;
    --dried-blood: 130, 0, 0;
 
@@ -367,6 +399,7 @@
    --swatch-text-dark: var(--blood-red);
    --swatch-text-light: var(--profondo-rosso);
    --swatch-important-text: var(--blood-red);
+   --swatch-text-secondary-color: var(--suspiria);
 
    --background-gradient-color: var(--background-black);
    --header-gradient-color-bottom: var(--background-black);
@@ -377,15 +410,22 @@
 
    --sidebar-transition-timing: 0.8s ease-in-out 0.1s;
 
-   --link-color: var(--blood-red);
-   --newpage-color: var(--blood-red);
    --hover-link-color: var(--profondo-rosso);
+   --newpage-color: var(--suspiria);
+   --link-color: var(--suspiria);
+    --visited-link-color: var(--dried-blood);
 
     --ui-button-bg: var(--background-black);
     --ui-button-txt: var(--profondo-rosso);
     --ui-button-hover-bg: var(--blood-red);
     --ui-button-hover-txt: var(--background-black);
     --ui-button-hover-outline: var(--background-black);
+}
+
+hr {
+   border-top: .0625rem solid rgba(var(--profondo-rosso), 1);
+   color: rgb(var(--profondo-rosso));
+   background-color: rgb(var(--profondo-rosso));
 }
 
 #main-content {
@@ -395,6 +435,9 @@
    --ui-icon-bg: var(--background-black);
    --ui-icon-hover-color: var(--background-black);
    --ui-icon-hover-bg: var(--blood-red);
+
+   --pagetags-title-text: var(--profondo-rosso);
+   --pagetags-text-color: var(--suspiria);
 }
 
 #page-title {
@@ -420,14 +463,29 @@
     --dropdown-bg-color: var(--background-black);
     --dropdown-border-color: var(--profondo-rosso);
     --dropdown-links-color: var(--profondo-rosso);
-    --dropdown-links-bg-color: 0,0,0,0; /* Transparent */
+    --dropdown-links-bg-color: 0,0,0,0; 
     --dropdown-links-hover-color: var(--background-black);
-    --dropdown-links-hover-bg-color: var(--dried-blood);
+    --dropdown-links-hover-bg-color: var(--blood-red);
 }
 
-#side-bar{
-    --sidebar-links-hover-text-color: var(--background-black);
+#side-bar, #interwiki{
+   font-weight: bold;
 
+   --sidebar-links-hover-text-color: var(--background-black);
+   --sideblock-heading-text-color: var(--suspiria);
+
+   --sidebar-collapsible-fld-link-color: var(--profondo-rosso);
+   --sidebar-collapsible-ufld-link-color: var(--profondo-rosso);
+
+   --sidebar-collapsible-fld-link-hover-color: var(--background-black);
+   --sidebar-collapsible-fld-arrow-hover-color: var(--background-black);
+
+   --sidebar-collapsible-ufld-link-hover-color: var(--background-black);
+   --sidebar-collapsible-ufld-arrow-hover-color: var(--background-black);
+}
+
+#interwiki .heading {
+   color: rgb(var(--blood-red));
 }
 
 ::-webkit-scrollbar {
@@ -472,86 +530,108 @@
 #footer {
     color: rgb(var(--profondo-rosso,66,66,72));
 }
-
 [[/module]]
 
+[[module CSS]]
+/*-----------------------------------------------*/
+/* Widebox for Large Elements */
+.widebox {
+   width: 40vw;
+   max-width: 40vw !important;
+   position: relative;
+   left: calc(-20vw + 50%);
+}
+
+@media screen and (max-width: 640px) {
+  .widebox {
+    width: 100vw;
+    max-width: 100vw !important;
+    left: calc(-50vw + 50%);
+  }
+}
+/*-----------------------------------------------*/
+[[/module]]
+[[div class=&#34;widebox&#34;]]
 ------
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/quick.png]]
+[[=image 00-header.png]]
 ------
 @@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/anubis%20%283%29.png]]
+[[=image 01-anubis.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/card%20%286%29.png]]
+[[=image 02-card.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/polaroid%20new%20%281%29.png]]
+[[=image 03-polaroid1980.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3A5k/lpb-spectro.png]]
+[[=image 04-spectro.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Acorpse-club/corpseclubvhs-1]]
+[[=image 05-corpseclub.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld:5k/town-sign.png]]
+[[=image 06-townsign.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/character-pixel-art.png]]
+[[=image 07-pixlart.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Ahf-poster/poster.png]]
+[[=image 09-murderlist.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3A5360-rewrite/list.png]]
+[[=image 10-shadow.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Adream-horror-alt/spooky.png]]
+[[=image 11-codeccall.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Amanagement-team/mockup-small.png]]
+[[=image 12-sbwitems.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/faux-itemsheet.png]]
-
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/es-2020.png]]
+[[=image 13-gdicon2020.png]]
 
 [[=image http://scp-wiki.wdfiles.com/local--files/scp-529/SCP-529-new.jpg]]
 @@ @@
 -----
+[[/div]]
 @@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aarcadia-contest/spread-1.png]]
+[[=image 14-sbwp1.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aarcadia-contest/spread-2.png]]
+[[=image 15-sbwp2.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3A5k/rook-2]]
+[[=image 16-rookp1.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3A5k/memorandum]]
+[[=image 17-rookp2.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3A5k/tribunal]]
+[[=image 18-rookp3.png]]
+@@ @@
+-----
+[[div class=&#34;widebox&#34;]]
+@@ @@
+[[=image 19-codexgigas.png]]
+
+[[=image 20-darlingpink.png]]
+
+[[=image 21-cctitles.png]]
 @@ @@
 -----
 @@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/title%20%281%29.png]]
-
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/anime-title-v2%20%281%29.png]]
-
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Acorpse-club/title-card-alt]]
+[[=image 22-suspirilite.png]]
 @@ @@
------
+[[=image 23-domc.png]]
 @@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/suspirilite%20%281%29.png]]
-@@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/domc.png]]
-@@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3A5k/card1.png]]
+[[=image 24-rookicon.png]]
 @@ @@
 [[=image http://scp-wiki.wdfiles.com/local--files/scp-5420/lancer-ii-final.png]]
 @@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/harimao.png]]
+[[=image 25-harimao.png]]
 @@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aarcadia-contest/logo-slimline.png]]
+[[=image 26-sbwlogo.png]]
 @@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aarcadia-manual-rewrite/arcadia-3]]
+[[=image 27-arcadiamid.png]]
 @@ @@
 -----
+[[/div]]
 @@ @@
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Acorpse-club/corpseclubposter]]
+[[=image 28-ccposter.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/signal-for-the-crack-of-dawn.png]]
+[[=image 08-hfuller.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/six%20days%20of%20blood.jpg]]
+[[=image 29-crackodawn.png]]
 
-[[=image http://smlt.wdfiles.com/local--files/jacrld%3Aartpage/poster-3001-worn%20%281%29.png]]
+[[=image 30-sixdays.jpg]]
+
+[[=image 31-3001poster.png]]
 @@ @@
 -----
 @@ @@
@@ -608,7 +688,7 @@
 
 <div id="footer">
   
-    <em>Last updated 2022-03-14 20:45:54.732062.</em>
+    <em>Last updated 2022-05-18 15:46:24.868436.</em>
   
 </div>
 </body>
