@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>逻辑链接模块</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">逻辑链接模块</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:logical-link" target="_blank">逻辑链接模块</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>color: orangered</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: #009966</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:logical-link-style" target="_blank"><code>component:logical-link-style</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-link</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>newpage</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-link</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-link</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki-cn:component:logical-link-base
+|name={$name}
+|internal-link={$internal-link}
+|internal-link=false
+|original-link={$original-link}
+|original-link=false
+|branch={$branch}
+|branch=http://www.scpwiki.com/
+|internal={$internal}
+|internal=false
+|original={$original}
+|original=false
+|mark={$mark}
+|mark=false
+|color-common={$color-common}
+|color-common=#009966
+|color-newpage={$color-newpage}
+|color-newpage=#F00
+|before={$before}
+|before=@&lt;&gt;@
+|after={$after}
+|after=@&lt;&gt;@
+]]
+
+[[iftags +样版]]
++ 这是什么
+
+逻辑链接模块的作用在于判断某个页面在本站是否拥有翻译，并根据此显示本站链接或者外站链接。特别适合用于著作信息中指向作者页的链接、中心页/作者页中待翻译的作品链接等等场景。
+
+逻辑链接模块并没有使用 ListPages 模块，因此可以放心地用于各种页面中。
+
++ 如何使用
+
+首先引入 CSS 样式：
+
+[[div class=&#34;code&#34;]]
+@@[[include component:logical-link-style]]@@
+[[/div]]
+
+CSS 样式只需在文中任意处引入一次。推荐放在页面开头，或者和下面的代码放在一起，以方便编辑。
+
+除非你已经在引入 CSS 样式之后保存过一次，否则在按下“预览”键时逻辑链接模块不能正确地显示，这是正常现象。
+
+然后用以下代码取代链接语法（{{@@[/page-name 标题]@@}}、{{@@[[[page-name|标题]]]@@}} 等等）。
+
+[[div class=&#34;code&#34;]]
+@@[[include component:logical-link@@
+@@|name=@@页面名称（必填）
+@@|internal-link=@@翻译的标题
+@@|original-link=@@原文的标题
+@@|branch=@@分部网站地址
+@@|internal=@@是否显示本站翻译链接
+@@|original=@@是否显示原文链接
+@@|mark=@@是否显示标记图标
+@@|color-common=@@已翻译时标记图标颜色
+@@|color-newpage=@@未翻译时标记图标颜色
+@@|before=@@链接前的文字
+@@|after=@@链接后的文字
+@@]]@@
+[[/div]]
+
+不要被参数的数量吓到了，实际上，除了第一个参数 {{name}} 必填以外，其他参数均为可选。你完全可以将可选参数那一行删去，这样，它们将会被设置为其默认值。
+
+++ name
+
+页面的名称（URL 地址），包括分类。比如“{{scp-173}}”、“{{system:recent-changes}}”。
+
+++ internal-link, original-link
+
+这些决定链接最终显示出的文字。
+
+若未设置 {{internal-link}}，则在本站已有翻译的情况下，模块会自动显示翻译页面的标题。
+
+++ branch
+
+原文所在的分部网站地址，默认为“{{@@http://www.scpwiki.com/@@}}”。必须包含开头的“{{@@http://@@}}”和结尾的“{{@@/@@}}”。
+
+++ internal
+
+是否显示本站翻译链接，允许的值为“{{true}}”。此参数只有在页面尚未被翻译的情况下有效，如果页面已有翻译则始终会显示本站翻译的链接。
+
+若显示本站翻译链接，则 {{original-link}} 参数无效，原文链接会始终显示为“（##b01|原文链接##）”的形式。
+
+++ original
+
+是否显示原文链接，允许的值为“{{true}}”。此参数只有在页面已有翻译的情况下有效，如果页面尚未被翻译则始终会显示原文链接。
+
+++ mark
+
+如果设置为“{{true}}”，则会在链接右上角显示一个“[[span class=&#34;fa fa-link&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]]”图标，方便辨认页面是否使用了逻辑链接模块。这样，在一个中心页的翻译告一段落之后，你可以再将逻辑链接模块替换回普通的链接。
+
+你也可以点击此页底端的“+ 选项”、“反向链接”按钮来查看哪些页面使用了逻辑链接模块。
+
+++ color-common, color-newpage
+
+代表已有翻译和未翻译时标记图标的颜色，默认值分别为 ##009966|@@#009966@@##、##F00|@@#F00@@##。
+
+++ before, after
+
+由于 Wikidot 的限制，{{@@[[include]]@@}} 语法必须单独处于一行。想要在链接前后添加什么文字的话，就写在这里。
+
+此处也允许__一部分__维基语法，例如想要加粗链接，就将这两者设为“{{@@**@@}}”。不允许使用含有“{{@@|@@}}”或“{{@@]]@@}}”的语法，因为这些语法会影响到 {{@@[[include]]@@}} 本身的结构。
+
+**空格：**请注意，在 {{@@[[include]]@@}} 语法中，每一个参数无论首尾有多少个空格都会被忽略，都是 Wikidot 的错。想要在首尾输入空格，请用“{{@&lt;@@ @@&gt;@}}”或“{{@&lt;@&amp;lt;&amp;amp;nbsp;&amp;gt;@&gt;@}}”。
+
+例如：“##b01|SCP-173## - 雕像 - **最初之作**”，你需要输入“{{@&lt;|after=@@ @@- 雕像 - **最初之作**&gt;@}}”。
+
++ 示例
+
+[[size .8em]]*不要忘记引入 CSS 样式[[/size]]
+
+[[div class=&#34;code&#34;]]
+@@[[include component:logical-link@@
+@@|name=@@dr-bright-s-personnel-file
+@@|internal-link=@@点击前往我的作者页！
+@@|original-link=@@点击前往我的作者页！
+@@|before=@@更多作品请
+@@]]@@
+[[/div]]
+
+未翻译时：
+
+更多作品请[http://www.scpwiki.com/dr-bright-s-personnel-file 点击前往我的作者页！]
+
+已翻译时：
+
+更多作品请[/dr-bright-s-personnel-file 点击前往我的作者页！]
+
+[[div class=&#34;code&#34;]]
+@@[[include component:logical-link@@
+@@|name=@@your-turn
+@@|branch=http://scp-jp.wikidot.com/@@
+@@|internal=@@true
+@@|mark=@@true
+@@|color-newpage=@@orangered
+@@]]@@
+[[/div]]
+
+未翻译时：
+
+[[a href=&#34;/your-turn&#34; class=&#34;newpage&#34;]]your-turn[[/a]]（[http://scp-jp.wikidot.com/your-turn 原文链接]）^^[[span class=&#34;fa fa-link&#34; style=&#34;color: orangered&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]]^^
+
+已翻译时：
+
+[[a href=&#34;/your-turn&#34;]]并非英雄[[/a]]^^[[span class=&#34;fa fa-link&#34; style=&#34;color: #009966&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]]^^
+
++ 还有问题？
+
+请在此页留言，或者私信 [[*user Sekai_s]]。
+[[/iftags]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:06.197763.</em>
+  
+</div>
+</body>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Timer</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Timer</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:timer" target="_blank">Timer</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>displayblock</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>days</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>smalltext_days</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hours</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>smalltext_hours</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>minutes</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>smalltext_minutes</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>seconds</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>smalltext_seconds</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[html]]
+&lt;html&gt;
+&lt;head&gt;
+    &lt;style type=&#34;text/css&#34;&gt;
+   body{
+    text-align: center;
+    font-family: verdana,arial,helvetica,sans-serif;
+  font-weight: 100;
+}
+
+h1{
+  color: #b01;
+  font-weight: 100;
+  font-size: 20px;
+  margin: 20px 0px 20px;
+}
+
+#clockdiv{
+    color: #fff;
+    display: inline-block;
+    font-weight: 100;
+    text-align: center;
+    font-size: 20px;
+}
+
+#clockdiv &gt; div{
+    padding: 10px;
+    border-radius: 3px;
+    background: #999990;
+    display: inline-block;
+    width: 128px;
+}
+
+#clockdiv div &gt; span{
+    padding: 8px;
+  color: #b01;
+    border-radius: 3px;
+    background: #fff;
+    display: inline-block;
+}
+
+.smalltext{
+  color: black;
+    padding-top: 5px;
+    font-size: 12px;
+}
+
+
+
+#message{
+  color: #b01;
+    padding-top: 5px;
+    font-size: 14px;
+}
+
+.displayblock{
+    background: #e5e6e8;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    width: calc(128px * 5);
+    position: relative;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    padding: 5px;
+}
+  &lt;/style&gt;
+
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class=&#34;displayblock&#34;&gt;
+    &lt;h1 id=&#34;topMessage&#34;&gt;&lt;/h1&gt;
+    &lt;div id=&#34;clockdiv&#34;&gt;
+        &lt;div&gt;
+            &lt;span class=&#34;days&#34;&gt;&lt;/span&gt;
+            &lt;div class=&#34;smalltext_days&#34;&gt;-&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span class=&#34;hours&#34;&gt;&lt;/span&gt;
+            &lt;div class=&#34;smalltext_hours&#34;&gt;-&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span class=&#34;minutes&#34;&gt;&lt;/span&gt;
+            &lt;div class=&#34;smalltext_minutes&#34;&gt;-&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+            &lt;span class=&#34;seconds&#34;&gt;&lt;/span&gt;
+            &lt;div class=&#34;smalltext_seconds&#34;&gt;-&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;span id=&#34;message&#34;&gt;&lt;/span&gt;
+&lt;/div&gt;
+
+
+
+&lt;script&gt;
+function getOrDefault(s, def) {
+  if (s.startsWith(&#39;{$&#39;)) return def;
+  return s*1;
+}
+
+function pickForm(number, forms) {
+  number %= 10;
+  // forms = часов, час, часа
+  if (number === 1) return forms[1];
+  if (number &gt;= 2 &amp;&amp; number &lt;= 4) return forms[2];
+  return forms[0];
+}
+
+function getTimeRemaining(endtime) {
+  const today = new Date();
+  let year = getOrDefault(&#39;{$year}&#39;, today.getYear()+1900);
+  let mon = getOrDefault(&#39;{$mon}&#39;, today.getMonth()+1);
+  let day = getOrDefault(&#39;{$day}&#39;, today.getDate());
+  let hour = getOrDefault(&#39;{$hour}&#39;, today.getHours());
+  mon -= 1;
+  let t = Date.UTC(year, mon, day, hour) - Date.parse(new Date());
+  let seconds = Math.floor((t / 1000) % 60);
+  let minutes = Math.floor((t / 1000 / 60) % 60);
+  let hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+  let days = Math.floor(t / (1000 * 60 * 60 * 24));
+  return {
+    &#39;total&#39;: t,
+    &#39;days&#39;: days,
+    &#39;hours&#39;: hours,
+    &#39;minutes&#39;: minutes,
+    &#39;seconds&#39;: seconds
+  };
+}
+ 
+function initializeClock(id, endtime) {
+  var daysSpan = document.getElementsByClassName(&#39;days&#39;)[0];
+  var hoursSpan = document.getElementsByClassName(&#39;hours&#39;)[0];
+  var minutesSpan = document.getElementsByClassName(&#39;minutes&#39;)[0];
+  var secondsSpan = document.getElementsByClassName(&#39;seconds&#39;)[0];
+  const daysTitle = document.getElementsByClassName(&#39;smalltext_days&#39;)[0];
+  const hoursTitle = document.getElementsByClassName(&#39;smalltext_hours&#39;)[0];
+  const minutesTitle = document.getElementsByClassName(&#39;smalltext_minutes&#39;)[0];
+  const secondsTitle = document.getElementsByClassName(&#39;smalltext_seconds&#39;)[0];
+ 
+  function updateClock() {
+    var t = getTimeRemaining(endtime);
+ 
+    daysSpan.innerHTML = t.days;
+    hoursSpan.innerHTML = t.hours;
+    minutesSpan.innerHTML = t.minutes;
+    secondsSpan.innerHTML = t.seconds;
+    daysTitle.innerHTML = pickForm(t.days, [&#39;дней&#39;, &#39;день&#39;, &#39;дня&#39;]);
+    hoursTitle.innerHTML = pickForm(t.hours, [&#39;часов&#39;, &#39;час&#39;, &#39;часа&#39;]);
+    minutesTitle.innerHTML = pickForm(t.minutes, [&#39;минут&#39;, &#39;минута&#39;, &#39;минуты&#39;]);
+    secondsTitle.innerHTML = pickForm(t.seconds, [&#39;секунд&#39;, &#39;секунда&#39;, &#39;секунды&#39;]);
+ 
+    if (t.total &lt;= 0) {
+      clearInterval(timeinterval);
+    }
+  }
+ 
+  updateClock();
+  var timeinterval = setInterval(updateClock, 1000);
+}
+ 
+var deadline = new Date(Date.parse(new Date()) + 15 * 24 * 60 * 60 * 1000); // for endless timer
+initializeClock(&#39;countdown&#39;, deadline);
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+[[/html]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:06.270367.</em>
+  
+</div>
+</body>

@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>关于CSS的部分指导和黑标笔版式的疑问</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">关于CSS的部分指导和黑标笔版式的疑问</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/how-to-make-a-css-theme" target="_blank">关于CSS的部分指导和黑标笔版式的疑问</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>/*我就知道肯定会有人点开网页源代码*/
+blockquote p { /*←这里改的是引用块以及&lt;p&gt;元素*/
+    border-bottom: 1px solid #000; /*←这是下边框*/
+}
+blockquote {
+    border: 3px double #000;/*←把边框换成了双层边框和黑色边框*/
+    padding: 0 1em;/*←内填充的话是1em，em和px这些都是单位*/
+    background-color: #f4f4f4;/*←背景的颜色为默认的灰白色*/
+}
+#top-bar ul li a {
+    border-left: solid 1px rgba(64,64,64,.1);
+    border-right: solid 1px rgba(64,64,64,.1);
+    text-decoration: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 1px;
+    max-height: 1px;
+    overflow: hidden;
+    transition: background .5s,color .5s,height .5s;/*←在这里我给顶栏加了一个过渡属性，并写上需要过渡的是背景和字色以及高度*/
+}
+.page-rate-widget-box .rateup a, .page-rate-widget-box .ratedown a {
+    background: transparent;
+    color: #633;
+    padding: 0 4px;
+    margin: 0 1px;
+    transition: color .5s,background .5s;/*←在评分模块上的也同理*/
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>XXXX</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mobile-top-bar</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+/*我就知道肯定会有人点开网页源代码*/
+blockquote p { /*←这里改的是引用块以及&lt;p&gt;元素*/
+    border-bottom: 1px solid #000; /*←这是下边框*/
+}
+blockquote {
+    border: 3px double #000;/*←把边框换成了双层边框和黑色边框*/
+    padding: 0 1em;/*←内填充的话是1em，em和px这些都是单位*/
+    background-color: #f4f4f4;/*←背景的颜色为默认的灰白色*/
+}
+#top-bar ul li a {
+    border-left: solid 1px rgba(64,64,64,.1);
+    border-right: solid 1px rgba(64,64,64,.1);
+    text-decoration: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    line-height: 1px;
+    max-height: 1px;
+    overflow: hidden;
+    transition: background .5s,color .5s,height .5s;/*←在这里我给顶栏加了一个过渡属性，并写上需要过渡的是背景和字色以及高度*/
+}
+.page-rate-widget-box .rateup a, .page-rate-widget-box .ratedown a {
+    background: transparent;
+    color: #633;
+    padding: 0 4px;
+    margin: 0 1px;
+    transition: color .5s,background .5s;/*←在评分模块上的也同理*/
+}
+[[/module]]
+
+[[&gt;]]
+[[module rate]]
+[[/&gt;]]
+
+这里是关于CSS部分的指导和如何制作自定义黑标笔版式的一些小技巧，很多人都觉得改CSS和制作自己的版式很难。其实并不难，只需要知道每一个属性的名称和改法就可以了。那么在开始改之前你需要知道这些。
+
+[[# thetoc]]
+[[toc]]
+
++ CSS是什么？它能用在哪里？
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; CSS是网站的重要组成部分之一，HTML为框架，而它是填充框架的东西。文章中也可以经常看到。例如[http://scp-wiki-cn.wikidot.com/ 这个]和[http://scpsandboxcn.wikidot.com/ 这个]。实际上我们无论到哪都能看到CSS，眼前的特效其实也就是CSS的一部分。在站内我们称它为版式，在一些已经无法靠文笔上升的文中也可以使用来加强读者的观感。
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ 关于色码
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; 色码分类有很多种，我们一般都会给它们命名。如：#000，这种的话叫16进制色码。rgb(252,252,252)，这种叫rgb值。rgba(252,252,252,0)，这种我们将其称之为rgba值。
+&gt;
+&gt; 上面所说的rgb和rgba好像也就多了个字而已有什么区别吗？它们当然有区别，r其实是##901|red##的缩写，g是##006600|green##的缩写，b是##4a70e3|blue##的缩写。也就是所谓的三原色，世界也由这三种颜色混合而成。a是什么？a其实是英文alpha的缩写，你可以理解成为混合度或者说透明度，一般用小数来表示如：rgba(252,252,252,0.5)、rgba(252,252,252,.5)，它们所表示的其实都一样，只不过是换了一种写法仅此而已。
+&gt;
+&gt; 如果觉得色码不好用其实可以使用颜色名，如：black、blue、yellow、lightyellow，这些都是颜色名，也就是颜色的英文。一般都可以百度得到，需要具体了解可以百度一下。
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ 一些关于CSS的语法介绍和用法
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; ++* ##901|[[module css]]##
+&gt;
+&gt; ##006600|/*↑写上[[module css]]代表你正在引用这一部分的代码↓*/##
+&gt; ##4a70e3|.XXXX {####006600|/*←↑↓→我们把一个个像这样的叫选择器，像这个的话，就是选择所有class=&#34;XXXX&#34;的元素*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*还有这种结构的↓*/##
+&gt; ##4a70e3|#XXXX { ####006600|/*←选择ID为XXXX的元素*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*↓*/##
+&gt; ##4a70e3|:link { ####006600|/*←选择所有元素中没访问（点击）过的链接*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*↓*/##
+&gt; ##4a70e3|:visited { ####006600|/*←选择所有元素中访问（点击）过的链接*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*↓*/##
+&gt; ##4a70e3|:active { ####006600|/*←选择所有元素中活动的链接*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*↓*/##
+&gt; ##4a70e3|:hover { ####006600|/*←鼠标放置于元素上面时会如何*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*↓*/##
+&gt; ##4a70e3|:focus { ####006600|/*←选择获取焦点的元素*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*↓*/##
+&gt; ##4a70e3|:before { ####006600|/*←在每个所选元素之前插入内容*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*↓*/##
+&gt; ##4a70e3|:after { ####006600|/*←在每个所选元素之后插入内容*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##006600|/*↓*/##
+&gt; ##4a70e3|:root { ####006600|/*←根部的选择器在黑标笔中会用到*/##
+&gt; ##006600|/*←↑↓→这里面放上一个个的属性*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ++* ##901|/*↓↓↓例如:↓↓↓*/##
+&gt;
+&gt; ##4a70e3|#header h1 a{####006600|/*←我们来翻译下即可知道，版头大字及链接,以及选择为id为header的选择器。*/##
+&gt; ##4a70e3|line-height: 0px;####006600|/*←线性高度，用于控制网页的层叠结构*/##
+&gt; ##4a70e3|color: #eee;####006600|/*←这是16进制色码，属性名是color则代表字体的颜色*/##
+&gt; ##4a70e3|font-family: BauhausLTDemi, Simhei, Arial, sans-serif;####006600|/*←这是字体选择，每一个字体都有自己的名字Arial和BauhausLTDemi都是自带的字体*/##
+&gt; ##4a70e3|font-size: 180%;####006600|/*←这里是字体大小的设置,可以把180%换为large或者是1800px*/##
+&gt; ##4a70e3|text-shadow: 3px 3px 5px #000;####006600|/*←文字的阴影设计，扩散四周颜色为黑色*/##
+&gt; ##4a70e3|letter-spacing: 0.9px;####006600|/*←文字间的距离*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##4a70e3|.mobile-top-bar {####006600|/*←选择所有class=&#34;mobile-top-bar&#34;的元素*/##
+&gt;     ##4a70e3|display: none;####006600|/*←显示为无*/##
+&gt;     ##4a70e3|position: absolute;####006600|/*←定位方式为相对*/##
+&gt;     ##4a70e3|left: 0px;####006600|/*←左侧距离*/##
+&gt;     ##4a70e3|bottom: 0px;####006600|/*←底部距离*/##
+&gt;     ##4a70e3|z-index: 0;####006600|/*←Z函数*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ##4a70e3|#side-bar a:visited {####006600|/*←选择所有id为side-block中已经访问过的链接元素*/##
+&gt; ##4a70e3|color: #b01;####006600|/*←链接的字体颜色为红色*/##
+&gt; ##4a70e3|}##
+&gt;
+&gt; ++* ##901|[[/module]]##
+&gt;
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ CSS的部分属性介绍
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; ##4a70e3|background:;####006600|/*←背景*/##
+&gt; ##4a70e3|color:;####006600|/*←颜色，一般都是用于指定选择器的字体颜色*/##
+&gt; ##4a70e3|border:;####006600|/*←边框，用于决定选择器的边框效果*/##
+&gt; ##4a70e3|background-clip:;####006600|/*←决定背景剪切效果，换个易懂的词，遮罩或者说蒙版图层*/##
+&gt; ##4a70e3|background-size:;####006600|/*←用于决定图片的大小*/##
+&gt; ##4a70e3|font-family:;####006600|/*←所用字体，这里只需要写字体的名称即可*/##
+&gt; ##4a70e3|font-size:;####006600|/*←字体的大小*/##
+&gt; ##4a70e3|z-index:;####006600|/*←Z函数决定执行层叠顺序*/##
+&gt; ##4a70e3|background-image:;####006600|/*←这里决定背景的图片*/##
+&gt; ##4a70e3|border-image:;####006600|/*←图片边框，也可以用于制作渐变边框*/##
+&gt; ##4a70e3|height:;####006600|/*←高度*/##
+&gt; ##4a70e3|width:;####006600|/*←宽度*/##
+&gt; ##4a70e3|max-weight:;####006600|/*←最大宽度*/##
+&gt; ##4a70e3|max-height:;####006600|/*←最大高度*/##
+&gt; ##4a70e3|display:;####006600|/*←显示*/##
+&gt; ##4a70e3|opacity:;####006600|/*←透明度*/##
+&gt; ##006600|/**/####4a70e3|←这个是一般CSS内的注解##
+&gt; ##4a70e3|margin:;####006600|/*←外边距*/##
+&gt; ##4a70e3|padding:;####006600|/*←内填充*/##
+&gt; ##4a70e3|position:;####006600|/*←定位*/##
+&gt; ##4a70e3|float:;####006600|/*←浮动*/##
+&gt; ##4a70e3|border-bottom:;####006600|/*←下边框*/##
+&gt; ##4a70e3|border-top:;####006600|/*←上边框*/##
+&gt; ##4a70e3|border-left:;####006600|/*←左边框*/##
+&gt; ##4a70e3|border-right:;####006600|/*←右边框*/##
+&gt; ##4a70e3|border-radius:;####006600|/*←边框圆角*/##
+&gt; ##4a70e3|text-align:;####006600|/*←文字位置*/##
+&gt; ##4a70e3|text-decoration:;####006600|/*←文字下划线*/##
+&gt; ##4a70e3|text-shadow:;####006600|/*←文字阴影*/##
+&gt; ##4a70e3|box-shadow:;####006600|/*←边框阴影*/##
+&gt; ##4a70e3|background-color:;####006600|/*←背景颜色*/##
+&gt; ##4a70e3|--var:;####006600|/*←变量*/##
+&gt; ##4a70e3|content:;####006600|/*←输入内容*/##
+&gt; ++* ##006600|/*↑↑↑↑↑只要掌握这些内容就能做出版式来，当然要教的不止这点，如果我想到其他需要用上的会来补充*/##
+&gt;
+&gt; +* ##006600|/*↓↓这里是语法以及修改说明↓↓*/##
+&gt;
+&gt; ++* ##006600|/*↓↓边框部分↓↓*/##
+&gt;
+&gt; ##4a70e3|border:solid 1px #000;####006600|/*←solid是一种边框样式表示实线边框，1px是边框的粗细可以进行调整，#000是边框的颜色代表黑色*/##
+&gt; ##4a70e3|border:double 1px rgb(0,0,0);####006600|/*←double代表双边框，1px是粗细，而rgb（0,0,0）是rgb值其实也是代表着黑色*/##
+&gt; ##4a70e3|border:dashed 1px rgb(0,0,0,1);####006600|/*←dashed代表虚线边框，1px是粗细，而rgba（0,0,0,1）是rgba值其实也是代表着黑色*/##
+&gt; ##4a70e3|border:dotted 1px black;####006600|/*←dotted代表点线边框，1px是粗细，black就是黑色啦。*/##
+&gt; ##4a70e3|border:groove 3px gray;####006600|/*←groove代表3D沟槽边框，一般效果取决于边框的颜色*/##
+&gt; ##4a70e3|border:ridge 3px gray;####006600|/*←groove代表3D脊边框，一般效果取决于边框的颜色*/##
+&gt; ##4a70e3|border:inset 3px gray;####006600|/*←inset代表3D嵌入式边框，一般效果取决于边框的颜色*/##
+&gt; ##4a70e3|border:outset 3px gray;####006600|/*←inset代表3D突出式边框，一般效果取决于边框的颜色*/##
+&gt;
+&gt; ++* ##006600|/*↓↓盒形阴影↓↓*/##
+&gt;  
+&gt; +++* ##006600|↓↓在CSS3中一般通过box-shadow来进行修改边框的阴影。↓↓##
+&gt;
+&gt; ##4a70e3|box-shadow:10px 10px 10px gray;####006600|/*←最左边的10px是阴影的范围，中间的10px是阴影的扩散程度，最右边的10px是阴影的模糊度，gray是阴影的颜色*/##
+&gt;
+&gt; ++* ##006600|/*↓↓圆角↓↓*/##
+&gt;
+&gt; +++* ##006600|↓↓在CSS3中一般通过border-radius来进行修改边框的圆角。↓↓##
+&gt;
+&gt; ##4a70e3|border-radius:25px;####006600|/*←25px为边框的圆角程度可以根据数值修改。*/##
+&gt;
+&gt; ++* ##006600|/*↓↓图片边框以及渐变边框↓↓*/##
+&gt;
+&gt; ##4a70e3|border-image:url(图片的链接);####006600|/*←这是图片边框的修改方法*/##
+&gt; ##4a70e3|border-image:linear-gradient(45deg,#000,#fff,gray);####006600|/*←关于渐变边框，45deg为渐变旋转角度，#000和#fff以及gray为混合渐变所使用的颜色，至少需要两个色码才可以进行渐变，linear-gradient是线性渐变的意思。*/##
+&gt; ##4a70e3|border-image:radial-gradient(#000,#fff,gray);####006600|/*←关于渐变边框，45deg为渐变旋转角度，#000和#fff以及gray为混合渐变所使用的颜色，至少需要两个色码才可以进行渐变，radial-gradient是径向渐变的意思。在渐变中不一定需要设定角度，不设定角度的情况下颜色会从上到下进行填充。*/##
+&gt;
+&gt; ++* ##006600|/*↓↓背景部分↓↓*/##
+&gt; 
+&gt; ##4a70e3|background:url(图片的链接);####006600|/*←在url处的括号内输入图链可以加入图片背景*/##
+&gt; ##4a70e3|background-image:url(图片的链接);####006600|/*←在url处的括号内输入图链可以加入图片背景，当然这种格式也可以*/##
+&gt; ##4a70e3|background-color:#000;####006600|/*←在定义背景颜色处输入色码或者是rgb和rgba值*/##
+&gt; ##4a70e3|background-image:linear-gradient(45deg,#000,gray,#fff);####006600|/*←在背景属性内输入线性渐变或者径向渐变并进行定义创造出渐变背景*/##
+&gt; ##4a70e3|background-size:20%;####006600|/*←在背景大小进行百分比调试或者用像素（px）以及覆盖（cover）来调试*/##
+&gt; ##4a70e3|background-clip:text;####006600|/*←此处可输入裁剪的元素，如：text、box*/##
+&gt;
+&gt; ++* ##006600|/*↓↓字色↓↓*/##
+&gt;
+&gt; ##4a70e3|color:#fff;####006600|/*←这里可以修改颜色，在color这个属性值内输入色码或者rgb、rgba值可以决定字色*/##
+&gt; ##4a70e3|color:rgb(252,252,252);####006600|/*←像这样*/##
+&gt; ##4a70e3|color:rgba(252,252,252,1);####006600|/*←还有这样*/##
+&gt;
+&gt; ++* ##006600|/*↓↓显示部分↓↓*/##
+&gt;
+&gt; ##4a70e3|display:none;####006600|/*←这个的话是不显示，none表示无，inline表示存在，inline-block表示块状显示*/##
+&gt; ##4a70e3|display:inline;####006600|/*←存在*/##
+&gt; ##4a70e3|display:inline-block;####006600|/*←块状显示*/##
+&gt;
+&gt; ++* ##006600|/*↓↓透明度↓↓*/##
+&gt;
+&gt; ##4a70e3|opacity:0;####006600|/*←0表示完全透明1表示完全不透明，透明和不显示是两种不一样的情况，在完全透明的情况依然能被选中，而不显示则代表完全无法选中，除非元素显示*/##
+&gt; ##4a70e3|opacity:.5;####006600|/*←也可以使用小数来进行表示，透明度一般在0～1之间*/##
+&gt;  
+&gt; ##006600|/*一般定位的属性值都有五个，####901|static####006600|（默认）、####901|fixed####006600|（固定定位，也就是你滑动也不会改变位置，始终固定于一个位置）、####901|relative####006600|（相对定位，相对其他元素的定位是正常的）、####901|absolute####006600|（绝对定位，依靠最近的元素进行定位）、####901|sticky####006600|（粘性定位，基于用户滚动时的位置来定位）、####006600|*/##
+&gt;
+&gt; ##4a70e3|position:flixed;####006600|/*←固定定位*/##
+&gt; ##4a70e3|position:relative;####006600|/*←相对定位*/##
+&gt; ##4a70e3|position:absolute;####006600|/*←绝对定位*/##
+&gt; ##4a70e3|position:sticky;####006600|/*←粘性定位*/##
+&gt; ##4a70e3|position:static;####006600|/*←默认*/##
+&gt;
+&gt; ++* ##006600|/*↓↓浮动↓↓*/##
+&gt;
+&gt; ##006600|/*关于浮动的属性值有五个，####901|left####006600|（浮动于左侧）、####901|right####006600|（浮动于右侧）、####901|bottom####006600|（浮动于底部）、####901|top####006600|（浮动于顶端）、####901|clear####006600|（禁止浮动）、####006600|*/##
+&gt;
+&gt; ##4a70e3|float:left;####006600|/*←浮动于左侧*/##
+&gt; ##4a70e3|float:right;####006600|/*←浮动于右侧*/##
+&gt; ##4a70e3|float:top;####006600|/*←浮动于顶端*/##
+&gt; ##4a70e3|float:botto;####006600|/*←浮动于底部*/##
+&gt; ##4a70e3|float:clear;####006600|/*←禁止浮动*/##
+&gt;
+&gt; ++* ##006600|/*↓↓填充(内边距)元素↓↓*/##
+&gt;
+&gt; ##006600|/*填充单边的属性值####901|padding-top:100px;####006600|（浮顶部填充100px）、####901|padding-bottom:100px;####006600|（底部填充100px）、####901|padding-left:100px;####006600|（左侧填充100px）、####901|padding-right:100px;####006600|（浮右侧填充100px）、####901|padding:100px 100px;####006600|（填充的简写）、####006600|*/##
+&gt;
+&gt; //**##006600|一个padding属性可以有四个值##**//
+&gt;
+&gt; ##4a70e3|padding:25px 24px 23px 22px;####006600|/*←上下左右都有填充值，上填充25px，右填充24px，下填充23px，左填充22px*/##
+&gt; ##4a70e3|padding:25px 24px 23px;####006600|/*←上填充25px，左右填充24px，下填充23px*/##
+&gt; ##4a70e3|padding:25px 24px;####006600|/*←上下填充25px，左右填充24px*/##
+&gt; ##4a70e3|padding:25px;####006600|/*←全部都填充25px*/##
+&gt;
+&gt; ++* ##006600|/*↓↓大小（尺寸）↓↓*/##
+&gt;
+&gt; ##4a70e3|width:25px;####006600|/*←宽度为25px*/##
+&gt; ##4a70e3|height:25px;####006600|/*←高度为25px*/##
+&gt; ##4a70e3|max-width:25px;####006600|/*←最大宽度为25px*/##
+&gt; ##4a70e3|max-height:25px;####006600|/*←最大高度为25px*/##
+&gt; ##4a70e3|min-width:25px;####006600|/*←最小宽度为25px*/##
+&gt; ##4a70e3|min-height:25px;####006600|/*←最小高度为25px*/##
+&gt; ##4a70e3|line-height:25px;####006600|/*←行高为25px*/##
+&gt;
+&gt; ++* ##006600|/*↓↓字体↓↓*/##
+&gt;
+&gt; ##4a70e3|font-size:25px;####006600|/*←用于决定字体的大小，目前为25px*/##
+&gt; ##4a70e3|font-family:Times New Roman&#34;, Times, serif;####006600|/*←字体种类，当字体不兼容时会引用下一种，一般字体名称超过1个字的都需要加上引号，如:font-family:&#34;微软雅黑&#34;;*/##
+&gt; ##4a70e3|font-style:normal;####006600|/*←字体的样式，目前的为默认，也就是正常的字体共分为三种，normal（正常）、italic（斜体）、oblique（倾斜文字和斜体有很高的相似性）*/##
+&gt; ##4a70e3|font-weight:2px;####006600|/*←用于决定字体的粗细，目前粗细为2px*/##
+&gt;
+&gt; ++* ##006600|/*↓↓外边距↓↓*/##
+&gt;
+&gt; ##4a70e3|margin:25px;####006600|/*←决定外边距的大小目前声明是上下左右为25px*/##
+&gt; ##4a70e3|margin-top:30px;####006600|/*←上边距，目前为30px*/##
+&gt; ##4a70e3|margin-bottom:35px;####006600|/*←下边距，目前为35px*/##
+&gt; ##4a70e3|margin-left:2px;####006600|/*←左边距，目前为2px*/##
+&gt; ##4a70e3|margin-right:10px;####006600|/*←右边距，目前为10px*/##
+&gt;
+&gt; ++* ##006600|/*↓↓层叠函数↓↓*/##
+&gt;
+&gt; ##4a70e3|z-index:1;####006600|/*←数值决定执行层叠数*/##
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ CSS的属性的使用
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; +* ##006600|在阅读以下内容之前请确保认真的读过[http://scp-wiki-cn.wikidot.com/how-to-make-a-css-theme#toc3 →CSS的部分属性介绍←]以及[http://scp-wiki-cn.wikidot.com/how-to-make-a-css-theme#toc2 →一些关于CSS的语法介绍和用法←]##
+&gt; +* ↑↑↑如果没有认真的看完或者是觉得没看懂，可以点击锚点返回去看。↑↑↑
+&gt;
+&gt; 一般的改法都是点电脑键盘的F12来查看要改的元素然后搬下来改，例如：
+&gt;
+&gt; #header h1 a { /*这是一块版头大字的部分*/
+&gt;
+&gt; }
+&gt;
+&gt; 将板块搬下来后我们可以对它进行修改和自定义。
+&gt;
+&gt; #header h1 a {
+&gt; color:你的色码、颜色名或者rgb和rgba值。然后别忘了加上;
+&gt; border:这里写上边框类型，粗细以及颜色。然后加上;
+&gt; position:这里写定位的方式，再加上;
+&gt; display:这里写上显示方式，如果不想让它显示可以写none;
+&gt; background:这里写上背景的颜色或者是url(图片的网址);
+&gt; background-clip:背景的切割方式;
+&gt; }
+&gt;
+&gt; #header h1 a:hover { /*也可以对它进行选择器上的修改，这里我修改的是有鼠标置于其上时的情况*/
+&gt; color:#000;
+&gt; border:solid #000 1px;
+&gt; position:static;
+&gt; display:none;
+&gt; background:url(www.xxxxxx.com);
+&gt; background-clip:text;
+&gt; }
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ 黑标笔遇见的常见问题
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; 关于如何[http://scp-wiki-cn.wikidot.com/forum/t-12228627 自定义黑标笔][[*user Sekai-s]]写了一篇帖文，这部分内容将基于原文进行描述。
+&gt;
+&gt; 下面将对一部分疑问进行解释↓
+&gt;
+&gt; +++* ##901|为什么我改了属性并没有出现反应？##
+&gt; 这种问题大概是因为你没有保存或者说你保存了，但是你的手机或者电脑浏览器并不兼容你修改的属性。
+&gt;
+&gt; +++* ##901|为什么我改了根部选择器的东西再改一部分其他的选择器，手机端的页面会炸开来？##
+&gt; 大概因为你手机页面的元素定位被新加入的属性所打乱了，一般删掉出现错误的那一块即可。
+&gt;
+&gt; +++* ##901|为什么我的手机加载黑标笔版式时黑标笔无法加载出来？##
+&gt; 大概是因为网络或者cookie数据的问题，cookie数据是你的浏览器缓存数据，清除数据重新进入即可。如果清了数据还是无法进入，那请尝试换个浏览器，这是浏览器的兼容问题。
+&gt;
+&gt; +++* ##901|为什么黑标笔加载速度会慢？##
+&gt; 想要提升加载速度一般就要减少其中的一些不必要物品，例如不必要的图片以及一些不必要的外网字库，加载这些会让进入网页的速度变慢。
+&gt;
+&gt; +++* ##901|我该怎么才能完全做出一套属于自己风格的黑标笔版式？##
+&gt; 这个问题很难解释，首先要做到完全自定义黑标笔版式就需要学会很多的CSS代码，如果这点做不到那就只能改个配色。
+&gt;
+&gt; +++* ##901|为什么这里没有出一个黑标笔的教程？##
+&gt; 不知道如何才能把黑标笔说到0基础也能完全自定义化，这点也是我的不足。所以才会把[[*user Sekai-s]]的帖子放在上面。
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ 那么学会这些你能做些什么呢？
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; 做一份自定义黑标笔版式、一份自定义sigma9版式，等等，你不满足于这些。
+&gt; 让我想想还能做什么？啊有了，还能让你的沙盒变得更卡。
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ 看完这些内容了我该怎么去做“坏事”？
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; +* 很简单，大概你的电脑然后点击F12这个按键，或者说用鼠标右键点审查元素，然后找到你想改的修改。改完之后把它复制下来然后粘贴到这个里面↓↓↓↓↓↓↓↓↓↓↓↓↓，切记：即使是F12改的东西也会有极限，可能会出现兼容性问题。
+&gt;
+&gt; ++* [[module css]]
+&gt;
+&gt; +++* 你的CSS
+&gt;
+&gt; ++* [[/module]]
+&gt;
+&gt; +* 例如：↓
+&gt; ++* [[module css]]
+&gt; +++* #XXXX {
+&gt; +++* color:#000;
+&gt; +++* }
+&gt; ++* [[/module]]
+&gt;
+&gt; +* 如果是黑标笔的话：↓
+&gt; ++* [[module css]]
+&gt; +++* :root {
+&gt; +++* --var-:252,252,252;
+&gt; +++* }
+&gt; +++* #XXXX {
+&gt; +++* color:#000;
+&gt; +++* }
+&gt; ++* [[/module]]
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ 那么做完版式之后，想将版式发布该怎么做呢？
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; ++* 在主页的新页面中创建一个新页面，并按下页面底部的标签按钮输入“原创”“版式”。↓
+&gt; ++* 用以下格式来表达你的代码。↓
+&gt;
+&gt; +++* ##901|[[code type=&#34;css&#34;]]##
+&gt; +++* ##4a70e3|你的代码##
+&gt; +++* ##901|[[/code]]##
+&gt;
+&gt; ++* 例如：↓
+&gt;
+&gt; +++* ##901|[[code type=&#34;css&#34;]]##
+&gt; +++* ##4a70e3|.XXXX {##
+&gt; +++* ##4a70e3|color:#000;##
+&gt; +++* ##4a70e3|}##
+&gt; +++* ##901|[[/code]]##
+&gt;
+&gt; ++* 并在页面内引用你的版式↓
+&gt;
+&gt; +++* ##901|[[module CSS]]##
+&gt; +++* ##4a70e3|@import url(&#34;http://scp-wiki-cn.wikidot.com/后缀/code/1&#34;);##
+&gt; +++* ##901|[[/module]]##
+&gt;
+&gt; ++* 或者这么引用↓
+&gt;
+&gt; +++* ##901|[[include :scp-wiki-cn:component:版式网址后缀]]##
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ 最后的最后
+&gt; [#thetoc →点此返回目录←]
+&gt;
+&gt; 恭喜你看完了这一篇指导，同时也感谢你看完这一大篇难看懂的玩意。如果你有更多的想法或者意见可以联系[[*user Whlie rock]]，也祝愿你能做出属于自己的黑标笔版式或者是sigma9版式，玩的愉快。
+&gt;
+&gt; [#thetoc →点此返回目录←]
+
++ 困难内容（慎入！）
+&gt; [#thetoc →点此返回目录←]
+&gt; 
+&gt; +* ！以下内容对新手极不友好，如有不适请返回目录！
+&gt; 
+&gt; ++* ##006600|/*↓↓过渡↓↓*/##
+&gt; 
+&gt; ##006600|/*####4a70e3|↓transition的意思为过渡，####4a70e3|同时也是四个量的缩写，####4a70e3|分别是：####901|transition-property:;（←需过渡属性）、####901|transition-duration:;（←过渡时间长短）、####901|transition-delay:;（←时间长短）、####901|transition-timing-function:;（←所运行函数）、####4a70e3|↓####006600|*/##
+&gt; 
+&gt; ##4a70e3|transition:color 2s;####006600|/*←一般都用这种简写方式用transition来定义过渡，旁边用秒数或者小数来表达过渡时间，目前需要过渡的元素是字色，过渡时间为2秒*/##
+&gt; ##4a70e3|transition:all 2s;####006600|/*←如果想每个属性都过渡则输入all*/##
+&gt; ##4a70e3|transition-property:all;####006600|/*←默认过渡属性为all，需要时则填入所需过渡的属性，不需要或者不需要定义时写none*/##
+&gt; ##4a70e3|transition-timing-function:linear;####006600|/*←过渡运行方式，这里可以填入多种运行方式，通常见到的有：linear（线性，以正常速度运行至结束），ease（默认，以慢速开始，结束则很快），ease-in（慢速入，规定由慢速开始），ease-out（慢速出，规定慢速结束），ease-in-out（缓慢，规定慢速运行慢速结束），cubic-bezier(n,n,n,n)←cubic函数n为定义值一般为0到1之间的数字，如： cubic-bezier(0,0,0.18,1)*/##
+&gt; ##4a70e3|transition-delay:2s;####006600|/*←过渡开始时间*/##
+&gt; 
+&gt; ++* ##006600|/*↓↓动画属性↓↓*/##
+&gt; 
+&gt; +++* //**##006600|这一部分非常难但是非常有意思，（搓手）##**//
+&gt; 
+&gt; ##901|@keyframes rename { ####006600|/*←创造一个动画选择器*/##
+&gt; ##4a70e3|填入属性##
+&gt; ##901|}##
+&gt; 
+&gt; +++* //**##006600|例如：↓##**//
+&gt; 
+&gt; ##901|@keyframes night ####006600|/*←创造一个动画选择器*/##
+&gt; ##901|{##
+&gt; ##4a70e3|0%   {transform:rotateY(72deg); ####006600|/*←由百分比开始动画进度，目前是由y轴旋转*/##
+&gt; ##4a70e3|-webkit-transform:rotateY(72deg);}##
+&gt; ##4a70e3|25%  {transform:rotateY(144deg);##
+&gt; ##4a70e3|-webkit-transform:rotateY(144deg);}##
+&gt; ##4a70e3|50%  {transform:rotateY(216deg);##
+&gt; ##4a70e3|-webkit-transform:rotateY(216deg);}##
+&gt; ##4a70e3|75%  {transform:rotateY(288deg);##
+&gt; ##4a70e3|-webkit-transform:rotateY(288deg);}##
+&gt; ##4a70e3|100% {transform:rotateY(360deg);##
+&gt; ##4a70e3|-webkit-transform:rotateY(360deg);}##
+&gt; ##901|}##
+&gt; 
+&gt; //**##006600|↑这部分代码来自[http://scp-wiki-cn.wikidot.com/scp-cn-1445 SCP-CN-1445]##**//
+&gt; 
+&gt; ##901|通常语法为：####4a70e3|animation: 选择器名称 持续时间 动画完成周期方式 延时 循环次数 反向运动 动画状态;##
+&gt; 
+&gt; +++* //**##006600|例如：↓##**//
+&gt; 
+&gt; ##4a70e3|animation:night 2s linear 1s infinite forwards alternate-reverse running;##
+&gt; 
+&gt; ##4a70e3|night为选择器的名字，2s为持续时间，通常为线性（linear）或者默认（ease）、慢速入（ease-in）、慢速出（ease-in）、缓慢（ease-in-out）。infinite表示永远执行动画循环，如果觉得动画只需执行一次可以把infinite换成1，forward表示应用样式，默认为无（none），也可以返回最初帧（backwards），双向延展（both）。alternate-reverse表示奇数次会反向播放动画，偶数次正向播放动画，也可以输入正常（normal）、反向（reverse）。running表示运行也可以输入暂停（pause），表示这两个词决定动画是否在运行##
+&gt; 
+&gt; ++* ##006600|/*↓↓2D、3D转换↓↓*/##
+&gt; 
+&gt; ##4a70e3|transform:;####006600|/*←利用transform来表示转换*/##
+&gt; ##4a70e3|transform:scale(1.2);####006600|/*←这里表示放大1.2倍，通过调整数值决定放大和缩小*/##
+&gt; ##4a70e3|transform:rotateY(30deg);####006600|/*←Y轴旋转30度（deg）*/##
+&gt; ##4a70e3|transform:rotateX(30deg);####006600|/*←X轴旋转30度（deg）*/##
+&gt; 
+&gt; ##4a70e3|/*↑该部分内容与过渡元素和动画元素一同使用效果更佳↑*/##
+&gt; 
+&gt; ++* ##006600|/*↓↓兼容性以及移动端适应性↓↓*/##
+&gt; 
+&gt; ##006600|通常很多浏览器都会有兼容性问题，这种问题是很久以前了（除了IE很多元素直到现在都还不支持，拜托，这么破烂的玩意真的有人用吗？）。##
+&gt; 
+&gt; ##006600|当我们遇到浏览器的对web元素出现兼容性问题时可以在属性前加上前缀，火狐的是-moz-，谷歌的是-webkit-，欧朋的是-o-。##
+&gt; 
+&gt; ##006600|像这样-o-animation:;以及这样-webkit-animation:;，还有这样-moz-animation:;。##
+&gt; 
+&gt; +++* ##006600|↓那么手机端和其他端口对页面元素不适应如何解决？↓##
+&gt; 
+&gt; ##006600|写上@media选择器，并且在内部写上会如何##
+&gt; 
+&gt; ##4a70e3|@media screen and (max-width: 475px) { ####006600|/*←当屏幕宽度在475px时*/##
+&gt; ##4a70e3|body {##
+&gt; ##4a70e3|background:#000;##
+&gt; ##4a70e3|}##
+&gt; ##4a70e3|}##
+&gt; 
+&gt; ##006600|通过@media选择器限制其屏幕宽度然后对出现问题的选择器进行修正##
+&gt; 
+&gt; [#thetoc →点此返回目录←]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:08.586832.</em>
+  
+</div>
+</body>

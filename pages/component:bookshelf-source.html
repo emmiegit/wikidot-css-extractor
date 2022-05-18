@@ -1,0 +1,2109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>被放逐者的书架：源代码</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">被放逐者的书架：源代码</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:bookshelf-source" target="_blank">被放逐者的书架：源代码</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>
+/*
+=====================
+被放逐者的书架
+由Etinjat制作
+书籍边框和书籍底图来自woedenaz
+=====================
+*/
+
+:root{   
+    /* 图片赋值 */
+
+    --gold-image: url(&#34;http://wanderers-library.wdfiles.com/local--files/component%3Atheme/goldfoil.png&#34;);
+
+    --wave-image: url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/Bgr-deco-pattern.png&#34;);
+
+    --cloud-image: url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/Bgr-white-waves.png&#34;);
+
+    --night-image: url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/Bgr-galfed.png&#34;);
+
+    --bluepaper-image: url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/Bgr-WL-Blue.png&#34;);
+
+ /* 投影赋值 */   
+
+   --box-out-shelf:0.0625rem -0.0625rem 0 #4c2e13, 0.125rem -0.125rem 0 #4c2e13, 0.1875rem -0.1875rem 0 #4c2e13, 0.25rem -0.25rem 0 #4c2e13, 0.3125rem -0.3125rem 0 #4c2e13, 0.375rem -0.375rem 0 #4c2e13, 0.4375rem -0.4375rem 0 #4c2e13, 0.8rem -0.8rem 0 #4c2e13;
+
+   --box-inner-shelf:-0.0625rem -0.0625rem 0 #4c2e13, -0.125rem -0.125rem 0 #4c2e13, -0.1875rem -0.1875rem 0 #4c2e13, -0.25rem -0.25rem 0 #4c2e13, -0.3125rem -0.3125rem 0 #4c2e13, -0.375rem -0.375rem 0 #4c2e13, -0.4375rem -0.4375rem 0 #4c2e13, -0.5rem -0.5rem 0 #4c2e13;
+
+   --box-green:0.0625rem 0.0625rem 0 #385814, 0.125rem 0.125rem 0 #385b15, 0.1875rem 0.1875rem 0 #3a5e16, 0.25rem 0.25rem 0 #3b6118, 0.3125rem 0.3125rem 0 #40641a, 0.375rem 0.375rem 0 #385814, 0.4375rem 0.4375rem 0 #3d5c15, 0.58rem 0.8rem 0 #31540e;
+
+   --box-white:0.0625rem 0.0625rem 0 #94a19d, 0.125rem 0.125rem 0 #acb0af, 0.1875rem 0.1875rem 0 #b6aaaa, 0.25rem 0.25rem 0 #a5a9a0, 0.3125rem 0.3125rem 0 #848881, 0.375rem 0.375rem 0 #81847f, 0.4375rem 0.4375rem 0 #545552, 0.58rem 0.8rem 0 #4e504d;
+
+   --box-black:0.0625rem 0.0625rem 0 #54584f, 0.125rem 0.125rem 0 #484c45, 0.1875rem 0.1875rem 0 #363a32, 0.25rem 0.25rem 0 #3a4133, 0.3125rem 0.3125rem 0 #40433c, 0.375rem 0.375rem 0 #32342f, 0.4375rem 0.4375rem 0 #1e1e1d, 0.58rem 0.8rem 0 #121212;
+
+   --box-red:0.0625rem 0.0625rem 0 #921212, 0.125rem 0.125rem 0 #901111, 0.1875rem 0.1875rem 0 #a92d0f, 0.25rem 0.25rem 0 #870e21, 0.3125rem 0.3125rem 0 #74060d, 0.375rem 0.375rem 0 #6b1808, 0.4375rem 0.4375rem 0 #5b0b0f, 0.58rem 0.8rem 0 #3c040f;
+
+   --box-gold:0.0625rem 0.0625rem 0 #aead42, 0.125rem 0.125rem 0 #a07512, 0.1875rem 0.1875rem 0 #b2781c, 0.25rem 0.25rem 0 #a37716, 0.3125rem 0.3125rem 0 #71560d, 0.375rem 0.375rem 0 #6e6615, 0.4375rem 0.4375rem 0 #827519, 0.58rem 0.8rem 0 #4e4208;
+
+   --box-blue:0.0625rem 0.0625rem 0 #12aab4, 0.125rem 0.125rem 0 #1f98d0, 0.1875rem 0.1875rem 0 #17898f, 0.25rem 0.25rem 0 #136f98, 0.3125rem 0.3125rem 0 #1d4b8d, 0.375rem 0.375rem 0 #144890, 0.4375rem 0.4375rem 0 #0d386b, 0.58rem 0.8rem 0 #083241;
+
+  --box-darkblue:0.0625rem 0.0625rem 0 #0c1481, 0.125rem 0.125rem 0 #1e0c8c, 0.1875rem 0.1875rem 0 #0a1172, 0.25rem 0.25rem 0 #0d1683, 0.3125rem 0.3125rem 0 #0a1160, 0.375rem 0.375rem 0 #0c1474, 0.4375rem 0.4375rem 0 #0b104e, 0.58rem 0.8rem 0 #0c114f;
+
+ --box-bluedark:0.0625rem 0.0625rem 0 #0d3e40, 0.125rem 0.125rem 0 #20364f, 0.1875rem 0.1875rem 0 #162c44, 0.25rem 0.25rem 0 #162c44, 0.3125rem 0.3125rem 0 #0a2244, 0.375rem 0.375rem 0 #061d3c, 0.4375rem 0.4375rem 0 #04162b, 0.58rem 0.8rem 0 #081c24;
+
+
+  --box-galaxy:0.0625rem 0.0625rem 0 #9b01d3, 0.125rem 0.125rem 0 #1c0463, 0.1875rem 0.1875rem 0 #3c0875, 0.25rem 0.25rem 0 #2e0d65, 0.3125rem 0.3125rem 0 #3d0a5d, 0.375rem 0.375rem 0 #340438, 0.4375rem 0.4375rem 0 #1a041c, 0.58rem 0.8rem 0 #1a041a;
+
+  --box-purple:0.0625rem 0.0625rem 0 #f303d6, 0.125rem 0.125rem 0 #9d11a3, 0.1875rem 0.1875rem 0 #881391, 0.25rem 0.25rem 0 #650e6a, 0.3125rem 0.3125rem 0 #490c49, 0.375rem 0.375rem 0 #30032f, 0.4375rem 0.4375rem 0 #2f032b, 0.58rem 0.8rem 0 #1f0226;
+
+  --box-mix-1:0.0625rem 0.0625rem 0 #142a49, 0.125rem 0.125rem 0 #1f301b, 0.1875rem 0.1875rem 0 #173240, 0.25rem 0.25rem 0 #1f4127, 0.3125rem 0.3125rem 0 #080840, 0.375rem 0.375rem 0 #1f0a4a, 0.4375rem 0.4375rem 0 #180840, 0.58rem 0.8rem 0 #0f1b02;
+
+--book-height:15rem;
+
+}
+
+/*
+=====================
+书架
+=====================
+*/
+
+.et-out-bookrack{
+    padding: 1rem 0 0.5rem 1.5rem;
+    filter: drop-shadow(1.5rem 0.2rem 3px #422306);
+    background: radial-gradient(#b16d1d, #f3cfa5, #684015);
+    background: -moz-radial-gradient(#b16d1d, #f3cfa5, #684015);
+    background: -webkit-radial-gradient(#b16d1d, #f3cfa5, #684015);
+/*
+    background-image:  var(--gold-image),
+                              linear-gradient(rgb(117, 89, 6) 0%, rgb(84, 59, 16) 30%, rgb(117, 61, 12) 100%);
+    background-blend-mode: overlay, normal;
+    background-size: cover, 100% 260%;
+*/
+    -moz-box-shadow: var(--box-out-shelf);
+    -o-box-shadow: var(--box-out-shelf);
+    -webkit-box-shadow: var(--box-out-shelf);
+    box-shadow: var(--box-out-shelf);
+}
+
+.et-inner-bookrack{
+    background: linear-gradient(43deg, #f9c29c,#cbcbcb,#d3c895);
+    padding: 2rem 0rem 0rem 0rem;
+    margin: 0.5rem 1.5rem 1rem 0rem;
+    filter: drop-shadow(1px 1px 10px #422306);
+    height: auto;
+  /* box-shadow: var(--box-inner-shelf); */
+    border: 0.8rem inset #866139;
+
+    border-right: 0rem inset #866139;
+
+}
+
+/*
+=====================
+书格
+=====================
+*/
+
+.shelf-no , .shelf-yes ,
+.shelf-no .list-pages-box,
+.shelf-yes  .list-pages-box{
+    display: flex;
+    min-height: 15rem;
+    overflow-y:hidden; 
+    margin: 0 0rem 0 1rem;
+    padding:3rem 0 0 0;
+}
+
+.shelf-no .list-pages-box{
+     overflow:visible;
+     padding:0.1rem 0 1rem 0;
+}
+
+/* 手机间隔 */
+@media (max-width: 479px) {
+  .et-out-bookrack{
+    padding:1rem 0.6rem 1rem 0.7rem ;
+ }
+
+  .et-inner-bookrack{
+     padding: 0.5rem 0.1rem 0rem 0.1rem ;
+     margin: 0.2rem 0rem 0rem 0rem ;
+  }
+
+  .shelf-no {
+     margin: 0rem 0.1rem 0 0.1rem;
+     padding:4rem 0 0 0;
+  }
+
+  .shelf-no   .list-pages-box{
+     margin: 0rem 0.1rem 0 0.1rem;
+     padding:0rem 0 0 0;
+  }
+}
+
+/*
+=====================
+封面
+=====================
+*/
+
+/*
+--------------------------
+书封
+--------------------------
+*/
+
+.dust-jacket{
+    margin: 0 0 0 0rem;
+ /* padding: 0.5rem 1rem 0 1rem;*/
+    width: 3rem;
+
+    display: inline-block;
+    transition: all 1s;
+    filter:brightness(1) drop-shadow(13px 5px 1px #333);
+    -webkit-filter:brightness(1) drop-shadow(13px 5px 1px #333);
+    border-radius: 0.2rem;
+}
+
+@media only screen and (min-width: 600px) {
+    /* 取书 */
+  .dust-jacket:hover{
+    -webkit-filter: brightness(2) drop-shadow(6px 20px 1px #000);
+    filter: brightness(2) drop-shadow(6px 20px 1px #333);   /* 如果把最后的1改成0，可能会有聚焦效果，但可能也更卡*/
+    transform:rotateX(20deg);
+   -webkit-transform:rotateX(-25deg); /* Safari and Chrome */
+    -moz-transform:rotateX(-25deg); /* Firefox */
+    transition: all 1s;
+
+    margin-bottom:2rem;
+    margin-top:-2rem;
+
+/* 似乎不起作用
+perspective: 1410;
+perspective-origin: 10% 10%;
+-webkit-perspective: 1410;
+-webkit-perspective-origin: 10% 10%;
+-moz-perspective: 1410;
+-moz-perspective-origin: 10% 10%;
+*/
+  }
+}
+
+/*
+@media (max-width: 479px) {
+  .dust-jacket:hover{
+  margin-bottom:2rem;
+   margin-top:-2rem;
+  }
+}
+*/
+
+/* 被选中时不会有选择带 */
+.dust-jacket::selection {
+    background:transparent;
+}
+
+.dust-jacket ::-moz-selection  {
+    background:transparent;
+}
+
+/*
+--------------------------
+书皮
+--------------------------
+*/
+
+.book-list {
+   display: inline-block;
+   min-width:3rem;
+  /*  margin: 1em 1em 0 1em;*/
+ /*  line-height:28px;*/
+   float:left;
+}
+
+.book-list a{
+    margin: 0 0 0 0.9rem;
+    max-height: calc(var(--book-height) - 2rem);
+
+    overflow: hidden;
+    text-overflow:ellipsis;
+    text-overflow:&#39;◈&#39;;
+
+    white-space: nowrap;
+
+    writing-mode: vertical-lr;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: vertical-lr;
+
+    text-decoration:none;
+    font-size: 135%;
+    font-family: kaiti,&#39;华文新魏&#39;;
+   /* padding: 0 1px 0  1px;*/
+}
+
+.book-list a{
+    min-height: 13.5rem;
+
+}
+
+.book-list a:hover{
+    background-color: transparent;
+}
+
+/*
+似乎无效
+.book-list {
+   display: inline-block;
+   margin: 1em 1em 0 1em;
+   min-width:0.5em;
+   line-height:30px;
+   float:left;
+   height:auto;
+}
+
+.book-list a{
+    text-decoration:none;
+    font-family: &#39;华文楷体&#39;,kaiti,&#39;华文新魏&#39;;
+    font-size: 135%;
+
+    margin: 0 1px 0 1px !important;
+   height: 13em;
+
+    writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: vertical-lr;
+
+}
+*/
+
+/*
+=====================
+书籍间隔
+=====================
+*/
+.the-shelf-block{
+   width:10px;
+}
+
+.module-shelf-block{
+   width:5px;
+   display: inline-flex;
+}
+
+/*废弃
+@media (max-width: 479px) {
+.the-shelf-block:nth-child(3)
+{
+width:100%;
+height:1em;
+background:grey;
+}
+}
+*/
+
+/*
+=====================
+隔板
+=====================
+*/
+
+.et-plank{
+background-image: var(--gold-image), linear-gradient(rgb(134, 103, 34) 0%, rgb(88, 56, 5) 30%, rgb(55, 30, 2) 100%); -webkit-filter: drop-shadow(8px 10px 1px #000); /* 亮色
+*/
+   background-image:  var(--gold-image), linear-gradient(rgb(88, 82, 69) 0%, rgb(64, 38, 11) 30%, rgb(17, 10, 2) 100%);
+   filter: drop-shadow(1px 10px 5px #422306);
+   transform: rotateX(20deg);
+   background-blend-mode: overlay, normal;
+   background-size: cover, 100% 260%;
+   border-radius: 0.5rem;
+
+   margin: -0.1rem 0 0 0;
+}
+
+.et-plank p {
+   margin-block-start: 0; /* 感谢 Jochoi 的修改 */
+   -webkit-margin-before: 0;
+   /*! line-height: 100%; */
+}
+
+/*
+=====================
+书封颜色
+=====================
+*/
+.cover-green{
+    background-image: var(--gold-image),
+    linear-gradient(rgb(30, 55, 30) 0%, rgb(30, 55, 30) 30%, rgb(255, 219, 90) 100%);
+    background-blend-mode: overlay, normal;
+    background-size: cover, 100% 260%;
+    border-left: 0.25rem double #e0ba45;
+    border-right: 0.25rem double #e0ba45;
+
+    -moz-box-shadow: var(--box-green);
+    -o-box-shadow: var(--box-green);
+    -webkit-box-shadow: var(--box-green);
+    box-shadow: var(--box-green);
+}
+
+.cover-red {
+   background-image:  var(--cloud-image), linear-gradient(rgb(186, 12, 12) 0%, rgb(145, 17, 17) 30%, rgb(102, 20, 20) 100%);
+   background-blend-mode: overlay, normal;
+   border-left: 0.25rem double #e0ba45;
+   border-right: 0.25rem double #e0ba45;
+
+  -moz-box-shadow: var(--box-red);
+    -o-box-shadow: var(--box-red);
+    -webkit-box-shadow: var(--box-red);
+    box-shadow: var(--box-red);
+}
+
+.cover-black {
+     background: linear-gradient(70deg, #191818, #636367,#333,#000);
+     border-left: 0.25rem double #aba7a7;
+     border-right: 0.25rem double #aba7a7;
+
+   -moz-box-shadow: var(--box-black);
+    -o-box-shadow: var(--box-black);
+    -webkit-box-shadow: var(--box-black);
+    box-shadow: var(--box-black);
+}
+
+.cover-galaxy {
+    background-image:  var(--night-image), linear-gradient(rgb(132, 132, 132) 0%, rgb(136, 136, 205) 30%, rgb(36, 36, 36) 100%);
+    border-left: 0.25rem double #9b01d3;
+    border-right: 0.25rem double #9b01d3;
+
+    -moz-box-shadow: var(--box-galaxy);
+    -o-box-shadow: var(--box-galaxy);
+    -webkit-box-shadow: var(--box-galaxy);
+    box-shadow: var(--box-galaxy);
+}
+
+.cover-gold {
+   background-image:  var(--wave-image), linear-gradient(rgb(223, 216, 31) 0%, rgb(202, 129, 0) 30%, rgb(206, 118, 12) 100%);
+   border-left: 0.25rem double #58076c;
+   border-right: 0.25rem double #58076c;
+
+    -moz-box-shadow: var(--box-gold);
+    -o-box-shadow: var(--box-gold);
+    -webkit-box-shadow: var(--box-gold);
+    box-shadow: var(--box-gold);
+}
+
+.cover-purple {
+   background: linear-gradient(-80deg, #420a75, #8f00ca,#8137ca,#7b20c4,#490d78);
+   border-left: 0.25rem double #edb016;
+   border-right: 0.25rem double #edb016;
+
+    -moz-box-shadow: var(--box-purple);
+    -o-box-shadow: var(--box-purple);
+    -webkit-box-shadow: var(--box-purple);
+    box-shadow: var(--box-purple);
+}
+
+.cover-blue {
+   background-image: linear-gradient(rgb(2, 151, 213) 0%, rgb(15, 77, 157) 30%, rgb(23, 26, 116) 100%);
+   background-blend-mode: overlay, normal;
+   background-size: cover, 100% 260%;
+   border-left: 0.25rem double #28d8a2;
+   border-right: 0.25rem double #28d8a2;
+
+    -moz-box-shadow: var(--box-blue);
+    -o-box-shadow: var(--box-blue);
+    -webkit-box-shadow: var(--box-blue);
+    box-shadow: var(--box-blue);
+}
+
+.cover-blue-2 {
+   background-image: url(http://wanderers-library.wikidot.com/local--files/component:theme/goldfoil.png), linear-gradient(rgb(2, 151, 213) 0%, rgb(15, 77, 157) 30%, rgb(23, 26, 116) 100%);
+   background-blend-mode: overlay, normal;
+   background-size: cover, 100% 260%;
+   border-left: 0.25rem double #28d8a2;
+   border-right: 0.25rem double #28d8a2;
+
+    -moz-box-shadow: var(--box-blue);
+    -o-box-shadow: var(--box-blue);
+    -webkit-box-shadow: var(--box-blue);
+    box-shadow: var(--box-blue);
+}
+
+.cover-blue-3 {
+   background-image:var(--bluepaper-image);
+  /* background-blend-mode: overlay, normal;*/
+   background-size: cover, 120% 100%;
+   border-left: 0.25rem double #153d7b;
+   border-right: 0.25rem double #153d7b;
+
+   -moz-box-shadow: var(--box-bluedark);
+   -o-box-shadow: var(--box-bluedark);
+   -webkit-box-shadow: var(--box-bluedark);
+   box-shadow: var(--box-bluedark);
+}
+
+.cover-darkblue{
+    background: linear-gradient(72deg, #190a5e, #170358,#0a1064,#080d46,#0d1252,#170743);
+    border-left: 0.25rem double #1fa8d8;
+    border-right: 0.25rem double #1fa8d8;
+
+    -moz-box-shadow: var(--box-darkblue);
+    -o-box-shadow: var(--box-darkblue);
+    -webkit-box-shadow: var(--box-darkblue);
+    box-shadow: var(--box-darkblue);
+}
+
+.cover-white {
+    background: linear-gradient(90deg, #d9d9d9, #e0f4f2,#dedede,#e5f1ed,#eee,#8e8e8e);
+    border-left: 0.25rem double #606060;
+    border-right: 0.25rem double #606060;
+
+    -moz-box-shadow: var(--box-white);
+    -o-box-shadow: var(--box-white);
+    -webkit-box-shadow: var(--box-white);
+    box-shadow: var(--box-white);
+}
+
+.cover-darkblack {
+    background: linear-gradient(90deg, #2f2f2f, #555,#2a2727,#161717,#3a3939,#000);
+    border-left: 0.25rem double #606060;
+    border-right: 0.25rem double #606060;
+
+    -moz-box-shadow: var(--box-black);
+    -o-box-shadow: var(--box-black);
+    -webkit-box-shadow: var(--box-black);
+    box-shadow: var(--box-black);
+}
+
+.cover-darkgrey {
+   background: linear-gradient(90deg, #5a5a5b, #6e6e6e,#8c8383,#6d7272,#656565,#585858);
+   border-left: 0.25rem double #191818;
+   border-right: 0.25rem double #191818;
+
+   -moz-box-shadow: var(--box-black);
+   -o-box-shadow: var(--box-black);
+   -webkit-box-shadow: var(--box-black);
+   box-shadow: var(--box-black);
+}
+
+.cover-mix-1 {
+    background: linear-gradient(43deg, #1f0d00, #1f462b,#0a1064,#5a199d);
+    border-left: 0.25rem double #65970c;
+    border-right: 0.25rem double #65970c;
+
+    -moz-box-shadow: var(--box-mix-1);
+    -o-box-shadow: var(--box-mix-1);
+    -webkit-box-shadow: var(--box-mix-1);
+    box-shadow: var(--box-mix-1);
+}
+
+.cover-mix-2 {
+    background: linear-gradient(-65deg, #580954, #320f7c,#518,#531f7b,#bb1a84);
+    border-left: 0.25rem double #0c0f3e;
+    border-right: 0.25rem double #0c0f3e;
+
+    -moz-box-shadow: var(--box-purple);
+    -o-box-shadow: var(--box-purple);
+    -webkit-box-shadow: var(--box-purple);
+    box-shadow: var(--box-purple);
+}
+
+/*
+----------------
+手机横排书角
+----------------
+*/
+@media (max-width: 479px) {
+
+  .trans-yes .dust-jacket{
+     border-left: 0;
+     border-right: 0;
+  }
+
+  .trans-yes .book-list p{
+    height: 0;
+  }
+
+  .trans-yes  .cover-green{
+    border-top: 0.25rem double #e0ba45;
+    border-bottom: 0.25rem double #e0ba45;
+  }
+
+  .trans-yes  .cover-red {
+    border-top: 0.25rem double #e0ba45;
+    border-bottom: 0.25rem double #e0ba45;
+   }
+
+  .trans-yes  .cover-black {
+    border-top: 0.25rem double #aba7a7;
+    border-bottom: 0.25rem double #aba7a7;
+  }
+
+  .trans-yes  .cover-galaxy {
+    border-top: 0.25rem double #9b01d3;
+    border-bottom: 0.25rem double #9b01d3;
+  }
+
+  .trans-yes  .cover-gold {
+    border-top: 0.25rem double #58076c;
+    border-bottom: 0.25rem double #58076c;
+  }
+
+  .trans-yes  .cover-purple {
+    border-top: 0.25rem double #edb016;
+    border-bottom: 0.25rem double #edb016;
+  }
+
+  .trans-yes  .cover-blue {
+    border-top: 0.25rem double #28d8a2;
+    border-bottom: 0.25rem double #28d8a2;
+  }
+
+  .trans-yes  .cover-blue-2 {
+    border-top: 0.25rem double #28d8a2;
+    border-bottom: 0.25rem double #28d8a2;
+  }
+
+  .trans-yes  .cover-blue-3 {
+    border-top: 0.25rem double #153d7b;
+    border-bottom: 0.25rem double #153d7b;
+  }
+
+  .trans-yes  .cover-darkblue{
+    border-top: 0.25rem double #1fa8d8;
+    border-bottom: 0.25rem double #1fa8d8;
+  }
+
+  .trans-yes  .cover-white {
+    border-top: 0.25rem double #606060;
+    border-bottom: 0.25rem double #606060;
+  }
+
+  .trans-yes  .cover-darkblack {
+    border-top: 0.25rem double #606060;
+    border-bottom: 0.25rem double #606060;
+  }
+
+  .trans-yes  .cover-darkgrey {
+    border-top: 0.25rem double #191818;
+    border-bottom: 0.25rem double #191818;
+  }
+
+  .trans-yes  .cover-mix-1 {
+    border-top: 0.25rem double #65970c;
+    border-bottom: 0.25rem double #65970c;
+  }
+
+  .trans-yes  .cover-mix-2 {
+    border-top: 0.25rem double #0c0f3e;
+    border-bottom: 0.25rem double #0c0f3e;
+ }
+}
+
+/*
+=====================
+书籍链接颜色
+=====================
+*/
+
+.link-gold a {
+    color:#e0ba45;
+}
+
+.link-white a {
+   color:#f4f4f4;
+}
+
+.link-red a {
+   color:#b01;
+}
+
+.link-black a {
+   color:#000;
+}
+
+/*
+=====================
+书架内的滚动条，火狐无效
+=====================
+ */
+
+.shelf-wrap {
+    scrollbar-color: #976f23 #805213;
+}
+
+.shelf-wrap::-webkit-scrollbar {
+    height: 0.5rem !important;
+    background-color: #F5F5F5;
+}
+
+.shelf-no .list-pages-box,
+.shelf-yes .list-pages-box{
+    scrollbar-width:none;
+    width: 100%;
+}
+
+/*
+.shelf-no, .shelf-yes{
+}
+*/
+
+/* 电脑上的火狐无效
+.shelf-no ::-webkit-scrollbar{
+        background-color:#b5b1b1;  
+}
+
+.shelf-no ::-webkit-scrollbar-thumb {  
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+   background-color:#b5b1b1;
+
+}
+
+.shelf-no ::-webkit-scrollbar-track{  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  
+    border-radius: 10px;
+      background-color:black;    
+
+}
+*/
+
+/*
+--------------------
+手机格式的书籍滚轮
+--------------------
+*/
+/*
+@media (max-width: 479px) {
+.shelf-no, .shelf-yes,
+.shelf-no .list-pages-box,
+.shelf-yes .list-pages-box {
+ overflow-y:hidden !important;
+}
+}
+*/
+
+/*
+=============================
+手机下的描边
+============================
+*/
+
+@media (max-width: 479px) {
+
+  .shelf-yes, .shelf-yes .list-pages-box {
+    display:  inline-block;
+    overflow-y: visible;
+    margin: 0 0rem 0 0rem;
+    padding: 0rem 0 0 0;
+    width:100%;
+  }
+
+  .trans-yes{
+     display:  flex;
+     margin:2rem 0 5rem  0rem ;
+   }
+
+  .trans-yes  .et-plank-wrap{
+        display:  inline-flex;
+        margin: 0;
+    }
+
+   .trans-yes  .et-plank-wrap .et-plank{
+        width: 2rem;
+        height: 115%;
+        margin: -2rem 0 0 0;
+        background-image: var(--gold-image),
+             linear-gradient(to top left, rgb(64, 38, 11) 100%, rgb(17, 10, 2) 90%),rgb(88, 82, 69) 100%);
+
+    }
+
+   .shelf-yes .dust-jacket {  
+      width:100%;
+      min-height: 3rem;    
+      margin: 0 0 1rem 0rem;
+      display: block;
+      transition: all 1s;
+      filter: brightness(1) drop-shadow(13px 5px 1px #333);
+      -webkit-filter: brightness(1) drop-shadow(10px 10px 2px #333);
+      border-radius: 0.2rem;
+      padding: 0;
+  }
+
+   .shelf-yes .dust-jacket p{
+       /*! line-height: 8; */
+   }
+
+  .shelf-yes  .dust-jacket:hover{
+      margin-left:-1rem;
+      margin-right:0rem;
+   }
+
+ .shelf-yes .book-list a {
+     position:relative ;
+     margin: -6rem 0 0 0;
+     left: 7rem;
+     height:12rem;
+     padding:  0rem 0rem 0rem 0rem;
+  }
+
+  .shelf-yes .pager {
+      writing-mode:   horizontal-tb  !important;  
+      padding: 4rem 0 0 0;
+      line-height: 2;
+      width: calc(100% - 3rem);
+  }
+
+   .shelf-yes .book-list a,
+   .shelf-yes .float-info  {
+       transform:rotate(-90deg);
+      -ms-transform:rotate(-90deg);
+      -webkit-transform:rotate(-90deg);
+   }
+
+   .trans-yes{
+        padding: 0;
+    }
+
+   .shelf-no    .dust-jacket:hover{
+      -webkit-filter: brightness(2) drop-shadow(6px 20px 1px #000);
+      filter: brightness(2) drop-shadow(6px 20px 1px #333);   /* 如果把最后的1改成0，可能会有聚焦效果，但可能也更卡*/
+      transform:rotateX(20deg);
+      -webkit-transform:rotateX(-25deg); /* Safari and Chrome */
+      -moz-transform:rotateX(-25deg); /* Firefox */
+      transition: all 1s;
+      margin-bottom:2rem;
+      margin-top:-2rem;
+   }
+}
+
+/*
+=====================
+外部组件
+=====================
+*/
+/* 翻开书籍 */
+
+/*
+@import url(http://etinjat.wikidot.com/css:open-book/code/1);
+*/
+
+/*
+=====================
+使用module时的按钮，待修缮
+=====================
+*/
+/*
+.shelf-yes .pager{
+    margin: 0 0rem 0 2rem;
+    writing-mode: sideways-rl;
+}
+
+.shelf-yes .pager span{
+    margin: 0.5rem 0rem 0 0rem;
+    writing-mode:  horizontal-tb;
+}
+
+.shelf-yes .pager .pager-no{
+    display: none;
+}
+*/
+
+.trans-yes {
+    width: auto;
+   /* height:calc(100% + 2rem);*/
+    padding: 1px;
+}
+
+.trans-no {
+    width: auto;
+  /*  height:calc(100% + 2rem);*/
+    padding: 1px;
+}
+
+.trans-no .pager,
+.trans-yes .pager {
+   position: absolute;  
+        margin: -3rem 0 0rem 0;  
+
+}
+
+.shelf-no  .list-pages-box .dust-jacket{
+    /* margin: 4rem 0 0rem 0;  */
+}
+
+.shelf-no  .list-pages-box .dust-jacket:hover{
+  /*  margin: 2rem 0 2rem 0;*/
+    transition:all  1s;
+
+}
+
+.shelf-no  .list-pages-box {
+    padding: 0;
+    margin: 0;
+}
+
+@media (max-width: 479px) {
+
+  .shelf-yes .list-pages-box .pager-no {
+    display: none;
+  }
+
+   .trans-yes .pager a,.trans-yes .current{
+    word-break:break-word;
+       padding: 0.5rem 0.2rem;
+
+   }
+
+  .trans-yes .pager span{
+       writing-mode:   sideways-lr  !important; 
+    }
+
+}
+
+/*
+=====================
+书籍描述
+=====================
+*/
+
+/* 方案一  */
+.book-description {
+    position:absolute;
+    z-index:-1;
+    margin-top: 14.8rem;
+    color: darkkhaki;
+    white-space: nowrap;/* 书本信息不分行，待思考 */
+    opacity: 0;
+    transition: opacity  0.5s;
+    float: left;
+}
+
+.self-defining .book-description, 
+.list-pages-box .book-description{
+    margin-top: -0.4rem;
+}
+
+.book-description p{
+   padding: 0 1rem 0 0.5rem;
+   overflow: hidden;
+   text-overflow:ellipsis;
+}
+
+.dust-jacket:hover + .book-description{
+    z-index: 1;
+    opacity: 1;
+   transition: opacity 0.8s;
+}
+
+@media (max-width: 479px) {
+   .shelf-yes .float-info {
+   top:21rem;
+    }
+
+    .shelf-yes .book-description{
+        position:relative;
+         right: -3.2rem;
+         writing-mode: vertical-lr;
+         margin: -5rem 0 0 0; /* 若是排到左侧的话会更好 */   
+        float: right;
+}
+
+        .shelf-yes .list-pages-box .book-description{
+        position:fixed;
+}
+
+/*
+------
+当在手机屏幕下文字正排时，可旋转文字使之横排
+    .shelf-yes    .book-description{
+       transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+
+}
+------
+*/
+
+  .self-defining  .book-description {
+      left:unset;
+   }  
+
+  .self-defining .trans-yes .book-description {
+      right: -10rem !important;
+      margin: 0rem 0 0 0 !important;
+      writing-mode: vertical-lr;
+      left:0rem;
+  }  
+
+   .shelf-yes  .list-pages-box .book-description {
+       margin: 0rem 0 0 0;
+       writing-mode:  sideways-lr !important;  
+       right: -1rem;
+        transform:rotate(0deg);
+    -ms-transform:rotate(0deg);
+-webkit-transform:rotate(0deg);
+    }     
+}
+
+/*
+方案二
+部分代码参考这里
+http://scp-wiki-cn.wikidot.com/component:author-page
+*/
+
+.float-info{
+  margin: 20px;
+  overflow:hidden;
+  position:fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 21%;
+  width: calc(50vw - 520px);
+  min-width: var(--book-height);
+  opacity:0;
+  transition: all 0.7s ease-out;
+  z-index: -1;
+}
+
+.dust-jacket:hover+ .book-description + .float-info{
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 1;
+}
+
+.float-info:hover{
+        opacity: 1;
+        z-index: 0;
+}
+
+@media screen and (max-width:992px) {
+  .float-info {
+     margin: 0 auto;
+     right: 0;
+     bottom: 0;
+    min-height:2rem;/* 高度 */
+  }
+}
+
+.info-1{
+   padding:1%;
+   box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2), 0px 6px 20px 0 rgba(0, 0, 0, 0.19);
+   background: rgba(242,242,194,1);
+   background-image: var(--wave-image);
+   border:   0.5em double rgba(167,105,68,0.9);
+}
+
+/*
+----------------
+手机屏幕下
+------------------
+*/
+
+@media (max-width: 479px) {
+
+/* 隐藏信息栏
+    .book-description,.float-info{   
+        display: none;
+    }
+*/
+
+  .trans-yes   .float-info{
+     right: 0rem;
+     bottom: 0.5rem;
+     min-width: var(--book-height);
+     max-height: calc(var(--book-height) - 6rem);
+     padding: 10px;
+     overflow:  scroll;
+     text-overflow:ellipsis;
+  }
+/*
+  .trans-yes  .float-info:hover{
+     opacity: 1;
+     transition: opacity 0.5s;
+     z-index: 1;
+}  
+*/
+}
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module css]]
+
+/*
+=====================
+被放逐者的书架
+由Etinjat制作
+书籍边框和书籍底图来自woedenaz
+=====================
+*/
+
+:root{   
+    /* 图片赋值 */
+
+    --gold-image: url(&#34;http://wanderers-library.wdfiles.com/local--files/component%3Atheme/goldfoil.png&#34;);
+
+    --wave-image: url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/Bgr-deco-pattern.png&#34;);
+
+    --cloud-image: url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/Bgr-white-waves.png&#34;);
+
+    --night-image: url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/Bgr-galfed.png&#34;);
+
+    --bluepaper-image: url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/Bgr-WL-Blue.png&#34;);
+
+ /* 投影赋值 */   
+
+   --box-out-shelf:0.0625rem -0.0625rem 0 #4c2e13, 0.125rem -0.125rem 0 #4c2e13, 0.1875rem -0.1875rem 0 #4c2e13, 0.25rem -0.25rem 0 #4c2e13, 0.3125rem -0.3125rem 0 #4c2e13, 0.375rem -0.375rem 0 #4c2e13, 0.4375rem -0.4375rem 0 #4c2e13, 0.8rem -0.8rem 0 #4c2e13;
+
+   --box-inner-shelf:-0.0625rem -0.0625rem 0 #4c2e13, -0.125rem -0.125rem 0 #4c2e13, -0.1875rem -0.1875rem 0 #4c2e13, -0.25rem -0.25rem 0 #4c2e13, -0.3125rem -0.3125rem 0 #4c2e13, -0.375rem -0.375rem 0 #4c2e13, -0.4375rem -0.4375rem 0 #4c2e13, -0.5rem -0.5rem 0 #4c2e13;
+
+   --box-green:0.0625rem 0.0625rem 0 #385814, 0.125rem 0.125rem 0 #385b15, 0.1875rem 0.1875rem 0 #3a5e16, 0.25rem 0.25rem 0 #3b6118, 0.3125rem 0.3125rem 0 #40641a, 0.375rem 0.375rem 0 #385814, 0.4375rem 0.4375rem 0 #3d5c15, 0.58rem 0.8rem 0 #31540e;
+
+   --box-white:0.0625rem 0.0625rem 0 #94a19d, 0.125rem 0.125rem 0 #acb0af, 0.1875rem 0.1875rem 0 #b6aaaa, 0.25rem 0.25rem 0 #a5a9a0, 0.3125rem 0.3125rem 0 #848881, 0.375rem 0.375rem 0 #81847f, 0.4375rem 0.4375rem 0 #545552, 0.58rem 0.8rem 0 #4e504d;
+
+   --box-black:0.0625rem 0.0625rem 0 #54584f, 0.125rem 0.125rem 0 #484c45, 0.1875rem 0.1875rem 0 #363a32, 0.25rem 0.25rem 0 #3a4133, 0.3125rem 0.3125rem 0 #40433c, 0.375rem 0.375rem 0 #32342f, 0.4375rem 0.4375rem 0 #1e1e1d, 0.58rem 0.8rem 0 #121212;
+
+   --box-red:0.0625rem 0.0625rem 0 #921212, 0.125rem 0.125rem 0 #901111, 0.1875rem 0.1875rem 0 #a92d0f, 0.25rem 0.25rem 0 #870e21, 0.3125rem 0.3125rem 0 #74060d, 0.375rem 0.375rem 0 #6b1808, 0.4375rem 0.4375rem 0 #5b0b0f, 0.58rem 0.8rem 0 #3c040f;
+
+   --box-gold:0.0625rem 0.0625rem 0 #aead42, 0.125rem 0.125rem 0 #a07512, 0.1875rem 0.1875rem 0 #b2781c, 0.25rem 0.25rem 0 #a37716, 0.3125rem 0.3125rem 0 #71560d, 0.375rem 0.375rem 0 #6e6615, 0.4375rem 0.4375rem 0 #827519, 0.58rem 0.8rem 0 #4e4208;
+
+   --box-blue:0.0625rem 0.0625rem 0 #12aab4, 0.125rem 0.125rem 0 #1f98d0, 0.1875rem 0.1875rem 0 #17898f, 0.25rem 0.25rem 0 #136f98, 0.3125rem 0.3125rem 0 #1d4b8d, 0.375rem 0.375rem 0 #144890, 0.4375rem 0.4375rem 0 #0d386b, 0.58rem 0.8rem 0 #083241;
+
+  --box-darkblue:0.0625rem 0.0625rem 0 #0c1481, 0.125rem 0.125rem 0 #1e0c8c, 0.1875rem 0.1875rem 0 #0a1172, 0.25rem 0.25rem 0 #0d1683, 0.3125rem 0.3125rem 0 #0a1160, 0.375rem 0.375rem 0 #0c1474, 0.4375rem 0.4375rem 0 #0b104e, 0.58rem 0.8rem 0 #0c114f;
+
+ --box-bluedark:0.0625rem 0.0625rem 0 #0d3e40, 0.125rem 0.125rem 0 #20364f, 0.1875rem 0.1875rem 0 #162c44, 0.25rem 0.25rem 0 #162c44, 0.3125rem 0.3125rem 0 #0a2244, 0.375rem 0.375rem 0 #061d3c, 0.4375rem 0.4375rem 0 #04162b, 0.58rem 0.8rem 0 #081c24;
+
+
+  --box-galaxy:0.0625rem 0.0625rem 0 #9b01d3, 0.125rem 0.125rem 0 #1c0463, 0.1875rem 0.1875rem 0 #3c0875, 0.25rem 0.25rem 0 #2e0d65, 0.3125rem 0.3125rem 0 #3d0a5d, 0.375rem 0.375rem 0 #340438, 0.4375rem 0.4375rem 0 #1a041c, 0.58rem 0.8rem 0 #1a041a;
+
+  --box-purple:0.0625rem 0.0625rem 0 #f303d6, 0.125rem 0.125rem 0 #9d11a3, 0.1875rem 0.1875rem 0 #881391, 0.25rem 0.25rem 0 #650e6a, 0.3125rem 0.3125rem 0 #490c49, 0.375rem 0.375rem 0 #30032f, 0.4375rem 0.4375rem 0 #2f032b, 0.58rem 0.8rem 0 #1f0226;
+
+  --box-mix-1:0.0625rem 0.0625rem 0 #142a49, 0.125rem 0.125rem 0 #1f301b, 0.1875rem 0.1875rem 0 #173240, 0.25rem 0.25rem 0 #1f4127, 0.3125rem 0.3125rem 0 #080840, 0.375rem 0.375rem 0 #1f0a4a, 0.4375rem 0.4375rem 0 #180840, 0.58rem 0.8rem 0 #0f1b02;
+
+--book-height:15rem;
+
+}
+
+/*
+=====================
+书架
+=====================
+*/
+
+.et-out-bookrack{
+    padding: 1rem 0 0.5rem 1.5rem;
+    filter: drop-shadow(1.5rem 0.2rem 3px #422306);
+    background: radial-gradient(#b16d1d, #f3cfa5, #684015);
+    background: -moz-radial-gradient(#b16d1d, #f3cfa5, #684015);
+    background: -webkit-radial-gradient(#b16d1d, #f3cfa5, #684015);
+/*
+    background-image:  var(--gold-image),
+                              linear-gradient(rgb(117, 89, 6) 0%, rgb(84, 59, 16) 30%, rgb(117, 61, 12) 100%);
+    background-blend-mode: overlay, normal;
+    background-size: cover, 100% 260%;
+*/
+    -moz-box-shadow: var(--box-out-shelf);
+    -o-box-shadow: var(--box-out-shelf);
+    -webkit-box-shadow: var(--box-out-shelf);
+    box-shadow: var(--box-out-shelf);
+}
+
+.et-inner-bookrack{
+    background: linear-gradient(43deg, #f9c29c,#cbcbcb,#d3c895);
+    padding: 2rem 0rem 0rem 0rem;
+    margin: 0.5rem 1.5rem 1rem 0rem;
+    filter: drop-shadow(1px 1px 10px #422306);
+    height: auto;
+  /* box-shadow: var(--box-inner-shelf); */
+    border: 0.8rem inset #866139;
+
+    border-right: 0rem inset #866139;
+
+}
+
+/*
+=====================
+书格
+=====================
+*/
+
+.shelf-no , .shelf-yes ,
+.shelf-no .list-pages-box,
+.shelf-yes  .list-pages-box{
+    display: flex;
+    min-height: 15rem;
+    overflow-y:hidden; 
+    margin: 0 0rem 0 1rem;
+    padding:3rem 0 0 0;
+}
+
+.shelf-no .list-pages-box{
+     overflow:visible;
+     padding:0.1rem 0 1rem 0;
+}
+
+/* 手机间隔 */
+@media (max-width: 479px) {
+  .et-out-bookrack{
+    padding:1rem 0.6rem 1rem 0.7rem ;
+ }
+
+  .et-inner-bookrack{
+     padding: 0.5rem 0.1rem 0rem 0.1rem ;
+     margin: 0.2rem 0rem 0rem 0rem ;
+  }
+
+  .shelf-no {
+     margin: 0rem 0.1rem 0 0.1rem;
+     padding:4rem 0 0 0;
+  }
+
+  .shelf-no   .list-pages-box{
+     margin: 0rem 0.1rem 0 0.1rem;
+     padding:0rem 0 0 0;
+  }
+}
+
+/*
+=====================
+封面
+=====================
+*/
+
+/*
+--------------------------
+书封
+--------------------------
+*/
+
+.dust-jacket{
+    margin: 0 0 0 0rem;
+ /* padding: 0.5rem 1rem 0 1rem;*/
+    width: 3rem;
+
+    display: inline-block;
+    transition: all 1s;
+    filter:brightness(1) drop-shadow(13px 5px 1px #333);
+    -webkit-filter:brightness(1) drop-shadow(13px 5px 1px #333);
+    border-radius: 0.2rem;
+}
+
+@media only screen and (min-width: 600px) {
+    /* 取书 */
+  .dust-jacket:hover{
+    -webkit-filter: brightness(2) drop-shadow(6px 20px 1px #000);
+    filter: brightness(2) drop-shadow(6px 20px 1px #333);   /* 如果把最后的1改成0，可能会有聚焦效果，但可能也更卡*/
+    transform:rotateX(20deg);
+   -webkit-transform:rotateX(-25deg); /* Safari and Chrome */
+    -moz-transform:rotateX(-25deg); /* Firefox */
+    transition: all 1s;
+
+    margin-bottom:2rem;
+    margin-top:-2rem;
+
+/* 似乎不起作用
+perspective: 1410;
+perspective-origin: 10% 10%;
+-webkit-perspective: 1410;
+-webkit-perspective-origin: 10% 10%;
+-moz-perspective: 1410;
+-moz-perspective-origin: 10% 10%;
+*/
+  }
+}
+
+/*
+@media (max-width: 479px) {
+  .dust-jacket:hover{
+  margin-bottom:2rem;
+   margin-top:-2rem;
+  }
+}
+*/
+
+/* 被选中时不会有选择带 */
+.dust-jacket::selection {
+    background:transparent;
+}
+
+.dust-jacket ::-moz-selection  {
+    background:transparent;
+}
+
+/*
+--------------------------
+书皮
+--------------------------
+*/
+
+.book-list {
+   display: inline-block;
+   min-width:3rem;
+  /*  margin: 1em 1em 0 1em;*/
+ /*  line-height:28px;*/
+   float:left;
+}
+
+.book-list a{
+    margin: 0 0 0 0.9rem;
+    max-height: calc(var(--book-height) - 2rem);
+
+    overflow: hidden;
+    text-overflow:ellipsis;
+    text-overflow:&#39;◈&#39;;
+
+    white-space: nowrap;
+
+    writing-mode: vertical-lr;
+    -webkit-writing-mode: vertical-lr;
+    -ms-writing-mode: vertical-lr;
+
+    text-decoration:none;
+    font-size: 135%;
+    font-family: kaiti,&#39;华文新魏&#39;;
+   /* padding: 0 1px 0  1px;*/
+}
+
+.book-list a{
+    min-height: 13.5rem;
+
+}
+
+.book-list a:hover{
+    background-color: transparent;
+}
+
+/*
+似乎无效
+.book-list {
+   display: inline-block;
+   margin: 1em 1em 0 1em;
+   min-width:0.5em;
+   line-height:30px;
+   float:left;
+   height:auto;
+}
+
+.book-list a{
+    text-decoration:none;
+    font-family: &#39;华文楷体&#39;,kaiti,&#39;华文新魏&#39;;
+    font-size: 135%;
+
+    margin: 0 1px 0 1px !important;
+   height: 13em;
+
+    writing-mode: vertical-lr;
+  -webkit-writing-mode: vertical-lr;
+  -ms-writing-mode: vertical-lr;
+
+}
+*/
+
+/*
+=====================
+书籍间隔
+=====================
+*/
+.the-shelf-block{
+   width:10px;
+}
+
+.module-shelf-block{
+   width:5px;
+   display: inline-flex;
+}
+
+/*废弃
+@media (max-width: 479px) {
+.the-shelf-block:nth-child(3)
+{
+width:100%;
+height:1em;
+background:grey;
+}
+}
+*/
+
+/*
+=====================
+隔板
+=====================
+*/
+
+.et-plank{
+background-image: var(--gold-image), linear-gradient(rgb(134, 103, 34) 0%, rgb(88, 56, 5) 30%, rgb(55, 30, 2) 100%); -webkit-filter: drop-shadow(8px 10px 1px #000); /* 亮色
+*/
+   background-image:  var(--gold-image), linear-gradient(rgb(88, 82, 69) 0%, rgb(64, 38, 11) 30%, rgb(17, 10, 2) 100%);
+   filter: drop-shadow(1px 10px 5px #422306);
+   transform: rotateX(20deg);
+   background-blend-mode: overlay, normal;
+   background-size: cover, 100% 260%;
+   border-radius: 0.5rem;
+
+   margin: -0.1rem 0 0 0;
+}
+
+.et-plank p {
+   margin-block-start: 0; /* 感谢 Jochoi 的修改 */
+   -webkit-margin-before: 0;
+   /*! line-height: 100%; */
+}
+
+/*
+=====================
+书封颜色
+=====================
+*/
+.cover-green{
+    background-image: var(--gold-image),
+    linear-gradient(rgb(30, 55, 30) 0%, rgb(30, 55, 30) 30%, rgb(255, 219, 90) 100%);
+    background-blend-mode: overlay, normal;
+    background-size: cover, 100% 260%;
+    border-left: 0.25rem double #e0ba45;
+    border-right: 0.25rem double #e0ba45;
+
+    -moz-box-shadow: var(--box-green);
+    -o-box-shadow: var(--box-green);
+    -webkit-box-shadow: var(--box-green);
+    box-shadow: var(--box-green);
+}
+
+.cover-red {
+   background-image:  var(--cloud-image), linear-gradient(rgb(186, 12, 12) 0%, rgb(145, 17, 17) 30%, rgb(102, 20, 20) 100%);
+   background-blend-mode: overlay, normal;
+   border-left: 0.25rem double #e0ba45;
+   border-right: 0.25rem double #e0ba45;
+
+  -moz-box-shadow: var(--box-red);
+    -o-box-shadow: var(--box-red);
+    -webkit-box-shadow: var(--box-red);
+    box-shadow: var(--box-red);
+}
+
+.cover-black {
+     background: linear-gradient(70deg, #191818, #636367,#333,#000);
+     border-left: 0.25rem double #aba7a7;
+     border-right: 0.25rem double #aba7a7;
+
+   -moz-box-shadow: var(--box-black);
+    -o-box-shadow: var(--box-black);
+    -webkit-box-shadow: var(--box-black);
+    box-shadow: var(--box-black);
+}
+
+.cover-galaxy {
+    background-image:  var(--night-image), linear-gradient(rgb(132, 132, 132) 0%, rgb(136, 136, 205) 30%, rgb(36, 36, 36) 100%);
+    border-left: 0.25rem double #9b01d3;
+    border-right: 0.25rem double #9b01d3;
+
+    -moz-box-shadow: var(--box-galaxy);
+    -o-box-shadow: var(--box-galaxy);
+    -webkit-box-shadow: var(--box-galaxy);
+    box-shadow: var(--box-galaxy);
+}
+
+.cover-gold {
+   background-image:  var(--wave-image), linear-gradient(rgb(223, 216, 31) 0%, rgb(202, 129, 0) 30%, rgb(206, 118, 12) 100%);
+   border-left: 0.25rem double #58076c;
+   border-right: 0.25rem double #58076c;
+
+    -moz-box-shadow: var(--box-gold);
+    -o-box-shadow: var(--box-gold);
+    -webkit-box-shadow: var(--box-gold);
+    box-shadow: var(--box-gold);
+}
+
+.cover-purple {
+   background: linear-gradient(-80deg, #420a75, #8f00ca,#8137ca,#7b20c4,#490d78);
+   border-left: 0.25rem double #edb016;
+   border-right: 0.25rem double #edb016;
+
+    -moz-box-shadow: var(--box-purple);
+    -o-box-shadow: var(--box-purple);
+    -webkit-box-shadow: var(--box-purple);
+    box-shadow: var(--box-purple);
+}
+
+.cover-blue {
+   background-image: linear-gradient(rgb(2, 151, 213) 0%, rgb(15, 77, 157) 30%, rgb(23, 26, 116) 100%);
+   background-blend-mode: overlay, normal;
+   background-size: cover, 100% 260%;
+   border-left: 0.25rem double #28d8a2;
+   border-right: 0.25rem double #28d8a2;
+
+    -moz-box-shadow: var(--box-blue);
+    -o-box-shadow: var(--box-blue);
+    -webkit-box-shadow: var(--box-blue);
+    box-shadow: var(--box-blue);
+}
+
+.cover-blue-2 {
+   background-image: url(http://wanderers-library.wikidot.com/local--files/component:theme/goldfoil.png), linear-gradient(rgb(2, 151, 213) 0%, rgb(15, 77, 157) 30%, rgb(23, 26, 116) 100%);
+   background-blend-mode: overlay, normal;
+   background-size: cover, 100% 260%;
+   border-left: 0.25rem double #28d8a2;
+   border-right: 0.25rem double #28d8a2;
+
+    -moz-box-shadow: var(--box-blue);
+    -o-box-shadow: var(--box-blue);
+    -webkit-box-shadow: var(--box-blue);
+    box-shadow: var(--box-blue);
+}
+
+.cover-blue-3 {
+   background-image:var(--bluepaper-image);
+  /* background-blend-mode: overlay, normal;*/
+   background-size: cover, 120% 100%;
+   border-left: 0.25rem double #153d7b;
+   border-right: 0.25rem double #153d7b;
+
+   -moz-box-shadow: var(--box-bluedark);
+   -o-box-shadow: var(--box-bluedark);
+   -webkit-box-shadow: var(--box-bluedark);
+   box-shadow: var(--box-bluedark);
+}
+
+.cover-darkblue{
+    background: linear-gradient(72deg, #190a5e, #170358,#0a1064,#080d46,#0d1252,#170743);
+    border-left: 0.25rem double #1fa8d8;
+    border-right: 0.25rem double #1fa8d8;
+
+    -moz-box-shadow: var(--box-darkblue);
+    -o-box-shadow: var(--box-darkblue);
+    -webkit-box-shadow: var(--box-darkblue);
+    box-shadow: var(--box-darkblue);
+}
+
+.cover-white {
+    background: linear-gradient(90deg, #d9d9d9, #e0f4f2,#dedede,#e5f1ed,#eee,#8e8e8e);
+    border-left: 0.25rem double #606060;
+    border-right: 0.25rem double #606060;
+
+    -moz-box-shadow: var(--box-white);
+    -o-box-shadow: var(--box-white);
+    -webkit-box-shadow: var(--box-white);
+    box-shadow: var(--box-white);
+}
+
+.cover-darkblack {
+    background: linear-gradient(90deg, #2f2f2f, #555,#2a2727,#161717,#3a3939,#000);
+    border-left: 0.25rem double #606060;
+    border-right: 0.25rem double #606060;
+
+    -moz-box-shadow: var(--box-black);
+    -o-box-shadow: var(--box-black);
+    -webkit-box-shadow: var(--box-black);
+    box-shadow: var(--box-black);
+}
+
+.cover-darkgrey {
+   background: linear-gradient(90deg, #5a5a5b, #6e6e6e,#8c8383,#6d7272,#656565,#585858);
+   border-left: 0.25rem double #191818;
+   border-right: 0.25rem double #191818;
+
+   -moz-box-shadow: var(--box-black);
+   -o-box-shadow: var(--box-black);
+   -webkit-box-shadow: var(--box-black);
+   box-shadow: var(--box-black);
+}
+
+.cover-mix-1 {
+    background: linear-gradient(43deg, #1f0d00, #1f462b,#0a1064,#5a199d);
+    border-left: 0.25rem double #65970c;
+    border-right: 0.25rem double #65970c;
+
+    -moz-box-shadow: var(--box-mix-1);
+    -o-box-shadow: var(--box-mix-1);
+    -webkit-box-shadow: var(--box-mix-1);
+    box-shadow: var(--box-mix-1);
+}
+
+.cover-mix-2 {
+    background: linear-gradient(-65deg, #580954, #320f7c,#518,#531f7b,#bb1a84);
+    border-left: 0.25rem double #0c0f3e;
+    border-right: 0.25rem double #0c0f3e;
+
+    -moz-box-shadow: var(--box-purple);
+    -o-box-shadow: var(--box-purple);
+    -webkit-box-shadow: var(--box-purple);
+    box-shadow: var(--box-purple);
+}
+
+/*
+----------------
+手机横排书角
+----------------
+*/
+@media (max-width: 479px) {
+
+  .trans-yes .dust-jacket{
+     border-left: 0;
+     border-right: 0;
+  }
+
+  .trans-yes .book-list p{
+    height: 0;
+  }
+
+  .trans-yes  .cover-green{
+    border-top: 0.25rem double #e0ba45;
+    border-bottom: 0.25rem double #e0ba45;
+  }
+
+  .trans-yes  .cover-red {
+    border-top: 0.25rem double #e0ba45;
+    border-bottom: 0.25rem double #e0ba45;
+   }
+
+  .trans-yes  .cover-black {
+    border-top: 0.25rem double #aba7a7;
+    border-bottom: 0.25rem double #aba7a7;
+  }
+
+  .trans-yes  .cover-galaxy {
+    border-top: 0.25rem double #9b01d3;
+    border-bottom: 0.25rem double #9b01d3;
+  }
+
+  .trans-yes  .cover-gold {
+    border-top: 0.25rem double #58076c;
+    border-bottom: 0.25rem double #58076c;
+  }
+
+  .trans-yes  .cover-purple {
+    border-top: 0.25rem double #edb016;
+    border-bottom: 0.25rem double #edb016;
+  }
+
+  .trans-yes  .cover-blue {
+    border-top: 0.25rem double #28d8a2;
+    border-bottom: 0.25rem double #28d8a2;
+  }
+
+  .trans-yes  .cover-blue-2 {
+    border-top: 0.25rem double #28d8a2;
+    border-bottom: 0.25rem double #28d8a2;
+  }
+
+  .trans-yes  .cover-blue-3 {
+    border-top: 0.25rem double #153d7b;
+    border-bottom: 0.25rem double #153d7b;
+  }
+
+  .trans-yes  .cover-darkblue{
+    border-top: 0.25rem double #1fa8d8;
+    border-bottom: 0.25rem double #1fa8d8;
+  }
+
+  .trans-yes  .cover-white {
+    border-top: 0.25rem double #606060;
+    border-bottom: 0.25rem double #606060;
+  }
+
+  .trans-yes  .cover-darkblack {
+    border-top: 0.25rem double #606060;
+    border-bottom: 0.25rem double #606060;
+  }
+
+  .trans-yes  .cover-darkgrey {
+    border-top: 0.25rem double #191818;
+    border-bottom: 0.25rem double #191818;
+  }
+
+  .trans-yes  .cover-mix-1 {
+    border-top: 0.25rem double #65970c;
+    border-bottom: 0.25rem double #65970c;
+  }
+
+  .trans-yes  .cover-mix-2 {
+    border-top: 0.25rem double #0c0f3e;
+    border-bottom: 0.25rem double #0c0f3e;
+ }
+}
+
+/*
+=====================
+书籍链接颜色
+=====================
+*/
+
+.link-gold a {
+    color:#e0ba45;
+}
+
+.link-white a {
+   color:#f4f4f4;
+}
+
+.link-red a {
+   color:#b01;
+}
+
+.link-black a {
+   color:#000;
+}
+
+/*
+=====================
+书架内的滚动条，火狐无效
+=====================
+ */
+
+.shelf-wrap {
+    scrollbar-color: #976f23 #805213;
+}
+
+.shelf-wrap::-webkit-scrollbar {
+    height: 0.5rem !important;
+    background-color: #F5F5F5;
+}
+
+.shelf-no .list-pages-box,
+.shelf-yes .list-pages-box{
+    scrollbar-width:none;
+    width: 100%;
+}
+
+/*
+.shelf-no, .shelf-yes{
+}
+*/
+
+/* 电脑上的火狐无效
+.shelf-no ::-webkit-scrollbar{
+        background-color:#b5b1b1;  
+}
+
+.shelf-no ::-webkit-scrollbar-thumb {  
+    border-radius: 10px;  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);  
+   background-color:#b5b1b1;
+
+}
+
+.shelf-no ::-webkit-scrollbar-track{  
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);  
+    border-radius: 10px;
+      background-color:black;    
+
+}
+*/
+
+/*
+--------------------
+手机格式的书籍滚轮
+--------------------
+*/
+/*
+@media (max-width: 479px) {
+.shelf-no, .shelf-yes,
+.shelf-no .list-pages-box,
+.shelf-yes .list-pages-box {
+ overflow-y:hidden !important;
+}
+}
+*/
+
+/*
+=============================
+手机下的描边
+============================
+*/
+
+@media (max-width: 479px) {
+
+  .shelf-yes, .shelf-yes .list-pages-box {
+    display:  inline-block;
+    overflow-y: visible;
+    margin: 0 0rem 0 0rem;
+    padding: 0rem 0 0 0;
+    width:100%;
+  }
+
+  .trans-yes{
+     display:  flex;
+     margin:2rem 0 5rem  0rem ;
+   }
+
+  .trans-yes  .et-plank-wrap{
+        display:  inline-flex;
+        margin: 0;
+    }
+
+   .trans-yes  .et-plank-wrap .et-plank{
+        width: 2rem;
+        height: 115%;
+        margin: -2rem 0 0 0;
+        background-image: var(--gold-image),
+             linear-gradient(to top left, rgb(64, 38, 11) 100%, rgb(17, 10, 2) 90%),rgb(88, 82, 69) 100%);
+
+    }
+
+   .shelf-yes .dust-jacket {  
+      width:100%;
+      min-height: 3rem;    
+      margin: 0 0 1rem 0rem;
+      display: block;
+      transition: all 1s;
+      filter: brightness(1) drop-shadow(13px 5px 1px #333);
+      -webkit-filter: brightness(1) drop-shadow(10px 10px 2px #333);
+      border-radius: 0.2rem;
+      padding: 0;
+  }
+
+   .shelf-yes .dust-jacket p{
+       /*! line-height: 8; */
+   }
+
+  .shelf-yes  .dust-jacket:hover{
+      margin-left:-1rem;
+      margin-right:0rem;
+   }
+
+ .shelf-yes .book-list a {
+     position:relative ;
+     margin: -6rem 0 0 0;
+     left: 7rem;
+     height:12rem;
+     padding:  0rem 0rem 0rem 0rem;
+  }
+
+  .shelf-yes .pager {
+      writing-mode:   horizontal-tb  !important;  
+      padding: 4rem 0 0 0;
+      line-height: 2;
+      width: calc(100% - 3rem);
+  }
+
+   .shelf-yes .book-list a,
+   .shelf-yes .float-info  {
+       transform:rotate(-90deg);
+      -ms-transform:rotate(-90deg);
+      -webkit-transform:rotate(-90deg);
+   }
+
+   .trans-yes{
+        padding: 0;
+    }
+
+   .shelf-no    .dust-jacket:hover{
+      -webkit-filter: brightness(2) drop-shadow(6px 20px 1px #000);
+      filter: brightness(2) drop-shadow(6px 20px 1px #333);   /* 如果把最后的1改成0，可能会有聚焦效果，但可能也更卡*/
+      transform:rotateX(20deg);
+      -webkit-transform:rotateX(-25deg); /* Safari and Chrome */
+      -moz-transform:rotateX(-25deg); /* Firefox */
+      transition: all 1s;
+      margin-bottom:2rem;
+      margin-top:-2rem;
+   }
+}
+
+/*
+=====================
+外部组件
+=====================
+*/
+/* 翻开书籍 */
+
+/*
+@import url(http://etinjat.wikidot.com/css:open-book/code/1);
+*/
+
+/*
+=====================
+使用module时的按钮，待修缮
+=====================
+*/
+/*
+.shelf-yes .pager{
+    margin: 0 0rem 0 2rem;
+    writing-mode: sideways-rl;
+}
+
+.shelf-yes .pager span{
+    margin: 0.5rem 0rem 0 0rem;
+    writing-mode:  horizontal-tb;
+}
+
+.shelf-yes .pager .pager-no{
+    display: none;
+}
+*/
+
+.trans-yes {
+    width: auto;
+   /* height:calc(100% + 2rem);*/
+    padding: 1px;
+}
+
+.trans-no {
+    width: auto;
+  /*  height:calc(100% + 2rem);*/
+    padding: 1px;
+}
+
+.trans-no .pager,
+.trans-yes .pager {
+   position: absolute;  
+        margin: -3rem 0 0rem 0;  
+
+}
+
+.shelf-no  .list-pages-box .dust-jacket{
+    /* margin: 4rem 0 0rem 0;  */
+}
+
+.shelf-no  .list-pages-box .dust-jacket:hover{
+  /*  margin: 2rem 0 2rem 0;*/
+    transition:all  1s;
+
+}
+
+.shelf-no  .list-pages-box {
+    padding: 0;
+    margin: 0;
+}
+
+@media (max-width: 479px) {
+
+  .shelf-yes .list-pages-box .pager-no {
+    display: none;
+  }
+
+   .trans-yes .pager a,.trans-yes .current{
+    word-break:break-word;
+       padding: 0.5rem 0.2rem;
+
+   }
+
+  .trans-yes .pager span{
+       writing-mode:   sideways-lr  !important; 
+    }
+
+}
+
+/*
+=====================
+书籍描述
+=====================
+*/
+
+/* 方案一  */
+.book-description {
+    position:absolute;
+    z-index:-1;
+    margin-top: 14.8rem;
+    color: darkkhaki;
+    white-space: nowrap;/* 书本信息不分行，待思考 */
+    opacity: 0;
+    transition: opacity  0.5s;
+    float: left;
+}
+
+.self-defining .book-description, 
+.list-pages-box .book-description{
+    margin-top: -0.4rem;
+}
+
+.book-description p{
+   padding: 0 1rem 0 0.5rem;
+   overflow: hidden;
+   text-overflow:ellipsis;
+}
+
+.dust-jacket:hover + .book-description{
+    z-index: 1;
+    opacity: 1;
+   transition: opacity 0.8s;
+}
+
+@media (max-width: 479px) {
+   .shelf-yes .float-info {
+   top:21rem;
+    }
+
+    .shelf-yes .book-description{
+        position:relative;
+         right: -3.2rem;
+         writing-mode: vertical-lr;
+         margin: -5rem 0 0 0; /* 若是排到左侧的话会更好 */   
+        float: right;
+}
+
+        .shelf-yes .list-pages-box .book-description{
+        position:fixed;
+}
+
+/*
+------
+当在手机屏幕下文字正排时，可旋转文字使之横排
+    .shelf-yes    .book-description{
+       transform:rotate(-90deg);
+    -ms-transform:rotate(-90deg);
+    -webkit-transform:rotate(-90deg);
+
+}
+------
+*/
+
+  .self-defining  .book-description {
+      left:unset;
+   }  
+
+  .self-defining .trans-yes .book-description {
+      right: -10rem !important;
+      margin: 0rem 0 0 0 !important;
+      writing-mode: vertical-lr;
+      left:0rem;
+  }  
+
+   .shelf-yes  .list-pages-box .book-description {
+       margin: 0rem 0 0 0;
+       writing-mode:  sideways-lr !important;  
+       right: -1rem;
+        transform:rotate(0deg);
+    -ms-transform:rotate(0deg);
+-webkit-transform:rotate(0deg);
+    }     
+}
+
+/*
+方案二
+部分代码参考这里
+http://scp-wiki-cn.wikidot.com/component:author-page
+*/
+
+.float-info{
+  margin: 20px;
+  overflow:hidden;
+  position:fixed;
+  right: 1rem;
+  bottom: 1rem;
+  width: 21%;
+  width: calc(50vw - 520px);
+  min-width: var(--book-height);
+  opacity:0;
+  transition: all 0.7s ease-out;
+  z-index: -1;
+}
+
+.dust-jacket:hover+ .book-description + .float-info{
+    opacity: 1;
+    transition: opacity 0.5s;
+    z-index: 1;
+}
+
+.float-info:hover{
+        opacity: 1;
+        z-index: 0;
+}
+
+@media screen and (max-width:992px) {
+  .float-info {
+     margin: 0 auto;
+     right: 0;
+     bottom: 0;
+    min-height:2rem;/* 高度 */
+  }
+}
+
+.info-1{
+   padding:1%;
+   box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2), 0px 6px 20px 0 rgba(0, 0, 0, 0.19);
+   background: rgba(242,242,194,1);
+   background-image: var(--wave-image);
+   border:   0.5em double rgba(167,105,68,0.9);
+}
+
+/*
+----------------
+手机屏幕下
+------------------
+*/
+
+@media (max-width: 479px) {
+
+/* 隐藏信息栏
+    .book-description,.float-info{   
+        display: none;
+    }
+*/
+
+  .trans-yes   .float-info{
+     right: 0rem;
+     bottom: 0.5rem;
+     min-width: var(--book-height);
+     max-height: calc(var(--book-height) - 6rem);
+     padding: 10px;
+     overflow:  scroll;
+     text-overflow:ellipsis;
+  }
+/*
+  .trans-yes  .float-info:hover{
+     opacity: 1;
+     transition: opacity 0.5s;
+     z-index: 1;
+}  
+*/
+}
+
+[[/module]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:06.144245.</em>
+  
+</div>
+</body>

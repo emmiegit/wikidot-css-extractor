@@ -1,0 +1,1514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Návod pro použití ACS</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Návod pro použití ACS</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/acs-guide" target="_blank">Návod pro použití ACS</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>:root {
+    --five-color: 196,2,51;
+    --four-color: 255,109,0;
+    --three-color: 255,211,0;
+    --two-color: 0,135,189;
+    --one-color: 0,159,107;
+}
+
+#breadcrumbs,
+#page-title {
+    text-align: center;
+}
+
+/* 1. Beautifiers (optional) */
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.simple-container {
+    width: 50vw;
+    height: 50vh;
+    padding: 1em;
+}
+
+/* 2. Resolving iOS iframe rendering issue */
+
+/* 2.1. Sizing reorganization (obligatory) */
+
+.popover {
+    /* To control popover size by .popover-body instead of .popover */
+    max-width: 100% !important;
+}
+
+.popover-body {
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.iframe-container,
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.fixed iframe {
+    /* This only fits iframe inside iframe-container but prevents scrolling */
+    width: 0;
+    height: 0;
+    
+    min-width: 100%;
+    min-height: 100%;    
+}
+
+.popover-body {
+    width: 706px; height: 900px;
+    max-width: 100vw; max-height: 100vh;
+}
+
+/* 2.2. RWD Resizings (optional) */
+
+@media only screen and (max-width: 568px)
+{
+    .rwd .popover-body {
+        width: 320px; height: 560px;
+    }    
+}
+
+@media only screen and (min-width: 569px) and (max-width: 965px)
+{
+    .rwd .popover-body {
+        width: 480px; height: 850px;
+    }    
+}
+
+@media only screen and (min-width: 968px) and (max-width: 1023px)
+{
+    .rwd .popover-body {
+        width: 640px; height: 1130px;
+    }    
+}
+
+/* 2.3. Resolving iOS iframe scrolling issue (obligatory) */
+
+/*
+    Due to iOS WebKit bug an iframe content cannot be scrolled, because WebKit renders entire iframe content:
+    https://bugs.webkit.org/show_bug.cgi?id=155198
+    (still not resolved on iOS11)
+    The workaround is to scroll an div container content with full iframe rendered inside.
+*/
+
+.scroll {
+    overflow: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* 2.4. Resolving iframe and container double scrollbars on desktop browsers (rather obligatory) */
+
+.no-scrollbar {
+    position: relative;
+}
+
+.no-scrollbar iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.no-scrollbar {
+    /* Hide scrollbars in IE Edge */
+    /* Autohiding is needed inside iframe document */
+    /*-ms-overflow-style: -ms-autohiding-scrollbar;*/
+    /* In the parent iframe container we don&#39;t want any scrollbars */
+    -ms-overflow-style: none;
+}
+
+ .foo {
+    height: 100vh;
+    width: 100vw;
+    background: url(cover.jpg) center center / cover no-repeat;
+ }
+ 
+
+/**
+ * iPad with portrait orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+  .foo {
+    height: 1024px;
+  }
+}
+
+/**
+ * iPad with landscape orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+  .foo {
+    height: 768px;
+  }
+}
+
+/**
+ * iPhone 5
+ * You can also target devices with aspect ratio.
+ */
+@media screen and (device-aspect-ratio: 40/71) {
+  .foo {
+    height: 500px;
+  }
+}
+
+.color-five {
+    background-color: rgb(var(--five-color));
+    color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+
+.color-four {
+    background-color: rgb(var(--four-color));
+}
+
+.color-three {
+    background-color: rgb(var(--three-color));
+}
+
+.color-two {
+    background-color: rgb(var(--two-color));
+}
+
+.color-one {
+    background-color: rgb(var(--one-color));
+}
+
+.color-gray {
+    background-color: rgba(var(--gray-monochrome, 66, 66, 72),0.15);
+}
+
+.color-white {
+    background-color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+
+.color-black,
+.cosmic {
+    background-color: rgb(var(--black-monochrome, 12, 12, 12));
+    color: rgb(var(--white-monochrome, 252, 252, 252));
+    border: 0.5rem solid rgb(var(--white-monochrome));
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: repeat(5, calc((100% / 5) - 0.25rem));
+    grid-gap: 0.25rem;
+}
+
+.class-table-box {
+    display: grid;
+    grid-template-columns: 1fr 75%;
+    background-color: rgb(var(--black-monochrome));
+    grid-gap: 0.125rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 500px ) {
+    .class-table-box {
+     grid-template-columns: initial;
+     border: 0.125rem solid rgb(var(--black-monochrome, 12,12,12));
+    }
+}
+
+.class-table-box &gt; div {
+    padding: 0.5rem;
+}
+
+.class-name {
+    font-family: var(--title-font);
+    font-size: 1.15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.class-description {
+    background-color: rgb(var(--white-monochrome));
+}
+
+@media (max-width: 500px ) {
+    .icons {
+     grid-template-columns: repeat(3, calc((100% / 3) - 0.25rem));
+    }
+}
+
+.icon_image {
+    border-radius: 50%;
+    border: 0.25rem solid  rgb(var(--black-monochrome, 12, 12, 12));
+    overflow: hidden;
+}
+
+.icon_name,
+.icon_link {
+    font-family: var(--title-font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.step_container {
+    margin: 0.5rem 0;
+    border: 1px solid #999;
+    padding: 1em;
+}
+
+.help {
+    display: flex;
+    align-content: stretch;
+    padding-top: 1em;
+    border-top: 1px dashed #999;
+}
+
+.help blockquote {
+    margin: 0;
+    font-size: 85%;
+}
+
+.help blockquote &gt; p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin-right: 0;
+    min-height: 2rem;
+    margin: 0;
+}
+
+.help blockquote &gt; p * {
+    margin: 0 0.1rem;
+    height: 100%;
+}
+
+.help blockquote:nth-of-type(1) {
+    width: 50%;
+    background: transparent;
+    border: unset;
+    box-shadow: unset;
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
+}
+
+.help blockquote:nth-of-type(1) &gt; p {
+    justify-content: flex-end;
+}
+
+.help blockquote:nth-of-type(2) {
+    margin-left: 1em;
+    width: 50%;
+}
+
+#page-content .collapsible-block {
+    display: block;
+    text-align: center;
+    padding: 0.75em;
+    background-color: lightgrey;
+    border-top: 0.125rem dashed slategrey;
+    border-bottom: 0.125rem dashed slategrey;
+}
+
+#page-content div.collapsible-block &gt; div.collapsible-block-unfolded &gt; div.collapsible-block-content {
+    text-align:left;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: block; border: dashed 1px #444444; background: #F5F5F5; margin-left: auto; margin-right: auto; width: auto; padding: 10px;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/info:start" target="_blank"><code>info:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/info:end" target="_blank"><code>info:end</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-cs.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-cs:theme:black-highlighter-theme</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>icons</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-gray</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-four</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-four</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[include info:start]]
+**Název: Návod pro použití ACS**
+**Originální návody:** http://scp-wiki.wikidot.com/anomaly-classification-system-guide, http://www.scp-wiki.net/classification-committee-memo
+**Autor:** [[*user djkaktus]]
+**Přeložil a zjednodušil:** [[*user Dr Bek]]
+[[include info:end]]
+
+[[module css]]
+:root {
+    --five-color: 196,2,51;
+    --four-color: 255,109,0;
+    --three-color: 255,211,0;
+    --two-color: 0,135,189;
+    --one-color: 0,159,107;
+}
+
+#breadcrumbs,
+#page-title {
+    text-align: center;
+}
+
+/* 1. Beautifiers (optional) */
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.simple-container {
+    width: 50vw;
+    height: 50vh;
+    padding: 1em;
+}
+
+/* 2. Resolving iOS iframe rendering issue */
+
+/* 2.1. Sizing reorganization (obligatory) */
+
+.popover {
+    /* To control popover size by .popover-body instead of .popover */
+    max-width: 100% !important;
+}
+
+.popover-body {
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.iframe-container,
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.fixed iframe {
+    /* This only fits iframe inside iframe-container but prevents scrolling */
+    width: 0;
+    height: 0;
+    
+    min-width: 100%;
+    min-height: 100%;    
+}
+
+.popover-body {
+    width: 706px; height: 900px;
+    max-width: 100vw; max-height: 100vh;
+}
+
+/* 2.2. RWD Resizings (optional) */
+
+@media only screen and (max-width: 568px)
+{
+    .rwd .popover-body {
+        width: 320px; height: 560px;
+    }    
+}
+
+@media only screen and (min-width: 569px) and (max-width: 965px)
+{
+    .rwd .popover-body {
+        width: 480px; height: 850px;
+    }    
+}
+
+@media only screen and (min-width: 968px) and (max-width: 1023px)
+{
+    .rwd .popover-body {
+        width: 640px; height: 1130px;
+    }    
+}
+
+/* 2.3. Resolving iOS iframe scrolling issue (obligatory) */
+
+/*
+    Due to iOS WebKit bug an iframe content cannot be scrolled, because WebKit renders entire iframe content:
+    https://bugs.webkit.org/show_bug.cgi?id=155198
+    (still not resolved on iOS11)
+    The workaround is to scroll an div container content with full iframe rendered inside.
+*/
+
+.scroll {
+    overflow: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* 2.4. Resolving iframe and container double scrollbars on desktop browsers (rather obligatory) */
+
+.no-scrollbar {
+    position: relative;
+}
+
+.no-scrollbar iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.no-scrollbar {
+    /* Hide scrollbars in IE Edge */
+    /* Autohiding is needed inside iframe document */
+    /*-ms-overflow-style: -ms-autohiding-scrollbar;*/
+    /* In the parent iframe container we don&#39;t want any scrollbars */
+    -ms-overflow-style: none;
+}
+
+ .foo {
+    height: 100vh;
+    width: 100vw;
+    background: url(cover.jpg) center center / cover no-repeat;
+ }
+ 
+
+/**
+ * iPad with portrait orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+  .foo {
+    height: 1024px;
+  }
+}
+
+/**
+ * iPad with landscape orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+  .foo {
+    height: 768px;
+  }
+}
+
+/**
+ * iPhone 5
+ * You can also target devices with aspect ratio.
+ */
+@media screen and (device-aspect-ratio: 40/71) {
+  .foo {
+    height: 500px;
+  }
+}
+
+.color-five {
+    background-color: rgb(var(--five-color));
+    color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+
+.color-four {
+    background-color: rgb(var(--four-color));
+}
+
+.color-three {
+    background-color: rgb(var(--three-color));
+}
+
+.color-two {
+    background-color: rgb(var(--two-color));
+}
+
+.color-one {
+    background-color: rgb(var(--one-color));
+}
+
+.color-gray {
+    background-color: rgba(var(--gray-monochrome, 66, 66, 72),0.15);
+}
+
+.color-white {
+    background-color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+
+.color-black,
+.cosmic {
+    background-color: rgb(var(--black-monochrome, 12, 12, 12));
+    color: rgb(var(--white-monochrome, 252, 252, 252));
+    border: 0.5rem solid rgb(var(--white-monochrome));
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: repeat(5, calc((100% / 5) - 0.25rem));
+    grid-gap: 0.25rem;
+}
+
+.class-table-box {
+    display: grid;
+    grid-template-columns: 1fr 75%;
+    background-color: rgb(var(--black-monochrome));
+    grid-gap: 0.125rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 500px ) {
+    .class-table-box {
+     grid-template-columns: initial;
+     border: 0.125rem solid rgb(var(--black-monochrome, 12,12,12));
+    }
+}
+
+.class-table-box &gt; div {
+    padding: 0.5rem;
+}
+
+.class-name {
+    font-family: var(--title-font);
+    font-size: 1.15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.class-description {
+    background-color: rgb(var(--white-monochrome));
+}
+
+@media (max-width: 500px ) {
+    .icons {
+     grid-template-columns: repeat(3, calc((100% / 3) - 0.25rem));
+    }
+}
+
+.icon_image {
+    border-radius: 50%;
+    border: 0.25rem solid  rgb(var(--black-monochrome, 12, 12, 12));
+    overflow: hidden;
+}
+
+.icon_name,
+.icon_link {
+    font-family: var(--title-font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.step_container {
+    margin: 0.5rem 0;
+    border: 1px solid #999;
+    padding: 1em;
+}
+
+.help {
+    display: flex;
+    align-content: stretch;
+    padding-top: 1em;
+    border-top: 1px dashed #999;
+}
+
+.help blockquote {
+    margin: 0;
+    font-size: 85%;
+}
+
+.help blockquote &gt; p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin-right: 0;
+    min-height: 2rem;
+    margin: 0;
+}
+
+.help blockquote &gt; p * {
+    margin: 0 0.1rem;
+    height: 100%;
+}
+
+.help blockquote:nth-of-type(1) {
+    width: 50%;
+    background: transparent;
+    border: unset;
+    box-shadow: unset;
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
+}
+
+.help blockquote:nth-of-type(1) &gt; p {
+    justify-content: flex-end;
+}
+
+.help blockquote:nth-of-type(2) {
+    margin-left: 1em;
+    width: 50%;
+}
+
+#page-content .collapsible-block {
+    display: block;
+    text-align: center;
+    padding: 0.75em;
+    background-color: lightgrey;
+    border-top: 0.125rem dashed slategrey;
+    border-bottom: 0.125rem dashed slategrey;
+}
+
+#page-content div.collapsible-block &gt; div.collapsible-block-unfolded &gt; div.collapsible-block-content {
+    text-align:left;
+}
+[[/module]]
+
+[[include :scp-cs:theme:black-highlighter-theme]]
+
+[[div style=&#34;display: block; border: dashed 1px #444444; background: #F5F5F5; margin-left: auto; margin-right: auto; width: auto; padding: 10px;&#34;]]
+
+Toto je návod pro používání ACS (Anomální Klasifikační Systém) vytvořeným uživatelem [[*user djkaktus]]. Tento návod zjednodušil [[*user Dr Bek]].
+
+-----
+
+**Příklad #1**
+
+[[include :scp-cs:component:anomaly-class-bar-source
+|item-number= 2316
+|clearance= 4
+|container-class= keter
+|secondary-class= none
+|disruption-class= vlam
+|risk-class= nebezpečné
+]]
+
+**Příklad #2**
+
+[[include :scp-cs:component:anomaly-class-bar-source
+|item-number= 3000
+|clearance= 5
+|container-class= ezoterická
+|secondary-class= thaumiel
+|secondary-icon= http://scptestwiki.wikidot.com/local--files/component:anomaly-class-bar/thaumiel-icon.svg
+|disruption-class= ekhi
+|risk-class= kritické
+]]
+
+**Příklad #3**
+
+[[include :scp-cs:component:anomaly-class-bar-source
+|item-number= 1730
+|clearance= 3
+|container-class= neutralized
+|secondary-class= none
+|disruption-class= none
+|risk-class= none
+]]
+[[collapsible show=&#34;Zdrojový kód příkladů&#34; hide=&#34;Uzavřít&#34;]]
+
+**Příklad #1**
+
+@@@@ [[include :scp-cs:component:anomaly-class-bar-source
+|item-number= 2316
+|clearance= 4
+|container-class= keter
+|secondary-class= none
+|disruption-class= vlam
+|risk-class= nebezpečné
+]] @@@@
+
+**Příklad #2**
+
+@@@@ [[include :scp-cs:component:anomaly-class-bar-source
+|item-number= 3000
+|clearance= 5
+|container-class= ezoterická
+|secondary-class= thaumiel
+|secondary-icon= http://scptestwiki.wikidot.com/local--files/component:anomaly-class-bar/thaumiel-icon.svg
+|disruption-class= ekhi
+|risk-class= kritické
+]] @@@@
+
+**Příklad #3**
+
+@@@@ [[include :scp-cs:component:anomaly-class-bar-source
+|item-number= 1730
+|clearance= 3
+|container-class= neutralized
+|secondary-class= none
+|disruption-class= none
+|risk-class= none
+]] @@@@
+[[/collapsible]]
+-----
+
++ Je 5 + 1 úrovní tajnosti článků:
+* **Volně přístupné:**Přístupné pro všechny bez brání zřetele na úroveň bezpečnostní prověrky zaměstnance.
+* **Omezené:** Přístupné pro personál úrovně 2 a vyšší.
+* **Důvěrné:** Přístupné pro personál úrovně 3 a vyšší.
+* **Tajné:** Přístupné pro personál úrovně 4 a vyšší.
+* **Přísně Tajné:** Nepřístupné všem kromě O5 a personálu s přímým povolením od O5.
+* **Kosmicky Tajné:** Nepřístupné nikomu kromě O5.
+
+++++ Třída Objektu byla přejmenována na Zadržovací Třídu. (Více info níže)
+
++ Je 5 úrovní Třídy Narušení:
+
+* **Dark:** Téměř žádný/ žádný potenciál narušit populaci.
+* **Vlam:** Nízký potenciál narušit populaci. Pokud narušení nastane je omezené na lokalitu.
+* **Keneq:** Střední potenciál narušit populaci. Narušení je většinou po celém regionu nebo městě.
+* **Ekhi:** Vysoký potenciál narušit populaci. Narušení je většinou rozšířené, ovlivňující kraje nebo celé země.
+* **Amida:** Celosvětové narušení populace. Narušení je globální a je vysokou hrozbou pro normálnost. Mohou narušit oblast větší než hranice planety Země.
+
++ Je 5 úrovní Třídy Ohrožení:
+
+* **Podezřelé:** Anomální je téměř/kompletně bez rizika. Jedinci pociťují minimální efekty anomálie, ale tyto efekty jsou pouze vzácně nebezpečné.
+* **Rizikové:** Anomálie je středně riziková. Jedinci pravděpodobně pocítí efekty anomálie a ty mohou způsobit zranění.
+* **Ohrožující:** Anomálie je vysoce riziková. Jedinci většinou pocítí efekty a ty způsobí těžká zranění a v některých případech smrt.
+* **Nebezpečné:** Anomálie je vysoce riziková. Jedinci vždy pocítí efekty, které způsobují těžká zranění a v některých případech smrt. Tyto efekty jsou těžké na potlačení.
+* **Kritické:** Anomálie je extrémně riziková. Jedinci vždy pocítí efekty, které způsobují životu ohrožující zranění. Tyto efekty nemohou být potlačeny.
+[[/div]]
+
++ Zadržovací Třídy
+
+&gt; Více informací [http://www.scp-wiki.cz/object-classes zde.]
+
+**POZNÁMKA:** V systému ACS je Thaumiel Sekundární Třída a ne Zadržovací třída.
+
++++ Možnosti Zadržovacích Tříd
+
+[[div_ class=&#34;icons&#34;]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-one&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/safe-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Safe
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-three&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/euclid-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Euclid
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-five&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/keter-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Keter
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-gray&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/neutralized-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Neutralized
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-black&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/pending-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Neklasifikováno
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/explained-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Explained
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/esoteric-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Ezoterická
+[[/div]]
+[[/div]]
+
+[[/div]]
+
+[[div class=&#34;step_container&#34;]]
+
++ Sekundární Třídy (Ezoterické Třídy)
+
+&gt; Na použití Ezoterických tříd se ptejte na našem [https://discord.gg/ZAdfEJ4 Discordu], kvůli jejich komplikacím.
+
+**POZNÁMKA**: V systému ACS je Thaumiel Sekundární Třída a ne Zadržovací třída.
+
++++ Možnosti Sekundárních Tříd
+
+&gt; Všechny Ezoterické Třídy zde nejsou vypsány a nemají ikony. Zde jsou pouze ty nejrozšířenější.
+
+[[div_ class=&#34;icons&#34;]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/apollyon-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Apollyon
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/archon-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Archon
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/cernunnos-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Cernunnos
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/hiemal-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Hiemal
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/tiamat-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Tiamat
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/ticonderoga-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Ticonderoga
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/thaumiel-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Thaumiel
+[[/div]]
+[[/div]]
+
+[[/div]]
+[[/div]]
+
++ Třídy Narušení
+[[div_ class=&#34;icons&#34;]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-one&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/dark-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+dark
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-two&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/vlam-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+vlam
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-three&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/keneq-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+keneq
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-four&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/ekhi-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+ekhi
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-five&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/amida-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+amida
+[[/div]]
+[[/div]]
+
+[[/div]]
+
++ Třídy Ohrožení
+[[div_ class=&#34;icons&#34;]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-one&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/notice-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Podezřelé
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-two&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/caution-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Rizikové
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-three&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/warning-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Ohrožující
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-four&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/danger-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+nebezpečné
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-five&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/critical-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+kritické
+[[/div]]
+[[/div]]
+
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:04.925677.</em>
+  
+</div>
+</body>

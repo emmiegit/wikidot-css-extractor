@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>常用Module(ListPages與ListUsers)簡易教學</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">常用Module(ListPages與ListUsers)簡易教學</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/module-guide" target="_blank">常用Module(ListPages與ListUsers)簡易教學</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>#page-title {
+  display: none;
+}
+
+.meta-title {
+  border-bottom: solid 1px #bbbbbb;
+  color: #990011;
+  font-weight: normal;
+  margin: 0 0 0.6em;
+  padding: 0 0 0.25em;
+  font-size: 200%;
+}
+
+.meta-title p {
+  margin: 0;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[&gt;]]
+[[module rate]]
+[[/&gt;]]
+
+
+
+[[toc]]
+
+本文以Module ListPages跟Module ListUsers的操作說明為主。部份節選、抄錄、翻譯自[http://www.wikidot.com/doc-modules:listpages-module 這裡]跟[http://www.wikidot.com/doc-modules:listusers-module 這裡]
+
+
++ ListPages
+
+Module ListPages能夠選取該維基內的其他頁面，並透過%%title%%、%%content%%等的代碼將被選取頁面的標題、內容呈現出來。Module ListPages在SCP寫作中的用法主要是迭代格式跟隨機頁面，以下將先針對如何應用Module ListPages做出迭代頁面進行說明。
+
+
+++ **ListPages基本應用(迭代文檔的技術指導)**
+
+為了方便，我們把記錄著各個迭代內容的頁面稱為「段落頁」，而利用Module ListPages將各個段落頁的內容呈現出來的頁面稱為「主頁」。
+
+假設你要寫的SCP-CN-XXX，是一個n頁迭代的文檔，且標題皆為SCP-CN-XXX。那麼你會需要n個段落頁跟一個主頁。以下為建議步驟：
+
+一、創建SCP-CN-XXX，網址為http://scp-wiki-cn.wikidot.com/scp-cn-xxx。內容打上下列代碼：
+[[code]]
+[[module ListPages category=&#34;fragment&#34; parent=&#34;.&#34; limit=&#34;1&#34; order=&#34;name&#34; offset=&#34;@URL|0&#34;]]
+
+%%content%%
+[[/module]]
+[[/code]]
+
+二、創建n個段落頁，網址分別為
+
+[[code]]
+http://scp-wiki-cn.wikidot.com/fragment:scp-cn-xxx-01
+(前略)/fragment:scp-cn-xxx-02
+(前略)/fragment:scp-cn-xxx-03
+…
+
+[[/code]]
+
+把你各個迭代的內容填進相應的段落頁裡。接著在各個段落頁中加入連向前一/後一迭代的連結，形式如下：
+
+[[code]]
+[http://scp-wiki-cn.wikidot.com/scp-cn-xxx/offset/(目標迭代序數-1) (錨點文字)]
+[[/code]]
+
+※這裡必須特別注意，offset/i其實是連向第i+1個迭代，所以offset/1連向的是第二迭代，以此類推。
+
+接著利用頁面右下角的「選項」→「父頁面」→填上scp-cn-xxx。
+
+最後在段落頁上加上「段落」標籤就算完成了。
+
++++ 標題會變化的迭代文檔
+
+最經典的SCP-2998除了內容隨著迭代變更，其標題也會更換。如果想做到相似的效果主頁請用以下代碼，套用之後每個迭代的標題都會顯示為該段落頁的標題。
+
+[[code]]
+[[module CSS]]
+#page-title {
+  display: none;
+}
+
+.meta-title {
+  border-bottom: solid 1px #bbbbbb;
+  color: #990011;
+  font-weight: normal;
+  margin: 0 0 0.6em;
+  padding: 0 0 0.25em;
+  font-size: 200%;
+}
+
+.meta-title p {
+  margin: 0;
+}
+[[/module]]
+[[module ListPages category=&#34;fragment&#34; parent=&#34;.&#34; limit=&#34;1&#34; order=&#34;name&#34; offset=&#34;@URL|0&#34;]]
+[[div class=&#34;meta-title&#34;]]
+%%title%%
+[[/div]]
+[[/module]]
+[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+[[module ListPages category=&#34;fragment&#34; parent=&#34;.&#34; limit=&#34;1&#34; order=&#34;name&#34; offset=&#34;@URL|0&#34;]]
+
+%%content%%
+[[/module]]
+[[/code]]
+
++++ 隨機頁面
+
+利用隨機排序就能夠做到隨機頁面的效果。只要把module ListPages裡面的order=&#34;name&#34; 改成 order=&#34;random&#34;就可以實現。例子：[[[SCP-CN-004]]]、[[[SCP-1893]]]。
+
+
+++ **ListPages的使用原理**
+
++++ 頁面順序
+
+選取頁面的順序由order後面指定的屬性決定，以下為筆者看得懂且認為比較常用的屬性：
+
+||~ 屬性||~ 意義||
+||name||頁面名稱，不包含分類||
+||fullname||包含分類||
+||title||標題||
+||created_at||頁面創建日期||
+||size||字數||
+||rating||評分||
+||revisions||版本||
+||comments||回覆||
+||random||隨機。每60秒更新一次||
+
+在屬性後空一格加上&#34;desc&#34;，如「order=&#34;name desc&#34;」表示以名字為排序依據作降冪排列；加上&#34;desc desc&#34;則表示升冪，如order=&#34;name desc desc&#34;
+
++++ 頁面選擇器
+
+以下為筆者看得懂且認為比較常用的選擇器：
+
+||~ 選擇器||~ 意義||
+||category||分類||
+||tags||標籤||
+||parent||父頁面||
+||created_by||頁面創建者||
+||rating||評分||
+||offset||略過的頁面數||
+
+category是分類，一般頁面為_default。任何頁面的全名中如果帶有冒號(:)，冒號前的字串就會成為該頁面的分類。舉例來說，前面我們創建段落頁時加上了一個「fragment:」的前綴，就是把這個頁面創建在fragment分類之下；而主頁沒有任何前綴，所以落在_default分類之下。
+
+&#34;.&#34; 表示與當前頁面同一分類
+&#34;*&#34; 表示全部分類
+&#34;分類1 分類2 … 分類n&#34; (可用空白或逗號隔開) 把分類1到分類n的頁面納入選擇。
+&#34;-分類x&#34; 排除分類x的頁面
+
+
+tag是標籤。
+
+&#34;-&#34; 表示沒有標籤
+&#34;=&#34; 表示與當前頁面有至少一相同的標籤
+&#34;==&#34; 表示與當前頁面的標籤完全相同
+&#34;標籤1 標籤2 … 標籤n&#34; (可用空白或逗號隔開) 具有標籤1或標籤2或……標籤n的所有頁面
+&#34;-標籤x&#34; 排除有標籤x的頁面
+&#34;+標籤y&#34; 必須有標籤y的頁面才會被選擇
+
+parent是父頁。
+
+&#34;-&#34; 表示沒有父頁
+&#34;=&#34; 表示與當前頁面有相同父頁
+&#34;-=&#34; 表示與當前頁面有不同父頁
+&#34;.&#34; 表示當前頁面為其父頁
+其他也可特定指明一個頁面名稱，選取以該頁面為父頁的所有頁面
+
+created_by是頁面的創建者
+&#34;=&#34; 表示與當前頁面為同一創建者
+&#34;-=&#34; 表示與當前頁面為不同創建者
+其他可以特定指明某位用戶，選取其創建的所有頁面
+
+rating是評分
+&#34;n&#34; 表示正好n分的頁面
+&#34;=&#34; 表示與當前頁面相同評分的頁面
+可以用以下符號為前綴 &#34;&gt;&#34;, &#34;&lt;&#34;, &#34;=&#34;, &#34;&lt;=&#34;, &#34;&gt;=&#34;, &#34;&lt;&gt;&#34;
+
+offset表示略過頁面
+
+offset=&#34;0&#34;表示不略過任何一頁，所以前述的第一迭代是offset/0，而第二迭代其實是把第一迭代的段落頁略過之後被顯示出來的第一個頁面，所以第二迭代是offset/1。(嘛，看不懂也沒關係。)
+
++++ 頁面屬性
+
+(因為太多了，所以選我認為應該會用到的。)
+前述的迭代格式中，在module之中包含著一串&#34;%%content%%&#34;其效果即是顯示被選取頁面的「內容」，以下介紹有相似效果的代碼。
+||~ 代碼||~ 顯示效果||
+||%%created_at%%||創建時間||
+||%%created_by%%||創建者(純文字)||
+||%%created_by_linked%%||創建者(含頭像與連結)||
+||%%title%%||頁面標題||
+||%%title_linked%%||頁面標題(連結)||
+||%%content%%	||頁面內容||
+||%%preview%%	||頁面前兩百字||
+||%%preview(n)%%||頁面前(n)字||
+||%%rating%%||評分||
+
+
+
+++ **ListPages的其他應用**
+
++++ 頁面管理
+
+直接上例子：
+
+[http://scp-wiki-cn.wikidot.com/lowest-rated-pages 最低評分的條目]
+[[code]]
+[[module ListPages order=&#34;ratingAsc&#34; limit=&#34;100&#34; tags=&#34; 原创, 待删除, -被废除, -被归档, -旧页面, -管理, -作者, -草稿&#34; rating=&#34;&lt;-0&#34; separate=&#34;no&#34; perPage=&#34;100&#34;]]
+%%title_linked%% ##777|(评分: %%rating%%, 评语： %%comments%%)##
+[[/module]]
+[[/code]]
+
+[http://scp-wiki-cn.wikidot.com/alive 生]
+(根據歷史紀錄，當前的作者/條目列表應該是由Flea_ZER0提供)
+[[code]]
+[[module ListPages separate=&#34;no&#34; tags=&#34;+生 -中心&#34; order=&#34;created_at&#34;]]
+**%%title_linked%%** **by** **%%created_by_linked%%**
+@@@@
+[[/module]]
+[[/code]]
+
++ ListUsers
+
+基本上，目前除了在文章中加入讀者的wikidot帳號增加帶入感，我其實想不到這東西的其他用處了。使用時要注意一點，對於未登入的讀者而言，module方塊裡的東西是完全不可見的。
+
+[[module ListUsers users=&#34;.&#34;]]
+你是%%title%%，對吧？
+[[/module]]
+
+[[code]]
+[[module ListUsers users=&#34;.&#34;]]
+你是%%title%%，對吧？
+[[/module]]
+[[/code]]
+
+
+**更新：**
+
+[[collapsible show=&#34;如果你還是看不懂？&#34; hide=&#34;那麼…&#34;]]
+找[[*user fuban]]吧。
+[[/collapsible]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:09.507753.</em>
+  
+</div>
+</body>

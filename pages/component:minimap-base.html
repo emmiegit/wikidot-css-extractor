@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Minimap Base</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Minimap Base</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:minimap-base" target="_blank">Minimap Base</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>width: {$width}; min-height: {$height};</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 100%;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>scp-image-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>block-{$float}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-image-caption</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[div class=&#34;scp-image-block block-{$float}&#34; style=&#34;width: {$width}; min-height: {$height};&#34;]]
+
+[[html]]
+
+    &lt;!-- Sistema di mapping CC usato: Leaflet --&gt;
+    &lt;!-- https://leafletjs.com/examples/quick-start/ --&gt;
+    &lt;head&gt;
+        &lt;!-- ▼ ▼ ▼ Non toccate nulla qui! ▼ ▼ ▼ --&gt;
+        &lt;!-- Leaflet&#39;s CSS --&gt;
+        &lt;link rel=&#34;stylesheet&#34;
+            href=&#34;https://unpkg.com/leaflet@1.5.1/dist/leaflet.css&#34;
+            integrity=&#34;sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==&#34;
+            crossorigin=&#34;&#34;/&gt;
+
+        &lt;!-- Make sure you put this AFTER Leaflet&#39;s CSS --&gt;
+        &lt;script src=&#34;https://unpkg.com/leaflet@1.5.1/dist/leaflet.js&#34;
+            integrity=&#34;sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==&#34;
+            crossorigin=&#34;&#34;&gt;&lt;/script&gt;
+
+        &lt;!-- script per Map Stamen --&gt;
+        &lt;script type=&#34;text/javascript&#34; src=&#34;http://maps.stamen.com/js/tile.stamen.js?v1.3.0&#34;&gt;&lt;/script&gt;
+        &lt;!-- ▲ ▲ ▲ Non toccate nulla qui! ▲ ▲ ▲ --&gt;
+    &lt;/head&gt;
+
+
+    &lt;body&gt;
+
+            &lt;!-- ▼ ▼ ▼ Non toccate nulla qui! ▼ ▼ ▼ --&gt;
+            &lt;!-- Dimensioni della mappa --&gt;
+            &lt;div id=&#34;mapid&#34; style=&#34;min-height: {$height}; height: {$height}; box-sizing:border-box;&#34;&gt;
+            &lt;/div&gt;
+            &lt;!-- ▲ ▲ ▲ Non toccate nulla qui! ▲ ▲ ▲ --&gt;
+
+            &lt;script type=&#34;text/javascript&#34;&gt;
+                // Dati su come viene visualizzata la mappa appena viene caricata
+                var Latitude = {$latitude}
+                var Longitude = {$longitude}
+                var Zoom = {$zoom}  // Zoom iniziale della mappa
+                if (Zoom &lt; 3) { Zoom = 3; }
+                if (Zoom &gt; 17) { Zoom = 17; }
+                var MinZoom = Zoom-2 // Valore minimo di zoom
+                var MaxZoom = Zoom+2 // Valore massimo di zoom
+
+
+                // ▼ ▼ ▼ Non toccate nulla qui! ▼ ▼ ▼
+                var mymap = L.map(&#39;mapid&#39;, {attributionControl: false, zoomControl: false })
+                             .setView([Latitude + {$latviewoffset},
+                                       Longitude + {$lonviewoffset}], Zoom)
+                mymap.options.minZoom = MinZoom
+                mymap.options.maxZoom = MaxZoom
+
+                // Tile servers: https://wiki.openstreetmap.org/wiki/Tile_servers
+
+                // Sistema di tile CC usato: Maps Stamen
+                // Tipi di visualizzazione: &#34;toner&#34;, &#34;terrain&#34;, &#34;watercolor&#34;
+                mymap.addLayer(
+                    new L.StamenTileLayer(
+                        &#34;{$visualstyle}&#34;,
+                        {detectRetina: true}
+                    )
+                )
+
+                if ({$crosshair})
+                {
+                    var lw = 1.0;
+                    var lat_line = L.polyline([ [-85.05112878, Longitude], [85.05112878, Longitude] ],
+                                              {color: &#34;{$color}&#34;, weight: lw}).addTo(mymap);
+
+                    var long_line = L.polyline([ [Latitude, -180.0], [Latitude, 180.0] ],
+                                               {color: &#34;{$color}&#34;, weight: lw}).addTo(mymap);
+
+                    var circle = L.circleMarker([Latitude, Longitude],
+                                                {color: &#34;{$color}&#34;, radius: 17,
+                                                 fill: false, weight: lw}
+                                 ).addTo(mymap);  
+                }
+
+            &lt;/script&gt;
+
+    &lt;/body&gt;
+
+[[/html]]
+
+[!-- CAPTION HERE --]
+[[div class=&#34;scp-image-caption&#34; style=&#34;width: 100%;&#34;]]
+    {$caption}
+[[/div]]
+
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:06.211804.</em>
+  
+</div>
+</body>

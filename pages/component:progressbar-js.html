@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Progress bar component js code</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Progress bar component js code</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:progressbar-js" target="_blank">Progress bar component js code</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[code type=&#34;javascript&#34;]]
+function getBar(progress) {
+    var bar = BAR_TEXT + &#39; [&#39;;
+    var stage = Math.ceil(progress * STAGE_RATIO);
+    for (var i = 1; i &lt;= BAR_WIDTH; i++) {
+     if (stage &gt;= i) {
+     bar += &#39;=&#39;;
+     } else {
+     bar += &#39;&amp;nbsp;&#39;;
+     }
+    }
+    bar += &#39;]&amp;nbsp;&#39;;
+    if (progress === 100) {
+     bar += COMPLETE_TEXT;
+    } else {
+     if (progress &lt; 10) {
+     bar += &#39;&amp;nbsp;&#39;
+     }
+     bar += progress + &#39;%&#39;;
+    }
+    return bar;
+}
+
+document.addEventListener(&#39;DOMContentLoaded&#39;, function () {
+    var barElem = document.querySelector(&#39;.bar&#39;);
+    var contentElem = document.querySelector(&#39;.content&#39;);
+    var initButton = document.querySelector(&#39;.init-button&#39;);
+    var loadingText = document.querySelector(&#39;.loading-text&#39;);
+    initButton.innerHTML = BUTTON_TEXT;
+
+    function onFinish() {
+     contentElem.style.display = &#39;block&#39;;
+     if (HIDE_BAR_AFTER_FINISH) {
+     barElem.style.display = &#39;none&#39;;
+     }
+    }
+    
+    var initialTick = true;
+
+    var onClickInit = function () {
+     if (HIDE_BUTTON_AFTER_INIT) {
+     initButton.style.display = &#39;none&#39;;
+     } else {
+     initButton.innerHTML = BUTTON_TEXT_AFTER_INIT;
+     initButton.removeEventListener(&#39;click&#39;, onClickInit);
+     initButton.style.color = &#39;#000&#39;;
+     }
+
+     if (LOADING_TEXT) {
+     loadingText.style.display = &#39;block&#39;;
+     loadingText.innerHTML = LOADING_TEXT;
+     }
+
+     var progress = 0;
+    
+     var tick = function () {
+     barElem.innerHTML = getBar(progress);
+     progress += PROGRESS_STEP;
+     requestAnimationFrame(function () {
+     if (progress &lt;= 100) {
+     setTimeout(tick, initialTick ? INITIAL_TICK_TIMEOUT  : TICK_INTERVAL);
+     initialTick = false;
+     } else {
+     barElem.innerHTML = getBar(100);
+     onFinish();
+     }
+     });
+     };
+     tick();
+    };
+
+    initButton.addEventListener(&#39;click&#39;, onClickInit);
+});
+[[/code]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:06.233404.</em>
+  
+</div>
+</body>

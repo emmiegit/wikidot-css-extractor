@@ -14,22 +14,22 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>ACS Animation</title>
+  <title>ACSアニメーション</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">ACS Animation</h1>
+    <h1 class="title">ACSアニメーション</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:acs-animation" target="_blank">ACS Animation</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:acs-animation" target="_blank">ACSアニメーション</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/component%3Aacs-animation/1&#39;);</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -53,6 +53,10 @@
           <pre><code>font-family: monospace; font-size: 120%;</code></pre>
         </li>
       
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Includes</h2>
@@ -63,14 +67,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:acs-animation" target="_blank"><code>:scp-wiki:component:acs-animation</code></a>
+    <a href="https://scp-jp.wikidot.com/component:acs-animation" target="_blank"><code>:scp-jp:component:acs-animation</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:acs-animation.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -95,30 +93,29 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +component]]
-
+    <pre><textarea class="page-source" readonly>[[iftags +コンポーネント]]
 [[div style=&#34;border: solid 2px #ededed; padding: 0.5rem; margin: 4px;&#34;]]
 
-This is a component that animates the **[[[anomaly-classification-system-guide|ACS header]]]** upon loading.
+これは**[[[anomaly-classification-system-guide|ACSヘッダー]]]**の読み込み時にアニメーション表示を行わせるコンポーネントです。
 
-++ How to use:
+++ 使い方:
 
-Put this in anywhere in the article:
+以下の記述を任意の場所に挿入してください。
 
 [[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
-@@[[include :scp-wiki:component:acs-animation]]@@
+@@[[include :scp-jp:component:acs-animation]]@@
 [[/div]]
 
-And you&#39;re done!
+これで完了です。
 
-//Example:// **[[[SCP-5935|]]]**
+//例:// **[[[SCP-5935|SCP-5935]]]**
 
 @@ @@
 -----
 
-++ Note:
+++ 注:
 
-- Two variables, //@@--timeScale@@// and //@@--timeDelay@@//, control the timings of the animation. For example:
+  //@@--timeScale@@//と//@@--timeDelay@@//の2つの要素がアニメーションの表示を制御します。例えば:
 
 [[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
 @@[[module CSS]]@@
@@ -126,18 +123,18 @@ And you&#39;re done!
 @@    --timeScale: 2;@@
 @@    --timeDelay: 0.5s;@@
 }
-@@[[/module]]@@ 
+@@[[/module]]@@
 [[/div]]
 
-//@@--timeScale@@// slows down the entire animation by a factor of 2, and //@@--timeDelay@@// delays the starting point of the animation by half a second. Default values are 1 and 0s, respectively.
+この場合、//@@--timeScale@@//によってアニメーションの表示速度はデフォルトから2倍遅くなり、//@@--timeDelay@@//によってアニメーションの表示は0.5秒遅れます。初期設定ではtimeScaleは1、timeDelayは0sとなっています。
 
-To change the default values, put the above after the {{[[include]]}}. //@@--timeDelay@@// is recommended if the ACS isn&#39;t the first content element, or you&#39;re using it in conjunction with other animation modules (a la **[[[component:fade-in|]]]**.)
+これらを適用する場合、{{[[include]]}}の下部に上記を記述してください。ACSヘッダが構文の最上部に導入されない場合や、他のアニメーションモジュール(例えば**[[[component:fade-in|Fade in]]]**モジュール)等と併用される場合は//@@--timeDelay@@//の使用が推奨されます。
 
 @@ @@
 
-- Likely incompatible with other types of ACS headers*.
+- 他のタイプのACSヘッダーとの互換性が存在しない可能性が高くなっているので注意してください。*
 
-*To use with [[*user PeppersGhost]]&#39;s [[[component:acs-peppo-lite|ACS Lite]]], add the following patch after the {{[[include]]}}:
+*[[*user PeppersGhost]]氏が作成した[[[component:acs-peppo-lite|ACS Lite]]]と併用する場合には{{[[include]]}}の後に以下の記述を挿入してください:
 
 [[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
 @@[[module CSS]]@@
@@ -153,15 +150,20 @@ div.diamond-part { clip-path: none; animation: none; box-shadow: none!important;
 
 @@ @@
 
-- Inspired by the works of [[*user AnAnomalousWriter]].
+- [[*user AnAnomalousWriter]]氏の作品から着想を得ています。
 
 [[/div]]
 
 -----
 
-++ Source Code:
+++ ソースコード:
 
-[[code type=&#34;CSS&#34;]]
+[[/iftags]]
+
+[[div [[iftags -コンポーネント]]style=&#34;display: none&#34;[[/iftags]]]]
+
+[[module CSS show=&#34;true&#34;]]
+
 :root {
     --timeScale: 1;
     --timeDelay: 0s;
@@ -218,11 +220,9 @@ div.top-left-box &gt; *, div.top-right-box &gt; * {
     animation-fill-mode: backwards;
 }
  
-
 /*-----------------------------------*/
 /*-----------------------------------*/
-
-
+ 
 /* CONTAINMENT, DISRUPTION, RISK CLASSES */
 div.text-part &gt; * {
     clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -258,11 +258,9 @@ div.main-class &gt; *,  div.disrupt-class &gt; *, div.risk-class &gt; * {
     animation-fill-mode: backwards;
 }
  
-
 /*-----------------------------------*/
 /*-----------------------------------*/
-
-
+ 
 /* DIAMOND */
 div.arrows {
     animation-name: arrowspin;
@@ -321,9 +319,9 @@ div.diamond-part {
     div.top-center-box &gt; :nth-child(6) { animation-delay: calc(0.6s * var(--timeScale) + var(--timeDelay)); }
  
 }
-
+ 
 /*--- Motion Accessibility ---*/
-@media screen and (prefers-reduced-motion: reduce) { 
+@media screen and (prefers-reduced-motion: reduce) {
     div.anom-bar-container { --timeScale: 0!important; }
 }
  
@@ -383,20 +381,15 @@ div.diamond-part {
     from { box-shadow: -0.5rem -20rem 0 0 rgb(var(--black-monochrome, 12, 12, 12)); }
     to { box-shadow: -0.5rem 0 0 0 rgb(var(--black-monochrome, 12, 12, 12)); }
 }
-
-[[/code]]
-[[/iftags]]
-
-[[module CSS]]
-@import url(&#39;https://scp-wiki.wdfiles.com/local--code/component%3Aacs-animation/1&#39;);
-[[/module]]</textarea></pre>
+[[/module]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 15:46:23.937412.</em>
+    <em>Last updated 2022-05-18 16:02:06.121216.</em>
   
 </div>
 </body>

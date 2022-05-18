@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>版頭重新着色</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">版頭重新着色</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:body-bg" target="_blank">版頭重新着色</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/info:start" target="_blank"><code>info:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/info:end" target="_blank"><code>info:end</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/component:body-bg" target="_blank"><code>:scp-zh-tr:component:body-bg</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[iftags +組件]]
+
+[[include info:start]]
+**原文：**[http://fondationscp.wikidot.com/component:body-bg Recoloration d&#39;en-tête]
+
+**作者：**[[*user Dr Lekter]]
+
+**搬運：**[[*user Mang Gwan]]
+[[include info:end]]
+
+這模板令您能使用代碼而不是圖像來修改版頭的顏色；你可以在頁面頂部插入此代碼，你可以將其用於您的各個頁面或CSS外觀主題。
+
+&gt; @@[[include :scp-zh-tr:component:body-bg]]@@
+
+然後是下面的內容（**注意**：如下面的代碼所示，以RGB表示的值）。
+
+
+[[div class=&#34;blockquote&#34;]]
+@@[[module css]]@@
+@@:root {@@
+@@    --head-top: [版頭上方顏色];@@
+@@    --head-bottom: [版頭上方顏色];@@
+@@    --bar-top: [頂部選單上方顏色];@@
+@@    --bar-bottom: [頂部選單下方顏色];@@
+@@    --bar-shadow-top: [頂部選單上方陰影顏色];@@
+@@    --bar-shadow-bottom: [頂部選單下方陰影顏色];@@
+@@    --body: [頁面顏色 (譯註：可能這變量是用來接上內文的顏色用的，因為它只有0.12rem高。)];@@
+@@}@@
+@@[[/module]]@@
+[[/div]]
+
+您可以刪走不需更改的變量。
+------
++ 代碼
+
+[[/iftags]]
+
+[[div [[iftags -組件]]style=&#34;display: none&#34;[[/iftags]]]]
+[[module CSS show=&#34;true&#34;]]
+
+/*
+     CSS gradient to replace Sigma-9 body-bg image
+     By 7happy7, Dr Lekter and Styrius
+     Based on code by Woedenaz
+*/
+ 
+:root {
+    --head-top: 0, 0, 0; /* Black */
+    --head-bottom: 103, 61, 61; /* Brown */
+    --bar-top: 83, 83, 83; /* Light gray */
+    --bar-bottom: 59, 59, 59; /* Dark gray */
+    --bar-shadow-top: 95, 60, 60; /* Dark brown */
+    --bar-shadow-bottom: 157, 157, 157; /* Very light gray */
+    --body: 255, 255, 255; /* White */
+}
+ 
+div#container-wrap {
+    background-image:
+        linear-gradient(to top, rgba(var(--head-bottom), .5) 10%,
+        rgba(var(--head-top), 1) 80%), 
+ 
+        repeating-linear-gradient(45deg,hsla(0, 0%, 100%, 0),
+        hsla(0, 0%, 100%, 0) 2px,
+        rgba(88, 88, 88, 0.2) 2px,
+        rgba(88, 88, 88, 0.2) 4px),
+ 
+        linear-gradient(to bottom, rgba(var(--head-top), 1) 4.67rem,
+        rgba(var(--head-bottom), 1) 8.55rem,
+        rgba(var(--bar-shadow-top), 1) 8.675rem,
+        rgba(var(--bar-top), 1) 8.8rem,
+        rgba(var(--bar-top), 1) calc(90% - 0.125rem),
+        rgba(var(--bar-bottom), 1) calc(98% - 0.125rem)),
+ 
+        linear-gradient(to bottom,rgba(var(--bar-bottom), 1) 10.1rem,
+        rgba(var(--bar-shadow-bottom), 1) 10.225rem,
+        rgba(var(--body), 1) 10.345rem);
+ 
+    background-size: 100% 8.7rem, 100% 8.7rem, 100% 10.1rem, 100% 10.465rem;
+    background-repeat: no-repeat;
+}
+[[/module]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:06.143036.</em>
+  
+</div>
+</body>

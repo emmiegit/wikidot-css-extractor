@@ -33,15 +33,6 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);</code></pre>
         </li>
       
-        <li>
-          <pre><code>h1, h2, h3 {
-    text-align: center;
-}
-#page-title {
-    text-align: center;
-}</code></pre>
-        </li>
-      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -61,14 +52,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-wiki:component:toggle-sidebar-bhl</code></a>
+    <a href="https://scp-pl.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-pl:component:toggle-sidebar-bhl</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar-bhl.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -82,265 +67,224 @@
           <pre><code>blockquote</code></pre>
         </li>
       
-        <li>
-          <pre><code>code</code></pre>
-        </li>
-      
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +component]]
+    <pre><textarea class="page-source" readonly>[[iftags +szablon]]
 [[module css]]
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 [[/module]]
 [[=]]
-[[module Rate]]
-[[/=]]
-[[module css]]
-h1, h2, h3 {
-    text-align: center;
-}
-#page-title {
-    text-align: center;
-}
-[[/module]]
-+ What this does
-
-++ Makes the sidebar hidden by default and toggled via a corner button, similar to the mobile version of the site.
-[[=]]
-* Does NOT work on Sigma-9. This ONLY functions with [http://www.scpwiki.com/theme:black-highlighter-theme Black Highlighter.]
-* [http://www.scpwiki.com/component:toggle-sidebar Use this component by EstrellaYoshte instead if you intend to use Sigma-9.]
-* [http://www.scpwiki.com/component:collapsible-sidebar If you prefer, there is also a Collapsible Sidebar that functions on both BHL and Sigma-9.] _
-The collapsible sidebar functions via hovering rather than clicking and is slightly more visible than the Toggle Sidebar.
+[[div_ class=&#34;blockquote&#34;]]
+Aby użyć poniższego komponentu, należy dać poniższy kod razem z kodem [http://scp-pl.wikidot.com/theme:black-highlighter-theme BHL]:
+&gt; {{[[include :scp-pl:component:toggle-sidebar-bhl]]}}
+[[/div]]
 [[/=]]
 
-------
-
-+ How to use
-
-++ 1. Copy code below.
-++ 2. Paste in article **after** Black Highlighter and any other Theme include.
-
-&gt; {{[[include :scp-wiki:component:toggle-sidebar-bhl]]}}
-
-+++ 3. (Optional) Style toggle button if using a theme.
-
-[[div class=&#34;blockquote&#34;]]
-There are also 5 CSS Vars available to style the button if needed.
-For the colors, it is heavily suggested that you use the available BHL Color Vars which can be found [https://github.com/Nu-SCPTheme/Black-Highlighter/blob/master/src/css/root.css here.]
-[[div class=&#34;code&#34;]]
-:root {
-    @@--toggle-button-bg: hex/rgb/hsl color;@@
-    @@--toggle-border-color: hex/rgb/hsl color;@@
-    @@--toggle-border-width: px/rem/em;@@
-    @@--toggle-icon-color: hex/rgb/hsl color;@@
-    @@--toggle-roundness: percentage;@@
-}
-[[/div]]
-[[/div]]
+&gt; [*https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl Oryginał] autorstwa [[*user Woedenaz]]
 
 ------
 
 [[/iftags]]
 
-[[div [[iftags -component]]style=&#34;display: none&#34;[[/iftags]]]]
-[[collapsible show=&#34;+ Show component code&#34; hide=&#34;- Hide component code&#34;]]
+[[div [[iftags -szablon]]style=&#34;display: none&#34;[[/iftags]]]]
+[[collapsible show=&#34;+ Pokaż kod komponentu&#34; hide=&#34;- Ukryj kod komponentu&#34;]]
 [[module CSS show=&#34;true&#34;]]
 @supports(display: grid) {
     :root {
-    	--sidebar-width-on-desktop: calc((var(--base-font-size) * (14 / 15)) * 19);
-    	--body-width-on-desktop: 45.75rem;
+     --sidebar-width-on-desktop: calc((var(--base-font-size) * (14 / 15)) * 19);
+     --body-width-on-desktop: 45.75rem;
     }
     @media only screen and (min-width: 769px) {
-    	#side-bar .close-menu {
-    		display: block;
-    		position: fixed;
-    		top: 0.25rem;
-    		left: 0.5rem;
-    		width: 3rem;
-    		opacity: 1;
-    		pointer-events: all;
-    		z-index: -1;
-    	}
-    	
-    	#side-bar .close-menu img {
-    		color: transparent;
-    	}
+     #side-bar .close-menu {
+     display: block;
+     position: fixed;
+     top: 0.25rem;
+     left: 0.5rem;
+     width: 3rem;
+     opacity: 1;
+     pointer-events: all;
+     z-index: -1;
+     }
+    
+     #side-bar .close-menu img {
+     color: transparent;
+     }
 
-    	#side-bar .close-menu::before,
-    	#side-bar .close-menu::after {
-    		content: &#34;&#34;;
-    		box-sizing: border-box;
-    		position: fixed;
-    		display: block;
-    		top: 0.5rem;
-    		left: 0.5rem;
-    		width: 3rem;
-    		height: 3rem;
-    		padding: 0;
-    		margin: 0;
-    		text-align: center;
-    		pointer-events: all;
-    		cursor: pointer;
-    		transition:
-    			opacity var(--sidebar-transition-timing);
-    	}
+     #side-bar .close-menu::before,
+     #side-bar .close-menu::after {
+     content: &#34;&#34;;
+     box-sizing: border-box;
+     position: fixed;
+     display: block;
+     top: 0.5rem;
+     left: 0.5rem;
+     width: 3rem;
+     height: 3rem;
+     padding: 0;
+     margin: 0;
+     text-align: center;
+     pointer-events: all;
+     cursor: pointer;
+     transition:
+     opacity var(--sidebar-transition-timing);
+     }
 
-    	#side-bar .close-menu::before {
-    		--mask:url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Hamburger&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 32 32&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M4 10h24c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm24 4H4c-1.1 0-2 .9-2 2s.9 2 2 2h24c1.1 0 2-.9 2-2s-.9-2-2-2zm0 8H4c-1.1 0-2 .9-2 2s.9 2 2 2h24c1.1 0 2-.9 2-2s-.9-2-2-2z&#39;/%3E%3C/svg%3E&#34;);
-    		z-index: -1;
-    		background-color: var(--toggle-icon-color, rgb(var(--sidebar-links-text))) !important;
-    		-webkit-mask: var(--mask);
-    		mask: var(--mask);
-    		-webkit-mask-repeat: no-repeat;
-    		mask-repeat: no-repeat;
-    		-webkit-mask-position: 50% 50%;
-    		mask-position: 50% 50%;
-    		-webkit-mask-size: 60%;
-    		mask-size: 60%;
-    	}
+     #side-bar .close-menu::before {
+     --mask:url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Hamburger&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 32 32&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M4 10h24c1.1 0 2-.9 2-2s-.9-2-2-2H4c-1.1 0-2 .9-2 2s.9 2 2 2zm24 4H4c-1.1 0-2 .9-2 2s.9 2 2 2h24c1.1 0 2-.9 2-2s-.9-2-2-2zm0 8H4c-1.1 0-2 .9-2 2s.9 2 2 2h24c1.1 0 2-.9 2-2s-.9-2-2-2z&#39;/%3E%3C/svg%3E&#34;);
+     z-index: -1;
+     background-color: var(--toggle-icon-color, rgb(var(--sidebar-links-text))) !important;
+     -webkit-mask: var(--mask);
+     mask: var(--mask);
+     -webkit-mask-repeat: no-repeat;
+     mask-repeat: no-repeat;
+     -webkit-mask-position: 50% 50%;
+     mask-position: 50% 50%;
+     -webkit-mask-size: 60%;
+     mask-size: 60%;
+     }
 
-    	#side-bar .close-menu::after {
-    		z-index: -2;
-    		background-color: var(--toggle-button-bg, rgb(var(--sidebar-bg-color))) !important;
-    		border-radius: var(--toggle-roundness, 50%);
-    		border: var(--toggle-border-color, rgb(var(--sidebar-links-text))) var(--toggle-border-width, 0.25rem) solid;
-    	}
+     #side-bar .close-menu::after {
+     z-index: -2;
+     background-color: var(--toggle-button-bg, rgb(var(--sidebar-bg-color))) !important;
+     border-radius: var(--toggle-roundness, 50%);
+     border: var(--toggle-border-color, rgb(var(--sidebar-links-text))) var(--toggle-border-width, 0.25rem) solid;
+     }
 
-    	#side-bar:focus-within .close-menu::before,
-    	#side-bar:focus-within .close-menu::after {
-    		opacity: 0;
-    	}
+     #side-bar:focus-within .close-menu::before,
+     #side-bar:focus-within .close-menu::after {
+     opacity: 0;
+     }
 
-    	#side-bar {
-    		display: block;
-    		position: fixed;
-    		top: 0;
-    		left: calc(var(--sidebar-width-on-desktop)*-1);
-    		z-index: 10;
-    		transition:
-    			left 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
-    		height: 100%;
-    		overflow-y: auto;
-    		overflow-x: hidden;
-    		margin-top: 0;
-    	}
+     #side-bar {
+     display: block;
+     position: fixed;
+     top: 0;
+     left: calc(var(--sidebar-width-on-desktop)*-1);
+     z-index: 10;
+     transition:
+     left 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+     height: 100%;
+     overflow-y: auto;
+     overflow-x: hidden;
+     margin-top: 0;
+     }
 
-    	#side-bar:focus-within {
-    		left: 0;
-    	}
+     #side-bar:focus-within {
+     left: 0;
+     }
 
-    	#side-bar .side-block {
-    		margin-top: 1rem;
-    		background-color: rgb(0, 0, 0, 0);
-    		border-radius: 0;
-    		border-left-width: 0px;
-    		border-right-width: 0px;
-    	}
+     #side-bar .side-block {
+     margin-top: 1rem;
+     background-color: rgb(0, 0, 0, 0);
+     border-radius: 0;
+     border-left-width: 0px;
+     border-right-width: 0px;
+     }
 
-    	#main-content::before {
-    		content: &#34;&#34;;
-    		display: block;
-    		position: fixed;
-    		top: 0;
-    		right: 0;
-    		z-index: -1;
-    		opacity: 0;
-    		transition:
-    			opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
-    			width 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
-    		margin-left: var(--sidebar-width-on-desktop);
-    		background: rgba(var(--swatch-menubg-black-color), .3) 1px 1px repeat;
-    		padding-right: 0;
-    		width: 100%;
-    		height: 100vh;
-    		pointer-events: none;
-    		z-index: 99;
-    	}
+     #main-content::before {
+     content: &#34;&#34;;
+     display: block;
+     position: fixed;
+     top: 0;
+     right: 0;
+     z-index: -1;
+     opacity: 0;
+     transition:
+     opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
+     width 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+     margin-left: var(--sidebar-width-on-desktop);
+     background: rgba(var(--swatch-menubg-black-color), .3) 1px 1px repeat;
+     padding-right: 0;
+     width: 100%;
+     height: 100vh;
+     pointer-events: none;
+     z-index: 99;
+     }
 
-    	#side-bar:focus-within~#main-content::before {
-    		width: calc(100% - var(--sidebar-width-on-desktop));
-    		opacity: 1;
-    		pointer-events: all;
-    	}
+     #side-bar:focus-within~#main-content::before {
+     width: calc(100% - var(--sidebar-width-on-desktop));
+     opacity: 1;
+     pointer-events: all;
+     }
 
-    	#content-wrap {
-    		display: flex;
-    		flex-direction: row;
-    		width: calc(100vw - (100vw - 100%));
-    		min-height: calc(100vh - calc(var(--final-header-height-on-desktop, 10.125rem)));
-    		flex-grow: 2;
-    		height: auto;
-    		position: relative;
-    		margin: 0 auto;
-    		max-width: inherit;
-    	}
+     #content-wrap {
+     display: flex;
+     flex-direction: row;
+     width: calc(100vw - (100vw - 100%));
+     min-height: calc(100vh - calc(var(--final-header-height-on-desktop, 10.125rem)));
+     flex-grow: 2;
+     height: auto;
+     position: relative;
+     margin: 0 auto;
+     max-width: inherit;
+     }
 
-    	#main-content {
-    		width: 100%;
-    		position: initial;
-    		max-height: 100%;
-    		padding: 2rem 1rem;
-    		width: var(--body-width-on-desktop, 45.75rem);
-    		max-width: var(--body-width-on-desktop, 45.75rem);
-    		margin: 0 auto;
-    	}
-    	
-    	#page-content {
-    		max-width: min(90vw, var(--body-width-on-desktop, 45.75rem));
-    	}
+     #main-content {
+     width: 100%;
+     position: initial;
+     max-height: 100%;
+     padding: 2rem 1rem;
+     width: var(--body-width-on-desktop, 45.75rem);
+     max-width: var(--body-width-on-desktop, 45.75rem);
+     margin: 0 auto;
+     }
+    
+     #page-content {
+     max-width: min(90vw, var(--body-width-on-desktop, 45.75rem));
+     }
 
-    	@media not all and (-webkit-min-device-pixel-ratio:0), not all and (min-resolution:.001dpcm) {
-    		@supports (-webkit-appearance:none) {
-    			#side-bar {
-    				transition:
-    					left 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
-    					padding-right 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
-    					background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
-    				padding-right: 0;
-    				background-color: rgb(0, 0, 0, 0);
-    				pointer-events: all;
-    				overflow-x: visible;
-    				overflow-y: visible;
-    				z-index: 999;
-    			}
+     @media not all and (-webkit-min-device-pixel-ratio:0), not all and (min-resolution:.001dpcm) {
+     @supports (-webkit-appearance:none) {
+     #side-bar {
+     transition:
+     left 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
+     padding-right 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
+     background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+     padding-right: 0;
+     background-color: rgb(0, 0, 0, 0);
+     pointer-events: all;
+     overflow-x: visible;
+     overflow-y: visible;
+     z-index: 999;
+     }
 
-    			#side-bar::-webkit-scrollbar {
-    				opacity: 0;
-    				-webkit-transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
-    				transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
-    			}
+     #side-bar::-webkit-scrollbar {
+     opacity: 0;
+     -webkit-transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+     transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+     }
 
-    			#side-bar .close-menu::before {
-    				z-index: 999;
-    			}
+     #side-bar .close-menu::before {
+     z-index: 999;
+     }
 
-    			#side-bar .close-menu::after {
-    				z-index: 998;
-    			}
+     #side-bar .close-menu::after {
+     z-index: 998;
+     }
 
-    			#side-bar:hover .close-menu::before {
-    				opacity: 0;
-    			}
+     #side-bar:hover .close-menu::before {
+     opacity: 0;
+     }
 
-    			#side-bar:hover {
-    				left: 0;
-    				background-color: rgba(var(--swatch-menubg-color), 1);
-    				padding-right: 0;
-    			}
+     #side-bar:hover {
+     left: 0;
+     background-color: rgba(var(--swatch-menubg-color), 1);
+     padding-right: 0;
+     }
 
-    			#side-bar:hover::-webkit-scrollbar {
-    				opacity: 1;
-    			}
+     #side-bar:hover::-webkit-scrollbar {
+     opacity: 1;
+     }
 
-    			#side-bar:hover~#main-content::before {
-    				width: calc(100% - var(--sidebar-width-on-desktop));
-    				opacity: 1;
-    				pointer-events: all;
-    			}
-    		}
-    	}
+     #side-bar:hover~#main-content::before {
+     width: calc(100% - var(--sidebar-width-on-desktop));
+     opacity: 1;
+     pointer-events: all;
+     }
+     }
+     }
     }
 }
 [[/module]]
@@ -352,7 +296,7 @@ For the colors, it is heavily suggested that you use the available BHL Color Var
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 15:46:23.987824.</em>
+    <em>Last updated 2022-05-18 16:02:06.271010.</em>
   
 </div>
 </body>

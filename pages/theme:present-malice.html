@@ -14,24 +14,272 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Perfect Malice Theme</title>
+  <title>恶意显露 主题版式</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Perfect Malice Theme</h1>
+    <h1 class="title">恶意显露 主题版式</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/theme:present-malice" target="_blank">Perfect Malice Theme</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/theme:present-malice" target="_blank">恶意显露 主题版式</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
+          <pre><code>@import url(&#34;https://cdn.jsdelivr.net/gh/Nu-SCPTheme/Black-Highlighter@gh-pages/css/min/normalize.min.css&#34;);
+@import url(&#34;https://cdn.jsdelivr.net/gh/Nu-SCPTheme/Black-Highlighter@gh-pages/css/min/black-highlighter.min.css&#34;);
 
+@supports((display: -ms-grid) or (display: grid)) {
+    @media only screen and (min-width: 769px) {
+    	#side-bar .close-menu {
+    		display: block;
+    		position: fixed;
+    		top: 0.25rem;
+    		left: 0.5rem;
+    		width: 3rem;
+    		opacity: 1;
+    		pointer-events: all;
+    	}
+
+    	#side-bar .close-menu::before,
+    	#side-bar .close-menu::after {
+    		content: &#34;&#34;;
+    		box-sizing: border-box;
+    		position: fixed;
+    		display: block;
+    		top: 0.25rem;
+    		left: 0.5rem;
+    		width: 3rem;
+    		height: 3rem;
+    		padding: 0;
+    		margin: 0;
+    		text-align: center;
+    		pointer-events: all;
+    		cursor: pointer;
+    		-webkit-transition:
+    			opacity var(--sidebar-transition-timing);
+    		-o-transition:
+    			opacity var(--sidebar-transition-timing);
+    		-moz-transition:
+    			opacity var(--sidebar-transition-timing);
+    		transition:
+    			opacity var(--sidebar-transition-timing);
+    	}
+
+    	#side-bar .close-menu::before {
+    		--mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; %3F%3E%3C!DOCTYPE svg PUBLIC &#39;-//W3C//DTD SVG 1.1//EN&#39; &#39;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&#39;%3E%3Csvg height=&#39;32px&#39; id=&#39;Layer_1&#39; style=&#39;enable-background:new 0 0 32 32;&#39; version=&#39;1.1&#39; viewBox=&#39;0 0 32 32&#39; width=&#39;32px&#39; xml:space=&#39;preserve&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39;%3E%3Cpath d=&#39;M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2 s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2 S29.104,22,28,22z&#39;/%3E%3C/svg%3E&#34;);
+    		z-index: -1;
+    		background-color: var(--toggle-icon-color, rgb(var(--sidebar-links-text))) !important;
+    		-webkit-mask: var(--mask);
+    		mask: var(--mask);
+    		-webkit-mask-repeat: no-repeat;
+    		mask-repeat: no-repeat;
+    		-webkit-mask-position: 50% 50%;
+    		mask-position: 50% 50%;
+    		-webkit-mask-size: 60%;
+    		mask-size: 60%;
+    	}
+
+    	#side-bar .close-menu::after {
+    		z-index: -2;
+    		background-color: var(--toggle-button-bg, rgb(var(--swatch-menubg-color))) !important;
+    		-webkit-border-radius: var(--toggle-roundness, 50%);
+    		-moz-border-radius: var(--toggle-roundness, 50%);
+    		border-radius: var(--toggle-roundness, 50%);
+    		border: var(--toggle-border-color, rgb(var(--swatch-border-color))) var(--toggle-border-width, 0.25rem) solid;
+    	}
+
+    	#side-bar:focus-within .close-menu::before,
+    	#side-bar:focus-within .close-menu::after {
+    		opacity: 0;
+    	}
+
+    	#side-bar {
+    		display: block;
+    		position: fixed;
+    		top: 0;
+    		left: -webkit-calc(var(--sidebar-width-on-desktop)*-1);
+    		left: -moz-calc(var(--sidebar-width-on-desktop)*-1);
+    		left: calc(var(--sidebar-width-on-desktop)*-1);
+    		z-index: 10;
+    		-webkit-transition:
+    			left var(--sidebar-transition-timing);
+    		-o-transition:
+    			left var(--sidebar-transition-timing);
+    		-moz-transition:
+    			left var(--sidebar-transition-timing);
+    		transition:
+    			left var(--sidebar-transition-timing);
+    		height: 100%;
+    		overflow-y: auto;
+    		overflow-x: hidden;
+    		margin-top: 0;
+    	}
+
+    	#side-bar:focus-within {
+    		left: 0;
+    	}
+
+    	#side-bar .side-block {
+    		margin-top: 1rem;
+    		background-color: rgb(0, 0, 0, 0);
+    		-webkit-border-radius: 0;
+    		-moz-border-radius: 0;
+    		border-radius: 0;
+    		border-left-width: 0px;
+    		border-right-width: 0px;
+    	}
+
+    	#main-content::before {
+    		content: &#34;&#34;;
+    		display: block;
+    		position: fixed;
+    		top: 0;
+    		right: 0;
+    		z-index: -1;
+    		opacity: 0;
+    		-webkit-transition:
+    			opacity var(--sidebar-transition-timing),
+    			width var(--sidebar-transition-timing);
+    		-o-transition:
+    			opacity var(--sidebar-transition-timing),
+    			width var(--sidebar-transition-timing);
+    		-moz-transition:
+    			opacity var(--sidebar-transition-timing),
+    			width var(--sidebar-transition-timing);
+    		transition:
+    			opacity var(--sidebar-transition-timing),
+    			width var(--sidebar-transition-timing);
+    		margin-left: var(--sidebar-width-on-desktop);
+    		background: rgba(var(--swatch-menubg-black-color), .3) 1px 1px repeat;
+    		padding-right: 0;
+    		width: 100%;
+    		height: 100vh;
+    		pointer-events: none;
+    		z-index: 99;
+    	}
+
+    	#side-bar:focus-within~#main-content::before {
+    		width: -webkit-calc(100% - var(--sidebar-width-on-desktop));
+    		width: -moz-calc(100% - var(--sidebar-width-on-desktop));
+    		width: calc(100% - var(--sidebar-width-on-desktop));
+    		opacity: 1;
+    		pointer-events: all;
+    	}
+
+    	#content-wrap {
+    		display: -webkit-box;
+    		display: -webkit-flex;
+    		display: -moz-box;
+    		display: -ms-flexbox;
+    		display: flex;
+    		-webkit-box-orient: horizontal;
+    		-webkit-box-direction: normal;
+    		-webkit-flex-direction: row;
+    		-moz-box-orient: horizontal;
+    		-moz-box-direction: normal;
+    		-ms-flex-direction: row;
+    		flex-direction: row;
+    		width: -webkit-calc(100vw - (100vw - 100%));
+    		width: -moz-calc(100vw - (100vw - 100%));
+    		width: calc(100vw - (100vw - 100%));
+    		min-height: -webkit-calc(100vh - -webkit-calc(var(--final-header-height-on-desktop, 10.125rem)));
+    		min-height: -moz-calc(100vh - -moz-calc(var(--final-header-height-on-desktop, 10.125rem)));
+    		min-height: calc(100vh - calc(var(--final-header-height-on-desktop, 10.125rem)));
+    		-webkit-box-flex: 2;
+    		-webkit-flex-grow: 2;
+    		-moz-box-flex: 2;
+    		-ms-flex-positive: 2;
+    		flex-grow: 2;
+    		height: auto;
+    		position: relative;
+    		margin: 0 auto;
+    		max-width: inherit;
+    	}
+
+    	#main-content {
+    		width: 100%;
+    		position: initial;
+    		max-height: 100%;
+    		padding: 2rem 1rem;
+    		width: 45.8rem;
+    		max-width: 45.8rem;
+    		margin: 0 auto;
+    	}
+
+    	@media not all and (min-resolution:.001dpcm) {
+    		@supports (-webkit-appearance:none) {
+    			#side-bar {
+    				-webkit-transition:
+    					left var(--sidebar-transition-timing),
+    					padding-right var(--sidebar-transition-timing),
+    					background-color var(--sidebar-transition-timing);
+    				-o-transition:
+    					left var(--sidebar-transition-timing),
+    					padding-right var(--sidebar-transition-timing),
+    					background-color var(--sidebar-transition-timing);
+    				-moz-transition:
+    					left var(--sidebar-transition-timing),
+    					padding-right var(--sidebar-transition-timing),
+    					background-color var(--sidebar-transition-timing);
+    				transition:
+    					left var(--sidebar-transition-timing),
+    					padding-right var(--sidebar-transition-timing),
+    					background-color var(--sidebar-transition-timing);
+    				padding-right: 0;
+    				background-color: rgb(0, 0, 0, 0);
+    				pointer-events: all;
+    				overflow-x: visible;
+    				overflow-y: visible;
+    				z-index: 999;
+    			}
+
+    			#side-bar::-webkit-scrollbar {
+    				opacity: 0;
+    				-webkit-transition: opacity var(--sidebar-transition-timing);
+    				transition: opacity var(--sidebar-transition-timing);
+    			}
+
+    			#side-bar .close-menu::before {
+    				z-index: 999;
+    			}
+
+    			#side-bar .close-menu::after {
+    				z-index: 998;
+    			}
+
+    			#side-bar:hover .close-menu::before {
+    				opacity: 0;
+    			}
+
+    			#side-bar:hover {
+    				left: 0;
+    				background-color: rgba(var(--swatch-menubg-color), 1);
+    				padding-right: 0;
+    			}
+
+    			#side-bar:hover::-webkit-scrollbar {
+    				opacity: 1;
+    			}
+
+    			#side-bar:hover~#main-content::before {
+    				width: -webkit-calc(100% - var(--sidebar-width-on-desktop));
+    				width: -moz-calc(100% - var(--sidebar-width-on-desktop));
+    				width: calc(100% - var(--sidebar-width-on-desktop));
+    				opacity: 1;
+    				pointer-events: all;
+    			}
+    		}
+    	}
+    }
+}
+
+.scp-image-block.block-right {
+    background: var(--stars-blue);
+}
 .scp-image-block img {
     min-width: 100%;
     border: 0.5rem solid transparent;
@@ -40,13 +288,21 @@
         </li>
       
         <li>
-          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/theme:present-malice/code/1&#39;);</code></pre>
+          <pre><code>@import url(&#34;https://scp-wiki-cn.wdfiles.com/local--code/theme%3Apresent-malice/1&#34;);</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Inline Styles</h2>
     <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display:none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:flex;</code></pre>
+        </li>
       
         <li>
           <pre><code>width:300px;</code></pre>
@@ -73,11 +329,7 @@
         </li>
       
         <li>
-          <pre><code>display: none</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
+          <pre><code>display:none</code></pre>
         </li>
       
     </ul>
@@ -107,14 +359,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
+    <a href="https://scp-wiki-cn.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki-cn:theme:black-highlighter-theme</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -141,14 +387,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:present-malice" target="_blank"><code>:scp-wiki:theme:present-malice</code></a>
+    <a href="https://scp-wiki-cn.wikidot.com/theme:present-malice" target="_blank"><code>:scp-wiki-cn:theme:present-malice</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:present-malice.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -170,31 +410,10 @@
   
 </li>
       
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-wiki:component:toggle-sidebar-bhl</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar-bhl.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes">
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
       
         <li>
           <pre><code>scp-image-block</code></pre>
@@ -206,6 +425,14 @@
       
         <li>
           <pre><code>scp-image-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
@@ -231,30 +458,280 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +theme]]
+    <pre><textarea class="page-source" readonly>[[iftags +版式]]
 [[module css]]
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
+@import url(&#34;https://cdn.jsdelivr.net/gh/Nu-SCPTheme/Black-Highlighter@gh-pages/css/min/normalize.min.css&#34;);
+@import url(&#34;https://cdn.jsdelivr.net/gh/Nu-SCPTheme/Black-Highlighter@gh-pages/css/min/black-highlighter.min.css&#34;);
 
+@supports((display: -ms-grid) or (display: grid)) {
+    @media only screen and (min-width: 769px) {
+    	#side-bar .close-menu {
+    		display: block;
+    		position: fixed;
+    		top: 0.25rem;
+    		left: 0.5rem;
+    		width: 3rem;
+    		opacity: 1;
+    		pointer-events: all;
+    	}
+
+    	#side-bar .close-menu::before,
+    	#side-bar .close-menu::after {
+    		content: &#34;&#34;;
+    		box-sizing: border-box;
+    		position: fixed;
+    		display: block;
+    		top: 0.25rem;
+    		left: 0.5rem;
+    		width: 3rem;
+    		height: 3rem;
+    		padding: 0;
+    		margin: 0;
+    		text-align: center;
+    		pointer-events: all;
+    		cursor: pointer;
+    		-webkit-transition:
+    			opacity var(--sidebar-transition-timing);
+    		-o-transition:
+    			opacity var(--sidebar-transition-timing);
+    		-moz-transition:
+    			opacity var(--sidebar-transition-timing);
+    		transition:
+    			opacity var(--sidebar-transition-timing);
+    	}
+
+    	#side-bar .close-menu::before {
+    		--mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; %3F%3E%3C!DOCTYPE svg PUBLIC &#39;-//W3C//DTD SVG 1.1//EN&#39; &#39;http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd&#39;%3E%3Csvg height=&#39;32px&#39; id=&#39;Layer_1&#39; style=&#39;enable-background:new 0 0 32 32;&#39; version=&#39;1.1&#39; viewBox=&#39;0 0 32 32&#39; width=&#39;32px&#39; xml:space=&#39;preserve&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39;%3E%3Cpath d=&#39;M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2 s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2 S29.104,22,28,22z&#39;/%3E%3C/svg%3E&#34;);
+    		z-index: -1;
+    		background-color: var(--toggle-icon-color, rgb(var(--sidebar-links-text))) !important;
+    		-webkit-mask: var(--mask);
+    		mask: var(--mask);
+    		-webkit-mask-repeat: no-repeat;
+    		mask-repeat: no-repeat;
+    		-webkit-mask-position: 50% 50%;
+    		mask-position: 50% 50%;
+    		-webkit-mask-size: 60%;
+    		mask-size: 60%;
+    	}
+
+    	#side-bar .close-menu::after {
+    		z-index: -2;
+    		background-color: var(--toggle-button-bg, rgb(var(--swatch-menubg-color))) !important;
+    		-webkit-border-radius: var(--toggle-roundness, 50%);
+    		-moz-border-radius: var(--toggle-roundness, 50%);
+    		border-radius: var(--toggle-roundness, 50%);
+    		border: var(--toggle-border-color, rgb(var(--swatch-border-color))) var(--toggle-border-width, 0.25rem) solid;
+    	}
+
+    	#side-bar:focus-within .close-menu::before,
+    	#side-bar:focus-within .close-menu::after {
+    		opacity: 0;
+    	}
+
+    	#side-bar {
+    		display: block;
+    		position: fixed;
+    		top: 0;
+    		left: -webkit-calc(var(--sidebar-width-on-desktop)*-1);
+    		left: -moz-calc(var(--sidebar-width-on-desktop)*-1);
+    		left: calc(var(--sidebar-width-on-desktop)*-1);
+    		z-index: 10;
+    		-webkit-transition:
+    			left var(--sidebar-transition-timing);
+    		-o-transition:
+    			left var(--sidebar-transition-timing);
+    		-moz-transition:
+    			left var(--sidebar-transition-timing);
+    		transition:
+    			left var(--sidebar-transition-timing);
+    		height: 100%;
+    		overflow-y: auto;
+    		overflow-x: hidden;
+    		margin-top: 0;
+    	}
+
+    	#side-bar:focus-within {
+    		left: 0;
+    	}
+
+    	#side-bar .side-block {
+    		margin-top: 1rem;
+    		background-color: rgb(0, 0, 0, 0);
+    		-webkit-border-radius: 0;
+    		-moz-border-radius: 0;
+    		border-radius: 0;
+    		border-left-width: 0px;
+    		border-right-width: 0px;
+    	}
+
+    	#main-content::before {
+    		content: &#34;&#34;;
+    		display: block;
+    		position: fixed;
+    		top: 0;
+    		right: 0;
+    		z-index: -1;
+    		opacity: 0;
+    		-webkit-transition:
+    			opacity var(--sidebar-transition-timing),
+    			width var(--sidebar-transition-timing);
+    		-o-transition:
+    			opacity var(--sidebar-transition-timing),
+    			width var(--sidebar-transition-timing);
+    		-moz-transition:
+    			opacity var(--sidebar-transition-timing),
+    			width var(--sidebar-transition-timing);
+    		transition:
+    			opacity var(--sidebar-transition-timing),
+    			width var(--sidebar-transition-timing);
+    		margin-left: var(--sidebar-width-on-desktop);
+    		background: rgba(var(--swatch-menubg-black-color), .3) 1px 1px repeat;
+    		padding-right: 0;
+    		width: 100%;
+    		height: 100vh;
+    		pointer-events: none;
+    		z-index: 99;
+    	}
+
+    	#side-bar:focus-within~#main-content::before {
+    		width: -webkit-calc(100% - var(--sidebar-width-on-desktop));
+    		width: -moz-calc(100% - var(--sidebar-width-on-desktop));
+    		width: calc(100% - var(--sidebar-width-on-desktop));
+    		opacity: 1;
+    		pointer-events: all;
+    	}
+
+    	#content-wrap {
+    		display: -webkit-box;
+    		display: -webkit-flex;
+    		display: -moz-box;
+    		display: -ms-flexbox;
+    		display: flex;
+    		-webkit-box-orient: horizontal;
+    		-webkit-box-direction: normal;
+    		-webkit-flex-direction: row;
+    		-moz-box-orient: horizontal;
+    		-moz-box-direction: normal;
+    		-ms-flex-direction: row;
+    		flex-direction: row;
+    		width: -webkit-calc(100vw - (100vw - 100%));
+    		width: -moz-calc(100vw - (100vw - 100%));
+    		width: calc(100vw - (100vw - 100%));
+    		min-height: -webkit-calc(100vh - -webkit-calc(var(--final-header-height-on-desktop, 10.125rem)));
+    		min-height: -moz-calc(100vh - -moz-calc(var(--final-header-height-on-desktop, 10.125rem)));
+    		min-height: calc(100vh - calc(var(--final-header-height-on-desktop, 10.125rem)));
+    		-webkit-box-flex: 2;
+    		-webkit-flex-grow: 2;
+    		-moz-box-flex: 2;
+    		-ms-flex-positive: 2;
+    		flex-grow: 2;
+    		height: auto;
+    		position: relative;
+    		margin: 0 auto;
+    		max-width: inherit;
+    	}
+
+    	#main-content {
+    		width: 100%;
+    		position: initial;
+    		max-height: 100%;
+    		padding: 2rem 1rem;
+    		width: 45.8rem;
+    		max-width: 45.8rem;
+    		margin: 0 auto;
+    	}
+
+    	@media not all and (min-resolution:.001dpcm) {
+    		@supports (-webkit-appearance:none) {
+    			#side-bar {
+    				-webkit-transition:
+    					left var(--sidebar-transition-timing),
+    					padding-right var(--sidebar-transition-timing),
+    					background-color var(--sidebar-transition-timing);
+    				-o-transition:
+    					left var(--sidebar-transition-timing),
+    					padding-right var(--sidebar-transition-timing),
+    					background-color var(--sidebar-transition-timing);
+    				-moz-transition:
+    					left var(--sidebar-transition-timing),
+    					padding-right var(--sidebar-transition-timing),
+    					background-color var(--sidebar-transition-timing);
+    				transition:
+    					left var(--sidebar-transition-timing),
+    					padding-right var(--sidebar-transition-timing),
+    					background-color var(--sidebar-transition-timing);
+    				padding-right: 0;
+    				background-color: rgb(0, 0, 0, 0);
+    				pointer-events: all;
+    				overflow-x: visible;
+    				overflow-y: visible;
+    				z-index: 999;
+    			}
+
+    			#side-bar::-webkit-scrollbar {
+    				opacity: 0;
+    				-webkit-transition: opacity var(--sidebar-transition-timing);
+    				transition: opacity var(--sidebar-transition-timing);
+    			}
+
+    			#side-bar .close-menu::before {
+    				z-index: 999;
+    			}
+
+    			#side-bar .close-menu::after {
+    				z-index: 998;
+    			}
+
+    			#side-bar:hover .close-menu::before {
+    				opacity: 0;
+    			}
+
+    			#side-bar:hover {
+    				left: 0;
+    				background-color: rgba(var(--swatch-menubg-color), 1);
+    				padding-right: 0;
+    			}
+
+    			#side-bar:hover::-webkit-scrollbar {
+    				opacity: 1;
+    			}
+
+    			#side-bar:hover~#main-content::before {
+    				width: -webkit-calc(100% - var(--sidebar-width-on-desktop));
+    				width: -moz-calc(100% - var(--sidebar-width-on-desktop));
+    				width: calc(100% - var(--sidebar-width-on-desktop));
+    				opacity: 1;
+    				pointer-events: all;
+    			}
+    		}
+    	}
+    }
+}
+
+.scp-image-block.block-right {
+    background: var(--stars-blue);
+}
 .scp-image-block img {
     min-width: 100%;
     border: 0.5rem solid transparent;
     box-sizing: border-box;
 }
 [[/module]]
-[[&gt;]]
-[[module Rate]]
-[[/&gt;]]
 
------
-++ What is this?
-[[div class=&#34;blockquote&#34;]]
-The Present Malice theme is a light theme for BHL visually based off of the 1996 survival horror videogame series //Resident Evil//. You can use it for any article... but preferably one with a sort of a &#34;cold scientists research - and exploit - the unimaginable&#34; vibe. Or if you like Resident Evil, of course.
+[[div_ style=&#34;display:none&#34;]]
+[[embed]]
+&lt;iframe src=&#34;//scp-wiki-cn.wdfiles.com/local--files/nav%3Aside/styleFrame.html?bhl&#34; name=&#34;typeFrame&#34;&gt;&lt;/iframe&gt;
+[[/embed]]
 [[/div]]
+
+[[div_ style=&#34;display:flex;&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/theme%3Ablack-highlighter-theme/black-highlighter-logo.svg]]
+[[/div]]
+
 ----
 
 [[=]]
-+ Theme Colors
++ 主题颜色
 [[/=]]
 
 [[include :scp-wiki:component:theme-squares -=-
@@ -267,15 +744,15 @@ The Present Malice theme is a light theme for BHL visually based off of the 1996
 | color2-info=#E6E6E6
 | color2-has-light-text=0
 | subcolor1-name= Light S.T.A.R.S Blue
-| subcolor1-variable=--light-stars-blue
+| subcolor1-variable=--menu-blue
 | subcolor1-info=#DCDAEB
-| subcolor1-has-light-text=1
+| subcolor1-has-light-text=0
 | subcolor2-name= Medium S.T.A.R.S Blue
-| subcolor2-variable=--medium-stars-blue
+| subcolor2-variable=--light-stars-blue
 | subcolor2-info=#525366
 | subcolor2-has-light-text=1
-| subcolor3-name= Dark S.T.A.R.S Blue
-| subcolor3-variable=--dark-stars-blue
+| subcolor3-name= S.T.A.R.S Blue
+| subcolor3-variable=--stars-blue
 | subcolor3-info=#000854
 | subcolor3-has-light-text=1
 | subcolor4-name=Wesker&#39;s Shades
@@ -295,149 +772,150 @@ The Present Malice theme is a light theme for BHL visually based off of the 1996
 ----
 
 [[div class=&#34;scp-image-block block-right&#34; style=&#34;width:300px;&#34;]]
-[[image https://scp-wiki.wdfiles.com/local--files/theme:present-malice/umbrella-scp.png]]
+[[image https://scp-wiki.wdfiles.com/local--files/theme%3Apresent-malice/umbrella-scp.png]]
 [[div class=&#34;scp-image-caption&#34; style=&#34;width:width:300px;;&#34;]]
-Signature Care Pharmaceuticals Logo
+[[span class=&#34;ruby&#34;]]特殊医疗制药[[span class=&#34;rt&#34;]]Signature Care Pharmaceuticals[[/span]][[/span]]标志
 [[/div]]
 [[/div]]
 
-++ Note: This is a Black Highlighter based theme. You will need to import the Black Highlighter theme as well in order to use this theme. [[[theme:black-highlighter-theme|To learn more go here]]].
+++ 注意：这是一个基于黑色标记笔的主题版式。若你想使用此版式，你还需要导入黑色标记笔版式。[[[theme:black-highlighter-theme|点击这里了解更多]]]。
 @@ @@
 @@ @@
 @@ @@
 @@ @@
 @@ @@
 
-On any wiki:
+在你的作品开头添加如下语法以应用此版式：
 
 [[div class=&#34;code&#34;]]
-@@[[include :scp-wiki:theme:black-highlighter-theme]]@@
+@@[[include :scp-wiki-cn:theme:black-highlighter-theme]]@@
 @@[[include :scp-wiki:component:toggle-sidebar-bhl]]@@
-@@[[include :scp-wiki:theme:present-malice]]@@
+@@[[include :scp-wiki-cn:theme:present-malice]]@@
 [[/div]]
 
-This theme also has code for [[*user Woedenaz]]&#39;s [[[component:toggle-sidebar-bhl|BHL Toggle Sidebar]]]. If you want it removed, simply remove its include above.
+此版式也包含 [[*user Woedenaz]] 的[[[component:toggle-sidebar-bhl|黑标切换侧边栏]]]代码。如果你想移除它，只需要删除上方相应的 include。
 
 -----
 
 [[div class=&#34;scp-image-block block-center&#34;]]
-[[image http://scp-wiki.wdfiles.com/local--files/theme%3Apresent-malice/pmal-2.PNG]]
+[[image https://scp-wiki-cn.wdfiles.com/local--files/theme%3Apresent-malice/centered-pmal.png]]
 [[div class=&#34;scp-image-caption&#34;]]
-Alternate Centered Header
+居中页眉
 [[/div]]
 [[/div]]
 
-This theme has code for [[*user Woedenaz]]&#39;s [[[component:centered-header-bhl|BHL Centered Header]]]. If you want to add it, simply add:
+此版式也包含 [[*user Woedenaz]] 的[[[component:centered-header-bhl|黑标居中页眉]]]代码。如果你想使用，只需要将：
 
 [[div class=&#34;code&#34;]]
 @@[[include :scp-wiki:component:centered-header-bhl |malice=--]]]@@
 [[/div]]
 
-after all of the includes above.
-@@ @@
-+ Examples
+添加至上方所有 include 之后。
 
-A horizontal rule can be created with 5 hyphens &#34;@@-----@@&#34; and extends across the whole page if it&#39;s not placed inside anything (eg a blockquote). The lines separating sections of this document are horizontal rules.
+@@ @@
+
++ 示例
+
+可通过五个连字符“@@-----@@”创建水平分割线。若它未被放在其他部件（诸如引用块）中，则会左右延伸贯穿页面。这种将文件分割为多个部分的线就是分割线。
 
 -----
 
-Titles can be created by putting between one and six plus &#34;+&#34; at the start of the line
+标题可通过在一行字起始处输入 1 至 6 个加号“+”来创建。
 
-[[collapsible show=&#34;+ Titles&#34; hide=&#34;- Titles&#34;]]
-+ First Title
+[[collapsible show=&#34;+ 标题&#34; hide=&#34;- 标题&#34;]]
++ 1 级标题
 
-++ Second Title
+++ 2 级标题
 
-+++ Third Title
++++ 3 级标题
 
-++++ Fourth Title
+++++ 4 级标题
 
-+++++ Fifth Title
++++++ 5 级标题
 
-++++++ Sixth Title
+++++++ 6 级标题
 [[/collapsible]]
 
 @@ @@
 
 [[tabview]]
-[[tab Tabulator]]
-Just use your imagination and pretend there&#39;s `Lorem Ipsum` here.
+[[tab 分页]]
+此为分页（tab view）。
 [[/tab]]
-[[tab Tabulation]]
-Hey look, more text here.
+[[tab 分页]]
+看，这有更多文字。
 
-How quaint.
+多么精巧绝伦。
 [[/tab]]
-[[tab Long Tab]]
-This is a long tab. It contains a lot of text.
+[[tab 长 Tab]]
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 
-This is a long tab. It contains a lot of text.
+这是一个长的 tab，它有很多文字。
 [[/tab]]
-[[tab Empty Tab]]
+[[tab 空 Tab]]
 [[/tab]]
-[[tab Empty Tab]]
+[[tab 空 Tab]]
 [[/tab]]
-[[tab Empty Tab]]
-&#34;I have //this//!&#34;
+[[tab 空 Tab]]
+“我有//这个//！”
 [[/tab]]
-[[tab Empty Tab]]
-something something Jill Sandwich
+[[tab 空 Tab]]
+某某某某吉尔三明治
 [[/tab]]
-[[tab Empty Tab]]
+[[tab 空 Tab]]
 [[/tab]]
-[[tab Empty Tab]]
-{{Will you use the ##0B8A00|**INK RIBBON**##? [YES/NO]}}
+[[tab 空 Tab]]
+{{你希望使用##097000|**打码色带**##吗？[是/否]}}
 [[/tab]]
 [[/tabview]]
-@@ @@
-&gt; This is a blockquote, created by putting &#34;&gt; &#34; at the start of each line.
-&gt;
-&gt; More text
+
+&gt; 这是一个引用块，在一行字的起始处加上“&gt; ”来创建。
+&gt; 
+&gt; 更多文字
 &gt; -----
-&gt; That&#39;s a horizontal rule
-&gt;
-&gt;&gt; Nested blockquotes
-&gt;&gt;&gt; And another[[footnote]] And here&#39;s a footnote! [[/footnote]]
-@@ @@
-||~ This is a ||~ table ||
-||You should know || how to make these ||
-||||already ||
+&gt; 一条分割线
+&gt; 
+&gt;&gt; 嵌套引用块
+&gt;&gt;&gt; 以及更多[[footnote]]这里是脚注！[[/footnote]]
+
+||~ 这是 ||~ 表格 ||
+||你应该老早 || 就知道怎么 ||
+||||做这个了吧 ||
 
 ----
 
 [[=]]
-[[span style=&#34;font-family: var(--header-font); font-size: 1.2em;&#34;]]The Header font is Anton.[[/span]]
-[[span style=&#34;font-family: var(--title-font); font-size: 1.2em;&#34;]]The Title font is Courier Prime.[[/span]]
-[[span style=&#34;font-family: var(--body-font); font-size: 1.2em;&#34;]]The Body font is Jost.[[/span]]
-[[span style=&#34;font-family: var(--mono-font); font-size: 1.2em;&#34;]]The Monospace font used is Anonymous Pro.[[/span]]
+[[span style=&#34;font-family: var(--header-font); font-size: 1.2em;&#34;]]页眉字体为 Anton / Noto Sans SC。[[/span]]
+[[span style=&#34;font-family: var(--title-font); font-size: 1.2em;&#34;]]标题字体为 Courier Prime / Noto Sans SC。[[/span]]
+[[span style=&#34;font-family: var(--body-font); font-size: 1.2em;&#34;]]正文字体为 DM Sans / Noto Sans SC。[[/span]]
+[[span style=&#34;font-family: var(--mono-font); font-size: 1.2em;&#34;]]等宽字为 Zilla Slab / 仿宋。[[/span]]
 [[/=]]
 
------
+----
 
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[div style=&#34;display: none&#34;]]
-[[include :scp-wiki:component:toggle-sidebar-bhl]]
-[[/div]]
+[[footnoteblock]]
+
+----
 
 [[code type=&#34;css&#34;]]
 
@@ -445,419 +923,343 @@ something something Jill Sandwich
    Present Malice Theme
    [2021 Wikidot Theme]
    by JackalRelated
-          greatly inspired by Resident Evil (1996)
+           and greatly inspired by Resident Evil (1996)
+
+   Toggle Sidebar BHL by Woedenaz
 */
- 
-@import url(&#39;https://fonts.googleapis.com/css2?family=Courier+Prime&amp;family=Anton&amp;family=Jost&amp;family=Anonymous+Pro&amp;display=swap&#39;);
- 
-:root {
+
+@import url(&#39;https://fonts.googleapis.com/css2?family=DM+Sans&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Anton&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Courier+Prime&amp;display=swap&#39;);
+
+:root:lang(cn) {
    --theme-base: &#34;black-highlighter&#34;;
    --theme-id: &#34;present-malice&#34;;
    --theme-name: &#34;Present Malice Theme&#34;;
- 
-   --logo-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme:present-malice/umbrella-scp.png&#34;);
-   --header-title: &#34;SCP FOUNDATION&#34;;
-   --header-subtitle: &#34;SECURE. CONTAIN. PROTECT.&#34;;
- 
-   --body-font: &#39;Jost&#39;, sans-serif;
-   --header-font: &#39;Anton&#39;, sans-serif;
-   --title-font: &#39;Courier Prime&#39;, sans-serif;
-   --mono-font: &#39;Anonymous Pro&#39;, monospace;
-   --UI-font: var(--body-font);
- 
-/* WHITE - GREY - BLACK */
-   --tyrant-white: 240, 235, 235;
-   --barry-magnum: 230, 230, 230;
-   --jill-grey: 198, 205, 215;
-   --pecking-crow: 40, 40, 40;
-   --weskers-shades: 20, 20, 20;
-   --mr-x: 5, 5, 5;
- 
-/* BLUE - GREEN */
-   --menu-blue: 132, 134, 163;
-   --light-stars-blue: 0, 13, 135;
-   --medium-stars-blue: 42, 45, 102;
-   --dark-stars-blue: 0, 8, 84;
-   --rpd-uniform: 30, 30, 56;
-   --jills-shoulderpads: 20, 20, 36;
-   --chris-green: 11, 138, 0;
-   --woman-drawing-water: 1, 71, 50;
- 
-/* RED - BROWN */
-   --chris-blood: 185, 0, 0;
+
+   --logo-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Apresent-malice/umbrella-scp.png&#34;);
+   --header-title: &#34;SCP基金会&#34;;
+   --header-subtitle: &#34;控制. 收容. 保护.&#34;;
+
+   --body-font: &#34;DM Sans&#34;, &#34;Noto Sans SC&#34;, sans-serif;
+   --header-font: &#34;Anton&#34;, &#34;Noto Sans SC&#34;, sans-serif;
+   --title-font: &#34;Courier Prime&#34;, &#34;Noto Sans SC&#34;, sans-serif;
+   --mono-font: &#34;Zilla Slab&#34;, &#34;仿宋&#34;, serif;
+
    --umbrella-red: 143, 0, 0;
-   --ashford-red: 84, 0, 0;
-   --barry-jacket: 165, 51, 51;
-   --rotten-flesh: 82, 54, 42;
+   --alternate-white: 240, 235, 235;
    --itchy-tasty: 126, 64, 38;
-   --rust-rot: 61, 31, 18;
- 
-/* THEME ASSIGNMENTS */
-   --white-monochrome: var(--tyrant-white);
+   --stars-blue: 0, 8, 84;
+   --light-stars-blue: 82, 83, 102;
+   --menu-blue: 220, 218, 235;
+   --chris-blood: 185, 0, 0;
+   --chris-green: 9, 112, 0;
+   --jill-grey: 198, 205, 215;
+   --barry-magnum: 230, 230, 230;
+   --barry-jacket: 165, 51, 51;
+   --weskers-shades: 20, 20, 20;
+
+   --white-monochrome: var(--jill-grey);
    --pale-gray-monochrome: var(--barry-magnum);
-   --light-gray-monochrome: var(--barry-magnum);
-   --gray-monochrome: var(--werskers-shades);
-   --dark-gray-monochrome: var(--jills-shoulderpads);
+   --light-gray-monochrome: var(--barry-jacket);
+   --gray-monochrome: var(--weskers-shades);
+   --dark-gray-monochrome: var(--menu-blue);
    --black-monochrome: var(--weskers-shades);
    --pale-accent: var(--barry-jacket);
    --bright-accent: var(--chris-blood);
    --medium-accent: var(--umbrella-red);
-   --dark-accent: var(--ashford-red);
- 
-   --swatch-topmenu-bg-color: var(--weskers-shades);
+   --dark-accent: var(--itchy-tasty);
+
+   --swatch-menubg-color: var(--light-stars-blue);
+   --swatch-menutxt-light-color: var(--alternate-white);
+   --swatch-menutxt-dark-color: var(--alternate-white);
+   --swatch-menubg-medium-color: var(--itchy-tasty);
+   --swatch-menubg-medium-dark-color: var(--weksers-shades);
+   --swatch-text-light: var(--alternate-white);
+
+   --rating-module-color: var(--umbrella-red);
+   --rating-module-button-color: var(--light-stars-blue);
+   --rating-module-text-color: var(--dark-monochrome);
+
+   --swatch-headerh1-color: var(--umbrella-red);
+   --swatch-headerh2-color: var(--alternate-white);
    --swatch-topmenu-border-color: var(--weskers-shades);
- 
-   --swatch-background: var(--jill-grey);
-   --swatch-border-color: var(--weskers-shades);
- 
-   --swatch-text-dark: var(--mr-x);
-   --swatch-text-light: var(--barry-magnum);
-   --swatch-text-general: var(--swatch-text-dark);
-   --swatch-important-text: var(--bright-accent);
- 
-   --swatch-menubg-color: var(--tyrant-white);
-   --swatch-menubg-light-color: var(--menu-blue);
-   --swatch-menubg-medium-color: var(--rpd-uniform);
-   --swatch-menubg-medium-dark-color: var(--jills-shoulderpads);
-   --swatch-menubg-dark-color: var(--jills-shoulderpads);
- 
-   --swatch-menutxt-dark-color: var(--mr-x);
-   --swatch-menutxt-light-color: var(--barry-magnum);
- 
-   --swatch-secondary-color: var(--jills-shoulderpads);
- 
-   --swatch-text-secondary-color: var(--tyrant-white);
-   --swatch-text-tertiary-color: var(--barry-magnum);
- 
-   --header-gradient-color-top: var(--weskers-shades);
-   --header-gradient-color-middle: var(--weskers-shades);
+   --swatch-topmenu-bg-color: var(--weskers-shades);
+   --swatch-primary: var(--umbrella-red);
+
    --header-gradient-color-bottom: var(--weskers-shades);
+   --header-gradient-color-middle: var(--weskers-shades);
+   --header-gradient-color-top: var(--weskers-shades);
    --background-gradient-distance: 0rem;
    --diagonal-stripes: linear-gradient(transparent 0);
- 
+
    --sidebar-transition-timing: 0.8s ease-in-out 0.1s;
- 
-   --hover-link-color: var(--chris-blood);
-   --link-color: var(--umbrella-red);
-   --newpage-color: var(--chris-blood);
-   --visited-link-color: var(--ashford-red);
- 
+
+   --hover-link-color: var(--umbrella-red);
+
    --toggle-button-bg: rgb(var(--weskers-shades));
    --toggle-border-color: rgb(var(--umbrella-red));
-   --toggle-icon-color: rgb(var(--tyrant-white));
+   --toggle-icon-color: rgb(var(--barry-magnum));
    --toggle-roundness: 0%;
+
 }
- 
+
+
 /* HEADER AND TOPBAR */
- 
-#header {
-   --swatch-headerh1-color: var(--chris-blood);
-   --swatch-headerh2-color: var(--tyrant-white);
- 
-   --search-icon-color: var(--barry-magnum);
-   --search-icon-hover-color: var(--tyrant-white);
-   --search-icon-hover-bg-color: var(--umbrella-red);
-   --search-textbox-text-color: 0,0,0,0;
- 
-   --search-icon-focus-color: var(--tyrant-white);
-   --search-icon-focus-bg-color: var(--umbrella-red);
-   --search-focus-outline-color: var(--chris-blood);
-   --search-focus-textbox-bg-color: var(--medium-stars-blue);
-   --search-focus-textbox-text-color: var(--barry-magnum);
- 
-   --login-line-divider-color: var(--chris-blood);
-   --login-username-color: var(--chris-blood);
-   --login-myaccount-color: var(--barry-magnum);
-   --login-myaccount-underline-color: var(--umbrella-red);
-   --login-myaccount-hover-bg-color: var(--mr-x);
-   --login-arrow-color: var(--barry-magnum);
- 
-   --login-dropdown-bg-color: var(--jills-shoulderpads);
-   --login-dropdown-bg-image: var(--jills-shoulderpads);
-   --login-dropdown-border-color: var(--mr-x);
-   --login-dropdown-text-color: var(--barry-magnum);
-   --login-dropdown-text-hover-color: var(--tyrant-white);
-   --login-dropdown-bg-hover-color: var(--chris-blood);
- 
-   --login-mobile-icon-color: var(--barry-magnum);
-   --login-mobile-icon-hover-color: var(--tyrant-white);
-   --login-mobile-icon-hover-bg-color: var(--chris-blood);
+#page-title {
+  text-align: center;
 }
 
-#header h1 a, #header h1 a:before {
-   --wght: 200;
-   font-weight: 200;
-}
- 
-#header h2 span::before {
-   margin-left: -0.2rem;
+#header h1 {
+  font-weight: 400;
 }
 
-@media only screen and (max-width: 320px) {
-   #header h2 span::before {
-       margin-left: -0.4rem;
-   }
+#header h1 a::before{
+  color: rgb(var(--chris-blood));
 }
 
-@media only screen and (max-width: 375px) {
-   #header h2 span::before {
-       margin-left: -0.7rem;
-   }
+#header h2 {
+  text-indent: -0.2em;
 }
-  
-#top-bar {
-   --topmenu-category-color: var(--barry-magnum);
-   --topmenu-category-hover-color: var(--tyrant-white);
-   --topmenu-category-hover-bg: var(--jills-shoulderpads);
-   --topmenu-hover-border-color: var(--umbrella-red);
- 
-   --mobile-topmenu-sidebar-button-color: var(--barry-magnum);
- 
-   --dropdown-bg-color: var(--rpd-uniform), 0.9;
-   --dropdown-border-color: var(--jills-shoulderpads), 0.5;
-   --dropdown-links-color: var(--barry-magnum);
-   --dropdown-links-hover-color: var(--tyrant-white);
-   --dropdown-links-hover-bg-color: var(--umbrella-red);
+
+#header-extra-div-1 {
+   --drop-shadow: none;
+   filter: drop-shadow(0rem 0rem 0rem var(--drop-shadow));
 }
- 
-/* BREADCRUMBS */
- 
-#breadcrumbs a:hover,
-.pseudocrumbs a:hover,
-#breadcrumbs a:active,
-.pseudocrumbs a:active {
-    color: rgb(var(--chris-blood));
-    text-decoration: none;
+
+@media only screen and (max-width: 768px) {
+    #header h2 {
+        text-indent: 0em;
+    }
 }
- 
-#breadcrumbs a:focus-within,
-.pseudocrumbs a:focus-within {
-    color: rgb(var(--umbrella-red));
-    text-decoration: none;
+
+#top-bar div.mobile-top-bar&gt;ul&gt;li&gt;ul&gt;li, #top-bar div.top-bar&gt;ul&gt;li&gt;ul&gt;li{
+  background: rgb(var(--stars-blue));
 }
- 
+
+#top-bar div.mobile-top-bar&gt;ul&gt;li:hover, #top-bar div.top-bar&gt;ul&gt;li:hover {
+   background: rgb(var(--stars-blue));
+}
+
+#top-bar div.mobile-top-bar&gt;ul&gt;li&gt;ul&gt;li:hover, #top-bar div.top-bar&gt;ul&gt;li&gt;ul&gt;li:hover {
+    background: rgb(var(--umbrella-red));
+}
+
+#login-status {
+   color: rgb(var(--chris-blood));
+}
+
+#login-status ul a{
+   background-color: rgb(var(--weskers-shades));
+   color: rgb(var(--chris-blood));
+}
+
+#account-options {
+   background-color: rgb(var(--weskers-shades));
+   color: rgb(var(--chris-blood));
+}
+
+#search-top-box input.empty{
+    color: rgb(var(--stars-blue));
+    background: rgb(var(--light-stars-blue));
+}
+
+#search-top-box input{
+    background: rgb(var(--stars-blue));
+}
+
+#search-top-box-input:focus, #search-top-box-input:hover {
+    background: rgb(var(--stars-blue));
+    color: rgb(var(--alternate-white));
+}
+
+#search-top-box-form input[type=submit] {
+    background: rgb(var(--umbrella-red));
+}
+
+#search-top-box-form input[type=submit]:focus, #search-top-box-form input[type=submit]:hover {
+    background: rgb(var(--chris-blood));
+}
+
+
+/* MISC. */
+.page-rate-widget-box{
+  background-color: rgb(var(--alternate-white));
+}
+
+hr {
+   background-color: rgb(0, 0, 0, 0);
+}
+
+
 /* SCROLLBAR AND SIDEBAR */
- 
 html,body {
-   scrollbar-color:
-     rgb(var(--weskers-shades))
-     rgb(var(--umbrella-red));
+  scrollbar-color:
+    rgb(var(--umbrella-red))
+    rgb(var(--weskers-shades));
 }
- 
+
 html::-webkit-scrollbar,
 body::-webkit-scrollbar {
-   width: 18px;
-   background: #transparent;
+  width: 18px;
+  background: #transparent;
 }
- 
+
 html::-webkit-scrollbar-track,
 body::-webkit-scrollbar-track {
-   background: rgb(var(--weskers-shades));
+  background: rgb(var(--weskers-shades));
 }
- 
+
 html::-webkit-scrollbar-thumb,
 body::-webkit-scrollbar-thumb {
-   background: rgb(var(--umbrella-red));
-   border: rgb(var(--umbrella-red)) 1px solid;
-   border-radius: 0px;
+  background: rgb(var(--umbrella-red));
+  border: rgb(var(--weskers-shades)) 1px solid;
+  border-radius: 0px;
 }
- 
+
 html::-webkit-scrollbar-thumb:hover,
 body::-webkit-scrollbar-thumb:hover {
-   background: rgb(var(--chris-blood));
+  background: rgb(var(--chris-blood));
 }
- 
-#side-bar {
-   --sidebar-bg-color: var(--jills-shoulderpads);
-   --sidebar-resources-bg-color: var(--ashford-red);
-   --sidebar-media-bg-color: var(---ashford-red);
- 
-   --sideblock-heading-bg-color: var(--umbrella-red);
-   --sideblock-heading-border-color: var(--chris-blood);
-   --sideblock-heading-text-color: var(--dress-white);
- 
-   --sidebar-border-color: var(--rpd-uniform);
-   --sidebar-subtest-color: var(--umbrella-red);
- 
-   --sidebar-links-text: var(--barry-magnum);
-   --sidebar-links-hover-bg-color: var(--chris-blood);
-   --sidebar-links-hover-text-color: var(--tyrant-white);
+
+#side-bar .heading {
+    background: rgb(var(--umbrella-red));
 }
- 
-hr {
-  background-color: rgb(var(--dark-stars-blue));
+
+.owindow .button-bar a{
+    background-color: rgb(var(--umbrella-red));
+    border: 1px solid rgb(var(--weskers-shades));
 }
- 
-.code {
-   background-color: rgb(var(--barry-magnum));
+
+.owindow .button-bar a:hover{
+    background-color: rgb(var(--stars-blue));
+    border: 1px solid rgb(var(--weskers-shades));
 }
- 
-.scp-image-block .scp-image-caption {
-   border-top: .0625rem outset rgba(var(--umbrella-red),1);
-   background-color: rgb(var(--barry-magnum));
-   color: var(--mr-x);
-}
- 
-.scp-image-block {
-   box-shadow: none;
-   border: none;
-}
- 
-/* MAIN CONTENT */
- 
+
+
+/* TABLES / TABS(YUINAVS) */
 .yui-navset .yui-nav a:hover, .yui-navset .yui-nav a:focus {
    filter: hue-rotate(0deg);
-}
- 
-#main-content {
-   --tabs-bg: var(--jills-shoulderpads);
-   --tabs-txt: var(--barry-magnum);
-   --tabs-hover-bg: var(--light-stars-blue);
-   --tabs-hover-txt: var(--tyrant-white);
-   --tabs-selected-bg: var(--chris-blood);
-   --tabs-selected-txt: var(--tyrant-white);
-   --tabs-selected-outline: var(--chris-blood);
-   --tabs-bottom-border-color: var(--light-stars-blue);
-   --tabs-content-bg-color: var(--tyrant-white);
-   --tabs-content-border-color: var(--jills-shoulderpads);
- 
-   --tables-header-bg: var(--chris-green);
-   --tables-header-txt: var(--weskers-shades);
-   --tables-border: var(--woman-drawing-water);
-   --tables-body-bg: var(--rpd-uniform), 0.25;
- 
-   --toc-header-bg-color: var(--umbrella-red);
-   --toc-header-text-color: var(--barry-magnum);
-   --toc-header-text-hover-color: var(--tyrant-white);
-   --toc-body-bg-color: var(--rpd-uniform);
-   --toc-body-link-color: var(--barry-magnum);    
- 
-   --ui-icon-color: var(--barry-magnum);
-   --ui-icon-bg: var(--jills-shoulderpads);
-   --ui-icon-hover-color: var(--tyrant-white);
-   --ui-icon-hover-bg: var(--chris-blood);
-
-   --editor-icon-hover-color: var(--tyrant-white);
- 
-   --blockquote-bg-color: var(--tyrant-white), 0.35;
-   --blockquote-border-color: var(--rust-rot);
-   --blockquote-colorbar-color: var(--itchy-tasty);
- 
-   --footnotes-footer-bg-color: var(--menu-blue);
-   --footnotes-footer-colorbar-color: var(--umbrella-red);
-   --footnotes-footer-title-bg-color: var(--umbrella-red);
-   --footnotes-footer-title-text-color: var(--barry-magnum);
- 
-   --pagetags-title-bg: var(--weskers-shades);
-   --pagetags-title-text: var(--barry-magnum);
-   --pagetags-text-color: var(--mr-x);
-   --pagetags-text-hover-color: var(--tyrant-white);
-   --pagetags-text-hover-bg-color: var(--chris-blood);
+   color: rgb(var(--alternate-white));
 }
 
-.blockquote hr, div.blockquote hr {
-   background-color: rgb(var(--rotten-flesh));
+.yui-navset .yui-content {
+   background-color: rgb(var(--alternate-white));
+   border-color: rgb(var(--weskers-shades));
 }
- 
-table.wiki-content-table th {
-   font-family: var(--title-font);
+
+.yui-navset .yui-nav .selected a, .yui-navset .yui-nav .selected a em {
+    color: rgb(var(--barry-magnum));
 }
- 
-:root {
-   --hoverblock-header-bg: var(--chris-blood);
-   --hoverblock-header-txt: var(--tyrant-white);
-   --hoverblock-footer-txt: var(--barry-magnum);
- 
-   --ui-button-hover-bg: var(--chris-blood);
-   --ui-button-hover-txt: var(--tyrant-white);
 
-   --modal-body-header-text: var(--barry-magnum);
-   --modal-body-text: var(--barry-magnum);
+table.wiki-content-table th, table.wiki-content-table tr {
+    border: .0625rem solid rgba(var(--menu-blue),.25)!important;
+}
 
-   --rating-module-button-plus-color: var(--chris-green);
-   --rating-module-button-negative-color: var(--chris-blood);
-   --rating-module-button-cancel-color: var(--itchy-tasty);
-   --rating-module-button-credit-color: var(--tyrant-white);
-   --rating-module-bg-color: var(--pecking-crow);
-   --rating-module-text-color: var(--barry-magnum);
-   --rating-module-text-hover-color: var(--tyrant-white);	
- }
- 
+table.wiki-content-table td {
+    border: 1px solid #141414;
+}
+
+table.wiki-content-table {
+    background-color: rgba(var(--menu-blue), .5);
+}
+
+table.form td div.sub, form div.sub {
+    color: rgb(var(--umbrella-red));
+}
+
+
 /* FOOTERS AND BELOW */
- 
-.page-source {
-   background: rgb(var(--tyrant-white));
-   font-family: var(--mono-font);
-}
- 
-#lock-info, div.note, input.checkbox, input.text, textarea {
-   font-family: var(--body-font);
+#footer {
+    color: rgb(var(--chris-blood, 66, 66, 72));
+    background: rgb(var(--jill-grey, 100, 3, 15));
 }
 
-form#edit-page-form #edit-page-textarea {
-   background-color: rgb(var(--barry-magnum));
+.footnotes-footer{
+   color: rgb(var(--weskers-shades));
+   background-color: rgba(var(--menu-blue), .5);
 }
- 
-#footer {
-   --footer-bg-color: var(--jills-shoulderpads);
-   --footer-text-color: var(--barry-magnum);
-   --footer-link-color: var(--barry-magnum);
-   --footer-link-hover-color: var(--tyrant-white);
-   --footer-link-hover-bg-color: var(--chris-blood);
+
+div#page-options-bottom-2&gt;a, div#page-options-bottom&gt;a {
+   color: rgb(var(--alternate-white));
+   background-color: rgb(var(--umbrella-red));
+   border: .125rem solid rgba(var(--weskers-shades),1)
 }
- 
-#license-area {
-   --license-bg-color: var(--weskers-shades);
-   --license-text-color: var(--barry-magnum);
-   --license-link-color: var(--barry-magnum);
-   --license-link-hover-color: var(--tyrant-white);
-   --license-link-hover-bg-color: var(--chris-blood);
+
+div#page-options-bottom-2 &gt; a:active, div#page-options-bottom-2 &gt; a:hover,
+div#page-options-bottom &gt; a:active, div#page-options-bottom &gt; a:hover {
+  background-color: rgb(var(--stars-blue));
 }
- 
+
+.page-source {
+    background: rgb(var(--barry-magnum));
+}
+
+form#edit-page-form {
+    background-color: rgba(var(--menu-blue), 1);
+}
+
+.change-textarea-size a {
+    background-color: rgba(var(--chris-green));
+}
+
+#lock-info, div.note, input.checkbox, input.text, textarea {
+    scrollbar-color: rgba(var(--umbrella-red), 1) rgba(var(--weskers-shades), 1);
+    border: .0625rem solid rgba(var(--swatch-border-color),.25);
+    background-color: rgb(var(--alternate-white));
+    color: rgb(var(--swatch-text-general));
+    font-family: var(--body-font);
+}
+
+div.buttons.alignleft&gt;input {
+    background-color: rgb(var(--umbrella-red));
+}
+
+
 /* TOGGLE SIDEBAR (BHL) CHANGES */
- 
-@supports((display: -ms-grid) or (display: grid)) {
+
+    @supports((display: -ms-grid) or (display: grid)) {
        @media only screen and (min-width: 769px) {
            #main-content::before {
-               background: rgba(var(--dark-stars-blue), .45) 1px 1px repeat;
+               background: rgba(var(--stars-blue), .45) 1px 1px repeat;
            }
         }
     }
- 
-#side-bar:hover,
-#side-bar:active {
-    scrollbar-color: 
-        rgb(var(--umbrella-red)
-        rgb(var(--weskers-shades), 1);
-    border-color: rgba(var(--umbrella-red), 1);
-}
- 
-#side-bar::-webkit-scrollbar-track,
-#side-bar:hover::-webkit-scrollbar-track {
-   background-color: rgb(var(--weskers-shades);
-}
- 
-#side-bar::-webkit-scrollbar-thumb {
-   background-color: rgb(var(--umbrella-red));
-}
- 
-#side-bar:hover::-webkit-scrollbar-thumb {
-   background-color: rgb(var(--chris-blood));
+
+    #side-bar::-webkit-scrollbar-track,
+    #side-bar:hover::-webkit-scrollbar-track {
+        background-color: rgba(var(--weskers-shades), 0);
+    }
+
+    #side-bar::-webkit-scrollbar-thumb {
+        background-color: rgb(var(--stars-blue));
+    }
+
+    #side-bar:hover::-webkit-scrollbar-thumb {
+        background-color: rgb(var(--chris-blood));
+    }
 }
 
 [[/code]]
 [[/iftags]]
 
-[[module CSS]]
-@import url(&#39;https://scp-wiki.wdfiles.com/theme:present-malice/code/1&#39;);
-[[/module]]</textarea></pre>
+[[module css]]
+@import url(&#34;https://scp-wiki-cn.wdfiles.com/local--code/theme%3Apresent-malice/1&#34;);
+[[/module]]
+
+[[div_ style=&#34;display:none&#34;]]
+[[embed]]
+&lt;iframe src=&#34;//scp-wiki-cn.wdfiles.com/local--files/nav%3Aside/styleFrame.html?%3Aroot%7B--umbrella-red%3A%20143%2C0%2C0%3B--alternate-white%3A%20240%2C235%2C235%3B--itchy-tasty%3A%20126%2C64%2C38%3B--chris-blood%3A%20185%2C0%2C0%3B--jill-grey%3A%20198%2C205%2C215%3B--weskers-shades%3A%2020%2C20%2C20%3B--white-monochrome%3A%20var(--jill-grey)%3B--black-monochrome%3A%20var(--weskers-shades)%3B--bright-accent%3A%20var(--chris-blood)%3B--medium-accent%3A%20var(--umbrella-red)%3B--dark-accent%3A%20var(--itchy-tasty)%3B--swatch-menutxt-light-color%3A%20var(--alternate-white)%3B--swatch-menutxt-dark-color%3A%20var(--alternate-white)%3B%7D.side-block%20.heading%7Bbackground%3A%20rgb(var(--umbrella-red))%3B%7D&#34; name=&#34;styleFrame&#34;&gt;&lt;/iframe&gt;
+[[/embed]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 15:46:28.182298.</em>
+    <em>Last updated 2022-05-18 16:02:16.543071.</em>
   
 </div>
 </body>

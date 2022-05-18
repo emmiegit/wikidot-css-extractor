@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>音速挑战者播放器:code</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">音速挑战者播放器:code</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/fragment:sonic-challenger-player-0" target="_blank">音速挑战者播放器:code</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[!--
+[[code type=&#34;CSS&#34;]]
+*{margin: 0px; padding: 0px;}
+body {
+  text-align: center;
+}
+.box {
+  width: 96.5%;
+  max-width: 450px !important;
+  height: 660px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #606060;
+  color: #A0A0A0;
+}
+.lrc {
+  position: relative;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.lrc::-webkit-scrollbar {
+  display: none;
+}
+.lrc li {
+  display: block;
+  width: calc(100% - 40px);
+  min-height: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 30px;
+}
+.z-crt {
+  color: #FFF;
+}
+.ctrl {
+  font-size: 50px;
+  color: #555;
+  cursor: pointer;
+}
+[[/code]]
+
+[[code type=&#34;JavaScript&#34;]]
+var _eul = document.getElementById(&#34;lrc&#34;);
+var _line = 0;
+var _freq = 20; // 刷新率
+
+// 当前歌词行_lineno滚动
+function _go(_lineno){
+  var _time = _lis[_lineno].offset;
+  if (_time &gt; 0) {
+    setTimeout(_go.bind(this, _lineno+1), _time);
+  } else {
+    document.getElementById(&#34;start&#34;).style.display=&#34;inline&#34;;
+  };
+
+  // 高亮下一行歌词
+  _eul.children[_line].setAttribute(&#34;class&#34;, &#34;&#34;);
+  _line = _lineno;
+  var _ep = _eul.children[_lineno];
+  _ep.setAttribute(&#34;class&#34;, &#34;z-crt&#34;);
+
+  // 计算滚动位置
+  var _scrollTop;
+  if (_ep.offsetTop &lt; _eul.clientHeight*.5){
+    _scrollTop = 0;
+  } else if (_ep.offsetTop &gt; (_eul.scrollHeight - _eul.clientHeight*.5)){
+    _scrollTop = _eul.scrollHeight - _eul.clientHeight;
+  } else {
+    _scrollTop = _ep.offsetTop - _eul.clientHeight*.5;
+  };
+
+  // 当前歌词行超出显示区域范围，直接定位
+  if (_eul.scrollTop &gt; (_scrollTop + _eul.clientHeight*.5) || (_eul.scrollTop + _eul.clientHeight*.5) &lt; _scrollTop){
+    _eul.scrollTop = _scrollTop;
+  } else { // 滚动
+    var _step = Math.ceil(Math.abs(_eul.scrollTop - _scrollTop)/(600/_freq));
+    _scroll(_eul.scrollTop, _scrollTop, _step);
+  };
+};
+
+// 歌词滚动
+function _scroll(_crt, _dst, _step){
+  if(Math.abs(_crt - _dst) &lt; _step || _eul.scrollTop &lt; Math.min(_crt, _dst) || _eul.scrollTop &gt; Math.max(_crt, _dst)){
+    return;
+  };
+  if(_crt &lt; _dst){
+    _eul.scrollTop += _step;
+    _crt += _step;
+  } else {
+    _eul.scrollTop -= _step;
+    _crt -= _step;
+  };
+  setTimeout(_scroll.bind(this, _crt, _dst, _step), _freq);
+};
+
+function _start(){
+  _go(11);
+  document.getElementById(&#34;start&#34;).style.display=&#34;none&#34;;
+};
+[[/code]]
+
+[[code type=&#34;JavaScript&#34;]]
+(function(){
+for (var i = 0; i &lt; _lis.length; i++) {
+  var _eli = document.createElement(&#34;li&#34;);
+  _eli.innerText = _lis[i].text;
+  _eul.appendChild(_eli);
+};
+})();
+[[/code]]
+--]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:08.148749.</em>
+  
+</div>
+</body>

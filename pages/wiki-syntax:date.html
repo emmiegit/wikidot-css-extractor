@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>日付</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">日付</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/wiki-syntax:date" target="_blank">日付</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>padding:0 0 0 1em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:none;width:100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-collapse:collapse;border-top:2px solid;border-bottom:2px solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>padding:3px 1em 3px 0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-top:1px solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>padding:3px 1em 3px 0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-top:1px solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>padding:3px 1em 3px 0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-top:1px solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>padding:3px 1em 3px 0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-top:1px solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>padding:3px 1em 3px 0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:none;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>odate</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>odate</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>pWikidotにおけるいくつかのページ（フォーラム、プライベートメッセージ、最新版更新日　等）では（カーソルが重ねられた際、もしくは直接記述された形で）経過時間を自動的に計算する日付及びタイムスタンプを使用しています。例えば
+* [[date 1237135440 format=&#34;%e %b %Y, %H:%M %Z|agohover&#34;]] (カーソルをこの日付の上に置き表示される文章を見てください) もしくは
+* [[date 1237135440 format=&#34;%c&#34;]]
+
+もしあなたが自分のページに「どれぐらい時間が経ったか」を自動的に伝える日付を掲載したいのであれば、ここであなたにその方法を教えます。
+
+++ [[# how]] 使い方
+
+下記の構文を要します:
+&gt; {{@@[[date@@ //timestamp// &lt;format=&#34;//format//@@&lt;|agohover&gt;&#34;&gt;]]@@}}
+
+構文
+* &lt; ... &gt; 任意のパラメータを意味します
+* {{//timestamp//}} は1970年1月1日から任意の日付までの秒数を記述します。特定の日付をこの数字に変換したい場合は[#wizard Code Wizard]以下をご参照ください。
+* {{//format//}}は//[http://community.wikidot.com/howto:frontforum-date-variable#modifiers %modifiers]//を含み得る、実際に表示される日付もしくは時間に変換される任意の文字列です。{{//format//}} を指定しない場合は&#34;%e&#39;&#39;が標準で設定されます。
+* {{|agohover}} は{{//format//}}で規定した文章が表示されている時、その文章にカーソルが重なった時に表示されるホバーテキスト (&#34;//時間に応じて// 秒/分/時間/日 ago&#34;) を指定します。
+
+++ [[# wizard]][[# example]]Code Wizard[[footnote]] 原文に掲載されていた[http://www.wikidot.com/doc-wiki-syntax:date#wizard Code Wizard]を[[*user C-take]]が改良したものです[[/footnote]]
+自身のページに特定の日付からの経過日数を表示する際に必要なコードを見つけ出します:
+[[html]]
+&lt;head&gt;
+    &lt;!--Created by ErichSteinboeck 2008--&gt;
+    &lt;style type=&#34;text/css&#34;&gt;
+    	@import url(&#39;/common--theme/base/css/style.css&#39;);
+    	#main-content {margin: 0; padding: 0;}
+    &lt;/style&gt;
+    &lt;script type=&#34;text/javascript&#34; src=&#34;/common--javascript/init.combined.js&#34;&gt;&lt;/script&gt;
+    &lt;script type=&#34;text/javascript&#34; src=&#34;/common--javascript/WIKIDOT.combined.js&#34;&gt;&lt;/script&gt;
+    &lt;script  type=&#34;text/javascript&#34;&gt;
+    OZONE.request.timestamp = Math.floor(new Date().getTime()/1000);
+    OZONE.request.date = new Date();
+
+&lt;!-- Begin
+    window.addEventListener(&#34;message&#34;,function(event){
+    	var checkC = event.data.indexOf(&#34;,&#34;);
+    	if(checkC &lt; 0){
+    		return;
+    	}
+    	if(event.data.substring(0,checkC) == &#34;response&#34;)
+    	{
+    		document.getElementById(&#39;output&#39;).innerHTML = event.data.substring(checkC+1,event.data.length);
+    		window.parent.window.subDate.window.postMessage(&#34;&#34;,&#34;*&#34;);
+    	}
+    });
+    
+var initializeRun = true;
+//-- Load dropdown lists with values ----------------------------
+function loadLists() {
+
+  //-- Populate a dropdown list ---------------------------------
+  function loadList(options, from, to, minLength, selected) {
+
+    var text;
+
+    for (var i = from; i &lt; to+1; i++) {
+      text = i.toString();
+      if (text.length&lt;minLength)
+        text = &#39;0000&#39;.substr(1,minLength-text.length)+text;
+      options[i-from] = new Option(text);
+    }
+    options[selected-from].selected = true;
+  }
+
+  // Clear &#34;no javascript&#34; warning
+  document.getElementById(&#39;no_js&#39;).firstChild.data = &#39;&#39;;
+
+  // Load all dropdown lists and select current date/time
+  var current=new Date();
+  var months = [&#34;1月&#34;, &#34;2月&#34;, &#34;3月&#34;, &#34;4月&#34;, &#34;5月&#34;, &#34;6月&#34;, &#34;7月&#34;, &#34;8月&#34;, &#34;9月&#34;, &#34;10月&#34;, &#34;11月&#34;, &#34;12月&#34;];
+
+  with (document.timestamp) {
+    for (var i = 0; i &lt; 12; i++)
+      month.options[i] = new Option(months[i]);
+    month.options[current.getMonth()].selected = true;
+    loadList(day.options, 1, 31, 1, current.getDate());
+    loadList(year.options, 1960, current.getFullYear(), 4, current.getFullYear());
+    loadList(hour.options, 0, 23, 2, current.getHours());
+    loadList(minute.options, 0, 59, 2, current.getMinutes());
+  }
+
+  adaptDayList(current.getMonth(), current.getFullYear());
+}
+
+//-- Adapt &#34;day&#34; dropdown list --------------------------------
+function adaptDayList(month, year) {
+
+  // calculate last day of month/year
+  var dayOne = new Date(month&lt;12?year:year+1, month&lt;12?month+1:1, 1);
+  var maxDays = new Date(dayOne.getTime()-1000).getDate();
+
+  with (document.timestamp.day) {
+    if (selectedIndex &gt; maxDays-1)
+      selectedIndex = maxDays-1;
+    for (var i = options.length; i &lt; maxDays; i++)
+      options[i] = new Option(i+1);
+    if (options.length != maxDays)
+      options.length = maxDays;
+  }
+}
+
+//-- Calculate timestamp from selection --------------------------------
+function calculate() {
+
+  // Calculate timestamp
+  with (document.timestamp) {
+    adaptDayList(month.selectedIndex, year.selectedIndex);
+    var ts = new Date(year.selectedIndex+1960, month.selectedIndex, day.selectedIndex+1, hour.selectedIndex, minute.selectedIndex);
+  }
+
+  // Write timestamp to code &amp; output
+  var time = Math.floor(ts.getTime()/1000);
+  var text;
+
+  text = time;
+  if (document.formatstring.format.value != &#39;&#39;)
+    text = time + &#39; format=&#34;&#39; + document.formatstring.format.value  + &#39;&#34;&#39;;
+  document.getElementById(&#39;code&#39;).firstChild.data = text;
+
+  text = time;
+  if (document.formatstring.format.value != &#39;&#39;){
+    text = time + &#39;|&#39; + document.formatstring.format.value;
+    }
+    if( initializeRun){
+    	document.getElementById(&#39;output&#39;).firstChild.data = text;
+    }else{
+    	window.parent.window.subDate.window.postMessage(&#34;request,&#34;+text,&#34;*&#34;);
+    }
+  &lt;!--CODE TO UPDATE THE CHANGED ODATE GOES HERE--&gt;
+}
+
+//-- Initial load for dropdown lists and initial calculate() ---------------
+function initialize() {
+  loadLists();
+changeTableStyle();
+  document.formatstring.format.value = &#39;%Y年 %m月 %d日, %H:%M %Z|agohover&#39;
+  calculate();
+ initializeRun = false;
+}
+
+        function isUseSmartPhone(){
+            return (((navigator.userAgent.indexOf(&#39;iPhone&#39;) &gt; 0 &amp;&amp; navigator.userAgent.indexOf(&#39;iPad&#39;) == -1) || navigator.userAgent.indexOf(&#39;iPod&#39;) &gt; 0 || navigator.userAgent.indexOf(&#39;Android&#39;) &gt; 0));
+        }
+
+function changeTableStyle(){
+    var table = document.getElementById(&#34;displayTable&#34;);
+    var resultTable = document.getElementById(&#34;ResultTable&#34;);
+    		var SelectButton = document.getElementById(&#34;forSmartPhone&#34;);
+    	SelectButton.parentNode.removeChild(SelectButton);
+    var isUserPhone = isUseSmartPhone();
+    if(isUserPhone){
+    	var formatArea = document.getElementById(&#34;formatArea&#34;);
+    	formatArea.removeAttribute(&#34;size&#34;);
+    	formatArea.setAttribute(&#34;style&#34;,&#34;width:100%;&#34;);
+    	var newStyle = &#34;width:100%;table-layout:fixed;font-break:break-all;&#34;;
+    	table.setAttribute(&#34;style&#34;,newStyle);
+    	var oldStyle = resultTable.getAttribute(&#34;style&#34;);
+    	newStyle = newStyle+oldStyle;
+    	resultTable.removeAttribute(&#34;style&#34;);
+    	resultTable.setAttribute(&#34;style&#34;,newStyle);
+    	replasticTable(&#34;SlectDate&#34;);
+    	replasticTable(&#34;DecideFormat&#34;);
+    	var ChildOfChild = new Array();
+    	var trParent = resultTable.getElementsByTagName(&#34;tr&#34;)[0].parentNode;
+    	while(trParent.children.length &gt; 0){
+    		var tmpChild = trParent.children[0].children;
+    		for(var j = 0;j &lt; 2;j++){
+    			ChildOfChild.push(tmpChild[j]);
+    		}
+    		trParent.removeChild(trParent.children[0]);
+    	}
+    	for(var i = 0;i&lt;4;i++){
+    		var Newtr = document.createElement(&#34;tr&#34;);
+    		var index = 0;
+    		switch(i){
+    			case 1:
+    				index = 2;
+    			break;
+    			case 2:
+    				index = 1;
+    			break;
+    			case 3:
+    				index = 3;
+    			break;
+    		}
+    		ChildOfChild[index].setAttribute(&#34;colspan&#34;,&#34;2&#34;);
+    		if(index == 2){
+    			SelectButton.style.display = &#34;block&#34;;
+    			ChildOfChild[index].appendChild(SelectButton);
+    		}
+    		Newtr.appendChild(ChildOfChild[index]);
+
+    		trParent.appendChild(Newtr);
+
+    	}
+
+    }else{
+var codeResult = document.getElementById(&#34;codeResult&#34;);
+codeResult.parentNode.appendChild(SelectButton);
+SelectButton.style.display = &#34;block&#34;;
+}
+
+}
+
+function replasticTable(idName){
+var TargetParent = document.getElementById(idName);
+var ChildrenNode = TargetParent.children;
+ChildrenNode[0].setAttribute(&#34;colspan&#34;,&#34;2&#34;);
+ChildrenNode[1].setAttribute(&#34;colspan&#34;,&#34;2&#34;);
+var AfterChild = ChildrenNode[1];
+TargetParent.removeChild(ChildrenNode[1]);
+
+var NewTr = document.createElement(&#34;tr&#34;);
+NewTr.appendChild(AfterChild);
+TargetParent.after(NewTr);
+}
+
+//  End --&gt;
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body id=&#34;html-body&#34; onload=&#34;initialize();&#34;&gt;
+&lt;div id=&#34;container-wrap&#34;&gt;
+&lt;div id=&#34;container&#34;&gt;
+&lt;div id=&#34;content-wrap&#34;&gt;
+&lt;div id=&#34;main-content&#34;&gt;
+&lt;div id=&#34;page-content&#34;&gt;
+&lt;table id=&#34;displayTable&#34;&gt;&lt;tr id=&#34;SlectDate&#34;&gt;
+&lt;td&gt;&lt;ul&gt;&lt;li&gt;必要な日付もしくは時間を選択してください&lt;/li&gt;&lt;/ul&gt;
+&lt;/td&gt;&lt;td style=&#34;padding:0 0 0 1em&#34;&gt;
+&lt;form name=&#34;timestamp&#34; onsubmit=&#34;return false;&#34;&gt;
+&lt;select name=&#34;year&#34; onkeyup=&#34;calculate();&#34; onchange=&#34;calculate();&#34;&gt;
+&lt;option&gt;2008&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name=&#34;month&#34; onkeyup=&#34;calculate();&#34; onchange=&#34;calculate();&#34;&gt;
+&lt;option&gt;Aug&lt;/option&gt;
+&lt;/select&gt;
+&lt;select name=&#34;day&#34; onkeyup=&#34;calculate();&#34; onchange=&#34;calculate();&#34;&gt;
+&lt;option&gt;27&lt;/option&gt;
+&lt;/select&gt;
+&amp;nbsp;
+&lt;select name=&#34;hour&#34; onkeyup=&#34;calculate();&#34; onchange=&#34;calculate();&#34;&gt;
+&lt;option&gt;20&lt;/option&gt;
+&lt;/select&gt;:&lt;select name=&#34;minute&#34; onkeyup=&#34;calculate();&#34; onchange=&#34;calculate();&#34;&gt;
+&lt;option&gt;51&lt;/option&gt;
+&lt;/select&gt;
+&lt;/form&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr id=&#34;DecideFormat&#34;&gt;
+&lt;td&gt;&lt;ul&gt;&lt;li&gt;更に&lt;em&gt;&lt;a href=&#34;http://community.wikidot.com/howto:frontforum-date-variable#modifiers&#34; target=&#34;_parent&#34;&gt;format&lt;/a&gt;&lt;/em&gt;を記入してください&lt;/li&gt;&lt;/ul&gt;&lt;/td&gt;
+&lt;td style=&#34;padding:0 0 0 1em&#34;&gt;
+&lt;form name=&#34;formatstring&#34; onsubmit=&#34;return false;&#34;&gt;
+&lt;input name=&#34;format&#34; type=&#34;text&#34; size=&#34;50&#34; id=&#34;formatArea&#34; onkeyup=&#34;calculate();&#34; value=&#34;%Y年 %m月 %d日, %H:%M %Z|agohover&#34;&gt;
+&lt;/form&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;span id=&#34;no_js&#34;&gt;JavaScriptを有効にしてください …&lt;/span&gt;
+&lt;br&gt;
+&lt;table style=&#34;border-collapse:collapse;border-top:2px solid;border-bottom:2px solid;table-layout:fixed;width:100%;&#34; id=&#34;ResultTable&#34;&gt;
+&lt;tr&gt;
+&lt;td style=&#34;padding:3px 1em 3px 0&#34;&gt;&lt;em&gt;&lt;strong&gt;構文…&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;&lt;strong&gt;表示 …&lt;/strong&gt;&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr style=&#34;border-top:1px solid&#34;&gt;
+&lt;td style=&#34;padding:3px 1em 3px 0&#34;&gt;
+&lt;div class=&#34;code&#34; id=&#34;codeResult&#34;&gt;
+&lt;pre&gt;
+&lt;code&gt;[[date &lt;span id=&#34;code&#34;&gt;format=&#34;1219863060%Y年 %m月 %d日, %H:%M %Z|agohover&#34;&lt;/span&gt;]]&lt;/code&gt;
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td&gt;&lt;span id=&#34;output&#34; class=&#34;odate&#34;&gt;1219863060|%Y年 %m月 %d日, %H:%M %Z|agohover&lt;/span&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div id=&#34;forSmartPhone&#34; style=&#34;display:none;width:100%;&#34;&gt;
+&lt;button style=&#34;width:100%;&#34; onclick=&#34;(function(){
+var oldSelect = window.getSelection();
+while(oldSelect.rangeCount &gt; 0){
+oldSelect.removeRange(oldSelect.getRangeAt(0));
+}
+var code = document.getElementById(&#39;codeResult&#39;);
+var range = document.createRange();
+range.selectNodeContents(code);
+window.getSelection().addRange(range);
+})()&#34;&gt;構文全選択&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div style=&#34;display:none&#34; id=&#34;dummy-ondomready-block&#34;&gt;&lt;/div&gt;
+&lt;/body&gt;
+[[/html]]
+表示されたコードをコピーして自身のページに貼り付けてください。
+
+++ [[# examples]]構文例
+[[table style=&#34;border-collapse:collapse;border-top:2px solid;border-bottom:2px solid&#34;]]
+[[row]]
+[[cell style=&#34;padding:3px 1em 3px 0&#34;]]//**記述例**//[[/cell]][[cell]]//**表示**//[[/cell]]
+[[/row]]
+[[row style=&#34;border-top:1px solid&#34;]]
+[[cell style=&#34;padding:3px 1em 3px 0&#34;]]{{@@[[date 1216153821]]@@}}[[/cell]]
+[[cell]][[date 1216153821]][[/cell]]
+[[/row]]
+[[row style=&#34;border-top:1px solid&#34;]]
+[[cell style=&#34;padding:3px 1em 3px 0&#34;]]{{@@[[date 1216153821 format=&#34;%d. %m. %Y|agohover&#34;]]@@}}[[/cell]]
+[[cell]][[date 1216153821 format=&#34;%d. %m. %Y|agohover&#34;]][[/cell]]
+[[/row]]
+[[row style=&#34;border-top:1px solid&#34;]]
+[[cell style=&#34;padding:3px 1em 3px 0&#34;]]{{@@[[date 681746400 format=&#34;James is %O young&#34;]]@@}}[[/cell]]
+[[cell]][[date 681746400 format=&#34;James is %O young&#34;]][[/cell]]
+[[/row]]
+[[row style=&#34;border-top:1px solid&#34;]]
+[[cell style=&#34;padding:3px 1em 3px 0&#34;]]{{@@+++ Minutes from [[date 1234567890 format=&#34;%e %B|agohover&#34;]]@@}}[[/cell]]
+[[cell]]
++++* Minutes from [[date 1234567890 format=&#34;%e %B|agohover&#34;]]
+[[/cell]]
+[[/row]]
+[[/table]]
+
+注意点: 未来の日付に対しても %O を使用する事ができます。
+[[embed]]
+&lt;iframe style=&#34;display:none;&#34; src=&#34;http://ja.scp-wiki.net/wiki-syntax:date/code/1&#34; name=&#34;subDate&#34;&gt;&lt;/iframe&gt;
+[[/embed]]
+**著者**
+created by [[*user ErichSteinboeck]]
+[!--
+[[code type=&#34;html&#34;]]
+&lt;!DOCTYPE html PUBLIC &#34;-//W3C//DTD XHTML 1.0 Transitional//EN&#34; &#34;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&#34;&gt;
+&lt;html lang=&#34;ja&#34;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&#34;Content-Type&#34; content=&#34;text/html; charset=utf-8&#34;/&gt;
+    &lt;title&gt;Wikidot Date Wizard&lt;/title&gt;
+    &lt;script type=&#34;text/javascript&#34; src=&#34;http://ja.scp-wiki.net/scpmetatitlesearch/code/4&#34;&gt;&lt;/script&gt;
+    		&lt;script type=&#34;text/javascript&#34; src=&#34;/common--javascript/init.combined.js&#34;&gt;&lt;/script&gt;
+    &lt;script type=&#34;text/javascript&#34; src=&#34;/common--javascript/WIKIDOT.combined.js&#34;&gt;&lt;/script&gt;
+
+    &lt;script  type=&#34;text/javascript&#34;&gt;
+    OZONE.request.timestamp = Math.floor(new Date().getTime()/1000);
+    OZONE.request.date = new Date();
+    var url = location.href;
+    var pureURL = url;
+    var PermitSend = &#34;&#34;;
+    var check = -1;
+    var loopSend = true;
+    var debug = true;
+    var RequestFormat = &#34;&#34;;
+
+    	
+    function initialize(){
+    check = url.indexOf(&#34;#&#34;);
+     if(check &lt; 0){
+    	return;
+     }
+    	pureURL = url.substring(0,check);
+    	var data =decodeURIExtension(url.substring(check+1,url.length));
+    	RequestFormat = data;
+    	
+    	document.getElementById(&#34;output&#34;).firstChild.data =RequestFormat;	
+setTimeout(LoopSend,5);
+    }
+    
+    function LoopSend(){
+
+    	if(document.getElementById(&#34;output&#34;).firstChild.data != &#34;&#34; ){
+    	
+    		if(RequestFormat != document.getElementById(&#34;output&#34;).innerHTML)
+    		{
+    			var iframes = window.parent.window.frames;
+    			for(var i = 0;i &lt; iframes.length;i++){
+    				iframes[i].window.postMessage(&#34;response,&#34;+document.getElementById(&#34;output&#34;).innerHTML,&#34;*&#34;);
+    			}
+    		}
+    	}
+    	if(loopSend){
+    		setTimeout(LoopSend,5);
+    	}
+    }
+    
+    window.addEventListener(&#34;message&#34;,function(event){
+    //リクエストを受け取るまでこのスクリプトは始動しない
+    	if(event.data == &#34;&#34;){
+    		loopSend = false;
+    		return;
+    	}
+    	var checkC = event.data.indexOf(&#34;,&#34;);
+    	if(checkC &lt; 0){
+    		loopSend = false;
+    		return;
+    	}
+    	var runType = event.data.substring(0,checkC);
+    	if(runType == &#34;request&#34;)
+    	{
+    		loopSend = false;
+    		RequestFormat = event.data.substring(checkC+1,event.data.length);
+    		location.href = pureURL + &#34;#&#34; + RequestFormat;
+    		location.reload();
+    	}
+    });
+    &lt;/script&gt;
+
+&lt;/head&gt;
+&lt;body id=&#34;html-body&#34; onload=&#34;initialize();&#34;&gt;
+&lt;/body&gt;
+&lt;span id=&#34;output&#34; class=&#34;odate&#34;&gt;1219863060|%Y年 %m月 %d日, %H:%M %Z|agohover&lt;/span&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+[[/code]]
+--]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:17.225561.</em>
+  
+</div>
+</body>

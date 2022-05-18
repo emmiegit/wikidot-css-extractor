@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Rateモジュールデザインガイド</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Rateモジュールデザインガイド</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/rate-module-design-guide" target="_blank">Rateモジュールデザインガイド</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/credit:start" target="_blank"><code>credit:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/credit:end" target="_blank"><code>credit:end</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[include credit:start |mode=no-rate]]
+
+**タイトル:** Rateモジュールデザインガイド
+**著者:** ©︎SCP財団
+**作成年:** 2019
+----
+本ページはSCPコミュニティのために作成され、SCP財団に帰属します。本ページの管理は[[[meet-the-staff-jp|サイトスタッフ]]]に委任されています。
+
+[[include credit:end]]
+
++ 1.Rateモジュールの定義
+++ 1.1.パーツの定義
+以下のようにRateモジュールの各パーツを定義します。
+&gt; [[image http://scp-jp.wdfiles.com/local--files/rate-module-design-guide/%E5%9B%B31.png]]
+&gt; [[=]]
+&gt; **fig.1**
+&gt; [[/=]]
+# タイトル
+# 評価表示
+# UVボタン
+# DVボタン
+# キャンセルボタン
+
+++ 1.2.用語の定義
+* 評価ポイント
+ * 該当の記事の評価値です。この値を-3以下になると削除対象となります
+* Vote
+ * 該当の記事の評価ポイントに対して自身のアカウント名義で1の加算もしくは減算を行う事です
+* UV
+ * 加算のVoteを行う事です
+* DV
+ * 減算のVoteを行う事です
+* キャンセル
+ * 自身のおこなったUVもしくはDVを取り消す事です
+
++ 2.Rateモジュールの&#34;正常&#34;な状態の定義
+
+++ 2.1.各パーツの機能定義
+各パーツについて以下の機能が実行されなければなりません。
+* 評価表示
+ * このモジュールが埋め込まれているページの現在の評価ポイントが表示される
+* UVボタン
+ * このモジュールが埋め込まれているページに対し、このボタンを押したユーザによるUVが行われる
+* DVボタン
+ * このモジュールが埋め込まれているページに対し、このボタンを押したユーザによるDVが行われる
+* キャンセルボタン
+ * このボタンを押したユーザが既にこのモジュールが埋め込まれたページに対し、uvもしくはdvをしている場合、その評価が取り消される
+ 
+++ 2.2.ボタンの配置及び存在
+各パーツの配置について、fig.1で示した順番で配置されていなければなりません。
+
+またRateモジュールの「1.1.パーツの定義」で定義した各パーツが全て存在し、全てのパーツにおいて既述の機能が実行できる必要があります。
+
+++ 2.3.ユーザによる任意の実行
+全てのVote処理はユーザによるRateモジュールのボタンの押下によって初めて実行されなければなりません。
+
+ページ読み込み時もしくは任意のタイミングでユーザの押下なく自動でRateモジュールもしくはページの評価が行われた場合、異常動作であると見なします。
+
+また、ユーザがUV、DV、キャンセルの操作の内、少なくともいずれかを意図して実行できない場合も異常であるとみなします。
+
+++ 2.4.視認性
+Rateモジュールはページを読み込んだ段階でその存在が確認でき、また以降もその状態が維持されるものでなければなりません。
+
+displayをnoneにする、不透明度を0にする等ページを読み込んだ段階ではRateモジュールの存在を視覚によって確認できない場合は異常な設置方法であるとみなします。
+
+またページ読み込み時は視認できる状態であったとしても、その後Rateモジュールが視認できなくなるのであれば同様に異常な設置とみなします（時間経過やカーソルのホバー等のユーザ操作によってRateモジュールが視認できなくなる等）。
+
+これは単にRateモジュールの存在を認識できるという事だけでなく、実際にVoteを行えるRateモジュールが視認できる必要があります。
+
+なお、スクロール位置による視認性においては各ユーザの使う端末によって条件が異なる為、この定義ではスクロール位置によるRateモジュールの視認性は取り扱いません。
+
+**異常と見なされる例:** 折り畳みの中にRateモジュールを入れ、折り畳みの表示として「Rateモジュールはここ」等とRateモジュールの存在を示唆する。具体例は下記
+[[collapsible show=&#34;+ Rateモジュールは折り畳みの中です&#34; hide=&#34;- 閉じる&#34;]]
+[[&gt;]]
+[[module rate]]
+[[/&gt;]]
+[[/collapsible]]
+
+++ 2.5.機能と視覚の一致
+Rateモジュールは、Rateモジュールの各パーツはその実際の機能と見た目が一致していなければなりません。
+
+例えばRateモジュールのUVボタンを大きくし、視覚上は通常のRateモジュールと同じ大きさのボタンを表示し、視認できる範囲外のUVボタンを押す事による誤作動を引き起こすといった場合は異常な動作であるとみなします。
+
+同様にUVもしくはDVボタン等をもう一方のボタンに被せる等、ユーザが視認でき意図できる動作とは別の動作を起こさせる状態も異常であるとみなします。
+
+
++ 3.Rateモジュールに対する許可されたカスタマイズ
+
+++ 3.1.許可リスト
+
+**本リストは変更される場合もあります。Rateモジュールのデザイン変更を行う際は必ずご確認ください。**
+
+Rateモジュールについて、styleもしくはCSSによる見た目のカスタマイズのみ許可します。
+
+Rateモジュールで認められているカスタマイズの範囲は以下の通りです。
+
+ただし許可リストに応じたカスタマイズを施す場合は下記の許可範囲の留意事項に加え、上述の「Rateモジュールの正常な動作」を満たしている必要があります。
+
+# Rateモジュールの色の変更（背景及び各文字)
+ * ##blue|Rateモジュール及び各パーツをそれぞれ視認でき、なおかつそれぞれのパーツを区別できる範囲でのみ##
+# 文字サイズの変更
+ * ##blue|Rateモジュールそのもの及び各パーツの存在が視認できる範囲でのみ。目安としてはデフォルト（0.8rem = 12.8px）よりも小さくすることは、Rateモジュールの可読性を低下させます[[footnote]] デフォルトより文字サイズが小さいからと言ってそれが全て禁止ではありません。文字サイズを小さくする場合はスタッフにご相談ください。 [[/footnote]]##
+# Rateモジュールの不透明度の変更
+ * ##blue|Rateモジュールそのもの及び各パーツの存在が視認できる範囲でのみ。不透明度を変更する場合は必ずスタッフにまでご相談ください。##
+# hover等の疑似クラスによるRateモジュールの色及び不透明度の変更
+ * ##blue|疑似クラスで定義された色及び不透明度も上記の色及び不透明度で求められている視認性の条件を満たす必要があります##
+# タイトルの文字の変更
+ * ##blue|誤操作を起こさないと考えられる範囲のみ##
+# UVボタンとDVボタンの文字の変更
+ * ##blue|どちらがUVでどちらがDVか判断でき、片方が目立ち過ぎずその両方が誤操作を起こさないと考えられる範囲のみ##
+# キャンセルボタンの文字の変更
+ * ##blue|このボタンが評価の取り消しボタンであると判断でき、誤操作を起こさないと考えられる範囲のみ##
+# Rateモジュールやその子要素の見た目を変更するスタイル及びアニメーションの適用
+ * ##blue|これがRateモジュールであると確実に判断できる上で常に評価数とUV/DV/キャンセルボタンを正常に認識でき、操作に難がなく誤操作を起こさないと考えられる範囲のみ##
+
++ 4.免責事項
+以下の条件にあてはまる場合、上述の&#34;正常な動作&#34;の定義もしくはカスタマイズの許可リストに違反した場合でも原則的に不問とします。
+
+ただし、看過できない悪意を持ったRateモジュールの設置が確認された場合は責任を問われる場合もあります。
+
+++ 4.1.動作不具合
+# Wikidot側のバグが原因であり、なおかつユーザ側のいかなるCSSの適用でも回避できない場合
+# Wikidot側のバグが原因であり、なおかつユーザ側がRateモジュールのスクリプトに一切介入していない場合
+
+++ 4.2.設置ページ
+# コンテストの決選投票用のページのように記事の削除条件に用いる評価とは別の評価を行う為のページ
+# 合作ハブのように複数人がハブに作品を投稿し、またそのハブそのものではなく投稿された個別の作品に対しVoteを行う事を目的としたページである場合。
+# ガイド等Rateモジュールの設置が義務付けられていないページ
+
++ 5.留意事項
+++ 5.1.スタッフによるデザイン/ギミック変更
+Rateモジュールの規約が変更され、過去のGoIフォーマット等で新しい規約に反するデザインもしくは（スクリプトを含む）ギミックが認められた場合、該当デザインもしくはギミックの変更が実施される場合がございます。
+
+この場合、作成者の責任は問いません。
+
+これはVoteという本サイトの根幹をなす活動において、記事の作成時期に関わらずフェアな状況を作りだす為の処置です。
+[[footnoteblock]]
+[!-- 脚注をコメント欄の上に表示するために必要な構文です。不要な場合は削除してください。 --]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:10.465421.</em>
+  
+</div>
+</body>

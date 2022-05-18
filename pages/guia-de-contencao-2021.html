@@ -1,0 +1,1996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Guia De Contenção Renovado (2020)</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Guia De Contenção Renovado (2020)</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/guia-de-contencao-2021" target="_blank">Guia De Contenção Renovado (2020)</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>:root {
+    --five-color: 196,2,51;
+    --four-color: 255,109,0;
+    --three-color: 255,211,0;
+    --two-color: 0,135,189;
+    --one-color: 0,159,107;
+}
+
+#breadcrumbs,
+#page-title {
+    text-align: center;
+}
+
+/* 1. Beautifiers (optional) */
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.simple-container {
+    width: 50vw;
+    height: 50vh;
+    padding: 1em;
+}
+
+/* 2. Resolving iOS iframe rendering issue */
+
+/* 2.1. Sizing reorganization (obligatory) */
+
+.popover {
+    /* To control popover size by .popover-body instead of .popover */
+    max-width: 100% !important;
+}
+
+.popover-body {
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.iframe-container,
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.fixed iframe {
+    /* This only fits iframe inside iframe-container but prevents scrolling */
+    width: 0;
+    height: 0;
+    
+    min-width: 100%;
+    min-height: 100%;    
+}
+
+.popover-body {
+    width: 706px; height: 900px;
+    max-width: 100vw; max-height: 100vh;
+}
+
+/* 2.2. RWD Resizings (optional) */
+
+@media only screen and (max-width: 568px)
+{
+    .rwd .popover-body {
+        width: 320px; height: 560px;
+    }    
+}
+
+@media only screen and (min-width: 569px) and (max-width: 965px)
+{
+    .rwd .popover-body {
+        width: 480px; height: 850px;
+    }    
+}
+
+@media only screen and (min-width: 968px) and (max-width: 1023px)
+{
+    .rwd .popover-body {
+        width: 640px; height: 1130px;
+    }    
+}
+
+/* 2.3. Resolving iOS iframe scrolling issue (obligatory) */
+
+/*
+    Due to iOS WebKit bug an iframe content cannot be scrolled, because WebKit renders entire iframe content:
+    https://bugs.webkit.org/show_bug.cgi?id=155198
+    (still not resolved on iOS11)
+    The workaround is to scroll an div container content with full iframe rendered inside.
+*/
+
+.scroll {
+    overflow: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* 2.4. Resolving iframe and container double scrollbars on desktop browsers (rather obligatory) */
+
+.no-scrollbar {
+    position: relative;
+}
+
+.no-scrollbar iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.no-scrollbar {
+    /* Hide scrollbars in IE Edge */
+    /* Autohiding is needed inside iframe document */
+    /*-ms-overflow-style: -ms-autohiding-scrollbar;*/
+    /* In the parent iframe container we don&#39;t want any scrollbars */
+    -ms-overflow-style: none;
+}
+
+ .foo {
+    height: 100vh;
+    width: 100vw;
+    background: url(cover.jpg) center center / cover no-repeat;
+ }
+ 
+
+/**
+ * iPad with portrait orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+  .foo {
+    height: 1024px;
+  }
+}
+
+/**
+ * iPad with landscape orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+  .foo {
+    height: 768px;
+  }
+}
+
+/**
+ * iPhone 5
+ * You can also target devices with aspect ratio.
+ */
+@media screen and (device-aspect-ratio: 40/71) {
+  .foo {
+    height: 500px;
+  }
+}
+
+.color-five {
+    background-color: rgb(var(--five-color));
+    color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+
+.color-four {
+    background-color: rgb(var(--four-color));
+}
+
+.color-three {
+    background-color: rgb(var(--three-color));
+}
+
+.color-two {
+    background-color: rgb(var(--two-color));
+}
+
+.color-one {
+    background-color: rgb(var(--one-color));
+}
+
+.color-gray {
+    background-color: rgba(var(--gray-monochrome, 66, 66, 72),0.15);
+}
+
+.color-white {
+    background-color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+
+.color-black,
+.cosmic {
+    background-color: rgb(var(--black-monochrome, 12, 12, 12));
+    color: rgb(var(--white-monochrome, 252, 252, 252));
+    border: 0.5rem solid rgb(var(--white-monochrome));
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: repeat(5, calc((100% / 5) - 0.25rem));
+    grid-gap: 0.25rem;
+}
+
+.class-table-box {
+    display: grid;
+    grid-template-columns: 1fr 75%;
+    background-color: rgb(var(--black-monochrome));
+    grid-gap: 0.125rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 500px ) {
+    .class-table-box {
+     grid-template-columns: initial;
+     border: 0.125rem solid rgb(var(--black-monochrome, 12,12,12));
+    }
+}
+
+.class-table-box &gt; div {
+    padding: 0.5rem;
+}
+
+.class-name {
+    font-family: var(--title-font);
+    font-size: 1.15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.class-description {
+    background-color: rgb(var(--white-monochrome));
+}
+
+@media (max-width: 500px ) {
+    .icons {
+     grid-template-columns: repeat(3, calc((100% / 3) - 0.25rem));
+    }
+}
+
+.icon_image {
+    border-radius: 50%;
+    border: 0.25rem solid  rgb(var(--black-monochrome, 12, 12, 12));
+    overflow: hidden;
+}
+
+.icon_name,
+.icon_link {
+    font-family: var(--title-font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.step_container {
+    margin: 0.5rem 0;
+    border: 1px solid #999;
+    padding: 1em;
+}
+
+.help {
+    display: flex;
+    align-content: stretch;
+    padding-top: 1em;
+    border-top: 1px dashed #999;
+}
+
+.help blockquote {
+    margin: 0;
+    font-size: 85%;
+}
+
+.help blockquote &gt; p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin-right: 0;
+    min-height: 2rem;
+    margin: 0;
+}
+
+.help blockquote &gt; p * {
+    margin: 0 0.1rem;
+    height: 100%;
+}
+
+.help blockquote:nth-of-type(1) {
+    width: 50%;
+    background: transparent;
+    border: unset;
+    box-shadow: unset;
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
+}
+
+.help blockquote:nth-of-type(1) &gt; p {
+    justify-content: flex-end;
+}
+
+.help blockquote:nth-of-type(2) {
+    margin-left: 1em;
+    width: 50%;
+}
+
+#page-content .collapsible-block {
+    display: block;
+    text-align: center;
+    padding: 0.75em;
+    background-color: lightgrey;
+    border-top: 0.125rem dashed slategrey;
+    border-bottom: 0.125rem dashed slategrey;
+}
+
+#page-content div.collapsible-block &gt; div.collapsible-block-unfolded &gt; div.collapsible-block-content {
+    text-align:left;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-table-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-table-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-four</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cosmic</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-gray</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-white</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-four</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-table-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-four</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-four</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-table-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-four</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>class-description</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[module css]]
+:root {
+    --five-color: 196,2,51;
+    --four-color: 255,109,0;
+    --three-color: 255,211,0;
+    --two-color: 0,135,189;
+    --one-color: 0,159,107;
+}
+
+#breadcrumbs,
+#page-title {
+    text-align: center;
+}
+
+/* 1. Beautifiers (optional) */
+
+iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+}
+
+.simple-container {
+    width: 50vw;
+    height: 50vh;
+    padding: 1em;
+}
+
+/* 2. Resolving iOS iframe rendering issue */
+
+/* 2.1. Sizing reorganization (obligatory) */
+
+.popover {
+    /* To control popover size by .popover-body instead of .popover */
+    max-width: 100% !important;
+}
+
+.popover-body {
+    box-sizing: border-box;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.iframe-container,
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+.fixed iframe {
+    /* This only fits iframe inside iframe-container but prevents scrolling */
+    width: 0;
+    height: 0;
+    
+    min-width: 100%;
+    min-height: 100%;    
+}
+
+.popover-body {
+    width: 706px; height: 900px;
+    max-width: 100vw; max-height: 100vh;
+}
+
+/* 2.2. RWD Resizings (optional) */
+
+@media only screen and (max-width: 568px)
+{
+    .rwd .popover-body {
+        width: 320px; height: 560px;
+    }    
+}
+
+@media only screen and (min-width: 569px) and (max-width: 965px)
+{
+    .rwd .popover-body {
+        width: 480px; height: 850px;
+    }    
+}
+
+@media only screen and (min-width: 968px) and (max-width: 1023px)
+{
+    .rwd .popover-body {
+        width: 640px; height: 1130px;
+    }    
+}
+
+/* 2.3. Resolving iOS iframe scrolling issue (obligatory) */
+
+/*
+    Due to iOS WebKit bug an iframe content cannot be scrolled, because WebKit renders entire iframe content:
+    https://bugs.webkit.org/show_bug.cgi?id=155198
+    (still not resolved on iOS11)
+    The workaround is to scroll an div container content with full iframe rendered inside.
+*/
+
+.scroll {
+    overflow: scroll !important;
+    -webkit-overflow-scrolling: touch !important;
+}
+
+/* 2.4. Resolving iframe and container double scrollbars on desktop browsers (rather obligatory) */
+
+.no-scrollbar {
+    position: relative;
+}
+
+.no-scrollbar iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.no-scrollbar {
+    /* Hide scrollbars in IE Edge */
+    /* Autohiding is needed inside iframe document */
+    /*-ms-overflow-style: -ms-autohiding-scrollbar;*/
+    /* In the parent iframe container we don&#39;t want any scrollbars */
+    -ms-overflow-style: none;
+}
+
+ .foo {
+    height: 100vh;
+    width: 100vw;
+    background: url(cover.jpg) center center / cover no-repeat;
+ }
+ 
+
+/**
+ * iPad with portrait orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait){
+  .foo {
+    height: 1024px;
+  }
+}
+
+/**
+ * iPad with landscape orientation.
+ */
+@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape){
+  .foo {
+    height: 768px;
+  }
+}
+
+/**
+ * iPhone 5
+ * You can also target devices with aspect ratio.
+ */
+@media screen and (device-aspect-ratio: 40/71) {
+  .foo {
+    height: 500px;
+  }
+}
+
+.color-five {
+    background-color: rgb(var(--five-color));
+    color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+
+.color-four {
+    background-color: rgb(var(--four-color));
+}
+
+.color-three {
+    background-color: rgb(var(--three-color));
+}
+
+.color-two {
+    background-color: rgb(var(--two-color));
+}
+
+.color-one {
+    background-color: rgb(var(--one-color));
+}
+
+.color-gray {
+    background-color: rgba(var(--gray-monochrome, 66, 66, 72),0.15);
+}
+
+.color-white {
+    background-color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+
+.color-black,
+.cosmic {
+    background-color: rgb(var(--black-monochrome, 12, 12, 12));
+    color: rgb(var(--white-monochrome, 252, 252, 252));
+    border: 0.5rem solid rgb(var(--white-monochrome));
+}
+
+.icons {
+    display: grid;
+    grid-template-columns: repeat(5, calc((100% / 5) - 0.25rem));
+    grid-gap: 0.25rem;
+}
+
+.class-table-box {
+    display: grid;
+    grid-template-columns: 1fr 75%;
+    background-color: rgb(var(--black-monochrome));
+    grid-gap: 0.125rem;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 500px ) {
+    .class-table-box {
+     grid-template-columns: initial;
+     border: 0.125rem solid rgb(var(--black-monochrome, 12,12,12));
+    }
+}
+
+.class-table-box &gt; div {
+    padding: 0.5rem;
+}
+
+.class-name {
+    font-family: var(--title-font);
+    font-size: 1.15em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.class-description {
+    background-color: rgb(var(--white-monochrome));
+}
+
+@media (max-width: 500px ) {
+    .icons {
+     grid-template-columns: repeat(3, calc((100% / 3) - 0.25rem));
+    }
+}
+
+.icon_image {
+    border-radius: 50%;
+    border: 0.25rem solid  rgb(var(--black-monochrome, 12, 12, 12));
+    overflow: hidden;
+}
+
+.icon_name,
+.icon_link {
+    font-family: var(--title-font);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.step_container {
+    margin: 0.5rem 0;
+    border: 1px solid #999;
+    padding: 1em;
+}
+
+.help {
+    display: flex;
+    align-content: stretch;
+    padding-top: 1em;
+    border-top: 1px dashed #999;
+}
+
+.help blockquote {
+    margin: 0;
+    font-size: 85%;
+}
+
+.help blockquote &gt; p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin-right: 0;
+    min-height: 2rem;
+    margin: 0;
+}
+
+.help blockquote &gt; p * {
+    margin: 0 0.1rem;
+    height: 100%;
+}
+
+.help blockquote:nth-of-type(1) {
+    width: 50%;
+    background: transparent;
+    border: unset;
+    box-shadow: unset;
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
+}
+
+.help blockquote:nth-of-type(1) &gt; p {
+    justify-content: flex-end;
+}
+
+.help blockquote:nth-of-type(2) {
+    margin-left: 1em;
+    width: 50%;
+}
+
+#page-content .collapsible-block {
+    display: block;
+    text-align: center;
+    padding: 0.75em;
+    background-color: lightgrey;
+    border-top: 0.125rem dashed slategrey;
+    border-bottom: 0.125rem dashed slategrey;
+}
+
+#page-content div.collapsible-block &gt; div.collapsible-block-unfolded &gt; div.collapsible-block-content {
+    text-align:left;
+}
+[[/module]]
+
+[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
++ Guia de utilização do Importantíssimo, Divino, Inigualável, Oportuno, Transtornado e Atraente Sistema (IDIOTAS) de contenção de anomalias
+
+------
+
+[[div class=&#34;step_container&#34;]]
+
++ O que é o IDIOTAS?
+
+&gt; IDIOTAS é o novo método de classificação de anomalias, que adiciona profundidade ao sistema de classificação SCP pré-existente . **A nossa intenção é a total substituição do sistema original de classificação. Sem essa besteira de opcional.**
+
+[[=]]
++++ Credits
+[[/=]]
+
+&gt; O design do Importantíssimo, Divino, Inigualável, Oportuno, Transtornado e Atraente Sistema foi feito por [[*user Woedenaz]] com a assistência de: [[*user The Great Hippo]] | [[*user Rounderhouse]] | [[*user djkaktus]] | [[*user Yossipossi]] | [[*user Captain Kirby]] | [[*user CadaverCommander]] | [[*user Uncle Nicolini]] | [[*user aismallard]] | [[*user Jade Skylar]] | [[*user Lt Flops]] | [[*user Sterbai]]
+
+[[/div]]
+
+[[div class=&#34;step_container&#34;]]
+
++ EXEMPLOS
+
++++ Exemplo Gráfico
+
+[[include :scp-wiki:component:anomaly-class-bar-source
+|item-number= 200-PT
+|clearance= 2
+|container-class= euclid
+|secondary-class= none
+|disruption-class= vlam
+|risk-class= notice
+]]
+
+[[div class=&#34;step_container&#34;]]
++++ [https://www.youtube.com/watch?v=oHg5SJYRHA0 Para utilização, veja o Guia aqui]
+[[/div]]
+
+------
+
+++ [https://i.kym-cdn.com/photos/images/newsfeed/001/745/570/c8e.jpg Veja mais aqui sobre os componentes Híbridos e de texto do IDIOTAS]
+
++++ Exemplo Híbrido
+
+[[include :scp-wiki:component:acs-hybrid-text-bar-source
+|version= hybrid
+|item-number= 2105
+|clearance-level= 2
+|containment-class= euclid
+|include-secondary= yes
+|secondary-class= apollyon
+|secondary-icon= http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/apollyon-icon.svg
+|disruption-class= vlam
+|risk-class= notice
+]]
+
+------
+
++++ Exemplo Textual
+
+[[include :scp-wiki:component:acs-hybrid-text-bar-source
+|version= text
+|item-number= 2105
+|clearance-level= 2
+|containment-class= euclid
+|include-secondary= yes
+|secondary-class= apollyon
+|disruption-class= vlam
+|risk-class= notice
+]]
+
+-----
+
++++ Exemplo Básico
+
+**Item #:** SCP-4205
+**Clearance Level 2:** Restricted
+
+**Object Class:** Euclid
+**Disruption Class:** 2/Vlam
+**Risk Class:** 1/Notice
+@@ @@
+[[collapsible show=&#34;+ Ver código&#34; hide=&#34;- Esconda isso logo!&#34;]]
+[[code]]
+
+**Item #:** SCP-4205
+**Clearance Level 2:** Restricted
+
+**Object Class:** Euclid
+**Disruption Class:** 2/Vlam
+**Risk Class:** 1/Notice
+[[/code]]
+[[/collapsible]]
+
+------
+
+[[div class=&#34;step_container&#34;]]
++++ As classificações utilizadas pelo IDIOTAS são as seguintes:
+
+[[div_ class=&#34;class-table-box&#34;]]
+[[div_ class=&#34;class-name color-black&#34;]]
+Nível de Acesso
+[[/div]]
+[[div_ class=&#34;class-description&#34;]]
+Isto é um remake dos [http://www.scp-wiki.net/security-clearance-levels Níveis de Acesso] pré-existentes. As modificações serão citadas abaixo, se alguém se importar com isso. **Níveis de Acesso se referem ao quão legal um SCP é, portanto, quanto mais alto, melhor.**
+[[/div]]
+[[div_ class=&#34;class-name color-black&#34;]]
+Classe de Contenção 
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+É a mesma que a “Classe de Objeto” clássica. **Foi renomeada porque estávamos afim de mudar.** Reclamações serão deletadas pelos moderadores.
+[[/div]]
+[[div_ class=&#34;class-name color-black&#34;]]
+Nível de Alerta
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Parada nova. Presta atenção. **Nível de Alerta é similar a periculosidade, apenas mais inútil, e se refere as chances de uma anomalia quebrar a normalidade do mundo.** Se isso parece irrelevante, saiba que é. Extremamente irrelevante para a grande maioria de artigos.
+
+Quando estiver em dúvida sobre o Nível de Alerta de um objeto, apenas responda três simples perguntas:
+# Quão rapidamente a anomalia irá se espalhar?
+# Quanto ela se espalharia sem atenção?
+# Você já viu o palhaço que se esconde de pessoas burras?
+[[/div]]
+[[div_ class=&#34;class-name color-black&#34;]]
+Classe de Risco
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Essa é uma das novas classes inventadas para esse sistema, que com certeza não estava sendo utilizada por todas as outras filiais antes da Anglófona. **Classe de Risco se refere a periculosidade do objeto anômalo e como ele afeta uma pessoa especificamente.** Nós que inventamos esse sistema, e ninguém mais. Sério.
+
+Para saber a Classe de Risco de um objeto, é só fazer três simples perguntas:
+# A recuperação de um indivíduo é possível após exposição?
+# Quão severos são os efeitos?
+# Você realmente está lendo esse artigo todo ao invés de fazer algo melhor da sua vida?
+[[/div]]
+[[div_ class=&#34;class-name color-black&#34;]]
+Classe Secundária
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Basicamente, classes esotéricas, aquelas que todo mundo usa para deixar o artigo mais assustador. Vai lá, use elas. Eu sei que você quer, Sr. Apollyon.
+
+As classes esotéricas podem ser encontradas [https://preview.redd.it/zrcc95ky8jh41.jpg?width=960&amp;crop=smart&amp;auto=webp&amp;s=8f06ef8879dfc4410f18a97f23880f0b99796527 nesta lista aqui.]
+
+Utilizar uma classe esotérica garante um aumento de upvotes de 100% por deixar o seu artigo extremamente mais épico.
+[[/div]]
+[[/div]]
+[[/div]]
+
++ Descrições detalhadas
+
+[[div class=&#34;step_container&#34;]]
+
+++ Nível de Acesso
+
+&gt; Eu vou ser sincero, eu não vou me dar o esforço de realmente traduzir tudo o que estava escrito nessas descrições detalhadas. Você sabe o que são Níveis de Acesso, não sabe? Não vejo razão nenhuma para eu ainda estar digitando isso. Segue abaixo os níveis.
+
+[[div_ class=&#34;class-table-box&#34;]]
+[[div_ class=&#34;class-name color-one&#34;]]
+Nível 1: Irrestrito (IR)
+[[/div]]
+[[div_ class=&#34;class-description&#34;]]
+Esse documento pode ser visto por qualquer funcionário da Fundação, o que faz dele chato. Quem se importa com algo que todo mundo pode ver?
+[[/div]]
+[[div_ class=&#34;class-name color-two&#34;]]
+Nível 2: Restrito (RE)
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Agora sim, as coisas estão melhorando. Esse artigo pode ser visto pela grande maioria de funcionários da Fundação após requisitado. Não recomendo a utilização dele em artigos, pois 2 ainda é um número pequeno.
+[[/div]]
+[[div_ class=&#34;class-name color-three&#34;]]
+Nível 3: Confidencial (CO)
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Só uma minoria de funcionários pode ver esse artigo porque ele é perigoso. Não é //bem// perigoso, mas é perigoso. Artigo legal, mas você não quer só um “artigo legal”, quer? Você quer um artigo épico! Mais abaixo veremos os únicos Níveis de Acesso que realmente importam.
+[[/div]]
+[[div_ class=&#34;class-name color-four&#34;]]
+Nível 4: Secreto (SE)
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Esse documento só pode ser visto por Diretores de Área, o que significa que ele é super importante e perigoso! Agora sim, os leitores vão gostar do seu artigo pelo Nível de Acesso alto e vão dar os upvotes que ele merece.
+[[/div]]
+[[div_ class=&#34;class-name color-five&#34;]]
+Nível 5: Ultra Secreto (US)
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Esse documento só pode ser visto pelo Conselho O5, pelo Comitê de Ética e pelo Administrador, os maiores cargos dentro da Fundação, o que significa que ele é coisa séria. Bicho brabo. Agora sim, se um artigo tiver esse Nível de Acesso, ninguém vai criticá-lo.
+[[/div]]
+[[div_ class=&#34;class-name cosmic&#34;]]
+Nível 6: ULTRA SECRETO CÓSMICO!!! (USC) [[footnote]]Nome ridículo? Sim. A pergunta melhor seria: se os autores originais sabem que o nome é ridículo, por que usaram ele mesmo assim?[[/footnote]]
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Este documento só pode ser visto pelo Conselho O5. E é só isso, na verdade. Mas é ULTRA SECRETO CÓSMICO!!! Caramba, quem não daria upvote em algo assim?
+[[/div]]
+[[/div]]
+
+[[/div]]
+
+[[div class=&#34;step_container&#34;]]
+
+++ Classe de Contenção
+
+&gt; Veja as [https://www.youtube.com/watch?v=g621QOi5OTM Classes de Objeto aqui.]
+
+**AVISO:** Prosseguir com a leitura deste guia pode causar declínio de atividade cerebral e eventual falecimento.
+
++++ Opções de Classe de Contenção
+
+[[div_ class=&#34;icons&#34;]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-one&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/safe-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+safe
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-three&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/euclid-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+euclid
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-five&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/keter-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+keter
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-gray&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/neutralized-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+neutralized
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-black&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/pending-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+pending
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/explained-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+explained
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/esoteric-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+esoteric
+[[/div]]
+[[/div]]
+
+[[/div]]
+[[/div]]
+
+[[div class=&#34;step_container&#34;]]
+
+++ Classe Secundária
+
+&gt; Página das [https://www.youtube.com/watch?v=RGcR9hVG4f4 Classes Esotéricas aqui.]
+
+**AVISO:** Thaumiel é considerada uma classe secundária, o que significa que ela é uma classe MAIS LEGAL.
+
++++ Opções de Classes Secundárias
+
+&gt; Nem todas as classes secundárias estão aqui, já que elas tem nomes ruins demais. Vejam as outras aqui: [https://cdn.discordapp.com/attachments/680981210670825474/694766701073399888/IMG_20200401_013422.jpg Lista de Classes Esotéricas.]
+
+[[div_ class=&#34;icons&#34;]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/apollyon-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+apollyon
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/archon-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+archon
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/cernunnos-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+cernunnos
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/hiemal-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+hiemal
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/tiamat-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+tiamat
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/ticonderoga-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+ticonderoga
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-white&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/thaumiel-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+thaumiel
+[[/div]]
+[[/div]]
+
+[[/div]]
+[[/div]]
+
+[[div class=&#34;step_container&#34;]]
+
++ Opções de Níveis de Alerta[[footnote]]Níveis de Alerta tem o nome baseado em níveis de iluminação. Quanto maior a luz, mais rápido eu faço você perder tempo lendo isso.[[/footnote]]
+
+[[div_ class=&#34;icons&#34;]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-one&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/dark-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+breu
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-two&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/vlam-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+vlam
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-three&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/keneq-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+kek
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-four&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/ekhi-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+ekhi
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-five&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/amida-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+amígdala
+[[/div]]
+[[/div]]
+
+[[/div]]
+
+[[div_ class=&#34;class-table-box&#34;]]
+[[div_ class=&#34;class-name color-one&#34;]]
+Breu[[footnote]]Escolhido pela nomenclatura ser fácil de entender, assim como “Seguro”.[[/footnote]]
+[[/div]]
+[[div_ class=&#34;class-description&#34;]]
+Os níveis de ameaça à normalidade potenciais ou conhecidos são **tão baixos a ponto de ninguém se importar com o seu artigo**.
+
+O objeto fica essencialmente inerte se ninguém interagir com este, como **todas as crianças lurkers do servidor**.
+
+A Fundação considera **desnecessário preocupar-se com este objeto**.
+[[/div]]
+[[div_ class=&#34;class-name color-two&#34;]]
+Vlam[[footnote]]Português para “falo”, especificamente, quando este é usado para bater em uma mesa.[[/footnote]]
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Os níveis de ameaça à normalidade potenciais ou conhecidos são **localizados em um pequeno grupo de escritores**
+
+Os efeitos anômalos certamente **afetam algumas pessoas que tendem a publicar artigos no site.**
+
+A Fundação acredita que é **relativamente fácil rir desta classificação.**
+[[/div]]
+[[div_ class=&#34;class-name color-three&#34;]]
+Kek[[footnote]]Coreano para hahah, o que faz sentido, já que esse sistema é uma piada.[[/footnote]]
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+O risco à normalidade conhecido ou potencial se estenderia a um grupo de pessoas **o suficiente para ocupar um servidor de Discord.**
+
+Este efeito anômalo se espalha com **muita facilidade, principalmente em redes sociais e image boards.**
+
+A Fundação considera isso **uma desculpa horrível para mascarar um artigo ruim com adições frufrus.**
+[[/div]]
+[[div_ class=&#34;class-name color-four&#34;]]
+Ekhi[[footnote]]Basco para ninguém se importa.[[/footnote]]
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+O **Risco à Normalidade** se **estenderia bastante** porque essa **classificação** é **perigosa** e **usa negrito para chamar a atenção de crianças**.
+
+A facilidade disso se espalhar é **bastante, heim**.
+
+A Fundação acredita que **seria difícil limpar o estrago que esse guia fez na comunidade Anglófona e Internacional**.
+[[/div]]
+[[div_ class=&#34;class-name color-five&#34;]]
+Amígdala[[footnote]]Todos sabemos que essa é a única classe que interessa a você.[[/footnote]]
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+**Ninguém se importa** em saber os efeitos desta classe, **já que todos vão utilizar ela de qualquer jeito.** Mas ela é **bem perigosa**, heim? Mais perigosa que **todas as outras** e por isso ela é a **mais épica**.
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;step_container&#34;]]
+
++ Opções de Classe de Risco
+
+[[div_ class=&#34;icons&#34;]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-one&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/notice-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+considere isso um aviso
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-two&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/caution-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+prerigo
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-three&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/warning-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Ameaça fantasma
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-four&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/danger-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Alerta vermelho
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_container&#34;]]
+[[div_ class=&#34;icon_image color-five&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/critical-icon.svg]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+23/19
+[[/div]]
+[[/div]]
+
+[[/div]]
+[[div_ class=&#34;class-table-box&#34;]]
+[[div_ class=&#34;class-name color-one&#34;]]
+Considere isso um aviso
+[[/div]]
+[[div_ class=&#34;class-description&#34;]]
+Os efeitos anômalos do objeto são **chatos demais para alguém se importar.**
+
+Um indivíduo lendo esse artigo não **sentirá nada** devido ao perigo baixo que o objeto representa.
+
+Não causa nenhuma **vontade de ler novamente** em usuários do site.
+[[/div]]
+[[div_ class=&#34;class-name color-two&#34;]]
+Prerigo
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Os efeitos anômalos deste objeto **são uma caveira.** Se você beber eles, então você **morre.**
+
+Um indivíduo, após contato com esse objeto, **vai para o beleléu.**
+
+O prerigo que este objeto causa é **moderado**.
+[[/div]]
+[[div_ class=&#34;class-name color-three&#34;]]
+Ameaça Fantasma
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Os efeitos anômalos deste objeto são **um final horrível para a franquia.**
+
+Um indivíduo próximo ao objeto irá preferir **os filmes originais**, além do material relacionado ao **universo expandido**.
+
+O perico que este causa é **moderado** para aqueles que **não sabem do que está sendo dito aqui**.
+[[/div]]
+[[div_ class=&#34;class-name color-four&#34;]]
+Alerta Vermelho
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+Os efeitos anômalos deste objeto vão **de significantes a extremos.**
+
+Um indivíduo próximo a este objeto **vai dar upvote no artigo** e pode vir a **comentar que não gostou do artigo, mas upvotou na espera de um artigo melhor.**
+
+O risco que ele possui é **extremo** para os críticos que forem alvejados pelos comentários enviesados de **moderadores**.
+[[/div]]
+[[div_ class=&#34;class-name color-five&#34;]]
+23/19
+[[/div]]
+[[div class=&#34;class-description&#34;]]
+A única classe que **vale a pena** utilizar em um artigo.
+
+Ela é **épica**, pois é a maior. **Todos** vão gostar do seu artigo ao utilizar **esta classificação**.
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:08.430285.</em>
+  
+</div>
+</body>

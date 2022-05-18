@@ -29,31 +29,122 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code> :root{
-     --accentColor: hsl(266, 85%, 67%);
-     --accentColorLite: hsla(266, 85%, 77%, .5);
-     --hue: 266deg;
-     --lgurl: url(https://scp-wiki.wdfiles.com/local--files/welcome-to-delta-t/Delta-t-transparent.png);
-     --header-title: &#34;TEMPORAL SITE-01&#34;;
-     --header-subtitle: &#34;SUSTAINING CHRONOLOGICAL PREDICTABILITY&#34;;
+          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--files/scp-6327/flopstyle-dark.css);
+/* 有关被引入版式的说明：
+ *   本版式为占位风格与 Flop 风格的分支版式。该版式仍未完成。
+ *   请勿使用该版式。请使用占位风格。
+ *   在完成之后其将会被替换为一个新的站点版式。
+**/
+
+/* HEADER */
+ :root{
+   --header-title: &#34;时间站点-01&#34;;
+   --header-subtitle: &#34;持续维护 时间顺序 可预测性&#34;;
+   --accentColor: hsl(325, 80%, 54%);
 }
- #extra-div-1{
-     filter: opacity(.15);
+ div#extra-div-1{
+     background-image: url(https://scp-wiki.wdfiles.com/local--files/welcome-to-delta-t/Delta-t-transparent.png);
+     filter: opacity(.5) invert(1);
 }
- .tableb.log .wiki-content-table tr th:nth-child(1),
- .tableb.log .wiki-content-table tr th:nth-child(3){
-     font: 1.35rem var(--header-font);
+ @media (max-width: 768px){
+     #header h1 a::before{
+          font-size: 1.1em;
+    }
+     #page-content .collapsible-block-link{
+          font-size: 100% !important;
+          letter-spacing: 0 !important;
+    }
+}
+
+/* COLLAPSIBLES */
+ #page-content .collapsible-block-link{
+     padding-bottom: 1px;
+     color: var(--accentColor);
+     border-bottom: 1px solid var(--accentColor);
+     font-family: &#34;Montserrat&#34;, sans-serif;
+     font-size: 1.45em;
      letter-spacing: 1px;
 }
- .faketable{
-     position: relative;
-     bottom: .53rem;
-     margin: .4rem;
-     padding: .4rem;
+ #page-content .collapsible-block-folded,
+ #page-content .collapsible-block-unfolded-link{
+     width: auto;
+     text-align: center;
+}
+ #page-content .collapsible-block-link:hover{
+     padding-bottom: 1px;
+     color: hsl(0, 0%, 93%);
+     border-bottom: 1px solid hsl(0, 0%, 93%);
+}
+ #page-content .collapsible-block-folded:hover,
+ #page-content .collapsible-block-unfolded-link:hover{
+     background-color: hsla(325, 80%, 54%, .35);
+}
+ #page-content .collapsible-block-folded .collapsible-block-link::before,
+ #page-content .collapsible-block-unfolded .collapsible-block-link::before{
+     content: unset;
+}
+ #page-content .info-container .collapsible-block-link{
+     font-size: 100%;
+}
+ #page-content .info-container .collapsible-block-folded:hover,
+ #page-content .info-container .collapsible-block-unfolded-link:hover{
+     background-color: var(--accentColor);
+}
 
-     color: var(--textColorAlt);
-     background: var(--fgColor);
-     border: 1px solid var(--accentColor);
+/* DISRUPTION CLASS */
+ .disruption-header{
+     display: inline-block;
+     width: 100%;
+     padding: .3em 0;
+     font-size: 145%;
+     text-align: center;
+     text-shadow: 1px 3px 1px hsla(0, 0%, 0%, .3);
+}
+ .disruption-header a:hover{
+     background-color: transparent;
+     text-decoration: none;
+}
+
+/* FORMATTING */
+ #page-content tr .tyrian{
+     padding: 0;
+     background-color: var(--accentColor);
+}
+ #page-content tr .tyrian h3{
+     color: hsl(222, 16%, 15%);
+}
+ #page-content .bt.sq::after,
+ #page-content .bt.sp::after{
+     content: &#34;&#34;;
+     position: relative;
+     left: .55em;
+     margin-right: .7em;
+     border-right: 2px solid var(--accentColor);
+}
+ #page-content .bt.sq::after{
+     border-right-width: 3px;
+}
+ .terminal-span{
+     font-family: &#34;Fira Code&#34;, &#34;Cousine&#34;, monospace;
+     font-size: 110%;
+     font-weight: bold;
+     letter-spacing: 1px;
+}
+ .footing::before{ /* ---- Page Footing ---- */
+     content: &#34; &#34;;
+     position: absolute;
+     bottom: 1px;
+     left: 0;
+     right: 0;
+
+     border-bottom: 2px solid var(--accentColor);
+}
+ .footing{
+     position: relative;
+     bottom: -2px;
+     margin-bottom: 2px;
+
+     border-bottom: 1px solid var(--accentColor);
 }</code></pre>
         </li>
       
@@ -63,11 +154,31 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          <pre><code>filter: invert(1); width: 150px;</code></pre>
         </li>
       
         <li>
-          <pre><code>filter: invert(1)</code></pre>
+          <pre><code>border: none; width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border: none; padding: none; background: transparent;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border: none; text-align: right; padding: none; background: transparent;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: hsl(0, 0%, 93%); background-color: hsla(345, 100%, 27%, .7);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-weight: 900;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 1em;</code></pre>
         </li>
       
     </ul>
@@ -80,13 +191,13 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/more-by:lt-flops" target="_blank"><code>:scp-wiki:more-by:lt-flops</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:betterfootnotes" target="_blank"><code>:scp-wiki:component:betterfootnotes</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/more-by:lt-flops.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:betterfootnotes.html" target="_blank">info</a>]
   </span>
 
   
@@ -97,13 +208,13 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>:scp-wiki:component:fade-in</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
   </span>
 
   
@@ -114,14 +225,25 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar" target="_blank"><code>:scp-wiki:component:toggle-sidebar</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar.html" target="_blank">info</a>]
   </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki-cn:component:license-box-end</code></a>
+  
 
   
 </li>
@@ -136,11 +258,23 @@
         </li>
       
         <li>
+          <pre><code>authorbox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>anchor</code></pre>
+        </li>
+      
+        <li>
           <pre><code>sidebox</code></pre>
         </li>
       
         <li>
-          <pre><code>tableb</code></pre>
+          <pre><code>table2</code></pre>
         </li>
       
         <li>
@@ -148,7 +282,7 @@
         </li>
       
         <li>
-          <pre><code>bb</code></pre>
+          <pre><code>bt</code></pre>
         </li>
       
         <li>
@@ -156,11 +290,7 @@
         </li>
       
         <li>
-          <pre><code>bb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>byline</code></pre>
+          <pre><code>bt</code></pre>
         </li>
       
         <li>
@@ -172,11 +302,7 @@
         </li>
       
         <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bb</code></pre>
+          <pre><code>darkbox</code></pre>
         </li>
       
         <li>
@@ -184,7 +310,11 @@
         </li>
       
         <li>
-          <pre><code>bb</code></pre>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sq</code></pre>
         </li>
       
         <li>
@@ -192,7 +322,43 @@
         </li>
       
         <li>
-          <pre><code>bb</code></pre>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>disruption-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sp</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sp</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sp</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
@@ -208,7 +374,39 @@
         </li>
       
         <li>
-          <pre><code>bb</code></pre>
+          <pre><code>sp</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
@@ -216,7 +414,7 @@
         </li>
       
         <li>
-          <pre><code>bb</code></pre>
+          <pre><code>sp</code></pre>
         </li>
       
         <li>
@@ -224,15 +422,11 @@
         </li>
       
         <li>
-          <pre><code>tableb</code></pre>
+          <pre><code>tyrian</code></pre>
         </li>
       
         <li>
-          <pre><code>log</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>faketable</code></pre>
+          <pre><code>tyrian</code></pre>
         </li>
       
         <li>
@@ -243,77 +437,162 @@
           <pre><code>footer-wikiwalk-nav</code></pre>
         </li>
       
-        <li>
-          <pre><code>centered</code></pre>
-        </li>
-      
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div style=&#34;display: none&#34;]]
-[[include :scp-wiki:theme:flopstyle-dark
-|witch=a]]
-[[/div]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:betterfootnotes]]
+[[include :scp-wiki:component:fade-in speed=1]]
+[[include :scp-wiki:component:toggle-sidebar]]
 
 [[module css]]
+@import url(https://scp-wiki.wdfiles.com/local--files/scp-6327/flopstyle-dark.css);
+/* 有关被引入版式的说明：
+ *   本版式为占位风格与 Flop 风格的分支版式。该版式仍未完成。
+ *   请勿使用该版式。请使用占位风格。
+ *   在完成之后其将会被替换为一个新的站点版式。
+**/
+
+/* HEADER */
  :root{
-     --accentColor: hsl(266, 85%, 67%);
-     --accentColorLite: hsla(266, 85%, 77%, .5);
-     --hue: 266deg;
-     --lgurl: url(https://scp-wiki.wdfiles.com/local--files/welcome-to-delta-t/Delta-t-transparent.png);
-     --header-title: &#34;TEMPORAL SITE-01&#34;;
-     --header-subtitle: &#34;SUSTAINING CHRONOLOGICAL PREDICTABILITY&#34;;
+   --header-title: &#34;时间站点-01&#34;;
+   --header-subtitle: &#34;持续维护 时间顺序 可预测性&#34;;
+   --accentColor: hsl(325, 80%, 54%);
 }
- #extra-div-1{
-     filter: opacity(.15);
+ div#extra-div-1{
+     background-image: url(https://scp-wiki.wdfiles.com/local--files/welcome-to-delta-t/Delta-t-transparent.png);
+     filter: opacity(.5) invert(1);
 }
- .tableb.log .wiki-content-table tr th:nth-child(1),
- .tableb.log .wiki-content-table tr th:nth-child(3){
-     font: 1.35rem var(--header-font);
+ @media (max-width: 768px){
+     #header h1 a::before{
+          font-size: 1.1em;
+    }
+     #page-content .collapsible-block-link{
+          font-size: 100% !important;
+          letter-spacing: 0 !important;
+    }
+}
+
+/* COLLAPSIBLES */
+ #page-content .collapsible-block-link{
+     padding-bottom: 1px;
+     color: var(--accentColor);
+     border-bottom: 1px solid var(--accentColor);
+     font-family: &#34;Montserrat&#34;, sans-serif;
+     font-size: 1.45em;
      letter-spacing: 1px;
 }
- .faketable{
-     position: relative;
-     bottom: .53rem;
-     margin: .4rem;
-     padding: .4rem;
+ #page-content .collapsible-block-folded,
+ #page-content .collapsible-block-unfolded-link{
+     width: auto;
+     text-align: center;
+}
+ #page-content .collapsible-block-link:hover{
+     padding-bottom: 1px;
+     color: hsl(0, 0%, 93%);
+     border-bottom: 1px solid hsl(0, 0%, 93%);
+}
+ #page-content .collapsible-block-folded:hover,
+ #page-content .collapsible-block-unfolded-link:hover{
+     background-color: hsla(325, 80%, 54%, .35);
+}
+ #page-content .collapsible-block-folded .collapsible-block-link::before,
+ #page-content .collapsible-block-unfolded .collapsible-block-link::before{
+     content: unset;
+}
+ #page-content .info-container .collapsible-block-link{
+     font-size: 100%;
+}
+ #page-content .info-container .collapsible-block-folded:hover,
+ #page-content .info-container .collapsible-block-unfolded-link:hover{
+     background-color: var(--accentColor);
+}
 
-     color: var(--textColorAlt);
-     background: var(--fgColor);
-     border: 1px solid var(--accentColor);
+/* DISRUPTION CLASS */
+ .disruption-header{
+     display: inline-block;
+     width: 100%;
+     padding: .3em 0;
+     font-size: 145%;
+     text-align: center;
+     text-shadow: 1px 3px 1px hsla(0, 0%, 0%, .3);
+}
+ .disruption-header a:hover{
+     background-color: transparent;
+     text-decoration: none;
+}
+
+/* FORMATTING */
+ #page-content tr .tyrian{
+     padding: 0;
+     background-color: var(--accentColor);
+}
+ #page-content tr .tyrian h3{
+     color: hsl(222, 16%, 15%);
+}
+ #page-content .bt.sq::after,
+ #page-content .bt.sp::after{
+     content: &#34;&#34;;
+     position: relative;
+     left: .55em;
+     margin-right: .7em;
+     border-right: 2px solid var(--accentColor);
+}
+ #page-content .bt.sq::after{
+     border-right-width: 3px;
+}
+ .terminal-span{
+     font-family: &#34;Fira Code&#34;, &#34;Cousine&#34;, monospace;
+     font-size: 110%;
+     font-weight: bold;
+     letter-spacing: 1px;
+}
+ .footing::before{ /* ---- Page Footing ---- */
+     content: &#34; &#34;;
+     position: absolute;
+     bottom: 1px;
+     left: 0;
+     right: 0;
+
+     border-bottom: 2px solid var(--accentColor);
+}
+ .footing{
+     position: relative;
+     bottom: -2px;
+     margin-bottom: 2px;
+
+     border-bottom: 1px solid var(--accentColor);
 }
 [[/module]]
 
 [[div class=&#34;anchor&#34;]]
-[[div class=&#34;sidebox tableb&#34;]]
-||~ SCP-6327 || **A Door Unstuck in Time** ||
-||||= Secure the Past. Contain the Present. Protect the Future. ||
-
-||~ [[image https://scp-wiki.wdfiles.com/local--files/welcome-to-delta-t/Delta-t-transparent.png style=&#34;filter: invert(1)&#34;]] ||
-[[module ListPages name=&#34;=&#34;]]
-||= **&gt;&gt; [[[floppyphoenix|Lt Flops&#39; Author Page]]] &lt;&lt;** ||
-||~ Published on %%created_at|%d %b %Y%% ||
-[[/module]]
+[[div class=&#34;authorbox&#34;]]
+||~ SCP-6327 ||
+||= [[span class=&#34;bt&#34;]]作者：[[/span]][[*user Lt Flops]] ||
+||~ 发布于 2022 年 1 月 17 日 ||
 [[/div]]
 [[/div]]
 
-[[include :scp-wiki:component:info-ayers
-|lang=en
+[[div class=&#34;anchor&#34;]]
+[[div class=&#34;sidebox&#34;]]
+[[div class=&#34;table2&#34;]]
+[[=]]
+||~ SCP-6327 || [[span class=&#34;bt&#34;]]未困于时间内的门[[/span]] ||
+||||= 控制过去。收容现在。保护未来。 ||
+@@ @@
+||~ [[=image https://scp-wiki.wdfiles.com/local--files/welcome-to-delta-t/Delta-t-transparent.png style=&#34;filter: invert(1); width: 150px;&#34;]] ||
+[[/=]]
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[include :scp-wiki-cn:component:info-ayers
 |page=scp-6327
-|authorPage=/floppyphoenix
-|comments=[[span class=&#34;bt bb&#34;]]SCP-6327[[/span]] A Door Unstuck in Time 
-[[span class=&#34;bt bb&#34;]]By[[/span]] [[*user Lt Flops]] 
-**Published on 17 Jan 2022** 
+|authorPage=floppyphoenix
+|comments=[[span class=&#34;bt&#34;]]SCP-6327：[[/span]]未困于时间内的门
+[[span class=&#34;bt&#34;]]作者：[[/span]][[*user Lt Flops]] 
+[[span class=&#34;bt&#34;]]发布于 2022 年 1 月 17 日[[/span]] 
 ----
-[[include :scp-wiki:more-by:lt-flops]]
-[[/div]]
-
-[[module Rate]]
-
-[[div class=&#34;byline&#34;]]
-[[span]] by [[[floppyphoenix|Lt Flops]]] [[/span]]
-[[span]] 2 [[/span]]
-[[/div]]
+]]
 
 @@ @@
 
@@ -322,99 +601,125 @@ SCP-6327
 [[/div]]
 
 [[div class=&#34;pseudocrumbs&#34;]]
-[[[SCP Series 7]]] &gt;&gt; SCP-6327
+[[[scp-series-7|SCP 系列 7]]] &gt;&gt; SCP-6327
 [[/div]]
 
-[[include :scp-wiki:component:flops-header
-|item=6327
-|containment=safe
-|level=5
-|security=top-secret
-|disruption=amida
-|disruption-bg-color=rgb(var(--five-color), .5)
-]]
-----
-[[span class=&#34;bt bb&#34;]]SPECIAL CONTAINMENT PROCEDURES[[/span]] The service corridor in which SCP-6327 is installed has been sealed until further notice.
-----
-[[span class=&#34;bt bb&#34;]]PAST DESCRIPTION[[/span]] SCP-6327 is a nondescript wooden door bearing a poem inscribed on its surface:
-
-&gt; = Forever here this door shall sit,
-&gt; = A rift in reason and in rhyme;
-&gt; = A pox on those who would commit
-&gt; = A treason &#39;gainst the flow of time.
-
-An ink sample from the inscription corresponds with black Sharpie. The inscription is smudged in several places.
-----
-[[span class=&#34;bt bb&#34;]]DISCOVERY[[/span]] On 17 January 2032, SCP-6327 was found installed in a hitherto unused service corridor in Temporal Site-01, Sub-Basement-09.
-
-A junior advisor to the newly formed Temp/EDDIES[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]][[span class=&#34;bt bb&#34;]]Temporal Ebb, Disruption, Desynchronization, and Intensification Enquiries Syndicate (Temp/EDDIES)[[/span]] An independent office organized in the eventuality that significant convergent temporal paradoxes have inhibited Research and Containment Team Δt at some point in the past, present, or future. Such an event would signify they had become compromised at some point in the past, present, or future, thus were/are/will be incapable of protecting the Prime-Timeline on the Foundation&#39;s terms.[[/span]] -- SCP-6327&#39;s discoverer -- sent an immediate distress beacon to the chief Temporal Anomalies official, Director [[[scp-5616|Dr. Ilse Reynders]]],[[size 80%]] PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD, PhD[[/size]].
-
-The lone security officer on-shift remarked at the time that, although the corridor itself does not have a camera, the stairwell to Sub-Basement-09 does. However, no persons or entities are recorded to have entered the Sub-Basement the week SCP-6327 appeared. This would imply it came into existence spontaneously. With no other explanation as to its appearance, this indicates an unregistered anomalous disturbance had occurred in the single most secure Foundation Site on the planet; demonstrable evidence that it has become compromised.
-
-After receiving the beacon, Director Reynders placed Temporal Site-01 under immediate spatiotemporal lockdown and ejected the site into extradimensional nullspace. This manoeuvre would have prevented any further anomalies from occurring, but it left the Prime-Timeline susceptible to transtemporal threats in the face of the sudden disappearance of Site-01.
-
-A fact-finding investigation into SCP-6327 occurred henceforth.
-
-The fact-finding investigation promptly met an impasse: The investigators, who were uninformed as to the nature of the anomaly, read SCP-6327&#39;s inscription and refused to proceed further, citing an OSHA breach. The junior advisor, who neglected to fill out a Special Containment Procedures file on the anomaly, was reprimanded for breach of Foundation protocol and placed under time-lock until further notice.
-----
-[[span class=&#34;bt bb&#34;]]PRESENT DESCRIPTION[[/span]] [[span class=&#34;terminal-span&#34;]][DUPLICATE INFORMATION EXPUNGED][[/span]]
-
-After the successful documentation and containment of SCP-6327, all requisite paperwork -- including an incident report -- was completed, and forwarded to the on-site RAISA liaison. Director Reynders currently maintains complete control over the investigatory proceedings and will personally oversee experimentation.
-
-One week has now elapsed since the discovery of SCP-6327.
-
-An experimentation log, as recorded in real-time, is as follows.
-
-[[div class=&#34;tableb log&#34;]]
-||~ ACTION ||
-|| SCP-6327 is opened. ||
-||~ OUTCOME ||
-|| SCP-6327 becomes ajar. A nondescript masonry wall sits behind it, offset into the finish face by approximately 20 cm. On the floor adjoining the wall is a single unidentifiable fruit in a state of advanced decay. A Post-it note is affixed between the fruit and SCP-6327. The note reads as follows. ||
+[[div class=&#34;darkbox&#34;]]
+[[table style=&#34;border: none; width: 100%;&#34;]]
+[[row]]
+[[cell style=&#34;border: none; padding: none; background: transparent;&#34;]]
+[[size 135%]][[span class=&#34;bt&#34;]]项目编号 |[[/span]] SCP-6327[[/size]]
+[[size 135%]][[span class=&#34;bt sq&#34;]]项目等级[[size 0%]]：[[/size]][[/span]] SAFE[[/size]]
+[[/cell]]
+[[cell style=&#34;border: none; text-align: right; padding: none; background: transparent;&#34;]]
+[[size 135%]][[span class=&#34;bt&#34;]]5/6327 级[[/span]][[/size]]
+[[size 135%]][[span class=&#34;bt&#34;]]最高机密[[/span]][[/size]]
+[[/cell]]
+[[/row]]
+[[/table]]
 [[/div]]
 
-[[div class=&#34;faketable&#34;]]
-[[collapsible show=&#34;POTENTIAL MEMETIHAZARD DETECTED&#34; hide=&#34;CLOSE&#34;]]
+[[a href=&#34;*https://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34; class=&#34;disruption-header&#34; style=&#34;color: hsl(0, 0%, 93%); background-color: hsla(345, 100%, 27%, .7);&#34;]][[span style=&#34;font-weight: 900;&#34;]]扰动等级：[[/span]]AMIDA[[/a]]
+----
+[[span class=&#34;bt sp&#34;]]特殊收容措施[[size 0%]]：[[/size]][[/span]] 装于 SCP-6327 内部的服务走道已被封死，直至收到进一步通知。
+----
+[[span class=&#34;bt sp&#34;]]曾用描述[[size 0%]]：[[/size]][[/span]] SCP-6327 为一扇无特征的木门，其表面印刻有一首诗：
+
+&gt; = 此门只应永留此，
+&gt; = 理性韵律存裂隙；
+&gt; = 认罪之人出疹疫，
+&gt; = 叛逆时间反流上。
+
+印刻内取得的墨迹样本与三福黑色记号笔中的墨水相似。该印刻有数处被污损。
+----
+[[span class=&#34;bt sp&#34;]]发现[[size 0%]]：[[/size]][[/span]] 2032 年 1 月 17 日，SCP-6327 被发现安装于[[span class=&#34;ruby&#34;]]时间站点-01[[span class=&#34;rt&#34;]]Temporal Site-01[[/span]][[/span]]的 09 号附地下室中一条迄今为止从未使用过的走道中。
+
+新成立的时间/EDDIES[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]][[span class=&#34;bt sp&#34;]]时间性[[span class=&#34;ruby&#34;]]衰落[[span class=&#34;rt&#34;]]Ebb[[/span]][[/span]]、[[span class=&#34;ruby&#34;]]扰动[[span class=&#34;rt&#34;]]Disruption[[/span]][[/span]]、[[span class=&#34;ruby&#34;]]去同步化[[span class=&#34;rt&#34;]]Desynchronization[[/span]][[/span]]及[[span class=&#34;ruby&#34;]]强化询查财团[[span class=&#34;rt&#34;]]Intensification Enquiries
+ Syndicate[[/span]][[/span]]（时间/EDDIES）[[size 0%]]：[[/size]][[/span]] 一间独立办公室，用于防止在现在、过去或未来的某个时间点上出现显著收敛性时间悖论将研究与收容团队 Δt 抑制。此种事件表明他们已经在过去、现在或未来的某个时间点陷入了危险当中，因此我们已/正/将无法遵守基金会的原则保护主时间线。[[/span]] 的一位初级顾问——SCP-6327 的发现者——发送了一个即时遇难信标至首要时间异常部官方处，即 [[[scp-5616|Ilse Reynders 博士]]]主管[[size 80%]]博士博士博士博士博士博士博士博士博士博士博士博士博士博士博士博士[[/size]]处。
+
+当时唯一的值班安保人员表示，虽然走到本身没有摄像头，但是通往附地下室-09的楼梯间是有摄像头的。然而，在 SCP-6327 出现的这一周内，没有任何人或实体曾登记进入附地下室。这意味着 SCP-6327 是自然出现的。在对其出现没有其它解释的情况下，这表明了有一未被记录的异常干扰发生在了地球上最安全的那个基金会站点之中；显然可知它已经遭到损害。
+
+在接收到信标之后，Reynders 主管将站点立即进行时空封锁并将其弹射至外维度零空间当中。这种谨慎的操作能够防止进一步发生任何异常现象，但面对时间站点-01的突然消失，这使得主时间线很容易受到跨时间的威胁。
+
+此后对 SCP-6327 进行了一次实情调查。
+
+该次实情调查很快就遇到了死局：调查者此前未被告知异常的性质，在阅读了 SCP-6327 的印刻之后以违反职业安全与健康标准为由拒绝进一步继续调查。一位忘记填写异常的特殊收容措施文件的初级顾问因其引起了基金会协议的突破而遭到了斥责，并被置于时间锁中，直至收到另行通知。
+----
+[[span class=&#34;bt sp&#34;]]现用描述[[size 0%]]：[[/size]][[/span]] [[span class=&#34;terminal-span&#34;]][重复信息已删节][[/span]]
+
+在成功记录下并收容 SCP-6327 后，所有的必要文书报告——包括一份事故报告——都已完成，且转发至驻站点 RAISA 联络人处。Reynders 主管目前维持对调查程序的完全控制，并将亲自监督对其的实验。
+
+自发现 SCP-6327 以来已过去了一周。
+
+一份实时记录的实验记录如下。
+
+[[table]]
+[[row]]
+[[cell class=&#34;tyrian&#34;]]
++++ 动作
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell]]
+SCP-6327 被打开。
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;tyrian&#34;]]
++++ 结果
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell]]
+SCP-6327 变为半开状态。其后是一扇无特征的砖石制墙，向其完成面偏移了大约 20 厘米。邻接砖墙的地面上有一种呈高度腐烂状态的水果。水果与 SCP-6327 之间黏有一张便利贴。便利贴上有如下内容。
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell]]
+[[collapsible show=&#34;»检测到潜在的模因危害«&#34; hide=&#34;- 收起 -&#34;]]
 @@ @@
-= Bureaucracy is the death of all sound work. ~ L.S.
+= 官僚主义即一切合理工作的死神。 ~ L.S.
 @@ @@
 [[/collapsible]]
-[[/div]]
+[[/cell]]
+[[/row]]
+[[/table]]
 
-@@ @@
+[[div style=&#34;margin: 1em;&#34;]]
+[[/div]]
 
 [[div class=&#34;footing&#34;]]
 [[/div]]
 
-[[module Rate]]
-
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
-&lt;&lt; [[[SCP-6326]]] | [[[floppyphoenix|Lt Flops]]] | [[[SCP-6328]]] &gt;&gt;
+= &lt;&lt; [[[SCP-6326]]] | [[[floppyphoenix|Lt Flops]]] | [[[SCP-6328]]] &gt;&gt;
 [[/div]]
-----
-[[div class=&#34;centered&#34;]]
-[[include :scp-wiki:component:license-box]]
-[[&lt;]]
-=====
-&gt; Original poem by [[*user seisatsu]], from [[[fragments|the Fragments page]]].
 
-&gt; This article contains a quote from //The World As I See It// (1949) by Albert Einstein.
-
-&gt; **Filename:** Delta-t-transparent.png
-&gt; **Name:** RCT-Δt logo
-&gt; **Author:** [[*user HammerMaiden]]
-&gt; **License:** [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Generic (CC BY-SA 3.0)]
-&gt; **Source Link:** [[[welcome-to-delta-t|Temporal Site-01 (RCT-Δt Hub)]]]
+[[include :scp-wiki-cn:component:license-box
+|author=Lt Flops]]
 =====
-[[/&lt;]]
-[[include :scp-wiki:component:license-box-end]]
-[[/div]]</textarea></pre>
+&gt; 原诗句作者 [[*user seisatsu]]，来自[[[fragments|段落页面]]]。
+
+&gt; 本文包含有阿尔伯特·爱因斯坦所著《我的世界观》（1949）中文段引用。
+
+&gt; **文件名：**Delta-t-transparent.png
+&gt; **图像名：**RCT-Δt logo
+&gt; **图像作者：**[[*user HammerMaiden]]
+&gt; **授权协议：**[https://creativecommons.org/licenses/by-sa/3.0/ 署名-相同方式共享 3.0 通用（CC BY-SA 3.0）]
+&gt; **来源链接：**[[[welcome-to-delta-t|时间站点-01（RCT-Δt 中心页)]]]
+=====
+[[include :scp-wiki-cn:component:license-box-end]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 15:46:27.438248.</em>
+    <em>Last updated 2022-05-18 16:02:14.045637.</em>
   
 </div>
 </body>

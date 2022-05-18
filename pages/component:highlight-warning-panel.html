@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>标记警告板 组件</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">标记警告板 组件</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:highlight-warning-panel" target="_blank">标记警告板 组件</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>/* Author: Dr Hormress */
+
+@import url(&#39;https://fonts.font.im/css?family=Libre+Barcode+128+Text|Space+Mono&#39;);
+
+@media (min-width: 1040px) {
+    :root {
+        --main-size: calc(1040px * 5 / 24 - 5em);
+        --border-width: calc(1040px /180 - 5em / 180);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1040px) {
+    :root {
+        --main-size: calc(100vw * 5 / 24 - 5em);
+        --border-width: calc(100vw /180 - 5em / 180);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --main-size: calc(100vw * 5 / 24);
+        --border-width: calc(100vw /180);
+    }
+}
+
+.panel-container-container {
+    position: relative;
+    height: var(--main-size);
+}
+
+.panel-container-container &gt; .panel-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: calc(var(--main-size) * 4.4) !important;
+    height: var(--main-size);
+    margin-top: calc(var(--main-size) * -1 / 2);
+    margin-left: calc(var(--main-size) * -2.2);
+}
+
+.panel-container {
+    display: flex;
+}
+
+.panel-container .logo-container {
+    display: block;
+    width: var(--main-size);
+    height: var(--main-size);
+    flex-shrink: 0;
+    background-image: url(http://scp-wiki.wdfiles.com/local--files/theme%3Aminimal/minimal.svg);
+    background-repeat: no-repeat;
+    background-size: var(--main-size) auto;
+    background-position: center;
+}
+
+.panel-container .content-container {
+    flex-grow: 1;
+}
+
+.panel-container .content-container p {
+    margin: 0;
+}
+
+.panel-container .content-container .title {
+    /* height: calc(var(--main-size) / 3); */
+    border-bottom: solid #000 var(--border-width);
+    font-size: calc(var(--main-size) / 75 * 16);
+    font-weight: bold;
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+}
+
+.panel-container .content-container .title p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .content-container .panel-container {
+    justify-content: flex-end;
+}
+
+.panel-container .content-container .top-content {
+    height: calc(var(--main-size) / 2.5);
+    font-size: calc(var(--main-size) / 10);
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    font-weight: bold;
+    padding-top: calc(var(--main-size) / 75);
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.panel-container .content-container .top-content p {
+    line-height: 1.2;
+}
+
+.panel-container .content-container .top-content p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .panel-container p {
+    line-height: 1;
+}
+
+.panel-container .content-container .barcode {
+    flex-grow: 1;
+    font-family: &#34;Libre Barcode 128 Text&#34;;
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    height: calc(var(--main-size) / 5);
+    font-size: calc(var(--main-size) / 5);
+}
+
+.panel-container .content-container .barcode p {
+    line-height: 1.2;
+}
+
+.panel-container .content-container .barcode p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .content-container .passcode {
+    font-family: &#34;Space Mono&#34;;
+    height: calc(var(--main-size) / 5);
+    font-size: calc(var(--main-size) / 10);
+}
+
+.panel-container .content-container .ct-2 {
+    display: none;
+}
+
+.panel-container .content-container .tr {
+    display: none;
+}
+
+/* {$bhl}/
+.panel-container .content-container .top-content {
+    height: calc(var(--main-size) / 1.8);
+    font-size: calc(var(--main-size) / 8);
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    font-weight: bold;
+    padding-top: calc(var(--main-size) / 75);
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.panel-container .logo-container {
+    display: block;
+    width: calc(var(--main-size) / 0.9);
+    height: calc(var(--main-size) / 0.9);
+    background-size: calc(var(--main-size) / 0.9) auto;
+}
+/{$bhl} */
+
+/* {$title-change}/
+
+.panel-container-container.{$id} .panel-container .content-container .title .ct-1 {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .title .ct-2 {
+    display: inline;
+}
+
+/{$title-change} */
+
+/* {$content-change}/
+
+.panel-container-container.{$id} .panel-container .content-container .top-content .ct-1 {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .top-content .ct-2 {
+    display: inline;
+}
+
+/{$content-change} */
+
+/* {$logo-change}/
+
+.panel-container-container.{$id} .panel-container .logo-container {
+    background-image: url(&#34;{$logo-url}&#34;);
+}
+
+/{$logo-change} */
+
+/* {$logo-invert}/
+
+.panel-container-container.{$id} .panel-container .logo-container {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
+/{$logo-invert} */
+
+/* {$border-invert}/
+
+.panel-container-container.{$id} .panel-container .content-container .title {
+    border-color: #FFF;
+}
+
+/{$border-invert} */
+
+/* {$tr}/
+
+.panel-container-container.{$id} .panel-container .content-container .cn {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .tr {
+    display: inline;
+}
+
+/{$tr} */</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>div.blockquote {
+    border: solid 2px #EDEDED;
+    padding: 0.5rem;
+    margin: 4px;
+    background-color: #FFF;
+}
+
+div.blockquote h1 {
+    text-align: center;
+}
+
+.page-rate-widget-box {
+    display: inline-flex;
+}
+
+.page-rate-widget-box a {
+    display: block;
+}
+
+div.code {
+    border: solid 1px rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.075);
+    overflow-x: auto;
+}
+
+div.bcode div.code,
+div.bcode div.code * {
+    white-space: nowrap !important;
+}
+
+div.code.left {
+    text-align: right;
+    width: 6em;
+    max-width: 6em;
+    min-width: 6em;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(127, 127, 127, 0.4);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+::-webkit-scrollbar-button {
+    background-color: transparent;
+
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(255, 255, 255, 1);
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* Author: Dr Hormress */
+
+@import url(&#39;https://fonts.font.im/css?family=Libre+Barcode+128+Text|Space+Mono&#39;);
+
+@media (min-width: 1040px) {
+    :root {
+        --main-size: calc(1040px * 5 / 24 - 5em);
+        --border-width: calc(1040px /180 - 5em / 180);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1040px) {
+    :root {
+        --main-size: calc(100vw * 5 / 24 - 5em);
+        --border-width: calc(100vw /180 - 5em / 180);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --main-size: calc(100vw * 5 / 24);
+        --border-width: calc(100vw /180);
+    }
+}
+
+.panel-container-container {
+    position: relative;
+    height: var(--main-size);
+}
+
+.panel-container-container &gt; .panel-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: calc(var(--main-size) * 4.4) !important;
+    height: var(--main-size);
+    margin-top: calc(var(--main-size) * -1 / 2);
+    margin-left: calc(var(--main-size) * -2.2);
+}
+
+.panel-container {
+    display: flex;
+}
+
+.panel-container .logo-container {
+    display: block;
+    width: var(--main-size);
+    height: var(--main-size);
+    flex-shrink: 0;
+    background-image: url(http://scp-wiki.wdfiles.com/local--files/theme%3Aminimal/minimal.svg);
+    background-repeat: no-repeat;
+    background-size: var(--main-size) auto;
+    background-position: center;
+}
+
+.panel-container .content-container {
+    flex-grow: 1;
+}
+
+.panel-container .content-container p {
+    margin: 0;
+}
+
+.panel-container .content-container .title {
+    /* height: calc(var(--main-size) / 3); */
+    border-bottom: solid #000 var(--border-width);
+    font-size: calc(var(--main-size) / 75 * 16);
+    font-weight: bold;
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+}
+
+.panel-container .content-container .title p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .content-container .panel-container {
+    justify-content: flex-end;
+}
+
+.panel-container .content-container .top-content {
+    height: calc(var(--main-size) / 2.5);
+    font-size: calc(var(--main-size) / 10);
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    font-weight: bold;
+    padding-top: calc(var(--main-size) / 75);
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.panel-container .content-container .top-content p {
+    line-height: 1.2;
+}
+
+.panel-container .content-container .top-content p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .panel-container p {
+    line-height: 1;
+}
+
+.panel-container .content-container .barcode {
+    flex-grow: 1;
+    font-family: &#34;Libre Barcode 128 Text&#34;;
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    height: calc(var(--main-size) / 5);
+    font-size: calc(var(--main-size) / 5);
+}
+
+.panel-container .content-container .barcode p {
+    line-height: 1.2;
+}
+
+.panel-container .content-container .barcode p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .content-container .passcode {
+    font-family: &#34;Space Mono&#34;;
+    height: calc(var(--main-size) / 5);
+    font-size: calc(var(--main-size) / 10);
+}
+
+.panel-container .content-container .ct-2 {
+    display: none;
+}
+
+.panel-container .content-container .tr {
+    display: none;
+}
+
+/* {$bhl}/
+.panel-container .content-container .top-content {
+    height: calc(var(--main-size) / 1.8);
+    font-size: calc(var(--main-size) / 8);
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    font-weight: bold;
+    padding-top: calc(var(--main-size) / 75);
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.panel-container .logo-container {
+    display: block;
+    width: calc(var(--main-size) / 0.9);
+    height: calc(var(--main-size) / 0.9);
+    background-size: calc(var(--main-size) / 0.9) auto;
+}
+/{$bhl} */
+
+/* {$title-change}/
+
+.panel-container-container.{$id} .panel-container .content-container .title .ct-1 {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .title .ct-2 {
+    display: inline;
+}
+
+/{$title-change} */
+
+/* {$content-change}/
+
+.panel-container-container.{$id} .panel-container .content-container .top-content .ct-1 {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .top-content .ct-2 {
+    display: inline;
+}
+
+/{$content-change} */
+
+/* {$logo-change}/
+
+.panel-container-container.{$id} .panel-container .logo-container {
+    background-image: url(&#34;{$logo-url}&#34;);
+}
+
+/{$logo-change} */
+
+/* {$logo-invert}/
+
+.panel-container-container.{$id} .panel-container .logo-container {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
+/{$logo-invert} */
+
+/* {$border-invert}/
+
+.panel-container-container.{$id} .panel-container .content-container .title {
+    border-color: #FFF;
+}
+
+/{$border-invert} */
+
+/* {$tr}/
+
+.panel-container-container.{$id} .panel-container .content-container .cn {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .tr {
+    display: inline;
+}
+
+/{$tr} */</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-grow: 1;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-grow: 1;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-grow: 1;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-grow: 1;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-grow: 1;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-grow: 1;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-grow: 1;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: flex;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-grow: 1;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>panel-container-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$id}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>panel-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>logo-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ct-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ct-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top-content</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ct-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ct-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>panel-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>barcode</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>passcode</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>panel-container-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>panel-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>logo-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top-content</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>panel-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>barcode</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>passcode</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bcode</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>panel-container-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$id}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>panel-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>logo-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ct-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ct-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top-content</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ct-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ct-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>panel-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>barcode</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>passcode</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tr</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+/* Author: Dr Hormress */
+
+@import url(&#39;https://fonts.font.im/css?family=Libre+Barcode+128+Text|Space+Mono&#39;);
+
+@media (min-width: 1040px) {
+    :root {
+        --main-size: calc(1040px * 5 / 24 - 5em);
+        --border-width: calc(1040px /180 - 5em / 180);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1040px) {
+    :root {
+        --main-size: calc(100vw * 5 / 24 - 5em);
+        --border-width: calc(100vw /180 - 5em / 180);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --main-size: calc(100vw * 5 / 24);
+        --border-width: calc(100vw /180);
+    }
+}
+
+.panel-container-container {
+    position: relative;
+    height: var(--main-size);
+}
+
+.panel-container-container &gt; .panel-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: calc(var(--main-size) * 4.4) !important;
+    height: var(--main-size);
+    margin-top: calc(var(--main-size) * -1 / 2);
+    margin-left: calc(var(--main-size) * -2.2);
+}
+
+.panel-container {
+    display: flex;
+}
+
+.panel-container .logo-container {
+    display: block;
+    width: var(--main-size);
+    height: var(--main-size);
+    flex-shrink: 0;
+    background-image: url(http://scp-wiki.wdfiles.com/local--files/theme%3Aminimal/minimal.svg);
+    background-repeat: no-repeat;
+    background-size: var(--main-size) auto;
+    background-position: center;
+}
+
+.panel-container .content-container {
+    flex-grow: 1;
+}
+
+.panel-container .content-container p {
+    margin: 0;
+}
+
+.panel-container .content-container .title {
+    /* height: calc(var(--main-size) / 3); */
+    border-bottom: solid #000 var(--border-width);
+    font-size: calc(var(--main-size) / 75 * 16);
+    font-weight: bold;
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+}
+
+.panel-container .content-container .title p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .content-container .panel-container {
+    justify-content: flex-end;
+}
+
+.panel-container .content-container .top-content {
+    height: calc(var(--main-size) / 2.5);
+    font-size: calc(var(--main-size) / 10);
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    font-weight: bold;
+    padding-top: calc(var(--main-size) / 75);
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.panel-container .content-container .top-content p {
+    line-height: 1.2;
+}
+
+.panel-container .content-container .top-content p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .panel-container p {
+    line-height: 1;
+}
+
+.panel-container .content-container .barcode {
+    flex-grow: 1;
+    font-family: &#34;Libre Barcode 128 Text&#34;;
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    height: calc(var(--main-size) / 5);
+    font-size: calc(var(--main-size) / 5);
+}
+
+.panel-container .content-container .barcode p {
+    line-height: 1.2;
+}
+
+.panel-container .content-container .barcode p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .content-container .passcode {
+    font-family: &#34;Space Mono&#34;;
+    height: calc(var(--main-size) / 5);
+    font-size: calc(var(--main-size) / 10);
+}
+
+.panel-container .content-container .ct-2 {
+    display: none;
+}
+
+.panel-container .content-container .tr {
+    display: none;
+}
+
+/* {$bhl}/
+.panel-container .content-container .top-content {
+    height: calc(var(--main-size) / 1.8);
+    font-size: calc(var(--main-size) / 8);
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    font-weight: bold;
+    padding-top: calc(var(--main-size) / 75);
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.panel-container .logo-container {
+    display: block;
+    width: calc(var(--main-size) / 0.9);
+    height: calc(var(--main-size) / 0.9);
+    background-size: calc(var(--main-size) / 0.9) auto;
+}
+/{$bhl} */
+
+/* {$title-change}/
+
+.panel-container-container.{$id} .panel-container .content-container .title .ct-1 {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .title .ct-2 {
+    display: inline;
+}
+
+/{$title-change} */
+
+/* {$content-change}/
+
+.panel-container-container.{$id} .panel-container .content-container .top-content .ct-1 {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .top-content .ct-2 {
+    display: inline;
+}
+
+/{$content-change} */
+
+/* {$logo-change}/
+
+.panel-container-container.{$id} .panel-container .logo-container {
+    background-image: url(&#34;{$logo-url}&#34;);
+}
+
+/{$logo-change} */
+
+/* {$logo-invert}/
+
+.panel-container-container.{$id} .panel-container .logo-container {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
+/{$logo-invert} */
+
+/* {$border-invert}/
+
+.panel-container-container.{$id} .panel-container .content-container .title {
+    border-color: #FFF;
+}
+
+/{$border-invert} */
+
+/* {$tr}/
+
+.panel-container-container.{$id} .panel-container .content-container .cn {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .tr {
+    display: inline;
+}
+
+/{$tr} */
+[[/module]]
+
+[[iftags -样版]]
+
+[[div class=&#34;panel-container-container {$id}&#34;]]
+[[div class=&#34;panel-container&#34;]]
+[[div class=&#34;logo-container&#34;]]
+[[/div]]
+[[div class=&#34;content-container&#34;]]
+[[div class=&#34;title&#34;]]
+[[span class=&#34;ct-1&#34;]][[span class=&#34;cn&#34;]]SCP基金会监督者议会授权分类[[/span]][[span class=&#34;tr&#34;]]SCP基金會监督者議會授权分類[[/span]][[/span]][[span class=&#34;ct-2&#34;]]{$content1}[[/span]]
+[[/div]]
+[[div class=&#34;top-content&#34;]]
+[[span class=&#34;ct-1&#34;]][[span class=&#34;cn&#34;]]本文件以及所有相关文件均属于SCP基金会所有，并服从于其分类要求与限制。该文档可能包含或不包含致命的模因防御措施。试图在未经获取适当及充分的授权的情况下访问或传播此文档将被判处死刑。[[/span]][[span class=&#34;tr&#34;]]本文件以及所有相關文件均屬於SCP基金會所有，並服從于其分類要求與限制。該文檔可能包含或不包含致命的模因防禦措施。試圖在未經獲取適當及充分的授權的情況下訪問或傳播此文檔將被判處死刑。[[/span]][[/span]][[span class=&#34;ct-2&#34;]]{$content2}[[/span]]
+[[/div]]
+[[div class=&#34;panel-container&#34;]]
+[[div class=&#34;barcode&#34;]]
+AUTH{$auth}/TOKN{$tokn}
+[[/div]]
+[[div class=&#34;passcode&#34;]]
+[[span class=&#34;cn&#34;]]识别码[[/span]][[span class=&#34;tr&#34;]]識別碼[[/span]]: ##4AB894|{$auth}##
+[[span class=&#34;cn&#34;]]授权码[[/span]][[span class=&#34;tr&#34;]]授權碼[[/span]]: ##4AB894|{$tokn}##
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[/iftags]]
+
+[[iftags +样版]]
+
+[[module CSS]]
+div.blockquote {
+    border: solid 2px #EDEDED;
+    padding: 0.5rem;
+    margin: 4px;
+    background-color: #FFF;
+}
+
+div.blockquote h1 {
+    text-align: center;
+}
+
+.page-rate-widget-box {
+    display: inline-flex;
+}
+
+.page-rate-widget-box a {
+    display: block;
+}
+
+div.code {
+    border: solid 1px rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.075);
+    overflow-x: auto;
+}
+
+div.bcode div.code,
+div.bcode div.code * {
+    white-space: nowrap !important;
+}
+
+div.code.left {
+    text-align: right;
+    width: 6em;
+    max-width: 6em;
+    min-width: 6em;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(127, 127, 127, 0.4);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+::-webkit-scrollbar-button {
+    background-color: transparent;
+
+}
+
+::-webkit-scrollbar-corner {
+    background: rgba(255, 255, 255, 1);
+}
+
+[[/module]]
+
+[[&gt;]]
+[[module rate]]
+[[/&gt;]]
+
+[[div class=&#34;blockquote&#34;]]
++* **这是什么？**
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+此组件用于创建一个djkaktus风格的警告板。
+
+**此组件与SCP-1730警告板的对比：**
+
+[[=]]
+[[image http://scp-wiki-cn.wikidot.com/local--files/scp-1730/1730warning_translated.png width=100%]]
+[[/=]]
+
+（1730）
+
+[[div class=&#34;panel-container-container&#34;]]
+[[div class=&#34;panel-container&#34;]]
+[[div class=&#34;logo-container&#34;]]
+[[/div]]
+[[div class=&#34;content-container&#34;]]
+[[div class=&#34;title&#34;]]
+SCP基金会监督者议会授权分类
+[[/div]]
+[[div class=&#34;top-content&#34;]]
+本文件以及所有相关文件均属于SCP基金会所有，并服从于其分类要求与限制。该文档可能包含或不包含致命的模因防御措施。试图在未经获取适当及充分的授权的情况下访问或传播此文档将被判处死刑。
+[[/div]]
+[[div class=&#34;panel-container&#34;]]
+[[div class=&#34;barcode&#34;]]
+AUTH858102dd28/TOKN1d1473de63
+[[/div]]
+[[div class=&#34;passcode&#34;]]
+识别码: ##4AB894|858102dd28##
+授权码: ##4AB894|1d1473de63##
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+
+（此组件）
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
++* **如何使用？**
+[[/div]]
+
+[[div class=&#34;blockquote bcode&#34;]]
+请使用{{[[include]]}}语法引用此组件。基础代码如下：
+
+[[div style=&#34;display: flex;&#34;]]
+[[div class=&#34;code left&#34;]]
+**模块头部**→
+识别码→
+授权码→
+##darkred|繁体##→
+**模块尾部**→
+[[/div]]
+[[div class=&#34;code&#34; style=&#34;flex-grow: 1;&#34;]]
+**@@[[include :scp-wiki-cn:component:highlight-warning-panel@@**
+|auth=##########
+|tokn=##########
+|tr=
+**@@]]@@**
+[[/div]]
+[[/div]]
+
+识别码与授权码均建议填写10位字母/数字，不支持汉字；设置{{|tr=*}}即为启用繁体，若使用简体文本则无需填写。
+
+__**可选功能**__
+
+此组件可以直接通过{{[[include]]}}使用更多选项。
+
+[[div style=&#34;display: flex;&#34;]]
+[[div class=&#34;code left&#34;]]
+**模块头部**→
+识别码→
+授权码→
+##darkred|繁体##→
+##darkred|模块ID##→
+**##green|更多选项##**→
+**模块尾部**→
+[[/div]]
+[[div class=&#34;code&#34; style=&#34;flex-grow: 1;&#34;]]
+**@@[[include :scp-wiki-cn:component:highlight-warning-panel@@**
+|auth=##########
+|tokn=##########
+|tr=
+|id=
+**##green|@@...@@##**
+**@@]]@@**
+[[/div]]
+[[/div]]
+
+若需使用可选功能，请复制上方形式的模块，并用可选功能对应的代码替换掉省略号。多个可选功能可以并存。若需要在页面上多次使用不同样式的此组件，请为每个模块赋予唯一的模块ID。
+
+**选项1 黑色标记笔适配**：此模块可以在黑色标记笔版式下正常显示，黑色标记笔适配功能将使它更接近黑色标记笔的版式风格。
+
+* Logo尺寸放大、字号略微增大，文本变为四行。
+
+[[div style=&#34;display: flex;&#34;]]
+[[div class=&#34;code left&#34;]]
+黑标适配→
+[[/div]]
+[[div class=&#34;code&#34; style=&#34;flex-grow: 1;&#34;]]
+|bhl=*
+[[/div]]
+[[/div]]
+
+**选项2 自定义标题**：此组件可以自定义标题，即替换掉“SCP基金会监督者议会授权分类”。然而，请确认你的标题字数能在一行内显示。
+
+[[div style=&#34;display: flex;&#34;]]
+[[div class=&#34;code left&#34;]]
+标题替换→
+替换后标题→
+[[/div]]
+[[div class=&#34;code&#34; style=&#34;flex-grow: 1;&#34;]]
+|title-change=*
+|content1=这是你修改之后的标题
+[[/div]]
+[[/div]]
+
+**选项3 自定义内容**：此组件可以自定义文字内容。然而，请确保在标准样式下文字约占三行空间、黑标适配样式下文字约占四行空间。
+
+[[div style=&#34;display: flex;&#34;]]
+[[div class=&#34;code left&#34;]]
+内容替换→
+替换后内容→
+[[/div]]
+[[div class=&#34;code&#34; style=&#34;flex-grow: 1;&#34;]]
+|content-change=*
+|content1=这是你修改之后的内容
+[[/div]]
+[[/div]]
+
+**选项4 自定义图标**：此组件可以自定义左侧的图标。
+
+[[div style=&#34;display: flex;&#34;]]
+[[div class=&#34;code left&#34;]]
+图标替换→
+图标链接→
+[[/div]]
+[[div class=&#34;code&#34; style=&#34;flex-grow: 1;&#34;]]
+|logo-change=*
+|logo-url=图标链接
+[[/div]]
+[[/div]]
+
+**选项5 反色**：如果你手头有一张白色基金会图标却找不到黑色的版本，或是你打算直接在黑色背景上使用此模块，此组件提供了两个反色设置。
+
+* 图标反色：对左侧图标进行色调反转。
+
+[[div style=&#34;display: flex;&#34;]]
+[[div class=&#34;code left&#34;]]
+图标反色→
+[[/div]]
+[[div class=&#34;code&#34; style=&#34;flex-grow: 1;&#34;]]
+|logo-invert=*
+[[/div]]
+[[/div]]
+
+* 边框反色：将警告板上的黑色横线进行色调反转（变为白色）。
+
+[[div style=&#34;display: flex;&#34;]]
+[[div class=&#34;code left&#34;]]
+边框反色→
+[[/div]]
+[[div class=&#34;code&#34; style=&#34;flex-grow: 1;&#34;]]
+|border-invert=*
+[[/div]]
+[[/div]]
+
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
++* 组件代码
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[collapsible show=&#34;+ 查看组件代码&#34; hide=&#34;- 关闭组件代码&#34;]]
+[[code type=&#34;CSS&#34;]]
+[[module CSS]]
+/* Author: Dr Hormress */
+
+@import url(&#39;https://fonts.font.im/css?family=Libre+Barcode+128+Text|Space+Mono&#39;);
+
+@media (min-width: 1040px) {
+    :root {
+        --main-size: calc(1040px * 5 / 24 - 5em);
+        --border-width: calc(1040px /180 - 5em / 180);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1040px) {
+    :root {
+        --main-size: calc(100vw * 5 / 24 - 5em);
+        --border-width: calc(100vw /180 - 5em / 180);
+    }
+}
+
+@media (max-width: 768px) {
+    :root {
+        --main-size: calc(100vw * 5 / 24);
+        --border-width: calc(100vw /180);
+    }
+}
+
+.panel-container-container {
+    position: relative;
+    height: var(--main-size);
+}
+
+.panel-container-container &gt; .panel-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: calc(var(--main-size) * 4.4) !important;
+    height: var(--main-size);
+    margin-top: calc(var(--main-size) * -1 / 2);
+    margin-left: calc(var(--main-size) * -2.2);
+}
+
+.panel-container {
+    display: flex;
+}
+
+.panel-container .logo-container {
+    display: block;
+    width: var(--main-size);
+    height: var(--main-size);
+    flex-shrink: 0;
+    background-image: url(http://scp-wiki.wdfiles.com/local--files/theme%3Aminimal/minimal.svg);
+    background-repeat: no-repeat;
+    background-size: var(--main-size) auto;
+    background-position: center;
+}
+
+.panel-container .content-container {
+    flex-grow: 1;
+}
+
+.panel-container .content-container p {
+    margin: 0;
+}
+
+.panel-container .content-container .title {
+    /* height: calc(var(--main-size) / 3); */
+    border-bottom: solid #000 var(--border-width);
+    font-size: calc(var(--main-size) / 75 * 16);
+    font-weight: bold;
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+}
+
+.panel-container .content-container .title p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .content-container .panel-container {
+    justify-content: flex-end;
+}
+
+.panel-container .content-container .top-content {
+    height: calc(var(--main-size) / 2.5);
+    font-size: calc(var(--main-size) / 10);
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    font-weight: bold;
+    padding-top: calc(var(--main-size) / 75);
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.panel-container .content-container .top-content p {
+    line-height: 1.2;
+}
+
+.panel-container .content-container .top-content p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .panel-container p {
+    line-height: 1;
+}
+
+.panel-container .content-container .barcode {
+    flex-grow: 1;
+    font-family: &#34;Libre Barcode 128 Text&#34;;
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    height: calc(var(--main-size) / 5);
+    font-size: calc(var(--main-size) / 5);
+}
+
+.panel-container .content-container .barcode p {
+    line-height: 1.2;
+}
+
+.panel-container .content-container .barcode p::after {
+    content: &#34;&#34;;
+    display: inline-block;
+    width: 100%;
+}
+
+.panel-container .content-container .passcode {
+    font-family: &#34;Space Mono&#34;;
+    height: calc(var(--main-size) / 5);
+    font-size: calc(var(--main-size) / 10);
+}
+
+.panel-container .content-container .ct-2 {
+    display: none;
+}
+
+.panel-container .content-container .tr {
+    display: none;
+}
+
+/* {$bhl}/
+.panel-container .content-container .top-content {
+    height: calc(var(--main-size) / 1.8);
+    font-size: calc(var(--main-size) / 8);
+    text-align: justify;
+    text-align: -webkit-justify;
+    text-align: -moz-justify;
+    word-break: break-all;
+    text-justify: distribute;
+    font-weight: bold;
+    padding-top: calc(var(--main-size) / 75);
+    background-color: rgba(128, 128, 128, .1);
+}
+
+.panel-container .logo-container {
+    display: block;
+    width: calc(var(--main-size) / 0.9);
+    height: calc(var(--main-size) / 0.9);
+    background-size: calc(var(--main-size) / 0.9) auto;
+}
+/{$bhl} */
+
+/* {$title-change}/
+
+.panel-container-container.{$id} .panel-container .content-container .title .ct-1 {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .title .ct-2 {
+    display: inline;
+}
+
+/{$title-change} */
+
+/* {$content-change}/
+
+.panel-container-container.{$id} .panel-container .content-container .top-content .ct-1 {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .top-content .ct-2 {
+    display: inline;
+}
+
+/{$content-change} */
+
+/* {$logo-change}/
+
+.panel-container-container.{$id} .panel-container .logo-container {
+    background-image: url(&#34;{$logo-url}&#34;);
+}
+
+/{$logo-change} */
+
+/* {$logo-invert}/
+
+.panel-container-container.{$id} .panel-container .logo-container {
+    filter: invert(100%);
+    -webkit-filter: invert(100%);
+}
+
+/{$logo-invert} */
+
+/* {$border-invert}/
+
+.panel-container-container.{$id} .panel-container .content-container .title {
+    border-color: #FFF;
+}
+
+/{$border-invert} */
+
+/* {$tr}/
+
+.panel-container-container.{$id} .panel-container .content-container .cn {
+    display: none;
+}
+
+.panel-container-container.{$id} .panel-container .content-container .tr {
+    display: inline;
+}
+
+/{$tr} */
+[[/module]]
+
+[[div class=&#34;panel-container-container {$id}&#34;]]
+[[div class=&#34;panel-container&#34;]]
+[[div class=&#34;logo-container&#34;]]
+[[/div]]
+[[div class=&#34;content-container&#34;]]
+[[div class=&#34;title&#34;]]
+[[span class=&#34;ct-1&#34;]][[span class=&#34;cn&#34;]]SCP基金会监督者议会授权分类[[/span]][[span class=&#34;tr&#34;]]SCP基金會监督者議會授权分類[[/span]][[/span]][[span class=&#34;ct-2&#34;]]{$content1}[[/span]]
+[[/div]]
+[[div class=&#34;top-content&#34;]]
+[[span class=&#34;ct-1&#34;]][[span class=&#34;cn&#34;]]本文件以及所有相关文件均属于SCP基金会所有，并服从于其分类要求与限制。该文档可能包含或不包含致命的模因防御措施。试图在未经获取适当及充分的授权的情况下访问或传播此文档将被判处死刑。[[/span]][[span class=&#34;tr&#34;]]本文件以及所有相關文件均屬於SCP基金會所有，並服從于其分類要求與限制。該文檔可能包含或不包含致命的模因防禦措施。試圖在未經獲取適當及充分的授權的情況下訪問或傳播此文檔將被判處死刑。[[/span]][[/span]][[span class=&#34;ct-2&#34;]]{$content2}[[/span]]
+[[/div]]
+[[div class=&#34;panel-container&#34;]]
+[[div class=&#34;barcode&#34;]]
+AUTH{$auth}/TOKN{$tokn}
+[[/div]]
+[[div class=&#34;passcode&#34;]]
+[[span class=&#34;cn&#34;]]识别码[[/span]][[span class=&#34;tr&#34;]]識別碼[[/span]]: ##4AB894|{$auth}##
+[[span class=&#34;cn&#34;]]授权码[[/span]][[span class=&#34;tr&#34;]]授權碼[[/span]]: ##4AB894|{$tokn}##
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[/code]]
+[[/collapsible]]
+[[/div]]
+
+[[/iftags]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:06.182470.</em>
+  
+</div>
+</body>

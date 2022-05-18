@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>All things are one的提案</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">All things are one的提案</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/all-things-are-one-s-proposal-offset-3" target="_blank">All things are one的提案</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>
+@import url(&#34;https://cdn.jsdelivr.net/gh/SCP-CN-Tech/Black-Highlighter@gh-pages/css/int/cn/min/normalize.min.css&#34;);
+
+@import url(&#34;https://cdn.jsdelivr.net/gh/SCP-CN-Tech/Black-Highlighter@gh-pages/css/int/cn/min/black-highlighter.min.css&#34;);
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* - == === BHL VARIABLES === == - */
+ 
+/* This is a BHL theme, which is configuration-based, so the root element
+ * contains variables that will affect the whole theme
+ */
+:root:lang(cn) {
+  /* S-CSS-P integration */
+  --theme-base: &#34;black-highlighter&#34;;
+  --theme-id: &#34;swirling-ashes&#34;;
+  --theme-name: &#34;Swirling Ashes Theme&#34;;
+ 
+  /* Colours */
+  --dark-gray-monochrome: 26, 24, 26;
+  --swatch-topmenu-bg-color: var(--dark-gray-monochrome);
+  --dark-accent: 63, 9, 143;
+  --medium-accent: 81, 13, 181;
+  --bright-accent: 105, 49, 186;
+  --pale-accent: 128, 80, 200;
+ 
+  /* Sky */
+  --sky-at-dawn: 236, 112, 99;
+  --sky-at-morning: 174, 214, 241;
+  --sky-at-daytime: 249, 231, 159;
+  --sky-at-evening: 248, 196, 113;
+  --sky-at-dusk: 140, 50, 70;
+  --sky-at-night: 50, 40, 67;
+  --sky-length: 15;
+  --sky-time: 60s;
+ 
+  /* Header adjustments */
+  --header-title: &#34;SCP基金会&#34;;
+  --header-subtitle: &#34;控制，收容，保护&#34;;
+ 
+  /* Delete the default header background */
+  --gradient-header: linear-gradient(transparent, transparent);
+  --diagonal-stripes: linear-gradient(transparent, transparent);
+}
+ 
+/* - == === HEADER BACKGROUNDS === == - */
+ 
+/* The header is made up of a million different stacked backgrounds.
+ * Instead of fucking about with z-index, I&#39;ve added backgrounds to
+ * the ::before and ::after of various full-page elements in their
+ * natural stacking order.
+ */
+ 
+/* The following pseudoelements each contain a different part of the
+ * header background. They need to be drawn precisely over the header
+ * and made unclickable so they don&#39;t interfere with the links up there.
+ * They appear on the page in this order, so they&#39;ll also be drawn on
+ * top of each other in this order.
+ */
+body::before,
+div#container-wrap-wrap::before,
+div#container-wrap::before,
+div#container-wrap-wrap::after,
+body::after {
+  content: &#34;&#34;;
+  position: absolute;
+  height: var(--header-height-on-desktop); width: 100%; top: 0; left: 0;
+  pointer-events: none;
+}
+ 
+/* The sky, which loops through a series of colours to evoke the
+ * unstoppable passing of time
+ */
+body::before {
+  background: linear-gradient(
+                to top,
+                rgb(var(--sky-at-morning)) 0%,
+                rgb(var(--sky-at-morning)) 11%,
+                rgb(var(--sky-at-daytime)) 22%,
+                rgb(var(--sky-at-daytime)) 33%,
+                rgb(var(--sky-at-evening)) 44%,
+                rgb(var(--sky-at-dusk)) 55%,
+                rgb(var(--sky-at-night)) 66%,
+                rgb(var(--sky-at-night)) 77%,
+                rgb(var(--sky-at-dawn)) 88%,
+                rgb(var(--sky-at-morning)) 100%
+              );
+  background-size: 100% calc(var(--header-height-on-desktop)
+                             * var(--sky-length));
+  animation: sky linear var(--sky-time) infinite;
+}
+@keyframes sky {
+  from { background-position: 0 0; }
+  to {
+    background-position: 0 calc(var(--header-height-on-desktop)
+                                * var(--sky-length));
+  }
+}
+ 
+/* The city skyline */
+div#container-wrap-wrap::before {
+  background: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline.png&#39;);
+  background-size: auto var(--header-height-on-desktop);
+}
+ 
+/* Two backgrounds: a white and blurred shine on the buildings,
+ * taken from a brightness threshold of the original skyline
+ * image; and a white-to-transparent gradient that uses the
+ * original skyline image as a clipping mask. These appear in
+ * the day and fade for the night to represent the sun&#39;s
+ * reflection on the buildings.
+ */
+div#container-wrap::before {
+  background: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline-whitewash.png&#39;),
+              url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline-highlight.png&#39;);
+  background-size: auto var(--header-height-on-desktop);
+  animation: shine ease-in-out var(--sky-time) infinite;
+}
+@keyframes shine {
+  0%, 40%, 100% { opacity: 0.2; }
+  55%, 77% { opacity: 0; }
+}
+ 
+/* The final two pseudoelements contain the ashes: clouds that
+ * roll past the city at ground level. Two elements are needed
+ * because the two layers of clouds have different widths and
+ * move at different speeds.
+ * The fade animation affords an unobscured view of the city
+ * every 3rd night.
+ */
+div#container-wrap-wrap::after, body::after {
+  background-size: var(--ashes-width) var(--header-height-on-desktop);
+  background-repeat: repeat-x;
+  animation: ashes-move linear var(--ashes-move-duration),
+             ashes-fade ease calc(var(--sky-time) * 3);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+div#container-wrap-wrap::after {
+  background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-large.png&#39;);
+  --ashes-move-duration: 27s;
+  --ashes-width: 500px;
+  --ashes-opacity: 0.5;
+}
+body::after {
+  background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-small.png&#39;);
+  --ashes-move-duration: 20s;
+  --ashes-width: 800px;
+  --ashes-opacity: 0.4;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) 0; }
+}
+@keyframes ashes-fade {
+  0%, 85%, 96%, 100% { opacity: var(--ashes-opacity); }
+  88.66%, 92.33% { opacity: 0.1; }
+}
+ 
+/* - == === BODY BACKGROUNDS === == - */
+ 
+/* This psuedolement contains the faint purple patchy smog on the page
+ * just below the header, as a thematic transition from dark to light.
+ */
+#content-wrap { position: relative; }
+#content-wrap::before {
+  content: &#34;&#34;;
+  position: absolute;
+  height: 100%; width: 100%; top: 0; left: 0;
+  background-repeat: repeat-x;
+  pointer-events: none;
+  background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/purple-smoke.png&#39;);
+  opacity: 0.2;
+}
+ 
+/* - == === MISCELLANEOUS === == - */
+ 
+/* Interwiki */
+#side-bar .scpnet-interwiki-wrapper {
+  filter: initial;
+}
+ 
+/* Add a pinch of extra contrast to the login info */
+#login-status {
+  background: rgba(var(--dark-accent), 0.3);
+  padding-left: 0.5rem;
+}
+ 
+/* Respect user motion settings */
+@media screen and (prefers-reduced-motion: reduce) {
+  body::before,
+  div#container-wrap::before,
+  div#container-wrap-wrap::after,
+  body::after {
+    animation: none;
+  }
+}
+
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/credit:start" target="_blank"><code>:scp-wiki-cn:credit:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/credit:end" target="_blank"><code>:scp-wiki-cn:credit:end</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+
+@import url(&#34;https://cdn.jsdelivr.net/gh/SCP-CN-Tech/Black-Highlighter@gh-pages/css/int/cn/min/normalize.min.css&#34;);
+
+@import url(&#34;https://cdn.jsdelivr.net/gh/SCP-CN-Tech/Black-Highlighter@gh-pages/css/int/cn/min/black-highlighter.min.css&#34;);
+
+[[/module]]
+
+[[module CSS]]
+/* - == === BHL VARIABLES === == - */
+ 
+/* This is a BHL theme, which is configuration-based, so the root element
+ * contains variables that will affect the whole theme
+ */
+:root:lang(cn) {
+  /* S-CSS-P integration */
+  --theme-base: &#34;black-highlighter&#34;;
+  --theme-id: &#34;swirling-ashes&#34;;
+  --theme-name: &#34;Swirling Ashes Theme&#34;;
+ 
+  /* Colours */
+  --dark-gray-monochrome: 26, 24, 26;
+  --swatch-topmenu-bg-color: var(--dark-gray-monochrome);
+  --dark-accent: 63, 9, 143;
+  --medium-accent: 81, 13, 181;
+  --bright-accent: 105, 49, 186;
+  --pale-accent: 128, 80, 200;
+ 
+  /* Sky */
+  --sky-at-dawn: 236, 112, 99;
+  --sky-at-morning: 174, 214, 241;
+  --sky-at-daytime: 249, 231, 159;
+  --sky-at-evening: 248, 196, 113;
+  --sky-at-dusk: 140, 50, 70;
+  --sky-at-night: 50, 40, 67;
+  --sky-length: 15;
+  --sky-time: 60s;
+ 
+  /* Header adjustments */
+  --header-title: &#34;SCP基金会&#34;;
+  --header-subtitle: &#34;控制，收容，保护&#34;;
+ 
+  /* Delete the default header background */
+  --gradient-header: linear-gradient(transparent, transparent);
+  --diagonal-stripes: linear-gradient(transparent, transparent);
+}
+ 
+/* - == === HEADER BACKGROUNDS === == - */
+ 
+/* The header is made up of a million different stacked backgrounds.
+ * Instead of fucking about with z-index, I&#39;ve added backgrounds to
+ * the ::before and ::after of various full-page elements in their
+ * natural stacking order.
+ */
+ 
+/* The following pseudoelements each contain a different part of the
+ * header background. They need to be drawn precisely over the header
+ * and made unclickable so they don&#39;t interfere with the links up there.
+ * They appear on the page in this order, so they&#39;ll also be drawn on
+ * top of each other in this order.
+ */
+body::before,
+div#container-wrap-wrap::before,
+div#container-wrap::before,
+div#container-wrap-wrap::after,
+body::after {
+  content: &#34;&#34;;
+  position: absolute;
+  height: var(--header-height-on-desktop); width: 100%; top: 0; left: 0;
+  pointer-events: none;
+}
+ 
+/* The sky, which loops through a series of colours to evoke the
+ * unstoppable passing of time
+ */
+body::before {
+  background: linear-gradient(
+                to top,
+                rgb(var(--sky-at-morning)) 0%,
+                rgb(var(--sky-at-morning)) 11%,
+                rgb(var(--sky-at-daytime)) 22%,
+                rgb(var(--sky-at-daytime)) 33%,
+                rgb(var(--sky-at-evening)) 44%,
+                rgb(var(--sky-at-dusk)) 55%,
+                rgb(var(--sky-at-night)) 66%,
+                rgb(var(--sky-at-night)) 77%,
+                rgb(var(--sky-at-dawn)) 88%,
+                rgb(var(--sky-at-morning)) 100%
+              );
+  background-size: 100% calc(var(--header-height-on-desktop)
+                             * var(--sky-length));
+  animation: sky linear var(--sky-time) infinite;
+}
+@keyframes sky {
+  from { background-position: 0 0; }
+  to {
+    background-position: 0 calc(var(--header-height-on-desktop)
+                                * var(--sky-length));
+  }
+}
+ 
+/* The city skyline */
+div#container-wrap-wrap::before {
+  background: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline.png&#39;);
+  background-size: auto var(--header-height-on-desktop);
+}
+ 
+/* Two backgrounds: a white and blurred shine on the buildings,
+ * taken from a brightness threshold of the original skyline
+ * image; and a white-to-transparent gradient that uses the
+ * original skyline image as a clipping mask. These appear in
+ * the day and fade for the night to represent the sun&#39;s
+ * reflection on the buildings.
+ */
+div#container-wrap::before {
+  background: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline-whitewash.png&#39;),
+              url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline-highlight.png&#39;);
+  background-size: auto var(--header-height-on-desktop);
+  animation: shine ease-in-out var(--sky-time) infinite;
+}
+@keyframes shine {
+  0%, 40%, 100% { opacity: 0.2; }
+  55%, 77% { opacity: 0; }
+}
+ 
+/* The final two pseudoelements contain the ashes: clouds that
+ * roll past the city at ground level. Two elements are needed
+ * because the two layers of clouds have different widths and
+ * move at different speeds.
+ * The fade animation affords an unobscured view of the city
+ * every 3rd night.
+ */
+div#container-wrap-wrap::after, body::after {
+  background-size: var(--ashes-width) var(--header-height-on-desktop);
+  background-repeat: repeat-x;
+  animation: ashes-move linear var(--ashes-move-duration),
+             ashes-fade ease calc(var(--sky-time) * 3);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+div#container-wrap-wrap::after {
+  background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-large.png&#39;);
+  --ashes-move-duration: 27s;
+  --ashes-width: 500px;
+  --ashes-opacity: 0.5;
+}
+body::after {
+  background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-small.png&#39;);
+  --ashes-move-duration: 20s;
+  --ashes-width: 800px;
+  --ashes-opacity: 0.4;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) 0; }
+}
+@keyframes ashes-fade {
+  0%, 85%, 96%, 100% { opacity: var(--ashes-opacity); }
+  88.66%, 92.33% { opacity: 0.1; }
+}
+ 
+/* - == === BODY BACKGROUNDS === == - */
+ 
+/* This psuedolement contains the faint purple patchy smog on the page
+ * just below the header, as a thematic transition from dark to light.
+ */
+#content-wrap { position: relative; }
+#content-wrap::before {
+  content: &#34;&#34;;
+  position: absolute;
+  height: 100%; width: 100%; top: 0; left: 0;
+  background-repeat: repeat-x;
+  pointer-events: none;
+  background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/purple-smoke.png&#39;);
+  opacity: 0.2;
+}
+ 
+/* - == === MISCELLANEOUS === == - */
+ 
+/* Interwiki */
+#side-bar .scpnet-interwiki-wrapper {
+  filter: initial;
+}
+ 
+/* Add a pinch of extra contrast to the login info */
+#login-status {
+  background: rgba(var(--dark-accent), 0.3);
+  padding-left: 0.5rem;
+}
+ 
+/* Respect user motion settings */
+@media screen and (prefers-reduced-motion: reduce) {
+  body::before,
+  div#container-wrap::before,
+  div#container-wrap-wrap::after,
+  body::after {
+    animation: none;
+  }
+}
+
+
+[[/module]]
+[[include :scp-wiki-cn:credit:start]]
+**SCP-CN-001：**江羽
+**作者：**[[*user All things are one]]
+感谢[[*user 5M7]]，[[*user JustAswellJar Pepper]]的帮助！
+[[include :scp-wiki-cn:credit:end]]
+&gt; 9号，他们的猜想确实是正确的。
+
+&gt; ？
+
+&gt; 文档已经通过O5-3的机密数据传输渠道发送到你的终端了。
+
+&gt; ......
+
+&gt; 江雁，这些江雁显然是长江的共生物，显然是。吉光片羽，无数遗失的神话仍在流传，从未断绝。
+
+&gt; 实际上，长江，SCP-CN-001的本质是什么？
+
+&gt; 不知道。我们只知道这是由初代基金会制造的产物，是与人类文明共生的长河。无数的叙事，存在过的文字与传说都仅是其一隅。被无数年代的时间，无数的神话与幻想扩张的长江早已经是被镶嵌于人类文明中的不可缺失的一环。
+
+&gt; 其他的呢？
+
+&gt; 初代基金会自然将其记录于长江，你去看吧。
+
+&gt; 吉光片羽，遗失之物最终呈现。
+
+&gt; 不必忧愁，我们仍将流传；不必记忆，我们皆在长江
+
+&gt; 时候不早了。[[[SCP-2000]]]已经启动完毕。现在我们是此迭代的最后13个人类。该下去了。
+
+&gt; 嗯</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:05.001619.</em>
+  
+</div>
+</body>

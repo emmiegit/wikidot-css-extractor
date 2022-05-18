@@ -48,15 +48,191 @@
         </li>
       
         <li>
-          <pre><code>table.wiki-content-table {
+          <pre><code>
+:root {
+    --swatch-background: var(--black-monochrome);
+    --header-subtitle: &#34;Office of the Overseer&#34;;
+}
+
+html, body {
+    color: rgb(var(--swatch-text-light));
+}
+
+#header h2,
+#header h2 span,
+#header h2 span::before {
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50%;
+    top: 40%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align:  flex-end;
+    -webkit-align-items:  flex-end;
+    -moz-box-align:  flex-end;
+    -ms-flex-align:  flex-end;
+    align-items: flex-end;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-height: inherit;
+    z-index: 0;
+    font-weight: 500;
+    font-family: var(--header-font);
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    pointer-events: none;
+}
+
+.danger-diamond a,
+.danger-diamond a:hover {
+    color: rgba(0,0,0,0) !important;
+    -webkit-box-shadow: initial !important;
+       -moz-box-shadow: initial !important;
+            box-shadow: initial !important;
+}
+
+.danger-diamond &gt; .arrows {
+    background-image: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 160 160&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;%23fcfcfc&#39; d=&#39;M136.1,133.3l23.9-23.9V51.2l-24-24l19.1-19.1l4.9,4.9l0-12.9l-12.9,0l4.9,4.9L133,24.2l-24-24H51l-24,24 L8,5.2l4.9-4.9L0,0.2l0,12.9l4.9-4.9L24,27.3l-24,24v58.2l23.9,23.9l-19,19L0,147.3l0,12.9l12.9,0L8,155.3l19-19l23.9,23.9h58.4 l23.9-23.9l19,19l-4.9,4.9l12.9,0l0-12.9l-4.9,4.9L136.1,133.3z M155.7,53v54.6l-22.6,22.6l-50-50L133,30.3L155.7,53z M52.8,4.5 h54.4l22.7,22.7L80,77.2L30.1,27.3L52.8,4.5z M4.3,107.6V53L27,30.3L77,80.2l-50,50L4.3,107.6z M107.4,155.9H52.6L30,133.3l50-50 l50,50L107.4,155.9z&#39;/%3E%3C/svg%3E%0A&#34;);
+}
+
+#page-title {
+    min-height: 4rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: -webkit-calc(100% - 1em - 0.5rem);
+    width: -moz-calc(100% - 1em - 0.5rem);
+    width: calc(100% - 1em - 0.5rem);
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border: initial;
+    font-size: 3em;
+    line-height: 1;
+    text-align: center;
+    color: rgb(var(--white-monochrome));
+    background-color: rgb(var(--swatch-primary));
+    padding: 0.5em;
+    border: 0.25rem solid rgb(var(--white-monochrome));
+    position: relative;
+    z-index: 1;
+}
+
+#page-title::before {
+    content: &#34; &#34;;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    background-color: rgb(var(--swatch-primary));
+    z-index: -1;
+    opacity: 0.25;
+}
+
+table.wiki-content-table {
     width: 100%;
     font-size: 1.5em;
     text-align: center;
     margin: 0 auto;
 }
 
+table.wiki-content-table,
+table.wiki-content-table * {
+    border-color: rgb(var(--black-monochrome)) !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+table.wiki-content-table tr:last-of-type {
+    width: 100%;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    margin: 0;
+    font-weight: 700;
+}
+
+table.wiki-content-table td {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0;
+    -webkit-box-flex: 2;
+    -webkit-flex-grow: 2;
+    -moz-box-flex: 2;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
+    -webkit-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    background-color: rgb(var(--swatch-primary-darkest));
+    color: rgb(var(--white-monochrome));
+    text-transform: uppercase;
+    line-height: 1;
+    text-align: center;
+}
+
+table.wiki-content-table td * {
+    width: 100%;
+}
+
+table.wiki-content-table td span:nth-of-type(even) {
+    font-family: var(--mono-font);
+    font-size: 0.75em;
+}
+
 .document-main .footnote_block {
-    --wght: 600;
     all: initial;
     display: -webkit-inline-box;
     display: -webkit-inline-flex;
@@ -72,7 +248,6 @@
 
 .document-main .footnote_content,
 .document-main .footnote_content * {
-    --wght: 600;
     all: initial;
     display: block;
     position: absolute;
@@ -88,32 +263,31 @@
     filter: initial;
     color: rgb(var(--white-monochrome));
     -webkit-transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     -o-transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     -moz-transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     pointer-events: none
 }
 
 .document-main .footnote_num {
-    --wght: 900;
     text-shadow: initial;
     font-weight: 900;
     color: rgb(var(--white-monochrome));
@@ -153,7 +327,6 @@
 }
 
 .document-main .footnote_block .footnote_content::before {
-    --wght: 900;
     content: &#34; &#34;;
     position: absolute;
     font-size: 1em;
@@ -220,11 +393,11 @@
 @media only screen and (max-width: 1050px) {
 
     .document-main .footnote_content {
-    	position: fixed;
-    	bottom: 1em;
-    	left: 12.5%;
-    	background-color: rgba(var(--white-monochrome));
-    	width: 75%;
+     position: fixed;
+     bottom: 1em;
+     left: 12.5%;
+     background-color: rgba(var(--white-monochrome));
+     width: 75%;
     }
 }
 
@@ -248,11 +421,14 @@ blockquote, .blockquote {
 }
 
 @media only screen and (max-width: 768px) {
+    #page-title {
+     font-size: 2em;
+    }
 
     table.wiki-content-table tr {
      -webkit-flex-wrap: wrap;
-    	 -ms-flex-wrap: wrap;
-    		 flex-wrap: wrap;
+         -ms-flex-wrap: wrap;
+             flex-wrap: wrap;
     }
 
     table.wiki-content-table tr &gt; td {
@@ -260,6 +436,15 @@ blockquote, .blockquote {
      font-size: 1rem;
      padding: 0.5rem;
     }
+}
+
+.document-main {
+    background-color: rgb(var(--swatch-primary), 0.15);
+    padding: 1rem 0.5em 0em 0.5em;
+    margin-top: 1rem;
+    border: 0.0625rem #CCCCCC solid;
+    border: 0.0625rem rgb(var(--swatch-border-color)) solid;
+    position: relative;
 }
 
 .document-main &gt; br {
@@ -291,7 +476,6 @@ blockquote, .blockquote {
 }
 
 .document-main &gt; div::before {
-    --wght: 600;
     content: &#34; &#34;;
     position: absolute;
     top: -1.25rem;
@@ -327,15 +511,15 @@ blockquote, .blockquote {
 }
 
 .document-main &gt; div.sp-containment::before {
-    content: &#34;Special Containment Procedures&#34;;    
+    content: &#34;Особые условия содержания&#34;;    
 }
 
 .document-main &gt; div.containment::before {
-    content: &#34;Containment Specifications&#34;;    
+    content: &#34;Спецификации содержания&#34;;    
 }
 
 .document-main &gt; div.description::before {
-    content: &#34;Description&#34;;
+    content: &#34;Описание&#34;;
 }
 
 .document-main &gt; .sp-containment &gt; .sp-containment-image {
@@ -352,7 +536,7 @@ blockquote, .blockquote {
 .scp-image-block {
     -webkit-box-shadow: initial;
        -moz-box-shadow: initial;
-    		box-shadow: initial;
+            box-shadow: initial;
 }
 
 .scp-image-block .scp-image-caption {
@@ -369,6 +553,13 @@ blockquote, .blockquote {
 
 /* Doc 3 GoI Entry */
 
+div.database_container,
+div.database_container * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 div.database_container {
     width: 100%;
     color: rgb(var(--white-monochrome));
@@ -382,10 +573,10 @@ div.database_main, div.database_text {
     padding: 0 0 0.75rem 0;
     display: -ms-grid;
     display: grid;
-    		grid-template-areas:
-    	&#34;title&#34;
-    	&#34;top&#34;
-    	&#34;main&#34;;
+            grid-template-areas:
+        &#34;title&#34;
+        &#34;top&#34;
+        &#34;main&#34;;
     -ms-grid-columns: 100%;
     grid-template-columns: 100%;
     position: relative;
@@ -399,7 +590,6 @@ div.database_main, div.database_text {
 }
 
 div.database_main &gt; .database_title {
-    --wght: 900;
     -ms-grid-row: 1;
     -ms-grid-column: 1;
     grid-area: title;
@@ -441,23 +631,13 @@ div.database_main &gt; .database_title {
     padding: 1rem 0.5rem 0 0.5rem;
     display: -ms-grid;
     display: grid;
-    	grid-template-areas:
-    	&#34;date secure&#34;
-    	&#34;date recognize&#34;;
+        grid-template-areas:
+        &#34;date secure&#34;
+        &#34;date recognize&#34;;
     -ms-grid-columns: 1fr auto auto;
     grid-template-columns: 1fr auto auto;
     -ms-grid-rows: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-}
-
-.database_table_top,
-.database_table_top * {
-    font-variation-settings: 
-    	&#34;wght&#34; var(--mono-wght), 
-    	&#34;slnt&#34; var(--slnt), 
-    	&#34;CASL&#34; var(--CASL), 
-    	&#34;CRSV&#34; var(--CRSV), 
-    	&#34;MONO&#34; var(--MONO);
 }
 
 .database_table_top br {
@@ -473,13 +653,13 @@ div.database_main &gt; .database_title {
     -webkit-box-align: center;
     -webkit-align-items: center;
        -moz-box-align: center;
-    	-ms-flex-align: center;
-    		align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
        -moz-box-pack: center;
-    	-ms-flex-pack: center;
-    		justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     text-align: center;
     padding: 1em;
     white-space: wrap;
@@ -506,16 +686,6 @@ div.database_text {
     font-family: var(--mono-font);
 }
 
-div.database_text,
-div.database_text * {
-    font-variation-settings: 
-    	&#34;wght&#34; var(--mono-wght), 
-    	&#34;slnt&#34; var(--slnt), 
-    	&#34;CASL&#34; var(--CASL), 
-    	&#34;CRSV&#34; var(--CRSV), 
-    	&#34;MONO&#34; var(--MONO);
-}
-
 .database_memo {
     font-family: var(--body-font);
     padding: 1rem;
@@ -531,21 +701,21 @@ div.database_text * {
 
 @media only screen and (max-width: 768px) {
     .document-main {
-    	margin: 0;
-    	padding: 0;
+        margin: 0;
+        padding: 0;
     }
 
     .document-main &gt; .sp-containment .scp-image-block,
     .document-main &gt; .sp-containment .scp-image-caption,
     .document-main &gt; .sp-containment &gt; .sp-containment-image,
     .document-main &gt; .sp-containment &gt; .sp-containment-text {
-    	clear: none !important;
+        clear: none !important;
     }
 
     .document-main &gt; .sp-containment .scp-image-block.block-right {
-    	max-width: 30vw;
-    	float: initial;
-    	margin: 0;
+        max-width: 30vw;
+        float: initial;
+        margin: 0;
     }
 
     .document-main &gt; .sp-containment &gt; .sp-containment-image {
@@ -553,57 +723,21 @@ div.database_text * {
     }
 
     .document-main &gt; .sp-containment &gt; .sp-containment-image img {
-    	-o-object-fit: cover;
-    	   object-fit: cover;
-    	-o-object-position: bottom;
-    	   object-position: bottom;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: bottom;
+           object-position: bottom;
     }
     .database_table_top {
-    	grid-template-areas: 
-    		&#34;date&#34; 
-    		&#34;secure&#34;
-    		&#34;recognize&#34;;
-    	-ms-grid-columns: 1fr;
-    	grid-template-columns: 1fr;
-    	-ms-grid-rows: 1fr 1fr 1fr;
-    	grid-template-rows: 1fr 1fr 1fr;
+     grid-template-areas:
+     &#34;date&#34;
+     &#34;secure&#34;
+     &#34;recognize&#34;;
+     -ms-grid-columns: 1fr;
+     grid-template-columns: 1fr;
+     -ms-grid-rows: 1fr 1fr 1fr;
+     grid-template-rows: 1fr 1fr 1fr;
     }
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>.danger-diamond &gt; .quadrants &gt; .bottom-quad {
-    background-color: rgb(var(--white-monochrome));
-}
-
-.text-part .disrupt-class::before, .text-part .risk-class::before {
-    color: rgb(var(--swatch-menutxt-general-color));
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>.danger-diamond a,
-.danger-diamond a:hover {
-    color: rgba(0,0,0,0) !important;
-    -webkit-box-shadow: initial !important;
-       -moz-box-shadow: initial !important;
-    		box-shadow: initial !important;
-}
-
-.danger-diamond &gt; .arrows {
-    --danger-diamond-arrows: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 160 160&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;%23fcfcfc&#39; d=&#39;M136.1,133.3l23.9-23.9V51.2l-24-24l19.1-19.1l4.9,4.9l0-12.9l-12.9,0l4.9,4.9L133,24.2l-24-24H51l-24,24 L8,5.2l4.9-4.9L0,0.2l0,12.9l4.9-4.9L24,27.3l-24,24v58.2l23.9,23.9l-19,19L0,147.3l0,12.9l12.9,0L8,155.3l19-19l23.9,23.9h58.4 l23.9-23.9l19,19l-4.9,4.9l12.9,0l0-12.9l-4.9,4.9L136.1,133.3z M155.7,53v54.6l-22.6,22.6l-50-50L133,30.3L155.7,53z M52.8,4.5 h54.4l22.7,22.7L80,77.2L30.1,27.3L52.8,4.5z M4.3,107.6V53L27,30.3L77,80.2l-50,50L4.3,107.6z M107.4,155.9H52.6L30,133.3l50-50 l50,50L107.4,155.9z&#39;/%3E%3C/svg%3E%0A&#34;);
-}
-
-.anom-bar-container.esoteric .danger-diamond &gt; .top-icon::before {
-    background-color: rgb(var(--swatch-menubg-light-color));
-}
-
-.anom-bar-container.apollyon .text-part &gt; .main-class::before {
-    background-color: rgb(var(--swatch-menubg-light-color));
-}
-
-.anom-bar-container.apollyon .text-part &gt; .main-class::after {
-    background-color: rgb(var(--swatch-menubg-light-color));
 }</code></pre>
         </li>
       
@@ -621,39 +755,7 @@ div.database_text * {
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:the-foundation-theme" target="_blank"><code>:scp-wiki:theme:the-foundation-theme</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:the-foundation-theme.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
+        <li>(none)</li>
       
     </ul>
 
@@ -767,9 +869,7 @@ div.database_text * {
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
-[[include :scp-wiki:theme:the-foundation-theme |dark=--]]]
-[[module css]]
+    <pre><textarea class="page-source" readonly>[[module css]]
 :root {
     --rating-module-text-color: var(--swatch-menutxt-light-color);
     --rating-module-button-color:  var(--swatch-menutxt-light-color);
@@ -788,6 +888,115 @@ div.database_text * {
 }
 [[/module]]
 [[module css]]
+
+:root {
+    --swatch-background: var(--black-monochrome);
+    --header-subtitle: &#34;Office of the Overseer&#34;;
+}
+
+html, body {
+    color: rgb(var(--swatch-text-light));
+}
+
+#header h2,
+#header h2 span,
+#header h2 span::before {
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 50%;
+    top: 40%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align:  flex-end;
+    -webkit-align-items:  flex-end;
+    -moz-box-align:  flex-end;
+    -ms-flex-align:  flex-end;
+    align-items: flex-end;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    max-height: inherit;
+    z-index: 0;
+    font-weight: 500;
+    font-family: var(--header-font);
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    pointer-events: none;
+}
+
+.danger-diamond a,
+.danger-diamond a:hover {
+    color: rgba(0,0,0,0) !important;
+    -webkit-box-shadow: initial !important;
+       -moz-box-shadow: initial !important;
+            box-shadow: initial !important;
+}
+
+.danger-diamond &gt; .arrows {
+    background-image: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 160 160&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;%23fcfcfc&#39; d=&#39;M136.1,133.3l23.9-23.9V51.2l-24-24l19.1-19.1l4.9,4.9l0-12.9l-12.9,0l4.9,4.9L133,24.2l-24-24H51l-24,24 L8,5.2l4.9-4.9L0,0.2l0,12.9l4.9-4.9L24,27.3l-24,24v58.2l23.9,23.9l-19,19L0,147.3l0,12.9l12.9,0L8,155.3l19-19l23.9,23.9h58.4 l23.9-23.9l19,19l-4.9,4.9l12.9,0l0-12.9l-4.9,4.9L136.1,133.3z M155.7,53v54.6l-22.6,22.6l-50-50L133,30.3L155.7,53z M52.8,4.5 h54.4l22.7,22.7L80,77.2L30.1,27.3L52.8,4.5z M4.3,107.6V53L27,30.3L77,80.2l-50,50L4.3,107.6z M107.4,155.9H52.6L30,133.3l50-50 l50,50L107.4,155.9z&#39;/%3E%3C/svg%3E%0A&#34;);
+}
+
+#page-title {
+    min-height: 4rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: -webkit-calc(100% - 1em - 0.5rem);
+    width: -moz-calc(100% - 1em - 0.5rem);
+    width: calc(100% - 1em - 0.5rem);
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border: initial;
+    font-size: 3em;
+    line-height: 1;
+    text-align: center;
+    color: rgb(var(--white-monochrome));
+    background-color: rgb(var(--swatch-primary));
+    padding: 0.5em;
+    border: 0.25rem solid rgb(var(--white-monochrome));
+    position: relative;
+    z-index: 1;
+}
+
+#page-title::before {
+    content: &#34; &#34;;
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url(https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 100%;
+    background-color: rgb(var(--swatch-primary));
+    z-index: -1;
+    opacity: 0.25;
+}
+
 table.wiki-content-table {
     width: 100%;
     font-size: 1.5em;
@@ -795,8 +1004,75 @@ table.wiki-content-table {
     margin: 0 auto;
 }
 
+table.wiki-content-table,
+table.wiki-content-table * {
+    border-color: rgb(var(--black-monochrome)) !important;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+table.wiki-content-table tr:last-of-type {
+    width: 100%;
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -moz-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    margin: 0;
+    font-weight: 700;
+}
+
+table.wiki-content-table td {
+    display: -webkit-inline-box;
+    display: -webkit-inline-flex;
+    display: -moz-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -moz-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0;
+    -webkit-box-flex: 2;
+    -webkit-flex-grow: 2;
+    -moz-box-flex: 2;
+    -ms-flex-positive: 2;
+    flex-grow: 2;
+    -webkit-flex-basis: 50%;
+    -ms-flex-preferred-size: 50%;
+    flex-basis: 50%;
+    background-color: rgb(var(--swatch-primary-darkest));
+    color: rgb(var(--white-monochrome));
+    text-transform: uppercase;
+    line-height: 1;
+    text-align: center;
+}
+
+table.wiki-content-table td * {
+    width: 100%;
+}
+
+table.wiki-content-table td span:nth-of-type(even) {
+    font-family: var(--mono-font);
+    font-size: 0.75em;
+}
+
 .document-main .footnote_block {
-    --wght: 600;
     all: initial;
     display: -webkit-inline-box;
     display: -webkit-inline-flex;
@@ -812,7 +1088,6 @@ table.wiki-content-table {
 
 .document-main .footnote_content,
 .document-main .footnote_content * {
-    --wght: 600;
     all: initial;
     display: block;
     position: absolute;
@@ -828,32 +1103,31 @@ table.wiki-content-table {
     filter: initial;
     color: rgb(var(--white-monochrome));
     -webkit-transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     -o-transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     -moz-transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     transition:
-    	opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
-    	-o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+     opacity 600ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+     -o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
     pointer-events: none
 }
 
 .document-main .footnote_num {
-    --wght: 900;
     text-shadow: initial;
     font-weight: 900;
     color: rgb(var(--white-monochrome));
@@ -893,7 +1167,6 @@ table.wiki-content-table {
 }
 
 .document-main .footnote_block .footnote_content::before {
-    --wght: 900;
     content: &#34; &#34;;
     position: absolute;
     font-size: 1em;
@@ -960,11 +1233,11 @@ table.wiki-content-table {
 @media only screen and (max-width: 1050px) {
 
     .document-main .footnote_content {
-    	position: fixed;
-    	bottom: 1em;
-    	left: 12.5%;
-    	background-color: rgba(var(--white-monochrome));
-    	width: 75%;
+     position: fixed;
+     bottom: 1em;
+     left: 12.5%;
+     background-color: rgba(var(--white-monochrome));
+     width: 75%;
     }
 }
 
@@ -988,11 +1261,14 @@ blockquote, .blockquote {
 }
 
 @media only screen and (max-width: 768px) {
+    #page-title {
+     font-size: 2em;
+    }
 
     table.wiki-content-table tr {
      -webkit-flex-wrap: wrap;
-    	 -ms-flex-wrap: wrap;
-    		 flex-wrap: wrap;
+         -ms-flex-wrap: wrap;
+             flex-wrap: wrap;
     }
 
     table.wiki-content-table tr &gt; td {
@@ -1000,6 +1276,15 @@ blockquote, .blockquote {
      font-size: 1rem;
      padding: 0.5rem;
     }
+}
+
+.document-main {
+    background-color: rgb(var(--swatch-primary), 0.15);
+    padding: 1rem 0.5em 0em 0.5em;
+    margin-top: 1rem;
+    border: 0.0625rem #CCCCCC solid;
+    border: 0.0625rem rgb(var(--swatch-border-color)) solid;
+    position: relative;
 }
 
 .document-main &gt; br {
@@ -1031,7 +1316,6 @@ blockquote, .blockquote {
 }
 
 .document-main &gt; div::before {
-    --wght: 600;
     content: &#34; &#34;;
     position: absolute;
     top: -1.25rem;
@@ -1067,15 +1351,15 @@ blockquote, .blockquote {
 }
 
 .document-main &gt; div.sp-containment::before {
-    content: &#34;Special Containment Procedures&#34;;    
+    content: &#34;Особые условия содержания&#34;;    
 }
 
 .document-main &gt; div.containment::before {
-    content: &#34;Containment Specifications&#34;;    
+    content: &#34;Спецификации содержания&#34;;    
 }
 
 .document-main &gt; div.description::before {
-    content: &#34;Description&#34;;
+    content: &#34;Описание&#34;;
 }
 
 .document-main &gt; .sp-containment &gt; .sp-containment-image {
@@ -1092,7 +1376,7 @@ blockquote, .blockquote {
 .scp-image-block {
     -webkit-box-shadow: initial;
        -moz-box-shadow: initial;
-    		box-shadow: initial;
+            box-shadow: initial;
 }
 
 .scp-image-block .scp-image-caption {
@@ -1109,6 +1393,13 @@ blockquote, .blockquote {
 
 /* Doc 3 GoI Entry */
 
+div.database_container,
+div.database_container * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
 div.database_container {
     width: 100%;
     color: rgb(var(--white-monochrome));
@@ -1122,10 +1413,10 @@ div.database_main, div.database_text {
     padding: 0 0 0.75rem 0;
     display: -ms-grid;
     display: grid;
-    		grid-template-areas:
-    	&#34;title&#34;
-    	&#34;top&#34;
-    	&#34;main&#34;;
+            grid-template-areas:
+        &#34;title&#34;
+        &#34;top&#34;
+        &#34;main&#34;;
     -ms-grid-columns: 100%;
     grid-template-columns: 100%;
     position: relative;
@@ -1139,7 +1430,6 @@ div.database_main, div.database_text {
 }
 
 div.database_main &gt; .database_title {
-    --wght: 900;
     -ms-grid-row: 1;
     -ms-grid-column: 1;
     grid-area: title;
@@ -1181,23 +1471,13 @@ div.database_main &gt; .database_title {
     padding: 1rem 0.5rem 0 0.5rem;
     display: -ms-grid;
     display: grid;
-    	grid-template-areas:
-    	&#34;date secure&#34;
-    	&#34;date recognize&#34;;
+        grid-template-areas:
+        &#34;date secure&#34;
+        &#34;date recognize&#34;;
     -ms-grid-columns: 1fr auto auto;
     grid-template-columns: 1fr auto auto;
     -ms-grid-rows: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-}
-
-.database_table_top,
-.database_table_top * {
-    font-variation-settings: 
-    	&#34;wght&#34; var(--mono-wght), 
-    	&#34;slnt&#34; var(--slnt), 
-    	&#34;CASL&#34; var(--CASL), 
-    	&#34;CRSV&#34; var(--CRSV), 
-    	&#34;MONO&#34; var(--MONO);
 }
 
 .database_table_top br {
@@ -1213,13 +1493,13 @@ div.database_main &gt; .database_title {
     -webkit-box-align: center;
     -webkit-align-items: center;
        -moz-box-align: center;
-    	-ms-flex-align: center;
-    		align-items: center;
+        -ms-flex-align: center;
+            align-items: center;
     -webkit-box-pack: center;
     -webkit-justify-content: center;
        -moz-box-pack: center;
-    	-ms-flex-pack: center;
-    		justify-content: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     text-align: center;
     padding: 1em;
     white-space: wrap;
@@ -1246,16 +1526,6 @@ div.database_text {
     font-family: var(--mono-font);
 }
 
-div.database_text,
-div.database_text * {
-    font-variation-settings: 
-    	&#34;wght&#34; var(--mono-wght), 
-    	&#34;slnt&#34; var(--slnt), 
-    	&#34;CASL&#34; var(--CASL), 
-    	&#34;CRSV&#34; var(--CRSV), 
-    	&#34;MONO&#34; var(--MONO);
-}
-
 .database_memo {
     font-family: var(--body-font);
     padding: 1rem;
@@ -1271,21 +1541,21 @@ div.database_text * {
 
 @media only screen and (max-width: 768px) {
     .document-main {
-    	margin: 0;
-    	padding: 0;
+        margin: 0;
+        padding: 0;
     }
 
     .document-main &gt; .sp-containment .scp-image-block,
     .document-main &gt; .sp-containment .scp-image-caption,
     .document-main &gt; .sp-containment &gt; .sp-containment-image,
     .document-main &gt; .sp-containment &gt; .sp-containment-text {
-    	clear: none !important;
+        clear: none !important;
     }
 
     .document-main &gt; .sp-containment .scp-image-block.block-right {
-    	max-width: 30vw;
-    	float: initial;
-    	margin: 0;
+        max-width: 30vw;
+        float: initial;
+        margin: 0;
     }
 
     .document-main &gt; .sp-containment &gt; .sp-containment-image {
@@ -1293,20 +1563,20 @@ div.database_text * {
     }
 
     .document-main &gt; .sp-containment &gt; .sp-containment-image img {
-    	-o-object-fit: cover;
-    	   object-fit: cover;
-    	-o-object-position: bottom;
-    	   object-position: bottom;
+        -o-object-fit: cover;
+           object-fit: cover;
+        -o-object-position: bottom;
+           object-position: bottom;
     }
     .database_table_top {
-    	grid-template-areas: 
-    		&#34;date&#34; 
-    		&#34;secure&#34;
-    		&#34;recognize&#34;;
-    	-ms-grid-columns: 1fr;
-    	grid-template-columns: 1fr;
-    	-ms-grid-rows: 1fr 1fr 1fr;
-    	grid-template-rows: 1fr 1fr 1fr;
+     grid-template-areas:
+     &#34;date&#34;
+     &#34;secure&#34;
+     &#34;recognize&#34;;
+     -ms-grid-columns: 1fr;
+     grid-template-columns: 1fr;
+     -ms-grid-rows: 1fr 1fr 1fr;
+     grid-template-rows: 1fr 1fr 1fr;
     }
 }
 [[/module]]
@@ -1314,15 +1584,15 @@ div.database_text * {
 [[table class=&#34;wiki-content-table&#34;]]
 [[row]]
 [[hcell colspan=&#34;2&#34;]]
-SCP-4485 PRIMARY DOCUMENT
+SCP-4485 ГЛАВНЫЙ ДОКУМЕНТ
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
-[[span]]LEVEL 6 -- COSMIC TOP SECRET[[/span]]
+[[span]]УРОВЕНЬ ДОПУСКА 6 — ВЫСШИЙ УРОВЕНЬ СЕКРЕТНОСТИ[[/span]]
 [[/cell]]
 [[cell]]
-[[span]]FOR O5 COUNCIL EYES ONLY[[/span]]
+[[span]]ИСКЛЮЧИТЕЛЬНО ДЛЯ ЧЛЕНОВ СОВЕТА О5[[/span]]
 [[/cell]]
 [[/row]]
 [[/table]]
@@ -1330,201 +1600,168 @@ SCP-4485 PRIMARY DOCUMENT
 [[include component:anomaly-class-bar-source
 |item-number= 4485
 |clearance= 6
-|container-class= esoteric
-|secondary-class= apollyon
-|secondary-icon= https://scp-wiki.wdfiles.com/local--files/component:anomaly-class-bar/apollyon-icon.svg
-|disruption-class= amida
-|risk-class= critical
+|container-class= внесистемный
+|secondary-class= аполлион
+|secondary-icon= http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/apollyon-icon.svg
+|disruption-class= амида
+|risk-class= критический
 ]]
-[[module css]]
-.danger-diamond &gt; .quadrants &gt; .bottom-quad {
-    background-color: rgb(var(--white-monochrome));
-}
 
-.text-part .disrupt-class::before, .text-part .risk-class::before {
-    color: rgb(var(--swatch-menutxt-general-color));
-}
-[[/module]]
-------
+----
 
 [[div class=&#34;document-main&#34;]]
 [[div class=&#34;sp-containment&#34;]]
 [[div_ class=&#34;sp-containment-image&#34;]]
 [[div_ class=&#34;scp-image-block block-right&#34;]]
-[[image https://scp-wiki.wikidot.com/local--files/fragment:scp-4485-5/location-scp-4485.png]]
+[[image http://scptestwiki.wikidot.com/local--files/members:scp-wt-woedcode-5/location-scp-0000.png]]
 [[div_ class=&#34;scp-image-caption&#34;]]
-Entrance to DEEPWELL-9
+Вход в ДИПВЕЛЛ-9
 [[/div]]
 [[/div]]
 [[/div]]
 [[div class=&#34;sp-containment-text&#34;]]
-SCP-4485, as well as all known individuals affected by SCP-4485 and all artifacts created by or attributed to those individuals or the Group of Interest known as HANSARP are stored in active containment within the Scranton-Jates Supra-Cultural Dissociation Engine at DEEPWELL-9, located beneath the former Site-35 at the Isar II Nuclear Power Plant near Landshut, Germany. Access to DEEPWELL-9 is permitted only to individuals assigned to SCP-4485&#39;s containment, as well as those individuals with express written permission by the DEEPWELL-9 Site Director, currently Director Viktor Jates.
+SCP-4485, как и все известные лица, подвергшиеся влиянию объекта и всех артефактов, созданных Связанной Организацией, известной как ГАНСАРП или приписываемых ей, должны находиться в секции активного содержания внутри Супракультурной Машины Диссоциации Скрэнтона-Джейтса в ДИПВЕЛЛ-9, находящемся под прошлой Зоной 35 на территории АЭС «Изар 2» рядом с городом Лэндшат, Германия. Доступ к ДИПВЕЛЛ-9 разрешён только сотрудникам, назначенным в качестве персонала содержания SCP-4485, и лицам, получившим срочное письменное разрешение от директора Зоны ДИПВЕЛЛ-9 (на данный момент директором является Виктор Джейтс).
 
-Please note that all previous personnel requirements are currently active:
+Обратите внимание на то, что все предыдущие требования к персоналу остаются в силе:
 
-[[collapsible show=&#34;+ Access Previous Containment Procedures&#34; hide=&#34;- Close Document&#34;]]
-Access to SCP-4485 is restricted to those personnel who are certified by the on-site accredited logician, appointed by the Foundation European Regional Mathematical Studies Head. Prior to receiving access clearance to SCP-4485, subjects must show they have a mastery over the basic Three Laws of Thought and their application:
+[[collapsible show=&#34;+ Получить доступ к предыдущим особым условиям содержания&#34; hide=&#34;− Закрыть документ&#34;]]
 
-* **Principle of Identity** (Each thing is identical to itself)
-* **Law of Noncontradiction** (A proposition cannot be both true and false)
-* **Law of Excluded Middle** (A proposition must be either true or false)
+SCP-4485 должен храниться в укреплённом ящике Зоны 35. Доступ к объекту разрешён только персоналу, одобренному штатным логиком, который назначается главой европейского отдела Фонда по исследованию математики. Для получения доступа к SCP-4485 кандидаты должны продемонстрировать превосходное владение тремя законами мышления и их практическим применением:
 
-Additionally, subjects must show a mastery over Schopenhauer&#39;s Four Laws as established in On the Fourfold Root of the Principle of Sufficient Reason and Boole&#39;s alternate algebraic representation as presented in An Investigation on the Laws of Thought, a thorough understanding of Russell and Whitehead&#39;s Principia Mathematica and Russell&#39;s The Problems of Philosophy, and be able to independently reason Gödel&#39;s proof.
+* **Принцип идентичности** (Каждый объект идентичен сам себе)
+* **Закон непротиворечия** (Утверждение не может быть истинным и ложным одновременно)
+* **Закон исключённого третьего** (Утверждение может быть либо истинным, либо ложным)
 
-Lastly, subjects must understand and apply Tarski&#39;s adaptations to the Law of Identity (Leibniz&#39; Law, Law of Reflexivity, Law of Symmetry, Law of Transitivity and its inverse). Subjects must also be familiar with contemporary logicism, such as intuitionistic logic, paraconsistent logic, three-valued logic, modal propositional calculi, and fuzzy logic.
+Кроме того, кандидаты должны в совершенстве овладеть Четырьмя законами Шопенгауэра, описанными в книге «О четверояком корне закона достаточного основания» и булевым альтернативным алгебраическим представлением, описанном в книге «Исследование Законов мышления», отлично знать «Principia Mathematica» за авторством Рассела и Уайтхеда и «Вопросы философии» Рассела. Кандидаты должны обладать умением свободно объяснять доказательство Геделя.
 
-In short, subjects must have an absolute mastery, at the highest level achievable by human beings in our current understanding of their nature, over the ability to adeptly reason what is true and logical, or false and illogical.
+И, наконец, кандидаты должны понимать и уметь применять закон тождества в адаптации Тарского (Закон Лейбница, Закон возвратности, Закон симметрии, Закон транзитивности и обратный ему). Также кандидаты должны быть знакомы с современным логикоцентричными теориями, такими как интуиционистская логика, паранепротиворечивая логика, троичная логика, модальные конкременты суждений и нечёткая логика.
+
+Иными словами, кандидаты должны максимально и на высшем уровне, какой только доступен человеческим существам (в современном понимании этого понятия), владеть умением обоснованно доказывать, что есть истина и логичное, а что есть ложь и нелогичное.
 [[/collapsible]]
 
-Objects and individuals believed to be associated with HANSARP are must be remanded to DEEPWELL-9 immediately, with objects being housed in individualized secure item lockers and human subjects being contained in long-term cryogenic stasis. Manual operation of the Dissociation Engine Core for the purposes of adding objects and individuals to the central containment cells should only be undertaken by members of the Foundation Corp of Anengineers, with any appropriate supervisors.
+Объекты и лица, которые, по мнению Фонда, связаны с ГАНСАРП, должны немедленно помещаться в ДИПВЕЛЛ-9, причём объекты необходимо помещать в отдельные запираемые ящики, а лиц необходимо погружать в долговременный криосон. Ручное управление Ядром Машины Диссоциации с целью помещения на содержание в центральные камеры новых лиц и объектов должно проводиться только членами Организации анинженеров[[footnote]]Скорее всего, термин, означающий «аномальный инженер», по аналогии с анартистами. — //прим. переводчика//[[/footnote]] Фонда под надзором любых подходящих лиц.
 
-All European Foundation sites affected by SCP-4485 are closed indefinitely until further notice. It is currently understood that 92% of active Foundation Europe staff members[[span class=&#34;footnote_block one&#34;]][[span class=&#34;footnote_num&#34;]]1[[/span]][[span class=&#34;footnote_content&#34;]]Specifically, all those from sites outside of Site-77.[[/span]]
-[[/span]]  are at risk for being affected by SCP-4485. Site-77 will be the primary European containment and research facility, with DEEPWELL-9 housing research and containment efforts for SCP-4485 specifically.
+Все европейские учреждения Фонда, подвергшиеся влиянию SCP-4485, закрыты до последующих распоряжений. На данный момент считается, что 92% активного персонала Фонда в Европе[[span class=&#34;footnote_block one&#34;]][[span class=&#34;footnote_num&#34;]]1[[/span]][[span class=&#34;footnote_content&#34;]]Особенно сотрудники, не работающие в Зоне 77.[[/span]]
+[[/span]] могут быть подвержены влиянию SCP-4485. Зона 77 будет являться основным учреждением исследования и содержания, а ДИПВЕЛЛ-9 будет заниматься исключительно содержанием и исследованием SCP-4485.
 
-Containment of SCP-4485 has also required institutional alterations to The Foundation. The following is a list of all current initiatives:
+Содержание SCP-4485 также потребовало некоторой реорганизации деятельности Фонда. Далее перечислены все текущие изменения:
 
-* Logical assessment, forwardly known as an &#34;Orientation,&#34; of all current employees at all levels. Any employees shown to lack an acceptable degree of rational and logical thought will be deemed a hazard to The Foundation and immediately terminated. Due to the risk of these individuals possibly being previously tainted, termination will result in containment within the Scranton-Jates Supra-Cultural Dissociation Engine.
-* Dissolution of the Ethics Committee. As voted by the O5 Council (11-2), the Ethics Committee is found to be both unnecessary and actively detrimental to the containment and elimination of HANSARP. All members of the Ethics Committee were deemed unfit and possibly tainted.
+* Логическое тестирование (далее — «инструктаж»), всех сотрудников, занимающих любые должности. Все сотрудники, не показавшие достаточного уровня навыков владения логическим и рациональным мышлением, должны считаться угрозой для Фонда и немедленно устраняться. Так как существует вероятность того, что такие лица уже попали под эффекты объекта, устранением является помещение их на содержание в Супракультурную Машину Диссоциации Скрэнтона-Джейтса.
+* Роспуск Комитета по этике. Согласно голосованию Совета О5 (11 за — 2 против), Комитет по этике считается бесполезным и даже активно вредящим содержанию и уничтожению ГАНСАРП. Все члены Комитета были сочтены несоответствующими занимаемой должности и, возможно, подвергшимися влиянию объекта.
 [[/div]]
 [[/div]]
 [[div class=&#34;containment&#34;]]
 [[div_ class=&#34;containment-image&#34;]]
 [[div_ class=&#34;scp-image-block&#34;]]
-[[image https://scp-wiki.wikidot.com/local--files/fragment:scp-4485-5/Scranton-JatesEngine.png]]
+[[image http://scptestwiki.wikidot.com/local--files/members:scp-wt-woedcode-5/Scranton-JatesEngine.png]]
 [[div_ class=&#34;scp-image-caption&#34;]]
-Dissociation Engine Core being lowered into its permanent housing above cryogenic containment cells.
+Ядро Машины Диссоциации, опускаемое на своё постоянное место работы, располагающееся над криогенными камерами содержания.
 [[/div]]
 [[/div]]
 [[/div]]
 [[div class=&#34;containment-text&#34;]]
-The Scranton-Jates Supra-Cultural Dissociation Engine exists solely to house artifacts and entities that, as an aspect of their nature, violate the innate conventions and structures of the human cultural egoplex, as well as adversely impact the established conventional reality as established by the SCP Foundation Overseer Council. Operation and maintenance of the Scranton-Jates Engine is carried out by the DEEPWELL-9 Operations Control Group in conjunction with the SCPF Department of Energy Control and Resource Consolidation.
+Супракультурная Машина Диссоциации Скрэнтона-Джейтса применяется исключительно для содержания артефактов и существ, которые в силу своей природы несут угрозу внутреннему устройству и структурам культурного эгоплекса человечества и негативно влияют на неаномальную реальность, обозначенную Советом Смотрителей Фонда SCP. Управление Супракультурной Машиной Диссоциации Скрэнтона-Джейтса и её обслуживание осуществляется командой контроля эксплуатации ДИПВЕЛЛ-9 в сотрудничестве с Отделом сбора ресурсов и управления энергией Фонда.
 
-The Scranton-Jates Engine consists of three distinct subsystems that make up the greater portion of the array:
+Супракультурная Машина Диссоциации Скрэнтона-Джейтса состоит из трёх отдельных подсистем, которые образуют основную часть комплекса:
 
-&gt; **Containment Shielding:** The outermost layer of the Scranton-Jates Engine is the containment shielding. This shielding is composed of titanium-alloy plates over a layer of ballistic nanofibers. Per class-appropriate engineering protocols, this shielding combined with the depth of the DEEPWELL site is designed to withstand a direct surface-level impact of a 5mt nuclear yield.
+&gt; **Саркофаг содержания:** Внешним слоем Машины Скрэнтона-Джейтса является саркофаг содержания. Он состоит из пластин, исполненных из титанового сплава, которыми покрыт слой баллистических нановолокон. Согласно инженерным расчётам, этот саркофаг, вкупе с глубиной, на которой расположена зона ДИПВЕЛЛ, должен выдержать прямое попадание (на уровне поверхности) атомной бомбы мощностью в 5 мегатонн.
 
-&gt; **Containment Housing:** The inner layer of the Scranton-Jates Engine is the containment housing, composed primarily of concrete and steel. This section is comprised of multiple large, hollow rings of channeled concrete (4m high x 30m in diameter) stacked vertically down into the DEEPWELL shaft. The current configuration of the containment housing allows for eleven such sections, with room for an additional fifteen below as they become necessary. A powered elevator system allows for all current sections to be lowered for the placement of additional sections at the top of the array.
+&gt; **Корпус содержания:** Внутренним слоем Машины Скрэнтона-Джейтса является корпус содержания, который в основном изготовлен из стали и бетона. Эта часть комплекса состоит из нескольких больших полых бетонных колец (4 метра  высоту, 30 метров в диаметре). Кольца, поставленные друг на друга, образуют шахту ДИПВЕЛЛ. На данный момент корпус содержания вмещает 11 таких секций, и при необходимости возможно построить ещё 15 секций под существующими. Система подъёмных механизмов позволяет опустить все существующие секции, чтобы поставить на них новые.
 &gt; 
-&gt; Each containment section is capable of holding up to two-hundred pacified human subjects in cryogenic stasis. Additionally, each section contains lockers for a variety of artifacts and objects related to SCP-4485. These lockers and cryogenic modules are sustained by liquid nitrogen pumped from storage containers at the surface, and recycled at a substation nearby. A cryogenic fail-safe will flush the each cylinder section with liquid oxygen to sustain containment in the event of a loss of power to the Engine or to the liquid nitrogen pumps.
+&gt; Каждая секция содержания может вместить до двухсот человек, находящихся в состоянии криогенного стазиса. Помимо этого, каждая секция оборудована ящиками, в которых можно хранить различные артефакты и объекты, связанные с SCP-4485. Эти ящики и криогенные модули обслуживаются при помощи жидкого азота, выкачиваемого из сосудов на поверхности и перерабатываемого на подстанции, находящейся неподалёку. Дублирующая подсистема запустит в контуры охлаждения каждой секции жидкий кислород в случае сбоя питания Машины или насосов, качающих жидкий азот.
 
-&gt; **Dissociation Engine Core:** The innermost component of the Scranton-Jates Engine is the Dissociation Engine Core, formerly classified as SCP-████-█. The Engine Core functions by dissociating cognition from psychological response, neutering the effects of SCP-4485-A and -B instances contained within. 
+&gt; **Ядро Машины Диссоциации:** Самой внутренней частью Машины Скрэнтона-Джейтса является Ядро Машины Диссоциации, которое ранее было классифицировано как SCP-████-█. Ядро рассеивает познание, проистекающее из психологического ответа, нейтрализуя таким образом эффекты содержащихся в комплексе экземпляров SCP-4485-A и -B.
 &gt; 
-&gt; //Under no circumstances should Foundation personnel enter the Engine Core while it is active; exposure to the core is acutely devastating to human psychology and, in the majority of cases, will lead to immediate or regressive brain death.//
+&gt; //Ни при каких обстоятельствах персонал Фонда не должен входить в Ядро Машины, когда оно работает; непосредственный контакт с ядром губительно влияет на человеческую психологию и в большинстве случаев приведёт к немедленной или скорой смерти мозга.//
 &gt; 
-&gt; The Engine Core also acts as a time sink when active, with an effective radius encompassing the entirety of the Scranton-Jates Engine. The current sustainable ratio is [1] day within the core to [46] days without.
+&gt; Также Ядро Машины работает в качестве темпорального стока с эффективным радиусом, покрывающим всю Машину Скрэнтона-Джейтса. Текущее возможное соотношение равно [1] дню внутри ядра к [46] дням снаружи.
 
-Despite the procedures listed above, SCP-4485 is currently considered outside of the Foundation&#39;s ability to contain. //See Dr. Yoss&#39; reports below for more details.// The 05 Council has given special permission to take any and all actions in order to contain SCP-4485. Approval is not required.
+Несмотря на всё, описанное выше, SCP-4485 на данный момент классифицирован как объект, который Фонд не может поставить на содержание. //См. отчёты д-ра Йосса для получения более подробной информации.// Совету 05[!-- Лол, тут в оригинале «05 Council», вроде как ошибка автора, но встречается и далее, поэтому оставлю поллитра --] особым распоряжением позволено предпринимать любые действия с целью содержания SCP-4485. Получение одобрения не нужно.
 [[/div]]
 [[/div]]
 [[div class=&#34;description&#34;]]
-SCP-4485 is a small leather-bound book written by German-French artist Jean &#34;Hans&#34; Arp. SCP-4485 itself is unremarkable in appearance, being moderately worn and slightly faded. The name of the author is pressed into the leather on the back of the journal in block capitalization. Within the front cover of SCP-4485 are the words &#34;gott ist ohne zweck&#34; beneath a crude drawing of a fish.
+SCP-4485 — небольшая книга в кожаном переплёте, написанная франко-немецким художником Жаном «Гансом» Арпом. Во внешнем виде самого объекта нет ничего примечательного — наличествуют потёртости и некоторое выцветание. На корешке книги печатными заглавными буквами оттиснуто имя автора (Ганс Арп). На лицевой стороне книги находятся слова «gott ist ohne zweck», над которыми находится корявый рисунок рыбы.
 
-SCP-4485 is not acutely anomalous; however, individuals who read SCP-4485 are anomalously affected by the words contained therein. SCP-4485 is filled with writing in the dadaist tradition, most of which is nonsensical with little connection between passages. These passages are interwoven with abstract drawings of shapes, animals, and human beings. Individuals who read SCP-4485 become affected by it in one of two distinct ways:
+Сам SCP-4485 не аномален, но люди, прочитавшие его, подвергаются аномальному эффекту слов, которые написаны в книге. SCP-4485 содержит тексты, написанные в дадаистском ключе, большинство из которых не имеет смысла и связи между отдельными их отрывками. Отрывки перемежаются абстрактными рисунками геометрических фигур, животных и людей. Прочитавшие SCP-4485 подвергаются одному из двух различных эффектов и впоследствии обозначаются следующим образом:
 
-* **(SCP-4485-A)** Individuals who read SCP-4485 and have, in their recent past, had strongly-held political or cultural opinions will strongly reject the &#34;nonsense&#34; contained within SCP-4485. These individuals will at first become more vocal about their positions, regardless of what they are, until eventually becoming seemingly unable to speak about anything else, and becoming violent towards those who would question their position. Over time, these individuals will experience physical changes as well, forming hardened crystalline structures composed primarily of calcium over much of their bodies. These structures will eventually cover the entire body, though locomotion is still possible by way of levitation. The means by which this is accomplished is currently unknown. These individuals are invariably hostile, and serve as vectors for the creation of both SCP-4485-B instances and other SCP-4485-A instance.
-* **(SCP-4485-B)** Individuals who read SCP-4485 and are not aligned with a specific ideology or political philosophy will experience a sharp increase in apathetic behavior. This will be followed by additional erratic behaviors: subjects will begin to ask strange, nonsensical questions or make comments that do not make sense. Any other individuals who engage with these subjects will inevitably succumb to the same anomalous influence as these subjects, who are able to self-propagate by audio and visual means. Over time these individuals will also experience physical changes, becoming less distinct in appearance and more incorporeal. It is the accumulation of these instances in a location that results in the breakdown of the logical super-construction in an area. The advancement of these effects are difficult to quantify, though the affected radius appears to follow exponential trends.
+* **(SCP-4485-A)** Прочитавшие SCP-4485 люди, которые в своём недалёком прошлом имели ярко выраженные политические или культурные мнения будут яростно отрицать «бессмыслицу», написанную в SCP-4485. Сначала пострадавшие будут ещё яростнее отстаивать любые свои позиции, и вскоре они не смогут говорить о чём-либо ещё, а также станут агрессивными по отношению к тем, кто ставит под вопрос их мнение или позицию. Со временем с пострадавшими произойдут физические изменения — на поверхности большей части их тела вырастут кристаллические структуры, в основном состоящие из кальция. Рано или поздно этими структурами покроется всё тело, хотя пострадавшие всё ещё будут способны к перемещению при помощи левитации (на данный момент неизвестно, почему это возможно). Все пострадавшие на этой стадии становятся агрессивными и являются распространителями аномального эффекта, способного создавать новых экземпляров SCP-4485-A и экземпляры SCP-4485-B.
+* **(SCP-4485-B)** Прочитавшие SCP-4485 люди, которые не являются приверженцами какой-либо идеологии или политической теории, резко становятся гораздо более апатичными. Впоследствии поведение пострадавших изменится: они станут задавать странные бессмысленные вопросы или делать бессмысленные замечания. Другие лица, взаимодействующие с пострадавшими, попадут под то же аномальное воздействие, как и пострадавшие. Заражение происходит аудиовизуальным путём. Через некоторое время происходят и физические изменения — пострадавшие становятся всё более незаметными и нематериальными. Некоторое количество пострадавших, собравшихся в одном месте, ведёт к разрушению логической суперструктуры этой территории. Распространение этого эффекта не поддаётся численному описанию, но отмечено, что радиус поражение возрастает по экспоненте.
 
-For more information regarding SCP-4485-A and SCP-4485-B instances, please see Dr. Yoss&#39; reports below.
+Для получения дополнительной информации об экземплярах SCP-4485-A и SCP-4485-B прочтите отчёты д-ра Йосса, представленные ниже.
 [[/div]]
 [[/div]]
 
 [[div_ class=&#34;database_container&#34;]]
     [[div_ class=&#34;database_main&#34;]]
-    	[[div_ class=&#34;database_title&#34;]]
-    		Secure Progress Report to 05 Council
-    	[[/div]]
-    	[[div_ class=&#34;database_table_top&#34;]]
-    		[[span]]submitted: 09.30.2019[[/span]]
-    		[[span]]secure channel: 37066A983DBEF644B6E4CCF6D1E2456D[[/span]]
-    		[[span]]recognize: Dr. Inan Yoss, SCP-4485 Head Researcher[[/span]]
-    	[[/div]]
+     [[div_ class=&#34;database_title&#34;]]
+     Секретный отчёт о прогрессе исследования для Совета 05
+     [[/div]]
+     [[div_ class=&#34;database_table_top&#34;]]
+     [[span]]отправлен: 30.09.2019[[/span]]
+     [[span]]зашифрованный канал: 37066A983DBEF644B6E4CCF6D1E2456D[[/span]]
+     [[span]]опознан: Д-р Инан Йосс, главный исследователь SCP-4485 [[/span]]
+     [[/div]]
     [[/div]]
     [[div class=&#34;database_text&#34;]]
-    Good afternoon, esteemed council members. Please find the memo I sent to The Foundation at large below:
+    Добрый день, уважаемые члены совета. Пожалуйста, полностью прочтите меморандум, который я послал Фонду:
     [[div class=&#34;database_memo&#34;]]
     
 
-    I know there have been a lot of questions recently concerning the situation in Europe. Understandably, there are some serious and legitimate concerns about our ability to contain the anomalous characteristics attributed to the HANSARP Group of Interest. Allow me to preface by saying that our containment of SCP-4485 and HANSARP as a whole has never before been as secure as it is today. We believe that at least 99.6% of all individuals associated with HANSARP are now in Foundation custody at DEEPWELL-9. However, to ensure we all understand the exact nature of this new threat, it is important for us to make available information regarding what HANSARP is, where it came from, and what it intends to accomplish.
+    Я знаю, что в последнее время звучало много вопросов касательно ситуации в Европе. Я понимаю, что есть серьёзные сомнения касательно того, сможем ли мы содержать аномальные объекты, относящиеся к Связанной Организации ГАНСАРП. Позвольте мне начать с того, что сегодня мы наиболее полно содержим SCP-4485 и ГАНСАРП. Мы считаем, что по крайней мере 99.6% всех лиц, связанных с ГАНСАРП, теперь находятся во владении Фонда в ДИПВЕЛЛ-9. Но для того, чтобы убедиться, что мы все чётко понимаем природу этой новой угрозы, необходимо собрать информацию о том, что же такое ГАНСАРП, откуда они появились и чего они хотят добиться.
 
-    SCP-4485 is the source of a self-propagating cultural consciousness that we now believe self-realized shortly after Jean Arp&#39;s death in 1966. We have no reason to suspect that Arp utilized anomalous means to propagate HANSARP, nor do we suspect that Arp himself was somehow anomalous. Analysis of SCP-4485 has shown no evidence that SCP-4485 itself is somehow anomalous.
+    SCP-4485 — источник саморазмножающегося культурного сознания, которое, по нашим сегодняшним представлениям, осознало само себя вскоре после смерти Жана Арпа в 1966 года. Пока у нас нет оснований подозревать, что Арп использовал аномалии для распространения ГАНСАРП или что он сам был аномалией. Анализ SCP-4485 показал, что сама книга не является аномальной.
 
-    We now believe that the source of the anomalous characteristics associated with SCP-4485 rest entirely within human interaction with the source. SCP-4485 does not change people; people are changed upon reading SCP-4485, or hearing about its contents. SCP-4485 is like a key, perfectly randomly shaped to fit a lock within the human psyche that demands order. Once unlocked, the mind begins to change itself, and the world around that mind follows.
+    Сейчас мы считаем, что источником аномальных эффектов, связанных с SCP-4485, является исключительно взаимодействие людей с книгой. SCP-4485 не меняет людей; люди меняются после прочтения SCP-4485 или после того, как они услышат о том, что в этой книге написано. SCP-4485 — ключ, который имеет случайную форму и подходит к замку в душе человека, которая жаждет порядка. Если его открыть, разум начинает изменять сам себя, и следом меняется и мир вокруг этого разума.
 
-    SCP-4485-A and SCP-4485-B instances represent the two reactions to being exposed to this kind of weaponized meaninglessness - apathy and rejection.
+    Экземпляры SCP-4485-A и SCP-4485-B представляют две реакции на воздействие этой вооружённой бессмыслицы — апатию и отрицание.
 
-    Those who are not prone to holding strong positions, when exposed to the patterns of meaninglessness espoused by SCP-4485 or other SCP-4485-A individuals, will themselves become SCP-4485-B. These individuals, as well as the superego they represent, is what we identify as HANSARP. It is a metaconstructure of disorganized thought that exists for a single purpose - to annihilate reason.
+    Те, кто яростно не отстаивает какую-либо позицию, если их подвергнуть воздействию набора бессмыслицы, которые содержат SCP-4485 или другие экземпляры SCP-4485-A, сами станут SCP-4485-B. Эти лица, как и суперэго, которое они представляют, и есть то, что мы называем ГАНСАРП. Это метаструктура дезорганизованной мысли, существующая с одной целью — уничтожить порядок.
 
-    The way this is accomplished is with the creation of SCP-4485-A instances, the logical inverse of SCP-4485-B instances. SCP-4485-A instances are individuals who have rejected the notions of meaninglessness and disorder as proclaimed by SCP-4485-B instances.
+    Она стремится к этой цели при помощи создания экземпляров SCP-4485-A, которые являются логическим отрицанием экземпляров SCP-4485-B. SCP-4485-A — люди, которые отрицают постулаты бессмысленности и беспорядка, провозглашаемые экземплярами SCP-4485-B.
 
-    If SCP-4485-B instances are the consciousness of HANSARP trying to free itself from the hull of its humanity with a blender, SCP-4485-A instances are the blades.
+    Если экземпляры SCP-4485-B — сознание ГАНСАРП, пытающееся освободиться от оболочки человечности при помощи блендера, то экземпляры SCP-4485-A — его лезвия.
 
-    The presence of SCP-4485-A instances is enough to drive the alteration of susceptible persons into new instances of SCP-4485-B at rates much higher than what is typical naturally.
+    Наличия экземпляров SCP-4485-A достаточно, чтобы превратить восприимчивых людей в экземпляры SCP-4485-B гораздо быстрее, чем это происходит без их наличия.
 
-    Individuals who are exposed to SCP-4485-A instances react with shock, fear, and then either rejection or apathy.
+    Взаимодействовавшие с SCP-4485-A испытывают шок или страх, а потом отрицание или апатию.
 
-    It is important in times like this that we keep calm and rational in our actions in response to these threats to The Foundation as well as reality itself. In the coming months, each and every Foundation employee will be asked to take a compulsory orientation on SCP-4485. It is within the best interest of The Foundation and yourself to complete this orientation as soon as possible. Your supervisor will contact you for further details.
+    В наше время нам надлежит оставаться спокойными и рациональными, предпринимая ответные меры на угрозы Фонду и самой реальности. В последующие месяцы каждый работник Фонда должен будет пройти полный инструктаж по SCP-4485. В ваших же интересах провести это мероприятие как можно быстрее. Ваш начальник свяжется с вами и объяснит вам детали.
 
-    With the continued cooperation of all Foundation personnel and pointed actions of the 05 Council, this threat will be eliminated.
+    Силами всего персонала Фонда и при помощи чётких решений Совета 05 эта угроза будет уничтожена.
     [[/div]]
-    As you all well know, this caused some measure of fervor within certain more rebellious individuals, particularly those that have persisted since prior to the dissolution of the Ethics Committee. I can assure you that these individuals are being watched and will be terminated if we find them detrimental to continued containment.
+    Как вы все отлично знаете, это вызвало некоторые волнения в среде наиболее мятежных лиц, а также поддержало недовольство, тлеющее ещё со времён роспуска Комитета по этике. Я заверяю вас, что за этими лицами ведётся наблюдение, и их устранят, если они попытаются навредить содержанию объекта.
 
-More importantly, I need to report this: Make no mistake; we were targeted specifically. Thousands of personnel were exposed to SCP-4485 in some form or another, all across Europe. Not just through exposure to SCP-4485 itself, but through exposure to artifacts and art pieces they knew we would be forced to clean up. We were fortunate, perhaps, that the majority of our sites were located in more remote locales. The total body count is nearly impossible to figure, but suffice to say that only Site-77 with its primarily internal rotation schedule was mostly spared. We have closed over three-hundred sites across the continent and had to clandestinely move hundreds of artifacts and entities to secure facilities elsewhere. The expense of this effort nearly bankrupted us. We have already begun rebuilding some of our outposts, but to train the required personnel and reinforce the existing structures will take decades, and billions of dollars, or more. As of right now, Europe as a whole is effectively lost to us. 
+Более того, мне необходимо сообщить вам: Не допускайте ошибок; на нас было совершено нападение. Тысячи работников Фонда были подвержены влиянию SCP-4485 в той или иной форме по всей Европе. Не только путём взаимодействия с самим SCP-4485, но и путём взаимодействия с артефактами и произведениями искусства, которые, и они это знали, мы просто обязаны были забрать. Нам в некотором роде повезло, потому что большая часть наших учреждений была расположена более-менее уединённо. Общее количество пострадавших неизвестно, но достаточно упомянуть, что только лишь Зона 77, сотрудники в которой меняли должности в основном внутри самой Зоны, осталось в основном не затронутой. Мы закрыли более трёх сотен учреждений по всему континенту и скрытно перевезли сотни артефактов и существ в другие места. Это было настолько дорого, что мы чуть не обанкротились. Мы уже начали восстанавливать некоторые учреждения, но на обучение персонала и укрепление построек уйдут десятилетия и миллиарды долларов, а то и больше. Пока что можно сказать, что мы практически потеряли контроль над Европой.
 
-This is made worse by the fact that, despite our thoughtful actions, we **have not** contained HANSARP. 
+Но несмотря на наши продуманные действия, мы ещё **не поставили** ГАНСАРП на содержание.
 
-All of the people in stasis within the Dissociation Engine were Foundation personnel who were within locked sites and could be easily transported. We can&#39;t account for some 65% of security personnel, or janitorial. People who were on leave. Doctors en route to other sites who disappeared under mysterious circumstances. There could be hundreds, thousands out there who now a functional super-intelligence and we have no idea how to find them. All the while, our impact teams are finding more HANSARP artifacts everyday. 
+Все люди, находящиеся в стазисе в Машине Диссоциации — персонал Фонда, который находился внутри закрытых учреждений и мог быть легко привезён в ДИПВЕЛЛ-9. Но мы не привезли уборщиков и 65% охранников. Эти люди не были там. Доктора, которые были в пути от одного учреждения до другого и исчезли при загадочных обстоятельствах. Возможно, что были сотни и тысячи людей, которые сейчас стали думающим сверхразумом, и мы понятия не имеем, где их искать. И, помимо этого, наши команды быстрого реагирования находят всё больше и больше артефактов ГАНСАРП.
 
-It is no longer isolated to Europe. It is unsustainable. There is not a site large enough to contain HANSARP, and HANSARP grows larger everyday.
+Они теперь не только в Европе. Оно теперь везде, и его не сдержать — у нас нет такого большого учреждения, которое смогло бы сдержать ГАСНАРП, и ГАНСАРП становится больше с каждым днём.
 
-The worst of all of this is that SCP-4485-B instances have a more potent detrimental effect on logic when they&#39;re together. A group of a dozen in a village can ruin reason in an area for months. For better or worse, we&#39;ve got a thousand of these individuals in a bubble the size of an apartment building underground. Don&#39;t be mistaken - the Dissociation Engine is a miracle, but it&#39;s a machine. The backups are machines. Everything that secures this device is a machine, and if HANSARP finds a workaround to those systems, that&#39;s it.
+Хуже всего то, что экземпляры SCP-4485-B гораздо активнее уничтожают логику, когда они собираются вместе. Дюжина в деревне может спокойно на целые месяцы нарушить порядок и причинность на прилегающей территории. Кстати да, у нас есть тысячи таких экземпляров под землёй, сосредоточенных в объёме примерно одного жилого здания. Снимите розовые очки — Машина Диссоциации — чудо, да, но это машина. Резервные системы — тоже машины. Всё, что содержит угрозу, — машина, и если ГАНСАРП обойдёт эти машины, то всё.
 
-In our attempts to save ourselves we have built a bomb filled to the brim with the most potent of payloads. We have armed it with a fuse that logically cannot be lit, and are hoping to keep it safe from an intelligence that does not care whether the facts say it can or cannot.
+Пытаясь спасти себя, мы построили бомбу, до краёв наполненную самой мощной взрывчаткой. Мы снабдили её предохранителем, который, следуя нашей логике, убережёт её от взрыва, и мы надеемся, что убережём её от интеллекта, которому неважно, говорят факты «да» или «нет».
 
-I am attaching a document to this report. It was recovered during a sweep of the last site we had to burn to the ground. Based on this document, __HANSARP knows.__ They are among us, dear council members. We must act swiftly.
-[[collapsible show=&#34;+ View Recovered Document&#34; hide=&#34;- Hide Recovered Document&#34;]]
+К этому отчёту я прикрепил документ. Он был обнаружен во время зачистки последнего учреждения, которое нам пришлось спалить дотла. Если верить этому документу, __ГАНСАРП знает.__ Они среди нас, уважаемые члены совета. Нам надлежит действовать незамедлительно.
+[[collapsible show=&#34;+ Показать обнаруженный документ&#34; hide=&#34;− Скрыть обнаруженный документ&#34;]]
 [[div_ class=&#34;scp-image-block&#34;]]
-[[image https://scp-wiki.wikidot.com/local--files/fragment:scp-4485-5/LHOOQ.png]]
+[[image http://scptestwiki.wikidot.com/local--files/members:kollab-main-6/LHOOQ.png]]
 [[div_ class=&#34;scp-image-caption&#34;]]
-Recovered document taken from Site-39. Image is of a sluice gate in service to DEEPWELL-9. Origin of photograph is unknown.
+Документ, обнаруженный в Зоне 39. Изображение шлюза системы водоснабжения ДИПВЕЛЛ-9. Происхождение фотографии неизвестно.
 [[/div]]
 [[/div]]
 [[/collapsible]]
     [[/div]]
 [[/div]]
-@@ @@
-[!-- CSS For ACS overwrite --]
-[[module css]]
-.danger-diamond a,
-.danger-diamond a:hover {
-    color: rgba(0,0,0,0) !important;
-    -webkit-box-shadow: initial !important;
-       -moz-box-shadow: initial !important;
-    		box-shadow: initial !important;
-}
-
-.danger-diamond &gt; .arrows {
-    --danger-diamond-arrows: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 160 160&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;%23fcfcfc&#39; d=&#39;M136.1,133.3l23.9-23.9V51.2l-24-24l19.1-19.1l4.9,4.9l0-12.9l-12.9,0l4.9,4.9L133,24.2l-24-24H51l-24,24 L8,5.2l4.9-4.9L0,0.2l0,12.9l4.9-4.9L24,27.3l-24,24v58.2l23.9,23.9l-19,19L0,147.3l0,12.9l12.9,0L8,155.3l19-19l23.9,23.9h58.4 l23.9-23.9l19,19l-4.9,4.9l12.9,0l0-12.9l-4.9,4.9L136.1,133.3z M155.7,53v54.6l-22.6,22.6l-50-50L133,30.3L155.7,53z M52.8,4.5 h54.4l22.7,22.7L80,77.2L30.1,27.3L52.8,4.5z M4.3,107.6V53L27,30.3L77,80.2l-50,50L4.3,107.6z M107.4,155.9H52.6L30,133.3l50-50 l50,50L107.4,155.9z&#39;/%3E%3C/svg%3E%0A&#34;);
-}
-
-.anom-bar-container.esoteric .danger-diamond &gt; .top-icon::before {
-    background-color: rgb(var(--swatch-menubg-light-color));
-}
-
-.anom-bar-container.apollyon .text-part &gt; .main-class::before {
-    background-color: rgb(var(--swatch-menubg-light-color));
-}
-
-.anom-bar-container.apollyon .text-part &gt; .main-class::after {
-    background-color: rgb(var(--swatch-menubg-light-color));
-}
-[[/module]]</textarea></pre>
+@@ @@</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 15:46:24.415588.</em>
+    <em>Last updated 2022-05-18 16:02:07.740610.</em>
   
 </div>
 </body>

@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>‪‪SCP-1286-JP‬</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">‪‪SCP-1286-JP‬</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/scp-1286-jp" target="_blank">‪‪SCP-1286-JP‬</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>/*== RECORD - COMMON SETTINGS ==*/
+
+:root {
+  /* Recordブロックの高さ */
+  --record-block-height: 7em;
+
+  /* 文字色 - 中央揃え */
+  --center-font-color: inherit;
+  /* 文字色 - 左揃え */
+  --left-font-color: inherit;
+  /* 文字色 - 右揃え */
+  --right-font-color: inherit;
+
+  /* 文字の左右の余白 */
+  --tape-side-margin: 4em;
+  /* スマホ表示時の余白 */
+  --tape-side-margin-mobile: 1em;
+
+  /* 右揃えの文字の上の余白 */
+  --right-top-margin: 0px;
+
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+.rec-20080414 {
+
+/* Reloadボタンを表示するまでの時間 */
+/* 最後に表示される文字のdelay + 4sくらいが目安 */
+--show-reload-delay: 36s;
+
+/* 財団ロゴが1回転する時間 */
+--tape-duration: 34s;
+
+/* tape-duration × tape-count = show-reload-delay になるように */
+--tape-count: 1.1;
+}
+
+.rec-20080414 .r1 {
+/* center - start*/
+animation-delay: 2s;
+animation-duration: 2s;
+}
+
+.rec-20080414 .r2 {
+/* left */
+animation-delay: 4s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r3 {
+/* right */
+animation-delay: 8s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r4 {
+/* right */
+animation-delay: 12s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r5 {
+/*left */
+animation-delay: 16s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r6 {
+/* right */
+animation-delay: 20s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r7 {
+/* left */
+animation-delay: 24s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r8 {
+/* right */
+animation-delay: 28s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r9 {
+/* center */
+animation-delay: 32s;
+animation-duration: 2s;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/*== SHOWDATE CSS ==*/
+@import url(&#39;http://ukwhatn-tp.wdfiles.com/local--code/component%3Ashowdate/1&#39;);
+
+/*========================
+Fadeout Page-Contents
+- Copyright (c) 2020 ukwhatn
+- Released under the MIT License
+- http://expunged.xyz/MIT.txt
+   ========================*/
+
+:root {
+  --fadeout-time: 1.0s
+}
+
+div#container-wrap {
+  background: url(http://expunged.xyz/css/sigma9/origin/header-crop.png) top left repeat-x;
+}
+
+.fadeout-wrapper  {
+  position: relative;
+  overflow: hidden;
+}
+
+.fadeout-wrapper .cover{
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  background: white;
+  color: transparent;
+  animation: cover-anim var(--fadeout-time) linear 0s 1 forwards;
+}
+
+@keyframes cover-anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeout-wrapper .escape {
+  position: relative;
+  display: inline-block;
+  z-index: 3;
+}
+
+/*========================
+    Record Block - Rebuild
+
+      author: ukwhatn
+
+      based on: http://ja.scp-wiki.net/scp-style-resource#toc3 (option 6) 
+                     licensed under CC BY-SA 3.0
+
+      licensed under CC BY-SA 3.0
+   ========================*/
+
+.tape-wrap .collapsible-block-unfolded-link .collapsible-block-link {
+  animation-delay: var(--show-reload-delay);
+}
+
+.tape-record {
+  position: relative;
+  height: var(--record-block-height);
+  pointer-events: none;
+  margin: 0;
+}
+
+.record {
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  animation-name: record;
+  opacity: 0;
+  top: 0;
+  color: var(--center-font-color);
+  text-align: center;
+}
+
+.record.center {
+  text-align: center;
+}
+
+.record.right {
+  text-align: right;
+  color: var(--right-font-color);
+  padding: 0 var(--tape-side-margin) 0 calc( var(--tape-side-margin) * 1.5);
+}
+
+@media (max-width: 768px) {
+  .record.right {
+    padding: 0 var(--tape-side-margin-mobile) 0 calc( var(--tape-side-margin-mobile) * 1.5);
+  }
+}
+
+.record.right::before {
+  display: block;
+  content:&#34; &#34;;
+  height: var(--right-top-margin);
+}
+
+.record.left {
+  text-align: left;
+  color: var(--left-font-color);
+  padding: 0 calc( var(--tape-side-margin) * 1.5) 0 var(--tape-side-margin);
+}
+
+@media (max-width: 768px) {
+  .record.left {
+    padding: 0 calc( var(--tape-side-margin-mobile) * 1.5) 0 var(--tape-side-margin-mobile);
+  }
+}
+
+@keyframes record {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*== TAPE ANIMATION ==*/
+
+.tape-wrap {
+  position: relative;
+  background-color: rgba(244, 244, 244, 1);
+  border: 1px dashed #999;
+  padding: 0 1em;
+}
+
+.tape-anim {
+  position: relative;
+  background-image: url(&#34;http://unofficial-scp-sandbox-jp.wikidot.com/local--files/iroiro-workshop-8/DoxYSJAV4AET63r.png&#34;);
+  background-size: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+}
+
+.tape-left,
+.tape-right {
+  display: block;
+  position: absolute;
+  margin: auto;
+  height: 0;
+  width: 70px;
+  padding-bottom: 100%;
+  background-image: url(&#34;http://unofficial-scp-sandbox-jp.wikidot.com/local--files/iroiro-workshop-8/scp_trans.png&#34;);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation-name: tape-spin;
+  animation-duration: var(--tape-duration);
+  animation-iteration-count: var(--tape-count);
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.tape-left {
+  top: -20px;
+  bottom: 0;
+  left: -70px;
+  right: 0;
+}
+
+.tape-right {
+  top: 0;
+  bottom: -32px;
+  left: 0;
+  right: -72px;
+}
+
+.tape-wrap .collapsible-block-unfolded-link {
+  padding-top: 1em;
+}
+
+.tape-wrap .collapsible-block-folded,
+.tape-wrap .collapsible-block-unfolded-link {
+  position: relative;
+  text-align: center;
+}
+
+.tape-wrap .collapsible-block-link:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+.tape-wrap .collapsible-block-folded .collapsible-block-link:before {
+  content: &#34;\f04b&#34;;
+  padding-right: 0.25em;
+}
+
+.tape-wrap .collapsible-block-unfolded-link .collapsible-block-link:before {
+  content: &#34;\f1da&#34;;
+  padding-right: 0.25em;
+}
+
+.tape-wrap .collapsible-block-unfolded-link .collapsible-block-link {
+  animation-name: g-ex;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.tape-wrap .collapsible-block-folded {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+@keyframes g-ex {
+  50% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes tape-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-document url-prefix() {
+  .tape-anim {
+    height: 300px;
+  }
+  .tape-left,
+  .tape-right {
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  .tape-left {
+    top: 105px;
+    bottom: initial;
+    left: -36px;
+  }
+  .tape-right {
+    top: 60px;
+    bottom: initial;
+    left: 35px;
+  }
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/credit:start" target="_blank"><code>credit:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/credit:end" target="_blank"><code>credit:end</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>fadeout-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>showdate</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tape-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rec-20080414</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tape-anim</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tape-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tape-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tape-record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r4</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r5</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r7</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r8</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>record</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>r9</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cover</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[include credit:start]]
+**タイトル:** SCP-1286-JP そして笑った
+**著者:** ©︎[[*user Kuronohanahana]]
+[[include credit:end]]
+
+[[module css]]
+/*== RECORD - COMMON SETTINGS ==*/
+
+:root {
+  /* Recordブロックの高さ */
+  --record-block-height: 7em;
+
+  /* 文字色 - 中央揃え */
+  --center-font-color: inherit;
+  /* 文字色 - 左揃え */
+  --left-font-color: inherit;
+  /* 文字色 - 右揃え */
+  --right-font-color: inherit;
+
+  /* 文字の左右の余白 */
+  --tape-side-margin: 4em;
+  /* スマホ表示時の余白 */
+  --tape-side-margin-mobile: 1em;
+
+  /* 右揃えの文字の上の余白 */
+  --right-top-margin: 0px;
+
+}
+
+[[/module]]
+
+[[div_ class=&#34;fadeout-wrapper&#34;]]
+
+**アイテム番号:** SCP-1286-JP
+
+**オブジェクトクラス:** かつてはEuclid。今はKeter、恐らく。
+
+[[collapsible show=&#34;+ 旧版特別収容プロトコル。当時の記憶を頼りに書いた為に幾つか間違ってるかも知れないが、いつかの為の参考に。&#34; hide=&#34;- 閲覧を終了する&#34;]]
+
+&gt; **特別収容プロトコル:** SCP-1286-JPは標準人型オブジェクト収容室に収容されます。‪収容室には監視カメラを設置し、SCP-1286-JP‬と直接接触するのはDクラス職員のみにしてください。SCP-1286-JPにはGPS発信機を取り付け、常に居場所が特定できるようにしてください。
+
+[[/collapsible]]
+
+**特別収容プロトコル:** ‪‪--SCP-1286-JP‬を認識しているのは私だけだ。--その特性によりSCP-1286-JPは現在収容不可能となっています。SCP-1286-JP‪‐1の発生時、--私は--竹村研究員は、SCP-1286-JPと会話し、鎮静させなければなりません。SCP-1286-JP‪‐1に対して、竹村研究員は何があっても笑うことは許されません。
+
+[[collapsible show=&#34;+ 旧版説明。これもかなり記憶があやふやだけれど、書くしかないだろう。&#34; hide=&#34;- 現在この異常性は無くなったとみられる。&#34;]]
+
+&gt; **説明:** SCP-1286-JPは身長およそ180cm、体重(覚えていない)kgの人型実体です。
+&gt; 
+&gt; ‪SCP-1286-JPの異常性は、SCP-1286-JPと会話をすることで発現します。SCP-1286-JPと会話をする人物(以下、対象と記述)は、SCP-1286-JPの放つジョークやそれに類するもの全てに笑います。‪それは対象が面白いと思うかどうかに関わらず、必ず発生します。
+[[/collapsible]]
+
+**説明:** ‪ SCP-1286-JP‬は、身長およそ180cm、体重(測る機会があったら記入する)kgの、自身を笹木拓磨と名乗る人型実体です。SCP-1286-JPは、一切の睡眠、食事を必要としません。
+
+SCP-1286-JPの異常性は、SCP-1286-JPの行うショー(以下、SCP-1286-JP‪‐1と記述)の最中に笑う事で発現します。‪SCP-1286-JP‪‐1では、SCP-1286-JPは不明な原理でステージを創り出し、その周囲(詳しい値は不明。恐らく3kmはある。判明したら記入する)kmにいる人物を観客席へと瞬間的に移動させ、‪コメディショーを始めます。SCP-1286-JPの最中に笑った人物は、‪SCP‐1286‐JP‐1が終了した後にSCP-1286-JPを認識できなくなり、‪またその人物がSCP-1286-JPに関する記録を行なっていた場合、その記録内容を認識できなくなります。SCP-1286-JPに関する情報は、例えそれが事実であっても‪全て嘘偽りであると--決めつけ--考えるようになります。SCP-1286-JP‬‐1‬が再び発生すると、‪ SCP-1286-JPを認識できなくなっていた人物はSCP-1286-JP‪‐1の間のみSCP-1286-JPを認識できるようになりますが、SCP-1286-JP‪‐1の間は会話が不可能なようです。
+
+SCP-1286-JP‬との直接の会話は可能であり、それを録音・録画することはできますが、SCP-1286-JPの影響を受けている人物には全て正しく認識されず、竹村研究員の独り言にしか聞こえないようです。--でも私にはきちんと見えるし聞こえる。今後誰かが影響下から解放されるかもしれないから、そのために私は毎回録音をしている。SCP-1286-JPもそれを了解している。--
+
+以下は、SCP-1286-JPが現在の状態に至るまでの、--私--竹村研究員による記録です。
+
+この記録は随時更新されます。
+
+||~ 日付 ||~ 概要 ||
+|| 2004/01/17 || SCP-1286-JPが、旧版特別収容プロトコルに従って収容された。 ||
+|| 2004/05/22 || SCP-1286-JPの収容違反。SCP-1286-JPはSCP-1286-JP-1を発生させ、ほとんどが‪笑い、‪SCP-1286-JP‬‬に関する情報を失った。この時点で‪残ったのは私を含む数名だけだった。 ||
+|| 2004/05/23 || SCP-1286-JPの異常性は変化したのだろうか。そういえば私はSCP-1286-JPの行ったショーで笑わなかった。 ||
+|| 2004/06/11 || SCP-1286-JPを認識できる数名でSCP-1286-JP‬の収容を何とか続けているが、いつまで保つかわからない。他の人達からしたら、何も無いのを収容しているように見えるのだろう。他のサイトへ連絡をしてSCP-1286-JPを移動させる案も出したが、被害は最小限に抑えるべきだと言われて却下された。まあ、もう一度収容違反しなければいいだけの話だ……。 ||
+|| 2004/08/05 || SCP-1286-JP、2度目の収容違反。…………残ったのは遂に私だけになってしまった。これは、かなりマズい状況だ。私の持つ権限じゃSCP-1286-JPの移動なんてさせられない。どうしよう、どうしよう、どうしよう…… ||
+|| 2004/08/15 || こうなるのはわかっていたが、誰も私の話を信用しない。やっぱり私にしかSCP-1286-JPは認識できていない。つい先日まで特別収容プロトコルが講じられてた‪SCPオブジェクトだったのに、今それを覚えているのは私だけなんて……。 ||
+|| 2004/08/19 ||SCP-1286-JPはどこかへ行ってしまった。……まぁ、SCP-1286-JPが笑われたら記憶から消えるだけだ。もう、収容は諦めようかな。本当だったらこんなの絶対許されないけど……。 ||
+|| 2004/10/22 || SCP-1286-JPが再びサイトへと戻ってきた。またショーを執り行っていたけど(これをSCP-1286-JP‪‐1と呼ぶことにした)、私は笑わなかった。笑えなかった。笑いたくなかった。皆は笑っていた。彼を見て笑っていた。 ||
+|| 2004/10/23 || SCP-1286-JPが、私に話しかけてきた。 ||
+
+[[collapsible show=&#34;+ &lt;録音記録 2004/10/23&gt;&#34; hide=&#34;- 閉じる&#34;]]
+
+以下はSCP-1286-JPとの会話の書き起こしです。
+
+&gt; [再生開始]
+&gt; 
+&gt; **SCP-1286-JP:** いろんなところでショーをしてきたけど、君だけだよ、1度も笑ってないのは。
+&gt; 
+&gt; **竹村研究員:** 笑えないに決まってるでしょ、こんなの。SCP-1286-JPが収容されてないっていうのに、誰も私の話を信じてくれない。ねえ、あなたは本当に存在するんだよね？ 実体でしょ？ そう言って、お願い。
+&gt; 
+&gt; **SCP-1286-JP:** その通り。僕は実体だよ。紛れもなく、ここに存在している。けど、皆には忘れ去られてしまったんだ。記憶から、パッとね。
+&gt; 
+&gt; **竹村研究員:** なんで、どうして、こうなったの？ なぜあなたは忘れられてしまうの？……その、笑われると。
+&gt; 
+&gt; **SCP-1286-JP:** さぁ？ そんなの知らないよ。でも、君は知ってるだろ？ 僕はかつて世界中で老若男女を笑わせたコメディアンだった。
+&gt; 
+&gt; **竹村研究員:** それはよく知ってる。ただ、私はあなたのショーで本当に1度も笑ったことはないけどね。
+&gt; 
+&gt; **SCP-1286-JP:** 悲しいなぁ。まあ、同時に嬉しくもあるよ。僕だって忘れられるのは辛いんだ。
+&gt; 
+&gt; **竹村研究員:** じゃあこんなのやめてよ。ショーなんかやらないでよ。こんなの……こんなの悪い夢みたいで、私、気が狂いそう。
+&gt; 
+&gt; **SCP-1286-JP:** こうでもしないと僕を見て笑ってくれる人はもう誰もいないんだよ、君以外に。君もショーで僕を笑ってくれればいい。そうしたら君も僕を忘れられる。その方が楽じゃないか。なぜ頑なに笑わないんだ？
+&gt; 
+&gt; **竹村研究員:** 笑わないんじゃない、笑えないの。SCP-1286-JP、あなたを収容したいの。お願い、協力的になって。
+&gt; 
+&gt; **SCP-1286-JP:** その番号みたいな呼び方嫌だな。名前で読んでよ。そうしたら協力的になるのも考えてみる。
+&gt; 
+&gt; **竹村研究員:** わかった。……で、名前は？
+&gt; 
+&gt; **SCP-1286-JP:** 笹木拓磨。漢字は……ちょっと紙とペン貸して。
+&gt; 
+&gt; //[SCP-1286-JP‬が名前を書く]//
+&gt; 
+&gt; **竹村研究員:** ……ありがとう、笹木さん。
+&gt; 
+&gt; [再生終了]
+[[/collapsible]]
+
+竹村研究員は、SCP-1286-JP‬と会話を続けることで、SCP-1286-JPを暫定的に収容しています。SCP-1286-JPは竹村研究員を笑わせることに強い関心を持ちますが、竹村研究員が笑うことは許されていません。今後も許されることはありません。
+
+||~ 日付 ||~ 概要 ||
+|| 2004/11/18 || ‪ようやく笹木さんことSCP‐1286‐JP‬‬が協力的になった。常に私の隣にいて、離れなければいけない時はGPSで居場所の把握もできるようになった。SCP-1286-JPが私以外に認識されないから収容室を割り当てることができないし、こうするしかないだろう。もっと私のセキュリティクリアランスレベルが高ければどうにか出来たのかもしれない。‪ ||
+|| 2004/11/22 || SCP-1286-JPの報告書を作成することにした。これは誰にも認められることはないだろうけど、私の個人的な研究資料としてまとめておこう。何かあればその日の日記も添付しよう。いつか参考になるかもしれない。 ||
+|| 2004/12/24 || SCP-1286-JPと会話をするのは、周りからすると私がずっと独り言を言っているように聞こえるらしい。カウンセリングを勧められてしまった。せっかくのクリスマスにとんでもないプレゼントだ。 ||
+|| 2005/01/01 || 新年あけましておめでとう。今年の初笑いは同僚のちょっとした冗談だった。SCP-1286-JPも私を笑わせようとしていたが、何一つ笑えなかった。 ||
+|| 2005/02/16 || 誕生日おめでとう、私。SCP-1286-JPは執拗に私を笑わせようとする。でもやっぱり、彼の言うことは何一つとして面白くない。 ||
+|| 2005/05/22 || 今日はSCP-1286-JPが初めて収容違反した日から1年だ。あの日、誰もが彼を見て笑っていた。あの時私も笑えばよかった。笑ってれば今こんなことにならずに済んだのに。 ||
+
+[[collapsible show=&#34;+ &lt;録音記録 2005/05/28&gt;&#34; hide=&#34;- 閉じる&#34;]]
+
+以下はSCP‐1286‐JP‬‬との会話の書き起こしです。
+
+&gt; [再生開始]
+&gt; 
+&gt; **竹村研究員:** 笹木さん、私を笑わせようとするのはやめて。お願いだから。 
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** それは難しいな。
+&gt; 
+&gt; **竹村研究員:** 協力的になってくれるって、随分前に約束してくれたでしょ？
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** 君が苦しそうだから協力してやってるじゃないか。僕をさっさと忘れてしまえばいいのに。
+&gt; 
+&gt; **竹村研究員:** 忘れられるのは辛いんだって言ったのはあなたなのに？ 私、誰かを放っておくのは性分に合わないの。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** 僕だって、誰かを笑わせるのが性分なんだよ。君、一度も僕のネタで笑ってくれないじゃないか。
+&gt; 
+&gt; **竹村研究員:** 私があなたを忘れてもいいの？
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** まぁ、忘れられるのは嫌だよ。けど君の笑顔が見てみたいんだ！
+&gt; 
+&gt; **竹村研究員:** 笑顔なら見た事あるはずよ。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** 僕が笑わせたいんだ。
+&gt; 
+&gt; **竹村研究員:** ……そのときはお別れね。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** でも僕は君に忘れられても君のそばにいると思うよ。僕は随分と君を気に入った。
+&gt; 
+&gt; [再生終了]
+[[/collapsible]]
+
+竹村研究員は、SCP-1286-JPとの会話・交流を継続しなければなりません。
+
+||~ 日付 ||~ 概要 ||
+|| 2005/06/30 || ‪同僚が私の陰口を言っているのを立ち聞きしてしまった。独り言ずっと言ってるように聞こえるんだから、当たり前かな。陰口を‪聞いたSCP‐1286‐JP‬‬は怒っていた。SCPオブジェクトとはいえ人間なんだなあと思って、ちょっと嬉しくなってしまった。いけないいけない。彼はオブジェクト。人間じゃない。 ||
+|| 2005/08/16 || SCP-1286-JPに私の名前を尋ねられた。誰かに話し掛けられることもほぼ無かったからSCP-1286-JPは知らなかったのだろうか。知られたところで特に何も無いだろうと判断して名前を教えた。 ||
+|| 2005/09/02 || SCP-1286-JPがショーをしたいってうるさい。もし私がそれで笑ってしまったらどうするつもりだ。いや、笑わせたいのだろうけど。とにかくそれは絶対に許可しない。……許可しなくともSCP-1286-JPは自身の意思でできるはずなのに、わざわざ私に尋ねてくるのは何故だろう。 ||
+|| 2005/12/10 || またカウンセリングを勧められた。去年の今頃も同じようなことがあったな。なんでこうなるんだろう。私はSCP-1286-JPを収容する為にこんなに頑張ってるのに、誰もわかってくれない。 ||
+|| 2006/01/01 || 新年あけましておめでとう。今年の初笑いは何になるかな。最近ずっと笑ってない。SCP-1286-JPは相変わらず私を笑わせようとする。無駄だって、いい加減に気づかないのだろうか。 ||
+|| 2006/01/26 || SCP-1286-JPを殺すのは、だめだろうか。…………だめか。 ||
+|| 2006/02/16 || 誕生日おめでとう、私。SCP-1286-JPがプレゼントと称していつものように笑わせようとしてきた。‪ありがとう、ごめんなさい。 ||
+
+[[collapsible show=&#34;+ &lt;録音記録 2006/08/11&gt;&#34; hide=&#34;- 閉じる&#34;]]
+
+以下はSCP‐1286‐JP‬‬との会話の書き起こしです。
+
+&gt; [再生開始]
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** そしてハンターは「OK！ それからどうすればいい？」って言ったんだよ！
+&gt; 
+&gt; **竹村研究員:** ふーん。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** アメリカンジョークもダメか。これ世界一面白いジョークって言われてて有名なやつなんだよ？
+&gt; 
+&gt; **竹村研究員:** それのどこが面白いの？
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** ま、これは英語の言葉遊びだから日本人には意味わからないよね！
+&gt; 
+&gt; **竹村研究員:** ……笹木さん。ちょっと質問したいんだけどさ。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** 竹村さんから話題を振るなんて珍しいね、何？
+&gt; 
+&gt; **竹村研究員:** 笹木さんって、何歳？ 誕生日は？
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** えっ……と。気にしたこと無かったな。ごめん、わからない。
+&gt; 
+&gt; **竹村研究員:** 出自のこと、わからないの？ 出身地も？
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** そうだね。何もわからない。
+&gt; 
+&gt; **竹村研究員:** そう……わかった。ありがとう。
+&gt; 
+&gt; [再生終了]
+[[/collapsible]]
+
+&gt; **&lt;やることリスト&gt;** 
+&gt; * 笑わない(優先度: 最高)
+&gt; * ‪SCP-1286-JPの出自を調べる(優先度: 高)
+&gt; * 昇進の申請(優先度: 中)
+&gt; * SCP-1286-JPの無力化(優先度: 低)
+
+竹村研究員は、SCP-1286-JPが研究対象であるということ、SCPオブジェクトであることを忘れてはいけません。必要以上の感情を持ち込むことは許可されません。--だれが許可するんだろう。SCP-1286-JPを知ってるのは私だけじゃないか。--
+
+||~ 日付 ||~ 概要 ||
+|| 2007/04/27 || ‪しばらくSCP‐1286‐JP‬‬の出自を調査していたけれど、なにも手がかりがない。仮報告書の更新もしばらくしていない。SCP‐1286‐JP‬‬が私を笑わせようとするのも、ずっと変わらない。よくネタが尽きないもんだなぁ……。‬ ||
+|| 2007/09/15 || また昇進申請が却下された。何回目だろう。昇進すればSCP-1286-JPについて調べられることも増えるかもしれないのに。私のことをよく思ってない人が多いんだろうな。 ||
+|| 2008/03/15 || SCP-1286-JPが、ショーをしたいって言う。そんなのダメだ。……でも、SCP-1286-JPは誰にも笑われないのが辛いのかな。 ||
+|| 2008/04/13 || SCP-1286-JP‪‐1発生。別に、もうどうでもいい。私は笑わなかったし、SCP‐1286‐JP‬‬はそれで満足したし。財団職員として失格だろうな。 ||
+
+[[collapsible show=&#34;+ &lt;録音記録 2008/04/14&gt;&#34; hide=&#34;- 閉じる&#34;]]
+
+以下はSCP‐1286‐JP‬‬との会話の書き起こしです。
+
+&gt; [再生開始]
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** 昨日のショーは最高だったよ！ 竹村さんは相変わらず笑ってくれないけど。
+&gt; 
+&gt; **竹村研究員:** ショーを許可するなんて、私どうかしてる。私が笑わないとも限らないのに。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** でも笑わなかった。
+&gt; 
+&gt; **竹村研究員:** そんなの結果論でしょ！ 私……怖かった。笹木さんのこと忘れちゃうんじゃないかって。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** 僕のことなんてさっさと忘れてしまえばいいのに。竹村さんが苦しむのは僕のせいじゃないか。
+&gt; 
+&gt; **竹村研究員:** 笹木さんに関してこの数年間必死で集めた記録が消えるなんて嫌。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** そう。僕はあくまで研究対象ってわけか。友達ですらない？
+&gt; 
+&gt; **竹村研究員:** そうだよ。あなたと私は友達なんかじゃない。
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** ふうん。じゃあ友達じゃない竹村さんにひとついいことを教えようか。僕は食事や睡眠を必要としないから、僕が終わらせなければ永遠にショーを続けられるんだよ。
+&gt; 
+&gt; **竹村研究員:** わ、私を脅してるの？
+&gt; 
+&gt; **SCP‐1286‐JP‬‬:** その通り。僕はいつでもこのサイトを壊滅的状態にさせることができる。別に君に許可を得なくたって、いつでもショーは開催できた。でも僕はいつだって君の意思を尊重したんだ。友達だと思ってたからね。
+&gt; 
+&gt; **竹村研究員:** 私が悪かったから、ねえ、お願い。そんな怖い目で私を見ないでよ。ごめんなさい。自分にイライラしてたの。……ごめんなさい。
+&gt; 
+&gt; [再生終了]
+
+[[/collapsible]]
+
+‪SCP-1286-JPと竹村研究員が友好的関係を築くことはSCP-1286-JPを長期的に鎮静させることに繋がります。長く続く友好的関係が望まれます。--大丈夫、普通に会話をしているだけでいいんだから。--
+
+[[div class=&#34;showdate&#34;]]
+||~ 日付 ||~ 概要 ||
+|| 2017/11/20 || 仮報告書をずっと更新していなかった。もうSCP-1286-JPがいるのは私にとってすっかり日常となってしまっている。昇進申請は一度も通っていない。SCP-1286-JPのことがあるから他の研究も上手く進まない。疲れたなあ。 ||
+|| 2018/07/18 || SCP-1286-JPが、またショーをしたいって言ってる。最後にやったのいつだっけな。まあ、させないのだけど。 ||
+|| 2018/12/02 || ずっとここで働いてても、昇進はできないだろうし、もう辞めてしまおうかな。……早計すぎるかな。まだ保留しておこう。SCP-1286-JPのこともあるし……。||
+|| [[iframe http://ukwhatn-tp.wdfiles.com/local--code/component%3Ashowdate/2 width=&#34;85&#34; scrolling=&#34;no&#34;]] || ずっと悩んでいたけど、遂に辞めることにした。誰にも引き留められなかった。記憶処理されて、何もかも忘れてしまうのだろう。 ||
+[[/div]]
+
+SCP‐1286‐JP‬‬‬に、SCP-1286-JP‪‐1の許可を出した。もういい。私はもう、全て忘れてしまいたい。
+書き起こすのも面倒だし、音声記録はそのまま載せておく。まあ、消えてしまうのだろうけど。
+
+@@ @@
+
+[[module css]]
+
+.rec-20080414 {
+
+/* Reloadボタンを表示するまでの時間 */
+/* 最後に表示される文字のdelay + 4sくらいが目安 */
+--show-reload-delay: 36s;
+
+/* 財団ロゴが1回転する時間 */
+--tape-duration: 34s;
+
+/* tape-duration × tape-count = show-reload-delay になるように */
+--tape-count: 1.1;
+}
+
+.rec-20080414 .r1 {
+/* center - start*/
+animation-delay: 2s;
+animation-duration: 2s;
+}
+
+.rec-20080414 .r2 {
+/* left */
+animation-delay: 4s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r3 {
+/* right */
+animation-delay: 8s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r4 {
+/* right */
+animation-delay: 12s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r5 {
+/*left */
+animation-delay: 16s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r6 {
+/* right */
+animation-delay: 20s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r7 {
+/* left */
+animation-delay: 24s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r8 {
+/* right */
+animation-delay: 28s;
+animation-duration: 4s;
+}
+
+.rec-20080414 .r9 {
+/* center */
+animation-delay: 32s;
+animation-duration: 2s;
+}
+
+[[/module]]
+
+[[div class=&#34;tape-wrap rec-20080414&#34;]]
+[[collapsible show=&#34;PLAY&#34; hide=&#34;RELOAD&#34;]]
+[[div class=&#34;tape-anim&#34;]]
+[[div class=&#34;tape-left&#34;]]
+[[/div]]
+[[div class=&#34;tape-right&#34;]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;tape-record&#34;]]
+[[span class=&#34;record r1&#34;]]@@[再生開始]@@[[/span]]
+[[span class=&#34;record left r2&#34;]] 笹木さん……あの、私、辞めることにした。[[/span]]
+[[span class=&#34;record right r3&#34;]]ああ、やっと決心ついたんだ？ もう竹村さんは僕のことは諦めるんだね。[[/span]]
+[[span class=&#34;record left r4&#34;]] うん。もう、疲れちゃった。ごめんね。[[/span]]
+[[span class=&#34;record right r5&#34;]]そうか。じゃあ、最後にとっておきのショーを執り行おうか。[[/span]]
+[[span class=&#34;record left r6&#34;]]いいね。笑わせてよ、私のこと。[[/span]]
+[[span class=&#34;record right r7&#34;]]勿論。心残りなく辞めていけるようにしてあげるよ。[[/span]]
+[[span class=&#34;record left r8&#34;]]文字通りね……それじゃ、最高のショーをお願い。[[/span]]
+[[span class=&#34;record r9&#34;]]@@[再生終了]@@[[/span]]
+
+[[/div]]
+
+[[/collapsible]]
+[[/div]]
+
+@@ @@
+
+[[collapsible show=&#34;これで最後だから、思いっきり笑ってやろうと思う。&#34; hide=&#34;　　&#34;]]
+
+[[div class=&#34;cover&#34;]]
+@@ @@
+[[/div]]
+[[/collapsible]]
+
+[[/div]]
+
+[[module css]]
+/*== SHOWDATE CSS ==*/
+@import url(&#39;http://ukwhatn-tp.wdfiles.com/local--code/component%3Ashowdate/1&#39;);
+
+/*========================
+Fadeout Page-Contents
+- Copyright (c) 2020 ukwhatn
+- Released under the MIT License
+- http://expunged.xyz/MIT.txt
+   ========================*/
+
+:root {
+  --fadeout-time: 1.0s
+}
+
+div#container-wrap {
+  background: url(http://expunged.xyz/css/sigma9/origin/header-crop.png) top left repeat-x;
+}
+
+.fadeout-wrapper  {
+  position: relative;
+  overflow: hidden;
+}
+
+.fadeout-wrapper .cover{
+  width: 100%;
+  height: 200%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  background: white;
+  color: transparent;
+  animation: cover-anim var(--fadeout-time) linear 0s 1 forwards;
+}
+
+@keyframes cover-anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeout-wrapper .escape {
+  position: relative;
+  display: inline-block;
+  z-index: 3;
+}
+
+/*========================
+    Record Block - Rebuild
+
+      author: ukwhatn
+
+      based on: http://ja.scp-wiki.net/scp-style-resource#toc3 (option 6) 
+                     licensed under CC BY-SA 3.0
+
+      licensed under CC BY-SA 3.0
+   ========================*/
+
+.tape-wrap .collapsible-block-unfolded-link .collapsible-block-link {
+  animation-delay: var(--show-reload-delay);
+}
+
+.tape-record {
+  position: relative;
+  height: var(--record-block-height);
+  pointer-events: none;
+  margin: 0;
+}
+
+.record {
+  display: block;
+  box-sizing: border-box;
+  position: absolute;
+  width: 100%;
+  animation-name: record;
+  opacity: 0;
+  top: 0;
+  color: var(--center-font-color);
+  text-align: center;
+}
+
+.record.center {
+  text-align: center;
+}
+
+.record.right {
+  text-align: right;
+  color: var(--right-font-color);
+  padding: 0 var(--tape-side-margin) 0 calc( var(--tape-side-margin) * 1.5);
+}
+
+@media (max-width: 768px) {
+  .record.right {
+    padding: 0 var(--tape-side-margin-mobile) 0 calc( var(--tape-side-margin-mobile) * 1.5);
+  }
+}
+
+.record.right::before {
+  display: block;
+  content:&#34; &#34;;
+  height: var(--right-top-margin);
+}
+
+.record.left {
+  text-align: left;
+  color: var(--left-font-color);
+  padding: 0 calc( var(--tape-side-margin) * 1.5) 0 var(--tape-side-margin);
+}
+
+@media (max-width: 768px) {
+  .record.left {
+    padding: 0 calc( var(--tape-side-margin-mobile) * 1.5) 0 var(--tape-side-margin-mobile);
+  }
+}
+
+@keyframes record {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/*== TAPE ANIMATION ==*/
+
+.tape-wrap {
+  position: relative;
+  background-color: rgba(244, 244, 244, 1);
+  border: 1px dashed #999;
+  padding: 0 1em;
+}
+
+.tape-anim {
+  position: relative;
+  background-image: url(&#34;http://unofficial-scp-sandbox-jp.wikidot.com/local--files/iroiro-workshop-8/DoxYSJAV4AET63r.png&#34;);
+  background-size: 200px;
+  background-position: center center;
+  background-repeat: no-repeat;
+  min-height: 300px;
+}
+
+.tape-left,
+.tape-right {
+  display: block;
+  position: absolute;
+  margin: auto;
+  height: 0;
+  width: 70px;
+  padding-bottom: 100%;
+  background-image: url(&#34;http://unofficial-scp-sandbox-jp.wikidot.com/local--files/iroiro-workshop-8/scp_trans.png&#34;);
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  animation-name: tape-spin;
+  animation-duration: var(--tape-duration);
+  animation-iteration-count: var(--tape-count);
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+.tape-left {
+  top: -20px;
+  bottom: 0;
+  left: -70px;
+  right: 0;
+}
+
+.tape-right {
+  top: 0;
+  bottom: -32px;
+  left: 0;
+  right: -72px;
+}
+
+.tape-wrap .collapsible-block-unfolded-link {
+  padding-top: 1em;
+}
+
+.tape-wrap .collapsible-block-folded,
+.tape-wrap .collapsible-block-unfolded-link {
+  position: relative;
+  text-align: center;
+}
+
+.tape-wrap .collapsible-block-link:before {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translate(0, 0);
+}
+
+.tape-wrap .collapsible-block-folded .collapsible-block-link:before {
+  content: &#34;\f04b&#34;;
+  padding-right: 0.25em;
+}
+
+.tape-wrap .collapsible-block-unfolded-link .collapsible-block-link:before {
+  content: &#34;\f1da&#34;;
+  padding-right: 0.25em;
+}
+
+.tape-wrap .collapsible-block-unfolded-link .collapsible-block-link {
+  animation-name: g-ex;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.tape-wrap .collapsible-block-folded {
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+@keyframes g-ex {
+  50% {
+    visibility: visible;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+@keyframes tape-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-document url-prefix() {
+  .tape-anim {
+    height: 300px;
+  }
+  .tape-left,
+  .tape-right {
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    margin: 0 auto;
+    padding: 0 auto;
+  }
+  .tape-left {
+    top: 105px;
+    bottom: initial;
+    left: -36px;
+  }
+  .tape-right {
+    top: 60px;
+    bottom: initial;
+    left: 35px;
+  }
+}
+[[/module]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:12.173639.</em>
+  
+</div>
+</body>

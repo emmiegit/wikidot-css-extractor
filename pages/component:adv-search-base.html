@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Base du code de la fonction de recherche</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Base du code de la fonction de recherche</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:adv-search-base" target="_blank">Base du code de la fonction de recherche</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>.query-area{
+display: none;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>font-size: 0px; visibility : hidden;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>visibility : visible;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width:100%; text-align: center;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>button</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[!--
+Advanced Search CSI
+Par : Kenneth Tsang
+Site : http://ktsang.tk/
+
+Copyright 2011-2012 Kenneth Tsang
+--]
+
+[!-- Note d&#39;affichage informant les utilisateurs que les résultats peuvent devoir se recharger pour afficher des résultats corrects --]
+[[div style=&#34;font-size: 0px; visibility : hidden;&#34;]]
+{$enforceDefault}
+[[size 12px]][[span style=&#34;visibility : visible;&#34;]]{$stringEnforceNote}[[/span]][[/size]]
+[!----]
+[[/div]]
+
+[[html]]
+&lt;style&gt;
+body{
+font-family: sans-serif;
+font-size: 90%;
+}
+{$css}
+&lt;/style&gt;
+&lt;script type=&#34;text/javascript&#34;&gt;
+/****************** Define some variables */
+pageselect=&#34;pf&#34;;
+enforceSearch = &#34;{$enforceDefault}&#34;;
+enforceMode = &#34;{$enforceMode}&#34;;
+miniMode = &#34;{$mini}&#34;;
+hideFilters = &#34;{$hideFilters}&#34;;
+
+defaultTitle = &#34;{$defaultTitle}&#34;;
+defaultCategory = &#34;{$defaultCategory}&#34;;
+defaultAuthor = &#34;{$defaultAuthor}&#34;;
+
+defaultMode = &#34;{$defaultMode}&#34;;
+
+showTitle = &#34;{$showTitle}&#34;;
+showAuthor = &#34;{$showAuthor}&#34;;
+showCategory = &#34;{$showCategory}&#34;;
+
+/****************** Ensure that &#34;null&#34; default value is nulled */
+if(defaultTitle==&#34;null&#34;){ defaultTitle= &#34;&#34;; }
+if(defaultCategory==&#34;null&#34;){ defaultCategory = &#34;&#34;; }
+if(defaultAuthor==&#34;null&#34;){ defaultAuthor = &#34;&#34;; }
+
+/****************** Trim Prototype */
+String.prototype.trim = function () {
+    return this.replace(/^\s*/, &#34;&#34;).replace(/\s*$/, &#34;&#34;);
+}
+
+/****************** getElementById Shortcut */
+function gEl(a){
+return document.getElementById(a);
+}
+
+/****************** onLoad function */
+window.onload = function(){
+
+/*** BEGIN &#34;ANY QUERY&#34; ACTION */
+if(miniMode==&#34;true&#34;){
+gEl(&#34;mode-radio-container&#34;).style.display = &#34;none&#34;;
+}
+if(hideFilters==&#34;true&#34;){
+gEl(&#34;filter-container&#34;).style.display = &#34;none&#34;;
+}
+
+pluralCheck = 0;
+
+if(showTitle.match(/^(none|false|no)$/i)){
+gEl(&#34;container-title&#34;).style.display = &#34;none&#34;;
+}else{
+gEl(&#34;container-title&#34;).style.display = &#34;block&#34;;
+pluralCheck++;
+}
+
+if(showAuthor.match(/^(none|false|no)$/i)){
+gEl(&#34;container-author&#34;).style.display = &#34;none&#34;;
+}else{
+gEl(&#34;container-author&#34;).style.display = &#34;block&#34;;
+pluralCheck++;
+}
+
+if(showCategory.match(/^(none|false|no)$/i)){
+gEl(&#34;container-category&#34;).style.display = &#34;none&#34;;
+}else{
+gEl(&#34;container-category&#34;).style.display = &#34;block&#34;;
+pluralCheck++;
+}
+
+if(pluralCheck==1){
+gEl(&#34;filter-container&#34;).innerHTML=gEl(&#34;filter-container&#34;).innerHTML.replace(&#34;Filters:&lt;/b&gt;&#34;,&#34;Filter:&lt;/b&gt;&#34;);
+}
+/*** END &#34;ANY QUERY&#34; ACTION */
+
+if(unescape(document.referrer).match(/\/q\/(.*?)$/)){
+/*** BEGIN QUERY CHECK */
+
+gEl(&#34;titlestring&#34;).value = defaultTitle;
+gEl(&#34;categorystring&#34;).value = defaultCategory;
+gEl(&#34;authorstring&#34;).value = defaultAuthor;
+
+recallSearch = false; //recalls search if default values are not met; define as false, will be set true if needed
+
+/****************** match the query string */
+searchstring = decodeURIComponent(document.referrer).match(/\/q\/(.*?)(\/)?([a-zA-Z]\/[0-9]+)?$/)[1];
+
+/****************** add a space after the search query (for matching later)*/
+searchstring += &#34; &#34;;
+
+/*** [START] MATCH TITLE FILTER */
+titlematch=searchstring.match(/title:(.*?) /);
+
+/*** Start TITLE enforceSearch */
+if((enforceSearch==&#34;true&#34;)&amp;&amp;(titlematch)){
+  if((titlematch[1]!=defaultTitle)){
+   if(defaultTitle!=&#34;&#34;){ recallSearch = true; }
+  }
+}else{  if((defaultTitle!=&#34;&#34;)&amp;&amp;(enforceSearch==&#34;true&#34;)){recallSearch = true;} }
+/*** End TITLE enforceSearch */
+
+if(titlematch){
+ gEl(&#34;titlestring&#34;).value = titlematch[1];
+ searchstring = searchstring.replace(/title:(.*?) /,&#34;&#34;);
+}
+/*** [END] MATCH TITLE FILTER */
+
+
+authormatch=searchstring.match(/user:(.*?) /);
+
+/*** Start AUTHOR enforceSearch */
+if((enforceSearch==&#34;true&#34;)&amp;&amp;(authormatch)){
+  if((authormatch[1]!=defaultAuthor)){
+   if(defaultAuthor!=&#34;&#34;){ recallSearch = true; }
+  }
+}else{  if((defaultAuthor!=&#34;&#34;)&amp;&amp;(enforceSearch==&#34;true&#34;)){recallSearch = true;} }
+/*** End AUTHOR enforceSearch */
+
+if(authormatch){
+gEl(&#34;authorstring&#34;).value = authormatch[1];
+searchstring = searchstring.replace(/user:(.*?) /,&#34;&#34;);
+}
+
+categorymatch=searchstring.match(/category:(.*?) /);
+
+/*** Start CATEGORY enforceSearch */
+if((enforceSearch==&#34;true&#34;)&amp;&amp;(categorymatch)){
+  if((categorymatch[1]!=defaultCategory)){
+   if(defaultCategory!=&#34;&#34;){ recallSearch = true; }
+  }
+}else{ if((defaultCategory!=&#34;&#34;)&amp;&amp;(enforceSearch==&#34;true&#34;)){recallSearch = true;} }
+/*** End CATEGORY enforceSearch */
+
+if(categorymatch){
+gEl(&#34;categorystring&#34;).value = categorymatch[1];
+searchstring = searchstring.replace(/category:(.*?) /,&#34;&#34;);
+}
+
+if(unescape(document.referrer).match(/\/a\/(.*?)\//)){
+ pageselect = unescape(document.referrer).match(/\/a\/(.*?)\//)[1];
+ document.getElementById(&#34;select&#34;+pageselect).checked=&#34;checked&#34;;
+ if((pageselect!=defaultMode)&amp;&amp;(enforceMode==&#34;true&#34;)){
+//console.log(&#34;DEBUG: defaultMode=&#34;+defaultMode);
+  pfselect(defaultMode);
+  //document.getElementById(&#34;select&#34;+defaultMode).checked=&#34;checked&#34;;
+  recallSearch = true;
+ }
+}
+
+document.getElementById(&#34;searchstring&#34;).value = searchstring.trim();
+
+if(recallSearch){
+if((defaultCategory!=&#34;&#34;)&amp;&amp;(enforceSearch==&#34;true&#34;)){gEl(&#34;categorystring&#34;).value=defaultCategory;}
+if((defaultTitle!=&#34;&#34;)&amp;&amp;(enforceSearch==&#34;true&#34;)){gEl(&#34;titlestring&#34;).value=defaultTitle;}
+if((defaultAuthor!=&#34;&#34;)&amp;&amp;(enforceSearch==&#34;true&#34;)){gEl(&#34;authorstring&#34;).value=defaultAuthor;}
+callSearch();
+}
+
+/*** END CHECK QUERY */
+}else{
+/*** BEGIN NO QUERY ACTION */
+/*** END NO QUERY ACTION */
+}
+/*** BEGIN &#34;ANY QUERY&#34; ACTION */
+
+
+/*** END &#34;ANY QUERY&#34; ACTION */
+
+
+}
+
+function pfselect(a){
+pageselect = a;
+}
+function callSearch(){
+theLocation = &#34;/{$searchLocation}/a/&#34;+pageselect+&#34;/q/&#34;+document.getElementById(&#34;searchstring&#34;).value;
+if(gEl(&#34;titlestring&#34;).value!=&#34;&#34;){
+theLocation += &#34; title:&#34;+gEl(&#34;titlestring&#34;).value;
+}
+if(gEl(&#34;authorstring&#34;).value!=&#34;&#34;){
+theLocation += &#34; user:&#34;+gEl(&#34;authorstring&#34;).value.replace(&#34; &#34;,&#34;-&#34;);
+}
+if(gEl(&#34;categorystring&#34;).value!=&#34;&#34;){
+theLocation += &#34; category:&#34;+gEl(&#34;categorystring&#34;).value;
+}
+window.top.location.href=theLocation;
+window.parent.location.href=theLocation;
+window.top.location.replace(theLocation);
+}
+&lt;/script&gt;
+&lt;center&gt;
+&lt;form action=&#34;javascript:;&#34; onsubmit=&#34;callSearch();&#34;&gt;
+&lt;table style=&#34;width:100%; text-align: center;&#34;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;div&gt;
+    &lt;input class=&#34;text&#34; type=&#34;text&#34; size=&#34;30&#34; name=&#34;query&#34; value=&#34;&#34; id=&#34;searchstring&#34;/&gt;
+    &lt;input class=&#34;button&#34; type=&#34;submit&#34; value=&#34;{$text}&#34; onClick=&#34;callSearch();&#34;/&gt;
+&lt;/div&gt;
+&lt;div id=&#34;mode-radio-container&#34;&gt;
+    &lt;input id=&#34;selectp&#34; type=&#34;radio&#34; name=&#34;area&#34; value=&#34;p&#34; onclick=&#34;pfselect(&#39;p&#39;);&#34; /&gt;{$stringPagesOnly}
+    &lt;input id=&#34;selectpf&#34; type=&#34;radio&#34; name=&#34;area&#34; value=&#34;pf&#34; checked=&#34;checked&#34; onclick=&#34;pfselect(&#39;pf&#39;);&#34; /&gt;{$stringPF}
+    &lt;input  id=&#34;selectf&#34; type=&#34;radio&#34; name=&#34;area&#34; value=&#34;f&#34;  onclick=&#34;pfselect(&#39;f&#39;);&#34; /&gt;{$stringForumOnly}
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td style=&#34;text-align: right;&#34;&gt;
+&lt;div id=&#34;filter-container&#34;&gt;
+&lt;b&gt;{$stringAdditional}&lt;/b&gt;&lt;br /&gt;
+&lt;div id=&#34;container-title&#34;&gt;
+    {$stringTitle}
+&lt;input class=&#34;text&#34; type=&#34;text&#34; size=&#34;20&#34; name=&#34;title&#34; value=&#34;&#34; id=&#34;titlestring&#34;/&gt;
+&lt;/div&gt;
+&lt;div id=&#34;container-author&#34;&gt;
+    {$stringAuthor}
+&lt;input class=&#34;text&#34; type=&#34;text&#34; size=&#34;20&#34; name=&#34;author&#34; value=&#34;&#34; id=&#34;authorstring&#34;/&gt;
+&lt;/div&gt;
+&lt;div id=&#34;container-category&#34;&gt;
+    {$stringCategory}
+&lt;input class=&#34;text&#34; type=&#34;text&#34; size=&#34;20&#34; name=&#34;category&#34; value=&#34;&#34; id=&#34;categorystring&#34;/&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;hr /&gt;
+    
+&lt;/form&gt;
+&lt;/center&gt;
+[[/html]]
+[[module CSS]]
+.query-area{
+display: none;
+}
+[[/module]]
+[[module Search]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:06.125638.</em>
+  
+</div>
+</body>

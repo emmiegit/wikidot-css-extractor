@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Inc:Map</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Inc:Map</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/inc:map" target="_blank">Inc:Map</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>&#34;,
+                Latitude=,
+                Longitude=,  //</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>Koordynaty</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>znajdziemy</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>na</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>stronie</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>http://latlong.net/
+                Site=</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[html]]
+&lt;!-- Zastosowany system tworzenia map CC: Leaflet --&gt;
+&lt;!-- https://leafletjs.com/examples/quick-start/ --&gt;
+    &lt;head&gt;
+        &lt;!-- ▼ ▼ ▼ NIE DOTYKAĆ! ▼ ▼ ▼ --&gt;
+        &lt;!-- Leaflet&#39;s CSS --&gt;
+        &lt;link rel=&#34;stylesheet&#34;
+            href=&#34;https://unpkg.com/leaflet@1.5.1/dist/leaflet.css&#34;
+            integrity=&#34;sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==&#34;
+            crossorigin=&#34;&#34;/&gt;
+
+        &lt;!-- Make sure you put this AFTER Leaflet&#39;s CSS --&gt;
+        &lt;script src=&#34;https://unpkg.com/leaflet@1.5.1/dist/leaflet.js&#34;
+            integrity=&#34;sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==&#34;
+            crossorigin=&#34;&#34;&gt;&lt;/script&gt;
+
+        &lt;!-- script per Map Stamen --&gt;
+        &lt;script type=&#34;text/javascript&#34; src=&#34;http://maps.stamen.com/js/tile.stamen.js?v1.3.0&#34;&gt;&lt;/script&gt;
+        &lt;!-- ▲ ▲ ▲ NIE DOTYKAĆ! ▲ ▲ ▲ --&gt;
+
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;!-- ▼ ▼ ▼ NIE DOTYKAĆ! ▼ ▼ ▼ --&gt;
+        &lt;!-- Dimensioni della mappa --&gt;
+        &lt;div id=&#34;mapid&#34; style=&#34;height: 750px; width: 100%;&#34;&gt;&lt;/div&gt;
+        &lt;!-- ▲ ▲ ▲ NIE DOTYKAĆ! ▲ ▲ ▲ --&gt;
+
+        &lt;script type=&#34;text/javascript&#34;&gt;
+            // Dane dotyczące sposobu wyświetlania mapy od razu po jej załadowaniu
+            var Latitude = 51.919437
+            var Longitude = 19.145136
+            var Zoom = 6  // Wstępne powiększenie mapy
+            var MinZoom = 3 // Minimalna wartość powiększenia
+            var MaxZoom = 9 // Maksymalna wartość powiększenia
+            var Icon_Size = 30  // Rozmiar ikon na mapie
+            var Popup_Size = 175 // Rozmiar popupu
+            var Image_Size = Popup_Size //  Rozmiar wyskakujących obrazów (musi być ≤ Popup_Size)
+            var New_Circle_Radius = Icon_Size / 1.85 // Promień okręgu na nowych artykułach
+            if (Image_Size &gt; Popup_Size)
+                { Image_Size = Popup_Size }
+            var report_line_color = &#34;orange&#34;
+            // Pliki obrazów różnych ikon, które pojawiają się na mapie
+            var IT_icon = L.icon(Options={
+                iconUrl: &#39;http://fondazionescp.wdfiles.com/local--files/mappa/scp-logo-it-400.png&#39;,
+                iconRetinaUrl: &#39;http://fondazionescp.wdfiles.com/local--files/mappa/scp-logo-it-400.png&#39;,
+                iconSize: Icon_Size
+            });
+            var EN_icon = L.icon(Options={
+                iconUrl: &#39;http://fondazionescp.wdfiles.com/local--files/mappa/site_en.png&#39;,
+                iconRetinaUrl: &#39;http://fondazionescp.wdfiles.com/local--files/mappa/site_en.png&#39;,
+                iconSize: Icon_Size
+            });
+            var Safe_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/green_it.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/green_it.png&#34;,
+                iconSize: Icon_Size
+            });
+            var Euclid_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/cyan_it.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/cyan_it.png&#34;,
+                iconSize: Icon_Size
+            });
+            var Keter_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/red_it.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/red_it.png&#34;,
+                iconSize: Icon_Size
+            });
+            var Thaumiel_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/lime_it.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/lime_it.png&#34;,
+                iconSize: Icon_Size
+            });
+            var Apollyon_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/purple_it.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/purple_it.png&#34;,
+                iconSize: Icon_Size
+            });
+            var Neutralized_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/gray_it.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/gray_it.png&#34;,
+                iconSize: Icon_Size
+            });
+            var Report_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/yellow_it.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/yellow_it.png&#34;,
+                iconSize: Icon_Size
+            });
+            var CFO_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wikidot.com/local--files/inc:mappa/cfologo_for_map_2.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wikidot.com/local--files/inc:mappa/cfologo_for_map_2.png&#34;,
+                iconSize: Icon_Size
+            });
+            var RIDIA_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/madao_per_mappa_temp.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/madao_per_mappa_temp.png&#34;,
+                iconSize: Icon_Size
+            });
+            var MADAO_icon = L.icon(Options={
+                iconUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/madao_per_mappa_temp.png&#34;,
+                iconRetinaUrl: &#34;http://fondazionescp.wdfiles.com/local--files/mappa/madao_per_mappa_temp.png&#34;,
+                iconSize: Icon_Size
+            });
+
+            // Współrzędne poszczególnych Placówek
+            var LatLong_SitoAngerona = [46.821389, 8.7975]
+            var LatLong_SitoAsclepio = [46.382650, 11.431260]
+            var LatLong_SitoCerere = [42.288441, 13.900870]
+            var LatLong_SitoDeus = [41.084167, 16.271389]
+            var LatLong_SitoIride = [42.991138, 12.578360]
+            var LatLong_SitoMinerva = [40.085899, 8.979820]
+            var LatLong_SitoNettunoAppoggio=[42.333333, 10.316667]
+            // Tutaj mamy jakiś kod na losowo poruszającą się Placówkę... Nie wiem, jak to działa, ale zostawiam, przyda się :D
+            // Unità 1
+            if (Math.random() &gt; 0.5)
+            {
+                var SN1_min_lat = 41.444657
+                var SN1_max_lat = 42.360447
+                var SN1_min_long = 16.265986
+                var SN1_max_long = 18.176771
+            } else {
+                var SN1_min_lat = 39.705338
+                var SN1_max_lat = 40.180148
+                var SN1_min_long = 16.861266
+                var SN1_max_long = 17.796288
+            };
+            var LatLong_SitoNettunoUnita1 =
+                [Math.random()*(SN1_max_lat-SN1_min_lat)+SN1_min_lat,
+                 Math.random()*(SN1_max_long-SN1_min_long)+SN1_min_long]
+            // Unità 2
+            var SN2_min_lat = 38.296673
+            var SN2_max_lat = 40.662150
+            var SN2_min_long = 9.892672
+            var SN2_max_long = 13.758169
+            var LatLong_SitoNettunoUnita2 =
+                [Math.random()*(SN2_max_lat-SN2_min_lat)+SN2_min_lat,
+                 Math.random()*(SN2_max_long-SN2_min_long)+SN2_min_long]
+            var LatLong_SitoPlutone = [40.860672, 14.843984]
+            var LatLong_SitoUrano = [45.262051, 7.920290]
+            var LatLong_SitoVesta = [37.599995, 14.015356]
+            var LatLong_SitoVittoria = [44.435188, 10.976970]
+            var LatLong_SitoVirtus = [41.855131, 12.568386]
+            var LatLong_SitoVulcano = [45.657581, 9.963600]
+
+
+            // ▼ ▼ ▼ NIE DOTYKAĆ! ▼ ▼ ▼
+            var mymap = L.map(&#39;mapid&#39;, {attributionControl: true})
+                         .setView([Latitude, Longitude], Zoom)
+            mymap.options.minZoom = MinZoom
+            mymap.options.maxZoom = MaxZoom
+
+            // Tile servers: https://wiki.openstreetmap.org/wiki/Tile_servers
+
+            // Zastosowany system kafelków CC: Maps Stamen
+            // Rodzaje ekspozycji: &#34;toner&#34;, &#34;teren&#34;, &#34;akwarela&#34;
+            mymap.addLayer(
+                new L.StamenTileLayer(
+                    &#34;toner&#34;,
+                    {detectRetina: true}
+                )
+            )
+
+            // Łączenie obiektów SCP z ich placówkami
+            var siteline = L.polyline([], {color: &#34;lime&#34;}).addTo(mymap);
+            //var sitecircle = L.circleMarker([0, 0], {color: &#34;lime&#34;, radius: 0}).addTo(mymap);
+            function onClick(a)
+            {
+                siteline.setLatLngs([a.latlng, a.target.latlong_site])
+                //sitecircle.setLatLng(a.target.latlong_site).setRadius(New_Circle_Radius)
+            }
+            function outClick(a)
+            {
+                siteline.setLatLngs([])
+                //sitecircle.setLatLng([]).setRadius(0)
+            }
+
+
+
+            // Zastosowany system kafelków CC: Thunderforest
+            // https://manage.thunderforest.com/dashboard
+            // ▲ Statystyki, ale i tak nie mamy dostępu do nich xD
+            // Rodzaje ekspozycji: cykl, transport, krajobraz, na zewnątrz,
+            // transport-dark, spinal-map, pioneer, mobile-atlas, neighbourhood
+            /*
+            L.tileLayer(&#39;https://tile.thunderforest.com/cycle/{z}/{x}/{y}.png?apikey=1cf08b91a1834e5eae6442893424c62a&#39;,
+                {attribution: &#39;Maps © &lt;a href=&#34;http://www.thunderforest.com/&#34;&gt;Thunderforest&lt;/a&gt;, Data © &lt;a href=&#34;http://www.openstreetmap.org/copyright&#34;&gt;OpenStreetMap&lt;/a&gt;&#39;,
+                maxZoom: 18,
+                id: &#39;mapbox.streets&#39;,
+                accessToken: &#39;your.mapbox.access.token&#39;
+            }).addTo(mymap);
+            */
+
+             // Ogólnie jeśli to przeglądasz, to chciałbym Ci życzyć miłego dnia :D
+
+            // Zastosowany system kafelków CC: Mapbox
+            // (!) Włosi nie zapłacili subskrybcji, więc nie działa, ale możemy mieć to w dupie :D
+            /*
+            L.tileLayer(&#39;https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZm9uZGF6aW9uZXNjcCIsImEiOiJjanZpaDFnZmQwNWdlM3pzMm4yMGYwOW1pIn0.lXtjMasPtttcWJ6Gj34wHA&#39;,
+                {attribution: &#39;Map data &amp;copy; &lt;a href=&#34;https://www.openstreetmap.org/&#34;&gt;OpenStreetMap&lt;/a&gt; contributors, &lt;a href=&#34;https://creativecommons.org/licenses/by-sa/2.0/&#34;&gt;CC-BY-SA&lt;/a&gt;, Imagery © &lt;a href=&#34;https://www.mapbox.com/&#34;&gt;Mapbox&lt;/a&gt;&#39;,
+                maxZoom: 18,
+                id: &#39;mapbox.streets&#39;,
+                accessToken: &#39;your.mapbox.access.token&#39;
+            }).addTo(mymap);
+            */
+
+            // Don&#39;t forget to add the / at the end!
+            //site_link_prefix_url = &#34;https://fondazionescp.wikidot.com/&#34;  // &lt;- aktywować to dla mapy włoskiej filii
+            //site_link_prefix_url = &#34;http://scp-int.wikidot.com/&#34;  // &lt;- aktywować to dla mapy na INT
+            //site_link_prefix_url = &#34;http://scp-pl.wikidot.com/&#34;  // &lt;- aktywować to dla mapy naszej Wielkiej Filii PL!
+
+            // Funkcja do tworzenia znaczników dla obiektów SCP
+            function add_scp(Number, Name, Class, Latitude, Longitude, Site, Image, Description=&#34;&#34;, New=false)
+            {
+                var Site_coord
+                if (Site.toLowerCase()==&#34;angerona&#34;)
+                    { Site_coord = LatLong_SitoAngerona }
+                if (Site.toLowerCase()==&#34;asclepio&#34;)
+                    { Site_coord = LatLong_SitoAsclepio }
+                if (Site.toLowerCase()==&#34;cerere&#34;)
+                    { Site_coord = LatLong_SitoCerere }
+                if (Site.toLowerCase()==&#34;deus&#34;)
+                    { Site_coord = LatLong_SitoDeus }
+                if (Site.toLowerCase()==&#34;iride&#34;)
+                    { Site_coord = LatLong_SitoIride }
+                if (Site.toLowerCase()==&#34;minerva&#34;)
+                    { Site_coord = LatLong_SitoMinerva }
+                if (Site.toLowerCase()==&#34;nettunoappoggio&#34;)
+                    { Site_coord = LatLong_SitoNettunoAppoggio }
+                if (Site.toLowerCase()==&#34;nettunounita1&#34;)
+                    { Site_coord = LatLong_SitoNettunoUnita1 }
+                if (Site.toLowerCase()==&#34;nettunounita2&#34;)
+                    { Site_coord = LatLong_SitoNettunoUnita2 }
+                if (Site.toLowerCase()==&#34;plutone&#34;)
+                    { Site_coord = LatLong_SitoPlutone }
+                if (Site.toLowerCase()==&#34;urano&#34;)
+                    { Site_coord = LatLong_SitoUrano }
+                if (Site.toLowerCase()==&#34;vesta&#34;)
+                    { Site_coord = LatLong_SitoVesta }
+                if (Site.toLowerCase()==&#34;vittoria&#34;)
+                    { Site_coord = LatLong_SitoVittoria }
+                if (Site.toLowerCase()==&#34;virtus&#34;)
+                    { Site_coord = LatLong_SitoVirtus }
+                if (Site.toLowerCase()==&#34;vulcano&#34;)
+                    { Site_coord = LatLong_SitoVulcano }
+
+                var Class_icon
+                if (Class.toLowerCase()==&#34;safe&#34;)
+                    { Class_icon = Safe_icon }
+                if (Class.toLowerCase()==&#34;euclid&#34;)
+                    { Class_icon = Euclid_icon }
+                if (Class.toLowerCase()==&#34;keter&#34;)
+                    { Class_icon = Keter_icon }
+                if (Class.toLowerCase()==&#34;neutralized&#34;)
+                    { Class_icon = Neutralized_icon }
+                if (Class.toLowerCase()==&#34;apollyon&#34;)
+                    { Class_icon = Apollyon_icon }
+                if (Class.toLowerCase()==&#34;thaumiel&#34;)
+                    { Class_icon = Thaumiel_icon }
+
+                var scp_marker = L.marker(
+                    LatLng=[Latitude, Longitude],
+                    Options={title: Number + &#34; – “&#34; + Name.replace(&#34;&lt;i&gt;&#34;, &#34;&#34;).replace(&#34;&lt;/i&gt;&#34;, &#34;&#34;) + &#34;”&#34;,
+                             riseOnHover: true,
+                             icon: Class_icon})
+                        .addTo(mymap).bindPopup(
+                            &#34;&lt;a href=&#39;&#34;+site_link_prefix_url+Number.toLowerCase()+&#34;&#39; target=&#39;_blank&#39;&gt;\
+                            &lt;b&gt;&#34;+Number+&#34; – “&#34; + Name + &#34;”&lt;/b&gt;&lt;/a&gt;\
+                            &lt;br&gt;&#34; + Description + &#34;&lt;br&gt;\
+                            &lt;a href=&#39;&#34;+site_link_prefix_url+Number.toLowerCase()+&#34;&#39; target=&#39;_blank&#39;&gt;\
+                            &lt;img src=&#34; + Image + &#34; width=&#34; + Image_Size + &#34;px&gt;&lt;/a&gt;&#34;,
+                        Options={maxWidth: Popup_Size});
+
+                if (Site != &#34;&#34;)
+                {
+                    scp_marker.latlong_site = Site_coord;
+                    scp_marker.on(&#39;mouseover&#39;, onClick).on(&#39;mouseout&#39;, outClick);
+                };
+
+                if (New == true)
+                {
+                    var circle = L.circleMarker([Latitude, Longitude],
+                                          {color: &#34;OrangeRed&#34;,
+                                           fillColor: &#34;Orange&#34;,
+                                           fillOpacity: 0.25,
+                                           radius: New_Circle_Radius}
+                                 ).addTo(mymap);  
+                    var tooltip = new L.marker([Latitude, Longitude], {opacity: 0});  //opacity may be set to zero
+                    tooltip.bindTooltip(&#34;&lt;b&gt;Recente Contenimento:&lt;/b&gt;&lt;br&gt;&#34; + Number + &#34; — “&#34; + Name + &#34;”&#34;,
+                                        {permanent: true, offset: [0, 25], opacity: 0.8}).addTo(mymap)
+                }
+            }
+
+
+            // Funkcja do tworzenia znaczników dla Placówek
+            function add_site(Name, Location, Description, LatitudeLongitude, Link, Image)
+            {
+                var site_marker = L.marker(
+                LatLng=LatitudeLongitude,
+                Options={title: Name + &#34; (&#34; + Location + &#34;)&#34;,
+                         riseOnHover: true,
+                         icon: IT_icon})
+                    .addTo(mymap).bindPopup(
+                        &#34;&lt;a href=&#39;&#34; + site_link_prefix_url + Link + &#34;&#39; target=&#39;_blank&#39;&gt;\
+                        &lt;b&gt;&#34; + Name + &#34; (&#34; + Location + &#34;)&lt;/b&gt;&lt;/a&gt;\
+                        &lt;br&gt;&#34; + Description + &#34;&lt;br&gt;\
+                        &lt;a href=&#39;&#34; + site_link_prefix_url + Link + &#34;&#39; target=&#39;_blank&#39;&gt;\
+                        &lt;img src=&#34; + Image + &#34; width=&#34; + Image_Size + &#34;px&gt;&lt;/a&gt;&#34;,
+                    Options={maxWidth: Popup_Size});
+            }
+
+
+            // Funkcja do tworzenia znaczników dla opowieści
+            function add_tale(Title, Description, LatitudeLongitude, Link, Image, ConnectedToLatLong=null, New=false)
+            {
+                var tale_marker = L.marker(
+                    LatLng=LatitudeLongitude,
+                    Options={title: &#39;“&#39; + Title + &#39;”&#39;,
+                             riseOnHover: true,
+                             icon: Report_icon})
+                        .addTo(mymap).bindPopup(
+                            &#34;&lt;a href=&#39;&#34; + site_link_prefix_url + Link + &#34;&#39; target=&#39;_blank&#39;&gt;\
+                            &lt;b&gt;“&#34; + Title + &#34;”&lt;/b&gt;&lt;/a&gt;\
+                            &lt;br&gt;&#34; + Description + &#34;&lt;br&gt;\
+                            &lt;a href=&#39;&#34; + site_link_prefix_url + Link + &#34;&#39; target=&#39;_blank&#39;&gt;\
+                            &lt;img src=&#34; + Image + &#34; width=&#34; + Image_Size + &#34;px&gt;&lt;/a&gt;&#34;,
+                        Options={maxWidth: Popup_Size});
+
+                if (ConnectedToLatLong != null)
+                {
+                    L.polyline([ConnectedToLatLong, LatitudeLongitude],
+                           {color: report_line_color}).addTo(mymap);
+                }
+
+                if (New == true)
+                {
+                    var circle = L.circleMarker(LatitudeLongitude,
+                                          {color: &#34;OrangeRed&#34;,
+                                           fillColor: &#34;Orange&#34;,
+                                           fillOpacity: 0.25,
+                                           radius: New_Circle_Radius}
+                                 ).addTo(mymap)
+                    var tooltip = new L.marker(LatitudeLongitude, {opacity: 0})  //opacity may be set to zero
+                    tooltip.bindTooltip(&#34;&lt;b&gt;Nuovo Rapporto:&lt;/b&gt;&lt;br&gt;&#34; + Title,
+                                        {permanent: true, offset: [0, 25], opacity: 0.8}).addTo(mymap)
+                }
+
+
+            }
+
+
+            // Funkcja do tworzenia znaczników dla GoI (obiektów lub opowieści)
+            function add_goi(Name, GoI, LatitudeLongitude, Link, Image, Description=&#34;&#34;, New=false)
+            {
+                var GoI_icon
+                if (GoI.toLowerCase()==&#34;cfo&#34;)
+                    { GoI_icon = CFO_icon }
+                if (GoI.toLowerCase()==&#34;madao&#34;)
+                    { GoI_icon = MADAO_icon }
+                if (GoI.toLowerCase()==&#34;ridia&#34;)
+                    { GoI_icon = MADAO_icon }
+
+                // HTML ma problemy jeśli w tekście są &#34;&lt;&#34; lub &#34;&gt;&#34;
+                var goi_marker = L.marker(
+                LatLng=LatitudeLongitude,
+                Options={title: Name,
+                         riseOnHover: true,
+                         icon: GoI_icon})
+                    .addTo(mymap).bindPopup(
+                        &#34;&lt;a href=&#39;&#34; + site_link_prefix_url +  Link + &#34;&#39; target=&#39;_blank&#39;&gt;\
+                        &lt;b&gt;&#34; +  Name.replace(&#34;&lt;&#34;, &#34;&amp;lt;&#34;).replace(&#34;&gt;&#34;, &#34;&amp;gt;&#34;) + &#34;&lt;/b&gt;&lt;/a&gt;\
+                        &lt;br&gt;&#34; + Description + &#34;&lt;br&gt;\
+                        &lt;a href=&#39;&#34; + site_link_prefix_url +  Link + &#34;&#39; target=&#39;_blank&#39;&gt;\
+                        &lt;img src=&#34; + Image + &#34; width=&#34; + Image_Size + &#34;px&gt;&lt;/a&gt;&#34;,
+                    Options={maxWidth: Popup_Size});
+
+                if (New == true)
+                {
+                    var circle = L.circleMarker(LatitudeLongitude,
+                                          {color: &#34;OrangeRed&#34;,
+                                           fillColor: &#34;Orange&#34;,
+                                           fillOpacity: 0.25,
+                                           radius: New_Circle_Radius}
+                                 ).addTo(mymap)
+                    var tooltip = new L.marker(LatitudeLongitude, {opacity: 0})  //opacity may be set to zero
+                    tooltip.bindTooltip(&#34;&lt;b&gt;Nuovo Oggetto &#34; + GoI.toUpperCase() + &#34;:&lt;/b&gt;&lt;br&gt;&#34; + Name,
+                                        {permanent: true, className: Name, offset: [0, 25], opacity: 0.8}).addTo(mymap)
+                }
+            }
+
+            report_image = &#34;http://fondazionescp.wikidot.com/local--files/inc:mappa/rapporto_per_mappina.png&#34;
+            no_image = &#34;http://fondazionescp.wikidot.com/local--files/mappa/nessuna_documentazione.gif&#34;
+
+            // ▲ ▲ ▲ NIE DOTYKAĆ! ▲ ▲ ▲
+
+
+
+            // - - - █ █ █ PLACÓWKI █ █ █ - - - //
+
+            // Placówki są w porządku alfabetycznym
+
+            /*
+            TEMPLATE:
+            (Uwaga: NIE ZMIENIAJ KOLEJNOŚCI!!! &#34;Name, Location, Description itd.&#34;)
+
+            add_site
+            (
+                Name = &#34;Sito &#34;,
+                Location = &#34;&#34;,
+                Description = &#34;&#34;,
+                LatitudeLongitude = LatLong_Sito,
+                Link = &#34;http://fondazionescp.wikidot.com/siti-italiani#Sito-&#34;,
+                Image = &#34;http://fondazionescp.wdfiles.com/local--files/siti-italiani/&#34;
+            )
+            */
+
+            // Tutaj jakiś easter egg, wstawimy tutaj Dom Larrego czy coś :D
+            if (Math.random() &lt; 0.15) {
+                var SitoMania = L.marker(
+                    LatLng=[40.851799, 14.268120],
+                    Options={title: &#39;SITO MANIA&#39;,
+                             riseOnHover: true,
+                             icon: L.icon(Options={
+                    iconUrl: &#39;http://www.pngmart.com/files/1/Pepperoni-Pizza.png&#39;,
+                    iconRetinaUrl: &#39;http://www.pngmart.com/files/1/Pepperoni-Pizza.png&#39;,
+                    iconSize: Icon_Size
+                })})
+                        .addTo(mymap).bindPopup(
+                            &#34;&lt;a href=&#39;&#34; + site_link_prefix_url + &#34;siti-italiani-j#Sito-Mania&#39; target=&#39;_blank&#39;&gt;\
+                            &lt;h3&gt;&lt;b&gt;SITO MANIA BEST SITO&lt;/b&gt;&lt;/h3&gt;&lt;br&gt;\
+                            &lt;img src=http://fondazionescp.wdfiles.com/local--files/siti-italiani-j/mania3.jpg \
+                            width=&#34;+Image_Size+&#34;px&gt;&lt;/a&gt;&#34;
+                        );
+            }
+
+            // - - - █ █ █ SCP █ █ █ - - - //
+
+            // SCP są w porządku rosnącym, więc kod zwraca uwagę na te najnowsze
+
+            /*
+            TEMPLATE:
+            (Uwaga: NIE ZMIENIAJ KOLEJNOŚCI!!! &#34;Number, Name, Class itd.&#34;)
+
+            add_scp //1
+            (
+                Number=&#34;SCP-1-IT&#34;,  // Numer Obiektu
+                Name=&#34;&#34;,  // Nazwa Obiektu
+                Class=&#34;&#34;,
+                Latitude=,
+                Longitude=,  // Koordynaty znajdziemy na stronie http://latlong.net/
+                Site=&#34;&#34;,  // █ il nettuno ha &#34;NettunoAppoggio&#34;, &#34;NettunoUnita1&#34; e &#34;NettunoUnita2&#34; (opp. &#34;&#34;) █
+                Image=&#34;&#34;,  // link albo &#34;no_image&#34;
+                Description=&#34;&#34;,  // Można pozostawić puste
+                New=false  // &#34;true&#34;, jeśli nowy, analogicznie &#34;false&#34; jeśli nie
+            )
+            */
+
+            // - - - █ █ █ GOI FORMAT █ █ █ - - - //
+
+            // Wszystko ułożone jest w porządku alfabetycznym, zarówno przedmioty, jak i raporty
+
+            /*
+            TEMPLATE;
+            (Uwaga: NIE ZMIENIAJ KOLEJNOŚCI!!! &#34;Name, GoI, LatitudeLongitude itd.&#34;)
+
+            add_goi // name
+            (
+                Name=&#34;&#34;,
+                GoI=&#34;&#34;,
+                LatitudeLongitude=[, ],
+                Link=&#34;&#34;,  // Umieść TYLKO nazwę strony (nie pełny adres url)
+                Image=&#34;&#34;,
+                Description=&#34;&#34;,
+                New=false
+            )
+            */
+
+            // - - - █ █ █ RAPORTY █ █ █ - - - //
+
+            // Raporty ułożone są w porządku alfabetycznym
+
+            /*
+            TEMPLATE:
+            (Uwaga: NIE ZMIENIAJ KOLEJNOŚCI!!! &#34;Title, Description, LatitudeLongitude itd.&#34;)
+
+            add_tale
+            (
+                Title=&#34;&#34;,
+                Description=&#34;&#34;,
+                LatitudeLongitude=[, ],
+                Link=&#34;&#34;,  // Umieść TYLKO nazwę strony (nie pełny adres url)
+                Image=&#34;&#34;,  // link lub &#34;report_image&#34; (lub &#34;no_image&#34;)
+                ConnectedToLatLong=[,],  // bądź też null (brak)
+                New=false
+            )
+            */
+
+
+        &lt;/script&gt;
+    &lt;/body&gt;
+[[/html]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:08.701664.</em>
+  
+</div>
+</body>

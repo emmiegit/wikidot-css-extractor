@@ -1,0 +1,3235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>挑戰傳統評分方式：關於自訂評分模版</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">挑戰傳統評分方式：關於自訂評分模版</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/rating-against-traditions" target="_blank">挑戰傳統評分方式：關於自訂評分模版</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>@import url(&#39;http://scp-wiki-cn.wikidot.com/component:colstyle/code/1&#39;);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* 選擇所有帶「upbtn」、「downbtn」或「cancelbtn」class 的元素，並設為行內元素 */
+.upbtn, 
+.downbtn,
+.cancelbtn {
+    display: inline-block;
+}
+/* 選擇所有帶「upbtn」、「downbtn」或「cancelbtn」class 的元素內的 &#34;page-rate-widget-box&#34; */
+.upbtn .page-rate-widget-box,
+.downbtn .page-rate-widget-box,
+.cancelbtn .page-rate-widget-box {
+    display: inline-block;
+    /* 將多個評分模塊設為行內元素 */
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    /* 將評分模塊的所有邊框、陰影、邊界分隔移除，並強制使用該屬性 */
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* 前略 */
+.upbtn *,
+.downbtn *,
+.cancelbtn * {
+    display: none;
+}
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block !important;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* 前略 */
+/* 單獨選擇各元素並定義為不顯示 */
+.upbtn .rate-points,
+.upbtn .ratedown,
+.upbtn .cancel,
+.downbtn .rate-points,
+.downbtn .rateup,
+.downbtn .cancel,
+.cancelbtn .rate-points,
+.cancelbtn .rateup,
+.cancelbtn .ratedown {
+    display: none;
+}
+/* 但是此後以至下一步仍然需要定義以下三個元素的屬性 */
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* 前略 */
+/* 需要定義上一步最後所選擇的三個元素的更多屬性 */
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block;
+    border: 0;
+    background: transparent !important;
+    /* 將邊框、背景屬性去掉 */
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    /* 設定圓角邊框半徑、寬和高、文字左右排列 */
+}
+/* 定義評分連接的屬性 */
+.upbtn .rateup a,
+.downbtn .ratedown a,
+.cancelbtn .cancel a {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    /* 把邊界本身、內部文字與邊界的距離去掉 */
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    vertical-align: text-top;
+    /* 設定圓角邊框半徑、寬和高、文字上下排列 */
+}
+.upbtn .rateup a {
+    font-size: 0;
+    /* 將 &#34;+&#34; 字設為0大小。*/
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/up-gray.png) no-repeat !important;
+    /* 設定背景圖為向上的大拇指 */
+}
+.downbtn .ratedown a {
+    font-size: 0;
+    /* 將 &#34;–&#34; 字設為0大小。*/
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/down-gray.png) no-repeat !important;
+    /* 設定背景圖為向下的大拇指 */
+}
+.cancelbtn .cancel a {
+    font-weight: bold;
+    font-size: 25px;
+    color: #aaa !important;
+    /* 設定 &#34;X&#34; 字為粗體，25px以及灰色 */
+}
+/* 定義游標於按鈕上懸浮時的屬性 */
+.upbtn .rateup a:hover,
+.downbtn .ratedown a:hover,
+.cancelbtn .cancel a:hover {
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent !important;
+    /* 設定游標於按鈕上懸浮時的圓角邊框半徑、寬和高、背景透明 */
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* 前略 */
+.upbtn .rateup.btn a:hover,
+.downbtn .ratedown.btn a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    /* 設定游標於up,down按鈕上懸浮時變成藍色 */
+}
+.cancelbtn .cancel.btn a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+    /* 設定游標於取消按鈕上懸浮時變成紅色 */
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.upbtn, 
+.downbtn,
+.cancelbtn,
+.ytp-rate,
+.ytp-rate .list-pages-box,
+.ytp-rate .list-pages-box p {
+    display:inline-block !important;
+    vertical-align: middle;
+}
+/* 後略 */</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.ytp-like-border {
+    display:block;
+    /* 確保佔比條於自己單獨一行上 */
+    height: 2px !important;
+    /* 高度設為2像素，模仿邊框 */
+}
+.ytp-like-border .neutralbar {
+    height: 2px !important;
+    background-color: #ccc;
+    /* 中立條顏色 */
+    font-size: 0;
+    /* 中立條文字調0大小 */
+}
+.ytp-like-border .downbar-base {
+    height: 2px !important;
+    background-color: #ccc;
+    /* 差評條顏色 */
+}
+.ytp-like-border .downbar-text {
+    height: 2px !important;
+    font-size:0;
+    /* 差評條文字調0大小 */
+    padding: 0 !important;
+    /* 去掉文字內襯厚度 */
+}
+.ytp-like-border .upbar {
+    height: 2px !important;
+    background-color: #167ac6;
+    /* 好評條顏色 */
+    font-size: 0;
+    /* 好評條文字調0大小 */
+    padding: 0 !important;
+    /* 去掉文字內襯厚度 */
+}
+.ytp-rate &gt; .cancelbtn + .list-pages-box,
+.ytp-rate &gt; .list-pages-box + .list-pages-box {
+    width: 100%;
+    /* 因為ListPages模塊的結構問題，我們需要手動將最後佔比條的兩個list-pages-box寬度設為上層元素的100% */
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.upbtn, 
+.downbtn,
+.cancelbtn,
+.ytp-rate,
+.ytp-rate .list-pages-box,
+.ytp-rate .list-pages-box p {
+    display:inline-block !important;
+    vertical-align: middle;
+}
+.upbtn .page-rate-widget-box,
+.downbtn .page-rate-widget-box,
+.cancelbtn .page-rate-widget-box {
+    display: inline-block;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+.upbtn *,
+.downbtn *,
+.cancelbtn * {
+    display: none;
+}
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block;
+    border: 0;
+    background: transparent !important;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.upbtn .rateup a,
+.downbtn .ratedown a,
+.cancelbtn .cancel a {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    vertical-align: text-top;
+}
+.upbtn .rateup a {
+    font-size: 0;
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/up-gray.png) no-repeat !important;
+}
+.downbtn .ratedown a {
+    font-size: 0;
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/down-gray.png) no-repeat !important;
+}
+.cancelbtn .cancel a {
+    font-weight: bold;
+    font-size: 25px;
+    color: #aaa !important;
+}
+.upbtn .rateup a:hover,
+.downbtn .ratedown a:hover,
+.cancelbtn .cancel a:hover {
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent !important;
+}
+.upbtn .rateup.btn a:hover,
+.downbtn .ratedown.btn a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+.cancelbtn .cancel.btn a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+.ytp-like-border {
+    display:block;
+    height: 2px !important;
+}
+.ytp-like-border .neutralbar {
+    height: 2px !important;
+    background-color: #ccc;
+    font-size: 0;
+}
+.ytp-like-border .downbar-base {
+    height: 2px !important;
+    background-color: #ccc;
+}
+.ytp-like-border .downbar-text {
+    height: 2px !important;
+    font-size:0;
+    padding: 0 !important;
+}
+.ytp-like-border .upbar {
+    height: 2px !important;
+    background-color: #167ac6;
+    font-size: 0;
+    padding: 0 !important;
+}
+.ytp-rate &gt; .cancelbtn + .list-pages-box,
+.ytp-rate &gt; .list-pages-box + .list-pages-box {
+    width: 100%;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.upbtn, 
+.downbtn,
+.cancelbtn,
+.ytp-rate,
+.ytp-rate .list-pages-box,
+.ytp-rate .list-pages-box p {
+    display:inline-block !important;
+    vertical-align: middle;
+}
+.upbtn .page-rate-widget-box,
+.downbtn .page-rate-widget-box,
+.cancelbtn .page-rate-widget-box {
+    display: inline-block;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+.upbtn *,
+.downbtn *,
+.cancelbtn * {
+    display: none;
+}
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block;
+    border: 0;
+    background: transparent !important;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.upbtn .rateup a,
+.downbtn .ratedown a,
+.cancelbtn .cancel a {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    vertical-align: text-top;
+}
+.upbtn .rateup a {
+    font-size: 0;
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/up-gray.png) no-repeat !important;
+}
+.downbtn .ratedown a {
+    font-size: 0;
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/down-gray.png) no-repeat !important;
+}
+.cancelbtn .cancel a {
+    font-weight: bold;
+    font-size: 25px;
+    color: #aaa !important;
+}
+.upbtn .rateup a:hover,
+.downbtn .ratedown a:hover,
+.cancelbtn .cancel a:hover {
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent !important;
+}
+.upbtn .rateup.btn a:hover,
+.downbtn .ratedown.btn a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+.cancelbtn .cancel.btn a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+.ytp-like-border {
+    display:block;
+    height: 2px !important;
+    clear:both;
+}
+.ytp-like-border .neutralbar {
+    height: 2px !important;
+    background-color: #ccc;
+    font-size: 0;
+    padding: 0 !important;
+}
+.ytp-like-border .downbar-base {
+    height: 2px !important;
+    background-color: #ccc;
+}
+.ytp-like-border .downbar-text {
+    height: 2px !important;
+    font-size:0;
+    padding: 0 !important;
+}
+.ytp-like-border .upbar {
+    height: 2px !important;
+    background-color: #167ac6;
+    font-size: 0;
+    padding: 0 !important;
+}
+.ytp-rate &gt; .cancelbtn + .list-pages-box,
+.ytp-rate &gt; .list-pages-box + .list-pages-box {
+    width: 100%;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* Spin Out Rate */
+.rateWrap {
+  position: relative;
+  float: right;
+  width: 6em;
+  height: 6em;
+  border-radius: 0 0 0 100%;
+  overflow: hidden;
+  z-index: 9;
+  -webkit-transition-delay: .8s;
+  -moz-transition-delay: .8s;
+  -ms-transition-delay: .8s;
+  -o-transition-delay: .8s;
+  transition-delay: .8s;
+  -webkit-transition-property: width, height;
+  -moz-transition-property: width, height;
+  -ms-transition-property: width, height;
+  -o-transition-property: width, height;
+  transition-property: width, height;
+}
+@media (min-width: 1041px) {
+.rateWrap {
+  right: calc(50vw - 520px);
+}
+}
+.rateWrap:hover {
+  width: 24em;
+  height: 24em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+.rateWrap ul li {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 0 0 100%;
+}
+.rateWrap ul li ul li {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 100% 0 0 0;
+}
+.rateWrap ul li .ratedit {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.rateWrap &gt; ul &gt; li {
+  width: 6em;
+  height: 6em;
+  background-color: #404040;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  -webkit-transition-delay: .5s;
+  -moz-transition-delay: .5s;
+  -ms-transition-delay: .5s;
+  -o-transition-delay: .5s;
+  transition-delay: .5s;
+}
+.rateWrap:hover &gt; ul &gt; li {
+  width: 11em;
+  height: 11em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap &gt; ul &gt; li &gt; div.fa {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.2em;
+  height: 1.2em;
+  font-size: 3em;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  -webkit-transition-delay: .5s;
+  -moz-transition-delay: .5s;
+  -ms-transition-delay: .5s;
+  -o-transition-delay: .5s;
+  transition-delay: .5s;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; div.fa {
+  font-size: 5.5em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap &gt; ul ul {
+  z-index: -1;
+}
+.rateWrap &gt; ul ul li {
+  -webkit-transform-origin: right bottom;
+  -moz-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  -o-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+  transform: rotate(5deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -ms-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+.rateWrap:hover &gt; ul ul li {
+  -webkit-transition-delay: .3s;
+  -moz-transition-delay: .3s;
+  -ms-transition-delay: .3s;
+  -o-transition-delay: .3s;
+  transition-delay: .3s;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) {
+  width: 24em;
+  height: 24em;
+  top: -24em;
+  background-color: #a3a3a7;
+  z-index: 8;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) &gt; a {
+  border-color: #a3a3a7;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) {
+  -webkit-transform: rotate(-18deg);
+  -moz-transform: rotate(-18deg);
+  -ms-transform: rotate(-18deg);
+  -o-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) {
+  width: 21.5em;
+  height: 21.5em;
+  top: -21.5em;
+  background-color: #b4b4b8;
+  z-index: 7;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) &gt; a {
+  border-color: #b4b4b8;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) {
+  -webkit-transform: rotate(-36deg);
+  -moz-transform: rotate(-36deg);
+  -ms-transform: rotate(-36deg);
+  -o-transform: rotate(-36deg);
+  transform: rotate(-36deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) {
+  width: 19.5em;
+  height: 19.5em;
+  top: -19.5em;
+  background-color: #c5c5c9;
+  z-index: 6;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) &gt; a {
+  border-color: #c5c5c9;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) {
+  -webkit-transform: rotate(-54deg);
+  -moz-transform: rotate(-54deg);
+  -ms-transform: rotate(-54deg);
+  -o-transform: rotate(-54deg);
+  transform: rotate(-54deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) {
+  width: 18em;
+  height: 18em;
+  top: -18em;
+  background-color: #d6d6da;
+  z-index: 5;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) {
+  -webkit-transform: rotate(-72deg);
+  -moz-transform: rotate(-72deg);
+  -ms-transform: rotate(-72deg);
+  -o-transform: rotate(-72deg);
+  transform: rotate(-72deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) &gt; a {
+  border-color: #d6d6da;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) {
+  width: 17em;
+  height: 17em;
+  top: -17em;
+  background-color: #e7e7eb;
+  z-index: 4;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) a {
+  border-color: #e7e7eb;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.rateWrap &gt; ul ul a:hover {
+  border-color: var(--dark-color) !important;
+}
+.rateWrap ul li .ratedit .page-rate-widget-box {
+    display: block;
+    position: absolute;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4em;
+}
+.rateWrap .ratedit .page-rate-widget-box * {
+    display: none;
+}
+.rateWrap .ratedit.list-pages-box {
+    height: 100%;
+}
+.rateWrap:hover ul li .ratedit.sentiment {
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.rateWrap .ratedit.spinout-pts .rate-points {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    left: 0.5em;
+    bottom: 1em;
+    background: transparent !important;
+}
+.rateWrap .ratedit.spinout-pts .rate-points .number { display: inline-block;}
+.rateWrap .ratedit.spinout-up .rateup,
+.rateWrap .ratedit.spinout-down .ratedown,
+.rateWrap .ratedit.spinout-cancel .cancel {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    font-weight: bold;
+    width: 90%;
+    height: 90%;
+    background: transparent !important;
+}
+.rateWrap .ratedit.spinout-up .rateup,
+.rateWrap .ratedit.spinout-down .ratedown {
+    left: 0.7em;
+    bottom: 0.2em;
+}
+.rateWrap .ratedit.spinout-cancel .cancel {
+    left: 0;
+    bottom: 0;
+}
+.rateWrap .ratedit.spinout-up .rateup a,
+.rateWrap .ratedit.spinout-down .ratedown a,
+.rateWrap .ratedit.spinout-cancel .cancel a {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    width: 100%;
+    height: 20%;
+    left: 0;
+    bottom: 0;
+    color: #FFF !important;
+    font-size: 30px;
+    text-align: left;
+    background: transparent !important;
+    padding-left: .8em;
+    border-radius: 100% 0 0 0;
+    text-decoration: none;
+    -webkit-transition: .1s ease-in-out;
+    -moz-transition: .1s ease-in-out;
+    -ms-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+}
+.rateWrap .ratedit.spinout-up .rateup a:hover,
+.rateWrap .ratedit.spinout-down .ratedown a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+.rateWrap .ratedit.spinout-cancel .cancel a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+
+.rateWrap .ratedit .list-pages-box {
+    display: inline-block !important;
+    position: relative;
+    border: 0;
+    background: transparent !important;
+    text-align: center;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* Spin Out Rate */
+.rateWrap {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 6em;
+  height: 6em;
+  border-radius: 0 0 0 100%;
+  overflow: hidden;
+  z-index: 9;
+  -webkit-transition-delay: .8s;
+  -moz-transition-delay: .8s;
+  -ms-transition-delay: .8s;
+  -o-transition-delay: .8s;
+  transition-delay: .8s;
+  -webkit-transition-property: width, height;
+  -moz-transition-property: width, height;
+  -ms-transition-property: width, height;
+  -o-transition-property: width, height;
+  transition-property: width, height;
+}
+@media (min-width: 1041px) {
+.rateWrap {
+  right: calc(50vw - 520px);
+}
+}
+.rateWrap:hover {
+  width: 24em;
+  height: 24em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+.rateWrap ul li {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 0 0 100%;
+}
+.rateWrap ul li ul li {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 100% 0 0 0;
+}
+.rateWrap ul li .ratedit {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.rateWrap &gt; ul &gt; li {
+  width: 6em;
+  height: 6em;
+  background-color: #404040;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  -webkit-transition-delay: .5s;
+  -moz-transition-delay: .5s;
+  -ms-transition-delay: .5s;
+  -o-transition-delay: .5s;
+  transition-delay: .5s;
+}
+.rateWrap:hover &gt; ul &gt; li {
+  width: 11em;
+  height: 11em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap &gt; ul &gt; li &gt; div.fa {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.2em;
+  height: 1.2em;
+  font-size: 3em;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  -webkit-transition-delay: .5s;
+  -moz-transition-delay: .5s;
+  -ms-transition-delay: .5s;
+  -o-transition-delay: .5s;
+  transition-delay: .5s;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; div.fa {
+  font-size: 5.5em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap &gt; ul ul {
+  z-index: -1;
+}
+.rateWrap &gt; ul ul li {
+  -webkit-transform-origin: right bottom;
+  -moz-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  -o-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+  transform: rotate(5deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -ms-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+.rateWrap:hover &gt; ul ul li {
+  -webkit-transition-delay: .3s;
+  -moz-transition-delay: .3s;
+  -ms-transition-delay: .3s;
+  -o-transition-delay: .3s;
+  transition-delay: .3s;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) {
+  width: 24em;
+  height: 24em;
+  top: -24em;
+  background-color: #a3a3a7;
+  z-index: 8;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) &gt; a {
+  border-color: #a3a3a7;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) {
+  -webkit-transform: rotate(-18deg);
+  -moz-transform: rotate(-18deg);
+  -ms-transform: rotate(-18deg);
+  -o-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) {
+  width: 21.5em;
+  height: 21.5em;
+  top: -21.5em;
+  background-color: #b4b4b8;
+  z-index: 7;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) &gt; a {
+  border-color: #b4b4b8;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) {
+  -webkit-transform: rotate(-36deg);
+  -moz-transform: rotate(-36deg);
+  -ms-transform: rotate(-36deg);
+  -o-transform: rotate(-36deg);
+  transform: rotate(-36deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) {
+  width: 19.5em;
+  height: 19.5em;
+  top: -19.5em;
+  background-color: #c5c5c9;
+  z-index: 6;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) &gt; a {
+  border-color: #c5c5c9;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) {
+  -webkit-transform: rotate(-54deg);
+  -moz-transform: rotate(-54deg);
+  -ms-transform: rotate(-54deg);
+  -o-transform: rotate(-54deg);
+  transform: rotate(-54deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) {
+  width: 18em;
+  height: 18em;
+  top: -18em;
+  background-color: #d6d6da;
+  z-index: 5;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) {
+  -webkit-transform: rotate(-72deg);
+  -moz-transform: rotate(-72deg);
+  -ms-transform: rotate(-72deg);
+  -o-transform: rotate(-72deg);
+  transform: rotate(-72deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) &gt; a {
+  border-color: #d6d6da;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) {
+  width: 17em;
+  height: 17em;
+  top: -17em;
+  background-color: #e7e7eb;
+  z-index: 4;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) a {
+  border-color: #e7e7eb;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.rateWrap &gt; ul ul a:hover {
+  border-color: var(--dark-color) !important;
+}
+.rateWrap ul li .ratedit .page-rate-widget-box {
+    display: block;
+    position: absolute;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4em;
+}
+.rateWrap .ratedit .page-rate-widget-box * {
+    display: none;
+}
+.rateWrap .ratedit.list-pages-box {
+    height: 100%;
+}
+.rateWrap:hover ul li .ratedit.sentiment {
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.rateWrap .ratedit.spinout-pts .rate-points {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    left: 0.5em;
+    bottom: 1em;
+    background: transparent !important;
+}
+.rateWrap .ratedit.spinout-pts .rate-points .number { display: inline-block;}
+.rateWrap .ratedit.spinout-up .rateup,
+.rateWrap .ratedit.spinout-down .ratedown,
+.rateWrap .ratedit.spinout-cancel .cancel {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    font-weight: bold;
+    width: 90%;
+    height: 90%;
+    background: transparent !important;
+}
+.rateWrap .ratedit.spinout-up .rateup,
+.rateWrap .ratedit.spinout-down .ratedown {
+    left: 0.7em;
+    bottom: 0.2em;
+}
+.rateWrap .ratedit.spinout-cancel .cancel {
+    left: 0;
+    bottom: 0;
+}
+.rateWrap .ratedit.spinout-up .rateup a,
+.rateWrap .ratedit.spinout-down .ratedown a,
+.rateWrap .ratedit.spinout-cancel .cancel a {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    width: 100%;
+    height: 20%;
+    left: 0;
+    bottom: 0;
+    color: #FFF !important;
+    font-size: 30px;
+    text-align: left;
+    background: transparent !important;
+    padding-left: .8em;
+    border-radius: 100% 0 0 0;
+    text-decoration: none;
+    -webkit-transition: .1s ease-in-out;
+    -moz-transition: .1s ease-in-out;
+    -ms-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+}
+.rateWrap .ratedit.spinout-up .rateup a:hover,
+.rateWrap .ratedit.spinout-down .ratedown a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+.rateWrap .ratedit.spinout-cancel .cancel a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+
+.rateWrap .ratedit .list-pages-box {
+    display: inline-block !important;
+    position: relative;
+    border: 0;
+    background: transparent !important;
+    text-align: center;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.creditRateWrap {
+  position: relative !important;
+  float: right;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>clear: both;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clear: both;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/info:start-standalone" target="_blank"><code>:scp-zh-tr:info:start-standalone</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/info:end" target="_blank"><code>:scp-zh-tr:info:end</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/ratemod:sentimentbar-arguments" target="_blank"><code>:scp-wiki-cn:ratemod:sentimentbar-arguments</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block-base" target="_blank"><code>component:image-block-base</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/ratemod:sentimentbar-arguments" target="_blank"><code>:scp-wiki-cn:ratemod:sentimentbar-arguments</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/ratemod:sentimentbar-arguments" target="_blank"><code>:scp-wiki-cn:ratemod:sentimentbar-arguments</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/ratemod:sentimentbar-arguments" target="_blank"><code>:scp-wiki-cn:ratemod:sentimentbar-arguments</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/ratemod:ytp-like" target="_blank"><code>:scp-zh-tr:ratemod:ytp-like</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:coltop" target="_blank"><code>:scp-wiki-cn:component:coltop</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:coltop" target="_blank"><code>:scp-wiki-cn:component:coltop</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/sentimentbar:quartercircle" target="_blank"><code>:scp-wiki-cn:sentimentbar:quartercircle</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:coltop" target="_blank"><code>:scp-wiki-cn:component:coltop</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/sentimentbar:quartercircle" target="_blank"><code>:scp-wiki-cn:sentimentbar:quartercircle</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:colend" target="_blank"><code>:scp-wiki-cn:component:colend</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:coltop" target="_blank"><code>:scp-wiki-cn:component:coltop</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:colend" target="_blank"><code>:scp-wiki-cn:component:colend</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/ratemod:spinout" target="_blank"><code>:scp-zh-tr:ratemod:spinout</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:coltop" target="_blank"><code>:scp-wiki-cn:component:coltop</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/ratemod:spinout-info:start" target="_blank"><code>:scp-zh-tr:ratemod:spinout-info:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/info:more" target="_blank"><code>:scp-zh-tr:info:more</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/info:end" target="_blank"><code>:scp-zh-tr:info:end</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/ratemod:spinout-info:start" target="_blank"><code>:scp-zh-tr:ratemod:spinout-info:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/info:more" target="_blank"><code>:scp-zh-tr:info:more</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-zh-tr.wikidot.com/info:end" target="_blank"><code>:scp-zh-tr:info:end</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:colend" target="_blank"><code>:scp-wiki-cn:component:colend</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:colend" target="_blank"><code>:scp-wiki-cn:component:colend</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:colend" target="_blank"><code>:scp-wiki-cn:component:colend</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>ytp-rate</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>upbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>downbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cancelbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-rate-widget-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rate-points</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>number</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>prw54353</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rateup</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>btn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>btn-default</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedown</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>btn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>btn-default</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cancel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>btn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>btn-default</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sample-one-c</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>upbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>downbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cancelbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ytp-rate</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>upbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>downbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cancelbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ytp-rate</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>upbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>downbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cancelbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ytp-rate</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>upbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>downbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cancelbtn</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rateWrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-angle-double-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sentiment</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spinout-pts</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spinout-up</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spinout-down</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spinout-cancel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rateWrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-angle-double-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sentiment</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spinout-pts</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spinout-up</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spinout-down</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ratedit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spinout-cancel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module css]]
+@import url(&#39;http://scp-wiki-cn.wikidot.com/component:colstyle/code/1&#39;);
+[[/module]]
+
+[[include :scp-zh-tr:info:start-standalone]]
+**標題：**挑戰傳統評分方式：關於自訂評分模版
+**作者：**[[*user Jochoi]]
+
+本文更改自本人於CN分部發佈的[*http://scp-wiki-cn.wikidot.com/rating-against-traditions 同名文章]。
+------
+
+**延伸閱讀：**
+[*http://scp-zh-tr.wikidot.com/ratemod:sentimentbar 評分佔比條模塊]
+
+[[include :scp-zh-tr:info:end]]
+
+[[&gt;]]
+[[div class=&#34;ytp-rate&#34;]]
+[[div class=&#34;upbtn&#34;]]
+[[module rate]]
+[[/div]]
+[[module ListPages separate=&#34;no&#34; range=&#34;.&#34;]]
+[[size 13px]][[#expr (%%rating_votes%%+%%rating%%)/2]][[/size]]
+[[/module]]
+[[div class=&#34;downbtn&#34;]]
+[[module rate]]
+[[/div]]
+[[module ListPages separate=&#34;no&#34; range=&#34;.&#34;]]
+[[size 13px]][[#expr (%%rating_votes%%-%%rating%%)/2]][[/size]]
+[[/module]]
+[[div class=&#34;cancelbtn&#34;]]
+[[module rate]]
+[[/div]]
+[[include :scp-wiki-cn:ratemod:sentimentbar-arguments width=100% | theme=ytp-like-border]]
+[[/div]]
+[[/&gt;]]
+
+[[toc]]
+
+[[=]]
++ 前言1：重要提示
+[[/=]]
+[[size 130%]]此文章的內容希望鼓勵讀者無須被傳統的評分模塊限制，並為自訂評分模版提供如何實現的流程指導。
+但是，很多時候花里胡哨的評分模版實際上既並無必要，亦不能為一篇寫得差的文章加分。
+
+**而更重要的是，永不要讓你的精力消耗在自訂評分模版而非你的文章上，永不要讓你的自訂評分模版喧賓奪主。**
+
+**聲明：使用以下內容需要你自己承擔所帶來的風險。如果你因為使用自訂評分模版而被down、被罵，本人概不負責。**[[/size]]
+
+[[=]]
++ 前言2：評分模塊？那是什麼？
+[[/=]]
+
+評分模塊，相信我們每個人都會熟悉。就是以下這個玩意。
+
+[[code]]
+[[module rate]]
+[[/code]]
+
+[[module rate]]
+
+評分模塊是wikidot自帶、用於已開放評分的網站的模塊。在不同的wikidot網站，視乎站主的設定，評分可以有以下三種模式：
+* +，–以及X，也就是SCP基金會使用的模式。
+* +以及X
+* 五星，也就是[*http://rpc-wiki-cn.wikidot.com RPC管理局]使用的模式。
+
+在此篇文章中，我們只談論第一種模式。
+
+不覺得一直都只看著這個排版太過沉悶了嗎？即使有著各版式主題，那也只是更改模塊的顏色而已。是不是很想改一下這個評分模組，讓你的頁面更有活力呢？
+
+
+[[=]]
++ 第一步：了解評分模塊的結構
+[[/=]]
+
+想要自訂評分模塊，我們得先來了解一下評分模塊在html內的表達：
+
+[[collapsible show=&#34;+ 打開代碼&#34; hide =&#34;– 收起代碼&#34;]]
+[[code]]
+&lt;div class=&#34;page-rate-widget-box&#34;&gt;
+&lt;span class=&#34;rate-points&#34;&gt;評分:&amp;nbsp;&lt;span class=&#34;number prw54353&#34;&gt;0&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&#34;rateup btn btn-default&#34;&gt;&lt;a title=&#34;我喜歡&#34; href=&#34;javascript:;&#34; onclick=&#34;WIKIDOT.modules.PageRateWidgetModule.listeners.rate(event, 1)&#34;&gt;+&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&#34;ratedown btn btn-default&#34;&gt;&lt;a title=&#34;我不喜歡&#34; href=&#34;javascript:;&#34; onclick=&#34;WIKIDOT.modules.PageRateWidgetModule.listeners.rate(event, -1)&#34;&gt;&amp;#8211;&lt;/a&gt;&lt;/span&gt;
+&lt;span class=&#34;cancel btn btn-default&#34;&gt;&lt;a title=&#34;取消我的投票&#34; href=&#34;javascript:;&#34; onclick=&#34;WIKIDOT.modules.PageRateWidgetModule.listeners.cancelVote(event)&#34;&gt;x&lt;/a&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;/div&gt;
+[[/code]]
+[[/collapsible]]
+
+我們可以看見，上面評分模塊的構成是這樣的：
+* ##26ef66|div##, class 為「page-rate-widget-box」
+ * ##26ef66|span##, class 為 &#34;rate-points&#34;, 內容為「评分: 」[[footnote]]「&amp;nbsp;」為HTML字元碼 不換行空格，此處用於禁止自動換行。[[/footnote]]
+  * ##26ef66|span##, class 為「number」和「prw54353」, 內容為該頁面分數
+ * ##26ef66|span##, class 為「rateup」,「btn」 和「btn-default」
+  * ##26ef66|a##, 內容為「+」，游標掃過時會顯示「我喜歡」。實際連結到頁面內的JavaScript JQuery，當被點擊時會進行「+1」的動作
+ * ##26ef66|span##, class 為「ratedown」,「btn」和「btn-default」
+  * ##26ef66|a##, 內容為「–」[[footnote]]「&amp;#8211;」為HTML字元碼，對應en dash「–」。多數鍵盤上沒有直接輸入en dash的鍵。[[/footnote]]，游標掃過時會顯示「我不喜歡」。實際連結到頁面內的JavaScript JQuery，當被點擊時會進行「-1」的動作
+ * ##26ef66|span##, class 為「cancel」,「btn」 和「btn-default」
+  * ##26ef66|a##, 內容為「X」，游標掃過時會顯示「取消我的投票」。實際連結到頁面內的JavaScript JQuery，當被點擊時會進行取消評分的動作
+
+另外，從JQuery代碼裡得知，當頁面自動刷新評分時，class 為「prw54353」的內容會自動更換為 class「prw54354」的內容。
+
+知道了每個div，span 和 a 的 class，對於我們撰寫 CSS 代碼將是非常重要的幫助。
+
+[[=]]
++ 第二步：構思自訂評分模塊的排版，以及預備材料
+[[/=]]
+
+那麼，了解了評分模塊的結構後，我們就需要開始構思我們所想要自訂評分模塊的排版了。
+
+++ 例1：
+[[include component:image-block-base name=http://scp-wiki-cn.wikidot.com/local--files/rating-against-traditions/youtube-sentiment.png|caption=這個評分模版好像很好看！[[footnote]]YouTube的評分模版[[/footnote]]|width=300px|link=#|align=center]]
+
+**以下，我們將以例一的內容進行評分模塊的更改，僅作參考之用。如果你想要達到的效果與此不同，請根據實際情況調整。**
+
++++ 評分模版分析（從左到右，上到下）：
+* up按鈕：灰色的向上大拇指圖案
+* up人數
+* down按鈕：灰色的向下大拇指圖案
+* down人數
+* 底部邊框：評分佔率：深灰色up條，淺灰色down條
+
+但是，你所選擇的排版，未必會完全符合SCP基金會的文章評分模塊要求。因此，我們要作出少許修改：
+
+* up按鈕：灰色的向上大拇指圖案
+* up人數
+* down按鈕：灰色的向下大拇指圖案
+* down人數
+* ##blue|取消按鈕##
+* 底部邊框：評分佔率：##blue|藍色up條##，淺灰色down條
+
+嗯，這樣好多了。
+
++++ 預備材料
+接下來，我們需要準備材料。視乎你想要如何實現該評分模版，你可能會需要準備一張或多張圖片。不過我的建議是，儘量使用越少圖片越好，能用文字代替就不要用圖片。這是因為加載圖片需要時間，加載大量圖片也就需要大量時間，這會影響讀者的觀感。
+
+//例1a,1b： 寬30px 高30px// [[image http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/up-gray.png]] [[image http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/down-gray.png]]
+要實現例1的效果，其實只需要預備其中一個方向的大拇指的圖片（另一張圖使用該圖片的180度旋轉），但是要使用該辦法會需要更繁複的代碼，故此我預備了兩張圖片。
+
+[[=]]
++ 第三步：使用代碼來實現該模版
+[[/=]]
+
+++ 碼代碼前需知
+首先，Wikidot本身並不支持直接更改評分模塊內容。然後，如果想要使用Wikidot代碼重製評分模塊，Wikidot會將 a 內的JQuery代碼過濾，使得該代碼並不能起效。因此，我們只能夠透過將評分模塊以 div 包含並標上 class 來實現更改獨立評分模塊。
+
+//例1c：//
+[[code]]
+[[div class=&#34;sample-one-c&#34;]]
+[[module rate]]
+[[/div]]
+[[/code]]
+備註：這個class不應與任何已存在的class名字重複。
+
+++ 真正碼代碼
+
++++ 將各按鈕分割成獨立部份
+
+因為在我們想要達到的效果中，up按鈕和down按鈕之間、down按鈕和取消按鈕之間都有字，所以我們必須將三個按鈕獨立分開，並定義各自的class。
+
+//例1d：//
+[[code]]
+[[div class=&#34;upbtn&#34;]] [!-- 此處我們想要只顯示up按鈕 --]
+[[module rate]]
+[[/div]]
+
+[[div class=&#34;downbtn&#34;]] [!-- 此處我們想要只顯示down按鈕 --]
+[[module rate]]
+[[/div]]
+
+[[div class=&#34;cancelbtn&#34;]] [!-- 此處我們想要只顯示取消按鈕 --]
+[[module rate]]
+[[/div]]
+[[/code]]
+
++++ 各評分模塊移除所有一般效果及設為行內元素
+
+//例1f：//
+[[code]]
+[[module css]]
+/* 選擇所有帶「upbtn」、「downbtn」或「cancelbtn」class 的元素，並設為行內元素 */
+.upbtn, 
+.downbtn,
+.cancelbtn {
+    display: inline-block;
+}
+/* 選擇所有帶「upbtn」、「downbtn」或「cancelbtn」class 的元素內的 &#34;page-rate-widget-box&#34; */
+.upbtn .page-rate-widget-box,
+.downbtn .page-rate-widget-box,
+.cancelbtn .page-rate-widget-box {
+    display: inline-block;
+    /* 將多個評分模塊設為行內元素 */
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    /* 將評分模塊的所有邊框、陰影、邊界分隔移除，並強制使用該屬性 */
+}
+[[/module]]
+[[/code]]
+
++++ 定義各按鈕的CSS
+
+++++ 定義按鈕的顯示
+
+//例1g-1：//
+[[code]]
+[[module css]]
+/* 前略 */
+.upbtn *,
+.downbtn *,
+.cancelbtn * {
+    display: none;
+}
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block !important;
+}
+[[/module]]
+[[/code]]
+
+首先，我們想要將upbtn內的評分模塊除up按鈕外清除；downbtn內的評分模塊除down按鈕外清除；cancelbtn內的評分模塊除取消按鈕外清除。其中一個做法為將所有元素設為不顯示，然後另外將rateup，ratedown，cancel設為顯示。
+
+採用此方法而非單獨選擇不想顯示的元素來設定不顯示的原因是，後面我們自訂各按鈕的時候亦會需要選擇各按鈕的元素來進行定義，所以此方法能夠更省略代碼量。若你不想這樣做，以下是單獨選擇元素來設定不顯示的代碼：
+[[collapsible show=&#34;+ 打開代碼&#34; hide =&#34;– 收起代碼&#34;]]
+//例1g-2：//
+[[code]]
+[[module css]]
+/* 前略 */
+/* 單獨選擇各元素並定義為不顯示 */
+.upbtn .rate-points,
+.upbtn .ratedown,
+.upbtn .cancel,
+.downbtn .rate-points,
+.downbtn .rateup,
+.downbtn .cancel,
+.cancelbtn .rate-points,
+.cancelbtn .rateup,
+.cancelbtn .ratedown {
+    display: none;
+}
+/* 但是此後以至下一步仍然需要定義以下三個元素的屬性 */
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block;
+}
+[[/module]]
+[[/code]]
+[[/collapsible]]
+
+++++ 定義按鈕的顯示內容
+
+接下來我們需要定義我們按鈕的顯示內容。之前我們準備了例1a,1b的圖片，網址為
+http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/up-gray.png
+http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/down-gray.png
+
+//例1h：//
+[[code]]
+[[module css]]
+/* 前略 */
+/* 需要定義上一步最後所選擇的三個元素的更多屬性 */
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block;
+    border: 0;
+    background: transparent !important;
+    /* 將邊框、背景屬性去掉 */
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    /* 設定圓角邊框半徑、寬和高、文字左右排列 */
+}
+/* 定義評分連接的屬性 */
+.upbtn .rateup a,
+.downbtn .ratedown a,
+.cancelbtn .cancel a {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    /* 把邊界本身、內部文字與邊界的距離去掉 */
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    vertical-align: text-top;
+    /* 設定圓角邊框半徑、寬和高、文字上下排列 */
+}
+.upbtn .rateup a {
+    font-size: 0;
+    /* 將 &#34;+&#34; 字設為0大小。*/
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/up-gray.png) no-repeat !important;
+    /* 設定背景圖為向上的大拇指 */
+}
+.downbtn .ratedown a {
+    font-size: 0;
+    /* 將 &#34;–&#34; 字設為0大小。*/
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/down-gray.png) no-repeat !important;
+    /* 設定背景圖為向下的大拇指 */
+}
+.cancelbtn .cancel a {
+    font-weight: bold;
+    font-size: 25px;
+    color: #aaa !important;
+    /* 設定 &#34;X&#34; 字為粗體，25px以及灰色 */
+}
+/* 定義游標於按鈕上懸浮時的屬性 */
+.upbtn .rateup a:hover,
+.downbtn .ratedown a:hover,
+.cancelbtn .cancel a:hover {
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent !important;
+    /* 設定游標於按鈕上懸浮時的圓角邊框半徑、寬和高、背景透明 */
+}
+[[/module]]
+[[/code]]
+
+++++ 定義游標於按鈕上懸浮的效果
+
+沒有動畫的按鈕怎麼能算是完整呢？所以，我們需要設置游標於按鈕上懸浮的效果。
+本例使用濾鏡來改變按鈕顏色，可以參考[*http://scp-wiki-cn.wikidot.com/esoteric-syntax#toc19 此處]。
+
+//例1i：//
+[[code]]
+[[module css]]
+/* 前略 */
+.upbtn .rateup.btn a:hover,
+.downbtn .ratedown.btn a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    /* 設定游標於up,down按鈕上懸浮時變成藍色 */
+}
+.cancelbtn .cancel.btn a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+    /* 設定游標於取消按鈕上懸浮時變成紅色 */
+}
+[[/module]]
+[[/code]]
+
++++ 設置up、down人數以及底部評分佔比條
+
+此時，各評分按鈕已經完成，但我們想要在按鈕旁顯示up、down人數，以及在整個模版的底部上顯示評分佔比。在這個階段，由於需要實時更新佔比條，單純的CSS不能滿足我們的需求。此處可以參考我所做的[*http://scp-zh-tr.wikidot.com/ratemod:sentimentbar 評分佔比條]模式，但是要作出一些改動，將佔比條上的文字去掉和調整高度模仿邊框。
+
+計算up、down的公式如下（以ListPages模塊實現）：
+[[module ListPages range=&#34;.&#34;]]
+Up 人數：@@[[#expr (%%@@rating_votes%%+%%@@rating%%)/2]]@@ = [[#expr (%%rating_votes%%+%%rating%%)/2]]
+Down 人數：@@[[#expr (%%@@rating_votes%%-%%@@rating%%)/2]]@@ = [[#expr (%%rating_votes%%-%%rating%%)/2]]
+[[/module]]
+
+對排版作出調整後，我們得到如下代碼：
+//例1j：//
+[[div class=&#34;code&#34;]]
+{{@@[[div class=&#34;ytp-rate&#34;]] [!-- 此div用作佔比條的載體 --]@@}}
+{{@@[[div class=&#34;upbtn&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[module ListPages separate=&#34;no&#34; range=&#34;.&#34;]]@@}}
+{{@@[[size 13px]][[#expr (%%rating_votes%%+%%rating%%)/2]][[/size]]@@}}
+{{@@[[/module]]@@}}
+{{@@[[div class=&#34;downbtn&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[module ListPages separate=&#34;no&#34; range=&#34;.&#34;]]@@}}
+{{@@[[size 13px]][[#expr (%%rating_votes%%-%%rating%%)/2]][[/size]]@@}}
+{{@@[[/module]]@@}}
+{{@@[[div class=&#34;cancelbtn&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[include :scp-wiki-cn:ratemod:sentimentbar-arguments width=100% | theme=ytp-like-border]]@@}}
+{{@@[[/div]]@@}}
+[[/div]]
+
+另外，由於ListPages模塊的某些特性，我們需要將其設為行內元素。同時，ytp-rate這個div本身也需要設為行內元素。再者，我們需要將ytp-rate內部的元素上下置中。我們可以將這幾個定義與先前的行內元素定義放在一起：
+//例1k：//
+[[code]]
+[[module css]]
+.upbtn, 
+.downbtn,
+.cancelbtn,
+.ytp-rate,
+.ytp-rate .list-pages-box,
+.ytp-rate .list-pages-box p {
+    display:inline-block !important;
+    vertical-align: middle;
+}
+/* 後略 */
+[[/module]]
+[[/code]]
+
+然後是佔比條本身的CSS：
+//例1l：//
+[[code]]
+[[module css]]
+.ytp-like-border {
+    display:block;
+    /* 確保佔比條於自己單獨一行上 */
+    height: 2px !important;
+    /* 高度設為2像素，模仿邊框 */
+}
+.ytp-like-border .neutralbar {
+    height: 2px !important;
+    background-color: #ccc;
+    /* 中立條顏色 */
+    font-size: 0;
+    /* 中立條文字調0大小 */
+}
+.ytp-like-border .downbar-base {
+    height: 2px !important;
+    background-color: #ccc;
+    /* 差評條顏色 */
+}
+.ytp-like-border .downbar-text {
+    height: 2px !important;
+    font-size:0;
+    /* 差評條文字調0大小 */
+    padding: 0 !important;
+    /* 去掉文字內襯厚度 */
+}
+.ytp-like-border .upbar {
+    height: 2px !important;
+    background-color: #167ac6;
+    /* 好評條顏色 */
+    font-size: 0;
+    /* 好評條文字調0大小 */
+    padding: 0 !important;
+    /* 去掉文字內襯厚度 */
+}
+.ytp-rate &gt; .cancelbtn + .list-pages-box,
+.ytp-rate &gt; .list-pages-box + .list-pages-box {
+    width: 100%;
+    /* 因為ListPages模塊的結構問題，我們需要手動將最後佔比條的兩個list-pages-box寬度設為上層元素的100% */
+}
+[[/module]]
+[[/code]]
+
++++ 將所有代碼整合
+
+這麼多的代碼，我們需要將其整合，方便自己使用。
+
+//例1m：//
+[[collapsible show=&#34;+ 此代碼為實際評分模版&#34; hide=&#34;- 此代碼為實際評分模版：&#34;]]
+[[div class=&#34;code&#34;]]
+{{@@[[div class=&#34;ytp-rate&#34;]]@@}}
+{{@@[[div class=&#34;upbtn&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[module ListPages separate=&#34;no&#34; range=&#34;.&#34;]]@@}}
+{{@@[[size 13px]][[#expr (%%rating_votes%%+%%rating%%)/2]][[/size]]@@}}
+{{@@[[/module]]@@}}
+{{@@[[div class=&#34;downbtn&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[module ListPages separate=&#34;no&#34; range=&#34;.&#34;]]@@}}
+{{@@[[size 3px]][[#expr (%%rating_votes%%-%%rating%%)/2]][[/size]]@@}}
+{{@@[[/module]]@@}}
+{{@@[[div class=&#34;cancelbtn&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[include :scp-wiki-cn:ratemod:sentimentbar-arguments width=100% | theme=ytp-like-border]]@@}}
+{{@@[[/div]]@@}}
+[[/div]]
+[[/collapsible]]
+
+[[collapsible show=&#34;+ 此代碼放置於內容任何一處&#34; hide =&#34;– 此代碼放置於內容任何一處：&#34;]]
+[[code]]
+[[module css]]
+.upbtn, 
+.downbtn,
+.cancelbtn,
+.ytp-rate,
+.ytp-rate .list-pages-box,
+.ytp-rate .list-pages-box p {
+    display:inline-block !important;
+    vertical-align: middle;
+}
+.upbtn .page-rate-widget-box,
+.downbtn .page-rate-widget-box,
+.cancelbtn .page-rate-widget-box {
+    display: inline-block;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+.upbtn *,
+.downbtn *,
+.cancelbtn * {
+    display: none;
+}
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block;
+    border: 0;
+    background: transparent !important;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.upbtn .rateup a,
+.downbtn .ratedown a,
+.cancelbtn .cancel a {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    vertical-align: text-top;
+}
+.upbtn .rateup a {
+    font-size: 0;
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/up-gray.png) no-repeat !important;
+}
+.downbtn .ratedown a {
+    font-size: 0;
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/down-gray.png) no-repeat !important;
+}
+.cancelbtn .cancel a {
+    font-weight: bold;
+    font-size: 25px;
+    color: #aaa !important;
+}
+.upbtn .rateup a:hover,
+.downbtn .ratedown a:hover,
+.cancelbtn .cancel a:hover {
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent !important;
+}
+.upbtn .rateup.btn a:hover,
+.downbtn .ratedown.btn a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+.cancelbtn .cancel.btn a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+.ytp-like-border {
+    display:block;
+    height: 2px !important;
+}
+.ytp-like-border .neutralbar {
+    height: 2px !important;
+    background-color: #ccc;
+    font-size: 0;
+}
+.ytp-like-border .downbar-base {
+    height: 2px !important;
+    background-color: #ccc;
+}
+.ytp-like-border .downbar-text {
+    height: 2px !important;
+    font-size:0;
+    padding: 0 !important;
+}
+.ytp-like-border .upbar {
+    height: 2px !important;
+    background-color: #167ac6;
+    font-size: 0;
+    padding: 0 !important;
+}
+.ytp-rate &gt; .cancelbtn + .list-pages-box,
+.ytp-rate &gt; .list-pages-box + .list-pages-box {
+    width: 100%;
+}
+[[/module]]
+[[/code]]
+[[/collapsible]]
+
+++ 實際效果
+
+碼了這麼多代碼，我們是時候看看實際效果了。
+
+[[div class=&#34;ytp-rate&#34;]]
+[[div class=&#34;upbtn&#34;]]
+[[module rate]]
+[[/div]]
+[[module ListPages separate=&#34;no&#34; range=&#34;.&#34;]]
+[[size 13px]][[#expr (%%rating_votes%%+%%rating%%)/2]][[/size]]
+[[/module]]
+[[div class=&#34;downbtn&#34;]]
+[[module rate]]
+[[/div]]
+[[module ListPages separate=&#34;no&#34; range=&#34;.&#34;]]
+[[size 13px]][[#expr (%%rating_votes%%-%%rating%%)/2]][[/size]]
+[[/module]]
+[[div class=&#34;cancelbtn&#34;]]
+[[module rate]]
+[[/div]]
+[[include :scp-wiki-cn:ratemod:sentimentbar-arguments width=100% | theme=ytp-like-border]]
+[[/div]]
+
+評分後是不能即時看到更新的，請重新載入頁面！
+
+[[module css]]
+.upbtn, 
+.downbtn,
+.cancelbtn,
+.ytp-rate,
+.ytp-rate .list-pages-box,
+.ytp-rate .list-pages-box p {
+    display:inline-block !important;
+    vertical-align: middle;
+}
+.upbtn .page-rate-widget-box,
+.downbtn .page-rate-widget-box,
+.cancelbtn .page-rate-widget-box {
+    display: inline-block;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+}
+.upbtn *,
+.downbtn *,
+.cancelbtn * {
+    display: none;
+}
+.upbtn .rateup,
+.downbtn .ratedown,
+.cancelbtn .cancel {
+    display: inline-block;
+    border: 0;
+    background: transparent !important;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+.upbtn .rateup a,
+.downbtn .ratedown a,
+.cancelbtn .cancel a {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    vertical-align: text-top;
+}
+.upbtn .rateup a {
+    font-size: 0;
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/up-gray.png) no-repeat !important;
+}
+.downbtn .ratedown a {
+    font-size: 0;
+    background: url(http://scp-wiki-cn.wikidot.com/local--files/ratemod:ytp-like-style/down-gray.png) no-repeat !important;
+}
+.cancelbtn .cancel a {
+    font-weight: bold;
+    font-size: 25px;
+    color: #aaa !important;
+}
+.upbtn .rateup a:hover,
+.downbtn .ratedown a:hover,
+.cancelbtn .cancel a:hover {
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+    background-color: transparent !important;
+}
+.upbtn .rateup.btn a:hover,
+.downbtn .ratedown.btn a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+.cancelbtn .cancel.btn a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+.ytp-like-border {
+    display:block;
+    height: 2px !important;
+    clear:both;
+}
+.ytp-like-border .neutralbar {
+    height: 2px !important;
+    background-color: #ccc;
+    font-size: 0;
+    padding: 0 !important;
+}
+.ytp-like-border .downbar-base {
+    height: 2px !important;
+    background-color: #ccc;
+}
+.ytp-like-border .downbar-text {
+    height: 2px !important;
+    font-size:0;
+    padding: 0 !important;
+}
+.ytp-like-border .upbar {
+    height: 2px !important;
+    background-color: #167ac6;
+    font-size: 0;
+    padding: 0 !important;
+}
+.ytp-rate &gt; .cancelbtn + .list-pages-box,
+.ytp-rate &gt; .list-pages-box + .list-pages-box {
+    width: 100%;
+}
+[[/module]]
+
+[[=]]
++ 第四步：將該評分模版用於你的文章內
+[[/=]]
+
+恭喜，你已經完成了你自製自訂評分模版的過程了！現在，你需要將其用於你的文章內。
+[[collapsible show=&#34;+ 應用例子&#34; hide=&#34;- 應用例子&#34;]]
+[*http://scp-wiki-cn.wikidot.com/ratemod:ytp-like-sample 樣版頁]
+[[image http://scp-wiki-cn.wikidot.com/local--files/rating-against-traditions/ytpsample.png]]
+[[/collapsible]]
+
+如需使用，此為該自訂評分模版引用代碼
+[[div class=&#34;code&#34;]]
+{{@@[[include :scp-zh-tr:ratemod:ytp-like]]@@}}
+[[/div]]
+
+[[=]]
++ Encore：更多代碼，實現更強大的效果
+[[/=]]
+
+[[include :scp-wiki-cn:component:coltop show=+ 我們是泰坦。|hide=- 強大有力的泰坦。]]
+[[include :scp-wiki-cn:component:coltop show=　+ 評分旋鈕|hide=　- 評分旋鈕]]
+[[module css]]
+/* Spin Out Rate */
+.rateWrap {
+  position: relative;
+  float: right;
+  width: 6em;
+  height: 6em;
+  border-radius: 0 0 0 100%;
+  overflow: hidden;
+  z-index: 9;
+  -webkit-transition-delay: .8s;
+  -moz-transition-delay: .8s;
+  -ms-transition-delay: .8s;
+  -o-transition-delay: .8s;
+  transition-delay: .8s;
+  -webkit-transition-property: width, height;
+  -moz-transition-property: width, height;
+  -ms-transition-property: width, height;
+  -o-transition-property: width, height;
+  transition-property: width, height;
+}
+@media (min-width: 1041px) {
+.rateWrap {
+  right: calc(50vw - 520px);
+}
+}
+.rateWrap:hover {
+  width: 24em;
+  height: 24em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+.rateWrap ul li {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 0 0 100%;
+}
+.rateWrap ul li ul li {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 100% 0 0 0;
+}
+.rateWrap ul li .ratedit {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.rateWrap &gt; ul &gt; li {
+  width: 6em;
+  height: 6em;
+  background-color: #404040;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  -webkit-transition-delay: .5s;
+  -moz-transition-delay: .5s;
+  -ms-transition-delay: .5s;
+  -o-transition-delay: .5s;
+  transition-delay: .5s;
+}
+.rateWrap:hover &gt; ul &gt; li {
+  width: 11em;
+  height: 11em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap &gt; ul &gt; li &gt; div.fa {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.2em;
+  height: 1.2em;
+  font-size: 3em;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  -webkit-transition-delay: .5s;
+  -moz-transition-delay: .5s;
+  -ms-transition-delay: .5s;
+  -o-transition-delay: .5s;
+  transition-delay: .5s;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; div.fa {
+  font-size: 5.5em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap &gt; ul ul {
+  z-index: -1;
+}
+.rateWrap &gt; ul ul li {
+  -webkit-transform-origin: right bottom;
+  -moz-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  -o-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+  transform: rotate(5deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -ms-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+.rateWrap:hover &gt; ul ul li {
+  -webkit-transition-delay: .3s;
+  -moz-transition-delay: .3s;
+  -ms-transition-delay: .3s;
+  -o-transition-delay: .3s;
+  transition-delay: .3s;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) {
+  width: 24em;
+  height: 24em;
+  top: -24em;
+  background-color: #a3a3a7;
+  z-index: 8;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) &gt; a {
+  border-color: #a3a3a7;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) {
+  -webkit-transform: rotate(-18deg);
+  -moz-transform: rotate(-18deg);
+  -ms-transform: rotate(-18deg);
+  -o-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) {
+  width: 21.5em;
+  height: 21.5em;
+  top: -21.5em;
+  background-color: #b4b4b8;
+  z-index: 7;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) &gt; a {
+  border-color: #b4b4b8;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) {
+  -webkit-transform: rotate(-36deg);
+  -moz-transform: rotate(-36deg);
+  -ms-transform: rotate(-36deg);
+  -o-transform: rotate(-36deg);
+  transform: rotate(-36deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) {
+  width: 19.5em;
+  height: 19.5em;
+  top: -19.5em;
+  background-color: #c5c5c9;
+  z-index: 6;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) &gt; a {
+  border-color: #c5c5c9;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) {
+  -webkit-transform: rotate(-54deg);
+  -moz-transform: rotate(-54deg);
+  -ms-transform: rotate(-54deg);
+  -o-transform: rotate(-54deg);
+  transform: rotate(-54deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) {
+  width: 18em;
+  height: 18em;
+  top: -18em;
+  background-color: #d6d6da;
+  z-index: 5;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) {
+  -webkit-transform: rotate(-72deg);
+  -moz-transform: rotate(-72deg);
+  -ms-transform: rotate(-72deg);
+  -o-transform: rotate(-72deg);
+  transform: rotate(-72deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) &gt; a {
+  border-color: #d6d6da;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) {
+  width: 17em;
+  height: 17em;
+  top: -17em;
+  background-color: #e7e7eb;
+  z-index: 4;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) a {
+  border-color: #e7e7eb;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.rateWrap &gt; ul ul a:hover {
+  border-color: var(--dark-color) !important;
+}
+.rateWrap ul li .ratedit .page-rate-widget-box {
+    display: block;
+    position: absolute;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4em;
+}
+.rateWrap .ratedit .page-rate-widget-box * {
+    display: none;
+}
+.rateWrap .ratedit.list-pages-box {
+    height: 100%;
+}
+.rateWrap:hover ul li .ratedit.sentiment {
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.rateWrap .ratedit.spinout-pts .rate-points {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    left: 0.5em;
+    bottom: 1em;
+    background: transparent !important;
+}
+.rateWrap .ratedit.spinout-pts .rate-points .number { display: inline-block;}
+.rateWrap .ratedit.spinout-up .rateup,
+.rateWrap .ratedit.spinout-down .ratedown,
+.rateWrap .ratedit.spinout-cancel .cancel {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    font-weight: bold;
+    width: 90%;
+    height: 90%;
+    background: transparent !important;
+}
+.rateWrap .ratedit.spinout-up .rateup,
+.rateWrap .ratedit.spinout-down .ratedown {
+    left: 0.7em;
+    bottom: 0.2em;
+}
+.rateWrap .ratedit.spinout-cancel .cancel {
+    left: 0;
+    bottom: 0;
+}
+.rateWrap .ratedit.spinout-up .rateup a,
+.rateWrap .ratedit.spinout-down .ratedown a,
+.rateWrap .ratedit.spinout-cancel .cancel a {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    width: 100%;
+    height: 20%;
+    left: 0;
+    bottom: 0;
+    color: #FFF !important;
+    font-size: 30px;
+    text-align: left;
+    background: transparent !important;
+    padding-left: .8em;
+    border-radius: 100% 0 0 0;
+    text-decoration: none;
+    -webkit-transition: .1s ease-in-out;
+    -moz-transition: .1s ease-in-out;
+    -ms-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+}
+.rateWrap .ratedit.spinout-up .rateup a:hover,
+.rateWrap .ratedit.spinout-down .ratedown a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+.rateWrap .ratedit.spinout-cancel .cancel a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+
+.rateWrap .ratedit .list-pages-box {
+    display: inline-block !important;
+    position: relative;
+    border: 0;
+    background: transparent !important;
+    text-align: center;
+}
+[[/module]]
+
+實際效果中，評分旋鈕應於頁面右上角。
+
+部份靈感與代碼來自 [[*user sekai_s]] 為CN分部 [*http://scp-wiki-cn.wikidot.com/linkage-hub LinkAge中心頁]所做的頁面菜單旋鈕。
+
+[[div class=&#34;rateWrap&#34;]]
+[[ul]]
+[[li]]
+[[div_ class=&#34;fa fa-angle-double-left&#34;]]
+@&lt;&amp;nbsp;&gt;@
+[[/div]]
+[[ul]]
+[[li]]
+[[div class=&#34;ratedit sentiment&#34;]]
+[[include :scp-wiki-cn:sentimentbar:quartercircle uper=(%%rating_votes%%+%%rating%%)/(2*%%rating_votes%%) | dper=(%%rating_votes%%-%%rating%%)/(2*%%rating_votes%%) | theme=spinout-sentiment]]
+[[/div]]
+[[/li]]
+[[li]]
+[[div class=&#34;ratedit spinout-pts&#34;]]
+[[module rate]]
+[[/div]]
+[[/li]]
+[[li]]
+[[div class=&#34;ratedit spinout-up&#34;]]
+[[module rate]]
+[[/div]]
+[[/li]]
+[[li]]
+[[div class=&#34;ratedit spinout-down&#34;]]
+[[module rate]]
+[[/div]]
+[[/li]]
+[[li]]
+[[div class=&#34;ratedit spinout-cancel&#34;]]
+[[module rate]]
+[[/div]]
+[[/li]]
+[[/ul]]
+[[/li]]
+[[/ul]]
+[[/div]]
+
+[[span style=&#34;clear: both;&#34;]]@@ @@[[/span]]
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+[[include :scp-wiki-cn:component:coltop show=　　+ 打開評分旋鈕模版|hide=　　- 收起評分旋鈕模版]]
+[[div class=&#34;code&#34;]]
+{{@@[[div class=&#34;rateWrap&#34;]]@@}}
+{{@@[[ul]]@@}}
+{{@@[[li]]@@}}
+{{@@[[div_ class=&#34;fa fa-angle-double-left&#34;]]@@}}
+@&lt;&amp;nbsp;&gt;@
+{{@@[[/div]]@@}}
+{{@@[[ul]]@@}}
+{{@@[[li]]@@}}
+{{@@[[div class=&#34;ratedit sentiment&#34;]]@@}}
+{{@@[[include :scp-wiki-cn:sentimentbar:quartercircle uper=(%%rating_votes%%+%%rating%%)/(2*%%rating_votes%%) | dper=(%%rating_votes%%-%%rating%%)/(2*%%rating_votes%%) | theme=spinout-sentiment]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[/li]]@@}}
+{{@@[[li]]@@}}
+{{@@[[div class=&#34;ratedit spinout-pts&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[/li]]@@}}
+{{@@[[li]]@@}}
+{{@@[[div class=&#34;ratedit spinout-up&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[/li]]@@}}
+{{@@[[li]]@@}}
+{{@@[[div class=&#34;ratedit spinout-down&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[/li]]@@}}
+{{@@[[li]]@@}}
+{{@@[[div class=&#34;ratedit spinout-cancel&#34;]]@@}}
+{{@@[[module rate]]@@}}
+{{@@[[/div]]@@}}
+{{@@[[/li]]@@}}
+{{@@[[/ul]]@@}}
+{{@@[[/li]]@@}}
+{{@@[[/ul]]@@}}
+{{@@[[/div]]@@}}
+[[/div]]
+[[include :scp-wiki-cn:component:colend]]
+[[include :scp-wiki-cn:component:coltop show=　　+ 打開CSS代碼|hide=　　- 收起CSS代碼]]
+[[code]]
+[[module css]]
+/* Spin Out Rate */
+.rateWrap {
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 6em;
+  height: 6em;
+  border-radius: 0 0 0 100%;
+  overflow: hidden;
+  z-index: 9;
+  -webkit-transition-delay: .8s;
+  -moz-transition-delay: .8s;
+  -ms-transition-delay: .8s;
+  -o-transition-delay: .8s;
+  transition-delay: .8s;
+  -webkit-transition-property: width, height;
+  -moz-transition-property: width, height;
+  -ms-transition-property: width, height;
+  -o-transition-property: width, height;
+  transition-property: width, height;
+}
+@media (min-width: 1041px) {
+.rateWrap {
+  right: calc(50vw - 520px);
+}
+}
+.rateWrap:hover {
+  width: 24em;
+  height: 24em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+}
+.rateWrap ul li {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 0 0 0 100%;
+}
+.rateWrap ul li ul li {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 100% 0 0 0;
+}
+.rateWrap ul li .ratedit {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+.rateWrap &gt; ul &gt; li {
+  width: 6em;
+  height: 6em;
+  background-color: #404040;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  -webkit-transition-delay: .5s;
+  -moz-transition-delay: .5s;
+  -ms-transition-delay: .5s;
+  -o-transition-delay: .5s;
+  transition-delay: .5s;
+}
+.rateWrap:hover &gt; ul &gt; li {
+  width: 11em;
+  height: 11em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap &gt; ul &gt; li &gt; div.fa {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 1.2em;
+  height: 1.2em;
+  font-size: 3em;
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+  -webkit-transition-delay: .5s;
+  -moz-transition-delay: .5s;
+  -ms-transition-delay: .5s;
+  -o-transition-delay: .5s;
+  transition-delay: .5s;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; div.fa {
+  font-size: 5.5em;
+  -webkit-transition-delay: 0;
+  -moz-transition-delay: 0;
+  -ms-transition-delay: 0;
+  -o-transition-delay: 0;
+  transition-delay: 0;
+}
+.rateWrap &gt; ul ul {
+  z-index: -1;
+}
+.rateWrap &gt; ul ul li {
+  -webkit-transform-origin: right bottom;
+  -moz-transform-origin: right bottom;
+  -ms-transform-origin: right bottom;
+  -o-transform-origin: right bottom;
+  transform-origin: right bottom;
+  -webkit-transform: rotate(5deg);
+  -moz-transform: rotate(5deg);
+  -ms-transform: rotate(5deg);
+  -o-transform: rotate(5deg);
+  transform: rotate(5deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -ms-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+}
+.rateWrap:hover &gt; ul ul li {
+  -webkit-transition-delay: .3s;
+  -moz-transition-delay: .3s;
+  -ms-transition-delay: .3s;
+  -o-transition-delay: .3s;
+  transition-delay: .3s;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) {
+  width: 24em;
+  height: 24em;
+  top: -24em;
+  background-color: #a3a3a7;
+  z-index: 8;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) &gt; a {
+  border-color: #a3a3a7;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(1) {
+  -webkit-transform: rotate(-18deg);
+  -moz-transform: rotate(-18deg);
+  -ms-transform: rotate(-18deg);
+  -o-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) {
+  width: 21.5em;
+  height: 21.5em;
+  top: -21.5em;
+  background-color: #b4b4b8;
+  z-index: 7;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) &gt; a {
+  border-color: #b4b4b8;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(2) {
+  -webkit-transform: rotate(-36deg);
+  -moz-transform: rotate(-36deg);
+  -ms-transform: rotate(-36deg);
+  -o-transform: rotate(-36deg);
+  transform: rotate(-36deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) {
+  width: 19.5em;
+  height: 19.5em;
+  top: -19.5em;
+  background-color: #c5c5c9;
+  z-index: 6;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) &gt; a {
+  border-color: #c5c5c9;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(3) {
+  -webkit-transform: rotate(-54deg);
+  -moz-transform: rotate(-54deg);
+  -ms-transform: rotate(-54deg);
+  -o-transform: rotate(-54deg);
+  transform: rotate(-54deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) {
+  width: 18em;
+  height: 18em;
+  top: -18em;
+  background-color: #d6d6da;
+  z-index: 5;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) {
+  -webkit-transform: rotate(-72deg);
+  -moz-transform: rotate(-72deg);
+  -ms-transform: rotate(-72deg);
+  -o-transform: rotate(-72deg);
+  transform: rotate(-72deg);
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(4) &gt; a {
+  border-color: #d6d6da;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) {
+  width: 17em;
+  height: 17em;
+  top: -17em;
+  background-color: #e7e7eb;
+  z-index: 4;
+}
+.rateWrap &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) a {
+  border-color: #e7e7eb;
+}
+.rateWrap:hover &gt; ul &gt; li &gt; ul &gt; li:nth-of-type(5) {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+.rateWrap &gt; ul ul a:hover {
+  border-color: var(--dark-color) !important;
+}
+.rateWrap ul li .ratedit .page-rate-widget-box {
+    display: block;
+    position: absolute;
+    border: 0 !important;
+    box-shadow: none !important;
+    margin: 0 !important;
+    width: 100%;
+    height: 100%;
+    font-size: 1.4em;
+}
+.rateWrap .ratedit .page-rate-widget-box * {
+    display: none;
+}
+.rateWrap .ratedit.list-pages-box {
+    height: 100%;
+}
+.rateWrap:hover ul li .ratedit.sentiment {
+  -webkit-transition: .3s ease-in-out;
+  -moz-transition: .3s ease-in-out;
+  -ms-transition: .3s ease-in-out;
+  -o-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+.rateWrap .ratedit.spinout-pts .rate-points {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    left: 0.5em;
+    bottom: 1em;
+    background: transparent !important;
+}
+.rateWrap .ratedit.spinout-pts .rate-points .number { display: inline-block;}
+.rateWrap .ratedit.spinout-up .rateup,
+.rateWrap .ratedit.spinout-down .ratedown,
+.rateWrap .ratedit.spinout-cancel .cancel {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    font-weight: bold;
+    width: 90%;
+    height: 90%;
+    background: transparent !important;
+}
+.rateWrap .ratedit.spinout-up .rateup,
+.rateWrap .ratedit.spinout-down .ratedown {
+    left: 0.7em;
+    bottom: 0.2em;
+}
+.rateWrap .ratedit.spinout-cancel .cancel {
+    left: 0;
+    bottom: 0;
+}
+.rateWrap .ratedit.spinout-up .rateup a,
+.rateWrap .ratedit.spinout-down .ratedown a,
+.rateWrap .ratedit.spinout-cancel .cancel a {
+    display: inline-block !important;
+    position: absolute;
+    border: 0;
+    width: 100%;
+    height: 20%;
+    left: 0;
+    bottom: 0;
+    color: #FFF !important;
+    font-size: 30px;
+    text-align: left;
+    background: transparent !important;
+    padding-left: .8em;
+    border-radius: 100% 0 0 0;
+    text-decoration: none;
+    -webkit-transition: .1s ease-in-out;
+    -moz-transition: .1s ease-in-out;
+    -ms-transition: .1s ease-in-out;
+    -o-transition: .1s ease-in-out;
+    transition: .1s ease-in-out;
+}
+.rateWrap .ratedit.spinout-up .rateup a:hover,
+.rateWrap .ratedit.spinout-down .ratedown a:hover {
+    -webkit-filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+    filter: grayscale(100%) brightness(50%) sepia(100%) hue-rotate(-180deg) saturate(700%) contrast(0.8);
+}
+.rateWrap .ratedit.spinout-cancel .cancel a:hover {
+    -webkit-filter: invert(40%) grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(400%) contrast(2);
+    filter: grayscale(100%) brightness(60%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(0.8);
+}
+
+.rateWrap .ratedit .list-pages-box {
+    display: inline-block !important;
+    position: relative;
+    border: 0;
+    background: transparent !important;
+    text-align: center;
+}
+[[/module]]
+[[/code]]
+[[include :scp-wiki-cn:component:colend]]
+
+如需使用，此為評分旋鈕引用代碼
+[[div class=&#34;code&#34;]]
+{{@@[[include :scp-zh-tr:ratemod:spinout]]@@}}
+[[/div]]
+
+[[include :scp-wiki-cn:component:coltop show=　+ 或者，你是想要帶著作資訊的旋鈕？|hide=　- 或者，你是想要帶著作資訊的旋鈕？]]
+
+[[module css]]
+.creditRateWrap {
+  position: relative !important;
+  float: right;
+}
+[[/module]]
+
+[[include :scp-zh-tr:ratemod:spinout-info:start]]
+資料
+[[include :scp-zh-tr:info:more]]
+更多資料
+[[include :scp-zh-tr:info:end]]
+
+[[span style=&#34;clear: both;&#34;]]@@ @@[[/span]]
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+@@ @@
+
+如需使用，此為著作資訊評分旋鈕引用代碼
+[[div class=&#34;code&#34;]]
+{{@@[[include :scp-zh-tr:ratemod:spinout-info:start]]@@}}
+資料
+{{@@[[include :scp-zh-tr:info:more]]@@}}
+更多資料
+{{@@[[include :scp-zh-tr:info:end]]@@}}
+[[/div]]
+
+[[include :scp-wiki-cn:component:colend]]
+[[include :scp-wiki-cn:component:colend]]
+[[include :scp-wiki-cn:component:colend]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2022-05-18 16:02:10.469261.</em>
+  
+</div>
+</body>
