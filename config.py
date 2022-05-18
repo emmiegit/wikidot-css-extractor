@@ -1,4 +1,5 @@
 import os
+import sys
 from functools import cached_property, partial
 
 import toml
@@ -9,7 +10,12 @@ DEFAULT_CONFIG_PATH = "config.toml"
 open = partial(open, encoding='utf-8')
 
 class Configuration:
-    def __init__(self, path=DEFAULT_CONFIG_PATH):
+    def __init__(self):
+        if len(sys.argv) >= 2:
+            path = sys.argv[1]
+        else:
+            path = DEFAULT_CONFIG_PATH
+
         with open(path) as file:
             self.data = toml.load(file)
 
