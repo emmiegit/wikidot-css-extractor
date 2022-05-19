@@ -20,7 +20,7 @@ REGEX_INLINE_CSS = re.compile(r'style="(.+?)"[^\]]*?\]\]', re.MULTILINE | re.IGN
 REGEX_INCLUDES = re.compile(r'\[\[include +([a-z0-9:\-_]+?)(?: |\]\])', re.MULTILINE | re.IGNORECASE)
 REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 
-CROM_ENDPOINT = "https://api.crom.avn.sh/"
+CROM_ENDPOINT = "https://api.crom.avn.sh/graphql"
 CROM_RETRIES = 3
 CROM_HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
