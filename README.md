@@ -6,7 +6,7 @@ It looks for inline styling, CSS modules, included pages, and CSS classes. In th
 
 Requires Python 3.8+.
 
-**You can see the collected data here: https://ammongit.github.io/wikidot-css-extractor/**
+**You can see the collected data here: https://emmiegit.github.io/wikidot-css-extractor/**
 
 ### Execution
 
