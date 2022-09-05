@@ -10,58 +10,158 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>破碎的世界 BHL 主题</title>
+  <title>Broken World Theme</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">破碎的世界 BHL 主题</h1>
+    <h1 class="title">Broken World Theme</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/theme:broken-world" target="_blank">破碎的世界 BHL 主题</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/theme:broken-world" target="_blank">Broken World Theme</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(http://etinjat.wikidot.com/css:float-memu-source/code/1);
+          <pre><code>
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 
-@import url(http://etinjat.wikidot.com/component:vol-title-source/code/1);
-@import url(&#34;http://www.scp-wiki.net/component:collapsible-sidebar/code/1&#34;);
+/* 
+=====================
+Title 
+=====================
+*/
 
+:root{
+   --img-line-1:url(&#34;http://scpsandboxcn.wikidot.com/local--files/pic/ICON_horiz-divi-001.png&#34;);
+   --img-1:url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/ICON-fly-dragon-MINI.png&#34;);
+
+  --left-1:0 0.8rem 0 0;
+  --right-1:0 0 0 0.8rem;
+
+  --img-height:2.8rem;
+  --img-width:5rem;
+
+  --phone-tt-size: 1.5rem ;
+  --img-height-phone:1.5rem;
+  --img-width-phone:3rem;
+  --left-phone:0 0.5rem 0 0;
+  --right-phone:0 0 0 0.5rem;
+}
+
+.tt-ch{
+  margin:6rem 0 4rem 0;
+}
+
+.tt-line-top,
+.tt-line-bottom {
+  background:var(--img-line-1) no-repeat scroll center transparent;
+  background-size: contain;
+  height:2rem;
+  margin:0rem 0rem 0 0rem;
+  padding:1rem 0rem 0 0rem;
+  width:100%;
+    opacity: 0.8
+}
+
+.tt-txt   h1{
+text-align:center;
+font-size:2.5rem;
+margin: 0;
+  font-weight:500;
+}
+
+.tt-txt h1::before,
+.tt-txt h1::after {
+  content:&#39; &#39;;
+  background-size: contain;
+  height:var(--img-height);
+  width: var(--img-width);
+  display:inline-block;
+  background-image: var(--img-1);
+    background-repeat: no-repeat;
+}
+
+.tt-txt h1::before {
+     margin:var( --left-1);
+     -moz-transform:scaleX(-1);
+     -webkit-transform:scaleX(-1);
+     -o-transform:scaleX(-1);
+     transform:scaleX(-1);
+}
+
+.tt-txt h1::after{
+  margin:var(--right-1);
+}
+
+@media (max-width: 479px) {
+  .tt-ch{
+  margin:5rem 0 2rem 0;
+}
+
+.tt-txt   h1{
+font-size:var(--phone-tt-size);
+}
+
+.tt-line{
+  margin:0 0 1rem 0;
+}
+
+.tt-txt h1::before,
+.tt-txt h1::after {
+  content:&#39; &#39;;
+  background-size: contain;
+  height:var(--img-height-phone);
+  width: var(--img-width-phone);
+  display:inline-block;
+}
+
+.tt-txt h1::before {
+     margin:var( --left-phone);
+}
+
+.tt-txt h1::after{
+  margin:var(--right-phone);
+}
+}
 
 .tt-txt h1{
-font-family:&#39;ZCOOL XiaoWei&#39;;
+font-family:&#39;Kumar One&#39;;
 }
 
 .my-font h1, .my-font h2, .my-font h3,
 .my-font h4, .my-font h5, .my-font h6{
-     font-family:&#39;思源宋体 CN&#39;;
+     font-family:&#39;Kumar One&#39;;
 }
 
+/* 
+=====================
+Semibox
+=====================
+ */
 
 .mmposter-cell .page-rate-widget-box{
     float: right;
 }
-
 .mmposter-wrap{
     display: flex;
     justify-content: center ;   
     flex-wrap: wrap;
-    
 }
-
 .mmposter-cell{
     flex-basis: 50%;
         justify-self: center;
 }
 
 /**/
+.help tt, 
 .no-sel  tt{
 -moz-user-select: none;
 -khtml-user-select: none;
@@ -73,26 +173,41 @@ user-select: none;
 .no-sel tt:before {
 content:&#34; ←  &#34;
 }
+
 /**/
 
 /* 
 =====================
-滑动侧边栏
-
-基于 Woednaz
-http://www.scpwiki.com/component:collapsible-sidebar
+COLLAPSIBLE SIDEBAR
 =====================
  */
 
-@import url(&#34;http://etinjat.wikidot.com/component:collapsible-sidebar/code/1&#34;);
+@media only screen and (min-width: 47.9375rem) {
+        #page-content {
+            max-width: 100%;
+    }  
+}
 
-/* 底部颜色 */
+#page-content {
+    width: 100%;
+}
+
+#main-content {
+min-width:{$main-width};
+}
+
+@media (max-width: 700px) {
+
+#main-content {
+min-width:0rem;
+}
+}
+
 #side-bar,#side-bar:hover {
     border:0.5rem  groove #2e2c2c;
     background-color: grey;
     background-image: var(--gradient-sidebar-line);        
 }
-
 
    #side-bar {
        opacity: 0;
@@ -118,20 +233,19 @@ http://www.scpwiki.com/component:collapsible-sidebar
 
 /*
 -----------------------
-其他
+other
 -----------------------
 */
 
 .unmargined{
   background-color: #5f5f5f  !important;
-  font-family: &#39;等线&#39;;
 }
 
 #breadcrumbs{
 text-align: center;
 }
 
-  .heritage-rating-module{display:none!important}
+.heritage-rating-module{display:none!important}
 
 .help {
     display: flex;
@@ -175,123 +289,41 @@ text-align: center;
 .help blockquote:nth-of-type(2) {
     margin-left: 1em;
     width: 50%;
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>@import url(http://scp-wiki-cn.wikidot.com/theme:broken-world/code/1);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>/* 
-=====================
-自定义图标
-=====================
- */
- @import url(&#34;http://etinjat.wikidot.com/svg:broken-world/code/1&#34;);
+}
 
-:root{
-  --Set-logo-0: url(&#34;{$set-url}&#34;);
-  --logo-image:var(--Set-logo-{$set-logo}) !important;
+.logo-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:  flex-start
+}
+
+.logo-list .scp-image-block{
+    width: 28% ;
+    min-width: 0;
 }
 </code></pre>
         </li>
       
         <li>
-          <pre><code>/* 
-=====================
-自定义图标
-=====================
- */
- @import url(&#34;http://etinjat.wikidot.com/svg:broken-world/code/1&#34;);
+          <pre><code>@import url(https://scp-wiki.wikidot.com/theme:broken-world/code/1);
 
-:root{
-  --Set-logo-0: url(&#34;{$set-url}&#34;);
-  --logo-image:var(--Set-logo-{$set-logo}) !important;
-}
-</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>
-/* 
-=====================
-滑动侧边栏
-
-基于 Woednaz
-http://www.scpwiki.com/component:collapsible-sidebar
-=====================
- */
-
-
-/* 底部颜色 */
-#side-bar,#side-bar:hover {
-    border:0.5rem  groove #2e2c2c;
-    background-color: grey;
-    background-image: var(--gradient-sidebar-line);        
-}
-
-
-   #side-bar {
-       opacity: 0;
-  }
-
-  #side-bar:hover {
-             opacity: 1;
-   }
-
-@media screen and (max-width: 475px){
-
-  #side-bar,
-  #side-bar:not(:target) {
-       opacity: 0;
-      transition:all 0.5s;
-  }
-
-   #side-bar:target {
-       opacity: 1;
-      transition:all 0.5s;
-  }
-}
-
-</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>/* 
-=====================
-自定义版头文本
-=====================
- */
-
-:root:lang(cn){
-    --header-font: &#39;{$header-font}&#39;, &#39;思源宋体 CN&#39;, &#39;华文中宋&#39;,&#39;宋体&#39;,lisu,&#39;楷体&#39;, &#39;Iceberg&#39; ,sans-serif;
-    --sub-header-font:&#39; {sub-header-font}&#39;, &#39;楷体&#39;, &#39;Iceberg&#39; ,sans-serif;
-}
-
-:root{
-    --header-font: &#39;{$header-font}&#39;, &#39;思源宋体 CN&#39;, &#39;华文中宋&#39;,&#39;宋体&#39;,lisu,&#39;楷体&#39;, &#39;Iceberg&#39; ,sans-serif;
-    --sub-header-font:&#39; {sub-header-font}&#39;, &#39;楷体&#39;, &#39;Iceberg&#39; ,sans-serif;
-}
-
-   #header h1 a::before {
+#header h1 a::before {
     content: {$header-title};
-   }
+}
         
- #header h2 span::before {
+#header h2 span::before {
     content: {$header-subtitle};
-  } 
+} 
 
 @media (max-width: 500px) {
    #header h1 a::before {
-    padding: 0 0 0 0.5rem;
     content: {$header-title};
-    content: {$phone-title};
-   }
+    content: {$mob-title};
+}
         
- #header h2 span::before {
+#header h2 span::before {
     content: {$header-subtitle};
-    content: {$phone-subtitle};
+    content: {$mob-subtitle};
   } 
 }
 </code></pre>
@@ -300,12 +332,27 @@ http://www.scpwiki.com/component:collapsible-sidebar
         <li>
           <pre><code>/* 
 =====================
-烫金版头
+MY LOGO
+=====================
+ */
+@import url(&#34;https://scp-wiki.wikidot.com/fragment:broken-world/code/2&#34;);
+
+:root{
+  --Set-logo-0: url(&#34;{$set-url}&#34;);
+  --logo-image:var(--Set-logo-{$set-logo}) !important;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* 
+=====================
+GOLDEN HEADER
 =====================
  */
 
 :root {
---gold-image: url(&#34;http://wanderers-library.wdfiles.com/local--files/component%3Atheme/goldfoil.png&#34;);
+--gold-image: url(&#34;https://wanderers-library.wdfiles.com/local--files/component%3Atheme/goldfoil.png&#34;);
 }
 
 @media screen and (min-width: 475px){
@@ -321,6 +368,10 @@ http://www.scpwiki.com/component:collapsible-sidebar
   #header #header-extra-div-2::before {
     background:var(--gradient-logo-cover);
   }
+
+ #header h1 a::before, #header h2 span::before {
+  text-shadow: .063rem .063rem .063rem #231e15;
+  }
 }</code></pre>
         </li>
       
@@ -328,14 +379,6 @@ http://www.scpwiki.com/component:collapsible-sidebar
 
     <h2 class="header">Inline Styles</h2>
     <ul class="inline-styles">
-      
-        <li>
-          <pre><code>display:none</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>font-family:&#39;思源宋体 CN&#39;, &#39;宋体&#39;;font-size: 120%;</code></pre>
-        </li>
       
         <li>
           <pre><code>width:100px;background:var(--gradient-header)</code></pre>
@@ -346,85 +389,57 @@ http://www.scpwiki.com/component:collapsible-sidebar
         </li>
       
         <li>
-          <pre><code>width:40px; margin:0.5em;float:left; background:var(--gradient-header)</code></pre>
+          <pre><code>background:var(--gradient-header)</code></pre>
         </li>
       
         <li>
-          <pre><code>width:40px; margin:0.5em;float:left; background:var(--gradient-header)</code></pre>
+          <pre><code>background:var(--gradient-header)</code></pre>
         </li>
       
         <li>
-          <pre><code>width:40px; margin:0.5em;float:left; background:var(--gradient-header)</code></pre>
+          <pre><code>background:var(--gradient-header)</code></pre>
         </li>
       
         <li>
-          <pre><code>width:40px; margin:0.5em; float:left; background:var(--gradient-header)</code></pre>
+          <pre><code>background:var(--gradient-header)</code></pre>
         </li>
       
         <li>
-          <pre><code>width:40px; margin:0.5em; float:left; background:var(--gradient-header)</code></pre>
+          <pre><code>background:var(--gradient-header)</code></pre>
         </li>
       
         <li>
-          <pre><code>width:40px; margin:0.5em; float:left; background:var(--gradient-header)</code></pre>
+          <pre><code>background:var(--gradient-header)</code></pre>
         </li>
       
         <li>
-          <pre><code>width:100%;clear: both;</code></pre>
+          <pre><code>font-family:Noto Sans SC</code></pre>
         </li>
       
         <li>
-          <pre><code>display:none</code></pre>
+          <pre><code>font-family:Noto Sans SC</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: var(--header-font);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: var(--page-title-font);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: var(--title-font);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: var(--mono-font);</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://etinjat.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:etinjat:theme:black-highlighter-theme</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://etinjat.wikidot.com/component:collapsible-sidebar-fixed" target="_blank"><code>:etinjat:component:collapsible-sidebar-fixed</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://etinjat.wikidot.com/css:float-memu-start" target="_blank"><code>:etinjat:css:float-memu-start</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://etinjat.wikidot.com/css:float-memu-end" target="_blank"><code>:etinjat:css:float-memu-end</code></a>
-  
-
-  
-</li>
       
         <li>
   
@@ -448,8 +463,14 @@ http://www.scpwiki.com/component:collapsible-sidebar
   
 
   
-    <a href="https://scp-wiki-cn.wikidot.com/credit:start" target="_blank"><code>:scp-wiki-cn:credit:start</code></a>
+    <a href="https://scp-wiki.wikidot.com/info:start" target="_blank"><code>:scp-wiki:info:start</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/info:start.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -459,8 +480,14 @@ http://www.scpwiki.com/component:collapsible-sidebar
   
 
   
-    <a href="https://scp-wiki-cn.wikidot.com/credit:end" target="_blank"><code>:scp-wiki-cn:credit:end</code></a>
+    <a href="https://scp-wiki.wikidot.com/info:end" target="_blank"><code>:scp-wiki:info:end</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/info:end.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -470,8 +497,14 @@ http://www.scpwiki.com/component:collapsible-sidebar
   
 
   
-    <a href="https://scp-wiki-cn.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki-cn:theme:black-highlighter-theme</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -481,8 +514,14 @@ http://www.scpwiki.com/component:collapsible-sidebar
   
 
   
-    <a href="https://scp-wiki-cn.wikidot.com/theme:broken-world" target="_blank"><code>:scp-wiki-cn:theme:broken-world</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:broken-world" target="_blank"><code>:scp-wiki:theme:broken-world</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:broken-world.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -492,8 +531,31 @@ http://www.scpwiki.com/component:collapsible-sidebar
   
 
   
-    <a href="https://etinjat.wikidot.com/component:collapsible-sidebar-fixed" target="_blank"><code>:etinjat:component:collapsible-sidebar-fixed</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:collapsible-sidebar" target="_blank"><code>:scp-wiki:component:collapsible-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:collapsible-sidebar.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -502,6 +564,62 @@ http://www.scpwiki.com/component:collapsible-sidebar
 
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes">
+      
+        <li>
+          <pre><code>tt-ch</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ch-{$chapter-num}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-line-top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-{$self-line}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-txt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-line-bottom</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-{$self-line}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-ch</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ch-{$chapter-num}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-line-top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-{$self-line}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-txt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-line-bottom</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-{$self-line}</code></pre>
+        </li>
       
         <li>
           <pre><code>mmposter-wrap</code></pre>
@@ -516,7 +634,31 @@ http://www.scpwiki.com/component:collapsible-sidebar
         </li>
       
         <li>
-          <pre><code>my-font</code></pre>
+          <pre><code>tt-ch</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ch-{$chapter-num}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-line-top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-{$self-line}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-txt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-line-bottom</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-{$self-line}</code></pre>
         </li>
       
         <li>
@@ -524,14 +666,6 @@ http://www.scpwiki.com/component:collapsible-sidebar
         </li>
       
         <li>
-          <pre><code>code</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>code</code></pre>
-        </li>
-      
-        <li>
           <pre><code>scp-image-block</code></pre>
         </li>
       
@@ -544,19 +678,7 @@ http://www.scpwiki.com/component:collapsible-sidebar
         </li>
       
         <li>
-          <pre><code>newpage</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>scp-image-block</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>block-right</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>scp-image-caption</code></pre>
+          <pre><code>logo-list</code></pre>
         </li>
       
         <li>
@@ -620,11 +742,19 @@ http://www.scpwiki.com/component:collapsible-sidebar
         </li>
       
         <li>
-          <pre><code>blockquote</code></pre>
+          <pre><code>scp-image-block</code></pre>
         </li>
       
         <li>
-          <pre><code>no-sel</code></pre>
+          <pre><code>block-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-image-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>help</code></pre>
         </li>
       
         <li>
@@ -635,59 +765,176 @@ http://www.scpwiki.com/component:collapsible-sidebar
           <pre><code>help</code></pre>
         </li>
       
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-ch</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ch-{$chapter-num}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-line-top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-{$self-line}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-txt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-line-bottom</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tt-{$self-line}</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[!-----------------------------------------
-[[div_ style=&#34;display:none&#34;]]
-[[embed]]
-
-&lt;iframe src=&#34;//scp-wiki-cn.wdfiles.com/local--files/nav%3Aside/styleFrame.html?%40import%20url(&#39;https%3A%2F%2Ffonts.googleapis.com%2Fcss2%3Ffamily%3DNoto%2BSerif%2BSC%26display%3Dswap&#39;)%3B.side-block%20.menu-item%20img%2C.side-block%20.sub-text%2C.side-block%3Ehr%7Bdisplay%3A%20none%7D.side-block%7Bborder-radius%3A%20unset%3Bborder%3A%20none%3Bbackground%3A%20%23333!important%3Bmargin%3A%200%7D.side-block%20.heading%7Bcolor%3A%20%23fff%3Bfont-weight%3A%20700%3Bfont-size%3A%2011pt%3Bborder-bottom%3A%201px%20solid%20%23eee%3Btext-align%3A%20center%3Bmargin%3A%201.5em%200%200%3Bpadding%3A%200%7D.side-block%20.menu-item%7Bborder-bottom%3A%201px%20solid%20%23666%3Bline-height%3A%202em%7D.side-block%20div.menu-item%20a%7Bcolor%3A%20%23eee%7D*%7Bfont-family%3A%20Lora%2C&#39;Noto%20Serif%20SC&#39;%2CGeorgia%2CGaramond%2CTimes%2CJejuMyeongjo%2CKopubBatang%2C&#39;Kopub%20Batang&#39;%2Cnanummyeongjo%2C&#39;Nanum%20Myeongjo&#39;%2CBatang%2CGungseo%2Ckaiti%2Cserif%3B%7D&#34; name=&#34;styleFrame&#34;&gt;&lt;/iframe&gt;
-
-[[/embed]]
-[[/div]]
-------------------------------------]
-
-[[iftags +版式]]
-[[include :etinjat:theme:black-highlighter-theme]]
-[[include :etinjat:component:collapsible-sidebar-fixed]]
-
-
-
+    <pre><textarea class="page-source" readonly>[[iftags +theme]]
 [[module css]]
-@import url(http://etinjat.wikidot.com/css:float-memu-source/code/1);
 
-@import url(http://etinjat.wikidot.com/component:vol-title-source/code/1);
-@import url(&#34;http://www.scp-wiki.net/component:collapsible-sidebar/code/1&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 
+/* 
+=====================
+Title 
+=====================
+*/
+
+:root{
+   --img-line-1:url(&#34;http://scpsandboxcn.wikidot.com/local--files/pic/ICON_horiz-divi-001.png&#34;);
+   --img-1:url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/ICON-fly-dragon-MINI.png&#34;);
+
+  --left-1:0 0.8rem 0 0;
+  --right-1:0 0 0 0.8rem;
+
+  --img-height:2.8rem;
+  --img-width:5rem;
+
+  --phone-tt-size: 1.5rem ;
+  --img-height-phone:1.5rem;
+  --img-width-phone:3rem;
+  --left-phone:0 0.5rem 0 0;
+  --right-phone:0 0 0 0.5rem;
+}
+
+.tt-ch{
+  margin:6rem 0 4rem 0;
+}
+
+.tt-line-top,
+.tt-line-bottom {
+  background:var(--img-line-1) no-repeat scroll center transparent;
+  background-size: contain;
+  height:2rem;
+  margin:0rem 0rem 0 0rem;
+  padding:1rem 0rem 0 0rem;
+  width:100%;
+    opacity: 0.8
+}
+
+.tt-txt   h1{
+text-align:center;
+font-size:2.5rem;
+margin: 0;
+  font-weight:500;
+}
+
+.tt-txt h1::before,
+.tt-txt h1::after {
+  content:&#39; &#39;;
+  background-size: contain;
+  height:var(--img-height);
+  width: var(--img-width);
+  display:inline-block;
+  background-image: var(--img-1);
+    background-repeat: no-repeat;
+}
+
+.tt-txt h1::before {
+     margin:var( --left-1);
+     -moz-transform:scaleX(-1);
+     -webkit-transform:scaleX(-1);
+     -o-transform:scaleX(-1);
+     transform:scaleX(-1);
+}
+
+.tt-txt h1::after{
+  margin:var(--right-1);
+}
+
+@media (max-width: 479px) {
+  .tt-ch{
+  margin:5rem 0 2rem 0;
+}
+
+.tt-txt   h1{
+font-size:var(--phone-tt-size);
+}
+
+.tt-line{
+  margin:0 0 1rem 0;
+}
+
+.tt-txt h1::before,
+.tt-txt h1::after {
+  content:&#39; &#39;;
+  background-size: contain;
+  height:var(--img-height-phone);
+  width: var(--img-width-phone);
+  display:inline-block;
+}
+
+.tt-txt h1::before {
+     margin:var( --left-phone);
+}
+
+.tt-txt h1::after{
+  margin:var(--right-phone);
+}
+}
 
 .tt-txt h1{
-font-family:&#39;ZCOOL XiaoWei&#39;;
+font-family:&#39;Kumar One&#39;;
 }
 
 .my-font h1, .my-font h2, .my-font h3,
 .my-font h4, .my-font h5, .my-font h6{
-     font-family:&#39;思源宋体 CN&#39;;
+     font-family:&#39;Kumar One&#39;;
 }
 
+/* 
+=====================
+Semibox
+=====================
+ */
 
 .mmposter-cell .page-rate-widget-box{
     float: right;
 }
-
 .mmposter-wrap{
     display: flex;
     justify-content: center ;   
     flex-wrap: wrap;
-    
 }
-
 .mmposter-cell{
     flex-basis: 50%;
         justify-self: center;
 }
 
 /**/
+.help tt, 
 .no-sel  tt{
 -moz-user-select: none;
 -khtml-user-select: none;
@@ -699,26 +946,41 @@ user-select: none;
 .no-sel tt:before {
 content:&#34; ←  &#34;
 }
+
 /**/
 
 /* 
 =====================
-滑动侧边栏
-
-基于 Woednaz
-http://www.scpwiki.com/component:collapsible-sidebar
+COLLAPSIBLE SIDEBAR
 =====================
  */
 
-@import url(&#34;http://etinjat.wikidot.com/component:collapsible-sidebar/code/1&#34;);
+@media only screen and (min-width: 47.9375rem) {
+        #page-content {
+            max-width: 100%;
+    }  
+}
 
-/* 底部颜色 */
+#page-content {
+    width: 100%;
+}
+
+#main-content {
+min-width:{$main-width};
+}
+
+@media (max-width: 700px) {
+
+#main-content {
+min-width:0rem;
+}
+}
+
 #side-bar,#side-bar:hover {
     border:0.5rem  groove #2e2c2c;
     background-color: grey;
     background-image: var(--gradient-sidebar-line);        
 }
-
 
    #side-bar {
        opacity: 0;
@@ -744,20 +1006,19 @@ http://www.scpwiki.com/component:collapsible-sidebar
 
 /*
 -----------------------
-其他
+other
 -----------------------
 */
 
 .unmargined{
   background-color: #5f5f5f  !important;
-  font-family: &#39;等线&#39;;
 }
 
 #breadcrumbs{
 text-align: center;
 }
 
-  .heritage-rating-module{display:none!important}
+.heritage-rating-module{display:none!important}
 
 .help {
     display: flex;
@@ -802,35 +1063,32 @@ text-align: center;
     margin-left: 1em;
     width: 50%;
 }
-[[/module]]
 
+.logo-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items:  flex-start
+}
+
+.logo-list .scp-image-block{
+    width: 28% ;
+    min-width: 0;
+}
+
+[[/module]]
+[!------------qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq--------------]
 [[div id=&#34;ch-top&#34;]]
 [[/div]]
 
-
-[[include :etinjat:css:float-memu-start]]
-[#u-ch1 主题颜色]
-
-[#u-ch2 著作信息块]
-
-[#u-ch3 使用方法]
-
-[#u-ch4 示例]
-
-[#u-ch5 源代码]
-[[include :etinjat:css:float-memu-end]]
-
-
-[[include :etinjat:component:vol-title
-|chapter-num=1
-|chapter-img=var(--img-1)
-|main-title=主题颜色
-|use-sub-tt=none
-|font-size=2.5rem
-|phone-font-size=1.5rem
-]]
-
-
+[[div class=&#34;tt-ch ch-{$chapter-num} &#34;]]
+[[div class=&#34;tt-line-top tt-{$self-line}&#34;]]
+[[/div]]
+[[div class=&#34;tt-txt&#34;]]
++ Theme Colors
+[[/div]]
+[[div class=&#34;tt-line-bottom tt-{$self-line}&#34;]]
+[[/div]]
+[[/div]]
 
 
 [[include :scp-wiki:component:theme-squares -=-
@@ -865,472 +1123,430 @@ text-align: center;
 | subcolor6-info=(105,32,32)
 ]]
 
+-----
+
+[[=]]
+[[collapsible show=&#34;▼  How does this theme look in Firefox  ▼&#34; hide=&#34;▲   How does this theme look in Firefox  ▲&#34;]]
+[[/=]]
+
+[[=image http://scpsandboxcn.wikidot.com/local--files/image/SHOW_broken-world-theme.png]]
+
+[[/collapsible]]
+
 ------
 
-[[div style=&#34;font-family:&#39;思源宋体 CN&#39;, &#39;宋体&#39;;font-size: 120%;&#34;]]
-//或曰：奭、衍之谈天雕龙，大道之破碎也。今曰其源出於大《易》，岂不荒经而蔑古乎？答曰：此流别之义也。官司失其典守，则私门之书，推原古人宪典，以定其离合；师儒失其传授，则游谈之书，推原前圣经传，以折其是非。其官无典守，而师无传习者，则是不根之妄言，屏而绝之，不得通於著录焉。其有幸而获传者，附於本类之下，而明著其违悖焉。是则著录之义，固所以明大道而治百家也。何为荒经蔑古乎？//
-[[&gt;]]
-————《校雠通义》
-[[/&gt;]]
+
+[[div class=&#34;tt-ch ch-{$chapter-num} &#34;]]
+[[div class=&#34;tt-line-top tt-{$self-line}&#34;]]
 [[/div]]
-[[include :etinjat:component:vol-title
-|chapter-num=2
-|chapter-img=var(--img-1)
-|main-title=著作信息块
-|use-sub-tt=none
-|font-size=2.5rem
-|phone-font-size=1.2rem
-]]
+[[div class=&#34;tt-txt&#34;]]
++ Rating
+[[/div]]
+[[div class=&#34;tt-line-bottom tt-{$self-line}&#34;]]
+[[/div]]
+[[/div]]
 
-
-[[div class=&#34;mmposter-wrap&#34; ]]
-[[div class=&#34;mmposter-cell&#34; ]]
-
-
+[[div class=&#34;mmposter-wrap&#34;]]
+[[div class=&#34;mmposter-cell&#34;]]
 [[&gt;]]
-**评分模组：**
+**Rating:**
 [[module Rate]]
 [[/&gt;]]
 [[/div]]
-[[div class=&#34;mmposter-cell&#34; ]]
+
+[[div class=&#34;mmposter-cell&#34;]]
 [[&gt;]]
-**著作信息块：**
+**Rating w/ Info Pane:**
 [[/&gt;]]
-
-[[include :scp-wiki-cn:credit:start]]
-你页面的信息
-[[include :scp-wiki-cn:credit:end]]
+[[include :scp-wiki:info:start]]
+Info about your page.
+[[include :scp-wiki:info:end]]
 [[/div]]
 [[/div]]
 
-[[include :etinjat:component:vol-title
-|chapter-num=3
-|chapter-img=var(--img-1)
-|main-title=使用方法
-|use-sub-tt=none
-|font-size=2.5rem
-]]
+[[div class=&#34;tt-ch ch-{$chapter-num} &#34;]]
+[[div class=&#34;tt-line-top tt-{$self-line}&#34;]]
+[[/div]]
+[[div class=&#34;tt-txt&#34;]]
++ Usage
+[[/div]]
+[[div class=&#34;tt-line-bottom tt-{$self-line}&#34;]]
+[[/div]]
+[[/div]]
 
-[[div class=&#34;my-font&#34;]]
-++ 注意：这是一个基于黑色标记笔的主题版式。若你想使用本主题，你还需要导入黑色标记笔主题。[http://scp-wiki-cn.wikidot.com/theme:black-highlighter-theme 点击这里了解更多。]
 
-**//PS：本主题是在火狐{{（Firefox）}}上开发的，故用火狐浏览器可能会取得更贴近设计意图的画面。//**
-------
-[[=]]
-[[collapsible show=&#34;+ 火狐浏览器上的显示效果 +&#34; hide=&#34;- 隐藏 -&#34;]]
-[[image http://scp-wiki-cn.wdfiles.com/local--files/black-highlighter-themes/View-the-broken-world-theme.png]]
-[[/collapsible]]
-[[/=]]
-------
 
-+++ **在你的作品开头添加如下语法以应用此版式：**
+This is a Black Highlighter based theme, meaning you will need to import the Black Highlighter theme as well in order to use this theme. To learn more, go [http://www.scp-wiki.net/component:black-highlighter-theme-dev here].
+
+**To import this theme, simply add the following to your page:**
 
 [[div class=&#34;code&#34;]]
-@@[[include :scp-wiki-cn:theme:black-highlighter-theme]]@@
-@@[[include :scp-wiki-cn:theme:broken-world]]@@
+@@[[include :scp-wiki:theme:black-highlighter-theme]]@@
+@@@@
+@@[[include :scp-wiki:theme:broken-world]]@@
 [[/div]]
 
+@@@@
+@@@@
 
-++++ 当你需要折叠侧边栏时，填这个：
-[[div class=&#34;code&#34;]]
-@@[[include :scp-wiki-cn:theme:broken-world@@
-|collapsible-sidebar=true
-]]
-[[/div]]
-
-++++ 如果你想要使用英文字体的话，请额外添加以下代码
-
-[[div class=&#34;code&#34;]]
-@@[[module CSS]]@@
-@@ @import url(http://scp-wiki-cn.wikidot.com/theme:broken-world/code/2);@@
-@@[[/module]]@@
-[[/div]]
-[[/div]]
-
-[[include :etinjat:component:vol-title
-|chapter-num=4
-|chapter-img=var(--img-1)
-|main-title=示例
-|use-sub-tt=none
-|font-size=2.5rem
-]]
++ Examples
 
 [[div class=&#34;scp-image-block block-right&#34; style=&#34;width:100px;background:var(--gradient-header)&#34;]]
 [[image http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Logo-broken-1.png ]]
 [[div class=&#34;scp-image-caption&#34; style=&#34;width:width:100px;;&#34;]]
-破碎教会标志
+The Broken Church
 [[/div]]
 [[/div]]
 
-++ **水平线**
-
-可通过五个连字符“@@-----@@”创建水平分割线。若它未被放在其他部件（诸如引用块）中，则会左右延伸贯穿页面。这种将文件分割为多个部分的线就是分割线。
+A horizontal rule can be created with 5 hyphens &#34;@@-----@@&#34; and extends across the whole page if it&#39;s not placed inside anything (eg a blockquote). The lines separating sections of this document are horizontal rules.
 
 -----
-++ **标题**
 
-[[collapsible show=&#34;+ 查看标题&#34; hide=&#34;- 查看标题&#34;]]
-+ 1 级标题
+Titles can be created by putting between one and six plus &#34;+&#34; at the start of the line
 
-++ 2 级标题
+[[collapsible show=&#34;▼ Titles&#34; hide=&#34;▲ Close&#34;]]
++ First Title
 
-+++ 3 级标题
+++ Second Title
 
-++++ 4 级标题
++++ Third Title
 
-+++++ 5 级标题
+++++ Fourth Title
 
-++++++ 6 级标题
++++++ Fifth Title
+
+++++++ Sixth Title
 [[/collapsible]]
 
-标题可通过在一行字起始处输入1至6个加号“+”来创建
-
-
-------
+@@ @@
 
 [[tabview]]
-[[tab 分页]]
-此为分页（tab view）。
-
-* [[[theme:broken-world|浏览过的链接]]]
-* [# 未浏览过的链接]
-* [[a href=&#34;#&#34; class=&#34;newpage&#34;]]空链接[[/a]]
-
+[[tab Tabulator]]
+Just use your imagination and pretend there&#39;s //Lorem Ipsum// here.
 [[/tab]]
-[[tab 分页]]
-看，这有更多文字。
+[[tab Tabulation]]
+Hey look, more text here.
 
-多么精巧绝伦。
+How quaint.
 [[/tab]]
-[[tab 长Tab]]
-这是一个长的tab，它有很多文字。
+[[tab Long Tab]]
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 
-这是一个长的tab，它有很多文字。
+This is a long tab. It contains a lot of text.
 [[/tab]]
-[[tab 空tab]]
+[[tab Empty Tab]]
 [[/tab]]
-[[tab 空tab]]
-[[/tab]]
-[[tab 空tab]]
-[[/tab]]
-[[tab 空tab]]
-[[/tab]]
-[[tab 空tab]]
-[[/tab]]
-[[tab 空tab]]
-[[/tab]]
-[[tab 自定义选项：替换LOGO]]
 
+[[tab Empty Tab]]
+[[/tab]]
+[[tab Empty Tab]]
+[[/tab]]
+
+[[tab NOTICE: customize your logo]]
 [[=]]
 
 ------
 
-+++ 图标
++++ [[[fragment:broken-world|Presets]]]
 
 ------
-
 [[/=]]
-[[div align=&#34;center&#34;]]
-[[div class=&#34;scp-image-block block-right&#34; style=&#34;width:40px; margin:0.5em;float:left; background:var(--gradient-header)&#34;]]
-[[image Logo-broken-1.png ]]
+
+[[div  class=&#34;logo-list&#34;]]
+[[div class=&#34;scp-image-block block-right&#34; style=&#34;background:var(--gradient-header)&#34;]]
+[[image http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Logo-broken-1.png ]]
 [[div class=&#34;scp-image-caption&#34;]]
-= 1. 破碎教会
-= //The Broken Church//
+= **1. Broken Church**
+= //by [[*user  SunnyClockwork]]//
 [[/div]]
 [[/div]]
 
-[[div class=&#34;scp-image-block block-right&#34; style=&#34;width:40px; margin:0.5em;float:left; background:var(--gradient-header)&#34;]]
-[[image Logo-broken-2.png ]]
+[[div class=&#34;scp-image-block block-right&#34; style=&#34;background:var(--gradient-header)&#34;]]
+[[image http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Logo-broken-2.png ]]
 [[div class=&#34;scp-image-caption&#34;]]
-= 2. 齿轮正教
-= //Cogwork Orthodox Church//
+= **2.  Cogwork Orthodox**
+= //by [[*user  SunnyClockwork]]//
 [[/div]]
 [[/div]]
 
-[[div class=&#34;scp-image-block block-right&#34; style=&#34;width:40px; margin:0.5em;float:left; background:var(--gradient-header)&#34;]]
-[[image Logo-broken-3.png]]
+[[div class=&#34;scp-image-block block-right&#34; style=&#34;background:var(--gradient-header)&#34;]]
+[[image http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Logo-broken-3.png]]
 [[div class=&#34;scp-image-caption&#34;]]
-= 3. 麦克斯韦宗
-= //Church of Maxwellism//
+= **3.  Maxwellism**
+= //by [[*user  SunnyClockwork]]//
 [[/div]]
 [[/div]]
 
 
-[[div class=&#34;scp-image-block block-right&#34; style=&#34;width:40px; margin:0.5em; float:left; background:var(--gradient-header)&#34;]]
-[[image Logo-Xia.png]]
+[[div class=&#34;scp-image-block block-right&#34; style=&#34;background:var(--gradient-header)&#34;]]
+[[image http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Logo-Xia.png]]
 [[div class=&#34;scp-image-caption&#34; ]]
-= 4. 夏异常文化群
-= Xia Anomalous Culture Group
+= **4. Xia Anomalous Group**
+= //by [[*user  SunnyClockwork]]//
 [[/div]]
 [[/div]]
 
 
-[[div class=&#34;scp-image-block block-right&#34; style=&#34;width:40px; margin:0.5em; float:left; background:var(--gradient-header)&#34;]]
-[[image Logo-CN-hub.png &#34;]]
+[[div class=&#34;scp-image-block block-right&#34; style=&#34;background:var(--gradient-header)&#34;]]
+[[image http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Logo-CN-hub.png &#34;]]
 [[div class=&#34;scp-image-caption&#34; ]]
-= 5. 中文分部龙标
-= 控制，收容，保护
-[[/div]]
+= **5. CN Dragon**
+= //by//
+//[[*user  Deer Kylin]](design)//
+//[[*user  Agent ]] (Vector)//
 [[/div]]
 [[/div]]
 
-
-[[div class=&#34;scp-image-block block-right&#34; style=&#34;width:40px; margin:0.5em; float:left; background:var(--gradient-header)&#34;]]
-[[image https://cdn.jsdelivr.net/gh/scp-cn-tech/black-highlighter@gh-pages/img/logo.svg ]]
+[[div class=&#34;scp-image-block block-right&#34; style=&#34;background:var(--gradient-header)&#34;]]
+[[image https://fastly.jsdelivr.net/gh/scp-cn-tech/black-highlighter@gh-pages/img/logo.svg ]]
 [[div class=&#34;scp-image-caption&#34; ]]
-= 6. 基金会标志
-= 控制，收容，保护
+= **6. SCP**
+= //by [[*user  Aelanna]]//
 [[/div]]
 [[/div]]
-
-[[div style=&#34;width:100%;clear: both;&#34;]]
-@@ @@
 [[/div]]
-
-
 [[=]]
 
 ------
 
-+++ 代码
++++ CODE
 
 ------
-
 [[/=]]
+[[div_ class=&#34;help&#34; style=&#34;font-family:Noto Sans SC&#34;]]
+&gt; Beginning of include ↦
+&gt; 
+&gt; Write //true//, and enable custom logo ↦
+&gt; 
+&gt; Serial numbers of logos, see above.[[footnote]]{{If you write  0, the following custom options will be enabled.}}[[/footnote]]  ↦
+&gt; 
+&gt; Url of your logo ↦
+&gt; 
+&gt; End of include ↦
+&gt; 
 
-[[div class=&#34;blockquote no-sel&#34;]]
-  @@     @@
-@@[[include :scp-wiki-cn:theme:broken-world@@ {{ 代码块的起始，**需完整地黏贴在开头** }}
-{{选择以下代码之一：}}
-|Logo-Broken=true {{破碎教会  }}
-|Logo-Cogwork=true{{齿轮正教 }}
-|Logo-Maxwellism=true{{麦克斯韦宗 }}
-|Logo-Xia=true{{夏异常}}
-  |Logo-CN=true{{中分龙标 }}
- |Logo-SCP=true{{基金会标志 }}
-{{@@ @@}}
-|Logo-Mine=true {{填此使用自己的图片  }}
-|set-url={{自定义logo的地址 }}
-   {{@@   @@}}
- @@]]@@{{结束引用块 }}
+&gt; @@[[include :scp-wiki:theme:broken-world@@
+&gt; 
+&gt; |my-logo=true
+&gt; 
+&gt; |set-logo=1~6, 0
+&gt; 
+&gt; |set-url=
+&gt; 
+&gt;  @@]]@@
+&gt; 
 [[/div]]
 
+@@@@
+@@@@
 
-++++ 特殊样式：烫金版头标题
+++++ Special style：Golden header
 
 [[div class=&#34;blockquote&#34;]]
-
 @@[[include :scp-wiki-cn:theme:broken-world@@
 |my-golden-header=true
 ]]
 
 [[/div]]
 
-* 该代码可以配合改LOGO和改标题自定义代码组合。
 
 @@@@
 @@@@
 
 [[/tab]]
-[[tab 自定义选项：替换版头标题]]
-
+[[tab NOTICE: customize your header title]]
 [[=]]
 
 ------
 
-+++ 此处可与上述改变logo的代码并放。
++++ CODE
 
 ------
-
 [[/=]]
 
-[[div_ class=&#34;help&#34;]]
-&gt; include组件代码块的起始，**需完整地黏贴在开头** ↦
+
+[[div_ class=&#34;help&#34;  style=&#34;font-family:Noto Sans SC&#34;]]
+&gt; Beginning of include ↦
 &gt; 
-&gt; 可不填。填true时启用自定义页眉标题 ↦
+&gt; BIG HEADER TITLE ↦
 &gt; 
-&gt; 大标题文本 ↦
+&gt; small header subtitle ↦
 &gt; 
-&gt; 次标题文本 ↦
+&gt; HEADER TITLE in phone ↦
 &gt; 
-&gt; 移动端大标题文本 ↦
+&gt; header subtitle in phone ↦
 &gt; 
-&gt; 移动端次标题文本 ↦
-&gt; 
-&gt; 大标题字体 ↦
-&gt; 
-&gt; 次标题字体 ↦
-&gt; 
-&gt; 结束引用块 ↦
+&gt; End of include ↦
 &gt; 
 
-&gt; @@[[include :scp-wiki-cn:theme:broken-world@@
+&gt; @@[[include :scp-wiki:theme:broken-world@@
 &gt; 
-&gt; |my-title=true
+&gt; |header-title=&#39;text&#39;{{[[footnote]] Don&#39;t delete the quotation marks. [[/footnote]]}}
 &gt; 
-&gt; |header-title=&#39;注意用半角引号框起来&#39;
+&gt; |header-subtitle=&#39;text&#39;
 &gt; 
-&gt; |header-subtitle=&#39;xxx&#39;
+&gt; |mob-title=&#39;text&#39;
 &gt; 
-&gt; |phone-title=
-&gt; 
-&gt; |phone-subtitle=
-&gt; 
-&gt; |header-title-font=
-&gt; 
-&gt; |header-subtitle-font=
+&gt; |mob-subtitle=&#39;text&#39;
 &gt; 
 &gt;  @@]]@@
 &gt; 
 [[/div]]
+
+
 @@@@
 @@@@
+
 [[/tab]]
 [[/tabview]]
 
-&gt; 这是一个引用块，在一行字的起始处加上“&gt; ”来创建。
-&gt;
-&gt; 更多文字
-&gt; -----
-&gt; 一条分割线
-&gt;
-&gt;&gt; 嵌套引用块[[footnote]] 这里是个脚注。 [[/footnote]]
-
-||~ 这是 ||~ 表格 ||
-||你应该老早 || 就知道怎么 ||
-||||做这个了吧 ||
-
 @@@@
 
+[[collapsible show=&#34;▼ Copy codes&#34; hide=&#34;▲  Copy codes&#34;]]
+
+[[div class=&#34;blockquote&#34; ]]
+@@[[include :scp-wiki:theme:black-highlighter-theme]]@@
+@@[[include :scp-wiki:theme:broken-world@@
+|header-title=&#39;text&#39;
+|header-subtitle=&#39;text&#39;
+|mob-title=&#39;text&#39;
+|mob-subtitle=&#39;text&#39;
+|my-logo=true
+|set-logo=1~6, 0
+|set-url=
+]]
+[[/div]]
+
+[[/collapsible]]
 ------
 
+&gt; This is a blockquote, created by putting &#34;&gt; &#34; at the start of each line.
+&gt; 
+&gt; More text
+&gt; -----
+&gt; That&#39;s a horizontal rule
+&gt; 
+&gt;&gt; Nested blockquotes
+&gt;&gt;&gt; And another[[footnote]] And here&#39;s a footnote! [[/footnote]]
+
+||~ This is a ||~ table ||
+||You should know || how to make these ||
+||||already ||
 @@@@
 @@@@
 
-你可能需要些字体，详情请看[http://etinjat.wikidot.com/typeface-hub 此处]。
+[[=]]
+The body font is //Iceland//.
+[[span style=&#34;font-family: var(--header-font);&#34;]]The Header  font is //Iceberg//.[[/span]]
+[[span style=&#34;font-family: var(--page-title-font);&#34;]]The Page title font is //Black Ops One//.[[/span]]
+[[span style=&#34;font-family: var(--title-font);&#34;]]The Title font is //Kumar One//.[[/span]]
+[[span style=&#34;font-family: var(--mono-font);&#34;]]The monospace font is //Space Mono//.[[/span]]
+[[/=]]
 
+@@@@
+@@@@
 
-[[include :etinjat:component:vol-title
-|chapter-num=5
-|chapter-img=var(--img-1)
-|main-title=源代码
-|use-sub-tt=none
-|font-size=2.5rem
-]]
+[[div class=&#34;tt-ch ch-{$chapter-num} &#34;]]
+[[div class=&#34;tt-line-top tt-{$self-line}&#34;]]
+[[/div]]
+[[div class=&#34;tt-txt&#34;]]
++ Code
+[[/div]]
+[[div class=&#34;tt-line-bottom tt-{$self-line}&#34;]]
+[[/div]]
+[[/div]]
+
 
 [[div id=&#34;ch-bottom&#34;]]
 [[/div]]
 
-[[collapsible show=&#34;+ 代码&#34; hide=&#34;- 隐藏&#34;]]
+[[collapsible show=&#34;+ CODE &#34; hide=&#34;- HIDE&#34;]]
 
-+++++ 主题代码
 [!---xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--------------------------------]
 [[code type=&#34;CSS&#34;]]
 /*
 =========================================================
-              ⚙️ 羽天一的破碎世界BHL版主题 ⚙️
-       ------------------------------------------------
-         破碎之神教会的LOGO由Sunyclocwork设计
-          侧边栏和版头logo的衬图由Woednaz制作
-                       遵循CC-BY-SA协议
+⚙️  Broken World Theme  ⚙️
+    [2019 Wikidot Theme]
+    Created by Etinjat
+    Based on Black Highlighter Theme created by Woedenaz and Croquembouche.
+    The COBG logos was created by Sunnyclockwork. Licensed under CC BY SA 3.0.
 ==========================================================
 */
- 
-/* 字体 */
-@import url(&#39;https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css?family=Iceberg&#39;);
+
+/* ICON */
+@import url(&#39;https://scp-wiki.wikidot.com/fragment:broken-world/code/1&#39;);
+
+/* FONTs */
+@import url(&#39;https://fonts.googleapis.com/css2?family=Black+Ops+One&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Kumar+One&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Iceland&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Iceberg&amp;display=swap&#39;);
+
 
 /* 
 ============================================
-赋值 
+ROOT
 ============================================
 */
  
-:root:lang(cn), :root {
-    
-/* 字体 */
-   --body-font: &#39;Iceland&#39;, &#39;微软雅黑&#39;, &#39;等线&#39;, &#39;Noto Sans SC&#39;,  &#39;Merriweather&#39;, &#39;Iceberg&#39;, &#39;Noto Serif SC&#39;, monospace;
-    --header-font: &#39;Noto Serif SC&#39;, &#39;Noto Serif&#39;,  &#39;思源宋体 CN&#39;,   &#39;华文中宋&#39;, &#39;宋体&#39;, lisu, &#39;楷体&#39;, &#39;ZCOOL XiaoWei&#39;, &#39;Iceberg&#39; , &#39;Noto Serif SC&#39;, sans-serif;
-    --sub-header-font: &#39;楷体&#39;, &#39;Noto Serif SC&#39;, &#39;ZCOOL XiaoWei&#39;, &#39;Iceberg&#39; ,sans-serif;
-    --page-title-font: &#39;ZCOOL XiaoWei&#39;, &#39;Iceberg&#39;,  &#39;装甲明朝&#39;,  &#39;华文中宋&#39;,  &#39;思源宋体 CN&#39;, &#39;Noto Serif SC&#39;, CTWeiBeiSJ, &#39;楷体&#39;, &#39;Ivymode&#39; , &#39;Iceberg&#39; ,sans-serif;
-    --title-font:  &#39;Noto Serif SC&#39;, &#39;思源宋体 CN&#39;,  &#39;Noto Sans SC&#39;, &#39;Noto Serif SC&#39;,  &#39;ZCOOL XiaoWei&#39;,  &#39;新宋体&#39;, &#39;Kumar One&#39;, &#39;Turnip&#39; , &#39;Iceberg&#39; , sans-serif;
-    --mono-font: &#39;仿宋&#39;, &#39;pennsylvania &#39;, monospace, &#39;ZCOOL XiaoWei&#39;, sans-serif;
- 
-
- 
-/* 版头文字 */
-     --header-title:&#34;破碎之神教会&#34;;
-     --header-subtitle:&#34;修补这个破碎的世界&#34;;
-    --phone-title: var(--header-title);
-     --phone-subtitle: var(--header-subtitle);
-}
-
-
-:root{
+:root, :root:lang(cn){
    --theme-base: &#34;black-highlighter&#34;;
    --theme-id: &#34; broken-world-bhl&#34;;
    --theme-name: &#34;Etinjats Broken world BHL theme&#34;;
-    
-    /* logo遮罩  */
+
+/* ------------- Fonts  ------------- */
+    --body-font: &#39;Iceland&#39;,  &#39;Iceberg&#39;, sans-serif;
+    --header-font:&#39;Iceberg&#39;, &#39;Iceland&#39;,   sans-serif;
+    --sub-header-font: &#39;Iceberg&#39;,  &#39;Iceland&#39;,   &#39;Kumar One&#39;, &#39;Iceberg&#39;,   &#39;Iceland&#39;,   sans-serif;
+    --page-title-font:  &#39;Black Ops One&#39;, &#39;Kumar One&#39;,   &#39;Iceberg&#39;,   &#39;Iceland&#39;,    sans-serif;
+    --title-font:&#39;Kumar One&#39;, &#39;Black Ops One&#39;,   &#39;Iceberg&#39;,   &#39;Iceland&#39;,    sans-serif;
+    --mono-font: &#34;Space Mono&#34;,  monospace;
+
+/* -------------  Header text ------------- */
+    --header-title:&#34;Church of the Broken God&#34;;
+    --header-subtitle:&#34;To Repair This Broken World&#34;;
+    --phone-title:&#34;Broken Church&#34;;
+    --phone-subtitle:&#34;Repair This World&#34;;
+
+    /* logo cover*/
    --gradient-logo-under:  linear-gradient(180deg,#2e2c2c 0%, #333 0%, #000 0%);  
  
    --gradient-logo-cover: linear-gradient(rgb(145, 145, 145,0.5) 0%, rgb(44,46, 44,0.8) 30%, rgb(51, 51, 51,0.8) 100%);
  
-    /* 版头遮罩  */
+    /* Header  cover*/
     --gradient-header: linear-gradient(50deg, #151515, #141414,#3b3b3b,#342f2f,#2a2a2a,#000);  
  
    --gradient-header-line: repeating-linear-gradient(50deg,hsla(0,0%,90%,0),hsla(0,0%,100%,0) .25vh,rgba(88,88,88,0.1) .35vh,rgba(88,88,88,0.2) .4vh);
     
     --header-title-cover: linear-gradient(120deg,#e8e8e8 0%, #a2a2a2 10%, #fff 50%);
 
-    
       --gradient-header-webkit:  -webkit-linear-gradient(50deg, #151515, #141414,#3b3b3b,#342f2f,#2a2a2a,#000);  
       --header-title-cover-webkit: -webkit-linear-gradient(120deg,#e8e8e8 0%, #a2a2a2 10%, #fff 50%);
 
-    
 
-/* 图片 */
-      /* --logo-image: url(&#34;http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Logo-broken-1.png&#34;);*/
- 
-        --ironhide-image: url(&#34;http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Bgr-wanderers-goldfoil.png&#34;);
- 
-       --gold-image: url(&#34;http://wanderers-library.wdfiles.com/local--files/component%3Atheme/goldfoil.png&#34;);
- 
-       --scp-image: url(&#34;https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg&#34;);
+    /* sidebar cover*/
 
-       --logo-image: url(&#34;data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2ZXJzaW9uPScxLjEnIGlkPSdMYXllcl8xJyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB4PScwcHgnIHk9JzBweCcgd2lkdGg9JzUxM3B4JyBoZWlnaHQ9JzUxMXB4JyB2aWV3Qm94PScwIDAgNTEzIDUxMScgZW5hYmxlLWJhY2tncm91bmQ9J25ldyAwIDAgNTEzIDUxMScgeG1sOnNwYWNlPSdwcmVzZXJ2ZSc+PGltYWdlIGlkPSdpbWFnZTAnIHdpZHRoPSc1MTMnIGhlaWdodD0nNTExJyB4PScwJyB5PScwJyBocmVmPSdkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdFQUFBSC9DQVFBQUFCa244WWVBQUFBQkdkQlRVRUFBTEdQQy94aEJRQUFBQ0JqU0ZKTiBBQUI2SmdBQWdJUUFBUG9BQUFDQTZBQUFkVEFBQU9wZ0FBQTZtQUFBRjNDY3VsRThBQUFBQW1KTFIwUUEvNGVQekw4QUFBQUpjRWhaIGN3QUFDeE1BQUFzVEFRQ2FuQmdBQUFBSGRFbE5SUWZsQkFZRUVUUXYwcWIwQUFBOG5rbEVRVlI0MnUyZHZXTGJUSkt1Mzg4endaZUIgazAxR090dU1jTFlaNFd3endWZEFPTnRNL0s2QWREYVo2T3hrZ3E5QWNIWW1FbndGZ3JLemthQXJNQlZ1eEJOUUVrRVNQdzJncW4rQSBlaGhJSXFsR05VaThxSzZ1cnY1akQySGtMTTcrL21YYUlFRW5memR0Z0VETTRZTDJNVG41ZWY2N0tqdGtyNytsQUlBTU80aElESW8vIHhBdHdHQTgrSnZBQkJBQm1tR2s4ZG9ZZGN1VFlJVU9PWjlPblF1aUtTSUJiZVBBeHd3dytKZ2hNRzNOQ2pod1pjbVRJOEdMYUdFRWQga1FBWFdHQUdIMzRuVjk0TTZhc2N5SkRCZWtRQzdHWHhldG43cGczcFJmYjZFREd3RkpFQTI1akNSd0RmTWplZmdnd3BNcVFTTjdBTCBrUUJibUNKQWdFQnJTTThNT1ZLa0lnVzJJQkpnbXZGYyt1ZUlGRmlCU0lBNXJoQWdIT0dsZjA2T0JDbFNtVWN3ZzBpQWZxWUlFU0EwIGJZWjFwRWlRNHRHMEdXTkRKRUFuYzBRSUhJL3djNU1qUllLZnBzMFlEeUlCZXBnakVxZS9CVHVrU0pESTRJQWZrUUJ1NU9MdlF5SkMgd0kxSUFCOXk4Vk1oUXNDSVNBQUhVNFJZeWNWUGpBZ0JDeUlCdEhnSUVRMHdzODhlWWdrVzBpSVNRTWNDRVVKbkZ2SzR6QTR4WXBrKyBwRUVrZ0FJUGtUaisyc213bFlGQmYwUUMrckpBaE1pMEVhTmxod1JiOFFmNklCTFFIYm4zMjRMNEF6MFFDZWpHSENzWjkxdkZEakcyIHN1U29QU0lCN1ZsS3pOOWFFbXlsT0VrN1JBTGE0R0dGU0Z4L3k4bXh3US9UUnJpRFNJQXFVMnpFOVhlR0hERzJFaDFRUVNSQWhRVlcgc3JqWE9YYllJcGJvUUJNaUFVMWNZU1VqZjRlSnNSRVpxRU1rb0k0bE5qTHlId0FpQXpXSUJGUWhsLyt3RUJtb1FDU2dETG44aDRuSSBRQWtpQWVkY1lTdVgvNENKc1pLWmdpSWZUQnRnRlF2Y0l4RUJHRFFSY3F6aG1UYkRIc1FMZUdPS1dDTC9vMkdIRGI2Yk5zSU9SQUlBIHdNTldWdnVOamh3cktUNGlFZ0FBYTZ3azYyK2twRmlOZmFueDJDVkFnbi9DeUFPRVk1WUFHZjBMQjBZZEdSanJqSUNITlhJUkFBRUEgTU1FV0QxaVlOc01NNC9RQ3h1Zis3NUFCQUhMazc4OWwySlcrTjNqL2JmSzYrWmsva2xqSktJY0U0NU9BS2JZRFgvV1g0bkI1SHk3NyBuQ3dmYm80SkRnTGhZekpRV1JqaGtHQnNFbkNOemVDK3VobDJTTEZEaHAzbTZQWWNFd1NZd0IrVUlJeHNsbUJNRWpDazhGK0tIRGxTIHdudDhmeGFZd1IrSUhHend6YlFKdWhpUEJMZy8rNzlEaGhRWmN1dnZVVlA0OEJFNExRWTVvbkZVSVJ5SEJNd1J2d2EyWENSOXZmVHQgdWQrck0wWHdLZ1l1c3NWbStPSEJNVWlBbStQL0hWS2t5QVp6SjFvZ1FPRGNRR3dFdnNEUUpjQzk4Zi9oMGsrdGQvYTdza0RvbUZjdyBjRjlnMkJLd3hOYWgrMytHQk1sZ0wvMVRQSVFJRURpU25aRWhHdTduTWx3SjhCQTdNdisvUTRKMHBCdGl6UkVpZE1JbkdPd2N3VkFsIFlJSFlnVHRNamdUSjBNZWFDa3dSSXJCZXNET0VUb1prR3hpbUJLeXhNVzFDQXprU3hNTjFManZoSVVSb3RSRHNzQnJlUGtYRGt3RGIgQTRCeThkZmpJYlI2ejhZRTBiQ0diRU9UZ0N2RTFnWUFkMGl3bFl0ZmlTbENhemR1enhFTzZWTWNsZ1RjWUdYYWhBb1NKTU56SWRteCBkd3YzMVhBV0V3MUhBanlrVmthV2M4U3lzMTBQYkIwWURHWkFNQlFKV0NDeDhHNlJJSllDbFNUWTZBOE1aRUF3REFtNHh0YTBDV2ZJIHJyYjBlQWl0MitVcGNuOTQ1NzRFMkpjQ2xHSHIvaGZEV216YjZOMzVTa091UzRCdGF3QVRiQ1hWaDUwcE5oYnQrK0I0eXBEYkVtQlggQkVBMnJkU0poNVUxRlNCMmlOeU4rYmdzQWZaRUFIYllZdXUyTytna0hsYUlMSWtPT0R0TjZLNEUzRnJpQ3NybGJ4cGJ0b0ozTkNyZyBwZ1RZa2dNZ2w3OHQyQ0VER1FMM3ZnMHVTc0RjaWczQTVmSzNEUnRrWUlmQXRWd0I5eVRBaGhDZ1hQNTJZa09JMExuVmhLNUp3Qkt4IFlRdms4cmNiRzJUQXFkQ2dXeEpndmc2QVRQeTVnUG04Z1JoZlRaOEVWVnlTQU5OekFDa2l1ZnlkWVk2dDBjVkZ6aXdqY2tVQ1RLY0IgajZDWTlBQXh1MzJzSS9NRGJtd3U3aUUxS0FBN3JQQlJCTUJCZnVJak5oWDdKL1BqSThYYzlDbG94Z1V2d0d3V2dLTUpIOEk3SnZlUyBkbUNTMEg0Sk1Ka0ZrR0VsZC85QllLNml0UFVpWVB0QVlJN1UyRWUzd2ljUmdJSHdDeDhOelNaTmtHSmh1dnQxMk8wRnpKRWFtdUZOIHNKTG8vK0F3VjEzYTR0SWlObnNCcGdSZ2h4QmZSQUFHeURNK1kyVWtQQmhqYWJyelZkanJCWmdTQUdmbWM0V09tUElGTFBVRWJQVUMgekFqQTRmNHZBakJzVFBrQ2xub0Nkbm9CWmdSQTd2OWp3b3d2WUtFbllLTVhZRUlBZG9qay9qOHFEcjZBYml6MEJPenpBa3dJZ09NRiBJSVhPbUNnL2E1a25ZSnNYWUVJQU52Z2tBakJTSGhGb3IwQnBtU2RnbHhlZ1h3QjJDQ1g5Wi9UbzM0eldJay9BSmduUUx3QXBRaG4vIEN3Q21TRFFQQ0t3UkFYc0dBdm9GWUlQUElnQUNBT0FabnpRUENMYTJyQ0sweFF2d2tHbGRDeUFEQU9FU3ZRTUNTeFlRMmVFRmVKb1ggQTJYd1JRQ0VDMzdDUjZidGFCTTc2Z25ZSUFHNjZ3SEVNZ01nVlBDTVFHT0IyZ2tTZUthN2JJTUU2SjJaamR3cDdDZ1k0QVZmTmFZTSB6WkNhRmdIekVuQ3JzYUxMRG9IV09PemM5TWNyZE9JN0FtMXJDSHdrWmp0cldnTFdHcXNDWndpMFJnRFd5TERESFpZaUJNN3hTMk5VIElNQ3R5YTZhblJIUXVUR0kzaHdBRDl1Q3VPMlFJSEYzKyttUm9yTnE5UWJmVEhYVHBBVE1OVVpmOVc3dFVCN2czQ0ZHYk1NMGtLQ00gdnIwcmpLVUttWk1BbmFsQWVqVzJ2bWM1WXNReUkrRU0ranhWMzh6dHdaUUU2SndJMUt1dmF1a2xHV0xFa3B2b0JFdHN0ZHlzREtVSyBtWktBZTAzbEduYUl0STdCMjkwekVpUklSQWlzUjVmSGFtVC9JVE1Tb0d1RXBWdFh1L1JMUW9VdW9LdXVRSUl2dXJ0bVFnSjBqYTVjIEVJQTNjaVFTS3JRYVhVUFhMZjdTMnpIOUVxQnJIaUJEcFBHU292bUM1Tmdpa1ZDaHBlZ1NBYzF6QTdvbHdFTSt3RkVWN1pjalJTd1IgQWl2Umt5bWcyWHZWTFFFUFduUlVyd0R3QklzU3hCSWhzQkFkY2F3Y3ZyN3ZyOTRFNFJzUkFHVkNKUGlOV3h1V2t3b0Z2bXFJWk0wMCBaczFxOVFMMGhBSDFDb0NPT2VNY0NiWVNJYkFJSFo2QXRuUTJmUktnWjI1VnR3REUybzZWSVpaUW9UWG9FQUZOaTlwMFNZQ2VhT3B3IEJlQU5TU2F5Qlg0UjJHR200NVBXSlFFNlZGT3ZBT2hiUUhLT0pCUFpBZjgzSU1Wbi9tN29rUUFkOTh1eENNQWJzdTdRUFB6ZkFnMFIgQVIwU29DTUtNRFlCZUVOQ2hXYmgveWF3UndSMFNBQi9Mc0FPdnJiTFFIZXhVeFVrVkdnT2JoRmd6eEhnbDRBYjltS01Pck9wYkJTQSBOeVJVYUFidVZhL01TNGU0SldDQmxQY0FJZ0JuWkVpUXlpNEpHdUgvVnJDdUd1Q1ZBQjByQXZTVkJEV3g2M0ZYWk5aQUo5d2l3RHJRIDVaV0FPL1pGRmZwV1Zia2tBRy9vWFMwNVpyaHZkb3pUZzV4ckJKYnNBckFTQWFqRlIyYlhYdmFENVlWNTU0RUFhNjZtK2J5QUtUTG0gaTBaZlZXQVRlWUIwR0N4UVBTcTRLMkV3bFJmbDh3SzQ5MmhOUkFBVTJaamRxbUkwUERKUEQ4WTh6ZjV0dzlQdU5mNmI2MHdBQURLRSArRi9XSXh4NzhuKzBISWNUSHhQODI3UVJJK0FSTy93WFcrdi9CRGhDM3p3REFlNUJnS1lGRkxBcEQ3QXZ4cmFxR0JtODN4aUd3UURQIFFJQjNFTERUbGd5c2M4ZERibUlKREdyaEsydEVZRXZmSkljRUxKbXpwVmJhSnJxMjJ2YVgxWUdJZ0I0QzVJeHRYMU0zU1Q4UTRKNGggdFdsek1QZVE0WUFPT0w4MTVHbEM5RjRBN3lBZzBUekJ4UjNsMVkxNEFqcDRaRndYTTZFZURGRFBDQ3p3TDdiTzY1d0hPUEkveUxWdCBNYTJERUxsa0RMTHppQW4razZudC8wQ0cvNkZyam5ZZzRDSERqS25qZXBjRW44Sy8ybEV2TWh6UUFkOEtRdElGeExRRGdSV2pBQUNSIHNSWHhmem1lSEhTT0RBZDBFTElGazJmWTBEVkc2UVZNR1NPaDV0TmM5V3lDb2cvdGU5ZU5FTTZVWWJJTUFVb3ZJR2JyTHBBYXozTVAgTk8yRnFJdVZwQTJ6d3hrVzNGSTFST2NGWENGaDY2NitiTUE2ZUNNZEp0QzMwR3E4OEMyWUo0cm9VRWtBNytXaHJ5eElQVVBMRWhBUiA0SWZ2eWlBS0NsSU5CRGdEZ1J0TEJBQjRaRjRWcnA5SWhnUE12TEJsbHN4b2hoazBYZ0JuSUZETGRnb3Q0Qnp3bUNIR3lvSmgxcEJaIFUwYndUNWoxbnlXamtRQys4WTRkVVlCVFhLOGZjSW5lWFJqR0NOZDhFc0ZBamtJQ09Lc0VoMWFXd0JRUkVOckJ0M3krZDV5TUloYXcgWmVrYUFNUldDZ0R3WTNBUzRDT0ZaOXFJQWZQTU5oVG8zVzUvTDREdmpzaStqMG92aGxOTTVBM3hCSGpoU2hqdTZTbjNsUURPeVVCYiBwZ0tyR0o0STVBaGxDUkViWElPQkhCLzcvSHZmZ1FEZlpPRFdjZ0hncmc5amdobFN6RTBiTVZpNEJnT3pmaXMrK25rQmZPVkJNbnhpIGFaY1dGellZYTR2T0RkckdCODlnb05lUXVaOFhzR0hMbFl1WTJxWGxaWEFyQjRDSmVBS01SQ3lwWmIyU2hQcEl3SlJ0RWNUR21mdlEgVUVWZ1lkcUlnY0kxR0ZoMW44L3BJd0U4blFGeXhtbEdlbDZZbE4wa0U2UlNVWUNKN3l4Wk5KUHV0K1B1c1FDK3BHRGJad0l1R2Q3eSBJVUJxQzNIQlUwV2djeDV0ZHk5Z3c5QU5BSWlkRTRBaExoOENwTFlRRjQ4czEwNW5QNkNyRjhEbEE5aTRKa0FOOFFRRVZYaXlhVHBlIE8xMjlnQzE1Qnc2NHUyYU5zMEtNT1dKWlRNekFDOHQzcGFNZjBNMEw0Rm9ZWk52QzRMWU1iL2tRSUdWRmVPRElFT2prQjNUekFsYmsgeHZPMnE0c2ZqdVF6dEVQS2luQVFNYlRaeVEvb0lnRlRwdW9BVzJleUFhb1JFUkRVNE1rUWlOci9TNWZkaExZc1NiRTdBenNGY2NDNSBqNHc1Zk13c1hianRMaG4rRzM4U3R6bHB2MWRVKzFnQTExekFrR0xQdzF0RENNaGlZbm80WWtldDF3MjJId2hzV0U1R05pQUJBTDRPIE1pd29aVVdvK2NGd08yMjlickN0QkV5WjdtOHJsbGJOSVNJZ3FCQ1piN090Qkd4WVRrVGlZRVpnRTE4Wkt5cWFRMFNBbGw4TTM1S2cgM1NLdmRoTGdNYzBGckZoYU5VMDR1RFdFZ0lnQU5SdUdOcU0yYjI0bkFTdVdGTmpZMkk3QnZBeHhJVEVnSWtETEw0WWhZNFNwK3B2YiB6QWp3MUFoeWQxV0FDa09zS3dUSTdBQWxISE5zTGZhTmJ1TUZoQ3crd0hiUVg2V1hRYTRoRkUrQWttY1dQMEQ1MDJuakJUelpzN3JKIEtZYTVobENxRE5MQjRRZXM4RjN0amVwZXdCVkxyZUJoK3dBSGhsbE5RS29NMHNIaEI2eFUzNmp1QlZpenNzbEp4Qk1RNnVEd0F4UzMgR0ZIMUFxWXN4WS9INEFNY0dHWTFBZkVFcUREb0I2aDZBUnhaNytQeEFRNE1zNXFBZUFJMGNQZ0JTbHVQcTNrQlBDbEI0L0VCRGd4eiBJYkY0QWpRWTh3UFV2QUNPKzlmWWZJQUR3MXhES0o0QUJmUitnTkkxcHVZRnJCZzZQRFlmNE1Bd2x3K0pKMERCTXhMaUZpY3EzcnVLIEY4QlI5M3ljUHNDQk82YVZGcVlSVDZBdjlEVTVGZmJtVlBFQ0lvYk9KcU1WQUNBYTVNb0IyWWlzUC9UckJ2MW0zOHlVQkd3WTJuU0Ygb1M0ZmtvM0kraE9UdHhnMXZhRlpBcFlNS1MxRFhSdW95Z3ZDUWVZTEFySUhVVC9vNndoRlRXOW9sb0NRb2FNeFE1dHU4VHpRcEdGQSBSS0FmVytMMkprMmZSbE00MEdQNG9ycStZUWdWVitRUllIc1lVakZZdmRBdnlVL3dwZTdsSmk4Z1l1aGt6TkNtaS93Y2NFUkVQSUd1IHZKQmZIMkY5QVJIOUVwREwvZUdWNVVEWERSd1FFZWpLbHJ6RnNPN0ZlZ21ZTWxTOGljbGJkSk1sNGtHdUhUd1NTN0pRSjU3SnB3WlggZFMvV1MwREkwTUV0UTV2dWNUTUtLWlNNd1c1c2lkdWIxWDBPOVJJUWtYY3VIbkZLMEpIYlFROEJqa3lRdGlsa0tienlVK2ZVWUowRSB5RENBQXcvM0ExMHFWTVlFaWRRWTdFQk0zRjVZL2RLSGJ2L1drWHlBVzRhMHcwUEtVbnpGWG1ZRGozandFQk8zVnpNVXFKT0FpTHhqIFcvSVczV0krMEpMaTFlUUlScDRKMmczNlZZTlIxUXZWcVVFY1ZVd21vNDRFRExWK1lEV3kyMEIzcUd0MDdQQ1A4aGVxdllDQXZGTmogWGgwSVhJMWNBQmE0TW0yUVUvd2d6c3VkVkEwRnFpVWdKTzlVVE42aU95eVJqRm9BbGtpUllHM2FLS2RJaU51THlwK3VHZ2pRcncybyBkRVJHd0hyQXFjRGx4UGhhK092bWZSTDA5SG1oRHVwU1BUaytsajFkNVFVRTVCMUt5RnQwaGR1UkMwQXhDeUxDdlV3U0t2SklISTJyIG1CV29rb0NRdkVOYjhoWmR3QnRzd2RCcWlnTGc0ZUdzLzRIc1Jxak1scmk5c096SnFvRUE5ZjZCRlU3SXdCbnF2c0oxRkpjSnp4R1ggOWw5bUN0U2ducFVyclNSWTdnWE15ZmNQVElqYmM0SHA2QVdncXYreUw3RWF6OFRSQUw4c1hidGNBZ0x5enNUa0xkck9ITm5JQkdCMyBJZ0RMMmtsUUVRRTFZdUwyZ3N1bnlpVWdKRDV3UHJyaTB1TkxBOW9oS0FqQWRlTlNhQkVCRlJMaTlzTExwL1I0QWRRZHNaMGxzaEVLIHdGSG1iNVVDV1NJQ3pWQVBCWUxMcDhva2dENkxLeVp2MFdhR3VuMW9OVmxCQUR6Y0tjK0JpQWcwRTVPMk5ybmM2YUZNQWdMaVRveHIgR0RDT1lpQkZUZ1VnYlRXTTFDMENublAxQ3hMaTlvTHpKM1JJQUhVbmJHWXN4VUNPRkNmNHVxeUU5TW5MWk5VUkljZmFLYytEZlNodyBLUUVlZVJ3N0ptN1BWdHE0d08xWVdYc09ZM3pxSlFBQU5Fc0FzRUh1VkduVG1MUzE0T0taL2ZuamFrL0w3ejFHOGZEMkQ4Um43bzNsIEhudnNiNWxhNzhOdG9mL0wvZThldmRQem1CYU9lNytmRy8vT3RMZWFnc1ZwK3g4VVZLSWZDWEY3ZHNLWEJ2UTIxMjdmdHVTYlFpSncgMTNySWVyY2NpUXEvQjhodzQ4U1E0Sms0UnpBNC9mTlNBbnppRGlURTdka0lYeHBROFJMNXF0VmxicmJzMi92dnQ1M2thYWQ5ejZIbyA3TytWSTBPQ2hMUzE0UFRQeXpVQ2U4V0dWQmwrcGFBRld5MkE4MHZFbmpVSFJjdTZMWVE2elNUUVFkWGkyeFFyeStlc3FKY04vMUg4IDQ5d0xvTjRmUGgyOEFDelo4Z0F2NzVGMmJFdStnLzl1MmVWS1FEVXk3UUpRWFQyUFkwaHdqVHRjaysyaThFaGN2ZVBVcnJQUXc1bzQgOUhCdFBKakMrMWdTbjY4M2ZwOEhiZDRmZkdGSFZjdm12VzE1MkhzR1BxdW5objdSQlNhOTk5RG8wLzUydnlUbzdTM3BaM2h5Vlo0ZiA2bzc0QytOSzFMWGI0NGI0YkIyL2puWG5iZDR4OWs3QnczN2EyNDViNWsrbC9IR2xZTmw5b1hkOUh0Y2w1MjFkS2VvcWp5WHBwM2hYIGJQdjhVTjArMUNxR1BTRjRTM3F1aW1ldFNUaE5pVUR4N3UyV0FLaC9XbXVDZS9aRDVTZDd0MTkya2htUDlITjhLclo5ZXFBcDZZSE0gZmR6OEQ0L2NYM3BEelVrMklRSjNCY3VXSGR2UW1RVncrbEEvWDArOTd0Y3FWOUhEL3FiMU1SNUlQOHZDZCt3MEhCaVFCaDMwNW4zcCBwRzBtdkRxcTlYUWVtWTVmVFl3djc1WjFYUWlsZXhMd3lGV0xrTzBNS2U1NnJDVUlHdC9oWTRVVWU5emhXdms0S2VuNThJKy9mcWg2IGdRUmFzMjJCTHcyb1RVR3RYMXByRW00TGFVRGRzZ0JNQ2tEN0NoZ2hNbHgzUEpiZjRpaGI1SGpDamNMcTNJVDBmQVNGMzArY2pYdFMgWitPcGx6dGw2NFBQQlc4L2JGb3lXWEpPMFgyL0pXakQ1bUZBa1lkTzRlejdqbWZvYm45ZGV6eEtDZ0ZCdm9PY3hSMEg4ckJKQUxDbiBuOFF0NDNqeGRwK1FiQTV4Y2o2V1BYcC8wem84Mkkrbi9lMytxdlNZOTRTZmFlSDJmUHIxcG1WNE9RRkw0ak4wNUthelRiZHNOdTMzIE5Ga0FiNnlOZlc1M1BjL0JWWXRqelluTy9QMStmU2FiYTZLV0Q3eUxET2NYZkdnNUFkVG41MGcvSi9tV3phNmlBRkQ0UC9kR1VvSTggZ2pPaG5qRndUZndKSEtjUjU2UXR2ODlJRk1PQk05S0FBeXpQdTI0TFh6V2d2bUV5cnVWREdXYnZueUZOT2RRQXVZSE5SVU9DTmdMayBpanNpK3FTMlR4QWlSbzRuM0JKZm44SDdid1g5dWlkVm1YdmpkMjNLeHkzcHVTbXFQRVdZakNOcCtPRWtDK0EzWWN2ZEJ6M2RIbmMxIFo3OGRLaGtEVCtTZkJBL3ZrYnFpRjBDclh5bHBheWJoMnhUc3RQQjJkK2lYRHhXckFYV3RCVkRGQ2c4YUsvaDVOVjdBQ2tHcnRmak4gR1FOVGNsK2FpM2M3anhMZ0VhOTN5MHoza1FnUEthTUFVQTJXWGhBU3JpWXI3Z3JJTVFEeWtXbGJweC9XdkpiaEZ6NWkxZXJNaGNocSBoZ1JCeGZNYkJOaGdpNVM0L0VkMy9QZmYzaDJZQmJHalFiUGd3dlNEYjExZXR6bm51Z2ZWaENWRkZvQUt0MXFDZzNlVnh6K3VZUEZhIEwvaXFHaEpVdFhQNjd2bCtzVi92MS90N282cytYNzkvUjdQV3BNMFBZNEVRWHhZQXozSlpDbnVMV1FCM1RMMC9uZ1h1V1NPdjV1aW4gZVN2VDFyR3d1NUxiM0VQRmUrdGlDTlA5WXIvY3IvZDN4Tkc0SnE3T0plQ1d0UGtoQkFOZEV3RHMreFovcGN3Q1VEMGliL2JJc3ViWSBsMGRldEF6bS9iN0lkYWlpalUrODJGL3QxL3ViL1QxemFIRjlMZ0gzSE0wNy9MaGlFNEE3VmdkNDJkbXVvZ0JNTmJxb25PZmpydWE0IDg0cno5N3VWOVUrRnhLRkY1YnU2OTJDNlgreXZXUVlOZCtjUzBLN2pUWmpOQ0RkNUlUWEJ2NEM2bSswVXRRQzY4c1EwSVBCcWoxcjkgWCt1VzlyOGxEbDIzUGxiYng0THdyRDhjMm55YkVaRDVnQ0xYYkdsQXhWZzdGejg2N0dpVW51MEpOR0czc3Npc3g3cThPc0xhSGxmeCBnbStZdFZxWkZ5REhUYzBtUER1eUh1VmtMUjNuQkJqVWhWTDFURHh1aWMvRkVYMnJKdHIxNFhSTGtHNzg3bjEyNkFjRWR6VkhheDZxIExscTYzcjhyendGbFpJeVNhZEVMbUJHcWk5cytBRmNhRUJEaHU3WmV0Tmw0Wkh1MkpVaDdkZ2p4RDJ4NjN1MUNaR1ExZDRINnBDQ1YgMUxWZitJU294WDEzb3NWM2FyWmJuUmtBSmduSU5ad0tEanpjTXdxQTNvSVpxaUlRNGEvMzM3c1ZBOG5nNHllQWIvQjdGcmFZMWFiZCB0Q1Zzc0ZxRkgvQjdTeHN0T1dGYlBuQ1VBSi9VekV6RHFhREhRMHBlT3UwQVZTSndPNXBGWUlldzk1WWdHUUk4di83K2pDOHRVMjR2IDJlQ2VxS1ovV0d1MWFuV21GM3lEM3pNMjFPK004TFUxQVk0U01DRnMyRTBKNkxvdmJqTTdCUGhscEU5ZmF6K0pIUUw4ZlAyOXEvK1QgWDVRNis0V1AyUFN5T2tCT3NLVk4zMkZBa1dkOFJkRERCYzk3OTZhcjVmVUV3RkVDQXNLR1hSd0k4QXFBdVdYVDFjdUhNdmp2ZG5YMyBmMWFsZDlOdm1QWDZxazZROWg0UWhMV3Zaa3B0RlBtRno2MGlBMXhRV2pBQnlyWVZwY0MxU2dGODAyREZDODBFVldzSWkrNTdIL21iIFZEei9qTThJZTMxZCt3NEl3dHBYMDA1dC9zREhUcEdCUHVmaG5PZitUYnpqQXdESGxLQnJaVU9YcEwwdlltYmpyUFBIWmFwdmNSS3cgWHhyUWJjT1IxNzNPMysvT0ZmMDl4bStvMTNyYXVOKytCT2VQaDVaSHI4UGJzM2dCbEpySFQ5ZWErTTIwS1FuT3lia25VSndFWFBUMCBmNEtHSTMrRDMyTkkwSDFBRU5hK21pbTFVZDJycnkxN0ZaTnUxN3NqYk10L0d3Z0VoSTI2RlF4Y00rWUJmckpDQUlCVEVTaE9BdmJmIEZYbldPSlAvaU0rSWVueHRONTBLaklTMXI2YTkrdnpXSy9XNWp4bFMzSkx0WGR6ZitpTVRubGpBanFGTkhtNTd4cTZyMFpFSTNJYUQgQ0p4T0F0TDRQNEhDZTM1Z2htM25JL2pJV2xZYzlGaTlnRGZhbFJ1SmtCTWxRYXNlVVFVZnI3R0FPOExSeGI1VnlXV1RJK1MySXpwMSA3TnhMMFR0WnNrclZlL1hkSXVhOVZxTzJxVGk0YkdpTDlxemV0T2dGUllXRUJkRW50OS92OSt1M1dNQ0VVRmZjOEFMNHlvRUJrV1VlIHdCc3ZoV2d5WFJwMG9Qek9SM3h1V2FTcnlBb1B5dW5EWWUycktWSFBEN3pncnhhTGlueGt1T2s1Sk5nUldoL2cxUXQ0SXRTVnZSVlIgOENibGZpRHRjUkg3bDBsVDk3N2RmYTJQOTZWV2I5bHJhSVdubGtXYlJVWHROaWU1Zk5CeC8rWUZ6SWgxMFc3bXlKalNnTXh1bmFsSyBUTno3b05XN1gvQzFjNzNqQ1dLRnNGclk4SHEzWXpmUlpsSFJCQW51TlZaUnJzYm5DQWVxblFSenpKRXlGWHJld1hkQUFOQWpNRmRPIDBQby9mdUZUNXlGQmhMUmhRQkEydEpBUzkvOUltMFZGNnB1VGNQWmdBbUJQdlZHUjNWVUQrY3FCbWQwNHM5M2p1blhmNmwvdFpzVzAgUnhpNnV2S0MxL0NmL0lscjB4WkRIWlhOU1M0Zjk1M1AyeVhlQjR3cEdMaEV3cFFJbkJ0ZENkQ1c3eTJtQTNlSUdxb1FUVG9tdnZSWiBWN2pGWGNXQUlHejR6N1RUOGRyMVMzMVJVZlBtSkdWa2hOYjY5QU1CU3ZObzRjd0ROTHNTb0QycSt4Qm1DUENqTWQ0ZGRMYmpWOGVzIGV5Q3NXRThZTnZ5ZldyLzc4cXZGR29td2RkbTBIYVdwSDBDZEcyZ3IzY3BocUdCTEluQTdRZ1d4emw1OW01Y0dFUWg2V2RLMTFNZ0UgS1c3T25tdEtDdEo1aS9xcExHOFRiUEZBbWtTc3ptd3M0VUMrY21DcGt3S2dzZzloWE9oWlV2dk9vS2N0M1ljRTU5a0NUWmJzTkh0ciAzNVR6SXYwV1NjUXBvWVdqa0FBUGQyd0NFT096a3dJQU5PMURHT05yb1dkSlExdjk3MkMvNEhkSzEvYVJGdHpvc09IZGFXODcyM0pJIEhWSTdib1JjMjE2TDczd0FkZEV3Mi9DUWt1d3dYNFp0S3dIYThveWdRZ1RPZThZN0ZIZzdScmRTSTVOQ2NEQnNlRzlHWUdkN252RlogTVJkaWdoajNwRVZVbTVqUnp3amtHczF2WnNwV0RlaDAwYTJyUEphS1FGblBrdHAyQWlKN3VwWWFPUVFIcnhxL3l5bVJuZTA1cEE3dCBGTjRaTkNZUlo0UjJ6YWhuR2UzYVFZQnpWeHo3RTRHN25xWHlubmthUC9ldXBVYWVyUDkyZXZ1MTRuZnlxVGFKbUk1N25zSmhkc0M1IEs0NExpY0NxRkQyQjZsckhMdzEzVU1wNGR0Y2h3YXpoOWZZdFVxTmVqM2ltS1lsNDhnSFVLd1Jzb1g4NWpDcDJneElBNENnQ0tmeWEgV3NkSmJSc0JzVTNQUFV1TmxKRVIyOWkxWjZwVmgvb2tFYXZpMHpvVjcxc1ZHbjhzU1h0VnhLVkU0RGFQZWVOMlo5TjZoNUxKY2I0aCAvT3pzcW1SeHAyaDFXUkl4SWRRRGdSMnpacW5CVnc3TWJFbHdUaDRidHp0N3JyMkxCaXhXdmVDdlh0VUhUNkZxUjY4MVpVbkVoRDBaIFlpeUFyeHlZV3lzQjZObld2dHF1dUpjNmZhc1B2cUcrZzVBZTBoYnZEVW0zV2p0aGVCTEFsd2ZvM2tvQWF0TGFWd1BHSS9lclBuZ2cgWTdTdkM0K3RaRzJDRFU4UzhiQWt3TU1Eb3dDNG1RaE15WE50U0RCZ1BYYi9JVUdmLytXaHJVVnRrb2lWK1VDc0syMDdSWW5IbUFiayA2a29BYXBLYTEzenFMK2NGL1lZRUtiTjFlaXc2SkJGUDZJd1lqaGZBV1E3TTVaVUF0Q1MxcndZYUxPZzZKTWhKdCtLaUllMzBYeFBhIDBtOURrUUMrY21EdXJ3U2c1TVhnVU9Cb1E1Y2hRZHYzNjZCZE5JQ0pZVWpBRldNZTRCQldBbENTMUx3V2FMT2kvWkFnMVdaYkc2cXMgU3ZTdHRSbUNCUENWQXp2ZGZrc0FURWNEaXJRYkVxUWFMVk9ueXFxczFVNUZ2WEJmQXZqS2dRMXJKUUFWTmd3RmpyYW9EZ2xzakFRQSA5Y0wwSFRPMkRKY0Nya3NBWHptdzRhMEVvQ0twZVMzUWJvM2FrQ0RWYnBlcTlYbnA4d0dBdCtWU01hOEpia3NBWHhwUTlZbzVJYWw1IExUQmlVZk9RSURWaWx3cE5scldwUjl3SmR5WEF3ejJyQUl3N0Q3Q091cUdBM21oQTBhYjZJVUdxM0pKdVZDeHJVNCs0TmE1S2dJZVUgN1k0ejlwVUF6Y1ExcndYR3JLb2VFdGdhQ1FDcUpDQzRlRWE5SG5GTDNKU0FPV01lb0t3RWFPWm56VmN4TUdyWmo5SVFXbXJVcG5xZSBXOXpkV1NJRExrb0Fyd0JJSXJBS1NlVXJnV0hMeWlvT3BaMWEwa1c1ZGVYMWd2cHN5bHFCZXhLd1lFd0RrcFVBcWlTVnI1aUtCaFE1IEwwS2FtamFvbG5MclpwWHYvNFZQbmJaZXFjQTFDZUFyQnlZckFkcGc3MURnYU9IYnZnU1p4WkVBb0VvQ0pyWC9rOU1kM2kwSjRFd0Qga3BVQTdZZ3JYd2xNbS9iS1lVaVFXTzREVkZWajhtdi9wLzdWVnJna0FUZU1BaUFyQWRvU1Y3N2ltemF0d0RPK09KRGluWm84dURzUyBjTnV3eFhVZlpDVkFleDRybmRIQXRHbk9rWlk4RitnNitBZkxkdjhwaDNOWFFGa0owSlc0OGhVemUrUzZTMnJ5NEIrSVF5VStnNDJjIHV3TEtTb0R1eEpXdkJLWk5jNHlYa21qQXJQWS9mTHFEVXc4RUpzVHQ4V1lCeUVxQVBsUVhGUTlNbStZYzZjVXpzOXIzVCtnT2JYc3MgZ0ZzQUpBK3dPNHZLVHlZd2JacHpwQ1hQYWRwbTNHNEo0RXdERWdIb2gxYzdQeVBSZ0hha0pjL0ZlTkloQXpaTEFHY2FVSWFaQ0VBdiB0cld1YW1EYVBNZDRLUjFVelJEakNkZTgrWllmUUx2RlFrRFdFbWNha0t3RTZNdFZ3d3hOWU5wQTU4Z3FucDloaXh6ckV4bWc5TEh5IEQ3QmxIOEJUK0tvQmlRRDBaOXI0NlFTbVRYU090T2ExQ1RZWE1rQkZidWRBZ0s4YUVCRGprd2hBVDJLRkFacEVBOXFSTnR5SzMyUmcgcXRhY092UVMwTmRFem1wQXNoS0FnclhTUFY3bFBjS1JaOHl3YWtqVU84Z0E3UTB5L3dEcTNLUlpyLy9tckFZa0FrREJYTEdxclcvYSBVT2Q0d1hkOFJOU1lyeHZSUzRBOWNHNEtCcXhFQUhyakthOVVEMHliNmlnLzhCR2h6cFJoZWdud08vOG41NlpnUUlUdmJHMlBoMWo1IEU1cGdpUVVXV0dCdTJtam4rSW5QbUNIV0VxalAvdzdxZmRjbkhmL3ZTaW5JMUJWWkNVREJkYXUxR25IbEszbUpzM3Y1M09rek5wY0EgNWVBWlg3RkNoQlhqYlJGNGxZQWRhWk9UVHYvRm1RV3dRNGhmYksyUGgzbW5IWDNMbVBYOFdxZXZQNU9CZTNZditJN3Z1TUtLYzFqMSB4LzZRaGt0SGlzK3QvMmZOdUhHU0pBTFQ0Q0ZqdmgrMUo4TW4weVpvWW9vTjB6elpIMy9zQVdCUDJHVDdqNFV6QzBBRWdJbzd0Z1hiIGZmakR0QUVhOGJEQ2lueXcvSWZwY0tESEtnQ1pDQUFSOVZHQWpEaWVwQTU1b296RkhHb2gwbTRuc251YkVjaEpUVlZQWS9TUWlnQTQgUUgwVUlFUEF2ZlZsSlRORHh6WEZDNzZSUldRQUlPT1JBRi94ZlZQR1dnQ3lFb0NPK2x5QXczbE9GTnVpWm1ib3VDWUphSnM3U01DTyB0TTJaMHJ0NDA0QVNFUUF5Nm5JQmRnanhnbmJiWWxFeTY5MkNlMHdJMjhyZUpDQWpOWEdtOEI3T1lpQkFqQzhpQUVUVVJRRjJDTjVuIDY3ZEdyUE9OSE5Vc2xIM2U4WGdCelNaeUZnT1JsUUNVMUVjQmlyR1d4SWg5RXlOSE5RbHRybVhPNHdWTUdsNi9aZzBleWFZZ2ROUkggQWFLVFlPdXprVm1Cd01BeHpUSWpiUzNuOFFLQzJsZHZXVjFHMlJTRWtyb293T29pNVhyTGFrdU8xUHF0d1hUZ2s3YVdBMzhIQVBLcCBzMmxGUHJlSExlTWtvS3dFb0tVdUNoQ1hwT1ltSFkrVDF2eTJPL3R1UGx4Y0FvdVJKWC83dlZzbzh2d21BVUJPNm1ENHBSTGdzVTRDIGlnRFFVaGNGeUVvSFd5OUlDcUtSdnY5MlhPNnpleDhzN0RyZWRpNW5rU1lHejVFSlpvUnQ1UUNmQlB5OGVHNktoRkVBSkJHWWxyb28gUUZZNTFQdkNidGRsS2xuWmQyM0krSVJ0NWNDeFhrREdiQ1p2Rm9BSUFEWFZVWUFkSW9NVHJ1bkZNN1BXYmJnTWJVWEdERGhLUUU3YSB0SC8yOXhYckpLQUlBRFYxVVlEUTZMbCt2Z2hkend4YW94K2Z0TFVkd09VRnpFN1dDU3lSTUFwQUJsOEVnSlM2S0VCa1BQaVdudjN0IEc3WkhMelBTMWxLQXl3c29UZ3l1V2JNQXNrSitta0JCWFJSZ2EwSEFOVHY3ZTJMYUlLMzRwSzNsd0ZFQ3FDK2pOMU52R1l1QnlGSWcgRHFxakFMRVZPUmZweFROanFrMFlrTGIyREJUTGg2YmtwbnE0WTgwQ2lFVUF5S21PQXFTV1pGMW1GODlNVEp1a0RWcXh5dzQvamhLUSBrellmd0VQS1dtY214bGNSQUdLcW93Q1pOVFdETGpmZ0RFeWJwQTJmdExYODhPTW9BUm14dVp5VGdMSVVpSWR0eld2MnlHMTI5dmZFIHRFSGFDRWhieXc0LytDUmd4bmdxWkNrUUQ5dktWM3pjbURidW5lekN0ckZBMjlQczhPT1A5OHFobnBVN0RKY2hpY0I4MUJWekR5M0ogdzV1ZmlVQ09qNlpOMGdMMUZUbzdoQVAvS0JRUGZuSWl6VUlFZ0pmcWNxNDd6Q3daRHB4WHZCNUhIV0hhWXYvdlo2MVlRVGczM1VjRiBSQUM0K1ZycEIweU1WUWc4SnozN2V4d2JtUWVrcmFWdnYzd29lOUpTZHZCRkFEU3dxb3dMQlZpYk5nN0FXQU9DQVdscjJkc3ZIOHFlIHRCSlhWd0lzVFJ2UW1oY0VsZCtGalJWMzNIUHJmTk1HYVNFZ2JTMTcrOFVWQ1hCVkFOYUk4ZUJjL3RvTGdzcGhZZEppbndoS0ZnWHggU2M5ZW14bXhTSGYvYWNuZWZpbEtnS2xDMENybXVya1VhSTROQUI4WmJneGRPRjE1UVZnUmZ6WVJFZkJ3aTdRZ1B1ZnJCV2ZhTGRKUCBRTnplKy9WMHVxRllacnFmcGJpN0ZDaCsvMjJGREZlbXpXbkZJNElLRWRBZEVWZ2pSd1JnVXNoYnlFN2U0V3UxeHd3QmFXdnA4VmY3IEpjRGRwVURyazYvbURBbnVuTm9EcjFvRTlFVUVGbmpDNWozY0Y3MGZOejE1MThReEg2c0xBV2xyMmZIWFV3bElUZmZ6QW5kM0JacVcgckpFTWtlSGF0R0V0ZUt4Y0dhQWpJakRGSGRJekozL3orak03ZTIvWTJKcmJzRVVDQU94UEgzWnh1NGV6ai92S1hqM3M1OGF0VTM4cyBLM3B4ejN6YzlmNTM2WEdYZSt5eDkwcnNjZW1zdGo4YnRFeVBiWjhmNm9IOXNsYkhaUUc0YnVqYmV1OFp0MUgxc2F6c0E5Y1JGL3VuIHlqUDM5SHJteXQ1eFcveHFEK3BCZTEzK0xyWjlmcWdicHN1NVBUZkdUM3YzeDdUaURsYmthYjh3YnFmcVkxblJCNDRlZVB2YmhqTjMga0o2N2lsZUhLQU1lOGJWMVYyejl3OWtZSVRVOTZIbkY3VjJCdGdyNWFqT2t1SE1ralBXall0MUFRaDdldkg2Ti90ZXhnb2ZxYjJxRSBITGRPaFYyYkNZbmJTMC8rWXRhYmJpeU42MjZmeDFXTG52NTJwcS9MVXZzZkNJOHdyNG1mbkxMZVk3OW9lTSt0UTE1VzArT1crUG82IGlacGNIdTZCK0hEdGNlV2lLSDk0TmVQWWN1NGRjVjJYcGRaVERkaldyYzdaZEs4U3VyNGZpQXo4SnI3Q1RscS9QTndOOGVIYThkdjUgRDYzTCtmdk5HRnFqZkN4THJlOHYyWXZXc25tN2g2TFA0TDRNekltdnNiTzVuTXNEWGhFZnNBMi9uWi9ZNmY1eFBUanhWVjJTZjJyTiA0Yjl5NWkzRTFoVS9xL3loM2s4MXJrL2JML3RJVE9HK0FQUWRSdDA0TUZWNFcyTDNRMmU3cnpvN3VmY3RiMWJ1emhROEVWOW5aMWZaIGg0dG80WXVoTk9ITTBiV0FSYTU3WnF1N3NKS2dyS1NJWDF0NHRJb3A3bnZzTXhXMC9NOElPZGFPek1BVW1SSXZncnJjMDdsRWRXNkkgVlVlRjd2Y1JleDRlVWRqbXp2cHpjVnRpOVhYTE5xNTduNjJIay92ajAvNTJZTmtZYitlSmxydnpJNVFkZEVGOFVKVVAwL1l2ZmRjTCBveHUvVzE5UU52UlZmUmluUHYzWEJ1eTkvYldDMit4VzB0a0Q4Vm02K0dhVkgxWXZ3eENBQmZGWnNUMkVkWHRoOFcvRnozSE45RDE2IGs2QkZaZWJnK1R2dGYwekp6OUxGdCtwRDZYZ2gwVGpXaWZISjBiV0FwMnlKMnd1UVcxS3ByNXpMbUlCS01aRUZIdGgybVp5OC92eUYgTDVoaFUxa0FKM2NvNWhRU3Q1ZGZWdDRvbDRCVVd4ZUhzaXZRbXFWc3hRWVBWdFRxSytkU0JJTGFEVWM4M0NCbExPOFJGSDUveGpkOCBSRmdxU29sU2EzWVFFYmRYMW5kTjdrYzVMcThGUEQxZnZ4blBrczFUaGJjWDFsNVZ2UE9LZkhMcm5QTDBxdlhGKzhZOERDajVkTXE5IGdHY3RFNE9iZ1hnQWFzdUN1ck5DWnEwdmNGbHdQQzRwbHVyaERvbWhDbi8rMmQ4dURRTWk4aFpMOW9QNlVQSFdWRVAzdnJFZlF3OEwgOXBvMTlxNHF2Q3c0UGtGOFp1a1N1WmFxUGtIcHMvN1ozNG1lRTBOQ1JOeGVhZCtySkNCbTc5eHdOZ1dKdFJ3bFJHN2xuZ1NYSWxCTSBGSnJpSHJIQnJUNjhDOThqTm1aTFcrYmtmbE5TOW1TVkJEd3liaks2UXpBZ0FWaHJjM0FuaUhGdjRVcjRsNHN5bzlGcmhjUTFjdkxpIDErM3d6LzRlOXpBZ0xYdnlRK1hiRTZhT1pmRHhpNmx0L1V5eDBucTh3TW9DcEpjaXNNV1NjZnF2SEwva3VlRHM3MFNyUmYySWlOdkwgeWt2eDY1WUFkL2NFS0ljM0VGakdCRnNMOXllNkxEZ2VhNi91UHlsNTd0eUdXTE5OM1ZtU2Y3TXErbDR0QVQ4WmhnSTdoSU5JQTNxRCBQeEJZam8vTXVyU2hSODMrVUJtWEFkUFp5VitaUThPQWtMekZwUHpwRCszL3BRY1R4Z2lEQ1dLRHg5N2d5Yktwd2g4TW85ZDIrQTNQIHhJYnRVMmRLTGdGWmxmZXRWd0k0UWh6bTBCY0lMR2VHMUxLOUNtZUdqKytmL1gwdWtZbGgrOVNKeUZ1TXExNm9rd0NPb2NDS3ZFVlQgNkE0RWxtTlBoUUhPN0g5Vi9MTy9aeWQvWlE1Rm9TTHlGcE9xRno1MCs3Zk96Q3o1d3ZaSGZ5Q3duTU5laFdaOUFlN3NmMVdDczc5UCBMZHFhTmsrWkszSi9xa2IrZEV2QVVQd0FVNEhBY3N5bURWMGh0K1JUblozTmxQZ25meVdtelZObVJkNWlYUDNTSC92NmYvM05jSytiIE9lU1FWZkZrZk54N1NZcEkrNW1kSWphYy9IUEs2Y3JUNHJjM3dSZlR4aWt5clZ6bTNKMVpWeStBSjRhNllXaFRMNllEZ2VYb1R4dGEgSTdOS0FJQ29rRDA1UGJsOUphWk5VMlpEM21KYWQyc3dJUUdoVlZIczl0Z1JDQ3hEWjlyUUlmdzNNZDNsQzdidnYva256eWVtRFZQRSBZeGhpeG5Vdk5rbkFJNE5UTXJIMkVsTERsa0JnT1RyU2htd0ovNVVSdms4RkZ1MkxuVWxKaXhpK1hVbmRpMDBTd0JOSFhURzBxUXU3IEFvSGw4S1lOMlJQK0srZHRzWEpRZUM0eGJaUXlLL0lXRytTdldRSVNobTVPckZ6MnFrWnMyZ0FsdU5LRyt0WCsxOVgzemV2UE4zWmwgcFRLc1pNa1FaVXJxWDI2V2dHY1dFZGd3dEtrRE93T0I1ZEJYRzdxMkx2eFgxZlBGeVJZY2lXbURXbGhPVGQ0a2Y4MFN3SE1DWjA3NiBBZllHQXN1aHJEWTB4NFBsVVpBaXArc1VFOVBtS0xKZ2lLODA5cjBwTCtBQVIzWkFoay9rYlhKejUwQWM0Sklkb3A2T3NJZU5ZK0lIIDVPOWVRSTZQcG8xUjVKN0J4MnJNd2xIeEFuakd2NzVsNjl5YWNTRVFXTVlFQ2U1NlZCdGFJSE5PQU9EZ01HREJJQUJwYzdLWW1nUnMgV2JxOFlXbVZqOWkwQVQwSU82WU5lYmhENmxEOG80ell0QUdLYk16MFhXMGd3T09pQUlGREpjVFd6a25XSlcxVGlLK01sdjZrd1pWaCB3SnloY1A4Ty8yaCtrNW9Yd0tXa0c1WldPWEF0RUZoTzBDSnQ2RkQ3ZjJMYTVONGtwZzFRWkd1cVRWVXZnQ2NrNkk0ZjRHWWdzSndNIFVXTUJyU0hjL3cvNFRoUUxXN0RzM0tHMElFL1ZDeGgzUE9CcVFBSndTQ0d1bTVJZHl2MGZjS2RvK0lhaHpVUnQwS2Z1QlhBc1lRUmMgMkZURVErWjRRT3lTdWxIaXRVUEZOWnB4WVdrNmp3K2c2R0dyZXdIUG80MEhyQVluQU1Da3BucFRZdG80VXJhbURWQmd3OUJtcGpyRSBWcGNBcnBDZzdYbUNVd2RFcWd0UjVTdDZOcFhWUldoOS9nbEhQa0FMNlZNZkNBREFBOHNDVWJ1bmJYaW1RMjJnMmtVZXdnVG9rUlNmIFRadFFDOGRWcFRRZGVLQ05GOERsVk0yczJ4Ymp5TlZnQmFCdXM0ckV0R21rQkZhWHJGMnkzRmEzNm05dDV3VncxY3piWVdabFNZY2ggQmdLUDFIbGZOdFpHNU9tcFdYaStZYTJ1cDNaZUFKY2ZNTEhVOFJ4aUlQRElyS2JFV0dMYU9PS2UyaHB2NHZtR0pXMXVxRzI5QUE4NSAwNHl4ZlpNM1hOT2c5bkJhYjdjSXp6U1ZPZXowTTZmSVdLNm1WdGRTV3kvZ2hXMlNKV1pxZDBnV1VWTmR5UFhYd0haL3RMTmVKVS81IDFiamR6YlN0QlBCZEdJRmxremRERGdTK01SbE5TQkJZV1ZlM2VzRzB3K2FtM2R2YlN3QlhpcEJkZDEzUGlaU1Mva1NWcnlTbVRTTm0gWXQwbnltT1BZbHJ3a2ZZU3dKZlBaOVBrNExBRGdVZUN5bElpSEp2S21pWHFVVGFGbm11bUl1emJ0di9RUlFMNC9JQ1ZKUi9TVURNQyB5MWhWdnBLWU5vMmMyTFFCNzNoTTM3QzAvY3JiTGhMQTV3Zlk0cXpGcGczUVNGajVTbXJhTkhMc2lUZHhMY1hldFArWGJoTEE1d2ZZIGtORTloa0Rna2VydDNoUFRwakd3TlcwQUFMNHFsQjE4Z0s0U3dMbStMelljdVIxTElQQklWUEg4eXdCRndMY2dTY2hqdTRGdXV2eFQgVnduZzh3Tm1oc2ZoWXdrRUhxbk9Ea2hNbThiQXhyUUJiTit3cEZzRnJyYlpnVWM0YytmTUZYc2Fma1pnR1N0OEwzM2VHOXlzQUFCcyA4TTNnMFRuS2hCN29tRi9iMVF2ZzlBTk1odVBNSGRra3E0cm5oemdVTUowa0ZMTzEyekhCdnJzRWNMcFV2cUVNZ1hFRkFvOVVMeGhLIFRKdkdnTWxGYVd1Mkxkazc5Nm43UUFBQWJwbFNIQUVUZzRGaEx3MnVwMnJCMEZBSFJtWVdwZkVOQXJiNHErdS85dkVDZ0EzaldERm0gYTdtSzhRVUNqMVNGQklkVlJPekkxc0F4K1dZQ2RuMzhtci8xK0YvZ0JYK3l1YzcvQkxUdU1UQWRwTk9yeXAvNGZ4VmUxNS80TDlQRyBNZkFmS3J2dEVmTXZ0bEwwLzhLL3UvOXp2NEVBWi8wQVFPOWdZTGcxQXRXb3FyQTMxS0dBN29xQ2ZCVVljdmg5YWlIMEd3Z0FMNnloIEZYMXBRbU1OQkI2cFdqQTAxS0ZBb0RWSnlHUDBNVGY5aXFIMGxRRGdPMnQrd0lhdDdTTGp5d2dzWTFYeGZHemFNQ1kyR28vRnR6MWIgMm5jcm52NFNBTlo2TENzdDFWL0hIQWc4RWxZOG41ZzJqQWw5aTlPdkdUZWsyL1J0b0c4czRBRG5PSnEvNnR0UVI3dnRDZkd6OUhtZSAvU1BNbzZlaUlOOVVZRjMxUjJVb3ZBQmVQMkRDZmhlS21kdDNoN0RpK2RpMFlVem9xQ2pJR1FYb05SbjRCbzBFUExLT3BRTldoMDBDIGdVZWlpdkJyWXRvd05qYnNSV3BpeGtIbWxtSmlrMllnd0QwNXFMeExhZ2U3eDVzUldFYlZncUdoRGdWSVhPa2FPSGRwSnRvZ2hjWUwgNEo0Y0JCS202VUVKQko0U1ZUd2ZtemFNc2NkOFJXcm1yTjV4Uk5NTWxSY0FjTjhwTW53aWIxTUNnWmVVcDJNTitVeHhKUW54ZXNZSiB2dEEwUk9VRkFMeEJRY0RIRFhtYk1hdkZiaEtWUGp2VUJDR0FiOXZSbEZFQWRuUUw5Q2dsNEJkemdzMktPSjlMQW9GbFJCWFB4NllOIFkyVEwwT1l0cTAvY015T3dDT1ZBZ0Q4b3VFTkF0bXBBQW9GVmxHY0hESGtvVUIwRzdjcVNWVEpKaHk2VVhnRHd3bGcvQURqa0NGQ0YgQlNVUVdFVlUrdXlRaHdMQWhqVGN2R0QybVZhVWpkRktBUENUdWZyOGpLajlNVzBXMHBhcTJnR3hhY01Zb1V3U21qUG5VV3hvMTgvUyBEZ1FBdmcyVGoxRE01STU5YVhBOTVXN3hzSWNDVkpXRVBLU3NVUUNpYklBajFGNEE4TXgrZjQxdzNiTUZDUVRXRTVVK08reWhBTlhLIFFWNEJJTXNHT0VJdkFjQjM5cTJvdHIzbUJtUnBjQk4rUlRuUjJMUmhyRkFrQ2ZIT0F3QmIraXhaRGduZ3poQUFnTGl5NXEyS2RUTjIgKzF3bktuMDJNVzBXTTV1ZS83OW1Eb2ZuSEI0MmZTemd3SnA5T05CMWduRG9JMW9hZHZoSDZmUERYU3R3b005YUZONkp3TDdXVmNMaiBCUURmMkFjRFhTY0lZMmE3aHNHa3dpbU9UUnZHVFBmKzhRdkFobWVwSEpjRUFCSDdabFF6cEsxRlFBS0Jhc1FWb2IvRXRHSE16RHBHIG1YZ1hCQUZBeHJVTkd0ZEFBT0JkS1BsR2hxQkZxcVJrQktwUk4rMDY5S0ZBbDBwQ2M5YjFBQWZZcW1uemVRRTZaZ1lBdjVYN0pZRkEgRlZhMWVSZXhhZk9ZYVo4a3BFTUFWbnpsOURtOUFQNDFBd2RVVTRVa0VLaEMxRkNSZHZobnNaMGZvT003enJybkFhY1h3TDltNEVDRSBXNlgzYlRYWTRqWTcrSTBscVllZUlBUk1XbnhUUEEwZUFPSEM0REo0SlFENHFlWENVeEdCQldNaDUyR1FLVTZ6eHFZTlpTZFNyQ2pJIG5RejhaZzNyMW1mY0VnQnN0TncxbWtVZzFtQ0Z5NmdLd0Z5TFoyZWFXT0U5ZWdSZ1cxSFluUXgrQ2RBekdHZ1NnYlVFQW11SjhVbHAgL0h1TmJPQXpBZ2VDeG1SaFBRS1E4YTlvNVEwSHZxRmplaENvRGd6eXIxNTBHN1dDR1I2U0VXVlYxSWZnOUFnQVpZbWNTdmk5QUFENCByaW1scE1vVDJJb0FWTEpEcUNRQVY4aEhKQUQxMjQ3cUVRRFdxY0FqZXJ3QW5VazVsNTRBMzdiTzdwTWpWUGlhZWRpT0lnSndTdFhLIGZGMEN3THZEd1R0NnZBRGdCU0Y3d3ZDQkNMZG5hY094cGo2NlI2cVVjN1pBTmtJQkFHYWxkU2wwQ1VDbVliMHRBSDBTQUR6cTZoS2kgazdVREVnaXNJc1puaFJEZ0RkTFJuc0hMaW9KejVGb0VZSWRJdzRhbkFIUktBUEJEMi8zWWZ4ZUJxVGJoY1kxSXdjMmM0MkhVNSs4OCBXVmhIS3ZDQlNFY1U0SUJPQ1FDK2Fzc3M4NUZpRGdrRWxxT1NCUWlzUnpJQldNZXFrQ1NrVHdBMjNMa0FSWFNGQTkvUXMycmd3QTRiIFNRb3VRV1YxNVJ6eDZDLy9BMjlCdVN2RW1yNjVyQ3NDTHRFdEFjQjg4RG5tZGhOajFTZ0EvRFdmWEdLR1p3MEZRZDdJNGV1S0FoelEgTHdFNjZxc0lWVFFuQWNuOS81d0VxVFp2VWtzeTBDa21KQUM0SGVVa2sybDJDQnRMVDhuOTN5eWh6aWpBQVRNU0lGdDU2Q2RyakRMTCAvZDgwRzY3aVlIWG9uUkU0RWtwRVFDdEpvNE1wOFgvVHhDWUV3SndYb0hPS1JkamlyOXJYNWY1dm5uWlZNQWt4SndFeU42Q0hIVllOIE9RQXkvamVQOW5tQUl5WWxRT1lHK0dtS01Ndjkzd1lNekFNY01SVUxPUEJEN2orc1pKalZmTFdtdUpYeHZ4V29yTlprdzZ3RUFOL0UgRDJBanJobGRlbGlQZFAyZmZVUTh1d1NwWW5ZZ2NPQk9DbnN5VURmQnRFQTgydFYvdHFGV3NZa1JHeVJBMXdyc01WSDN4Ym9aOWVvLyB1OUJVRnFRTzB3TUJBSGhCSUhNRHhBU1ZyOXlKQUZpREJRSmdoeGNBeUc1LzlKU25ta29STlh2SThNbTBDWUFkWGdDZ3M3RFlXSWc3IGJiMHU2Q0t6SlVYZUZna0FIaEdJQ0JBeUtaMXJ5VXliSlFBd21BdDRpVDBTSUNKQVRZaXJpK2RlWkJMV0FuSjdCTUNlV01BYnNuS0Ega3JJOWNpVWFZQnFqdVlDWDJPUUZBT0lKMEZJMkdQZ2xFbUFVeXdUQVBnblFXV3g4REpRTkJsYW1qUm94MWdtQWpSSUEvSkRFVlVJdSBad1llSlI1Z0NBc0Z3RTRKRUJHZ3BHd3dzSkhCbGdHc0ZBQmJKUUQ0SVRFQk1pNEhBODlTWEYwN2xncUFmVE1DUldSMmdJcXlnaFJQIGtvMnBFV3NGd0Y0dkFKRFpBVHBtSlhVWk5xMWJFYnBpc1FEWTdRVUE0Z25RRVZ5c1NoYy9RQTlXQzREZFhnQWduZ0FkOGNVekc5TW0gallMTWJnR3dYd0lPSXBDWk5tSUF6TEErZSthSGlDczcxZ3VBQ3hJZ0lrREZCdk96WjdhbVRSbzRGaTBHcXNiMldNQWJVbG1JZ3ZNOSBhM1h1OHp3K1VvVDJDNEFiWGdBQXZPQ1Q1TFQxSnNEMXlkOHY0Z2V3RWVPekN3TGdqaGR3UUxZajdjc09QcDRMZjRzZndJTVZKY0hVIGNNVUxPUEJWSktBbms3UDd2dmdCSEVUdUNJQnJYZ0FBTExHVisxWXZUcXNLaWg5QVMvTUdicGJobGhjQXlPcUIvbXhQMWc2S0gwREogRG9GYkF1Q2lCQUNQOEdXU3NBZm42Y0pia1ZRaUhNZ0N1TVJGQ1FDZUVTQXhiWVREckxBby9DVitBQTJwaXdMZ1lpemdpT3lLMDUzVCBHdllTRCtpUFEzTUFwL3h0WTlxQzd2d2JPUUw4YWRvTUova25VRmcyOUwvNDA1YXE5bzRTMWV6Z2FEa3Vld0VBTUVjaTY5MDZjWm9oIElINUFkeXhmQ2RpRW03R0FJNC93cFNKdUowNExpa2s4b0NzWmZKY0Z3SDBKQUY3d1diNituUWl3TFB3bDh3SmRpQkdjWkZzNmlQc1MgQUFCL3lZNkVuU2htQ0lnZjBKNElYOTFZQjFDSDY3R0FJM1BFc3Bhd05RbSt2UDh1OFlBMjVBamRIZ0M4TVF3dkFEaFVGWWhORytFYyBZU0ZEUVB3QWRSTFhJd0JIaHVNRkhKQVZCRzBwVmhjV1AwQ05GYjZiTm9FT2wvTUN5bmpFLzhWLzRwK216WENJQ2Y3RXYxOS9sL3lBIFpuSUVKOHVzbkdkb1hzQUJ5UnRzeDlHcEZUK2duZ1NSK3dIQVU0WVRDeWp5bDZ3bWJFWDgvcHZFQTZyWkljS1hvUW5BVUwwQUFQQVEgSXpSdGhETnMzaE5jeFE4b0owUG9lZ1pBT2NQMEFnRGdCVit3RWw5QWtRMm1yNytKSDFER0JwK0dLUUJEOWdJT1RCRkxnRXVKWTNWaCA4UU5PeVJBTlpRS3dqT0Y2QVFlZThWbDhBU1dPNmNJdlVvdWh3QWFmaGl3QXcvY0NEb2d2b01JT3M5ZGcxeFM1YVdPc0lNUHFZaWZHIHdURjBMK0NBK0FJcUhLc0xQMHVlSlE3My84RUx3Rmk4Z0FQaUN6UVR2UmEvSExzZk1QRHhmNUZ4ZUFFSG52RVprZmdDdGNTNHdSVEEgODRqakFUdXNoajcrTHpJbUwrQ0FoNjFzU0NKVWttQTExT20vY3NZbkFRQ3dRQ3pseG9RTGNxeUdsZit2d3BnR0FrZCs0U00yTWlRUSBUdGpBSDU4QWpOVUxPRERGVmxLSUJRQWpkUCtQakZrQ0FCa1NDQ09aL2E5bW5BT0JJNy93VVRJR1Jzd08wVGhtLzZzWnV4ZHd3TU5HIEtneU1qaDIyMkE1djhXOWJSQUxla01qQXVJaXhHZXZvLzVTeER3U09QT01MQXRtV1pCVEVtT0dyQ01BQjhRTE9rUURoc0VteEdmZlkgL3h6eEFzNzVoWStJUnA0aFAxUlNCUGdzQW5DS2VBRlZMTEVSYjJCQXlOMi9BcEdBT2tRR2hvRmMvaldJQkRRaE11QTJFdmx2UUNSQSBCWkVCRjlraGtjdS9HWkVBVmE2d2tvSWp6aUJwUDhxSUJMUmhnWldrRDFsUGh1MXI3U05CQVpHQXRreXhRU2hGdGkwbHdWWUNmKzBRIENlaUNod2dyaVE1WXhRNHh0akx5YjQ5SVFIY2tPbUFMNHZyM1FDU2dIMU9zRU1td3dCZzdKTmlPcDlRbkJ5SUJGQ3dSaVQrZ25ReGIgSkJMMTc0dElBQlZUckJCS2ZFQUxPOFNJNWQ1UGcwZ0FMVmNJWmI2QWxRVHhHSXQ4OGlFU1FJK0hFS0hrRDVBampqOExJZ0ZjZUFpeCBnbS9hakVHUUlVWWlFMzQ4aUFUd01rV0lRRHlDenNqRno0NUlnQTVrYU5DZUZJbGMvRG9RQ2RESkZVSUVNbXRReXc0SlVobno2ME1rIFFEOXpCQWdsaitDQ0ZDa1NtZXJUalVpQUtUd0VDQkJJd0JBWlVxUkk1YjV2QnBFQTA0eFhDZzRYZmlhWHZsbEVBbXpCZXhXQ3dMUWggekdUSWtDRVZoOThXUkFMc1l3SC85VEVjTW1USWtjcGFmdnNRQ2JBWnQ4Vmc5M3JoWjNMaDI0eElnQnZNTVlNUEh6UEw1ZUI0MmVjeSBwKzhHSWdIdU1jY0VBU2J3TWJNZ3h5Qi9mV1RZeWQzZVJVUUNYR2VLR1Nid0FRUUF1eWhrMkdHSDdQVTN1ZE1QZ1A4UHZpZDlpc3BNIDFPSUFBQUFsZEVWWWRHUmhkR1U2WTNKbFlYUmxBREl3TWpFdE1EUXRNRFZVTWpBNk1UYzZOVElyTURnNk1EQlFjdVZ3QUFBQUpYUkYgV0hSa1lYUmxPbTF2WkdsbWVRQXlNREl4TFRBMExUQTFWREl3T2pFM09qVXlLekE0T2pBd0lTOWR6QUFBQUNCMFJWaDBjMjltZEhkaCBjbVVBYUhSMGNITTZMeTlwYldGblpXMWhaMmxqYXk1dmNtZTh6eDJkQUFBQUdIUkZXSFJVYUhWdFlqbzZSRzlqZFcxbGJuUTZPbEJoIFoyVnpBREduLzdzdkFBQUFHSFJGV0hSVWFIVnRZam82U1cxaFoyVTZPa2hsYVdkb2RBQTFNVEVXaEFJN0FBQUFGM1JGV0hSVWFIVnQgWWpvNlNXMWhaMlU2T2xkcFpIUm9BRFV4TTJ0N00wb0FBQUFaZEVWWWRGUm9kVzFpT2pwTmFXMWxkSGx3WlFCcGJXRm5aUzl3Ym1jLyBzbFpPQUFBQUYzUkZXSFJVYUhWdFlqbzZUVlJwYldVQU1UWXhOell5TlRBM01qRUs5dGNBQUFBVGRFVllkRlJvZFcxaU9qcFRhWHBsIEFERTVOamt5UWtMRDJsdG5BQUFBUm5SRldIUlVhSFZ0WWpvNlZWSkpBR1pwYkdVNkx5OHZZWEJ3TDNSdGNDOXBiV0ZuWld4akwybHQgWjNacFpYY3lYemxmTVRZd09Ua3dNelU1TWprd01UZzVNamRmT1RKZld6QmRESHBubVFBQUFBQkpSVTVFcmtKZ2dnPT0nID48L2ltYWdlPjwvc3ZnPiA=&#34;);;
- 
-       --title-image:url(&#34;http://scpsandboxcn.wikidot.com/local--files/image/ICON-fly-dragon-MINI.png&#34;);
-       
-
-    
- /* */                        
- /* 颜色与阴影遮罩 */  
- /* */
- 
-
-
-  /* 侧边栏遮罩  */
    --gradient-sidebar-cover: linear-gradient(150deg,#2e2c2c 0%, #333 20%, #000 100%);     
  
    --gradient-sidebar-line: repeating-linear-gradient(60deg,hsla(0,0%,90%,0),hsla(0,0%,100%,0) .25vh,rgba(88,88,88,0.1) .35vh,rgba(88,88,88,0.2) .6vh); 
@@ -1339,64 +1555,72 @@ text-align: center;
  
   --gradient-sidebar-txt-line:repeating-linear-gradient(20deg,hsla(0,0%,90%,0),hsla(0,0%,100%,0) .25vh,rgba(88,88,88,0.1) .35vh,rgba(88,88,88,0.2) .6vh);  
  
-/* 基准色以及其他 */    
+ /*------------------ colors ---------------------- */
     --bright-accent:0,0,0;
     --medium-accent:grey;
     --dark-accent:0,0,0;
  
                 --white-monochrome: 250, 250, 250;
-            /*↑ 白色 ↑*/
                   --pale-gray-monochrome: 244, 244, 244;
-            /*↑ 非常浅的灰色，用于引用块 ↑*/
                   --light-pale-gray-monochrome: 225, 225, 225;
-            /*↑ 浅灰色 ↑*/
                   --very-light-gray-monochrome: 215, 215, 215;
-            /*↑ 浅灰色 ↑*/
                   --light-gray-monochrome: 150, 150, 150;
-            /*↑ 浅灰色 ↑*/
                   --black-monochrome: 5, 5, 5;
-            /*↑ 黑色 ↑*/
      --swatch-menubg-light-color:180,180,180;   
-
         --tabs-selected-txt:#000;
 
     
-    /* 评分颜色 */
+    
+    /* rating*/
                  --rating-module-button-plus-color: none;
-            /*↑ 好评背景颜色 - 绿色 ↑*/
                   --rating-module-button-negative-color: none;
-            /*↑ 差评背景颜色 - 红色 ↑*/
                   --rating-module-button-cancel-color: none;
-    
 
-    
-    /*
- --gray-monochrome: 30, 36, 30;
- --dark-gray-monochrome: 25, 25, 25;
-        --dark-gray-monochrome:77,77,77;
-*/
-
- /* 链接颜色   */
+ /* link */
                   --link-color:118,36,36;
                   --visited-link-color:90,90,90;
                   --hover-link-color:165,42,42;
                   --newpage-color: 105,32,32;
                   --sidebar-links-text:255,255,255;
+ --sidebar-headlink-color:grey;
+
+ /*------------------ image ---------------------- */
+
+        --logo-image: var(--cobg-image);
+
+        --ironhide-image: url(&#34;https://scp-wiki.wikidot.com/local--files/theme:broken-world/ICON_iron-sheet.png&#34;);
  
 
- 
-/* 著作信息文件夹 */
+/* -------------------------- info box -----------------------*/
    --linkColour: #999 !important;
    --barColour:  linear-gradient(0deg, #555, #3b3b3b,#342f2f,#2a2a2a,#333)  !important;
  
-/*  滚动条 */
+/* -------------------------- scrollbar -----------------------*/
      scrollbar-color: rgba(128,128,128, 1) rgba(51,51,51, 0.50);
 }
- 
-/*  字间距 */
-  #page-content{
-       letter-spacing:0.5px;
-  }
+
+
+/*
+=====================================
+BODY
+=====================================
+*/
+
+#page-content{
+       letter-spacing:0.3px;
+}
+
+ #page-content p{
+    font-size: 130%;
+}
+
+form#edit-page-form #edit-page-textarea{
+    font-family: var(--mono-font);
+}
+
+ #page-content .code p{
+    font-size: 90%;
+}
  
 @media (max-width: 479px) {    
   #page-content{
@@ -1406,7 +1630,7 @@ text-align: center;
 
 /* 
 ============================================
-版头 
+HEADER
 ============================================
 */
 div#container-wrap {
@@ -1443,16 +1667,14 @@ div#container-wrap {
 } 
 }
 
-
-
-
 /* 
 ============================================
-3d 版头标题 
+3D HEADER
 ============================================
 */
  
-/* 限电脑屏幕 */
+/* ----------------- WIDE SCREEN  ------------------------ */
+
  @media screen and (min-width: 475px){
 #header h1 a::before,#header h2 span::before{
      background-image:var(--header-title-cover);
@@ -1471,13 +1693,9 @@ text-shadow: .063rem .063rem .063rem var(--tt-text-shadow);
     }    
 }
  
-
-
-
  @media screen and (max-width: 475px){
 #header h1 a::before,#header h2 span{
     font-size:120% ;
-
 }
     
  #header h2 span a:before{ 
@@ -1486,22 +1704,22 @@ text-shadow: .063rem .063rem .063rem var(--tt-text-shadow);
      margin: 0;
 } 
 }
+
 /*
 ============================================
 LOGO
-此处代码修改自超形而上学主题中Woedenaz制作的层叠logo代码
-我不知道怎么回事反正整整就能用作3d效果的了
+base on Woedenaz
 ============================================
 */
  
-/* 限电脑屏幕 */
+/* ----------------- WIDE SCREEN  ------------------------ */
 @media screen and (min-width: 500px){
- 
-#header {
+   #header {
    background-image: none;
 }
  
-/* 插入div格式，背景图片 */
+/* BACKGROUND IMG*/
+
 #header #header-extra-div-1,
 #header #header-extra-div-2{
     display: flex;
@@ -1526,7 +1744,7 @@ LOGO
     flex: 1;
 }
  
-/* 层叠1 主要底图*/
+/* SHEET 1 */
  #header #header-extra-div-1::before {
     z-index: 1;
     background: var(--ironhide-image),
@@ -1547,15 +1765,14 @@ LOGO
     -webkit-mask-size: cover;
     z-index: 2;
 }
-    
-    
 }
  
 /* 
 ============================================
-标题 
+TITLE
 ============================================
 */
+
 #page-title, .meta-title {
     font-family:var(--page-title-font);
     font-size: 300% ;
@@ -1589,12 +1806,6 @@ transform: scaleX(-1);
   #page-title, .meta-title {
     border-top: 0px solid #333;
  }
-    /*
-    #page-title::after, .meta-title::after ,
-    #page-title::before, .meta-title::before {
-    flex-grow:0;
-  }   
-    */
 }
 
 #breadcrumbs, .pseudocrumbs {
@@ -1605,7 +1816,7 @@ transform: scaleX(-1);
 
 /* 
 ============================================
-搜索框 和 用户栏
+SEARCH AND USER 
 ============================================
 */
  
@@ -1619,7 +1830,7 @@ transform: scaleX(-1);
 }
  
 #login-status {
-    font-family: var( --title-font);
+    font-family: var(--header-font);
 }
 
 #login-status #account-options {
@@ -1636,7 +1847,8 @@ overflow: visible;
     padding: 0.1rem 0.5rem;
     width: auto;
         display: block;
-    overflow: hidden
+    overflow: hidden;
+    padding-left: 1rem
 }
 
 #login-status #account-options ul li a:hover{
@@ -1652,43 +1864,54 @@ left: -5%;
 #login-status #account-options ul ,
 #login-status #account-options ul li {
     display: block;
-    font-size: 1rem;
 overflow: hidden;
 }
 
-#login-status #account-options li &gt; a[href=&#34;https://www.wikidot.com/account/messages&#34;] {
+#login-status #account-options li &gt; a[href*=&#34;/messages&#34;] {
     position: relative;
     top: 0;
-    left: 0;
     height: 100%;
-    font-size: 1rem;
+    font-size: 0.8rem;
     color: inherit;
-    width: 83%;
+    width: 82.5%;
 }
-
-
-
 
 #login-status #account-options li  a:hover::after,
-#login-status #account-options li &gt; a[href=&#34;https://www.wikidot.com/account/messages&#34;]:hover::after {
-        position: absolute;
-    left:3rem;
-font-size: 1rem;
-    font-weight: ;
+#login-status #account-options li &gt; a[href*=&#34;/messages&#34;]:hover::after {
+    position: absolute;
+    content: &#39; ⌖&#39;;
+    margin-left: 0.2rem; 
+    left: 0
+}
+
+#login-status #account-options li &gt; a[href*=&#34;/messages&#34;]::after  {
+  content: &#34;&#34;;
+}
+
+
+
+#login-status #account-options ul ,
+#login-status #account-options ul li {
+        font-size: 0.8rem;
+
     
-      content: &#39;⌖&#39;;
 }
 
-#login-status #account-options li &gt; a[href=&#34;https://www.wikidot.com/account/messages&#34;]::after {
-    content: &#34; &#34;;
-    padding-left: 0.5rem;
 
+ @media only screen and (max-width: 56.25rem){
+div.mobile-top-bar {
+    z-index: 10;
+}
 }
 
+#login-status #account-options ul {
+    z-index:100 ;
+    position: relative;
+}
 
 /* 
 ============================================
-著作信息文件夹
+INFO BOX
 ============================================
 */
  
@@ -1708,13 +1931,18 @@ font-size: 1rem;
  
 /* 
 ============================================
-评分栏 
+RATING
 ============================================
 */
 #page-content .rate-box-with-credit-button,
 .page-rate-widget-box {
      background:grey;
      border: 0.2rem ridge grey;
+}
+
+.page-rate-widget-box &gt; span.rate-points{
+      font-family: var(--header-font);
+      align-items:  center;
 }
  
 .creditButton p,
@@ -1765,7 +1993,7 @@ background:#e8e8e8 !important;
  
 /* 
 ============================================
-鼠标选择色 
+SELECTION 
 ============================================
 */
 ::selection { 
@@ -1784,7 +2012,7 @@ background:#e8e8e8 !important;
  
 /* 
 ============================================
-顶栏 
+TOP BAR
 ============================================
 */
 #top-bar ul li a {
@@ -1809,7 +2037,7 @@ background:#e8e8e8 !important;
  
 /*
 ============================================
-侧边栏
+SIDE BAR
 ============================================
 */
 
@@ -1819,19 +2047,21 @@ background:#e8e8e8 !important;
 
 /* 
 -------------------------------
-侧边栏样式
+NORMAL
 ------------------------------
  */
  
-/* 底部颜色 */
+/* -----------BACKGROUND COLOR----------------*/
+
 #side-bar,#side-bar:hover {
     border:0.5em  groove #2e2c2c; 
     background-color: grey;
     background-image: var(--gradient-sidebar-line);        
 }
  
-/* 引导链接文字 */
-#side-bar .heading ,#side-bar .collapsible-block a{
+/* -----------GUIDE TEXT----------------*/
+
+#side-bar .heading ,#side-bar {
     color: #600;
     border: groove 0.5rem #4D4D4D;
     padding-left: 15px;
@@ -1844,8 +2074,7 @@ background:#e8e8e8 !important;
 #side-bar .sub-text,
 #side-bar  .side-block span {
  color: #969696 ;
-    width: 95%;
-    
+    width: 95%;  
 }
 
 
@@ -1863,13 +2092,14 @@ background:#e8e8e8 !important;
 }
 
  
-/*  菜单 */
-#side-bar .side-block {
-        width: 90% ;
+/* ----------- MENU BLOCK ----------------*/
 
+#side-bar .side-block {
+    width: 100%;
     padding: 0px;
-    margin: 0rem 0.1rem 0 0.5rem;
-    border: 1rem ridge #555 !important;
+    margin: auto 0rem auto 0;
+
+    border: 1rem ridge #555;
     border-radius: 0px;
     box-shadow: 2px 2px 6px var(--dark-gray-monochrome);
     /*background-color: #2e2c2c; */
@@ -1894,10 +2124,14 @@ background:#e8e8e8 !important;
                var(--gradient-sidebar-cover);  
     background-blend-mode: overlay, normal;
     background-size: cover, 100% 260%;   
+    margin:0;
 }
 
+#side-bar  .menu-item.small{
+    font-size: 0; 
+}
  
-/* 菜单链接 */
+/* ----------- MENU LINK----------------*/
 #side-bar div.menu-item a{
    background-image:  var(--gradient-sidebar-btn);
    filter: brightness(1) drop-shadow(5px 3px 1px #000);
@@ -1910,15 +2144,18 @@ background:#e8e8e8 !important;
    border: 0.2rem inset #2c2e2e;
    top: 0.2rem;
 }
- /* 文本上下 */
+
+/* ----------- MENU BLOCK ----------------*/
 #side-bar .heading,
 #side-bar  .menu-item  {
-margin: 0.2rem 0 !important; 
+margin: 0.2rem 0; 
 }
 
+#side-bar .heading p {
+  margin-top: 0.5rem;
+}
 
-
-/* 侧边栏链接样式 */
+/* ----------- LINKS ----------------*/
 #container #side-bar  a {
     color:#fff;
 }
@@ -1932,17 +2169,22 @@ margin: 0.2rem 0 !important;
     color: #fff;
 }
 
- 
-/*
- 因nu主题又变而修改，用auto可能比较合适，但丑 
-因弹性布局被废弃。
-#side-bar div.menu-item &gt; a:last-of-type {
-    width: 85%;
+#interwiki div.heading a::before, #side-bar div.heading a::before,
+#container #side-bar .heading a:hover{
+border: none;
+  background: none;
+  top: 0;
+  color: var(--sidebar-headlink-color) !important;
+  filter: none;
+  text-shadow: none
 }
-*/
+
+
+
+
 /* 
 ---------------------------
-图片
+SIDEBAR IMAGE
 ---------------------------
 */
 
@@ -1956,9 +2198,10 @@ margin: 0.2rem 0 !important;
 }
 
 
+
 /* 
 ---------------------------
-弹性布局
+FLEX LAYOUT
 ---------------------------
 */
 #side-bar .side-block, #side-bar div[style*=&#34;center&#34;], #side-bar div[style*=&#34;center&#34;] &gt; div {
@@ -1970,112 +2213,95 @@ margin: 0.2rem 0 !important;
 }
 
 
-
 #side-bar div.menu-item.scp-series a, #side-bar div.menu-item.scp-tales a, #side-bar div.menu-item a[href*=&#34;scp-series&#34;] {
     justify-content: center;
     width: auto;
-    padding: 0 .5em;
     text-indent: 0;
     white-space: wrap !important;
     display: block !important;
     text-align: center ;
 }
 
-
-/*  鼠标移过灌注修正 */
+/*  HOVER LINK */
 #side-bar div.menu-item a::before, #side-bar div.menu-item a:hover::before {
     width: 220%;
 }
- 
-/* 
-插入语，弃用
-#side-bar .scpnet-interwiki-wrapper:after {
-    content: &#34;⚙️ 神虽破裂，人必完整 ⚙️&#34;;
-    border: 0.2rem inset #2c2e2e;
-    padding: 0.2rem;
-    background: var(--gradient-sidebar-btn);
-    width: auto;
-    color: #000;
-    font-family:STXingkai,&#39;微软简行楷&#39;,Kaiti,SimSun,sans-serif ;
-    font-size: 130%;
-}
-*/
-
 
 /* 
 ---------------------------
-媒体与管理
+MEDIA
 ---------------------------
 */
 
-
-
-#container #side-bar .collapsible-block{
-    
-    padding: 0.5rem 0;
-    min-height:3rem ;
-    width: 86%;
-
-}
 
 #container #side-bar .collapsible-block a{
-        padding: 0.5rem 0;
+    padding: 0.5rem 0;
     margin: 0rem;
-      
-
 }
-
 
 
 #container #side-bar .collapsible-block .menu-item:first-child a{
-    margin: 1rem 0 0 0;
+    margin: 0.5rem 0 0 0;
 }
 
 
 #container #side-bar .collapsible-block .menu-item a{
-            padding: 0.1rem;
-
+            padding: 0 0.5rem;
     margin: 0.05rem;
+    
+    
 }
 
-#side-bar div.collapsible-block div.collapsible-block-folded &gt; a.collapsible-block-link::after {
-    background: #fff;
-}
-
-#container #side-bar:lang(cn) div.side-block.media,
-#side-bar:lang(cn) div.side-block.media + div[style*=&#34;#f0f0f0&#34;]{
-     display: block !important;
-        grid-column:2;
-         margin: .5rem -45% 0 0;
-        width: 130% ;
+.collapsible-block-content{
+    width: 100%;
+    margin-left:0.2rem;;
 }
 
 
 
- 
 /* 
 -----------------------------
-通常手机下的侧边栏 
+INTERWIKI
 -----------------------------
 */
 
-/* 手机样式 */
+#content-wrap #side-bar .scpnet-interwiki-wrapper{
+    margin-left:-0.8rem ;
+}
+
+
+
+/* 
+-----------------------------
+FIT POSITION
+-----------------------------
+*/
+#side-bar .side-block.resources,
+#side-bar .side-block.media,
+#side-bar .side-block{
+    margin-right: -0.5rem
+}
+
+
+
+/* 
+-----------------------------
+SIDEBAR - MOB
+-----------------------------
+*/
+
 .mobile-top-bar .open-menu a::after{
      display: block !important;
     width: 100% !important;
 }
 
-
-
  @media (max-width: 479px) {
    #side-bar,#side-bar:hover {
         border:none; 
-        padding: 0  1rem 0 0rem;
+        padding:0 0.5rem 0 0rem;
    }
  
-  #side-bar .side-block {
-     border: 0rem double #2B2B2B;
-   }
+ 
 
   #side-bar:target .close-menu {
        border-left: 0.2rem solid #2e2c2c;     
@@ -2094,12 +2320,7 @@ margin: 0.2rem 0 !important;
          word-break: normal;
         text-align: center !important; 
    }
- 
-    #side-bar div.menu-item   {
-          display: block;
-    }
- 
-     
+    
     #side-bar:not(#side-bar:target) {       
      left: -20rem !important;
      }
@@ -2108,43 +2329,112 @@ margin: 0.2rem 0 !important;
    left: 0rem !important;
      }
      
-     
-     
-     
+
   #container  #side-bar:target .close-menu {            
         width: 100%;
         height: 100%;
     }
+     
+     
+ #content-wrap #side-bar .scpnet-interwiki-wrapper{
+    margin-left:0rem ;
+   }
+     
+ #side-bar .side-block {
+     border: none;
+     border-right: 1rem groove #888;
+     width: 100%
+     
+   }
 }
 
 
-/*
-------------------------------
-多语言框
-------------------------------
-*/
- 
-iframe.scpnet-interwiki-frame {
-    filter: invert(1)  grayscale(80%);
+
+/**/
+
+
+#container #side-bar .collapsible-block{
+    padding: 0.5rem 0;
+    min-height:3rem ;
 }
- 
+
+#side-bar .collapsible-block{
+    padding: 0.5rem 0;
+    min-height:3rem ;
+}
 
 
+#side-bar div.collapsible-block div.collapsible-block-folded &gt; a.collapsible-block-link::after {
+ display: none;
+}
 
 
 /* 
+-----------------------------
+ COLLAPSIBLE SIDEBAR
+-----------------------------
+*/
+
+
+@media only screen and (min-width: 47.9375rem) {
+        #page-content {
+            max-width: 100%;
+    }  
+}
+
+#page-content {
+    width: 100%;
+}
+
+#main-content {
+min-width:{$main-width};
+}
+
+@media (max-width: 700px) {
+#main-content {
+min-width:0rem;
+}
+}
+
+#side-bar,#side-bar:hover {
+    border:0.5rem  groove #2e2c2c;
+    background-color: grey;
+    background-image: var(--gradient-sidebar-line);        
+}
+
+   #side-bar {
+       opacity: 0;
+  }
+
+  #side-bar:hover {
+             opacity: 1;
+   }
+
+@media screen and (max-width: 475px){
+  #side-bar,
+  #side-bar:not(:target) {
+       opacity: 0;
+      transition:all 0.5s;
+  }
+
+   #side-bar:target {
+       opacity: 1;
+      transition:all 0.5s;
+  }
+}
+
+/* 
 ============================================
-tab格式 
+TABS
 ============================================
 */
  
-/*  tab：内容页  */
 .yui-navset .yui-content{
     border: 0.2rem inset #5E5E5E;
 }
 
 
-/*  tab：边框  */
+/*  TAB：BORDER*/
 .yui-navset .yui-nav a, 
 .yui-navset .yui-nav .selected, .yui-navset .yui-navset-top .yui-nav .selected,
 .yui-navset .yui-navset-top .yui-nav a{
@@ -2154,12 +2444,12 @@ tab格式
 
 .yui-nav{
     background:#888;
-
+    font-family:var(--header-font);
     
 }
 
  
-/*  tab：未被选中 */
+/*  TAB：UNSEL */
 .yui-navset .yui-nav a,
 .yui-navset .yui-navset-top .yui-nav a {
      filter: drop-shadow(2px 10px 10px #333);
@@ -2176,7 +2466,7 @@ tab格式
 
 
  
-/*  tab：被选中时 */
+/*  TAB：SEL*/
 
 .yui-navset .yui-nav .selected, 
 .yui-navset .yui-navset-top .yui-nav .selecteda:focus,
@@ -2195,7 +2485,7 @@ tab格式
 }
 
  
-/* tab：鼠标移过 */
+/* TAB：HOVER*/
 .yui-navset .yui-nav a:hover,
 .yui-navset .yui-nav a:focus {
     filter: sepia(15%) drop-shadow(2px 8px 8px #000);
@@ -2203,7 +2493,7 @@ tab格式
 }
 
 
-/*  tab：移过和选择 */
+/*  tab：hover &amp; sel */
 
 .yui-navset .yui-nav a:hover,
 .yui-navset .yui-nav a:focus,
@@ -2227,21 +2517,29 @@ tab格式
 }
 
  
-/*  tab：被选择时，顶部选页的文字样式 */
+/*  tab：nav text */
 .yui-navset .yui-nav .selected a,
 .yui-navset .yui-nav .selected a em {
    color: #000 !important;
 }
 
 
+/*
+============================
+TABLE &amp; TOC
+============================
+*/
 
+#toc #toc-action-bar, #toc .title,
+#page-content div.b-tables table.wiki-content-table th, #page-content table.wiki-content-table th {
+  background-color: rgb(85, 83, 83);
+}
 
  /*
 ============================================
- 页面信息折框
+ PAGE INFO
 ============================================
  */
-
 
 #page-info-break{
    margin-top: 2rem;
@@ -2271,20 +2569,10 @@ white-space: nowrap;
    font-size: 0.8rem;
 }
 
-
 .page-watch-options a:after   {
    font-size: 0.8rem;
         content: &#39; |&#39;;
-
 }
-
-.page-watch-options a[onclick*=&#34;site&#34;]:before   {
-    content: &#39;关注&#39;;
-   font-size: 0.8rem;
-
-}
-
-
 
 #page-info :after{
     content: &#39;  &#39;;
@@ -2293,83 +2581,15 @@ white-space: nowrap;
     position: absolute;
     height: 2.3rem;
     width:3rem;
-    margin-left: -3rem;
-margin-top: -1.5rem;
+    margin-left: -2.6rem;
+margin-top: -1.2rem;
 }
-
- /*
-============================================
- 页面信息折框
-============================================
- */
-
-
-
-#page-info-break{
-   margin-top: 2rem;
-}
-
-#page-options-container  #page-info ,
-#page-options-container  .page-watch-options {
-    width: 100%;
-    max-width:80vw;
-    padding-right: 5rem ;
-        margin-right: 5rem ;
-overflow: hidden ;
-text-overflow:ellipsis ;
-white-space: nowrap;
-}
-
-#page-info  span,
-.page-watch-options a[href*=&#34;faq:watching&#34;]   {
-    padding-right: 0.5rem ;
-        margin-right: 0rem ;
-}
-.page-watch-options:not(a)   {
-   font-size: 0;
-}
-
-.page-watch-options a   {
-   font-size: 0.8rem;
-}
-
-
-.page-watch-options a:after   {
-   font-size: 0.8rem;
-        content: &#39; |&#39;;
-
-}
-
-.page-watch-options a[onclick*=&#34;site&#34;]:before   {
-    content: &#39;关注&#39;;
-   font-size: 0.8rem;
-
-}
-
-
-
-#page-info :after{
-    content: &#39;  &#39;;
-        border-top: 2px solid #444;
-    border-right: 2px solid #444;
-    position: absolute;
-    height: 2.5rem;
-    width:5rem;
-    margin-left: -4.5rem;
-margin-top: -2.3em;
-    z-index: -1
-}
-
-
 
 @media (max-width:700px) {
 #page-info :after{
-margin-top: -3em;
-    
+margin-top: -2.5em;    
 }   
 }
-
-
 
 @media (max-width:410px) {
  #page-options-container #page-info span:after{
@@ -2388,34 +2608,22 @@ left: -5rem;
 #page-info span:after{
     margin-left:-15.5em;
 }
-    
 }
-
 
 /*
 ============================================
- 标签
+ TAGS
 ============================================
  */
 
-
-
-
 #main-content .page-tags::before {
-content: &#34;\f02c 标签 &#34;;
+content: &#34;\f02c  TAGs&#34;;
 padding: 0.5rem 0.5rem 0.2rem 0.5rem;
 top: -2rem;
 width: 4rem;
 font-size: 0.8rem;
 font-family: FontAwesome,   var(--body-font);
 letter-spacing: 0.1rem;
-/*
-    padding: 0.5rem;
-    content: &#34;标签 ▼&#34;;
-    top:-2.5rem;
-    font-size: 1rem;
-    width: 4.8rem;
-*/
     margin: 0;
     background-image: linear-gradient(-110deg, transparent 0rem,  transparent 1.5rem, #333 1.6rem,#000 100%);
     background-color: transparent;
@@ -2424,7 +2632,6 @@ letter-spacing: 0.1rem;
 #main-content .page-tags span{
 margin: 0 0 0 0rem;
 }
-
 
 #main-content .page-tags, 
 #main-content .page-tags span {
@@ -2467,7 +2674,6 @@ height: 100%;
        font-size: 60%;
     left: 0.3rem;
     position:  absolute;
-
 }
 
 #main-content .page-tags a:hover::after {
@@ -2480,7 +2686,6 @@ height: 100%;
     position:  absolute;
 
 }
-
 
 #main-content .page-tags span a:not([href^=&#34;/system:page-tags/tag/_&#34;]), #main-content .page-tags span a:visited:not([href^=&#34;/system:page-tags/tag/_&#34;]){
     padding: 0.2rem 0.5rem  0.2rem 1rem;
@@ -2518,9 +2723,11 @@ top: -1.5rem;
 
 /* 
 ============================================
-底部按钮 
+BOTTOM BOTTON
 ============================================
 */
+
+
 .page-options-bottom a {
     display: inline-block;
     white-space: nowrap;
@@ -2531,8 +2738,6 @@ div[id*=&#34;page-options-bottom&#34;]{
     margin-top: 0rem;
 }
 
- 
-/* 因为nu主题受修改 */
 #main-content .page-options-bottom a,
 #main-content #action-area div #edit-page-form .buttons.alignleft input {
     cursor: pointer;
@@ -2561,18 +2766,23 @@ border: 3px double #e8e8e8;
     content: &#39;|&#39;;
     color: #e8e8e8;
        position: absolute;
-    left: 1.5em;
+    left: 1.4em;
 font-size: 1.2rem;
 }
 
- @media (max-width: 500px) {
-div[id*=&#34;page-options-bottom&#34;] {
+@media (max-width: 500px) {
+  div[id*=&#34;page-options-bottom&#34;] {
     justify-content: center;
-}
+  }
+    #content-wrap #main-content .page-options-bottom a:hover:before,
+    #main-content .page-options-bottom  a:hover:before {
+    left: calc(var(--icon-size) - .6em);
+    }
  }
+
 /* 
 ============================================
-底部
+BOTTOM BAR
 ============================================
  */
 #footer {
@@ -2593,29 +2803,40 @@ div[id*=&#34;page-options-bottom&#34;] {
 
 /* 
 ============================================
-其他
+OTHERS
 ============================================
- */
+*/
 
-.page-tags *, #page-options-container, 
+/* FONT */
+#top-bar li,
+.yui-navset .yui-nav {
+  font-family: var(--header-font);
+ }
+
+#container #side-bar a,
+.page-tags * {
+  font-family: var(--body-font);
+}
+
+ #page-options-container, 
 #page-options-container #page-options-bottom a,
 #page-options-container #page-options-bottom-2 a,
  .hovertip * {
-  font-family: var(--body-font) ;
-    }
-
+  font-family: var(--header-font);
+}
 
 
 table.wiki-content-table th {
     background: #bfbfbf;
     color: #000;
 }
-/* 懒人组件 */
+
+/* AUTHOR TOOL */
 .list-pages-box div.preview {
     display: block;
 }
 
-/* 页面修改之处的颜色 */
+/* SOURCE CHANGED */
 div.inline-diff del {
     background-color: #FCC;
 }
@@ -2623,45 +2844,102 @@ div.inline-diff ins {
     background-color: #DDF;
 }
 
-/* 悬浮脚注里的引用块 */
+/* HOVERTIP */
 .footnote blockquote, .footnote  div.blockquote {
     background-color: rgb(var(--light-gray-monochrome));
     border: 1px solid  rgb(var(--dark-gray-monochrome));
 }
 
+.footnote .f-heading{  
+        font-family: var(--body-font);
+        background-color: rgb(var(--dark-gray-monochrome));
+}
+
+.footnote .f-content{
+    letter-spacing: 0.5px
+}
 [[/code]]
-
-[!---xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx--------------------------------]
-
-+++++ 中分的多语言栏
-[[div_ style=&#34;display:none&#34;]]
-[[embed]]
-&lt;iframe src=&#34;//scp-wiki-cn.wdfiles.com/local--files/nav%3Aside/styleFrame.html?bhl&#34; name=&#34;typeFrame&#34;&gt;&lt;/iframe&gt;
-[[/embed]]
-[[/div]]
-
-+++++ 英文字体
 
 [[code type=&#34;CSS&#34;]]
 /* 
 ============================================
-英文字体引用
+INTERWIKI
+22222222222222222222222
 ============================================
 */
-@import url(&#39;https://fonts.googleapis.com/css?family=Iceberg&#39;);
-@import url(&#39;https://fonts.font.im/css?family=Iceland&#39;);
+:root {  
+   --ironhide-image: url(&#34;http://scp-wiki-cn.wdfiles.com/local--files/theme:broken-world/Bgr-wanderers-goldfoil.png&#34;);
+   --gradient-sidebar-cover: linear-gradient(150deg,#2e2c2c 0%, #333 20%, #000 100%);     
+   --gradient-sidebar-line: repeating-linear-gradient(60deg,hsla(0,0%,90%,0),hsla(0,0%,100%,0) .25vh,rgba(88,88,88,0.1) .35vh,rgba(88,88,88,0.2) .6vh); 
+   --gradient-sidebar-btn: linear-gradient(10deg, rgba(44,46,46,0.1),rgba(88,76,26,0.2),rgba(0,0,0,0.6));    
+  --gradient-sidebar-txt-line:repeating-linear-gradient(20deg,hsla(0,0%,90%,0),hsla(0,0%,100%,0) .25vh,rgba(88,88,88,0.1) .35vh,rgba(88,88,88,0.2) .6vh);  
+      
+    --bright-accent: 0,0,0;
+    --medium-accent: 250,250,250;
+    --sidebar-links-text: 255,250,255;
+    --swatch-menutxt-general-color:200,200,200;
+    
+}
 
-@import url(&#39;https://fonts.font.im/css?family=Black+Ops+One&#39;);
-@import url(&#39;https://fonts.font.im/css?family=Kumar+One&#39;);
-@import url(&#39;https://fonts.googleapis.com/css?family=Special+Elite&#39;);
-@import url(&#39;http://www.scp-wiki.net/local--files/chicago-spirit/Yukarimobile.css&#39;);
+#interwiki .side-block {
+    height: 100%;
+    margin: 0rem 0rem 0 0rem;
+    border: 1rem ridge #555 !important;
+    background-image: var(--ironhide-image), var(--gradient-sidebar-cover);  
+    background-blend-mode: overlay, normal;
+    background-size: cover, 100% 260%;    
+    border-radius: 0;
+}
 
-/*
-@import url(&#39;https://fonts.font.im/css?family=Black+Ops+One&#39;);
-@import url(&#39;https://fonts.googleapis.com/css?family=Berkshire+Swash&#39;);
-@import url(&#34;https://use.typekit.net/nxg5itx.css&#34;);
-@import url(&#39;https://fonts.googleapis.com/css?family=Merriweather:400,700,900|Roboto+Mono:400,500,700|Source+Sans+Pro:400,400i,600,600i,700,700i,900,900i&amp;display=swap&amp;subset=latin-ext&#39;);
-*/
+#interwiki .heading {
+    color: #fff;
+    border: groove 0.5rem #4D4D4D;
+    background-color:#2c2e2e;
+    background-image:var(--gradient-sidebar-txt-line);  
+}
+
+#interwiki .heading p{
+     width: 100%;
+     text-align: center ;
+    font-size: 120% !important;
+}
+
+#interwiki div.menu-item a {
+color: #fff;
+    text-decoration: none;
+    padding: 0.2rem 0.5rem;
+}
+
+#interwiki .side-block div.menu-item a:first-of-type{
+}
+
+#interwiki .side-block div.menu-item{
+    margin: 0.2rem 0;
+}
+
+ .side-block div.menu-item img{
+display: none;
+}
+
+ #interwiki  div.menu-item a{
+     display: block;
+     width: 100%;
+   background-image:  var(--gradient-sidebar-btn);
+   filter: brightness(1) drop-shadow(2px 3px 1px #000);
+   border: 0.2rem outset #2c2e2e;
+}
+ 
+#interwiki  div.menu-item a:hover{
+   filter: brightness(2) drop-shadow(2px 2px 1px #000);
+   border: 0.2rem inset #2c2e2e;
+   top: 0.2rem;
+}
+
+@media screen and (max-width: 230px){
+    #interwiki .side-block {
+    border: none !important;
+  } 
+}
 
 [[/code]]
 
@@ -2677,139 +2955,49 @@ div.inline-diff ins {
 @@@@
 [[/iftags]]
 
+[[include :scp-wiki:component:collapsible-sidebar]]
 [[module CSS]]
-@import url(http://scp-wiki-cn.wikidot.com/theme:broken-world/code/1);
-[[/module]]
+@import url(https://scp-wiki.wikidot.com/theme:broken-world/code/1);
 
-[[iftags [[#ifexpr {$my-logo} == (true) | - ]]]]
-[[module CSS]]
-/* 
-=====================
-自定义图标
-=====================
- */
- @import url(&#34;http://etinjat.wikidot.com/svg:broken-world/code/1&#34;);
-
-:root{
-  --Set-logo-0: url(&#34;{$set-url}&#34;);
-  --logo-image:var(--Set-logo-{$set-logo}) !important;
-}
-
-[[/module]]
-[[/iftags]]
-
-[[iftags [[#ifexpr {$my-logo} == (true) | - ]]]]
-[[module CSS]]
-/* 
-=====================
-自定义图标
-=====================
- */
- @import url(&#34;http://etinjat.wikidot.com/svg:broken-world/code/1&#34;);
-
-:root{
-  --Set-logo-0: url(&#34;{$set-url}&#34;);
-  --logo-image:var(--Set-logo-{$set-logo}) !important;
-}
-
-[[/module]]
-[[/iftags]]
-
-
-
-
-
-[[iftags [[#ifexpr {$collapsible-sidebar} == (true) | - ]]]]
-
-[[include :etinjat:component:collapsible-sidebar-fixed]]
-
-[[module CSS]]
-
-/* 
-=====================
-滑动侧边栏
-
-基于 Woednaz
-http://www.scpwiki.com/component:collapsible-sidebar
-=====================
- */
-
-
-/* 底部颜色 */
-#side-bar,#side-bar:hover {
-    border:0.5rem  groove #2e2c2c;
-    background-color: grey;
-    background-image: var(--gradient-sidebar-line);        
-}
-
-
-   #side-bar {
-       opacity: 0;
-  }
-
-  #side-bar:hover {
-             opacity: 1;
-   }
-
-@media screen and (max-width: 475px){
-
-  #side-bar,
-  #side-bar:not(:target) {
-       opacity: 0;
-      transition:all 0.5s;
-  }
-
-   #side-bar:target {
-       opacity: 1;
-      transition:all 0.5s;
-  }
-}
-
-
-[[/module]]
-[[/iftags]]
-
-[[iftags [[#ifexpr {$my-title} == (true) | - ]]]]
-[[module CSS]]
-/* 
-=====================
-自定义版头文本
-=====================
- */
-
-:root:lang(cn){
-    --header-font: &#39;{$header-font}&#39;, &#39;思源宋体 CN&#39;, &#39;华文中宋&#39;,&#39;宋体&#39;,lisu,&#39;楷体&#39;, &#39;Iceberg&#39; ,sans-serif;
-    --sub-header-font:&#39; {sub-header-font}&#39;, &#39;楷体&#39;, &#39;Iceberg&#39; ,sans-serif;
-}
-
-:root{
-    --header-font: &#39;{$header-font}&#39;, &#39;思源宋体 CN&#39;, &#39;华文中宋&#39;,&#39;宋体&#39;,lisu,&#39;楷体&#39;, &#39;Iceberg&#39; ,sans-serif;
-    --sub-header-font:&#39; {sub-header-font}&#39;, &#39;楷体&#39;, &#39;Iceberg&#39; ,sans-serif;
-}
-
-   #header h1 a::before {
+#header h1 a::before {
     content: {$header-title};
-   }
+}
         
- #header h2 span::before {
+#header h2 span::before {
     content: {$header-subtitle};
-  } 
+} 
 
 @media (max-width: 500px) {
    #header h1 a::before {
-    padding: 0 0 0 0.5rem;
     content: {$header-title};
-    content: {$phone-title};
-   }
+    content: {$mob-title};
+}
         
- #header h2 span::before {
+#header h2 span::before {
     content: {$header-subtitle};
-    content: {$phone-subtitle};
+    content: {$mob-subtitle};
   } 
 }
 
 [[/module]]
+
+[[iftags [[#ifexpr {$my-logo} == (true) | - ]]]]
+[[module CSS]]
+/* 
+=====================
+MY LOGO
+=====================
+ */
+@import url(&#34;https://scp-wiki.wikidot.com/fragment:broken-world/code/2&#34;);
+
+:root{
+  --Set-logo-0: url(&#34;{$set-url}&#34;);
+  --logo-image:var(--Set-logo-{$set-logo}) !important;
+}
+
+[[/module]]
 [[/iftags]]
+
 
 
 
@@ -2817,12 +3005,12 @@ http://www.scpwiki.com/component:collapsible-sidebar
 [[module CSS]]
 /* 
 =====================
-烫金版头
+GOLDEN HEADER
 =====================
  */
 
 :root {
---gold-image: url(&#34;http://wanderers-library.wdfiles.com/local--files/component%3Atheme/goldfoil.png&#34;);
+--gold-image: url(&#34;https://wanderers-library.wdfiles.com/local--files/component%3Atheme/goldfoil.png&#34;);
 }
 
 @media screen and (min-width: 475px){
@@ -2838,16 +3026,27 @@ http://www.scpwiki.com/component:collapsible-sidebar
   #header #header-extra-div-2::before {
     background:var(--gradient-logo-cover);
   }
+
+ #header h1 a::before, #header h2 span::before {
+  text-shadow: .063rem .063rem .063rem #231e15;
+  }
 }
 [[/module]]
-[[/iftags]]</textarea></pre>
+[[/iftags]]
+
+
+[[include :scp-wiki:component:interwiki-style
+|priority=3
+|type=sidebar
+|theme=https://scp-wiki.wdfiles.com/local--code/theme%3Abroken-world/2
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.490121.</em>
+    <em>Last updated 2022-09-05 08:37:09.792286.</em>
   
 </div>
 </body>

@@ -10,26 +10,105 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Los Cuatro Arcanos</title>
+  <title>The Four Arcana</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Los Cuatro Arcanos</h1>
+    <h1 class="title">The Four Arcana</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/the-four-arcana" target="_blank">Los Cuatro Arcanos</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/the-four-arcana" target="_blank">The Four Arcana</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>/* This theme overrides some of the Swirling Ashes headers.
+ * Made by Croquembouche for djkaktus&#39; The Four Arcana. */
+ 
+/* Replace the sky with an aurora. */
+body::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/sky.webp);
+  background-size: 1500px calc(var(--header-height-on-desktop));
+  animation-duration: 360s;
+}
+
+/* Replace the buildings. */
+div#container-wrap-wrap::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/skyline.png);
+}
+ 
+@keyframes sky {
+  from { background-position: 1500px 0; }
+  to { background-position: 0 0; }
+}
+ 
+/* Replace fog layers with snow */
+div#container-wrap-wrap::after, body::after {
+  background-image: url(http://scp-sandbox-3.wikidot.com/local--files/croquemtest2/snow.webp);
+  background-size: var(--ashes-width);
+  background-repeat: repeat;
+  animation: ashes-move linear var(--ashes-move-duration) infinite;
+  opacity: 0.8;
+}
+div#container-wrap-wrap::after {
+  --ashes-move-duration: 37s;
+  --ashes-width: 250px;
+}
+body::after {
+  --ashes-move-duration: 30s;
+  --ashes-width: 400px;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) var(--ashes-width); }
+}
+
+#page-content .info-container {
+    --link-color: rgb(var(--swatch-text-general));
+}
+
+#page-content .info-container .translation_block {
+    display: none;
+}
+
+#page-content .info-container .collapsible-block-link,
+#page-content .info-container:hover .collapsible-block-link {
+    line-height: 1.6em;
+}
+
+#page-content .info-container .collapsible-block-folded,
+#page-content .info-container .collapsible-block-unfolded-link {
+    display: grid;
+}
+
+#page-content .info-container .collapsible-block-folded .collapsible-block-link,
+#page-content .info-container .collapsible-block-link {
+    -webkit-mask: unset;
+            mask: unset;
+    background: transparent;
+    grid-column: 1;
+    grid-row: 1;
+    opacity: 0;
+}
+
+#page-content .info-container .collapsible-block-folded::before,
+#page-content .info-container .collapsible-block-unfolded-link::before {
+    --wght: 800;
+    content: &#34;djkaktus&#34;;
+    color: #FFFFFF;
+    font-family: Inter, Arimo, Verdana, Geneva, &#34;Helvetica Neue&#34;, &#34;Helvetica&#34;, Arial, sans-serif;;
+    display: block;
+    pointer-events: none;
+    grid-column: 1;
+    grid-row: 1;
+}</code></pre>
         </li>
       
     </ul>
@@ -46,7 +125,56 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:swirling-ashes" target="_blank"><code>:scp-wiki:theme:swirling-ashes</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:swirling-ashes.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
       
     </ul>
 
@@ -60,64 +188,161 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[&gt;]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[include :scp-wiki:theme:swirling-ashes]]
+
+[[module css]]
+/* This theme overrides some of the Swirling Ashes headers.
+ * Made by Croquembouche for djkaktus&#39; The Four Arcana. */
+ 
+/* Replace the sky with an aurora. */
+body::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/sky.webp);
+  background-size: 1500px calc(var(--header-height-on-desktop));
+  animation-duration: 360s;
+}
+
+/* Replace the buildings. */
+div#container-wrap-wrap::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/skyline.png);
+}
+ 
+@keyframes sky {
+  from { background-position: 1500px 0; }
+  to { background-position: 0 0; }
+}
+ 
+/* Replace fog layers with snow */
+div#container-wrap-wrap::after, body::after {
+  background-image: url(http://scp-sandbox-3.wikidot.com/local--files/croquemtest2/snow.webp);
+  background-size: var(--ashes-width);
+  background-repeat: repeat;
+  animation: ashes-move linear var(--ashes-move-duration) infinite;
+  opacity: 0.8;
+}
+div#container-wrap-wrap::after {
+  --ashes-move-duration: 37s;
+  --ashes-width: 250px;
+}
+body::after {
+  --ashes-move-duration: 30s;
+  --ashes-width: 400px;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) var(--ashes-width); }
+}
+
+#page-content .info-container {
+    --link-color: rgb(var(--swatch-text-general));
+}
+
+#page-content .info-container .translation_block {
+    display: none;
+}
+
+#page-content .info-container .collapsible-block-link,
+#page-content .info-container:hover .collapsible-block-link {
+    line-height: 1.6em;
+}
+
+#page-content .info-container .collapsible-block-folded,
+#page-content .info-container .collapsible-block-unfolded-link {
+    display: grid;
+}
+
+#page-content .info-container .collapsible-block-folded .collapsible-block-link,
+#page-content .info-container .collapsible-block-link {
+    -webkit-mask: unset;
+            mask: unset;
+    background: transparent;
+    grid-column: 1;
+    grid-row: 1;
+    opacity: 0;
+}
+
+#page-content .info-container .collapsible-block-folded::before,
+#page-content .info-container .collapsible-block-unfolded-link::before {
+    --wght: 800;
+    content: &#34;djkaktus&#34;;
+    color: #FFFFFF;
+    font-family: Inter, Arimo, Verdana, Geneva, &#34;Helvetica Neue&#34;, &#34;Helvetica&#34;, Arial, sans-serif;;
+    display: block;
+    pointer-events: none;
+    grid-column: 1;
+    grid-row: 1;
+}
+[[/module]]
+
+[[include :scp-wiki:component:info-ayers
+|lang=en[!-- EN/RU/KO/CN/FR/PL/ES/TH/JP/DE/IT/UA/PTBR --]
+|page=the-four-arcana[!-- url of your page on the scp wiki --]
+|authorPage=http://www.scp-wiki.net/djkaktus[!-- link to your author page --]
+|comments=
+
+= **//The Four Arcana//**
+
+]]
+
+[[&gt;]]
 [[module Rate]]
 [[/&gt;]]
 [[=]]
 [[image snow.png]]
 [[/=]]
 
-Yacía en una zanja de nieve, sangrando. Mi corazón late frenéticamente, devolviendo la vida a mi cuerpo roto. Las brasas se apagan y la llama chisporrotea, y la oscuridad se arrastra por los bordes. Un cielo nocturno, negro y azul, se posa sofocante sobre mis pecados, por muy satisfecho y santurrón que haya sido, incapaz de ver las estrellas a través del humo. Llena mis pulmones y se asientan, flácidos y exhaustos - como yo, una cosa que fue un hombre, ahora convertida en carne y vapor moribundos.
+I lay in a snow ditch, bleeding. My heart beats frantically, desperately coaxing my broken body back to life. The embers die down and the flame sputters, and darkness creeps in along the edges. A night sky of black and blue settles suffocatingly on my sins, self-satisfied and sanctimonious though I have been, incapable of seeing stars through smoke. It fills my lungs and they settle, limp and exhausted - like I, a thing that was a man, now turned into dying meat and vapor.
 
-Madre, ¿ves el lugar donde estoy tendido? ¿Ves la sangre que empapa mi camisa?
+Mother, do you see the place I am lying? Do you see the blood soaking through my shirt?
 
-Pero las brasas encienden el fuego, y cuando toso es sangre y bilis y aire. Mis pulmones están llenos de este aire helado y estoy //vivo//. Ruedo y me arrastro y encuentro algo duro para apoyarme de nuevo, y con una fuerza agonizante arranco mi cuerpo hacia arriba y me pongo de pie, agarrándome a un haya para apoyarme. Mis ojos se adaptan a la oscuridad, me escuecen contra el sudor, la sangre y el humo de mi propia carne chamuscada, pero a través de la calma de la noche lo //veo//.
+But the embers kindle the fire, and when I cough it is blood and bile and air. My lungs are filled with this frozen air and I am //alive//. I roll and crawl and find something hard to brace again, and with agonizing force I wrench my body upwards and I stand, grasping against a beech for support. My eyes adjust to the dark - they sting against the sweat and the blood and the smoke from my own singed flesh, but through the night’s calm I //see it//.
 
-Ahora solo está a unos pasos de distancia, aunque puedo ver el lugar en el que me encontraba antes de ser arrojado hacia atrás. Un cráter, tal vez de un tiro de piedra y tan profundo como un estanque, lleno ahora de tierra y fuego. Me acerco a él a trompicones, respirando ahora con más facilidad, y me detengo a los pies de una cosa que solía ser humana. Su nombre, ¿dónde está su nombre? Un momento, y luego vuelve a aparecer: Morehead, un cazarrecompensas [[[a-small-bundle-of-letters|contratado por los regidores]]], ahora reducido a poco más que vísceras - una sonrisa mórbida grabada para siempre en lo que había sido la carne de su rostro.
+Only paces away now, though I can see where I had stood before I was thrown back. A crater, maybe a stone’s throw across and as deep as a pool, filled now with dirt and fire. I stumble towards it, my breath coming more easily now, and I pause at the foot of a thing that used to be human. His name - where is his name? A moment, then it too returns - Morehead, a bounty-man [[[a-small-bundle-of-letters|hired by the councilmen]]], now reduced to little more than viscera - a morbid grin seared forever into what had been the flesh of his face.
 
-¿Qué es la virtud? ¿De dónde surge? ¿Es la fuente de la virtud tan fácil de romper? ¿Se desmoronan tan fácilmente sus cimientos?
+What is virtue? From where is it brought forth? Is the font of virtue so easily broken? Are its foundations so easily crumbled?
 
-El hombre tiene un amo, y el hombre existe según el capricho del amo. Un día, el hombre busca al amo y le pide que le explique por qué es el esclavo del amo. El amo no dice nada. Insatisfecho por ello, el hombre encuentra al amo mientras duerme y lo **rompe**. Si el amo puede ser roto, ¿fue alguna vez el hombre realmente un esclavo?
+Man has a master, and man exists at the master’s whim. One day, man seeks out the master and asks him to explain why he is the slave to the master. The master says nothing. Unsatisfied by this, man finds the master as he is sleeping and **breaks him**. If the master can be broken, was the man ever truly a slave?
 
-Paso junto a los cadáveres, carbonizados y humeantes, algunos de los cuales se aferran desesperadamente a una vida que los ha abandonado. Uno de ellos se acerca a mí, agarra mi calcetín con su mano partida. La sangre se acumula en la boca abierta del hombre y las lágrimas corren por sus mejillas. Tiene los ojos muy abiertos.
+I walk past corpses, charred and smoking, some still clinging desperately to a life that has abandoned them. One reaches for me, grabs my sock with his split hand. Blood pools in the man’s open mouth and tears run down his cheeks. His eyes are wide.
 
-//Por favor,// me suplica. //Por favor, Dios, por favor no me dejes.//
+//Please,// he begs me. //Please, God, please don’t leave me.//
 
-¿Dios? ¿Dónde está Dios? Un cráter humeante y hombres destrozados, ¿es ese el Dios al que reza este hombre? Me detengo y le observo durante unos instantes mientras se agarra desesperadamente a mi pie. Hace gárgaras y se ahoga, asfixiado por la sangre y las consecuencias. Sus ojos aterrorizados se encuentran con los míos por última vez y luego se queda quieto. Sus oraciones quedan sin respuesta, pero no por indiferencia. El Dios al que rezó está muerto.
+God? Where is God? A smoking crater and sundered men - is that the God this man prays to? I stop and watch him for a few moments as he desperately grabs for my foot. He gargles and chokes, suffocating on blood and consequence. His terrified eyes meet mine a final time, and then he is still. His prayers go unanswered - but not for indifference. The God he prayed to is dead.
 
-La noche es tranquila, aparte del crepitar del fuego y el viento, pero un sonido al otro lado del camino se hace sentir. Las carcajadas de un hombre, que ladra como un perro rabioso. Lo veo y voy hacia él, que cuelga empalado en la rama de un árbol atravesando su estómago a unos tres metros de altura. Me ve acercarme y su carcajada aumenta. También me viene su nombre: el Regidor, presunto líder de lo que fue un grupo de ocultistas. Él, al igual que el otro hombre, ya está muerto, pero la muerte lo recibe de forma extraña. Sus ojos son salvajes pero carecen del miedo del hombre en el suelo.
+The night is quiet aside from the crackling of fire and the wind, but a sound across the way carries. The harsh cackling of a man, barking like a mad dog. I see him and go to him - he hangs impaled upon a tree limb through his stomach some ten feet into the air. He sees me approach and his cackling only increases. His name comes to me as well - the Alderman, presumed leader of what was once a group of occultists. He, like the other man, is already dead - but death greets him strangely. His eyes are wild but lack the fear of the man on the ground.
 
-&#34;¡Hola!&#34;, me grita. &#34;¡Hola, y buen día para ti, hermano mío! Veo que has salido ileso. Pocos pueden decir lo mismo. Tú y yo, sin embargo, hemos sobrevivido. Hemos llegado al otro lado&#34;.
+“Hallo there!” he shouts to me. “Hallo, and good day to you my brother! I see you’ve made it out unmolested. Few can say the same. You and I, though, we’ve survived it. We’ve made it through to the other side.”
 
-&#34;¿A qué hemos sobrevivido?&#34; Le pregunto.
+“What have we survived?” I ask him.
 
-&#34;¡El fin del mundo, chico!&#34; Vuelve a reírse, con la mandíbula temblando como un cuervo parlanchín. &#34;Hemos visto el propio mundo deshecho y hecho de nuevo + una Nueva Jerusalén, y tú estás de pie en ella ahora mismo. Un mundo libre de milagros&#34;.
+“The end of the world, boy!” He cackles again, his jaw shaking like a chattering crow. “We’ve seen the world itself unmade and made whole again - a New Jerusalem, and you’re standing in it right now. A world free from miracles.”
 
-Me estremezco contra el frío. Su voz es tan fuerte y brillante, incluso cuando la sangre se filtra desde su cuerpo perforado.
+I shiver against the cold. His voice is so loud and bright, even as blood seeps from his punctured body.
 
-&#34;No sé si lo conseguirás, señor&#34;, le digo. &#34;[[[worry-worry|No soy médico, solo un científico.]]]&#34;
+“I don’t know if you’ll make it, sir,” I tell him. “[[[worry-worry|I’m not a doctor, just a scientist.]]]”
 
-Levanta un brazo de la rama para hacerme un gesto despectivo; había estado usando ambos para sostenerse. Al hacerlo, su cuerpo se desploma ligeramente y emite un sonido como el de una tela mojada que se desgarra. Gruñe, pero su sonrisa no disminuye.
+He raises an arm off the branch to gesture at me dismissively - he had been using both to hold himself up. As he does, his body slumps down slightly and makes a sound like tearing wet fabric. He grunts, but his smile does not diminish.
 
-&#34;Tonterías. Ya lo he conseguido, estoy //aquí//&#34;, señala con ambas manos mientras su torso se desgarra contra su propio peso. &#34;Ya estamos aquí, tú y yo, somos los primeros hijos de un mundo rehecho. Magnífico. Pensar que hemos podido llegar hasta aquí&#34;.
+“Nonsense. I’ve already made it, I’m //here//-” he gestures around with both hands as his torso rips against its own weight. “We’re here now, you and I, we’re the first children of a world remade. Magnificent. To think that we could come this far.”
 
-Su respiración se detuvo en el pecho mientras sus ojos se desviaban hacia el cielo, y por un momento pensé que lo había visto morir. Entonces sus párpados parpadearon y tosió, con sangre y saliva saliendo de sus labios.
+His breath caught in his chest as his eyes rolled skyward, and for a moment I thought I had seen him die. Then his eyelids flickered and he coughed, blood and spittle flying from his lips.
 
-&#34;¿Cómo te llamas, chico?&#34;, me llamó. &#34;¿Con quién estabas?&#34;
+“What’s your name, boy?” he called down to me. “Who were you with?”
 
-Dudo.
+I hesitate.
 
-&#34;Robert&#34;, le digo. &#34;Estaba con los hombres del Regidor.&#34;
+“Robert,” I tell him. “I was with the Alderman’s men.”
 
-Hace una mueca. &#34;Ah. Entonces eras uno de los míos, ¿no?&#34;.
+He grimaces. “Ah. You were one of mine then, weren’t you?”
 
-&#34;Lo era, señor&#34;.
+“I was, sir.”
 
-Se queda quieto un momento. &#34;Recuerda esto, Robert. Recuerda esta sensación. Oh, este sentimiento. Es el éxtasis&#34;.
+He is still for a moment. “Remember this, Robert. Remember this feeling. Oh, this feeling. It is ecstasy.”
 
-Se detuvo otro momento, jadeó ligeramente y murió. Permanecí junto a su cuerpo durante un rato, hasta que el frío me llevó a ceñirme el abrigo al cuello. Busqué el camino a través del bosque por el que habíamos entrado en el claro, y comencé mi camino de vuelta hacia el pueblo. Pensé en el concejal durante un rato. Pensé en su rostro, iluminado por la divinidad rendida, gritando y retorciéndose y riendo como un animal sujeto al fuego. Pensé en sus palabras, y en el sentimiento de ese momento.
+He paused another moment, gasped slightly, and died. I stood by his body for a while, until the cold drove me to pull my coat tight around my neck. I searched for the path through the woods where we had entered into the clearing, and began my trek back towards the village. I thought about the Alderman for a while. I thought about his face, illuminated by rendered divinity, screaming and writhing and laughing like an animal held to fire. I thought about his words, and the feeling of that moment.
 
-Tenía razón. Era el éxtasis.
+He was right. It was ecstasy.
 
 -----
 
@@ -125,74 +350,75 @@ Tenía razón. Era el éxtasis.
 [[image snow2.png]]
 [[/=]]
 
-En el largo camino de vuelta por el bosque, empieza a nevar.
+On the long walk back through the forest, it begins to snow.
 
-Iluminados únicamente por la luna llena, los copos de nieve bailan a mi alrededor al ritmo de un tambor invisible que toca para una banda silenciosa. Cada uno de ellos que aterrizaba en mi cara quemada era una misericordia, un diminuto indulto de las ampollas. Un pequeño respiro del sufrimiento de mi existencia. El hombre nace en el sufrimiento, supuse, y solo con la lucha es capaz de tirar de las cadenas con las que el amo lo ha encadenado y lograr un pequeño consuelo.
+Illuminated only by the full moon above, swirling flakes of snow danced around me to the beat of an unseen drummer playing for a silent band. Each one of them that landed on my burned face was a mercy, a tiny reprieve from the blistering. A tiny reprieve from the suffering of my existence. Man is born into suffering, I surmised, and by struggle alone is he able to pull against those chains that the master has bound him in and achieve some minor comfort.
 
-¿Me ves, madre? ¿Ves los pasos que he dado a través de la profunda nieve? ¿Sientes el frío del invierno en mi cuello?
+Do you see me, mother? Do you see the steps I’ve taken through the deep snow? Do you feel the chill of winter on my neck?
 
-Recuerdo el día como si fuera hace unos instantes: una nota que llegó horas antes a mis oficinas en la ciudad, y el carruaje que me llevó rápidamente al hogar en el que crecimos. Lamento haber sido el último en llegar, teniendo ahora el menor tiempo para estar a tu lado, para escuchar tus jadeos y tu llanto, los últimos momentos antes de que te quedaras inmóvil para siempre. ¿Me viste, en esos momentos? ¿Sentiste el calor de mi mano sobre la tuya?
+I remember the day like it was moments ago - a note having arrived hours prior at my offices in the city, and the carriage having borne me swiftly to the home in which we grew up. I regret that I was the last to arrive, given now the shortest time to be at your side, to hear your gasping and crying, the final moments before you became forever still. Did you see me, in those moments? Did you feel the warmth of my hand on yours?
 
-Para mí, el recuerdo está grabado a fuego en mí como si fuera un hierro candente. Tus ojos fijos en los míos, un momento de paz, un último suspiro, y luego el silencio. Yo, desesperado, sacudiendo tu cuerpo y pidiendo una respuesta. El horror de ese momento, mezclado con la humedad de la enfermedad en una habitación mohosa. La sal de mis propias lágrimas, la última bocanada de aire que salía de tu pecho... todo ello forma ahora parte de mí como mis propios ojos, mis propias manos, mi propia piel.
+For mine, the memory is seared into me as if by a hot iron. Your eyes fixed on mine, a moment of peace, a final breath, and then silence. Me, in desperation, shaking your body and begging for a response. The horror of that moment, mixed with the humidity of sickness in a musty room. The salt of my own tears, the last gasp of air leaving your breast - these all are now just as much a part of me as my own eyes, my own hands, my own skin.
 
-Y sin embargo, en ese momento de tu muerte sentí que algo ardía dentro de mí. Este sentimiento, que sube y baja y vuelve a subir, choca como un rayo contra mi alma. ¿Qué es? ¿El conocimiento pasajero de que la vida es efímera y de que todos los hombres mueren, representado ahora ante mí al lado de mi madre? ¿Qué fue lo que sentí cuando te deslizaste en ese oscuro desconocimiento, el poder y la rabia y el éxtasis de ese momento? Una vida perdida - la energía del alma dispersada sobre el éter como el agua en el vapor en una placa caliente.
+And yet, in that moment of your passing I felt something burning within me. This feeling, rising and falling and rising again, cracking like lightning against my soul. What is it? The passing knowledge that life is fleeting and that all men die, played now before me at my mother’s side? What was it I felt when you slipped into that dark unknowingness, the power and rage and ecstasy of that moment? A life lost - the energy of the soul dispersed over the ether like water into vapor on a hot plate.
 
-Ahora me he teletransportado al momento en que ocurrió, de pie en este oscuro bosque a las afueras del pueblo, con nada más que la luna en lo alto y el sonido del viento y las ramas que se mecen. Círculos concéntricos tallados en la tierra empapada de nieve, abrasados por el fuego del encantamiento y empapados con la sangre del sacrificio. Una hoja de acero curvada en la mano del Regidor, sus pasos vacilantes pero sus ojos desorbitados de placer. Allí, atado en el centro y a momentos de su muerte, un **poder** - desdichado y retorcido - pero sostenido por estos cuatro arcanos: sangre, hielo, luz lunar y acero.
+Now I am teleported to the moment it happened, standing in this dark forest outside of the village with naught but the moon overhead and the sound of wind and swaying branches. Concentric circles carved into the snow-soaked earth, scorched by the fire of incantation and sopping with the blood of sacrifice. A curved steel blade in the hand of the Alderman, his steps hesitant but his eyes wild with delight. There, bound in the center and moments from its death, a **power** - wretched and writhing - but held by these four arcana - blood, ice, moonlight, and steel.
+
 
 [[=]]
 [[image parchment.png]]
 [[/=]]
 
 
-Al bajar la cuchilla, veo tus propios ojos manchados de sangre mirándome, madre. Veo tus manos agarradas y siento el sudor de tu cuerpo que falla. Siento el poder, subiendo y bajando y subiendo de nuevo - este gran y terrible impulso mientras el péndulo oscila hacia el desorden. Oh, romper un cuerpo - es un sentimiento sin control ni consideración; un sentimiento horrible, maravilloso, asfixiante. Poder - poder para romper, y poder para ser roto. Este dios en la pira, ardiendo sobre las llamas de la blasfemia y el deseo, gritando mientras se manifiesta solo por el momento necesario para que sea cercenado y //roto// y entonces sí - el sentimiento. //Oh, el sentimiento//, la sinergia de la muerte y el alma. Es todo a la vez, una avalancha vampírica de calor que inflama el espíritu.
+As the blade is brought down, I see your own bloodstained eyes looking back at me, mother. I see your grasping hands and feel the sweat of your failing body. I feel the power, rising and falling and rising again - this great and terrible momentum as the pendulum swings towards disorder. Oh, to break a body - this is a feeling without control or consideration; a horrid, wonderful, smothering feeling. Power - power to break, and power to be broken. This god upon the pyre, burning over the flames of blasphemy and want, screaming as it is made manifest for only the moment needed for it to be sundered and //broken// and then yes - the feeling. //Oh, the feeling//, the synergy of death and the soul. It is everything at once, a vampyric avalanche of heat that inflames the spirit.
 
-Atravieso los árboles y veo de cerca las luces del pueblo, y al salir a la calle veo iluminada al otro lado del camino a una mujer joven, envuelta con fuerza contra el frío y arrastrando los pies. Sus ojos captan los míos y entonces actúo, como un animal, incontrolable mientras un deseo primario se apodera de mí de nuevo. Aquí, bajo la luna, contra la nieve caída, con su sangre como círculo y mi propio cuchillo largo como llave, rompo su cuerpo. Introduzco el cuchillo en ella, una y otra vez, manchando la nieve y mi propia carne con su sangre y completando el conjuro. Sí, los momentos previos a tu muerte, madre, y el círculo en el bosque. Todo está conectado. Estos momentos son todos iguales.
+I come through the trees and see the lights of the village closely now, and as I walk onto the street I see illuminated across the way a young woman, wrapped tightly against the cold and shuffling away. Her eyes catch my own and then I act - like an animal, uncontrollable as a primal desire seizes me again. Here under the moon, against the fallen snow, with her blood as the circle and my own long knife as the key I break her body. I bring the knife down into her, again and again, staining the snow and my own flesh in her lifeblood and completing the incantation. Yes - the moments before your death mother, and the circle in the forest. It is all connected. These moments are all the same.
 
-Y entonces - la incertidumbre. El poder está ahí, el calor creciente a lo largo de la piel y el calor húmedo del aliento mezclado con su sangre y vísceras, el poder de una bestia de presa - pero es suficiente para un segundo fugaz. Es débil, y se agota, y en ese momento el deseo primario se convierte en terror abyecto. Este poder, este mecanismo de tic-tac en el que he caído y me he encajado entre sus ruedas, no es //nada// comparado con el hierro molido y el acero abrasador de ese motor de creación y destrucción que fue borrado en el bosque. Es poco más que jadear a través de un junco, aferrarse a una ramita en una tormenta. Me ahogaré en este miedo si no puedo aprovechar una vez más el éxtasis de ese gran desgarro.
+And then - uncertainty. The power is there, the rising warmth along the skin and the damp heat of the breath mixed with her blood and viscera, the power of a beast of prey - but it suffices for a fleeting second. It is weak, and it sputters, and in that moment the primal desire turns into abject terror. This power, this ticking mechanism that I have fallen into and become wedged between its wheels is //nothing// compared to the grinding iron and blistering steel of that engine of creation and destruction that was obliterated in the forest. It is little more than gasping through a reed, clinging to a twig in a storm. I will drown in this fear if I cannot seize once again the ecstasy of that great rending.
 
-Pero soy pequeño, y débil, y no tengo ese conocimiento de la autoridad que poseen el Regidor y sus ocultistas. No hay ningún dios que responda a mi grito de liberación, ninguna deidad primigenia que pueda atar con mis propias manos. Estoy solo, y tengo miedo.
+But I am small, and weak, and do not have that knowledge of authority possessed by the Alderman and his occultists. There is no god that would answer to my cry for release, no primal deity that I could bind with my own hands. I am alone, and I am afraid.
 
-Oh, madre. ¿Lo sabías, en esos momentos finales? ¿Me miraste a los ojos mientras tu cuerpo flaqueaba y viste los montones de cadáveres en la oscuridad bajo el molino de mi padre? ¿Oíste los gritos de las madres y los llantos de los padres mientras sus hijos eran arrastrados a esas calles laterales y a la penumbra de mis horribles dominios, y sabías el silencio que seguiría cuando esas madres y esos padres fueran llevados abajo también? No puedo matar a un dios, madre, no más de lo que podría salvar tu vida cuando se me escapa de las manos. Pero puedo arreglarlo.
+Oh, mother. Did you know, in those final moments? Did you look into my eyes as your body faltered and see the piles of corpses in the dark beneath my father’s mill? Did you hear the screams of mothers and the cries of fathers as their children were dragged into those side streets and into the gloom of my horrible domain, and did you know the silence that would follow when those mothers and fathers are brought below as well? I cannot kill a god, mother - no more than I could save your life as it slipped through my fingers. But I can make due.
 
-La puerta se abre y comienzan los gritos. Uno a uno los sacan del pozo en el que los mantengo y los arrastran a la habitación contigua. Atados a este altar bajo la luz de la luna, y a través del aire gélido llego yo, el nuevo heraldo, habiendo cambiado mi largo cuchillo por el gran engranaje de acero del molino de mi padre. Suplican y ruegan y gritan, pero la rueda gira y desciende. Veo cómo se encuentra con sus cuerpos, cómo la carne se separa del músculo y el músculo del hueso. El hombre se reduce a carne. La carne se reduce a niebla roja.
+The door opens, and the screaming begins. One by one they are pulled from the pit I keep them in and dragged into the next room. Bound to this altar under the light of the moon, and through the frigid air comes I, the new harbinger, having traded my long knife for the great steel gear of my father&#39;s mill. They plead and beg and shriek, but the wheel spins and the wheel descends. I watch as it meets their bodies, as flesh is torn from muscle and muscle from bone. Man reduces to meat. Meat reduced to red mist.
 
-No soy un gran estudiante de misticismo, y no tengo sus poderosos conjuros - pero tengo la rueda giratoria de esta temible máquina, y la máquina me alimenta. Cada nuevo cuerpo que se rompe en mi máquina es como la electricidad en mi sangre, pero //sin embargo// palidece en comparación. Estoy pisando el agua, es cierto, pero mi resistencia tiene límites y la orilla está muy lejos. Los gritos se vuelven apagados y sin brillo. El olor a sangre se convierte en algo común. El miedo en sus ojos no significa nada. Nada de eso puede compararse con el poder de ese momento en el bosque.
+I am no great student of mysticism, and I do not have their powerful incantations - but I have the spinning wheel of this dread machine, and the machine feeds me. Each new body broken upon my machine is like electricity in my blood, but //still// it pales in comparison. I am treading water, true, but my endurance has limits and the shoreline is so far away. The screams become muted and dull. The smell of blood becomes commonplace. The fear in their eyes means nothing. None of it can compare to the power of that moment in the woods.
 
-Me siento en la oscuridad, solo. Hay un número limitado de cuerpos, y casi he agotado este pueblo. Podría continuar, pero ¿para qué? Estoy desenterrando toperas y rogando que se conviertan en montañas. Lloro, no solo por mí, sino por ti, madre. Lloro porque tus lecciones se perdieron en mí. Nos sentábamos en la iglesia y tú tomabas mi mano entre las tuyas, fuerte y cálida, y me decías que //confíe en Dios//. Incluso ahora, fría y vacía, siento tu mano muerta sobre la mía. //Confía en Dios//.
+I sit in the dark, alone. There are only so many bodies, and I have nearly exhausted this village. I could continue, but for what? I am digging up molehills and begging for them to become mountains. I weep, not just for myself - but for you, mother. I weep that your lessons were lost on me. We would sit in the church and you would take my hand in yours, strong and warm, and tell me to //trust in God//. Even now, cold and empty, I feel your dead hand on my own. //Trust in God//.
 
-Miro la rueda, el gran engranaje del molino de mi padre. Su último y miserable regalo para mí. Empapado en sangre y vísceras, brillando bajo la luz de la luna. La rueda. //Confía en Dios.//
+I look to the wheel, the great spinning gear of my father’s mill. His last, wretched gift to me. Caked in blood and gore, glimmering under the light of the moon. The wheel. //Trust in God.//
 
-Queda una niña entre este grupo, una que reza cada noche y pide a Dios que la salve. Es pequeña, y cualquier pequeño alivio de esta agonía de la separación que sentiría al ponerla contra la rueda sería fugaz, pero oigo tus palabras en mi oído, madre. //Confía en Dios.// ¿Podría ser ella mi liberación? La he dejado a un lado estos largos meses para que languidezca en el frío y ver si se puede quebrar su fe - si se puede estropear.
+There is one child left among this group, one who prays every night and asks God to save her. She is small, and whatever minor relief from this agony of separation I would feel from putting her against the wheel would be fleeting, but I hear your words in my ear, mother. //Trust in God.// Could she be my deliverance? I have set her aside these many long months to languish in the cold and see if her faith could be broken - if she can be spoiled.
 
-La mantengo, atada y amordazada en un pequeño rincón del pozo del sótano por la esperanza de que su fe sea lo suficientemente fuerte. Lo suficientemente fuerte como para alimentar **lo que debe suceder a continuación**. He pensado en ello durante algún tiempo, y no puedo quitarme la imagen de la cabeza. He estado tan preocupado por la fugaz euforia de romper a una persona que no he considerado mi despilfarro. En la oscuridad de mi carnicería se forma una obsesión que se aferra a mi mente como un parásito.
+I keep her, bound and gagged in a small corner of the cellar pit for hope that her faith will be strong enough. Strong enough to fuel **what must happen next**. I have thought it over now for some time, and I cannot get the image out of my mind. I have been so preoccupied with the fleeting elation of breaking a person that I have not considered my wastefulness. In the darkness of my butchery an obsession forms, latching onto my mind like a parasite.
 
-Después de todo, si el éxtasis de romper un cuerpo es tan fuerte, y tan intensamente cautivador para mi alma, entonces ¿qué pasa con la alegría que viene con romper un cuerpo dos veces?
+After all, if the ecstasy of breaking a body is so strong, and so intensely captivating to my soul, then what of the joy that comes with breaking a body twice?
 
-Recojo lo que puedo de los libros del Regidor, y poco a poco empiezo a recomponer esos pueblos fracturados. El brazo del carnicero. Las manos del herrero. Los ojos del bibliotecario. Las piernas del alguacil. Pieza a pieza, hasta que están todos juntos y todos como uno. El olor, madre - ¡no creerías el olor! Casi me da asco, pero estoy demasiado aturdido para sentir cualquier malestar. Esta cosa que he construido, esta masa intacta de carne y hombre, es mi liberación. ¿Cuántos cuerpos están cosidos aquí? ¿Cuántos rostros cortados y salpicados me miran con esas sonrisas horrorizadas? Creo que es suficiente. Creo que será suficiente.
+I gather what I can from the Alderman’s books, and slowly I begin piecing back together those fractured peoples. The arm of the butcher. The hands of the smith. The eyes of the librarian. The legs of the constable. Piece by piece, until they are all together and all as one. The smell, mother - you would not believe the smell! It almost makes me sick, but I am too giddy to feel any unease. This thing I have built, this unbroken mass of meat and man, this is my deliverance. How many bodies are stitched together here? How many chopped and splattered faces staring back at me with those horrified grins? Enough, I believe. I believe it will be enough.
 
-Mi fe sola no será suficiente, no. No soy el pilar de la virtud que tú eras, madre. No puedo extender mis manos y darle a este ser una nueva vida. Pero la creencia de una niña - esta niña pura y sin adulterar, tal vez su creencia pueda obrar mi milagro.
+My faith alone will not be sufficient, no. I am not the pillar of virtue that you were, mother. I cannot reach out my hands and give this being a new life. But the belief of a child - this pure, unadulterated child, perhaps her belief can work my miracle.
 
-La traigo a la habitación, bajo la luz de la luna y el frío del invierno. Ella reza, como tú rezaste, y su rostro no está lleno de miedo, sino de determinación. Cree más firmemente que nada en el mundo que será liberada. La pongo sobre la mesa, bajo mi sombría máquina, y por un momento me invade su serenidad. Entonces, cuando pasa una nube y la habitación se ilumina, ella abre los ojos. Por un momento, me mira y nos quedamos encerrados juntos: mi mano en la palanca, pero sin poder lanzarla. Entonces mira hacia la esquina, donde la masa destrozada de mi nuevo mesías descansa contra la mampostería, y veo una fracción de segundo de pánico.
+I bring her into the room, under the light of the moon and in the chill of winter. She prays, as you prayed - and her face is filled not with fear, but determination. She believes more strongly than anything in the world that she will be delivered. I lay her on the table, under my grim machine, and for a moment I am overcome with her serenity. Then, as a cloud passes and the room is illuminated, she opens her eyes. For a moment, she looks at me and we are locked together - my hand on the lever but unable to throw it. Then she looks to the corner, where the mangled mass of my new messiah rests against the masonry, and I see a split second of panic.
 
-Lanzo la palanca y ella se rompe bajo mi horrible rueda.
+I throw the lever, and she is broken under my horrible wheel.
 
-La tierra tiembla y el molino gime, y una vez más estoy junto a ti, madre, mientras el universo se deshace en las costuras. Veo engranajes que rechinan y fragmentos brillantes de metal en llamas: pistones y poleas en una danza interminable a través del tiempo y el espacio. El humo y el fuego llenan mis pulmones, y estoy en llamas en un mar negro de aceite que me llena hasta casi reventar. Veo el claro, y al Regidor graznando, y en el centro del cráter veo mi rueda, incrustada en el cuerpo arruinado de una niña. El cuerpo arruinado de mi madre. El cuerpo arruinado de Dios.
+The earth shakes and the mill groans, and once more I am standing beside you, mother, as the universe comes apart at the seams. I see grinding gears and bright shards of flaming metal - pistons and pulleys in an endless dance across time and space. Smoke and fire fills my lungs, and I am alight in an oil black sea that fills me until I nearly burst. I see the clearing, and the cackling Alderman, and in the center of the crater I see my wheel, embedded into the ruined body of a little girl. The ruined body of my mother. The ruined body of God.
 
-Madre, ¿ves el lugar donde estoy tirado? ¿Ves la sangre que empapa mi camisa?
+Mother, do you see the place I am lying? Do you see the blood soaking through my shirt?
 
-Me pongo de pie, y ya no estoy solo. Mi hija - esta hija de mi herejía, libera un gemido lastimero. Se aferra a sí misma, buscando respuestas que no podría comprender, buscando algún escape de esta cosa en la que se ha convertido. La boca se abre y las lenguas flácidas salen de ellas, los ojos giran de un lado a otro en sus cráneos. Oh, mi bendito niño. Mi dulce y precioso niño.
+I stand, and I am no longer alone. My child - this daughter of my heresy, releases a pitiable moan. It grasps at itself, seeking answers it could not possibly comprehend, looking for some escape from this thing it has become. Mouth open and limp tongues roll out of them, eyes swivel back and forth in its skulls. Oh, my blessed child. My sweet and precious child.
 
-Dejo caer mi rueda sobre él, y se rompe de nuevo.
+I drop my wheel on it, and it is broken again.
 
-//Sí, madre.// Sí, el sentimiento estaba allí. Oh, y fuerte - más fuerte que cualquiera de ellos solos, y más de lo que había soñado todos juntos. Pero más grande que el poder y la maravilla de ese momento era esa obsesión que había estado rondando en el fondo de mi mente, desde que imaginé por primera vez a mi hijo reformado y empecé a coser su cuerpo de nuevo. El parásito se hincha y ruge, y este sueño - esta verdad realizada - es ahora la única verdad que importa. Es la única verdad que siempre ha importado.
+//Yes, mother.// Yes, the feeling was there. Oh, and strong - stronger than any of them alone, and more than I had ever dreamed of all together. But greater than the power and wonder of that moment was that obsession that had been lingering in the back of my mind, ever since I first imagined my reformed child and first began to stitch its body back together. The parasite swells and roars, and this dream - this realized truth - is now the only truth that matters. It is the only truth that ever mattered.
 
-Las cosas rotas pueden rehacerse, y las cosas rotas pueden volver a romperse.
+Broken things can be remade, and broken things can be broken again.
 
-Los pocos que quedan son los primeros discípulos de mi nueva iglesia, los apóstoles de una fe de hierro. Son el público cautivo, convertido por la autoridad de la rueda rota e intoxicado por la deificación del dominio del hombre sobre el hombre. Salen del molino para difundir la palabra del nuevo evangelio, y en poco tiempo se han unido más a nuestro rebaño. Se unen a mí en el molino, balanceándose y gritando mientras los nuevos sacrificios son llevados bajo el reluciente engranaje de la rueda y son desmenuzados como la carne arrancada. Sienten ese poder, y en sus ojos veo los ojos del Regidor, salvajes y vivos.
+Those few who remain are the first disciples of my new church - the apostles of an iron faith. They were the captive audience, converted by the authority of the breaking wheel and intoxicated by the deification of man&#39;s dominion over man. They leave the mill to spread the word of the new gospel, and before long more have joined our flock. They join me in the millroom, swaying and calling out as new sacrifices are brought beneath the glistening gear of the wheel and are shredded like pulled meat. They feel that power, and in their eyes I see the eyes of the Alderman, wild and alive.
 
-Entonces - sorprendentemente - uno de ellos produce su propio milagro. Un joven fabrica un pistón que se mueve por sí mismo, una máquina autónoma, sin intervención humana. Lo encontró en un campo cercano a su casa, y no puede explicar de dónde salió ni cómo se mueve independientemente de cualquier acción exterior. La congregación ve un extraño pistón, pero su vista es limitada. Yo miro el pistón, empujando y tirando obedientemente dentro de su carcasa, y veo el temblor de un dedo cortado: una parte menor del todo, un trozo de algo fracturado. Lo adoramos.
+Then - astonishingly - one of them produces a miracle of their own. A young man produces a piston that moves by itself, an autonomous machine, devoid of human intervention. He found it in a field near his home, and cannot explain where it came from or how it moves independently from any outside action. The congregation sees a strange piston, but their sight is limited. I look at the piston, dutifully pushing and pulling within its casing, and I see the twitching of a severed finger - a smaller part of the whole, a piece of something fractured. We worship it.
 
-Doy mi decreto, para ir al mundo y encontrar estas piezas rotas y traerlas de vuelta a mí. Sin duda son muchas, y necesitaremos muchas más manos para llevar el peso. La congregación es ferviente y su fanatismo es absoluto. Vuelven con otras maravillas mecánicas: máquinas que no deberían funcionar, engranajes que no deberían girar, y sin embargo todas son impulsadas por la misma fuerza inexorable. Me rodeo de ellas, me baño en ellas, y la música de sus mecanismos me canta hasta dormirme.
+I give my decree, to go into the world and find these broken pieces and bring them back to me. There are no doubt a great very many, and we will need many more hands to carry the weight. The congregation is fervent and their zealotry is absolute. They return with other mechanical wonders - machines that should not work, gears that should not spin, yet are all driven by the same inexorable force. I surround myself with them, bathe in them, and the music of their mechanisms sings me to sleep.
 @@@@
 @@@@
 @@@@
@@ -223,7 +449,7 @@ Doy mi decreto, para ir al mundo y encontrar estas piezas rotas y traerlas de vu
 @@@@
 [[=]]
 [[image wheeltop.png]]
-[[size 80%]]//Estoy a la deriva en un océano de aceite y fuego, y sobre mí cuelga una rueca.//[[/size]]
+[[size 80%]]//I am adrift in an ocean of oil and fire, and above me hangs a spinning wheel.//[[/size]]
 [[image wheelbottom.png]]
 [[/=]]
 @@@@
@@ -260,20 +486,20 @@ Doy mi decreto, para ir al mundo y encontrar estas piezas rotas y traerlas de vu
 [[image mill.png]]
 [[/=]]
 
-Me siento en una habitación oscura dentro del molino de mi padre. Cuando murió, lo enterré bajo el sótano para que su tumba no volviera a ver la luz del sol. En mis brazos está mi hijo - el hijo de mi unión con una de las apóstoles - una cultista llamada Hedwig. Nuestro hijo no llevará el nombre de mi padre. Su nombre está enterrado bajo el sótano.
+I sit in a dark room within my father’s mill. When he died, I buried him beneath the basement so his grave would never see the light of the sun again. In my arms is my son - the child of my union with one of the apostles - a cultist named Hedwig. Our son will not carry my father’s name. His name is buried beneath the basement.
 
-Mi hijo llevará tu nombre, madre. //Bumaro//. Tendrá sus propios hijos, y sus hijos tendrán hijos, y un día mi linaje producirá un hijo de una creencia tan pura y auténtica en este nuevo dios, este dios máquina, que no tendrá rival en ningún otro lugar del mundo. De esto, mis profetas me aseguran.
+My son will carry your name, mother. //Bumaro//. He will have children of his own, and his children will have children, and one day my bloodline will produce a child of such pure and authentic belief in this new god, this machine god, it will be unrivaled anywhere else in the world. Of this, my prophets assure me.
 
-Ese día, [[[ambrose-vienna|cuando ese niño está realmente convencido de su creencia]]], mi iglesia romperá su cuerpo en la rueda y lo resucitará aquí, conmigo. Ese día, sacaremos a ese niño roto de la tierra y lo romperemos en la rueda de nuevo, y al consumir su fe perfecta tendremos el catalizador necesario para deshacer el trabajo hecho por el Regidor y sus ocultistas en ese bosque. Ese día, bajo la luna llena y el frío del invierno, dentro de un círculo de sangre y sobre nuestro altar de acero, reconstruiremos nuestro Dios Roto.
+On that day, [[[ambrose-vienna|when that child becomes truly realized in its belief]]], my church will break its body on the wheel and resurrect it here, with me. On that day, we will bring that broken child out of the dirt and break it on the wheel again, and by consuming its perfect faith we will have the catalyst needed to undo the work done by the Alderman and his occultists in that forest. On that day, beneath the full moon and winter&#39;s chill, within a circle of blood and atop our steel altar, we will rebuild our Broken God.
 
-Y entonces, bañado en la luz y el éxtasis de esos cuatro arcanos, yo, Robert Bumaro, lo romperé de nuevo.</textarea></pre>
+And then bathed in the light and rapture of those four arcana I, Robert Bumaro, will break it again.</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.297467.</em>
+    <em>Last updated 2022-09-05 08:37:09.676206.</em>
   
 </div>
 </body>

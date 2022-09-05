@@ -10,61 +10,193 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Trang Lưu Trữ Các Cuộc Thi</title>
+  <title>Contest Archive</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Trang Lưu Trữ Các Cuộc Thi</h1>
+    <h1 class="title">Contest Archive</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/contest-archive" target="_blank">Trang Lưu Trữ Các Cuộc Thi</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/contest-archive" target="_blank">Contest Archive</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>.welcome-header {
-  font-size: 200%;
-  font-weight: bold;
-  color: #922B21;
-  text-align: center;
+          <pre><code>#page-title {
+    text-align: center;
 }
-.welcome-header span {
-  word-break: normal;
+.footnotes-footer .title { font-size: 1.15em; margin: 0.3em 0; }
+.footnotes-footer .footnote-footer { font-size: 0.95em; }
+
+.modal-wrapper {
+    list-style: none;
+    display: contents;
+}
+.modal-wrapper &gt; li .foldable-list-container {
+    text-align: right;
+    font-size: 90%;
+}
+.modal-wrapper &gt; li.folded .foldable-list-container.chrono { display: none; }
+.modal-wrapper &gt; li.unfolded .foldable-list-container.latest { display: none; }
+
+.modal-wrapper &gt; li &gt; .item-list,
+.modal-wrapper &gt; li #toc-list {
+    display: flex;
+    flex-flow: column;
+}
+.modal-wrapper &gt; li.unfolded &gt; .item-list,
+.modal-wrapper &gt; li.unfolded #toc-list {
+    flex-flow: column-reverse;
 }
 
-#page-title { display: none; }
+.item-list h1 span, .item-title a {
+    word-break: initial !important;
+}
+p[style=&#34;text-align: center;&#34;] { margin: 0.625em 0; }
 
-.content-panel .content-type-title &gt; p {
-  margin: 0;
+.item-list h1 {
+    width: 7ch;
+    margin: -1.5rem 0 1.5rem;
+    height: 0rem;
+    font-size: 1.5em;
+    position: relative;
 }
-.content-panel .content-type-title {
-  font-size: 150%;
+li.unfolded .item-list h1 { margin: -5rem 0 5rem; }
+
+.item-list h1 span {
+    position: absolute;
+    bottom: -3.625rem;
+}
+
+.item-list h1 span::after {
+    content: &#34;&#34;;
+    display: block;
+    border: solid 0.3rem currentColor;
+    border-radius: 50%;
+    width: 1.15rem;
+    height: 1.15rem;
+    box-sizing: border-box;
+    margin: 0.25rem auto 0 0.85rem;
+}
+.item-list h1 span::before {
+    content: &#34;&#34;;
+    display: block;
+    position: absolute;
+    background-color: currentColor;
+    border-radius: 1rem;
+    width: 6rem;
+    height: 0.25rem;
+    margin: -0.7rem auto 0 0;
+    bottom: 0.45rem;
+    left: 1.85rem;
+}
+
+.item {
+  background-color: #FFFFFF;
+  border: 1px solid #bbb;
+  margin: 1.25rem;
+  margin-left: 5.15rem;
+  padding: 1rem 2rem;
+  position: relative;
+}
+.item .item-title {
+  position: relative;
+  top: -2rem;
+  left: -3rem;
+  background-color: inherit;
+  border: 1px solid #bbb;
+  font-size: 1.5rem;
   font-weight: bold;
-  padding: 5px 20px;
-  background-color: #666;
-  color: #fff;
-  border-radius: 8px 8px 0 0;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.8),
-    inset 0 15px 1px rgba(255,255,255,.2),
-    inset 0 15px 10px rgba(255,255,255,.2);
+  max-width: max-content!important;
+  margin-bottom: -3.25rem;
 }
-.content-panel .content-type-description {
-padding: 0 20px;
-text-align: justify;
+.item .item-title p {
+  margin: 0.1rem 0.5rem;
 }
-.content-panel.content-row .content-type-description {
-padding: 5px 2px;
+
+.item.unofficial {
+    background-color: #FFF4E4;
 }
-.content-panel.content-row .content-type-description-2 {
-padding: 0 2px;
-text-align: justify;
+.item.unofficial::before {
+    content: &#34;Unofficial&#34;;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    padding: 0.25rem 0.45rem;
+    font-weight: bold;
+    font-size: 1.05em;
+}
+
+.item &gt; hr {
+    margin: 0.5rem -2.05rem;
+    background-color: transparent;
+    height: 0;
+    border-bottom: 1px solid #bbb;
+}
+
+.item &gt; table { width: 97.5%; }
+.item &gt; table.wiki-content-table tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.item &gt; table.wiki-content-table td {
+    text-align: center;
+    border: none;
+    flex-basis: 9rem;
+    flex-grow: 1;
+}
+.item &gt; table.wiki-content-table td::before {
+    font-size: 0.95em;
+    font-weight: bold;
+    display: block;
+}
+.item &gt; table.wiki-content-table td:first-child::before { content: &#34;Host: &#34;; }
+.item &gt; table.wiki-content-table td:last-child::before { content: &#34;Date(s) Held:&#34;; }
+
+@media only screen and (max-width: 660px) {
+    .item { margin: 1.25rem 0.25rem; }
+    .item-list h1 {
+        width: max-content;
+        margin: 0.5rem auto 0;
+        height: auto;
+        font-size: 2em;
+    }
+    .item-list h1 span {
+        position: relative;
+        bottom: 0;
+        top: 0.125em;
+    }
+    .item-list h1 span::after {
+          margin: 0.45rem auto;
+          width: 0;
+          height: 0;
+          border-radius: 0;
+          border: solid 0.75rem currentColor;
+          border-bottom-width: 0;
+          border-left-color: transparent;
+          border-right-color: transparent;
+    }
+    .item-list h1 span::before { display: none; }
+    li.unfolded .item-list h1 { margin: -1rem auto 1.25rem; }
+    li.unfolded .item-list h1 span {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    li.unfolded .item-list h1 span::after {
+          border-top-width: 0;
+          border-bottom-width: 0.75rem;
+          border-left-color: transparent;
+          border-right-color: transparent;
+    }
 }</code></pre>
         </li>
       
@@ -74,727 +206,7 @@ text-align: justify;
     <ul class="inline-styles">
       
         <li>
-          <pre><code>background: #f1f1f1; padding: 10px; border: 1.6px solid #922B21; width: 95%; margin: auto;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: 100%;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>font-weight: bold; color: #fff; background-color: #666;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 35%;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 15%; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 25%; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: 100%; border-collapse:collapse; vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>font-weight: bold; color: #fff;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 35%; text-align: left;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 15%; text-align: left;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 25%; text-align: left;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 25%; text-align: left;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #C4C4C4;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #E7E7E7;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #DCDCDC;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #D0D0D0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; background-color: #F3F3F3;</code></pre>
+          <pre><code>font-size:120%</code></pre>
         </li>
       
     </ul>
@@ -810,991 +222,1150 @@ text-align: justify;
     <ul class="css-classes">
       
         <li>
-          <pre><code>welcome-header</code></pre>
+          <pre><code>modal-wrapper</code></pre>
         </li>
       
         <li>
-          <pre><code>content-panel</code></pre>
+          <pre><code>folded</code></pre>
         </li>
       
         <li>
-          <pre><code>standalone</code></pre>
+          <pre><code>foldable-list-container</code></pre>
         </li>
       
         <li>
-          <pre><code>content-row</code></pre>
+          <pre><code>chrono</code></pre>
         </li>
       
         <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>foldable-list-container</code></pre>
         </li>
       
         <li>
-          <pre><code>content-type-description-2</code></pre>
+          <pre><code>latest</code></pre>
         </li>
       
         <li>
-          <pre><code>content-type-description</code></pre>
+          <pre><code>item-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>unofficial</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>unofficial</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>item-title</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[=]]
-[[div class=&#34;welcome-header&#34;]]
-[[size 80%]]**CHÀO MỪNG NHÂN SỰ ĐẾN VỚI**[[/size]]
-[[size 120%]]**TRANG LƯU TRỮ CUỘC THI TỔ CHỨC**[[/size]]
-[[/DIV]]
-++ Nội dung của trang dưới đây hiện chưa được [phân loại].
-
-**Một vài nội dung trong đây có mức phân loại truy cập khác nhau, và cần có cấp phép truy cập, nhân sự lưu ý.**
-
-[[div style=&#34;background: #f1f1f1; padding: 10px; border: 1.6px solid #922B21; width: 95%; margin: auto;&#34;]]
-**Lưu chú từ Quản Trị Viên Hệ Thống:** Trong trang lưu trữ này có chứa các bản ghi chép về cuộc thi tại Tổ Chức. Mọi thông tin thắc mắc về cuộc thi cần được giải đáp tại trang chính của cuộc thi đó.
-[[/div]]
++* [[span style=&#34;font-size:120%&#34;]]Welcome to the SCP Wiki&#39;s Contest Archive![[/span]]
 [[/=]]
+
+Here, you can find an archived listing of all past contests hosted on the SCP Wiki throughout the years.[[footnote]] With the exception of the [https://scp-wiki.wikidot.com/system:page-tags/tag/goi2019 International GoI Contest 2019], which was primarily hosted on the International Translation Archive. More information **[http://scp-int.wikidot.com/international-goi-contest-2019 here]**.[[/footnote]] Winners, concepts/themes, prize(s), hosts, and other relevant information will be listed. Links to their respective hubs will also be available along with each contest entry for convenience.
+
+[[footnoteblock]]
+
+[[ul class=&#34;modal-wrapper&#34;]][[li class=&#34;folded&#34;]]
+[[toc]]
+[[div_ class=&#34;foldable-list-container chrono&#34;]]
+[# Sort chronologically][[/div]]
+[[div_ class=&#34;foldable-list-container latest&#34;]]
+[# Sort by latest][[/div]]
+[[div class=&#34;item-list&#34;]]
+
++ 2009 - 2012
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[gears-birthday-contest-2009|Gears Birthday Contest 2009]]]
+[[/div]]
+|| [[*user Dr Gears]] || 2009/8/07 - 2009/8/19 ||
 -----
+To celebrate Dr Gears&#39;s birthday (the user, not the character), a general horror-themed contest is run.
+
+= **WINNER(S):**
+= [[[opportunity-knocks|Opportunity Knocks]]], [[*user tunedtoadeadchannel]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[the-great-short-story-contest-archives|The Great Short Story Contest]]]
+[[/div]]
+|| [[*user agatharights]] || 2010/9/01 - 2010/9/30 (Variable) ||
+-----
+Multiple short contests, each themed around a short prompt.
+
+= **WINNER(S):**
+= Varied (See hub)
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[scp1000contesthub|The SCP-1000 Contest]]]
+[[/div]]
+|| SCP Wiki Staff || 2011/7/27 - 2011/9/01 ||
+-----
+A contest to determine which SCP will go in the coveted SCP-1000 slot, themed around folktales and urban legends.
+
+= **WINNER(S):**
+= [[[scp-1000|SCP-1000]]] - Bigfoot, [[*user thedeadlymoose]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[halloween-contest|Halloween Contest, 2012]]]
+[[/div]]
+|| [[*user TroyL]] || 2012/10/21 - 2012/10/31 ||
+-----
+A tale of themes which incorporate the SCP Foundation and an in-universe Halloween in some shape or form.
+
+= **WINNER(S):**
+= [[[treats|Treats]]], [[*user Dr Gears]]
+[[/div]]
+
++ 2013 - 2014
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[new-years-contest|New Years Canon Contest, 2013]]]
+[[/div]]
+|| [[*user TroyL]] || 2013/1/24 - 2013/2/05 ||
+-----
+A contest to create some new canons, which birthed some of the most popular onsite canons to this day.
+
+= **WINNER(S):**
+= [[[unfounded-hub|The Unfounded Canon]]], by [[*user DrClef]], [[*user Fantem]], [[*user Photosynthetic]], &amp; [[*user Pig_Catapult]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[five-questions|Five Questions Contest]]]
+[[/div]]
+|| [[*user DrEverettMann]] || 2013/2/25 - 2013/3/22||
+-----
+Five questions, each dealing with an ambiguity or plot hole in another article, are posed. The authors were tasked to write tales answering said questions.
+
+= **WINNER(S):**
+= [[[iteration-0|Iteration 0]]], [[*user HammerMaiden]]
+= [[[playing-god|Playing God]]], [[*user  Rikks]]
+= [[[children-of-doubt|Children of Doubt]]], [Anonymous]
+= [[[a-slumber-did-my-spirit-seal|A Slumber Did My Spirit Seal]]], [[*user Dmatix]]
+= [[[bugs|Bugs]]], [[*user Giant Enemy Spycrab]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[time-contest|Time Contest]]]
+[[/div]]
+|| [[*user Drewbear]] || 2013/8/01 - 2013/9/07 ||
+-----
+A contest centered around how pre-existing SCPs would interact with the passage of time.
+
+= **WINNER(S):**
+= [[[and-the-winner-is|And the Winner Is...]]], [[*user Smapti]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[scp2000contesthub|The SCP-2000 Contest]]]
+[[/div]]
+|| SCP Wiki Staff || 2013/11/23 - 2013/12/06 ||
+-----
+A contest to win the coveted SCP-2000 slot, themed around the concept of Sci-fi.
+
+= **WINNER(S):**
+= [[[scp-2000|SCP-2000]]] - Deus Ex Machina, [[*user HammerMaiden]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[under-appreciated-contest|Under-Appreciated Contest]]]
+[[/div]]
+|| [[*user CryogenChaos]] || 2014/3/07 - 2014/4/11 ||
+-----
+A contest to shine the spotlight on some woefully overlooked articles using tales.
+
+= **WINNER(S):**
+= [[[Exit History]]], [[*user HammerMaiden]]
+= [[[Exploded Diagram of a Young Woman]]], [[*user Chubert]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[goi-contest-2014|Groups of Interest Contest!]]]
+[[/div]]
+|| [[*user TroyL]] || 2014/6/20 - 2014/7/12 ||
+-----
+Some of our most famous Groups of Interest have their origins in this team contest, where teams of authors worked together to invent some more players in the SCP universe.
+
+= **WINNER(S):**
+= [[[serpent-s-hand-hub|Serpent&#39;s Hand]]], by [[*user thedeadlymoose]], [[*user Dexanote]], [[*user Vivax]], &amp; [[*user Zyn]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[dystopia-contest|Dystopia Contest]]]
+[[/div]]
+|| [[*user Rejekyll]] || 2014/11/22 - 2014/12/08 ||
+-----
+Dystopian blurb.
+
+= **WINNER(S):**
+= [[[Mission Statement]]], [[*user Dr Reach]]
+[[/div]]
+
++ 2015 - 2016
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[reimagining-contest|Reimagining Contest]]]
+[[/div]]
+|| [[*user thedeadlymoose]] &amp; [[*user TroyL]] || 2015/2/20 - 2015/3/10 ||
+-----
+In this contest, some of the oldest and most classic articles on the site were treated to a makeover and re-imagining for new audiences.
+
+= **WINNER(S):**
+= [[[lucky-dinosaur|The Lucky Dinosaur]]], [[*user Sophia Light]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[short-works-contest|Short Works Contest]]]
+[[/div]]
+|| [[*user Sophia Light]] || 2015/7/24 - 2015/8/03 ||
+-----
+Brevity is the soul of wit - and of this contest to create the best article with the fewest words.
+= **WINNER(S):**
+= [[[scp-2521|●●|●●●●●|●●|●]]], [[*user LurkD]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[mobile-task-force-contest|Mobile Task Force Contest!]]]
+[[/div]]
+|| [[*user Decibelles]] &amp; [[*user TroyL]] || 2016/2/10 - 2016/3/16 ||
+-----
+The Foundation&#39;s MTFs got the limelight in this contest all about the Foundation&#39;s best people in uniform.
+
+= **WINNER(S):**
+= **Team Basic (&#34;Kappa-10&#34;)**, by [[*user LurkD]], [[*user djkaktus]], Harmony, &amp; [[*user Doctor Cimmerian]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[an-incredibly-important-announcement|Crack Fiction Contest]]]
+[[/div]]
+|| [[*user TroyL]] || 2016/4/01 ||
+-----
+Authors were tasked with creating.... something, alright!
+
+= **WINNER(S):**
+= [[[gears-is-totally-not-a-robot-guys|Gears Is Totally Not A Robot Guys]]], [[*user Dr Solo]]
+= [[[the-minions-day-at-the-scp|The Minions© day at the scp]]], [[*user Randomini]]
+= [[[its-not-pronounced-like-the-thesaurus-dammit|It&#39;s Not Pronounced Like the Thesaurus, Dammit!]]], [[*user Kestin]]
+= [[[scp-the-anime-part-4-gears-iceberg-clef-kondraki-rights-ligh|SCP the Anime, part 4 (Gears/Iceberg, Clef/Kondraki, Rights/Light, Kain, monkey!Bright)]]], [[*user MrWrong]]
+= [[[orgy-5-counsel-9|Orgy 5 Counsel 9: XXXK End of Virginity Scenario]]], [[*user TyGently]]
+= [[[my-loever-the-dog|My Loever, the Dog: The Incredibly True Story of Kain Pathos Crow]]], [[*user Zmax15]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[d-class-contest|D-Class Contest]]]
+[[/div]]
+|| [[*user Decibelles]] &amp; [[*user Dexanote]] || 2016/09/18 - 2016/10/01 ||
+-----
+Writers were tasked with giving a new dimension to the the orange-jumpsuits ubiquitous in experiment logs and explorations.
+
+= **WINNER(S):**
+= [[[SCP-2439]]], [[*user Jack Ike]]
+= [[[SCP-2669]]], [[*user Kalinin]]
+= [[[history|History]]], [[*user Humanmale]]
+[[/div]]
+
++ 2017 - 2018
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[history-contest|This Contest Is History!]]]
+[[/div]]
+|| Harmony || 2017/1/17 - 2017/2/06 ||
+-----
+SCPs and tales, all about the vast history of the world.
+
+= **WINNER(S):**
+= [[[SCP-2624]]], [[*user TyGently]]
+= [[[now-hollow-fires-burn-out-to-black-and-lights-are-waning-low|Now Hollow Fires Burn Out To Black And Lights Are Guttering Low]]], [[*user Doctor Cimmerian]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[scp3000contesthub|SCP-3000 Contest]]]
+[[/div]]
+|| SCP Administration || 2017/3/24 - 2017/4/20 ||
+-----
+The contest for the coveted SCP-3000 spot, and entries in the SCP Wiki&#39;s most renowned genre: horror!
+
+= **WINNER(S):**
+= [[[SCP-3000]]] - Anantashesha, by [[*user A Random Day]], [[*user djkaktus]], &amp; [[*user Joreth]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[173-festival|10 Years Birthday SCParty]]]
+[[/div]]
+|| [[*user Dexanote]] || 2017/6/09 - 2017/6/19 ||
+-----
+10 years after SCP-173 was posted, the wiki celebrated its first article with all sorts of articles about the statue.
+
+= **WINNER(S):**
+= Everyone
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[social-media-art-contest|Social Media Art Contest]]]
+[[/div]]
+|| Internet Outreach || 2017/7/30 - 2017/8/30 ||
+-----
+The first art contest, displaying all the wonderful visual creativity of the SCP Community.
+
+= **WINNER(S):**
+= Varied
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[72-hour-jam-contest|72 Hour Jam Contest]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user A Random Day]] || 2018/2/17 - 2018/2/20 ||
+-----
+Authors were tasked with crafting and posting three articles back-to-back with only 24 hours apiece, conforming to three surprise themes. Clock&#39;s ticking.
+
+= **WINNER(S):**
+= [[*user Rimple]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[doomsday-contest|Doomsday Contest]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user A Random Day]] || 2018/05/18 - 2018/06/15 ||
+-----
+The SCP world has been extensively developed over the years - which is why in this contest, teams of authors figured out how to destroy it in the most bombastic ways.
+
+= **WINNER(S):**
+= [[[apotheosis-hub|Team Clever Gentlemen]]] - [[*user Weryllium]], [[*user CadaverCommander]], [[*user Modern_Erasmus]], &amp; [[*user fieldstone]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[scp4000contesthub|SCP-4000 Contest]]]
+[[/div]]
+|| SCP Administration || 2018/07/1 - 2018/08/8 ||
+-----
+The race for the SCP-4000 slot as Series 5 opened, all about history.
+
+= **WINNER(S):**
+= [[[taboo|Taboo]]], [[*user PeppersGhost]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[halloween-contest-2018|Halloween Contest 2018]]]
+[[/div]]
+|| [[*user Dexanote]] || 2018/10/1 - 2018/10/30 ||
+-----
+A seasonal contest to celebrate all the tropes and clichés of the spookiest holiday.
+
+= **WINNER(S):**
+= [[[mtf-sigma-5-pumpkin-punchers|MTF Sigma-5 &#34;Pumpkin Punchers&#34;]]], [[*user Rounderhouse]]
+[[/div]]
+
++ 2019 - 2020
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[cliche-con-2019|Cliché-Con 2019]]]
+[[/div]]
+|| [[*user taylor_itkin]] &amp; [[*user Uncle Nicolini]] || 2019/1/01 - 2019/1/31 ||
+-----
+SCP authors were given a list of some of the most common clichés on the site and encouraged to subvert them - or even play them straight.
+
+= **WINNER(S):**
+= [[[SCP-4205]]], [[*user Woedenaz]]
+= [[[SCP-3597]]], [[*user aismallard]]
+= [[[SCP-4511]]], [[*user DrAnnoyingDog]] &amp; [[*user Rounderhouse]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[144-hour-jam-contest|144-Hour Jam Contest]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user A Random Day]] || 2019/3/09 - 2019/3/15 ||
+-----
+The triumphant return of Jamcon, doubled in length to 48 hours to write about shaggy dogs, pulp fiction, and dreams.
+
+= **WINNER(S):**
+= [[[SCP-4808]]], [[[SCP-4804]]], &amp; [[[not-a-seagull-proposal|]]], [[*user notgull]]
+= [[[SCP-4290]]], [[[barrels-of-prose|]]], &amp; [[[sweeter-dreams-inc|]]], [[*user NatVoltaic]]
+= [[[SCP-4464]]], [[[SCP-4494]]], &amp; [[[SCP-4744]]], [[*user Mortos]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[collaboration-contest|Collaboration Contest]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user A Random Day]] || 2019/6/24 - 2019/7/16 ||
+-----
+Collaborative articles can be difficult, but this duos contest showed just how fruitful a good partnership can be.
+
+= **WINNER(S):**
+= [[[Land Of Honey]]] &amp; [[[SCP-4475]]], KindlyTurtleClem &amp; [[*user Lt Flops]]
+= [[[SCP-4688]]] &amp; [[[erics-journal|Eric&#39;s Journal]]], [[*user notgull]] and [[*user Mew-ltiverse]]
+= [[[chicago-factory|Carroll 280: Barrels O&#39;Hooch/Chicago Spirit Repeating Order (R-01221)]]] &amp; [[[SCP-4256]]], [[*user Ihp]] &amp; [[*user Uncle Nicolini]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[scp5000contesthub|SCP-5000 Contest]]]
+[[/div]]
+|| [[*user ProcyonLotor]] || 2020/01/01 - 2020/02/01 ||
+-----
+The contest for the SCP-5000 slot - themed around mysterious mystery.
+
+= **WINNER(S):**
+= [[[SCP-5000]]] - Why?, [[*user Tanhony]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[144-hour-jam-contest-two|144-Hour Jam Contest Two]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user A Random Day]] || 2020/3/09 - 2020/3/15 ||
+-----
+Jamcon the Third, with the themes &#34;explosions&#34;, &#34;delicious&#34;, and &#34;more than meets the eye&#34;.
+
+= **WINNER(S):**
+= [[[SCP-5983]]], [[[adoption-poster-pearl |]]], &amp; [[[SCP-5149]]], [[*user Rounderhouse]]
+= [[[cool-guys-dont-look-at-explosions |]]], [[[project-proposal-2018-145 |]]], &amp; [[[SCP-5047]]], [[*user Uncle Nicolini]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[exquisite-corpse-contest|Exquisite Corpse Contest]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user A Random Day]] || 2020/3/09 - 2020/3/15 ||
+-----
+Authors were assigned each other&#39;s containment procedures and object class, and told to build the best article they could without ever knowing their coauthor.
+
+= **WINNER(S):**
+= [[[SCP-5250]]], by [[*user Popsioak]] &amp; [[*user Dyslexion]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[canon-renaissance-contest|Canon Renaissance Contest]]]
+[[/div]]
+|| [[*user Modulum]] &amp; [[*user ProcyonLotor]] || 2020/9/17 - 2020/10/29 ||
+-----
+Many of the canons created in the original Canon Contest fell into a quiet slumber - this canon revived them with a bang, retouched to modern tastes.
+
+= **WINNER(S):**
+= [[[the-man-in-the-white-suit-hub|The Man In The White Suit]]], by [[*user Rounderhouse]], [[*user Captain Kirby]], [[*user Tufto]], &amp; [[*user Woedenaz]]
+[[/div]]
+
++ 2021 - 2022
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[cupid-contest-2021|Cupid Contest 2021]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user taylor_itkin]] || 2021/2/14 - 2021/2/21 ||
+-----
+Love is in the air. Better write about it.
+
+= **WINNER(S):**
+= [[[SCP-5659]]], [[*user Ralliston]]
+= [[[skyisover-thiscruelmoon-weintertwined|]]], [[*user CelesteKara]]
+= [[[critter-profile-max|]]], [[*user R4_EX]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[jam-con-2021|JamCon 2021]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user taylor_itkin]] || 2021/03/22 - 2021/04/01 ||
+-----
+Jamcon. Again! &#34;Marine&#34;, &#34;corruption&#34;, and &#34;what could possibly go wrong?&#34;.
+
+= **WINNER(S):**
+= [[[SCP-5929]]], [[[SCP-5383]]], &amp; [[[SCP-5377]]], [[*user Rounderhouse]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[scp6000contesthub|SCP-6000 Contest]]]
+[[/div]]
+|| [[*user ProcyonLotor]] &amp; [[*user taylor_itkin]] || 2021/5/25 - 2021/6/01 ||
+-----
+The contest for the SCP-6000 slot, in tune with the theme of nature.
+
+= **WINNER(S):**
+= [[[SCP-6000]]] - The Serpent, the Moose, and the Wanderer&#39;s Library, [[*user Rounderhouse]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item unofficial&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[memecon-unofficial|MEMECON]]]
+[[/div]]
+|| [[*user Woedenaz]] || 2021/7/03 - 2021/7/22 ||
+-----
+An unofficial contest to inject a little humor back into the wiki by playing off our favorite memes.
+
+= **WINNER(S):**
+= [[[SCP-6599]]], [[*user J Dune]] &amp; [[*user PlaguePJP]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item unofficial&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[nightmarefest|NIGHTMAREFEST]]]
+[[/div]]
+|| [[*user UraniumEmpire]] || 2021/10/25 - 2021/11/13 ||
+-----
+An unofficial festival to celebrate the spookiest articles for three equally-spooky features.
+
+= **WINNER(S):**
+= [[[SCP-6274]]], [[*user Rounderhouse]]
+= [[[SCP-6061]]], [[*user Ecronak]]
+= [[[SCP-6502]]], [[*user bigslothonmyface]]
+[[/div]]
+
+[!-- ======================================= --]
+[[div class=&#34;item&#34;]]
+[[div class=&#34;item-title&#34;]]
+[[[department-contest|DEPARTMENT-CON 2022]]]
+[[/div]]
+|| [[*user Rounderhouse]] || 2022/1/21 - 2022/3/31 ||
+-----
+The various Departments and Divisions of the Foundation toil outside of the limelight, using their esoteric knowledge and niche specializations to keep the anomalous contained. This contest aimed to look at some of the lesser-known Foundation departments.
+
+= **WINNER(S):**
+= **Team Marge is canonically incapable of farting (Fire Suppression Department)**, by [[*user Uncle Nicolini]], [[*user UraniumEmpire]], &amp; [[*user T Rutherford]]
+[[/div]]
+
+
+[[/div]]
+[[/li]][[/ul]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[!-- CSS below. You have been warned. --]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [[module CSS]]
-.welcome-header {
-  font-size: 200%;
+#page-title {
+    text-align: center;
+}
+.footnotes-footer .title { font-size: 1.15em; margin: 0.3em 0; }
+.footnotes-footer .footnote-footer { font-size: 0.95em; }
+
+.modal-wrapper {
+    list-style: none;
+    display: contents;
+}
+.modal-wrapper &gt; li .foldable-list-container {
+    text-align: right;
+    font-size: 90%;
+}
+.modal-wrapper &gt; li.folded .foldable-list-container.chrono { display: none; }
+.modal-wrapper &gt; li.unfolded .foldable-list-container.latest { display: none; }
+
+.modal-wrapper &gt; li &gt; .item-list,
+.modal-wrapper &gt; li #toc-list {
+    display: flex;
+    flex-flow: column;
+}
+.modal-wrapper &gt; li.unfolded &gt; .item-list,
+.modal-wrapper &gt; li.unfolded #toc-list {
+    flex-flow: column-reverse;
+}
+
+.item-list h1 span, .item-title a {
+    word-break: initial !important;
+}
+p[style=&#34;text-align: center;&#34;] { margin: 0.625em 0; }
+
+.item-list h1 {
+    width: 7ch;
+    margin: -1.5rem 0 1.5rem;
+    height: 0rem;
+    font-size: 1.5em;
+    position: relative;
+}
+li.unfolded .item-list h1 { margin: -5rem 0 5rem; }
+
+.item-list h1 span {
+    position: absolute;
+    bottom: -3.625rem;
+}
+
+.item-list h1 span::after {
+    content: &#34;&#34;;
+    display: block;
+    border: solid 0.3rem currentColor;
+    border-radius: 50%;
+    width: 1.15rem;
+    height: 1.15rem;
+    box-sizing: border-box;
+    margin: 0.25rem auto 0 0.85rem;
+}
+.item-list h1 span::before {
+    content: &#34;&#34;;
+    display: block;
+    position: absolute;
+    background-color: currentColor;
+    border-radius: 1rem;
+    width: 6rem;
+    height: 0.25rem;
+    margin: -0.7rem auto 0 0;
+    bottom: 0.45rem;
+    left: 1.85rem;
+}
+
+.item {
+  background-color: #FFFFFF;
+  border: 1px solid #bbb;
+  margin: 1.25rem;
+  margin-left: 5.15rem;
+  padding: 1rem 2rem;
+  position: relative;
+}
+.item .item-title {
+  position: relative;
+  top: -2rem;
+  left: -3rem;
+  background-color: inherit;
+  border: 1px solid #bbb;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: #922B21;
-  text-align: center;
+  max-width: max-content!important;
+  margin-bottom: -3.25rem;
 }
-.welcome-header span {
-  word-break: normal;
+.item .item-title p {
+  margin: 0.1rem 0.5rem;
 }
 
-#page-title { display: none; }
-
-.content-panel .content-type-title &gt; p {
-  margin: 0;
+.item.unofficial {
+    background-color: #FFF4E4;
 }
-.content-panel .content-type-title {
-  font-size: 150%;
-  font-weight: bold;
-  padding: 5px 20px;
-  background-color: #666;
-  color: #fff;
-  border-radius: 8px 8px 0 0;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.8),
-    inset 0 15px 1px rgba(255,255,255,.2),
-    inset 0 15px 10px rgba(255,255,255,.2);
+.item.unofficial::before {
+    content: &#34;Unofficial&#34;;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    padding: 0.25rem 0.45rem;
+    font-weight: bold;
+    font-size: 1.05em;
 }
-.content-panel .content-type-description {
-padding: 0 20px;
-text-align: justify;
+
+.item &gt; hr {
+    margin: 0.5rem -2.05rem;
+    background-color: transparent;
+    height: 0;
+    border-bottom: 1px solid #bbb;
 }
-.content-panel.content-row .content-type-description {
-padding: 5px 2px;
+
+.item &gt; table { width: 97.5%; }
+.item &gt; table.wiki-content-table tr {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
-.content-panel.content-row .content-type-description-2 {
-padding: 0 2px;
-text-align: justify;
+.item &gt; table.wiki-content-table td {
+    text-align: center;
+    border: none;
+    flex-basis: 9rem;
+    flex-grow: 1;
 }
-[[/module]]
-
-[[div class=&#34;content-panel standalone content-row&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-Lưu Trữ Cuộc Thi
-[[/div]]
-
-[[div class=&#34;content-type-description-2&#34;]]
-
-[[table style=&#34;width: 100%;&#34;]]
-[[row style=&#34;font-weight: bold; color: #fff; background-color: #666;&#34;]]
-[[cell style=&#34;padding: 0 2px; width: 35%;&#34;]]
-Tên Cuộc Thi
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; width: 15%; text-align: center;&#34;]]
-Bên Tổ Chức
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; width: 25%; text-align: center;&#34;]]
-Tác Phẩm Đạt Giải
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; text-align: center;&#34;]]
-Tác Giả Đạt Giải
-[[/cell]]
-[[/row]]
-[[/table]]
-
-[[/div]]
-
-[[div class=&#34;content-type-description&#34;]]
-
-[[table style=&#34;width: 100%; border-collapse:collapse; vertical-align: top;&#34;]]
-[[row style=&#34;font-weight: bold; color: #fff;&#34;]]
-[[cell style=&#34;padding: 0 2px; width: 35%; text-align: left;&#34;]]
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; width: 15%; text-align: left;&#34;]]
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; width: 25%; text-align: left;&#34;]]
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; width: 25%; text-align: left;&#34;]]
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[The Great Short Story Contest Archives|Trang Lưu Trữ Cuộc Thi Câu Chuyện Ngắn Hay]]]
-[[/cell]]
-[[cell]]
-Dr. Rights
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Nhiền Tác Phẩm
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Nhiều Tác Giả
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[gears-birthday-contest-2009|Cuộc Thi Sinh Nhật Gears 2009]]]
-[[/cell]]
-[[cell]]
-Dr. Gears
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[Opportunity Knocks]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-tunedtoadeadchannel
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[http://www.scp-wiki.net/forum/t-376556/contest-for-1000 |Cuộc Thi SCP-1000 &#39;11]]]
-[[/cell]]
-[[cell]]
-Quản Trị Viên SCP
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[SCP-1000]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-thedeadlymoose
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[halloween-contest|Cuộc Thi Halloween &#39;12]]]
-[[/cell]]
-[[cell]]
-TroyL
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[Treats]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Dr. Gears
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[New-years-contest|Cuộc Thi Canon &#39;13]]]
-[[/cell]]
-[[cell]]
-TroyL
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[unfounded-hub|Từ Chức]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-DrClef, Fantem, Photosynthetic, &amp; Pig_Catapult
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[five-questions|Cuộc Thi  Năm Câu Hỏi &#39;13 P1]]]
-[[/cell]]
-[[cell]]
-Dr. Mann
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[Iteration 0]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-HammerMaiden
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-[[[Playing God|Đóng Giả Thánh Thần]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-Rikks
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[Children of Doubt]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Roget
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-[[[A Slumber Did My Spirit Seal|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-Dmatix
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[Bugs]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Giant Enemy Spycrab
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[time-contest|Cuộc Thi Thời Gian &#39;13]]]
-[[/cell]]
-[[cell]]
-Drewbear
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[and-the-winner-is |]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Smapti
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[scp2000contesthub|Cuộc Thi SCP-2000 &#39;13]]]
-[[/cell]]
-[[cell]]
-Quản Trị Viên SCP
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-2000]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-HammerMaiden
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[under-appreciated-contest|Cuộc Thi Không Mấy Tôn Trọng &#39;14]]]
-[[/cell]]
-[[cell]]
-CryogenChaos
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[Exit History]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-HammerMaiden
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-[[[Exploded Diagram of a Young Woman]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-Chubert
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[goi-contest-2014|Cuộc Thi Thế Lực Đáng Lưu Tâm &#39;14]]]
-[[/cell]]
-[[cell]]
-TroyL
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[serpent-s-hand-hub|Xà Thủ]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-thedeadlymoose, Dexanote, Vivax, &amp; Zyn
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[dystopia-contest|Cuộc Thi Loạn Thị &#39;14]]]
-[[/cell]]
-[[cell]]
-Reject
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[Mission Statement]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Dr. Reach
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[reimagining-contest|Cuộc Thi Mơ Tưởng Lại &#39;15]]]
-[[/cell]]
-[[cell]]
-Moose &amp; TroyL
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[lucky-dinosaur|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Sophia Light
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[short-works-contest|Cuộc Thi Tác Phẩm Ngắn &#39;15]]]
-[[/cell]]
-[[cell]]
-Sophia Light
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[SCP-2521|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-LurkD
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[mobile-task-force-contest|Cuộc Thi Đội Đặc Nhiệm Cơ Động &#39;16]]]
-[[/cell]]
-[[cell]]
-Decibelles &amp; TroyL
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Team Basic
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-LurkD, djkaktus, Roget, &amp; Doctor Cimmerian
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[an-incredibly-important-announcement|Cuộc Thi Viễn Tưởng Cá Tháng Tư &#39;16]]]
-[[/cell]]
-[[cell]]
-TroyL
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[gears-is-totally-not-a-robot-guys|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Dr Solo
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-[[[the-minions-day-at-the-scp|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-Randomini
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[its-not-pronounced-like-the-thesaurus-dammit|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Kestin
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-[[[scp-the-anime-part-4-gears-iceberg-clef-kondraki-rights-ligh|SCP Anime, phần 4 (Gears/Iceberg, Clef/Kondraki, Rights/Light, Kain, khỉ!Bright)]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-MrWrong
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[orgy-5-counsel-9|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-TyGently
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-[[[my-loever-the-dog|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-Zmax15
-[[/cell]]
-[[/row]]
-
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[d-class-contest |Cuộc Thi Cấp-D &#39;16]]]
-[[/cell]]
-[[cell]]
-Decibelles &amp; Dexanote
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-2439]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Jack Ike
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-[[[SCP-2669]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-Kalinin
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[history |]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Humanmale
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[history-contest |Cuộc Thi Lịch Sử &#39;17]]]
-[[/cell]]
-[[cell]]
-Roget
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[SCP-2624]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-TyGently
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
- 
-[[/cell]]
-[[cell]]
- 
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-[[[now-hollow-fires-burn-out-to-black-and-lights-are-waning-low|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-Doctor Cimmerian
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[scp3000contesthub|Cuộc Thi SCP-3000 &#39;17]]]
-[[/cell]]
-[[cell]]
-Quản Trị Viên SCP
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-3000]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-A Random Day, djkaktus, &amp; Joreth
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[173-festival|Tiệc SinhnhậtCP 10 Năm &#39;17]]]
-[[/cell]]
-[[cell]]
-Dexanote
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Tất Cả Tác Phẩm
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Tất Cả Tác Giả
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[Social Media Art Contest|Cuộc Thi Tác Phẩm Mạng Xã Hội &#39;17]]]
-[[/cell]]
-[[cell]]
-Nhóm Quan Hệ Mạng
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Nhiều Tác Phẩm
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Nhiều Tác Giả
-[[/cell]]
-[[/row]]
-
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[72 Hour Jam Contest|Cuộc Thi 72 Tiếng Kẹt Cứng &#39;18]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; ARD
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Nhiều Tác Phẩm
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Rimple
-[[/cell]]
-[[/row]]
-
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[Doomsday Contest|Cuộc Thi Tận Thế &#39;18]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; ARD
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[apotheosis-hub|Đội Clever Gentlemen]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Weryllium, CadaverCommander, Modern_Erasmus, &amp; fieldstone
-[[/cell]]
-[[/row]]
-
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[scp4000contesthub|Cuộc Thi SCP-4000 &#39;18]]]
-[[/cell]]
-[[cell]]
-Quản Trị Viên SCP
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[Taboo]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-PeppersGhost
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[halloween-contest-2018|Cuộc Thi Halloween &#39;18]]]
-[[/cell]]
-[[cell]]
-Dexanote
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[MTF Sigma-5 &#34;Pumpkin Punchers&#34;]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Rounderhouse
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[cliche-con-2019|]]]
-[[/cell]]
-[[cell]]
-taylor_itkin &amp; Uncle Nicolini
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[SCP-4205]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Woedenaz
-[[/cell]]
-[[/row]]
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-[[[SCP-3597]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-aismallard
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[SCP-4511]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-DrAnnoyingDog &amp; Rounderhouse
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[144-hour-jam-contest|Cuộc Thi 144 Tiếng Kẹt Cứng &#39;19]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; ARD
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-4808]]], [[[SCP-4804]]], &amp; [[[not-a-seagull-proposal|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-not_a_seagull
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
- 
-[[/cell]]
-[[cell]]
- 
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-[[[SCP-4290]]], [[[barrels-of-prose|]]], &amp; [[[sweeter-dreams-inc|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-NatVoltaic
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
- 
-[[/cell]]
-[[cell]]
- 
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-4464]]], [[[SCP-4494]]], &amp; [[[SCP-4744]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Mortos
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[collaboration-contest|Cuộc Thi Hợp Tác &#39;19]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; ARD
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[Land Of Honey]]] &amp; [[[SCP-4475]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-KindlyTurtleClem &amp; Lt Flops
-[[/cell]]
-[[/row]]
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-[[[SCP-4688]]] &amp; [[[erics-journal|Eric&#39;s Journal]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-not_a_seagull &amp; Mew-ltiverse
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-　
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[chicago-factory|Carroll 280: Barrels O&#39;Hooch/Chicago Spirit Repeating Order (R-01221)]]] &amp; [[[SCP-4256]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Ihp &amp; Uncle Nicolini
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[scp5000contesthub|Cuộc Thi SCP-5000 &#39;20]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-5000]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Tanhony
-[[/cell]]
-[[/row]]
-
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[144-hour-jam-contest-two|Cuộc Thi 144 Tiếng Kẹt Cứng Hai &#39;20]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; ARD
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[SCP-5983]]], [[[adoption-poster-pearl |]]], &amp; [[[SCP-5149]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Rounderhouse
-[[/cell]]
-
-[[/row]]
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-　
-[[/cell]]
-[[cell]]
-
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-[[[cool-guys-dont-look-at-explosions |]]], [[[project-proposal-2018-145 |]]], &amp; [[[SCP-5047]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #C4C4C4;&#34;]]
-Uncle Nicolini
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[exquisite-corpse-contest|Cuộc Thi Cái Xác Thối Mòn &#39;20]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; ARD
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-5250]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Popsioak &amp; Dyslexion
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[canon-renaissance-contest|Cuộc Thi Canon Phục Hưng &#39;20]]]
-[[/cell]]
-[[cell]]
-Modulum &amp; ProcyonLotor
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[http://scp-vn.wikidot.com/the-man-in-the-white-suit-hub The Man In The White Suit]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Rounderhouse, Captain Kirby, Tufto, Woedenaz
-[[/cell]]
-[[/row]]
-
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[cupid-contest-2021|Cuộc Thi Tình Tiên &#39;21]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; taylor_itkin
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-5659]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Ralliston
-[[/cell]]
-[[/row]]
-
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
- 
-[[/cell]]
-[[cell]]
- 
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-[[[skyisover-thiscruelmoon-weintertwined|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #E7E7E7;&#34;]]
-CelesteKara
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
- 
-[[/cell]]
-[[cell]]
- 
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[critter-profile-max|]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-R4_EX
-[[/cell]]
-[[/row]]
-
-[[row style=&#34;vertical-align: top; background-color: #DCDCDC;&#34;]]
-[[cell]]
-[[[jam-con-2021|JamCon &#39;21]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; taylor_itkin
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-[[[SCP-5929]]], [[[SCP-5383]]], &amp; [[[SCP-5377]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #D0D0D0;&#34;]]
-Rounderhouse
-[[/cell]]
-[[/row]]
-
-
-[[row style=&#34;vertical-align: top;&#34;]]
-[[cell]]
-[[[scp6000contesthub|Cuộc Thi SCP-6000 &#39;21]]]
-[[/cell]]
-[[cell]]
-ProcyonLotor &amp; taylor_itkin
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-[[[SCP-6000]]]
-[[/cell]]
-[[cell style=&#34;vertical-align: top; background-color: #F3F3F3;&#34;]]
-Rounderhouse
-[[/cell]]
-[[/row]]
-
-
-
-
-
-
-[[/table]]
-[[/div]]
-[[/div]]</textarea></pre>
+.item &gt; table.wiki-content-table td::before {
+    font-size: 0.95em;
+    font-weight: bold;
+    display: block;
+}
+.item &gt; table.wiki-content-table td:first-child::before { content: &#34;Host: &#34;; }
+.item &gt; table.wiki-content-table td:last-child::before { content: &#34;Date(s) Held:&#34;; }
+
+@media only screen and (max-width: 660px) {
+    .item { margin: 1.25rem 0.25rem; }
+    .item-list h1 {
+        width: max-content;
+        margin: 0.5rem auto 0;
+        height: auto;
+        font-size: 2em;
+    }
+    .item-list h1 span {
+        position: relative;
+        bottom: 0;
+        top: 0.125em;
+    }
+    .item-list h1 span::after {
+          margin: 0.45rem auto;
+          width: 0;
+          height: 0;
+          border-radius: 0;
+          border: solid 0.75rem currentColor;
+          border-bottom-width: 0;
+          border-left-color: transparent;
+          border-right-color: transparent;
+    }
+    .item-list h1 span::before { display: none; }
+    li.unfolded .item-list h1 { margin: -1rem auto 1.25rem; }
+    li.unfolded .item-list h1 span {
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    li.unfolded .item-list h1 span::after {
+          border-top-width: 0;
+          border-bottom-width: 0.75rem;
+          border-left-color: transparent;
+          border-right-color: transparent;
+    }
+}
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:06.312654.</em>
+    <em>Last updated 2022-09-05 08:37:06.107595.</em>
   
 </div>
 </body>

@@ -10,26 +10,26 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Tema CSS das Investigações Incomuns</title>
+  <title>Unusual Investigations CSS Theme</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Tema CSS das Investigações Incomuns</h1>
+    <h1 class="title">Unusual Investigations CSS Theme</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/theme:ui" target="_blank">Tema CSS das Investigações Incomuns</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/theme:ui" target="_blank">Unusual Investigations CSS Theme</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;https://scp-pt-br.wdfiles.com/local--code/theme%3Aui/1&#39;);</code></pre>
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aui/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -51,7 +51,7 @@
   
 
   
-    <a href="https://scp-pt-br.wikidot.com/theme:ui" target="_blank"><code>:scp-pt-br:theme:ui</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:ui" target="_blank"><code>theme:ui</code></a>
   
 
   
@@ -70,17 +70,22 @@
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[module CSS]]
-@import url(&#39;https://scp-pt-br.wdfiles.com/local--code/theme%3Aui/1&#39;);
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aui/1&#39;);
 [[/module]]
 
-[[iftags +tema]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aui/1
+]]
+
+[[iftags +theme]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
 
-Este é um tema para a série de contos [[[unusual-investigations|As Investigações Incomuns de Kenneth Spencer e Robin Thorne]]]. Para usar este tema, coloque o seguinte em qualquer página:
+This is a theme for the [[[unusual-investigations|The Unusual Investigations of Kenneth Spencer and Robin Thorne]]] tale series. To use this theme, put the following on any page:
 
-&gt; @@[[include :scp-pt-br:theme:ui]]@@
+&gt; @@[[include theme:ui]]@@
 
 [[code type=&#34;CSS&#34;]]
 /*
@@ -195,13 +200,14 @@ div#extra-div-2 {
     color: transparent;
     text-shadow: none;
     font-family: Arial, sans-serif;
-    font-size: 130%;
+    font-size: 2.5vw;
 }
  
 #header h1 a::before {
-    content: &#34;Departamento Federal de Investigação&#34;;
+    content: &#34;Federal Bureau of Investigation &#34;;
     color: #e9ebf0;
     text-shadow: 3px 3px 5px #000000;
+    padding-inline-start: 30px;
 }
  
 #header h2 span {
@@ -210,12 +216,13 @@ div#extra-div-2 {
 }
  
 #header h2 span::before {
-    content: &#39;Unidade de Incidentes Incomuns, Escritório de Três Portlands&#39;;
+    content: &#39;Unusual Incidents Unit, Three Portlands Office &#39;;
     color: #F1F1F1;
     text-shadow: 1px 1px 1px rgba(0,0,0,.8);
+    padding-inline-start: 30px;
 }
  
-/* TOP MENU */
+/* TOP MENU */ 
 #top-bar a {
     color: #e9ebf0;
 }
@@ -245,17 +252,8 @@ div#extra-div-2 {
 }
   
 /* SIDE MENU */
-@media (max-width: 767px) {
-#top-bar .open-menu a {
-   color: #888888;
-   background-image: url();
-  }
-#top-bar .open-menu:hover a {
-   color: #E20B28 !important;
-  }
-}
-
-#side-bar a:visited {
+#side-bar a:visited,
+#interwiki a:visited {
    color: #e20b28;
 }
  
@@ -264,7 +262,8 @@ div#extra-div-2 {
     -webkit-filter: hue-rotate(15deg);
 }
  
-#side-bar .side-block {
+#side-bar .sideblock,
+#interwiki .side-block {
     border: 1px solid #b3001b;
     background: #f4eede;
     box-shadow: none;
@@ -275,11 +274,8 @@ div#extra-div-2 {
     background: #f4eede;
 }
 
-.scpnet-interwiki-frame {
-    filter: opacity(80%) brightness(90%) saturate(150%) sepia(25%)
-}
-
-#side-bar .heading {
+#side-bar .heading,
+#interwiki .heading {
     color: #b3001b;
     border-bottom: solid 1px #b3001b;
 }
@@ -410,6 +406,7 @@ div.sexy-box div.image-container img {
 
     #header h1 a::before {
         content: &#34;FBI &#34;;
+        font-size: 6vw;
         padding-inline-start: 55px;
     }
    
@@ -418,10 +415,19 @@ div.sexy-box div.image-container img {
         padding-inline-start: 55px;
     }
 
-    #side-bar .side-bar-container {
+    #side-bar {
         background-color: #0a0037;
-        brder-right: 0px !important;
      }
+}
+
+@media (min-width: 1600px) {
+    #header h1 a::before {
+        font-size: 1.5vw;
+    }
+}
+/* Preview module */
+.third-law-preview {
+    display: none;
 }
 [[/code]]
 [[/iftags]]</textarea></pre>
@@ -431,7 +437,7 @@ div.sexy-box div.image-container img {
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.571114.</em>
+    <em>Last updated 2022-09-05 08:37:09.835117.</em>
   
 </div>
 </body>

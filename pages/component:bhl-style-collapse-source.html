@@ -10,26 +10,34 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Bhl Style Collapse Source</title>
+  <title>BHL Style Collapsibles Source</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Bhl Style Collapse Source</h1>
+    <h1 class="title">BHL Style Collapsibles Source</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:bhl-style-collapse-source" target="_blank">Bhl Style Collapse Source</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:bhl-style-collapse-source" target="_blank">BHL Style Collapsibles Source</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* BHL styled collapsibles with fancy-schamncy animations! By Monkatraz */
+          <pre><code>/* BHL styled collapsibles with fancy-schamncy animations! By Monkatraz, modified by AnActualCrow */
+
+/* VARIABLES FOR CUSTOMIZATION */
+:root{
+  --base-color: rgb(66, 66, 72);
+  --hover-color: rgb(100, 46, 44);
+  --click-color: rgb(133, 0, 5);
+}
+
 /* #page-content is shoved everywhere to make sure it&#39;s the most specific thingy */
 /* Styling! */
 #page-content .collapsible-block-folded, #page-content .collapsible-block-unfolded-link {
@@ -39,7 +47,7 @@
     box-shadow: rgb(128, 128, 128) 0px 0px 3px 0px;
     /* Animated things */
     transition: background 0.2s linear;
-    background: rgb(66, 66, 72);
+    background: var(--base-color);
     /* Technical bits */
     width: min-content;
     white-space: nowrap;
@@ -49,6 +57,7 @@
 #page-content .collapsible-block-link {
     color: white;
     font-weight: bold;
+    text-decoration: none;
 }
 /* Gets rid of the underline when hovering over the collapsible */
 #page-content .collapsible-block-link:hover {
@@ -56,20 +65,24 @@
 }
 /* Collapsible content */
 #page-content .collapsible-block-content {
-    border-bottom: solid 3px rgb(66,66,72);
     /* Animated things */
-    transition: border-top-color 0.2s linear;
-    border-top: solid rgb(66, 66, 72) 5px;
+    transition: border-top-color 0.2s linear, border-bottom-color 0.2s linear;
+    border-top: solid var(--base-color) 5px;
+    border-bottom: solid var(--base-color) 3px;
 }
-/* End of addendum tag */
+
+Message #multipurpose/* End of addendum tag */
 #page-content .collapsible-block-content::after {
-    content:&#34;附錄結束&#34;;
+    content:&#34;END OF ADDENDUM&#34;;
     font-weight: bold;
     font-size: 95%;
     color:white;
-    background: rgb(66, 66, 72);
-    width: 150px;
+    width: intrinsic; width: -moz-max-content; width: -webkit-max-content;
+    padding: 0em .3em;
     border-radius: 3px;
+    /* Animated things */
+    transition: background 0.2s linear;
+    background: var(--base-color);
     /* Technical bits */
     display: block;
     text-align: center;
@@ -79,7 +92,7 @@
 /* Folded blocks are animated, unfolded ones are not */
 #page-content .collapsible-block-folded {
     transition: max-width 0.2s linear;
-    max-width: 7.8em;
+    max-width: 10.5em;
 }
 #page-content .collapsible-block-unfolded-link{
     width: min-content;
@@ -94,7 +107,7 @@
 
 /* Addendum prefixes */
 #page-content .collapsible-block-folded .collapsible-block-link::before {
-    content: &#34;▷ 附錄 XXXX.&#34; counter(collapse);
+    content: &#34;▷ ADDENDUM {$scp-number}.&#34; counter(collapse);
     border-right: dotted 0.25em;
     padding-right: 1rem;
     margin-right: 1rem;
@@ -102,7 +115,7 @@
     font-family: var(--mono-font);
 }
 #page-content .collapsible-block-unfolded .collapsible-block-link::before {
-    content: &#34;▽ 附錄 XXXX.&#34; counter(collapse);
+    content: &#34;▽ ADDENDUM {$scp-number}.&#34; counter(collapse);
     border-right: dotted 0.25em;
     padding-right: 1rem;
     margin-right: 1rem;
@@ -110,28 +123,39 @@
     font-family: var(--mono-font);
 }
 /* Hovering effects */
-#page-content .collapsible-block-folded:hover, #page-content .collapsible-block-unfolded-link:hover{
-    background: rgb(100, 46, 44);
+#page-content .collapsible-block-folded:hover, #page-content .collapsible-block-unfolded-link:hover {
+    background: var(--hover-color);
     max-width: 100%;
 }
-/* Top of the collapsible border - because it looks prettier this way */
+/* Collapsible borders - because it looks prettier this way */
 #page-content .collapsible-block-unfolded-link:hover + .collapsible-block-content{
-    border-top-color: rgb(100, 46, 44);
+    border-top-color: var(--hover-color);
+    border-bottom-color: var(--hover-color);
 }
-/* Accent flash when clicking, also forces the collapsible to expand */
-#page-content .collapsible-block-folded:active, #page-content .collapsible-block-unfolded-link:active{
+/* When hovering over link, change addendum tag to hover-color */
+#page-content .collapsible-block-unfolded-link:hover + .collapsible-block-content::after {
+    background: var(--hover-color);
+}
+/* Click flash when clicking, also forces the collapsible to expand */
+#page-content .collapsible-block-folded:active, #page-content .collapsible-block-unfolded-link:active, #page-content .collapsible-block-unfolded-link:active + .collapsible-block-content::after {
     transition: background 0s, max-width 0s;
-    background: rgb(133, 0, 5);
+    background: var(--click-color);
     max-width: 100%;
+}
+/* On click, change borders to click-color */
+#page-content .collapsible-block-unfolded-link:active + .collapsible-block-content {
+    transition: border-top-color 0s, border-bottom-color 0s;
+    border-top-color: var(--click-color);
+    border-bottom-color: var(--click-color);
 }
 /* Done with normal collapsibles, now we do all the variations */
 /* Unfolded collapsible */
-#page-content .unfolded-collapse{
+#page-content .unfolded-collapse {
     margin-top: 10px;
     padding-left: 1rem;
     padding-right: 1rem;
     box-shadow: rgb(128, 128, 128) 0px 0px 3px 0px;
-    background: rgb(66, 66, 72);
+    background: var(--base-color);
     /* Text */
     color: white;
     font-weight: bold;
@@ -142,7 +166,7 @@
 }
 /* Addendum prefix */
 #page-content .unfolded-collapse::before {
-    content: &#34;▽ 附錄 XXXX.&#34; counter(collapse);
+    content: &#34;▽ ADDENDUM {$scp-number}.&#34; counter(collapse);
     border-right: dotted 0.25em;
     padding-right: 1rem;
     margin-right: 1rem;
@@ -153,7 +177,7 @@
 #page-content .unfolded-collapse-border {
     display: block;
     width: 700px;
-    border-top: solid rgb(66, 66, 72) 5px;
+    border-top: solid var(--base-color) 5px;
 }
 /* Centering, very simple */
 #page-content .center-collapse .collapsible-block-folded, #page-content .center-collapse .collapsible-block-unfolded-link, #page-content .center-collapse .unfolded-collapse{
@@ -163,7 +187,7 @@
 /* Removing the slick animation and addendum number because you&#39;re a monster */
 /* Set back the max width and just ignore the transition screwyness */
 #page-content .no-addendum .collapsible-block-folded {
-    max-width: auto;
+    max-width: 100%;
 }
 /* Prefixes */
 #page-content .no-addendum .collapsible-block-unfolded .collapsible-block-link::before, #page-content .no-addendum .unfolded-collapse::before {
@@ -187,18 +211,19 @@
 /* The footer is actually the giant bottom border object because larger -&gt; smaller works better */
 #page-content .addendumfooter{
     display: block;
-    border-bottom: solid 3px rgb(66,66,72);
-    margin:auto;
+    border-bottom: solid 3px var(--base-color);
+    margin: auto;
     text-align: center;
 }
 /* Texty bits */
 #page-content .addendumfooter::after{
-    content: &#34;附錄結束&#34;;
+    content: &#34;END OF ADDENDUM&#34;;
     font-weight: bold;
     font-size: 95%;
     color:white;
-    background: rgb(66, 66, 72);
-    width: 150px;
+    background: var(--base-color);
+    width: intrinsic; width: -moz-max-content; width: -webkit-max-content;
+    padding: 0em .3em;
     border-radius: 3px;
     /* Technical bits */
     display: block;
@@ -300,9 +325,17 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags -組件後端]]
+    <pre><textarea class="page-source" readonly>[[iftags -component-backend]]
 [[module css]]
-/* BHL styled collapsibles with fancy-schamncy animations! By Monkatraz */
+/* BHL styled collapsibles with fancy-schamncy animations! By Monkatraz, modified by AnActualCrow */
+
+/* VARIABLES FOR CUSTOMIZATION */
+:root{
+  --base-color: rgb(66, 66, 72);
+  --hover-color: rgb(100, 46, 44);
+  --click-color: rgb(133, 0, 5);
+}
+
 /* #page-content is shoved everywhere to make sure it&#39;s the most specific thingy */
 /* Styling! */
 #page-content .collapsible-block-folded, #page-content .collapsible-block-unfolded-link {
@@ -312,7 +345,7 @@
     box-shadow: rgb(128, 128, 128) 0px 0px 3px 0px;
     /* Animated things */
     transition: background 0.2s linear;
-    background: rgb(66, 66, 72);
+    background: var(--base-color);
     /* Technical bits */
     width: min-content;
     white-space: nowrap;
@@ -322,6 +355,7 @@
 #page-content .collapsible-block-link {
     color: white;
     font-weight: bold;
+    text-decoration: none;
 }
 /* Gets rid of the underline when hovering over the collapsible */
 #page-content .collapsible-block-link:hover {
@@ -329,20 +363,24 @@
 }
 /* Collapsible content */
 #page-content .collapsible-block-content {
-    border-bottom: solid 3px rgb(66,66,72);
     /* Animated things */
-    transition: border-top-color 0.2s linear;
-    border-top: solid rgb(66, 66, 72) 5px;
+    transition: border-top-color 0.2s linear, border-bottom-color 0.2s linear;
+    border-top: solid var(--base-color) 5px;
+    border-bottom: solid var(--base-color) 3px;
 }
-/* End of addendum tag */
+
+Message #multipurpose/* End of addendum tag */
 #page-content .collapsible-block-content::after {
-    content:&#34;附錄結束&#34;;
+    content:&#34;END OF ADDENDUM&#34;;
     font-weight: bold;
     font-size: 95%;
     color:white;
-    background: rgb(66, 66, 72);
-    width: 150px;
+    width: intrinsic; width: -moz-max-content; width: -webkit-max-content;
+    padding: 0em .3em;
     border-radius: 3px;
+    /* Animated things */
+    transition: background 0.2s linear;
+    background: var(--base-color);
     /* Technical bits */
     display: block;
     text-align: center;
@@ -352,7 +390,7 @@
 /* Folded blocks are animated, unfolded ones are not */
 #page-content .collapsible-block-folded {
     transition: max-width 0.2s linear;
-    max-width: 7.8em;
+    max-width: 10.5em;
 }
 #page-content .collapsible-block-unfolded-link{
     width: min-content;
@@ -367,7 +405,7 @@
 
 /* Addendum prefixes */
 #page-content .collapsible-block-folded .collapsible-block-link::before {
-    content: &#34;▷ 附錄 XXXX.&#34; counter(collapse);
+    content: &#34;▷ ADDENDUM {$scp-number}.&#34; counter(collapse);
     border-right: dotted 0.25em;
     padding-right: 1rem;
     margin-right: 1rem;
@@ -375,7 +413,7 @@
     font-family: var(--mono-font);
 }
 #page-content .collapsible-block-unfolded .collapsible-block-link::before {
-    content: &#34;▽ 附錄 XXXX.&#34; counter(collapse);
+    content: &#34;▽ ADDENDUM {$scp-number}.&#34; counter(collapse);
     border-right: dotted 0.25em;
     padding-right: 1rem;
     margin-right: 1rem;
@@ -383,28 +421,39 @@
     font-family: var(--mono-font);
 }
 /* Hovering effects */
-#page-content .collapsible-block-folded:hover, #page-content .collapsible-block-unfolded-link:hover{
-    background: rgb(100, 46, 44);
+#page-content .collapsible-block-folded:hover, #page-content .collapsible-block-unfolded-link:hover {
+    background: var(--hover-color);
     max-width: 100%;
 }
-/* Top of the collapsible border - because it looks prettier this way */
+/* Collapsible borders - because it looks prettier this way */
 #page-content .collapsible-block-unfolded-link:hover + .collapsible-block-content{
-    border-top-color: rgb(100, 46, 44);
+    border-top-color: var(--hover-color);
+    border-bottom-color: var(--hover-color);
 }
-/* Accent flash when clicking, also forces the collapsible to expand */
-#page-content .collapsible-block-folded:active, #page-content .collapsible-block-unfolded-link:active{
+/* When hovering over link, change addendum tag to hover-color */
+#page-content .collapsible-block-unfolded-link:hover + .collapsible-block-content::after {
+    background: var(--hover-color);
+}
+/* Click flash when clicking, also forces the collapsible to expand */
+#page-content .collapsible-block-folded:active, #page-content .collapsible-block-unfolded-link:active, #page-content .collapsible-block-unfolded-link:active + .collapsible-block-content::after {
     transition: background 0s, max-width 0s;
-    background: rgb(133, 0, 5);
+    background: var(--click-color);
     max-width: 100%;
+}
+/* On click, change borders to click-color */
+#page-content .collapsible-block-unfolded-link:active + .collapsible-block-content {
+    transition: border-top-color 0s, border-bottom-color 0s;
+    border-top-color: var(--click-color);
+    border-bottom-color: var(--click-color);
 }
 /* Done with normal collapsibles, now we do all the variations */
 /* Unfolded collapsible */
-#page-content .unfolded-collapse{
+#page-content .unfolded-collapse {
     margin-top: 10px;
     padding-left: 1rem;
     padding-right: 1rem;
     box-shadow: rgb(128, 128, 128) 0px 0px 3px 0px;
-    background: rgb(66, 66, 72);
+    background: var(--base-color);
     /* Text */
     color: white;
     font-weight: bold;
@@ -415,7 +464,7 @@
 }
 /* Addendum prefix */
 #page-content .unfolded-collapse::before {
-    content: &#34;▽ 附錄 XXXX.&#34; counter(collapse);
+    content: &#34;▽ ADDENDUM {$scp-number}.&#34; counter(collapse);
     border-right: dotted 0.25em;
     padding-right: 1rem;
     margin-right: 1rem;
@@ -426,7 +475,7 @@
 #page-content .unfolded-collapse-border {
     display: block;
     width: 700px;
-    border-top: solid rgb(66, 66, 72) 5px;
+    border-top: solid var(--base-color) 5px;
 }
 /* Centering, very simple */
 #page-content .center-collapse .collapsible-block-folded, #page-content .center-collapse .collapsible-block-unfolded-link, #page-content .center-collapse .unfolded-collapse{
@@ -436,7 +485,7 @@
 /* Removing the slick animation and addendum number because you&#39;re a monster */
 /* Set back the max width and just ignore the transition screwyness */
 #page-content .no-addendum .collapsible-block-folded {
-    max-width: auto;
+    max-width: 100%;
 }
 /* Prefixes */
 #page-content .no-addendum .collapsible-block-unfolded .collapsible-block-link::before, #page-content .no-addendum .unfolded-collapse::before {
@@ -460,18 +509,19 @@
 /* The footer is actually the giant bottom border object because larger -&gt; smaller works better */
 #page-content .addendumfooter{
     display: block;
-    border-bottom: solid 3px rgb(66,66,72);
-    margin:auto;
+    border-bottom: solid 3px var(--base-color);
+    margin: auto;
     text-align: center;
 }
 /* Texty bits */
 #page-content .addendumfooter::after{
-    content: &#34;附錄結束&#34;;
+    content: &#34;END OF ADDENDUM&#34;;
     font-weight: bold;
     font-size: 95%;
     color:white;
-    background: rgb(66, 66, 72);
-    width: 150px;
+    background: var(--base-color);
+    width: intrinsic; width: -moz-max-content; width: -webkit-max-content;
+    padding: 0em .3em;
     border-radius: 3px;
     /* Technical bits */
     display: block;
@@ -545,8 +595,8 @@
 }
 [[/module]]
 [[/iftags]]
-[[iftags +組件後端]]
-[http://scp-zh-tr.wikidot.com/component:bhl-style-collapse 請點選我]
+[[iftags +component-backend]]
+[[[component:bhl-style-collapse |Click Me Please]]]
 [[/iftags]]</textarea></pre>
   </div>
 
@@ -554,7 +604,7 @@
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:06.140935.</em>
+    <em>Last updated 2022-09-05 08:37:06.057785.</em>
   
 </div>
 </body>

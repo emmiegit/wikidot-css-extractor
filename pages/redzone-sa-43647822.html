@@ -10,19 +10,19 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>红区RedDB存档异步复制漏洞</title>
+  <title>Redzone RedDB Archive Asynchronous Copy Vulnerability</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">红区RedDB存档异步复制漏洞</h1>
+    <h1 class="title">Redzone RedDB Archive Asynchronous Copy Vulnerability</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/redzone-sa-43647822" target="_blank">红区RedDB存档异步复制漏洞</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/redzone-sa-43647822" target="_blank">Redzone RedDB Archive Asynchronous Copy Vulnerability</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
@@ -46,7 +46,39 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
       
     </ul>
 
@@ -54,42 +86,18 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>ruby</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>ruby</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>ruby</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>ruby</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rt</code></pre>
+          (none)
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include component:redzone-advisory
-|title=红区RedDB存档异步复制漏洞
+    <pre><textarea class="page-source" readonly>[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
+[[include component:redzone-advisory
+|title=Redzone RedDB Archive Asynchronous Copy Vulnerability
 |id=redzone-sa-43647822-async-copy
 |updated=2015-7-13
 |published=2015-7-10
@@ -103,53 +111,70 @@ RZux59902
 CWE-689
 ]]
 ----
-++ 概述
-红区[[footnote]]“[[span class=&#34;ruby&#34;]]红区安全[[span class=&#34;rt&#34;]]Redzone Security[[/span]][[/span]]”是前普罗米修斯实验室的一部分，是一家成立于2001年的数据库安全公司。[[/footnote]]RedDB ASA-5500 Series存档存储设备的异步复制例程中的漏洞允许特定的恶意存档内容，导致任意数据被加载至受保护的内存区域，并在归档媒体读取时被作为代码执行。
+++ Summary
+A vulnerability in the asynchronous copy routine used by the Redzone[[footnote]]Redzone Security is a database security company formed in 2001 from part of the former Prometheus Labs.[[/footnote]] RedDB ASA-5500 Series Archival Storage Appliance allows certain malicious archive contents to cause arbitrary data to be loaded into protected memory segments and executed as program code when the archive media is read.
 
-此漏洞的产生归因于系统对存档的内容过滤不完全，导致其允许存档数据和将内存区域标记为“使用中”的操作系统例程之间的奇术污染。
+This vulnerability is due to incomplete sanitization of archive contents, allowing thaumatic contagion between the archive data and the operating system routines used to mark regions of memory as in use.
 
-远程攻击者能够通过将一特意构造的自修改信息危害插入一受影响的数据库系统实现对此漏洞的利用。该信息危害应能够在插入后自变为能够触发该漏洞的形式。
+A remote attacker could exploit this vulnerability by inserting a specially-crafted self-modifying infohazard into an affected archive database, which could then mutate into a form that triggers this vulnerability.
 
-++ 受影响的产品
-在以下产品中运行的红区RedDB软件可能受此漏洞影响：
+++ Affected Products
+Affected Redzone RedDB Software running on the following products may be affected by this vulnerability:
 
-||~ 产品 ||~ 于以下版本修复： ||
-|| 红区RedDB ASA-5500 Series存档存储设备|| 4.3.30 ||
-|| 红区RedDB ASA-5500-P Series物理文档存储设备|| 4.3.31 ||
-|| 红区信息危害内容管理系统（ICMS） || 2.14.10 ||
-|| 红区分布式远程数据库系统（DND）|| 1.19.11 ||
+||~ Vulnerable Product ||~ Fixed In: ||
+|| Redzone RedDB ASA-5500 Series Archival Storage Appliance || 4.3.30 ||
+|| Redzone RedDB ASA-5500-P Series Physical Document Storage Appliance || 4.3.31 ||
+|| Redzone Infohazard Content Management System (ICMS) || 2.14.10 ||
+|| Redzone Distributed Nonlocal Database System (DND) || 1.19.11 ||
 
-++ 入侵指标[[footnote]]**译注：**Indicators Of Compromise，IOC，威胁情报的重要部分，可以借此发现内部被攻陷的主机等重要风险。[[/footnote]]
-此漏洞已知被Adament [原文如此[[footnote]]**译注：**该“原文如此”原文中即存在。[[/footnote]]] 广告植入病毒[[footnote]][[[scp-2234 | SCP-2234]]][[/footnote]]利用。该利用方式的存在是您的系统已被篡改的有力证据。可以通过以下症状检测：
-* 在从被篡改的设备处取回的资料上出现多余的广告条幅；
-* 在纸张类存档媒体上出现动画广告；
-* 出现有关保密人员历史的指向性广告；
-* 联网打印机开始打印含有模因元素的优惠券。
+++ Indicators of Compromise
+This vulnerability is known to be exploited by the Adament [sic] adware virus[[footnote]][[[SCP-2234]]][[/footnote]]. The presence of this exploit is a strong indicator that your system is compromised, and can be detected from these symptoms:
 
-++ 临时解决措施[[footnote]]**译注：**workaround，指虽然没能修复底层漏洞，但是能阻挡已知攻击向量的解决措施。[[/footnote]]
-可以采取以下措施以减少此漏洞导致不良后果的可能性：
-* 确保网络已配备最新的主动信息危害检测系统；
-* 在任何与受影响系统交互的计算机上安装Adblock软件；
-* 在所有联网打印机上安装模因过滤防火墙；
-* 训练使用受影响系统的用户如何识别、报告计算机安全问题。
+* Appearance of unwanted banner ads attached to items retrieved from compromised equipment.
+* Appearance of animated advertisements on paper archive media.
+* Appearance of targeted advertisements referencing confidential personnel history.
+* Networked printers printing coupons containing anomalous memetic elements.
 
-++ 已修复的软件
-在考虑升级软件的同时，建议客户查看[[span class=&#34;ruby&#34;]]红区安全公告与响应[[span class=&#34;rt&#34;]]Redzone Security Advisories and Responses[[/span]][[/span]]档案，并查看后续公告，以确定暴露程度和完整的升级方案。
+++ Workarounds
+The following measures may be taken to reduce the potential for adverse consequences resulting from this vulnerability:
+* Ensure the network is equipped with an up-to-date active infohazard detection system.
+* Install Adblock software on any computer used to interact with affected systems.
+* Install memetic filter firewalls on all networked printers.
+* Train users of affected systems to recognise and report computer security issues.
 
-在所有情况下，客户都应该确保即将升级的设备拥有足够的内存，同时确认当前的硬件和软件配置在新发行版中仍然受到支持。如果信息不明确，建议客户联系[[span class=&#34;ruby&#34;]]红区技术支持中心[[span class=&#34;rt&#34;]]Redzone Technical Assistance Center[[/span]][[/span]]（TAC）或签约维护供应商。
+++ Fixed Software
+When considering software upgrades, customers are advised to consult the Redzone Security Advisories and Responses archive and review subsequent advisories to determine exposure and a complete upgrade solution. 
 
-++ 利用与公开情况
-[[span class=&#34;ruby&#34;]]红区安全事件响应团队[[span class=&#34;rt&#34;]]Redzone Security Incident Team[[/span]][[/span]]（RSIT）发现此漏洞已被Adament [原文如此] 广告植入病毒成功利用。RSIT未发现任何关于此漏洞的以往公开信息。
+In all cases, customers should ensure that the devices to upgrade contain sufficient memory and confirm that current hardware and software configurations will continue to be supported properly by the new release. If the information is not clear, customers are advised to contact the Redzone Technical Assistance Center (TAC) or their contracted maintenance providers.
 
-++ 来源
-**2015-07-07:** 来自SCP基金会MTF Rho-9的Gloria McDuffie和Walter Sotomayor向红区报告了此漏洞。</textarea></pre>
+++ Exploitation and Public Announcements
+The Redzone Security Incident Team (RSIT) is aware that this vulnerability has been exploited in the Adament [sic] adware virus. RSIT is not aware of any prior public disclosure of this vulnerability.
+
+++ Source
+**2015-07-07:** Gloria McDuffie and Walter Sotomayor of SCP Foundation MTF Rho-9 reported this vulnerability to Redzone.
+
+[[footnoteblock]]
+
+[[div]]
+[[=]]
+[[include :scp-wiki:component:license-box]]
+=====
+[[&lt;]]
+&gt; **Filename:** redzone3.png
+&gt; **Author:** [[*user AJMansfield]]
+&gt; **License:** CC BY-SA 3.0
+[[/&lt;]]
+=====
+[[include :scp-wiki:component:license-box-end]]
+[[/=]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:10.513209.</em>
+    <em>Last updated 2022-09-05 08:37:07.322883.</em>
   
 </div>
 </body>

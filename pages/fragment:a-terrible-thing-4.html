@@ -10,57 +10,76 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>A Terrible Thing 4</title>
+  <title>Flaxen Snow 4</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">A Terrible Thing 4</h1>
+    <h1 class="title">Flaxen Snow 4</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/fragment:a-terrible-thing-4" target="_blank">A Terrible Thing 4</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/fragment:a-terrible-thing-4" target="_blank">Flaxen Snow 4</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>#header h1 a{
-    display: block;
-    margin: 0;
-    padding: 80px 0 25px;
-    line-height: 0;
-    max-height: 0;
-    color: transparent;
-    background: transparent;
-    text-decoration: none;
-    text-shadow: none;
-    letter-spacing: 0.9px;
+          <pre><code> 
+/* Replace the sky with an aurora. */
+body::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/sky.webp);
+  background-size: 1500px calc(var(--header-height-on-desktop));
+  animation-duration: 360s;
+  filter: grayscale(70%);
 }
-#header h1 a::before{
-    content: &#34;El Espectro&#34;;
-    color: white;
-    letter-spacing: -0.02em;
-    text-shadow: 3px 3px 5px black;
+
+/* Replace the buildings. */
+div#container-wrap-wrap::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/skyline.png);
+  filter: grayscale(70%);
 }
-#header h2 span{
-    display: block;
-    margin: 0;
-    padding: 19px 0;
-    line-height: 0;
-    max-height: 0;
-    font-weight: bold;
-    color: transparent;
-    text-shadow: none;
+ 
+@keyframes sky {
+  from { background-position: 1500px 0; }
+  to { background-position: 0 0; }
 }
-#header h2 span::before{
-    content: &#39;Un Hombre Honorable&#39;;
-    color: white;
-    text-shadow: 1px 1px 1px black;
+ 
+/* Replace fog layers with snow */
+div#container-wrap-wrap::after, body::after {
+  background-image: url(http://scp-sandbox-3.wikidot.com/local--files/croquemtest2/snow.webp);
+  background-size: var(--ashes-width);
+  background-repeat: repeat;
+  animation: ashes-move linear var(--ashes-move-duration) infinite;
+  opacity: 0.8;
+}
+div#container-wrap-wrap::after {
+  --ashes-move-duration: 37s;
+  --ashes-width: 250px;
+}
+body::after {
+  --ashes-move-duration: 30s;
+  --ashes-width: 400px;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) var(--ashes-width); }
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>#header h1 a::before {
+  content: &#34;The Spook&#34;;
+}
+#header h2 span::before {
+  content: &#34;An Honourable Man&#34; !important;
+}
+#header::before {
+  display: none;
 }</code></pre>
         </li>
       
@@ -78,7 +97,56 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:swirling-ashes" target="_blank"><code>:scp-wiki:theme:swirling-ashes</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:swirling-ashes.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
       
     </ul>
 
@@ -92,116 +160,139 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[module CSS]]
-#header h1 a{
-    display: block;
-    margin: 0;
-    padding: 80px 0 25px;
-    line-height: 0;
-    max-height: 0;
-    color: transparent;
-    background: transparent;
-    text-decoration: none;
-    text-shadow: none;
-    letter-spacing: 0.9px;
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[include :scp-wiki:theme:swirling-ashes]]
+
+[[module css]]
+ 
+/* Replace the sky with an aurora. */
+body::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/sky.webp);
+  background-size: 1500px calc(var(--header-height-on-desktop));
+  animation-duration: 360s;
+  filter: grayscale(70%);
 }
-#header h1 a::before{
-    content: &#34;El Espectro&#34;;
-    color: white;
-    letter-spacing: -0.02em;
-    text-shadow: 3px 3px 5px black;
+
+/* Replace the buildings. */
+div#container-wrap-wrap::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/skyline.png);
+  filter: grayscale(70%);
 }
-#header h2 span{
-    display: block;
-    margin: 0;
-    padding: 19px 0;
-    line-height: 0;
-    max-height: 0;
-    font-weight: bold;
-    color: transparent;
-    text-shadow: none;
+ 
+@keyframes sky {
+  from { background-position: 1500px 0; }
+  to { background-position: 0 0; }
 }
-#header h2 span::before{
-    content: &#39;Un Hombre Honorable&#39;;
-    color: white;
-    text-shadow: 1px 1px 1px black;
+ 
+/* Replace fog layers with snow */
+div#container-wrap-wrap::after, body::after {
+  background-image: url(http://scp-sandbox-3.wikidot.com/local--files/croquemtest2/snow.webp);
+  background-size: var(--ashes-width);
+  background-repeat: repeat;
+  animation: ashes-move linear var(--ashes-move-duration) infinite;
+  opacity: 0.8;
+}
+div#container-wrap-wrap::after {
+  --ashes-move-duration: 37s;
+  --ashes-width: 250px;
+}
+body::after {
+  --ashes-move-duration: 30s;
+  --ashes-width: 400px;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) var(--ashes-width); }
+}
+[[/module]]
+
+[[module CSS]]
+#header h1 a::before {
+  content: &#34;The Spook&#34;;
+}
+#header h2 span::before {
+  content: &#34;An Honourable Man&#34; !important;
+}
+#header::before {
+  display: none;
 }
 [[/module]]
 
 [[=]]
 
-++++++ Navegación:
-[[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/0 | 1]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/1 | 2]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/2 | 3]]] | **[[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/3 | 4]]]** | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/4 | 5]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/5 | 6]]]
+++++++ Navigation:
+[[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/0 | 1]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/1 | 2]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/2 | 3]]] | **[[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/3 | 4]]]** | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/4 | 5]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/5 | 6]]]
 [[/=]]
 
-El espectro se aleja del puesto de escucha. Mira con resentimiento el laberinto de resistencias, cables y tubos que brillan con energía residual. El naranja deshilachado le hace nadar la vista. Se limpia algo líquido de los ojos. No se atreve a comprobar el color. 
+The spook pushes back from the listening post. He looks up resentfully at the labyrinth of resistors and wires and tubes that glow with residual energy. The fraying orange makes his vision swim. He wipes something liquid from his eyes. He cannot bring himself to check the colour. 
 
-El mensaje nunca cambia. Lo odia por eso. 
+The message never changes. He hates it for that. 
 
-En un arrebato pueril lanza los auriculares contra el suelo y escucha el agudo estruendo que atraviesa el sordo zumbido y el chirrido eléctrico. 
-
-@@ @@
-
-Sigue solo en un puesto de escucha en una pequeña cabaña metálica en el límite del mundo.
+In a puerile outburst he throws the headphones against the floor and listens to the sharp clatter that cuts through the dull thrum and the electric chirping. 
 
 @@ @@
 
-El espectro no recuerda cuánto tiempo lleva allí. Ha perdido la cuenta, pero no sabe cuándo. 
+He is still alone in a listening post in a small metal shack at the edge of the world.
 
 @@ @@
 
-El espectro no recuerda su nombre. Se lo quitaron los bibliotecarios. Dijeron que sería una distracción de la misión. 
+The spook cannot remember how long he has been there. He lost track, but does not know when. 
 
-El espectro sabe que los amantes de los libros no saben nada del deber. Tomar los nombres de los cuatro fue una decisión cobarde. La estúpida mirada del bibliotecario cuando afirmó que nadie podía registrar nombres en el recinto le indignó aún más. 
+@@ @@
 
-Estaba solo. El monstruo se encogió de hombros y el bibliotecario le siguió la corriente. La carcelera no dijo nada y él no pudo leer sus ojos.
+The spook cannot remember his name. It was taken from him by the librarian&#39;s people. They said that it would be a distraction from the mission. 
 
-Pero él sabe algo que ellos no saben.
+The spook knows that the booklovers know nothing of duty. Taking the names of the four was a coward&#39;s choice. The stupid look on the librarian&#39;s face as they claimed no one could record names on the compound incensed him further. 
+
+He was alone. The freak shrugged, the librarian went along. The jailer said nothing and he could not read her eyes.
+
+But he knows something they do not know.
 
 ---------------
 
-El mensaje debería haber cambiado. Lo sabía de una manera que no había conocido antes. Era la prueba de su duplicidad. Lo único que faltaba era averiguar quién.
+The message should have changed. He knew it in a way that he had not known things before. It was proof of their duplicity. The only thing left was to find out who.
 
-El espectro saca de su bolsillo un delgado libro negro. El interior está forrado con una fina tinta negra deliberada. Idas y venidas. Horarios y tiempos. Es la culminación de la espera y la paciencia. Las paranoias de una mente enferma.
+The spook pulls out a slim black book from his pocket. The interior is lined with thin deliberate black ink. Comings and goings. Schedules and timings. It is the culmination of watchful waiting and patience. The paranoias of a diseased mind.
 
 
 
-Sabe dónde está cada uno. El monstruo está en la cabecera. El bibliotecario está en la sala de hormigón. La carcelera está catalogando. Estos son sus papeles y él sabe que no tienen el valor de romperlos. Solo él sirve a este propósito superior.
+He knows where each one is. The freak is at the masthead. The librarian is in the concrete room. The jailer is cataloguing. These are their roles and he knows they do not have the courage to break it. Only he serves this higher purpose.
 
-El espectro se aparta del insistente staccato del puesto de escucha y se dirige a la puerta. El mensaje puede esperar. No ha cambiado.
+The spook turns from the insistent staccato of the listening post and to the door. The message can wait. It has not changed. 
 
 ----------
 
-Se dirige a buscar más información sobre la carcelera. Ella es difícil de leer, pero no es rival para el espectro. Es solo cuestión de tiempo hasta que encuentre algo que la incrimine.
+He is headed to find more information on the jailer. She is difficult to read, but she is no match for the spook. It is only a matter of time till he finds something that incriminates her.
 
-Los otros dos son conocidos. El bibliotecario es débil y tiene miedo. El monstruo es un autómata descerebrado sin su profeta. 
+The other two are known quantities. The librarian is weak and afraid. The freak is a mindless automaton without his prophet. 
 
-El espectro no tardó en darse cuenta de esto. Solo un par de ciclos después supo que había un traidor. Antes de estar seguro de ese conocimiento, podía leerlos.
+It did not take long for the spook to discern this. Only a couple of cycles after he knew that there was a traitor. Before he was confident in that knowledge, he could read them.
 
-Se había ofrecido como voluntario para este puesto. Había escuchado los rumores entre la gente que trabajaba con él de una misión. Susurros y rumores. Pero lo fue reconstruyendo.
+He had volunteered for this position. He had heard the rumours among the people that worked with him of a mission. Whispers and rumours. But he pieced it together.
 
-No tardó en convencer a los superiores. Un simple vistazo a su historial había bastado. 
+It did not take long for him to convince the higher ups. A single look at his record had sufficed. 
 
-Pero la carcelera. Era una desconocida. Sin antecedentes, sin historia. Sin nombre.
+But the jailer. She was an unknown quantity. No record, no history. No name.
 
-Seguirla fue fácil para el espía. Ella nunca se dio cuenta de que la seguía, pasaba, observaba, registraba. Estaba ocupada, distraída. Catalogando. Escribiendo instrucciones para el bibliotecario. Reparando. Exactamente lo mismo, ciclo tras ciclo. Habría detectado cualquier discrepancia.
+Tailing her was easy for the spook. She never noticed him following, passing, watching, Recording. She was busy, distracted. Cataloguing. Writing instructions for the librarian. Repairing. Exactly the same, cycle after cycle. He would have caught any discrepancies.
 
-Ya le falló a su país una vez. En los campos de exterminio de las montañas dináricas. Era débil. No volvería a ser débil. 
+He failed his country once before. In the killing fields of the Dinaric mountains. He was weak. He would not be weak again. 
 
-En el vestíbulo del recinto, una luz gris apagada se difracta a través del cristal esmerilado. Mira hacia el exterior. Es instintivo. 
+In the hall of the compound, a dull grey light diffracts through frosted crystal. He looks outside. It is instinctual. 
 
-En la nieve blanca como la niebla, una figura se acurruca contra el frío. Se mueve con precisión y determinación.
+In the fog-white snow, a figure huddled against the cold. It moves with precision and determination.
 
-Una aberración. Una afrenta al horario. Una blasfemia forzada en la cara del espectro y su libro. Una prueba. 
+An aberration. An affront to the schedule. A profanity forced into the face of the spook and his book. Proof. 
 
-Su mente gira rápidamente. La figura viene de los generadores. Vuelve al puesto de escucha y espera para poner en marcha su nuevo plan. Él no escucha el mensaje que grita para llamar la atención.
+His mind turns quickly. The figure is coming from the generators. He returns to the listening post and waits to enact his new plan. He does not listen to the message screaming for attention.
 
-Sabe lo que debe hacer. Es bueno que tenga el valor de hacerlo.
+He knows what he must do. It is good that he has the courage to see it done.
 
 [[=]]
 
-++++++ Navegación:
-[[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/0 | 1]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/1 | 2]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/2 | 3]]] | **[[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/3 | 4]]]** | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/4 | 5]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/5 | 6]]]
+++++++ Navigation:
+[[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/0 | 1]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/1 | 2]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/2 | 3]]] | **[[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/3 | 4]]]** | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/4 | 5]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/5 | 6]]]
 [[/=]]</textarea></pre>
   </div>
 
@@ -209,7 +300,7 @@ Sabe lo que debe hacer. Es bueno que tenga el valor de hacerlo.
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:07.399720.</em>
+    <em>Last updated 2022-09-05 08:37:06.373881.</em>
   
 </div>
 </body>

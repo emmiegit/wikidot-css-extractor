@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>SCP-4948</title>
 </head>
@@ -46,7 +46,16 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/more-by:notgull" target="_blank"><code>more-by:notgull</code></a>
+  
+
+  
+</li>
       
     </ul>
 
@@ -98,44 +107,102 @@ table.wiki-content-table th{
 &lt;table class=&#34;wiki-content-table&#34;&gt;
 &lt;tbody&gt;&lt;tr&gt;
 &lt;td&gt;
-&lt;img id=&#34;door&#34; src=&#34;http://www.scp-wiki.net/local--files/scp-4948/door.png&#34; alt=&#34;&#34; class=&#34;image&#34; width=&#34;300&#34;&gt;
+&lt;img id=&#34;door&#34; src=&#34;http://www.scp-wiki.net/local--files/scp-4948/ajar3.png&#34; alt=&#34;&#34; class=&#34;image&#34; width=&#34;300&#34;&gt;
 &lt;script language=&#34;JavaScript&#34;&gt;
-if (Math.random() &lt; 0.2) {
-  document.getElementById(&#34;door&#34;).src = &#34;http://www.scp-wiki.net/local--files/scp-4948/door2.png&#34;;
+var roots = [&#34;http://www.scp-wiki.net/local--files/scp-4948/ajar&#34;, &#34;.png&#34;];
+var lastBackoff = 7.5;
+var iterations = 0;
+var currentIndex = 3;
+
+function getNextBackoff() {
+    var nextBackoff = lastBackoff;
+    
+    // the idea behind this is that you average reader will take about 7.5 seconds to get into the
+    // article, then they notice the image changing, they stare at the image for a while, but then
+    // return to reading
+    // backoff is represented by 7.5 + 2log(x  + 2), where x is the number of times we&#39;ve asked
+    // for the backoff
+    lastBackoff = 7.5 + (2 * Math.log(iterations + 2));
+    iterations += 1;
+
+    return nextBackoff * 1000;
 }
+
+function randomRange(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function coinFlip() {
+    if (Math.floor(Math.random() * 2) == 0)
+        return -1;
+    else
+        return 1;
+}
+
+function switchImage() {
+    // figure out the next index
+    // only adjust the image slightly for iterators less than 8, go full ham after
+    if (iterations &lt; 8) {
+        while (true) {
+            currentIndex += coinFlip();
+            if (currentIndex &lt; 1) {
+                currentIndex = 1;
+            } else if (currentIndex &gt; 6) {
+                currentIndex = 6;
+            } else {
+                 break;
+            }
+        }
+    } else {
+        currentIndex = randomRange(1, 6);
+    }
+
+    document.getElementById(&#34;door&#34;).src = roots[0] + currentIndex + roots[1];
+
+    // set timeout for when this function is activated again
+    setTimeout(function() {
+        swtichImage();
+    }, getNextBackoff());
+}
+
+window.onload = function() {
+    setTimeout(function() { switchImage(); }, getNextBackoff());
+};
 &lt;/script&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;
-&lt;th&gt;&lt;sup&gt;Jeżeli odczuwasz strach lub niepokój po patrzeniu na ten obraz, bądź jeżeli widzisz niespodziewanie byty, proszę skonsultuj się z psychiatrą twojego ośrodka.&lt;/sup&gt;&lt;/th&gt;
+&lt;th&gt;&lt;sup&gt;If you feel dread or anxiety after viewing this image, or if you see any unexpected entities, please consult your on-site psychiatrist.&lt;/sup&gt;&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 [[/html]]
 [[/div]]
 
-**Identyfikator podmiotu:** SCP-4948
+**Item #:** SCP-4948
 
-**Klasa obiektu:** Memetyczny
+**Object Class:** Memetic
 
-**Klasa przechowywania:** Zneutralizowane
+**Containment Class:** Neutralized
 
-**Specjalne Czynności Przechowawcze (Zlikwidowane):** Cywile dotknięci przez SCP-4948 mają zostać przeniesieni do Komory Testowej #127 w Pomocniczym Ośrodku 4948. Drzwi do Komory #127 mają być pozostawione lekko uchylone na dwie minuty przed weryfikacją remediacji i powrotu do społeczności lokalnej.
+**Special Containment Procedures (Defunct):** Civilians affected by SCP-4948 are to be brought to Testing Chamber #127 at Adjunct Site-4948. The door to Chamber #127 is to be left slightly ajar for two minutes before verification of remediation and return to populace.
 
-**Opis:** SCP-4948 jest fenomenem nagłej i irracjonalnej paranoi przed zamkniętymi drzwiami. Nieznane jest, w jaki sposób SCP-4948 się rozwija; podejrzewa się, że czynnikiem jest bliskość osób dotkniętych przez SCP-4948.
+**Description:** SCP-4948 is the phenomenon of sudden and irrational paranoia of closing doors. It is unknown how SCP-4948 is developed; it is heavily suspected that proximity to those affected by SCP-4948 is a factor.
 
-SCP-4948 zaczyna się od lekkiego, niewyjaśnionego strachu na widok zamykanych drzwi. Aż ostatecznie staje się to pełnym przerażeniem i poczuciem potrzeby ucieczki z pomieszczenia, jeżeli to tylko możliwe.
+SCP-4948 begins with slight, unexplained dread at the sight of doors closing. Eventually, this becomes full terror, and the feeling of need to escape the room if possible.
 
-Jeżeli niemożliwe jest opuszczenie pokoju z zamkniętymi lub uchylonymi drzwiami, dotknięty personel będzie zgłaszał zwiększoną ciemność w pomieszczeniu, oraz bardziej poszarpaną i agresywną geometrie. Po około dwóch minutach, podmiot się uspokoi, a SCP-4948 zaprzestanie wpływania na niego.
+If unable to leave a room with a closing or ajar door, affected personnel will report increased darkness in the room and more jagged and aggressive geometry. After approximately two minutes, the subject will calm, and SCP-4948 will cease to affect them.
 
-**Historia:** SCP-4948 został pierwszy raz zauważony po tym, jak zaczął wpływać na mieszkańców miasteczka Nightford, Minnesota, małej, leśnej wioski, która została zbadana po zniknięciu miejscowej rodziny. Odkryto, że wszystkie drzwi z domu tej rodziny zostały usunięte. Nie znaleziono dalszych śladów rodziny, o której mowa.
+**History:** SCP-4948 was first noted after it  had begun to affect citizens of the town of Nightford, Minnesota, a small forest hamlet that was investigated after a disappearance of a local family. It was found that all doors within the home of the family had been removed. No traces of the family in question were found.
 
-Miejscowy hotel został przekształcony w Pomocniczym Ośrodek 4948, aby leczyć lokalną społeczność i personel Fundacji, który zaczął przejawiać objawy SCP-4948. Podczas leczenia, większość podmiotów chowała się w rogu komory badawczej, dopóki nie ustępowały efekty SCP-4948. Podczas tego okresu czasu, urządzenia rejestrujące wychwyciły ledwo słyszalne szepty, wraz z skowytem badanych. Od 31.08.2018r. do 20.09.2018r., ponad 300 osób zostało poddanych leczeniu SCP-4948, przy czym wszystkie leczenia zostały uznane za udane. W związku z czym, SCP-4948 został uznany za Zneutralizowane.
+A local hotel was converted into Adjunct Site-4948 to treat the populace and Foundation personnel that begun exhibiting symptoms of SCP-4948. During treatment, most subjects would hide themselves in the corner of the testing chamber until cessation of SCP-4948&#39;s effects. During this period of time, recording instruments picked up barely audible whispers, along with whimpering from the subjects. From 08/31/2018 to 09/20/2018, over 300 personnel were treated for SCP-4948, with all treatments deemed successful. As such, SCP-4948 has been declared Neutralized.
 
-Wartego odnotowania jest ostateczna neutralizacja SCP-4948, w przypadku Dr. Warnera. Neutralizacja ta trwała pięć minut, zamiast dwóch, oraz zakończyła się zbliżeniem się do drzwi przez Dr. Warnera, uklęknięciem na kolanach i błaganiem drzwi o nie &#34;zabieraniem [mu] tego&#34;. Po tym nastąpił dwugodzinny okres utraty przytomności, po którym Dr. Warner zgłosił, że jest wyleczony.
+Of note is the final neutralization of SCP-4948, in the case of Dr. Warner. This neutralization lasted five minutes instead of two, and was ended with Dr. Warner approaching the door and getting onto his knees and begging to the door to not &#34;take it away from [him]&#34;. This was followed by a two-hour period of unconsciousness, after which Dr. Warner reported being cured.
 
-Personel w Pomocniczym Ośrodku 4948 zgłaszał, że Komora Testowa #127 zaczęła pachnieć rozkładającym się mięsem. Ustalono, że było to spowodowane przez drzwi zrobione z materiałów organicznych, które pojawiły się w komorze. Próby usunięcia tych drzwi z komory nie powiodły się.  Od tego czasu, komora została zalana betonem.
+Personnel at Adjunct Site-4948 have reported that Testing Chamber #127 has smelled of rotting meat. This was found to be due to multiple doors made up of organic materials that have appeared within the chamber. Attempts to remove these doors from the chamber have failed. The chamber has since been filled with concrete.
 
 [[footnoteblock]]
+
+[[include more-by:notgull]]
 
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
 [[=]]
@@ -148,7 +215,7 @@ Personel w Pomocniczym Ośrodku 4948 zgłaszał, że Komora Testowa #127 zaczę�
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:13.530131.</em>
+    <em>Last updated 2022-09-05 08:37:08.598368.</em>
   
 </div>
 </body>

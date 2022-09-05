@@ -10,26 +10,26 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Theme: Creepypasta</title>
+  <title>Creepypasta Theme</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Theme: Creepypasta</h1>
+    <h1 class="title">Creepypasta Theme</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/theme:creepypasta" target="_blank">Theme: Creepypasta</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/theme:creepypasta" target="_blank">Creepypasta Theme</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Acreepypasta/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -38,7 +38,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -51,8 +51,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:creepypasta" target="_blank"><code>theme:creepypasta</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:creepypasta" target="_blank"><code>:scp-wiki:theme:creepypasta</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:creepypasta.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -80,8 +86,17 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Acreepypasta/1&#39;);
+[[/module]]
 
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Acreepypasta/1
+]]
+
+
+[[iftags +theme]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -91,10 +106,10 @@
 To import this theme to your page, put the following anywhere inside it:
 
 [[div class=&#34;code&#34;]]
-@@[[include theme:creepypasta]]@@
+@@[[include :scp-wiki:theme:creepypasta]]@@
 [[/div]]
 
-The standard CSS @import method won&#39;t work. This is intentional (thanks to [[*user stormbreath]] for providing the CSS code!). Importing the theme using @@[[include]]@@ adds your page to a list of Backlinks. This is useful for seeing what pages would be affected when this theme is updated, and allows any errors caused by that to be noticed and corrected much faster.
+Importing the theme using @@[[include]]@@ adds your page to a list of Backlinks. This is useful for seeing what pages would be affected when this theme is updated, and allows any errors caused by that to be noticed and corrected much faster.
 
 You can view any page&#39;s Backlinks by clicking &#34;+ Options&#34; at the bottom of the page, then &#34;Backlinks&#34;.
 
@@ -179,11 +194,11 @@ This is a long tab. It contains a lot of text.
 [[/tabview]]
 
 &gt; This is a blockquote, created by putting &#34;&gt; &#34; at the start of each line.
-&gt;
+&gt; 
 &gt; More text
 &gt; -----
 &gt; That&#39;s a horizontal rule
-&gt;
+&gt; 
 &gt;&gt; Nested blockquotes
 
 ||~ This is a ||~ table ||
@@ -191,7 +206,7 @@ This is a long tab. It contains a lot of text.
 ||||already ||
 
 
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 @import url(&#39;https://fonts.googleapis.com/css?family=PT+Mono&amp;display=swap&#39;);
  
 /*
@@ -208,7 +223,7 @@ This is a long tab. It contains a lot of text.
     --bg: #1a1a1a;
     --bg-dark: #000000;
  
-    --fg-light: #ffffff;
+    --fg-light: #ffffff; 
     --fg:  #f2f2f2;
     --fg-dark: #e6e6e6;
  
@@ -277,12 +292,15 @@ div#header h2:after {
 /* SIDE-BAR */
  
 div#side-bar a,
-div#side-bar a:visited {
+div#side-bar a:visited,
+#interwiki a,
+#interwiki a:visited {
     color: var(--fg-dark);
 }
  
-div#side-bar div.side-block {
-    background: rgb(24, 24, 24) !important;
+div#side-bar div.side-block,
+#interwiki div.side-block {
+    background: rgb(24, 24, 24);
     border: 1px solid #ffe087;
     box-shadow: 0 2px 6px #404040;
 }
@@ -293,19 +311,19 @@ div#side-bar div.side-block.resources {
 }
  
 div#side-bar div.side-block div.heading,
-div#side-bar div.collapsible-block-unfolded-link,
-div#side-bar div.collapsible-block-unfolded-link div.collapsible-block-link {
+#interwiki div.side-block div.heading,
+div#side-bar .collapsible-block-unfolded-link,
+div#side-bar .collapsible-block-unfolded-link .collapsible-block-link {
     color: rgb(255, 224, 135);
     border-color: rgb(255, 224, 135);
 }
- 
-/* Recolors the image bullet points in the side-bar */
-.side-block .menu-item &gt; .image {
-    filter: hue-rotate(230deg) invert(100%);
+
+#side-bar .collapsible-block-unfolded-link .collapsible-block-link:hover {
+    color: var(--fg-dark);
 }
- 
+  
 /* Recolors the Translation Module */
-div.scpnet-interwiki-wrapper {
+#interwiki .menu-item img {
     filter: hue-rotate(230deg) invert(100%);
 }
  
@@ -333,7 +351,7 @@ div.scpnet-interwiki-wrapper {
 }
  
 /* Top-Bar */
-#top-bar a {
+#top-bar a { 
     color: var(--fg-dark);
 }
  
@@ -589,7 +607,7 @@ hr {
 /* INFO MODULE */
 
 #page-content .rate-box-with-credit-button {
-    background-color: var(--bg-dark);
+    background-color: var(--bg-dark); 
     border: 1px solid var(--bg-dark);
 }
 
@@ -620,7 +638,7 @@ hr {
 }
 
 /* MOBILE CODE */
-@media (max-width: 767px) {
+@media (max-width: 767px) { 
     div#header {
         background-size: 22em;
         background-position: 1em;
@@ -632,16 +650,16 @@ hr {
         color: var(--bg-light);
   }
 }
-[[/module]]
+[[/code]]
 
-[[/div]]</textarea></pre>
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.495947.</em>
+    <em>Last updated 2022-09-05 08:37:09.797645.</em>
   
 </div>
 </body>

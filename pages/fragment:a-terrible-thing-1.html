@@ -10,57 +10,77 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>A Terrible Thing 1</title>
+  <title>Flaxen Snow 1</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">A Terrible Thing 1</h1>
+    <h1 class="title">Flaxen Snow 1</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/fragment:a-terrible-thing-1" target="_blank">A Terrible Thing 1</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/fragment:a-terrible-thing-1" target="_blank">Flaxen Snow 1</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>#header h1 a{
-    display: block;
-    margin: 0;
-    padding: 80px 0 25px;
-    line-height: 0;
-    max-height: 0;
-    color: transparent;
-    background: transparent;
-    text-decoration: none;
-    text-shadow: none;
-    letter-spacing: 0.9px;
+          <pre><code>/* Taken from The Four Arcana and modified for here */
+ 
+/* Replace the sky with an aurora. */
+body::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/sky.webp);
+  background-size: 1500px calc(var(--header-height-on-desktop));
+  animation-duration: 360s;
+  filter: grayscale(70%);
 }
-#header h1 a::before{
-    content: &#34;Una Cosa Terrible&#34;;
-    color: white;
-    letter-spacing: -0.02em;
-    text-shadow: 3px 3px 5px black;
+
+/* Replace the buildings. */
+div#container-wrap-wrap::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/skyline.png);
+  filter: grayscale(70%);
 }
-#header h2 span{
-    display: block;
-    margin: 0;
-    padding: 19px 0;
-    line-height: 0;
-    max-height: 0;
-    font-weight: bold;
-    color: transparent;
-    text-shadow: none;
+ 
+@keyframes sky {
+  from { background-position: 1500px 0; }
+  to { background-position: 0 0; }
 }
-#header h2 span::before{
-    content: &#39;Cuatro centinelas&#39;;
-    color: white;
-    text-shadow: 1px 1px 1px black;
+ 
+/* Replace fog layers with snow */
+div#container-wrap-wrap::after, body::after {
+  background-image: url(http://scp-sandbox-3.wikidot.com/local--files/croquemtest2/snow.webp);
+  background-size: var(--ashes-width);
+  background-repeat: repeat;
+  animation: ashes-move linear var(--ashes-move-duration) infinite;
+  opacity: 0.8;
+}
+div#container-wrap-wrap::after {
+  --ashes-move-duration: 37s;
+  --ashes-width: 250px;
+}
+body::after {
+  --ashes-move-duration: 30s;
+  --ashes-width: 400px;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) var(--ashes-width); }
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>#header h1 a::before {
+  content: &#34;A Terrible Thing&#34;;
+}
+#header h2 span::before {
+  content: &#34;Four sentinels&#34; !important;
+}
+#header::before {
+  display: none;
 }</code></pre>
         </li>
       
@@ -78,7 +98,56 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:swirling-ashes" target="_blank"><code>:scp-wiki:theme:swirling-ashes</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:swirling-ashes.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
       
     </ul>
 
@@ -92,39 +161,63 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[module CSS]]
-#header h1 a{
-    display: block;
-    margin: 0;
-    padding: 80px 0 25px;
-    line-height: 0;
-    max-height: 0;
-    color: transparent;
-    background: transparent;
-    text-decoration: none;
-    text-shadow: none;
-    letter-spacing: 0.9px;
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[include :scp-wiki:theme:swirling-ashes]]
+
+[[module css]]
+/* Taken from The Four Arcana and modified for here */
+ 
+/* Replace the sky with an aurora. */
+body::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/sky.webp);
+  background-size: 1500px calc(var(--header-height-on-desktop));
+  animation-duration: 360s;
+  filter: grayscale(70%);
 }
-#header h1 a::before{
-    content: &#34;Una Cosa Terrible&#34;;
-    color: white;
-    letter-spacing: -0.02em;
-    text-shadow: 3px 3px 5px black;
+
+/* Replace the buildings. */
+div#container-wrap-wrap::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/skyline.png);
+  filter: grayscale(70%);
 }
-#header h2 span{
-    display: block;
-    margin: 0;
-    padding: 19px 0;
-    line-height: 0;
-    max-height: 0;
-    font-weight: bold;
-    color: transparent;
-    text-shadow: none;
+ 
+@keyframes sky {
+  from { background-position: 1500px 0; }
+  to { background-position: 0 0; }
 }
-#header h2 span::before{
-    content: &#39;Cuatro centinelas&#39;;
-    color: white;
-    text-shadow: 1px 1px 1px black;
+ 
+/* Replace fog layers with snow */
+div#container-wrap-wrap::after, body::after {
+  background-image: url(http://scp-sandbox-3.wikidot.com/local--files/croquemtest2/snow.webp);
+  background-size: var(--ashes-width);
+  background-repeat: repeat;
+  animation: ashes-move linear var(--ashes-move-duration) infinite;
+  opacity: 0.8;
+}
+div#container-wrap-wrap::after {
+  --ashes-move-duration: 37s;
+  --ashes-width: 250px;
+}
+body::after {
+  --ashes-move-duration: 30s;
+  --ashes-width: 400px;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) var(--ashes-width); }
+}
+[[/module]]
+
+[[module CSS]]
+#header h1 a::before {
+  content: &#34;A Terrible Thing&#34;;
+}
+#header h2 span::before {
+  content: &#34;Four sentinels&#34; !important;
+}
+#header::before {
+  display: none;
 }
 [[/module]]
 
@@ -132,38 +225,38 @@
 
 [[=]]
 
-++++++ Navegación:
-**[[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/0 | 1]]]** | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/1 | 2]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/2 | 3]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/3 | 4]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/4 | 5]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/5 | 6]]]
+++++++ Navigation:
+**[[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/0 | 1]]]** | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/1 | 2]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/2 | 3]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/3 | 4]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/4 | 5]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/5 | 6]]]
 [[/=]]
 
-Cuatro figuras se abren paso a través de las derivas heladas y el aire de la escarcha. Están envueltas en pantalones térmicos, chaquetas y parkas, con los rostros oscurecidos. El viento se ha llevado sus palabras. El frío les ha quitado el habla. Saben a dónde van.
+Four figures cut through the frozen drifts and rimefrost air. They are wrapped in thermals and jackets and parkas, faces obscured. The wind has taken their words. The cold has taken their speech. They know where they are going.
 @@ @@
 
-El espectro los guía. Camina con la confianza de un hombre de la mitad de su edad.
+The spook leads them. He walks with the confidence of a man half his age.
 @@ @@ 
 
-El bibliotecario le sigue. Se inclina el cuello, buscando respuestas y el lugar.
+The librarian follows. They crane their neck, probing for answers and place.
 @@ @@ 
 
-La carcelera va en tercer lugar. Está concentrada en el camino, controlando su respiración.
+The jailer comes third. She is focused on the path, controlling her breath.
 @@ @@
 
-El monstruo es el último. Es más grande que el resto. No lleva parka.
+The freak comes last. He is larger than the rest. He wears no parka.
 @@ @@
 
-La carcelera cae. Su pie rompe el frágil hielo y su pierna desaparece en el frío abismo. Grita conmocionada, con palabras no pronunciadas pidiendo ayuda. Es el único sonido en kilómetros. La fría intrusión ha roto su compostura, pero no importa. Su vida se perdió hace mucho tiempo.
+The jailer falls. Her foot breaks the fragile ice, and her leg disappears into the cold abyss. She cries out in shock, unformed words pleading for help. It is the only sound for miles. The cold intrusion had broken her composure, but it was no matter. Her life had been made forfeit long ago.
 
-El bibliotecario y el espectro no rompen el paso.
+The librarian and the spook do not break pace.
 
-El monstruo la levanta de las aguas cristalinas. Sus ojos se encuentran, separados por el hielo y el cristal esmeralda. No intercambian palabras.
+The freak lifts her from the crystal waters. Their eyes meet, separated by ice and emerald glass. They exchange no words.
 
-En el límite del mundo, las cuatro figuras caminan a través de la estática hacia una pequeña choza de metal.
+At the edge of the world, the four figures trudge through the static towards a small metal shack.
 
 
 [[=]]
 
-++++++ Navegación:
-**[[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/0 | 1]]]** | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/1 | 2]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/2 | 3]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/3 | 4]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/4 | 5]]] | [[[http://lafundacionscp.wikidot.com//a-terrible-thing/offset/5 | 6]]]
+++++++ Navigation:
+**[[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/0 | 1]]]** | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/1 | 2]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/2 | 3]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/3 | 4]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/4 | 5]]] | [[[http://scp-wiki.wikidot.com/a-terrible-thing/offset/5 | 6]]]
 [[/=]]</textarea></pre>
   </div>
 
@@ -171,7 +264,7 @@ En el límite del mundo, las cuatro figuras caminan a través de la estática ha
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:07.398967.</em>
+    <em>Last updated 2022-09-05 08:37:06.373171.</em>
   
 </div>
 </body>

@@ -10,19 +10,19 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>識別卡</title>
+  <title>ID Card</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">識別卡</h1>
+    <h1 class="title">ID Card</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:id-card" target="_blank">識別卡</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:id-card" target="_blank">ID Card</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
@@ -176,16 +176,16 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +組件]]
+    <pre><textarea class="page-source" readonly>[[iftags +component]]
 
 [[div style=&#34;border: solid 2px #ededed; padding: 0.5rem; margin: 1rem 0;&#34;]]
-這是個用於製作裝飾性識別卡的組件。
+This is a component used to make decorative ID cards.
 [[=image https://scp-wiki.wdfiles.com/local--files/component%3Aid-card/idcard.png width=&#34;80%&#34;]]
 
 [[div class=&#34;code&#34; style=&#34;width:80%;margin:auto&#34; ]]
-@@[[include :scp-zh-tr:component:id-card@@ ##blue|**@@|css=--@@**##
+@@[[include :scp-wiki:component:id-card@@ ##blue|**@@|css=--@@**##
 @@|photo=https://scp-wiki.wdfiles.com/local--files/estrellayoshte/u.png@@
-|level=3 [[span style=&#34;color:blue;font-style:italic;user-select:none&#34;]]支持 1 到 5[[/span]]
+|level=3 [[span style=&#34;color:blue;font-style:italic;user-select:none&#34;]]Supports 1 to 5[[/span]]
 |name=Suong Yvonne
 |dept=of Design |position=Iconographer
 |id-number= 3492-775201
@@ -193,7 +193,8 @@
 @@]]@@
 [[/div]]
 
-如果在同一頁面放置多張識別卡，你只需使用{{css}}參數一次便可在後面的{{[[include]]}}中省略掉。
+If multiple cards are placed on one page, you only need the {{css}} parameter once, and can otherwise be omitted on subsequent {{[[include]]}}s.
+
 [[/div]]
 
 
@@ -235,6 +236,7 @@
     margin: 1.5rem auto;
     border-radius: calc(var(--id-card-margin)*0.75);
     box-shadow: 0 0 0.325rem rgba(0,0,0,0.175);
+    line-height: 1.125;
     font-family: &#39;Lexend&#39;, sans-serif;
     color: rgb(var(--id-card-text-color));
     background-color: rgb(var(--id-card-background-color));
@@ -261,13 +263,14 @@
     grid-area: pfp;
     box-sizing: border-box;
     border: solid 0.125rem rgb(var(--id-card-border-color));
-    border-radius: min(0.5rem, 1vw);
+    border-radius: calc(var(--id-card-margin)*0.385);
     aspect-ratio: 4/5;
     overflow: hidden;
     position: relative;
 }
 .foundation-id-card .profile-picture img {
     height: 100%;
+    width: 100%;
     object-fit: cover;
 }
 
@@ -320,10 +323,10 @@
     right: 0;
     text-align: right;
     text-transform: uppercase;
-    font-weight: bold;
-    font-size: calc(var(--id-card-margin)*1.25/*1.425*/);
+    font-size: calc(var(--id-card-margin)*1.425);
     line-height: calc(var(--id-card-margin)*1.325);
 }
+.foundation-id-card .access &gt; * { font-weight: bold; }
 .foundation-id-card .access span:first-child { font-size: 103.5%; }
 .foundation-id-card .access br { display: none; }
 
@@ -331,7 +334,7 @@
     grid-area: info;
     display: flex;
     flex-wrap: wrap;
-    row-gap: calc(var(--id-card-margin)*0.375);
+    grid-gap: calc(var(--id-card-margin)*0.375);
 }
 .foundation-id-card .info &gt; * {
     flex-grow: 1;
@@ -364,17 +367,20 @@
     padding-top: calc(var(--id-card-margin)*0.625);
     grid-gap: calc(var(--id-card-margin)*0.375);
     border-top: solid 0.125rem rgb(var(--id-card-border-color));
+    overflow: hidden;
 }
 .foundation-id-card .card-end .barcode {
     font-family: &#39;Libre Barcode 128&#39;, cursive;
     user-select: none;
+    height: 100%;
     flex-basis: 67.5%;
     flex-grow: 1;
     overflow: hidden;
     white-space: nowrap;
     font-size: calc(var(--id-card-margin)*3.5);
+    line-height: 1;
     align-self: flex-start;
-    clip-path: inset(0);
+    box-sizing: border-box;
 }
 .foundation-id-card .card-end .expire {
     color: rgb(var(--id-card-subtext-color));
@@ -382,7 +388,7 @@
     font-family: &#39;Share Tech Mono&#39;, monospace;
     align-self: flex-end;
     text-align: right;
-    width: max-content;
+    min-width: max-content;
 }
 .foundation-id-card .card-end .expire .id .sublead { font-size: 80%; margin-right: 0.75ch; }
 .foundation-id-card .card-end .expire .id { font-size: 115%; }
@@ -415,22 +421,22 @@
 [[/div]]
 [[/div]]
 [[div_ class=&#34;access&#34;]]
-[[span]]等級{$level}[[/span]]
-[[span]]通行證[[/span]]
+[[span]]Level{$level}[[/span]]
+[[span]]Access[[/span]]
 [[/div]]
 [[/div]]
 
 [[div_ class=&#34;info&#34;]]
 [[div_ class=&#34;fullname&#34;]]
-[[span class=&#34;heading&#34;]]職員全名[[/span]]
+[[span class=&#34;heading&#34;]]Full Name[[/span]]
 [[span class=&#34;fill-info&#34;]]{$name}[[/span]]
 [[/div]]
 [[div_ class=&#34;department&#34;]]
-[[span class=&#34;heading&#34;]]所屬部門[[/span]]
+[[span class=&#34;heading&#34;]]Department[[/span]]
 [[span class=&#34;fill-info&#34;]]{$dept}[[/span]]
 [[/div]]
 [[div_ class=&#34;position&#34;]]
-[[span class=&#34;heading&#34;]]職位[[/span]]
+[[span class=&#34;heading&#34;]]Position[[/span]]
 [[span class=&#34;fill-info&#34;]]{$position}[[/span]]
 [[/div]]
 [[/div]]
@@ -452,7 +458,7 @@
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:06.184596.</em>
+    <em>Last updated 2022-09-05 08:37:06.074853.</em>
   
 </div>
 </body>
