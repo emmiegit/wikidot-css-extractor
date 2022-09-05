@@ -41,7 +41,7 @@ def get_regex_options(args):
 
 def eprint(message):
     if USE_COLOR:
-        message = f"{Fore.RED}{message}{Style.RESET}"
+        message = f"{Fore.RED}{message}{Fore.RESET}"
 
     print(message, file=sys.stderr)
 
