@@ -12,7 +12,7 @@ from colorama import Fore, Style
 WIKIDOT_SITE_REGEX = re.compile(r"^https?://([^\.]+)\.wikidot\.com/.+")
 USE_COLOR = None
 
-RegexOptions = namedtuple('RegexOptions', ('invert', 'flags'))
+RegexOptions = namedtuple('RegexOptions', ('invert', 'flags', 'sites'))
 Match = namedtuple('Match', ('line_number', 'line_content', 'spans'))
 
 # Always open files using UTF-8
@@ -200,7 +200,7 @@ if __name__ == '__main__':
         "-S",
         "--site",
         default=None,
-        dest="filter_site",
+        dest="filter_sites",
         help="Only search from the following sites (comma-separated)",
     )
     argparser.add_argument(
