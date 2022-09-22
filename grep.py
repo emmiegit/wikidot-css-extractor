@@ -72,6 +72,12 @@ def grep(regex, pages, options):
 
     for slug, page in pages.items():
         lines = page['source'].split('\n')
+        site = WIKIDOT_SITE_REGEX.match(page['url'])[1]
+
+        if options.sites:
+            # Check site filter
+            if site not in options.sites:
+                continue
 
         matches = []
         for i, line in enumerate(lines):
@@ -84,7 +90,6 @@ def grep(regex, pages, options):
                 ))
 
         if matches:
-            site = WIKIDOT_SITE_REGEX.match(page['url'])[1]
             page_matches[(site, slug)] = matches
 
     return page_matches
