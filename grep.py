@@ -34,9 +34,15 @@ def get_regex_options(args):
     if args.ignore_case:
         flags |= re.IGNORECASE
 
+    if args.filter_sites:
+        sites = args.filter_sites.split(",")
+    else:
+        sites = None
+
     return RegexOptions(
         invert=args.invert_match,
         flags=flags,
+        sites=sites,
     )
 
 def eprint(message):
@@ -184,6 +190,13 @@ if __name__ == '__main__':
         default="auto",
         choices=["always", "never", "auto"],
         help="Whether to use colors to highlight results",
+    )
+    argparser.add_argument(
+        "-S",
+        "--site",
+        default=None,
+        dest="filter_site",
+        help="Only search from the following sites (comma-separated)",
     )
     argparser.add_argument(
         "pattern",
