@@ -33,6 +33,10 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Acalamity/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -48,10 +52,6 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -172,6 +172,15 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -320,14 +329,8 @@ The body font is Ubuntu.
 [[span style=&#34;font-family: var(--title-font);&#34;]]The title font is Baumans.[[/span]]
 [[span style=&#34;font-family: var(--mono-font);&#34;]]The monospace font used is Space Mono.[[/span]]
 [[/=]]
-[[/iftags]]
-
-[[include :scp-wiki:component:centered-header-bhl]]
-[[include :scp-wiki:component:toggle-sidebar-bhl]]
-
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[collapsible show=&#34;+ Show code&#34; hide=&#34;- Hide code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
+[[code type=&#34;css&#34;]]
 /*
 Calamity Theme
 [2021 Wikidot Theme]
@@ -607,17 +610,17 @@ table.wiki-content-table th {
 }
 
 /* Side Bar Touch Up */
-    #side-bar .heading,
-    #side-bar .side-block&gt;.collapsible-block:nth-child(1) .collapsible-block-folded {
-        background: rgba(var(--pale-accent), 0.35);
-        font-family: var(--title-font);
-        min-height: 1.5rem;
-        height: 1.5rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-size: 125%;
-    }
+#side-bar .heading,
+#side-bar .side-block&gt;.collapsible-block:nth-child(1) .collapsible-block-folded {
+    background: rgba(var(--pale-accent), 0.35);
+    font-family: var(--title-font);
+    min-height: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-size: 125%;
+}
 
 #side-bar .heading p {
     color: rgb(62, 62, 104);
@@ -638,7 +641,7 @@ table.wiki-content-table th {
     --dropdown-bg-color: var(--swatch-alternate-color), 0.9;
     --dropdown-border-color: var(--swatch-text-tertiary-color), 0.5;
     --dropdown-links-color: var(--swatch-text-secondary-color);
-    --dropdown-links-bg-color: 0,0,0,0;
+    --dropdown-links-bg-color: 0, 0, 0, 0;
     --dropdown-links-hover-color: var(--swatch-text-secondary-color);
     --dropdown-links-hover-bg-color: var(--swatch-primary);
 }
@@ -656,7 +659,7 @@ body::before {
 
 body::before {
     -webkit-animation: sky linear var(--sky-time) infinite;
-            animation: sky linear var(--sky-time) infinite;
+    animation: sky linear var(--sky-time) infinite;
     background: linear-gradient(to top,
     		rgb(var(--sky-at-morning)) 0%,
     		rgb(var(--sky-at-morning)) 11%,
@@ -701,16 +704,16 @@ body::before {
     height: 10rem;
     -webkit-animation: rainOne 1.7s infinite linear,
     	rainFade var(--sky-time) ease;
-            animation: rainOne 1.7s infinite linear,
+    animation: rainOne 1.7s infinite linear,
     	rainFade var(--sky-time) ease;
     -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
     background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Acalamity/rain1.png&#39;);
     background-repeat: repeat;
     background-size: 14.375rem;
     pointer-events: none;
     -webkit-filter: blur(.9px);
-            filter: blur(.9px);
+    filter: blur(.9px);
 }
 
 #header-extra-div-2 {
@@ -722,16 +725,16 @@ body::before {
     height: 10rem;
     -webkit-animation: rainTwo 1.2s infinite linear,
     	rainFade var(--sky-time) ease;
-            animation: rainTwo 1.2s infinite linear,
+    animation: rainTwo 1.2s infinite linear,
     	rainFade var(--sky-time) ease;
     -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
     background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Acalamity/rain1.png&#39;);
     background-repeat: repeat;
     background-size: 23.125rem;
     pointer-events: none;
     -webkit-filter: blur(0.4px);
-            filter: blur(0.4px);
+    filter: blur(0.4px);
 }
 
 #header-extra-div-3 {
@@ -743,16 +746,16 @@ body::before {
     height: 10rem;
     -webkit-animation: rainThree .75s infinite linear,
     	rainFade var(--sky-time) ease;
-            animation: rainThree .75s infinite linear,
+    animation: rainThree .75s infinite linear,
     	rainFade var(--sky-time) ease;
     -webkit-animation-iteration-count: infinite;
-            animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
     background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Acalamity/rain1.png&#39;);
     background-repeat: repeat;
     background-size: 45rem;
     pointer-events: none;
     -webkit-filter: blur(.2px);
-            filter: blur(.2px);
+    filter: blur(.2px);
 }
 
 @-webkit-keyframes rainOne {
@@ -905,12 +908,6 @@ body::before {
     }
 }
 
-/* Translation Box - coded by Calibri Bold */
-div.scpnet-interwiki-wrapper {
-    -webkit-filter: invert(18%) sepia(11%) saturate(216%) hue-rotate(203deg) brightness(104%) contrast(111%);
-            filter: invert(18%) sepia(11%) saturate(216%) hue-rotate(203deg) brightness(104%) contrast(111%);
-}
-
 /* Wikidot Footer Link Colors */
 #footer {
     background: #4A4A7D;
@@ -925,20 +922,111 @@ div.scpnet-interwiki-wrapper {
     #header-extra-div-2,
     #header-extra-div-3 {
     	-webkit-animation: none;
-    	        animation: none;
+    	animation: none;
     }
 }
+[[/code]]
 
-[[/module]]
+Interwiki Code:
+[[code type=&#34;css&#34;]]
+@import url(&#39;https://fonts.googleapis.com/css?family=Cabin+Sketch|Ubuntu|Space+Mono|Baumans&amp;display=swap&#39;);
+
+#interwiki {
+    /* Typefaces */
+    --body-font: &#34;Ubuntu&#34;, sans-serif;
+    --header-font: &#34;Cabin Sketch&#34;, sans-serif;
+    --title-font: &#34;Baumans&#34;, sans-serif;
+    --mono-font: &#34;Space Mono&#34;, &#34;Andale Mono&#34;, &#34;Courier New&#34;, Courier, monospace;
+
+    /* Standard Colors */
+    --black-monochrome: var(--sky-at-night);
+    --dark-gray-monochrome: var(--sky-at-evening);
+    --pale-accent: 150, 150, 254;
+    /* lavender, for visited links */
+    --bright-accent: 51, 201, 208;
+    /* bright turquoise */
+    --medium-accent: 23, 152, 158;
+    /* darker turquoise */
+    --dark-accent: 90, 90, 152;
+    /* darker purple */
+    --alt-accent: var(--sky-at-dawn);
+    /* pinkish red, for newpage links */
+
+    /* Sky */
+    --sky-at-dawn: 221, 93, 112;
+    --sky-at-morning: 131, 192, 233;
+    --sky-at-daytime: 104, 153, 186;
+    --sky-at-evening: 87, 98, 106;
+    --sky-at-dusk: 99, 100, 90;
+    --sky-at-night: 21, 25, 43;
+    --sky-length: 15;
+    --sky-time: 65s;
+
+    /* Primary Theme Colors */
+    --swatch-primary: var(--medium-accent);
+    --swatch-primary-darker: var(--pale-accent);
+
+    /* Primary Menu Colors */
+    --swatch-menubg-medium-dark-color: var(--medium-accent);
+
+    /* Colors for Secondary &amp; Tertiary items like Blockquote and YUI Tabs */
+    --swatch-secondary-color: var(--bright-accent);
+    --swatch-tertiary-color: var(--pale-accent);
+
+    /* Link Colors */
+    --link-color: 110, 110, 170;
+    --visited-link-color: var(--medium-accent);
+}
+/* Side Bar Touch Up */
+#interwiki .heading {
+    background: rgba(var(--pale-accent), 0.35);
+    font-family: var(--title-font);
+    min-height: 1.5rem;
+    height: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-size: 125%;
+}
+
+#interwiki .heading p {
+    color: rgb(62, 62, 104);
+    font-family: var(--title-font);
+    text-shadow: none;
+    --text-shadow: none;
+    text-align: center;
+}
+
+/* Reduce Motion Check */
+@media screen and (prefers-reduced-motion: reduce) {
+
+    body::before,
+    #header-extra-div-1,
+    #header-extra-div-2,
+    #header-extra-div-3 {
+    	-webkit-animation: none;
+    	animation: none;
+    }
+}
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[/iftags]]
+[[include :scp-wiki:component:centered-header-bhl]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Acalamity/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Acalamity/2
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.560368.</em>
+    <em>Last updated 2023-07-15 21:44:40.993876.</em>
   
 </div>
 </body>

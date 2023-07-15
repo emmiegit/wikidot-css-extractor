@@ -54,10 +54,23 @@
  display: none
 }
 
-@media (max-width: 500px) {
-.mob-hid{
- display:none;
+
+.flex-wrap{
+    display: flex;
+    justify-content: space-around;    
 }
+
+.flex-wrap div{
+     margin: 0 0.5rem;
+    width: 100%;
+}
+
+
+@media (max-width: 500px) {
+    .flex-wrap{
+flex-wrap:wrap;        
+    }
+    
   .mmposter-semi  .mmposter-cell,
 
     .mmposter-cell{
@@ -95,6 +108,8 @@ content:&#34; ←  &#34;;
         padding:0 0.2rem 0 0rem;
 
 }
+
+
 
 /*
 -----------------------------
@@ -185,13 +200,11 @@ max-width:100% !important;
         </li>
       
         <li>
-          <pre><code>/*
-=====================================
+          <pre><code>/*=====================================
 Magazine theme - 00000000
 ------------------------------
 Customiz
-=====================================
-*/
+=====================================*/
 
 
 @import url(https://scp-wiki.wikidot.com/theme:magazine/code/1);
@@ -204,7 +217,7 @@ div#header h1 a::before {
     content:{$header-title};
 }
 
-#header h2::before {
+div#header h2::before {
    content: {$header-subtitle};
 }
 
@@ -214,13 +227,13 @@ div#header h1 a::before {
 
 
 @media (max-width: 767px) {
-  div#header h1 a::before {
+ div#header h1 a::before {
     content:{$header-title};
     content:{$pad-title};
    }
 
-   div#header h2::before {
-    content:{$header-title};
+  div#header h2::before {
+    content:{$header-subtitle};
     content:{$pad-subtitle};
    }
 
@@ -231,7 +244,7 @@ div#header h1 a::before {
 }
 
 @media (max-width: 500px) {
-   div#header h1 a::before {
+  div#header h1 a::before {
     content:{$header-title};
     content:{$pad-title};
     content:{$mob-title};
@@ -252,58 +265,59 @@ div#header h1 a::before {
 
 #side-bar:before {
     background-image:{$logo-sidebar};
-}
-
-#side-bar div.side-block:first-child:before{
     content:{$sidebar-content};
 }
 
+#page-title{
+   display:{$page-title};
+}
 
-#page-title::before {
+#page-title::after{
     content:{$title-orn-content};
     font-size:{$title-orn-size};
+    line-height:calc( {$title-orn-size} * 0.7);
     width: {$title-orn-width};
     color:{$title-orn-color};
+}
+
+#page-title:before,
+#page-title:after{
+   display:{$title-underlines};
 }
 </code></pre>
         </li>
       
         <li>
-          <pre><code>/*
-=====================================
+          <pre><code>/*=====================================
 Magazine Theme
 --------------
 Collapsible Sidebar Source
-=====================================
-*/
+=====================================*/
 
 :root{  
 --body-width-on-desktop:60rem;
---sidebar-topBox-left:3.2rem;   
-    --sidebar-bg-pc:var(--page-bg);
-}
-
-#main-content{
-    margin-top: 0em;
+--SB-topbox_left:3.2rem;   
+    --SB-bg_PC:var(--page-bg);
 }
 
 #content-wrap{
      margin-left:0;
 }
 
-#main-content::after {
-filter: sepia(50%) hue-rotate(150deg) saturate(150%);
+#content-wrap::after {
+display: none;
 }
 
 #main-content {
     padding: 0;
+    padding-top: var(--main-top);
     margin: 0 auto;
     left: 0;
     right: 0;
 }
 
-#content-wrap::after {
-display: none;
+#main-content::after {
+filter: sepia(50%) hue-rotate(150deg) saturate(150%);
 }
 
 #side-bar{
@@ -312,8 +326,11 @@ display: none;
   height: 100%;
 }
 
+#page-content {
+            margin: auto;
+}
 
- #side-bar{
+#side-bar{
      margin-left:0;
      margin: 0;
      position: fixed;
@@ -335,9 +352,24 @@ display: none;
 
 div#extra-div-1 {
     z-index: 9;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/*===================================
+Magazine Theme
+--------------
+Custom page background
+=====================================*/
+#container {
+--hollow-image: {$page-background};
+background: var(--hollow-image) center 0 repeat;
 }
 
-</code></pre>
+#content-wrap #side-bar::before,
+#content-wrap #side-bar {
+background-color: transparent ;
+}</code></pre>
         </li>
       
     </ul>
@@ -366,15 +398,79 @@ div#extra-div-1 {
         </li>
       
         <li>
+          <pre><code>font-family:var(--teletype-font);</code></pre>
+        </li>
+      
+        <li>
           <pre><code>display:flex;flex-wrap: wrap; justify-content:space-around; </code></pre>
         </li>
       
         <li>
-          <pre><code>font-family:var(--header-tt-font);</code></pre>
+          <pre><code>--tip-color:blue</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width:60%;margin: 0 auto</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 0 auto;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width:80%;margin: 0 auto</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width:80%;margin: 0 auto</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width:80%;margin: 0 auto</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 0 auto;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 0 auto;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--tk-img-right:url(http://scpsandboxcn.wikidot.com/local--files/icon/IMG-goat.png)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--tk-img-right:url(IMAGE_LINK)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--tk-img-left:url(IMAGE_LINK); --tk-img-right:url(IMAGE_LINK);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--tk-img-left:url(http://scpsandboxcn.wdfiles.com/local--files/icon/ICON_angry-eagle.svg)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shadow-line:green;--tk-box-bg:skyblue;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shadow-line:green;--tk-box-bg:skyblue;color:darkred</code></pre>
         </li>
       
         <li>
           <pre><code>padding-top: 0rem</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 0;--ttbox_h1BDR-color:#333;--ttbox_before-color:#888;--ttbox_h1-bg: #000;--ttbox_h1-color: #fff;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 0;--ttbox_h1BDR-color:#333;--ttbox_before-color:#888;--ttbox_h1-bg: #000;--ttbox_h1-color: #fff;</code></pre>
         </li>
       
         <li>
@@ -391,6 +487,10 @@ div#extra-div-1 {
       
         <li>
           <pre><code>opacity:0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:none</code></pre>
         </li>
       
     </ul>
@@ -487,6 +587,46 @@ div#extra-div-1 {
 
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes">
+      
+        <li>
+          <pre><code>image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wait</code></pre>
+        </li>
       
         <li>
           <pre><code>float-sticky</code></pre>
@@ -913,6 +1053,562 @@ div#extra-div-1 {
         </li>
       
         <li>
+          <pre><code>clip-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clip-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>note-page</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>note-page</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-note</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-note</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-note</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>note-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-note</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-talking-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>pc-width</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-round  talkbox-dark</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-sel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-talking-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-talking-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>pc-width</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-talking-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>pc-width</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-upper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-lefttop</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-upper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-lefttop</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-lefttop</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-inby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-lefttop  talkbox-inby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-talking-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-inby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-lefttop  talkbox-inby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-round</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-dark</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-round  talkbox-dark</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-doubleline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-righttop</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-doubleline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-bubles</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-bubles</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkimg-below</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-img</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-round</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-bubles</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talking-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-round</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>talkbox-bubles</code></pre>
+        </li>
+      
+        <li>
           <pre><code>mz-blockquote</code></pre>
         </li>
       
@@ -981,6 +1677,46 @@ div#extra-div-1 {
         </li>
       
         <li>
+          <pre><code>mz-tt333</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-sel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-tt333</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-tt333</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-sel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
           <pre><code>mz-tt</code></pre>
         </li>
       
@@ -1002,6 +1738,14 @@ div#extra-div-1 {
       
         <li>
           <pre><code>tt-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-sel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
@@ -1191,8 +1935,7 @@ div#extra-div-1 {
 [[collapsible show=&#34;+ CODE&#34; hide=&#34;- HIDE&#34;]]
 [!---------------1111111111111111111111111111111111111-------------------------------]
 [[code type=&#34;CSS&#34;]]
-/*
-=====================================
+/*=====================================
 Magazine Theme - sigma9
 [2021 Wikidot Theme]
 by Etinjat
@@ -1200,8 +1943,7 @@ by Etinjat
 Inspired by EstrellaYoshte, hoah2333 and MalyceGraves
 Magazine logo is created by Kcorena 
 Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
-=====================================
-*/
+=====================================*/
 
 /* FONTS */
 @import url(&#39;https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap&#39;);
@@ -1209,12 +1951,9 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
 @import url(&#39;https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500;700&amp;display=swap&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=IM+Fell+English&amp;display=swap&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap&#39;);
-
-/*
-=====================================
+/*=====================================
 根属性 ROOT
-=====================================
-*/
+=====================================*/
 
 :root{
 
@@ -1222,36 +1961,36 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
 
 --content-width:inherit;
 --main-width:inherit;
+    
+    --main-top:var(--TB_height_half);
+    --main-top_PAD:min(var(--PGtt_size),1.3rem); 
+    --main-top_MOB:min(var(--PGtt_size),1rem);   
 
-/* ----------- 标题 || HEADER----------- */
-
---header-title: &#34;FOUNDATION&#34; ;
---header-subtitle:&#34;Secure Contain Protect&#34;;
---mob-title:&#34;S C P&#34;;
---mob-subtitle:&#34;FOUNDATION&#34;;
---pad-title: var(--header-title) ;
---pad-subtitle: var(--header-subtitle) ;
-
---sidebar-content:&#39;Documents&#39;;
 
 
 /* ----------- 字体 || FONT ----------- */
 
-    --page-font:&#39;Roboto Slab&#39;, &#39;Markazi Text&#39;, verdana,arial,helvetica, sans-serif ;
-    --handwriting-font: &#39;Yesteryear&#39;, &#39;La Belle Aurore&#39;, &#34;Monotype Corsiva&#34;, &#34;Bradley Hand ITC&#34;, sans-serif ;
-    --page-tt-font:&#39;DM Serif Display&#39;, &#39;Roboto Slab&#39;,  &#39;Noto Serif SC&#39;, sans-serif ;   
-    --header-tt-font:  &#39;IM Fell English&#39;, &#39;DM Serif Display&#39;,&#39;Roboto Slab&#39;,   &#39;Noto Serif SC&#39;, sans-serif ;   
-    --mono-font:&#39;Special Elite&#39;, &#39;IM Fell English&#39;, &#39;Ubuntu Mono&#39;, &#39;BauhausLTDemi&#39;, monospace;
-
-
---teletype-font: var(--teletype222-font), &#39;Ubuntu Mono&#39;, &#39;Andale Mono&#39;, &#39;Courier New&#39;,var(--page-font) , Courier, monospace;
---teletype222-font: var(--mono-font);
+    --page-font: &#39;Roboto Slab&#39;, &#39;Markazi Text&#39;, &#39;Nanum Gothic&#39;, verdana, arial, helvetica, sans-serif;
+    --handwriting-font:&#39;Yesteryear&#39;, &#39;La Belle Aurore&#39;, &#34;Monotype Corsiva&#34;, &#34;Bradley Hand ITC&#34;, sans-serif;
+    --page-tt-font:&#39;DM Serif Display&#39;, &#39;Roboto Slab&#39;, &#39;BauhausLTDemi&#39;, sans-serif;   
+    --header-tt-font:&#39;IM Fell English&#39;, &#39;DM Serif Display&#39;,&#39;Roboto Slab&#39;, &#39;BauhausLTDemi&#39;, sans-serif;   
+    --mono-font:&#39;Courier New&#39;, &#39;Nanum Gothic Coding&#39;, &#39;Ubuntu Mono&#39;, &#34;Trebuchet MS&#34;, Courier, monospace;
+    --teletype-font:&#39;Special Elite&#39;, &#39;IM Fell English&#39;, Courier, monospace;
 
 
 --header-tt-font-weight:500;
---header-h2-font-weight:600;
+--HD-h2_font-weight:600;
 
---mob-tt-font: var(--page-tt-font);
+--mob-tt-font:var(--page-tt-font);
+
+/* 用户栏文本 */
+--font_printuser: var(--handwriting-font);
+--font_my-account: var(--teletype-font);
+   
+/* 编辑区域 */    
+--EDIT-box_font:  &#34;Trebuchet MS&#34;, var(--page-font);
+--EDIT-btn_font: &#39;Nanum Gothic&#39;, &#39;Special Elite&#39;, &#34;Monotype Corsiva&#34;, &#34;Bradley Hand ITC&#34;,var(--page-font);
+--EDIT-help_font: fontawesome, &#39;Nanum Gothic&#39;, &#34;Trebuchet MS&#34;, var(--mono-font);
 
 /* ----------- 颜色 || BASE COLOR----------- */
 
@@ -1262,6 +2001,7 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
 --color-red:#990314;
 --color-darkred:#6f1212;
 --color-grey:#ecebf0;
+--color-grey-pale:#eee;
 --color-grey-dark:#e0e1e1;
 --color-grey-darker:#d2d2d2;
 --color-grey-darkest:#c4c4c4;
@@ -1279,275 +2019,297 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
 --color-darker:#333;
 --color-dark:#555;  
 
-/* ------------ 版头 || HEADER ------------------  */
+/* ------------ 版头 ------------------  */
 
    /* 版头 和 标题 */
- --header-bg:var(--color-kraft);
- --topbar-bg:var(--color-navy);
- --topbar-txt: var(--color-gold);
+ --HD_bg:var(--color-kraft);
+ --TB_bg:var(--color-navy);
+ --TB_txt:var(--color-gold);
+ --HD_mob_HOV:var(--color-red);
+ --HDtt_color:var(--accentColor);
+ --HD-h2_color:var(--color-darkest);     
 
- --header-mob-hover:var(--color-red);
+ --HD_height:var(--HD_height_PC);
+ --HD_height_PC:max(8rem, var(--HDtt_height));  
+ --HD_height_PAD:var(--HD_height_PC);  
+ --HD_height_MOB:var(--HD_height_PC);  
+ --HD_blank:var(--SB_width-total,16rem);    
+  
+  
+    /* 页眉标题 */
+--header-title:&#34;FOUNDATION&#34;;
+--header-subtitle:&#34;Secure Contain Protect&#34;;
+--mob-title:&#34;S C P&#34;;
+--mob-subtitle:&#34;FOUNDATION&#34;;
+--pad-title:var(--header-title);
+--pad-subtitle:var(--header-subtitle);
 
- --header-tt-color:var(--accentColor);
- --header-subtt-color:var(--color-darkest);
-
---hdtt-top:inherit;
---hdtt-subtop:0.1rem;
-
- --hdtt-top-pad:var(--hdtt-top);
- --hdtt-subtop-pad:var(--hdtt-subtop);
-
- --hdtt-top-mob:5px;
- --hdtt-subtop-mob:0rem;
-
-    /*   搜索栏    */
-     --search-line:var(--accentColor);
-     --search-bg:transparent;
-     --search-bg-hover:var(--search-line);
-     --search-txt:var(--search-line);
-     --search-txt-hover:var(--header-bg);
-
-    /*   用户栏  */
-       --user-line:var(--header-tt-color);
-       --user-unline:var(--header-subtt-color);
-       --user-list-txtHVR:var(--color-gold);    
+    --HDtt_top:2rem;
+    --HDtt_size:4rem;
+    --HDtt_size_PAD:3rem;
+    --HDtt_size_MOB:var(--HDtt_size_PAD);
+    --HD-h2_size:1.5rem;
+    --HD-h2_size_PAD:1.25rem;
+    --HD-h2_size_MOB:var(--HD-h2_size_PAD);
+    --HDtt_gap:0.5rem;
+    --HDtt_gap_MOB:0.25rem;
+    --HDtt_height:calc(var(--HDtt_size) + var(--HDtt_gap) + var(--HD-h2_size) + var(--TB_height));
+    --HD-h1_top:inherit;
+    --HD-h2_top:-0.25em;
+    --HD-h1_top_PAD:1rem;
+    --HD-h1_top_MOB:var(--HD-h1_top_PAD);
     
-       --headbtn-bg-hover:var(--header-tt-color);
-       --headbtn-line-hover:var(--search-txt-hover);
-
-    /* 侧栏色 */
-   --barColour: var(--color-grey);
-   --sidebar-hdtxt-color:#600;
+  /* 用户栏和搜索栏 */  
+     --SEARCH_line:var(--accentColor);
+     --SEARCH_bg:transparent;
+     --SEARCH_bg_HOV:var(--SEARCH_line);
+     --SEARCH_txt:var(--SEARCH_line);
+     --SEARCH_txt_HOV:var(--HD_bg);
+    --USER_line:var(--HDtt_color);
+    --USER_unline:var(--HD-h2_color);
+    --USER-list_txt:var(--HDtt_color);
+    --USER-list_txt_HOV:var(--color-gold);
+    --HD-btn_line_HOV:var(--HD_mob_HOV);
+    --HD-btn_bg_HOV:var(--HDtt_color);
+    --HD-btn_line_HOV:var(--SEARCH_txt_HOV);
     
-     /* tab色 */
-    --color-tabsect-bg222:var(--color-brown);
-    --color-tabsect-txt222:var(--color-red);
+ --STATUS_maxwidth:var(--HD_blank); 
+ --STATUS_top:1rem;
+ --STATUS_padding:0.5rem; 
+ --STATUS-btn_padding:0.5rem;
+ --STATUS_grid: 1.5rem;
+ --STATUS_grid-gap: 0.25rem;
+ --STATUS-btn_grid: 2rem;
+ --STATUS-btn_btn: 1.2rem;    
+ --STATUS-btn_size: 1rem;
+ --USER_font-size:var(--STATUS_grid);
+ --unlogin-font-size: 1.25rem;
+ --STATUS_row-11:var(--STATUS_grid);
+ --STATUS_row-22:var(--STATUS_grid);
+ --STATUS_column-11:0;
+ --STATUS_column-22:var(--STATUS-btn_grid);
+ --STATUS_column-33:minmax(5rem,auto);   
+    
+  --SEARCH_top:calc(var(--STATUS_top) + var(--STATUS_padding) * 3 + var(--USER_font-size) * 2 );  
+   --HD-menu_minwidth:10rem;
+   --HD-menu_maxwidth:var(--HD_blank);
+   --HD-menu_height:var(--STATUS_grid);
+    
+/* 顶栏 */    
+   --TB_height:1.8rem;
+   --TB_height_half:calc(var(--TB_height) / 2 + var(--HDtt_gap) / 2);
+   --TB_font-size:90%;
 
-/* ----------- 标志 || LOGO ----------- */
-
-   --logo-sidebar-opacity:1;
-    --logo-size:110px;
-    --logo-top:11px;
-    --logo-opacity:0.2;
-    --logo-position:50.2% 0%;
-
-    --logo-top-mob:15px;
-    --logo-size-mob:120px;
-    --logo-position-mob:51% 0%;
-
-
-   --logo-image:none;
-   --logo-image-mob:var(--icon-scp);
-   --header-cover:var(--icon-noise);
-
-   --logo-sidebar:var(--icon-magazine);
-   --logo-sidebar-mob:var(--logo-sidebar);
-
+/* -------------------------------- 标志 ---------------------------------------- */
+    --HD_cover:var(--icon-noise);
+    --LOGO_sidebar-opacity:1;
+    --LOGO_size:7rem;
+    --LOGO_top:0;
+    --LOGO_opacity:0.2;
+    --LOGO_position:50.2% 0%;
+    --LOGO_top_PAD:0.45rem;
+    --LOGO_size_PAD:6.5rem;
+    --LOGO_position_PAD:50.1% 0%;
+    --LOGO_top_MOB:var(--LOGO_top_PAD);
+    --LOGO_size_MOB:var(--LOGO_size_PAD);
+    --LOGO_position_MOB:var(--LOGO_position_PAD);
+   --LOGO_image:none;
+    --LOGO_image_PAD:var(--LOGO_image);
+   --LOGO_image_MOB:var(--LOGO_image_PAD);
+    
+    
+   --LOGO_sidebar:var(--icon-magazine);
+   --LOGO_sidebar_MOB:var(--LOGO_sidebar);
+    
 
 /* 图标 || ICON */
 
---icon-scp:url(https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO-SCP.svg);
---icon-magazine :url(https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO-magazine.svg);
---icon-noise:url(https://scp-wiki.wikidot.com/local--files/theme:magazine/IMG-noise.png);
+--icon-scp:url(https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_SCP.svg);
+--icon-magazine:url(https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_magazine.svg);
+--icon-noise:url(https://scp-wiki.wikidot.com/local--files/theme:magazine/IMG_noise.png);
 
 
---mzlog-img: url(&#39;https://scp-wiki.wikidot.com/local--files/theme:magazine/ICON-eagle.svg&#39;);
+--mzlog-img:url(&#39;https://scp-wiki.wikidot.com/local--files/theme:magazine/ICON_eagle.svg&#39;);
 
+ /* ----------------  侧边栏 || SIDE BAR ---------------------- */
+   --SB_content:&#39;Documents&#39;;   
+   --barColour: var(--color-grey);
+   --SB-hdtxt_color:#600;
+    
+   --SB-hdtxt_size:0.95rem;
+    --SB-link_size:0.85rem;
+    --SB-main_size:1.2rem;
+    
+--SB-line11: solid 0.18em var(--SB-hdtxt_cl);
+--SB-line22: solid min(0.12em, 0.15rem) var(--SB-line_cl);
+ 
+    
+    
+  /* 左右空白 + 侧边栏 = 整个侧边栏尺寸 = 页面右侧空白  */
+    --SB_width:14rem;
+    --SB-blank_right:1rem;
+    --SB-blank_left:2rem;
+    --SB-blank_top:6rem;
+    --content-width:54rem;   
+    --SB_width-total:calc(var(--SB_width) + var(--SB-blank_left) + var(--SB-blank_right));  
+
+    /* 背景颜色 */
+     --SB-bg_PC:transparent;
+     --SB-bg_MOB:transparent;
+     --SB-cover_MOB:transparent ; /* var(--icon-noise);*/
+
+    /* 项目颜色 || ITEM COLOR */
+    --SB-btn_border_cl:var(--color-darker);
+    --SB-btn_txt:var(--color-darker);
+    --SB-btn_bg:var(--color-navy);
+
+    --SB-link_txt:var(--color-navy);
+    --SB-link_bg:transparent;
+    --SB-link_txt_HOV:var(--color-light);
+    --SB-link_bg_HOV:var(--accentColor);
+
+/* 栏线颜色 || ITEM LINE */
+    --SB-hdtxt_cl:var(--accentColor);
+    --SB-line_cl:var(--SB-hdtxt_cl);
+    --SB-content_color:var(--SB-hdtxt_cl);
+    --SB-hdtxt_cl_MOD:var(--SB-hdtxt_cl);
+   --color-hr-sidebar:var(--color-navy);
+   --SB-fold_color:var(--color-red);
+    
+    /* 栏线 */
+    --SB-hdtxt_left: 0.4em;
+    --SB-line11_size: min(0.2em, 2.5rem);
+    --SB-line22_size: min(0.12em, 1.5rem);   
+    --SB-line22_top:var(--SB-line11_size);
+    --SB-line22_left: var(--SB-hdtxt_left);
+    --SB-line22_right: max(7em, 65%) ;
+    --SB-line_height: calc((var(--SB-line11_size) + var(--SB-line22_size)) / 2 + 0.5px );  
+
+    --SB-line_clip: polygon(0 0, 100% 0, 100% var(--SB-line22_top), var(--SB-line22_right) var(--SB-line22_top), var(--SB-line22_right) 100%,  var(--SB-line22_left)  100%, var(--SB-line22_left)  var(--SB-line22_top), 0% var(--SB-line22_top));
+
+/* 栏头 */
+    --SB-topbox_size:8rem;
+    --SB-topbox_top222:1rem;   
+    --SB-phrase_size:2rem;
+    --SB-phrase_top:calc(var(--SB-topbox_size) + 0.5rem);
+
+     /* 手机按钮 */
+    --SB_btntxt: &#34;\f0c9&#34;;
+    --SB-btn_square:1.5rem;
+    --SB-btn_left:1rem;
+    --SB-btn_top:1rem;
+    --SB-btntxt_size:1rem;
+    --SB-btntxt_size_HOV:var(--SB-btntxt_size);
+    --SB-btntxt_cl:var(--color-navy);
+    --SB-btn_bgcl:var(--color-navy);
+    --SB-btn_border_cl: var(--color-navy);   
+    --SB-btntxt_bg_HOV:var(--accentColor);
+    --SB-btntxt_cl_HOV:var(--TB_txt); 
+    --SB-btn_bgcl:var(--color-grey-dark); 
 
 
 /* ------------------- 页面标题 || PAGE TITLE ------------------- */
-
-    --page-tt-txtPOS: center;
-
-    --page-tt-txt: #000;
-    --page-tt-bg: transparent;
-    --pgtt-before-contentBG:transparent;
-    --pgtt-before-contentBG:transparent;  
-    --pgtt-before-contentTXT: var(--accentColor);
-
-     --page-tt-size: 2.5rem;
-     --page-tt-sizeMOB:1.8rem;
-
-    /*.....底部装饰物 || BOTTOM ORNAMENT.....*/
-    --pgtt-before-content:&#39;\f005&#39;;  
-    --pgtt-before-size: calc(var(--page-tt-size) / 5 * 4);
-     --pgtt-before-sizeMOB: calc(var(--page-tt-sizeMOB) / 5 * 4);
-
-
-    --pgtt-before-width:calc(var(--page-tt-size) / 5 * 6);
-     --pgtt-before-height:var(--pgtt-before-size);
+  --PGtt_txt-color:var(--color-darkest);
+    --PGtt_size:2.5rem;
+    --PGtt_size_PAD:2rem;    
+    --PGtt_size_MOB:1.5rem;    
     
+     /*.....底部盒子.....*/
+    --PGtt_underbox-gap:0rem;  
+    --PGtt_underbox-height:0.5em;
 
-    --pgtt-before-widthMOB:calc(var(--page-tt-sizeMOB) / 5 * 6);
-    --pgtt-before-heightMOB:var(--pgtt-before-sizeMOB);  
+     /*.....底部装饰线.....*/
+    --PGtt-line_color:var(--color-darker);
+    --PGtt-linebox_space: max(var(--PGtt-line01_height),var(--PGtt-line02_height) );
+    --PGtt-linebox_gap: 0.07em;
+    --PGtt-line_ornleft:calc(50% - var(--PGtt-orn_width) / 2);
+    --PGtt-line_ornright:calc(50% + var(--PGtt-orn_width) / 2);
+   
+    --PGtt-line01_height: 0.1em;
+    --PGtt-line02_height: 0.06em;
+    --PGtt-line02clip_height: var(--PGtt-line01_height);
+    --PGtt-line02clip_right: calc(100% - var(--PGtt-line02clip_left));
+    --PGtt-line02clip_left: min(10%, var(--PGtt-orn_size) * 10 );
+
+  --PGtt-lines-img: linear-gradient(90deg, var(--PGtt-line_color) , var(--PGtt-line_color));
+  --PGtt-line02_clip:polygon(100% 0, 0 0, 0 var(--PGtt-line02clip_height), var(--PGtt-line02clip_left) var(--PGtt-line02clip_height), var(--PGtt-line02clip_left) 100%, var(--PGtt-line_ornleft) 100%, var(--PGtt-line_ornleft) 0, var(--PGtt-line_ornright) 0, var(--PGtt-line_ornright) 100%, var(--PGtt-line02clip_right) 100%, var(--PGtt-line02clip_right) var(--PGtt-line02clip_height), 100% var(--PGtt-line02clip_height));
+ 
+
     
+     /*.....底部图案.....*/
+    --PGtt-orn_content:&#34;\f005&#34;;
+    --PGtt-orn_txt-color:var(--accentColor);   
+    --PGtt-orn_size:0.8em;
+    --PGtt-orn_width:calc(var(--PGtt-orn_size) * 1.5);    
 
-    /*.....底部装饰线 ||  UNDERLINE .....*/
-
-   --pgtt-linecolor:#444;
-   --pgtt-before-left:calc(50% - var(--pgtt-before-width) / 2);
-    --pgtt-before-right: calc(50% + var(--pgtt-before-width) / 2);
-    --pgtt-line:linear-gradient(to right, var(--pgtt-linecolor) 0, var(--pgtt-linecolor) var(--pgtt-before-left), transparent 0%, transparent var(--pgtt-before-right), var(--pgtt-linecolor) 50%, var(--pgtt-linecolor) 100%);;
-
-    --pgttcn-bg:unset;/* 装饰背景，未设置 || background */
-    --pgttcn-img:var(--pgtt-line);/* 装饰衬图，渐变 */   
-
-    /* 手机 || PHONE */
-    --pgtt-before-leftMOB:calc(50% - var(--pgtt-before-widthMOB) / 2);
-    --pgtt-before-rightMOB: calc(50% + var(--pgtt-before-widthMOB) / 2);
-    --pgtt-lineMOB:linear-gradient(to right, var(--pgtt-linecolor) 0, var(--pgtt-linecolor) var(--pgtt-before-leftMOB), transparent 0%, transparent var(--pgtt-before-rightMOB), var(--pgtt-linecolor) 50%, var(--pgtt-linecolor) 100%);;
-
-    --pgttcn-imgMOB:var(--pgtt-lineMOB);/* 装饰衬图，渐变 */
-
-   /*.....底部装饰边距 || BOTTOM GAP .....*/   
-    --page-tt-topPADD: 1rem;
-    --page-tt-btmPADD: 0.2rem;     
-    --page-tt-topPADD-MOB:0.5rem;
-    
-    --pgttcn-line-top:-0.3rem;
-
-    --pgtt-aft-width: 100%;
-    --pgcon-bef-width: 80%;
-     --pgtt-aft-height:4px;
-    --pgcon-bef-height:2.5px;
-
-    --pgtt-aft-heightMOB:3.5px;
-    --pgcon-bef-heightMOB:2px;
-    
-    --pgtt-after-top:calc(var(--pgtt-before-width) / 10 + var(--page-tt-btmPADD));/* 长饰线 */
-
-    /* 手机 || PHONE */
-    --pgtt-after-topMOB:calc(var(--pgtt-before-widthMOB) / 10);
-    --pgtt-before-bottomMOB:calc(0% - var(--pgtt-before-widthMOB) / 2 );
-
-    --pgcon-bef-top: calc( 0rem - var(--pgtt-before-height) / 2 );
-    --pgcon-bef-topMOB:calc( 0rem - var(--pgtt-before-heightMOB) / 2 );
-    
-    --pgcon-linespace:calc(50% - var(--pgcon-bef-top) / 2.5);
-    --pgcon-linespace-MOB:calc(50% -  var(--pgcon-bef-topMOB) / 2.5  );  
     
     
-    
-    /* 标题与正文的距离 || SPACE BETWEEN TITLE &amp; TEXT */
-    --pgcon-ct-gap:0.5rem;
-    --pgcon-ct-gapMOB:var(--pgcon-ct-gap);
-
 /* ------------------- 评分栏 || RATE BOX------------------- */
 
+  --RATE_text:&#39;Rating&#39;;
+    --RATE_text_HOV:var(--RATE_text);   
     /* 颜色 */
-    --rate-font:var(--page-font);
-    --rate-bg:var(--page-bg);
-    --rate-num-bg:var(--rate-num-border);
-    --rate-num-num:var(--color-light);
-    --rate-num-txt:var(--color-darkest);
-    --rate-num-border:var(--color-darker);
-
-    --rate-hover-bg:var(--color-grey-darkest);
-    --rate-hover-txt:var(--color-red);
-
-    --rate-info-btn:var(--color-dark);
-    --rate-info-btnHover:var(--color-darker);
-    --rate-info-btnHover-txt:var(--color-light);
-    --rate-info-border:var(--color-grey-darkest);
-
-    --rate-mobox-border:var(--color-navy);
-    --rate-mobox-bg:var(--color-kraft);
-    --rate-mobox-tt:var(--color-gold);
-    --rate-mobox-txt:var(--color-darkest);
-    --rate-mobox-btn: var(--accentColor) ;
-
+    --RATE_font:var(--page-font);
+    --RATE_bg:var(--page-bg);
+    --RATE-num_bg:var(--RATE-num_border);
+    --RATE-num_num:var(--color-light);
+    --RATE-num_txt:var(--color-darkest);
+    --RATE-num_border:var(--color-darker);
+ 
+    --RATE-info_btn:var(--color-dark);
+    --RATE-info_btn_HOV:var(--color-darker);
+    --RATE-info_btn_HOV-txt:var(--color-light);
+    --RATE-info_border:var(--color-grey-darkest);
+ 
+    --RATE-mobox_border:var(--color-navy);
+    --RATE-mobox_bg:var(--color-kraft);
+    --RATE-mobox_tt:var(--color-gold);
+    --RATE-mobox_txt:var(--color-darkest); 
+    --RATE-mobox_btn: var(--accentColor) ; 
+ 
  /* .....尺寸..... */
-    --rate-num-size:1.2rem;
-    --rate-num-lh:1.2; /* 数字行间距 */
-    --rate-num-padding:calc(var(--rate-num-size) / 3);
+    --RATE-num_size:1.2rem;
+    --RATE-txt_size:0.8rem;
+    --RATE-num_lh:1.2; /* 数字行间距 */
+    --RATE-num_padding:0.4em;  
+    --RATE_padding-left:0em;
+    --RATE-num_height:calc(var(--RATE-num_size) + var(--RATE-num_padding) * 2);
     
-    --rate-padding-left:0rem;
+    /*按钮*/
+    --RATE-btn_mgleft:0.5rem;
+    --RATE-btn_mgleft_half:0.25rem;    
+    --RATE-btn_width: 1.5em;
+    --flag-delta-size:0.5em;
+    --RATE-btn_height:2em; 
+    --RATE-btn_size: 1rem;
 
-    /* 按钮 || BUTTON */
-    --rate-btn-size:1rem;
-    --rate-btn-width:1.4rem;
-    --rate-btn-height:1.35rem;
-    --rate-btn-mgleft:0.5rem;
-
-  /* 旗子 ||  FLAG*/
-    --rate-padding-top:0rem;
-    --rate-flag-underTOP:0px;
-    --rate-flag-topHover:calc(var(--rate-plank-hight) + var(--rate-line-width) );
-
-    --rate-delta-half:calc(var(--rate-btn-width) / 2);
-    --rate-delta-height:calc(var(--rate-btn-width) / 4 + 0.1rem);
-    --rate-delta-size:0 var(--rate-delta-half) var(--rate-delta-height) var(--rate-delta-half);
-
-
-   --rate-btn-bgcolor:var(--rate-bg);
-   --rate-boder-flag:var(--color-darker);
-   --rate-flag-gap:var(--page-bg);
-
- --rate-btn-filter: drop-shadow(0px 0px 0.5px var(--rate-boder-flag)) drop-shadow(0px 0px 0px var(--rate-boder-flag))
-         drop-shadow(0px 0px 0.5px var(--rate-boder-flag)) drop-shadow(0px 0px 0px var(--rate-boder-flag))
-         drop-shadow(0px 0px 0.2px  var(--rate-flag-gap)) drop-shadow(0px 0px 0.1px var(--rate-flag-gap))
-         drop-shadow(0px 0px 0.1px  var(--rate-flag-gap)) drop-shadow(0px 0px 0.1px  var(--rate-flag-gap))
-         drop-shadow(0px 0px 0.1px  var(--rate-flag-gap)) drop-shadow(0px 0px 0.1px  var(--rate-flag-gap))
-         drop-shadow(0px 0px 0.5px var(--rate-boder-flag)) drop-shadow(0px 0px 0px var(--rate-boder-flag))
-         drop-shadow(0px 0px 0.5px var(--rate-boder-flag)) drop-shadow(0px 0px 0px var(--rate-boder-flag));    
-
-
-/* 线条 */
-
-    --rate-line-width:0.1rem;    
-    --rate-line-gapcut: 0.05rem;
-    --rate-line-gap:calc(var(--rate-line-width) * 2 + var(--rate-line-gapcut));
-
-    --rate-line-top:calc(var(--rate-num-size) * var(--rate-num-lh) + var(--rate-padding-top) + var( --rate-line-gap) - var(--rate-line-gapcut));
-    --rate-plank-hight:var(--rate-line-top);
-
-
- /* ----------------  侧边栏 || SIDE BAR ---------------------- */
-
-    /* 左右空白 + 侧边栏 = 整个侧边栏尺寸 = 页面右侧空白  */
-    --sidebar-width:14rem;
-    --sidebar-blank-right:1rem;
-    --sidebar-blank-left:2rem;
-    --sidebar-blank-top:6rem;
-    --content-width:54rem;   
-    --sidebar-total-width:calc(var(--sidebar-width) + var(--sidebar-blank-left) + var(--sidebar-blank-right)) ;  
-
-    /* 背景颜色 */
-     --sidebar-bg-pc:transparent;
-     --sidebar-bg-mob:transparent;
-     --sidebar-cover-mob:transparent ; /* var(--icon-noise);*/
-
-    /* 项目颜色 || ITEM COLOR */
-    --sidebar-btn-border:var(--color-darker);
-    --sidebar-btn-txt:var(--color-darker);
-    --sidebar-btn-bg:var(--color-navy);
-
-    --sidebar-link-txt:var(--color-navy);
-    --sidebar-link-bg:transparent;
-    --sidebar-link-hoverTXT:var(--color-light);
-    --sidebar-link-hoverBG:var(--accentColor);
-
-/* 栏线颜色 || ITEM LINE */
-    --sidebar-hd-txt:var(--accentColor);
-    --sidebar-line:var(--sidebar-hd-txt);
-    --sidebar-content-color:var(--sidebar-hd-txt);
-    --sidebar-hd-txtMOD:var(--sidebar-hd-txt);
-
-   --color-hr-sidebar:var(--color-navy);
---sidebar-fold-color:var(--color-red);
-
-/* 栏头 */
-    --sidebar-topBox-size:8rem;
-    --sidebar-topBox-top:calc(var(--sidebar-topBox-size) / 2 * -1) ;
-    --sidebar-topBox-top222:1rem;   
-    --sidebar-topBox-left:calc((var(--sidebar-width) - var(--sidebar-topBox-size)) / 2 ) ;   
-
+    --RATE-box_heigh:calc(var(--RATE_padding-top) + var(--RATE-line_width) + var(--RATE-num_size) + var(--RATE-line_gap) + var(--RATE-box_margin-bottom) - 1px);
+    --RATE-box_margin-bottom:0.25rem;
+    
+      /* 旗子 */
+   --RATE-btn_bgcolor:var(--RATE_bg);  
+   --RATE-btn_color:var(--accentColor);  
+   --RATE_bg_HOV:var(--color-grey-darkest);
+   --RATE_txt_HOV:var(--color-red);
+   --RATE_boder-flag:var(--color-darker);
+   --RATE-flag_gap:var(--page-bg);  
+    --RATE_padding-top:0rem;
+    --RATE-flag_top: calc(var(--RATE_padding-top) + var(--RATE-btn_height) );
+    --RATE-delta_height:calc(var(--RATE-btn_width) / 4);
+    --flag-delta-count: calc(100% - var(--flag-delta-size));
+    
+    /* 线条 */ 
+    --RATE-line_width:0.1rem; 
+    --RATE-line_bottom: var(--RATE-line_width);
+    --RATE-line_gap: var(--RATE-line_width);
+    --RATE-line_gapcount:calc(var(--RATE-line_width) * 2 + var(--RATE-line_gap));
+  
    /* ---------  引用块  --------- */
 
-    --blockquote-bg:rgba(236,235,220, 0.6);
-    --blockquote-bg222:rgba(220,220,230, 0.2);
-    --blockquote-border:rgba(33,33,33,0.4);
-    --blockquote-border-left:rgba(33,33,33,0.7);
+    --QUOTE_bg:rgba(236,235,220, 0.6);
+    --QUOTE_bg222:rgba(220,220,230, 0.2);
+    --QUOTE_border:rgba(33,33,33,0.4);
+    --QUOTE_border-left:rgba(33,33,33,0.7);
 
   /* --------- 分割线 --------- */
 
@@ -1555,23 +2317,31 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
 
   /* --------- 目录 / TOC MENU--------- */
 
-    --TOCbd-cl:var(--color-navy);
-    --TOC-tt-cl:var(--color-navy);
-    --TOC-tt-bg:var(--page-bg);
+    --TOC-bd_cl:var(--color-navy);
+    --TOC-tt_cl:var(--color-navy);
+    --TOC-tt_bg:var(--page-bg);
 
-       --TOC-txt-size:1rem;
-       --TOC-line-height:1.6rem;
+       --TOC-txt_size:1rem;
+       --TOC-line_height:1.6rem;
 
-
-       --TOC-tt-txt:&#39;MENU&#39;;
-       --foldToc-txt:&#39;Fold&#39;;
-       --unfoldToc-txt:&#39;Unfold&#39;;
+       --TOC_text-tt:&#39;MENU&#39;;
+       --TOC_text-fold:&#39;Fold&#39;;
+       --TOC_text-unfold:&#39;Unfold&#39;;
 
   /* --------- 特殊 div 样式 --------- */
 
     /* 泛黄块 */
     --mz-paper-bg:rgba(236,235,220, 0.6);
     --mz-paper-bg222:#e9e9e2;
+
+    /* 便利贴 */
+    --tip-bdcl:155,155,155;
+    --tip-color:var(--color-grey-darker);
+    --tip-deg:-45deg;
+    --tip-dogear-size:1.5em;
+    --tip-dogearoll-size:calc( var(--tip-dogear-size) * 1.4); 
+    --tip-maxwidth_PC:calc(var(--content-width, 56rem) * 0.5);
+    --tip-dogearoll-margin: 0rem -0.9rem 0 0;
 
    /* --------- 维基图片框 || IMAGE BOX--------- */
 
@@ -1580,8 +2350,8 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
     --shadow-line:var(--color-navy);
 
     --box-line:drop-shadow(0px -1px 0.5px var(--shadow-line)) drop-shadow(0px 0px 0px var(--shadow-line))
-        drop-shadow(0px 0px 0.5px var(--shadow-line)) drop-shadow(0px 0px 0px var(--rate-boder-flag))
-        drop-shadow(0px 0px 0.5px var(--shadow-line)) drop-shadow(0px 0px 0px var(--rate-boder-flag))
+        drop-shadow(0px 0px 0.5px var(--shadow-line)) drop-shadow(0px 0px 0px var(--RATE_boder-flag))
+        drop-shadow(0px 0px 0.5px var(--shadow-line)) drop-shadow(0px 0px 0px var(--RATE_boder-flag))
         drop-shadow(0px 0px 0.1px var(--shadow-gap)) drop-shadow(0px 0px 0.1px var(--shadow-line))
         drop-shadow(0px 0px 0.1px var(--shadow-gap)) drop-shadow(0px 0px 0.1px var(--shadow-gap))
         drop-shadow(0px 0px 0.5px var(--shadow-line)) drop-shadow(0px 0px 0px var(--shadow-line))
@@ -1591,15 +2361,15 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
  /* ----------- TAB 样式 ----------- */
 
     --tabNAV-txt:var(--color-navy);
-    --tabNAV-txtHover: var(--color-light);
-    --tabMain-txt: var(--color-darker);
+    --tabNAV-txt_HOV:var(--color-light);
+    --tabMain-txt:var(--color-darker);
 
-    --tabNAV-bgHover:var(--accentColor);
-    --tabNAV-bgSelect:var(--tabNAV-bgHover);
+    --tabNAV-bg_HOV:var(--accentColor);
+    --tabNAV-bg_SEL:var(--tabNAV-bg_HOV);
 
-    --tabNAV-txtSelect:var(--tabNAV-txtHover);
-    --tabNAV-bgAct:var(--tabNAV-bgHover);
-    --tabNAV-txtACT:var(--tabNAV-txtHover);
+    --tabNAV-txt_SEL:var(--tabNAV-txt_HOV);
+    --tabNAV-bg_ACT:var(--tabNAV-bg_HOV);
+    --tabNAV-txt_ACT:var(--tabNAV-txt_HOV);
 
     --tabNAV-border:var(--color-darker);   
    --tabMain-border:var(--accentColor);
@@ -1609,15 +2379,15 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
 
     /* 深线样式 */
     --Line-tabNAV-txt:var(--color-navy);
-    --Line-tabNAV-txtHover:var(--color-light);
+    --Line-tabNAV-txt_HOV:var(--color-light);
 
-   --Line-tabNAV-txtSelect:var(--Line-tabNAV-txtHover);
-   --Line-tabNAV-txtACT:var(--Line-tabNAV-txtHover);
+   --Line-tabNAV-txt_SEL:var(--Line-tabNAV-txt_HOV);
+   --Line-tabNAV-txt_ACT:var(--Line-tabNAV-txt_HOV);
 
    --Line-tab-base:var(--color-navy);  
-    --Line-tabNAV-bgHover:var(--Line-tab-base);
-    --Line-tabNAV-bgSelect:var(--Line-tabNAV-bgHover);
-    --Line-tabNAV-bgAct:var(--Line-tabNAV-bgHover);
+    --Line-tabNAV-bg_HOV:var(--Line-tab-base);
+    --Line-tabNAV-bg_SEL:var(--Line-tabNAV-bg_HOV);
+    --Line-tabNAV-bg_ACT:var(--Line-tabNAV-bg_HOV);
 
     --Line-tabNAV-border:var(--Line-tab-base);
     --Line-tabMain-border:var(--Line-tab-base);
@@ -1630,57 +2400,153 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
    --Line-tabBD-weight:3px;
 
     /* ------------- 文本标题框 / TITLE BOX-------------  */
-      --ttbox-padding:0.5rem;
-    --ttbox-margin:0.5rem;
+    --ttbox_padding:0.5rem;
+    --ttbox_margin:0.5rem;
 
-    --ttbox-h1BDR-color:var(--color-navy);
-    --ttbox-boxBDR-color:var(--ttbox-h1BDR-color);
-    --ttbox-bevel-color:var(--ttbox-h1BDR-color);
+    --ttbox_h1BDR-color:var(--color-navy);
+    --ttbox_boxBDR-color:var(--ttbox_h1BDR-color);
+    --ttbox_bevel-color:var(--ttbox_h1BDR-color);
 
-    --ttbox-h1-color:var(--color-navy);
+    --ttbox_h1-color:var(--color-navy);
 
-    --ttbox-h1-bg:var(--page-bg);
-    --ttbox-box-bg:var(--page-bg);
+    --ttbox_h1-bg:var(--page-bg);
+    --ttbox_box-bg:var(--page-bg);
 
-    --ttbox-box-size:0.2rem;
-    --ttbox-border-size:0.25rem;
+    --ttbox_box-size:0.2rem;
+    --ttbox_border-size:0.25rem;
 
-    --ttbox-h1-size:1.2rem;
-    --ttbox-h1-top:calc(0rem - var(--ttbox-h1-size) * 2 );
-    --ttbox-h1-left:calc(0rem - var(--ttbox-padding) * 4);
+    --ttbox_h1-size:1.2rem;
+    --ttbox_h1-top:calc(0rem - var(--ttbox_h1-size) * 2 );
+    --ttbox_h1-left:calc(0rem - var(--ttbox_padding) * 4);
     --mztt-h1pd-horiz:1rem;
     
-     --ttbox-bevel-size:2rem;
-     --ttbox-bevel-left:calc(0rem - var(--mztt-h1pd-horiz) + var(--ttbox-padding));
-     --ttbox-bevel-top:calc(0rem - var(--ttbox-padding) + var(--ttbox-h1-size));
-     --ttbox-bevel-bg:linear-gradient(-135deg, var(--ttbox-bevel-color), var(--ttbox-bevel-color) 50%, transparent 50%, transparent 100%);
+     --ttbox_bevel-size:2rem;
+     --ttbox_bevel-left:calc(0rem - var(--mztt-h1pd-horiz) + var(--ttbox_padding));
+     --ttbox_bevel-top:calc(0rem - var(--ttbox_padding) + var(--ttbox_h1-size));
+     --ttbox_bevel-bg:linear-gradient(-135deg, var(--ttbox_bevel-color), var(--ttbox_bevel-color) 50%, transparent 50%, transparent 100%);
 
+ /*-------------- 操作区域 ----------------*/ 
+    
+  /*......... 历史区 .........*/
+    --HISTORY-btn_size：1rem;
+    --HISTORY-form_columns:repeat(8, auto);
+    --HISTORY-form_td_width:100%;
+    --HISTORY-form_td_margin:0.2rem 0;
+    --HISTORY-perpage_width: 8.5rem;
+       
+  /*......... 编辑区 .........*/
+   --EDIT-table_width:95%;
+
+    --EDIT-ui_size-11: 1rem;
+    --EDIT-ui_size-22: 0.8em;
+    --EDIT-ui_size-33: 0.8em;
+    --EDIT-ui_size-sub: 0.7em;
+    --EDIT-ui_size-99:1em;
+    --EDIT-ui_height: 2em;
+    --EDIT-ui_weight: var(--EDIT-ui_height);
+    --EDIT-ui_mono-font: &#39;Nanum Gothic Coding&#39;;
+    --EDIT-ui_color:var(--color-navy);
+    --EDIT-ui_color_HOV:var(--EDIT-ui_color);
+    --EDIT-ui_bg:transparent;
+    --EDIT-ui_bg_HOV:var(--color-grey-dark);
+    --EDIT-ui-sub_HOV:var(--color-grey-darkest);
+
+    --EDIT-ui-btn_margin:0 0.5em 0 0;
+    --EDIT-ui-panel_margin:0 0 0.5em 0;
+
+    --EDIT-border_color:var(--color-dark);
+    --EDIT-border_color_Foc:var(--color-dark);
+    
+    --EDIT-box_bg:var( --color-grey);
+    --EDIT-box_bg_Foc:var( --color-grey-pale);
+    
+    --EDIT-ui_outline:1.5px solid var(--EDIT-border_color);
+    --EDIT-ui_font: &#39;Roboto Slab&#39;, &#39;DM Serif Display&#39;,&#34;Trebuchet MS&#34;,&#34;FontAwesome&#34;;    
+    
+    
+    /* ............... 保存盒子 .......- */
+--lock-info111:&#34;You have an exclusive 15-minute lock that \A will stop others editing this page while you are working. \A The lock expires in &#34;;
+--lock-info222:&#34;\00A0 seconds of inactivity.&#34;;
+--lock-info333:&#34;Saving Page...... If this tip has been displaying for a long time, \A you may need to copy your contents from \A the Edit Form and refresh the page.&#34;;
+
+ --lock-info111_MOB: &#34;You can exclusively edit this page in &#34;;
+--lock-info222_MOB: &#34;s.&#34;;
+--lock-info333_MOB: &#34;Saving Page. Backup your work if no response.&#34;;   
+
+ /*-------------- 页脚 ----------------*/   
+--FOOT_size: 0.8rem;
+--LICENSE_bg: var(--color-grey-darker);
+--LICENSE_cl: var(--color-darker);   
+--FOOT-line_cl: var(--color-grey-darkest);
+    
+    
 /* ----------- 讨论区帖子 / FORUM POST ----------- */
 
-    --post-hdbg:#e5e5e5;
-    --post-short:#DBDBDB;
-    --post-BDcolor:#333;
-    --post-BDcolor-222:#929292;
+    --POST_hdbg:#e5e5e5;
+    --POST_short:#DBDBDB;
+    --POST_BDcolor:#333;
+    --POST_BDcolor-222:#929292;
     
     
 /* ----------- 笔记本组件厚度 ----------- */
 --cl-tab-bar:var(--color-navy);
- --cl-tab-bar222:#fff;
+--cl-tab-bar222:#fff;
 }
 
-/*
-------------------------------------------------
-窄屏根属性
-------------------------------------------------
-*/
+
+/*------------------------------------------------
+PAD 根属性
+------------------------------------------------*/
 
 @media (max-width:1000px){
     :root{
  /* ----------------  侧边栏  ---------------------- */
-    --sidebar-blank-right:0rem;
-    --sidebar-blank-left:0rem;
+    --SB-blank_right:0rem;
+    --SB-blank_left:0rem;
   }
 }
+
+/*------------------------------------------------
+MOB 根属性
+------------------------------------------------*/
+
+@media (max-width:500px){
+  :root{
+ /*-------------- 操作区域 ----------------*/   
+      --EDIT-table_width:95%;
+   --EDIT-ui_size-11:0.8rem;
+    --EDIT-ui-btn_margin: 0 0.15em 0 0;
+    --EDIT-box_txt-size:1rem;   
+--EDIT-ui_outline: 0.5px solid var(--EDIT-border_color);
+ 
+--EDIT-bottomtable_width:95%;      
+--EDIT-bottomtable_columns:100%;             
+--EDIT-bottomtable_tip-order:-1;  
+--EDIT-box-btn_padding:0 0.2em;
+ --EDIT-help_size:0.9em;     
+ --EDIT-help_display: inline-grid;   
+--EDIT-help_right:0;      
+ --EDIT-ui-panel_margin: -0.5rem 0 0.5rem 0rem;
+      
+        --lock-info111: var(--lock-info111_MOB); 
+        --lock-info222: var(--lock-info222_MOB);
+        --lock-info333: var(--lock-info333_MOB); 
+       
+   /*............ 历史区 .......*/
+    --HISTORY-btn_size：1rem;
+    --HISTORY-form_columns:repeat(4, auto);
+--HISTORY-update_size: 0.8rem;
+    --HISTORY-perpage_width: 5rem; 
+      
+      
+ /*-------------- 页脚 ----------------*/   
+      
+      --FOOT-wiki_display:none;
+      --LICENSE-link_size:1em;
+      --LICENSE_size:0.75em;
+  }
+}
+
 
 /*
 =====================================
@@ -1694,12 +2560,13 @@ body {
     background-image:none;
 }
 
+
 #page-content p{
-    font-size: 1.1em;
+/*    font-size: 1.1em; */
 }
 
 tt {
-    font-family:var(--teletype-font);
+    font-family:var(--mono-font);
     font-size: 98%;
 }
 
@@ -1725,63 +2592,163 @@ a.newpage {
     color: var(--color-kraft);
 }
 
+#page-content a {
+    border: none;
+}
+
+#page-content .printuser img.small {
+    padding-right: 0.25rem;
+}
+
 /* ----------------- 字体及字重 || FONT -------------------- */
 
-
+#action-area h1,
 div#extra-div-1:before, div#extra-div-1:after, 
-   #page-title, .meta-title,
-   #header h1 a:before,  #header h2 a:before, #page-content h1,
-   #page-content h2, #page-content h3, #page-content h4,
-   #page-content h5, #page-content h6 {
-
+#page-title, .meta-title, #page-content :is(h1, h2, h3, h4, h5,h6) {
         font-weight:600;
         font-family:var(--page-tt-font), serif;
 }
 
-#header h1 a::before, #header h2::before {
+#header :is(h1,h1 a,h1 a::before, h2,  h2::before) {
     font-family:var(--header-tt-font), serif;
-    font-weight:var(--header-tt-font-weight,600);
+    font-weight:var(--header-tt-font-weight, 600);
 }
 
 #header h2::before {
-    font-weight:var(--header-h2-font-weight,600);
-}
-
-#side-bar ,#top-bar, .page-tags,
-.hovertip, #page-content {
+    font-weight:var(--HD-h2_font-weight,600);
 }
 
 @media (max-width: 600px) {
-div#extra-div-1:before,div#extra-div-1:after,
-   #page-title, .meta-title,
-   #page-content h1, #page-content h2, #page-content h3,
-   #page-content h4, #page-content h5, #page-content h6 {
+div#extra-div-1:before, div#extra-div-1:after, 
+#page-title, .meta-title, #page-content :is(h1, h2, h3, h4, h5,h6) {
        font-family:var(--mob-tt-font);
-       font-weight: 600;
+       font-weight: var(--mob-hdtt-h1-font-weight,600);
+ letter-spacing: 1.5px;
   }
+ #container {
+    /*  overflow: hidden; */
+  }
+
+
 }
+
 
 /*
 =====================================
-版头 / HEADER 
+版头
 =====================================
 */
 
-div#header {
+
+#container-wrap-wrap #container-wrap {
+    background-color: none;
+    background-image: none;
+}
+
+div#header {   
+    
     background-image: none;
     width: 100%;
    max-width: 100%;
+    height: var(--HD_height_PC);
+    background-color:var(--HD_bg);
+    background-image: var(--HD_cover);
+    background-size:18rem;
+    background-position: 0% 0%;
+    background-repeat: repeat;
+
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: var(--HD_leftright,1.2rem) minmax(300px, 100%) min-content var(--HD_leftright,1.2rem);
+  grid-template-rows:0  var(--HDtt_top) minmax(var(--HDtt_size), 100%) minmax(var(--HD-h2_size), 100%) auto;
+      grid-template-areas:
+    &#39;.  upper  upper    . &#39; 
+    &#39;.      leftop rightop .      &#39;
+    &#39;hdleft bigtt  bigtt   hdright&#39; 
+    &#39;hdleft subtt  subtt   hdright&#39; 
+    &#39;topbar topbar topbar  topbar &#39;;
+
 }
 
-div#container-wrap {
-    background-image: none;
+#header h1, #header h2, 
+#top-bar,#login-status, #search-top-box{
+    position: initial;
+    display: grid;
+    top: 0;
+    left:0;
+    right:0;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    align-content: center;
 }
 
-/* ---------------- 版头标题 --------------------- */
+#header h1 a {
+  padding:0;
+}
+
+#header h1{
+    order: 1;
+    grid-area: bigtt;
+    display: inline-grid;    
+    height: var(--HDtt_size);
+    line-height: 0
+}
+
+#header h2{
+    order: 2;
+    grid-area: subtt;
+}
+
+/* ------------- ----
+LOGO 
+------------------ */
+
+#header-extra-div-1, #header-extra-div-2, #header-extra-div-3{
+     grid-area: upper;
+}
+
+#header-extra-div-1{
+height: var(--HD_height);
+width: 100%;
+    display: inline-flex;
+    justify-content: center;
+   top:var(--LOGO_top);
+    position: relative;
+    overflow: hidden;
+}
+
+#header-extra-div-1:before{
+    content: &#39; &#39;;
+    display: inline-flex;
+    align-self: center;
+    position: relative;
+    height: var(--LOGO_size);
+width: 100%;
+background-size: contain;
+background-position: var(--LOGO_position);
+background-repeat: no-repeat;
+background-image: var(--LOGO_image);
+opacity: var(--LOGO_opacity);   
+}
+
+#header-extra-div-2{
+    order:0
+}
+#header-extra-div-3{
+    order:0
+}
+
+/* ---------------- 
+版头标题
+--------------------- */
+
 #header h1, #header h2 {
     margin-left: 0;
     float: none;
     text-align: center;
+    z-index: 1;
+    pointer-events: none;
 }
 
 #header h1 span, #header h2 span {
@@ -1794,7 +2761,7 @@ div#container-wrap {
 }
 
 div#header h1 a{
-    top: var(--header-h1-top,-0.8rem);
+    top: var(--HD-h1_top); 
     position: relative;
     letter-spacing: 0.1rem;
     max-width: max-content;
@@ -1802,256 +2769,262 @@ div#header h1 a{
 }
 
 div#header h1 a:before{
-    font-weight: 300;
-    font-size:4rem;
-    /*! top:-1rem; */
+    font-size:var(--HDtt_size);
     content: var(--header-title);
-    color: var(--header-tt-color);
-    position: relative;
-    top:var(--hdtt-top);
+    color: var(--HDtt_color);
 }
 
 #header h2::before {
    content: var(--header-subtitle);
-   position: relative;
-   font-size: 1.25rem;
-    top:var(--hdtt-subtop);
-   color: var(--header-subtt-color);
+   font-size:var(--HD-h2_size);
+   margin-top:var(--HD-h2_top);
+   color: var(--HD-h2_color);
 }
 
-@media (max-width: 767px) {
-  div#header h1 a::before {
-     content: var(--pad-title);
-     font-size:3rem;
-     top: var(--hdtt-top-pad);
-   }
+/* ------------- ----
+用户栏 
+------------------ */
 
-   div#header h2::before {
-      content: var(--pad-subtitle);
-      top:var(--hdtt-subtop-pad);
-   }
-}
-
-@media (max-width: 480px) {
-  div#header h1 a::before {
-     content: var(--mob-title);
-     font-size:3rem;
-     top: var(--hdtt-top-mob);
-   }
-
-   div#header h2::before {
-      content: var(--mob-subtitle);
-      top:var(--hdtt-subtop-mob);
-   }
-}
-
-/* ---------------- 标志 || HEADER LOGO ---------------- */
-
-#header-extra-div-1{
-    height: 140px;
-    width: 100%;
-    top: 0;
-    position: absolute;
-    background-color:var(--header-bg);
-    background-image: var(--header-cover);
-    background-size:300px;/* 20% */
-    background-position: 0% 0%;
-    background-repeat: repeat;
-    z-index:-1;
-}
-
-#header-extra-div-1::after {
-    content:&#34; &#34;;
-    height: 30px;
-    width: 100%;
-    top: 135px;
-    position: absolute;
-    background:var(--topbar-bg);
-    background-size: cover;
-    background-position: 0% 0%;
-    z-index: 0;
-    position: absolute;
-}
-
-#header-extra-div-1::before {  
-    content:&#34; &#34;;
-    height: 150px;
-    width: 100%;
-    top: var(--logo-top);
-    position: absolute;
-    background-size: var(--logo-size);
-    background-position:var(--logo-position);
-    background-repeat: no-repeat;
-    z-index:10;
-    background-image:var(--logo-image);
-    opacity: var(--logo-opacity);
-}
-
-@media (max-width: 767px) {
-  #header-extra-div-1::before {  
-    top: var(--logo-top-mob, 1rem);
-    background-size: var(--logo-size-mob, 110px);
-    background-position:var(--logo-position-mob, 50% 50%);
-    opacity: var(--logo-opacity-mob, 0.15);
-  }
-}
-
-@media (max-width: 520px) {
-  #header-extra-div-1::before {  
-    background-image: var(--logo-image-mob);
-  }
-}
-
-/* --------------- 用户栏 || ACCOUNT BAR ---------------------- */
-
-#login-status img{
-        display: none;
-}
-    
 #login-status{
+    grid-area: var(--area-status,rightop);
+    margin-top: var(--STATUS_top);
+    align-items: center;
+    align-self: start;
+    grid-gap: 0.5rem 0rem;
+    grid-template-columns:var(--STATUS_column-11) var(--STATUS_column-22) var(--STATUS_column-33)  var(--STATUS_column-44,0);
+    grid-template-rows:  var(--STATUS_row-11) var(--STATUS_row-22) var(--STATUS_row-33, auto);
+    grid-template-areas:
+        &#39;left botton   Account  right&#39;
+        &#39;left messages username right&#39;;
+    width: max-content;
+    word-break:  keep-all;
     color: transparent;
-    float: right;
-    display: flex;
-    flex-wrap: wrap;
-    top: -0.2rem;
-    max-width: max-content;
-    flex-direction:column;
-}
-
-
-#account-topbutton,
-#login-status .printuser,
-#login-status #my-account {
-    background-size: contain;
+    font-size: 0;
+    max-width: var(--HD-menu_maxwidth);
+    min-width: var(--HD-menu_minwidth);
+    display: inline-grid;
+    height: var(--STATUS_height);
+    justify-self: var(--justify-status);
     position: relative;
-    white-space:nowrap;  
+    left:var(--STATUS_left, 0);
 }
 
-
-#login-status .printuser{    
-    max-width:16rem;   
-    width: min-content;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: &#39;.&#39;;
-    order: 3;
-    letter-spacing: 0.1rem;
-    
-    background-image: linear-gradient(40deg, transparent 0%, transparent 12%, var(--user-line) 14%, var(--user-line) 15%, var(--user-line) 60%, transparent 90%, transparent 100%);
-    background-size: 100% 0.15rem;
-    background-repeat: no-repeat;
-    background-position:0 85%;
-}
-
-
-#login-status .printuser:after{
-   content: &#39;. \00A0 \00A0&#39;;
-}
-
-#login-status .printuser:before{
-   content: &#39;\00A0 &#39;;
-}
+/*------- 账户与用户名  ----------*/
 
 #login-status .printuser, #login-status #my-account , #account-topbutton{
-     font-family: var(--handwriting-font);
-      color: var(--user-line);
-      font-size: 1.5rem;
+     font-family: var(--header-tt-font);
+      color: var(--USER_line);
+      font-size: var(--USER_font-size);
+    margin-left: var(--STATUS_grid-gap);
 }
 
-#login-status #my-account:hover  {
-    color: var(--user-unline);
-    text-decoration: none;
-}
-
-#login-status #my-account {
+#login-status #my-account{
+    grid-area: Account;
     text-decoration: none;
     order:0;
-   font-family: var(--mono-font);
-    flex-basis: 100%;    
-    padding-left: 0.2rem;
-    min-width: 11rem;
+    font-family: var(--font_my-account);
+    pointer-events: none;
+    width: auto;
+    display: var(--display-status-txt,inline-grid);
+    align-self: start;
+}
+
+#login-status .printuser{
+    font-family: var(--font_printuser);
+    grid-area: var(--area-username,username);
+    white-space: nowrap;
+    overflow: hidden ;
+    text-overflow: &#39;.&#39;;
+    letter-spacing: 0.1rem;
+    background-image:linear-gradient(40deg, transparent 0%, transparent 12%, var(--USER_line) 14%, var(--USER_line) 15%, var(--USER_line) 60%, transparent 90%, transparent 100%);
+    background-size: 110% 0.15rem;
+    background-repeat: no-repeat;
+    background-position:-0.25em 70%;   
+     width: 90%;
+     max-width: min-content;
+    cursor: default;
+    padding: var(--STATUS_padding); 
+    display: var(--display-topbox-notbtn);
+    background-blend-mode:  color-burn
 }
 
 
-#account-topbutton:before {
-    color: var(--user-line);
-    font-size: 1rem;
+#login-status:hover .printuser{
+    animation:  user-script 1.5s;
 }
 
+#login-status:has(:is(#account-topbutton, a[href*=&#34;messages&#34;]):hover) .printuser{
+    animation:  none;
+}
+
+#login-status .printuser:hover{
+       color:var(--HD-h2_color) ;
+    -webkit-text-stroke: 0.5px var(--HD_mob_HOV);
+}
+
+@keyframes user-script{
+    0% {width:10%; background-size: 0% 0.15rem;text-overflow: &#39;&#39;;}
+    80% {width:90%; background-size: 0% 0.15rem;text-overflow: &#39;&#39;;}
+    100%  {width:90%; background-size: 0% 0.15rem;}
+}
+
+#login-status .printuser a{
+    width: 100%;
+    position: relative;
+    display:  inline-block;
+    margin-right: -100%;
+    height: 100%;
+    opacity: 0;
+}
+
+#login-status .printuser img.small {
+ height:var(--USER_font-size);
+}
+
+/*------- 菜单 ----------*/
 #account-topbutton{
-    order:2; 
+        grid-area: botton;
     font-size: 0rem;
-    border: none;  
-    padding: 0;
-    margin: 0;
-    padding: 0;
-    position:absolute; 
-    left: -1.5rem; 
-    bottom: 0.5rem;
+    border: none;
+    margin: 0
 }
 
-#account-topbutton:before {
-    color: var(--user-line);
-    content: &#39;\f007&#39;;
-    font-family: FontAwesome;
-    font-size: 1rem;
-    border:  var(--user-line) solid 2px;  
-    border-radius:40%;
-    padding: 2px;
-    margin-top: 0.2rem;
+#account-topbutton:hover:before {
+    color: var(--HD_bg);
+ background-color:  var(--USER_line);
 }
 
-#account-options{
-    top:1rem;
-    left: -17rem;
-   font-size: 1rem;
-    background-color: var(--header-bg);
-    border: 2px solid var(--user-line);
+#login-status #account-options{
+    font-size:  var(--STATUS-btn_size);
+    position: relative;
+    background-color: var(--HD_bg);
+    border: 2px solid var(--USER_line);
+    grid-area: var(--area-account-options,left);
+    justify-self:  var(--justify-account-options,end);
+    align-self: start;
+    overflow:hidden;
 }
 
-#account-options a {
-    background-color: var(--header-bg);
-    border: 1px solid var(--user-line);
+#account-options:hover, #login-status #account-options[style*=&#34;block&#34;]{
+    display: inline-grid;
+}
+
+#account-options ul {
+margin:-0.1rem;   
+width:105%;
+height:105%;
+}
+
+#login-status #account-options a {
+    color: var(--USER-list_txt);
+    background-color: var(--HD_bg);
+    border: 1px solid var(--USER_line);
     text-decoration: none;
 }
-
+ 
 #login-status  #account-options a:hover {
-    background-color: var(--user-line);
-    color: var(--user-list-txtHVR);
-    border: 1px solid var(--user-unline);
+    background-color: var(--USER_line);
+    color: var(--USER-list_txt_HOV);
+    border: 1px solid var(--USER_unline);
 }
 
-/* 私信 */
+
+/*------------- 按钮 --------------------*/
+#login-status:before,
+#login-status:after,
+#account-topbutton,
 #login-status :not(div) + a[href*=&#34;messages&#34;]{
-    color:var(--user-unline);
-   left: -2.5rem;
-    top:1rem;
-    position: absolute;
+    display: inline-grid;
+    color:var(--USER_unline);
     font-size: 0rem;
-    width: 2rem;
-    z-index: 2;   
+    margin: 0;
+    padding: 0;    
+    justify-items: left;    
+    margin-left: var(--STATUS_padding);
+        min-height: var(--HD-menu_height);
+}
+
+#account-topbutton:after,
+#login-status :not(div) + a[href*=&#34;messages&#34;]:after{
+    width: var(--STATUS-btn_grid);
+    height:var(--STATUS-btn_grid);
+    position: absolute;
+}
+
+/* 按钮样式 */
+#login-status a:is(.login-status-create-account, .login-status-sign-in):before,
+#login-status:before,
+#login-status:after,
+#search-top-box-form:before,
+#account-topbutton:before {
+    display: inline-grid;
+    justify-content: center;
+    color: var(--USER_line);
+    content: &#39;\f007&#39;;
+    font-family: FontAwesome;
+    font-size: var(--STATUS-btn_size);
+    border:  var(--USER_line) solid 2px;
+    width: var(--STATUS-btn_btn);
+    min-height: var(--STATUS-btn_btn);
+    margin-right: var(--STATUS-btn_padding);
+    content: &#39;\f007&#39;;
+    border-radius:40%;
+    padding:1px;
+    align-content: center;
+}
+
+/* 用户名旁的装饰 */
+#login-status:before,
+#login-status:after{
+   content:&#34;\f05a&#34;;
+    grid-area: messages;
+    border:none;
+    font-size: var(--STATUS-btn_btn);
+    justify-content: end;
+    display:none;
+}
+
+#login-status:has(:not(div) + a[href*=&#34;messages&#34;]):after{
+    display:none;
+}
+
+
+#login-status:before{
+    grid-area: botton;
+}
+
+#login-status:has(.printuser):after{
+    display: var(--display-status-txt, inherit);
+}
+
+
+/*------------- 私信 --------------------*/
+#login-status :not(div) + a[href*=&#34;messages&#34;]{
+     grid-area: var(--area-messages,messages);
+    display: inline-grid;
+     align-self:  start;
+    align-content:  center;
+        height: 0;
 }
 
 #login-status  :not(div) + a[href*=&#34;messages&#34;]:before{
     content: &#39;\f0e0 &#39;;
-    font-size: 1.2rem;
+    font-size: var(--STATUS_grid);
     font-family: &#39;FontAwesome&#39;;
-    padding: 1rem;/* 为了能按中 */
-    color:var(--user-line);
+    color:var(--USER_line);
 
-    -webkit-animation-name: sssblink;
+    -webkit-animation-name: user-messages;
     -webkit-animation-iteration-count: infinite;
     -webkit-animation-timing-function: cubic-bezier(1.0, 0, 0, 1.0);
     -webkit-animation-duration: 1s;
-    animation-name: sssblink;
+    animation-name: user-messages;
     animation-iteration-count: infinite;
     animation-timing-function: cubic-bezier(1.0, 0, 0, 1.0);
     animation-duration: 1s;
 }
 
-
 #login-status  :not(div) + a[href*=&#34;messages&#34;]:hover:before{
-   color:var(--header-mob-hover);
+   color:var(--HD_mob_HOV);
     -webkit-animation-play-state:paused;
     animation-play-state:paused;
 }
@@ -2060,384 +3033,158 @@ div#header h1 a:before{
     text-decoration: none ;
 }
 
-@-webkit-keyframes sssblink {
+@-webkit-keyframes user-messages {
     from { content: &#39;\f0e0 &#39;; }
     to { content: &#39;\f003&#39;; }
 }
 
-@keyframes sssblink {
+@keyframes user-messages {
     from { content: &#39;\f0e0 &#39;; }
     to { content: &#39;\f003&#39;; }
 }
 
-/* 未登录 */
-#login-status .login-status-create-account,
-#login-status .login-status-create-account + span,
-#login-status .login-status-sign-in {
-  color:var(--user-line);
-  font-family: var(--mono-font), &#39;FontAwesome&#39;;
-  padding-right:0.5rem;
-  margin-top: 1rem;
-  font-size: 0.8rem;
+
+/* ----------------- 未登录 ------------------- */
+#login-status {
+    column-gap: var(--STATUS_gridbox-gap,0);
 }
 
-#login-status  .login-status-create-account + span {
- display: none;   
+#login-status a:is(.login-status-create-account, .login-status-sign-in){
+   font-size:var(--unlogin-font-size);
+   grid-area: var(--area-create-account, messages);
+   font-family: var(--header-tt-font), var(--page-tt-font), serif;
+   font-weight:600;
+   color: var(--USER_line);
+   display:inline-grid;
+   white-space:nowrap;
+   grid-template-columns: var(--STATUS-btn_grid) auto;
+   grid-gap: var(--STATUS_unlogin-gap,var(--STATUS_padding));
+   justify-content: start;
+   align-self: start;
+   text-decoration: none;
 }
 
-
-
-
- #login-status .login-status-create-account:before {
-     content: &#34;\f234&#34;;
-     margin-right: 0.2rem;
- }
-    
-#login-status .login-status-sign-in:before {
-      content: &#34;\f090&#34;;
-         margin-right: 0.4rem;
+#login-status a.login-status-sign-in{
+   grid-area: var(--area-sign-in,botton);
 }
 
-/* MOB */
-
-@media (max-width: 1200px) {  
-
-  #login-status .login-status-create-account,
-  #login-status .login-status-create-account + span,
-  #login-status .login-status-sign-in {
-      order: 1;
-    margin-top:0rem;
-    white-space:nowrap;
-  }
-    
-   #login-status  .login-status-sign-in{
-       order: 0;
-   }
-    
-       
-   #account-options{
-    left: 2rem;
-   }
-    
-
-   #login-status :not(div)  + a[href*=&#34;messages&#34;]{
-     left: -0.8rem;
-       right: 0rem;
-     top:2.2rem;  
-  }
-      #login-status :not(div)  + a[href*=&#34;messages&#34;]:before{
-    padding-top:0;
-  }
-
-   #login-status{
-       top: 0.5rem;
-       left: 1.5rem;
-       max-width: 15rem;
-       flex-wrap:  inherit;
-        flex-direction: inherit;
-    }
-
-   #account-topbutton:before,
-   #account-topbutton,
-   #login-status .printuser,
-   #login-status #my-account {
-      display: inline-flex ;
-      flex-wrap: nowrap;    
-      position:revert;
-      white-space:nowrap;  
-      left: 0;
-      right: 0;
-      top:0;
-      margin-right: 0rem;
-      margin-left: 0;
-   }
-
-    #account-topbutton::before {
-      order:0;
-   }
-
-    #login-status .printuser{
-      order: 3;   
-        margin-left:0.5rem;
-        display: inline;
-   }     
-
-  #login-status #my-account {
-        display: none;
-    }
-
-  #login-status .printuser {
-    font-size: 1.2rem;
-  }
+#login-status a:is(.login-status-create-account, .login-status-sign-in):before{
+   content:&#34;\f090&#34;;
+   font-family:fontawesome;
+   font-size:var(--STATUS-btn_size);
+   width: var(--STATUS-btn_btn);
+   height:var(--STATUS-btn_btn);
+   border-radius: 5px;
+   align-content: center;
+   margin-left: var(--STATUS_padding);
+   align-self: center;
 }
 
-@media (max-width: 770px) {
-  #account-options{
-       left: -15.6em;
-  }
-
-  #login-status :not(div)  +  a[href*=&#34;messages&#34;]{
-     left:0.6rem;
-    top:0px;   
-  }
-
-   #login-status .printuser,  
-   #login-status #my-account {
-        display: none;
-    } 
+#login-status a.login-status-create-account:before{
+  content:&#34;\f234&#34;; 
 }
 
-/* --------------- 搜索框 || SEARCH BAR ---------------------- */
+#search-top-box-form:hover:before,
+#login-status :is(.login-status-create-account, .login-status-sign-in):hover:before{
+      color: var(--SEARCH_txt_HOV);
+    background: var(--SEARCH_bg_HOV);
+}
+
+#login-status a:is(.login-status-create-account, .login-status-sign-in)::after {
+    content: &#34;&#34;;
+}
+
+/* ------------- ----
+搜索栏 
+------------------ */
+
+#header  #search-top-box{
+    grid-area: var(--area-search, rightop);
+    justify-content: var(--justify-search,stretch);
+    align-content:   start;
+    width: 100%;
+    min-width: var(--HD-menu_minwidth);
+    margin-top:var(--SEARCH_top);
+    position: relative;
+    left: var(--HD-menu_left);
+    height: var(--STATUS_grid);
+}
 
 #search-top-box-form {
    position: relative;
-    right:2rem;
-    top:1rem;
+   display: grid;
+   width:  initial;
+   grid-template-columns: var(--STATUS-btn_grid) auto;
+   grid-gap: var(--STATUS_grid-gap); 
+}
+
+#search-top-box-form:before {
+      content: &#39;\f002 &#39;;
+      position: absolute;
+      z-index: -1;
+      border-radius: 5px;
+      align-self: center;
+      min-height: var(--STATUS-btn_btn);
+      margin-left: var(--STATUS_padding);
 }
 
 #search-top-box input.empty,
 #search-top-box-input {
-    border: solid 2px var(--search-line);
+    order: 2;
+    border: solid 2px var(--SEARCH_line);
     background-color: transparent;
     box-shadow: none;
-    color: var(--search-txt);
+    color: var(--SEARCH_txt);
+   width: 100%;
+   margin-left:0.25rem;
+        display: var(--display-topbox-notbtn);
+    border-radius: 5px;
 }
 
 #search-top-box-form #search-top-box-input:hover,
 #search-top-box-form  #search-top-box-input:focus {
-    border: solid 2px var(--search-line);
-    color: var(--search-txt-hover);
-    background-color:var(--search-bg-hover);
+    border: solid 2px var(--SEARCH_line);
+    color: var(--SEARCH_txt_HOV);
+    background-color:var(--SEARCH_bg_HOV);
     box-shadow: none;
+       outline: none;
 }
 
 #search-top-box-form input[type=&#34;submit&#34;]:focus,
 #search-top-box-form input[type=&#34;submit&#34;]:hover {
-    color: var(--search-txt-hover);
-    background: var(--search-bg-hover);
-    border: solid 2px var(--search-line);
+    color: transparent;
+    background: transparent;
+    border: none;
     box-shadow: none;
 }
 
 #search-top-box-form input[type=&#34;submit&#34;] {
-    color: var(--search-txt);
+    color: var(--SEARCH_txt);
     background: transparent;
     box-shadow: none;
-    border: solid 2px  var(--search-line);
+    border: none;
+    font-size: 0;
+    width: var(--USER_font-size);
+    height: var(--STATUS_grid);
+   margin-left: var(--STATUS_padding);
 }
 
-@media (max-width:1200px) {
-    #search-top-box-input {
-    border: solid 2px var(--search-line);
-    color: var(--search-txt);
-    background-color: transparent ;
-    box-shadow: none;
-        max-width: 4rem;
-  }
-
-    
-  #search-top-box-form {
-    position: relative;
-      top: -70px;
-      right: 10px;
-  }   
-}
-
-@media (max-width: 770px) {   
-   #search-top-box-input {
-        display: none;
-    }
-
-    #search-top-box-form input[type=&#34;submit&#34;]:hover,
-    #search-top-box-form input[type=&#34;submit&#34;] {   
-       font-size: 0;
-        margin: 0;
-        background: none;
-        border: none;
-    }
-    
-    #search-top-box-form{
-        top:0;
-        margin: 0;
-        left: 0;
-        right: 0;
-        justify-self: flex-end;
-        display:  inline-flex;
-    }
-
-    #search-top-box-form .btn,
-    #search-top-box,
-    #search-top-box .btn{
-        position: absolute;
-    }
-}
-
-/* --------------------- 综合用户栏和搜索栏  || ACCOUNT &amp; SEARCH  --------------------- */
-
-      #account-topbutton:hover:before {
-        color: var(--headbtn-line-hover);
-        background-color: var(--headbtn-bg-hover);
-   }
-
-
-@media (max-width: 770px) {
-          #login-status .login-status-create-account:hover, 
-  #login-status .login-status-sign-in:hover, 
-      #account-topbutton:hover,
-      #search-top-box-form:hover  {
-        background-color: var(--headbtn-bg-hover);
-   }
-    
-  #login-status .login-status-create-account:before,
-  #login-status .login-status-sign-in:before,
-    #account-topbutton:after,
-    #search-top-box-form:after{
-         position: relative;
-         font-family:FontAwesome;
-         color: var(--search-txt);
-         z-index: -1;
-         font-size: 1rem;
-         font-weight: 500;
-        top:0.1rem;
-        left:0.2rem; 
-   }
-    
-  #login-status .login-status-create-account + span, 
-  #account-topbutton::before {
-        display: none;
-  }
-    
-   #account-topbutton:after{
-         content: &#39;\f007 &#39;;
-         left:0.25rem; 
-   }
-    #search-top-box-form:after{
-         content: &#39;\f002 &#39;;
-   }
-    
-
-  #login-status .login-status-create-account,
-  #login-status .login-status-sign-in,
-    #account-topbutton,
-    #account-topbutton,
-    #search-top-box-form input[type=&#34;submit&#34;],
-    #search-top-box-form {
-       width: 1.4rem;
-       height:1.4rem; 
-       font-size: 0em;
-    }
-    
-    
-    #login-status .login-status-create-account,
-    #login-status .login-status-sign-in, 
-    #account-topbutton,
-    #search-top-box-form  {
-    color: var(--search-txt);
-    background: transparent;
-    box-shadow: none;
-    border: solid 2px  var(--search-line);
-    border-radius: 5px;
-        margin: 0;
-        padding: 0;
-        position: relative;
-        
-}
- 
-  #account-topbutton {
-      top:3.5rem;
-    color: var(--user-line);
-    border:  var(--user-line) solid 2px;  
-  }
-    
-    
-    
- #search-top-box-form input[type=&#34;submit&#34;]{
-    border: none;  
-     left: 0rem;
-  }
-    
-    
-    #search-top-box{
-    margin: 0;
-    padding:0;
-    right:0;
-    }
-    
-    
-   #search-top-box-form  {
-       top:1.5rem;
-       margin-right: 1rem;
-   }
-    
-   #login-status{
-       top:0rem;  
-       left: initial;
-       right: 0;
-       margin-right: 1rem; 
-       flex-wrap: wrap;
-       max-width: 1.6rem;
-       height: 0;
-   }
-    
-  #login-status :not(div) + a[href*=&#34;messages&#34;]::before {
-        font-size: 1.5rem;
-    }
-    
-   #login-status :not(div)  + a[href*=&#34;messages&#34;]{
-     top:2.4rem; 
-     left: 0rem;   
-  }
-       #login-status :not(div)  + a[href*=&#34;messages&#34;]:before{
-
-       padding: 0
-  }
-    
-  #login-status .login-status-create-account:hover:before, 
-  #login-status .login-status-sign-in:hover:before, 
-      #account-topbutton:hover:after,
-      #search-top-box-form:hover:after {
-        color: var(--headbtn-line-hover) ;
-        z-index:0
-   }  
-    
-    #search-top-box-form input[type=&#34;submit&#34;]{
-        background: none;
-        z-index: 1;
-    }      
-    
-    #login-status .login-status-sign-in {
-          order: 0;
-    }
-    
-      #login-status .login-status-create-account {
-           left:0rem;
-    }
-    
-  #login-status .login-status-create-account,
-  #login-status .login-status-sign-in {
-      text-decoration: none;
-      margin-bottom: 0.5rem;
-      top:2.2rem;
-    }
-}
-
-
-/* ----------------- 顶栏 ---------------------- */
-
-#top-bar {
-    display: flex;
+/*========================== 
+顶栏 
+==============================*/
+#header #top-bar{
+    grid-area: topbar; 
+    height: var(--TB_height); 
+    font-size: var(--TB_font-size); 
+    position: absolute; 
+    background:var(--TB_bg);
+    background-size: cover;
+    background-position: 0% 0%;
+    max-width: 100%;
     justify-content: center;
-    left: 0;
-    right: 0;
-}
-
-@media (max-width:767px) {
-  .mobile-top-bar {
-     justify-content: center;
-     display: inline-flex;
-     left: 0;
-     right: 0;
-  }
+    display: inline-grid;
+    align-items: center;
+     margin-top: var(--HDtt_gap); 
 }
 
 #top-bar div.top-bar  &gt; ul &gt; li &gt; ul,
@@ -2452,8 +3199,7 @@ div#header h1 a:before{
 
 #top-bar li ul li a {
     background: var(--color-kraft);
-          border: var(--accentColor) solid 2px;      
-
+    border: var(--accentColor)  solid 2px  ;   
 }
 
 #top-bar ul li a {
@@ -2462,8 +3208,11 @@ div#header h1 a:before{
 }
 
 #header #top-bar a{
-    color:var(--topbar-txt);
+    color:var(--TB_txt);
     text-align:center;
+    padding: 0 min(1.2vw,1em);
+    letter-spacing: 0.5px;
+    font-size:var(--TB-li_size);
 }
 
 #header #top-bar .sfhover a{
@@ -2476,128 +3225,162 @@ div#header h1 a:before{
         color: var(--color-gold);
 }
 
+/*========================== 
+版头窄屏 
+==============================*/
 
-
-
-/*
-=====================================
-标题 / PAGE TITLE
-=====================================
-*/
-
-/* ----------- 页面标题  ---------------- */
-    /* 突出标题 */
-
-#page-title,
-#page-content .meta-title{
-display: flex;
-    flex-wrap: wrap;
-    flex-basis: 100%;
-    border-bottom: none;
-
-    font-size: var(--page-tt-size);
-    text-align: var(--page-tt-txtPOS);
-    font-weight: bold;
-    background-color: var(--page-tt-bg);
-    color: var(--page-tt-txt);
-    position: relative;
-    margin: var(--page-tt-margin) ;
-    border:none;
-
-    padding-top: var(--page-tt-topPADD);
-    padding-bottom: var(--page-tt-btmPADD);
-    justify-content: center;
+@media (max-width: 1100px) {
+  div#header{
+    --area-status:leftop;
+    --area-username:Account;
+    --area-account-options:username;
+     --area-sign-in:botton;
+     --area-create-account:Account;
+    --STATUS_top:0.5rem;
+   --STATUS_unlogin-gap:var(--STATUS_grid-gap);
+    --SEARCH_top:var(--STATUS_top); 
+    --STATUS_column-22:max-content;
+    --display-status-txt:none;
+    --HD-menu_maxwidth:80vw;
+    --justify-account-options:start;   
+      --justify-search:right;
+  }
 }
 
+@media (max-width: 767px) {
+  div#header{
+   --HD_height:var(--HD_height_PAD);  
+   --HDtt_size:var(--HDtt_size_PAD);
+   --HD-h2_size:var(--HD-h2_size_PAD);
+   --header-title:var(--pad-title);
+   --header-subtitle:var(--pad-subtitle);
+      --HD_leftright:0;
+    --HD-h1_top:var(--HD-h1_top_PAD);
+    --HD-h2_top:var(--HD-h2_top_PAD);
+     --LOGO_image:var(--LOGO_image_PAD);
+    --LOGO_top:var(--LOGO_top_PAD);
+    --LOGO_size:var(--LOGO_size_PAD);
+    --LOGO_position:var(--LOGO_position_PAD);
+   --HDtt_gap:var(--HDtt_gap_MOB);
+   --display-topbox-notbtn:none;
+   --HD-menu_minwidth:var(--STATUS_grid);
+    --HD-menu_maxwidth:var(--STATUS_grid);
+   --area-status:upper;
+   --area-search:upper;
+      --STATUS_row-22:auto;
+       --STATUS_row-33:0;
+  --STATUS_column-11:var(--HD-menu_minwidth);
+      --STATUS_column-22:var(--HD-menu_minwidth);
+      --STATUS_column-33:var(--HD-menu_minwidth);
+      --STATUS_column-44:0;
+      --HD-menu_left:-0.5rem;
+      --STATUS_gridbox-gap:calc(var(--STATUS_padding)  + var(--HD-menu_left) - var(--HD-menu_left) * 1.5);
+      --STATUS_left:calc(0rem - var(--STATUS_gridbox-gap) + var(--HD-menu_left) * 2  - var(--STATUS-btn_size) - var(--STATUS_grid) * 2 );
+      --unlogin-font-size:0rem;
+    --area-account-options:username ;
+    --area-messages:left;
+    --area-sign-in:left;
+    --area-create-account: botton ;
+    --justify-account-options:end;    
+    --justify-status:end; 
+    --justify-search:end;   
+  }
+  .mobile-top-bar {
+      width: 100%;
+      justify-content:center;
+      display: inline-flex;
+      bottom: unset;
+      left: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  div#header{
+   --HD_height:var(--HD_height_MOB);  
+   --HDtt_size:var(--HDtt_size_MOB);
+   --HD-h2_size:var(--HD-h2_size_MOB);
+   --header-title:var(--mob-title);
+   --header-subtitle:var(--mob-subtitle);
+    --HD-h1_top:var(--HD-h1_top_MOB);
+    --HD-h2_top:var(--HD-h2_top_MOB);
+     --LOGO_image:var(--LOGO_image_MOB);
+     --LOGO_top:var(--LOGO_top_MOB);
+     --LOGO_size:var(--LOGO_size_MOB);
+     --LOGO_position:var(--LOGO_position_MOB);
+      --TB-li_size:90%;
+  }
+}
+
+/*=====================================
+标题
+=====================================*/
+
+/* ----------- 页面标题  ---------------- */
+#page-title,
+#page-content .meta-title{
+ display: grid;
+    width: 100%;
+font-size: var(--PGtt_size);
+font-weight: bold;
+color: var(--PGtt_txt-color);    
+background: var(--PGtt_bg);
+background-size: var(--PGtt_bg-size,contain);
+background-repeat:no-repeat;
+ background-position: center;  
+position: relative;
+border: none;
+justify-content: center;
+    align-items: end;
+    text-align: center;
+grid-template-columns: 100%;
+ grid-template-rows:  min-content var(--PGtt_underbox-gap) var(--PGtt_underbox-height);
+grid-template-areas: &#39;body&#39; &#39;gap&#39; &#39;underbox&#39; ;
+    margin-bottom:0.5rem;
+
+}
+ 
 .meta-title:before,
-.meta-title:after,
-#page-title:before,
-#page-title:after{
+#page-title:before{       
+      grid-area:underbox;
+    align-self: center;
     content: &#39;  &#39;;
-    position: relative;
-    background: var(--pgttcn-bg);
-    background-image: var(--pgttcn-img);
-    margin: 0 auto;
-    top:var(--pgttcn-line-top);
+    height:var(--PGtt-linebox_gap);
+    background:transparent;
+    border:var(--PGtt-linebox_space) solid;     border-image-source:var(--PGtt-lines-img);
+    border-image-width: var(--PGtt-line01_height) 0px var(--PGtt-line02_height) 0px;
+    border-image-slice: 100% 0 100% 0;
+    -webkit-clip-path:var(--PGtt-line02_clip);
+    clip-path:var(--PGtt-line02_clip);   
+    background: var(--PGtt-linebox_background);
 }
 
 .meta-title:after,
 #page-title:after{    
-    width:var(--pgtt-aft-width);
-    height:var(--pgtt-aft-height);
-    margin-top:var(--pgtt-after-top);   
+  grid-area:underbox;
+ justify-self: center;
+ align-self: center; 
+ text-align:center;   
+ content: var(--PGtt-orn_content);
+ background:var(--PGtt_ornBG);
+ background-size:var(--PGtt_ornBG-size, contain);
+ background-repeat: no-repeat;
+ background-position: center;
+ height:var(--PGtt-orn_height,max-content);
+ width:var(--PGtt-orn_width); 
+ font-size: var(--PGtt-orn_size);
+ color: var(--PGtt-orn_txt-color);
+ z-index: 1;
+font-family: &#39;FontAwesome&#39;,var(--RATE_font);
+  margin-top: var(--PGtt-orn_top);
 }
 
-
-.meta-title:before,
-#page-title:before{       
-    content:var(--pgtt-before-content); 
-    width:var(--pgcon-bef-width);
-    height: var(--pgtt-before-height);
-    z-index: 0;
-
-    font-size: var(--pgtt-before-size);
-    color:var(--pgtt-before-contentTXT);
-    line-height: 110%;
-    text-align: center;
-    font-family: &#39;FontAwesome&#39;,var(--rate-font);
- 
-    display: inline-flex;
-    position: relative;
-    margin-top:var(--pgcon-bef-top);
-    left: 0;
-    order: 3;  
-    margin-bottom: var(--pgcon-ct-gap);  
-
-    background-size:100% var(--pgcon-bef-height);
-    background-position:0 var(--pgcon-linespace);
-    background-repeat: no-repeat;
-  justify-content:  center;
-    
+ /* ----------- 面包屑导航------------ */
+#breadcrumbs {
+  margin: 0.5em 0em;
 }
-
-
-/* ------------------- */
-
-@media (max-width: 700px) {
-  #page-content .meta-title,
-  #page-title{
-     font-size: var(--page-tt-sizeMOB);
-     padding: var(--page-ttMOB-padding) 0;
-     padding-top: var(--page-tt-topPADD-MOB);
-   }
-    
- #page-content .meta-title:before,
-   #page-title:before{
-     bottom:var(--pgtt-before-bottomMOB);
-     font-size: var(--pgtt-before-sizeMOB);
-     height: var(--pgtt-before-heightMOB);
-       
-      background-size:100% var(--pgcon-bef-heightMOB);
-      background-position:0 var(--pgcon-linespace-MOB);
-       margin-top: var(--pgcon-bef-topMOB);
-       margin-bottom: var(--pgcon-ct-gapMOB);  
-  }   
-    
-    #page-content .meta-title:before,
-    #page-content .meta-title:after,
-    #page-title:before,
-    #page-title:after{
-      background-image: var(--pgttcn-imgMOB);
-      top:var(--pgttcn-line-topMOB);
-    }   
-    
-    #page-content .meta-title:after,
-    #page-title:after{    
-       margin-top: var(--pgtt-after-topMOB);
-   }   
-    
-}
-
-
 
 /* ----------- 内文一级标题 || H1 ---------------- */
-
+#action-area h1,
 #page-content h1 {
     font-weight: bold;
     margin-top: 0.6rem;
@@ -2611,6 +3394,7 @@ display: flex;
     display: flex;
 }
 
+#action-area h1:after, 
 #page-content h1::after {
     content: &#34; &#34;;
     flex-grow: 1;
@@ -2622,17 +3406,32 @@ display: flex;
     width:auto;
 }
 
-#page-content .note-nobody h1,
-#page-content  blockquote blockquote h1,
-#page-content .blockquote .blockquote h1,
-#page-content  .yui-content h1 {
-    display: block ;
+
+#page-content  blockquote :is(blockquote, .blockquote) h1,
+#page-content .blockquote :is(blockquote, .blockquote) h1,
+#page-content div:is(.note-nobody, .yui-content, .blockquote, .code, .mz-cover, .mz-textquote, .mz-outbox, .mz-blockquote,mz-board, .clip-wrap, .note-page, .mz-note ) h1{
+    display: block;
 }
 
 h1 {
     color: var(--color-red);
+    font-size: var(--PG-h1_size, 190%);
 }
-
+h2 {
+    font-size: var(--PG-h2_size, 170%);
+}
+h3 {
+    font-size: var(--PG-h3_size, 150%);
+}
+h4 {
+    font-size: var(--PG-h4_size, 130%);
+}
+h5 {
+    font-size: var(--PG-h5_size, 110%);
+}
+h6 {
+    font-size: var(--PG-h6_size, 100%);
+}
 
 h2, h3, h4, h5, h6 {
     color: var(--color-navy);
@@ -2673,8 +3472,8 @@ h2, h3, h4, h5, h6 {
 #main-content{    
     margin: 0 auto;
     width:var(--content-width, 56rem);
-
-    max-width:calc(98% - var(--sidebar-total-width));  
+    max-width:calc(98% - var(--SB_width-total)); 
+    padding-top: var(--main-top);
     padding-right: var(--main-padding-right);
     padding-left:var(--main-padding-left);
     position: initial;
@@ -2683,7 +3482,7 @@ h2, h3, h4, h5, h6 {
 #side-bar,
 #content-wrap:after{
     content: &#39;  &#39;;
-    max-width: var(--sidebar-width);
+    max-width: var(--SB_width);
     height:12rem;
     flex-grow: 1;
     flex-shrink: 0;
@@ -2692,10 +3491,10 @@ h2, h3, h4, h5, h6 {
 #content-wrap:after{
   flex-grow: 0;
   flex-shrink: 100;
-  flex-basis:var(--sidebar-total-width,inherit);
+  flex-basis:var(--SB_width-total,inherit);
   width: 0;
-  margin-right:var(--sidebar-blank-left);
-  margin-left:var(--sidebar-blank-right);
+  margin-right:var(--SB-blank_left);
+  margin-left:var(--SB-blank_right);
 
 }
 
@@ -2705,22 +3504,25 @@ h2, h3, h4, h5, h6 {
   }
 }
 
+@media (max-width: 1100px){
+   #content-wrap #side-bar {
+  --SB-blank_right: 0rem;
+  --SB-blank_left: 0rem;
+  }
+}
+
 @media (max-width: 767px){
     #content-wrap{
   }
 
   #main-content{    
+   --PGtt_size: var(--PGtt_size_PAD);
+   --main-top:  var(--main-top_PAD);   
      flex-grow: 1;  
      max-width:90%;
      margin: 0 auto ;
      padding-left:0;
      padding-right:0rem;
-  }
-
-  #content-wrap  #side-bar{
-    left: -27em;
-    flex-basis: 0;
-    position: absolute;
   }
 
   #content-wrap:before,
@@ -2729,6 +3531,19 @@ h2, h3, h4, h5, h6 {
     position: absolute;
     margin:0;
   }       
+}
+
+@media (max-width: 479px) {
+  #main-content{
+    --PGtt_size: var(--PGtt_size_MOB);
+    --PG-h1_size:150%; 
+    --PG-h2_size:135%;  
+    --PG-h3_size:120%;  
+    --PG-h4_size:110%;  
+    --PG-h5_size:100%;  
+    --PG-h6_size:90%;  
+    --main-top:var(--main-top_MOB);
+    }
 }
 
 /*
@@ -2740,61 +3555,51 @@ h2, h3, h4, h5, h6 {
 /* ----------- 侧边栏样式 ---------------- */
 
 #side-bar{
-    flex-basis:var(--sidebar-width,inherit);
-    min-width:var(--sidebar-width,16em);
+    --link-main-page:1.3rem;
+    flex-basis:var(--SB_width,inherit);
+    min-width:var(--SB_width,16em);
     position:  relative;
-    margin-left:var(--sidebar-blank-left);
-    margin-right:var(--sidebar-blank-right);
+    margin-left:var(--SB-blank_left);
+    margin-right:var(--SB-blank_right);
     left: 0;
-
     height:100%;
-    /*! border: #333 double 5px; */
-    margin-top: var(--sidebar-topBox-top222);
+    margin-top: var(--SB-topbox_top222);
     padding: 0;
-     background-color: var(--sidebar-bg-pc);
+    background-color: var(--SB-bg_PC);
+    border: none;
+    filter: none;
+    box-shadow:none
 }
 
-#side-bar:before {
-    content: &#39; &#39;;
-    display: block;
-    position:  inherit;
-    height:var(--sidebar-topBox-size);
-    width: var(--sidebar-topBox-size);
-
-    background-size: contain;
-    background-image:var(--logo-sidebar);
+#side-bar:before { 
+    position:relative;
+    height:auto;
+    width: 100%;
+    background-size:  auto var(--SB-topbox_size);
+    background-image:var(--LOGO_sidebar);
     background-repeat: no-repeat;
-    background-color: var(--sidebar-bg-pc);
-   opacity: var(--logo-sidebar-opacity);
-
-    left:var(--sidebar-topBox-left, 0);
-
-   /* top:var(--sidebar-topBox-top);
-      margin-bottom: var(--sidebar-topBox-top);
-    */
-}
-
-/* 内部 */
-#side-bar div.side-block:first-child{
-margin-top: 0;
-}
-
-#side-bar div.side-block:first-child:before{
-    content:var(--sidebar-content);
-    content:{$sidebar-content};
+    background-position: top center;
+    background-color: var(--SB-bg_PC);
+    opacity: var(--LOGO_sidebar-opacity);
+    left: 0;
+    
+    color:var(--SB-content_color);   
+    content:var(--SB_content);
     font-family: var(--handwriting-font);
-    white-space:pre;
-    font-size: 2rem;
+    font-size: var(--SB-phrase_size);
+    display: inline-grid;
+    justify-content: center;
+    padding-top: var(--SB-phrase_top);
+    margin-top: 1rem;
+    white-space: break-spaces;
+ }
 
-    display: inline-block;
-    position: inherit;
-    text-align: center;
-    margin: 1rem 0;
-    width:100% ;
-    background-color: ;
-    padding: 0 0 0rem 0;
-    line-height: 1.2em;
-    color:var(--sidebar-content-color);
+
+/* -------------- 内部 ----------- */
+#side-bar .side-block.resources,
+#side-bar div.side-block:first-child{
+margin-top: 0;   
+    padding-top: 0;
 }
 
 #side-bar div.side-block :not(a)  img{
@@ -2804,7 +3609,7 @@ margin-top: 0;
 
 #side-bar div.side-block:not(.side-links) a  img{
     display: inline-block ;
-    padding: 0 0.1rem;;
+    padding: 0 0.2em;;
 }
 
 #side-bar div.side-block img[alt*=&#34;cc-by-sa&#34;]{
@@ -2817,202 +3622,289 @@ margin-top: 0;
 }
 
 #side-bar .side-block {
-    padding: 0rem 0.8rem;
-    padding-top: 20px;
+    padding: 0rem 0.8em;
+    padding-top: 0px;
     border: none;
     border-radius:0px;
     box-shadow: none;
-    background: transparent;
-    background-color: transparent !important;
+    background: transparent !important;
+}
+
+
+/* ------- 分割线 -------- */
+#side-bar hr{
+    display: none;
+}
+
+#side-bar .side-block hr{
+    display: block;
+    border-top: 2px  dotted var(--color-hr-sidebar);
+}
+
+/* ------- 媒体图标 -------- */
+
+#side-bar :is(.media, .sns) img{
+    transition:transform 0.2s;
+    background-color: transparent;
+}
+
+ #side-bar :is(.media, .sns) img:hover{
+     --media-scale:1.2;
+    -ms-transform:scale(var(--media-scale));	
+    -moz-transform:scale(var(--media-scale));
+    -webkit-transform:scale(var(--media-scale));
+    -o-transform:scale(var(--media-scale));
+    transform:scale(var(--media-scale));
+    transition:transform 0.1s;
+     background-color: transparent;
+}
+
+/* fixed for JP*/
+#side-bar .sns div :is(a, a:hover){ 
+    padding-top: 0; padding-bottom: 0; 
+    background-color: transparent;
 }
 
 /*-----------------侧边栏主页按钮 / MAIN PAGE BTN -----------------------*/
 
+#side-bar .menu-item a {
+ font-size: var(--SB-link_size);
+    font-family: var(--SB-link_font, &#34;Trebuchet MS&#34;);
+    letter-spacing:1px;
+    
+}
+
+#side-bar .menu-item :is(a[href=&#34;/&#34;], a[href=&#34;/&#34;] ~ a[href=&#34;/forum:start&#34;]){
+    font-size: var(--SB-main_size);
+     font-family: var(--SB-main_font, var(--page-tt-font));
+}
+
+#side-bar &gt; *:first-child[class=&#34;image&#34;] {
+  display: none;
+}
+
 #side-bar .menu-item a[href=&#34;/&#34;],
 #side-bar .menu-item a:visited,
 #side-bar .menu-item a{
-    color: var(--sidebar-link-txt);
-    padding:0.2rem  0.3rem;
+    color: var(--SB-link_txt);
+    padding:0.2em  0.3em;
 }
 
 #side-bar .menu-item a[href=&#34;/&#34;]:hover,
 #side-bar .menu-item a:hover {
-    color:var(--sidebar-link-hoverTXT);
-    background-color: var(--sidebar-link-hoverBG);
+    color:var(--SB-link_txt_HOV);
+    background-color: var(--SB-link_bg_HOV);
     text-decoration: none;
 }
 
 #side-bar .menu-item a[href=&#34;/&#34;] {
-    font-family: var(--handwriting-font);
-    font-size: 1.5rem;
     top:0rem;
     position: relative;
+    align-self: center;
 }
-
-/* ..........英文站排版 || for EN SITE................ */
-
-#side-bar .side-block.resources + div + .side-block .menu-item:nth-child(2),
-#side-bar .side-block.resources + div + .side-block .menu-item:first-child{
-        display: inline-flex;
-        font-size: 1.2rem;
-    
-}
-
-#side-bar .side-block.resources + div + .side-block .menu-item:nth-child(2):before,
-#side-bar .side-block.resources + div + .side-block .menu-item:first-child:before{
-            display: inline-flex;
-        content:&#34;\f138&#34;;
-    font-family: FontAwesome;
-    align-items:center;
-    padding: 0 0.4rem;
-    font-size: 80%;
-}
-
-/*--------------- 栏目 --------------------*/
 
 #side-bar .heading {
-    border-bottom: solid 0px transparent;
+    border: 0;
     padding:10px 0px 8px 0px;
-    margin-bottom: 5px;
-    font-size: 8pt;
+    margin-bottom: 0.4em;
+    font-size: var(--SB-hdtxt_size);
     font-weight: bold;
-    color:var(--sidebar-hdtxt-color);
+    color:var(--SB-hdtxt_color);
+    width: 100%;
+    
 }
-
+ 
 #side-bar .heading p{
-    border-bottom:solid 2px var(--sidebar-hd-txt);
-    padding-left: 0.2rem
+    padding-left:var(--SB-hdtxt_left);
+    padding-bottom: var(--SB-hdtxt_bottom, 0.1em);
 }
 
-#side-bar .collapsible-block-unfolded-link:after,
+
+/* 主页下方的系列 */
+.menu-item:has(a[href=&#34;/&#34;]) ~ .menu-item:has(a[href*=&#34;/scp-series&#34;]) {
+    width:100%;
+    display: inline-grid;
+    grid-template-columns: 15% 2% 20% 2%  20% 2% 20% 2% 20%;
+     font-size: 0;
+    justify-items: center;
+}
+
+.menu-item:has(a[href=&#34;/&#34;]) ~ .menu-item:has(a[href*=&#34;/scp-series&#34;]) a{
+  --SB-item-line_cl:var(--color-dark);
+    text-align: center;
+    width: 100%;    
+    border-image-source:linear-gradient(transparent 15%, var(--SB-item-line_cl) 15%, var(--SB-item-line_cl) 85%, transparent 85%);
+    border-image-width: 0 0.1rem 0 0;
+    border-image-slice: 0 100% 0 0;
+    padding:  0;
+}
+
+.menu-item:has(a[href=&#34;/&#34;]) ~ .menu-item:has(a[href*=&#34;/scp-series&#34;]) :is(a:hover, a:last-child) {
+   --SB-item-line_cl:transparent
+}
+
+/*-----------------底部线条  -----------------------*/
+#side-bar .heading:after,
 #side-bar .collapsible-block-folded:after,
-#side-bar .heading p:after{
+#side-bar .collapsible-block-unfolded-link:after{
     content: &#39; &#39;;
     position: relative;
-    height: 0rem;
-    width: 100%;
-    top:0.3rem;
-    width: 60%;
     display: block;
-    border-bottom:solid 1px var(--sidebar-line);
-}
-
-/*-----------------侧边栏折叠 || collapsible  -----------------------*/
-
-#side-bar .collapsible-block-unfolded-link .collapsible-block-link {
-    font-size: inherit;
-}
-
-#side-bar .collapsible-block-unfolded-link,
-#side-bar .collapsible-block-folded {
-    background:none;
-      border-bottom: 2px solid var(--sidebar-line);
+    max-width: 100%;
+    width: 100%;
+    font-size: var(--SB-hdtxt_size);
+ height: 0.15em; 
+ border-top: var(--SB-line11_size) solid var(--SB-line_cl);
+ border-bottom: var(--SB-line22_size) solid var(--SB-line_cl);   
+   -webkit-clip-path: var(--SB-line_clip);
+   clip-path: var(--SB-line_clip);   
 }
 
 
-#side-bar .collapsible-block-unfolded-link,
-#side-bar .collapsible-block-folded {
-    background:none;
-      border-bottom: 2px solid var(--sidebar-line);
+/*-----------------侧边栏折叠 / collapsible  -----------------------*/
+
+ #side-bar .collapsible-block-folded{
+    background: none;
 }
 
 
 #side-bar .collapsible-block-unfolded-link .collapsible-block-link,
-#side-bar a.collapsible-block-link{
-     color:var(--sidebar-fold-color);
-        text-decoration: none;
-        margin-left: 0px;
-        font-family: &#39;FontAwesome&#39;,var(--rate-font);
+#side-bar div.collapsible-block div.collapsible-block-folded &gt; .collapsible-block-link {
+    display: block;
+      font-size: var(--SB-hdtxt_size);
+    margin: 0;
 }
-
-
-/*
-#side-bar .collapsible-block-folded  a.collapsible-block-link:before{
-   content: &#39;\f059  \00A0 &#39;;
-}
-#side-bar .collapsible-block-unfolded-link a.collapsible-block-link:before {
-    content: &#39;\f20b  \00A0&#39;;
-}
-*/
-
-#side-bar .side-block:nth-of-type(2) .menu-item:first-child{
-    text-align: center;
-}
-
-#side-bar .collapsible-block .menu-item:first-child{
-    padding-top: 0.5rem;
-}
-
+/* 线*/
 #side-bar .collapsible-block-unfolded-link::after,
 #side-bar .collapsible-block-folded:after{
     width: 100%;
 }
+ 
 
+#side-bar .collapsible-block-unfolded-link,
+#side-bar .collapsible-block-folded {
+    background:none;
+      border-bottom: 0.15em solid var(--SB-line);
+}
+ 
+/* 提示 */
+#side-bar .collapsible-block-unfolded-link .collapsible-block-link,
+#side-bar a.collapsible-block-link{
+     color:var(--SB-fold_color);
+        text-decoration: none;
+        margin-left: 0px;
+      font-family: &#39;FontAwesome&#39;,var(--RATE_font);
+}
+ 
+#side-bar .collapsible-block-folded  a.collapsible-block-link:before{
+   content: &#39;\f0fe  \00A0 &#39;;
+}
+ 
+#side-bar .collapsible-block-unfolded-link a.collapsible-block-link:before {
+    content: &#39;\f146  \00A0&#39;;
+}
+ 
+#side-bar .collapsible-block-folded  a.collapsible-block-link:hover:before{
+   content: &#39;\f13a  \00A0 &#39;;
+}
+ 
+#side-bar .collapsible-block-unfolded-link a.collapsible-block-link:hover:before {
+    content: &#39;\f139  \00A0&#39;;
+}
+ 
+/* 折叠内容 */
+#side-bar .collapsible-block-unfolded {
+  border: none;
+}
+ 
+#side-bar .collapsible-block .menu-item:first-child{
+    padding-top: 0.5rem;
+}
+ 
 
 /* ----------- 手机样式 || MOB ---------------- */
 
 #content-wrap #side-bar:target {
     display: block;
     left: 0;
-
     position: fixed;
-    background-color:var(--header-bg);
-    background-image: var(--header-cover);
+    background-color:var(--HD_bg);
+    background-image: var(--HD_cover);
     background-size:300px;/* 20% */
     background-position: 0% 0%;
     background-repeat: repeat;
+    border:none;
+    border-right: 4px solid rgba(0,0,0,0.3);
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 @media (max-width: 767px){
  #content-wrap #side-bar {
+     --SB-fold_color:var(--color-darkred);
+        --SB-hdtxt_size:0.9rem;
+    --SB-link_size:0.8rem;
+    --SB-main_size:1.2rem;
       position: fixed;
       top: 0;
       margin-top: 0;
       margin-left: 0;
       left: -20rem;
       z-index: 50;
-      background-image: var(--header-cover);
-      background-color:var(--sidebar-bg-pc);
-      background-color:var(--header-bg);
+      background-image: var(--HD_cover);
+      background-color:var(--SB-bg_PC);
+      background-color:var(--HD_bg);
   }
 
   #side-bar:before {
-      content: &#39; &#39;;
-      position:  relative;
-      z-index: -1;
-      background-color: var(--sidebar-bg-mob);
-      background-image: var(--logo-sidebar-mob);
+background-color: var(--SB-bg_MOB);
+background-image: var(--LOGO_sidebar_MOB);
+pointer-events: none;
    }
-
-   #side-bar .menu-item a[href=&#34;/&#34;] ,  
-   #side-bar div.side-block:first-child:before{
-     color:var(--sidebar-hd-txtMOD);
-  }
 
     #side-bar:target {
     display: block;
     left: 0;
     position: fixed;
+  } 
+  #side-bar:target .close-menu {
+   background: rgba(0,0,0,0.2) 1px 1px repeat;
   }
-    
-#header #top-bar .open-menu a {
+
+   #header #top-bar .open-menu a {     
     position: fixed;
-    top: 1.5rem;
+    top: var(--SB-btn_top);
     z-index:20;
     border-radius: 5px;
-    border: 0.1em solid var(--sidebar-btn-border);
-    color:  var(--sidebar-btn-txt);
-    background-color: var(--color-grey-dark);
+    border: 0.15rem solid var(--SB-btn_border_cl);
+    color:  var(--SB-btntxt_cl);
+    background-color: var(--SB-btn_bgcl);
+    background-image: var(--SB-btn_image, unset);
+    font-size:0rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--SB-btn_square);
+    height: var(--SB-btn_square);
+    left:  var(--SB-btn_left);
 }
-    
+  
+ #header #top-bar .open-menu a:before {
+    content: var(--SB_btntxt);
+    font-size:var(--SB-btntxt_size);
+    font-family: FontAwesome;
+}
 
 #header #top-bar .open-menu a:hover {
-     -webkit-box-shadow:none;
-     box-shadow:none;
-      background-color:var(--accentColor);
-  color: var(--topbar-txt);
-}
-  }   
+    --SB-btntxt_size: var(--SB-btntxt_size_HOV);
+    --SB-btntxt_cl: var(--SB-btntxt_cl_HOV);
+    --SB-btn_bgcl:var(--SB-btntxt_bg_HOV);
+      -webkit-box-shadow:none;
+      box-shadow:none;
+  }  
+   div.scpnet-interwiki-wrapper {
+  margin: 0;
+   }
 }
 
 /*=====================================
@@ -3028,274 +3920,243 @@ background:transparent;
 /* ---------------------------------
 ----------- 常规 || normal -----------
 -------------------------------------- */
+
+.mz-talking-wrap, .rateBox, .page-rate-widget-box {
+         --RATE-btn_filter: drop-shadow(0px 0px 0.5px var(--RATE_boder-flag)) drop-shadow(0px 0px 0px var(--RATE_boder-flag))
+         drop-shadow(0px 0px 0.5px var(--RATE_boder-flag)) drop-shadow(0px 0px 0px var(--RATE_boder-flag))
+         drop-shadow(0px 0px 0.2px  var(--RATE-flag_gap)) drop-shadow(0px 0px 0.1px var(--RATE-flag_gap))
+         drop-shadow(0px 0px 0.1px  var(--RATE-flag_gap)) drop-shadow(0px 0px 0.1px  var(--RATE-flag_gap))
+         drop-shadow(0px 0px 0.1px  var(--RATE-flag_gap)) drop-shadow(0px 0px 0.1px  var(--RATE-flag_gap))
+         drop-shadow(0px 0px 0.5px var(--RATE_boder-flag)) drop-shadow(0px 0px 0px var(--RATE_boder-flag))
+         drop-shadow(0px 0px 0.5px var(--RATE_boder-flag)) drop-shadow(0px 0px 0px var(--RATE_boder-flag));    
+}
+
+/* ---------------------------------
+----------- 常规 -----------
+-------------------------------------- */
+ 
 .page-rate-widget-box {
     border-radius: 0;
     box-shadow: none;
-    margin-top:0.2rem;
-    margin-bottom:0.2rem;
-    margin-right: 0.5rem;
+    margin-top:0px;
+    margin-bottom:var(--RATE-box_margin-bottom);
+    margin-right: 0rem;
     position: relative;
     user-select:none;  
-    z-index: 0;
-    transition-delay: 0.5s;
-    /*! margin-bottom:var(--rate-line-gap, 0.2rem); */
-    /*! background: transparent; */
-}
-
-.page-rate-widget-box:hover {
-    z-index: 2;
-     transition: z-index 0s;
-     transition-delay: 0s;
-}
-
-/* ..... 评分文本栏和第一底线 || text container &amp; first line ..... */
-
-#main-content .page-rate-widget-box  .rate-points {
-    border: solid 0px transparent;
-    border-bottom: solid var(--rate-line-width, 2px) var(--rate-num-border);
-    border-radius: 0;
-    padding-top:var(--rate-padding-top, 0.5rem);
-    padding-right:var(--rate-padding-left, 1rem);
-
-    font-size: 0;
-    color:var(--rate-num-txt) ;
-    position: relative;
-
     z-index: 1;
     display: inline-flex;
-    flex-wrap: nowrap;
-    align-items: baseline;   
-    margin-bottom: var(--rate-line-gap);
 }
+ 
+ 
+/* .....评分文本栏和第一底线..... */
+#main-content .page-rate-widget-box  .rate-points {
+    border: solid 0px transparent;
+    border-bottom: solid var(--RATE-line_width, 2px) var(--RATE-num_border);
+    border-radius: 0;
+    padding-top:var(--RATE_padding-top, 0.5rem);
+    padding-right:var(--RATE_padding-left, 1rem);
+    padding-bottom: var(--RATE-line_bottom,0.1rem);
 
+    font-size: 0;
+    color:var(--RATE-num_txt) ;
+    position: relative;
+ 
+    z-index: 1;
+    display: inline-grid;
+    align-self: start;
+    align-items: baseline;   
+    background-color: transparent !important; 
+    margin-bottom: var(--RATE-line_bottom);
+    
+grid-template-columns: var(--RATE_column-11) var(--RATE_column-22) var(--RATE_column-33);
+grid-template-rows: var(--RATE_row-11) var(--RATE_row-22) var(--RATE_row-33);
+grid-template-areas:
+&#39;top top  top &#39; 
+&#39;. text number&#39;
+&#39;. line line&#39;
+ &#39;bottom bottom bottom&#39;  ;
+}
 
 .page-rate-widget-box .rate-points {
     background-color: transparent !important;
 }
 
-
-/* 背景遮板和第二底线 || second line &amp; backplate*/
-
-.rate-points:after {
-    content: &#39; &#39;;
-    height: var(--rate-plank-hight);
-    display: inline-block;
-    position: absolute;
-    z-index: 1;
-    /*! padding-bottom: var(--rate-line-width, 2px); */
-    width:var(--rate-plank-width,  108%);
-    left: var(--rate-plank-left,  -8%);
-    top:0;
-    border-bottom: solid var(--rate-line-width, 2px) var(--rate-num-border);
+/* 第二条底线 */
+.rate-points::after {
+  grid-area: line;
+  content: &#39; &#39;;
+  border-bottom: solid var(--RATE-line_width, 2px) var(--RATE-num_border);
 }
 
-/* 评分数字 || RATE NUMEMBER */
+/* 评分数字 */
 .rate-points .number {
-    font-size: var(--rate-num-size);
-    background-color:var(--rate-num-bg) ;
-    color:var(--rate-num-num) ;
-    padding: 0 var(--rate-num-padding);
+    font-size: var(--RATE-num_size);
+    background-color:var(--RATE-num_bg);
+    color:var(--RATE-num_num);
+    padding: 0 var(--RATE-num_padding);
     letter-spacing: 1px;
-    line-height: var(--rate-num-lh);
+    line-height: var(--RATE-num_lh);
+    word-break: keep-all;
+    grid-area: number;
 }
-
-/* 评分文本 || RATE TEXT */
+ 
+/* 评分文本 */
 .page-rate-widget-box  .rate-points:before {
-    content: &#39;Rating&#39;;
-font-size: 0.8rem;
-    padding:  0 0.5rem 0 0rem;
+    grid-area: text;
+    content: var(--RATE_text);
+    font-size: var(--RATE-txt_size,0.8rem);
+    padding: 0 0.4em 0 0.8em;
     margin-left: 0rem;
-        font-family: &#39;FontAwesome&#39;,var(--rate-font);
-    letter-spacing: 0.15rem;
-      color: var(--rate-info-btn);
-word-break:  keep-all;
+    font-family: &#39;FontAwesome&#39;,var(--RATE_font);
+    letter-spacing: 0.25em;
+    color: var(--RATE-info_btn);
+    word-break:  keep-all;
     white-space:pre;
+    /*! font-family: &#34;Trebuchet MS&#34;; */
 }
-
-
+ 
+.page-rate-widget-box:hover  .rate-points:before {
+    content: var(--RATE_text_HOV) ;
+}
 
 /*.....评分旗子 || BTN FLAG ........*/
-
-.page-rate-widget-box   span.btn {
+.page-rate-widget-box span.btn {
     background-color: transparent;
-    border: solid 0px transparent;
+    border: solid 0px transparent; 
 }
 
-.page-rate-widget-box .btn:not(:first-child){
-    border-radius: 0;
-    font-size: 0;
-    width: 0;
-
-     display: inline-flex;
-     flex-wrap: wrap;
-     justify-content:  left;
-     margin-right:var(--rate-btn-mgleft);
-     height:var(--rate-btn-height);
-     width: var(--rate-btn-width);
-     background-color:  var(--rate-btn-bgcolor);
-     left: 0;
-
-       -webkit-filter:var(--rate-btn-filter);
-       filter:var(--rate-btn-filter);
+.creditRate :is(.creditButton, .creditButtonStandalone) a,
+.page-rate-widget-box span.btn {
+     font-size: var(--RATE-btn_size);
+     height:var(--RATE-btn_height);
+     width: var(--RATE-btn_width);
+     text-align: center;
+    -webkit-filter:var(--RATE-btn_filter);
+    filter:var(--RATE-btn_filter);
+    display: inline-flex;
+    justify-content:  center;
+    align-content: start;
+    align-self: center;  
+    top: 0;
+    left: 0;
+    padding: 0;
+    margin-left: var(--flag-delta-size);
 }
 
-.page-rate-widget-box span.rateup{
-    margin-left: 0.5rem;
+.page-rate-widget-box span.btn a{
+    width: 100%;   
+    background-color:  var(--RATE-btn_bgcolor);
+    margin: 0;
+    padding-bottom:0;
 }
 
-.page-rate-widget-box .btn:not(:first-child) a{
-    padding:0;
-    width: 100%;
-    text-align: center;
-    font-size: var(--rate-btn-size);
+.creditRate :is(.creditButton, .creditButtonStandalone) a:before,
+.page-rate-widget-box span.btn a{
+    --flag-clip: polygon(100% 0, 100% 50%, 100% 100%, 50% var(--flag-delta-count), 0 100%, 0 0);
+     background-color:  var(--RATE-btn_bgcolor);
+    -webkit-clip-path:var(--flag-clip);
+     clip-path: var(--flag-clip);
 }
 
-.page-rate-widget-box .btn:not(:first-child):after{
-    content: &#39; &#39;;    
-   height: 0;
-   border-style: solid;
-   border-width: var(--rate-delta-size);
-   border-color: var(--rate-btn-bgcolor) var(--rate-btn-bgcolor) transparent var(--rate-btn-bgcolor);       
-    top:var(--rate-flag-underTOP, 0.15rem);  
-}
 
-/*..........鼠标移过..........*/
-.page-rate-widget-box .btn:not(:first-child):hover a {
-    background: transparent;
-        color:var(--rate-hover-txt);
+.page-rate-widget-box span.btn a:hover,
+.creditRate :is(.creditButton, .creditButtonStandalone):hover a:before{
+          background-color:var(--RATE_bg_HOV);
+          color:var(--RATE_txt_HOV);
+          border-radius: 0;
+          text-decoration: none;
 }
-
-.page-rate-widget-box .btn:not(:first-child):hover {
-        background-color: var(--rate-hover-bg);  
-}
-
-.page-rate-widget-box .btn:not(:first-child):hover:after{
-   border-color:var(--rate-hover-bg) var(--rate-hover-bg) transparent var(--rate-hover-bg);     
-}
-
 
 /* ---------------------------------
 著作信息栏 || INFO BOX
 --------------------------------- */
 
 .rateBox .rate-box-with-credit-button{
-    background-color: transparent;
+   background-color: transparent;
    border: none;
    border-radius: 0x;
    box-shadow: none;   
-user-select:none;
-}
-
-.rateBox .rate-box-with-credit-button{
-    display: flex;
+   user-select:none;
+    display: inline-flex;
 }
 
 #page-content .creditRate{
   margin-right: 0.5rem;
 }
 
-.rateBox .creditButton p a {
-    color: var(--rate-info-btn);
-    border-left: none;
-    padding-top: 0rem;
-    border-left: solid 2px  var(--rate-info-border);
-    margin: 0.5rem 0 0 0rem;
-   padding: 0rem 0.4rem ;
-    margin-top: var(--rate-padding-top);
+.rateBox :is(.page-rate-widget-box, .creditButton){
+    display: inline-flex;
 }
 
-.rateBox  .fa-info::before {
-    content: &#34; More \D\A  Info&#34;;
-    white-space:pre;
-    line-height: 0.8rem;
-    padding: 0 ;
-    left: -0.25rem;
-    position:relative;
-   word-break: keep-all;
-    font-family: var(--body-font);
-
+.page-rate-widget-box span.btn:last-child {
+     margin-right: 0;
 }
 
-.creditButton  p{
-    position: absolute;
+.creditRate .creditButton{
+    display: inline-flex;
+    position: relative;
+    align-items: end; 
+    margin-left: var(--RATE-btn_mgleft);
+}
+ 
+.creditRate :is(.creditButton, .creditButtonStandalone) a {
+    -webkit-filter: var(--RATE-btn_filter);
+    filter: var(--RATE-btn_filter);
+    margin: auto;
+    position: relative;    
+    justify-content:  center;
+    background-color: transparent;
 }
 
+.creditRate :is(.creditButton, .creditButtonStandalone) a:before{  
+    --RATE-txt_size: var(--RATE-btn_size);
+    color: var(--RATE-num_bg);
+    left: unset;
+    top: unset;
+    width: 100%;
+    height: var(--RATE-btn_height);
+    display: inline-grid;
+    justify-content: center;   
+    align-items: center;
+    grid-template-rows:var(--RATE-btn_width) auto;
+ }
+ 
+
+/* -------- 著作信息内部弹窗 --------------  */
 .modalbox hr{
     border: none;
 }
 
-.rateBox .creditButton p a:hover {
-    color: var(--rate-info-btnHover-txt);
-    background-color:  var(--rate-info-btnHover);
-}
-
-.rateBox   .btn:not(:first-child){
-    /*! right:-1.2rem; */
-}
-
 .modalcontainer  .modalbox .close-credits {
+-webkit-filter:sepia(100%)   saturate(500%) brightness(200%);
 filter: sepia(100%)   saturate(500%) brightness(200%);
-
 }
 
-.modalcontainer  .modalbox h2{
-    color: var(--rate-mobox-tt);
+.modalcontainer  .modalbox h2:first-child{
+    color: var(--RATE-mobox_tt);
 }
 
-#main-content .modalbox .page-rate-widget-box  .rate-points {
-    background-color: transparent;
+/* ------------ 著作信息评分栏 ------------------- */
+div:is(#u-credit-view, #u-credit-otherwise) .modalcontainer .modalbox {
+    --RATE_bg: var(--RATE-mobox_bg) ;
+    --RATE-info_btn:var(--RATE-mobox_txt) ;
+    --RATE-num_num: var(--RATE-mobox_bg);
+    --RATE-num_bg: var(--RATE-mobox_border) ;   
+    --RATE_boder-flag:var(--RATE-mobox_border);
+    --RATE-flag_gap: var(--RATE-num_bg);
+     --RATE-btn_bgcolor:var(--RATE-mobox_bg) ;  
+     --RATE_bg_HOV:var(--RATE-mobox_btn);
+    --RATE_txt_HOV:var(--RATE-mobox_tt);
+     
+    background: linear-gradient(var(--RATE-mobox_border) 51px,var(--RATE-mobox_bg) 51px);
+    border: var(--RATE-num_bg) solid 4px;
+    color: var(--RATE-mobox_txt) ;   
+    scrollbar-color:  var(--RATE-mobox_btn) var(--RATE-mobox_border);
 }
 
-#main-content .modalbox .page-rate-widget-box:before {
-    background-color: var(--rate-mobox-bg) ;
+ .modalcontainer :is(a, .rateup a, .ratedown a, .cancel a) {
+  color: var(--RATE-mobox_btn);
 }
-
-#main-content .modalcontainer  .modalbox {
-    background: linear-gradient(var(--rate-mobox-border) 51px,var(--rate-mobox-bg) 51px);
-    border: var(--rate-mobox-border) solid 4px;
-    color: #000;
-}
-
-.modalcontainer  .modalbox {
-    background: linear-gradient(var(--rate-mobox-border) 51px,var(--rate-mobox-bg) 51px);
-    border: var(--color-navy) solid 4px;
-}
-
- .modalbox  .page-rate-widget-box .btn:not(:first-child):after{
-   border-color:var(--rate-mobox-bg) var(--rate-mobox-bg) transparent var(--rate-mobox-bg);       
-}
-
- .modalbox  .page-rate-widget-box .btn:not(:first-child),
- .modalbox  .page-rate-widget-box  .rate-points {
-    background-color: var(--rate-mobox-bg) ;
-}
-
- .modalbox  .page-rate-widget-box .btn:not(:first-child):hover {
-    background-color: var(--rate-mobox-btn);
-}
-
- .modalbox  .page-rate-widget-box .btn:not(:first-child):hover:after{
-   border-color:var(--rate-mobox-btn) var(--rate-mobox-btn) transparent var(--rate-mobox-btn);       
-}
-
- .modalbox  .page-rate-widget-box .btn:not(:first-child):hover a{
-    color: var(--rate-mobox-tt);
-}
-
- .modalbox  .page-rate-widget-box {
-    top:-10px;
-}
-
- .modalbox  .rate-points .number {
-    background-color: var(--rate-mobox-border) ;
-    color:var(--rate-mobox-bg) ;
-}
-
- .modalbox  .page-rate-widget-box ,
- .modalbox  .page-rate-widget-box .rate-points::before {
-    color:var(--rate-mobox-txt) ;
-}
-
 
 /* ----------- TAB 里的颜色 ---------------- */
 .yui-content .page-rate-widget-box .btn:not(:first-child),
@@ -3331,9 +4192,9 @@ filter: sepia(100%)   saturate(500%) brightness(200%);
 */
 
 /* ----------- 表格 ------------ */
-
 table.wiki-content-table th {
-    background-color: var(--table-th-color,#DADADA);
+  color: var(--RATE-num_bg);
+  background-color: var(--color-light);
 }
 
 /* ----------- 目录（有空再弄） ------------ */
@@ -3353,15 +4214,15 @@ table.wiki-content-table th {
      flex-direction: column;
 
      min-width: 8rem;
-     font-size: var(--TOC-txt-size);
+     font-size: var(--TOC-txt_size);
       padding: 0em 0em;
      background-color: transparent;
-     line-height: var(--TOC-line-height);
+     line-height: var(--TOC-line_height);
 
-    border: 0px solid var(--TOCbd-cl);
+    border: 0px solid var(--TOC-bd_cl);
     border-radius: 0rem 0.875rem;
-    border-bottom: solid 0.2rem var(--TOCbd-cl);
-    border-top: solid 0.2rem var(--TOCbd-cl);
+    border-bottom: solid 0.2rem var(--TOC-bd_cl);
+    border-top: solid 0.2rem var(--TOC-bd_cl);
     position: relative;
 
 }
@@ -3377,20 +4238,14 @@ table.wiki-content-table th {
 }
 
 #toc .title:before {
- content:var(--TOC-tt-txt,&#39;MENU&#39;) ;
+ content:var(--TOC_text-tt,&#39;MENU&#39;) ;
     visibility: visible;
     padding: 0.2rem 0.4rem;
-    background-color:var(--TOC-tt-bg);
-    color:var(--TOC-tt-cl);
+    background-color:var(--TOC-tt_bg);
+    color:var(--TOC-tt_cl);
         border-radius: 0.5rem;
-    border: 2px solid var(--TOCbd-cl);
+    border: 2px solid var(--TOC-bd_cl);
 }
-
-/*!
-#toc #toc-list div{
- width: auto; margin-keft:0 ;
-}
-*/
 
  #toc #toc-action-bar{
     order: 3;
@@ -3414,41 +4269,41 @@ padding: 0;
     font-size: initial;
         padding: 0.2rem 0.4rem;
     font-family: var(--page-font);
-    background-color:var(--TOC-tt-bg);
-    color:var(--TOC-tt-cl);
+    background-color:var(--TOC-tt_bg);
+    color:var(--TOC-tt_cl);
         border-radius: 0.5rem;
-    border: 2px solid var(--TOCbd-cl);  
+    border: 2px solid var(--TOC-bd_cl);  
 }
 
 #toc-action-bar a[onclick*=&#34;foldToc&#34;]:before{
-    content: var(--foldToc-txt);
+    content: var(--TOC_text-fold);
 }
 
 #toc-action-bar a[onclick*=&#34;unfoldToc&#34;]:before{
-    content: var(--unfoldToc-txt);
+    content: var(--TOC_text-unfold);
 }
 
 #toc-action-bar a[onclick*=&#34;foldToc&#34;]:hover:before,
 #toc-action-bar a[onclick*=&#34;unfoldToc&#34;]:hover:before{
-    background:  var(--TOCbd-cl);
-    color:var(--TOC-tt-bg);
+    background:  var(--TOC-bd_cl);
+    color:var(--TOC-tt_bg);
 }
 
 /* ----------- 引用块 ------------ */
 
 blockquote,
 div.blockquote {
-    border: 2px dashed var(--blockquote-border);
+    border: 2px dashed var(--QUOTE_border);
     padding:0.5rem 0.8rem;
     margin: 1rem 3em;
-    background-color: var(--blockquote-bg222);
+    background-color: var(--QUOTE_bg222);
 }
 
 /* ----------- 替代引用块的div ------------ */
 .mz-board,
 .mz-blockquote {
-    border: 3px double var(--blockquote-border);
-        border-left: 5px solid var(--blockquote-border-left);
+    border: 3px double var(--QUOTE_border);
+        border-left: 5px solid var(--QUOTE_border-left);
     padding:0.5rem 0.8rem;
     margin: 1rem 3em;
         background-size:80px;/* 20% */
@@ -3522,6 +4377,16 @@ div.blockquote {
         background-image: var(--icon-noise);
 }
 
+
+#page-content .mz-cover :is(h1, h2, h3, h4, h5, h6){
+font-family:var(--teletype-font);
+}
+
+.mz-cover tt{
+font-family:var(--teletype-font);
+}
+
+
 /**/
 
 .mz-textquote {
@@ -3570,7 +4435,260 @@ box-shadow: 0 1px 3px rgba(0,0,0,.2);
    box-shadow: 0 1px 3px rgba(0,0,0,.2);
 }
 
-/**/
+
+/*-------------- 便利贴与脚注 ------------------*/
+.hovertip .content .footnote,
+.mz-note{
+    min-width: 15vw;
+}
+
+.hovertip  .content,
+.mz-note{
+    background-image:linear-gradient(var(--tip-deg),transparent 0%, transparent var(--tip-dogear-size) ,var(--tip-color) var(--tip-dogear-size), var(--tip-color) 100%);
+    -webkit-filter: drop-shadow(0px 0px 2px rgba(var(--tip-bdcl),0.5));
+    filter: drop-shadow(0px 0px 2px rgba(var(--tip-bdcl),0.5));
+}
+
+.hovertip  .content:after,
+.mz-note::after{
+    content: &#34;  &#34;;
+    display: block;
+    width: var(--tip-dogearoll-size);
+    height: var(--tip-dogearoll-size);
+    background-size:contain;
+    background-image:linear-gradient(var(--tip-deg),transparent 0%, transparent 50% , var(--tip-color) 50%, var(--tip-color) 100%);    
+    float: right;
+    margin: 0 -0.5rem -0.5rem 0;
+    -webkit-filter: drop-shadow(-2px -1px 4px rgba(var(--tip-bdcl),0.6))  drop-shadow(2px -1px 1px rgba(var(--tip-bdcl),0.2)) grayscale(50%);
+    filter: drop-shadow(-2px -1px 4px rgba(var(--tip-bdcl),0.6))  drop-shadow(2px -1px 1px rgba(var(--tip-bdcl),0.2)) grayscale(50%);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+}
+
+.mz-note.note-left{
+    --tip-deg:45deg;
+}
+
+.mz-note.note-left:after{
+   float: left;
+}
+
+.mz-note .blockquote,
+.mz-note blockquote{
+    padding:0 1em;
+    margin: 1rem 1em;
+}
+
+.mz-note hr{
+   border-width: 2px;
+   border-style: solid;
+}
+
+#page-content .mz-note{
+    max-width:var(--tip-maxwidth_PC);
+    padding: 0.5rem;
+}
+
+a.footnoteref  {
+    display: inline-flex;
+    font-family:var(--page-tt-font);
+    text-decoration: none;
+}
+
+a.footnoteref::before{
+    content: &#34;(&#34;;
+    margin: 0 0.1em;
+}
+
+a.footnoteref::after{
+    content: &#34;)&#34;;
+      margin: 0 0.1em;
+}
+
+.hovertip  {
+    --tip-dogear-size:1em;
+    --tip-dogearoll-size:1.35em;
+    border: none !important;
+    background: transparent !important;
+   width: auto !important;
+    font-size:var(--tip-txt_size)
+}
+
+.hovertip .content{
+    --tip-dogear-padding: 0.5rem  calc(var(--tip-dogearoll-size) + 0.5em) 0.5rem 0.5rem;
+    -webkit-filter: drop-shadow(0px 0px 3px rgba(var(--tip-bdcl),0.5))  drop-shadow(0px 0px 1px rgba(var(--tip-bdcl),1));  
+    filter: drop-shadow(0px 0px 3px rgba(var(--tip-bdcl),0.5))  drop-shadow(0px 0px 1px rgba(var(--tip-bdcl),1));  
+    padding:var(--tip-dogear-padding);
+    font-size: 110%;
+    min-height: var(--tip-dogearoll-size);
+}
+
+.hovertip .f-footer{
+    height: 0;
+    font-size: 0;
+}
+
+.hovertip .f-heading  {
+    max-width: 11em;
+    padding: 0em 0 0em 0em;
+    font-size: 110%;
+    font-family:var(--handwriting-font);
+    letter-spacing:1px;
+    font-weight: 600;
+}
+
+.hovertip .f-heading::after {
+    content: &#39; &#39;;
+    height: 0.1rem;
+    display: block;    
+    padding: 0;
+    margin-left: -5px;  
+    background-image: linear-gradient(70deg, transparent 0px,  var(--color-navy) 8%,  var(--color-navy) 10%, transparent 100%);
+}
+
+@media (max-width: 500px) {  
+  #page-content .mz-note{
+     max-width: 90%;
+  }   
+  .hovertip {
+    max-width: 90vw;
+      --tip-txt_size:0.9em;
+  }
+ a.footnoteref  {
+    font-size:80%;
+  }
+}
+
+/*--------------便签纸-----------------*/
+
+.note-page {
+    display: block;
+    overflow: hidden;
+    font-family: &#34;Monotype Corsiva&#34;, &#34;Bradley Hand ITC&#34;,var(--handwriting-font);
+    font-style: normal;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-image: linear-gradient(to top ,rgb(202, 219, 228) 0%, rgb(231, 233, 220) 8%);
+    background-origin: padding-box;
+    background-position: 0px 8px;
+    background-repeat: repeat;
+    background-size: 100% 20px;
+    border: 1px solid #CCC;
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2)
+}
+
+.note-page p,
+.note-page ul {
+    line-height: 20px;
+    margin: 0;
+}
+
+.note-page blockquote,
+.note-page .blockquote{
+    margin: 0.5rem 2em;  
+}
+
+/*--------------回形针-----------------*/
+
+.clip-wrap div {
+    max-width: 60%;
+    margin: 1rem auto;
+    width: 60%;
+}
+
+.clip-wrap .clip-img,
+.clip-wrap .clip-body {
+    border: solid 2px rgb(var(--clip-border,0,0,0));
+    background-color: rgb(var(--clip-bg, 244, 244, 244));
+    box-sizing: border-box;
+    position: relative;
+    z-index: 0;
+    padding: 0.5rem;
+}
+
+.clip-wrap .clip-img::before,.clip-wrap .clip-img::after,
+.clip-wrap .clip-body::before,.clip-wrap .clip-body::after {
+    content:&#39;&#39;;
+    position: absolute;
+    pointer-events: none;
+    border: solid 0.25rem var(--color-darker);
+    transform: rotate(25deg);
+}
+
+.clip-wrap .clip-img::before,.clip-wrap .clip-img::after {
+    border: solid 0.25rem var(--color-darker);
+}
+
+.clip-wrap .clip-img::before,
+.clip-wrap .clip-body::before {
+  right: 0.45rem;
+  height: 36px;
+  width: 9px;
+  top: -0.45rem;
+  border-radius: 0 0 2rem 2rem;
+  border-top: none;
+}
+
+.clip-wrap .clip-img::after,
+.clip-wrap .clip-body::after {
+    top: -24px;
+    right: -0.5rem;
+    height: 16px;
+    width: 14px;
+    border-radius: 2rem 2rem 0 0;
+    border-bottom: solid 0.55rem transparent;
+    z-index: -1;
+}
+
+.clip-wrap .clip-body img,
+.clip-wrap .clip-img {
+    border: 0.15rem solid var(--color-darkest);
+  width: max-content;
+}
+
+.clip-wrap .clip-img::before {
+  right: -0.2rem;
+  top: -0.45rem;
+}
+
+.clip-wrap .clip-img::after {
+    right: -0.8rem;
+        height: 45px;
+}
+
+.clip-wrap .clip-img {
+    padding: 0rem;
+    border: 0.12rem solid var(--color-darkest);
+    box-shadow:  0px 0px 0px 9px rgba(50,50,50, 0.1), 0px 0px 0px 12px rgba(150,150,150, 0.1);
+}
+
+@media (max-width: 500px) {
+.clip-wrap{
+     max-width: 100%;
+}
+.clip-wrap .clip-img::before,
+.clip-wrap .clip-body::before {
+  right: 0.3rem;
+  height: 1.4rem;
+  width: 0.4rem;
+  top: 0rem;
+}
+
+.clip-wrap .clip-img::after,
+.clip-wrap .clip-body::after {
+    top: -1rem;
+    right: -0.5rem;
+    height: 1rem;
+    width: 0.7rem;
+}
+}
+
 
 /* ----------- 分割线 ------------ */
 
@@ -3590,19 +4708,10 @@ hr{
     width: 100%;
 }
 
-#side-bar hr{
-        border-style: solid;
-        border-width: 1px;
-       border-color: var(--color-hr-sidebar);
-}
-
 /* 缩减  */
 
-.mz-cover hr,
-.yui-content hr,
-.mz-board hr,
-.mz-blockquote hr,
-blockquote hr, div.blockquote hr {
+blockquote hr,
+div:is(.mz-cover, .yui-content, .mz-board, .mz-blockquote, .blockquote) hr {
     border-top: var(--color-hr) solid 2px;
     margin: 1em 1.5em;
 }
@@ -3651,7 +4760,7 @@ top:0.3rem;
     content: &#39; &#39;;
 margin: 1rem  0.8rem 0 0.8rem;
     font-size: 1.6rem;
-      border-left:2px solid  var(--rate-info-border);
+      border-left:2px solid  var(--RATE-info_border);
     position: relative;
 }
 
@@ -3783,11 +4892,18 @@ margin: 1rem  0.8rem 0 0.8rem;
 =====================================
 */
 
-/* ----------- 内文标题 || Horizontally center title ------------ */
+/* ------------------------- 
+内文标题 || Horizontally center title 
+------------------------- */
 
+#page-content  :is(.mz-tt.tt-box, .mz-tt333) h1{
+    display: block;
+    text-align: center;
+}
+ 
 .mz-tt{
     text-align:center;
-    margin: var(--ttbox-margin);
+    margin: var(--ttbox_margin);
 }
 
 .mz-tt h1 span{
@@ -3801,73 +4917,6 @@ height: 0.1rem;
 margin: auto auto auto 0.375rem;
 color: var(--accentColor);
 background-color: var(--dark-accent);   
-}
-
-
-/* ----------- 伪黑光盒 || Pseudo Blacklight box ------------ */
-
-#page-content  .mz-tt.tt-box h1:after {
- content: &#34; &#34;;
-    
-    width: var(--ttbox-bevel-size);
-    height:var(--ttbox-bevel-size);
-    
-    background: var(--ttbox-bevel-bg);
-    color:var(--ttbox-bevel-color);
-
-    position: absolute;
-    font-size:var(--ttbox-bevel-size);
-    margin-top:var(--ttbox-bevel-top);
-    margin-left: var(--ttbox-bevel-left);
-    
-    z-index: -1;
-       display: block;
-}
-
-#page-content  .mz-tt.tt-box h1:before{
-    display: none;
-}
-
-#page-content  .mz-tt.tt-box h1{
-    display: block;
-    letter-spacing: 0.1rem;
-    font-size:var(--ttbox-h1-size);
-    background-color: var(--ttbox-h1-bg);
-    border: solid var(--ttbox-border-size)  var(--ttbox-h1BDR-color);
-    padding: var(--ttbox-padding);
-    color:  var(--ttbox-h1-color);
-    margin-left:  var(--ttbox-h1-left);
-    max-width:  max-content;
-}
-
-
-.mz-tt.tt-box {
-       background-color: var(--ttbox-box-bg);
-  border: solid var(--ttbox-box-size)  var(--ttbox-boxBDR-color);
-    padding: 0rem 0 1rem 0;
-   position: relative;
-   padding: var(--ttbox-padding);
-    text-align: left;
-}
-
-.mz-tt.tt-box  h1:first-of-type {
-    display: block;
-    top:var(--ttbox-h1-top);
-    position: relative;
-}
-
-.mz-tt.tt-box  h1:first-of-type + * {
-    margin-top:var(--ttbox-h1-top);
-}
-
-.tt-box p{  
-    padding:inherit 0.5rem;
-}
-
-@media (max-width: 600px){
-#page-content .mz-tt.tt-box  h1 {
-  font-size:130%;
-}
 }
 
 
@@ -3893,21 +4942,35 @@ display: block;
     display: block;
 }
 
-/* ----------- 分栏 || Columns----------- */
+/* -----------横跨标题其三 || Horizontally center title 3 ----------- */
+
+.mz-tt333 *{
+    margin: auto;
+}
+
+.mz-tt333:after{
+    content: &#39;  &#39;;
+    display: block;
+    width:100%;
+    border-bottom: 0.25em solid var(--PGtt-line_color)
+}
+
+
+
+/* --------------------------------- 
+分栏 || Columns
+---------------------------------  */
 .mz-column p:first-of-type{
    margin: 0;  
 }
 
 .mz-column{
-
   -moz-column-count:2;
   -moz-column-rule:2px solid grey;
   -moz-column-gap:4rem;
-
   -webkit-column-count:2;     
   -webkit-column-rule:2px solid grey;
   -webkit-column-gap:4rem;
-
   column-count:2;     
   column-rule:2px solid grey;
   column-gap:4rem;
@@ -3937,6 +5000,7 @@ display: block;
 }
 
 @media (max-width: 600px){
+.mz-column.column-333, 
 .mz-column{
   -moz-column-count:1;   
   -webkit-column-count:1;    
@@ -3944,11 +5008,382 @@ display: block;
   }
 }
 
-/*
-=====================================
+
+/* ---------------------------------------
+ 伪黑光盒 || Pseudo Blacklight box 
+---------------------------------------- */
+
+#page-content  .mz-tt.tt-box h1:after {
+ content: &#34; &#34;;
+    
+    width: var(--ttbox_bevel-size);
+    height:var(--ttbox_bevel-size);
+    
+    background: var(--ttbox_bevel-bg);
+    color:var(--ttbox_bevel-color);
+
+    position: absolute;
+    font-size:var(--ttbox_bevel-size);
+    margin-top:var(--ttbox_bevel-top);
+    margin-left: var(--ttbox_bevel-left);
+    
+    z-index: -1;
+       display: block;
+}
+
+#page-content  .mz-tt.tt-box h1:before{
+    display: none;
+}
+
+#page-content  .mz-tt.tt-box h1{
+    display: block;
+    letter-spacing: 0.1rem;
+    font-size:var(--ttbox_h1-size);
+    background-color: var(--ttbox_h1-bg);
+    border: solid var(--ttbox_border-size)  var(--ttbox_h1BDR-color);
+    padding: var(--ttbox_padding);
+    color:  var(--ttbox_h1-color);
+    margin-left:  var(--ttbox_h1-left);
+    max-width:  max-content;
+}
+
+
+.mz-tt.tt-box {
+       background-color: var(--ttbox_box-bg);
+  border: solid var(--ttbox_box-size)  var(--ttbox_boxBDR-color);
+    padding: 0rem 0 1rem 0;
+   position: relative;
+   padding: var(--ttbox_padding);
+    text-align: left;
+}
+
+.mz-tt.tt-box  h1:first-of-type {
+    display: block;
+    top:var(--ttbox_h1-top);
+    position: relative;
+}
+
+.mz-tt.tt-box  h1:first-of-type + * {
+    margin-top:var(--ttbox_h1-top);
+}
+
+.tt-box p{  
+    padding:inherit 0.5rem;
+}
+
+@media (max-width: 600px){
+#page-content .mz-tt.tt-box  h1 {
+  font-size:130%;
+}
+}
+
+
+
+/*--------------------------------
+对话框
+----------------------------------*/
+ 
+.mz-talking-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+ /* 变量 */
+    --tk-img-width:5rem;
+    --tk-img-heigh:var(--tk-img-width);
+    --tk-img-margin:0rem 1.2rem;
+    --tk-img-left:var(--icon-scp);
+    --tk-img-right:var(--icon-magazine);
+    --tk-delta-width:0.5rem;
+    --tk-delta-width:0.5rem;
+    --tk-box-bg: var(--page-bg);
+    --tk-txt-padd:1rem;
+    --tk-delta-size:2rem;
+    --tk-delta-horiz: -0.5rem; /* 似乎低配版chrome无法用负数margin实现该功能*/
+    --tk-delta-verti: -1rem;
+    --tk-delta-path: polygon(50% 0, 100% 0, 100% 50%, 0 100%);
+    --tk-bd-weight:1px;
+    --tk-bdops-weight:-1px;
+    --tk-img-out:calc(var(--tk-img-heigh) * -0.8);
+    --tk-img-out-ops:calc(var(--tk-img-out) * -1);
+    
+    --line-border-shadow:
+        drop-shadow(var(--tk-bd-weight) 0px 0px var(--shadow-line)) drop-shadow(0px var(--tk-bd-weight) 0px var(--shadow-line)) 
+        drop-shadow(var(--tk-bdops-weight) 0px 0px var(--shadow-line)) drop-shadow(0px var(--tk-bdops-weight) 0px var(--shadow-line));  /* 放这里让变量可以直接在style中修改 */ 
+}
+
+.mz-talking-wrap :is(.talking-left,.talking-right){
+    display: inline-flex;
+    width: 100%;
+    margin-bottom: var(--tk-delta-size);
+}
+
+.talking-img{
+    margin: var(--tk-img-margin);
+    min-height: var(--tk-img-heigh);
+    min-width:  var(--tk-img-width);
+    background-image: var(--tk-img-left);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;  
+}
+
+.talking-right .talking-img{
+    background-image: var(--tk-img-right);
+}
+
+.mz-talking-wrap .talking-img.no-image, 
+.mz-talking-wrap .no-image .talking-img,
+.mz-talking-wrap.no-image  .talking-img{
+    background-image: none;
+}
+
+.talking-box p:first-child{
+    margin: 0;
+}
+
+#page-content .talking-box{
+        max-width: 40%;
+}
+
+.talking-box{
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 60%;
+    padding:var(--tk-txt-padd);
+    background-color: var(--tk-box-bg);  
+    -webkit-filter: var(--line-border-shadow);
+    filter: var(--line-border-shadow);
+    align-self:   center;
+}
+
+.talking-box::after,
+.talking-box:before{
+   content: &#39; &#39;;
+   width: var(--tk-delta-size);
+   height: var(--tk-delta-size);
+   display: inline-flex;
+   position: absolute;
+    align-self: end;   
+    background-repeat: no-repeat;
+
+   background-color: inherit;
+  -webkit-clip-path:var(--tk-delta-path);
+    clip-path: var(--tk-delta-path);
+    z-index: -1;
+ 
+    left: var(--tk-delta-horiz);
+    bottom:var(--tk-delta-verti);
+}
+
+.talking-box::after{
+    display: none ;
+}
+
+.talking-right, .talking-right .talking-box{
+    flex-direction: row-reverse;
+}
+
+.talking-right, .talking-right .talking-box p{
+   text-align: left;
+    flex-basis: 100%;
+}
+
+
+.talking-right .talking-box:before, 
+.talking-right .talking-box:after{
+    -moz-transform:scaleX(-1);
+    -webkit-transform:scaleX(-1);
+    -o-transform:scaleX(-1);
+    transform:scaleX(-1);
+    left: unset;
+    right: var(--tk-delta-horiz);
+}
+
+.talking-center{
+    margin: 0 auto;
+    display:flex;
+    align-items:  center;
+}
+
+.talking-center *{
+    margin: 0 0.2rem;
+}
+
+/*------ 手机 -------*/
+
+@media (max-width: 500px) {
+    .talking-img{
+        display: none;
+    }
+    
+    .mz-talking-wrap div:is(.talkimg-upper, .talkimg-below){
+        margin: 0 0 var(--tk-delta-size) 0;
+    }
+
+   #page-content .talking-box{
+        max-width: 80%;
+   }
+}
+
+
+/* 方向 */
+.talking-box.talkbox-righttop:before,
+.talking-box.talkbox-lefttop:before, 
+.talking-box.talkbox-righttop:after,
+.talking-box.talkbox-lefttop:after {
+     align-self: start;
+    
+    right: var(--tk-delta-horiz);
+    top:var(--tk-delta-verti);
+    bottom:unset;
+    
+     -moz-transform:scaleY(-1);
+    -webkit-transform:scaleY(-1);
+    -o-transform:scaleY(-1);
+    transform:scaleY(-1);
+}
+
+.talking-box.talkbox-righttop:before,
+.talking-box.talkbox-righttop:after{
+   -moz-transform:scale(-1,-1);
+    -webkit-transform:scale(-1,-1);
+    -o-transform:scale(-1,-1);
+     transform:scale(-1,-1);
+    
+    left:unset;
+    right: var(--tk-delta-horiz);
+    top:var(--tk-delta-verti);
+    bottom:unset;
+}
+
+.talkbox-inby{
+     align-self: start;
+}
+
+.talkbox-inby::before,
+.talkbox-inby::after {
+       -moz-transform:scaleY(-1);
+    -webkit-transform:scaleY(-1);
+    -o-transform:scaleY(-1);
+    transform:scaleY(-1);
+
+    left: var(--tk-delta-verti);
+    bottom:0;
+}
+
+.talkbox-inby.talkbox-lefttop::before,
+.talkbox-inby.talkbox-lefttop::after{
+     transform:scaleY(1);
+    left:var(--tk-delta-verti);
+    right: unset;
+    top:0;
+    bottom:unset;
+}
+
+.talking-right .talkbox-inby::before, 
+.talking-right .talkbox-inby::after{
+    -moz-transform:scale(-1);
+    -webkit-transform:scale(-1);
+    -o-transform:scale(-1);
+   transform:scale(-1);
+    left:unset;
+    right:var(--tk-delta-verti);
+    top:unset;
+    bottom:0;
+}
+
+.talkbox-inby.talkbox-righttop::before,
+.talkbox-inby.talkbox-righttop::after {
+   -moz-transform:scale(-1,1);
+    -webkit-transform:scale(-1,1);
+    -o-transform:scale(-1,1);
+        transform:scale(-1,1);
+    left:unset;
+    right:var(--tk-delta-verti);
+    top:0;
+    bottom:unset;
+}
+
+/* 内折 */
+.talkbox-round.talkbox-inby{
+   --tk-delta-verti: var(--tk-delta-horiz)
+}
+
+/*------ 自定义 -------*/
+
+.talkbox-round{
+    border-radius:40px;
+}
+
+.talkbox-dark, div:is(.talking-box:before, .talking-box:after) {
+   background-color: var(--shadow-line);
+   color: var(--page-bg);
+}
+
+.talkbox-doubleline{
+    -webkit-filter: var(--RATE-btn_filter);
+    filter: var(--RATE-btn_filter);
+}
+
+/* 图片位置 */
+.mz-talking-wrap .talkimg-below {
+    margin-bottom: var(--tk-img-out-ops);
+}
+.mz-talking-wrap .talkimg-upper {
+    margin-top: var(--tk-img-out-ops);
+}
+
+.talkimg-below .talking-img{
+    background-position: bottom center;
+    position: relative;
+    bottom: var(--tk-img-out);
+}
+
+.talkimg-upper .talking-img{
+    background-position: top center;
+    position: relative;
+    top: var(--tk-img-out);
+}
+
+/* 思考气泡 */
+.talkbox-bubles.talking-box {
+    margin-bottom: 1.5rem 
+}
+
+.talkbox-bubles.talking-box::after {
+display: block;
+}
+
+.talkbox-bubles.talking-box::before,
+.talkbox-bubles.talking-box::after{
+ --tk-delta-path: polygon(0 74%, 41% 74%, 41% 100%, 0 100%);
+}
+
+.talkbox-bubles.talking-box::before {
+    --tk-delta-path:polygon(0 65%, 40% 65%, 39% 100%, 0 100%);
+    --tk-delta-size:3rem;
+    --tk-delta-horiz: -0.5rem;
+    --tk-delta-verti: -1rem;
+}
+
+.talkbox-bubles.talking-box::after {
+    --tk-delta-path:polygon(0 65%, 40% 65%, 39% 100%, 0 100%);
+    --tk-delta-size:2rem;
+    --tk-delta-horiz: -1.2rem;
+    --tk-delta-verti: -2rem;
+}
+
+.talkbox-round.talkbox-bubles.talking-box::before {
+    --tk-delta-path:circle(28% at 50% 50%);
+}
+
+.talkbox-round.talkbox-bubles.talking-box::after {
+    --tk-delta-path:circle(20% at 50% 50%);
+}
+
+/*=====================================
 tab 分页
-=====================================
-*/
+=====================================*/
 
 /* ---- YUI TAB BASE ---- */
 .yui-navset {
@@ -4006,7 +5441,7 @@ tab 分页
  .yui-navset .yui-nav a:focus{
      color: #d6d6d6;
     /* ---- Tab Background Colour | [HOVER] ---- */
-     background-color: var(--tabNAV-bgHover);
+     background-color: var(--tabNAV-bg_HOV);
 }
  .yui-navset .yui-nav li, /* ---- Listitem Modifier ---- */
  .yui-navset .yui-navset-top .yui-nav li{
@@ -4045,8 +5480,8 @@ tab 分页
      margin: 0;
      padding: 0;
     /* ---- Tab Background Colour | [SELECTED] ---- */
-     background-color: var(--tabNAV-bgSelect);
-     color:var(--tabNAV-txtSelect);
+     background-color: var(--tabNAV-bg_SEL);
+     color:var(--tabNAV-txt_SEL);
 }
  .yui-navset .yui-nav .selected a,
  .yui-navset .yui-nav .selected a em{
@@ -4054,13 +5489,13 @@ tab 分页
 }
  .yui-navset .yui-nav .selected a{
      width: 100%;
-     color: var(--tabNAV-txtSelect);
+     color: var(--tabNAV-txt_SEL);
      font-weight: bold;
 }
  .yui-navset .yui-nav .selected a:focus,
  .yui-navset .yui-nav .selected a:active{
-     color:var(--tabNAV-txtACT);
-     background-color: var(--tabNAV-bgAct);
+     color:var(--tabNAV-txt_ACT);
+     background-color: var(--tabNAV-bg_ACT);
 }
  .yui-navset .yui-content {
     background-color:var(--tabMain-bg);
@@ -4095,6 +5530,7 @@ tab 分页
 
 .mz-tab-line  .yui-navset .yui-nav li {
     margin-right:var(--Line-tabBD-weight);
+   margin-top: var(--Line-tabBD-weight);
 }
 
 .mz-tab-line .yui-navset .yui-nav a,
@@ -4106,35 +5542,35 @@ tab 分页
 
 .mz-tab-line .yui-navset .yui-nav a:hover,
 .mz-tab-line .yui-navset .yui-nav a:focus{
-     background-color: var(--Line-tabNAV-bgHover);
+     background-color: var(--Line-tabNAV-bg_HOV);
 }
 
 .mz-tab-line .yui-navset .yui-nav .selected,
 .mz-tab-line  .yui-navset .yui-navset-top .yui-nav .selected{
-     background-color: var(--Line-tabNAV-bgSelect);
-     color:var(--Line-tabNAV-txtSelect);
+     background-color: var(--Line-tabNAV-bg_SEL);
+     color:var(--Line-tabNAV-txt_SEL);
 }
 
  .mz-tab-line .mz-line .yui-navset .yui-nav .selected a{
-     color: var(--Line-tabNAV-txtSelect);
+     color: var(--Line-tabNAV-txt_SEL);
 }
  .mz-tab-line .yui-navset .yui-nav .selected a:focus,
  .mz-tab-line .yui-navset .yui-nav .selected a:active{
-     color:var(--Line-tabNAV-txtACT);
-     background-color: var(--Line-tabNAV-bgAct);
+     color:var(--Line-tabNAV-txt_ACT);
+     background-color: var(--Line-tabNAV-bg_ACT);
 }
  .mz-tab-line .yui-navset .yui-nav  a:hover,
  .mz-tab-line .yui-navset .yui-nav .selected a,
  .mz-tab-line .yui-navset .yui-nav .selected a:focus,
  .mz-tab-line .yui-navset .yui-nav .selected a:hover {
-       color:var(--Line-tabNAV-txtHover);
-     background-color: var(--Line-tabNAV-bgHover);
+       color:var(--Line-tabNAV-txt_HOV);
+     background-color: var(--Line-tabNAV-bg_HOV);
 }
 
  .mz-tab-line .yui-navset .yui-nav .selected,
  .mz-tab-line .yui-navset .yui-navset-top .yui-nav .selected {
-    background-color: var(--Line-tabNAV-bgSelect);
-    color: var(--Line-tabNAV-txtSelect);
+    background-color: var(--Line-tabNAV-bg_SEL);
+    color: var(--Line-tabNAV-txt_SEL);
 }
 
 .mz-tab-line .yui-navset .yui-content {
@@ -4152,100 +5588,766 @@ tab 分页
   }
 }
 
-/*
-=====================================
+/*=====================================
 底栏
-=====================================
-*/
-
+=====================================*/
+ 
 .page-tags a{
-padding: 0.2rem 0.2rem;
+    padding: 0.2rem 0.2rem;
     margin: 0 0.05rem;
 }
-
-/*
-==========================
-      讨论区帖子 / Forum
-===========================
-*/
-
-
-/* ------------------- 帖子 ----------------------- */
-
+ 
 .page-tags a:hover,
+.page-watch-options a:hover:before,
 #page-options-container  a:hover{  
- color: var(--sidebar-link-hoverTXT);
- background-color: var(--sidebar-link-hoverBG);
+ color: var(--SB-link_txt_HOV);
+ background-color: var(--SB-link_bg_HOV);
     text-decoration: none;
 }
 
-.thread-container .post .head {
-    background: var(--post-hdbg);
-    box-shadow: none;
-    border-radius: 0;
-    border: 1px solid var(--post-BDcolor);
-    margin: 0 -3px;  
+
+/*========================
+操作区
+========================*/
+
+/*------------------------
+按钮
+--------------------------*/
+
+/* 通常 */
+
+#action-area .btn:hover{
+   text-decoration: none;
+    cursor: pointer;
 }
 
-.thread-container .post .short {
-  background-color: var(--post-short);
-  border: 1px solid var(--post-BDcolor);
+/* 关闭 */
+
+a.action-area-close{
+    height: 2em;
+    margin-top: 0.5em;
+    align-content: center;
+    display: grid;
+    background: var(--ACT-close_bg);
+    border: 2px dotted var(--color-darker)
 }
 
-/* ------------------- 评论区顶部 ----------------------- */
-
-.forum-thread-box .description-block {
-    box-shadow: none;
-    border: 4px double var(--post-BDcolor-222);
-    background-color:var(--post-short);
+a.action-area-close:hover{
+  --ACT-close_bg: var(--color-darkest);
+ text-decoration: none;
+  border: 2px solid var(--color-darker);
 }
 
-.forum-category-box,
-.forum-thread-box{
+/* 勾选 */
+
+.checkbox * {
+    display: inline-flex;
+    align-items: center;
+}
+
+#action-area input[type=&#34;checkbox&#34;]{
+    margin-left: 1em;
+    background-color: transparent;
+     width: 1rem;
+    appearance: none;
+    cursor:  pointer;   
+}
+
+#action-area  input[type=&#34;checkbox&#34;]::before{
+    content: &#34;\f096&#34;;
+    font-family: fontawesome;
+    font-size: 150%;
+}
+
+#action-area input[type=&#34;checkbox&#34;]:checked::before{
+    content: &#34;\f046&#34;;
+}
+
+/*----------------------------------
+历史区（未完成）
+------------------------------------*/
+
+#history-form-1 .form tbody{
     display: flex;
-    flex-wrap: wrap;
-    flex-basis: 100%;
+    flex-wrap: wrap; 
 }
 
-.forum-category-box div,
-.forum-thread-box div{
-    flex-basis: 100%;
+#history-form-1 .form tbody td {
+    width: var(--HISTORY-form_td_width);
+    margin:var(--HISTORY-form_td_margin);
 }
 
-.description-block well{
-    order: 1;
+#history-form-1 .form tbody &gt; tr td:last-child{
+    display: inline-grid;
+    grid-template-columns: var(--HISTORY-form_columns);
+    grid-template-rows: auto auto;
+    grid-gap: 0.25em 0rem;
+    font-size: var(--HISTORY-btn_size);
+    align-items: center;
+    align-content: center;
+    width: max-content;
+    padding-right: 0
 }
 
-.forum-breadcrumbs{
-        order: 2;
+#history-form-1{
+  display: grid;
+  grid-template-areas:
+ &#39;left m11 right&#39; 
+ &#39;left m22 right&#39; 
+  &#39;left m33 right&#39;     
+ &#39;under under  under&#39;;
+      grid-template-columns:1fr auto 1fr;
+      grid-template-rows:auto auto auto auto;
 }
 
-.forum-category-box .new-post,
-.options{
-        order: 3;
+#history-form-1 .form {
+    grid-area: m11;
+    margin: 0;
+    max-width: max-content;
 }
 
-.forum-category-box .new-post{
-margin-top: -2rem;
+#history-form-1 .buttons{
+    position: relative;
+     grid-area: m22; 
+    text-align: right;
+    margin: -1.8rem 0 0 0;
+    padding: 0;
+    width: max-content;
+    justify-self: flex-end;
+    font-size: var(--HISTORY-update_size);
+ }
+
+
+#revision-list{
+    grid-area: under;
+    
+}
+
+#history-form-1 #h-perpage{
+    width: var(--HISTORY-perpage_width);
+}
+
+/*----------------------------------
+编辑区
+------------------------------------*/
+
+
+/*--------------- 代码按钮 ---------------------*/
+
+.wd-editor-toolbar-panel li.hseparator {
+display: none;
+}
+
+.wd-editor-toolbar-panel {
+   display: flex;
+    flex-wrap: wrap; 
+    align-items: center;
+    align-content: center;
+    margin: var(--EDIT-ui-panel_margin);
+}
+
+.wd-editor-toolbar-panel div {
+   flex-basis: 100%;
+   margin: 0.2rem 0;
+   height: auto;
+   display: flex;
+}
+
+.wd-editor-toolbar-panel div:nth-child(2) {
+    order: 3;
+}
+
+.wd-editor-toolbar-panel div:nth-child(1) {
+    order: 2;
+}
+
+.wd-editor-toolbar-panel div:nth-child(1):after {
+   content: &#39;\f096&#39;;
+   width: var( --EDIT-ui_weight);
+   display: inline-grid;
+   margin: var(--EDIT-ui-btn_margin);
+    justify-content :center;
+    align-items: center;
+}
+
+
+.wd-editor-toolbar-panel ul li {
+ margin: var(--EDIT-ui-btn_margin);
+}
+
+.wd-editor-toolbar-panel,
+.wd-editor-toolbar-panel a ,
+.wd-editor-toolbar-panel a:hover {
+        background-image:none;
+        font-family: var(--EDIT-ui_font);
+        letter-spacing: 1px;
+        text-decoration: none;
+        font-size: var(--EDIT-ui_size-11);
+}
+
+.wd-editor-toolbar-panel ul li ul li a,
+.wd-editor-toolbar-panel ul li a {
+     height: var(--EDIT-ui_height);
+     width: var(--EDIT-ui_weight);
+     display: inline-grid;
+     position: relative;
+     background-color: var(--EDIT-ui_bg);
+    text-align: center;   
+}
+
+.wd-editor-toolbar-panel a::before {
+    content: &#34;&#34;;
+   display: inline-grid; 
+    left: 0;
+    top: 0; 
+  height: var( --EDIT-ui_height);
+  width: var( --EDIT-ui_weight);
+    text-align: center;
+    line-height: 1.5em;
+    white-space: nowrap;
+    z-index: 5;
+    color:var(--EDIT-ui_color);
+    align-content: center;
+    justify-self: center;
+    align-self: center;
+}
+
+.wd-editor-toolbar-panel a:hover {
+    --EDIT-ui_color: var(--EDIT-ui_color_HOV);
+    outline:var(--EDIT-ui_outline);
+     -webkit-filter:brightness(90%);  
+    filter: brightness(90%);  
+    background-image: var(--hollow-image);
+ }
+
+/*---------- 引导 -----------*/
+
+.wd-editor-toolbar-panel a[class*=&#34;wiz&#34;]::after {
+    content:&#34;\f0d0&#34;;
+    font-size: var(--EDIT-ui_size-99);
+    justify-self:right;
+    align-self: flex-end;
+    opacity: 1;
+    color:var(--EDIT-ui_color);  
+    z-index: 6;
+    transition:  opacity 0.5s;
+    position: absolute;
+}
+
+.wd-editor-toolbar-panel a[class*=&#34;wiz&#34;]::before {
+     opacity:0.25 ;
+     -webkit-text-stroke: 1px rgba(50,50,50,0.4);
+        transition:  opacity 0.5s;
+}
+
+.wd-editor-toolbar-panel a[class*=&#34;wiz&#34;]:hover::before {
+     opacity:1 ;
+        transition:  opacity 0.25s;
+}
+
+.wd-editor-toolbar-panel a[class*=&#34;wiz&#34;]:hover::after {
+    opacity: 0.25;
+    transition:  opacity 0.25s;
+}
+
+/*---------- 次级框 -----------*/
+.wd-editor-toolbar-panel li li a {
+    --EDIT-ui_bg: var(--page-bg);
+    outline:var(--EDIT-ui_outline);
+    background-image: var(--hollow-image);
+}
+
+
+.wd-editor-toolbar-panel ul li ul:before {
+    content: &#39;▲&#39;;    
+    position: relative;
+    top:-1.3em;
+    left: 1em;
+    font-size: 0.65em;
+    width: 0;
+    height: 0;
+    display: block;
+    color: var(--EDIT-border_color); 
+}
+
+/*---------- 各项 -----------*/
+
+.wd-editor-toolbar-panel ul li ul a::before {
+    content: &#34;H&#34;;
+    font-size: var(--EDIT-ui_size-sub);
+    font-weight: 600;
+}
+
+.wd-editor-toolbar-panel a.weditor-h1::before{
+    content: &#34;H1&#34;;
+    font-size: var(--EDIT-ui_size-11);
+    font-weight: 600;
+}
+
+.wd-editor-toolbar-panel a.weditor-h2::before {
+    content: &#34;H2&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-h3::before {
+    content: &#34;H3&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-h4::before {
+    content: &#34;H4&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-h5::before {
+    content: &#34;H5&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-h6::before {
+    content: &#34;H6&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-bold::before {
+    content: &#34;\f032&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-italic::before {
+    content: &#34;\f033&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-underline::before {
+    content: &#34;\f0cd&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-strikethrough::before {
+    content: &#34;\f0cc&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-teletype::before {
+    content: &#34;\f035&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-quote::before {
+    content: &#34;\f10e&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-superscript::before {
+    content: &#34;\f12b&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-subscript::before {
+    content: &#34;\f12c&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-raw::before {
+    content: &#34;\f070&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-hr::before {
+    content: &#34;——&#34;;
+    font-weight: 900;
+}
+
+.wd-editor-toolbar-panel a.weditor-div::before {
+    content: &#34;div&#34;;
+    font-size: var(--EDIT-ui_size-33);
+   font-weight: 600;
+}
+
+.wd-editor-toolbar-panel a.weditor-clearfloat::before {
+    content: &#34;\f0ec&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-clearfloatleft::before {
+    content: &#34;\f177&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-clearfloatright::before {
+    content: &#34;\f178&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-table::before {
+    content: &#34;\f0ce&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-toc::before {
+    content: &#34;toc&#34;;
+    font-size: var(--EDIT-ui_size-33);
+    font-weight: 600;
+}
+
+.wd-editor-toolbar-panel a.weditor-code::before,
+.wd-editor-toolbar-panel a.weditor-codewiz::before  {
+    content: &#34;\003c\002f\003e&#34;;
+    font-size: var(--EDIT-ui_size-33);
+}
+
+.wd-editor-toolbar-panel a.weditor-uri::before,
+.wd-editor-toolbar-panel a.weditor-uriwiz::before {
+    content: &#34;\f0c6&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-pagelink::before,
+.wd-editor-toolbar-panel a.weditor-pagelinkwiz::before {
+    content: &#34;\f0c1&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-image::before,
+.wd-editor-toolbar-panel a.weditor-imagewiz::before {
+    content: &#34;\f03e&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-html::before {
+    content: &#34;\f1c9&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-numlist::before {
+    content: &#34;\f0cb&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-bullist::before {
+    content: &#34;\f0ca&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-incindent::before {
+    content: &#34;\f03c&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-decindent::before {
+    content: &#34;\f03b&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-deflist::before {
+    content: &#34;\f03a&#34;;
+}
+
+.wd-editor-toolbar-panel a.weditor-footnote::before {
+    content:&#34;\f0f6&#34;;
+    transform:  rotateX(180deg);
+    margin-top: 1px
+    
+}
+
+.wd-editor-toolbar-panel a.weditor-math::before {
+    content: &#34;√x&#34;;
+        font-size:  var(--EDIT-ui_size-22);
+        font-weight: 600;
+}
+
+.wd-editor-toolbar-panel a.weditor-mathinline::before {
+    content: &#34;x/2&#34;;
+    font-size:  var(--EDIT-ui_size-22);
+        font-weight: 600;
+}
+
+.wd-editor-toolbar-panel a.weditor-eqref::before {
+    content: &#34;Eq&#34;;
+    font-size:  var(--EDIT-ui_size-22);
+        font-weight: 600;
+}
+
+.wd-editor-toolbar-panel a.weditor-bib::before {
+    content: &#34;Bib&#34;;
+    font-size: var(--EDIT-ui_size-33);
+        font-weight: 600;
+}
+
+.wd-editor-toolbar-panel a.weditor-bibcite::before {
+    content: &#34;[n]&#34;;
+    font-size: var(--EDIT-ui_size-22);
+        font-weight: 600;
+}
+
+
+/*--------------- 编辑框 ---------------------*/
+
+#edit-page-form tbody {
+    width: 100%;
+}
+
+#edit-page-form .form {
+    width: 100%;
+    display: flex;
+}
+
+#edit-page-form  .form tr td:first-child{
+    vertical-align:  middle;
+    margin-bottom: 0.5rem;
+    padding: 0;
+    text-align: center;
+}
+
+ #edit-page-title,  
+ #edit-page-textarea{
+  max-width: var(--EDIT-table_width) !important;
+  width: var(--EDIT-table_width) !important;
+  }
+
+#edit-page-form *::selection,
+#edit-page-form *::-moz-selection {
+     color: white;
+    background:var(--color-darker);
+}
+
+#main-content textarea:focus,
+#main-content input.text:focus{
+    outline:var(--EDIT-ui_outline);
+    background-color: var(--EDIT-box_bg_Foc);
+}
+
+#main-content textarea,
+#main-content input.text {
+      border: 2px solid var(--EDIT-border_color);
+      background-color: var(--EDIT-box_bg);
+      background-image: var(--hollow-image);
+    -webkit-filter:brightness(95%);  
+    filter: brightness(95%);  
+    width: 100%;
+    font-family: var(--EDIT-box_font);
+}
+
+#edit-page-title,
+#edit-page-comments,
+#edit-page-textarea{    
+    line-height: 130%;
+    padding: 5px 5px;   
+    font-size: var(--EDIT-box_txt-size, 1.1rem);
+    letter-spacing:0.5px;
+}
+
+/* 编辑框下小物件 */
+.change-textarea-size {
+  padding:var(--EDIT-box-btn_padding, 0 2.5rem);
+}
+
+.edit-help-34{
+    display: var(--EDIT-help_display);
+    grid-template-areas: &#39;a b&#39;&#39;c d&#39;;
+    margin-top: 0.5em;
+    
+}
+
+.edit-help-34 a{
+    font-family: var(--EDIT-help_font);
+    letter-spacing: 0px;
+        color: var(--color-paleblue);
+        font-size: var(--EDIT-help_size, 0.9rem);
+    font-weight: 400;
+    letter-spacing:0.5px;
+    margin-right:var(--EDIT-help_right, 0.5em);
+}
+
+.edit-help-34 a:first-child{
+    grid-area: b;
+}
+
+.edit-help-34 a:last-child{
+    grid-area: d;
+}
+
+.edit-help-34 a:before{
+    content:&#34;\f002&#34;;
+    margin:0 0.2em 0 0.2em;
+}
+.edit-help-34 a:hover,
+.edit-help-34 a:hover:before{
+    text-decoration: none;
+        color: var(--color-red);
+}
+
+
+/* ---------- 编辑补充信息 ---------- */
+
+.edit-page-bottomtable{
+   width:var(--EDIT-table_width);
+}
+
+
+.edit-page-bottomtable tbody td{
+    line-height: 1.5rem;
+}
+
+.edit-page-bottomtable tbody tr {
+    display: inline-grid;
+    grid-gap: 0.5em 5%; 
+    grid-template-columns: var(--EDIT-bottomtable_columns, 35% 60%);
+    grid-template-rows: 50% 50%;
+    margin-top:0.5em;
+    align-items: center;
+    width: 100%;
+}
+
+
+/*------------------ 修复保存卡死 || Fixed the saving box by W Asriel ------------------------- */
+
+table.edit-page-bottomtable td {
+  padding: 0 !important;
+}
+
+
+
+table.edit-page-bottomtable td:last-child {
+   --lock-info_size:0.8rem;
+    border: 2px dashed var(--color-grey-darkest) !important;
+    background-color: var(--color-grey-pale) !important;
+    border: 2px dashed var(--color-grey-darkest);
+    width: 100%;
+    order: var(--EDIT-bottomtable_tip-order, 0);
+    padding: 0.3em 0.1em 0rem 0.5em !important;  
+}
+
+table.edit-page-bottomtable td div#lock-info {
+    font-family: &#34;Trebuchet MS&#34;;
+    font-size: 0;
+    background: none !important;
+    border: none !important;
+}
+
+body[class=&#34;wait&#34;] #odialog-shader-iframe,body[class=&#34;wait&#34;] #odialog-shader {
+    display:none!important
+}
+#odialog-container {
+    position:fixed!important;
+}
+body[class=&#34;wait&#34;] #odialog-container {
+    z-index:-1
+}
+body[class=&#34;wait&#34;] #odialog-container #owindow-1 {
+    display:none!important
+}
+body[class=&#34;wait&#34;] a[name=&#34;page-top&#34;][target]+div #main-content #action-area .edit-page-bottomtable td:last-child {
+    background-color:rgb(var(--very-light-gray-monochrome,200,200,200)) !important;;
+    border:2px solid rgb(var(--dark-gray-monochrome,0,0,0)) !important;
+}
+
+div#lock-info {
+    content:var(--lock-info222);
+    display:inline;
+    font-size:var(--lock-info_size);
+}
+
+div#lock-info::before {
+    content:var(--lock-info111);
+    display:inline;
+    font-size:var(--lock-info_size);
+    white-space:pre-wrap
+}
+div#lock-info&gt;strong {
+    font-size:var(--lock-info_size);
+}
+div#lock-info&gt;br {
+    display:none
+}
+div#lock-info::after {
+    content:var(--lock-info222);
+    display:inline;
+    font-size:var(--lock-info_size);
+}
+body[class=&#34;wait&#34;] a[name=&#34;page-top&#34;][target]+div #main-content #action-area div#lock-info::before {
+    content:var(--lock-info333);
+    display:inline;
+    font-size:var(--lock-info_size);
+    color:rgb(var(--gray-monochrome,33,33,33));
+    white-space:pre-wrap
+}
+
+body[class=&#34;wait&#34;] a[name=&#34;page-top&#34;][target]+div #main-content #action-area div#lock-info::after {
+    font-size:0
+}
+body[class=&#34;wait&#34;] a[name=&#34;page-top&#34;][target]+div #main-content #action-area div#lock-info&gt;strong {
+    font-size:0
+}
+body[class=&#34;wait&#34;] a[name=&#34;page-top&#34;][target]+div #main-content #action-area div#lock-info::after {
+    font-size:0
+}
+
+/* ---------- 编辑操作按钮 ---------- */
+.mz-btn,
+div.buttons input:not(.btn-sm) {
+  font-family: var(--EDIT-btn_font);
+    padding: 0.5rem;
+    color: var(--color-darkgrey);
+    border-radius:10px;
+    background:var(--color-light);
+    border: 2px double var(--color-dark);
+    margin:var(--EDIT-btn_margin, 0 0.6rem 0.5rem 0rem) ;
+}
+
+
+.mz-btn:hover,
+div.buttons input:not(.btn-sm):hover{
+    filter: brightness(95%);
+    background-image: var(--icon-noise); 
 
 }
 
-.new-post{
-         order: 5;
+/* ===============================
+页脚 
+================================*/
+
+
+#footer {
+ display: inline-grid !important;     
+ grid-template-areas: 
+     &#39;. left  right&#39;
+     &#39;. under  under&#39;;   
+ grid-template-columns: 1rem max-content auto 1rem;
+     font-size: 0;
+         width: 100%;
+     padding: 2px 0;
+     font-family:   &#34;Trebuchet MS&#34;, &#39;Nanum Gothic&#39;, var(--mono-font);     
 }
 
-.forum-category-box table,
-.thread-container{
-     order: 4;
+ #footer a{
+     font-size: var(--FOOT_size);
 }
 
-@media (max-width:767px) {
-.forum-thread-box .description-block  .statistics{
-        float:  revert;
-    }
+ #footer a[href=&#34;http://www.wikidot.com&#34;]{
+    grid-area: left;
+    width: max-content;
+     display: var(--FOOT-wiki_display, block);
 }
 
-/* ------------------- 最近发帖 ----------------------- */
+ #footer a[href=&#34;http://www.wikidot.com&#34;]:before{
+    content: &#34;Powered by &#34;;
+     color: var(--FOOT-line_cl);
+        
+}
+
+#footer .options :is(a:first-child, a:nth-child(2)) {
+display:var(--FOOT-wiki_display, inline); 
+}
+
+
+#footer .options {
+  grid-area:  var(--FOOT-options_area, right);
+    order: 2;
+    width: max-content;
+    text-align: center;
+    float: unset;
+    justify-self: right
+}
+
+#footer .options a:not(:last-child):after {
+    content: &#39;|&#39;;
+    margin: 0 0.5em;
+    color: var(--FOOT-line_cl);
+}
+
+#license-area{
+   background:var(--LICENSE_bg);
+   font-size:var(--LICENSE_size);  
+   color: var(--LICENSE_cl);
+}
+
+#license-area a{
+    word-break:  keep-all;
+    white-space:   pre-wrap;
+    font-size:var(--LICENSE-link_size)
+
+}
+
+
+/* ===============================
+最近发帖 
+================================*/
 
 .thread-container .post .long .head .title a {
   font-weight: bold;
@@ -4305,18 +6407,16 @@ padding-left: 0;
 
 .thread-container .post .long .head .info br + a + a:before {
    content: &#39;▷&#39;;
-    color:var(--post-BDcolor);
+    color:var(--POST_BDcolor);
    border-bottom: 1px solid transparent;
-    border-color: var(--post-hdbg);
+    border-color: var(--POST_hdbg);
     padding-right: 0.3rem;
 }
 
 
-/*
-=====================================
+/*=====================================
 其他小组件 / OTHER
-=====================================
-*/
+=====================================*/
 
 
 /* ----------- 辑录  ----------------*/
@@ -4400,6 +6500,137 @@ padding-left: 0;
 }
 }
 
+/*=====================================
+调整其他组件 Modify the comportments
+=====================================*/
+
+/* ----------------- Author Label  -----------------------*/
+
+#page-content .authorlink-wrapper {
+ --swatch-tertiary-color:50,50,50,0.8;
+  z-index: 0;
+  margin-top: var(--author-top-adjust, 0rem);  
+  margin-right: var(--author-right-adjust, 0.5em);
+}
+
+/* ----------------- Ayers&#39; info tab  -----------------------*/
+
+#main-content:has(.info-container) #page-title:before, 
+#main-content:has(.info-container) #page-title:after {
+    display: none   
+}
+
+.info-container {
+  top:-1rem;
+  position:relative;
+}
+
+/*=====================================
+外文站排版修复 fixed for other sites
+=====================================*/
+
+/* ---------- EN &amp; ES ---------- */
+.side-block.borradores + .side-block .menu-item:first-child,
+.side-block.resources + div + .side-block .menu-item:first-child{
+    display: inline-flex;
+    font-size: var(--link-main-page);
+    justify-content:  space-around;
+    width: 100%;
+    color: transparent;
+    margin: auto;
+    font-family:var(--page-tt-font);
+    align-content: center;
+    align-items: center;
+}
+
+.side-block.borradores + .side-block .menu-item:first-child a:before,
+.side-block.resources + div + .side-block .menu-item:first-child a:before{
+    display: inline-flex;
+    content:&#34;\f138&#34;;
+    font-family: FontAwesome;
+    align-items:center;
+    padding-right: 0.6rem;
+    font-size: 0.8em;
+    color:var(--SB-link_txt);
+}
+
+.side-block.borradores + .side-block .menu-item:first-child a:hover:before,
+.side-block.resources + div + .side-block .menu-item:first-child a:hover:before{
+    color:var(--SB-link_txt_HOV);
+}
+
+/* -------- KO ---------- */
+#side-bar:lang(ko) .menu-item :is(a[href=&#34;/&#34;], a[href=&#34;/&#34;] + div, a[href=&#34;/&#34;] ~ a ) {
+   font-size:var(--link-main-page);
+   align-self: baseline;
+}
+
+
+/* ---------- VN ---------- */
+#side-bar:lang(vi) .side-block a:is(.collapsible-block-link):before {
+    display: none;
+}
+
+/* ---------- INT ---------- */
+
+#content-wrap:lang(en){
+  --SEARCH_top_MOB:0rem;  
+  --ct_bg_open-menu-button:none; 
+  --ct_col_m_sidebar-bg:transprent;
+  --ct_brd_m_sidebar-right:transprent;
+  --ct_bg_sidebar-item-main:none;
+  --ct_bg_sidebar-item-default:none;
+  --ct_bg_sidebar-item-home:none;
+  --ct_bg_sidebar-collapse:none;
+  --ct_bg_sidebar-expand:none;
+  --ct_col_rate-primary:transparent;
+}
+
+ #side-bar .side-bar-container {
+  padding:0;
+  width: 100%;
+  overflow: unset;
+}
+
+#side-bar .side-bar-container .menu-item.home a{
+    font-family: var(--page-tt-font);
+}
+
+#side-bar .side-bar-container .hover {
+  color: var(--color-darkred);
+}
+
+#side-bar .side-bar-container .menu-item {
+    padding: 0;
+    margin: 0;
+}
+
+#side-bar .side-bar-container .menu-item p::before{
+    display: none;
+}
+
+#side-bar .side-bar-container  .collapsible-block-link::before{
+    display: unset;
+    color: var(--SB-fold_color);
+    margin:0;
+    margin-bottom: 2rem;
+}
+
+#side-bar .side-bar-container .scpnet-interwiki-frame{
+    min-height: 10rem;
+    width: auto;
+    max-width: auto;
+}
+
+.scpnet-interwiki-wrapper{
+    margin-left: 0;
+    margin:0 -0.5rem ;
+    width: auto;
+}
+
+.page-rate-widget-box:lang(en) span a{
+  --ct_col_rate-primary:var(--RATE-btn_color);
+}
 
 [[/code]]
 [!---------------------------
@@ -4487,7 +6718,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 
 + Usage
 
-This is a  sigma9 theme created by [[*user etinjat]], which is inspired by  [[[theme:newspaper | Newspaper Theme]]]  and [[*user hoah2333]]&#39;s [https://scp-wiki-cn.wikidot.com/semimonth-202108-02 Semimonth Theme]. And the magazine logo on sidebar is made by  [[*user Kcorena]].
+This is a sigma9 theme created by [[*user etinjat]], which is inspired by  [[[theme:newspaper | Newspaper Theme]]] and  [[*user hoah2333]]&#39;s [https://scp-wiki-cn.wikidot.com/semimonth-202108-02 old Semimonth Theme] (Now it looks [http://scp-wiki-cn.wikidot.com/semimonth-202112-01 better]). And the magazine logo on sidebar is made by  [[*user Kcorena]]. 
 
 +++* To use this theme, put the following syntax on any page:
 
@@ -4501,19 +6732,20 @@ This is a  sigma9 theme created by [[*user etinjat]], which is inspired by  
 @@[[include :scp-wiki:theme:magazine@@
  |collapsible-sidebar=@@---]@@ {{To use the collapsible sidebar.}}
 |content-width= {{Change the width of main content.}}
-|header-title= &#39;texts&#39; {{Change the big header title [[footnote]] It should be enclosed with &#39;single quotation marks&#39; [[/footnote]].}}
-|header-subtitle= &#39;texts&#39; {{Change the small header subtitle}}
-|mob-title= &#39;texts&#39; {{Change the header title when in narrow screen (like phone).}}
-|mob-subtitle= &#39;texts&#39; {{Header subtitle when in narrow screen.}}
-|logo-image=url(&#39;yourlink&#39;) {{Logo on header.}}
-|logo-image-mob=url(&#39;yourlink&#39;)  {{header Logo in narrow screen.}}
-|logo-sidebar=url(&#39;yourlink&#39;)  {{Logo on sidebar. }}
-|sidebar-content=&#39;texts&#39;  {{Text under the sidebar logo.}}
-|page-title= none   {{No page-title.}}
-|title-orn-content= &#39;★&#39; {{The ornament below the page title}}
-|title-orn-size= 1.5rem 
+|header-title= &#34;texts&#34; {{Change the big header title [[footnote]] It should be enclosed with &#34;quotation marks&#34; [[/footnote]].}}
+|header-subtitle= &#34;texts&#34; {{Change the small header subtitle}}
+|mob-title= &#34;texts&#34; {{Change the header title when in narrow screen //(like phones)//.}}
+|mob-subtitle= &#34;texts&#34; {{Header subtitle when in narrow screen.}}
+|logo-image=url(&#39;yourlink&#39;) {{Logo on header //(Hidden by default)//.}}
+|logo-image-mob=url(&#39;yourlink&#39;)  {{Header Logo in narrow screen //(Default to the Foundation logo)//.}}
+|logo-sidebar=url(&#39;yourlink&#39;)  {{Logo on sidebar //(Default to the magazine logo)//. }}
+|sidebar-content= &#34;texts&#34; {{Text under the sidebar logo.}}
+|page-title= none   {{Remove page-title.}}
+|title-underlines = none   {{Remove underlines of page-title.}}
+|title-orn-content= &#34;★&#34; {{The ornament below page-title}}
+|title-orn-size= 1.5rem [[footnote]]   It is equivalent to removing the ornament when you set 0.  [[/footnote]]
 |title-orn-color= #542429
-|title-orn-width= 2rem
+|title-orn-width= 2rem[[footnote]]  The width of the blank space behind the ornament.  [[/footnote]]
 @@]]@@
 [[/div]]
 
@@ -4522,7 +6754,8 @@ This is a  sigma9 theme created by [[*user etinjat]], which is inspired by  
 [[div class=&#34;blockquote no-sel&#34;]]
 @@[[module css]]@@
 #container {
-@@background: url(&#39;YOUR IMAGE LINK&#39;) center 0 repeat;@@
+@@--hollow-image:  url(&#39;YOUR IMAGE LINK&#39;);@@
+@@background: var(--hollow-image) center 0 repeat;@@
 }
 
 #content-wrap  #side-bar::before,
@@ -4561,7 +6794,6 @@ background-color: transparent ;
 ++++++* Sixth Title
 
 
-**Titles can be created by putting between one and six plus &#34;+&#34; at the start of the line.**
 
 
 [[/div]]
@@ -4591,7 +6823,7 @@ More information about your page.
 [[/div]]
 
 
- **bold** | //italic// | __underline__ | --strikethrough-- | {{teletype text}} ^^superscript^^,,subscript,,
+ **bold** | //italic// | __underline__ | --strikethrough-- | {{Mono text}} ^^superscript^^,,subscript,,
 
 
 
@@ -4617,7 +6849,9 @@ Body：[[span style=&#34;font-family:var(--page-font);&#34;]]Roboto Slab[[/span]
 
 Handwriting：[[span style=&#34;font-family:var(--handwriting-font);&#34;]]Yesteryear[[/span]]
 
-Teletype：{{Special Elite}}
+Mono：{{Courier New}}
+
+Teletype：[[span style=&#34;font-family:var(--teletype-font);&#34;]]Special Elite[[/span]]
 [[/div]]
 
 [[/collapsible]]
@@ -4634,7 +6868,6 @@ Teletype：{{Special Elite}}
 @@@@
 @@@@
 
-
 + Image block
 
 [[div class=&#34;mmposter-wrap&#34; ]]
@@ -4642,7 +6875,7 @@ Teletype：{{Special Elite}}
 
 
 [[include component:image-block
-name=https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO-magazine.svg
+name=https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_magazine.svg
 |caption= Standard Image Block
 |width=280px
 ]]
@@ -4681,7 +6914,7 @@ name=
 [[div style=&#34;display:flex;flex-wrap: wrap; justify-content:space-around; &#34;]]
 [[div class=&#34;mz-img-wrap&#34; ]]
 [[include component:image-block
-name=http://scpsandboxcn.wikidot.com/local--files/icon/IMG-vintage-dragon.png
+name=https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_magazine.svg
 |width=120px
 |caption=
 **Image**
@@ -4691,7 +6924,7 @@ class=&#34;mz-img-wrap&#34;
 
 [[div class=&#34;mz-img-wrap img-frame&#34; ]]
 [[include component:image-block
-name=http://scpsandboxcn.wikidot.com/local--files/icon/IMG-vintage-dragon.png
+name=https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_magazine.svg
 |width=120px
 |caption=
 **Image**
@@ -4702,7 +6935,7 @@ class=&#34;mz-img-wrap img-frame&#34;
 
 [[div class=&#34;mz-img-wrap img-b3d&#34; ]]
 [[include component:image-block
-name=http://scpsandboxcn.wikidot.com/local--files/icon/IMG-vintage-dragon.png
+name=https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_magazine.svg
 |width=120px
 |caption=
 **Image**
@@ -4711,10 +6944,9 @@ class=&#34;mz-img-wrap img-b3d&#34;
 [[/div]]
 
 
-
 [[div class=&#34;mz-img-wrap img-border&#34; ]]
 [[include component:image-block
-name=http://scpsandboxcn.wikidot.com/local--files/icon/IMG-vintage-dragon.png
+name=https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_magazine.svg
 |width=120px
 |caption=
 **Image**
@@ -4725,7 +6957,7 @@ class=&#34;mz-img-wrap img-border&#34;
 
 [[div class=&#34;mz-img-wrap img-border img-frame&#34; ]]
 [[include component:image-block
-name=http://scpsandboxcn.wikidot.com/local--files/icon/IMG-vintage-dragon.png
+name=https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_magazine.svg
 |width=120px
 |caption=
 **Image**
@@ -4799,7 +7031,7 @@ A horizontal rule can be created with 5 hyphens &#34;-----&#34; and extends acro
 
 
 [[div class=&#34;mz-hr&#34; ]]
-[[image https://scp-wiki.wikidot.com/local--files/theme:magazine/ICON-eagle.svg width=&#34;5rem&#34; class=&#34;mz-mirror&#34;]]
+[[image https://scp-wiki.wikidot.com/local--files/theme:magazine/ICON_eagle.svg width=&#34;5rem&#34; class=&#34;mz-mirror&#34;]]
 
 ------
 
@@ -4880,17 +7112,15 @@ Woohoo
 Modules  can be used for a variety of things. Like this:
 
 [[div class=&#34;blockquote&#34;]]
-@@[[module css]]@@
-#page-title {
-    display: none;
-}
-@@[[/module]]@@
+@@[[include :scp-wiki:theme:magazine@@
+|page-title= none 
+@@]]@@
 [[/div]]
 
 [[div class=&#34;blockquote&#34;]]
 @@[[div class=&#34;pgtt-module  mz-hr&#34; ]]@@
 @@[[module ListPages  category=&#34;*&#34; limit=&#34;1&#34; fullname=&#34;=&#34;]]@@
-%%title%%
+%__#__%title%%
 @@[[/module]]@@
 @@{{,,#,,}}@@
 @@------@@
@@ -4915,7 +7145,7 @@ Move your mouse over the picture to see the hovertip box.
 @@[[module ListPages  category=&#34;*&#34; limit=&#34;1&#34; fullname=&#34;=&#34;]]@@
 @@[[div  class=&#34;mz-log-list&#34;]]@@
 @@[[div class=&#34;mz-hr&#34; ]]@@
-@@%%title%%@@ 
+%__#__%title%%
 @@{{,,#,,}}@@
 @@------@@
 @@[[div class=&#34;mz-log-trigger&#34;]]@@
@@ -4923,7 +7153,7 @@ Move your mouse over the picture to see the hovertip box.
 @@[[div class=&#34;mz-log-hovertip&#34;]]@@
 @@**Author：**@@%__#__%created_by%%
 @@**Date：**@@%__#__%created_at|%m-%d-%Y%%
-@@**Tags：**@@%__#__%tags%%
+@@**Tags：**@@% %tags%%
 @@[[/div]]@@
 @@[[/div]]@@
 @@[[div class=&#34;mz-log-content&#34;]]@@
@@ -5003,12 +7233,12 @@ mz-board
 [[div class=&#34;mmposter-wrap mmposter-blockquote&#34; ]]
 [[div class=&#34;mmposter-cell&#34; ]]
 
-[[div class=&#34;mz-cover&#34; style=&#34;font-family:var(--header-tt-font);&#34;]]
-##542429|@@[[div class=&#34;mz-cover&#34;]]@@##
-
-mz-cover
-
+[[div class=&#34;mz-cover&#34;]]
+@@[[div class=&#34;mz-cover&#34;]]@@
+normal text
+{{@@{{teletype text}}@@}}
 @@[[/div]]@@
+
 [[/div]]
 [[/div]]
 [[div class=&#34;mmposter-cell&#34;]]
@@ -5061,11 +7291,11 @@ text
 
 [[div class=&#34;mz-img-wrap &#34; ]]
 [[include component:image-block
-name=http://scpsandboxcn.wikidot.com/local--files/icon/IMG-vintage-dragon.png
-|width=100px
+name=http://scpsandboxcn.wdfiles.com/local--files/icon/ICON_angry-eagle.svg
+|width=200px
 |align=left
 |caption=
-**Here Be Dragon**
+**NO OIL HERE**
 ]]
 [[/div]]
  Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae suscipit ante, quis interdum arcu. Nam efficitur magna nec nulla luctus, eu faucibus magna elementum. Duis tempor odio in magna efficitur, sit amet porttitor purus dapibus. Sed interdum elit vel enim dapibus, quis gravida mi dapibus. Donec tincidunt commodo tellus vitae malesuada. Mauris a volutpat ante, quis tempus ex. Nullam nisl neque, sollicitudin sed congue at, iaculis ullamcorper libero. Praesent egestas urna ut ante accumsan, et posuere lacus bibendum. Nunc sit amet dictum nisi, ac fermentum arcu. Nam eu pretium nibh. Vestibulum efficitur, elit non lacinia semper, turpis nunc cursus orci, vel accumsan dolor felis ac risus.
@@ -5091,8 +7321,312 @@ Proin tellus ipsum, luctus vitae orci sit amet, luctus posuere nisl. In sit amet
 [[/div]]
 [[/div]]
 
+
 @@@@
 @@@@
+
+++ More div blocks
+
+[[div class=&#34;clip-wrap&#34;]]
+[[div class=&#34;clip-body&#34;]]
+++++* [/theme:newspaper Clip]
+@@[[div class=&#34;clip-wrap&#34;]]@@
+@@[[div class=&#34;clip-body&#34;]]@@
+content
+@@[[/div]]@@
+@@[[/div]]@@
+[[/div]]
+[[/div]]
+
+
+[[div class=&#34;flex-wrap&#34;]]
+[[div class=&#34;flex-wrap&#34;]]
+[[div class=&#34;clip-wrap&#34;]]
+[[div class=&#34;clip-body&#34;]]
+[[=image http://backroomssandboxcn.wikidot.com/local--files/img/PHO_ravine-gully.jpg width=&#34;300px&#34;]]
+content
+[[/div]]
+[[/div]]
+
+[[div class=&#34;clip-wrap&#34;]]
+[[div class=&#34;clip-img&#34;]]
+[[image http://backroomssandboxcn.wikidot.com/local--files/img/PHO_ravine-gully.jpg  width=&#34;300px&#34;]]
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[/div]]
+
++++++* Code
+
+[[div class=&#34;code&#34;]]
+@@[[div class=&#34;clip-wrap&#34;]]@@
+@@[[div class=&#34;clip-body&#34;]]@@
+@@[[image YOUR-IMAGE-LINK]]@@
+content
+@@[[/div]]@@
+@@[[/div]]@@
+
+@@[[div class=&#34;clip-wrap&#34;]]@@
+@@[[div class=&#34;clip-img&#34;]]@@
+@@[[image YOUR-IMAGE-LINK]]@@
+@@[[/div]]@@
+@@[[/div]]@@
+[[/div]]
+
+@@@@
+
+------
+
+@@@@
+
+[[div class=&#34;flex-wrap&#34;]]
+[[div class=&#34;note-page&#34;]]
+&gt; [/scp-style-resource#toc7 Note paper]
+@@[[div class=&#34;note-page&#34;]]@@
+content
+@@[[/div]]@@
+[[/div]]
+
+
+[[div class=&#34;mz-note&#34;]]
+&gt; [https://scp-wiki-cn.wikidot.com/component:note-template#u-ch3 Note tip]
+@@[[div class=&#34;mz-note&#34;]]@@
+@@[[/div]]@@
+
+------
+
+Left Dogear:
+
+@@[[div class=&#34;mz-note note-left&#34;]]@@
+@@[[/div]]@@
+
+------
+
+Swap the background color of note:
+
+@@[[div class=&#34;mz-note&#34; style=&#34;--tip-color:blue&#34;]]@@
+@@[[/div]]@@
+
+[[/div]]
+[[/div]]
+
+------
+
+++ Dialogues
+
+[[div class=&#34;mz-talking-wrap pc-width&#34; style=&#34;width:60%;margin: 0 auto&#34;]]
+[[div class=&#34;talking-left talkimg-below&#34; ]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box&#34;]]
+Mabe you want a talk.
+[[/div]]
+[[/div]]
+
+[[div class=&#34;talking-right talkimg-below&#34; ]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box talkbox-round  talkbox-dark&#34;]]
+See the folow to create a sheet of speech bubbles.
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;flex-wrap&#34;]]
+[[div class=&#34;blockquote no-sel&#34; style=&#34;margin: 0 auto;&#34;]]
+++* Code
+
+@@[[div class=&#34;mz-talking-wrap&#34;]]@@ {{The Beginning-block}}
+@@[[div class=&#34;talking-left talkimg-below&#34; ]]@@{{The Dialog-block}}
+@@[[div class=&#34;talking-img&#34;]]@@ {{The Image-block}}
+@@[[/div]]@@
+@@[[div class=&#34;talking-box&#34;]]@@{{The Text-block}}
+**Left**
+@@[[/div]]@@
+@@[[/div]]@@
+
+@@[[div class=&#34;talking-right talkimg-below&#34; ]]@@
+@@[[div class=&#34;talking-img&#34;]]@@
+@@[[/div]]@@
+@@[[div class=&#34;talking-box&#34;]]@@
+**Right**
+@@[[/div]]@@
+@@[[/div]]@@
+
+@@[[/div]]@@
+[[/div]]
+
+[[div]]
+++* Intro
+Maybe the speech bubbles sheet is too broad to display a well visual effect on the wide screen (like PC), so you can add the coda  __//style=&#34;width:80%;margin: 0 auto&#34;//__ at the beginning-block to narrow the whole sheet. Meanwhile, add the classname __//pc-width//__ to make it restore 100% width when on narrow screen (like phone).
+
+[[div class=&#34;blockquote&#34; style=&#34;margin: 0 auto;&#34;]]
+@@[[div class=&#34;mz-talking-wrap pc-width&#34;  style=&#34;width:80%;margin: 0 auto&#34;]]@@
+[[/div]]
+
+On narrow screens, the picture in the image-block are hidden to leave space for text.  If you want to hide the picture in wide screen, add the classname __//no-image//__ in the image-block. Like this: 
+
+[[div class=&#34;blockquote&#34;]]
+ @@[[div class=&#34;talking-img no-image&#34;]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+
+@@@@
+@@@@
+
+[[div class=&#34;mz-talking-wrap pc-width&#34;  style=&#34;width:80%;margin: 0 auto&#34;]]
+
+[[div class=&#34;talking-left talkimg-below&#34; ]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box&#34;]]
+**Left dialog-block：**
+@@@@
+@@@@
+[[div class=&#34;blockquote&#34; style=&#34;margin: 0 auto;&#34;]]
+@@[[div class=&#34;talking-left talkimg-below&#34; ]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+
+[[div class=&#34;talking-right talkimg-below&#34; ]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box&#34;]]
+**Right dialog-block：**
+@@@@
+@@@@
+[[div class=&#34;blockquote&#34; style=&#34;margin: 0 auto;&#34;]]
+@@[[div class=&#34;talking-right talkimg-below&#34; ]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+
+[[div class=&#34;talking-left talkimg-upper&#34; ]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box talkbox-lefttop&#34;]]
+
+To place the dialog-block below the picture, follow this: 
+
+1. Fill in the classname of dialog-block with __//talkimg-upper//__ to modify the picture position.
+@@@@
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-left talkimg-upper&#34; ]]@@
+[[/div]]
+2. Fill in the classname of text-block with __//talkbox-lefttop / talkbox-righttopr//__ to modify the position of speech triangle of dialog-block.
+@@@@
+@@@@
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-box talkbox-lefttop&#34;]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;talking-left&#34; ]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box talkbox-lefttop talkbox-inby&#34;]]
+To place the picture in the center of image-block,  do not fill in the classname of dialog-block with anything except __//talking-left / talking-right//__ and add __//talkbox-inby//__ into text-block.
+
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-box talkbox-lefttop  talkbox-inby&#34;]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+
+[[div class=&#34;talking-right talkimg-below&#34; style=&#34;--tk-img-right:url(http://scpsandboxcn.wikidot.com/local--files/icon/IMG-goat.png)&#34;]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box&#34;]]
+To swap a new picture, need to fill in __//@@--tk-img-left@@//__ or __//@@--tk-img-right@@//__ to the style of text-block according to its direction.
+
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-right&#34; style=&#34;--tk-img-right:url(IMAGE_LINK)&#34;]]@@
+[[/div]]
+
+If you fill both codes in the beginning-block, the left and right pictures in the whole sheet will be converted. 
+
+[[div class=&#34;blockquote&#34;]]
+ @@[[div class=&#34;mz-talking-wrap&#34; style=&#34;--tk-img-left:url(IMAGE_LINK); --tk-img-right:url(IMAGE_LINK);&#34; ]]@@
+[[/div]]
+
+[[/div]]
+[[/div]]
+
+
+[[div class=&#34;talking-left&#34; style=&#34;--tk-img-left:url(http://scpsandboxcn.wdfiles.com/local--files/icon/ICON_angry-eagle.svg)&#34;]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box talkbox-inby&#34; style=&#34;--shadow-line:green;--tk-box-bg:skyblue;&#34;]]
+
+To change the colors of  text-block, need to full __//@@--shadow-line@@//__ and __//@@--tk-box-bg@@//__ within its style definition.
+
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-box talkbox-lefttop  talkbox-inby &#34; style=&#34;--shadow-line:green;--tk-box-bg:skyblue;color:darkred&#34;]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+
+[[div class=&#34;talking-right talkimg-below&#34;]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box talkbox-round talkbox-dark&#34;]]
+Full in the classname of text-block with __//talkbox-round//__ to change its border to round; Full with __//talkbox-dark//__ to make a dark style.
+
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-box talkbox-round  talkbox-dark&#34;]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;talking-right talkimg-below&#34;]]
+[[div class=&#34;talking-img no-image&#34;]]
+[[/div]]
+[[div class=&#34;talking-box talkbox-doubleline talkbox-righttop&#34;]]
+Full with __//talkbox-doubleline//__ to change its border to doubleline.
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-box talkbox-doubleline&#34;]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+
+[[div class=&#34;talking-left talkimg-below&#34;]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box talkbox-bubles&#34;]]
+Full with __//talkbox-bubles//__ to change the speech triangle to two bubles (default to square).
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-box talkbox-bubles&#34;]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;talking-left talkimg-below&#34;]]
+[[div class=&#34;talking-img&#34;]]
+[[/div]]
+[[div class=&#34;talking-box talkbox-round talkbox-bubles &#34;]]
+Add the __//talkbox-round//__ to make them round).
+[[div class=&#34;blockquote&#34;]]
+@@[[div class=&#34;talking-box talkbox-round talkbox-bubles&#34;]]@@
+[[/div]]
+[[/div]]
+[[/div]]
+
+
+[[/div]]
+@@@@
+@@@@
+
+
 
 + TABs
 
@@ -5276,7 +7810,6 @@ vvvvvvvvvvv
 @@@@
 
 
-
 [[div class=&#34;mz-tt&#34;]]
 + Horizontally center  title 
 ○  Type A
@@ -5291,7 +7824,7 @@ vvvvvvvvvvv
 [[div class=&#34;mz-tt222&#34;]]
 +*  Type B
 [[/div]]
-
+= ○ text
 
 [[div class=&#34;no-sel blockquote&#34;]]
 @@[[div class=&#34;mz-tt222&#34;]]@@
@@ -5299,8 +7832,39 @@ vvvvvvvvvvv
 @@[[/div]]@@
 [[/div]]
 
+[[div class=&#34;mz-tt333&#34;]]
++*  Type C
+[[/div]]
+
+[[div class=&#34;no-sel blockquote&#34;]]
+@@[[div class=&#34;mz-tt333&#34;]]@@
+@@+*  Type C@@  
+@@[[/div]]@@
+
+{{Or just horizontal line:}}
+
+@@[[div class=&#34;mz-tt333&#34;]]@@
+@@[[/div]]@@
+[[/div]]
+
+[[div class=&#34;meta-title&#34;]]
+Meta Title 
+[[/div]]
+
+[[div class=&#34;no-sel blockquote&#34;]]
+@@[[div class=&#34;meta-title&#34;]]@@
+Meta Title 
+@@[[/div]]@@
+
+{{Or just horizontal line:}}
+
+@@[[div class=&#34;meta-title&#34;]]@@
+@@[[/div]]@@
+[[/div]]
+
 @@@@
 @@@@
+
 
 [[div  class=&#34;mz-tt tt-box&#34;]]
 + Pseudo Blacklight box
@@ -5322,20 +7886,30 @@ texts
 [[div class=&#34;no-sel blockquote&#34;]]
 
 @@[[module CSS]]@@
-@@--ttbox-h1BDR-color: #333;@@ {{Color of the title box&#39;s border}}
-@@--ttbox-boxBDR-color: #333;@@ {{Color of the content box&#39;s border}}
-@@--ttbox-bevel-color: #333;@@ {{Color of the  title box&#39;s bevel}}
+:root{
+@@--ttbox_h1BDR-color: #333;@@ {{Color of the title box&#39;s border}}
+@@--ttbox_boxBDR-color: #333;@@ {{Color of the content box&#39;s border}}
+@@--ttbox_bevel-color: #333;@@ {{Color of the  title box&#39;s bevel}}
 
 
-@@--ttbox-h1-bg: #333;@@ {{Background color of title}}
-@@--ttbox-h1-color: fff;@@ {{Color of title}}
-
+@@--ttbox_h1-bg: #333;@@ {{Background color of title}}
+@@--ttbox_h1-color: fff;@@ {{Color of title}}
+}
 
 @@[[/module]]@@
-
 [[/div]]
 
+@@@@
+@@@@
+[[div style=&#34;height: 0;--ttbox_h1BDR-color:#333;--ttbox_before-color:#888;--ttbox_h1-bg: #000;--ttbox_h1-color: #fff;&#34;]]
++*  Individual title
+[[/div]]
 
+[[div class=&#34;no-sel blockquote&#34;]]
+@@[[div style=&#34;height: 0;--ttbox_h1BDR-color:#333;--ttbox_before-color:#888;--ttbox_h1-bg: #000;--ttbox_h1-color: #fff;&#34;]]@@
+@@+*  Individual title@@
+@@[[/div]]@@
+[[/div]]
 
 [[/div]]
 
@@ -5582,10 +8156,23 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
  display: none
 }
 
-@media (max-width: 500px) {
-.mob-hid{
- display:none;
+
+.flex-wrap{
+    display: flex;
+    justify-content: space-around;    
 }
+
+.flex-wrap div{
+     margin: 0 0.5rem;
+    width: 100%;
+}
+
+
+@media (max-width: 500px) {
+    .flex-wrap{
+flex-wrap:wrap;        
+    }
+    
   .mmposter-semi  .mmposter-cell,
 
     .mmposter-cell{
@@ -5623,6 +8210,8 @@ content:&#34; ←  &#34;;
         padding:0 0.2rem 0 0rem;
 
 }
+
+
 
 /*
 -----------------------------
@@ -5727,13 +8316,11 @@ ccccccccccccccccccccccccc
 
 [!--========= 源代码 / SOURCE =============--]
 [[module CSS]]
-/*
-=====================================
+/*=====================================
 Magazine theme - 00000000
 ------------------------------
 Customiz
-=====================================
-*/
+=====================================*/
 
 
 @import url(https://scp-wiki.wikidot.com/theme:magazine/code/1);
@@ -5746,7 +8333,7 @@ div#header h1 a::before {
     content:{$header-title};
 }
 
-#header h2::before {
+div#header h2::before {
    content: {$header-subtitle};
 }
 
@@ -5756,13 +8343,13 @@ div#header h1 a::before {
 
 
 @media (max-width: 767px) {
-  div#header h1 a::before {
+ div#header h1 a::before {
     content:{$header-title};
     content:{$pad-title};
    }
 
-   div#header h2::before {
-    content:{$header-title};
+  div#header h2::before {
+    content:{$header-subtitle};
     content:{$pad-subtitle};
    }
 
@@ -5773,7 +8360,7 @@ div#header h1 a::before {
 }
 
 @media (max-width: 500px) {
-   div#header h1 a::before {
+  div#header h1 a::before {
     content:{$header-title};
     content:{$pad-title};
     content:{$mob-title};
@@ -5794,67 +8381,70 @@ div#header h1 a::before {
 
 #side-bar:before {
     background-image:{$logo-sidebar};
-}
-
-#side-bar div.side-block:first-child:before{
     content:{$sidebar-content};
 }
 
+#page-title{
+   display:{$page-title};
+}
 
-#page-title::before {
+#page-title::after{
     content:{$title-orn-content};
     font-size:{$title-orn-size};
+    line-height:calc( {$title-orn-size} * 0.7);
     width: {$title-orn-width};
     color:{$title-orn-color};
 }
 
+#page-title:before,
+#page-title:after{
+   display:{$title-underlines};
+}
+
 [[/module]]
+[[div style=&#34;display:none&#34;]]
 [[include :scp-wiki:component:interwiki-style
 |priority=1
 |type=sidebar
 |theme=https://scp-wiki.wdfiles.com/local--code/theme%3Amagazine/2
 ]]
+[[/div]]
 [!---=============================---]
 
 [!--========= 折叠侧边栏 / Collapsible sidebar =============--]
 [!------------------------------------------------{$collapsible-sidebar}
 [[include :scp-wiki:component:collapsible-sidebar]]
 [[module CSS]]
-/*
-=====================================
+/*=====================================
 Magazine Theme
 --------------
 Collapsible Sidebar Source
-=====================================
-*/
+=====================================*/
 
 :root{  
 --body-width-on-desktop:60rem;
---sidebar-topBox-left:3.2rem;   
-    --sidebar-bg-pc:var(--page-bg);
-}
-
-#main-content{
-    margin-top: 0em;
+--SB-topbox_left:3.2rem;   
+    --SB-bg_PC:var(--page-bg);
 }
 
 #content-wrap{
      margin-left:0;
 }
 
-#main-content::after {
-filter: sepia(50%) hue-rotate(150deg) saturate(150%);
+#content-wrap::after {
+display: none;
 }
 
 #main-content {
     padding: 0;
+    padding-top: var(--main-top);
     margin: 0 auto;
     left: 0;
     right: 0;
 }
 
-#content-wrap::after {
-display: none;
+#main-content::after {
+filter: sepia(50%) hue-rotate(150deg) saturate(150%);
 }
 
 #side-bar{
@@ -5863,8 +8453,11 @@ display: none;
   height: 100%;
 }
 
+#page-content {
+            margin: auto;
+}
 
- #side-bar{
+#side-bar{
      margin-left:0;
      margin: 0;
      position: fixed;
@@ -5887,18 +8480,33 @@ display: none;
 div#extra-div-1 {
     z-index: 9;
 }
-
-
 [[/module]]
+[!---============= 自定义网页背景图 ================---]
+[[iftags [[#ifexpr {$my-background} == (true) | - ]]]]
+[[module CSS]]
+/*===================================
+Magazine Theme
+--------------
+Custom page background
+=====================================*/
+#container {
+--hollow-image: {$page-background};
+background: var(--hollow-image) center 0 repeat;
+}
 
-[!---=============================---]</textarea></pre>
+#content-wrap #side-bar::before,
+#content-wrap #side-bar {
+background-color: transparent ;
+}
+[[/module]]
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.581664.</em>
+    <em>Last updated 2023-07-15 21:44:41.016448.</em>
   
 </div>
 </body>

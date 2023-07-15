@@ -37,6 +37,10 @@
           <pre><code>.colors-container .colors .color:first-child { color: rgb(var(--darkColor)); }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aisolated-terminal/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -52,10 +56,6 @@
       
         <li>
           <pre><code>font-family: &#39;profontwindowsregular&#39;, monospace;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -260,6 +260,16 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 [[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 
 [[&gt;]]
 **Rating:**
@@ -468,133 +478,141 @@ The body font is Terminus.
 @@ @@
 
 +* Source Code
-[[/iftags]]
 
-
-[[include :scp-wiki:component:toggle-sidebar-bhl]]
-[[include :scp-wiki:component:centered-header-bhl]]
-
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
 [[collapsible show=&#34;+ Show&#34; hide=&#34;- Hide&#34;]]
-[[module CSS show=&#34;true&#34;]]
-
+[[code type=&#34;css&#34;]]
 @import url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:isolated-terminal/terminus.css&#39;);
 @import url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:isolated-terminal/profontwindows.css&#39;);
 @import url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:isolated-terminal/vga8.css&#39;);
 
 
 :root {
-     /* S-CSS-P Integration */
-     /* If you&#39;re making a new CSS theme, please include the following three variables at minimum. */
-     --theme-base: &#34;black-highlighter&#34;;
-     /* must be either &#34;black-highlighter&#34; or &#34;sigma9&#34; */
-     --theme-id: &#34;isolated-terminal&#34;;
-     /* set this to the URL of your theme&#39;s page - eg for &#34;component:ar-theme&#34;, set it to &#34;ar-theme&#34; */
-     --theme-name: &#34;Isolated Terminal Theme&#34;;
-     /* set this to your theme&#39;s full name */
+    /* S-CSS-P Integration */
+    /* If you&#39;re making a new CSS theme, please include the following three variables at minimum. */
+    --theme-base: &#34;black-highlighter&#34;;
+    /* must be either &#34;black-highlighter&#34; or &#34;sigma9&#34; */
+    --theme-id: &#34;isolated-terminal&#34;;
+    /* set this to the URL of your theme&#39;s page - eg for &#34;component:ar-theme&#34;, set it to &#34;ar-theme&#34; */
+    --theme-name: &#34;Isolated Terminal Theme&#34;;
+    /* set this to your theme&#39;s full name */
 
-     /* header measurements */
-     --header-height-on-desktop: 12.4rem;
-     --header-height-on-mobile: 12rem;
-     --header-h1-font-size: calc(var(--base-font-size) * 3);
+    /* header measurements */
+    --header-height-on-desktop: 12.4rem;
+    --header-height-on-mobile: 12rem;
+    --header-h1-font-size: calc(var(--base-font-size) * 3);
 
-     /* Typefaces */
-     --body-font: &#39;terminus_ttfmedium&#39;, sans-serif;
-     --header-font: &#39;mxplus_ibm_vga_8x16regular&#39;, sans-serif;
-     --title-font: &#39;mxplus_ibm_vga_8x16regular&#39;, sans-serif;
-     --mono-font: &#39;profontwindowsregular&#39;, monospace;
-     --UI-font: &#39;profontwindowsregular&#39;, monospace;
-     --base-font-size: 1.1rem;
+    /* Typefaces */
+    --body-font: &#39;terminus_ttfmedium&#39;, sans-serif;
+    --header-font: &#39;mxplus_ibm_vga_8x16regular&#39;, sans-serif;
+    --title-font: &#39;mxplus_ibm_vga_8x16regular&#39;, sans-serif;
+    --mono-font: &#39;profontwindowsregular&#39;, monospace;
+    --UI-font: &#39;profontwindowsregular&#39;, monospace;
+    --base-font-size: 1.1rem;
 
-     /* null logo */
-     --logo-image: none;
+    /* null logo */
+    --logo-image: none;
 
-     /* change title */
-     --header-title: &#34;SCP FOUNDATION&#34;;
+    /* change title */
+    --header-title: &#34;SCP FOUNDATION&#34;;
 
-     /* Header Gradients */
-     --diagonal-stripes: initial;
-
-
-/*----*/
-
-  --accentColor: 246,196,3;
-  --darkColor: 40,26,8;
+    /* Header Gradients */
+    --diagonal-stripes: initial;
 
 
-  --bright-accent: var(--accentColor);
-  --dark-accent: var(--accentColor);
-  --pale-accent: var(--accentColor);
-  --medium-accent: var(--accentColor);
+    /*----*/
 
-  --black-monochrome: var(--accentColor);
-  --dark-gray-monochrome: var(--darkColor);
-  --gray-monochrome: var(--darkColor);
-  --light-pale-gray-monochrome: var(--darkColor);
-  --pale-gray-monochrome: var(--accentColor);
-  --very-light-gray-monochrome: var(--darkColor);
-  --white-monochrome: var(--darkColor);
+    --accentColor: 246, 196, 3;
+    --darkColor: 40, 26, 8;
 
-  --rating-module-bg-color: var(--pale-gray-monochrome);
-  --rating-module-button-color: var(--white-monochrome);
-  --rating-module-button-credit-color: var(--white-monochrome);
-  --rating-module-text-color: var(--white-monochrome);
-  --rating-module-button-cancel-color: var(--gray-monochrome);
-  --rating-module-text-hover-color: var(--pale-gray-monochrome);
 
-  --swatch-headerh1-color: var(--black-monochrome);
+    --bright-accent: var(--accentColor);
+    --dark-accent: var(--accentColor);
+    --pale-accent: var(--accentColor);
+    --medium-accent: var(--accentColor);
 
-  --swatch-menubg-medium-color: var(--bright-accent);
-  --swatch-menubg-light-color: var(--gray-monochrome);
-  --swatch-menutxt-light-color: var(--black-monochrome);
-  --swatch-menubg-medium-dark-color: var(--black-monochrome);
+    --black-monochrome: var(--accentColor);
+    --dark-gray-monochrome: var(--darkColor);
+    --gray-monochrome: var(--darkColor);
+    --light-pale-gray-monochrome: var(--darkColor);
+    --pale-gray-monochrome: var(--accentColor);
+    --very-light-gray-monochrome: var(--darkColor);
+    --white-monochrome: var(--darkColor);
 
-  --swatch-primary-darker: var(--bright-accent);
-  --swatch-primary-darkest: var(--pale-gray-monochrome);
-  --swatch-text-secondary-color: var(--white-monochrome);
-  --swatch-text-light: var(--bright-accent);
-  --swatch-topmenu-bg-color: var(--bright-accent);
+    --rating-module-bg-color: var(--pale-gray-monochrome);
+    --rating-module-button-color: var(--white-monochrome);
+    --rating-module-button-credit-color: var(--white-monochrome);
+    --rating-module-text-color: var(--white-monochrome);
+    --rating-module-button-cancel-color: var(--gray-monochrome);
+    --rating-module-text-hover-color: var(--pale-gray-monochrome);
 
-  --gradient-header: none;
-  --gradient-background: rgb(var( --gray-monochrome));
+    --swatch-headerh1-color: var(--black-monochrome);
 
-  /* Desktop Sidebar button */
-  --toggle-button-bg: rgb(var(--swatch-menubg-light-color));
-  --toggle-border-width: 0;
-  --toggle-icon-color: rgb(var(--swatch-primary-darkest));
-  --toggle-roundness: 0;
+    --swatch-menubg-medium-color: var(--bright-accent);
+    --swatch-menubg-light-color: var(--gray-monochrome);
+    --swatch-menutxt-light-color: var(--black-monochrome);
+    --swatch-menubg-medium-dark-color: var(--black-monochrome);
+
+    --swatch-primary-darker: var(--bright-accent);
+    --swatch-primary-darkest: var(--pale-gray-monochrome);
+    --swatch-text-secondary-color: var(--white-monochrome);
+    --swatch-text-light: var(--bright-accent);
+    --swatch-topmenu-bg-color: var(--bright-accent);
+
+    --gradient-header: none;
+    --gradient-background: rgb(var(--gray-monochrome));
+
+    /* Desktop Sidebar button */
+    --toggle-button-bg: rgb(var(--swatch-menubg-light-color));
+    --toggle-border-width: 0;
+    --toggle-icon-color: rgb(var(--swatch-primary-darkest));
+    --toggle-roundness: 0;
 }
 
 
 /* ------------------------------- */
 
 /* header title adjustments */
-#header::before { opacity: 1; } /* change logo opacity */
-#header { filter: none; }
-#header h1, #header h1 a, #header h1 a::before {
+#header::before {
+    opacity: 1;
+}
+
+/* change logo opacity */
+#header {
+    -webkit-filter: none;
+    filter: none;
+}
+
+#header h1,
+#header h1 a,
+#header h1 a::before {
     text-shadow: none;
     letter-spacing: 0.1rem;
     align-self: flex-end;
 }
+
 #header h1 a::before {
     height: 0.5em;
     -webkit-text-stroke: 0;
 }
-#header h1 a::after, #header h1 a span, #header h2 { display: none; }
+
+#header h1 a::after,
+#header h1 a span,
+#header h2 {
+    display: none;
+}
 
 /* svg logo mask */
 #header::before {
     background-color: rgb(var(--black-monochrome));
     -webkit-mask-image: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; version=&#39;1.0&#39; width=&#39;1040&#39; height=&#39;1040&#39;%3E%3Cpath d=&#39;M437 969v-10h-73v-18h-36v-18h-36v-18h-36v-18h-56v18h-72v-36h-18v-36H92v-37H74v-36H55v-36H37v-36H19v-56h18v-18h18v-18h19V451h18v-72h18v-38h18v-36h18v-36h18v-18h18v-18h18v-19h20v-18h18v-18h18v-18h36v-18h36v-18h18v-18h18V50h19V32h272v18h19v56h18v18h18v18h36v18h36v18h18v18h20v18h18v19h18v18h18v18h18v36h18v36h18v38h18v72h18v145h19v18h18v18h18v56h-18v36h-18v36h-19v36h-18v37h-18v36h-18v36h-72v-18h-56v18h-36v18h-36v18h-36v18h-73v20H437v-10zm146-37v-9h72v-18h37v-18h36v-18h18v-18h92v18h54v-36h18v-37h18v-36h18v-36h18v-36h19v-38h-19v-18h-18v-18h-18V469h-18v-72h-18v-38h-18v-36h-18v-18h-18v-36h-18v-18h-20v-18h-18v-19h-36v-18h-18v-18h-36v-18h-18v-18h-19v-36h-18V70H401v36h-18v36h-19v18h-18v18h-36v18h-18v18h-36v19h-18v18h-18v18h-20v36h-18v18h-18v36h-18v38h-18v72h-18v145H92v18H74v18H55v38h19v36h18v36h18v36h18v37h18v36h54v-18h92v18h18v18h36v18h37v18h72v18h128v-9z&#39;/%3E%3Cpath d=&#39;M437 805v-9h-54v-18h-37v-18h-18v-18h-18v-18h-18v-18h-36v18h-36v18h-20v-18h-18v-36h38v-18h18v-20h18v-18h-18v-72h-18v-73h18v-72h18v-36h18v-38h18v-18h18v-18h18v-18h18v-18h37v-18h36v-18h72v-55h56v55h72v18h36v18h37v18h18v18h18v18h18v18h18v38h18v36h18v72h20v73h-20v72h-18v18h18v20h20v18h36v36h-18v18h-18v-18h-38v-18h-36v18h-18v18h-18v18h-18v18h-37v18h-54v18H437v-9zm164-54v-9h36v-18h37v-18h18v-18h18v-18h-18v-20h-37v-18h-18v38h-18v-20h-18v-36h-18v-18h-18v-18h-18v-36h90v18h55v18h-18v18h18v18h36v18h18v-54h18V469h-18v-54h-18v-36h-18v-20h-18v-18h-18v-18h-37v-18h-36v-18h-54v92h36v36h-18v36h-18v36h-18v18h-20v-18h-18v-36h-18v-36h-18v-36h36v-92h-54v18h-36v18h-37v18h-18v18h-18v20h-18v36h-18v54h-18v109h18v54h18v-18h36v-18h18v-18h-18v-18h55v-18h90v36h-18v18h-18v18h-18v36h-18v20h-18v-38h-18v18h-37v20h-18v18h18v18h18v18h37v18h36v18h164v-9z&#39;/%3E%3C/svg%3E&#34;);
-            mask-image: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; version=&#39;1.0&#39; width=&#39;1040&#39; height=&#39;1040&#39;%3E%3Cpath d=&#39;M437 969v-10h-73v-18h-36v-18h-36v-18h-36v-18h-56v18h-72v-36h-18v-36H92v-37H74v-36H55v-36H37v-36H19v-56h18v-18h18v-18h19V451h18v-72h18v-38h18v-36h18v-36h18v-18h18v-18h18v-19h20v-18h18v-18h18v-18h36v-18h36v-18h18v-18h18V50h19V32h272v18h19v56h18v18h18v18h36v18h36v18h18v18h20v18h18v19h18v18h18v18h18v36h18v36h18v38h18v72h18v145h19v18h18v18h18v56h-18v36h-18v36h-19v36h-18v37h-18v36h-18v36h-72v-18h-56v18h-36v18h-36v18h-36v18h-73v20H437v-10zm146-37v-9h72v-18h37v-18h36v-18h18v-18h92v18h54v-36h18v-37h18v-36h18v-36h18v-36h19v-38h-19v-18h-18v-18h-18V469h-18v-72h-18v-38h-18v-36h-18v-18h-18v-36h-18v-18h-20v-18h-18v-19h-36v-18h-18v-18h-36v-18h-18v-18h-19v-36h-18V70H401v36h-18v36h-19v18h-18v18h-36v18h-18v18h-36v19h-18v18h-18v18h-20v36h-18v18h-18v36h-18v38h-18v72h-18v145H92v18H74v18H55v38h19v36h18v36h18v36h18v37h18v36h54v-18h92v18h18v18h36v18h37v18h72v18h128v-9z&#39;/%3E%3Cpath d=&#39;M437 805v-9h-54v-18h-37v-18h-18v-18h-18v-18h-18v-18h-36v18h-36v18h-20v-18h-18v-36h38v-18h18v-20h18v-18h-18v-72h-18v-73h18v-72h18v-36h18v-38h18v-18h18v-18h18v-18h18v-18h37v-18h36v-18h72v-55h56v55h72v18h36v18h37v18h18v18h18v18h18v18h18v38h18v36h18v72h20v73h-20v72h-18v18h18v20h20v18h36v36h-18v18h-18v-18h-38v-18h-36v18h-18v18h-18v18h-18v18h-37v18h-54v18H437v-9zm164-54v-9h36v-18h37v-18h18v-18h18v-18h-18v-20h-37v-18h-18v38h-18v-20h-18v-36h-18v-18h-18v-18h-18v-36h90v18h55v18h-18v18h18v18h36v18h18v-54h18V469h-18v-54h-18v-36h-18v-20h-18v-18h-18v-18h-37v-18h-36v-18h-54v92h36v36h-18v36h-18v36h-18v18h-20v-18h-18v-36h-18v-36h-18v-36h36v-92h-54v18h-36v18h-37v18h-18v18h-18v20h-18v36h-18v54h-18v109h18v54h18v-18h36v-18h18v-18h-18v-18h55v-18h90v36h-18v18h-18v18h-18v36h-18v20h-18v-38h-18v18h-37v20h-18v18h18v18h18v18h37v18h36v18h164v-9z&#39;/%3E%3C/svg%3E&#34;);
+    mask-image: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; version=&#39;1.0&#39; width=&#39;1040&#39; height=&#39;1040&#39;%3E%3Cpath d=&#39;M437 969v-10h-73v-18h-36v-18h-36v-18h-36v-18h-56v18h-72v-36h-18v-36H92v-37H74v-36H55v-36H37v-36H19v-56h18v-18h18v-18h19V451h18v-72h18v-38h18v-36h18v-36h18v-18h18v-18h18v-19h20v-18h18v-18h18v-18h36v-18h36v-18h18v-18h18V50h19V32h272v18h19v56h18v18h18v18h36v18h36v18h18v18h20v18h18v19h18v18h18v18h18v36h18v36h18v38h18v72h18v145h19v18h18v18h18v56h-18v36h-18v36h-19v36h-18v37h-18v36h-18v36h-72v-18h-56v18h-36v18h-36v18h-36v18h-73v20H437v-10zm146-37v-9h72v-18h37v-18h36v-18h18v-18h92v18h54v-36h18v-37h18v-36h18v-36h18v-36h19v-38h-19v-18h-18v-18h-18V469h-18v-72h-18v-38h-18v-36h-18v-18h-18v-36h-18v-18h-20v-18h-18v-19h-36v-18h-18v-18h-36v-18h-18v-18h-19v-36h-18V70H401v36h-18v36h-19v18h-18v18h-36v18h-18v18h-36v19h-18v18h-18v18h-20v36h-18v18h-18v36h-18v38h-18v72h-18v145H92v18H74v18H55v38h19v36h18v36h18v36h18v37h18v36h54v-18h92v18h18v18h36v18h37v18h72v18h128v-9z&#39;/%3E%3Cpath d=&#39;M437 805v-9h-54v-18h-37v-18h-18v-18h-18v-18h-18v-18h-36v18h-36v18h-20v-18h-18v-36h38v-18h18v-20h18v-18h-18v-72h-18v-73h18v-72h18v-36h18v-38h18v-18h18v-18h18v-18h18v-18h37v-18h36v-18h72v-55h56v55h72v18h36v18h37v18h18v18h18v18h18v18h18v38h18v36h18v72h20v73h-20v72h-18v18h18v20h20v18h36v36h-18v18h-18v-18h-38v-18h-36v18h-18v18h-18v18h-18v18h-37v18h-54v18H437v-9zm164-54v-9h36v-18h37v-18h18v-18h18v-18h-18v-20h-37v-18h-18v38h-18v-20h-18v-36h-18v-18h-18v-18h-18v-36h90v18h55v18h-18v18h18v18h36v18h18v-54h18V469h-18v-54h-18v-36h-18v-20h-18v-18h-18v-18h-37v-18h-36v-18h-54v92h36v36h-18v36h-18v36h-18v18h-20v-18h-18v-36h-18v-36h-18v-36h36v-92h-54v18h-36v18h-37v18h-18v18h-18v20h-18v36h-18v54h-18v109h18v54h18v-18h36v-18h18v-18h-18v-18h55v-18h90v36h-18v18h-18v18h-18v36h-18v20h-18v-38h-18v18h-37v20h-18v18h18v18h18v18h37v18h36v18h164v-9z&#39;/%3E%3C/svg%3E&#34;);
     -webkit-mask-size: calc(var(--header-height-on-desktop) - var(--header-h1-font-size) - 1rem);
-            mask-size: calc(var(--header-height-on-desktop) - var(--header-h1-font-size) - 1rem);
+    mask-size: calc(var(--header-height-on-desktop) - var(--header-h1-font-size) - 1rem);
     -webkit-mask-position: center 0;
-            mask-position: center 0;
+    mask-position: center 0;
     -webkit-mask-repeat: no-repeat;
-            mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
 }
-
 
 
 #header {
@@ -603,17 +621,21 @@ The body font is Terminus.
     --login-dropdown-text-hover-color: var(--white-monochrome);
 }
 
-#my-account:hover, #my-account:active, #my-account:focus {
+#my-account:hover,
+#my-account:active,
+#my-account:focus {
     --login-myaccount-color: var(--white-monochrome);
 }
 
 #search-top-box:focus-within {
     --search-icon-hover-color: var(--swatch-menubg-light-color);
 }
+
 #search-top-box form[id=&#34;search-top-box-form&#34;] input[type=&#34;text&#34;] {
     --search-focus-textbox-bg-color: var(--black-monochrome);
-    background-color: rgb(var(--search-focus-textbox-bg-color), 0.06)!important;
+    background-color: rgb(var(--search-focus-textbox-bg-color), 0.06) !important;
 }
+
 #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
     --search-textbox-text-color: var(--black-monochrome);
 }
@@ -621,33 +643,19 @@ The body font is Terminus.
 #top-bar {
     --dropdown-links-hover-color: var(--white-monochrome);
 }
-#top-bar .mobile-top-bar &gt; ul &gt; li &gt; a {
+
+#top-bar .mobile-top-bar&gt;ul&gt;li&gt;a {
     --topmenu-category-color: var(--white-monochrome);
 }
-#top-bar .mobile-top-bar &gt; ul &gt; li:hover &gt; a,
-#top-bar .mobile-top-bar &gt; ul &gt; li:active &gt; a,
-#top-bar .mobile-top-bar &gt; ul &gt; li:focus-within &gt; a {
+
+#top-bar .mobile-top-bar&gt;ul&gt;li:hover&gt;a,
+#top-bar .mobile-top-bar&gt;ul&gt;li:active&gt;a,
+#top-bar .mobile-top-bar&gt;ul&gt;li:focus-within&gt;a {
     --topmenu-category-hover-bg: var(--white-monochrome);
 }
-#header div[class*=&#34;top-bar&#34;] &gt; div.open-menu &gt; p &gt; a {
+
+#header div[class*=&#34;top-bar&#34;]&gt;div.open-menu&gt;p&gt;a {
     --mobile-topmenu-sidebar-button-color: var(--white-monochrome);
-}
-
-/* ------------------------------- */
-
-#side-bar iframe.scpnet-interwiki-frame:not(:lang(cn)) {
-    -webkit-filter: invert(1);
-            filter: invert(1);
-}
-
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before,
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::before,
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::after {
-    background-color: rgb(var(--swatch-menubg-color));
-}
- 
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before {
-    mix-blend-mode: lighten;
 }
 
 /* ------------------------------- */
@@ -656,8 +664,9 @@ The body font is Terminus.
 #wd-editor-toolbar-panel {
     --editor-icon-color: var(--white-monochrome);
 }
+
 form#edit-page-form .edit-page-bottomtable div.sub {
-  color: var(--swatch-primary-darkest);
+    color: var(--swatch-primary-darkest);
 }
 
 /* ------------------------------- */
@@ -668,6 +677,7 @@ form#edit-page-form .edit-page-bottomtable div.sub {
     border-width: 0;
     box-shadow: none;
 }
+
 .scp-image-block .scp-image-caption {
     color: rgb(var(--swatch-text-secondary-color));
     background-color: rgb(var(--swatch-primary-darker));
@@ -683,19 +693,21 @@ form#edit-page-form .edit-page-bottomtable div.sub {
 
 /* Code */
 div.code {
-   background-color: #f4f4f4;
-   text-shadow: none;
+    background-color: #f4f4f4;
+    text-shadow: none;
 }
 
 /* hr */
 hr {
     background-color: rgb(var(--swatch-menubg-medium-color));
     height: 0;
-    margin-top: 1.5em; margin-bottom: 1.5em;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
 }
-blockquote &gt; hr, div.blockquote &gt; hr {
-    margin-left: -1.25em;
-    margin-right: -1.25em;
+
+:is(blockquote, .blockquote, div.blockquote, [class*=&#34;blockquote&#34;])&gt;hr {
+    margin-left: -2ch;
+    margin-right: -2ch;
 }
 
 /* footnotes */
@@ -703,19 +715,31 @@ a.footnoteref {
     display: inline;
 }
 
+.footnotes-footer a[href*=&#34;javascript&#34;]:-webkit-any-link {
+    margin-right: -0.45rem;
+}
+
+.footnotes-footer a[href*=&#34;javascript&#34;]:-moz-any-link {
+    margin-right: -0.45rem;
+}
+
 .footnotes-footer a[href*=&#34;javascript&#34;]:any-link {
     margin-right: -0.45rem;
 }
+
 .footnotes-footer a[href*=&#34;javascript&#34;]::before {
     padding-left: 0.35em;
 }
+
 .footnotes-footer a[href*=&#34;javascript&#34;]::before,
 .footnotes-footer a[href*=&#34;javascript&#34;]:hover::before {
     color: rgb(var(--swatch-secondary-color));
     background-color: rgb(var(--swatch-primary));
 }
-.footnotes-footer, .bibitems {
-    background-color: rgba(var(--footnotes-footer-colorbar-color),0.06);
+
+.footnotes-footer,
+.bibitems {
+    background-color: rgba(var(--footnotes-footer-colorbar-color), 0.06);
 }
 
 
@@ -726,10 +750,10 @@ a.footnoteref {
     padding: 0.115em;
     background-color: rgb(var(--black-monochrome));
 }
-#main-content a:not(#breadcrumbs a, .pseudocrumbs a, .page-rate-widget-box a, .rate-box-with-credit-button a, ul.yui-nav a, .printuser.avatarhover a:first-child, .footnote-footer &gt; a[href*=&#34;javascript&#34;], div[id*=&#34;page-options-bottom&#34;] a, .danger-diamond a):hover {
-    box-shadow: 0 0 0.7em 0.1em rgba(var(--black-monochrome),0.3);
-}
 
+#main-content a:not(#breadcrumbs a, .pseudocrumbs a, .page-rate-widget-box a, .rate-box-with-credit-button a, ul.yui-nav a, .printuser.avatarhover a:first-child, .footnote-footer &gt; a[href*=&#34;javascript&#34;], div[id*=&#34;page-options-bottom&#34;] a, .danger-diamond a):hover {
+    box-shadow: 0 0 0.7em 0.1em rgba(var(--black-monochrome), 0.3);
+}
 
 
 /* CUSTOM BLOCKS */
@@ -739,6 +763,7 @@ a.footnoteref {
     border: solid 0.7rem rgb(var(--black-monochrome));
     padding: 1rem;
 }
+
 .expoblock hr {
     height: 0.6rem;
     margin: 1.5em 0;
@@ -754,11 +779,13 @@ span.hilighter {
 }
 
 /* author label compatibility */
-#page-content .authorlink-wrapper &gt; a::before {
+#page-content .authorlink-wrapper&gt;a::before {
     color: rgb(var(--gray-monochrome));
 }
+
 #page-content .authorlink-wrapper .authorbox {
-    filter: drop-shadow(0 0 3px rgba(var(--black-monochrome),0.75));
+    -webkit-filter: drop-shadow(0 0 3px rgba(var(--black-monochrome), 0.75));
+    filter: drop-shadow(0 0 3px rgba(var(--black-monochrome), 0.75));
 }
 
 /* ayers info compatibility */
@@ -766,9 +793,11 @@ span.hilighter {
     --barColour: rgb(var(--accentColor));
     --linkColour: rgb(var(--darkColor));
 }
-#main-content #page-content .info-container &gt; .collapsible-block a.collapsible-block-link {
+
+#main-content #page-content .info-container&gt;.collapsible-block a.collapsible-block-link {
     background-color: var(--linkColour);
 }
+
 .info-container .collapsible-block-unfolded {
     border-color: rgb(var(--accentColor));
 }
@@ -777,9 +806,21 @@ span.hilighter {
 #main-content .page-tags {
     margin-bottom: 1rem;
 }
+
 #main-content .page-tags span {
     display: block;
 }
+
+#content-wrap #main-content .page-tags span a:-webkit-any-link:not([href^=&#34;/system:page-tags/tag/_&#34;]) {
+    margin: 0.2rem;
+    padding: 0.2em 0.25em;
+}
+
+#content-wrap #main-content .page-tags span a:-moz-any-link:not([href^=&#34;/system:page-tags/tag/_&#34;]) {
+    margin: 0.2rem;
+    padding: 0.2em 0.25em;
+}
+
 #content-wrap #main-content .page-tags span a:any-link:not([href^=&#34;/system:page-tags/tag/_&#34;]) {
     margin: 0.2rem;
     padding: 0.2em 0.25em;
@@ -792,6 +833,7 @@ div[id*=&#34;page-options-bottom&#34;]:not(.page-rate-widget-box):not(#search-to
     flex-basis: 6rem;
     flex-grow: 1;
 }
+
 div[id*=&#34;page-options-bottom&#34;]&gt;a#more-options-button {
     flex-grow: 4;
 }
@@ -810,7 +852,7 @@ div[id*=&#34;page-options-bottom&#34;]&gt;a#more-options-button {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    background: repeating-linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.15) 50%,rgba(0,0,0,0));
+    background: repeating-linear-gradient(180deg, rgba(0, 0, 0, 0), rgba(0, 0, 0, .15) 50%, rgba(0, 0, 0, 0));
     background-size: auto 8px;
     opacity: 0.7;
 }
@@ -818,19 +860,65 @@ div[id*=&#34;page-options-bottom&#34;]&gt;a#more-options-button {
 #extrac-div-2 {
     position: fixed;
     width: 100vw;
-    height : 1rem;
+    height: 1rem;
     top: 0;
     pointer-events: none;
-    background: linear-gradient(to bottom, rgba(255,0,0,0) 0%,rgba(255,250,250,1) 50%,rgba(255,255,255,0.98) 51%,rgba(255,0,0,0) 100%);
-    opacity : .1;
+    background: linear-gradient(to bottom, rgba(255, 0, 0, 0) 0%, rgba(255, 250, 250, 1) 50%, rgba(255, 255, 255, 0.98) 51%, rgba(255, 0, 0, 0) 100%);
+    opacity: .1;
+    -webkit-animation: scanm 6s linear infinite;
     animation: scanm 6s linear infinite;
 }
+
+@-webkit-keyframes scanm {
+    0% {
+    	top: -1rem;
+    	opacity: .05;
+    }
+
+    25% {
+    	top: 50%;
+    	opacity: .03;
+    }
+
+    37.5% {
+    	top: 75%;
+    	opacity: 0.06;
+    }
+
+    50% {
+    	top: 100%;
+    	opacity: .03;
+    }
+
+    100% {
+    	top: 100%;
+    }
+}
+
 @keyframes scanm {
-  0%   { top: -1rem; opacity : .05;}
-  25% { top: 50%; opacity: .03;}
-  37.5% { top: 75%; opacity: 0.06;}
-  50% { top: 100%; opacity: .03;}
-  100% { top: 100%;}
+    0% {
+    	top: -1rem;
+    	opacity: .05;
+    }
+
+    25% {
+    	top: 50%;
+    	opacity: .03;
+    }
+
+    37.5% {
+    	top: 75%;
+    	opacity: 0.06;
+    }
+
+    50% {
+    	top: 100%;
+    	opacity: .03;
+    }
+
+    100% {
+    	top: 100%;
+    }
 }
 
 #extrac-div-3 {
@@ -838,40 +926,52 @@ div[id*=&#34;page-options-bottom&#34;]&gt;a#more-options-button {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    background-image: radial-gradient(circle, rgb(230,210,200) 0%, rgb(177,158,152) 60%, rgb(55,28,30) 100%);
+    background-image: radial-gradient(circle, rgb(230, 210, 200) 0%, rgb(177, 158, 152) 60%, rgb(55, 28, 30) 100%);
     opacity: 0.25;
     mix-blend-mode: color-dodge;
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 30;
 }
+
 /* fixes a chrome bug */
-html { background: rgb(var(--swatch-background)); }
-
-
+html {
+    background: rgb(var(--swatch-background));
+}
 
 
 /*---- MOBILE QUERY ----*/
 @media only screen and (max-width: 56.25rem) {
     :root {
-        --header-h1-font-size: calc(var(--base-font-size) * 2.4);
+    	--header-h1-font-size: calc(var(--base-font-size) * 2.4);
     }
+
     #login-status:hover {
-        background-color: rgba(var(--swatch-menubg-light-color),0.65);
-        backdrop-filter: blur(0.1rem);
+    	background-color: rgba(var(--swatch-menubg-light-color), 0.65);
+    	-webkit-backdrop-filter: blur(0.1rem);
+    	backdrop-filter: blur(0.1rem);
     }
 }
 
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[/iftags]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[include :scp-wiki:component:centered-header-bhl]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aisolated-terminal/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aisolated-terminal/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.578500.</em>
+    <em>Last updated 2023-07-15 21:44:41.012742.</em>
   
 </div>
 </body>

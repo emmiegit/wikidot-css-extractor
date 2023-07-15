@@ -42,6 +42,10 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aold-money-theme/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -65,10 +69,6 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -165,6 +165,15 @@
     box-sizing: border-box;
 }
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -314,13 +323,8 @@ The body font is Turnip.
 [[span style=&#34;font-family: var(--mono-font);&#34;]]The monospace font used is Pennsylvania.[[/span]]
 [[/=]]
 @@ @@
-
-[[footnoteblock]]
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @import url(&#34;https://use.typekit.net/nxg5itx.css&#34;);
 
 @supports(display:grid) {
@@ -344,6 +348,9 @@ The body font is Turnip.
     	--title-font: ivymode, sans-serif;
     	--UI-font: turnip, serif;
     	--mono-font: pennsylvania, monospace;
+    	
+    	/* Stylistic Alternates */
+    	--ss04: 0;
 
     	/* Standard Colors */
     	--white-monochrome: 252, 252, 252;
@@ -385,6 +392,9 @@ The body font is Turnip.
 
     	/* Primary Theme Colors */
     	--swatch-background: var(--black-monochrome, 26, 25, 24);
+    	
+    	/* Link Colors */
+    	--visited-link-color: var(--gray-monochrome);
 
     	/* ===SECONDARY &amp; TERTIARY COLORS=== */
     	/* Colors for Secondary &amp; Tertiary items like Blockquote and YUI Tabs */
@@ -555,6 +565,10 @@ The body font is Turnip.
     	background-blend-mode: difference;
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+
     @media only screen and (min-width: 56.25rem) {
     	#side-bar:hover {
     		background-color: rgb(var(--black-monochrome), 0.5);
@@ -567,6 +581,7 @@ The body font is Turnip.
     	scrollbar-color: rgba(var(--dark-gray-monochrome), 0) rgba(var(--black-monochrome), 0);
     }
 
+    #interwiki div.menu-item,
     #side-bar div.menu-item {
     	align-items: baseline;
     	margin-top: -0.0625rem;
@@ -581,11 +596,13 @@ The body font is Turnip.
     	line-height: 2ch;
     }
 
+    #interwiki div.menu-item a,
     #side-bar div.menu-item a,
     #side-bar div.menu-item .text {
     	color: rgb(var(--swatch-menutxt-light-color));
     }
 
+    #interwiki .heading,
     #side-bar .heading,
     #side-bar .side-block&gt;.collapsible-block:nth-child(1) .collapsible-block-folded {
     	align-items: center;
@@ -593,6 +610,7 @@ The body font is Turnip.
     	background: initial;
     }
 
+    #interwiki .heading p,
     #side-bar .heading p {
     	display: flex;
     	position: relative;
@@ -615,6 +633,8 @@ The body font is Turnip.
     	overflow-wrap: normal;
     }
 
+    #interwiki .heading p::after,
+    #interwiki .heading p::before,
     #side-bar .heading p::after,
     #side-bar .heading p::before {
     	content: &#34; &#34;;
@@ -639,11 +659,13 @@ The body font is Turnip.
     	margin-top: .25rem;
     }
 
+    #interwiki .heading p::after,
     #side-bar .heading p::after,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link::after {
     	bottom: -0.6rem;
     }
 
+    #interwiki .heading p::before,
     #side-bar .heading p::before,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link::before {
     	top: -0.6rem;
@@ -833,21 +855,6 @@ The body font is Turnip.
     	background-color: rgb(var(--swatch-background));
     }
 
-    #side-bar iframe.scpnet-interwiki-frame:not(:lang(cn)) {
-    	-webkit-filter: invert(1);
-    	        filter: invert(1);
-    }
-
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before,
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::before,
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::after {
-    	background-color: rgb(var(--swatch-menubg-color));
-    }
-
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before {
-    	mix-blend-mode: lighten;
-    }
-
     @media only screen and (max-width: 56.25rem) {
     	#header {
     		--size: calc(var(--final-header-height-on-mobile) - 0.875rem);
@@ -874,17 +881,24 @@ The body font is Turnip.
     }
 }
 
-
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[footnoteblock]]
+[[/iftags]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aold-money-theme/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aold-money-theme/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.587288.</em>
+    <em>Last updated 2023-07-15 21:44:41.022312.</em>
   
 </div>
 </body>

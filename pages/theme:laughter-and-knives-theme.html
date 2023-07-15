@@ -55,6 +55,10 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Alaughter-and-knives-theme/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -78,10 +82,6 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -191,6 +191,15 @@
             animation: rainbow 36s ease infinite;
 }
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -349,13 +358,8 @@ The body font is Overlock.
 [[span style=&#34;font-family: var(--mono-font);&#34;]]The monospace font used is PT Mono.[[/span]]
 [[/=]]
 @@ @@
-
-[[footnoteblock]]
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @import url(&#39;https://fonts.googleapis.com/css?family=Chicle|Overlock:400,900&#39;);
 
 @supports(display:grid) {
@@ -614,6 +618,7 @@ The body font is Overlock.
 
     #top-bar&gt;div.top-bar&gt;ul&gt;li&gt;a,
     #top-bar&gt;div.top-bar&gt;ul&gt;li&gt;ul&gt;li&gt;a,
+    #interwiki&gt;div&gt;div&gt;a
     #side-bar&gt;div&gt;div&gt;a {
     	position: relative !important;
     	background: transparent !important;
@@ -628,6 +633,8 @@ The body font is Overlock.
     #top-bar div.top-bar&gt;ul&gt;li&gt;ul&gt;li&gt;a::before,
     #top-bar div.top-bar&gt;ul&gt;li&gt;ul&gt;li&gt;ul&gt;li&gt;a::before,
     #top-bar div.top-bar&gt;ul&gt;li&gt;ul&gt;li&gt;a:hover::before,
+    #interwiki div.menu-item a::before,
+    #interwiki div.menu-item a:hover::before,
     #side-bar div.menu-item a::before,
     #side-bar div.menu-item a:hover::before {
     	background-color: rgba(0, 0, 0, 0);
@@ -668,6 +675,10 @@ The body font is Overlock.
     	--ui-wght: 900;
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+
     #side-bar,
     #side-bar:hover {
     	font-variant: unset;
@@ -682,10 +693,12 @@ The body font is Overlock.
     	background-size: 200% 200%;
     }
 
+    #interwiki .heading,
     #side-bar .heading {
     	background-color: rgb(var(--gray-monochrome));
     }
 
+    #interwiki .heading p,
     #side-bar .heading p,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link {
     	text-shadow: inherit;
@@ -696,6 +709,7 @@ The body font is Overlock.
     	letter-spacing: 0.1em;
     }
 
+    #interwiki div.menu-item a,
     #side-bar div.menu-item a,
     #side-bar div.menu-item .text {
     	font-size: calc(var(--base-font-size));
@@ -1058,16 +1072,24 @@ The body font is Overlock.
     }
 }
 
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[footnoteblock]]
+[[/iftags]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Alaughter-and-knives-theme/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Alaughter-and-knives-theme/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.580488.</em>
+    <em>Last updated 2023-07-15 21:44:41.014643.</em>
   
 </div>
 </body>

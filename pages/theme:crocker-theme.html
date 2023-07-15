@@ -65,6 +65,10 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Acrocker-theme/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -72,10 +76,6 @@
       
         <li>
           <pre><code>display: inline-flex; width: 100%;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -183,6 +183,15 @@
     padding: 0.5em;
 }
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 @@ @@
 [[=]]
 [[module Rate]]
@@ -320,13 +329,8 @@ This is a long tab. It contains a lot of text.
 ||You should know || how to make these ||
 ||||already ||
 @@ @@
-[[footnoteblock]]
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
-@@ @@
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @import url(&#34;https://use.typekit.net/tax7dna.css&#34;);
 
 @supports(display: grid) {
@@ -649,6 +653,11 @@ This is a long tab. It contains a lot of text.
     	background: rgb(var(--white-monochrome));
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+
+    #interwiki .heading,
     #side-bar .heading,
     #side-bar .side-block&gt;.collapsible-block:nth-child(1) .collapsible-block-folded {
     	background: rgba(var(--pale-gray-monochrome), 0.5);
@@ -656,6 +665,7 @@ This is a long tab. It contains a lot of text.
     	min-height: 1.5rem;
     }
 
+    #interwiki .heading p,
     #side-bar .heading p,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link {
     	--wght: 900;
@@ -885,7 +895,7 @@ This is a long tab. It contains a lot of text.
     }
 
     .code&gt;* {
-    	line-height: 1.75;
+    	line-height: calc(var(--base-font-size) * 1.62);
     }
 
     .footnotes-footer&gt;* {
@@ -1002,7 +1012,7 @@ This is a long tab. It contains a lot of text.
 
     	.code&gt;*,
     	.footnotes-footer&gt;* {
-    		line-height: 1.85;
+    		line-height: 1.78;
     		padding-left: 2.5rem;
     	}
 
@@ -1033,16 +1043,25 @@ This is a long tab. It contains a lot of text.
     }
 }
 
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[footnoteblock]]
+[[/iftags]]
+
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Acrocker-theme/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Acrocker-theme/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.565485.</em>
+    <em>Last updated 2023-07-15 21:44:40.997379.</em>
   
 </div>
 </body>

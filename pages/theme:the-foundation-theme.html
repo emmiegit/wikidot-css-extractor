@@ -29,8 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
+          <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 
 #page-title, #breadcrumbs {
@@ -58,6 +57,14 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Athe-foundation-theme/1&#34;)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Athe-foundation-theme/2&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -73,10 +80,6 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -238,7 +241,6 @@
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[iftags +theme]]
 [[module css]]
-
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 
@@ -266,6 +268,17 @@
     padding: 0.5em;
 }
 [[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
+
 [[=]]
 [[module Rate]]
 [[/=]]
@@ -420,17 +433,8 @@ The body and header font is Source Sans Pro.
 [[span style=&#34;font-family: var(--mono-font);&#34;]]The monospace font is Roboto Mono.[[/span]]
 [[/=]]
 @@ @@
-
-[[footnoteblock]]
-[[/iftags]]
-[[include :scp-wiki:component:collapsible-sidebar]]
-[[include :scp-wiki:component:centered-header-bhl]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[!-- DARK VERSION --]
-[!-- {$dark}
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @supports(display: grid) {
     :root {
     	/* S-CSS-P Integration */
@@ -585,10 +589,8 @@ The body and header font is Source Sans Pro.
     }
 }
 
-[[/module]]
-[!----]
-[!-- NORMAL VERSION --]
-[[module CSS show=&#34;true&#34;]]
+[[/code]]
+[[code type=&#34;css&#34;]]
 @import url(&#34;https://use.typekit.net/cjg4ysl.css&#34;);
 
 @supports(display:grid) {
@@ -815,6 +817,10 @@ The body and header font is Source Sans Pro.
     	pointer-events: none;
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+
     #side-bar {
     	--swatch-border-color: rgb(var(--light-gray-monochrome));
     	z-index: 10;
@@ -860,6 +866,7 @@ The body and header font is Source Sans Pro.
     	}
     }
 
+    #interwiki .heading,
     #side-bar .heading {
     	position: relative;
     	padding-top: 0.15em;
@@ -867,6 +874,7 @@ The body and header font is Source Sans Pro.
     	font-family: var(--title-font);
     }
 
+    #interwiki div.menu-item a,
     #side-bar div.menu-item a,
     #side-bar div.menu-item .text {
     	margin: 0.15em 0;
@@ -1000,9 +1008,30 @@ The body and header font is Source Sans Pro.
     }
 }
 
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]
+[[footnoteblock]]
+[[/iftags]]
+
+[[include :scp-wiki:component:collapsible-sidebar]]
+[[include :scp-wiki:component:centered-header-bhl]]
+
+[!-- DARK VERSION --]
+[!-- {$dark}
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Athe-foundation-theme/1&#34;)
+[[/module]]
+[!----]
+[!-- NORMAL VERSION --]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Athe-foundation-theme/2&#34;)
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Athe-foundation-theme/2
+]]
+
 [[include :scp-wiki:component:bhl-dark-sidebar]]</textarea></pre>
   </div>
 
@@ -1010,7 +1039,7 @@ The body and header font is Source Sans Pro.
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.601425.</em>
+    <em>Last updated 2023-07-15 21:44:41.038367.</em>
   
 </div>
 </body>

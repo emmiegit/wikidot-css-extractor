@@ -34,7 +34,7 @@
         </li>
       
         <li>
-          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ahansarp/1&#39;);</code></pre>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Ahansarp/1&#34;)</code></pre>
         </li>
       
     </ul>
@@ -147,6 +147,16 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 [[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 
 [[&gt;]]
 [[module Rate]]
@@ -295,31 +305,31 @@ The body font is Mali.
 @import url(&#39;https://fonts.googleapis.com/css2?family=Mali:wght@400;700&amp;display=swap&#39;);
 
 :root {
-     /* S-CSS-P Integration */
-     /* If you&#39;re making a new CSS theme, please include the following three variables at minimum. */
-     --theme-base: &#34;black-highlighter&#34;;
-     /* must be either &#34;black-highlighter&#34; or &#34;sigma9&#34; */
-     --theme-id: &#34;hansarp&#34;;
-     /* set this to the URL of your theme&#39;s page - eg for &#34;component:ar-theme&#34;, set it to &#34;ar-theme&#34; */
-     --theme-name: &#34;HANSARP Theme&#34;;
-     /* set this to your theme&#39;s full name */
+    /* S-CSS-P Integration */
+    /* If you&#39;re making a new CSS theme, please include the following three variables at minimum. */
+    --theme-base: &#34;black-highlighter&#34;;
+    /* must be either &#34;black-highlighter&#34; or &#34;sigma9&#34; */
+    --theme-id: &#34;hansarp&#34;;
+    /* set this to the URL of your theme&#39;s page - eg for &#34;component:ar-theme&#34;, set it to &#34;ar-theme&#34; */
+    --theme-name: &#34;HANSARP Theme&#34;;
+    /* set this to your theme&#39;s full name */
 
-   /* Typefaces */
-     --header-font: &#39;Permanent Marker&#39;, cursive;
-     --title-font: &#39;Permanent Marker&#39;, cursive;
-     --body-font: &#39;Mali&#39;, cursive;
-     --mono-font: &#39;Azeret Mono&#39;, monospace;
-     --UI-font: &#39;Klee One&#39;, cursive;
+    /* Typefaces */
+    --header-font: &#39;Permanent Marker&#39;, cursive;
+    --title-font: &#39;Permanent Marker&#39;, cursive;
+    --body-font: &#39;Mali&#39;, cursive;
+    --mono-font: &#39;Azeret Mono&#39;, monospace;
+    --UI-font: &#39;Klee One&#39;, cursive;
 
-   /* Header */
-     --logo-image: none;
-     --diagonal-stripes: initial;
-     --header-height-on-desktop: 10.5rem;
-     --header-height-on-mobile: 10.5rem;
-     --background-gradient-distance: 0rem;
+    /* Header */
+    --logo-image: none;
+    --diagonal-stripes: initial;
+    --header-height-on-desktop: 10.5rem;
+    --header-height-on-mobile: 10.5rem;
+    --background-gradient-distance: 0rem;
 
 
-   /* Standard Colors */
+    /* Standard Colors */
     --white-monochrome: 242, 230, 212;
     --pale-gray-monochrome: 226, 191, 130;
     --bright-accent: 222, 71, 30;
@@ -334,6 +344,7 @@ The body font is Mali.
 
     --hoverblock-header-bg: var(--swatch-primary-darkest);
 }
+
 #main-content {
     --blockquote-bg-color: var(--dark-accent);
     --tables-border: var(--bright-accent);
@@ -344,38 +355,55 @@ The body font is Mali.
 
 body {
     background: radial-gradient(rgba(var(--swatch-secondary-color), 1) 1.5px, transparent 1.5px),
-                          radial-gradient(rgba(var(--swatch-secondary-color), 1) 1.5px, rgba(var(--white-monochrome),1) 1.5px);
+    	radial-gradient(rgba(var(--swatch-secondary-color), 1) 1.5px, rgba(var(--white-monochrome), 1) 1.5px);
     background-size: 60px 60px;
     background-position: 0 0, 30px 30px;
 }
 
 #header {
-     --header-h1-font-size: calc(var(--base-font-size)*3.25);
-     --header-title: &#34;WHAT IS HANSARP?&#34;;
-     --header-title-mobile: &#34;HANSARP?&#34;;
-     --swatch-headerh1-color: var(--bright-accent);
+    --header-h1-font-size: calc(var(--base-font-size)*3.25);
+    --header-title: &#34;WHAT IS HANSARP?&#34;;
+    --header-title-mobile: &#34;HANSARP?&#34;;
+    --swatch-headerh1-color: var(--bright-accent);
 }
+
 @media only screen and (max-width: 34.25rem) {
-    #header { --header-title: var(--header-title-mobile); }
+    #header {
+    	--header-title: var(--header-title-mobile);
+    }
 }
-#header h1 { transform: rotate(-10deg); }
+
+#header h1 {
+    transform: rotate(-10deg);
+}
+
 #header h1 a {
     margin-left: calc(var(--header-height-on-desktop)/1.25 - 1.5rem);
     padding-top: 2.5rem;
 }
-#header h1 a::before { filter: drop-shadow(-3.95em -1.15em 0 rgb(var(--dark-accent))); }
-#header h2 { display: none; }
+
+#header h1 a::before {
+    -webkit-filter: drop-shadow(-3.95em -1.15em 0 rgb(var(--dark-accent)));
+            filter: drop-shadow(-3.95em -1.15em 0 rgb(var(--dark-accent)));
+}
+
+#header h2 {
+    display: none;
+}
 
 #extrac-div-1 {
     width: 100%;
     height: calc(var(--final-header-height-on-desktop)*1.025);
     display: block;
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     overflow: hidden;
     z-index: -1;
 }
-#extrac-div-1::before, #extrac-div-1::after {
+
+#extrac-div-1::before,
+#extrac-div-1::after {
     content: &#34; &#34;;
     display: block;
     position: absolute;
@@ -384,8 +412,10 @@ body {
     box-sizing: border-box;
     border-radius: 50%;
 }
+
 #extrac-div-1::before {
-    top: -2rem; left: -5rem;
+    top: -2rem;
+    left: -5rem;
     border: solid 3.5rem rgb(var(--bright-accent));
     box-shadow: 4rem 1rem 0 rgb(var(--medium-accent));
 }
@@ -404,6 +434,7 @@ body {
     box-shadow: -7rem 3rem 0 rgb(var(--dark-accent));
     z-index: -2;
 }
+
 #extrac-div-1 span {
     display: block;
     position: absolute;
@@ -416,12 +447,14 @@ body {
     bottom: 1.5rem;
     transform: rotate(30deg);
 }
+
 /*-----------------------------------*/
 
-#page-content &gt; *:nth-child(3n-2):not(.image-block, .scp-image-block, .page-rate-widget-box) {
+#page-content&gt;*:nth-child(3n-2):not(.image-block, .scp-image-block, .page-rate-widget-box) {
     transform: rotate(0.68deg);
 }
-#page-content &gt; *:nth-child(3n):not(.image-block, .scp-image-block, .page-rate-widget-box) {
+
+#page-content&gt;*:nth-child(3n):not(.image-block, .scp-image-block, .page-rate-widget-box) {
     transform: rotate(-0.68deg);
 }
 
@@ -429,31 +462,39 @@ body {
 /*-----Top Menu-----*/
 /*-----------------------------------*/
 #top-bar .top-bar {
-    position: relative; 
+    position: relative;
     background: linear-gradient(90deg, rgb(var(--bright-accent)) 10%, rgb(var(--swatch-topmenu-bg-color)) 30%, rgb(var(--swatch-topmenu-bg-color)) 70%, rgb(var(--medium-accent)) 90%);
 }
 
 #header #top-bar .top-bar ul&gt;li&gt;ul {
     background: transparent;
     box-shadow: none;
-    backdrop-filter: none;
-    filter: drop-shadow(0.3rem 0.35rem 0 rgb(var(--bright-accent)));
+    -webkit-backdrop-filter: none;
+            backdrop-filter: none;
+    -webkit-filter: drop-shadow(0.3rem 0.35rem 0 rgb(var(--bright-accent)));
+            filter: drop-shadow(0.3rem 0.35rem 0 rgb(var(--bright-accent)));
 }
+
 #header #top-bar .top-bar ul&gt;li&gt;ul&gt;li::before {
     content: &#34;&#34;;
     display: block;
     position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
     background-color: rgb(var(--medium-accent));
 }
+
 #header #top-bar .top-bar ul&gt;li&gt;ul&gt;li:nth-child(2n)::before {
     background-color: rgb(var(--dark-accent));
 }
+
 #top-bar .top-bar&gt;ul&gt;li ul&gt;li:nth-child(2n) {
     transform: perspective(1rem) rotateY(1.5deg) scale(1.02);
 }
+
 #top-bar .top-bar&gt;ul&gt;li ul&gt;li:nth-child(2n-1) {
     transform: perspective(1rem) rotateY(-1.5deg) scale(1.02);
 }
@@ -469,61 +510,80 @@ body {
     z-index: -1;
     pointer-events: none;
 }
-#extrac-div-2::before, #extrac-div-2::after {
+
+#extrac-div-2::before,
+#extrac-div-2::after {
     content: &#34;&#34;;
     display: block;
     position: absolute;
     width: 80%;
     height: 5.5rem;
 }
+
 #extrac-div-2::before {
     left: 0;
     bottom: calc(var(--final-header-height-on-desktop)*0.5);
     background-color: rgb(var(--bright-accent));
-    clip-path: polygon(0 0, 100% 100%, 0 100%);
+    -webkit-clip-path: polygon(0 0, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 100%, 0 100%);
 }
+
 #extrac-div-2::after {
     right: 0;
     top: var(--header-height-on-desktop);
-    background: linear-gradient(90deg, rgba(0,0,0,0) 30%, rgb(var(--medium-accent)) 30%);
-    clip-path: polygon(0 0, 100% 0, 100% 100%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 30%, rgb(var(--medium-accent)) 30%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
 }
 
 /*-----------------------------------*/
 /*-----Side Bar-----*/
 /*-----------------------------------*/
 
-#side-bar {
-     --sidebar-bg-color: var(--swatch-secondary-color);
-     --swatch-menubg-color: var(--sidebar-bg-color);
+#side-bar,
+#interwiki {
+    --sidebar-bg-color: var(--swatch-secondary-color);
+    --swatch-menubg-color: var(--sidebar-bg-color);
 }
-#side-bar &gt; .scpnet-interwiki-wrapper {
-     --swatch-primary: var(--sidebar-bg-color);
+
+#side-bar&gt;.scpnet-interwiki-wrapper {
+    --swatch-primary: var(--sidebar-bg-color);
 }
 
 #interwiki .side-block,
 #side-bar .side-block {
-box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 rgb(var(--bright-accent));
+    box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 rgb(var(--bright-accent));
 }
 
-#interwiki .side-block &gt; *:nth-child(2n),
-#side-bar .side-block &gt; *:nth-child(2n) {
+#interwiki .side-block&gt;*:nth-child(2n),
+#side-bar .side-block&gt;*:nth-child(2n) {
     --sidebar-links-hover-bg-color: var(--medium-accent);
 }
 
-#interwiki .heading, #side-bar .heading {
+#interwiki .heading,
+#side-bar .heading {
     box-shadow: none;
     position: relative;
 }
-#interwiki .heading p, #side-bar .heading p {
+
+#interwiki .heading p,
+#side-bar .heading p {
     color: rgb(var(--white-monochrome));
     display: inline-block;
     position: relative;
     padding: 0.45em 1em;
-    text-indent: 0;
-    margin: 0 1.5em 0 auto;
+    text-indent: 0;	
     transform: perspective(7em) rotateY(19deg) scale(1.05);
 }
+
+#side-bar .heading p {
+    margin: 0 1.5em 0 auto;
+}
+
+#interwiki .heading p {
+    margin: 0 0 0 auto;
+}
+
 #interwiki .heading p:first-letter,
 #side-bar .heading p:first-letter {
     background-color: rgb(var(--white-monochrome));
@@ -544,7 +604,7 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
     background-color: rgb(var(--dark-accent));
     z-index: -1;
     transform: skewX(-30deg) translateY(0.1em);
-    box-shadow: 1.5em 0.25em 0 rgb(var( --swatch-primary));
+    box-shadow: 1.5em 0.25em 0 rgb(var(--swatch-primary));
 }
 
 
@@ -565,25 +625,30 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
 
     transition: transform 0.125s ease;
 }
+
 #main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a)::before {
     content: &#34; &#34;;
     display: block;
     position: absolute;
-    left: 0; bottom: 0;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background-color: transparent;
     transform: none;
     transform-style: flat;
-    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 73.5%);
+    -webkit-clip-path: polygon(0 0, 100% 0, 100% 100%, 0 73.5%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 73.5%);
     transition: transform 0.125s ease-out, background-color 0.01s ease;
     z-index: -2;
 }
+
 #main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a)::after {
     content: &#34; &#34;;
     display: block;
     position: absolute;
-    left: 0; bottom: 0;
+    left: 0;
+    bottom: 0;
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -591,21 +656,24 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
     z-index: -1;
 }
 
-#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover,:focus) {
+#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover, :focus) {
     text-decoration: none;
     color: rgb(var(--hover-link-color));
     margin-right: -0.465em;
     transform: scale(1.05) rotate(3deg);
     z-index: 2;
 }
-#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover,:focus)::before {
+
+#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover, :focus)::before {
     background-color: rgb(var(--bright-accent));
     transform: skew(-20deg) scale(1.06, 1.4) rotate(-4deg) translate(0.25em, calc(0.12em + 9%));
 }
-#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover,:focus)::after {
+
+#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover, :focus)::after {
     background-color: rgb(var(--dark-accent));
 }
-#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover,:focus):first-letter {
+
+#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover, :focus):first-letter {
     background-color: rgb(var(--white-monochrome));
     color: rgb(var(--dark-accent));
     padding: 0 0.15em;
@@ -617,22 +685,26 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
 /*Firefox Styling*/
 @supports (-moz-appearance:none) {
 
-#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover,:focus) {
-    margin-right: -0.65em;
-}
-#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a)::before { display: none; }
+    #main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover, :focus) {
+    	margin-right: -0.65em;
+    }
 
-#main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover,:focus)::after {
-    transition: background-color 0.075s linear, box-shadow 0.08s ease-out 0.03s, transform 0.05s;
-    box-shadow:  0.35em 0.25em 0 rgb(var(--bright-accent));
-    transform: translatex(-3%) scaleY(1.1) skew(-15deg);
-}
+    #main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a)::before {
+    	display: none;
+    }
+
+    #main-content a:not(a.footnoteref, .footnote-footer&gt;a:first-child, ul.yui-nav a, .page-rate-widget-box a, .rate-box-with-credit-button a, div[id*=&#34;page-options-bottom&#34;] a, #edit-page-form a, .page-tags a):is(:hover, :focus)::after {
+    	transition: background-color 0.075s linear, box-shadow 0.08s ease-out 0.03s, transform 0.05s;
+    	box-shadow: 0.35em 0.25em 0 rgb(var(--bright-accent));
+    	transform: translatex(-3%) scaleY(1.1) skew(-15deg);
+    }
 
 }
 
 /*-----Blockquote-----*/
 
-#main-content blockquote, #main-content div.blockquote {
+#main-content blockquote,
+#main-content div.blockquote {
     color: rgb(var(--white-monochrome));
     background-color: transparent;
     box-shadow: none;
@@ -641,9 +713,15 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
     margin-top: 1rem;
     padding: 1.85rem 1.75rem 1.45rem 1.35rem;
     position: relative;
-    filter: brightness(1.14) hue-rotate(2deg) drop-shadow(0.65rem 0.45rem 0 rgb(var(--swatch-primary)));
+    -webkit-filter: brightness(1.14) hue-rotate(2deg) drop-shadow(0.65rem 0.45rem 0 rgb(var(--swatch-primary)));
+            filter: brightness(1.14) hue-rotate(2deg) drop-shadow(0.65rem 0.45rem 0 rgb(var(--swatch-primary)));
 }
-#page-content &gt; blockquote, #page-content &gt; div.blockquote { filter: drop-shadow(0.65rem 0.45rem 0 rgb(var(--swatch-primary))); }
+
+#page-content&gt;blockquote,
+#page-content&gt;div.blockquote {
+    -webkit-filter: drop-shadow(0.65rem 0.45rem 0 rgb(var(--swatch-primary)));
+            filter: drop-shadow(0.65rem 0.45rem 0 rgb(var(--swatch-primary)));
+}
 
 :is(blockquote, div.blockquote)::before,
 :is(blockquote, div.blockquote)::after {
@@ -653,43 +731,54 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
     background-color: rgb(var(--blockquote-bg-color));
     z-index: -1;
 }
+
 :is(blockquote, div.blockquote)::before {
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    clip-path: polygon(0 1rem, 100% 0, calc(100% - 1rem) 100%, 0.5rem calc(100% - 0.5rem));
+    -webkit-clip-path: polygon(0 1rem, 100% 0, calc(100% - 1rem) 100%, 0.5rem calc(100% - 0.5rem));
+            clip-path: polygon(0 1rem, 100% 0, calc(100% - 1rem) 100%, 0.5rem calc(100% - 0.5rem));
 }
+
 :is(blockquote, div.blockquote)::after {
     top: calc(97.5% - 0.75rem);
     right: calc(90% - 2rem);
     width: calc(15% + 5rem);
     height: calc(10% + 3rem);
-    clip-path: polygon(0 55%, 40% 40%, 37% 0, 100% 30%, 93% 83%, 60% 64%, 56% 84%);
+    -webkit-clip-path: polygon(0 55%, 40% 40%, 37% 0, 100% 30%, 93% 83%, 60% 64%, 56% 84%);
+            clip-path: polygon(0 55%, 40% 40%, 37% 0, 100% 30%, 93% 83%, 60% 64%, 56% 84%);
     transform: rotate(-25deg);
 }
+
 @media only screen and (max-width: 42.5rem) {
     :is(blockquote, div.blockquote)::after {
-        display: none;
+    	display: none;
     }
-    #main-content blockquote, #main-content  div.blockquote {
-        margin: 1rem auto;
-        padding: 1.75rem 1.75rem 1.15rem 1.5rem;
+
+    #main-content blockquote,
+    #main-content div.blockquote {
+    	margin: 1rem auto;
+    	padding: 1.75rem 1.75rem 1.15rem 1.5rem;
     }
 }
 
 /*-----Page Title, h1-6-----*/
-#page-title, .meta-title {
+#page-title,
+.meta-title {
     text-align: center;
     position: relative;
     display: flow-root;
     font-size: 2.5em;
     margin: 0.25em 0.5rem;
 }
+
 #main-content :is(h1, h2, h3, h4, h5, h6) {
     position: relative;
     display: flow-root;
     margin: 0.35em 0.5rem;
 }
+
 #page-title:first-letter,
 .meta-title:first-letter,
 #main-content :is(h1, h2, h3, h4, h5, h6):first-letter {
@@ -697,7 +786,8 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
     color: rgb(var(--swatch-primary));
 }
 
-#page-title::after, .meta-title::after,
+#page-title::after,
+.meta-title::after,
 #main-content :is(h1, h2, h3, h4, h5, h6)::after {
     content: &#34;&#34;;
     position: absolute;
@@ -707,7 +797,7 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
     height: 0.65em;
     margin: 0;
     z-index: -1;
-    background-color: rgba(var(--pale-gray-monochrome),0.65);
+    background-color: rgba(var(--pale-gray-monochrome), 0.65);
     transform: skewX(25deg);
 }
 
@@ -717,9 +807,10 @@ box-shadow: 0.25rem 0.25rem 0 rgb(var(--dark-gray-monochrome)), 0.5rem 0.5rem 0 
     transform: skew(-15deg) scale(1.03);
     box-shadow: 0.35rem 0.15rem 0 0.05rem rgb(var(--rating-module-bottom-border-color)), -0.75rem 0.45rem 0 0.1rem rgb(var(--medium-accent));
 }
-.page-rate-widget-box:not(.rateBox .page-rate-widget-box) &gt; *,
-#page-content .rate-box-with-credit-button &gt; * {
-   transform: skew(15deg);
+
+.page-rate-widget-box:not(.rateBox .page-rate-widget-box)&gt;*,
+#page-content .rate-box-with-credit-button&gt;* {
+    transform: skew(15deg);
 }
 
 /*-----Horizontal Rule-----*/
@@ -728,20 +819,25 @@ hr {
     background-color: transparent;
     border: none;
     height: 0.75rem;
-    --hrmask: linear-gradient(#000 0 0) center/calc(100% - 1.5rem) calc(100% - 1.5rem) no-repeat, conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 0 0/1.5rem 0.75rem space no-repeat, conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 0 100%/1.5rem 0.75rem space no-repeat, conic-gradient(from 45deg at left,#0000,#000 1deg 89deg,#0000 90deg) 0 0/0.75rem 1.5rem no-repeat space, conic-gradient(from -135deg at right,#0000,#000 1deg 89deg,#0000 90deg) 100% 0/0.75rem 1.5rem no-repeat space;
+    --hrmask: linear-gradient(#000 0 0) center/calc(100% - 1.5rem) calc(100% - 1.5rem) no-repeat, conic-gradient(from 135deg at top, #0000, #000 1deg 89deg, #0000 90deg) 0 0/1.5rem 0.75rem space no-repeat, conic-gradient(from -45deg at bottom, #0000, #000 1deg 89deg, #0000 90deg) 0 100%/1.5rem 0.75rem space no-repeat, conic-gradient(from 45deg at left, #0000, #000 1deg 89deg, #0000 90deg) 0 0/0.75rem 1.5rem no-repeat space, conic-gradient(from -135deg at right, #0000, #000 1deg 89deg, #0000 90deg) 100% 0/0.75rem 1.5rem no-repeat space;
 }
-hr::before, hr::after {
+
+hr::before,
+hr::after {
     content: &#34;&#34;;
     position: absolute;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgb(var(--dark-accent));
     -webkit-mask: var(--hrmask);
     mask: var(--hrmask);
 }
+
 hr::before {
-    top: 0.4rem; left: 0.4rem;
+    top: 0.4rem;
+    left: 0.4rem;
     background-color: rgb(var(--swatch-primary));
 }
 
@@ -753,9 +849,11 @@ hr::before {
     background: linear-gradient(180deg, rgb(var(--medium-accent)), rgb(var(--dark-accent)));
     margin-bottom: 2rem;
 }
+
 :is(.image-block, .scp-image-block):not(.block-center) {
     transform: perspective(4rem) rotateY(-1.5deg) translateZ(-5px) scale(1.06);
 }
+
 #page-content :is(.image-block, .scp-image-block).block-left {
     box-shadow: -0.75rem 0.75rem 0 rgb(var(--swatch-primary)), -1.5rem 1.5rem 0 rgb(var(--dark-accent));
     transform: perspective(4rem) rotateY(1.5deg) translateZ(-5px) scale(1.06);
@@ -769,6 +867,7 @@ hr::before {
 :is(.image-block, .scp-image-block):not(.block-center) img.image {
     transform: perspective(4rem) rotateY(1.5deg) translateZ(-5px) scale(1.06);
 }
+
 :is(.image-block, .scp-image-block).block-left img.image {
     transform: perspective(4rem) rotateY(-1.5deg) translateZ(-5px) scale(1.06);
 }
@@ -778,9 +877,11 @@ hr::before {
     margin-top: 0.425rem;
     box-shadow: none;
 }
+
 :is(.image-block, .scp-image-block):not(.block-center) .scp-image-caption {
     transform: perspective(6rem) rotateY(4.5deg) rotateZ(-2.5deg) rotateX(-1deg) skew(-2deg, -0.35deg);
 }
+
 :is(.image-block, .scp-image-block).block-left .scp-image-caption {
     transform: perspective(6rem) rotateY(-4.5deg) rotateZ(2.5deg) rotateX(-1deg) skew(2deg, 0.35deg);
 }
@@ -792,26 +893,37 @@ hr::before {
     grid-template-columns: 1fr 9rem;
 }
 
- .yui-navset.yui-navset-top &gt; .yui-nav {
+.yui-navset.yui-navset-top&gt;.yui-nav {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
     grid-area: tabs;
     display: flex;
-    clip-path: none;
+    -webkit-clip-path: none;
+            clip-path: none;
     align-items: stretch;
     align-self: flex-start;
     flex-direction: column;
-    position: sticky; top: var(--topbar-height-on-mobile);
+    position: -webkit-sticky;
+    position: sticky;
+    top: var(--topbar-height-on-mobile);
 }
- .yui-navset.yui-navset-top &gt; .yui-nav &gt; li {
+
+.yui-navset.yui-navset-top&gt;.yui-nav&gt;li {
     flex-grow: 0;
 }
+
 .yui-navset .yui-nav .selected {
     transform: perspective(6em) rotateY(-15deg) translateZ(1.5em) scale(0.835) translateX(-0.7em);
 }
 
-.yui-navset .yui-nav .selected a em, .yui-navset .yui-nav a em {
+.yui-navset .yui-nav .selected a em,
+.yui-navset .yui-nav a em {
     white-space: break-spaces;
 }
-.yui-navset.yui-navset-top &gt; .yui-content {
+
+.yui-navset.yui-navset-top&gt;.yui-content {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
     grid-area: content;
     border: none;
     border-right: solid 0.35rem rgb(var(--swatch-primary));
@@ -819,12 +931,18 @@ hr::before {
 
 /*-----Hovertip-----*/
 .hovertip[style*=&#34;display: block&#34;] {
-    filter: drop-shadow(-0.45em -0.45em 0 rgb(var(--swatch-primary)));
+    -webkit-filter: drop-shadow(-0.45em -0.45em 0 rgb(var(--swatch-primary)));
+            filter: drop-shadow(-0.45em -0.45em 0 rgb(var(--swatch-primary)));
 }
-.hovertip:before { box-shadow: none!important; }
+
+.hovertip:before {
+    box-shadow: none !important;
+}
+
 .hovertip .content {
     box-shadow: -0.5em -0.5em 0 rgb(var(--swatch-primary-darkest));
 }
+
 .hovertip .f-heading {
     transform: perspective(5em) rotateY(12deg) rotateZ(0.25deg) scale(1.15) translateY(0.2em);
 }
@@ -834,20 +952,21 @@ hr::before {
 /*-----Edit Area-----*/
 /*-----------------------------------*/
 
-div[id*=&#34;page-options-bottom&#34;]:not(.page-rate-widget-box):not(#search-top-box-form) &gt; a.btn {
-    transition: border-color .2s cubic-bezier(.4,0,.2,1),
-                     box-shadow .2s cubic-bezier(.4,0,.2,1),
-                     color .15s cubic-bezier(.4,0,.2,1),
-                     background-color .15s cubic-bezier(.4,0,.2,1),
-                     font-weight .2s cubic-bezier(.4,0,.2,1),
-                     font-variation-settings .2s cubic-bezier(.4,0,.2,1),
-                     transform 0.15s;
+div[id*=&#34;page-options-bottom&#34;]:not(.page-rate-widget-box):not(#search-top-box-form)&gt;a.btn {
+    transition: border-color .2s cubic-bezier(.4, 0, .2, 1),
+    	box-shadow .2s cubic-bezier(.4, 0, .2, 1),
+    	color .15s cubic-bezier(.4, 0, .2, 1),
+    	background-color .15s cubic-bezier(.4, 0, .2, 1),
+    	font-weight .2s cubic-bezier(.4, 0, .2, 1),
+    	font-variation-settings .2s cubic-bezier(.4, 0, .2, 1),
+    	transform 0.15s;
 }
-div[id*=&#34;page-options-bottom&#34;]:not(.page-rate-widget-box):not(#search-top-box-form) &gt; a.btn:is(:hover, :active) {
+
+div[id*=&#34;page-options-bottom&#34;]:not(.page-rate-widget-box):not(#search-top-box-form)&gt;a.btn:is(:hover, :active) {
     transform: scale(0.9) skew(-5deg);
     box-shadow: 0 0 0 .125rem rgb(var(--ui-button-hover-outline)),
-                        inset var(--icon-size) 0 0 0 rgb(var(--ui-icon-hover-bg)),
-                        0.45rem .35rem 0 .1rem rgb(var(--ui-icon-bg));
+    	inset var(--icon-size) 0 0 0 rgb(var(--ui-icon-hover-bg)),
+    	0.45rem .35rem 0 .1rem rgb(var(--ui-icon-bg));
 }
 
 .page-source {
@@ -858,12 +977,11 @@ div[id*=&#34;page-options-bottom&#34;]:not(.page-rate-widget-box):not(#search-to
 [[/collapsible]]
 [[/iftags]]
 
-[[module CSS]]
-@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ahansarp/1&#39;);
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Ahansarp/1&#34;)
 [[/module]]
-
 [[include :scp-wiki:component:interwiki-style
-| priority=2
+| priority=3
 | theme=https://scp-wiki.wdfiles.com/local--code/theme%3Ahansarp/1
 ]]</textarea></pre>
   </div>
@@ -872,7 +990,7 @@ div[id*=&#34;page-options-bottom&#34;]:not(.page-rate-widget-box):not(#search-to
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.576110.</em>
+    <em>Last updated 2023-07-15 21:44:41.010564.</em>
   
 </div>
 </body>

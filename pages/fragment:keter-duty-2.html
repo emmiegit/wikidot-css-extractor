@@ -61,6 +61,54 @@ a[href*=&#34;/scp-2718&#34;]::after {
   80% {content: &#34;1718&#34;;}
   90% {content: &#34;1712&#34;;}
   100%   {content: &#34;1#12&#34;;}
+}
+
+.grid-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr;
+    align-items: stretch;
+    border: solid 0.5px var(--accentColor);
+}
+.grid-table &gt; * {
+    display: flex;
+    flex-direction: column;
+    border: solid 0.5px var(--accentColor);
+    background-color: #21252E;
+    color: #EDEDED;
+    padding: 0.625em;
+    justify-content: center;
+}
+.grid-table &gt; .title {
+    color: #21252E;
+    background-color: var(--accentColor);
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+}
+@media screen and (max-width: 620px) {
+    .grid-table {
+        grid-template-columns: 1fr 1fr;
+        border: none;
+    }
+    .grid-table &gt; .title { display: none; }
+    .grid-table &gt; * { justify-content: start; }
+    .grid-table &gt; *:nth-child(3n-2) { border-width: 1px 0.5px 0.5px 1px; }
+    .grid-table &gt; *:nth-child(3n-1) { border-width: 1px 1px 0.5px 0.5px; }
+    .grid-table &gt; *:nth-child(3n) {
+        grid-column: span 2;
+        margin-bottom: 1.25rem;
+        border-width: 0.5px 1px 1px;
+     }
+    .grid-table &gt; *:nth-child(3n-2)::before, .grid-table &gt; *:nth-child(3n-1)::before {
+        content: &#34;SCP&#34;;
+        display: block;
+        color: #21252E;
+        background-color: var(--accentColor);
+        text-align: center;
+        font-weight: bold;
+        padding: 0.5em;
+    }
+    .grid-table &gt; *:nth-child(3n-1)::before { content: &#34;001-K&#34;; }
 }</code></pre>
         </li>
       
@@ -83,10 +131,6 @@ a[href*=&#34;/scp-2718&#34;]::after {
       
         <li>
           <pre><code>border: none; text-align: right; padding: none; background: transparent;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>line-height: 1px</code></pre>
         </li>
       
     </ul>
@@ -124,6 +168,17 @@ a[href*=&#34;/scp-2718&#34;]::after {
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
   </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
 
   
 </li>
@@ -216,6 +271,22 @@ a[href*=&#34;/scp-2718&#34;]::after {
         </li>
       
         <li>
+          <pre><code>grid-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
           <pre><code>bt</code></pre>
         </li>
       
@@ -262,6 +333,54 @@ a[href*=&#34;/scp-2718&#34;]::after {
   90% {content: &#34;1712&#34;;}
   100%   {content: &#34;1#12&#34;;}
 }
+
+.grid-table {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1.5fr;
+    align-items: stretch;
+    border: solid 0.5px var(--accentColor);
+}
+.grid-table &gt; * {
+    display: flex;
+    flex-direction: column;
+    border: solid 0.5px var(--accentColor);
+    background-color: #21252E;
+    color: #EDEDED;
+    padding: 0.625em;
+    justify-content: center;
+}
+.grid-table &gt; .title {
+    color: #21252E;
+    background-color: var(--accentColor);
+    padding: 0;
+    font-weight: bold;
+    text-align: center;
+}
+@media screen and (max-width: 620px) {
+    .grid-table {
+        grid-template-columns: 1fr 1fr;
+        border: none;
+    }
+    .grid-table &gt; .title { display: none; }
+    .grid-table &gt; * { justify-content: start; }
+    .grid-table &gt; *:nth-child(3n-2) { border-width: 1px 0.5px 0.5px 1px; }
+    .grid-table &gt; *:nth-child(3n-1) { border-width: 1px 1px 0.5px 0.5px; }
+    .grid-table &gt; *:nth-child(3n) {
+        grid-column: span 2;
+        margin-bottom: 1.25rem;
+        border-width: 0.5px 1px 1px;
+     }
+    .grid-table &gt; *:nth-child(3n-2)::before, .grid-table &gt; *:nth-child(3n-1)::before {
+        content: &#34;SCP&#34;;
+        display: block;
+        color: #21252E;
+        background-color: var(--accentColor);
+        text-align: center;
+        font-weight: bold;
+        padding: 0.5em;
+    }
+    .grid-table &gt; *:nth-child(3n-1)::before { content: &#34;001-K&#34;; }
+}
 [[/module]]
 
 ----
@@ -281,15 +400,13 @@ a[href*=&#34;/scp-2718&#34;]::after {
 [[/div]]
 
 [[include component:image-block-base
-|name=http://scp-sandbox-3.wdfiles.com/local--files/fragment%3Aketer-duty-2/site-001.jpg
+|name=https://scp-wiki.wdfiles.com/local--files/fragment%3Aketer-duty-2/site-001.jpg
 |caption=SCP-001, Entrance Omega. Pictured headstones are symbolic. Remains are irretrievable. 
 |width=100%
 |align=center
 ]]
 
-[[html]]
-&lt;br style=&#34;line-height: 1px&#34; /&gt;
-[[/html]]
+~~~~
 
 [[span class=&#34;bt&#34;]]SPECIAL CONTAINMENT PROCEDURES:[[/span]] The containment cycles of all SCP-001-K instances are to be maintained at all costs. Monitoring of each cycle is to take place within a dedicated observation room, using methods incapable of undermining the balance of their respective anomalies.
 
@@ -314,6 +431,8 @@ In case of containment failure, personnel are to enter the chamber of a broken c
 ----
 [[span class=&#34;bt&#34;]]DESCRIPTION:[[/span]] SCP-001 is a facility designed for the containment of anomalous objects and phenomena which are either uncontainable, or whose attributes would require a nigh-insurmountable amount of resources or technological prowess to contain indefinitely -- a containment class codified during the genesis of our organization&#39;s founding as Keter.
 
+[[include component:image-block name=hallway.png|caption=Interior hallway of SCP-001.|width=300px]]
+
 The facility itself is nondescript externally, excepting the fact that its outer appearance mildly varies over time and between persons, defying attempts to document a concrete structure. This ambiguity continues into its internal layout -- attempts to concretely map out the interior have invariably failed and have resulted in the loss of countless personnel to date. The only sustaining characteristic is the existence and number of containment zones. Despite having been discovered in pre-modern times, with the earliest references to the facility having been recorded in ~730 A.D., it has always possessed technology and architecture on-par with militaristic facilities circa the late 1900s. Some areas of SCP-001 have been rendered inaccessible due to containment failures, and are inhospitable to human life.
 
 The halls of SCP-001 are broken into several hundred unique containment zones, each housing a pair of anomalous objects or phenomena whose anomalous traits serve to counteract each other in perpetuity. The entrance to each containment chamber has been marked with symbols of occult significance, ostensibly tied to Kabbalistic teachings. Damage to these symbols ultimately leads to the upsetting of balance between its respective pair of anomalies. Introducing human variables into containment cycles has been proven to be the sole method of reestablishing order.
@@ -322,41 +441,136 @@ Failure to maintain cycles has disastrous consequences: where one anomaly is una
 
 Half of all anomalous subjects within SCP-001 (one per containment zone) were concretely documented upon discovery and formed the basis for documentation standards among our burgeoning organization. These have been formally categorized under their original designations. There existed no mentions of the opposing anomalies, which have been studied, interrogated, and catalogued in the years since. These anomalies have been designated SCP-001-K.
 
+[[div class=&#34;grid-table&#34;]]
+
+[[div class=&#34;title&#34;]]
+SCP Description
+[[/div]]
+[[div class=&#34;title&#34;]]
+001-K Description
+[[/div]]
+[[div class=&#34;title&#34;]]
+Containment Method
+[[/div]]
+
+[[div]]
+[[[SCP-1048]]] - An animate teddy bear that reconstitutes matter into duplicates of itself.
+[[/div]]
+[[div]]
+[http://scp-int.wikidot.com/scp-1054-ru K-1054-RU] - An airplane engine that produces a variety of organisms resembling crows with anomalous capabilities.
+[[/div]]
+[[div]]
+Lifeforms produced by K-1054-RU&#39;s &#34;low throttle&#34;, &#34;cruise&#34;, and  &#34;high throttle&#34; settings are attacked and repurposed into copies of SCP-1048. When K-1054-RU shifts into its &#34;emergency&#34; setting, the resulting murder of crows abduct SCP-1048 copies, feeding them into the engine. Due to the sheer number of entities within the chamber at all times, the original SCP-1048 has not been seen in over a decade.
+[[/div]]
+
+[[div]]
+= [[[scp-2521|●●|●●●●●|●●|●]]]
+[[image http://scp-wiki.wdfiles.com/local--files/fragment%3Aketer-duty-2/scp_number.jpg size=&#34;small&#34;]]
+[[/div]]
+[[div]]
+[[[scp-5242|K-INTEGER]]] - A HAZARD CONSTRUCT that abstracts the identities of media of communication which describe it concretely.
+[[/div]]
+[[div]]
+[[image https://web.archive.org/web/20210611002853im_/https://scp-sandbox-3.wdfiles.com/local--files/collab%3Aketer-duty/scp_number2.png width=&#34;100%&#34;]]
+In return, the spread of K-INTEGER&#39;s abstraction effect is limited by its need to now elude capture.
+[[/div]]
+
+[[div]]
+[[[SCP-106]]] - A malicious humanoid entity that corrodes all forms of matter, bringing prey into a pocket dimension to torture and kill.
+[[/div]]
+[[div]]
+[[[scp-3333|K-3333]]] - A fire lookout tower whose floors extend upwards in perpetuity. Inhabited by hostile lifeforms.
+[[/div]]
+[[div]]
+SCP-106 hunts the entities residing in K-3333; however, attempts to draw these entities into its pocket dimension invariably result in SCP-106 re-emerging within K-3333. This has resulted in SCP-106&#39;s behavior growing more erratic and agitated; at one point, they were observed tearing a vulpine inhabitant of K-3333 in half in an apparent fit of rage. This behavior is encouraged by various taunting behaviors of K-3333 inhabitants, who cajole SCP-106 and lure him onto higher floors.
+[[/div]]
+
+[[div]]
+[[[SCP-2718|SCP- ]]] - The subjective perception of death in perpetuity.
+[[/div]]
+[[div]]
+[[[scp-3980|K-3980]]] - A transmissible state of being that subverts known traits of the life/death dichotomy.
+[[/div]]
+[[div]]
+= {{sleep now, children}}
+[[/div]]
+
+[[div]]
+[[[scp-231|SCP-231-7]]] - The sole survivor of an anomalous ritual perpetrated by the Children of the Scarlet King. The removal or delivery of foeti from other victims have led to an increasing amount of devastation; were SCP-231-7 to follow suit, an XK-level event would occur.
+[[/div]]
+[[div]]
+[[[scp-4666|K-4666]]] - An ancient humanoid that abducts children, producing toys from their bodily remains.
+[[/div]]
+[[div]]
+Once every twenty-four hours, SCP-231-7 is subjected to [DATA EXPUNGED], which has effectively replaced procedure 110-Montauk, while also lessening the psychological impact on SCP-231-7. K-4666 collects toys resulting from this interaction and places them into his sack. The sack undulates with the motions of its inhabitants.
+[[/div]]
+
+
+[[div]]
 [[include :scp-wiki:component:listusers-1 users=&#34;.&#34;]]
-
-||~ SCP Description||~ 001-K Description||~ Containment Method ||
-||[[[SCP-1048]]] - An animate teddy bear that reconstitutes matter into duplicates of itself.||[http://scp-int.wikidot.com/scp-1054-ru K-1054-RU] - An airplane engine that produces a variety of organisms resembling crows with anomalous capabilities.||Lifeforms produced by K-1054-RU&#39;s &#34;low throttle&#34;, &#34;cruise&#34;, and  &#34;high throttle&#34; settings are attacked and repurposed into copies of SCP-1048. When K-1054-RU shifts into its &#34;emergency&#34; setting, the resulting murder of crows abduct SCP-1048 copies, feeding them into the engine. Due to the sheer number of entities within the chamber at all times, the original SCP-1048 has not been seen in over a decade.||
-||= [[[scp-2521|●●|●●●●●|●●|●]]] _
-[[image http://scp-wiki.wdfiles.com/local--files/fragment%3Aketer-duty-2/scp_number.jpg size=&#34;small&#34;]]||[[[scp-5242|K-INTEGER]]] - A HAZARD CONSTRUCT that abstracts the identities of media of communication which describe it concretely.|| [[image http://scp-sandbox-3.wdfiles.com/local--files/collab%3Aketer-duty/scp_number2.png width=&#34;100%&#34;]] _
-In return, the spread of K-INTEGER&#39;s abstraction effect is limited by its need to now elude capture.||
-||[[[SCP-106]]] - A malicious humanoid entity that corrodes all forms of matter, bringing prey into a pocket dimension to torture and kill.||[[[scp-3333|K-3333]]] - A fire lookout tower whose floors extend upwards in perpetuity. Inhabited by hostile lifeforms.||SCP-106 hunts the entities residing in K-3333; however, attempts to draw these entities into its pocket dimension invariably result in SCP-106 re-emerging within K-3333. This has resulted in SCP-106&#39;s behavior growing more erratic and agitated; at one point, they were observed tearing a vulpine inhabitant of K-3333 in half in an apparent fit of rage. This behavior is encouraged by various taunting behaviors of K-3333 inhabitants, who cajole SCP-106 and lure him onto higher floors.||
-||[[[SCP-2718|SCP- ]]] - The subjective perception of death in perpetuity.||[[[scp-3980|K-3980]]] - A transmissible state of being that subverts known traits of the life/death dichotomy.||= {{sleep now, children}}||
-||[[[scp-231|SCP-231-7]]] - The sole survivor of an anomalous ritual perpetrated by the Children of the Scarlet King. The removal or delivery of foeti from other victims have led to an increasing amount of devastation; were SCP-231-7 to follow suit, an XK-level event would occur.||[[[scp-4666|K-4666]]] - An ancient humanoid that abducts children, producing toys from their bodily remains.||Once every twenty-four hours, SCP-231-7 is subjected to [DATA EXPUNGED], which has effectively replaced procedure 110-Montauk, while also lessening the psychological impact on SCP-231-7. K-4666 collects toys resulting from this interaction and places them into his sack. The sack undulates with the motions of its inhabitants.||
-||[[[SCP-1893]]] - ,,I have my hands full, %%title%%, I&#39;ll deal with you later.,,||[[[scp-3999|K-3999]]] - N/A||The exact process of containment is not fully understood; the corpse of Researcher Talloran is suspended in the middle of a chamber. The sound of a wooden baseball bat dragging against concrete can be heard on occasion.||
-||[[[SCP-1739]]] - A parauniversal containment apparatus in the form of a Dell laptop. Its primary program is used to input a time between 01/01/2004 and the present. Doing so will displace the user into the past, creating a divergent timeline. This universe will then be fed on by an unknown entity, represented on the computer as a graphic of a woman unchaining a dog and tossing a ball.||[[[http://www.scpwiki.com/scp-5243|K-5243]]] - A retrocausal containment breach contained to Site-43. Must be re-enacted perfectly each year to prevent the creation of dead timelines.||SCP-1739 has been used to create a divergent timeline in which its activation is entangled with K-5243. This timeline is consumed soon after its creation, but reconstitutes annually due to the recurrence of K-5243. SCP-1739 displays an animation of a dog chasing its tail.||
-||[[[SCP-2316]]] - A lake containing human corpses floating at its surface. Possesses cognitohazardous traits that prey upon familiarity and kinship.||[[[scp-5856|K-5856]]] - A sociokinetic humanoid that can manipulate social bonds.||SCP-2316&#39;s effects are malleable to K-5856, which remains lakeside as it does not recognize the bodies in the water.||
-||[[[SCP-469]]] - A humanoid entity encased within countless furled wings that grow in number with the absorption of sound.||[[[http://scp-int.wikidot.com/scp-es-002|K-ES-002]]] - A parasitic species of soundwaves.||SCP-469 unfurls its wings to capture instances of K-ES-002, rendering the chamber silent as it grows. K-ES-002 then uses SCP-469 as a medium for reproduction, with juvenile instances being released into SCP-469&#39;s chamber at irregular intervals. An evolutionary pattern has been noticed among K-ES-002; while originally at an inaudible frequency below 17hz, K-ES-002 is currently audible, and resembles sounds produced by individuals undergoing glossolalia.||
-||[[[SCP-2719]]] - A metaphysical pointer capable of redefining or sending concepts inside.||[[[SCP-3125|K-3125]]] - Unknown concept with some form of agency.||SCP-2719 is in a constant state of flux due to attempts by K-3125 to reassert its foci from within; all attempts to go outside result in it becoming inside.||
-|| [[[SCP-579]]] - {{[DATA EXPUNGED]}}|| [[[SCP-055]]] - {{Unknown}} || Can&#39;t fit round pegs in square holes.||
-
+[[[SCP-1893]]] - ,,I have my hands full, %%title%%, I&#39;ll deal with you later.,,
 [[include :scp-wiki:component:listusers-2]]
-
-||~ SCP Description||~ 001-K Description||~ Containment Method ||
-||[[[SCP-1048]]] - An animate teddy bear that reconstitutes matter into duplicates of itself.||[[[http://scp-int.wikidot.com/scp-1054-ru|K-1054-RU]]] - An airplane engine that produces a variety of organisms resembling crows with anomalous capabilities.||Lifeforms produced by K-1054-RU&#39;s &#34;low throttle&#34;, &#34;cruise&#34;, and  &#34;high throttle&#34; settings are attacked and repurposed into copies of SCP-1048. When K-1054-RU shifts into its &#34;emergency&#34; setting, the resulting murder of crows abduct SCP-1048 copies, feeding them into the engine. Due to the sheer number of entities within the chamber at all times, the original SCP-1048 has not been seen in over a decade.||
-||= [[[scp-2521|●●|●●●●●|●●|●]]] _
-[[image http://scp-wiki.wdfiles.com/local--files/fragment%3Aketer-duty-2/scp_number.jpg size=&#34;small&#34;]]||[[[scp-5242|K-INTEGER]]] - A HAZARD CONSTRUCT that abstracts the identities of media of communication which describe it concretely|| [[image http://scp-sandbox-3.wdfiles.com/local--files/collab%3Aketer-duty/scp_number2.png width=&#34;100%&#34;]] _
-In return, the spread of K-INTEGER&#39;s abstraction effect is limited by its need to now elude capture.||
-||[[[SCP-106]]] - A malicious humanoid entity that corrodes all forms of matter, bringing prey into a pocket dimension to torture and kill.||[[[scp-3333|K-3333]]] - A fire lookout tower whose floors extend upwards in perpetuity. Inhabited by hostile lifeforms.||SCP-106 hunts the entities residing in K-3333; however, attempts to draw these entities into its pocket dimension invariably result in SCP-106 re-emerging within K-3333. This has resulted in SCP-106&#39;s behavior growing more erratic and agitated; at one point, they were observed tearing a vulpine inhabitant of K-3333 in half in an apparent fit of rage. This behavior is encouraged by various taunting behaviors of K-3333 inhabitants, who cajole SCP-106 and lure him onto higher floors.||
-||[[[SCP-2718|SCP- ]]] - The subjective perception of death in perpetuity.||[[[scp-3980|K-3980]]] - A transmissible state of being that subverts known traits of the life/death dichotomy.||= {{go to sleep}}||
-||[[[scp-231|SCP-231-7]]] - The sole survivor of an anomalous ritual perpetrated by the Children of the Scarlet King. The removal or delivery of foeti from other victims have led to an increasing amount of devastation; were SCP-231-7 to follow suit, an XK-level event would occur.||[[[scp-4666|K-4666]]] - An ancient humanoid that abducts children, producing toys from their bodily remains.||Once every twenty-four hours, SCP-231-7 is subjected to [DATA EXPUNGED], which has effectively replaced procedure 110-Montauk, while also lessening the psychological impact on SCP-231-7. K-4666 collects toys resulting from this interaction and places them into his sack. The sack undulates with the motions of its inhabitants.||
-||[[[SCP-1893]]] - ,,I have my hands full, researcher, I&#39;ll deal with you later.,,||[[[scp-3999|K-3999]]] - N/A||The exact process of containment is not fully understood; the corpse of Researcher Talloran is suspended in the middle of a chamber. The sound of a wooden baseball bat dragging against concrete can be heard on occasion.||
-||[[[SCP-1739]]] - A parauniversal containment apparatus in the form of a Dell laptop. Its primary program is used to input a time between 01/01/2004 and the present. Doing so will displace the user into the past, creating a divergent timeline. This universe will then be fed on by an unknown entity, represented on the computer as a graphic of a woman unchaining a dog and tossing a ball.||[[[scp-5243|K-5243]]] A retrocausal containment breach contained to Site-43. Must be re-enacted perfectly each year to prevent the creation of dead timelines.||SCP-1739 has been used to create a divergent timeline in which its activation is entangled with K-5243. This timeline is consumed soon after its creation, but reconstitutes annually due to the recurrence of K-5243. SCP-1739 displays an animation of a dog chasing its tail.||
-||[[[SCP-2316]]] - A lake containing human corpses floating at its surface. Possesses cognitohazardous traits that prey upon familiarity and kinship.||[[[scp-5856|K-5856]]] - A sociokinetic humanoid that can manipulate social bonds.||SCP-2316&#39;s effects are malleable to K-5856, which remains lakeside as it does not recognize the bodies in the water.||
-||[[[SCP-469]]] - A humanoid entity encased within countless furled wings that grow in number with the absorption of sound.||[[[http://scp-int.wikidot.com/scp-es-002|K-ES-002]]] - A parasitic species of soundwaves.||SCP-469 unfurls its wings to capture instances of K-ES-002, rendering the chamber silent as it grows. K-ES-002 then uses SCP-469 as a medium for reproduction, with juvenile instances being released into SCP-469&#39;s chamber at irregular intervals. An evolutionary pattern has been noticed among K-ES-002; while originally at an inaudible frequency below 17hz, K-ES-002 is currently audible, and resembles sounds produced by individuals undergoing glossolalia.||
-||[[[SCP-2719]]] - A metaphysical pointer capable of redefining or sending concepts inside.||[[[SCP-3125|K-3125]]] - Unknown concept with some form of agency.||SCP-2719 is in a constant state of flux due to attempts by K-3125 to reassert its foci from within; all attempts to go outside result in it becoming inside.||
-|| [[[SCP-579]]] - {{[DATA EXPUNGED]}}|| [[[SCP-055]]] - {{Unknown}} || Can&#39;t fit round pegs in square holes.||
-
+[[[SCP-1893]]] - ,,I have my hands full, researcher, I&#39;ll deal with you later.,,
 [[include :scp-wiki:component:listusers-3]]
+[[/div]]
+[[div]]
+[[[scp-3999|K-3999]]] - N/A
+[[/div]]
+[[div]]
+The exact process of containment is not fully understood; the corpse of Researcher Talloran is suspended in the middle of a chamber. The sound of a wooden baseball bat dragging against concrete can be heard on occasion.
+[[/div]]
+
+[[div]]
+[[[SCP-1739]]] - A parauniversal containment apparatus in the form of a Dell laptop. Its primary program is used to input a time between 01/01/2004 and the present. Doing so will displace the user into the past, creating a divergent timeline. This universe will then be fed on by an unknown entity, represented on the computer as a graphic of a woman unchaining a dog and tossing a ball.
+[[/div]]
+[[div]]
+[[[http://www.scpwiki.com/scp-5243|K-5243]]] - A retrocausal containment breach contained to Site-43. Must be re-enacted perfectly each year to prevent the creation of dead timelines.
+[[/div]]
+[[div]]
+SCP-1739 has been used to create a divergent timeline in which its activation is entangled with K-5243. This timeline is consumed soon after its creation, but reconstitutes annually due to the recurrence of K-5243. SCP-1739 displays an animation of a dog chasing its tail.
+[[/div]]
+
+[[div]]
+[[[SCP-2316]]] - A lake containing human corpses floating at its surface. Possesses cognitohazardous traits that prey upon familiarity and kinship.
+[[/div]]
+[[div]]
+[[[scp-5856|K-5856]]] - A sociokinetic humanoid that can manipulate social bonds.
+[[/div]]
+[[div]]
+SCP-2316&#39;s effects are malleable to K-5856, which remains lakeside as it does not recognize the bodies in the water.
+[[/div]]
+
+[[div]]
+[[[SCP-469]]] - A humanoid entity encased within countless furled wings that grow in number with the absorption of sound.
+[[/div]]
+[[div]]
+[[[http://scp-int.wikidot.com/scp-es-002|K-ES-002]]] - A parasitic species of soundwaves.
+[[/div]]
+[[div]]
+SCP-469 unfurls its wings to capture instances of K-ES-002, rendering the chamber silent as it grows. K-ES-002 then uses SCP-469 as a medium for reproduction, with juvenile instances being released into SCP-469&#39;s chamber at irregular intervals. An evolutionary pattern has been noticed among K-ES-002; while originally at an inaudible frequency below 17hz, K-ES-002 is currently audible, and resembles sounds produced by individuals undergoing glossolalia.
+[[/div]]
+
+[[div]]
+[[[SCP-2719]]] - A metaphysical pointer capable of redefining or sending concepts inside.
+[[/div]]
+[[div]]
+[[[SCP-3125|K-3125]]] - Unknown concept with some form of agency.
+[[/div]]
+[[div]]
+SCP-2719 is in a constant state of flux due to attempts by K-3125 to reassert its foci from within; all attempts to go outside result in it becoming inside.
+[[/div]]
+
+[[div]]
+[[[SCP-579]]] - {{[DATA EXPUNGED]}}
+[[/div]]
+[[div]]
+[[[SCP-055]]] - {{Unknown}}
+[[/div]]
+[[div]]
+Can&#39;t fit round pegs in square holes.
+[[/div]]
+
+[[/div]]
 
 @@ @@
 @@ @@
@@ -395,7 +609,7 @@ Despite having been under Foundation purview for over a century, the core of SCP
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:53.071908.</em>
+    <em>Last updated 2023-07-15 21:44:37.319154.</em>
   
 </div>
 </body>

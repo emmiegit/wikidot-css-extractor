@@ -52,6 +52,10 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aaesthetic-theme/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -79,10 +83,6 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -223,6 +223,15 @@
     filter: drop-shadow(-0.125rem 0.125rem 0rem var(--drop-shadow));
 }
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[=]]
 [[module Rate]]
 [[/=]]
@@ -380,15 +389,8 @@ The body font is Prenton.
 [[span style=&#34;font-family: var(--mono-font);&#34;]]The monospace font used is Recursive.[[/span]]
 [[/=]]
 @@ @@
-
-[[footnoteblock]]
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
-[[include :scp-wiki:component:toggle-sidebar-bhl]]
-[[include :scp-wiki:component:centered-header-bhl]]
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @import url(&#34;https://use.typekit.net/afb2wxe.css&#34;);
 
 @supports(display: grid) {
@@ -509,6 +511,7 @@ The body font is Prenton.
     	--dropdown-links-hover-color: var(--swatch-text-secondary-color);
     }
 
+    #interwiki,
     #side-bar {
     	/* ===SIDE-BAR ELEMENTS=== */
 
@@ -739,6 +742,11 @@ The body font is Prenton.
     	background-position: top left;
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+    
+    #interwiki  div.menu-item,
     #side-bar div.menu-item {
     	--text-shadow: rgb(var(--swatch-text-dark, 12, 12, 12, ));
     	border-bottom: 0.0625rem solid rgb(var(--swatch-border-color));
@@ -751,6 +759,9 @@ The body font is Prenton.
     	border-left: 0.0625rem solid rgb(var(--swatch-border-color));
     }
 
+    #interwiki div.menu-item a,
+    #interwiki  div.menu-item a:visited,
+    #interwiki  div.menu-item .text,
     #side-bar div.menu-item a,
     #side-bar div.menu-item a:visited,
     #side-bar div.menu-item .text {
@@ -759,6 +770,8 @@ The body font is Prenton.
     	word-spacing: 0.1em;
     }
 
+    #interwiki div.menu-item a::before,
+    #interwiki div.menu-item a:hover::before,
     #side-bar div.menu-item a::before,
     #side-bar div.menu-item a:hover::before {
     	background: var(--gradient-header);
@@ -768,12 +781,14 @@ The body font is Prenton.
     	background-size: 100vh;
     }
 
-    #side-bar .heading {
+    #interwiki .heading ,
+    #side-bar .heading  {
     	text-align: center;
     	justify-content: center;
     	align-items: center;
     }
 
+    #interwiki .heading p,
     #side-bar .heading p,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link {
     	--text-shadow: rgb(var(--swatch-text-dark, 12, 12, 12, ));
@@ -789,15 +804,18 @@ The body font is Prenton.
     	text-transform: none;
     }
 
+    #interwiki .side-block[style*=&#34;background-color:&#34;] .heading ,
     #side-bar .side-block[style*=&#34;background-color:&#34;] .heading {
     	margin-top: .25rem;
     }
 
+    #interwiki .heading p::after,
     #side-bar .heading p::after,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link::after {
     	bottom: -0.6rem;
     }
 
+    #interwiki .heading p::before,
     #side-bar .heading p::before,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link::before {
     	top: -0.6rem;
@@ -992,21 +1010,6 @@ The body font is Prenton.
     	border: 0.0625rem solid rgb(var(--light-gray-monochrome));
     }
 
-    #side-bar iframe.scpnet-interwiki-frame:not(:lang(cn)) {
-    	-webkit-filter: invert(1);
-    	        filter: invert(1);
-    }
-
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before,
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::before,
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::after {
-    	background-color: rgb(var(--swatch-menubg-color));
-    }
-
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before {
-    	mix-blend-mode: lighten;
-    }
-
     @media only screen and (max-width: 56.25rem) {
 
     	a[href*=&#34;/random:random-tale&#34;],
@@ -1014,6 +1017,7 @@ The body font is Prenton.
     		min-width: calc((var(--base-font-size) * (14 / 15)) * 4);
     	}
 
+    	#interwiki .heading p,
     	#side-bar .heading p,
     	#side-bar .side-block&gt;.collapsible-block .collapsible-block-link {
     		font-size: 1em;
@@ -1048,17 +1052,26 @@ The body font is Prenton.
     	}
     }
 }
-
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[footnoteblock]]
+[[/iftags]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[include :scp-wiki:component:centered-header-bhl]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aaesthetic-theme/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aaesthetic-theme/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.554164.</em>
+    <em>Last updated 2023-07-15 21:44:40.989343.</em>
   
 </div>
 </body>

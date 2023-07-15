@@ -29,15 +29,21 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>:root {
+          <pre><code>:where(:root) {
+    /*Basalt compatibility */
+    --rating-module-button-plus-color: var(--rate-module-upvote-color);
+    --rating-module-button-negative-color: var(--rate-module-downvote-color);
+    /*BHL compatibility */
     --positiveColor: rgb(var(--rating-module-button-plus-color, 144,238,144));
     --negativeColor: rgb(var(--rating-module-button-negative-color, 255,192,203));
-}
-
-.page-rate-widget-box {
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.page-rate-widget-box {
     position: relative;
 }
-#main-content .page-rate-widget-box &gt; *:not(.creditBottomRate .page-rate-widget-box &gt; *) {
+#main-content .page-rate-widget-box &gt; *:where(:not(.creditBottomRate .page-rate-widget-box &gt; *)) {
     border-bottom-width: 0.45em;
 }
 .page-rate-widget-box::after {
@@ -72,7 +78,6 @@
 }
 #page-content .creditButton p a {
     margin-left: inherit;
-    line-height: calc(100% + 0.65em);
 }
 
 div.creditBottomRate .page-rate-widget-box::after {
@@ -107,18 +112,15 @@ div.creditBottomRate .page-rate-widget-box::after {
     margin: 0;
     bottom: 0;
 }
-
-#page-content .creditButton p a {
-    line-height: inherit;
-}</code></pre>
+</code></pre>
         </li>
       
         <li>
           <pre><code>:root {
     --info-circle-size: 12.5rem;
 
-    --info-up-bg: rgb(var(--rating-module-button-plus-color, 144,238,144));
-    --info-down-bg: rgb(var(--rating-module-button-negative-color, 255,192,203));
+    --info-up-bg: var(--positiveColor);
+    --info-down-bg: var(--negativeColor);
     --info-border-color: rgba(var(--swatch-border-color, 187,0,17),0.25);
 }
 .list-pages-box .rate_t3 {
@@ -170,6 +172,9 @@ div.creditBottomRate .page-rate-widget-box::after {
     border-radius: 0 0 100rem 100rem;
     background: var(--info-down-bg);
     border-width: 0 1px 1px;
+}
+.list-pages-box .rate_t3 td {
+    border: none;
 }</code></pre>
         </li>
       
@@ -228,8 +233,14 @@ div.creditBottomRate .page-rate-widget-box::after {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>component:ratio-bar</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>:scp-wiki:component:ratio-bar</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:ratio-bar.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -239,8 +250,14 @@ div.creditBottomRate .page-rate-widget-box::after {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>component:ratio-bar</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>:scp-wiki:component:ratio-bar</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:ratio-bar.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -250,8 +267,14 @@ div.creditBottomRate .page-rate-widget-box::after {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>component:ratio-bar</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>:scp-wiki:component:ratio-bar</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:ratio-bar.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -349,7 +372,18 @@ div.creditBottomRate .page-rate-widget-box::after {
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[!-- {$base}]
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+:where(:root) {
+    /*Basalt compatibility */
+    --rating-module-button-plus-color: var(--rate-module-upvote-color);
+    --rating-module-button-negative-color: var(--rate-module-downvote-color);
+    /*BHL compatibility */
+    --positiveColor: rgb(var(--rating-module-button-plus-color, 144,238,144));
+    --negativeColor: rgb(var(--rating-module-button-negative-color, 255,192,203));
+}
+[[/module]]
+
+[!-- {$base}]
 [[module ListPages name=&#34;=&#34;]]
 [[module%%content{0}%% CSS]]
 :root {
@@ -363,15 +397,10 @@ div.creditBottomRate .page-rate-widget-box::after {
 [[/module]]
 
 [[module CSS]]
-:root {
-    --positiveColor: rgb(var(--rating-module-button-plus-color, 144,238,144));
-    --negativeColor: rgb(var(--rating-module-button-negative-color, 255,192,203));
-}
-
 .page-rate-widget-box {
     position: relative;
 }
-#main-content .page-rate-widget-box &gt; *:not(.creditBottomRate .page-rate-widget-box &gt; *) {
+#main-content .page-rate-widget-box &gt; *:where(:not(.creditBottomRate .page-rate-widget-box &gt; *)) {
     border-bottom-width: 0.45em;
 }
 .page-rate-widget-box::after {
@@ -406,7 +435,6 @@ div.creditBottomRate .page-rate-widget-box::after {
 }
 #page-content .creditButton p a {
     margin-left: inherit;
-    line-height: calc(100% + 0.65em);
 }
 
 div.creditBottomRate .page-rate-widget-box::after {
@@ -446,9 +474,6 @@ div.creditBottomRate .page-rate-widget-box::after {
     bottom: 0;
 }
 
-#page-content .creditButton p a {
-    line-height: inherit;
-}
 [[/module]]
 [!-- --]
 
@@ -459,8 +484,8 @@ div.creditBottomRate .page-rate-widget-box::after {
 :root {
     --info-circle-size: 12.5rem;
 
-    --info-up-bg: rgb(var(--rating-module-button-plus-color, 144,238,144));
-    --info-down-bg: rgb(var(--rating-module-button-negative-color, 255,192,203));
+    --info-up-bg: var(--positiveColor);
+    --info-down-bg: var(--negativeColor);
     --info-border-color: rgba(var(--swatch-border-color, 187,0,17),0.25);
 }
 .list-pages-box .rate_t3 {
@@ -512,6 +537,9 @@ div.creditBottomRate .page-rate-widget-box::after {
     border-radius: 0 0 100rem 100rem;
     background: var(--info-down-bg);
     border-width: 0 1px 1px;
+}
+.list-pages-box .rate_t3 td {
+    border: none;
 }
 [[/module]]
 
@@ -571,15 +599,15 @@ div.creditBottomRate .page-rate-widget-box::after {
 [[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
 To add the Ratio Bar, insert the following after any theme {{[[include]]}}:
 
-&gt; {{@@[[include component:ratio-bar base=--]]@@}}
+&gt; {{@@[[include :scp-wiki:component:ratio-bar base=--]]@@}}
 
 Which will add it any existing rating module:
 [[=image ratio1.png width=&#34;50%&#34;]]
 
 
-For certain themes that more heavily alter the rating module, such as [[[theme:black-highlighter-theme|]]] and [[[theme:inkblot|]]], you will need another parameter:
+For certain themes that more heavily alter the rating module, such as [[[theme:black-highlighter-theme|]]], [[[theme:basalt|]]] and [[[theme:inkblot|]]], you will need another parameter:
 
-&gt; {{@@[[include component:ratio-bar base=-- |ex=--]]@@}}
+&gt; {{@@[[include :scp-wiki:component:ratio-bar base=-- |ex=--]]@@}}
 
 The extended compatibility parameter is meant to cover for cases when the standard rating module is extensively styled by a theme&#39;s CSS.
 
@@ -591,7 +619,7 @@ Generally, this parameter is meant for BHL and BHL-based themes. Otherwise, star
 
 There is also a standalone pie chart module:
 
-&gt; {{@@[[include component:ratio-bar pie=--]]@@}}
+&gt; {{@@[[include :scp-wiki:component:ratio-bar pie=--]]@@}}
 
 As a usage suggestion, this could be put inside an Info module or something similar:
 
@@ -612,7 +640,7 @@ As a usage suggestion, this could be put inside an Info module or something simi
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:52.722065.</em>
+    <em>Last updated 2023-07-15 21:44:36.933575.</em>
   
 </div>
 </body>

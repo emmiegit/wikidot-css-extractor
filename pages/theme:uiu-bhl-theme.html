@@ -56,6 +56,10 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Auiu-bhl-theme/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -79,10 +83,6 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -193,6 +193,15 @@
     padding: 0.5em;
 }
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[=]]
 [[module Rate]]
 [[/=]]
@@ -345,13 +354,8 @@ The body and header font is Source Sans Pro.
 [[/=]]
 
 @@ @@
-
-[[footnoteblock]]
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @import url(&#39;https://fonts.googleapis.com/css?family=Merriweather:400,700,900|Roboto+Mono:400,500,700|Source+Sans+Pro:400,400i,600,600i,700,700i,900,900i&amp;display=swap&amp;subset=latin-ext&#39;);
 
 @supports(display:grid) {
@@ -510,6 +514,8 @@ The body and header font is Source Sans Pro.
     	/* ===BLOCKQUOTES=== */
     	--blockquote-bg-color: var(--swatch-secondary-color), 0.5;
     	--blockquote-border-color: var(--swatch-primary-darkest);
+
+    	--tables-header-txt: var(--swatch-text-tertiary-color);
     }
 
     ::-moz-selection {
@@ -588,7 +594,7 @@ The body and header font is Source Sans Pro.
     	background-size: var(--header-background-image-size), 100% 14.25rem, 100% var(--background-gradient-distance);
     }
 
-    hr {
+    #main-content hr {
     	position: relative;
     	width: 90%;
     	height: 1.5rem;
@@ -773,10 +779,15 @@ The body and header font is Source Sans Pro.
     	background-color: rgb(var(--dark-accent));
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+
     #side-bar:hover {
     	background: rgb(var(--white-monochrome));
     }
 
+    #interwiki .heading,
     #side-bar .heading,
     #side-bar .side-block&gt;.collapsible-block:nth-child(1) .collapsible-block-folded {
     	min-height: 1.5rem;
@@ -784,6 +795,7 @@ The body and header font is Source Sans Pro.
     	font-family: var(--title-font);
     }
 
+    #interwiki .heading p,
     #side-bar .heading p,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link {
     	--wght: 900;
@@ -798,6 +810,8 @@ The body and header font is Source Sans Pro.
     	text-shadow: inherit;
     }
 
+    #interwiki div.menu-item a::before,
+    #interwiki div.menu-item a:hover::before,
     #side-bar div.menu-item a::before,
     #side-bar div.menu-item a:hover::before {
     	background: var(--gradient-header);
@@ -948,8 +962,15 @@ The body and header font is Source Sans Pro.
     	text-align: left;
     }
 
-    .yui-navset .yui-content,
-    .yui-navset .yui-navset-top .yui-content {
+    #breadcrumbs a:active, 
+    #breadcrumbs a:hover, 
+    .pseudocrumbs a:active, 
+    .pseudocrumbs a:hover {
+    	color: rgb(var(--swatch-text-tertiary-color));
+    }
+
+    #page-content .yui-navset .yui-content,
+    #page-content .yui-navset .yui-navset-top .yui-content {
     	padding: 0.5em 2em;
     }
 
@@ -1029,12 +1050,24 @@ The body and header font is Source Sans Pro.
     	background-color: rgb(var(--swatch-menubg-dark-color))
     }
 
+    #main-content .page-tags span a:-webkit-any-link:not([href^=&#34;/system:page-tags/tag/_&#34;]) {
+    	--hover-link-color: var(--swatch-text-general);
+    }
+
+    #main-content .page-tags span a:-moz-any-link:not([href^=&#34;/system:page-tags/tag/_&#34;]) {
+    	--hover-link-color: var(--swatch-text-general);
+    }
+
     div.page-watch-options a,
     div.page-watch-options a:visited,
     #main-content .page-tags span a:any-link:not([href^=&#34;/system:page-tags/tag/_&#34;]),
     #footer,
     #license-area {
     	--hover-link-color: var(--swatch-text-general);
+    }
+
+    form#edit-page-form .edit-page-bottomtable tr &gt; td:first-of-type &gt; div:first-of-type:focus-within::before {
+    	color: rgb(var(--swatch-menutxt-general-color));
     }
 
     #footer a {
@@ -1148,17 +1181,25 @@ The body and header font is Source Sans Pro.
     }
 }
 
-
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[footnoteblock]]
+[[/iftags]]
+
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Auiu-bhl-theme/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Auiu-bhl-theme/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.603995.</em>
+    <em>Last updated 2023-07-15 21:44:41.041268.</em>
   
 </div>
 </body>

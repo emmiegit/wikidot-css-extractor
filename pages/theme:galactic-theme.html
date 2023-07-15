@@ -33,6 +33,10 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Agalactic-theme/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -48,10 +52,6 @@
       
         <li>
           <pre><code>filter: invert(1) brightness(110%);display:flex;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -173,6 +173,15 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -326,14 +335,8 @@ The header font is Sirin Stencil. The monospace font used is PT Mono.
 
 @@ @@
 
-[[footnoteblock]]
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
-[[include :scp-wiki:component:toggle-sidebar-bhl]]
-[[include :scp-wiki:component:centered-header-bhl]]
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 /* Fonts */
 
 @import url(&#39;https://fonts.googleapis.com/css?family=Sirin+Stencil&#39;);
@@ -535,8 +538,8 @@ The header font is Sirin Stencil. The monospace font used is PT Mono.
     	background-size: 50%;
     	pointer-events: none;
     	will-change: transform;
-    	-webkit-mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 120%);
-    	        mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 120%);
+    	        -webkit-mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 120%);
+    	                mask: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 120%);
     }
 
     #header {
@@ -606,6 +609,10 @@ The header font is Sirin Stencil. The monospace font used is PT Mono.
     	color: rgb(var(--swatch-text-tertiary-color));
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+
     #side-bar {
     	background-color: rgba(var(--swatch-menubg-dark-color), 0.1);
     }
@@ -619,6 +626,9 @@ The header font is Sirin Stencil. The monospace font used is PT Mono.
     	background-color: inherit;
     }
 
+    #interwiki div.menu-item a,
+    #interwiki div.menu-item a:visited,
+    #interwiki div.menu-item a:active,
     #side-bar div.menu-item a,
     #side-bar div.menu-item a:visited,
     #side-bar div.menu-item a:active,
@@ -627,6 +637,7 @@ The header font is Sirin Stencil. The monospace font used is PT Mono.
     	font-weight: 500;
     }
 
+    #interwiki .heading p,
     #side-bar .heading p,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link {
     	padding-right: 0.5rem;
@@ -870,22 +881,7 @@ The header font is Sirin Stencil. The monospace font used is PT Mono.
     	-webkit-animation-play-state: running;
     	animation-play-state: running;
     }
-
-    #side-bar iframe.scpnet-interwiki-frame:not(:lang(cn)) {
-    	-webkit-filter: invert(1);
-    	        filter: invert(1);
-    }
-
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before,
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::before,
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::after {
-    	background-color: rgb(var(--swatch-menubg-color));
-    }
-
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before {
-    	mix-blend-mode: lighten;
-    }
-
+    
     @media only screen and (max-width: 56.25rem) {
     	#header h1 a {
     		margin-top: calc(0.625rem + var(--offset-from-page-top));
@@ -1201,16 +1197,26 @@ The header font is Sirin Stencil. The monospace font used is PT Mono.
     }
 }
 
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[footnoteblock]]
+[[/iftags]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[include :scp-wiki:component:centered-header-bhl]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Agalactic-theme/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Agalactic-theme/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.574839.</em>
+    <em>Last updated 2023-07-15 21:44:41.008428.</em>
   
 </div>
 </body>

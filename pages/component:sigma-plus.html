@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Sigma+</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Sigma+</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:sigma-plus" target="_blank">Sigma+</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--code/component%3Asigma-plus/1);</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>border: solid 2px #ededed; padding: 0.5rem;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sigma-plus" target="_blank"><code>:scp-wiki:component:sigma-plus</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sigma-plus.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[iftags +component]]
+
+[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
+[[div style=&#34;border: solid 2px #ededed; padding: 0.5rem;&#34;]]
+This is a meta-component made by [[*user EstrellaYoshte]] to be used as an assistive layer for theme-making.
+To use, put the following:
+
+&gt; @@[[include :scp-wiki:component:sigma-plus]]@@
+
+Sigma+, by itself, preserves most of the original aesthetics while using more modern CSS conventions and properties, including:
+
+* Extensible CSS variables
+* Grid and flex-based layout
+* Fully tab-able navigation
+* RTL direction compliance
+
++++ Developer&#39;s Note
+
+The principal idea of the component is to alleviate the burden of resolving the site theme&#39;s outdated base layout, which tends to either limit the amount of customization implemented, massively increase CSS complexity/overhead to implement the desired layout, further worsens the situation with more unoptimized CSS, or some unholy combination of the three.
+
+Sigma+ limits itself to re-implementing semantic and visual flow for the most part to maintain the highest possible passthrough as a compatibility layer, with a few exceptions:
+
+* **Header decoration**: Originally a background-image on {{#container-wrap}}, which both semantically divorce it from the actual {{#header}} and {{#top-bar}}, and makes it unresponsive to change in size and layout (from end-user settings, browser defaults, screen size, etc.) Remade into {{background-image}} for both divs.
+* **Top Bar dropdowns**: modified to be better responsive to screen sizes, as well as overriding generally annoying styles from Wikidot&#39;s default. Made tab-navigable.
+* **Rate &amp; Info module**: significantly restyled for better semantic separation and easier to modify with variables. Undid Info module&#39;s idiosyncratic CSS.
+* **Tabs**: Replaced the spritesheet used to style the tabs with CSS variables. Slightly less annoying to deal with.
+
++++ Example
+
+[[image https://scp-wiki.wdfiles.com/local--files/component%3Asigma-plus/plus-example.png]]
+
+[[div class=&#34;code&#34;]]
+:root {
+@@    --header-title: &#34;We don&#39;t have a 55&#34;;@@
+@@    --sp_header-height: 21.75rem;@@
+}
+[[/div]]
+
+[[/div]]
+
+++ Source Code:
+
+[[code type=&#34;css&#34;]]
+:where(:root) {
+    --header-title: &#34;SCP Foundation&#34;;
+    --header-subtitle: &#34;Secure, Contain, Protect&#34;;
+
+    --sp_header-title-size: min(calc(2.675rem * var(--sp_header-title-scale)), calc(1.25rem * var(--sp_header-title-scale) + 2.5vw));
+    --sp_header-subtitle-size: min(calc(.875rem * var(--sp_header-subtitle-scale)), calc(0.475rem * var(--sp_header-subtitle-scale) + 1.25vw));
+    --sp_header-title-scale: 1;
+    --sp_header-subtitle-scale: 1;
+
+    --sp_header-logo: url(https://scpwiki.github.io/sigma/images/header-logo.svg);
+    --sp_header-logo-size: 6.25rem;
+    --sp_header-logo-adaptive-size: min(var(--sp_header-logo-size), calc(var(--sp_header-logo-size)*0.575 + 5vw));
+    --sp_header-height: 8.75rem;
+
+    --sp_header-gradient-top-color: #000000;
+    --sp_header-gradient-top-stop: .4;
+    --sp_header-gradient-bottom-color: #6B4040;
+    --sp_header-gradient-bottom-stop: .95;
+
+    --sp_diagonal-stripes-angle: 45deg;
+    --sp_diagonal-stripes-width: .08rem;
+    --sp_diagonal-stripes-gap: .22rem;
+    --sp_diagonal-stripes-color: #FFAFAF09;
+
+    --sp_top-bar-height: 1.375rem;
+    --sp_top-bar-gradient-top-color: #535353;
+    --sp_top-bar-gradient-bottom-color: #3B3B3B;
+
+    --sp_top-bar-link-color: #fff;
+    --sp_top-bar-link-hover-color: #a01;
+    --sp_top-bar-link-hover-background: #fff;
+
+    --sp_dropdown-width: calc(8.25rem + 2.25vw);
+    --sp_dropdown-background: #eee;
+    --sp_dropdown-link-color: var(--sp_top-bar-link-hover-color);
+    --sp_dropdown-link-hover-color: var(--sp_top-bar-link-hover-color);
+    --sp_dropdown-link-background: transparent;
+    --sp_dropdown-link-border: 0.05rem solid #ddd;
+    --sp_dropdown-link-hover-background: var(--sp_top-bar-link-hover-background);
+
+    --sp_side-bar-width: 14rem;
+
+    --sp_area-max-width: 62.5rem;
+    --sp_area-min-margin: 1.25rem;
+    --sp_area-comp-margin: max(calc((100vw - var(--sp_area-max-width))/2), var(--sp_area-min-margin));
+    --sp_final-header-height: calc(var(--sp_header-height) + var(--sp_top-bar-height));
+
+    --sp_rate-module-text-color: #FFF;
+    --sp_rate-module-background: #633;
+    --sp_rate-module-sub-color: #966;
+    --sp_rate-module-active-color: var(--sp_rate-module-text-color);
+
+    --sp_rate-module-button-color: var(--sp_rate-module-background);
+    --sp_rate-module-button-background: #fff6f0;
+    --sp_rate-module-button-hover-color: var(--sp_rate-module-active-color);
+    --sp_rate-module-button-hover-background: var(--sp_rate-module-background);
+
+    --sp_tab-text-color: #000;
+    --sp_tab-background: #fefefe;
+    --sp_tab-border-color: #a3a3a3;
+    --sp_tab-hover-text-color: var(--sp_tab-text-color);
+    --sp_tab-hover-background: #ffd3d3;
+    --sp_tab-hover-border-color: var(--sp_tab-border-color);
+    --sp_tab-selected-text-color: #fff;
+    --sp_tab-selected-background: #901;
+    --sp_tab-selected-border-color: #65000b;
+
+    --sp_hovertip-background: #fff;
+    --sp_hovertip-border: 0.05rem solid black;
+}
+
+textarea, input { font-family: inherit; }
+
+
+/*--------------*/
+/*--- HEADER ---*/
+/*--------------*/
+
+/* unset the faux header bg */
+div#container-wrap { background-image: none; }
+
+#header {
+    /* Recreating (sans top bar) with gradients */
+    background-image:
+
+        /* Diagonal stripes */
+        repeating-linear-gradient(var(--sp_diagonal-stripes-angle),
+            var(--sp_diagonal-stripes-color), var(--sp_diagonal-stripes-color) var(--sp_diagonal-stripes-width),
+            transparent var(--sp_diagonal-stripes-width), transparent var(--sp_diagonal-stripes-gap)),
+
+        /* Header gradient colors */
+        linear-gradient(to bottom,
+            var(--sp_header-gradient-top-color) calc(var(--sp_header-gradient-top-stop) * var(--sp_header-height)),
+            var(--sp_header-gradient-bottom-color) calc(var(--sp_header-gradient-bottom-stop) * var(--sp_header-height))
+        );
+    background-repeat: repeat-x;
+    background-size: auto;
+    background-position: initial;
+
+    /* De-styling sigma */
+    padding-bottom: 0;
+    height: auto;
+    width: 100%;
+    max-width: unset;
+    min-height: var(--sp_final-header-height);
+    z-index: initial;
+
+    /* Grid layout */
+    display: grid;
+    grid-template-areas:
+        &#34;. login login .&#34;
+        &#34;. . . .&#34;
+        &#34;. h1 search .&#34;
+        &#34;. h2 search .&#34;
+        &#34;. . . .&#34;
+        &#34;top-bar top-bar top-bar top-bar&#34;;
+    grid-template-rows: auto 1fr auto auto 1fr auto;
+    grid-template-columns: var(--sp_area-comp-margin) 1fr auto var(--sp_area-comp-margin);
+}
+
+/* Header logo */
+#header::before {
+    content: &#34;&#34;;
+    display: block;
+    background: var(--sp_header-logo) no-repeat center;
+    background-size: contain;
+    grid-row: 2/6;
+    grid-column: 2/3;
+    width: var(--sp_header-logo-adaptive-size);
+}
+
+/*--------------*/
+/*--- TOP BAR ---*/
+/*--------------*/
+
+#top-bar {
+    grid-area: top-bar;
+
+    /* De-styling sigma-9 */
+    position: relative;
+    z-index: initial;
+    top: initial; right: initial;
+    max-width: unset;
+    line-height: unset;
+    height: auto;
+    font-size: .875em;
+
+    padding-inline: var(--sp_area-min-margin);
+    box-sizing: border-box;
+    min-height: var(--sp_top-bar-height);
+
+    /* Recreating top bar image with gradients */
+    background-image:
+        linear-gradient(to bottom,
+            var(--sp_top-bar-gradient-top-color) 0%,
+            var(--sp_top-bar-gradient-bottom-color) 100%);
+}
+
+#top-bar &gt; div[class*=&#34;top-bar&#34;] {
+    max-width: var(--sp_area-max-width);
+    height: 100%;
+    margin: auto;
+    position: static;
+    left: initial;
+    bottom: initial;
+    z-index: initial;
+}
+#top-bar ul, #top-bar li {
+    float: none;
+}
+#top-bar div[class*=&#34;top-bar&#34;] &gt; ul {
+    height: 100%;
+    display: flex;
+    justify-content: end;
+}
+#top-bar :is(.top-bar, .mobile-top-bar) &gt; ul &gt; li &gt; a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    max-height: unset;
+    border: none;
+    line-height: 1.275;
+    color: var(--sp_top-bar-link-color);
+    padding: 0;
+    padding-inline: calc(var(--sp_dropdown-width)*0.05 + 0.25vw);
+    box-sizing: border-box;
+}
+#top-bar :is(.top-bar, .mobile-top-bar) &gt; ul &gt; li &gt; a:hover,
+#top-bar :is(.top-bar, .mobile-top-bar) &gt; ul &gt; li:is(.sfhover, :hover, :focus-within) &gt; a {
+    color: var(--sp_top-bar-link-hover-color);
+    background: var(--sp_top-bar-link-hover-background);
+}
+#top-bar :is(.top-bar, .mobile-top-bar) ul li ul {
+    left: initial;
+    min-width: max(100%, var(--sp_dropdown-width));
+    width: max-content;
+    background: var(--sp_dropdown-background);
+    box-sizing: border-box;
+    z-index: 3;
+    visibility: visible;
+    pointer-events: none;
+    opacity: 0;
+}
+#top-bar :is(.top-bar, .mobile-top-bar) &gt; ul &gt; li:where(:not(:last-child)) &gt; ul {
+    inset-inline-start: 0;
+}
+#top-bar :is(.top-bar, .mobile-top-bar) &gt; ul &gt; li:where(:last-child) &gt; ul {
+    right: initial;
+    inset-inline-end: 0;
+}
+#top-bar :is(.top-bar, .mobile-top-bar) ul li:is(.sfhover, :hover, :focus-within) ul {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+#top-bar :is(.top-bar, .mobile-top-bar) ul li ul li a {
+    min-width: max-content;
+    width: 100%;
+    box-sizing: border-box;
+    line-height: 1.5;
+    overflow: initial;
+    max-height: initial;
+    padding: 0.125em 0.75em;
+    border-top: var(--sp_dropdown-link-border);
+    color: var(--sp_dropdown-link-color);
+    background: var(--sp_dropdown-link-background);
+    text-align: start;
+}
+#top-bar :is(.top-bar, .mobile-top-bar) ul li ul li a:is(:hover,:focus) {
+    color: var(--sp_dropdown-link-hover-color);
+    background: var(--sp_dropdown-link-hover-background);
+}
+
+#top-bar .open-menu, #top-bar .open-menu &gt; p { display: contents; }
+#top-bar .open-menu a { z-index: 9; }
+
+/*--------------*/
+/*--- LOGIN ---*/
+/*--------------*/
+
+#login-status {
+    top: initial;
+    right: initial;
+    position: relative;
+    z-index: 3;
+    grid-area: login;
+    text-align: end;
+    padding-block-start: 0.5rem;
+}
+#account-options {
+    right: initial;
+    inset-inline-end: 0;
+    inset-block-start: 100%;
+    display: block!important;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.075s linear;
+}
+#account-topbutton:focus + #account-options,
+#account-options:is(:hover, :focus-within) {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Safari support */
+@media not all and (min-resolution:.001dpcm) { @media { 
+#account-topbutton:hover + #account-options {
+    opacity: 1;
+    pointer-events: auto;
+}
+}}
+
+/*--------------*/
+/*--- SEARCH ---*/
+/*--------------*/
+
+#search-top-box {
+    grid-area: search;
+    position: relative;
+    right: initial;
+    top: initial;
+    width: auto;
+    display: flex;
+    align-items: center;
+    text-align: unset;
+    z-index: initial;
+}
+
+#search-top-box-form {
+    display: flex;
+    gap: 0.325rem;
+}
+
+#search-top-box-input, #search-top-box-form input[type=submit] {
+    margin: 0; 
+    appearance: none;
+}
+
+/*------------------*/
+/*--- HEADER TEXT ---*/
+/*------------------*/
+
+#header h1 { grid-area: h1; }
+#header h2 { grid-area: h2; }
+#search-top-box { grid-area: search; }
+#header h1, #header h2 {
+    margin-left: initial;
+    padding: 0;
+    padding-inline-start: calc(var(--sp_header-logo-adaptive-size)*1.05);
+    float: none;
+    max-height: initial;
+    font-size: 1rem;
+}
+#header h1 a, #header h2 span {
+    margin: 0;
+    padding: 0;
+    line-height: 1.125;
+    max-height: initial;
+    max-width: max-content;
+    display: inline-block;
+    font-size: 0rem;
+    letter-spacing: 0;
+}
+#header h1 a::before {
+    content: var(--header-title);
+    font-size: var(--sp_header-title-size);
+}
+#header h2 span::before {
+    content: var(--header-subtitle);
+    font-size: var(--sp_header-subtitle-size);
+    letter-spacing: 0.05vw;
+}
+
+/*-----------------------*/
+/*-----------------------*/
+/*-----------------------*/
+
+/*------------------*/
+/*--- MAIN AREA ---*/
+/*------------------*/
+
+#content-wrap {
+    min-height: unset;
+    width: calc(100% - var(--sp_area-min-margin)*2);
+    display: flex;
+    max-width: var(--sp_area-max-width);
+    column-gap: 2.325rem;
+}
+
+#main-content {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    min-width: 0rem;
+    flex: 1 1 auto;
+    overflow-wrap: break-word;
+}
+#page-content { font-size: unset; }
+
+/* Side Bar */
+@media not all and (max-width: 767px) {
+    #side-bar {
+        position: static;
+        inset: initial;
+    }
+}
+div#side-bar {
+    width: var(--sp_side-bar-width);
+    flex: 0 0 var(--sp_side-bar-width);
+}
+
+
+/* Breadcrumbs */
+#breadcrumbs, .pseudocrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 0.55ch;
+}
+.pseudocrumbs &gt; p { display: contents; }
+
+/*--------------------*/
+/*--- USER DISPLAY ---*/
+/*--------------------*/
+
+.printuser {
+    display: inline-flex;
+    align-items: baseline;
+    grid-gap: 0.25em;
+    text-indent: 0;
+}
+.printuser a { margin-right: 0; }
+.printuser &gt; a:first-child {
+    display: flex;
+    user-select: none;
+    align-self: center;
+    min-width: max-content;
+}
+.printuser &gt; a:first-child img {
+    height: 1.25em;
+    width: 1.25em;
+    padding: 0;
+    padding-left: 0.5em;
+    object-fit: contain;
+    background-size: cover;
+    overflow: hidden;
+    margin: 0;
+}
+
+/*-----------------*/
+/*--- RATE &amp; INFO MODULE ---*/
+/*-----------------*/
+
+/* Baseline reset */
+div.page-rate-widget-box,
+div.rate-box-with-credit-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--sp_rate-module-background);
+    border: none;
+    padding: 0.075em;
+    margin-right: 0;
+}
+div.page-rate-widget-box .cancel a:hover { background: transparent; }
+
+/*-----------------*/
+
+div.page-rate-widget-box {
+    flex-wrap: wrap;
+}
+div.page-rate-widget-box .rate-points {
+    padding: 0 .675em;
+    color: var(--sp_rate-module-text-color);
+}
+#main-content div.page-rate-widget-box span:is(.rate-points, .btn) {
+    border: none;
+    border-radius: unset;
+    background: transparent;
+}
+.page-rate-widget-box :is(.rateup, .ratedown) a {
+    margin: 0;
+    color: var(--sp_rate-module-button-color);
+    background-color: var(--sp_rate-module-button-background);
+}
+.page-rate-widget-box :is(.rateup, .ratedown) a:is(:hover,:focus) {
+    color: var(--sp_rate-module-button-hover-color);
+    background-color: var(--sp_rate-module-button-hover-background);
+}
+
+div.page-rate-widget-box .cancel a { color: var( --sp_rate-module-sub-color); }
+div.page-rate-widget-box .cancel a:is(:hover,:focus) { color: var( --sp_rate-module-active-color); }
+
+/*-----------------*/
+
+div.rate-box-with-credit-button {
+    align-items: stretch;
+}
+
+div.rate-box-with-credit-button .page-rate-widget-box {
+    background-color: transparent;
+    border-radius: inherit;
+    padding: 0;
+}
+
+div.rate-box-with-credit-button .creditButton {
+    display: block;
+}
+div.rate-box-with-credit-button .creditButton p {
+    display: contents;
+    font-size: unset;
+}
+div.creditButton p a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .925em;
+    width: 1.375em;
+    height: 100%;
+    color: var( --sp_rate-module-text-color);
+    padding: 0; padding-top: .1425em;
+    border: 0;
+    border-inline-start: solid 0.05em var( --sp_rate-module-sub-color);
+    box-sizing: border-box;
+    margin: 0;
+}
+div.creditButton p a:is(:hover,:focus) { color: var(--sp_rate-module-button-hover-color); }
+
+div.creditRate {
+    display: block;
+    float: none;
+    text-align: end;
+    margin-right: 0;
+}
+div.creditRate .rateBox { display: contents; }
+
+div#u-credit-view, div#u-credit-otherwise {
+    display: grid;
+    place-content: center;
+}
+div.modalcontainer {
+    position: relative;
+    top: unset;
+    bottom: unset;
+    left: unset;
+    right: unset;
+    height: auto;
+}
+div.modalbox {
+    display: flex;
+    flex-direction: column;
+}
+
+/*-------------*/
+/*--- IMAGE BLOCK ---*/
+/*-------------*/
+
+div.scp-image-block.block-right {
+margin-right: 0;
+}
+div.scp-image-block.block-left {
+margin-left: 0;
+}
+@media screen and (max-width: 640px) {
+    div.scp-image-block:is(.block-right,.block-left) {
+        margin: .75em auto; float: none;
+    }
+}
+
+/*-------------*/
+/*--- TABS ---*/
+/*-------------*/
+
+.yui-navset { clear: both; }
+
+.yui-navset .yui-nav {
+    display: flex;
+    flex-wrap: wrap;
+}
+.yui-navset.yui-navset-top .yui-nav :is(li, .selected) {
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+.yui-navset.yui-navset-top .yui-nav li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    border-width: 0.05rem;
+    box-sizing: border-box;
+    padding: 0.325rem 0.625rem;
+}
+
+.yui-navset.yui-navset-top .yui-nav :is(li, .selected) a em {
+    position: static;
+    inset: unset;
+    border: none;
+    padding: 0;
+}
+
+/* ------------------------- */
+.yui-navset.yui-navset-top .yui-nav li a {
+    color: var(--sp_tab-text-color);
+    background: var(--sp_tab-background);
+    border-color: var(--sp_tab-border-color);
+}
+
+
+.yui-navset.yui-navset-top .yui-nav li a:where(:hover,:focus) {
+    color: var(--sp_tab-hover-text-color);
+    background: var(--sp_tab-hover-background);
+    border-color: var(--sp_tab-hover-border-color);
+}
+
+.yui-navset.yui-navset-top .yui-nav .selected a {
+    color: var(--sp_tab-selected-text-color);
+    background: var(--sp_tab-selected-background);
+    border-color: var(--sp_tab-selected-border-color);
+}
+
+
+/*-------------*/
+/*--- FOOTNOTE ---*/
+/*-------------*/
+
+.hovertip {
+    background: var(--sp_hovertip-background)!important;
+    border: var(--sp_hovertip-border)!important;
+}
+
+
+/*-------------*/
+/*--- TAGS ---*/
+/*-------------*/
+
+#main-content .page-tags { text-align: start; }
+#main-content .page-tags span {
+    max-width: max-content;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 0.375rem;
+}
+#main-content .page-tags a {
+    margin: 0;
+}
+
+/*------------------*/
+/*--- BOTTOM OPTIONS ---*/
+/*------------------*/
+
+#page-info, .page-watch-options, .page-options-bottom {
+    text-align: end;
+    height: auto;
+}
+:where(#page-options-container) .page-options-bottom a {
+    display: inline-block;
+}
+
+#who-rated-page-area &gt; div {
+    column-width: 13.75em;
+    column-gap: 0.75rem;
+}
+
+/*------------------*/
+/*--- END AREA ---*/
+/*------------------*/
+
+#footer {
+    display: flex!important;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    align-items: baseline;
+    grid-gap: 0.5ch;
+}
+#footer .options {
+    display: flex!important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    float: none;
+    order: 1;
+    width: auto;
+    font-size: 0;
+    margin-inline: 0.25rem;
+    text-align: inherit;
+}
+#footer .options a {
+    display: flex;
+    align-items: center;
+    font-size: 0.625rem;
+    padding-inline: 0.375rem;
+    border-inline-start: currentColor solid 0.05rem;
+}
+
+#license-area {
+    padding-inline: var(--sp_area-min-margin);
+}
+
+#footer-bar {
+    max-width: 100%;
+    margin: 0 auto;
+    border: none;
+    padding: 0 var(--sp_area-comp-margin);
+}
+#footer-bar .units {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    padding: .5rem;
+}
+#footer-bar .unit {
+    float: none;
+    width: auto;
+    flex-basis: 10.25rem;
+}
+
+/*------------------*/
+/*--- MOBILE Q ---*/
+/*------------------*/
+
+@media (max-width: 767px) {
+    #top-bar { padding-inline: 0; }
+    #top-bar div[class*=&#34;top-bar&#34;] &gt; ul { justify-content: center; }
+    #top-bar div[class*=&#34;top-bar&#34;] &gt; ul &gt; li { flex-grow: 1; }
+}
+[[/code]]
+
+[[/iftags]]
+
+[[module css]]
+@import url(https://scp-wiki.wdfiles.com/local--code/component%3Asigma-plus/1);
+[[/module]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2023-07-15 21:44:36.937365.</em>
+  
+</div>
+</body>

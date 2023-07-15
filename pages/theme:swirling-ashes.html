@@ -29,7 +29,12 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;https://scp-wiki.wikidot.com/theme:swirling-ashes/code/1&#39;);</code></pre>
+          <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aswirling-ashes/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -38,52 +43,13 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none;</code></pre>
+          (none)
         </li>
       
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>theme:black-highlighter-theme</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>component:bhl-dark-sidebar</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:croqstyle" target="_blank"><code>:scp-wiki:component:croqstyle</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
       
         <li>
   
@@ -153,6 +119,34 @@
   
 </li>
       
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>component:bhl-dark-sidebar</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:croqstyle" target="_blank"><code>:scp-wiki:component:croqstyle</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
@@ -170,16 +164,23 @@
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[iftags +theme]]
-
+[[module css]]
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
+[[/module]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
 
-[[div style=&#34;display: none;&#34;]]
-[[include theme:black-highlighter-theme]]
-[[include component:bhl-dark-sidebar]]
-[[include :scp-wiki:component:croqstyle -=- ]]
-[[/div]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 
 This is the Swirling Ashes theme, designed for use by articles set in the [[[rat&#39;s nest hub| Rat&#39;s Nest]]] canon.
 
@@ -247,43 +248,43 @@ To adjust the header text:
 [[collapsible show=&#34;+ Show source code&#34;]]
 
 [[code type=&#34;css&#34;]]
-
 /* - == === BHL VARIABLES === == - */
 
 /* This is a BHL theme, which is configuration-based, so the root element
  * contains variables that will affect the whole theme
  */
-:root {
-  /* S-CSS-P integration */
-  --theme-base: &#34;black-highlighter&#34;;
-  --theme-id: &#34;swirling-ashes&#34;;
-  --theme-name: &#34;Swirling Ashes Theme&#34;;
+ :root {
+    /* S-CSS-P integration */
+    --theme-base: &#34;black-highlighter&#34;;
+    --theme-id: &#34;swirling-ashes&#34;;
+    --theme-name: &#34;Swirling Ashes Theme&#34;;
 
-  /* Colours */
-  --dark-gray-monochrome: 26, 24, 26;
-  --swatch-topmenu-bg-color: var(--dark-gray-monochrome);
-  --dark-accent: 63, 9, 143;
-  --medium-accent: 81, 13, 181;
-  --bright-accent: 105, 49, 186;
-  --pale-accent: 128, 80, 200;
+    /* Colours */
+    --dark-gray-monochrome: 26, 24, 26;
+    --swatch-topmenu-bg-color: var(--dark-gray-monochrome);
+    --swatch-menubg-color: var(--dark-gray-monochrome);
+    --dark-accent: 63, 9, 143;
+    --medium-accent: 81, 13, 181;
+    --bright-accent: 105, 49, 186;
+    --pale-accent: 128, 80, 200;
 
-  /* Sky */
-  --sky-at-dawn: 236, 112, 99;
-  --sky-at-morning: 174, 214, 241;
-  --sky-at-daytime: 249, 231, 159;
-  --sky-at-evening: 248, 196, 113;
-  --sky-at-dusk: 140, 50, 70;
-  --sky-at-night: 50, 40, 67;
-  --sky-length: 15;
-  --sky-time: 60s;
+    /* Sky */
+    --sky-at-dawn: 236, 112, 99;
+    --sky-at-morning: 174, 214, 241;
+    --sky-at-daytime: 249, 231, 159;
+    --sky-at-evening: 248, 196, 113;
+    --sky-at-dusk: 140, 50, 70;
+    --sky-at-night: 50, 40, 67;
+    --sky-length: 15;
+    --sky-time: 60s;	
 
-  /* Header adjustments */
-  --header-title: &#34;Rat&#39;s Nest&#34;;
-  --header-subtitle: &#34;let&#39;s begin at the end&#34;;
+    /* Header adjustments */
+    --header-title: &#34;Rat&#39;s Nest&#34;;
+    --header-subtitle: &#34;let&#39;s begin at the end&#34;;
 
-  /* Delete the default header background */
-  --gradient-header: linear-gradient(transparent, transparent);
-  --diagonal-stripes: linear-gradient(transparent, transparent);
+    /* Delete the default header background */
+    --gradient-header: linear-gradient(transparent, transparent);
+    --diagonal-stripes: linear-gradient(transparent, transparent);
 }
 
 /* - == === HEADER BACKGROUNDS === == - */
@@ -305,45 +306,59 @@ div#container-wrap-wrap::before,
 div#container-wrap::before,
 div#container-wrap-wrap::after,
 body::after {
-  content: &#34;&#34;;
-  position: absolute;
-  height: var(--header-height-on-desktop); width: 100%; top: 0; left: 0;
-  pointer-events: none;
+    content: &#34;&#34;;
+    position: absolute;
+    height: var(--header-height-on-desktop);
+    width: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
 
 /* The sky, which loops through a series of colours to evoke the
  * unstoppable passing of time
  */
 body::before {
-  background: linear-gradient(
-                to top,
-                rgb(var(--sky-at-morning)) 0%,
-                rgb(var(--sky-at-morning)) 11%,
-                rgb(var(--sky-at-daytime)) 22%,
-                rgb(var(--sky-at-daytime)) 33%,
-                rgb(var(--sky-at-evening)) 44%,
-                rgb(var(--sky-at-dusk)) 55%,
-                rgb(var(--sky-at-night)) 66%,
-                rgb(var(--sky-at-night)) 77%,
-                rgb(var(--sky-at-dawn)) 88%,
-                rgb(var(--sky-at-morning)) 100%
-              );
-  background-size: 100% calc(var(--header-height-on-desktop)
-                             * var(--sky-length));
-  animation: sky linear var(--sky-time) infinite;
+    background: linear-gradient(to top,
+    		rgb(var(--sky-at-morning)) 0%,
+    		rgb(var(--sky-at-morning)) 11%,
+    		rgb(var(--sky-at-daytime)) 22%,
+    		rgb(var(--sky-at-daytime)) 33%,
+    		rgb(var(--sky-at-evening)) 44%,
+    		rgb(var(--sky-at-dusk)) 55%,
+    		rgb(var(--sky-at-night)) 66%,
+    		rgb(var(--sky-at-night)) 77%,
+    		rgb(var(--sky-at-dawn)) 88%,
+    		rgb(var(--sky-at-morning)) 100%);
+    background-size: 100% calc(var(--header-height-on-desktop) * var(--sky-length));
+    -webkit-animation: sky linear var(--sky-time) infinite;
+            animation: sky linear var(--sky-time) infinite;
 }
+
+@-webkit-keyframes sky {
+    from {
+    	background-position: 0 0;
+    }
+
+    to {
+    	background-position: 0 calc(var(--header-height-on-desktop) * var(--sky-length));
+    }
+}
+
 @keyframes sky {
-  from { background-position: 0 0; }
-  to {
-    background-position: 0 calc(var(--header-height-on-desktop)
-                                * var(--sky-length));
-  }
+    from {
+    	background-position: 0 0;
+    }
+
+    to {
+    	background-position: 0 calc(var(--header-height-on-desktop) * var(--sky-length));
+    }
 }
 
 /* The city skyline */
 div#container-wrap-wrap::before {
-  background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline.png&#39;);
-  background-size: auto var(--header-height-on-desktop);
+    background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline.png&#39;);
+    background-size: auto var(--header-height-on-desktop);
 }
 
 /* Two backgrounds: a white and blurred shine on the buildings,
@@ -354,14 +369,39 @@ div#container-wrap-wrap::before {
  * reflection on the buildings.
  */
 div#container-wrap::before {
-  background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline-whitewash.png&#39;),
-              url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline-highlight.png&#39;);
-  background-size: auto var(--header-height-on-desktop);
-  animation: shine ease-in-out var(--sky-time) infinite;
+    background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline-whitewash.png&#39;),
+    	url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/skyline-highlight.png&#39;);
+    background-size: auto var(--header-height-on-desktop);
+    -webkit-animation: shine ease-in-out var(--sky-time) infinite;
+            animation: shine ease-in-out var(--sky-time) infinite;
 }
+
+@-webkit-keyframes shine {
+
+    0%,
+    40%,
+    100% {
+    	opacity: 0.2;
+    }
+
+    55%,
+    77% {
+    	opacity: 0;
+    }
+}
+
 @keyframes shine {
-  0%, 40%, 100% { opacity: 0.2; }
-  55%, 77% { opacity: 0; }
+
+    0%,
+    40%,
+    100% {
+    	opacity: 0.2;
+    }
+
+    55%,
+    77% {
+    	opacity: 0;
+    }
 }
 
 /* The final two pseudoelements contain the ashes: clouds that
@@ -371,33 +411,82 @@ div#container-wrap::before {
  * The fade animation affords an unobscured view of the city
  * every 3rd night.
  */
-div#container-wrap-wrap::after, body::after {
-  background-size: var(--ashes-width) var(--header-height-on-desktop);
-  background-repeat: repeat-x;
-  animation: ashes-move linear var(--ashes-move-duration), 
-             ashes-fade ease calc(var(--sky-time) * 3);
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-div#container-wrap-wrap::after {
-  background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-large.png&#39;);
-  --ashes-move-duration: 27s;
-  --ashes-width: 500px;
-  --ashes-opacity: 0.5;
-}
+div#container-wrap-wrap::after,
 body::after {
-  background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-small.png&#39;);
-  --ashes-move-duration: 20s;
-  --ashes-width: 800px;
-  --ashes-opacity: 0.4;
+    background-size: var(--ashes-width) var(--header-height-on-desktop);
+    background-repeat: repeat-x;
+    -webkit-animation: ashes-move linear var(--ashes-move-duration),
+    	ashes-fade ease calc(var(--sky-time) * 3);
+            animation: ashes-move linear var(--ashes-move-duration),
+    	ashes-fade ease calc(var(--sky-time) * 3);
+    -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
 }
+
+div#container-wrap-wrap::after {
+    background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-large.png&#39;);
+    --ashes-move-duration: 27s;
+    --ashes-width: 500px;
+    --ashes-opacity: 0.5;
+}
+
+body::after {
+    background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-small.png&#39;);
+    --ashes-move-duration: 20s;
+    --ashes-width: 800px;
+    --ashes-opacity: 0.4;
+}
+
+@-webkit-keyframes ashes-move {
+    from {
+    	background-position: 0 0;
+    }
+
+    to {
+    	background-position: var(--ashes-width) 0;
+    }
+}
+
 @keyframes ashes-move {
-  from { background-position: 0 0; }
-  to { background-position: var(--ashes-width) 0; }
+    from {
+    	background-position: 0 0;
+    }
+
+    to {
+    	background-position: var(--ashes-width) 0;
+    }
 }
+
+@-webkit-keyframes ashes-fade {
+
+    0%,
+    85%,
+    96%,
+    100% {
+    	opacity: var(--ashes-opacity);
+    }
+
+    88.66%,
+    92.33% {
+    	opacity: 0.1;
+    }
+}
+
 @keyframes ashes-fade {
-  0%, 85%, 96%, 100% { opacity: var(--ashes-opacity); }
-  88.66%, 92.33% { opacity: 0.1; }
+
+    0%,
+    85%,
+    96%,
+    100% {
+    	opacity: var(--ashes-opacity);
+    }
+
+    88.66%,
+    92.33% {
+    	opacity: 0.1;
+    }
 }
 
 /* - == === BODY BACKGROUNDS === == - */
@@ -405,55 +494,116 @@ body::after {
 /* This psuedolement contains the faint purple patchy smog on the page
  * just below the header, as a thematic transition from dark to light.
  */
-#content-wrap { position: relative; }
+#content-wrap {
+    position: relative;
+}
+
 #content-wrap::before {
-  content: &#34;&#34;;
-  position: absolute;
-  height: 100%; width: 100%; top: 0; left: 0;
-  background-repeat: repeat-x;
-  pointer-events: none;
-  background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/purple-smoke.png&#39;);
-  opacity: 0.2;
+    content: &#34;&#34;;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-repeat: repeat-x;
+    pointer-events: none;
+    background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/purple-smoke.png&#39;);
+    opacity: 0.2;
 }
 
 /* - == === MISCELLANEOUS === == - */
 
-/* Interwiki */
-.scpnet-interwiki-wrapper {
-  filter: brightness(0.86) invert(1) hue-rotate(73deg) saturate(10);
-}
-
 /* Add a pinch of extra contrast to the login info */
 #login-status {
-  background: rgba(var(--dark-accent), 0.3);
-  padding-left: 0.5rem;
+    background: rgba(var(--dark-accent), 0.3);
+    padding-left: 0.5rem;
 }
 
 /* Respect user motion settings */
 @media screen and (prefers-reduced-motion: reduce) {
-  body::before,
-  div#container-wrap::before,
-  div#container-wrap-wrap::after,
-  body::after {
-    animation: none;
-  }
+
+    body::before,
+    div#container-wrap::before,
+    div#container-wrap-wrap::after,
+    body::after {
+    	-webkit-animation: none;
+    	        animation: none;
+    }
+}
+[[/code]]
+
+Sidebar Code:
+[[code type=&#34;css&#34;]]
+/* - == === BHL VARIABLES === == - */
+
+/* This is a BHL theme, which is configuration-based, so the root element
+ * contains variables that will affect the whole theme
+ */
+ :root {
+    /* S-CSS-P integration */
+    --theme-base: &#34;black-highlighter&#34;;
+    --theme-id: &#34;swirling-ashes&#34;;
+    --theme-name: &#34;Swirling Ashes Theme&#34;;
+
+    /* Colours */
+    --dark-gray-monochrome: 26, 24, 26;
+    --swatch-topmenu-bg-color: var(--dark-gray-monochrome);
+    --dark-accent: 63, 9, 143;
+    --medium-accent: 81, 13, 181;
+    --bright-accent: 105, 49, 186;
+    --pale-accent: 128, 80, 200;
+
+    /* Sky */
+    --sky-at-dawn: 236, 112, 99;
+    --sky-at-morning: 174, 214, 241;
+    --sky-at-daytime: 249, 231, 159;
+    --sky-at-evening: 248, 196, 113;
+    --sky-at-dusk: 140, 50, 70;
+    --sky-at-night: 50, 40, 67;
+    --sky-length: 15;
+    --sky-time: 60s;
+
+    /* Header adjustments */
+    --header-title: &#34;Rat&#39;s Nest&#34;;
+    --header-subtitle: &#34;let&#39;s begin at the end&#34;;
+
+    /* Delete the default header background */
+    --diagonal-stripes: linear-gradient(transparent, transparent);
+}
+
+/* Respect user motion settings */
+@media screen and (prefers-reduced-motion: reduce) {
+
+    body::before,
+    div#container-wrap::before,
+    div#container-wrap-wrap::after,
+    body::after {
+    	-webkit-animation: none;
+    	        animation: none;
+    }
 }
 [[/code]]
 
 [[/collapsible]]
 
 [[/iftags]]
-
+[[include component:bhl-dark-sidebar]]
+[[include :scp-wiki:component:croqstyle -=- ]]
 [[module CSS]]
-@import url(&#39;https://scp-wiki.wikidot.com/theme:swirling-ashes/code/1&#39;);
-[[/module]]</textarea></pre>
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Aswirling-ashes/1&#39;);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aswirling-ashes/2
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.599498.</em>
+    <em>Last updated 2023-07-15 21:44:41.036108.</em>
   
 </div>
 </body>

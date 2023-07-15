@@ -45,6 +45,10 @@
  }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Agoc/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -84,10 +88,6 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -203,6 +203,18 @@
   }
  }
 [[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
+
+
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -378,10 +390,8 @@ Here&#39;s a multipurpose GOC logo div:
 [[/=]]
 
 ----
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 /*
 Ex Officio Theme
 [2020 Wikidot Theme]
@@ -480,19 +490,24 @@ The GOC logo was created by 7happy7. Licensed under CC BY SA 3.0.
     :root {
     	--header-title: &#34;UNGOC&#34;;
     }
+
+    #header::before {
+    	top: -1rem;
+    	left: -2rem;
+    }
 }
 
 :root {
     /* ===BACKGROUND GRADIENT=== */
 
-    	/* ===GENERAL BACKGROUND=== */
-    	/* Gradient Color used for the --gradient-background var */
+    /* ===GENERAL BACKGROUND=== */
+    /* Gradient Color used for the --gradient-background var */
     --background-gradient-color: var(--bright-accent);
 
     /* ===TOPBAR GRADIENT=== */
-    	/* Colors used in the --gradient-topmenu var to give the topbar its color */
-    	--swatch-topmenu-border-color: var(--medium-accent);
-    	--swatch-topmenu-bg-color: var(--bright-accent);
+    /* Colors used in the --gradient-topmenu var to give the topbar its color */
+    --swatch-topmenu-border-color: var(--medium-accent);
+    --swatch-topmenu-bg-color: var(--bright-accent);
 
     /* ===LINK COLORS=== */
     --link-color: var(--swatch-primary-darker);
@@ -503,15 +518,15 @@ The GOC logo was created by 7happy7. Licensed under CC BY SA 3.0.
 
 #header {
     /* ===HEADER ELEMENTS=== */
-    	/* ===HEADER TITLES=== */
-    	/* Header H1 and H2 colors */
+    /* ===HEADER TITLES=== */
+    /* Header H1 and H2 colors */
     --swatch-headerh1-color: var(--medium-accent);
     --swatch-headerh2-color: var(--dark-accent);
 
-    	/* ===SEARCH ELEMENT=== */
+    /* ===SEARCH ELEMENT=== */
     --search-icon-color: var(--swatch-text-tertiary-color);
 
-    	/* ===LOGIN BOX ELEMENT=== */
+    /* ===LOGIN BOX ELEMENT=== */
     --login-line-divider-color: var(--swatch-text-tertiary-color);
     --login-username-color: var(--swatch-text-tertiary-color);
     --login-myaccount-color: var(--swatch-text-tertiary-color);
@@ -521,7 +536,7 @@ The GOC logo was created by 7happy7. Licensed under CC BY SA 3.0.
 #top-bar {
     /* ===TOPBAR ELEMENTS=== */
 
-    	/* ===TOPBAR CATEGORIES=== */
+    /* ===TOPBAR CATEGORIES=== */
     --topmenu-category-color: var(--swatch-text-tertiary-color);
     --topmenu-category-hover-color: var(--swatch-text-tertiary-color);
     --topmenu-hover-border-color: var(--swatch-primary);
@@ -534,7 +549,7 @@ The GOC logo was created by 7happy7. Licensed under CC BY SA 3.0.
     --footer-link-hover-color: var(--swatch-text-tertiary-color);
 }
 
-    /* ===LICENSE AREA=== */
+/* ===LICENSE AREA=== */
 #license-area {
     --license-link-hover-color: var(--swatch-text-tertiary-color);
 }
@@ -557,16 +572,28 @@ body,
 }
 
 /* Header shadow and colors */
+
+/* logo drop shadow */
+
 #header {
-    -webkit-filter: drop-shadow(-.1rem .1rem 0 white);
-            filter: drop-shadow(-.1rem .1rem 0 white);
+    background-image: none;
 }
 
-#top-bar,
-#top-bar ::before,
-#top-bar ::after {
-    -webkit-filter: unset;
-            filter: unset;
+#header::before {
+    content: &#34; &#34;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--header-height-on-desktop);
+    opacity: 1;
+    background-image: var(--logo-image);
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: auto 10rem;
+    pointer-events: none;
+    -webkit-filter: drop-shadow(1px 1px 1px white);
+            filter: drop-shadow(1px 1px 1px white);
 }
 
 #header h1 a::before {
@@ -592,10 +619,11 @@ body,
 }
 
 blockquote,
-.blockquote {
-    border-style: outset;
-    border-color: rgb(var(--bright-accent));
-    background-color: rgba(var(--light-gray-monochrome), 0.03);
+.blockquote,
+div.blockquote,
+[class*=&#34;blockquote&#34;] {
+    background-color: #fff;
+    border-left: 5px solid rgb(var(--medium-accent));
 }
 
 /* Set horizontal rules to have the double line GOC formats have */
@@ -621,7 +649,7 @@ hr {
     background-size: cover;
     pointer-events: none;
     -webkit-filter: drop-shadow(-0.125rem 0.125rem 1rem var(--drop-shadow));
-            filter: drop-shadow(-0.125rem 0.125rem 1rem var(--drop-shadow));
+    filter: drop-shadow(-0.125rem 0.125rem 1rem var(--drop-shadow));
 }
 
 div.warning {
@@ -638,16 +666,24 @@ div.warning hr {
     border-color: rgb(var(--swatch-primary-darker));
 }
 
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[/iftags]]
+
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Agoc/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Agoc/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.575176.</em>
+    <em>Last updated 2023-07-15 21:44:41.008731.</em>
   
 </div>
 </body>

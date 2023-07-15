@@ -42,6 +42,10 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Adeus-ex-machina/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -53,10 +57,6 @@
       
         <li>
           <pre><code>font-family: var(--header-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -160,6 +160,16 @@
     box-sizing: border-box;
 }
 [[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 
 [[&gt;]]
 [[module Rate]]
@@ -313,10 +323,9 @@ TEXT[[footnote]] And here&#39;s a footnote! [[/footnote]]
 
 [[footnoteblock]]
 -----
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
+
 @import url(&#39;https://fonts.googleapis.com/css?family=Carrois+Gothic&amp;display=swap&#39;);
 
 @supports(display: grid) {
@@ -361,13 +370,11 @@ TEXT[[footnote]] And here&#39;s a footnote! [[/footnote]]
     	--hover-link-color: var(--pale-accent);
 
     	/* ===PRIMARY GRADIENTS=== */
-    	--diagonal-stripes: repeating-linear-gradient(
-    		180deg,
-    		hsla(0, 0%, 100%, 0),
-    		hsla(0, 0%, 100%, 0) 0.25vh,
-    		rgba(88, 88, 88, 0.1) 0.35vh,
-    		rgba(88, 88, 88, 0.2) 0.5vh
-    	);
+    	--diagonal-stripes: repeating-linear-gradient(180deg,
+    			hsla(0, 0%, 100%, 0),
+    			hsla(0, 0%, 100%, 0) 0.25vh,
+    			rgba(88, 88, 88, 0.1) 0.35vh,
+    			rgba(88, 88, 88, 0.2) 0.5vh);
 
     	/* ===RATING MODULE=== */
     	--rating-module-bg-color: var(--swatch-menubg-light-color);
@@ -379,23 +386,26 @@ TEXT[[footnote]] And here&#39;s a footnote! [[/footnote]]
 
     /* ===TOPBAR ELEMENTS=== */
 
-    #header div[class*=&#34;top-bar&#34;] &gt; ul &gt; li:hover,
-    #header div[class*=&#34;top-bar&#34;] &gt; ul &gt; li:active,
-    #header div[class*=&#34;top-bar&#34;] &gt; ul &gt; li:focus-within {
+    #header div[class*=&#34;top-bar&#34;]&gt;ul&gt;li:hover,
+    #header div[class*=&#34;top-bar&#34;]&gt;ul&gt;li:active,
+    #header div[class*=&#34;top-bar&#34;]&gt;ul&gt;li:focus-within {
     	background-color: rgba(var(--white-monochrome), 0.1);
     }
 
     /* ===SIDE-BAR ELEMENTS=== */
 
-    #side-bar {
+    #side-bar,
+    #interwiki {
     	--sidebar-bg-color: var(--swatch-menubg-light-color);
     }
 
-    #side-bar .heading {
+    #side-bar .heading,
+    #interwiki .heading {
     	margin-top: 0.5em;
     }
 
     #side-bar .heading p,
+    #interwiki .heading p,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link {
     	font-size: calc(var(--base-font-size) * (7/6));
     }
@@ -432,6 +442,10 @@ TEXT[[footnote]] And here&#39;s a footnote! [[/footnote]]
     	text-align: center;
     }
 
+    .pata-notice ::-moz-selection {
+    	background: rgba(var(--white-monochrome), 0.25);
+    }
+
     .pata-notice ::-moz-selection,
     .pata-notice ::selection {
     	background: rgba(var(--white-monochrome), 0.25);
@@ -445,16 +459,24 @@ TEXT[[footnote]] And here&#39;s a footnote! [[/footnote]]
     	}
     }
 }
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[/iftags]]
+
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Adeus-ex-machina/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Adeus-ex-machina/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.567446.</em>
+    <em>Last updated 2023-07-15 21:44:40.999262.</em>
   
 </div>
 </body>

@@ -40,6 +40,7 @@
 &gt;      @@--lgurl: url(&#39;your url here&#39;);@@
 &gt; }
 &gt; [[/module]]
+**NOTE:** Please understand that this is a **DARK** theme. Attempting to edit this theme to use colors that are either really dark or immensely bright is probably going to hurt some eyes and hurt your total ratings (you&#39;ll thank me for this later.)
 
 + WHAT&#39;S DIFFERENT?
 
@@ -154,15 +155,8 @@ This is a long tab. It contains a lot of text.
 
 [[footnoteblock]]
 
-[[/iftags]]
-
-[[include :scp-wiki:component:centered-header-bhl]]
-[[include :scp-wiki:component:toggle-sidebar-bhl]]
-
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[collapsible show=&#34;+ Show&#34; hide=&#34;- Hide&#34;]]
-[[module CSS show=&#34;true&#34;]]
-
+[[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
+[[code type=&#34;css&#34;]]
 :root {
     --header-title: &#34;SCP FOUNDATION&#34;;
 
@@ -202,7 +196,7 @@ This is a long tab. It contains a lot of text.
     --sidebar-links-hover-text-color: var(--dark-accent);
 
     /* Text Colors for Secondary &amp; Tertiary items like Sidebar Headers and Top-Bar Menu Text */
-    --swatch-text-tertiary-color: var(--swatch-menutxt-light-color);    
+    --swatch-text-tertiary-color: var(--swatch-menutxt-light-color);
 
     /* Primary Header Colors */
     --swatch-topmenu-border-color: var(--swatch-menubg-black-color);
@@ -210,18 +204,17 @@ This is a long tab. It contains a lot of text.
 
     --rating-module-text-color: var(--bright-accent);
     --rating-module-button-cancel-color: var(--gray-monochrome);
-    ;
 
     --gradient-header: linear-gradient(to bottom,
-            rgb(var(--header-gradient-color-bottom)) 0%,
-            rgb(var(--header-gradient-color-middle)) 90%,
-            rgb(var(--header-gradient-color-top)) 100%);
+    		rgb(var(--header-gradient-color-bottom)) 0%,
+    		rgb(var(--header-gradient-color-middle)) 90%,
+    		rgb(var(--header-gradient-color-top)) 100%);
 
     --diagonal-stripes: repeating-linear-gradient(45deg,
-            hsla(0, 0%, 100%, 0),
-            hsla(0, 0%, 100%, 0) 0.25vh,
-            rgba(var(--swatch-menubg-extra-dark-color), 0.1) 0.35vh,
-            rgba(var(--swatch-menubg-extra-dark-color), 0.2) 0.5vh);
+    		hsla(0, 0%, 100%, 0),
+    		hsla(0, 0%, 100%, 0) 0.25vh,
+    		rgba(var(--swatch-menubg-extra-dark-color), 0.1) 0.35vh,
+    		rgba(var(--swatch-menubg-extra-dark-color), 0.2) 0.5vh);
 
     --toggle-button-bg: rgb(var(--dark-accent));
     --toggle-border-color: rgb(var(--dark-gray-monochrome));
@@ -229,12 +222,12 @@ This is a long tab. It contains a lot of text.
 }
 
 #header {
-    		/* Focus is when the search box has been clicked on */
+    /* Focus is when the search box has been clicked on */
     --search-icon-focus-bg-color: var(--swatch-primary-darkest);
     --search-focus-textbox-bg-color: var(--swatch-primary-darkest);
 
     /* ===LOGIN BOX ELEMENT=== */
-    		/* Dropdown Box when arrow is clicked */
+    /* Dropdown Box when arrow is clicked */
     --login-dropdown-bg-image: none;
     --login-dropdown-border-color: var(--swatch-primary-darkest), 0.9;
     --login-dropdown-text-hover-color: var(--swatch-menutxt-dark-color);
@@ -261,10 +254,10 @@ This is a long tab. It contains a lot of text.
 #top-bar {
     /* ===TOPBAR ELEMENTS=== */
 
-    	/* ===TOPBAR CATEGORIES=== */
-    --topmenu-hover-border-color: var(--swatch-primary),0.5;
+    /* ===TOPBAR CATEGORIES=== */
+    --topmenu-hover-border-color: var(--swatch-primary), 0.5;
 
-    	/* ===DROPDOWN MENU=== */
+    /* ===DROPDOWN MENU=== */
     --dropdown-bg-color: var(--dark-gray-monochrome);
     --dropdown-border-color: var(--swatch-primary-darkest), 0.9;
 }
@@ -275,11 +268,11 @@ This is a long tab. It contains a lot of text.
 
 #main-content {
     /* ===MAIN CONTENT UI ELEMENTS */
-        /* ===UI ICONS=== */
-            /* ===PAGE OPTIONS ICONS=== */
+    /* ===UI ICONS=== */
+    /* ===PAGE OPTIONS ICONS=== */
     --ui-icon-hover-bg: var(--swatch-primary-darkest);
 
-    	/* ===TABS=== */
+    /* ===TABS=== */
     --tabs-hover-bg: var(--swatch-primary-darkest);
     --tabs-bottom-border-color: var(--swatch-primary-darkest);
 }
@@ -308,26 +301,33 @@ body {
 }
 
 #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
-    color: rgba(var(--swatch-primary),0);
+    color: rgba(var(--swatch-primary), 0);
 }
 
 @media (min-width: 36rem) {
     #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
-        box-shadow: 0 0 0 0.125rem rgba(var(--swatch-primary),0.2);
-        color: rgba(var(--swatch-primary),0.7);
+    	box-shadow: 0 0 0 0.125rem rgba(var(--swatch-primary), 0.2);
+    	color: rgba(var(--swatch-primary), 0.7);
     }
 }
 
- 
+@supports (display:grid) {
+    div.page-rate-widget-box .rate-points {
+    	border: rgb(var(--dark-accent));
+    	border-right: rgb(var(--dark-accent));
+    }
+}
+
 #page-content a:not([href*=&#34;user&#34;]):not([href*=&#34;javascript:;&#34;]):not(.fa-info):not([href*=&#34;http://www.scp-wiki.net/classification-committee-memo&#34;]):not([href=&#34;http://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34;]):not([href=&#34;/classification-committee-memo&#34;]) {
     padding: 0.15em;
     margin: -0.15em;
     color: inherit;
+    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     box-shadow: inset 0 -0.125rem 0 0rem rgba(var(--bright-accent));
     transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), color 200ms cubic-bezier(0.4, 0.0, 0.2, 1), padding 200ms cubic-bezier(0.4, 0.0, 0.2, 1), margin 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
- 
+
 #page-content a:not([href*=&#34;user&#34;]):not([href*=&#34;javascript:;&#34;]):not([href*=&#34;http://www.scp-wiki.net/classification-committee-memo&#34;]):not([href=&#34;http://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34;]):not([href=&#34;/classification-committee-memo&#34;]):not(.fa-info):hover {
     padding: 0.3em 0.25em 0.2em 0.25em;
     margin: -0.25em;
@@ -339,27 +339,28 @@ body {
 a {
     color: inherit;
 }
- 
+
 a:hover {
     color: inherit;
 }
- 
+
 a.close-menu {
     background-color: transparent;
 }
- 
+
 a:visited {
     color: inherit;
 }
- 
+
 .scp-image-block a {
-     box-shadow:none;
+    box-shadow: none;
 }
 
 a.collapsible-block-link {
     padding: 0.15em;
     margin: -0.15em;
     color: inherit;
+    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     box-shadow: inset 0 -0.125rem 0 0rem rgba(var(--bright-accent));
     transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), color 200ms cubic-bezier(0.4, 0.0, 0.2, 1), padding 200ms cubic-bezier(0.4, 0.0, 0.2, 1), margin 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -373,12 +374,18 @@ a.collapsible-block-link:hover {
     color: rgb(var(--dark-accent))
 }
 
-#breadcrumbs a, #breadcrumbs a:visited, .pseudocrumbs a, .pseudocrumbs a:visited {
+#breadcrumbs a,
+#breadcrumbs a:visited,
+.pseudocrumbs a,
+.pseudocrumbs a:visited {
     background-color: transparent;
     color: rgb(var(--bright-accent));
 }
 
-#breadcrumbs a:active, #breadcrumbs a:hover, .pseudocrumbs a:active, .pseudocrumbs a:hover {
+#breadcrumbs a:active,
+#breadcrumbs a:hover,
+.pseudocrumbs a:active,
+.pseudocrumbs a:hover {
     color: rgb(var(--dark-accent));
 }
 
@@ -394,18 +401,18 @@ a.close-menu {
 
 
 ::-moz-selection {
-    background: rgb(var(--bright-accent),0.25);
+    background: rgb(var(--bright-accent), 0.25);
 }
 
 ::selection {
-    background: rgb(var(--bright-accent),0.25);
+    background: rgb(var(--bright-accent), 0.25);
 }
 
 #page-title::after,
 .meta-title::after,
 #page-title::before,
 .meta-title::before {
-    background: rgba(var(--swatch-primary),0.5);
+    background: rgba(var(--swatch-primary), 0.5);
 }
 
 .creditButton p a {
@@ -430,6 +437,7 @@ a.close-menu {
     text-decoration: none;
 }
 
+#interwiki .heading,
 #side-bar .heading {
     background: rgb(var(--dark-gray-monochrome));
 }
@@ -446,7 +454,8 @@ a.close-menu {
     background-color: rgba(var(--dark-gray-monochrome)) !important;
 }
 
-#side-bar div.menu-item&gt;a, #side-bar div.menu-item&gt;a:visited {
+#side-bar div.menu-item&gt;a,
+#side-bar div.menu-item&gt;a:visited {
     color: rgb(var(--bright-accent));
 }
 
@@ -462,6 +471,7 @@ a.close-menu {
 #side-bar .heading {
     background: rgb(var(--dark-gray-monochrome));
 }
+
 
 #search-top-box-input {
     background-color: rgb(var(--dark-gray-monochrome));
@@ -512,7 +522,7 @@ div.blockquote {
     border: none;
     background-color: rgb(var(--dark-gray-monochrome));
     --swatch-border-color: var(--gray-monochrome);
-    box-shadow: .0225rem .0835rem .0725rem .0925rem rgb(var(--dark-accent));
+    box-shadow: 0rem 0.095rem 0.25rem 0.125rem rgb(var(--dark-accent));
 }
 
 .yui-navset .yui-nav li,
@@ -559,16 +569,19 @@ div.blockquote {
     color: rgb(var(--bright-accent));
 }
 
-#page-content .blockquote div.b-tables table.wiki-content-table th, #page-content .blockquote table.wiki-content-table th {
+#page-content .blockquote div.b-tables table.wiki-content-table th,
+#page-content .blockquote table.wiki-content-table th {
     background: rgb(var(--bright-accent));
     color: rgb(var(--dark-accent));
-    border: 0.0625rem solid rgba(var(--bright-accent))!important;
-}
-#page-content .blockquote table.wiki-content-table td {
-    border: 0.0625rem solid rgba(var(--bright-accent))!important;
+    border: 0.0625rem solid rgba(var(--bright-accent)) !important;
 }
 
-#page-content div.b-tables table.wiki-content-table th, #page-content table.wiki-content-table th {
+#page-content .blockquote table.wiki-content-table td {
+    border: 0.0625rem solid rgba(var(--bright-accent)) !important;
+}
+
+#page-content div.b-tables table.wiki-content-table th,
+#page-content table.wiki-content-table th {
     background: rgb(var(--dark-gray-monochrome));
     color: rgb(var(--white-accent));
     --tables-border: var(--dark-gray-monochrome);
@@ -611,24 +624,10 @@ div.note,
     color: rgb(var(--bright-accent));
 }
 
-#side-bar iframe.scpnet-interwiki-frame:not(:lang(cn)) {
-    -webkit-filter: invert(1);
-            filter: invert(1);
-}
- 
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before,
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::before,
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::after {
-    background-color: rgb(var(--swatch-menubg-color));
-}
- 
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before {
-    mix-blend-mode: lighten;
-}
-
-.image-block .image-caption, .scp-image-block .scp-image-caption {
+.image-block .image-caption,
+.scp-image-block .scp-image-caption {
     box-shadow: none;
-     border: none;
+    border: none;
     background-color: rgb(var(--dark-gray-monochrome));
     color: rgb(var(--bright-accent));
 }
@@ -656,12 +655,14 @@ div.note,
     color: rgb(var(--dark-accent));
 }
 
-.bibitems .title, .footnotes-footer .title {
+.bibitems .title,
+.footnotes-footer .title {
     background-color: rgb(var(--bright-accent));
     color: rgb(var(--dark-accent));
 }
 
-.bibitems, .footnotes-footer {
+.bibitems,
+.footnotes-footer {
     box-shadow: inset .5em 0 0 0 rgba(var(--bright-accent));
 }
 
@@ -674,14 +675,17 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     color: rgb(var(--dark-accent));
 }
 
-.pager .current, .pager .current:before {
+.pager .current,
+.pager .current:before {
     background-color: rgb(var(--dark-accent));
 }
+
 .pager .current {
     color: rgb(var(--bright-accent));
 }
 
-.paged a:visited, .pager a {
+.paged a:visited,
+.pager a {
     color: rgb(var(--bright-accent));
 }
 
@@ -716,7 +720,8 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     box-shadow: 0 -.125rem 0 0 rgb(var(--bright-accent));
 }
 
-.footnotes-footer a[href*=javascript], .footnotes-footer a[href*=javascript]:visited {
+.footnotes-footer a[href*=javascript],
+.footnotes-footer a[href*=javascript]:visited {
     background-color: transparent;
 }
 
@@ -728,7 +733,8 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     background-color: rgba(var(--dark-accent));
 }
 
-[id*=u-credit] .credit.first, [id*=u-credit] .credit.otherwise {
+[id*=u-credit] .credit.first,
+[id*=u-credit] .credit.otherwise {
     padding: 5px;
 }
 
@@ -794,17 +800,18 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     color: rgba(0, 0, 0, 0);
 }
 
-.authorlink-wrapper &gt; a {
+.authorlink-wrapper&gt;a {
     background-color: transparent;
     color: rgb(var(--bright-accent));
     --author-right-adjust: 0rem;
 }
 
-.authorlink-wrapper &gt; a::before {
+.authorlink-wrapper&gt;a::before {
     color: darkgrey;
 }
 
 .authorbox {
+    -webkit-filter: drop-shadow(0 0 3px rgba(228, 228, 228));
     filter: drop-shadow(0 0 3px rgba(228, 228, 228));
 }
 
@@ -829,7 +836,8 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     color: rgb(var(--bright-accent));
 }
 
-table.page-files tr&gt;td&gt;a:not(.btn), table.page-files tr&gt;td&gt;a:visited:not(.btn) {
+table.page-files tr&gt;td&gt;a:not(.btn),
+table.page-files tr&gt;td&gt;a:visited:not(.btn) {
     color: rgb(var(--bright-accent));
 }
 
@@ -838,10 +846,17 @@ table.page-files th {
 }
 
 @media (min-width: 36rem) {
-#login-status:not(:focus-within) *:not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
-    --clip-path: none;
+    #login-status:not(:focus-within) *:not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
+    	--clip-path: none;
+    }
 }
-}</code></pre>
+[[/code]]
+[[/collapsible]]
+[[/iftags]]
+[[include :scp-wiki:component:centered-header-bhl]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Ajakstyle/1&#34;)</code></pre>
         </li>
       
     </ul>
@@ -859,10 +874,6 @@ table.page-files th {
       
         <li>
           <pre><code>font-family:var(--mono-font); font-size: calc(var(--base-font-size) * 1.25);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -966,6 +977,15 @@ table.page-files th {
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[=]]
 [[module Rate]]
 [[/=]]
@@ -996,6 +1016,7 @@ To edit the header, subheader, and background image, please use the following co
 &gt;      @@--lgurl: url(&#39;your url here&#39;);@@
 &gt; }
 &gt; [[/module]]
+**NOTE:** Please understand that this is a **DARK** theme. Attempting to edit this theme to use colors that are either really dark or immensely bright is probably going to hurt some eyes and hurt your total ratings (you&#39;ll thank me for this later.)
 
 + WHAT&#39;S DIFFERENT?
 
@@ -1110,15 +1131,8 @@ This is a long tab. It contains a lot of text.
 
 [[footnoteblock]]
 
-[[/iftags]]
-
-[[include :scp-wiki:component:centered-header-bhl]]
-[[include :scp-wiki:component:toggle-sidebar-bhl]]
-
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-[[collapsible show=&#34;+ Show&#34; hide=&#34;- Hide&#34;]]
-[[module CSS show=&#34;true&#34;]]
-
+[[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
+[[code type=&#34;css&#34;]]
 :root {
     --header-title: &#34;SCP FOUNDATION&#34;;
 
@@ -1158,7 +1172,7 @@ This is a long tab. It contains a lot of text.
     --sidebar-links-hover-text-color: var(--dark-accent);
 
     /* Text Colors for Secondary &amp; Tertiary items like Sidebar Headers and Top-Bar Menu Text */
-    --swatch-text-tertiary-color: var(--swatch-menutxt-light-color);    
+    --swatch-text-tertiary-color: var(--swatch-menutxt-light-color);
 
     /* Primary Header Colors */
     --swatch-topmenu-border-color: var(--swatch-menubg-black-color);
@@ -1166,18 +1180,17 @@ This is a long tab. It contains a lot of text.
 
     --rating-module-text-color: var(--bright-accent);
     --rating-module-button-cancel-color: var(--gray-monochrome);
-    ;
 
     --gradient-header: linear-gradient(to bottom,
-            rgb(var(--header-gradient-color-bottom)) 0%,
-            rgb(var(--header-gradient-color-middle)) 90%,
-            rgb(var(--header-gradient-color-top)) 100%);
+    		rgb(var(--header-gradient-color-bottom)) 0%,
+    		rgb(var(--header-gradient-color-middle)) 90%,
+    		rgb(var(--header-gradient-color-top)) 100%);
 
     --diagonal-stripes: repeating-linear-gradient(45deg,
-            hsla(0, 0%, 100%, 0),
-            hsla(0, 0%, 100%, 0) 0.25vh,
-            rgba(var(--swatch-menubg-extra-dark-color), 0.1) 0.35vh,
-            rgba(var(--swatch-menubg-extra-dark-color), 0.2) 0.5vh);
+    		hsla(0, 0%, 100%, 0),
+    		hsla(0, 0%, 100%, 0) 0.25vh,
+    		rgba(var(--swatch-menubg-extra-dark-color), 0.1) 0.35vh,
+    		rgba(var(--swatch-menubg-extra-dark-color), 0.2) 0.5vh);
 
     --toggle-button-bg: rgb(var(--dark-accent));
     --toggle-border-color: rgb(var(--dark-gray-monochrome));
@@ -1185,12 +1198,12 @@ This is a long tab. It contains a lot of text.
 }
 
 #header {
-    		/* Focus is when the search box has been clicked on */
+    /* Focus is when the search box has been clicked on */
     --search-icon-focus-bg-color: var(--swatch-primary-darkest);
     --search-focus-textbox-bg-color: var(--swatch-primary-darkest);
 
     /* ===LOGIN BOX ELEMENT=== */
-    		/* Dropdown Box when arrow is clicked */
+    /* Dropdown Box when arrow is clicked */
     --login-dropdown-bg-image: none;
     --login-dropdown-border-color: var(--swatch-primary-darkest), 0.9;
     --login-dropdown-text-hover-color: var(--swatch-menutxt-dark-color);
@@ -1217,10 +1230,10 @@ This is a long tab. It contains a lot of text.
 #top-bar {
     /* ===TOPBAR ELEMENTS=== */
 
-    	/* ===TOPBAR CATEGORIES=== */
-    --topmenu-hover-border-color: var(--swatch-primary),0.5;
+    /* ===TOPBAR CATEGORIES=== */
+    --topmenu-hover-border-color: var(--swatch-primary), 0.5;
 
-    	/* ===DROPDOWN MENU=== */
+    /* ===DROPDOWN MENU=== */
     --dropdown-bg-color: var(--dark-gray-monochrome);
     --dropdown-border-color: var(--swatch-primary-darkest), 0.9;
 }
@@ -1231,11 +1244,11 @@ This is a long tab. It contains a lot of text.
 
 #main-content {
     /* ===MAIN CONTENT UI ELEMENTS */
-        /* ===UI ICONS=== */
-            /* ===PAGE OPTIONS ICONS=== */
+    /* ===UI ICONS=== */
+    /* ===PAGE OPTIONS ICONS=== */
     --ui-icon-hover-bg: var(--swatch-primary-darkest);
 
-    	/* ===TABS=== */
+    /* ===TABS=== */
     --tabs-hover-bg: var(--swatch-primary-darkest);
     --tabs-bottom-border-color: var(--swatch-primary-darkest);
 }
@@ -1264,26 +1277,33 @@ body {
 }
 
 #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
-    color: rgba(var(--swatch-primary),0);
+    color: rgba(var(--swatch-primary), 0);
 }
 
 @media (min-width: 36rem) {
     #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
-        box-shadow: 0 0 0 0.125rem rgba(var(--swatch-primary),0.2);
-        color: rgba(var(--swatch-primary),0.7);
+    	box-shadow: 0 0 0 0.125rem rgba(var(--swatch-primary), 0.2);
+    	color: rgba(var(--swatch-primary), 0.7);
     }
 }
 
- 
+@supports (display:grid) {
+    div.page-rate-widget-box .rate-points {
+    	border: rgb(var(--dark-accent));
+    	border-right: rgb(var(--dark-accent));
+    }
+}
+
 #page-content a:not([href*=&#34;user&#34;]):not([href*=&#34;javascript:;&#34;]):not(.fa-info):not([href*=&#34;http://www.scp-wiki.net/classification-committee-memo&#34;]):not([href=&#34;http://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34;]):not([href=&#34;/classification-committee-memo&#34;]) {
     padding: 0.15em;
     margin: -0.15em;
     color: inherit;
+    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     box-shadow: inset 0 -0.125rem 0 0rem rgba(var(--bright-accent));
     transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), color 200ms cubic-bezier(0.4, 0.0, 0.2, 1), padding 200ms cubic-bezier(0.4, 0.0, 0.2, 1), margin 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
 }
- 
+
 #page-content a:not([href*=&#34;user&#34;]):not([href*=&#34;javascript:;&#34;]):not([href*=&#34;http://www.scp-wiki.net/classification-committee-memo&#34;]):not([href=&#34;http://scp-wiki.wikidot.com/anomaly-classification-system-guide&#34;]):not([href=&#34;/classification-committee-memo&#34;]):not(.fa-info):hover {
     padding: 0.3em 0.25em 0.2em 0.25em;
     margin: -0.25em;
@@ -1295,27 +1315,28 @@ body {
 a {
     color: inherit;
 }
- 
+
 a:hover {
     color: inherit;
 }
- 
+
 a.close-menu {
     background-color: transparent;
 }
- 
+
 a:visited {
     color: inherit;
 }
- 
+
 .scp-image-block a {
-     box-shadow:none;
+    box-shadow: none;
 }
 
 a.collapsible-block-link {
     padding: 0.15em;
     margin: -0.15em;
     color: inherit;
+    -webkit-box-decoration-break: clone;
     box-decoration-break: clone;
     box-shadow: inset 0 -0.125rem 0 0rem rgba(var(--bright-accent));
     transition: box-shadow 200ms cubic-bezier(0.4, 0.0, 0.2, 1), color 200ms cubic-bezier(0.4, 0.0, 0.2, 1), padding 200ms cubic-bezier(0.4, 0.0, 0.2, 1), margin 200ms cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -1329,12 +1350,18 @@ a.collapsible-block-link:hover {
     color: rgb(var(--dark-accent))
 }
 
-#breadcrumbs a, #breadcrumbs a:visited, .pseudocrumbs a, .pseudocrumbs a:visited {
+#breadcrumbs a,
+#breadcrumbs a:visited,
+.pseudocrumbs a,
+.pseudocrumbs a:visited {
     background-color: transparent;
     color: rgb(var(--bright-accent));
 }
 
-#breadcrumbs a:active, #breadcrumbs a:hover, .pseudocrumbs a:active, .pseudocrumbs a:hover {
+#breadcrumbs a:active,
+#breadcrumbs a:hover,
+.pseudocrumbs a:active,
+.pseudocrumbs a:hover {
     color: rgb(var(--dark-accent));
 }
 
@@ -1350,18 +1377,18 @@ a.close-menu {
 
 
 ::-moz-selection {
-    background: rgb(var(--bright-accent),0.25);
+    background: rgb(var(--bright-accent), 0.25);
 }
 
 ::selection {
-    background: rgb(var(--bright-accent),0.25);
+    background: rgb(var(--bright-accent), 0.25);
 }
 
 #page-title::after,
 .meta-title::after,
 #page-title::before,
 .meta-title::before {
-    background: rgba(var(--swatch-primary),0.5);
+    background: rgba(var(--swatch-primary), 0.5);
 }
 
 .creditButton p a {
@@ -1386,6 +1413,7 @@ a.close-menu {
     text-decoration: none;
 }
 
+#interwiki .heading,
 #side-bar .heading {
     background: rgb(var(--dark-gray-monochrome));
 }
@@ -1402,7 +1430,8 @@ a.close-menu {
     background-color: rgba(var(--dark-gray-monochrome)) !important;
 }
 
-#side-bar div.menu-item&gt;a, #side-bar div.menu-item&gt;a:visited {
+#side-bar div.menu-item&gt;a,
+#side-bar div.menu-item&gt;a:visited {
     color: rgb(var(--bright-accent));
 }
 
@@ -1418,6 +1447,7 @@ a.close-menu {
 #side-bar .heading {
     background: rgb(var(--dark-gray-monochrome));
 }
+
 
 #search-top-box-input {
     background-color: rgb(var(--dark-gray-monochrome));
@@ -1468,7 +1498,7 @@ div.blockquote {
     border: none;
     background-color: rgb(var(--dark-gray-monochrome));
     --swatch-border-color: var(--gray-monochrome);
-    box-shadow: .0225rem .0835rem .0725rem .0925rem rgb(var(--dark-accent));
+    box-shadow: 0rem 0.095rem 0.25rem 0.125rem rgb(var(--dark-accent));
 }
 
 .yui-navset .yui-nav li,
@@ -1515,16 +1545,19 @@ div.blockquote {
     color: rgb(var(--bright-accent));
 }
 
-#page-content .blockquote div.b-tables table.wiki-content-table th, #page-content .blockquote table.wiki-content-table th {
+#page-content .blockquote div.b-tables table.wiki-content-table th,
+#page-content .blockquote table.wiki-content-table th {
     background: rgb(var(--bright-accent));
     color: rgb(var(--dark-accent));
-    border: 0.0625rem solid rgba(var(--bright-accent))!important;
-}
-#page-content .blockquote table.wiki-content-table td {
-    border: 0.0625rem solid rgba(var(--bright-accent))!important;
+    border: 0.0625rem solid rgba(var(--bright-accent)) !important;
 }
 
-#page-content div.b-tables table.wiki-content-table th, #page-content table.wiki-content-table th {
+#page-content .blockquote table.wiki-content-table td {
+    border: 0.0625rem solid rgba(var(--bright-accent)) !important;
+}
+
+#page-content div.b-tables table.wiki-content-table th,
+#page-content table.wiki-content-table th {
     background: rgb(var(--dark-gray-monochrome));
     color: rgb(var(--white-accent));
     --tables-border: var(--dark-gray-monochrome);
@@ -1567,24 +1600,10 @@ div.note,
     color: rgb(var(--bright-accent));
 }
 
-#side-bar iframe.scpnet-interwiki-frame:not(:lang(cn)) {
-    -webkit-filter: invert(1);
-            filter: invert(1);
-}
- 
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before,
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::before,
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::after {
-    background-color: rgb(var(--swatch-menubg-color));
-}
- 
-#side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before {
-    mix-blend-mode: lighten;
-}
-
-.image-block .image-caption, .scp-image-block .scp-image-caption {
+.image-block .image-caption,
+.scp-image-block .scp-image-caption {
     box-shadow: none;
-     border: none;
+    border: none;
     background-color: rgb(var(--dark-gray-monochrome));
     color: rgb(var(--bright-accent));
 }
@@ -1612,12 +1631,14 @@ div.note,
     color: rgb(var(--dark-accent));
 }
 
-.bibitems .title, .footnotes-footer .title {
+.bibitems .title,
+.footnotes-footer .title {
     background-color: rgb(var(--bright-accent));
     color: rgb(var(--dark-accent));
 }
 
-.bibitems, .footnotes-footer {
+.bibitems,
+.footnotes-footer {
     box-shadow: inset .5em 0 0 0 rgba(var(--bright-accent));
 }
 
@@ -1630,14 +1651,17 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     color: rgb(var(--dark-accent));
 }
 
-.pager .current, .pager .current:before {
+.pager .current,
+.pager .current:before {
     background-color: rgb(var(--dark-accent));
 }
+
 .pager .current {
     color: rgb(var(--bright-accent));
 }
 
-.paged a:visited, .pager a {
+.paged a:visited,
+.pager a {
     color: rgb(var(--bright-accent));
 }
 
@@ -1672,7 +1696,8 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     box-shadow: 0 -.125rem 0 0 rgb(var(--bright-accent));
 }
 
-.footnotes-footer a[href*=javascript], .footnotes-footer a[href*=javascript]:visited {
+.footnotes-footer a[href*=javascript],
+.footnotes-footer a[href*=javascript]:visited {
     background-color: transparent;
 }
 
@@ -1684,7 +1709,8 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     background-color: rgba(var(--dark-accent));
 }
 
-[id*=u-credit] .credit.first, [id*=u-credit] .credit.otherwise {
+[id*=u-credit] .credit.first,
+[id*=u-credit] .credit.otherwise {
     padding: 5px;
 }
 
@@ -1750,17 +1776,18 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     color: rgba(0, 0, 0, 0);
 }
 
-.authorlink-wrapper &gt; a {
+.authorlink-wrapper&gt;a {
     background-color: transparent;
     color: rgb(var(--bright-accent));
     --author-right-adjust: 0rem;
 }
 
-.authorlink-wrapper &gt; a::before {
+.authorlink-wrapper&gt;a::before {
     color: darkgrey;
 }
 
 .authorbox {
+    -webkit-filter: drop-shadow(0 0 3px rgba(228, 228, 228));
     filter: drop-shadow(0 0 3px rgba(228, 228, 228));
 }
 
@@ -1785,7 +1812,8 @@ table.page-history tr:nth-of-type(2) td:not(:nth-of-type(7)):before {
     color: rgb(var(--bright-accent));
 }
 
-table.page-files tr&gt;td&gt;a:not(.btn), table.page-files tr&gt;td&gt;a:visited:not(.btn) {
+table.page-files tr&gt;td&gt;a:not(.btn),
+table.page-files tr&gt;td&gt;a:visited:not(.btn) {
     color: rgb(var(--bright-accent));
 }
 
@@ -1794,20 +1822,29 @@ table.page-files th {
 }
 
 @media (min-width: 36rem) {
-#login-status:not(:focus-within) *:not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
-    --clip-path: none;
+    #login-status:not(:focus-within) *:not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
+    	--clip-path: none;
+    }
 }
-}
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[/iftags]]
+[[include :scp-wiki:component:centered-header-bhl]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Ajakstyle/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Ajakstyle/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.579013.</em>
+    <em>Last updated 2023-07-15 21:44:41.013231.</em>
   
 </div>
 </body>

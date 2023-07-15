@@ -62,6 +62,10 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aextra-black-highlighter-theme/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -85,10 +89,6 @@
       
         <li>
           <pre><code>font-family:var(--mono-font); font-size: calc(var(--base-font-size) * 1.25);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -221,6 +221,15 @@
     padding: 0.5em;
 }
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[=]]
 [[module Rate]]
 + What is this?
@@ -370,12 +379,8 @@ This is a long tab. It contains a lot of text.
 [[span style=&#34;font-family:var(--header-font); font-size: calc(var(--base-font-size) * 1.25);&#34;]]The header and title font is [https://fonts.google.com/specimen/Poppins Poppins].[[/span]] 
 [[span style=&#34;font-family:var(--mono-font); font-size: calc(var(--base-font-size) * 1.25);&#34;]]The monospace font is [https://fonts.google.com/specimen/Recursive Recursive].[[/span]] 
 [[/=]]
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
-[[include :scp-wiki:component:bhl-dark-sidebar]]
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @supports(display:grid) {
     :root {
     	/* S-CSS-P Integration */
@@ -497,6 +502,11 @@ This is a long tab. It contains a lot of text.
     	box-shadow: inset 0 0 0 0.0625rem rgba(var(--swatch-menubg-medium-color), 0.15);
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+
+    #interwiki .heading p,
     #side-bar .heading p,
     #side-bar .collapsible-block .collapsible-block-link {
     	color: rgb(var(--swatch-menutxt-light-color));
@@ -582,21 +592,6 @@ This is a long tab. It contains a lot of text.
     	color: rgb(var(--swatch-text-general));
     }
 
-    #side-bar iframe.scpnet-interwiki-frame:not(:lang(cn)) {
-    	-webkit-filter: invert(1);
-    	        filter: invert(1);
-    }
-
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before,
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::before,
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn)) p::after {
-    	background-color: rgb(var(--swatch-menubg-dark-color));
-    }
-
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before {
-    	mix-blend-mode: lighten;
-    }
-
     div[id*=&#34;page-options-bottom&#34;]&gt;a::after {
     	background-color: rgb(var(--swatch-text-secondary-color));
     }
@@ -607,16 +602,24 @@ This is a long tab. It contains a lot of text.
     }
 }
 
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[/iftags]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aextra-black-highlighter-theme/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aextra-black-highlighter-theme/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.570323.</em>
+    <em>Last updated 2023-07-15 21:44:41.002149.</em>
   
 </div>
 </body>

@@ -34,20 +34,47 @@
     opacity: .9;
 }
 
+.logobox-wrapper {
+    --logo-size: calc(7.5rem + 3.25vw);
+    display: grid;
+    grid-template-columns: var(--logo-size) 1fr;
+    align-items: center;
+    margin-block-start: -.95rem;
+}
+.logobox-wrapper &gt; * { grid-row: 1/2; grid-column: 1/2; }
 .logobox {
-    width: 84%;
-    margin-left: 16%;
+    grid-column: 1/3;
+    flex-basis: 22.5em;
     box-sizing: border-box;
-    padding: 5px;
-    padding-left: 6rem;
-    padding-right: 12px;
+    padding: 0.5rem;
+    margin-inline-start: calc(var(--logo-size)/2);
+    padding-inline-start: calc(var(--logo-size)/2 + 2.5vw);
+    flex-grow: 1;
     background-color: #990;
     background: #013737;
     color: #00FFFF;
     text-shadow: #009999 1px 1px;
     border-radius: 3px;
-    font-size: 14px;
+    font-size: 0.95em;
     z-index: -1;
+}
+@media screen and (max-width: 450px) {
+.logobox-wrapper {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+.logobox-wrapper &gt; img {
+    width: var(--logo-size);
+    align-self: self-start;
+}
+.logobox {
+    grid-column: 1/2;
+    margin: 0;
+    padding: 0.75rem;
+    padding-block-start: calc(var(--logo-size)*0.375);
+    margin-block-start: calc(var(--logo-size)*0.575);
+    text-align: center;
+}
 }
 
 .footnotes-footer {
@@ -123,15 +150,11 @@ body {
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: flex; align-items: center; margin-top: 12px;</code></pre>
+          <pre><code>padding-top: 2.5%</code></pre>
         </li>
       
         <li>
-          <pre><code>position: absolute; margin-left: -4%;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: 22rem; margin: auto; text-align: center; margin-top: -20px;</code></pre>
+          <pre><code>width: 22rem; margin: auto; text-align: center;</code></pre>
         </li>
       
         <li>
@@ -562,6 +585,10 @@ body {
     <ul class="css-classes">
       
         <li>
+          <pre><code>logobox-wrapper</code></pre>
+        </li>
+      
+        <li>
           <pre><code>logobox</code></pre>
         </li>
       
@@ -616,20 +643,47 @@ body {
     opacity: .9;
 }
 
+.logobox-wrapper {
+    --logo-size: calc(7.5rem + 3.25vw);
+    display: grid;
+    grid-template-columns: var(--logo-size) 1fr;
+    align-items: center;
+    margin-block-start: -.95rem;
+}
+.logobox-wrapper &gt; * { grid-row: 1/2; grid-column: 1/2; }
 .logobox {
-    width: 84%;
-    margin-left: 16%;
+    grid-column: 1/3;
+    flex-basis: 22.5em;
     box-sizing: border-box;
-    padding: 5px;
-    padding-left: 6rem;
-    padding-right: 12px;
+    padding: 0.5rem;
+    margin-inline-start: calc(var(--logo-size)/2);
+    padding-inline-start: calc(var(--logo-size)/2 + 2.5vw);
+    flex-grow: 1;
     background-color: #990;
     background: #013737;
     color: #00FFFF;
     text-shadow: #009999 1px 1px;
     border-radius: 3px;
-    font-size: 14px;
+    font-size: 0.95em;
     z-index: -1;
+}
+@media screen and (max-width: 450px) {
+.logobox-wrapper {
+    grid-template-columns: 1fr;
+    justify-items: center;
+}
+.logobox-wrapper &gt; img {
+    width: var(--logo-size);
+    align-self: self-start;
+}
+.logobox {
+    grid-column: 1/2;
+    margin: 0;
+    padding: 0.75rem;
+    padding-block-start: calc(var(--logo-size)*0.375);
+    margin-block-start: calc(var(--logo-size)*0.575);
+    text-align: center;
+}
 }
 
 .footnotes-footer {
@@ -711,17 +765,15 @@ Special thanks to [[*user SunnyClockwork]] for the original AIAD logo, as well a
 [[/=]]
 [[include :scp-wiki:info:end]]
 
-[[div style=&#34;display: flex; align-items: center; margin-top: 12px;&#34;]]
-[[image https://scp-wiki.wdfiles.com/local--files/aiad-homescreen/itlogo3.png width=&#34;164px&#34; style=&#34;position: absolute; margin-left: -4%;&#34;]]
+[[div class=&#34;logobox-wrapper&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/aiad-homescreen/itlogo3.png style=&#34;padding-top: 2.5%&#34;]]
 [[div class=&#34;logobox&#34;]]
 {{SCP FOUNDATION | IT Dept.}}
 {{AIAD &lt;Artificial Intelligence Applications Division&gt;}}
 [[/div]]
 [[/div]]
 
-@@ @@
-
-[[div style=&#34;width: 22rem; margin: auto; text-align: center; margin-top: -20px;&#34;]]
+[[div style=&#34;width: 22rem; margin: auto; text-align: center;&#34;]]
 [[include :scp-wiki:component:audio-player-woed-source
 |unique-name=aiadance
 |audio-file=https://scp-wiki.wdfiles.com/local--files/aiad-homescreen/song.mp3
@@ -1114,7 +1166,7 @@ And done!
  * [[[null-terminating-string|Part V: Null Terminating String]]]
 * [[[SCP-2987]]] by [[*user Doctor Cimmerian]]
 * [[[SCP-2306]]] by [[*user Jacob Conwell]]
-* Draft Proposal For Programme Arduinosis] by Anonymous
+* [[[Draft Proposal For Programme Arduinosis 9001]]] by Anonymous
 * Hello World series by [[*user LurkD]]
  * [[[hello-world|Part I]]]
  * [[[hello-world-part-ii|Part II]]]
@@ -1423,7 +1475,7 @@ In order of appearance:
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:52.407437.</em>
+    <em>Last updated 2023-07-15 21:44:36.579309.</em>
   
 </div>
 </body>

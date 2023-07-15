@@ -733,7 +733,7 @@ div#search-top-box::before {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0; right: 0.05rem;
+    top: 0; right: 0.1rem;
     background-color: var(--accentColor);
     pointer-events: none;
     z-index: 2;
@@ -748,7 +748,6 @@ div#search-top-box::before {
     opacity: 1;
     transition: opacity 0.25s ease;
 }
-div#search-top-box:focus-within::before { opacity: 0; }
  
 div#search-top-box form {
     display: flex;
@@ -760,7 +759,7 @@ div#search-top-box form input[type=&#34;text&#34;]:not(:focus):not(:hover) {
     position: relative;
     color: transparent;
     cursor: pointer;
-    display: inline-block;
+    display: none;
     font-family: var(--body-font);
     width: 1.6rem;
     height: 1.6rem;
@@ -783,9 +782,20 @@ div#search-top-box form input[type=&#34;text&#34;]:focus {
     transition: width .25s;
     outline: none;
 }
- 
-div#search-top-box form input[type=&#34;submit&#34;] {
-    display: none;
+
+div#search-top-box form input[type=&#34;submit&#34;].button {
+    appearance: none;
+    display: block;
+    height: 1.6rem;
+    width: 1.6rem;
+    border: none;
+    color: transparent;
+    box-shadow: 0 0 0.25rem var(--shadow);
+    text-shadow: none;
+    background: var(--primaryBackgroundColor);
+}
+div#search-top-box form input[type=&#34;submit&#34;].button:is(:hover, :focus) {
+    background: var(--selectionColor);
 }
 
 /* ---- TOP BAR ---- */
@@ -1209,9 +1219,9 @@ div#side-bar {
     border-radius: 0;
 }
 
-.page-rate-widget-box .rate-points {
-    background-color: var(--primaryBackgroundColor) !important;
-    color: var(--textColor) !important;
+div.page-rate-widget-box .rate-points {
+    background-color: var(--primaryBackgroundColor);
+    color: var(--textColor);
     border: solid 1px var(--primaryBackgroundColor);
     border-radius: 0;
 }
@@ -2006,7 +2016,7 @@ a.action-area-close:hover {
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.586275.</em>
+    <em>Last updated 2023-07-15 21:44:41.020951.</em>
   
 </div>
 </body>

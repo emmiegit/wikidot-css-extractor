@@ -41,10 +41,15 @@
 }
 
 .scp-image-block img {
+    width: 100%;
     min-width: 100%;
     border: 0.5rem solid rgba(var(--pale-gray-monochrome));
     box-sizing: border-box;
 }</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aouroborous-theme/1&#34;)</code></pre>
         </li>
       
     </ul>
@@ -62,10 +67,6 @@
       
         <li>
           <pre><code>filter: invert(1) brightness(110%);display:flex;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -162,11 +163,21 @@
 }
 
 .scp-image-block img {
+    width: 100%;
     min-width: 100%;
     border: 0.5rem solid rgba(var(--pale-gray-monochrome));
     box-sizing: border-box;
 }
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[=]]
 [[module Rate]]
 [[/=]]
@@ -311,13 +322,8 @@ This is a long tab. It contains a lot of text.
 ||You should know || how to make these ||
 ||||already ||
 @@ @@
-
-[[footnoteblock]]
-[[/iftags]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
------
 [[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;css&#34;]]
 @import url(&#34;https://use.typekit.net/mst2dnj.css&#34;);
 
 @supports(display: grid) {
@@ -453,6 +459,7 @@ This is a long tab. It contains a lot of text.
     	--login-dropdown-bg-hover-color: var(--dark-accent);
     }
 
+    #interwiki,
     #side-bar {
     	--sidebar-links-hover-text-color: var(--swatch-menutxt-general-color);
     }
@@ -657,26 +664,34 @@ This is a long tab. It contains a lot of text.
     	background: rgba(var(--swatch-menubg-black-color), .93);
     }
 
+    #interwiki {
+    	background-color: transparent;
+    }
+
     #side-bar {
     	background-color: rgb(var(--black-monochrome));
     }
 
+    #interwiki div.menu-item,
     #side-bar div.menu-item {
     	border-bottom: 0.0625rem solid rgb(var(--swatch-menubg-dark-color));
     	border-top: 0.0625rem solid rgb(var(--swatch-menubg-dark-color));
     	margin-top: -0.0625rem;
     }
 
+    #interwiki div.menu-item a,
     #side-bar div.menu-item a,
     #side-bar div.menu-item .text {
     	color: rgb(var(--swatch-menutxt-light-color));
     	line-height: inherit;
     }
 
+    #interwiki div.menu-item a:hover,
     #side-bar div.menu-item a:hover {
     	background-color: rgba(var(--bright-accent), .15);
     }
 
+    #interwiki div.menu-item a:hover::before,
     #side-bar div.menu-item a:hover::before,
     #top-bar div.top-bar&gt;ul&gt;li&gt;ul&gt;li&gt;a:hover::before,
     #top-bar div.top-bar&gt;ul&gt;li&gt;ul&gt;li&gt;ul&gt;li&gt;a:hover::before {
@@ -684,6 +699,7 @@ This is a long tab. It contains a lot of text.
     	animation: neonbg 1.5s ease-in-out infinite alternate;
     }
 
+    #interwiki .heading,
     #side-bar .heading,
     #side-bar .side-block&gt;.collapsible-block:nth-child(1) .collapsible-block-folded {
     	--wght: 700;
@@ -691,6 +707,7 @@ This is a long tab. It contains a lot of text.
     	font-weight: 700;
     }
 
+    #interwiki .heading p,
     #side-bar .heading p,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link {
     	--wght: 900;
@@ -710,8 +727,10 @@ This is a long tab. It contains a lot of text.
     	text-transform: none;
     }
 
+    #interwiki .heading p::after,
     #side-bar .heading p::after,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link::after,
+    #interwiki .heading p::before,
     #side-bar .heading p::before,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link::before {
     	content: &#34; &#34;;
@@ -728,11 +747,13 @@ This is a long tab. It contains a lot of text.
     	margin-top: .25rem;
     }
 
+    #interwiki .heading p::after,
     #side-bar .heading p::after,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link::after {
     	bottom: -0.6rem;
     }
 
+    #interwiki .heading p::before,
     #side-bar .heading p::before,
     #side-bar .side-block&gt;.collapsible-block .collapsible-block-link::before {
     	top: -0.6rem;
@@ -744,14 +765,6 @@ This is a long tab. It contains a lot of text.
 
     html:not(:lang(cn)) div.scpnet-interwiki-wrapper p::before {
         box-shadow: inherit;
-    }
-     
-    #side-bar iframe.scpnet-interwiki-frame:not(:lang(cn)) {
-        filter: invert(1);
-    }
-     
-    #side-bar .scpnet-interwiki-wrapper:not(:lang(cn))::before {
-        mix-blend-mode: lighten;
     }
 
     #page-title {
@@ -1159,17 +1172,24 @@ This is a long tab. It contains a lot of text.
     }
 }
 
-
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[footnoteblock]]
+[[/iftags]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Aouroborous-theme/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aouroborous-theme/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.587680.</em>
+    <em>Last updated 2023-07-15 21:44:41.022693.</em>
   
 </div>
 </body>

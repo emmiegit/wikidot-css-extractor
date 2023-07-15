@@ -33,6 +33,10 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);</code></pre>
         </li>
       
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Afoundless/1&#34;)</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -56,10 +60,6 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -160,6 +160,17 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 [[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
+
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -310,12 +321,8 @@ weed lmao
 [[/=]]
 
 +* Code
-[[/iftags]]
-[[include :scp-wiki:component:bhl-dark-sidebar]]
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
 [[collapsible show=&#34;▼ Show code&#34; hide=&#34;▲ Hide code&#34;]]
-[[module CSS show=&#34;true&#34;]]
-
+[[code type=&#34;css&#34;]]
 /*
     Foundless Theme
     [2020 Wikidot Theme]
@@ -323,210 +330,234 @@ weed lmao
      Logo by stephlynch
 */
 @supports(display: grid) {
-/* ROOT - Header &amp;amp; General Recoloring */
+
+    /* ROOT - Header &amp; General Recoloring */
     :root {
-    /* Intro */
-        --theme-base: &#34;nuscp&#34;;
-        --theme-id: &#34;foundless&#34;;
-        --theme-name: &#34;Foundless Theme&#34;;
+    	/* Intro */
+    	--theme-base: &#34;nuscp&#34;;
+    	--theme-id: &#34;foundless&#34;;
+    	--theme-name: &#34;Foundless Theme&#34;;
 
-    /* Header */
-        --logo-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme:foundless/unfounded.gif&#34;);
-        --header-title: &#34;Unfounded&#34;;
-        --header-subtitle: &#34;Untainted by the Foundation&#34;;
+    	/* Header */
+    	--logo-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme:foundless/unfounded.gif&#34;);
+    	--header-title: &#34;Unfounded&#34;;
+    	--header-subtitle: &#34;Untainted by the Foundation&#34;;
 
-    /* Colors */
-        --pale-gray-monochrome: 220, 220, 240; /* Light Grey */
-        --light-gray-monochrome: 160, 160, 180; /* Accent Light Gray */
-        --gray-monochrome: 48, 48, 64; /* Gray  */
-        --dark-gray-monochrome: 48, 48, 64; /*Gray */
+    	/* Colors */
+    	--pale-gray-monochrome: 220, 220, 240;
+    	/* Light Grey */
+    	--light-gray-monochrome: 160, 160, 180;
+    	/* Accent Light Gray */
+    	--gray-monochrome: 48, 48, 64;
+    	/* Gray  */
+    	--dark-gray-monochrome: 48, 48, 64;
+    	/*Gray */
 
-        --pale-accent: 140, 202, 202; /* Pale Blue*/
-        --bright-accent: 206, 233, 234; /* Light Blue*/
-        --medium-accent: 139, 179, 180; /* Blue */
-        --dark-accent: 68, 92, 109; /* Dark Blue */
-        --newpage-color: 135, 158, 176; /* Grey Blue */
+    	--pale-accent: 140, 202, 202;
+    	/* Pale Blue*/
+    	--bright-accent: 206, 233, 234;
+    	/* Light Blue*/
+    	--medium-accent: 139, 179, 180;
+    	/* Blue */
+    	--dark-accent: 68, 92, 109;
+    	/* Dark Blue */
+    	--newpage-color: 135, 158, 176;
+    	/* Grey Blue */
 
-    /* Menu Colors */
-        --swatch-menubg-color: var(--gray-monochrome);
-        --swatch-menubg-light-color: var(--pale-gray-monochrome);
-        --swatch-menubg-medium-color: var(--light-gray-monochrome);
-        --swatch-menubg-medium-dark-color: var(--black-monochrome);
-        --swatch-menubg-dark-color: var(--dark-gray-monochrome);
-        --swatch-menubg-black-color: var(--black-monochrome);
-        --swatch-menubg-hover-color: var(--gray-monochrome);
-        --swatch-menutxt-dark-color: var(--dark-accent);
-        --swatch-menutxt-light-color: var(--white-monochrome);
-        --swatch-border-color: var(--black-monochrome);
+    	/* Menu Colors */
+    	--swatch-menubg-color: var(--gray-monochrome);
+    	--swatch-menubg-light-color: var(--pale-gray-monochrome);
+    	--swatch-menubg-medium-color: var(--light-gray-monochrome);
+    	--swatch-menubg-medium-dark-color: var(--black-monochrome);
+    	--swatch-menubg-dark-color: var(--dark-gray-monochrome);
+    	--swatch-menubg-black-color: var(--black-monochrome);
+    	--swatch-menubg-hover-color: var(--gray-monochrome);
+    	--swatch-menutxt-dark-color: var(--dark-accent);
+    	--swatch-menutxt-light-color: var(--white-monochrome);
+    	--swatch-border-color: var(--black-monochrome);
 
-    /* Link Colors */
-      --link-color: var(--medium-accent);
-      --visited-link-color: var(--dark-accent);
-      --hover-link-color: var(--bright-accent);
+    	/* Link Colors */
+    	--link-color: var(--medium-accent);
+    	--visited-link-color: var(--dark-accent);
+    	--hover-link-color: var(--bright-accent);
 
-    /* Rating Module Colors */
-        --rating-module-text-color: var(--black-monochrome);
+    	/* Rating Module Colors */
+    	--rating-module-text-color: var(--black-monochrome);
 
-    /* Header Colors */
-      --swatch-topmenu-border-color: var(--light-gray-monochrome);
-      --swatch-topmenu-bg-color: var(--light-gray-monochrome);
+    	/* Header Colors */
+    	--swatch-topmenu-border-color: var(--light-gray-monochrome);
+    	--swatch-topmenu-bg-color: var(--light-gray-monochrome);
 
-    /* Navbar Shadow */
-        --gradient-background: 
-            linear-gradient(
-                to bottom,
-                rgba(var(--background-gradient-color), 0.5) 0,
-                rgba(var(--background-gradient-color), 0)
-                    var(--background-gradient-distance)
-            );
-         --background-gradient-color: var(--dark-accent);
-         --background-gradient-distance: 15rem;
+    	/* Navbar Shadow */
+    	--gradient-background:
+    		linear-gradient(to bottom,
+    			rgba(var(--background-gradient-color), 0.5) 0,
+    			rgba(var(--background-gradient-color), 0) var(--background-gradient-distance));
+    	--background-gradient-color: var(--dark-accent);
+    	--background-gradient-distance: 15rem;
 
-        --header-gradient-color-bottom: 68, 92, 109;
-        --header-gradient-color-middle: 135, 158, 176;
-        --header-gradient-color-top: 154, 180, 181;
+    	--header-gradient-color-bottom: 68, 92, 109;
+    	--header-gradient-color-middle: 135, 158, 176;
+    	--header-gradient-color-top: 154, 180, 181;
 
-        --diagonal-stripes: repeating-linear-gradient(
-            135deg,
-            hsla(0, 0%, 100%, 0),
-            hsla(0, 0%, 100%, 0) 0.25vh,
-            rgba(88, 88, 88, 0.1) 0.35vh,
-            rgba(88, 88, 88, 0.2) 0.5vh
-        );
+    	--diagonal-stripes: repeating-linear-gradient(135deg,
+    			hsla(0, 0%, 100%, 0),
+    			hsla(0, 0%, 100%, 0) 0.25vh,
+    			rgba(88, 88, 88, 0.1) 0.35vh,
+    			rgba(88, 88, 88, 0.2) 0.5vh);
     }
-      /* Filter */
-      --filter: hue-rotate(268deg) saturate(50%) brightness(111%);
 
-      /* Ayers&#39; Info Bar */
-      --barColour: rgb(var(--dark-accent));
+    /* Filter */
+    --filter: hue-rotate(268deg) saturate(50%) brightness(111%);
+
+    /* Ayers&#39; Info Bar */
+    --barColour: rgb(var(--dark-accent));
 
     #header {
-        /* ===HEADER ELEMENTS=== */
-            /* ===SEARCH ELEMENT=== */
-                /* Focus is when the search box has been clicked on */
-        --search-icon-focus-color: var(--swatch-alternate-color);
+    	/* ===HEADER ELEMENTS=== */
+    	/* ===SEARCH ELEMENT=== */
+    	/* Focus is when the search box has been clicked on */
+    	--search-icon-focus-color: var(--swatch-alternate-color);
     }
 
-    #top-bar {    
-            /* ===DROPDOWN MENU=== */
-        --dropdown-links-hover-color: var(--swatch-text-tertiary-color);
+    #top-bar {
+    	/* ===DROPDOWN MENU=== */
+    	--dropdown-links-hover-color: var(--swatch-text-tertiary-color);
     }
 
     #side-bar {
-            /* ===SIDEBLOCK MENU=== */
-        --sideblock-heading-border-color: var(--dark-accent);
-        --sideblock-heading-bg-color: var(--medium-accent),0.25;
-        --sideblock-heading-text-color: var(--swatch-text-tertiary-color);
+    	/* ===SIDEBLOCK MENU=== */
+    	--sideblock-heading-border-color: var(--dark-accent);
+    	--sideblock-heading-bg-color: var(--medium-accent), 0.25;
+    	--sideblock-heading-text-color: var(--swatch-text-tertiary-color);
 
-        --sidebar-links-hover-bg-color: var(--light-gray-monochrome)
+    	--sidebar-links-hover-bg-color: var(--light-gray-monochrome)
     }
 
-        /* ===FOOTER=== */
+    #interwiki {
+    	--sideblock-heading-bg-color: var(--medium-accent), 0.25;
+    }
+
+    /* ===FOOTER=== */
     #footer {
-        --footer-link-hover-color: var(--swatch-text-tertiary-color);
+    	--footer-link-hover-color: var(--swatch-text-tertiary-color);
     }
 
-        /* ===LICENSE AREA=== */
+    /* ===LICENSE AREA=== */
     #license-area {
-        --license-link-hover-color: var(--swatch-text-tertiary-color);
+    	--license-link-hover-color: var(--swatch-text-tertiary-color);
     }
 
     #main-content {
-        /* ===MAIN CONTENT UI ELEMENTS */
-            /* ===UI ICONS=== */
-                /* ===PAGE OPTIONS ICONS=== */
-        --ui-icon-hover-color: var(--dark-accent);
+    	/* ===MAIN CONTENT UI ELEMENTS */
+    	/* ===UI ICONS=== */
+    	/* ===PAGE OPTIONS ICONS=== */
+    	--ui-icon-hover-color: var(--dark-accent);
 
-                /* ===TEXT EDITOR ICONS=== */
-        --editor-icon-color: var(--swatch-menutxt-dark-color);
-        --editor-icon-hover-bg: var(--dark-accent);
+    	/* ===TEXT EDITOR ICONS=== */
+    	--editor-icon-color: var(--swatch-menutxt-dark-color);
+    	--editor-icon-hover-bg: var(--dark-accent);
 
-            /* ===TABS=== */
-        --tabs-txt: var(--swatch-text-tertiary-color);
-        --tabs-hover-bg: var(--swatch-primary-darkest);
-        --tabs-hover-txt: var(--swatch-text-secondary-color);
-        --tabs-selected-bg: var(--swatch-primary-darker);
-        --tabs-selected-txt: var(--swatch-text-secondary-color);
-        --tabs-selected-outline: var(--swatch-primary-darker);
+    	/* ===TABS=== */
+    	--tabs-txt: var(--swatch-text-tertiary-color);
+    	--tabs-hover-bg: var(--swatch-primary-darkest);
+    	--tabs-hover-txt: var(--swatch-text-secondary-color);
+    	--tabs-selected-bg: var(--swatch-primary-darker);
+    	--tabs-selected-txt: var(--swatch-text-secondary-color);
+    	--tabs-selected-outline: var(--swatch-primary-darker);
 
-            /* ===TABLES=== */
-        --tables-header-bg: var(--light-gray-monochrome);
+    	/* ===TABLES=== */
+    	--tables-header-bg: var(--light-gray-monochrome);
 
-            /* Color for special .colorbar-quote blockquote class */
-        --blockquote-colorbar-color: var(--swatch-primary-darker), 1;
+    	/* Color for special .colorbar-quote blockquote class */
+    	--blockquote-colorbar-color: var(--swatch-primary-darker), 1;
 
-            /* ===PAGE TAGS=== */
-        --pagetags-text-hover-color: var(--swatch-primary-darkest);
+    	/* ===PAGE TAGS=== */
+    	--pagetags-text-hover-color: var(--swatch-primary-darkest);
     }
 
-        /* ===GLOBAL ELEMENTS=== */
+    /* ===GLOBAL ELEMENTS=== */
     :root {
-            /* ===UI BUTTONS=== */
-        --ui-button-bg: var(--swatch-alternate-color);
-        --ui-button-txt: var(--swatch-text-secondary-color);
-        --ui-button-hover-bg: var(--swatch-primary-darkest);
-        --ui-button-hover-outline: var(--swatch-primary-darkest);    
+    	/* ===UI BUTTONS=== */
+    	--ui-button-bg: var(--swatch-alternate-color);
+    	--ui-button-txt: var(--swatch-text-secondary-color);
+    	--ui-button-hover-bg: var(--swatch-primary-darkest);
+    	--ui-button-hover-outline: var(--swatch-primary-darkest);
 
-            /* ===FOOTNOTES HOVER BLOCK=== */
-        --hoverblock-bg: var(--swatch-alternate-color);
+    	/* ===FOOTNOTES HOVER BLOCK=== */
+    	--hoverblock-bg: var(--swatch-alternate-color);
+    }
+
+    ::-moz-selection {
+    	background: rgba(var(--swatch-primary-darkest), 1);
+    	color: rgb(var(--swatch-primary));
     }
 
     ::selection {
-        background: rgba(var(--swatch-primary-darkest), 1);
-        color: rgb(var(--swatch-primary));
+    	background: rgba(var(--swatch-primary-darkest), 1);
+    	color: rgb(var(--swatch-primary));
     }
 
     /* Header Logo Compensation */
     #header {
-        background-position: left 0 top 0;
-        background-size: var(--header-height-on-desktop) auto;
+    	background-position: left 0 top 0;
+    	background-size: var(--header-height-on-desktop) auto;
     }
 
     /* Page Title */
     #page-title {
-        border-color: rgb(var(--dark-gray));
-        color: rgb(var(--medium-accent));
+    	border-color: rgb(var(--dark-gray));
+    	color: rgb(var(--medium-accent));
     }
 
     /* Page Rating Module */
     .page-rate-widget-box {
-        border-color: rgb(var(--pale-gray-monochrome));
-        background: linear-gradient(to top,
-         rgba(var(--pale-gray-monochrome),1) 0%,
-         rgba(var(--pale-gray-monochrome), 1) 100%);
+    	border-color: rgb(var(--pale-gray-monochrome));
+    	background: linear-gradient(to top,
+    			rgba(var(--pale-gray-monochrome), 1) 0%,
+    			rgba(var(--pale-gray-monochrome), 1) 100%);
     }
 
     #page-content .rate-box-with-credit-button {
-        border-color: rgb(var(--pale-gray-monochrome));
-        background: linear-gradient(to top,
-         rgba(var(--pale-gray-monochrome),1) 0%,
-         rgba(var(--pale-gray-monochrome), 1) 100%);
-    }
-    #page-content .rate-box-with-credit-button &gt; .creditButton &gt; p &gt; a::before {
-        background-color: rgb(var(--pale-gray-monochrome));
+    	border-color: rgb(var(--pale-gray-monochrome));
+    	background: linear-gradient(to top,
+    			rgba(var(--pale-gray-monochrome), 1) 0%,
+    			rgba(var(--pale-gray-monochrome), 1) 100%);
     }
 
-    #page-content .rate-box-with-credit-button &gt; .creditButton:hover {
-        background: rgba(var(--bright-accent), 0.8);
+    #page-content .rate-box-with-credit-button&gt;.creditButton&gt;p&gt;a::before {
+    	background-color: rgb(var(--pale-gray-monochrome));
+    }
+
+    #page-content .rate-box-with-credit-button&gt;.creditButton:hover {
+    	background: rgba(var(--bright-accent), 0.8);
     }
 
     #page-content .modalbox {
-         border-radius: 0;
-         background: rgb(var(--pale-gray-monochrome)) !important;
-         box-shadow: 0 2px 6px rgba(var(--bright-accent), 0.5);
-         color: rgb(var(--pale-gray-monochrome));
+    	border-radius: 0;
+    	background: rgb(var(--pale-gray-monochrome)) !important;
+    	box-shadow: 0 2px 6px rgba(var(--bright-accent), 0.5);
+    	color: rgb(var(--pale-gray-monochrome));
     }
 }
-[[/module]]
+[[/code]]
 [[/collapsible]]
-[[/div]]</textarea></pre>
+[[/iftags]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[module css]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Afoundless/1&#34;)
+[[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=3
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Afoundless/1
+]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.574418.</em>
+    <em>Last updated 2023-07-15 21:44:41.006528.</em>
   
 </div>
 </body>

@@ -29,202 +29,49 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:wght@200&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap&#39;);
+          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap&#39;);
+:root {
+    --basalt-overtone: 40,40,40;
+    --basalt-undertone: 248,60,55;
+    --basalt-background-color: 252,252,252;
 
-/* --- BASE ---*/
-@media (min-width: 768px) {
-    #header, #top-bar {
-         width: calc(100% - 4.4rem);
-         max-width: calc(100% - 4.4rem);
-    }
+    --link-color: var(--basalt-undertone);
+    --link-visited-color: 240,52,50;
+
+    --main-content-width: 63.5rem;
+    --main-content-top-margin: 0rem;
+    --base-font-size: 0.9675rem;
+
+    --base-header-height: 2.875rem;
+    --header-title: &#34;CTS ARCHIVE&#34;;
+    --subtitle-size: 0rem;
+    --header-background-color: var(--basalt-overtone);
+    --header-border-width: 0rem;
+    --header-title-color: var(--basalt-light-text-color);
+    --top-bar-link-color: var(--basalt-light-text-color);
+    --top-bar-link-background-hover-alt: var(--basalt-undertone);
+    --top-bar-dropdown-link-color: var(--basalt-main-text-color);
+    --side-bar-button-color: var(--basalt-light-text-color);
+    --side-bar-button-background-hover: var(--basalt-undertone);
+
+    --tab-hover-background-color: var(--basalt-undertone);
+
+    --bottom-area-text-color: var(--basalt-light-text-color);
+    --bottom-area-background-color: var(--basalt-overtone);
 }
 
 body {
-    background-color: #f8f8f8;
-    background-image: radial-gradient(#ccc 1px, #f8f8f8 1px);
-    background-size: 20px 20px;
-    background-attachment: fixed;
-    background-repeat: repeat;
+    background-size: 1.5rem 1.5rem;
+    background-image: linear-gradient(rgb(var(--basalt-undertone),0.07) 1px, transparent 1px), linear-gradient(to right, rgb(var(--basalt-undertone),0.07) 1px, transparent 1px);
 }
 
-#header { height: 2rem; }
-#header h1, #header h2 { display: none; }
-
-#side-bar {
-    background-color: #FCFCFC;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+#header h1 a::before { content: unset; }
+#page-title { display: none; }
+#license-area {
+    padding-top: var(--bottom-area-padding);
 }
-#side-bar .side-block { box-shadow: none; }
-
-#main-content { top: -2.8rem; }
-@media (min-width: 768px) {
-    #main-content {
-       max-width: 96%;
-    }
-}
-
-/* --- THEME LAYOUT ---*/
-#extra-div-1 {
-    z-index: 9;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 3rem;
-    background-color: #222;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
-}
-#extra-div-1::before {
-    content: &#34;CTS ARCHIVE&#34;;
-    position: fixed;
-    top:  .8rem; left: 3.2rem;
-    color: #f7f7f7;
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
-    font-weight: bold;
-    font-size: 1.8rem;
-}
-
-#u-header-link {
-    display: block;
-    position: fixed;
-    top: 0; left: 3.2rem;
-    height: 2.5rem;
-    width: 15vw;
-    z-index: 21;
-}
-#u-sb-button {
-    display: block;
-    position: fixed;
-    top: 0; left: 1rem;
-    height: 2.5rem;
-    width: 20px;
-    color: #f7f7f7;
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
-    font-weight: bold;
-    font-size: 2.1rem;
-    text-decoration: none!important;
-    z-index: 21;
-}
-#side-bar, #side-bar:target { z-index: 22; }
-#side-bar { background-color: white; }
-
-#top-bar {
-    position: fixed;
-    top: 0.9rem;
-}
-
-#top-bar, #top-bar a, #login-status, login-status a, a#account-topbutton {
-    color: #f7f7f7;
-}
-
-#top-bar div.open-menu a {
-    display: none;
-}
-#top-bar ul { float: left; }
-#top-bar ul li ul { border: none; }
-#top-bar ul li.sfhover ul li a, #top-bar ul li:hover ul li a { background-color: #F4F4F4; }
-
-#login-status {
-    position: fixed;
-    top: 0.65rem;
-    right: 1.72rem;
-    width: 4.5rem;
-    font-size: 0.78em;
-    text-align: center;
-}
-#login-status span.printuser  {
-    font-size: 0;
-}
-#login-status span.printuser img {
-    font-size: 0;
-    transform: translate(6px, 5px);
-}
-#login-status a#my-account {
-    display: none;
-}
-#account-topbutton {
-    border: none;
-    margin-left: -0.1rem;
-}
-
-div#search-top-box {
-    width: 2rem;
-    position: fixed;
-    top: 0.76rem;
-    right: 0.2rem;
-    z-index: 21;
-}
-#search-top-box-input { display: none; }
-#search-top-box-form &gt; input[type=submit],
-#search-top-box-form &gt; input[type=submit]:hover,
-#search-top-box-form &gt; input[type=submit]:focus,
-#search-top-box-form &gt; input[type=submit]:target {
-    background: url(&#34;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22%23ddd%22%20d%3D%22M505%20442.7L405.3%20343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3%2044-79.7%2044-128C416%2093.1%20322.9%200%20208%200S0%2093.1%200%20208s93.1%20208%20208%20208c48.3%200%2092.7-16.4%20128-44v16.3c0%206.4%202.5%2012.5%207%2017l99.7%2099.7c9.4%209.4%2024.6%209.4%2033.9%200l28.3-28.3c9.4-9.4%209.4-24.6.1-34zM208%20336c-70.7%200-128-57.2-128-128%200-70.7%2057.2-128%20128-128%2070.7%200%20128%2057.2%20128%20128%200%2070.7-57.2%20128-128%20128z%22%2F%3E%3C%2Fsvg%3E&#34;) 50%/0.8rem no-repeat, #333 !important;
-    border: none;
-    border-radius: 50%;
-    font-size: 0;
-    height: 1.5rem;
-    width: 1.5rem;
-    box-shadow: 0 0 0 0.1rem white;
-}
-
-@media (max-width: 1060px) {
-    #extra-div-1::before {
-        content: &#34;CTS&#34;;
-        font-size: 1.1rem;
-        top: 1.06rem;
-    }
-}
-@media (max-width: 500px) {
-    #extra-div-1::before {
-        content: &#34; &#34;;
-    }
-    #u-header-link {
-        display: none;
-    }
-    .mobile-top-bar { left: 2rem; display: block; }
-    .mobile-top-bar * { font-size: 0.96em; }
-    #u-sb-button { left: 0.5rem; }  
-}
-
-/* --- CONTENT ---*/
-
-hr { background-color: #333; }
-
-h1 { margin-top: 0.3rem; }
-
-h2, h4 {
-    font-family: &#39;Montserrat&#39;, sans-serif;
-    font-size: 1.55rem;
-    text-align: right;
-    letter-spacing: -1px;
-}
-h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
-
-.modalbox h2 { text-align: center; }
-
-.year-in-review {
-    display: flex;
-    align-items: center;
-}
-.year-in-review::before, .year-in-review::after {
-    content: &#34;&#34;;
-    display: flex;
-    flex-grow: 1;
-    background-color: #333;
-    height: 0.125rem;
-}
-.year-in-review h1 {
-    font-size: 2rem;
-    margin: 0 0.75rem;
-    padding-top: 0.2rem;
-}
-
-
-.yui-navset .yui-content {
-    padding: 0.5rem 0 0.1rem 0;
-    background: transparent;
-    box-shadow: none;
+#license-area::before, #license-area::after {
+    content: unset;
 }
 
 /* --- big display feature ---*/
@@ -261,6 +108,11 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
     box-sizing: border-box;
     font-size: 105%;
 }
+.tale-desc h4 {
+    text-align: right;
+    font-weight: normal;
+    font-style: italic;
+}
 .display-container.second .tale-desc {
     padding-left: 0; padding-right: 1.4rem;
     border-left: none; border-right: solid 0.1rem #333;
@@ -288,13 +140,12 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
 }
 
 .tale-desc h1, .multi-grid div h1, .multi-grid-small div h1 {
-    font-family: &#39;Montserrat&#39;, sans-serif;
-    font-size: 2rem;
+    font-size: 2em;
     text-align: center;
-    letter-spacing: -1.2px;
+    letter-spacing: -0.045em;
 }
-.multi-grid div h1 { font-size: 1.3rem; }
-.multi-grid-small div h1 { font-size: 1.1rem; }
+.multi-grid div h1 { font-size: 1.25em; }
+.multi-grid-small div h1 { font-size: 1.15em; }
 
 @media (max-width: 700px) {
     .display-container, .display-container.second {
@@ -311,6 +162,29 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
     .tale-cover img:hover, .display-container.second .tale-cover img:hover {
         transform: none;
     }
+}
+
+.year-in-review {
+    display: flex;
+    align-items: center;
+}
+.year-in-review + br { display: none; }
+.year-in-review::before, .year-in-review::after {
+    content: &#34;&#34;;
+    display: flex;
+    flex-grow: 1;
+    background-color: #333;
+    height: 0.1rem;
+}
+.year-in-review h1 {
+    font-size: 2rem;
+    margin: 0 0.75rem;
+    padding-top: 0.2rem;
+}
+
+.yui-navset.yui-navset-top .yui-content {
+    padding: 0.5rem 0 0.1rem 0;
+    border: none;
 }
 
 /*--- Content Warning span ---*/
@@ -363,40 +237,6 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:paperstack" target="_blank"><code>:scp-wiki:theme:paperstack</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:paperstack.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar" target="_blank"><code>:scp-wiki:component:toggle-sidebar</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
     <a href="https://scp-wiki.wikidot.com/info:start" target="_blank"><code>:scp-wiki:info:start</code></a>
   
 
@@ -421,6 +261,23 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
     
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/info:end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:bedrock" target="_blank"><code>:scp-wiki:theme:bedrock</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:bedrock.html" target="_blank">info</a>]
   </span>
 
   
@@ -457,6 +314,18 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
       
         <li>
           <pre><code>second</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tale-cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tale-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display-container</code></pre>
         </li>
       
         <li>
@@ -622,15 +491,7 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:paperstack]]
-[[include :scp-wiki:component:toggle-sidebar]]
-[[a href=&#34;/&#34; id=&#34;header-link&#34;]]
-[[/a]]
-[[a href=&#34;#side-bar&#34; id=&#34;sb-button&#34;]]
-≡
-[[/a]]
-
-[[include :scp-wiki:info:start]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:info:start]]
 [[=]]
 The archive for the monthly rotation of series seen on [[[curated-tale-series|]]].
 
@@ -706,6 +567,29 @@ Foundation investigators piece together the events leading up to this deadly occ
 [[/div]]
 [[/tab]]
 
+[[tab June]]
++ Pick of the Month
+
+[[div class=&#34;display-container&#34;]]
+[[div class=&#34;tale-cover&#34;]]
+[[image https://i.imgur.com/y95grG2.png link=&#34;https://scp-wiki.wikidot.com/speed-demon-hub&#34;]]
+[[/div]]
+[[div class=&#34;tale-desc&#34;]]
++ Speed Demon
+++++ Written by [[[dr-arvind-desais-personnel-file|A Random Day]]]
+
+//The first rule of witches — they&#39;re all bitches.//
+
+Rukmini &#34;the Rookie&#34; Mahakali is the Chicago Specter&#39;s beating heart, a veritable wraith who injects herself with dead demon to wreak havoc across the criminal underworld. Her secret is her magic heart, stolen out of her ex-girlfriend&#39;s chest during a lovers&#39; quarrel.
+
+So when the Rookie&#39;s ex steals into her new dimension to take it back,  pumping blood through her body becomes the least of her worries.
+
+++++ (Description by [[[uraniumempire|UraniumEmpire]]])
+[[/div]]
+[[/div]]
+
+[[/tab]]
+
 [[/tabview]]
 
 @@ @@
@@ -743,7 +627,7 @@ It expertly weaves humor, introspection, character-driven actions and sensitive 
 [[/div]]
 [[div class=&#34;tale-desc&#34;]]
 + In Saffron Sands
-++++ Written by [[user Popsioak]]
+++++ Written by [[[popsioaks-garden|Popsioak]]]
 
 //&#34;The world of **In Saffron Sands** is a completely godless one; in which rampant factions attempt to corral power and support to fulfill what roles have been opened, and one fellow (and his occasionally assholish snake demon) attempt to nix a plot long running behind the scenes.&#34;//
 
@@ -924,270 +808,51 @@ From the ancient world to the technocratic 1990s, this sprawling epic weaves a t
 * [https://scp-wiki.wikidot.com/series-archive Series Archive]
 * [https://scp-wiki.wikidot.com/user-curated-lists User-Curated Lists]
 
-
-
-
-
-
-
-[!-- Notice: CSS below.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-You have been warned. --]
-
-
-[[module CSS]]
-@import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:wght@200&amp;display=swap&#39;);
+[[include :scp-wiki:theme:bedrock]]
+[[module css]]
 @import url(&#39;https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap&#39;);
+:root {
+    --basalt-overtone: 40,40,40;
+    --basalt-undertone: 248,60,55;
+    --basalt-background-color: 252,252,252;
 
-/* --- BASE ---*/
-@media (min-width: 768px) {
-    #header, #top-bar {
-         width: calc(100% - 4.4rem);
-         max-width: calc(100% - 4.4rem);
-    }
+    --link-color: var(--basalt-undertone);
+    --link-visited-color: 240,52,50;
+
+    --main-content-width: 63.5rem;
+    --main-content-top-margin: 0rem;
+    --base-font-size: 0.9675rem;
+
+    --base-header-height: 2.875rem;
+    --header-title: &#34;CTS ARCHIVE&#34;;
+    --subtitle-size: 0rem;
+    --header-background-color: var(--basalt-overtone);
+    --header-border-width: 0rem;
+    --header-title-color: var(--basalt-light-text-color);
+    --top-bar-link-color: var(--basalt-light-text-color);
+    --top-bar-link-background-hover-alt: var(--basalt-undertone);
+    --top-bar-dropdown-link-color: var(--basalt-main-text-color);
+    --side-bar-button-color: var(--basalt-light-text-color);
+    --side-bar-button-background-hover: var(--basalt-undertone);
+
+    --tab-hover-background-color: var(--basalt-undertone);
+
+    --bottom-area-text-color: var(--basalt-light-text-color);
+    --bottom-area-background-color: var(--basalt-overtone);
 }
 
 body {
-    background-color: #f8f8f8;
-    background-image: radial-gradient(#ccc 1px, #f8f8f8 1px);
-    background-size: 20px 20px;
-    background-attachment: fixed;
-    background-repeat: repeat;
+    background-size: 1.5rem 1.5rem;
+    background-image: linear-gradient(rgb(var(--basalt-undertone),0.07) 1px, transparent 1px), linear-gradient(to right, rgb(var(--basalt-undertone),0.07) 1px, transparent 1px);
 }
 
-#header { height: 2rem; }
-#header h1, #header h2 { display: none; }
-
-#side-bar {
-    background-color: #FCFCFC;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+#header h1 a::before { content: unset; }
+#page-title { display: none; }
+#license-area {
+    padding-top: var(--bottom-area-padding);
 }
-#side-bar .side-block { box-shadow: none; }
-
-#main-content { top: -2.8rem; }
-@media (min-width: 768px) {
-    #main-content {
-       max-width: 96%;
-    }
-}
-
-/* --- THEME LAYOUT ---*/
-#extra-div-1 {
-    z-index: 9;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100vw;
-    height: 3rem;
-    background-color: #222;
-    box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
-}
-#extra-div-1::before {
-    content: &#34;CTS ARCHIVE&#34;;
-    position: fixed;
-    top:  .8rem; left: 3.2rem;
-    color: #f7f7f7;
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
-    font-weight: bold;
-    font-size: 1.8rem;
-}
-
-#u-header-link {
-    display: block;
-    position: fixed;
-    top: 0; left: 3.2rem;
-    height: 2.5rem;
-    width: 15vw;
-    z-index: 21;
-}
-#u-sb-button {
-    display: block;
-    position: fixed;
-    top: 0; left: 1rem;
-    height: 2.5rem;
-    width: 20px;
-    color: #f7f7f7;
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
-    font-weight: bold;
-    font-size: 2.1rem;
-    text-decoration: none!important;
-    z-index: 21;
-}
-#side-bar, #side-bar:target { z-index: 22; }
-#side-bar { background-color: white; }
-
-#top-bar {
-    position: fixed;
-    top: 0.9rem;
-}
-
-#top-bar, #top-bar a, #login-status, login-status a, a#account-topbutton {
-    color: #f7f7f7;
-}
-
-#top-bar div.open-menu a {
-    display: none;
-}
-#top-bar ul { float: left; }
-#top-bar ul li ul { border: none; }
-#top-bar ul li.sfhover ul li a, #top-bar ul li:hover ul li a { background-color: #F4F4F4; }
-
-#login-status {
-    position: fixed;
-    top: 0.65rem;
-    right: 1.72rem;
-    width: 4.5rem;
-    font-size: 0.78em;
-    text-align: center;
-}
-#login-status span.printuser  {
-    font-size: 0;
-}
-#login-status span.printuser img {
-    font-size: 0;
-    transform: translate(6px, 5px);
-}
-#login-status a#my-account {
-    display: none;
-}
-#account-topbutton {
-    border: none;
-    margin-left: -0.1rem;
-}
-
-div#search-top-box {
-    width: 2rem;
-    position: fixed;
-    top: 0.76rem;
-    right: 0.2rem;
-    z-index: 21;
-}
-#search-top-box-input { display: none; }
-#search-top-box-form &gt; input[type=submit],
-#search-top-box-form &gt; input[type=submit]:hover,
-#search-top-box-form &gt; input[type=submit]:focus,
-#search-top-box-form &gt; input[type=submit]:target {
-    background: url(&#34;data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20512%20512%22%3E%3Cpath%20fill%3D%22%23ddd%22%20d%3D%22M505%20442.7L405.3%20343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3%2044-79.7%2044-128C416%2093.1%20322.9%200%20208%200S0%2093.1%200%20208s93.1%20208%20208%20208c48.3%200%2092.7-16.4%20128-44v16.3c0%206.4%202.5%2012.5%207%2017l99.7%2099.7c9.4%209.4%2024.6%209.4%2033.9%200l28.3-28.3c9.4-9.4%209.4-24.6.1-34zM208%20336c-70.7%200-128-57.2-128-128%200-70.7%2057.2-128%20128-128%2070.7%200%20128%2057.2%20128%20128%200%2070.7-57.2%20128-128%20128z%22%2F%3E%3C%2Fsvg%3E&#34;) 50%/0.8rem no-repeat, #333 !important;
-    border: none;
-    border-radius: 50%;
-    font-size: 0;
-    height: 1.5rem;
-    width: 1.5rem;
-    box-shadow: 0 0 0 0.1rem white;
-}
-
-@media (max-width: 1060px) {
-    #extra-div-1::before {
-        content: &#34;CTS&#34;;
-        font-size: 1.1rem;
-        top: 1.06rem;
-    }
-}
-@media (max-width: 500px) {
-    #extra-div-1::before {
-        content: &#34; &#34;;
-    }
-    #u-header-link {
-        display: none;
-    }
-    .mobile-top-bar { left: 2rem; display: block; }
-    .mobile-top-bar * { font-size: 0.96em; }
-    #u-sb-button { left: 0.5rem; }  
-}
-
-/* --- CONTENT ---*/
-
-hr { background-color: #333; }
-
-h1 { margin-top: 0.3rem; }
-
-h2, h4 {
-    font-family: &#39;Montserrat&#39;, sans-serif;
-    font-size: 1.55rem;
-    text-align: right;
-    letter-spacing: -1px;
-}
-h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
-
-.modalbox h2 { text-align: center; }
-
-.year-in-review {
-    display: flex;
-    align-items: center;
-}
-.year-in-review::before, .year-in-review::after {
-    content: &#34;&#34;;
-    display: flex;
-    flex-grow: 1;
-    background-color: #333;
-    height: 0.125rem;
-}
-.year-in-review h1 {
-    font-size: 2rem;
-    margin: 0 0.75rem;
-    padding-top: 0.2rem;
-}
-
-
-.yui-navset .yui-content {
-    padding: 0.5rem 0 0.1rem 0;
-    background: transparent;
-    box-shadow: none;
+#license-area::before, #license-area::after {
+    content: unset;
 }
 
 /* --- big display feature ---*/
@@ -1224,6 +889,11 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
     box-sizing: border-box;
     font-size: 105%;
 }
+.tale-desc h4 {
+    text-align: right;
+    font-weight: normal;
+    font-style: italic;
+}
 .display-container.second .tale-desc {
     padding-left: 0; padding-right: 1.4rem;
     border-left: none; border-right: solid 0.1rem #333;
@@ -1251,13 +921,12 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
 }
 
 .tale-desc h1, .multi-grid div h1, .multi-grid-small div h1 {
-    font-family: &#39;Montserrat&#39;, sans-serif;
-    font-size: 2rem;
+    font-size: 2em;
     text-align: center;
-    letter-spacing: -1.2px;
+    letter-spacing: -0.045em;
 }
-.multi-grid div h1 { font-size: 1.3rem; }
-.multi-grid-small div h1 { font-size: 1.1rem; }
+.multi-grid div h1 { font-size: 1.25em; }
+.multi-grid-small div h1 { font-size: 1.15em; }
 
 @media (max-width: 700px) {
     .display-container, .display-container.second {
@@ -1274,6 +943,29 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
     .tale-cover img:hover, .display-container.second .tale-cover img:hover {
         transform: none;
     }
+}
+
+.year-in-review {
+    display: flex;
+    align-items: center;
+}
+.year-in-review + br { display: none; }
+.year-in-review::before, .year-in-review::after {
+    content: &#34;&#34;;
+    display: flex;
+    flex-grow: 1;
+    background-color: #333;
+    height: 0.1rem;
+}
+.year-in-review h1 {
+    font-size: 2rem;
+    margin: 0 0.75rem;
+    padding-top: 0.2rem;
+}
+
+.yui-navset.yui-navset-top .yui-content {
+    padding: 0.5rem 0 0.1rem 0;
+    border: none;
 }
 
 /*--- Content Warning span ---*/
@@ -1312,7 +1004,7 @@ h4 { font-size: 1rem; font-style: italic; margin-top: -0.6rem; }
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:52.500874.</em>
+    <em>Last updated 2023-07-15 21:44:36.680794.</em>
   
 </div>
 </body>

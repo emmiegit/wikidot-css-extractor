@@ -40,6 +40,14 @@
 }</code></pre>
         </li>
       
+        <li>
+          <pre><code>:root{
+  --base-color: rgb(66, 66, 72);
+  --hover-color: rgb(100, 46, 44);
+  --click-color: rgb(133, 0, 5);
+}</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
@@ -51,6 +59,10 @@
       
         <li>
           <pre><code>border: solid 1px #444444; padding: 1px 10px; margin: auto; box-shadow: 1px 1px 5px rgba(0,0,0,.3)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: monospace;</code></pre>
         </li>
       
         <li>
@@ -79,8 +91,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>theme:black-highlighter-theme</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -90,8 +108,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>component:bhl-dark-sidebar</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -107,23 +131,6 @@
   
 </li>
       
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:bhl-style-collapse-source" target="_blank"><code>:scp-wiki:component:bhl-style-collapse-source</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:bhl-style-collapse-source.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
@@ -135,6 +142,10 @@
       
         <li>
           <pre><code>no-addendum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
         </li>
       
         <li>
@@ -240,218 +251,20 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include theme:black-highlighter-theme]]
-[[include component:bhl-dark-sidebar]]
-[[include component:bhl-style-collapse-source]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[include component:bhl-style-collapse-source
+|scp-number=XXXX]]
+
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
+
 [[div_ class=&#34;no-addendum&#34;]]
 [[collapsible show=&#34;CODE&#34; hide=&#34;CODE&#34;]]
 [[div_ style=&#34;font-size: 65%;&#34;]]
 [[code type=&#34;css&#34;]]
-/* BHL styled collapsibles with fancy-schamncy animations! By Monkatraz */
-/* #page-content is shoved everywhere to make sure it&#39;s the most specific thingy */
-/* Styling! */
-#page-content .collapsible-block-folded, #page-content .collapsible-block-unfolded-link {
-    margin-top: 10px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-shadow: rgb(128, 128, 128) 0px 0px 3px 0px;
-    /* Animated things */
-    transition: background 0.2s linear;
-    background: rgb(66, 66, 72);
-    /* Technical bits */
-    width: min-content;
-    white-space: nowrap;
-    overflow: hidden;
-}
-/* The Clicky Text */
-#page-content .collapsible-block-link {
-    color: white;
-    font-weight: bold;
-}
-/* Gets rid of the underline when hovering over the collapsible */
-#page-content .collapsible-block-link:hover {
-    text-decoration: none
-}
-/* Collapsible content */
-#page-content .collapsible-block-content {
-    border-bottom: solid 3px rgb(66,66,72);
-    /* Animated things */
-    transition: border-top-color 0.2s linear;
-    border-top: solid rgb(66, 66, 72) 5px;
-}
-/* End of addendum tag */
-#page-content .collapsible-block-content::after {
-    content:&#34;END OF ADDENDUM&#34;;
-    font-weight: bold;
-    font-size: 95%;
-    color:white;
-    background: rgb(66, 66, 72);
-    width: 150px;
-    border-radius: 3px;
-    /* Technical bits */
-    display: block;
-    text-align: center;
-    margin:auto;
-    margin-bottom: -3px;
-}
-/* Folded blocks are animated, unfolded ones are not */
-#page-content .collapsible-block-folded {
-    transition: max-width 0.2s linear;
-    max-width: 10.5em;
-}
-#page-content .collapsible-block-unfolded-link{
-    width: min-content;
-}
-/* Addendum counter */
-#page-content {
-    counter-reset: collapse;
-}
-#page-content .collapsible-block, #page-content .unfolded-collapse, #page-content .centered-unfolded-collapse{
-    counter-increment: collapse;
-}
-
-/* Addendum prefixes */
-#page-content .collapsible-block-folded .collapsible-block-link::before {
-    content: &#34;▷ ADDENDUM XXXX.&#34; counter(collapse);
-    border-right: dotted 0.25em;
-    padding-right: 1rem;
-    margin-right: 1rem;
-    font-weight: normal;
-    font-family: var(--mono-font);
-}
-#page-content .collapsible-block-unfolded .collapsible-block-link::before {
-    content: &#34;▽ ADDENDUM XXXX.&#34; counter(collapse);
-    border-right: dotted 0.25em;
-    padding-right: 1rem;
-    margin-right: 1rem;
-    font-weight: normal;
-    font-family: var(--mono-font);
-}
-/* Hovering effects */
-#page-content .collapsible-block-folded:hover, #page-content .collapsible-block-unfolded-link:hover{
-    background: rgb(100, 46, 44);
-    max-width: 100%;
-}
-/* Top of the collapsible border - because it looks prettier this way */
-#page-content .collapsible-block-unfolded-link:hover + .collapsible-block-content{
-    border-top-color: rgb(100, 46, 44);
-}
-/* Accent flash when clicking, also forces the collapsible to expand */
-#page-content .collapsible-block-folded:active, #page-content .collapsible-block-unfolded-link:active{
-    transition: background 0s, max-width 0s;
-    background: rgb(133, 0, 5);
-    max-width: 100%;
-}
-/* Done with normal collapsibles, now we do all the variations */
-/* Unfolded collapsible */
-#page-content .unfolded-collapse{
-    margin-top: 10px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    box-shadow: rgb(128, 128, 128) 0px 0px 3px 0px;
-    background: rgb(66, 66, 72);
-    /* Text */
-    color: white;
-    font-weight: bold;
-    /* Technical bits */
-    width: min-content;
-    white-space: nowrap;
-    overflow: hidden;
-}
-/* Addendum prefix */
-#page-content .unfolded-collapse::before {
-    content: &#34;▽ ADDENDUM XXXX.&#34; counter(collapse);
-    border-right: dotted 0.25em;
-    padding-right: 1rem;
-    margin-right: 1rem;
-    font-weight: normal;
-    font-family: var(--mono-font);
-}
-/* Bottom border */
-#page-content .unfolded-collapse-border {
-    display: block;
-    width: 700px;
-    border-top: solid rgb(66, 66, 72) 5px;
-}
-/* Centering, very simple */
-#page-content .center-collapse .collapsible-block-folded, #page-content .center-collapse .collapsible-block-unfolded-link, #page-content .center-collapse .unfolded-collapse{
-    margin:auto;
-    margin-top: 10px;
-}
-/* Removing the slick animation and addendum number because you&#39;re a monster */
-/* Set back the max width and just ignore the transition screwyness */
-#page-content .no-addendum .collapsible-block-folded {
-    max-width: auto;
-}
-/* Prefixes */
-#page-content .no-addendum .collapsible-block-unfolded .collapsible-block-link::before, #page-content .no-addendum .unfolded-collapse::before {
-    content: &#34;▽&#34;;
-    border-right: none;
-    padding-right: 0rem;
-}
-#page-content .no-addendum .collapsible-block-folded .collapsible-block-link::before {
-    content: &#34;▷&#34;;
-    border-right: none;
-    padding-right: 0rem;
-}
-/* Kill the automatic footer because you haven no trouble figuring out where your addendums end */
-#page-content .no-footer .collapsible-block-content{
-    border-bottom: none;
-}
-#page-content .no-footer .collapsible-block-content::after{
-    display:none;
-}
-/* Fittingly, we finish with the footer object */
-/* The footer is actually the giant bottom border object because larger -&gt; smaller works better */
-#page-content .addendumfooter{
-    display: block;
-    border-bottom: solid 3px rgb(66,66,72);
-    margin:auto;
-    text-align: center;
-}
-/* Texty bits */
-#page-content .addendumfooter::after{
-    content: &#34;END OF ADDENDUM&#34;;
-    font-weight: bold;
-    font-size: 95%;
-    color:white;
-    background: rgb(66, 66, 72);
-    width: 150px;
-    border-radius: 3px;
-    /* Technical bits */
-    display: block;
-    text-align: center;
-    margin:auto;
-    margin-bottom: -3px;
-}
-/* Ayer&#39;s info-bar patch */
-#page-content .info-container .collapsible-block {
-    counter-increment: none;
-}
-#page-content .info-container .collapsible-block-folded, #page-content .info-container .collapsible-block-unfolded-link  {
-    transition: none;
-    width: 100%;
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 0;
-    box-shadow: none;
-    background: var(--barColour);
-}
-#page-content .info-container .collapsible-block-folded::before, #page-content .info-container .collapsible-block-unfolded-link::before  {
-    content: &#34;&#34;;
-    display: none;
-}
-#page-content .info-container .collapsible-block-content {
-    border-bottom: none;
-    transition: none;
-    border-top: none;
-}
-#page-content .info-container .collapsible-block-content::after {
-    display: none;
-}
+[[include component:bhl-style-collapse-source]]
 [[/code]]
 [[/div]]
 [[/collapsible]]
@@ -460,11 +273,12 @@
 [[div class=&#34;no-addendum&#34; style=&#34;border: solid 1px #444444; padding: 1px 10px; margin: auto; box-shadow: 1px 1px 5px rgba(0,0,0,.3)&#34;]]
 + Including
 On any wiki:
-[[code]]
-[[include :scp-wiki:component:bhl-style-collapse-source]] 
-[[/code]]
+[[div class=&#34;code&#34; style=&#34;font-family: monospace;&#34;]]
+@@[[include :scp-wiki:component:bhl-style-collapse-source@@
+@@|scp-number=XXXX]]@@
+[[/div]]
 
-If you aren&#39;t using the [http://scp-wiki.wikidot.com/theme:black-highlighter-theme Black Highlighter Theme] on your article, insert this CSS module after the previous include:
+Be sure to set the &#34;scp-number&#34; variable accordingly. If you aren&#39;t using the [http://scp-wiki.wikidot.com/theme:black-highlighter-theme Black Highlighter Theme] on your article, insert this CSS module after the previous include:
 [[collapsible show=&#34;CSS&#34; hide=&#34;CSS&#34;]]
 [[div_ style=&#34;font-size: 65%;&#34;]]
 [[code type=&#34;css&#34;]]
@@ -495,18 +309,26 @@ This is an unofficial [http://scp-wiki.wikidot.com/theme:black-highlighter-theme
 * Somewhat customizable (see below)
 * Literally does the addendum counting for you lmao
 * Standalone custom div decorations for those that don&#39;t care about the clicky smashy part
-* That arrow that faces right turns downward when it unfolds hOW COOL IS THAT!?
+* That arrow that faces right turns downward when it unfolds HOW COOL IS THAT!?
 * You know if you get enough upvotes, you might just finally be at peace with yourself. Come on, include the module. It&#39;s what you need.
 
 **Restrictions:**
 * It will affect //all// collapsibles. If you have some custom ones, you&#39;ll need to learn some CSS editing.
-* It looks very silly when you set {{hideLocation}}&#39; to &#34;both&#34;
+* It looks very silly when you set {{hideLocation}} to &#34;both&#34;
 * It does not magically add support for nested collapsibles. This is just CSS.
 
 [[/collapsible]]
 
 [[div_ class=&#34;no-addendum&#34;]]
 [[collapsible show=&#34;CHANGELOG&#34; hide=&#34;CHANGELOG&#34;]]
+**1/2/2022**
+* Added customization options for the &#34;Addendum XXXX&#34; text.
+* Added customization options for collapsible colors.
+* Hovering over/clicking a collapsible now changes the color of the collapsible header and footer.
+* &#34;END OF ADDENDUM&#34; text now always fits on one line, regardless of text size.
+* Collapsibles inside &#34;no-addendum&#34; divs no longer cut off show/hide text.
+* The underline for collapsible text now stays hidden.
+
 **7/9/2020**
 * Added Sigma-9 compatibility patch
 * Fixed conflict with Ayer&#39;s info module
@@ -530,7 +352,7 @@ Stuff!
 **Always Unfolded:**
 To be clear, this is literally just an &#34;in-place&#34; decorative element. You aren&#39;t actually putting any of your article inside of this &#34;collapsible.&#34;
 
-//Note:// The &#34;{{ADDENDUM XXXX.N}}&#34; counter is still incremented by these collapsibles. 
+//Note:// The &#34;{{ADDENDUM XXXX.N}}&#34; counter is still incremented by these collapsibles.
 [[div_ class=&#34;unfolded-collapse&#34;]]
 COOL THING
 [[/div]]
@@ -547,6 +369,22 @@ COOL THING
 ----
 [[div style=&#34;border: solid 1px #444444; padding: 1px 10px; margin: auto; box-shadow: 1px 1px 5px rgba(0,0,0,.3)&#34;]]
 +++++ Modifiers
+**Changing Colors:**
+//Note:// This will affect //all// collapsibles in the article.
+{{@@--base-color:@@}} The color of collapsibles you aren&#39;t hovering over.
+{{@@--hover-color@@:}} The color of collapsibles you are hovering over.
+{{@@--click-color:@@}} The color a collapsible flashes when you click on it.
+The default values are included below. You only need to add this code if you want to use different colors.
+[[code]]
+[[module css]]
+:root{
+  --base-color: rgb(66, 66, 72);
+  --hover-color: rgb(100, 46, 44);
+  --click-color: rgb(133, 0, 5);
+}
+[[/module]]
+[[/code]]
+
 **Centering:**
 [[div_ class=&#34;center-collapse&#34;]]
 [[collapsible show=&#34;COOL THING&#34; hide=&#34;COOL THING&#34;]]
@@ -578,7 +416,7 @@ COOL THING
 [[/code]]
 
 **Remove &#34;Addendum&#34; and Animation:**
-//Note:// The &#34;{{ADDENDUM XXXX.N}}&#34; counter is still incremented by these collapsibles. 
+//Note:// The &#34;{{ADDENDUM XXXX.N}}&#34; counter is still incremented by these collapsibles.
 [[div_ class=&#34;no-addendum&#34;]]
 [[collapsible show=&#34;COOL THING&#34; hide=&#34;COOL THING&#34;]]
 [[code]]
@@ -635,6 +473,8 @@ Stuff!
 [[/div]]
 + Credits
 * [[*user monkatraz]]
+* [[*user AnActualCrow]]
+* [[*user Stormbreath]]
 * About 1500 people on Google</textarea></pre>
   </div>
 
@@ -642,7 +482,7 @@ Stuff!
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:52.691186.</em>
+    <em>Last updated 2023-07-15 21:44:36.905464.</em>
   
 </div>
 </body>

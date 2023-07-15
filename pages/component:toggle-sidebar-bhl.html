@@ -94,6 +94,15 @@
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
 [[/module]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
+]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=2
+| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
+]]
 [[=]]
 [[module Rate]]
 [[/=]]
@@ -141,7 +150,6 @@ For the colors, it is heavily suggested that you use the available BHL Color Var
 [[/div]]
 
 ------
-
 [[/iftags]]
 
 [[div [[iftags -component]]style=&#34;display: none&#34;[[/iftags]]]]
@@ -156,14 +164,15 @@ For the colors, it is heavily suggested that you use the available BHL Color Var
     	#side-bar .close-menu {
     		display: block;
     		position: fixed;
-    		top: 0.25rem;
+    		top: 0.5rem;
     		left: 0.5rem;
     		width: 3rem;
+    		height: 3rem;
     		opacity: 1;
     		pointer-events: all;
     		z-index: -1;
     	}
-    	
+
     	#side-bar .close-menu img {
     		color: transparent;
     	}
@@ -208,9 +217,21 @@ For the colors, it is heavily suggested that you use the available BHL Color Var
     		border: var(--toggle-border-color, rgb(var(--sidebar-links-text))) var(--toggle-border-width, 0.25rem) solid;
     	}
 
+    	#side-bar:focus-within .close-menu,
+    	#side-bar:not(:has(.close-menu:hover)):not(:focus-within):hover .close-menu {
+    		pointer-events: none;
+    	}
+
     	#side-bar:focus-within .close-menu::before,
     	#side-bar:focus-within .close-menu::after {
     		opacity: 0;
+    		pointer-events: none;
+    	}
+
+    	#side-bar:not(:has(.close-menu:hover)):not(:focus-within):hover .close-menu::before,
+    	#side-bar:not(:has(.close-menu:hover)):not(:focus-within):hover .close-menu::after {
+    		opacity: 0;
+    		pointer-events: none;
     	}
 
     	#side-bar {
@@ -228,6 +249,10 @@ For the colors, it is heavily suggested that you use the available BHL Color Var
     	}
 
     	#side-bar:focus-within {
+    		left: 0;
+    	}
+
+    	#side-bar:not(:has(.close-menu:hover)):not(:focus-within):hover {
     		left: 0;
     	}
 
@@ -259,11 +284,21 @@ For the colors, it is heavily suggested that you use the available BHL Color Var
     		z-index: 99;
     	}
 
-    	#side-bar:focus-within~#main-content::before {
+    	#side-bar:focus-within ~ #main-content::before {
     		width: calc(100% - var(--sidebar-width-on-desktop));
     		opacity: 1;
     		pointer-events: all;
     	}
+
+    	#side-bar:not(:has(.close-menu:hover)):not(:focus-within):hover ~ #main-content::before {
+    		width: calc(100% - var(--sidebar-width-on-desktop));
+    		opacity: 1;
+    		pointer-events: all;
+    	}
+
+    	@supports (-moz-appearance:none) and (background-attachment:local) and (not (-moz-osx-font-smoothing:auto)) { #side-bar {
+    		padding: inherit;
+    	} }
 
     	#content-wrap {
     		display: flex;
@@ -286,59 +321,58 @@ For the colors, it is heavily suggested that you use the available BHL Color Var
     		max-width: var(--body-width-on-desktop, 45.75rem);
     		margin: 0 auto;
     	}
-    	
+
     	#page-content {
     		max-width: min(90vw, var(--body-width-on-desktop, 45.75rem));
     	}
 
-    	@media not all and (-webkit-min-device-pixel-ratio:0), not all and (min-resolution:.001dpcm) {
-    		@supports (-webkit-appearance:none) {
-    			#side-bar {
-    				transition:
-    					left 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
-    					padding-right 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
-    					background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
-    				padding-right: 0;
-    				background-color: rgb(0, 0, 0, 0);
-    				pointer-events: all;
-    				overflow-x: visible;
-    				overflow-y: visible;
-    				z-index: 999;
-    			}
+    	@supports (-webkit-hyphens:none) { 
+    		#side-bar {
+    			transition:
+    				left 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
+    				padding-right 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms,
+    				background-color 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+    			padding-right: 0;
+    			background-color: rgb(0, 0, 0, 0);
+    			pointer-events: all;
+    			overflow-x: visible;
+    			overflow-y: visible;
+    			z-index: 999;
+    		}
 
-    			#side-bar::-webkit-scrollbar {
-    				opacity: 0;
-    				-webkit-transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
-    				transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
-    			}
+    		#side-bar::-webkit-scrollbar {
+    			opacity: 0;
+    			-webkit-transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+    			transition: opacity 500ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+    		}
 
-    			#side-bar .close-menu::before {
-    				z-index: 999;
-    			}
+    		#side-bar .close-menu::before {
+    			z-index: 999;
+    		}
 
-    			#side-bar .close-menu::after {
-    				z-index: 998;
-    			}
+    		#side-bar .close-menu::after {
+    			z-index: 998;
+    		}
 
-    			#side-bar:hover .close-menu::before {
-    				opacity: 0;
-    			}
+    		#side-bar:hover .close-menu::before,
+    		#side-bar:hover .close-menu::after {
+    			opacity: 0;
+    		}
 
-    			#side-bar:hover {
-    				left: 0;
-    				background-color: rgba(var(--swatch-menubg-color), 1);
-    				padding-right: 0;
-    			}
+    		#side-bar:hover {
+    			left: 0;
+    			background-color: rgba(var(--swatch-menubg-color), 1);
+    			padding-right: 0;
+    		}
 
-    			#side-bar:hover::-webkit-scrollbar {
-    				opacity: 1;
-    			}
+    		#side-bar:hover::-webkit-scrollbar {
+    			opacity: 1;
+    		}
 
-    			#side-bar:hover~#main-content::before {
-    				width: calc(100% - var(--sidebar-width-on-desktop));
-    				opacity: 1;
-    				pointer-events: all;
-    			}
+    		#side-bar:hover~#main-content::before {
+    			width: calc(100% - var(--sidebar-width-on-desktop));
+    			opacity: 1;
+    			pointer-events: all;
     		}
     	}
     }
@@ -352,7 +386,7 @@ For the colors, it is heavily suggested that you use the available BHL Color Var
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:52.728493.</em>
+    <em>Last updated 2023-07-15 21:44:36.939575.</em>
   
 </div>
 </body>

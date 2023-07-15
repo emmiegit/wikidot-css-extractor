@@ -29,7 +29,18 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>:root {
+          <pre><code>
+/* Someday, @custom-media variables will be supported in CSS proper:
+   https://www.w3.org/TR/mediaqueries-5/#custom-mq
+*/
+/* For the low-definition displays of cheap/small laptops and monitors. */
+/* max-width: 1280px; */
+@custom-media --viewport-laptop only screen and (width &lt;= 80rem);
+
+:root {
+--body-width-on-desktop: 60.75rem;
+--original-width-on-desktop: 45.75rem;
+
 /* hsv: 127°, 6%, 57% | 60°, 1%, 81% | 127°, 6%, 57% */
 --background: linear-gradient(0.25turn, #89928a, #cfcfcc, #89928a);
   /* A grey gradient */
@@ -43,8 +54,364 @@
   /* dark grey */
 --alt-accent: 124, 118, 124; /* hsv: 300°, 5%, 49% */
   /* light grey */
+
+--level5-color: 196, 2, 51;
+--level4-color: 255, 109, 0;
+--level3-color: 255, 211, 0;
+--level2-color: 0, 135, 189;
+--level1-color: 0, 159, 107;
+
+--dc-default-color: 188, 188, 204;
+--dc-eyeroll-color: 188, 188, 204;
+
+--rc-unolunae-color: 100, 100, 250;
+--rc-duolunae-color: 150, 100, 250;
+--rc-trilunae-color: 200, 100, 250;
+
+--art-tooltip-offset: 0.125rem;
+--art-tooltip-arrow-size: 0.25rem;
+--art-tooltip-border-radius: 0.25rem;
+--art-tooltip-max-width: 12.5rem;
+
+--art-tooltip-font-size: 0.875rem;
+--art-tooltip-font-wght: 500;
+--art-tooltip-line-hght: 1.000rem;
+
+--art-tooltip-text-color: var(--swatch-text-general);
+--art-tooltip-background: 255, 255, 255;
+--art-tooltip-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.16);
+
+--render-enlarge-speed: 300ms;
+--render-enlarge-factor: 2;
+
+--test-variable: &#34;test value&#34;;
 }
-/* Image Tables for Icon and Logo Metadata */
+
+/* @media (--viewport-laptop) */
+@media (max-width: 1280px) {
+  :root {
+  --body-width-on-desktop: 45.75rem; /* 44.25rem; */
+  }
+}
+
+div.original_width {
+  margin: 0 auto;
+  max-width: min(90vw, var(--original-width-on-desktop, 45.75rem));
+}
+
+
+
+/* ---------------- */
+/* ---- COLORS ---- */
+/* ---------------- */
+
+.color-white {
+  background-color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+.color-gray {
+  background-color: rgba(var(--gray-monochrome, 66, 66, 72), 0.15);
+}
+.color-black {
+  background-color: rgb(var(--black-monochrome, 12, 12, 12));
+  color: rgb(var(--white-monochrome, 252, 252, 252));
+  border: 0.5rem solid rgb(var(--white-monochrome));
+}
+
+.color-level5 {
+  background-color: rgb(var(--level5-color));
+  color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+.color-level4 {
+  background-color: rgb(var(--level4-color));
+}
+.color-level3 {
+  background-color: rgb(var(--level3-color));
+}
+.color-level2 {
+  background-color: rgb(var(--level2-color));
+}
+.color-level1 {
+  background-color: rgb(var(--level1-color));
+}
+
+.color-dc-default {
+  background-color: rgb(var(--dc-default-color));
+}
+.color-dc-eyeroll {
+  background-color: rgb(var(--dc-eyeroll-color));
+}
+
+.color-rc-unolunae {
+  background-color: rgb(var(--rc-unolunae-color));
+}
+.color-rc-duolunae {
+  background-color: rgb(var(--rc-duolunae-color));
+}
+.color-rc-trilunae {
+  background-color: rgb(var(--rc-trilunae-color));
+}
+
+
+
+/* ------------------------ */
+/* ---- PREVIEW PANELS ---- */
+/* ------------------------ */
+
+.preview-panel {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+
+.preview-panel .image-wrapper {
+  display: block;
+  position: relative;
+  margin: 0.25rem;
+}
+
+.preview-panel .image-wrapper a {
+  display: block;
+  position: relative;
+  border: 0.25rem solid #000;
+  overflow: hidden;
+}
+
+.preview-panel .image-wrapper::before {
+  --wght: var(--art-tooltip-font-wght); /* For BHL */
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  margin-bottom: calc(var(--art-tooltip-arrow-size) + var(--art-tooltip-offset));
+  padding: 0.5rem 0.75rem;
+  overflow: hidden;
+  color: rgb(var(--art-tooltip-text-color));
+  background: rgb(var(--art-tooltip-background));
+  box-shadow: var(--art-tooltip-box-shadow);
+  border-radius: var(--art-tooltip-border-radius);
+  font-weight: var(--art-tooltip-font-wght);
+  font-size: var(--art-tooltip-font-size);
+  line-height: var(--art-tooltip-line-hght);
+  width: max-content;
+  max-width: var(--art-tooltip-max-width);
+  box-sizing: border-box;
+  word-wrap: break-word;
+  display: none;
+}
+
+.preview-panel .image-wrapper::after {
+  content: &#34;&#34;;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  z-index: 1000;
+  width: 0;
+  height: 0;
+  margin-bottom: calc(-1 * var(--art-tooltip-offset));
+  margin-left: calc(-1 * var(--art-tooltip-arrow-size));
+  border: var(--art-tooltip-arrow-size) solid transparent;
+  border-top-color: rgb(var(--art-tooltip-background));
+  display: none;
+}
+
+.preview-panel .image-wrapper:hover a,
+.preview-panel .image-wrapper:focus a,
+.preview-panel .image-wrapper:focus-within a {
+  border: 0.25rem solid #999;
+}
+
+.preview-panel .image-wrapper:hover::before,
+.preview-panel .image-wrapper:hover::after,
+.preview-panel .image-wrapper:focus::before,
+.preview-panel .image-wrapper:focus::after,
+.preview-panel .image-wrapper:focus-within::before,
+.preview-panel .image-wrapper:focus-within::after {
+  display: block;
+}
+
+.preview-panel.icons-large .image-wrapper a {
+  border-radius: 50%;
+  width: 4rem; /* 3.53125rem; */
+}
+
+.preview-panel.icons-small .image-wrapper a {
+  border-radius: 50%;
+  width: 3rem; /* 2.5rem; */
+}
+
+.preview-panel.logos-large .image-wrapper a {
+  border-radius: 50%;
+  width: 6rem;
+  padding: 0.25rem;
+}
+
+.preview-panel.logos-small .image-wrapper a {
+  border-radius: 50%;
+  width: 3rem;
+  padding: 0.25rem;
+}
+
+.preview-panel.clipart-images .image-wrapper a {
+  border-radius: 0.5rem;
+  width: 4rem;
+}
+
+/* Disable Preview Links on Touch-Screens */
+
+/* This allows viewers on phones and tablets to still see 
+   the Preview Panel Tooltips when pressing on the Thumbnails, 
+   but not accidentally open the links when pressing on them, 
+   or when simply scrolling down the page.
+*/
+
+@media (hover: none) {
+  .preview-panel .image-wrapper a {
+    pointer-events: none;
+  }
+}
+
+/* Shrink Preview Images on Mobile Browsers */
+
+/* @media (--viewport-mobile) */
+@media (max-width: 480px) {
+  .preview-panel.icons-large .image-wrapper a {
+    border-radius: 50%;
+    width: 3.5rem; /* 3rem; */
+  }
+
+  .preview-panel.icons-small .image-wrapper a {
+    border-radius: 50%;
+    width: 2rem; /* 1.75rem; */
+  }
+
+  .preview-panel.logos-large .image-wrapper a {
+    border-radius: 50%;
+    width: 4rem;
+    padding: 0.25rem;
+  }
+
+  .preview-panel.logos-small .image-wrapper a {
+    border-radius: 50%;
+    width: 2rem;
+    padding: 0.25rem;
+  }
+
+  .preview-panel.clipart-images .image-wrapper a {
+    border-radius: 0.5rem;
+    width: 3rem;
+  }
+}
+
+
+
+/* ---------------------------- */
+/* ---- FANCY COLLAPSIBLES ---- */
+/* ---------------------------- */
+
+/* The Nested Collapsible Component needs to be used here because, 
+   for whatever asinine reason, Wikidot replaces every whitespace in 
+   its [[collapsible]] &lt;a&gt; elements with the &amp;nbsp; HTML escape code, 
+   which turns the entire link text into one continuous word, 
+   making it unable to be line wrapped properly by CSS code.
+*/
+
+.fancy-collapse .colmod-block &gt; ul {
+  padding: 0 !important; /* For BHL */
+}
+
+.fancy-collapse .colmod-link-top,
+.fancy-collapse .colmod-link-end {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  border: 0.25rem solid #000;
+  border-radius: 0.5rem;
+  color: #000;
+  padding: 0.25rem;
+  transition: color .15s var(--ease-in-out),
+       border-color .15s var(--ease-in-out);
+  width: max-content;
+}
+
+.fancy-collapse .colmod-link-top:hover,
+.fancy-collapse .colmod-link-top:focus,
+.fancy-collapse .colmod-link-top:focus-within,
+.fancy-collapse .colmod-link-end:hover,
+.fancy-collapse .colmod-link-end:focus,
+.fancy-collapse .colmod-link-end:focus-within {
+  border-color: #999;
+  color: #999;
+}
+
+.fancy-collapse .colmod-block li.folded .colmod-link-top::before {
+  content: &#34;►&#34;;
+  margin-right: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.folded .colmod-link-top::after {
+  content: &#34;◄&#34;;
+  margin-left: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.unfolded .colmod-link-top::before {
+  content: &#34;▼&#34;;
+  margin-right: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.unfolded .colmod-link-top::after {
+  content: &#34;▼&#34;;
+  margin-left: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.unfolded .colmod-link-end::before {
+  content: &#34;▲&#34;;
+  margin-right: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.unfolded .colmod-link-end::after {
+  content: &#34;▲&#34;;
+  margin-left: 0.25rem;
+}
+
+.fancy-collapse [class|=&#34;colmod-link&#34;] a {
+  --wght: bold; /* For BHL */
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: normal;
+  white-space: normal;
+  word-break: normal;
+  font-weight: bold;
+  padding: 0.5rem 1.75rem;
+  margin: -0.5rem -1.75rem;
+  width: max-content;
+  max-width: 10rem;
+  position: relative;
+  z-index: 1;
+}
+
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:hover,
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:focus,
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:focus-within,
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:active,
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:visited {
+  text-decoration: none;
+}
+
+
+
+/* --------------------------------------------- */
+/* ---- Tables for Image Details &amp; Metadata ---- */
+/* --------------------------------------------- */
+
+.icon-table {
+  margin: 0.5rem !important; /* For BHL */
+}
+
 .icon-column {
   width: 4rem;
 }
@@ -54,52 +421,179 @@
 .name-column {
   width: 7.5rem;
 }
-/* Icon Grid Display for ACS Guide */
+.desc-column {
+  width: 30rem;
+}
+
+span.color-value {
+  border: 1px solid #000;
+  border-radius: 0.125rem;
+  font-weight: bold;
+  padding: 0.125rem;
+  white-space: nowrap;
+}
+
+
+
+/* ----------------------------------------- */
+/* ---- Icon Grid Display for ACS Guide ---- */
+/* ----------------------------------------- */
+
+.step_container {
+  margin: 0.5rem 0;
+  border: 0.0625rem solid rgb(var(--swatch-menubg-medium-dark-color));
+  padding: 1em;
+}
+
+.icon_groups_container {
+  --speed: var(--render-enlarge-speed);
+  position: relative;
+  margin: 0;
+  border: 0.125rem solid transparent;
+  background-color: #fff;
+  padding: 0.5rem;
+  transition: border var(--speed) var(--ease-in-out),
+          box-shadow var(--speed) var(--ease-in-out),
+           transform var(--speed) var(--ease-in-out);
+}
+
+.icon_groups_container:hover {
+  --enlarge-by: var(--render-enlarge-factor);
+  --enlarge-by-final: calc(1 + (var(--enlarge-by) / 10));
+  border: 0.125rem solid rgb(var(--swatch-menubg-medium-dark-color));
+  box-shadow: 0 0 0 calc(0.0625rem / var(--enlarge-by-final)) rgb(var(--swatch-border-color));
+  transform: scale3d(var(--enlarge-by-final), var(--enlarge-by-final), 1);
+}
+
+.icon_groups_side_by_side {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 0;
+}
+.icon_groups_side_by_side.icon_1_fifths {
+  grid-template-columns: 1fr 4fr;
+}
+.icon_groups_side_by_side.icon_2_fifths {
+  grid-template-columns: 2fr 3fr;
+}
+.icon_groups_side_by_side.icon_3_fifths {
+  grid-template-columns: 3fr 2fr;
+}
+.icon_groups_side_by_side.icon_4_fifths {
+  grid-template-columns: 4fr 1fr;
+}
+
+.icon_group {
+  display: block;
+}
+
 .icon_grid {
   display: grid;
   grid-template-columns: repeat(5, calc((100% / 5) - 0.25rem));
   grid-gap: 0.25rem;
-  margin: 0.25rem;
-  border: 0.25rem solid #000;
-  background-color: #fff;
 }
-.icon_cont {
-  padding: 0.5rem;
+.icon_grid.icon_1_fifths {
+  grid-template-columns: 100%;
 }
-.icon_cont img {
+.icon_grid.icon_2_fifths {
+  grid-template-columns: repeat(2, calc((100% / 2) - 0.25rem));
+}
+.icon_grid.icon_3_fifths {
+  grid-template-columns: repeat(3, calc((100% / 3) - 0.25rem));
+}
+.icon_grid.icon_4_fifths {
+  grid-template-columns: repeat(4, calc((100% / 4) - 0.25rem));
+}
+
+.icon_cont,
+.icon_empty {
+  display: block;
+}
+
+.icon_image {
   border: 0.25rem solid #000;
   border-radius: 50%;
+  padding: 0.5rem;
 }
+
+.icon_title, 
 .icon_name {
+  --wght: bold; /* for BHL */
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  font-weight: bold;
+  margin: 0.25rem 0 0.5rem;
 }
+
+.icon_title p, 
 .icon_name p {
-  margin: 0.25rem 0;
+  margin: 0;
 }
-@media (max-width: 500px ) {
-  .icons {
+
+/* Less Columns on Mobile Browsers */
+
+/* @media (--viewport-tablet) */
+@media (max-width: 900px) {
+  .icon_groups_side_by_side.icon_1_fifths,
+  .icon_groups_side_by_side.icon_2_fifths,
+  .icon_groups_side_by_side.icon_3_fifths,
+  .icon_groups_side_by_side.icon_4_fifths {
+    grid-template-columns: 100%;
+  }
+
+  .icon_grid,
+  .icon_grid.icon_1_fifths,
+  .icon_grid.icon_2_fifths,
+  .icon_grid.icon_3_fifths,
+  .icon_grid.icon_4_fifths  {
     grid-template-columns: repeat(3, calc((100% / 3) - 0.25rem));
   }
+
+  .icon_empty {
+    display: none;
+  }
 }
-/* Source Code Display */
-.code-cell, 
+
+
+/* ----------------------------- */
+/* ---- Source Code Display ---- */
+/* ----------------------------- */
+
+.code-cell,
 .page-source {
   border: 1px dashed #ddd;
   background-color: #f7f7f7;
-  font-family: var(--mono-font, Recursive), Consolas, 
+  font-family: var(--mono-font, Recursive), Consolas,
     &#39;Andale Mono&#39;, &#39;Courier New&#39;, Courier, monaco, monospace;
-  font-size: 77%;
-  padding: .125rem;
+  font-size: 90%;
+  padding: 0.125rem;
+}
+.code-cell {
+  font-size: 75%;
+}
+.code {
+  font-size: 90%;
 }
 .page-source {
   padding-left: .5rem;
   padding-right: .5rem;
 }
-.code {
-  font-size: 77%;
+.long-code {
+  font-size: 70%;
+}
+
+/* @media (--viewport-laptop) */
+@media (max-width: 1280px) {
+  .code-cell,
+  .page-source,
+  .code {
+    font-size: 75%;
+  }
+  .long-code {
+    font-size: 60%;
+  }
 }</code></pre>
         </li>
       
@@ -109,7 +603,43 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>text-align: center;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 27px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 30px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 27px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 30px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 27px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 30px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 27px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 30px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none;</code></pre>
         </li>
       
     </ul>
@@ -191,11 +721,771 @@
     <ul class="css-classes">
       
         <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>preview-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons-large</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
+        </li>
+      
+        <li>
           <pre><code>icon-table</code></pre>
         </li>
       
         <li>
           <pre><code>wiki-content-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>desc-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>preview-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons-large</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wiki-content-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>desc-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>preview-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons-small</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-dc-default</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-dc-eyeroll</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wiki-content-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>desc-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-dc-default</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-dc-eyeroll</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>preview-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icons-small</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-unolunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-duolunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-trilunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wiki-content-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>desc-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-unolunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-duolunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-trilunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-value</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>original_width</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>step_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_groups_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_group</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_grid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_empty</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_group</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_grid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_groups_side_by_side</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_2_fifths</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_group</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_grid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_2_fifths</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-dc-default</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-dc-default</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_group</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_grid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_3_fifths</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-unolunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-duolunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_cont</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color-rc-trilunae</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon_name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>preview-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>logos-small</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wiki-content-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-column</code></pre>
         </li>
       
         <li>
@@ -223,31 +1513,59 @@
         </li>
       
         <li>
-          <pre><code>icon_grid</code></pre>
+          <pre><code>image-cell</code></pre>
         </li>
       
         <li>
-          <pre><code>icon_cont</code></pre>
+          <pre><code>image-cell</code></pre>
         </li>
       
         <li>
-          <pre><code>icon_name</code></pre>
+          <pre><code>image-cell</code></pre>
         </li>
       
         <li>
-          <pre><code>icon_cont</code></pre>
+          <pre><code>image-cell</code></pre>
         </li>
       
         <li>
-          <pre><code>icon_name</code></pre>
+          <pre><code>image-cell</code></pre>
         </li>
       
         <li>
-          <pre><code>icon_cont</code></pre>
+          <pre><code>preview-panel</code></pre>
         </li>
       
         <li>
-          <pre><code>icon_name</code></pre>
+          <pre><code>logos-large</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
         </li>
       
         <li>
@@ -279,11 +1597,207 @@
         </li>
       
         <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>preview-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>logos-large</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>logo-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>wiki-content-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>logo-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>logo-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>desc-column</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>preview-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clipart-images</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancy-collapse</code></pre>
+        </li>
+      
+        <li>
           <pre><code>icon-table</code></pre>
         </li>
       
         <li>
           <pre><code>wiki-content-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-column</code></pre>
         </li>
       
         <li>
@@ -310,12 +1824,27 @@
           <pre><code>image-cell</code></pre>
         </li>
       
+        <li>
+          <pre><code>image-cell</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
 [[module css]]
+
+/* Someday, @custom-media variables will be supported in CSS proper:
+   https://www.w3.org/TR/mediaqueries-5/#custom-mq
+*/
+/* For the low-definition displays of cheap/small laptops and monitors. */
+/* max-width: 1280px; */
+@custom-media --viewport-laptop only screen and (width &lt;= 80rem);
+
 :root {
+--body-width-on-desktop: 60.75rem;
+--original-width-on-desktop: 45.75rem;
+
 /* hsv: 127°, 6%, 57% | 60°, 1%, 81% | 127°, 6%, 57% */
 --background: linear-gradient(0.25turn, #89928a, #cfcfcc, #89928a);
   /* A grey gradient */
@@ -329,8 +1858,364 @@
   /* dark grey */
 --alt-accent: 124, 118, 124; /* hsv: 300°, 5%, 49% */
   /* light grey */
+
+--level5-color: 196, 2, 51;
+--level4-color: 255, 109, 0;
+--level3-color: 255, 211, 0;
+--level2-color: 0, 135, 189;
+--level1-color: 0, 159, 107;
+
+--dc-default-color: 188, 188, 204;
+--dc-eyeroll-color: 188, 188, 204;
+
+--rc-unolunae-color: 100, 100, 250;
+--rc-duolunae-color: 150, 100, 250;
+--rc-trilunae-color: 200, 100, 250;
+
+--art-tooltip-offset: 0.125rem;
+--art-tooltip-arrow-size: 0.25rem;
+--art-tooltip-border-radius: 0.25rem;
+--art-tooltip-max-width: 12.5rem;
+
+--art-tooltip-font-size: 0.875rem;
+--art-tooltip-font-wght: 500;
+--art-tooltip-line-hght: 1.000rem;
+
+--art-tooltip-text-color: var(--swatch-text-general);
+--art-tooltip-background: 255, 255, 255;
+--art-tooltip-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.16);
+
+--render-enlarge-speed: 300ms;
+--render-enlarge-factor: 2;
+
+--test-variable: &#34;test value&#34;;
 }
-/* Image Tables for Icon and Logo Metadata */
+
+/* @media (--viewport-laptop) */
+@media (max-width: 1280px) {
+  :root {
+  --body-width-on-desktop: 45.75rem; /* 44.25rem; */
+  }
+}
+
+div.original_width {
+  margin: 0 auto;
+  max-width: min(90vw, var(--original-width-on-desktop, 45.75rem));
+}
+
+
+
+/* ---------------- */
+/* ---- COLORS ---- */
+/* ---------------- */
+
+.color-white {
+  background-color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+.color-gray {
+  background-color: rgba(var(--gray-monochrome, 66, 66, 72), 0.15);
+}
+.color-black {
+  background-color: rgb(var(--black-monochrome, 12, 12, 12));
+  color: rgb(var(--white-monochrome, 252, 252, 252));
+  border: 0.5rem solid rgb(var(--white-monochrome));
+}
+
+.color-level5 {
+  background-color: rgb(var(--level5-color));
+  color: rgb(var(--white-monochrome, 252, 252, 252));
+}
+.color-level4 {
+  background-color: rgb(var(--level4-color));
+}
+.color-level3 {
+  background-color: rgb(var(--level3-color));
+}
+.color-level2 {
+  background-color: rgb(var(--level2-color));
+}
+.color-level1 {
+  background-color: rgb(var(--level1-color));
+}
+
+.color-dc-default {
+  background-color: rgb(var(--dc-default-color));
+}
+.color-dc-eyeroll {
+  background-color: rgb(var(--dc-eyeroll-color));
+}
+
+.color-rc-unolunae {
+  background-color: rgb(var(--rc-unolunae-color));
+}
+.color-rc-duolunae {
+  background-color: rgb(var(--rc-duolunae-color));
+}
+.color-rc-trilunae {
+  background-color: rgb(var(--rc-trilunae-color));
+}
+
+
+
+/* ------------------------ */
+/* ---- PREVIEW PANELS ---- */
+/* ------------------------ */
+
+.preview-panel {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0.5rem 0;
+}
+
+.preview-panel .image-wrapper {
+  display: block;
+  position: relative;
+  margin: 0.25rem;
+}
+
+.preview-panel .image-wrapper a {
+  display: block;
+  position: relative;
+  border: 0.25rem solid #000;
+  overflow: hidden;
+}
+
+.preview-panel .image-wrapper::before {
+  --wght: var(--art-tooltip-font-wght); /* For BHL */
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  margin-bottom: calc(var(--art-tooltip-arrow-size) + var(--art-tooltip-offset));
+  padding: 0.5rem 0.75rem;
+  overflow: hidden;
+  color: rgb(var(--art-tooltip-text-color));
+  background: rgb(var(--art-tooltip-background));
+  box-shadow: var(--art-tooltip-box-shadow);
+  border-radius: var(--art-tooltip-border-radius);
+  font-weight: var(--art-tooltip-font-wght);
+  font-size: var(--art-tooltip-font-size);
+  line-height: var(--art-tooltip-line-hght);
+  width: max-content;
+  max-width: var(--art-tooltip-max-width);
+  box-sizing: border-box;
+  word-wrap: break-word;
+  display: none;
+}
+
+.preview-panel .image-wrapper::after {
+  content: &#34;&#34;;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  z-index: 1000;
+  width: 0;
+  height: 0;
+  margin-bottom: calc(-1 * var(--art-tooltip-offset));
+  margin-left: calc(-1 * var(--art-tooltip-arrow-size));
+  border: var(--art-tooltip-arrow-size) solid transparent;
+  border-top-color: rgb(var(--art-tooltip-background));
+  display: none;
+}
+
+.preview-panel .image-wrapper:hover a,
+.preview-panel .image-wrapper:focus a,
+.preview-panel .image-wrapper:focus-within a {
+  border: 0.25rem solid #999;
+}
+
+.preview-panel .image-wrapper:hover::before,
+.preview-panel .image-wrapper:hover::after,
+.preview-panel .image-wrapper:focus::before,
+.preview-panel .image-wrapper:focus::after,
+.preview-panel .image-wrapper:focus-within::before,
+.preview-panel .image-wrapper:focus-within::after {
+  display: block;
+}
+
+.preview-panel.icons-large .image-wrapper a {
+  border-radius: 50%;
+  width: 4rem; /* 3.53125rem; */
+}
+
+.preview-panel.icons-small .image-wrapper a {
+  border-radius: 50%;
+  width: 3rem; /* 2.5rem; */
+}
+
+.preview-panel.logos-large .image-wrapper a {
+  border-radius: 50%;
+  width: 6rem;
+  padding: 0.25rem;
+}
+
+.preview-panel.logos-small .image-wrapper a {
+  border-radius: 50%;
+  width: 3rem;
+  padding: 0.25rem;
+}
+
+.preview-panel.clipart-images .image-wrapper a {
+  border-radius: 0.5rem;
+  width: 4rem;
+}
+
+/* Disable Preview Links on Touch-Screens */
+
+/* This allows viewers on phones and tablets to still see 
+   the Preview Panel Tooltips when pressing on the Thumbnails, 
+   but not accidentally open the links when pressing on them, 
+   or when simply scrolling down the page.
+*/
+
+@media (hover: none) {
+  .preview-panel .image-wrapper a {
+    pointer-events: none;
+  }
+}
+
+/* Shrink Preview Images on Mobile Browsers */
+
+/* @media (--viewport-mobile) */
+@media (max-width: 480px) {
+  .preview-panel.icons-large .image-wrapper a {
+    border-radius: 50%;
+    width: 3.5rem; /* 3rem; */
+  }
+
+  .preview-panel.icons-small .image-wrapper a {
+    border-radius: 50%;
+    width: 2rem; /* 1.75rem; */
+  }
+
+  .preview-panel.logos-large .image-wrapper a {
+    border-radius: 50%;
+    width: 4rem;
+    padding: 0.25rem;
+  }
+
+  .preview-panel.logos-small .image-wrapper a {
+    border-radius: 50%;
+    width: 2rem;
+    padding: 0.25rem;
+  }
+
+  .preview-panel.clipart-images .image-wrapper a {
+    border-radius: 0.5rem;
+    width: 3rem;
+  }
+}
+
+
+
+/* ---------------------------- */
+/* ---- FANCY COLLAPSIBLES ---- */
+/* ---------------------------- */
+
+/* The Nested Collapsible Component needs to be used here because, 
+   for whatever asinine reason, Wikidot replaces every whitespace in 
+   its [[collapsible]] &lt;a&gt; elements with the &amp;nbsp; HTML escape code, 
+   which turns the entire link text into one continuous word, 
+   making it unable to be line wrapped properly by CSS code.
+*/
+
+.fancy-collapse .colmod-block &gt; ul {
+  padding: 0 !important; /* For BHL */
+}
+
+.fancy-collapse .colmod-link-top,
+.fancy-collapse .colmod-link-end {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  border: 0.25rem solid #000;
+  border-radius: 0.5rem;
+  color: #000;
+  padding: 0.25rem;
+  transition: color .15s var(--ease-in-out),
+       border-color .15s var(--ease-in-out);
+  width: max-content;
+}
+
+.fancy-collapse .colmod-link-top:hover,
+.fancy-collapse .colmod-link-top:focus,
+.fancy-collapse .colmod-link-top:focus-within,
+.fancy-collapse .colmod-link-end:hover,
+.fancy-collapse .colmod-link-end:focus,
+.fancy-collapse .colmod-link-end:focus-within {
+  border-color: #999;
+  color: #999;
+}
+
+.fancy-collapse .colmod-block li.folded .colmod-link-top::before {
+  content: &#34;►&#34;;
+  margin-right: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.folded .colmod-link-top::after {
+  content: &#34;◄&#34;;
+  margin-left: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.unfolded .colmod-link-top::before {
+  content: &#34;▼&#34;;
+  margin-right: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.unfolded .colmod-link-top::after {
+  content: &#34;▼&#34;;
+  margin-left: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.unfolded .colmod-link-end::before {
+  content: &#34;▲&#34;;
+  margin-right: 0.25rem;
+}
+
+.fancy-collapse .colmod-block li.unfolded .colmod-link-end::after {
+  content: &#34;▲&#34;;
+  margin-left: 0.25rem;
+}
+
+.fancy-collapse [class|=&#34;colmod-link&#34;] a {
+  --wght: bold; /* For BHL */
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  overflow-wrap: normal;
+  white-space: normal;
+  word-break: normal;
+  font-weight: bold;
+  padding: 0.5rem 1.75rem;
+  margin: -0.5rem -1.75rem;
+  width: max-content;
+  max-width: 10rem;
+  position: relative;
+  z-index: 1;
+}
+
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:hover,
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:focus,
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:focus-within,
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:active,
+.fancy-collapse [class|=&#34;colmod-link&#34;] a:visited {
+  text-decoration: none;
+}
+
+
+
+/* --------------------------------------------- */
+/* ---- Tables for Image Details &amp; Metadata ---- */
+/* --------------------------------------------- */
+
+.icon-table {
+  margin: 0.5rem !important; /* For BHL */
+}
+
 .icon-column {
   width: 4rem;
 }
@@ -340,52 +2225,179 @@
 .name-column {
   width: 7.5rem;
 }
-/* Icon Grid Display for ACS Guide */
+.desc-column {
+  width: 30rem;
+}
+
+span.color-value {
+  border: 1px solid #000;
+  border-radius: 0.125rem;
+  font-weight: bold;
+  padding: 0.125rem;
+  white-space: nowrap;
+}
+
+
+
+/* ----------------------------------------- */
+/* ---- Icon Grid Display for ACS Guide ---- */
+/* ----------------------------------------- */
+
+.step_container {
+  margin: 0.5rem 0;
+  border: 0.0625rem solid rgb(var(--swatch-menubg-medium-dark-color));
+  padding: 1em;
+}
+
+.icon_groups_container {
+  --speed: var(--render-enlarge-speed);
+  position: relative;
+  margin: 0;
+  border: 0.125rem solid transparent;
+  background-color: #fff;
+  padding: 0.5rem;
+  transition: border var(--speed) var(--ease-in-out),
+          box-shadow var(--speed) var(--ease-in-out),
+           transform var(--speed) var(--ease-in-out);
+}
+
+.icon_groups_container:hover {
+  --enlarge-by: var(--render-enlarge-factor);
+  --enlarge-by-final: calc(1 + (var(--enlarge-by) / 10));
+  border: 0.125rem solid rgb(var(--swatch-menubg-medium-dark-color));
+  box-shadow: 0 0 0 calc(0.0625rem / var(--enlarge-by-final)) rgb(var(--swatch-border-color));
+  transform: scale3d(var(--enlarge-by-final), var(--enlarge-by-final), 1);
+}
+
+.icon_groups_side_by_side {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 0;
+}
+.icon_groups_side_by_side.icon_1_fifths {
+  grid-template-columns: 1fr 4fr;
+}
+.icon_groups_side_by_side.icon_2_fifths {
+  grid-template-columns: 2fr 3fr;
+}
+.icon_groups_side_by_side.icon_3_fifths {
+  grid-template-columns: 3fr 2fr;
+}
+.icon_groups_side_by_side.icon_4_fifths {
+  grid-template-columns: 4fr 1fr;
+}
+
+.icon_group {
+  display: block;
+}
+
 .icon_grid {
   display: grid;
   grid-template-columns: repeat(5, calc((100% / 5) - 0.25rem));
   grid-gap: 0.25rem;
-  margin: 0.25rem;
-  border: 0.25rem solid #000;
-  background-color: #fff;
 }
-.icon_cont {
-  padding: 0.5rem;
+.icon_grid.icon_1_fifths {
+  grid-template-columns: 100%;
 }
-.icon_cont img {
+.icon_grid.icon_2_fifths {
+  grid-template-columns: repeat(2, calc((100% / 2) - 0.25rem));
+}
+.icon_grid.icon_3_fifths {
+  grid-template-columns: repeat(3, calc((100% / 3) - 0.25rem));
+}
+.icon_grid.icon_4_fifths {
+  grid-template-columns: repeat(4, calc((100% / 4) - 0.25rem));
+}
+
+.icon_cont,
+.icon_empty {
+  display: block;
+}
+
+.icon_image {
   border: 0.25rem solid #000;
   border-radius: 50%;
+  padding: 0.5rem;
 }
+
+.icon_title, 
 .icon_name {
+  --wght: bold; /* for BHL */
   display: flex;
   align-items: center;
   justify-content: center;
   text-transform: uppercase;
+  font-weight: bold;
+  margin: 0.25rem 0 0.5rem;
 }
+
+.icon_title p, 
 .icon_name p {
-  margin: 0.25rem 0;
+  margin: 0;
 }
-@media (max-width: 500px ) {
-  .icons {
+
+/* Less Columns on Mobile Browsers */
+
+/* @media (--viewport-tablet) */
+@media (max-width: 900px) {
+  .icon_groups_side_by_side.icon_1_fifths,
+  .icon_groups_side_by_side.icon_2_fifths,
+  .icon_groups_side_by_side.icon_3_fifths,
+  .icon_groups_side_by_side.icon_4_fifths {
+    grid-template-columns: 100%;
+  }
+
+  .icon_grid,
+  .icon_grid.icon_1_fifths,
+  .icon_grid.icon_2_fifths,
+  .icon_grid.icon_3_fifths,
+  .icon_grid.icon_4_fifths  {
     grid-template-columns: repeat(3, calc((100% / 3) - 0.25rem));
   }
+
+  .icon_empty {
+    display: none;
+  }
 }
-/* Source Code Display */
-.code-cell, 
+
+
+/* ----------------------------- */
+/* ---- Source Code Display ---- */
+/* ----------------------------- */
+
+.code-cell,
 .page-source {
   border: 1px dashed #ddd;
   background-color: #f7f7f7;
-  font-family: var(--mono-font, Recursive), Consolas, 
+  font-family: var(--mono-font, Recursive), Consolas,
     &#39;Andale Mono&#39;, &#39;Courier New&#39;, Courier, monaco, monospace;
-  font-size: 77%;
-  padding: .125rem;
+  font-size: 90%;
+  padding: 0.125rem;
+}
+.code-cell {
+  font-size: 75%;
+}
+.code {
+  font-size: 90%;
 }
 .page-source {
   padding-left: .5rem;
   padding-right: .5rem;
 }
-.code {
-  font-size: 77%;
+.long-code {
+  font-size: 70%;
+}
+
+/* @media (--viewport-laptop) */
+@media (max-width: 1280px) {
+  .code-cell,
+  .page-source,
+  .code {
+    font-size: 75%;
+  }
+  .long-code {
+    font-size: 60%;
+  }
 }
 [[/module]]
 
@@ -393,34 +2405,101 @@
 [[module Rate]]
 [[/&gt;]]
 
-Welcome to my humble little art page! It will serve as the central repository for all vector and raster art that I have created specifically for direct use on the SCP Wiki, or indirectly related to subject matter and creative works on the SCP Wiki (aka Fan Art).
+[[div class=&#34;blockquote&#34;]]
++++* Table of Contents
+-----
+* [#intro Introduction]
+* [#art-vector Vector (SVG) Art]
+ * [#icons-ACS ACS Icons]
+  * [#icons-CC Containment Class Icons]
+  * [#icons-CSC Containment Subclass Icons]
+  * [#icons-DC Disruption Class Icons]
+  * [#icons-RC Risk Class Icons]
+  * [#icons-group Group Icon Render]
+ * [#icons-SCP SCP Icons]
+ * [#logos-SCP SCP Logos]
+ * [#logos-Therian SCP Therianthropy Department Logos]
+ * [#clip-art Clip Art]
+[!-- * [#art-raster Raster (PNG) Art] --]
+* [#ext-links External Website Links]
+[!-- * [#donate Donations Link] --]
+[[/div]]
+
+[[# intro]]
++ Introduction
+
+Welcome to my humble little art page! It will serve as the central repository \
+for all vector and raster art that I have created specifically for direct use on the SCP Wiki, \
+or indirectly related to subject matter and creative works on the SCP Wiki (aka Fan Art).
+
+
 
 ----
 
-++ Vector (SVG) Art
 
-[[tabview]]
 
-[[tab ACS Icons]]
+[[# art-vector]]
++ Vector (SVG) Art
 
-These icons are designed to be used with the [[[anomaly-classification-system-guide|Anomaly Classification System]]].
 
-++++ Containment Class Icons:
+
+----
+
+
+
+[[# icons-ACS]]
+++ ACS Icons
+
+These icons are designed to be used with the \
+[[[anomaly-classification-system-guide|Anomaly Classification System]]].
+
+
+
+[[# icons-CC]]
++++ Containment Class Icons
+
+
+[[div_ class=&#34;preview-panel icons-large&#34;]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Archon&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Archon.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Archon.svg&#34;
+  data-tooltip=&#34;Archon&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Flor Galana&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-FlorGalana.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-FlorGalana.svg&#34; 
+  data-tooltip=&#34;For Galana&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Skótos&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Skotos.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Skotos.svg&#34; 
+  data-tooltip=&#34;Skótos&#34;]]
+[[/div]]
+[[/div]]
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show More Details About These Images
+| hide= Hide More Details About These Images
+]]
 
 [[table class=&#34;icon-table wiki-content-table&#34;]]
 [[row]]
 [[hcell class=&#34;icon-column&#34;]] Icon [[/hcell]]
-[[hcell class=&#34;name-column&#34;]] Name / Link [[/hcell]]
+[[hcell class=&#34;name-column&#34;]] Name / Data [[/hcell]]
 [[hcell class=&#34;desc-column&#34;]] Description [[/hcell]]
 [[/row]]
 
 [[row]]
 [[cell class=&#34;image-cell&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Archon.svg]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Archon.svg ]]
 [[/cell]]
 [[cell]]
 **Archon**
 [[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Archon.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
 [[/cell]]
 [[cell]]
 Item is able to be contained, but ought not to be.
@@ -429,25 +2508,29 @@ Item is able to be contained, but ought not to be.
 
 [[row]]
 [[cell class=&#34;image-cell&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-FlorGalana.svg]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-FlorGalana.svg ]]
 [[/cell]]
 [[cell]]
 **Flor Galana**
 [[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-FlorGalana.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
 [[/cell]]
 [[cell]]
 Item aids the Foundation in partially containing itself and/or other anomalies, \
 but cannot be fully contained for logistical and/or ethical reasons.
+
+Meant to be a combination of the **Cernunnos** and **Thaumiel** Containment Classes.
 [[/cell]]
 [[/row]]
 
 [[row]]
 [[cell class=&#34;image-cell&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Skótos.svg]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Skotos.svg ]]
 [[/cell]]
 [[cell]]
 **Skótos**
-[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Skótos.svg | LINK]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Skotos.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
 [[/cell]]
 [[cell]]
 Research and documentation of the item is still in progress or severely lacking.
@@ -456,48 +2539,873 @@ Research and documentation of the item is still in progress or severely lacking.
 
 [[/table]]
 
-++++ Containment Subclass Icons:
+[[include :scp-wiki:component:colend
+| hide= Hide More Details About These Images
+]]
+[[/div]]
 
-++++ Disruption Class Icons:
 
-++++ Risk Class Icons:
 
-+++ Group Image Render:
+[[# icons-CSC]]
++++ Containment Subclass Icons
 
-Below are the icons rendered in a simple grid instead of a table, \
-for creating a preview image for the \
-[[[anomaly-classification-system-guide|ACS Guide]]].
 
-[[div class=&#34;icon_grid&#34;]]
+[[div_ class=&#34;preview-panel icons-large&#34;]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Adviso&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Adviso.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Adviso.svg&#34; 
+  data-tooltip=&#34;Adviso&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Alterius&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Alterius.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Alterius.svg&#34; 
+  data-tooltip=&#34;Alterius&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Doctrina&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Doctrina.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Doctrina.svg&#34; 
+  data-tooltip=&#34;Doctrina&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Exsequi&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Exsequi.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Exsequi.svg&#34; 
+  data-tooltip=&#34;Exsequi&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Flecto&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Flecto.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Flecto.svg&#34; 
+  data-tooltip=&#34;Flecto&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Impetus&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Impetus.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Impetus.svg&#34; 
+  data-tooltip=&#34;Impetus&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Numen&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Numen.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Numen.svg&#34; 
+  data-tooltip=&#34;Numen&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Nuntii&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Nuntii.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Nuntii.svg&#34; 
+  data-tooltip=&#34;Nuntii&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Potissimi&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Potissimi.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Potissimi.svg&#34; 
+  data-tooltip=&#34;Potissimi&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Supernus&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Supernus.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Supernus.svg&#34; 
+  data-tooltip=&#34;Supernus&#34;]]
+[[/div]]
+[[/div]]
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show More Details About These Images
+| hide= Hide More Details About These Images
+]]
+
+[[table class=&#34;icon-table wiki-content-table&#34;]]
+[[row]]
+[[hcell class=&#34;icon-column&#34;]] Icon [[/hcell]]
+[[hcell class=&#34;name-column&#34;]] Name / Data [[/hcell]]
+[[hcell class=&#34;desc-column&#34;]] Description [[/hcell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Adviso.svg ]]
+[[/cell]]
+[[cell]]
+**Adviso**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Adviso.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item&#39;s class has been tentatively declared, but may be subject to change.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Alterius.svg ]]
+[[/cell]]
+[[cell]]
+**Alterius**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Alterius.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item is alien to Earth, extraterrestrially or extradimensionally.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Doctrina.svg ]]
+[[/cell]]
+[[cell]]
+**Doctrina**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Doctrina.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item is undergoing testing or investigation.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Exsequi.svg ]]
+[[/cell]]
+[[cell]]
+**Exsequi**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Exsequi.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item is capable of independent action.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Flecto.svg ]]
+[[/cell]]
+[[cell]]
+**Flecto**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Flecto.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item displays one or more biological mutations.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Impetus.svg ]]
+[[/cell]]
+[[cell]]
+**Impetus**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Impetus.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item is hostile.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Numen.svg ]]
+[[/cell]]
+[[cell]]
+**Numen**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Numen.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item is related to a deity.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Nuntii.svg ]]
+[[/cell]]
+[[cell]]
+**Nuntii**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Nuntii.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item possesses memetic attributes.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Potissimi.svg ]]
+[[/cell]]
+[[cell]]
+**Potissimi**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Potissimi.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item&#39;s containment is of high importance.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Supernus.svg ]]
+[[/cell]]
+[[cell]]
+**Supernus**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Supernus.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 250, 250, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Item is too distant and/or unnoticeable from the Earth or Solar System to be a priority.
+[[/cell]]
+[[/row]]
+
+[[/table]]
+
+[[include :scp-wiki:component:colend
+| hide= Hide More Details About These Images
+]]
+[[/div]]
+
+
+
+[[# icons-DC]]
++++ Disruption Class Icons
+
+
+[[div_ class=&#34;preview-panel icons-small&#34;]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Default&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Default.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Default.svg&#34; 
+  class=&#34;color-dc-default&#34; 
+  data-tooltip=&#34;Default&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Eyeroll&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Eyeroll.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Eyeroll.svg&#34; 
+  class=&#34;color-dc-eyeroll&#34; 
+  data-tooltip=&#34;Eyeroll&#34;]]
+[[/div]]
+[[/div]]
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show More Details About These Images
+| hide= Hide More Details About These Images
+]]
+
+[[table class=&#34;icon-table wiki-content-table&#34;]]
+[[row]]
+[[hcell class=&#34;icon-column&#34;]] Icon [[/hcell]]
+[[hcell class=&#34;name-column&#34;]] Name / Data [[/hcell]]
+[[hcell class=&#34;desc-column&#34;]] Description [[/hcell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell color-dc-default&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Default.svg ]]
+[[/cell]]
+[[cell]]
+**Default**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Default.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 188, 188, 204 [[/span]]
+[[/cell]]
+[[cell]]
+Generic Disruption Class Icon Eye Template, \
+which will serve as a base for all custom Disruption Class Icons.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell color-dc-eyeroll&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Eyeroll.svg ]]
+[[/cell]]
+[[cell]]
+**Eyeroll**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Eyeroll.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 188, 188, 204 [[/span]]
+[[/cell]]
+[[cell]]
+Created from the Default Disruption Class Icon to demonstrate \
+its ability to be animated in various ways, \
+including eye movements, expressions, and blinking.
+[[/cell]]
+[[/row]]
+
+[[/table]]
+
+[[include :scp-wiki:component:colend
+| hide= Hide More Details About These Images
+]]
+[[/div]]
+
+
+
+[[# icons-RC]]
++++ Risk Class Icons
+
+
+[[div_ class=&#34;preview-panel icons-small&#34;]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Unolunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Unolunae.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Unolunae.svg&#34; 
+  class=&#34;color-rc-unolunae&#34; 
+  data-tooltip=&#34;Unolunae&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Duolunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Duolunae.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Duolunae.svg&#34; 
+  class=&#34;color-rc-duolunae&#34; 
+  data-tooltip=&#34;Duolunae&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Trilunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Trilunae.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Trilunae.svg&#34; 
+  class=&#34;color-rc-trilunae&#34; 
+  data-tooltip=&#34;Trilunae&#34;]]
+[[/div]]
+[[/div]]
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show More Details About These Images
+| hide= Hide More Details About These Images
+]]
+
+[[table class=&#34;icon-table wiki-content-table&#34;]]
+[[row]]
+[[hcell class=&#34;icon-column&#34;]] Icon [[/hcell]]
+[[hcell class=&#34;name-column&#34;]] Name / Data [[/hcell]]
+[[hcell class=&#34;desc-column&#34;]] Description [[/hcell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell color-rc-unolunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Unolunae.svg ]]
+[[/cell]]
+[[cell]]
+**Unolunae**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Unolunae.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 100, 100, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Anomalous Object poses a **mild danger** to the **afterlife** of any individual nearby.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell color-rc-duolunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Duolunae.svg ]]
+[[/cell]]
+[[cell]]
+**Duolunae**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Duolunae.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 150, 100, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Anomalous Object poses a **moderate danger** to the **afterlife** of any individual nearby.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell color-rc-trilunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Trilunae.svg ]]
+[[/cell]]
+[[cell]]
+**Trilunae**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Trilunae.svg | LINK]]]
+[[span class=&#34;color-value&#34;]] 200, 100, 250 [[/span]]
+[[/cell]]
+[[cell]]
+Anomalous Object poses a **significant danger** to the **afterlife** of any individual nearby.
+[[/cell]]
+[[/row]]
+
+[[/table]]
+
+[[include :scp-wiki:component:colend
+| hide= Hide More Details About These Images
+]]
+[[/div]]
+
+
+
+[[# icons-group]]
++++ Group Icon Render
+
+
+An attempt the mimic the appearance and behavior of my section in \
+the [[[anomaly-classification-system-guide|ACS Guide]]], \
+particularly its Custom ACS Icons Image.
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show Group Render
+| hide= Hide Group Render
+]]
+
+[[div class=&#34;original_width&#34;]]
+
+[[div_ class=&#34;step_container&#34; style=&#34;text-align: center;&#34;]]
+++ [#more-icons More Icons!][[# more-icons]]
+[[div_ class=&#34;step_container&#34;]]
+++ [[[chaos-arts| ]]]
++++ by [[*user ChaosMageX]]
+-------
+[[div_ class=&#34;icon_groups_container&#34;]]
+
+
+
+[[div_ class=&#34;icon_group&#34;]]
+[[div_ class=&#34;icon_title&#34;]]
+Containment Classes
+[[/div]]
+
+[[div_ class=&#34;icon_grid&#34;]]
+
+[[div_ class=&#34;icon_empty&#34;]]
+[[/div]]
 
 [[div_ class=&#34;icon_cont&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Archon.svg]]
-[[div class=&#34;icon_name&#34;]]
-**ARCHON**
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Archon.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Archon
 [[/div]]
 [[/div]]
 
 [[div_ class=&#34;icon_cont&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-FlorGalana.svg]]
-[[div class=&#34;icon_name&#34;]]
-**FLOR GALANA**
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-FlorGalana.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Flor Galana
 [[/div]]
 [[/div]]
 
 [[div_ class=&#34;icon_cont&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Skótos.svg]]
-[[div class=&#34;icon_name&#34;]]
-**SKÓTOS**
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CC-Skotos.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+SKÓTOS
 [[/div]]
 [[/div]]
 
+[!-- end icon_grid --]
+[[/div]]
+[!-- end icon_group --]
 [[/div]]
 
-[[/tab]]
 
-[[tab SCP Logos]]
 
-+++ SCP Logos:
+[[div_ class=&#34;icon_group&#34;]]
+[[div_ class=&#34;icon_title&#34;]]
+Containment Subclasses
+[[/div]]
+
+[[div_ class=&#34;icon_grid&#34;]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Adviso.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Adviso
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Alterius.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Alterius
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Doctrina.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Doctrina
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Exsequi.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Exsequi
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Flecto.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Flecto
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Impetus.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Impetus
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Numen.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Numen
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Nuntii.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Nuntii
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Potissimi.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Potissimi
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-CSC-Supernus.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Supernus
+[[/div]]
+[[/div]]
+
+[!-- end icon_grid --]
+[[/div]]
+[!-- end icon_group --]
+[[/div]]
+
+
+
+[[div_ class=&#34;icon_groups_side_by_side icon_2_fifths&#34;]]
+
+
+
+[[div_ class=&#34;icon_group&#34;]]
+[[div_ class=&#34;icon_title&#34;]]
+Disruption Classes
+[[/div]]
+
+[[div_ class=&#34;icon_grid icon_2_fifths&#34;]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image color-dc-default&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Default.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Default
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image color-dc-default&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-DC-Eyeroll.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Eyeroll
+[[/div]]
+[[/div]]
+
+[!-- end icon_grid --]
+[[/div]]
+[!-- end icon_group --]
+[[/div]]
+
+
+
+[[div_ class=&#34;icon_group&#34;]]
+[[div_ class=&#34;icon_title&#34;]]
+Risk Classes
+[[/div]]
+
+[[div_ class=&#34;icon_grid icon_3_fifths&#34;]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image color-rc-unolunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Unolunae.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Unolunae
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image color-rc-duolunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Duolunae.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Duolunae
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;icon_cont&#34;]]
+[[div_ class=&#34;icon_image color-rc-trilunae&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-RC-Trilunae.svg ]]
+[[/div]]
+[[div_ class=&#34;icon_name&#34;]]
+Trilunae
+[[/div]]
+[[/div]]
+
+[!-- end icon_grid --]
+[[/div]]
+[!-- end icon_group --]
+[[/div]]
+
+
+
+[!-- end icon_groups_side_by_side --]
+[[/div]]
+
+
+
+[!-- end icon_groups_container --]
+[[/div]]
+
+[!-- end step_container --]
+[[/div]]
+[!-- end step_container --]
+[[/div]]
+
+[!-- end original_width --]
+[[/div]]
+
+[[include :scp-wiki:component:colend
+| hide= Hide Group Render
+]]
+[[/div]]
+
+
+
+----
+
+
+
+[[# icons-SCP]]
+++ SCP Icons
+
+
+[[div_ class=&#34;preview-panel logos-small&#34;]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Heart&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Heart.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Heart.svg&#34; 
+  data-tooltip=&#34;Heart&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Heart (Arrows)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-HeartArrows.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-HeartArrows.svg&#34; 
+  data-tooltip=&#34;Heart (Arrows)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Dollar&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Dollar.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Dollar.svg&#34; 
+  data-tooltip=&#34;Dollar&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Dollar (Arrows)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-DollarArrows.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-DollarArrows.svg&#34; 
+  data-tooltip=&#34;Dollar (Arrows)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Diamond&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Diamond.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Diamond.svg&#34; 
+  data-tooltip=&#34;Diamond&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Diamond (Arrows)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-DiamondArrows.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-DiamondArrows.svg&#34; 
+  data-tooltip=&#34;Diamond (Arrows)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Fur Affinity&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity.svg&#34; 
+  data-tooltip=&#34;Fur Affinity&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Fur Affinity (2020)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity2020.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity2020.svg&#34; 
+  data-tooltip=&#34;Fur Affinity (2020)&#34;]]
+[[/div]]
+[[/div]]
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show More Details About These Images
+| hide= Hide More Details About These Images
+]]
+
+These are custom versions of the SCP Foundation Logo \
+that are meant to be scaled down to very small small sizes, \
+mainly to act as emojis and hyperlink images.
+
+[[table class=&#34;icon-table wiki-content-table&#34;]]
+[[row]]
+[[hcell class=&#34;icon-column&#34;]] Image 1 [[/hcell]]
+[[hcell class=&#34;icon-column&#34;]] Image 2 [[/hcell]]
+[[hcell class=&#34;name-column&#34;]] Name / Link [[/hcell]]
+[[hcell class=&#34;desc-column&#34;]] Description [[/hcell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Heart.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-HeartArrows.svg ]]
+[[/cell]]
+[[cell]]
+**Ko-Fi Heart**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Heart.svg | LINK (Left) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-HeartArrows.svg | LINK (Right) ]]]
+[[/cell]]
+[[cell]]
+A small red heart SCP Logo for use with the **Ko-Fi Theme** of the Fundraiser Widget.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Dollar.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-DollarArrows.svg ]]
+[[/cell]]
+[[cell]]
+**Ko-Fi Dollar**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Dollar.svg | LINK (Left) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-DollarArrows.svg | LINK (Right) ]]]
+[[/cell]]
+[[cell]]
+A small green cifrão SCP Logo for use with the **Ko-Fi Theme** of the Fundraiser Widget.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Diamond.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-DiamondArrows.svg ]]
+[[/cell]]
+[[cell]]
+**Ko-Fi Diamond**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-Diamond.svg | LINK (Left) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-DiamondArrows.svg | LINK (Right) ]]]
+[[/cell]]
+[[cell]]
+A small blue diamond SCP Logo for use with the **Ko-Fi Theme** of the Fundraiser Widget.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity2020.svg ]]
+[[/cell]]
+[[cell]]
+**Fur Affinity Link**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity.svg | LINK (Left) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity2020.svg | LINK (Right) ]]]
+[[/cell]]
+[[cell]]
+A small SCP Logo styled after Fur Affinity&#39;s Logo (as of 2022) \
+and the social media link icons at the top of the SCP Wiki&#39;s Navigation Sidebar, \
+created to act as a visual link to web pages hosted on [[[*http://www.furaffinity.net/ ]]].
+[[/cell]]
+[[/row]]
+
+[[/table]]
+
+[[include :scp-wiki:component:colend
+| hide= Hide More Details About These Images
+]]
+[[/div]]
+
+
+
+----
+
+
+
+[[# logos-SCP]]
+++ SCP Logos
+
+
+[[div_ class=&#34;preview-panel logos-large&#34;]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Default&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default.svg&#34; 
+  data-tooltip=&#34;Default&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Default Animated&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default-Anim.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default-Anim.svg&#34; 
+  data-tooltip=&#34;Default Animated&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;4th of July&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-4th-of-July.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-4th-of-July.svg&#34; 
+  data-tooltip=&#34;4th of July&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Juneteenth&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Juneteenth.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Juneteenth.svg&#34; 
+  data-tooltip=&#34;Juneteenth&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Juneteenth Animated&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Juneteenth-Anim.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Juneteenth-Anim.svg&#34; 
+  data-tooltip=&#34;Juneteenth Animated&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Ukraine Coat of Arms&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-UkraineCoatOfArms.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-UkraineCoatOfArms.svg&#34; 
+  data-tooltip=&#34;Ukraine Coat of Arms&#34;]]
+[[/div]]
+[[/div]]
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show More Details About These Images
+| hide= Hide More Details About These Images
+]]
 
 These are custom versions of the SCP Foundation Logo. \
 Some are designed for use with specific Themes and/or Departments within the Foundation. \
@@ -513,7 +3421,7 @@ The rest were just made for fun and/or experimentation.
 
 [[row]]
 [[cell class=&#34;image-cell&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default.svg]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default.svg ]]
 [[/cell]]
 [[cell]]
 **Default**
@@ -526,126 +3434,546 @@ Generic SCP Foundation Logo, to be used to derive all future custom versions.
 
 [[row]]
 [[cell class=&#34;image-cell&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-4th-of-July.svg]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default-Anim.svg ]]
+[[/cell]]
+[[cell]]
+**Default Animated**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default-Anim.svg | LINK]]]
+[[/cell]]
+[[cell]]
+Animated version of the Generic SCP Foundation Logo, with clock-like movements.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-4th-of-July.svg ]]
 [[/cell]]
 [[cell]]
 **4th of July**
 [[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-4th-of-July.svg | LINK]]]
 [[/cell]]
 [[cell]]
-Festive SCP Logo for celebrating Independence Day of the United States of America.
+Festive SCP Logo for celebrating the **Independence Day** of the United States of America.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Juneteenth.svg ]]
+[[/cell]]
+[[cell]]
+**Juneteenth**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Juneteenth.svg | LINK]]]
+[[/cell]]
+[[cell]]
+Festive SCP Logo for celebrating the **Juneteenth** holiday in the United States of America.
+Juneteenth celebrates when Union Soldiers freed the last enslaved people in the U.S.A. \
+on June 19th, 1865, in Galveston, Texas.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Juneteenth-Anim.svg ]]
+[[/cell]]
+[[cell]]
+**Juneteenth Animated**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Juneteenth-Anim.svg | LINK]]]
+[[/cell]]
+[[cell]]
+Animated version of the above **Juneteenth** SCP Logo, \
+with clock-like movements and the fists pumping with each tick.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-UkraineCoatOfArms.svg ]]
+[[/cell]]
+[[cell]]
+**Ukraine Coat of Arms**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-UkraineCoatOfArms.svg | LINK]]]
+[[/cell]]
+[[cell]]
+Created from and styled after \
+[[[*https://en.wikipedia.org/wiki/Coat_of_arms_of_Ukraine | Ukraine&#39;s Coat of Arms]]] \
+to celebrate Ukraine&#39;s Independence Day, the anniversary of it leaving the USSR.
+
+Also created to stand in solidarity with Ukraine against the hostile Russian invasion \
+orchestrated by Vladimir Putin, which started exactly 6 months before Ukraine&#39;s Independence Day. \
+That can&#39;t be a coincidence.
 [[/cell]]
 [[/row]]
 
 [[/table]]
 
-+++ SCP Icons:
+[[include :scp-wiki:component:colend
+| hide= Hide More Details About These Images
+]]
+[[/div]]
 
-These are custom versions of the SCP Foundation Logo \
-that are meant to be scaled down to very small small sizes, \
-mainly to act as emojis and hyperlink images.
 
-[[table class=&#34;icon-table wiki-content-table&#34;]]
+
+----
+
+
+
+[[# logos-Therian]]
+++ SCP Therianthropy Department Logos
+
+
+[[div_ class=&#34;preview-panel logos-large&#34;]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Default (Dark)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark.svg&#34; 
+  data-tooltip=&#34;Default (Dark)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Default (Light)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight.svg&#34; 
+  data-tooltip=&#34;Default (Light)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Animated (Dark)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Anim.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Anim.svg&#34; 
+  data-tooltip=&#34;Animated (Dark)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Animated (Light)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Anim.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Anim.svg&#34; 
+  data-tooltip=&#34;Animated (Light)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Eclipse (Dark)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Eclipse.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Eclipse.svg&#34; 
+  data-tooltip=&#34;Eclipse (Dark)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Eclipse (Light)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Eclipse.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Eclipse.svg&#34; 
+  data-tooltip=&#34;Eclipse (Light)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Pride (Dark)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Pride.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Pride.svg&#34; 
+  data-tooltip=&#34;Pride (Dark)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Pride (Light)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Pride.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Pride.svg&#34; 
+  data-tooltip=&#34;Pride (Light)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Pride Animated (Dark)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-PrideAnim.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-PrideAnim.svg&#34; 
+  data-tooltip=&#34;Pride Animated (Dark)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Pride Animated (Light)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-PrideAnim.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-PrideAnim.svg&#34; 
+  data-tooltip=&#34;Pride Animated (Light)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Juneteenth (Dark)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Juneteenth.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Juneteenth.svg&#34; 
+  data-tooltip=&#34;Juneteenth (Dark)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Juneteenth (Light)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Juneteenth.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Juneteenth.svg&#34; 
+  data-tooltip=&#34;Juneteenth (Light)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Ukraine (Dark)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Ukraine.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Ukraine.svg&#34; 
+  data-tooltip=&#34;Ukraine (Dark)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Ukraine (Light)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Ukraine.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Ukraine.svg&#34; 
+  data-tooltip=&#34;Ukraine (Light)&#34;]]
+[[/div]]
+[[/div]]
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show More Details About These Images
+| hide= Hide More Details About These Images
+]]
+
+The various versions of the logo for the SCP Foundation&#39;s Therianthropy Department.
+Originally, this was only going to be a single logo to go in the above table, \
+but it ended up growing far beyond that as I created many versions for different memes, \
+so I decided to create a dedicated table for all the current and future versions.
+
+[[table class=&#34;logo-table wiki-content-table&#34;]]
 [[row]]
-[[hcell class=&#34;icon-column&#34;]] Icon [[/hcell]]
+[[hcell class=&#34;logo-column&#34;]] Logo (Dark) [[/hcell]]
+[[hcell class=&#34;logo-column&#34;]] Logo (Light) [[/hcell]]
 [[hcell class=&#34;name-column&#34;]] Name / Link [[/hcell]]
 [[hcell class=&#34;desc-column&#34;]] Description [[/hcell]]
 [[/row]]
 
 [[row]]
 [[cell class=&#34;image-cell&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/component:fundraiser-widget/scp-heart.svg]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight.svg ]]
 [[/cell]]
 [[cell]]
-**Heart**
-[[[*http://scp-wiki.wikidot.com/local--files/component:fundraiser-widget/scp-heart.svg | LINK]]]
+**Default**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark.svg | LINK (Dark) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight.svg | LINK (Light) ]]]
 [[/cell]]
 [[cell]]
-A small heart SCP Logo for use with the **Ko-Fi Theme** of the Fundraiser Widget.
+The SCP Foundation Therianthropy Department Logo, \
+in its simplest form, for both light and dark themes/backgrounds.
 [[/cell]]
 [[/row]]
 
 [[row]]
 [[cell class=&#34;image-cell&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/component:fundraiser-widget/scp-dollar.svg]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Anim.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Anim.svg ]]
 [[/cell]]
 [[cell]]
-**Dollar**
-[[[*http://scp-wiki.wikidot.com/local--files/component:fundraiser-widget/scp-dollar.svg | LINK]]]
+**Default Animated**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Anim.svg | LINK (Dark) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Anim.svg | LINK (Light) ]]]
 [[/cell]]
 [[cell]]
-A small dollar sign SCP Logo for use with the **Ko-Fi Theme** of the Fundraiser Widget.
+Animated version of the SCP Foundation Therianthropy Department Logo, \
+with clock-like movements and a lunar eclipse animation to symbolize change.
 [[/cell]]
 [[/row]]
 
 [[row]]
 [[cell class=&#34;image-cell&#34;]]
-[[image http://scp-wiki.wikidot.com/local--files/component:fundraiser-widget/scp-diamond.svg]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Eclipse.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Eclipse.svg ]]
 [[/cell]]
 [[cell]]
-**Diamond**
-[[[*http://scp-wiki.wikidot.com/local--files/component:fundraiser-widget/scp-diamond.svg | LINK]]]
+**Eclipse**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Eclipse.svg | LINK (Dark) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Eclipse.svg | LINK (Light) ]]]
 [[/cell]]
 [[cell]]
-A small cut gemstone SCP Logo for use with the **Ko-Fi Theme** of the Fundraiser Widget.
+A version of SCP Foundation Therianthropy Department Logo with a static partial lunar eclipse shading, \
+created to symbolize change without being animated.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Pride.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Pride.svg ]]
+[[/cell]]
+[[cell]]
+**Pride**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Pride.svg | LINK (Dark) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Pride.svg | LINK (Light) ]]]
+[[/cell]]
+[[cell]]
+A version of SCP Foundation Therianthropy Department Logo with a rainbow lunar eclipse shading, \
+created for Pride Month and to stand in solidarity with the LGBTQIA+ Community.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-PrideAnim.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-PrideAnim.svg ]]
+[[/cell]]
+[[cell]]
+**Pride Animated**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-PrideAnim.svg | LINK (Dark) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-PrideAnim.svg | LINK (Light) ]]]
+[[/cell]]
+[[cell]]
+Animated version of the SCP Foundation Therianthropy Department Logo, \
+with clock-like movements and an animated rainbow lunar eclipse, \
+created for Pride Month and to stand in solidarity with the LGBTQIA+ Community.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Juneteenth.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Juneteenth.svg ]]
+[[/cell]]
+[[cell]]
+**Juneteenth**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Juneteenth.svg | LINK (Dark) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Juneteenth.svg | LINK (Light) ]]]
+[[/cell]]
+[[cell]]
+A version of SCP Foundation Therianthropy Department Logo with red/black/green lunar eclipse shading, \
+created to stand in solidarity with the African American Community and \
+celebrate the Juneteenth US Holiday celebrating the freeing of the last slaves in the US, \
+in Galveston, Texas on June 19th, 1865.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Ukraine.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Ukraine.svg ]]
+[[/cell]]
+[[cell]]
+**Ukraine**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark-Ukraine.svg | LINK (Dark) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianLight-Ukraine.svg | LINK (Light) ]]]
+[[/cell]]
+[[cell]]
+A version of SCP Foundation Therianthropy Department Logo \
+with blue &amp; yellow lunar eclipse shading, created to stand in solidarity with Ukraine \
+against the hostile Russian invasion orchestrated by Vladimir Putin.
 [[/cell]]
 [[/row]]
 
 [[/table]]
 
-[[/tab]]
+[[include :scp-wiki:component:colend
+| hide= Hide More Details About These Images
+]]
+[[/div]]
 
-[[/tabview]]
+
 
 ----
 
-++ Raster (PNG) Art
+
+
+[[# clip-art]]
+++ Clip Art
+
+
+[[div_ class=&#34;preview-panel clipart-images&#34;]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Raised Fist (Left)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-FistLeft.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-FistLeft.svg&#34; 
+  data-tooltip=&#34;Raised Fist (Left)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Raised Fist (Right)&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-FistRight.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-FistRight.svg&#34; 
+  data-tooltip=&#34;Raised Fist (Right)&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Paw Print 1&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-PawPrint1.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-PawPrint1.svg&#34; 
+  data-tooltip=&#34;Paw Print 1&#34;]]
+[[/div]]
+[[div_ class=&#34;image-wrapper&#34; data-tooltip=&#34;Paw Print 2&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-PawPrint2.svg 
+  link=&#34;http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-PawPrint2.svg&#34; 
+  data-tooltip=&#34;Paw Print 2&#34;]]
+[[/div]]
+[[/div]]
+
+
+
+[[div_ class=&#34;fancy-collapse&#34;]]
+[[include :scp-wiki:component:coltop
+| show= Show More Details About These Images
+| hide= Hide More Details About These Images
+]]
+
+These are custom vectors created for various purposes, \
+usually as part of a custom icon or logo, and have been extracted as separate SVG files \
+to make it easier for others to use them in their own derivative works.
+
+[[table class=&#34;icon-table wiki-content-table&#34;]]
+[[row]]
+[[hcell class=&#34;icon-column&#34;]] Image 1 [[/hcell]]
+[[hcell class=&#34;icon-column&#34;]] Image 2 [[/hcell]]
+[[hcell class=&#34;name-column&#34;]] Name / Link [[/hcell]]
+[[hcell class=&#34;desc-column&#34;]] Description [[/hcell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-FistLeft.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-FistRight.svg ]]
+[[/cell]]
+[[cell]]
+**Raised Fist**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-FistLeft.svg | LINK (Left) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-FistRight.svg | LINK (Right) ]]]
+[[/cell]]
+[[cell]]
+Simple silhouette of a raised fist, extracted from the **Juneteenth SCP Logo**.
+[[/cell]]
+[[/row]]
+
+[[row]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-PawPrint1.svg ]]
+[[/cell]]
+[[cell class=&#34;image-cell&#34;]]
+[[image http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-PawPrint2.svg ]]
+[[/cell]]
+[[cell]]
+**Paw Print**
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-PawPrint1.svg | LINK (Left) ]]]
+[[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/clipArt-PawPrint2.svg | LINK (Right) ]]]
+[[/cell]]
+[[cell]]
+Simple silhouette of a paw print with claws, extracted from the **SCP Fur Affinity Link Icon**.
+[[/cell]]
+[[/row]]
+
+[[/table]]
+
+[[include :scp-wiki:component:colend
+| hide= Hide More Details About These Images
+]]
+[[/div]]
+
+
+
+----
+
+
+
+[[# art-raster]]
+[!-- + Raster (PNG) Art ]
 
 WILL GO HERE ONCE I&#39;VE DRAWN SOME...
 
+
+
+---- [!-- --]
+
+
+
+[[# ext-links]]
++ External Website Links
+
+Links to my accounts on other websites, where I&#39;ve created Artwork, Code, \
+and other Creative Works unrelated to the SCP Wiki.
+
+[[ul]]
+
+[[li]] [[image 
+https://scp-wiki.wdfiles.com/local--files/nav:side/social-deviantart.png title=&#34;DeviantArt&#34; 
+link=&#34;https://www.deviantart.com/chaosmagex&#34; 
+alt=&#34;Deviant Art Link Icon&#34; style=&#34;width: 27px;&#34; ]] - [[image 
+https://scp-wiki.wdfiles.com/local--files/nav:side/icon-DeviantArt-2020.png title=&#34;DeviantArt&#34; 
+link=&#34;https://www.deviantart.com/chaosmagex&#34; 
+alt=&#34;Deviant Art Link Icon&#34; style=&#34;width: 30px;&#34; ]] - \
+[[[*https://www.deviantart.com/chaosmagex | DeviantArt]]] [[/li]]
+
+[[li]] [[image 
+http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity.svg title=&#34;FurAffinity&#34; 
+link=&#34;https://www.furaffinity.net/user/chaosmagex&#34; 
+alt=&#34;Fur Affinity Link Icon&#34; style=&#34;width: 27px;&#34; ]] - [[image 
+http://scp-wiki.wikidot.com/local--files/chaos-arts/icon-SCP-FurAffinity2020.svg title=&#34;FurAffinity&#34; 
+link=&#34;https://www.furaffinity.net/user/chaosmagex&#34; 
+alt=&#34;Fur Affinity Link Icon&#34; style=&#34;width: 30px;&#34; ]] - \
+[[[*https://www.furaffinity.net/user/chaosmagex | FurAffinity]]] [[/li]]
+
+[[li]] [[image 
+https://scp-wiki.wdfiles.com/local--files/nav:side/social-twitter.png title=&#34;Twitter&#34; 
+link=&#34;https://twitter.com/ChaosAlchemistX&#34; 
+alt=&#34;Twitter Link Icon&#34; style=&#34;width: 27px;&#34; ]] - [[image 
+https://scp-wiki.wdfiles.com/local--files/nav:side/icon-Twitter-2020.png title=&#34;Twitter&#34; 
+link=&#34;https://twitter.com/ChaosAlchemistX&#34; 
+alt=&#34;Twitter Link Icon&#34; style=&#34;width: 30px;&#34; ]] - \
+[[[*https://twitter.com/ChaosAlchemistX | Twitter]]] [[/li]]
+
+[[li]] [[image 
+https://scp-wiki.wdfiles.com/local--files/nav:side/social-tumblr.png title=&#34;Tumblr&#34; 
+link=&#34;https://chaosmagex.tumblr.com/&#34; 
+alt=&#34;Tumbler Link Icon&#34; style=&#34;width: 27px;&#34; ]] - [[image 
+https://scp-wiki.wdfiles.com/local--files/nav:side/icon-Tumblr-2020.png title=&#34;Tumblr&#34; 
+link=&#34;https://chaosmagex.tumblr.com/&#34; 
+alt=&#34;Tumbler Link Icon&#34; style=&#34;width: 30px;&#34; ]] - \
+[[[*https://chaosmagex.tumblr.com/ | Tumblr]]] [[/li]]
+
+[[/ul]]
+
+
+
 ----
 
-++ Third Party Website Links
 
-Links to my accounts on other websites, where I&#39;ve created Artwork, Code, and other Creative Works unrelated to the SCP Wiki.
-* [[[*https://www.deviantart.com/chaosmagex | DeviantArt]]]
-* [[[*https://www.furaffinity.net/user/chaosmagex | FurAffinity]]]
-* [[[*https://github.com/ChaosMageX | GitHub]]]
-* [[[*https://twitter.com/ChaosAlchemistX | Twitter]]]
-* [[[*https://chaosmagex.tumblr.com/ | Tumblr]]]
-Mainly these links are here to prove that I can draw raster images and I will eventually draw some related to the SCP Wiki and post them in the above section.
 
-----
+[[# donate]]
+[[div style=&#34;display: none;&#34;]]
++ Donations Link
 
-++ Donations Link
+Please consider donating to my GoFundMe to help me buy a new refrigerator \
+for my personal food storage, as well as perishable food to store in it. \
+My family only pays for one of my three daily meals, my dinner, \
+while breakfast &amp; lunch are up to me to pay for.
 
-Please consider donating to my GoFundMe to help me buy a new refrigerator for my family. This will greatly alleviate the current tensions in my household and give me some much needed breathing room, which will allow me to create more artwork and other creative works for the SCP Wiki.
-
-[[include :scp-wiki:component:fundraiser-widget amt=0
-|goal=200
+[[include :scp-wiki:component:fundraiser-widget amt=615
+|goal=1000
 |shape=BHL
 |theme=gofundme
-|title= Help me Pay for my Meds and Food
-|main_url= https://www.gofundme.com/f/help-me-pay-for-my-meds-and-food
-|image_url= https://images.gofundme.com/90PlAIyZGCS7-mLal-ltQaDNAoQ=/720x405/https://d2g8igdw686xgo.cloudfront.net/63709125_1646253871687050_r.jpeg
-|donate_url= https://www.gofundme.com/f/help-me-pay-for-my-meds-and-food/donate
+|title= Help me Buy my Meds, Food, &amp; a New Fridge
+|main_url= https://www.gofundme.com/f/help-me-buy-my-meds-food-a-new-fridge
+|image_url= http://scp-wiki.wikidot.com/local--files/chaos-arts/MiniFridgeGoFundMe.png
+|donate_url= https://www.gofundme.com/f/help-me-buy-my-meds-food-a-new-fridge/donate
 |logo_text= gofundme
-|description= Please consider donating to my GoFundMe to help me pay for my next prescription of medication. I accidentally overspent on groceries, and then lost the means to get that money back, so now I have no money to pay for my meds, which I need to pick up soon. I need my meds to give me the energy and focus I need to create more artwork and other creative works for the SCP Wiki.
+|description= Please consider donating to my GoFundMe to help me pay for more food and a new fridge to put it in. My mini-fridge recently broke, and I&#39;m in the process of replacing it. I still need a little more money to buy the fridge &amp; more perishable food to put in it. Food would definitely help give me the energy I need to create more artwork and other creative works for the SCP Wiki.
 ]]
 
 **DISCLAIMER** (last updated July 18th, 2021)
 As required by the [[[donations-policy|SCP Wiki Official Donations Policy]]].
 * You will be charged **immediately**, but only **one time**, for the amount you pledge towards this GoFundMe campaign, for those not familiar with how GoFundMe works.
-* You will not receive anything specific in return for your donation, no matter how much you donate.
-* However, I do sometimes pay kindness and generosity forward, and might make gifts for some donators, but **I don&#39;t make commitments** and will only make gifts if I can find the time to do so. A donation doesn&#39;t count as payment for an art commission.
-* Ultimately, you are **//NOT//** guaranteed anything in return for donating. I hope I&#39;ve been clear on that.
+* You will **not receive anything specific in return** for your donation, no matter how much you donate.
+* However, I do sometimes pay kindness and generosity forward, and **I might make gifts** for some donators, **but I don&#39;t make commitments** and will only make gifts if I can find the time to do so. A donation doesn&#39;t count as payment for an art commission.
+* Ultimately, you are **NOT** guaranteed anything in return for donating. I hope I&#39;ve been clear on that.
+
+
+
+----
+[[/div]]
+
+
 
 [[include :scp-wiki:component:license-box]]
 =====
-&gt; **Name:** All images on this page...
+&gt; **Name:** Logo: SCP Foundation: Ukraine Coat of Arms
 &gt; **Author:** ChaosMageX
 &gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [http://scp-sandbox-3.wikidot.com/chaos-arts/ Chaos Arts]
+&gt; **Source Link:** [[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-UkraineCoatOfArms.svg | Logo-SCP-UkraineCoatOfArms.svg]]]
+&gt; **Derivative of:**
+&gt; [[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default.svg | SCP Foundation: Logo: Default]]] by ChaosMageX, available on this page.
+&gt; [[[*https://commons.wikimedia.org/wiki/File:Lesser_Coat_of_Arms_of_Ukraine.svg | Lesser Coat of Arms of Ukraine]]] by Alex Khristov and Wasyl Krytschewskyj, available on Wikimedia Commons.
+=====
+&gt; **Name:** All of the SCP Therianthropy Department Logos
+&gt; **Author:** ChaosMageX
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-TherianDark.svg | Logo-SCP-TherianDark.svg]]]
+&gt; **Derivative of:**
+&gt; [[[*http://scp-wiki.wikidot.com/local--files/chaos-arts/Logo-SCP-Default.svg | SCP Foundation: Logo: Default]]] by ChaosMageX, available on this page.
+&gt; [[[*https://commons.wikimedia.org/wiki/File:Weather_icon_-_full_moon.svg | Weather icon - full moon]]] by gnokii, available on Wikimedia Commons.
+=====
+&gt; **Name:** All other images on this page
+&gt; **Author:** ChaosMageX
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [[[https://scp-wiki.wikidot.com/chaos-arts]]]
 =====
 [[include :scp-wiki:component:license-box-end]]</textarea></pre>
   </div>
@@ -654,7 +3982,7 @@ As required by the [[[donations-policy|SCP Wiki Official Donations Policy]]].
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:52.635516.</em>
+    <em>Last updated 2023-07-15 21:44:36.844000.</em>
   
 </div>
 </body>

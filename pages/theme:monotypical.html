@@ -29,7 +29,8 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme:monotypical/5&#34;);</code></pre>
+          <pre><code>@import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/normalize-min.css&#39;);
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme:monotypical/5&#34;);</code></pre>
         </li>
       
     </ul>
@@ -212,6 +213,7 @@
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:croqstyle]]
 [[module css]]
+@import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/normalize-min.css&#39;);
 @import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme:monotypical/5&#34;);
 [[/module]]
 [[div_ id=&#34;mono-structure&#34;]]
@@ -427,7 +429,6 @@ Monotypical&#39;s appearance is controlled by the following variables:
 
     --sidebar-width: 15rem;
     --sidebar-timing: 0.275s ease-out;
-    --header-height: 5.5rem;
     --page-content-width: 954px;
 
     --radius-adjust: 0.95rem;
@@ -530,15 +531,13 @@ Feel free to experiment with your own color scheme!
 */
 @import url(&#39;https://fonts.googleapis.com/css2?family=Quicksand&amp;display=swap&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Ubuntu&amp;display=swap&#39;);
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
-
 
 /*---- Dismantling and Rebuilding the Structure ----*/
 
 div#container-wrap {
     display: grid;
     grid-template-columns: var(--sidebar-width) 1fr;
-    grid-template-rows: var(--header-height) 1fr auto auto auto;
+    grid-template-rows: auto 1fr auto auto auto;
     overflow: hidden;
     background: none;
 }
@@ -595,6 +594,7 @@ div#container-wrap {
 }
 
 #main-content {
+    position: relative;
     margin: 0;
     max-width: 100%;
 }
@@ -650,7 +650,6 @@ div#container-wrap {
 
     --sidebar-width: 15rem;
     --sidebar-timing: 0.275s ease-out;
-    --header-height: 5.5rem;
     --page-content-width: 954px;
 
     --radius-adjust: 0.95rem;
@@ -660,10 +659,12 @@ div#container-wrap {
 
 body {
     font-family: var(--body-font);
-    font-size: 0.95rem;
+    font-size: 0.9675rem;
     color: var(--textColor);
-    line-height: 1.45;
+    background-color: var(--primaryBackgroundColor);
 }
+body, li, p { line-height: 1.5; }
+
 
 img {
     max-width: 100%;
@@ -671,13 +672,13 @@ img {
 
 tt {
     background-color: var(--secondaryBackgroundColor);
-    font-size: 90%;
+    font-size: .925em;
 }
 code {
     font-family: var(--mono-font);
 }
 #edit-page-textarea, .code pre, .code p, .code, .page-source {
-    font-size: 95%;
+    font-size: .95em;
 }
 
 #main-content {
@@ -685,14 +686,18 @@ code {
     padding: 1em 3em;
 }
 
+span.printuser {
+    display: inline-flex;
+    align-items: baseline;
+}
 #main-content span.printuser.deleted img,
 .hovertip span.printuser a:first-of-type,
 #main-content span.printuser a:first-of-type {
     display: inline-block;
     height: 1em;
     position: relative;
-    bottom: -0.25em;
     margin-right: 0;
+    user-select: none;
 }
 
 #page-content {
@@ -758,7 +763,6 @@ code {
 
 #header {
     z-index: 4;
-    height: var(--header-height);
     background: var(--primaryBackgroundColor);
 }
 
@@ -771,7 +775,6 @@ code {
     margin-left: 0;
     padding: 0;
     float: none;
-    max-height: 4rem;
     width: 100%;
 }
 #header h1 a {
@@ -952,10 +955,9 @@ div#search-top-box form input[type=&#34;submit&#34;] {
     right: initial;
 }
 
-#top-bar .mobile-top-bar .open-menu {
+#top-bar .mobile-top-bar .open-menu, #side-bar a.close-menu {
     display: none; /* nix the sidebar button in favor of my own */
 }
-
 
 #top-bar div.mobile-top-bar {
     display: none;
@@ -1263,7 +1265,7 @@ iframe.scpnet-interwiki-frame, div.scpnet-interwiki-wrapper {
     top: 0;
     right: 0;
     z-index: 12;
-    cursor-events: all;
+    pointer-events: all;
 }
 
 
@@ -1828,6 +1830,7 @@ a.footnoteref {
     border: none;
     box-sizing: border-box;
     border-radius: var(--radius-adjust);
+    max-width: calc(100% - 3rem);
 }
 .owindow .title {
     background-color: var(--secondaryBackgroundColor);
@@ -2643,7 +2646,7 @@ div.buttons.alignleft {
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:56.584647.</em>
+    <em>Last updated 2023-07-15 21:44:41.019257.</em>
   
 </div>
 </body>

@@ -168,14 +168,14 @@ div.diamond-part { clip-path: none; animation: none; box-shadow: none!important;
 }
  
 /* Converting middle divider from box-shadow to ::before pseudo-element */
-.anom-bar &gt; .bottom-box { box-shadow: none!important; }
-.anom-bar &gt; .bottom-box::before {
+.anom-bar &gt; div.bottom-box { box-shadow: none; position: relative; }
+.anom-bar &gt; div.bottom-box::before {
     position: absolute;
     content: &#34; &#34;;
     width: 100%;
     height: 0.5rem;
-    background-color: rgb(var(--black-monochrome, 12, 12, 12));
-    transform: translateY(-0.74rem);
+    bottom: 100%; left: 0;
+    background-color: rgb(var(--swatch-menubg-black-color, 12, 12, 12));
 }
  
 /* DIVIDER */
@@ -218,11 +218,9 @@ div.top-left-box &gt; *, div.top-right-box &gt; * {
     animation-fill-mode: backwards;
 }
  
-
 /*-----------------------------------*/
 /*-----------------------------------*/
-
-
+ 
 /* CONTAINMENT, DISRUPTION, RISK CLASSES */
 div.text-part &gt; * {
     clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -258,16 +256,14 @@ div.main-class &gt; *,  div.disrupt-class &gt; *, div.risk-class &gt; * {
     animation-fill-mode: backwards;
 }
  
-
 /*-----------------------------------*/
 /*-----------------------------------*/
-
-
+ 
 /* DIAMOND */
 div.arrows {
     animation-name: arrowspin;
-    animation-duration: calc(0.7s * var(--timeScale));
-    animation-delay: calc(0.6s * var(--timeScale) + var(--timeDelay));
+    animation-duration: calc(0.65s * var(--timeScale));
+    animation-delay: calc(0.55s * var(--timeScale) + var(--timeDelay));
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier(.12,.41,.27,.99);
     animation-fill-mode: backwards;
@@ -290,25 +286,27 @@ div.top-icon, div.right-icon, div.left-icon, div.bottom-icon {
     animation-timing-function: cubic-bezier(.12,.41,.27,.99);
     animation-fill-mode: backwards;
 }
-div.diamond-part {
-    clip-path: polygon( -10% 0.37%, 120% 0.37%, 120% 100%, -10% 100%);
-    animation-name: diamondBorder;
-    animation-duration: calc(0.8s * var(--timeScale));
-    animation-delay: calc(0.5s * var(--timeScale) + var(--timeDelay));
-    animation-iteration-count: 1;
-    animation-timing-function: cubic-bezier(.32,.38,.39,.94);
-    animation-fill-mode: backwards;
-    will-change: box-shadow;
+.bottom-box &gt; div.diamond-part {
+    box-shadow: none;
 }
- 
+.bottom-box &gt; div.diamond-part::before {
+    content: &#34;&#34;;
+    position: absolute;
+    width: 0.5rem; height: 100%;
+    top: 0; right: 100%;
+    background-color: rgb(var(--swatch-menubg-black-color, 12, 12, 12));
+    animation-name: diamondBorder;
+    animation-duration: calc(0.475s * var(--timeScale));
+    animation-delay: calc(0.775s * var(--timeScale) + var(--timeDelay));
+    animation-iteration-count: 1;
+    animation-timing-function: cubic-bezier(.28,.72,.55,.91);
+    animation-fill-mode: backwards;
+}
+
 /* MOBILE QUERY */
 @media (max-width: 480px ) {
-    .anom-bar &gt; .bottom-box::before {
-        display:none;
-    }
-    .anom-bar &gt; .bottom-box {
-        box-shadow: 0 -0.5rem 0 0 rgb(var(--black-monochrome, 12, 12, 12))!important;
-    }
+    .anom-bar &gt; div.bottom-box { position: initial; }
+    .anom-bar &gt; div.bottom-box::before { bottom: initial; top: 40vw; }
     div.top-center-box  &gt; * {
         animation-name: bar-mobile;
         animation-duration: calc(0.9s * var(--timeScale));
@@ -321,9 +319,9 @@ div.diamond-part {
     div.top-center-box &gt; :nth-child(6) { animation-delay: calc(0.6s * var(--timeScale) + var(--timeDelay)); }
  
 }
-
+ 
 /*--- Motion Accessibility ---*/
-@media screen and (prefers-reduced-motion: reduce) { 
+@media screen and (prefers-reduced-motion: reduce) {
     div.anom-bar-container { --timeScale: 0!important; }
 }
  
@@ -380,8 +378,8 @@ div.diamond-part {
     to {  transform: scale(1);}
 }
 @keyframes diamondBorder {
-    from { box-shadow: -0.5rem -20rem 0 0 rgb(var(--black-monochrome, 12, 12, 12)); }
-    to { box-shadow: -0.5rem 0 0 0 rgb(var(--black-monochrome, 12, 12, 12)); }
+    from { height: 0; }
+    to { height: 100%; }
 }
 
 [[/code]]
@@ -396,7 +394,7 @@ div.diamond-part {
 
 <div id="footer">
   
-    <em>Last updated 2022-10-27 18:25:52.683338.</em>
+    <em>Last updated 2023-07-15 21:44:36.897464.</em>
   
 </div>
 </body>
