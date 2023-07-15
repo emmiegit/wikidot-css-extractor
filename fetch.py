@@ -6,6 +6,7 @@ import json
 import os
 import re
 import sys
+import time
 import traceback
 from functools import partial
 
@@ -146,13 +147,22 @@ class Crawler:
 
         payload = json.dumps({ 'query': query }).encode('utf-8')
 
-        async with session.post(CROM_ENDPOINT, data=payload, headers=CROM_HEADERS) as r:
-            json_body = await r.json()
+        try:
+            async with session.post(CROM_ENDPOINT, data=payload, headers=CROM_HEADERS) as r:
+                json_body = await r.json()
 
-            if 'errors' in json_body:
-                raise CromError(json_body['errors'])
+                if 'errors' in json_body:
+                    raise CromError(json_body['errors'])
 
-            return json_body['data']
+                return json_body['data']
+        except CromError as error:
+            if error.ratelimit is None:
+                raise error
+
+            # Otherwise, try again
+            print(f"Ratelimited, trying again after {error.ratelimit} seconds")
+            time.sleep(error.ratelimit)
+            return await self.raw_request(session, query, variables)
 
     async def next_pages(self, session):
         variables = {
