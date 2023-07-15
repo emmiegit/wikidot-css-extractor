@@ -14,6 +14,7 @@ from dateutil.parser import isoparse
 
 from config import Configuration
 
+REGEX_CROM_RATE_LIMIT = re.compile(r"Rate limit exceeded: Try again in (\d+) seconds?\.")
 REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+)\.wikidot\.com/(.+)$')
 REGEX_MODULE_CSS = re.compile(r'\[\[module +css\]\]\n(.+?)\n\[\[/module\]\]', re.IGNORECASE | re.DOTALL)
 REGEX_INLINE_CSS = re.compile(r'style="(.+?)"[^\]]*?\]\]', re.MULTILINE | re.IGNORECASE)
@@ -95,6 +96,7 @@ class CromError(RuntimeError):
     def __init__(self, errors):
         super().__init__(self._get_message(errors))
         self.errors = errors
+        self.ratelimit = self._get_ratelimit()
 
     @staticmethod
     def _get_message(errors):
@@ -102,6 +104,14 @@ class CromError(RuntimeError):
             return errors[0]
         else:
             return errors
+
+    def _get_ratelimit(self):
+        for error in self.errors:
+            match = REGEX_CROM_RATE_LIMIT.fullmatch(error)
+            if match is not None:
+                return int(match[1])
+
+        return None
 
 class Crawler:
     def __init__(self, config):
