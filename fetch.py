@@ -108,7 +108,7 @@ class CromError(RuntimeError):
 
     def _get_ratelimit(self):
         for error in self.errors:
-            match = REGEX_CROM_RATE_LIMIT.fullmatch(error)
+            match = REGEX_CROM_RATE_LIMIT.fullmatch(error["message"])
             if match is not None:
                 return int(match[1])
 
