@@ -15,7 +15,7 @@ from dateutil.parser import isoparse
 
 from config import Configuration
 
-REGEX_CROM_RATE_LIMIT = re.compile(r"Rate limit exceeded: Try again in (\d+) seconds?\.")
+REGEX_CROM_RATE_LIMIT = re.compile(r"You're making requests too often! Please wait for (\d+) seconds?\.")
 REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+)\.wikidot\.com/(.+)$')
 REGEX_MODULE_CSS = re.compile(r'\[\[module +css\]\]\n(.+?)\n\[\[/module\]\]', re.IGNORECASE | re.DOTALL)
 REGEX_INLINE_CSS = re.compile(r'style="(.+?)"[^\]]*?\]\]', re.MULTILINE | re.IGNORECASE)
