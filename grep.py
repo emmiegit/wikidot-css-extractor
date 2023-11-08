@@ -248,7 +248,7 @@ if __name__ == '__main__':
         print(f"Downloading {url} -> {filename}")
         dest = os.path.join(file_directory, filename)
         with open(dest, "wb", encoding=None) as file:
-            r = requests.get(url)
+            r = requests.get(url, timeout=10)
             r.raise_for_status()
             file.write(r.content)
 
