@@ -235,4 +235,52 @@ if __name__ == '__main__':
         sys.exit(1)
 
     results = grep(regex, pages, options)
-    print_grep_results(results, args.compact)
+    #print_grep_results(results, args.compact)
+
+    import os
+    import requests
+    URL_FILENAME_REGEX = re.compile(r"https:\/\/cdn\.discordapp\.com\/(?:.+)\/([^\?]+).*?")
+    base_directory = os.path.expanduser("~/incoming/cdndiscord")
+    file_directory = os.path.join(base_directory, "files")
+    os.makedirs(file_directory, exist_ok=True)
+
+    def download_file(url, filename):
+        print(f"Downloading {url} -> {filename}")
+        dest = os.path.join(file_directory, filename)
+        with open(dest, "wb", encoding=None) as file:
+            r = requests.get(url)
+            r.raise_for_status()
+            file.write(r.content)
+
+    def get_extension(url):
+        match = URL_FILENAME_REGEX.fullmatch(url)
+        if match is None:
+            raise RuntimeError(url)
+        _, ext = os.path.splitext(match[1])
+        return ext
+
+    counter = 0
+    urls = {}
+    for ((site, slug), matches) in results.items():
+        directory = os.path.join(base_directory, site)
+        os.makedirs(directory, exist_ok=True)
+
+        page_path = os.path.join(directory, slug.replace(":", "$")) + ".txt"
+        with open(page_path, "w") as file:
+            for match in matches:
+                for (start, end) in match.spans:
+                    url = match.line_content[start:end]
+                    ext = get_extension(url)
+
+                    try:
+                        filename = urls[url]
+                    except KeyError:
+                        filename = f"{counter:06}{ext}"
+                        counter += 1
+                        try:
+                            download_file(url, filename)
+                            urls[url] = filename
+                        except requests.HTTPError:
+                            filename = "<BROKEN>"
+
+                    file.write(f"{url} {filename}\n")
