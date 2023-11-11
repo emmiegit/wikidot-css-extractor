@@ -269,7 +269,7 @@ if __name__ == '__main__':
         with open(page_path, "w") as file:
             for match in matches:
                 for (start, end) in match.spans:
-                    url = match.line_content[start:end]
+                    url = match.line_content[start:end].replace(" ", "%20")
                     ext = get_extension(url)
 
                     try:
