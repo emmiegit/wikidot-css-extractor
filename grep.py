@@ -239,7 +239,7 @@ if __name__ == '__main__':
 
     import os
     import requests
-    URL_FILENAME_REGEX = re.compile(r"https:\/\/cdn\.discordapp\.com\/(?:.+)\/([^\?]+).*?")
+    URL_FILENAME_REGEX = re.compile(r"https:\/\/\w+\.discord\w*\.\w+\/(?:.+)\/([^\?]+).*?")
     base_directory = os.path.expanduser("~/incoming/cdndiscord")
     file_directory = os.path.join(base_directory, "files")
     os.makedirs(file_directory, exist_ok=True)
