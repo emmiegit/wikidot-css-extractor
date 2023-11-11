@@ -22,8 +22,12 @@ if __name__ == "__main__":
                     continue
 
                 url, filename = line.split()
+                if filename == "<BROKEN>":
+                    print(f"File at {url} is broken")
+                    continue
+
                 source_path = os.path.join(base_directory, "files", filename)
                 dest_path = os.path.join(directory, filename)
                 if not os.path.isfile(dest_path):
-                    print(f"Copying image {filename}")
+                    print(f"Copying file {filename}")
                     shutil.copyfile(source_path, dest_path)
