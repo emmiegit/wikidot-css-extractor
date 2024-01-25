@@ -35,6 +35,8 @@
         <li>
           <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Fira+Code&amp;display=swap&#39;);
 
+div#side-bar { background-color: var(--whiteColor); }
+
 /*-- in-page stuff --*/
 
 #page-title {
@@ -99,9 +101,10 @@
 
 /*-- Toggle Sidebar styling --*/
 div#side-bar {
-  border-right: solid 1px #d9d9d9;
-  box-sizing: border-box;
-  overflow-x: hidden;
+    width: 17rem;
+    border-right: solid 1px #d9d9d9;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 
@@ -227,9 +230,9 @@ div#side-bar {
     background-color: #282828;
     color: #f4f4f4;
     border-radius: 0rem;
-    margin: .25rem .2rem; .5rem .2rem;
-    padding: 0.21rem 0.35rem 0.22rem 1.02rem;
-    --notchSize: 7.6px;
+    margin: .325rem .2rem;
+    padding: 0.225rem 0.35rem 0.225rem 1.025rem;
+    --notchSize: .5rem;
     clip-path: 
      polygon(
       0% var(--notchSize), 
@@ -582,7 +585,7 @@ The body font is Open Sans.
 body {
     color: #000000;
     font-family: &#39;Open Sans&#39;, sans-serif;
-    font-size: 0.9125rem;
+    font-size: 0.925rem;
     background-color: var(--whiteColor);
 }
 
@@ -626,8 +629,9 @@ h6 {
 /* ---- HEADER ---- */
 
  div#container-wrap{
-     background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Asimple-yonder/bg3.png&#39;);
-     background-repeat: repeat-x;
+    background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Asimple-yonder/bg3.png&#39;);
+    background-size: auto;
+    background-repeat: repeat-x;
 }
 
 div#header {
@@ -748,15 +752,15 @@ div#header h2 span {
 }
 :is(#side-bar, #interwiki) .menu-item img { display: none; }
 
+:is(#side-bar, #interwiki) a {
+    color: var(--accentColor);
+}
+
 #top-bar div.open-menu a {
     border-radius: 0;
     box-shadow: 0px 1px 4px 0 rgba(0, 0, 0, 0.2), 0px 3px 10px 0 rgba(0, 0, 0, 0.19);
     color: var(--themeColor);
     border: none;
-}
- 
-#side-bar a:visited {
-    color: var(--themeColor);
 }
  
 @media (max-width: 767px) {
@@ -783,24 +787,18 @@ div#header h2 span {
         width: 100%;
         height: 100%;
         top: 0;
-        right: 0;
+        right: 0; left: auto;
         background: rgba(0,0,0,0.3);
-        background-position: 19em 50%;
         z-index: -1;
         opacity: 0;
         pointer-events: none;
     }
     #side-bar:target .close-menu {
-        width: calc(100% - 17.875em);
-        right: 0;
-        left: auto;
+        width: calc(100% - 17rem);
         opacity: 1;
         pointer-events: auto;
     }
-    #page-content &gt; hr,
-    #page-content &gt; .list-pages-box &gt; .list-pages-item &gt; hr {
-        margin: 3em -5.5%;
-    }
+
     #side-bar {
         top: 0;
     }
@@ -892,12 +890,12 @@ div#header h2 span {
     border-radius: 0;
 }
  
-#page-content .rate-box-with-credit-button .fa-info {
+#page-content .creditButton a {
     border: none;
     color: var(--themeColor);
 }
  
-#page-content .rate-box-with-credit-button .fa-info:hover {
+#page-content .creditButton a:hover {
     background: var(--whiteColor);
     color: var(--accentColor);
 }
@@ -906,7 +904,7 @@ div#header h2 span {
     border: solid 1px var(--whiteColor);
 }
  
-.modalbox {
+#page-content .modalbox {
     background: var(--whiteColor);
     border: none;
     box-shadow: none;
@@ -999,17 +997,33 @@ div.blockquote,
 
 hr {
     background-color: var(--borderColor);
+    margin: 1.5rem 0;
 }
 
 .hovertip {
     border-color: var(--borderColor)!important;
 }
 
-
+#main-content .page-tags span {
+    max-width: 100%;
+}
 
 /* ---- FOOTER ---- */
 #footer { background: transparent; }
 #footer a { color: var(--themeColor); }
+
+/* ---- LICENSE AREA ---- */
+#license-area {
+    border-top: 0.05rem solid var(--borderColor);
+    padding: .425rem;
+    font-size: .775em;
+    background: var(--themeColor);
+    color: var(--whiteColor);
+}
+#license-area a {
+    color: inherit;
+    font-weight: bold;
+}
 [[/code]]
 [[/iftags]]
 
@@ -1032,6 +1046,8 @@ hr {
 
 [[module CSS]]
 @import url(&#39;https://fonts.googleapis.com/css2?family=Fira+Code&amp;display=swap&#39;);
+
+div#side-bar { background-color: var(--whiteColor); }
 
 /*-- in-page stuff --*/
 
@@ -1097,9 +1113,10 @@ hr {
 
 /*-- Toggle Sidebar styling --*/
 div#side-bar {
-  border-right: solid 1px #d9d9d9;
-  box-sizing: border-box;
-  overflow-x: hidden;
+    width: 17rem;
+    border-right: solid 1px #d9d9d9;
+    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 
@@ -1225,9 +1242,9 @@ div#side-bar {
     background-color: #282828;
     color: #f4f4f4;
     border-radius: 0rem;
-    margin: .25rem .2rem; .5rem .2rem;
-    padding: 0.21rem 0.35rem 0.22rem 1.02rem;
-    --notchSize: 7.6px;
+    margin: .325rem .2rem;
+    padding: 0.225rem 0.35rem 0.225rem 1.025rem;
+    --notchSize: .5rem;
     clip-path: 
      polygon(
       0% var(--notchSize), 
@@ -1267,7 +1284,7 @@ div#side-bar {
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:41.033447.</em>
+    <em>Last updated 2024-01-25 19:20:42.869617.</em>
   
 </div>
 </body>

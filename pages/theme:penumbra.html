@@ -474,21 +474,54 @@ The body font is Roboto.
        BHL Style Collapsible by Monkatraz
 */
 
-@import url(&#39;https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap&#39;);
-@import url(https://fonts.googleapis.com/css2?family=Fira+Code&amp;display=swap);
+@import url(&#39;https://api.fonts.coollabs.io/css2?family=Roboto&amp;display=swap&#39;);
+@import url(https://api.fonts.coollabs.io/css2?family=Fira+Code&amp;display=swap);
+
+@font-face {
+    font-family: &#39;Josefin Sans&#39;;
+    src: url(https://cdn.jsdelivr.net/gh/SYwaves/Webfont-Archive@master/Josefin-Sans.woff2) format(&#34;woff2&#34;);
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: &#39;Josefin Sans&#39;;
+    src: url(https://cdn.jsdelivr.net/gh/SYwaves/Webfont-Archive@master/Josefin-Sans-Italic.woff2) format(&#34;woff2&#34;);
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+@font-face {
+    font-family: &#39;Josefin Sans&#39;;
+    src: url(https://cdn.jsdelivr.net/gh/SYwaves/Webfont-Archive@master/Josefin-Sans-Bold.woff2) format(&#34;woff2&#34;);
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: &#39;Josefin Sans&#39;;
+    src: url(https://cdn.jsdelivr.net/gh/SYwaves/Webfont-Archive@master/Josefin-Sans-Bold-Italic.woff2) format(&#34;woff2&#34;);
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
 
 :root {
+  --body-font: &#39;Roboto&#39;, Inter, BlinkMacSystemFont,&#39;Segoe UI&#39;,Oxygen,Ubuntu,Cantarell,&#39;Fira Sans&#39;,&#39;Droid Sans&#39;,&#39;Helvetica Neue&#39;,sans-serif;
+  --header-font: &#39;Josefin Sans&#39;, Verdana, Arial, Helvetica, sans-serif;
+  --mono-font: &#39;Fira Code&#39;, &#39;Andale Mono&#39;, &#39;Courier New&#39;, Courier, monospace;
+
   --accentColor: #1EB5E8;
   --darkColor: #2F333C; 
   --darkerColor: #21252E;
+  --lightColor: #EDEDED;
   --lgurl: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Apenumbra/logo.png&#34;);
 }
 
 body {
-    font-family: &#39;Roboto&#39;, sans-serif;
+    font-family: var(--body-font);
     font-size: .9325rem;
-    color: #EDEDED;
+    color: var(--lightColor);
     background-color: var(--darkColor);
     background-image: linear-gradient(
         to bottom,
@@ -499,17 +532,18 @@ body {
     accent-color: var(--accentColor);
 }
 
-input { color-scheme: dark; }
-
-#main-content {
-    top: -1.2rem;
+#content-wrap {
+    margin-top: 1.25rem;
 }
+
+input { color-scheme: dark; }
 
 
 /* ---- SCROLLBAR ---- */
 
 ::-webkit-scrollbar {
-  width: 9px;
+  width: .625rem;
+  height: .625rem;
   background: transparent;
 }
 
@@ -552,28 +586,34 @@ div#extra-div-1 {
 #header h1, #header h2 { margin-left: 0; float: none; text-align: center; }
 /* Move the subtitle down a smidge */
 #header h2 { margin-top: 0.45rem; }
+#header h1 a {
+    margin: auto;
+    width: max-content;
+}
 /* Hide the existing text */
 #header h1 span, #header h2 span { font-size: 0; display: none; }
 /* Style the new text */
 #header h1 a::before, #header h2::before {
   color: var(--accentColor);
-  font-family: &#39;Josefin Sans&#39;, sans-serif;
+  font-family: var(--header-font);
   text-shadow: none;
 }
 /* Set the new text&#39;s content from variable */
 #header h1 a::before {
   content: var(--header-title, &#34;SCP FOUNDATION&#34;);
-  font-weight: 300;
+  font-weight: 700;
   font-size: 1.3em;
 }
 #header h2::before {
   content: var(--header-subtitle, &#34;SECURE - CONTAIN - PROTECT&#34;);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1.22em;
 }
 
 #login-status {
-    color: #ededed;
+    color: var(--lightColor);
+    width: 100%;
+    text-align: right;
 }
 #login-status a {
     color: var(--accentColor);
@@ -639,7 +679,7 @@ div#extra-div-1 {
 
 #footer {
     background: transparent;
-    color: #ededed;
+    color: var(--lightColor);
     font-size: 0.625rem;
     margin-top: 0.25em;
     padding: 0.25em 0.35em;
@@ -649,7 +689,7 @@ div#extra-div-1 {
     flex-wrap: wrap;
 }
 #footer &gt; a[href*=&#34;www.wikidot.com&#34;] {
-    color: #ededed;
+    color: var(--lightColor);
     padding: 0 0.85ch 0 0.5ch;
     border-right: 1px solid currentColor;
 }
@@ -660,7 +700,7 @@ div#extra-div-1 {
     font-size: 0;
 }
 #footer .options a {
-    color: #ededed;
+    color: var(--lightColor);
     font-size: 0.625rem;
     padding: 0 0.85ch;
     border-right: 1px solid currentColor;
@@ -671,7 +711,7 @@ div#extra-div-1 {
 }
 
 #license-area {
-    color: #ededed;
+    color: var(--lightColor);
     background-color: var(--darkerColor);
     border-top: solid 0.1rem var(--accentColor);
 }
@@ -692,19 +732,21 @@ div#extra-div-1 {
 #search-top-box {
     top: 2.2rem!important;
     right: 8px;
+    z-index: 8;
 }
 #search-top-box-form &gt; input[type=submit] {
-    border: solid 1px #ededed;
+    border: solid 1px var(--lightColor);
     background: var(--darkerColor)!important;
     box-shadow: none;
     border-radius: 0;
-    color: #ededed;
+    color: var(--lightColor);
     transition: color 0.15s linear;
 }
 #search-top-box-form input[type=submit]:hover {
     border: solid 1px var(--accentColor);
     box-shadow: none;
     color: var(--accentColor);
+    appearance: none;
 }
 #search-top-box-form &gt; input[type=text] { display: none; }
 
@@ -727,7 +769,7 @@ div#extra-div-1 {
     }
 }
 #top-bar, #top-bar a {
-     color: #ededed;
+     color: var(--lightColor);
      transition: color 0s;
 }
 #top-bar ul li ul,
@@ -742,7 +784,7 @@ div#extra-div-1 {
 #top-bar ul li.sfhover a,
 #top-bar ul li:hover a {
     background: var(--darkerColor);
-    color: #ededed;
+    color: var(--lightColor);
 }
 #top-bar ul li.sfhover a:hover,
 #top-bar ul li:hover a:hover {
@@ -830,7 +872,7 @@ div#side-bar {
 }
 #side-bar .collapsible-block-folded .collapsible-block-link,
 #side-bar .collapsible-block-unfolded-link .collapsible-block-link {
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
+    font-family: var(--header-font);
 }
 #side-bar .collapsible-block-unfolded-link .collapsible-block-link:hover {
     color: #ffffff;
@@ -840,10 +882,10 @@ div#side-bar {
 
 #side-bar .heading,
 #interwiki .heading {
-    color: #ededed;
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
+    color: var(--lightColor);
+    font-family: var(--header-font);
     font-size: 0.94rem;
-    border-bottom: solid 1px #ededed;
+    border-bottom: solid 1px var(--lightColor);
     margin-top: 1.25em;
 }
 
@@ -937,7 +979,7 @@ div.scpnet-interwiki-wrapper {
         width: 100%;
         height: 100%;
         top: 0;
-        right: 0;
+        right: 0; left: auto;
         background: rgba(0,0,0,0.3);
         background-position: 19em 50%;
         z-index: -1;
@@ -950,9 +992,6 @@ div.scpnet-interwiki-wrapper {
         left: auto;
         opacity: 1;
         pointer-events: auto;
-    }
-    #page-content &gt; hr, #page-content &gt; .list-pages-box &gt; .list-pages-item &gt; hr {
-        margin: 3em -5.5%;
     }
     #side-bar {
         top: 0;
@@ -980,7 +1019,7 @@ div.scpnet-interwiki-wrapper {
 }
  .yui-navset .yui-nav a, /* ---- Link Modifier ---- */
  .yui-navset .yui-navset-top .yui-nav a{
-     color: #ededed;
+     color: var(--lightColor);
      font-weight: bold;
     /* ---- Tab Background Colour | [UNSELECTED] ---- */
      background-color: var(--darkerColor);
@@ -991,7 +1030,7 @@ div.scpnet-interwiki-wrapper {
 }
  .yui-navset .yui-nav a:hover,
  .yui-navset .yui-nav a:focus{
-     color: #ededed;
+     color: var(--lightColor);
     /* ---- Tab Background Colour | [HOVER] ---- */
      background-color: var(--accentColor);
 }
@@ -1003,7 +1042,7 @@ div.scpnet-interwiki-wrapper {
      max-width: 100%;
      margin: 0;
      padding: 0;
-     color: #ededed;
+     color: var(--lightColor);
      background-color: var(--darkerColor);
      border-color: transparent;
      box-shadow: none;
@@ -1106,7 +1145,7 @@ div.scpnet-interwiki-wrapper {
 /* ---- INFO BAR ---- */
  body{
      --barColour: var(--darkerColor);
-     --linkColour: #ededed;
+     --linkColour: var(--lightColor);
 }
 
  .info-container .collapsible-block-content {
@@ -1167,7 +1206,7 @@ div.scpnet-interwiki-wrapper {
 }
  
 #page-content .rate-box-with-credit-button .fa-info {
-     color: #ededed;
+     color: var(--lightColor);
 }
 #page-content .rate-box-with-credit-button .fa-info:hover {
      color: var(--accentColor);
@@ -1178,7 +1217,7 @@ div.scpnet-interwiki-wrapper {
     border: solid 2px var(--darkerColor);
     border-radius: 0;
     box-shadow: 3px 0px 0px 0px var(--accentColor);
-    color: #ededed;
+    color: var(--lightColor);
 }
 #page-content .creditButtonStandalone p a:hover {
     color: var(--accentColor);
@@ -1186,7 +1225,7 @@ div.scpnet-interwiki-wrapper {
 
 #page-content .modalbox {
     background: var(--darkColor) !important;
-    color: #ededed;
+    color: var(--lightColor);
     box-shadow: none;
     border-radius: 0;
 }
@@ -1207,7 +1246,7 @@ div.scpnet-interwiki-wrapper {
 div.page-rate-widget-box .rate-points {
     background-color: var(--darkerColor);
     border: none;
-    color: #ededed !important;
+    color: var(--lightColor) !important;
     text-transform: capitalize;
 }
 .page-rate-widget-box .rateup,
@@ -1219,7 +1258,7 @@ div.page-rate-widget-box .rate-points {
 .page-rate-widget-box .rateup a,
 .page-rate-widget-box .ratedown a {
     background: transparent;
-    color: #ededed;
+    color: var(--lightColor);
 }
 .page-rate-widget-box .rateup a:hover,
 .page-rate-widget-box .ratedown a:hover {
@@ -1232,7 +1271,7 @@ div.page-rate-widget-box .rate-points {
     border: none;
 }
 .page-rate-widget-box .cancel a {
-    color: #ededed;
+    color: var(--lightColor);
 }
 .page-rate-widget-box .cancel a:hover {
     background: var(--darkerColor);
@@ -1242,19 +1281,19 @@ div.page-rate-widget-box .rate-points {
 
 /* ---- PAGE ELEMENTS ---- */
 
-.page-source, tt{
-    font-family: &#34;Fira Code&#34;, monospace;
+.page-source, tt {
+    font-family: var(--mono-font);
     font-size: 0.87rem;
 }
  .code pre, .code p, .code {
-    font-family: &#34;Fira Code&#34;, monospace;
+    font-family: var(--mono-font);
     font-size: 0.87rem;
     color: var(--darkerColor);
 }
 
 h1 {
     color: var(--accentColor);
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
+    font-family: var(--header-font);
     font-weight: bold;
 }
 h2,
@@ -1262,17 +1301,18 @@ h3,
 h4,
 h5,
 h6 {
-    color: #EDEDED;
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
+    color: inherit;
+    font-family: var(--header-font);
     font-weight: bold;
 }
 
-#page-title {
-    color: #ededed;
-    font-family: &#39;Josefin Sans&#39;, sans-serif;
-    font-size: 1.65rem;
+#page-title, .meta-title {
+    color: var(--lightColor);
+    font-family: var(--header-font);
+    font-weight: bold;
+    font-size: 1.75em;
     text-align: center;
-    border-color: #ededed;
+    border-color: currentColor;
 }
 
 /* Clicky links */
@@ -1284,7 +1324,7 @@ a:visited,
     color: var(--accentColor);
     transition: color 0.15s linear;
 }
-a:hover, a.newpage:hover, a:visited:hover, #side-bar a:hover {
+a:hover, a.newpage:hover, a:visited:hover, #side-bar a:not(.close-menu):hover {
     color: #ffffff;
     text-decoration: none;
     background-color: var(--accentColor);
@@ -1303,6 +1343,7 @@ a.newpage { filter: hue-rotate(180deg); }
 
 hr {
     background-color: var(--accentColor);
+    margin: 1.5rem 0;
 }
 
 blockquote,
@@ -1327,7 +1368,7 @@ div.blockquote,
 .scp-image-block .scp-image-caption {
     background-color: var(--darkerColor);
     border: solid 4px var(--darkerColor);
-    color: #ededed;
+    color: var(--lightColor);
     font-size: 0.84rem;
 }
 .scp-image-block.block-left { margin-left: 0; }
@@ -1370,7 +1411,7 @@ div.blockquote,
     padding: 0.5rem 1rem;
 
     text-decoration: none;
-    color: #ededed;
+    color: var(--lightColor);
     font-weight: bold;
     text-align: center;
 }
@@ -1405,7 +1446,7 @@ div.blockquote,
     box-shadow: -0.24rem 0px 0px 0px var(--accentColor);
 }
 .footnotes-footer .title {
-    color: #ededed;
+    color: var(--lightColor);;
 }
 .footnote .f-footer, .equation .e-footer, .reference .r-footer {
     display: none;
@@ -1416,7 +1457,7 @@ div.blockquote,
     margin-top: .18rem;
 }
 .page-tags span {
-    border-top: 1px solid #ededed;
+    border-top: 1px solid var(--lightColor);
 }
 
 /* Pop-Up Windows */
@@ -1442,7 +1483,7 @@ div.blockquote,
 .owindow .button-bar a {
     background-color: var(--darkerColor);
     border-color: var(--accentColor);
-    color: #ededed;
+    color: var(--lightColor);
 }
 .owindow .button-bar a:hover {
     background-color: var(--accentColor);
@@ -1491,7 +1532,7 @@ div.blockquote,
 /* Edit Lock Info*/
 #lock-info {
     background-color: var(--darkerColor);
-    border-color: #ededed;
+    border-color: var(--lightColor);
 }
  
 /* Close Button for Page Source, Rating, Etc */
@@ -1502,7 +1543,7 @@ a.action-area-close:hover {
 /* History */
 .pager .current {
     background-color: var(--accentColor);
-    border-color: #ededed;
+    border-color: var(--lightColor);
 }
 .pager a,
 table.page-history td.optionstd a {
@@ -1534,7 +1575,7 @@ table.page-history td.optionstd a {
 }
 
 .lightbox {
-    background-color: #ededed;
+    background-color: var(--lightColor);
     color: var(--darkerColor);
     border-left: solid 0.26rem var(--accentColor);
     border-right: solid 0.26rem var(--accentColor);
@@ -1688,7 +1729,7 @@ table.page-history td.optionstd a {
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:41.024479.</em>
+    <em>Last updated 2024-01-25 19:20:42.860996.</em>
   
 </div>
 </body>

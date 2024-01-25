@@ -29,13 +29,12 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>.morebyplacemcd {
-font-size: 0.9em !important;
-}
+          <pre><code>.morebyplacemcd { font-size: 0.9em !important; }
 
-.morebyplacemcd :is(#page-content table:not(.form), table.wiki-content-table) td {
-text-align: center !important;
-}</code></pre>
+.morebyplacemcd :is(table, .wiki-content-table) { width: 100%; }
+.morebyplacemcd :is(table:not(.form), table.wiki-content-table) td { text-align: center !important; }
+
+#page-content .printuser { white-space: nowrap !important; }</code></pre>
         </li>
       
     </ul>
@@ -71,13 +70,12 @@ text-align: center !important;
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[module css]]
-.morebyplacemcd {
-font-size: 0.9em !important;
-}
+.morebyplacemcd { font-size: 0.9em !important; }
 
-.morebyplacemcd :is(#page-content table:not(.form), table.wiki-content-table) td {
-text-align: center !important;
-}
+.morebyplacemcd :is(table, .wiki-content-table) { width: 100%; }
+.morebyplacemcd :is(table:not(.form), table.wiki-content-table) td { text-align: center !important; }
+
+#page-content .printuser { white-space: nowrap !important; }
 [[/module]]
 
 @@ @@
@@ -86,13 +84,15 @@ text-align: center !important;
 [[div class=&#34;morebyplacemcd&#34;]]
 ++* SOLO WORKS
 
-[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+author&#34; prependLine=&#34;||||||~ Author Page ||&#34;]]
+@@ @@
+
+[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;name&#34; tags=&#34;+author&#34; prependLine=&#34;||||||~ Author Page ||&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
 commented %%commented_at%% ||
 [[/module]]
 @@ @@
 
-[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+scp -co-authored&#34; prependLine=&#34;||||||~ SCP Articles ||&#34;]]
+[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;name&#34; tags=&#34;+scp -co-authored&#34; prependLine=&#34;||||||~ SCP Articles ||&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
 commented %%commented_at%% ||
 [[/module]]
@@ -102,112 +102,209 @@ commented %%commented_at%% ||
 [[/module]]
 @@ @@
 
-[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+tale -co-authored&#34; prependLine=&#34;||||||~ Tales ||&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-@@ @@
-
-[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+supplement -co-authored&#34; prependLine=&#34;||||||~ Supplements ||&#34;]]
+[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;name&#34; tags=&#34;+tale -co-authored&#34; prependLine=&#34;||||||~ Tales ||&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
 commented %%commented_at%% ||
 [[/module]]
 @@ @@
 
 [[div style=&#34;display: none;&#34;]]
-[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+goi-format -co-authored&#34; prependLine=&#34;||||||~ GoI Formats ||&#34;]]
+[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;name&#34; tags=&#34;+site -co-authored&#34; prependLine=&#34;||||||~ Facility Dossiers ||&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% ||
+[[/module]]
+
+[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;name&#34; tags=&#34;+goi-format -co-authored&#34; prependLine=&#34;||||||~ GoI Formats ||&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
 commented %%commented_at%% ||
 [[/module]]
 @@ @@
 
-[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+hub -co-authored&#34; prependLine=&#34;||||||~ Hubs ||&#34;]]
+[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;name&#34; tags=&#34;+hub -co-authored&#34; prependLine=&#34;||||||~ Hubs ||&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
 commented %%commented_at%% ||
 [[/module]]
 @@ @@
 [[/div]]
 
-[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;rating desc&#34; category=&#34;+theme&#34; prependLine=&#34;||||||~ Themes ||&#34;]]
+[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;name&#34; tags=&#34;+supplement -co-authored&#34; prependLine=&#34;||||||~ Supplements ||&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
 commented %%commented_at%% ||
 [[/module]]
+@@ @@
+
+[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;name&#34; category=&#34;+theme&#34; prependLine=&#34;||||||~ Themes ||&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% ||
+[[/module]]
+
 @@ @@
 
 ----
 
 @@ @@
+
 ++* COLLAB WORKS
 
-[[module ListPages created_by=&#34;Placeholder McD&#34; separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+co-authored&#34;]]
+@@ @@
+
+||||||||~ SCP Articles ||
+[[module ListPages name=&#34;abraka-davids-proposal&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
+commented %%commented_at%% || Various ||
 [[/module]]
 [[module ListPages name=&#34;keter-duty&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;scp-5956&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;scp-7555&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;admonition&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;site-17-hub&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;theme%3A5k&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;theme%3Aadmo&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;theme%3Abasalt&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;no-return-hub&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
-[[/module]]
-[[module ListPages name=&#34;project-isorropia&#34;]]
-|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
+commented %%commented_at%% || [[*user EstrellaYoshte]] _
+Ihp _
+[[*user S D Locke]] ||
 [[/module]]
 [[module ListPages name=&#34;scp-5841&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
+commented %%commented_at%% || [[*user Tyumen]] ||
 [[/module]]
-[[module ListPages name=&#34;i-hub&#34;]]
+[[module ListPages name=&#34;scp-5956&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
+commented %%commented_at%% || [[*user HarryBlank]] ||
 [[/module]]
-[[module ListPages name=&#34;scp-5243-video-transcripts&#34;]]
+[[module ListPages name=&#34;scp-6488&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
+commented %%commented_at%% || [[*user Liryn]] _
+feat. [[*user Jack Ike]] ||
 [[/module]]
-[[module ListPages name=&#34;bedrock&#34;]]
+[[module ListPages name=&#34;scp-6500&#34;]]
 || %%title_linked%% || +%%rating%% || edited %%updated_at%% _
-commented %%commented_at%% ||
+commented %%commented_at%% || [[*user Aethris]] _
+[[*user DarkStuff]] _
+[[*user Grigori Karpin]] _
+[[*user HarryBlank]] _
+Ihp _
+[[*user S D Locke]] ||
+[[/module]]
+[[module ListPages name=&#34;scp-6659&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Liryn]] _
+feat. [[*user DodoDevil]] ||
+[[/module]]
+[[module ListPages name=&#34;scp-6747&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Liryn]] _
+feat. [[*user Ralliston]] ||
+[[/module]]
+[[module ListPages name=&#34;scp-6820&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Liryn]] _
+stephlynch ||
+[[/module]]
+[[module ListPages name=&#34;scp-7528&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Gabriel Kero]] _
+[[*user HarryBlank]] ||
+[[/module]]
+[[module ListPages name=&#34;scp-7555&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Gabriel Kero]] ||
+[[/module]]
+[[module ListPages name=&#34;scp-7566&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Gabriel Kero]] _
+[[*user HarryBlank]] ||
 [[/module]]
 @@ @@
 
-&gt; A little goes a long way. If you&#39;ve enjoyed my work, you&#39;re not a student, and are otherwise financially stable, please consider donating.
+||||||||~ Tales ||
+[[module ListPages name=&#34;fragmented-compiled&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Its a Bad Idea]] _
+[[*user Pedagon]] _
+[[*user Tyumen]] ||
+[[/module]]
+@@ @@
+
+||||||||~ Facility Dossiers ||
+[[module ListPages name=&#34;secure-facility-dossier-area-12&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Gabriel Kero]] ||
+[[/module]]
+@@ @@
+
+||||||||~ Hubs ||
+[[module ListPages name=&#34;admonition&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Liryn]] ||
+[[/module]]
+[[module ListPages name=&#34;i-hub&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || Various ||
+[[/module]]
+[[module ListPages name=&#34;no-return-hub&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Aethris]] _
+[[*user DarkStuff]] _
+[[*user Grigori Karpin]] _
+[[*user HarryBlank]] _
+Ihp _
+[[*user Liryn]] _
+[[*user S D Locke]] ||
+[[/module]]
+[[module ListPages name=&#34;site-17-hub&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Liryn]] _
+[[*user Nagiros]] ||
+[[/module]]
+@@ @@
+
+||||||||~ Supplements ||
+[[module ListPages name=&#34;project-isorropia&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user EstrellaYoshte]] _
+Ihp _
+[[*user S D Locke]] ||
+[[/module]]
+[[module ListPages name=&#34;scp-5243-video-transcripts&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user HarryBlank]] ||
+[[/module]]
+@@ @@
+
+||||||||~ Themes ||
+[[module ListPages category=&#34;theme&#34; name=&#34;5k&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Liryn]] ||
+[[/module]]
+[[module ListPages category=&#34;theme&#34; name=&#34;admo&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user Liryn]] ||
+[[/module]]
+[[module ListPages category=&#34;theme&#34; name=&#34;basalt&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user EstrellaYoshte]] _
+[[*user Liryn]] ||
+[[/module]]
+[[module ListPages category=&#34;theme&#34; name=&#34;bedrock&#34;]]
+|| %%title_linked%% || +%%rating%% || edited %%updated_at%% _
+commented %%commented_at%% || [[*user EstrellaYoshte]] _
+[[*user Liryn]] ||
+[[/module]]
+@@ @@
+
+&gt; [[size 111%]]A little goes a long way. If you&#39;ve enjoyed my work, you&#39;re not a student, and are otherwise financially stable, please consider donating.[[/size]]
+
+@@ @@
 
 [[html]]
 &lt;div align=&#34;center&#34; style=&#34;width: min-content; margin: auto; border: 4px solid #ccc; border-radius: 10px;&#34;&gt;
 &lt;script type=&#39;text/javascript&#39; src=&#39;https://storage.ko-fi.com/cdn/widget/Widget_2.js&#39;&gt;&lt;/script&gt;&lt;script type=&#39;text/javascript&#39;&gt;kofiwidget2.init(&#39;DONATION&#39;, &#39;#333&#39;, &#39;X8X6BJ9T9&#39;);kofiwidget2.draw();&lt;/script&gt; 
 &lt;/div&gt;
 [[/html]]
+
+@@ @@
+
+[[&lt;]]
+&gt; The above widget links to my Ko-Fi page. Ko-fi is a website where you can donate money to creators in small increments, on either a one-time or recurring basis. I accept donations solely in recognition and endorsement of my existing works on the SCP Wiki; I do not indicate any intent to generate further works (or any other product/service) in so doing.
+&gt; 
+&gt; Payment services may reveal information such as your real name, email address, and other personal information when you donate. For more information, please view the SCP Wiki&#39;s [*/donations-policy Official Donations Policy].
+[[/&lt;]]
 
 @@ @@
 
@@ -222,7 +319,7 @@ commented %%commented_at%% ||
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:38.027273.</em>
+    <em>Last updated 2024-01-25 19:20:39.572166.</em>
   
 </div>
 </body>

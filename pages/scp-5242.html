@@ -30,48 +30,123 @@
       
         <li>
           <pre><code>:root {
-    --header-title: &#34;ORGANIZATION&#34;;
-    --header-subtitle: &#34;ENSURE ● INCLUDE ● PRESERVE&#34;;
-    --logo-img: url(http://scp-wiki.wdfiles.com/local--files/desk-of-junior-designer-s-yvonne/miscdept.png);
+  --header-title: &#34;ORGANIZATION&#34;;
+  --header-subtitle: &#34;ENSURE ● INCLUDE ● PRESERVE&#34;;
+  --logo-img: url(https://scp-wiki.wdfiles.com/local--files/calibri-s-mega-cool-art-page-it-s-mostly-just-icons-but-what/Volatility);
+
+  --head-font: var(--ui-font);
+
+  --accentLite: 230, 40, 60;
+  --posX: calc(50% - 333px - 17.5rem);
 }
 
-.authorlink-wrapper {
-    --author-top-adjust: -0.2rem;
+#page-content h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+}
+
+#page-content &gt; p {
+  font-weight: normal;
+}
+
+#page-content .blockquote {
+  margin: 1em 2em;
+}
+
+#page-content hr {
+  height: 1px;
+  background-color: rgb(var(--accent));
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#page-content .notation {
+  width: auto;
+  margin: auto;
+  border-left: solid 4px rgba(var(--accent), 0.33);
+  border-right: solid 4px rgba(var(--accent), 0.33);
+}
+
+#page-content .jotting {
+  padding: 0.5em 1.5em;
+}
+
+.notation &gt; .jotting,
+#page-content &gt; .jotting &gt; blockquote,
+#page-content &gt; .jotting tr td {
+  background: white;
+}
+
+#page-content a {
+  font-weight: bold;
+}
+
+#page-content tr th {
+  background: #eee;
+}
+
+.fncon {
+  font-family: var(--page-font) !important;
+  border-color: rgb(var(--accent));
+  background-color: #eee;
+}
+
+.fncon::before {
+  background-color: rgb(var(--accent));
+}
+
+@media only screen and (min-width: 1278px) {
+  .fncon {
+    width: 14rem;
+    border: none;
+    border-left: 5px rgb(var(--accent)) solid;
+  }
+
+  .fncon::before {
+    top: 14px; left: -10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .jotting,
+  .modal {
+    margin: 0.5em;
+  }   
+}
+
+#page-content .scp-image-block img {
+  border: solid 1px rgba(var(--accent), 0.66);
+}
+
+#page-content .scp-image-block.block-left {
+  margin: 0.5em 1.5em 1em 0em;
+}
+
+#page-content .scp-image-block.block-right {
+  margin: 0.5em 0em 1em 1.5em;
+}
+
+#page-content .scp-image-caption {
+  border: solid 1px rgba(var(--accent), 0.66);
+  border-radius: 0px;
+  margin-top: 7px;
+}
+
+:is(.anom-bar-container, .anom-bar-esoteric) + :not(.acs-extra),
+.acs-extra + * {
+    margin-top: 1.2rem !important;
+}
+
+#breadcrumbs, .pseudocrumbs {
+  font-size: 90%;
 }
 
 .bblock:hover {
-    color: white
+  color: white;
 }</code></pre>
         </li>
       
         <li>
-          <pre><code>.anom-bar-container.clear-1 .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-2 .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-3 .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-∶№ .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-5 .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-6 .top-center-box &gt; .bar-one {
-    display: block;
-}
-
-.anom-bar-container.clear-2 .top-center-box &gt; .bar-two,
-.anom-bar-container.clear-3 .top-center-box &gt; .bar-two,
-.anom-bar-container.clear-∶№ .top-center-box &gt; .bar-two,
-.anom-bar-container.clear-5 .top-center-box &gt; .bar-two,
-.anom-bar-container.clear-6 .top-center-box &gt; .bar-two {
-    display: block;
-}
-
-.anom-bar-container.clear-3 .top-center-box &gt; .bar-three,
-.anom-bar-container.clear-∶№ .top-center-box &gt; .bar-three,
-.anom-bar-container.clear-5 .top-center-box &gt; .bar-three,
-.anom-bar-container.clear-6 .top-center-box &gt; .bar-three {
-    display: block;
-}
-
-.anom-bar-container.clear-∶№ .top-center-box &gt; .bar-four,
-.anom-bar-container.clear-5 .top-center-box &gt; .bar-four,
-.anom-bar-container.clear-6 .top-center-box &gt; .bar-four {
+          <pre><code>.anom-bar-container.clear-∶№ .top-center-box &gt; :is(.bar-one, .bar-two, .bar-three, .bar-four) {
     display: block;
 }
 
@@ -90,15 +165,19 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>margin-bottom: 1em;</code></pre>
+          <pre><code>border-collapse: collapse;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: 300px; margin: auto; font-style: italic;</code></pre>
+          <pre><code>width: 50%;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: 33%; margin: auto;</code></pre>
+          <pre><code>max-width: 300px; margin: auto; font-style: italic;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 33%; min-width: 300px; margin: auto;</code></pre>
         </li>
       
         <li>
@@ -115,13 +194,13 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:foxtrot" target="_blank"><code>:scp-wiki:theme:foxtrot</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:croqstyle" target="_blank"><code>:scp-wiki:component:croqstyle</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:foxtrot.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
   </span>
 
   
@@ -166,8 +245,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/more-by:placeholder-mcd" target="_blank"><code>more-by:placeholder-mcd</code></a>
+    <a href="https://scp-wiki.wikidot.com/more-by:placeholder-mcd" target="_blank"><code>:scp-wiki:more-by:placeholder-mcd</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/more-by:placeholder-mcd.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -212,7 +297,7 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>modal</code></pre>
+          <pre><code>notation</code></pre>
         </li>
       
         <li>
@@ -280,10 +365,6 @@
         </li>
       
         <li>
-          <pre><code>table1</code></pre>
-        </li>
-      
-        <li>
           <pre><code>fnnum</code></pre>
         </li>
       
@@ -308,15 +389,7 @@
         </li>
       
         <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table1</code></pre>
+          <pre><code>jotting</code></pre>
         </li>
       
         <li>
@@ -329,6 +402,10 @@
       
         <li>
           <pre><code>fncon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
@@ -350,21 +427,124 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:foxtrot wide=a|hidetitle=a]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:foxtrot
+hidetitle=a]]
+[[include :scp-wiki:component:croqstyle]]
 
 [[module css]]
 :root {
-    --header-title: &#34;ORGANIZATION&#34;;
-    --header-subtitle: &#34;ENSURE ● INCLUDE ● PRESERVE&#34;;
-    --logo-img: url(http://scp-wiki.wdfiles.com/local--files/desk-of-junior-designer-s-yvonne/miscdept.png);
+  --header-title: &#34;ORGANIZATION&#34;;
+  --header-subtitle: &#34;ENSURE ● INCLUDE ● PRESERVE&#34;;
+  --logo-img: url(https://scp-wiki.wdfiles.com/local--files/calibri-s-mega-cool-art-page-it-s-mostly-just-icons-but-what/Volatility);
+
+  --head-font: var(--ui-font);
+
+  --accentLite: 230, 40, 60;
+  --posX: calc(50% - 333px - 17.5rem);
 }
 
-.authorlink-wrapper {
-    --author-top-adjust: -0.2rem;
+#page-content h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+}
+
+#page-content &gt; p {
+  font-weight: normal;
+}
+
+#page-content .blockquote {
+  margin: 1em 2em;
+}
+
+#page-content hr {
+  height: 1px;
+  background-color: rgb(var(--accent));
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
+
+#page-content .notation {
+  width: auto;
+  margin: auto;
+  border-left: solid 4px rgba(var(--accent), 0.33);
+  border-right: solid 4px rgba(var(--accent), 0.33);
+}
+
+#page-content .jotting {
+  padding: 0.5em 1.5em;
+}
+
+.notation &gt; .jotting,
+#page-content &gt; .jotting &gt; blockquote,
+#page-content &gt; .jotting tr td {
+  background: white;
+}
+
+#page-content a {
+  font-weight: bold;
+}
+
+#page-content tr th {
+  background: #eee;
+}
+
+.fncon {
+  font-family: var(--page-font) !important;
+  border-color: rgb(var(--accent));
+  background-color: #eee;
+}
+
+.fncon::before {
+  background-color: rgb(var(--accent));
+}
+
+@media only screen and (min-width: 1278px) {
+  .fncon {
+    width: 14rem;
+    border: none;
+    border-left: 5px rgb(var(--accent)) solid;
+  }
+
+  .fncon::before {
+    top: 14px; left: -10px;
+  }
+}
+
+@media (max-width: 767px) {
+  .jotting,
+  .modal {
+    margin: 0.5em;
+  }   
+}
+
+#page-content .scp-image-block img {
+  border: solid 1px rgba(var(--accent), 0.66);
+}
+
+#page-content .scp-image-block.block-left {
+  margin: 0.5em 1.5em 1em 0em;
+}
+
+#page-content .scp-image-block.block-right {
+  margin: 0.5em 0em 1em 1.5em;
+}
+
+#page-content .scp-image-caption {
+  border: solid 1px rgba(var(--accent), 0.66);
+  border-radius: 0px;
+  margin-top: 7px;
+}
+
+:is(.anom-bar-container, .anom-bar-esoteric) + :not(.acs-extra),
+.acs-extra + * {
+    margin-top: 1.2rem !important;
+}
+
+#breadcrumbs, .pseudocrumbs {
+  font-size: 90%;
 }
 
 .bblock:hover {
-    color: white
+  color: white;
 }
 [[/module]]
 
@@ -380,21 +560,32 @@ More works like this: [*/placeholder-mcd-s-authorpage PLACEHOLDER STAFF DOCUMENT
 
 @@ @@
 
-[[div class=&#34;modal&#34;]]
+[[div class=&#34;notation&#34;]]
 [[=]]
-+* MISCOMMUNICATIONS DEPT. NOTICE
+++* MISCOMMUNICATIONS NOTICE
 [[/=]]
 
-//A semiohazard, informally, is a fact of the universe that just shouldn&#39;t be true, but functionally is. They are inherently abstract and affect the way that we think and communicate about reality.//[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]//Intro to Semiontology// by S. M. Katz, Esq.[[/span]]
+//&#34;A semiohazard, informally, is a fact of the universe that just shouldn&#39;t be true, but functionally is. They are inherently abstract and affect the way that we think and communicate about reality.&#34;//
 
-A particularly costly example of one such fact is, &#39;the operations of &#39;YWTGTSYT&#39; are [*/scp-4703 perfectly legal],&#39; which currently requires the Foundation Legal Department to entirely redraft Texas corporate law.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**NOTE:** Bureaucratohazards are a subset of semiohazard affecting bureaucratic systems.[[/span]] Such things are facts of baseline reality; they always have been, and always will be, true. But they //shouldn&#39;t//, and we //know// they shouldn&#39;t. They aren&#39;t part of reality because reality says so, but because reality has been pulled inside-out by the conceptual nature of semantic equivalence itself. Alas, there is nothing we can do but reframe our definition of baseline and move on. To purposely poke at the bugs in the simulation is to invite a crash.
+[[&gt;]]
+[[size 90%]]//-- Intro to Semiospherics//[[/size]]
+[[size 90%]]//S. M. Katz, Esq. et al//[[/size]]
+[[/&gt;]]
 
-Read on, knowing that you must accept what the universe says is true, even if it doesn&#39;t make sense. One plus one doesn&#39;t always equal two.
+-----
+
+A particularly costly example of a semiohazard: &#39;the operations of &#39;YWTGTSYT&#39; are [*/scp-4703 perfectly legal],&#39; one which has obligated the Foundation Legal Department to entirely redraft Texas&#39; corporate laws.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**NOTE:** Bureaucratohazards are a subset of semiohazard affecting bureaucratic systems.[[/span]] These things are perceived facts of baseline reality; they always have been, and always will be, apparently true. But they //shouldn&#39;t//, and we //know// they shouldn&#39;t. They aren&#39;t part of reality because reality says so, but because reality has been pulled inside-out by the perceptual nature of semantic equivalence.
+
+Read on, knowing that you must accept what the universe says is true, even if it doesn&#39;t make sense; one plus one doesn&#39;t always equal two.
+
+[[&gt;]]
+[[size 90%]]//-- Dr. Eli Forkley//[[/size]]
+[[size 90%]]//Director of [*/domc-hub Miscommunications]//[[/size]]
+[[/&gt;]]
 [[/div]]
 
 @@ @@
 
-[[div style=&#34;margin-bottom: 1em;&#34;]]
 [[include :scp-wiki:component:anomaly-class-bar-source
 |item-number= scp-integer
 |clearance=∶№
@@ -424,36 +615,9 @@ Read on, knowing that you must accept what the universe says is true, even if it
 [[include :scp-wiki:component:customizable-acs
 |clearance-four= 0, 0, 0
 |inc-clearance= --]]]
-[[/div]]
 
 [[module CSS]]
-.anom-bar-container.clear-1 .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-2 .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-3 .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-∶№ .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-5 .top-center-box &gt; .bar-one,
-.anom-bar-container.clear-6 .top-center-box &gt; .bar-one {
-    display: block;
-}
-
-.anom-bar-container.clear-2 .top-center-box &gt; .bar-two,
-.anom-bar-container.clear-3 .top-center-box &gt; .bar-two,
-.anom-bar-container.clear-∶№ .top-center-box &gt; .bar-two,
-.anom-bar-container.clear-5 .top-center-box &gt; .bar-two,
-.anom-bar-container.clear-6 .top-center-box &gt; .bar-two {
-    display: block;
-}
-
-.anom-bar-container.clear-3 .top-center-box &gt; .bar-three,
-.anom-bar-container.clear-∶№ .top-center-box &gt; .bar-three,
-.anom-bar-container.clear-5 .top-center-box &gt; .bar-three,
-.anom-bar-container.clear-6 .top-center-box &gt; .bar-three {
-    display: block;
-}
-
-.anom-bar-container.clear-∶№ .top-center-box &gt; .bar-four,
-.anom-bar-container.clear-5 .top-center-box &gt; .bar-four,
-.anom-bar-container.clear-6 .top-center-box &gt; .bar-four {
+.anom-bar-container.clear-∶№ .top-center-box &gt; :is(.bar-one, .bar-two, .bar-three, .bar-four) {
     display: block;
 }
 
@@ -467,16 +631,18 @@ Read on, knowing that you must accept what the universe says is true, even if it
 [[/module]]
 
 [[include component:image-block
-|name=ABSTRACT_RISK
+|name=https://scp-wiki.wdfiles.com/local--files/calibri-s-mega-cool-art-page-it-s-mostly-just-icons-but-what/Volatility
 |caption=A symbolic identifier representing &#39;VOLATILITY&#39;, apparently abstracted from SCP-INTEGER&#39;s original Risk Class.
 |align=right
 |width=275px]]
 
 **##green|SECURITY MEASURES##:** ##blue|SCP-INTEGER## must only be semantically identified using &#39;correct&#39; identifiers, including &#39;##blue|NAME##&#39;, &#39;##blue|BEING##&#39;, &#39;##blue|ENTITY##&#39; and others. However, &#39;##blue|SCP-INTEGER##&#39; is the suggested identifier, due to others being either redundant or only conditionally &#39;correct&#39;.
 
-Knowledge of ##blue|SCP-INTEGER## and its properties should be restricted to only the necessary personnel for containment, including Dr. Placeholder and one member of the [*http://www.scp-wiki.net/domc-hub Department of Miscommunications], enforceable via amnesticization. However, extensions for research purposes may be permitted by Dir. Forkley on a case-by-case basis. Note that this ##green|FILE## has been strictly organized such that non-abstract information concerning ##blue|SCP-INTEGER## and/or ##green|SCP-INTEGER-DIGIT## instances is not directly communicated via identifiers. For the sake of clarity, correct identifiers for ##blue|SCP-INTEGER## and ##green|SCP-INTEGER-DIGIT## have been made distinct via blue and green coloration (respectively). Updates to this ##green|FILE##, if any, are encouraged to remain consistent with these principles.
+Knowledge of ##blue|SCP-INTEGER## and its properties should be restricted to only the necessary personnel for containment, including Dr. Placeholder and one member of the Department of Miscommunications, enforceable via amnesticization. However, extensions for research purposes may be permitted by Dir. Forkley on a case-by-case basis. Note that this ##green|FILE## has been strictly organized such that non-abstract information concerning ##blue|SCP-INTEGER## and/or ##green|SCP-INTEGER-DIGIT## instances is not directly communicated via identifiers. For the sake of clarity, correct identifiers for ##blue|SCP-INTEGER## and ##green|SCP-INTEGER-DIGIT## have been made distinct via blue and green coloration (respectively). Updates to this ##green|FILE##, if any, are encouraged to remain consistent with these principles.
 
 ##green|SCP-INTEGER-DIGIT## instances that do not possess sapience are to be contained at Site-15. Access to such instances for research of semiontological anomalies (a.k.a. semiohazards) may be permitted to personnel possessing Level 4 clearance or higher. With regards to ##green|SCIENTIST## instances, ##green|SCP-INTEGER-DIGIT## instances possessing sapience need not be contained unless, as a result of their properties or otherwise, they inhibit the containment of ##blue|SCP-INTEGER##.
+
+----
 
 **##green|EXPLANATION##:** ##blue|SCP-INTEGER## is a ##blue|HAZARD##[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]A semiontological anomaly (semiohazard) is a disruption of the Semiosphere (the medium through which information about reality travels before it is perceived or measured) which results in reality&#39;s apparent adherence to some non-real axiom.[[/span]] ##blue|COMPLEX## that simplifies &#39;incorrect&#39; designations and classifications of itself and instances of ##green|SCP-INTEGER-DIGIT##. In the event that ##blue|SCP-INTEGER## is &#39;incorrectly&#39; designated or classified through any form of semantic communication, said identifier becomes abstracted[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Abstraction: The generalization of a concept.[[/span]] by one Cuil.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]The Cuil is a unit of measurement denoting one level of abstraction away from the reality of a situation.[[/span]] The new, abstracted identifier is retroactively incorporated into the ##blue|CONSTRUCT## as &#39;correct&#39;. Additionally, its respective medium of communication will become an instance of ##green|SCP-INTEGER-DIGIT##.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**##red|LESSON##**[[/span]]
 
@@ -500,32 +666,81 @@ Other known &#39;correct&#39; identifiers for ##blue|SCP-INTEGER## include:
 
 ##green|SCP-INTEGER-DIGIT## is the designation for ##green|THINGS##, including both ##green|ITEMS## and ##green|BEINGS##, that have served as a medium of communication for an incorrect designation or classification of ##blue|SCP-INTEGER##. Upon becoming an instance of ##green|SCP-INTEGER-DIGIT##, its identifiers are similarly abstracted by ##blue|SCP-INTEGER##. Incorrect identifications of ##green|SCP-INTEGER-DIGIT## instances will be abstracted, but their respective media of communication do not become further instances.
 
-The following is a list of known instances of SCP-INTEGER-DIGIT.
+The following is a list of known instances of ##green|SCP-INTEGER-DIGIT##.
 
 @@ @@
 
-[[div class=&#34;table1&#34;]]
-||~ Correct Identifier(s) ||~ Non-identifying ##green|EXPLANATION## ||
-|| &#39;##green|FILE##&#39; _
-&#39;##green|ACCESS##&#39; (when referring to protocol) _
-&#39;##green|SECURITY MEASURE##&#39; (when referring to protocol) _
-&#39;##green|EXPLANATION##&#39; (when referring to descriptiveness) _
-&#39;##green|RESTRICTION##&#39; (when referring to reduced access) _
-&#39;##green|ERASED##&#39; (when referring to expungement) _
-&#39;##green|ADDITION##&#39; (when referring to new content) _
-&#39;##green|INQUIRY##&#39; (when referring to gathering knowledge) || Contains electronic information concerning ##blue|SCP-INTEGER##. ||
-|| &#39;##green|PAGE##&#39; _
-&#39;##green|SHEET##&#39; || Contains physical information concerning ##blue|SCP-INTEGER##, and is composed of cellulose pulp. ||
-|| &#39;##green|INSTRUMENT##&#39;[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]It is unknown whether this identifier is considered an abstraction of the conventional identifier for ##green|INSTRUMENT##, or if it was semantically conflated with its homonym, the woodwind instrument.[[/span]] || Contains auditory information concerning ##blue|SCP-INTEGER## _
-Used for ##green|INQUIRY##. ||
-|| &#39;##green|DISPLAY##&#39; || Shows electronic information, and is connected to a computer. ||
-|| &#39;##green|SCIENTIST##&#39; _
-&#39;##green|RESEARCHER##&#39; _
-&#39;##green|INQUISITOR##&#39; (when referring to gathering knowledge)[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]See **##green|ADDITION INTEGER-LETTER##**.[[/span]] || At the time of writing, 3 of these instances exist. Either currently or previously employed at Site-15. ||
-|| &#39;Doctor Placeholder McDoctorate, PhD.&#39; _
-&#39;Dr. PhD. McPhD., PhD.&#39; _
-Any combination of at least two components of the above names, ordered left to right. || Site-15 Director. Instance is unique in that only proper-noun or title designations are corrected. Dr. Placeholder is legally unable to change this, as it is an objective fact that this is his name.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**##red|PUNISHMENT##**.[[/span]] ||
-[[/div]]
+[[table style=&#34;border-collapse: collapse;&#34;]]
+[[row]]
+[[hcell style=&#34;width: 50%;&#34;]]
+Correct Identifier(s)
+[[/hcell]]
+[[hcell]]
+Non-identifying ##green|EXPLANATION##
+[[/hcell]]
+[[/row]]
+[[row]]
+[[cell]]
+&#39;##green|FILE##&#39;
+&#39;##green|ACCESS##&#39; (when referring to protocol)
+&#39;##green|SECURITY MEASURE##&#39; (when referring to protocol)
+&#39;##green|EXPLANATION##&#39; (when referring to descriptiveness)
+&#39;##green|RESTRICTION##&#39; (when referring to reduced access)
+&#39;##green|ERASED##&#39; (when referring to expungement)
+&#39;##green|ADDITION##&#39; (when referring to new content)
+&#39;##green|INQUIRY##&#39; (when referring to gathering knowledge)
+[[/cell]]
+[[cell]]
+Contains electronic information concerning ##blue|SCP-INTEGER##.
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
+&#39;##green|PAGE##&#39;
+&#39;##green|SHEET##&#39;
+[[/cell]]
+[[cell]]
+Contains physical information concerning ##blue|SCP-INTEGER##, and is composed of cellulose pulp.
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
+&#39;##green|INSTRUMENT##&#39;[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]It is unknown whether this identifier is considered an abstraction of the conventional identifier for an ##green|INSTRUMENT## which records audio, or if it was semantically conflated with its homonym, the woodwind instrument.[[/span]]
+[[/cell]]
+[[cell]]
+Contains auditory information concerning ##blue|SCP-INTEGER##
+Used for ##green|INQUIRY##.
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
+&#39;##green|DISPLAY##&#39;
+[[/cell]]
+[[cell]]
+Displays electronic information, and is connected to a computer.
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
+&#39;##green|SCIENTIST##&#39;
+&#39;##green|RESEARCHER##&#39;
+&#39;##green|INQUISITOR##&#39; (when referring to gathering knowledge)[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]See **##green|ADDITION INTEGER-LETTER##**.[[/span]]
+[[/cell]]
+[[cell]]
+Three instances exist at time of writing. Either currently or previously employed at Site-15.
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
+&#39;Doctor Placeholder McDoctorate, PhD.&#39;
+&#39;Dr. PhD. McPhD., PhD.&#39;
+Any combination of at least two components of the above names, ordered left to right.
+[[/cell]]
+[[cell]]
+Site-15 Director. Instance is unique in that only proper-noun or title designations are corrected. Dr. Placeholder is legally unable to change this, as it is an objective fact that this is his name.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**##red|PUNISHMENT##**.[[/span]]
+[[/cell]]
+[[/row]]
+[[/table]]
 
 @@ @@
 
@@ -533,65 +748,102 @@ The Foundation became aware of ##blue|SCP-INTEGER## on 05/05/2002, when [##green
 
 @@ @@
 
-[[div class=&#34;table1 tableb&#34;]]
-||~ ##green|ADDITION INTEGER-LETTER: INQUIRY LOG## ||
-|| ##green|**INQUISITOR:** SCIENTIST-LETTER## _
-**INTERVIEWED:** Dr. Placeholder ||
-|| **FOREWORD:** Attempted interview of Dr. Placeholder to ascertain the nature of ##blue|SCP-INTEGER##. Terminated due to ##green|SCIENTIST-LETTER##&#39;s lack of understanding concerning ##blue|SCP-INTEGER##&#39;s ##green|SECURITY MEASURES##. Note that the ##green|FILE## used in this ##green|INQUIRY## did not yet contain an ##green|EXPLANATION## demonstrating accuracy. ||
-||~ &lt;&lt; BEGIN ##green|LOG## &gt;&gt; ||
-|| **##green|INQUISITOR##:** Dr. Placeholder, this ##green|INQUIRY## is being conducted exactly fifteen minutes after you updated the ##green|SECURITY MEASURES## for ##blue|SCP-INTEGER##. We&#39;d like to know exactly what the hell anything in that ##green|FILE## means. _
- _
-**Dr. PhD.:** This ##green|INQUIRY## is going to look just as useless on ##green|FILE##. I already tried to tell ##green|SCIENTIST##, you can&#39;t [##green|UNPROFESSIONALISM ERASED##] talk about it specifically. _
- _
-**##green|INQUISITOR##:** And why is that, might I ask? _
- _
-**Dr. PhD.:** What part of, &#39;can&#39;t talk about it,&#39; don&#39;t you understand? You have the ##green|PAGE## in front of you, right? _
- _
-**##green|INQUISITOR##:** I&#39;m the ##green|INQUISITOR## asking the questions here. _
- _
-**Dr. PhD.:** [##green|ERASED##], fine. You see that list of terms? We can only talk about ##blue|SCP-INTEGER## using those terms. _
- _
-**##green|INQUISITOR##:** //(The ##green|INQUISITOR## examines the FILE.)// Okay... So, how did you become aware of the ##blue|HAZARD##? _
- _
-**Dr. PhD.:** All I can tell you is that I found- //(A painful groan is heard.)// ...I //said// something that I shouldn&#39;t have said. That should never be said. Ever. _
- _
-**##green|INQUISITOR##:** Unhelpful, but duly noted. Could you attempt to somehow convey what ##blue|SCP-INTEGER## does with a little more clarity? Try your best? _
- _
-**Dr. PhD.:** //(Scoffs.)// If you use any other word than what&#39;s on that list, it&#39;ll take some general category that the word is in, and add the word for that category to the list. _
- _
-**##green|INQUISITOR##:** ...Go on. _
- _
-**Dr. PhD.:** And, it&#39;ll do the same to you, and give you your own personal list. So I suggest you stick to the ##green|SECURITY MEASURES##. _
- _
-**##green|INQUISITOR##:** I&#39;m not sure I understand. So what if this ##blue|THING## attaches a list to me? _
- _
-**Dr. PhD.:** Be [##green|ERASED##] careful! Haven&#39;t you had a briefing on semiohazards? It&#39;s not just a list of words- it&#39;s a list of //facts//. There&#39;s no way around them, and there&#39;s no way of undoing them. You&#39;re lucky &#39;##blue|THING##&#39; is on the list, or we&#39;d be stuck calling you ##green|RESEARCHER## for the rest of time. And from the beginning of time. _
- _
-**##green|INQUISITOR##:** Ah... well, this is quite the ##blue|ISSUE##,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**##red|MISTAKE##**.[[/span]] isn&#39;t it? _
- _
-**Dr. PhD.:** Yeah, no kidding. _
- _
-//(A strong breeze moves through the room.)// _
- _
-**Dr. PhD.:** //(Sharp inhale.)// Wait, //the// [##green|ERASED##] //list! I didn&#39;t write that-// _
- _
-**##green|INQUISITOR##:** Wait, what? But ##blue|ISSUE## is a correct identifier for ##blue|SCP-INTEGER##. _
- _
-**Dr. PhD.:** //(A pause is followed by an exasperated sigh.)// I really tried, ##green|INQUISITOR##. _
- _
-**##green|INQUISITOR##:** Wait, something doesn&#39;t feel right- why am I ##green|INQUISITOR##? _
- _
-**Dr. PhD.:** Whatever you //actually// just said wasn&#39;t a correct identifier until //you// misidentified it. I&#39;ve had to call you ##green|SCIENTIST-LETTER## for years now, and I finally know why. _
- _
-**##green|INQUISITOR##:** Wait, but... that doesn&#39;t... that //shouldn&#39;t// be my name- //What the// [##green|ERASED##] //is going on!?// ||
-||~ &lt;&lt; END ##green|LOG## &gt;&gt; ||
-|| **CLOSING STATEMENT:** Evidence would suggest that ##green|SCIENTIST-LETTER&#39;s## status as an ##green|SCP-INTEGER-DIGIT## instance was retroactively caused by negligence of ##green|SECURITY MEASURES## during the above ##green|INQUIRY##. ##green|SCIENTIST-LETTER##&#39;s subsequent amnesticization request granted, despite minimal predicted effectiveness. ||
+[[div class=&#34;jotting tableb&#34;]]
+= ##green|**__ADDITION INTEGER/LETTER:__** EVENT##
+
+[[table]]
+[[row]]
+[[hcell]]
+##green|INQUIRY LOG INTEGER-NUMERAL##
+[[/hcell]]
+[[/row]]
+[[row]]
+[[cell]]
+##green|**INQUISITOR:** SCIENTIST-LETTER##
+**INTERVIEWED:** Dr. Placeholder
+
+**FOREWORD:** Attempted interview of Dr. Placeholder to ascertain the nature of ##blue|SCP-INTEGER##. Terminated due to ##green|SCIENTIST-LETTER##&#39;s lack of understanding concerning ##blue|SCP-INTEGER##&#39;s ##green|SECURITY MEASURES##. Note that the ##green|FILE## used in this ##green|INQUIRY## did not yet contain an ##green|EXPLANATION## demonstrating accuracy.
+[[/cell]]
+[[/row]]
+[[row]]
+[[hcell]]
+&lt;&lt; BEGIN ##green|LOG## &gt;&gt;
+[[/hcell]]
+[[/row]]
+[[row]]
+[[cell]]
+**##green|INQUISITOR##:** Dr. Placeholder, this ##green|INQUIRY## is being conducted exactly fifteen minutes after you updated the ##green|SECURITY MEASURES## for ##blue|SCP-INTEGER##. We&#39;d like to know exactly what the hell anything in that ##green|FILE## means.
+
+**Dr. PhD.:** This ##green|INQUIRY## is going to look just as useless on ##green|FILE##. I already tried to tell ##green|SCIENTIST##, you can&#39;t [##green|UNPROFESSIONALISM ERASED##] talk about it specifically.
+
+**##green|INQUISITOR##:** And why is that, might I ask?
+
+**Dr. PhD.:** What part of, &#39;can&#39;t talk about it,&#39; don&#39;t you understand? You have the ##green|PAGE## in front of you, right?
+
+**##green|INQUISITOR##:** I&#39;m the ##green|INQUISITOR## asking the questions here.
+
+**Dr. PhD.:** [##green|ERASED##], fine. You see that list of terms? We can only talk about ##blue|SCP-INTEGER## using those terms.
+
+= //&lt;##green|INQUISITOR## examines the FILE.&gt;//
+
+**##green|INQUISITOR##:** Okay... So, how did you become aware of the ##blue|HAZARD##?
+
+**Dr. PhD.:** All I can tell you is that I found -- //&lt;groans&gt;// ... I //said// something that I shouldn&#39;t have said. That should never be said. Ever.
+
+**##green|INQUISITOR##:** Unhelpful, but duly noted. Could you attempt to somehow convey what ##blue|SCP-INTEGER## does with a little more clarity? Try your best?
+
+**Dr. PhD.:** //&lt;scoffs&gt;// If you use any other word than what&#39;s on that list, it&#39;ll take some general category that the word is in, and add the word for that category to the list.
+
+**##green|INQUISITOR##:** ... Go on.
+
+**Dr. PhD.:** And, it&#39;ll do the same to you, and give you your own personal list. So I suggest you stick to the ##green|SECURITY MEASURES##.
+
+**##green|INQUISITOR##:** I&#39;m not sure I understand. So what if this ##blue|THING## attaches a list to me?
+
+**Dr. PhD.:** Be [##green|ERASED##] careful! Haven&#39;t you had a briefing on semiohazards? It&#39;s not just a list of words- it&#39;s a list of //facts//. There&#39;s no way around them, and there&#39;s no way of undoing them. You&#39;re lucky &#39;##blue|THING##&#39; is on the list, or we&#39;d be stuck calling you ##green|RESEARCHER## for the rest of time. And from the beginning of time.
+
+**##green|INQUISITOR##:** Ah... well, this is quite the ##blue|ISSUE##,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**##red|MISTAKE##**.[[/span]] isn&#39;t it?
+
+**Dr. PhD.:** Yeah, no kidding.
+
+= //&lt;A strong breeze moves through the room.&gt;//
+
+**Dr. PhD.:** //&lt;inhales sharply&gt;// Wait, //the// [##green|ERASED##] //list!// I didn&#39;t write that --
+
+**##green|INQUISITOR##:** Woah, wait -- //what//? It says ##blue|ISSUE## is a correct identifier for ##blue|SCP-INTEGER##.
+
+= //&lt;Silence on recording.&gt;//
+
+**Dr. PhD.:** //&lt;sighs&gt;// I really tried, ##green|INQUISITOR##.
+
+**##green|INQUISITOR##:** Wait, something doesn&#39;t feel right- why am I ##green|INQUISITOR##?
+
+**Dr. PhD.:** Whatever you //actually// just said wasn&#39;t a correct identifier until //you// misidentified it. I&#39;ve had to call you ##green|SCIENTIST-LETTER## for years now, and I finally know why.
+
+**##green|INQUISITOR##:** Wait, but... that doesn&#39;t... that //shouldn&#39;t// be my name- //What the// [##green|ERASED##] //is going on!?//
+[[/cell]]
+[[/row]]
+[[row]]
+[[hcell]]
+&lt;&lt; END ##green|LOG## &gt;&gt;
+[[/hcell]]
+[[/row]]
+[[row]]
+[[cell]]
+**CLOSING STATEMENT:** Evidence would suggest that ##green|SCIENTIST-LETTER&#39;s## status as an ##green|SCP-INTEGER-DIGIT## instance was retroactively caused by negligence of ##green|SECURITY MEASURES## during the above ##green|INQUIRY##. ##green|SCIENTIST-LETTER##&#39;s subsequent amnesticization request granted, despite minimal predicted effectiveness.
+[[/cell]]
+[[/row]]
+[[/table]]
+
+= **__END ##green|ADDITION##__**
+[[/div]]
 
 @@ @@
 ----
 @@ @@
 
-||~ ##green|**NOTICE:**## A semiohazardous error has occurred while viewing this file. The following ##green|PARABLE## may not correspond to objective reality. ||
+[[div class=&#34;blockquote&#34;]]
+= ##green|**NOTICE:**## An error has occurred in retrieving this file. The following ##green|PARABLE## may not correspond to objective reality.
 [[/div]]
 
 @@ @@
@@ -602,47 +854,47 @@ The Foundation became aware of ##blue|SCP-INTEGER## on 05/05/2002, when [##green
 
 @@ @@
 
-[[div class=&#34;jotting&#34; style=&#34;width: 300px; margin: auto; font-style: italic;&#34;]]
-**##red|LESSON##**
+[[div class=&#34;jotting&#34; style=&#34;max-width: 300px; margin: auto; font-style: italic;&#34;]]
+**__##red|LESSON##__**
 
 IF TWO ONES MAKE TWO
-AND TWO TWOS MAKE FOUR
-WHAT&#39;S TO DO WHEN TWO TWOS
-WON&#39;T MAKE FOUR ANYMORE
+AND ##blue|TWO TWOS## MAKE ##blue|FOUR##
+WHAT&#39;S TO DO WHEN ##blue|TWO TWOS##
+WON&#39;T MAKE ##blue|FOUR## ANYMORE
 
 WHEN VALUES IN BASE TEN
 RETURN SUMS IN BASE EIGHT
 THAT TWO FOURS MAKE TEN
-IS THE SUM OF ALL HATE
+IS THE SUM OF ONE&#39;S HATE
 
 IF A EQUALS B
 AND C IS NOT A
 TO HEAR THAT B&#39;S C
 LEAVES ONE WROUGHT WITH DISMAY
 
-WHEN THE ENEMY OF AN ENEMY
-IS THE ENEMY OF ONE&#39;S FRIEND
+WHEN THE ##blue|ENEMY## OF AN ##red|ENEMY##
+IS THE ##blue|ENEMY## OF ONE&#39;S ##green|FRIEND##
 AND HOPE OF ANY CLARITY
 YIELDS CHAOS IN THE END
 
-SUCH IS A **##red|PUNISHMENT##**
-FOR THOSE WHO WANDER
+SUCH IS A ##red|PUNISHMENT##
+FOR ##blue|THOSE WHO WANDER##
 TOO FAR FROM **##brown|THE PATH##**
 OF **##green|THE FOREST WITHOUT NAME##**
-AND SEEK KNOWLEDGE
-THAT IS BEST LEFT **##red|UNKNOWN##**
+AND SEEK ##red|KNOWLEDGE##
+THAT IS BEST LEFT UNKNOWN
 
-FOR YOUR CRIMES OF NAMING
+FOR THE CRIME OF NAMING
 **##red|THAT WHICH OUGHT NOT BE NAMED##**
-YOU MUST ACCEPT THAT REALITY
-DOESN&#39;T ALWAYS MAKE SENSE
+##blue|YOU## MUST ACCEPT THAT REALITY
+__DOESN&#39;T ALWAYS MAKE SENSE__
 
 [[span class=&#34;bblock&#34;]]**LOGICIAN**[[/span]]
 [[/div]]
 
 @@ @@
 
-[[=image https://upload.wikimedia.org/wikipedia/commons/6/67/Rubiks_revenge_scrambled.jpg link=&#34;http://scp-wiki.wikidot.com/scp-6416&#34; style=&#34;width: 33%; margin: auto;&#34;]]
+[[=image https://scp-wiki.wdfiles.com/local--files/scp-5242/Rubiks_revenge_scrambled.jpg link=&#34;https://scp-wiki.wikidot.com/scp-6416&#34; style=&#34;width: 33%; min-width: 300px; margin: auto;&#34;]]
 
 @@ @@
 
@@ -659,7 +911,7 @@ DOESN&#39;T ALWAYS MAKE SENSE
 [[/div]]
 
 [[collapsible show=&#34;» More by Placeholder McD «&#34; hide=&#34;« Less by Placeholder McD »&#34; hideLocation=&#34;both&#34;]]
-[[include more-by:placeholder-mcd]]
+[[include :scp-wiki:more-by:placeholder-mcd]]
 [[/collapsible]]
 
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
@@ -668,11 +920,13 @@ DOESN&#39;T ALWAYS MAKE SENSE
 
 [[include :scp-wiki:component:license-box]]
 =====
+[[&lt;]]
 &gt; **SOURCE:** https://commons.wikimedia.org/wiki/File:Rubiks_revenge_scrambled.jpg
 &gt; **AUTHOR:** Mike Gonzalez
 &gt; **LICENSE:** CC BY-SA 3.0
+[[/&lt;]]
 
-All custom ACS icons (including VOLATILITY) graciously made by Calibri Bold.
+All custom ACS icons (CHALLENGE, INFLUENCE, VOLATILITY) graciously made by [[*user Calibold]] and hosted on their [*/calibri-s-mega-cool-art-page-it-s-mostly-just-icons-but-what/ art page].
 =====
 [[include :scp-wiki:component:license-box-end]]
 [[/=]]
@@ -683,7 +937,7 @@ All custom ACS icons (including VOLATILITY) graciously made by Calibri Bold.
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:39.712712.</em>
+    <em>Last updated 2024-01-25 19:20:41.333269.</em>
   
 </div>
 </body>

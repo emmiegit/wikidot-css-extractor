@@ -29,122 +29,64 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
+          <pre><code>:root {
+  --header-title: &#34;SITE-17 DEEPWELL&#34;;
+  --logo-img: url(https://scp-wiki.wdfiles.com/local--files/placeholder-mcd-s-authorpage/s17_purp.png);
 
-@import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap&#39;);
+  --head-font: var(--ui-font);
 
-:root {
-    --accentColor: #97e;
-    --lgurl: url(https://scp-wiki.wdfiles.com/local--files/placeholder-mcd-s-authorpage/s17_purp.png);
-    --header-title: &#34;SITE-17 DEEPWELL&#34;;
-    --header-subtitle: &#34;SECURE - CONTAIN - PROTECT&#34;;
+  --accent: 153, 119, 238;
 }
 
-body {
-    background: #080016 !important;
-    font-family: &#39;Inter&#39;, sans-serif;
-}
-
-#header h1 a::before, #header h2::before {
-letter-spacing: 2px;
-font-family: &#39;Work Sans&#39;, sans-serif !important;
-font-weight: 700 !important;
-}
-
-h1, h2, h3, h4, h5, h6 {
-font-family: &#39;Work Sans&#39;, sans-serif !important;
-font-weight: 700 !important;
-text-transform: uppercase !important;
-}
-
-#header h2::before {
-font-size: 1em;
-}
-
-#header h1 a::before {
-font-size: 1em;
-letter-spacing: 5px;
-}
-
-.allmont, .allmont *, .allmont *::before, .allmont *:before, .allmont *::after, .allmont *:after {
-font-family: &#39;Work Sans&#39;, sans-serif !important;
-font-weight: 600;
+@media (max-width: 768px) {
+  :root {
+    --header-title: &#34;DEEPWELL&#34; !important;
+  }
 }
 
 @media (min-width: 768px) {
-    #main-content {
-       max-width: 98%;
-    }
+  #main-content {
+   max-width: 98%;
+  }
+
+  #header h1 a::before {
+    letter-spacing: 5px;
+  }
+
+  #header h2::before {
+    letter-spacing: 2px;
+  }
+}
+
+#page-content :is(h1, h2, h3, h4, h5, h6) {
+  text-transform: uppercase;
+}
+
+body {
+  background: #080016 !important;
 }
 
 .notation {
-    border-left: solid 3px rgb(40, 40, 40);
-    border-right: solid 3px rgb(40, 40, 40);
-    padding: 5px 15px;
-    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.7);
-    width: 75%;
-    margin: auto;
-    background: rgb(20, 20, 20) !important;
-    overflow: auto;
-    height: auto;
-}
-
-.modal {
-    padding: 15px 15px 15px 15px;
-    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.7);
-    width: 96%;
-    margin: auto;
-    background: rgb(20, 20, 20);
-    border: solid 2px rgb(40, 40, 40);
-    overflow: auto;
-    height: auto;
-}
-
-.bigtext {
-    font-family: &#39;Work Sans&#39;, sans-serif;
-    font-weight: 700;
-    color: var(--accentColor);
-    font-size: 110%;
-}
-
-.scp-image-block .scp-image-caption p {
-    font-size: 110%;
-    font-family: &#39;Work Sans&#39;, sans-serif;
-}
-
-.scp-image-block {
-    border: none;
-    box-shadow: none;
-}
-
-.scp-image-block .scp-image-caption {
-    border-top: none !important;
-    margin-top: 8px;
-    background: rgb(10, 10, 10);
-    color: #ffffff;
-}
-
-.scp-image-block img,
-.scp-image-block .scp-image-caption {
-    outline: solid 1px var(--accentColor);
-    box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.7);
-}
-
-div#extra-div-1 {
-    filter: opacity(0.4);
+  width: 75%;
+  margin: auto;
+  background: rgb(20, 20, 20) !important;
 }
 
 /* excerpt div stuff */
+
 .excerpt {
-  border: solid 2px var(--accentColor);
+  --link-txt-color: rgb(var(--accent));
+
+  border: solid 2px rgb(var(--accent));
   border-left-width: 10px;
   padding: 1px 15px;
   width: 75%;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  background: #303040;
+  background: var(--dark-bg-2);
 }
+
 @media (max-width: 479px) {
   .excerpt {
     width: auto;
@@ -152,38 +94,48 @@ div#extra-div-1 {
     margin-right: 0;
   }
 }
+
 /* replacing wikidot syntax for centering/size */
+
 .excerpt &gt; p:first-child {
   text-align: center;
   font-size: 80%;
 }
+
 .excerpt p:first-child &gt; strong:first-of-type,
 .excerpt p:first-child &gt; em {
   font-size: 125%;
 }
+
 .excerpt:not(.hub) &gt; hr ~ p {
   font-style: italic;
 }
+
 /* excerpt border colors */
-.series.lifeless {
-  --accentColor: #59f;
+
+.lifeless {
+  --accent: 85, 153, 255;
 }
-.series.white-space {
-  --accentColor: #0c3;
+
+.white-space {
+  --accent: 0, 204, 51;
 }
+
 .admonition {
-  --accentColor: #f24;
+  --accent: var(--five-color);
 }
+
 .other {
-  --accentColor: #ccc;
+  --accent: 204, 204, 204;
 }
-.other a {
-  --accentColor: #97e;
+.other .excerpt {
+  --link-txt-color: rgb(153, 119, 238);
 }
 
 /* section header stuff */
+
 .section-header {
-  border-bottom: 2px solid var(--accentColor);
+  border-bottom: 2px solid rgb(var(--accent));
   margin: 50px 0 15px;
 }
 .section-header h1 {
@@ -218,38 +170,17 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>display: none;</code></pre>
+          <pre><code>background: rgb(20, 20, 20);</code></pre>
         </li>
       
         <li>
-          <pre><code>background: #eee; border: solid 1px #6f4c7a; padding: 5px 15px; margin: 5px 5px 12.8px 5px</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>color: #6f4c7a;</code></pre>
+          <pre><code>color: #97e;</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:placestyle" target="_blank"><code>:scp-wiki:theme:placestyle</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:placestyle.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
       
         <li>
   
@@ -289,7 +220,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
+          <pre><code>bt</code></pre>
         </li>
       
         <li>
@@ -297,7 +228,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
+          <pre><code>bt</code></pre>
         </li>
       
         <li>
@@ -305,15 +236,11 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
+          <pre><code>bt</code></pre>
         </li>
       
         <li>
           <pre><code>section-header</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>series</code></pre>
         </li>
       
         <li>
@@ -369,7 +296,11 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>series</code></pre>
+          <pre><code>excerpt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>excerpt</code></pre>
         </li>
       
         <li>
@@ -413,11 +344,11 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
+          <pre><code>paper</code></pre>
         </li>
       
         <li>
-          <pre><code>series</code></pre>
+          <pre><code>bt</code></pre>
         </li>
       
         <li>
@@ -438,10 +369,6 @@ div#extra-div-1 {
       
         <li>
           <pre><code>excerpt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>series</code></pre>
         </li>
       
         <li>
@@ -469,6 +396,10 @@ div#extra-div-1 {
         </li>
       
         <li>
+          <pre><code>hub</code></pre>
+        </li>
+      
+        <li>
           <pre><code>bt</code></pre>
         </li>
       
@@ -480,130 +411,73 @@ div#extra-div-1 {
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[div style=&#34;display: none;&#34;]]
-[[include :scp-wiki:theme:placestyle]]
-[[/div]]
-
-[[div style=&#34;display: none;&#34;]]
 [[include component:image-block name=https://scp-wiki.wdfiles.com/local--files/placeholder-mcd-s-authorpage/s17_purp.png|caption=.]]
 [[/div]]
 
+[[include :scp-wiki:theme:foxtrot
+dark=a|
+wide=a|
+hidetitle=a]]
+
 [[module CSS]]
-@import url(&#39;https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
-
-@import url(&#39;https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap&#39;);
-
 :root {
-    --accentColor: #97e;
-    --lgurl: url(https://scp-wiki.wdfiles.com/local--files/placeholder-mcd-s-authorpage/s17_purp.png);
-    --header-title: &#34;SITE-17 DEEPWELL&#34;;
-    --header-subtitle: &#34;SECURE - CONTAIN - PROTECT&#34;;
+  --header-title: &#34;SITE-17 DEEPWELL&#34;;
+  --logo-img: url(https://scp-wiki.wdfiles.com/local--files/placeholder-mcd-s-authorpage/s17_purp.png);
+
+  --head-font: var(--ui-font);
+
+  --accent: 153, 119, 238;
 }
 
-body {
-    background: #080016 !important;
-    font-family: &#39;Inter&#39;, sans-serif;
-}
-
-#header h1 a::before, #header h2::before {
-letter-spacing: 2px;
-font-family: &#39;Work Sans&#39;, sans-serif !important;
-font-weight: 700 !important;
-}
-
-h1, h2, h3, h4, h5, h6 {
-font-family: &#39;Work Sans&#39;, sans-serif !important;
-font-weight: 700 !important;
-text-transform: uppercase !important;
-}
-
-#header h2::before {
-font-size: 1em;
-}
-
-#header h1 a::before {
-font-size: 1em;
-letter-spacing: 5px;
-}
-
-.allmont, .allmont *, .allmont *::before, .allmont *:before, .allmont *::after, .allmont *:after {
-font-family: &#39;Work Sans&#39;, sans-serif !important;
-font-weight: 600;
+@media (max-width: 768px) {
+  :root {
+    --header-title: &#34;DEEPWELL&#34; !important;
+  }
 }
 
 @media (min-width: 768px) {
-    #main-content {
-       max-width: 98%;
-    }
+  #main-content {
+   max-width: 98%;
+  }
+
+  #header h1 a::before {
+    letter-spacing: 5px;
+  }
+
+  #header h2::before {
+    letter-spacing: 2px;
+  }
+}
+
+#page-content :is(h1, h2, h3, h4, h5, h6) {
+  text-transform: uppercase;
+}
+
+body {
+  background: #080016 !important;
 }
 
 .notation {
-    border-left: solid 3px rgb(40, 40, 40);
-    border-right: solid 3px rgb(40, 40, 40);
-    padding: 5px 15px;
-    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.7);
-    width: 75%;
-    margin: auto;
-    background: rgb(20, 20, 20) !important;
-    overflow: auto;
-    height: auto;
-}
-
-.modal {
-    padding: 15px 15px 15px 15px;
-    box-shadow: 0px 0px 8px 4px rgba(0, 0, 0, 0.7);
-    width: 96%;
-    margin: auto;
-    background: rgb(20, 20, 20);
-    border: solid 2px rgb(40, 40, 40);
-    overflow: auto;
-    height: auto;
-}
-
-.bigtext {
-    font-family: &#39;Work Sans&#39;, sans-serif;
-    font-weight: 700;
-    color: var(--accentColor);
-    font-size: 110%;
-}
-
-.scp-image-block .scp-image-caption p {
-    font-size: 110%;
-    font-family: &#39;Work Sans&#39;, sans-serif;
-}
-
-.scp-image-block {
-    border: none;
-    box-shadow: none;
-}
-
-.scp-image-block .scp-image-caption {
-    border-top: none !important;
-    margin-top: 8px;
-    background: rgb(10, 10, 10);
-    color: #ffffff;
-}
-
-.scp-image-block img,
-.scp-image-block .scp-image-caption {
-    outline: solid 1px var(--accentColor);
-    box-shadow: 0px 0px 5px 4px rgba(0, 0, 0, 0.7);
-}
-
-div#extra-div-1 {
-    filter: opacity(0.4);
+  width: 75%;
+  margin: auto;
+  background: rgb(20, 20, 20) !important;
 }
 
 /* excerpt div stuff */
+
 .excerpt {
-  border: solid 2px var(--accentColor);
+  --link-txt-color: rgb(var(--accent));
+
+  border: solid 2px rgb(var(--accent));
   border-left-width: 10px;
   padding: 1px 15px;
   width: 75%;
   margin: auto;
   margin-top: 20px;
   margin-bottom: 20px;
-  background: #303040;
+  background: var(--dark-bg-2);
 }
+
 @media (max-width: 479px) {
   .excerpt {
     width: auto;
@@ -611,38 +485,48 @@ div#extra-div-1 {
     margin-right: 0;
   }
 }
+
 /* replacing wikidot syntax for centering/size */
+
 .excerpt &gt; p:first-child {
   text-align: center;
   font-size: 80%;
 }
+
 .excerpt p:first-child &gt; strong:first-of-type,
 .excerpt p:first-child &gt; em {
   font-size: 125%;
 }
+
 .excerpt:not(.hub) &gt; hr ~ p {
   font-style: italic;
 }
+
 /* excerpt border colors */
-.series.lifeless {
-  --accentColor: #59f;
+
+.lifeless {
+  --accent: 85, 153, 255;
 }
-.series.white-space {
-  --accentColor: #0c3;
+
+.white-space {
+  --accent: 0, 204, 51;
 }
+
 .admonition {
-  --accentColor: #f24;
+  --accent: var(--five-color);
 }
+
 .other {
-  --accentColor: #ccc;
+  --accent: 204, 204, 204;
 }
-.other a {
-  --accentColor: #97e;
+.other .excerpt {
+  --link-txt-color: rgb(153, 119, 238);
 }
 
 /* section header stuff */
+
 .section-header {
-  border-bottom: 2px solid var(--accentColor);
+  border-bottom: 2px solid rgb(var(--accent));
   margin: 50px 0 15px;
 }
 .section-header h1 {
@@ -653,30 +537,35 @@ div#extra-div-1 {
 [[=]]
 [[module Rate]]
 [[/=]]
+
 ----
+
 @@ @@
-@@ @@
+
 [[==]]
 [[div class=&#34;notation&#34;]]
 The Foundation is a global, clandestine organization with an iron grip on all media, literature, and public knowledge. They operate within a strict hierarchy of Researcher to Site Director to Overseer to ensure that humanity remains in perpetual and blissful ignorance. They will and have contained God, and no one seems to care.
 
-= [[span class=&#34;bigtext&#34;]]Everything is as it must be.[[/span]]
+= [[span class=&#34;bt&#34;]]Everything is as it must be.[[/span]]
 [[/div]]
+
 @@ @@
-@@ @@
+
 [[div class=&#34;notation&#34;]]
 Site-17 is the second-largest Foundation containment facility, housing hundreds of researchers and containing twice as many anomalies. Corruption has slowly festered within its ranks. The embodiment of the anomalous is knocking on reality&#39;s door. Someone has stopped to listen to a humanoid&#39;s sobbing.
 
-= [[span class=&#34;bigtext&#34;]]Is everything as it must be?[[/span]]
+= [[span class=&#34;bt&#34;]]Is everything as it must be?[[/span]]
 [[/div]]
+
 @@ @@
-@@ @@
+
 [[div class=&#34;notation&#34;]]
 Site-17 is on the brink. There is always the slowly-beating thrum of anticipation, always the knowledge of something bigger, always the end just out of reach. So keep your head down, and your nose to the grindstone. You don&#39;t have to like what we do here; you just have to do it. If you start having dreams, consult a psychiatrist. If you start feeling ill, look past the blood. If you start losing your memories, don&#39;t bother. That&#39;s just how it is in this place.
 
-= [[span class=&#34;bigtext&#34;]]Nothing is as it should be.[[/span]]
+= [[span class=&#34;bt&#34;]]Nothing is as it should be.[[/span]]
 [[/div]]
 [[/==]]
+
 @@ @@
 
 [[div class=&#34;section-header&#34;]]
@@ -687,8 +576,10 @@ Deepwell is loosely stratified into series and standalone works; below are the c
 
 @@ @@
 
-[[div class=&#34;series other&#34;]]
-[[collapsible show=&#34;Scenes From The Deepwell&#34; hide=&#34;Scenes From The Deepwell&#34; folded=&#34;no&#34;]]
+[[div class=&#34;other&#34;]]
+[[=]]
+[[collapsible show=&#34;» Scenes From The Deepwell «&#34; hide=&#34;« Scenes From The Deepwell »&#34; folded=&#34;no&#34; hideLocation=&#34;both&#34;]]
+[[&lt;]]
 
 [[div class=&#34;excerpt&#34;]]
 **[[[test-subjects|&#39;Test Subjects&#39; (B82SW/9KL74/Y4P1K)]]]**
@@ -773,21 +664,41 @@ Story of freedom, time, and orange jumpsuits.
 [[/div]]
 
 [[div class=&#34;excerpt&#34;]]
-**[[[SCP-7791]]]:** //Ｎｅｃｅｓｓａｒｙ Ｅｖｉｌ//
+**[[[SCP-7791]]]:** //ｎｅｃｅｓｓａｒｙ ｅｖｉｌ//
 by **NielleiN**
 ----
 Actions taken by the Foundation such as genocide, torture, brainwashing, and abuse of sapient beings have historically been most effective in provoking SCP-7791 to action.
 [[/div]]
 
+[[div class=&#34;excerpt&#34;]]
+**[[[SCP-7356]]]:** //Noncanonical Materials//
+by **FLOORBOARDS**
+----
+Those in the presence of SCP-7356 have not reported adverse effects. However, assigned ritualists — even those who had been amnesticized — have reported experiencing dreams depicting an unknown species of bird, possibly a crow or raven, gliding down a hallway.
+[[/div]]
+
+[[div class=&#34;excerpt&#34;]]
+**[[[justifying-means-justifying-means|Justifying Means Justifying Means ]]]**
+by **Yossipossi**
+----
+And yet, in my endless hate for hatred itself, I came to love You, O blaspheme of nature.
+[[/div]]
+
+[[/&lt;]]
 [[/collapsible]]
+[[/=]]
 [[/div]]
 
 @@ @@
-------
+
+----
+
 @@ @@
 
-[[div class=&#34;series lifeless&#34;]]
-[[collapsible show=&#34;&#39;These Lifeless Things&#39;&#34; hide=&#34;&#39;These Lifeless Things&#39;&#34; folded=&#34;no&#34;]]
+[[div class=&#34;lifeless&#34;]]
+[[=]]
+[[collapsible show=&#34;» &#39;These Lifeless Things&#39; «&#34; hide=&#34;« &#39;These Lifeless Things&#39; »&#34; folded=&#34;no&#34; hideLocation=&#34;both&#34;]]
+[[&lt;]]
 
 [[div class=&#34;excerpt&#34;]]
 **[[[SCP-4051]]]:** //Your Friendly Neighborhood Keter//
@@ -804,7 +715,7 @@ SCP-4260 refers to the consciousness of an essophysical entity which has permeat
 [[/div]]
 
 [[div class=&#34;excerpt&#34;]]
-**[[[APAS|]]]**
+**[*/apas Automated Passive Amnestization System Ver. 17.09]**
 by **Nagiros**
 ----
 [[module CSS]]
@@ -860,17 +771,25 @@ SCP-4755 designates the ultimate purpose of conceptualization, which is containm
 [[div class=&#34;excerpt&#34;]]
 **[[[Systems Patch]]]**
 by **Nagiros**
+
 ----
-[[div style=&#34;background: #eee; border: solid 1px #6f4c7a; padding: 5px 15px; margin: 5px 5px 12.8px 5px&#34;]]
-= [[span class=&#34;bigtext&#34; style=&#34;color: #6f4c7a;&#34;]]{{Hello, Nathaniel. Will you be implementing my interface update tonight?}}[[/span]]
+
+[[div class=&#34;paper&#34; style=&#34;background: rgb(20, 20, 20);&#34;]]
+= [[span class=&#34;bt&#34; style=&#34;color: #97e;&#34;]]{{**Hello, Nathaniel. Will you be implementing my interface update tonight?**}}[[/span]]
 [[/div]]
 [[/div]]
 
+[[/&lt;]]
 [[/collapsible]]
+[[/=]]
 [[/div]]
+
 @@ @@
-[[div class=&#34;series a-part&#34;]]
-[[collapsible show=&#34;&#39;A Part&#39;&#34; hide=&#34;&#39;A Part&#39;&#34; folded=&#34;no&#34;]]
+
+[[div class=&#34;a-part&#34;]]
+[[=]]
+[[collapsible show=&#34;» &#39;A Part&#39; «&#34; hide=&#34;« &#39;A Part&#39; »&#34; folded=&#34;no&#34; hideLocation=&#34;both&#34;]]
+[[&lt;]]
 
 [[div class=&#34;excerpt&#34;]]
 **[[[SCP-5097]]]:** //Working 9 to 5//
@@ -900,13 +819,14 @@ by **Nagiros**
 Their coworkers dreamed of the hyperreal, but Kassidy was left with paper cuts.
 [[/div]]
 
+[[/&lt;]]
 [[/collapsible]]
+[[/=]]
 [[/div]]
-@@ @@
-[[div class=&#34;series white-space&#34;]]
-[[collapsible show=&#34;&#39;White Space&#39;&#34; hide=&#34;&#39;White Space&#39;&#34; folded=&#34;no&#34;]]
 
-[[div class=&#34;excerpt hub&#34;]]
+@@ @@
+
+[[div class=&#34;white-space excerpt hub&#34;]]
 **[[[white space (HUB)]]]**
 ----
 The future is more bleak than you could possibly imagine. It is an unconscious hellscape, a continuation of the present, a birthplace of the static sky above the port. The Foundation — if it can be called that at this stage in its mutation — has entered its endgame.
@@ -914,23 +834,24 @@ The future is more bleak than you could possibly imagine. It is an unconscious h
 Fortunately, this hell won&#39;t last much longer.
 [[/div]]
 
-[[/collapsible]]
-[[/div]]
 @@ @@
-[[div class=&#34;admonition&#34;]]
-[[collapsible show=&#34;&#39;ADMONITION&#39;&#34; hide=&#34;&#39;ADMONITION&#39;&#34; folded=&#34;no&#34;]]
+
+----
+
 @@ @@
-[[div class=&#34;excerpt notation&#34;]]
+
+[[div class=&#34;admonition excerpt notation hub&#34;]]
 **[*/admonition ADMONITION (HUB)]**
 by **Liryn, Placeholder McD, et. al**
+
 ----
+
 = //To control everything is to control nothing; as one&#39;s dominion increases, so too is it stretched thin.//
-----
 
 = [[span class=&#34;bt&#34;]]Everything will be as it should.[[/span]]
 [[/div]]
-[[/collapsible]]
-[[/div]]
+
+@@ @@
 
 [[div class=&#34;section-header&#34;]]
 +* Canon Details
@@ -938,6 +859,7 @@ by **Liryn, Placeholder McD, et. al**
 
 [[tabview]]
 [[tab That Which Can Be Said]]
+
 ++* Beginnings
 
 The first tenet of Site-17&#39;s fiction is that the Foundation is, at its core, evil. It is a hierarchical, bureaucratic institution which seeks to enforce ignorance as law and is plainly hostile to the world at large. It worships the greater ethical good but has no method of defining what that good is.
@@ -957,8 +879,12 @@ Preferably, articles written for Site-17 should incorporate one or more of the f
 * Thematic interest in secrecy, truth, and/or the sacrifices made to maintain the Veil
 
 In any case, feel free to parent your article to this page and add it here when it&#39;s posted. The applicable tag is {{deepwell-catalog}}.
+
+Note that the ADMONITION Series is set in an alternate continuity which runs on a similar vibe and thematic interest. It is currently closed to collaboration.
+
 [[/tab]]
 [[tab That Which Can Be Known]]
+
 ++ Essophysics
 
 Essophysics is the study of embodiments. The ideas which govern our everyday are not really ours; reality bends to the wills of Intrinsic anomalies, fading in and out of reality alongside their concepts. None are all-powerful, all are subject to the discordancy of conceptualization, and all are mortal. Painfully, obviously mortal.
@@ -967,46 +893,54 @@ Essophysics is the study of embodiments. The ideas which govern our everyday are
 
 This primarily exists as a vain attempt to ensure that characters born in 1990 don&#39;t become Site Directors in 1970. It&#39;s harder than you&#39;d think!
 
-------
+----
+
 **Warning:** Heavy spoilers.
 
+[[=]]
 [[collapsible show=&#34;+ Show Full Timeline&#34; hide=&#34;- Hide Full Timeline&#34; hideLocation=&#34;both&#34;]]
+[[&lt;]]
 
 ||~ Date ||~ Event ||
-||1906/06/08 || First humanoid anomaly, [[[SCP-6086]]], is contained. ||
-||1910|| Creation of the Ethics Committee. ||
-||1912/10/02 || [[[SCP-6086]]] is designated as neutralized. ||
-||1987|| The Foundation notes the existence of [[[SCP-4755]]] but fails to determine its source or nature. ||
-||1999/01/13|| Death is contained as [[[SCP-4260]]] after voluntarily manifesting and requesting medical assistance. ||
-||2003|| [[[APAS | Apollyon]]] manifests for the first time and destroys Site-17, but is turned back by Dr. Skyler. Dr. Weathers is contracted as the Provisional Site Director. ||
-||2005/05/13|| Irantu //Mark-LXXII// contacts the Foundation from the year 2103 CE regarding SCP-4755. ||
-||2010/01/04|| Apollyon completes a manifestation event and exits the local timeline. ||
-||2012/08|| Rainer Miller is contained as [[[SCP-4051]]]. ||
-||2015/09/08|| [[[SCP-4175 | Alex Conrad]]] is neutralized. ||
-||2016/02/13|| Foundation Administrator Ethan Horowitz becomes the heir to SCP-4260 in order to prevent a ΩK-Class (&#34;End-of-Death&#34;) Scenario. ||
-||2103||The Foundation ascends to a Tier V conceptual anomaly, becoming SCP-4755.||
+|| 1906/06/08 || First humanoid anomaly, [[[SCP-6086]]], is contained. ||
+|| 1910 || Creation of the Ethics Committee. ||
+|| 1912/10/02 || [[[SCP-6086]]] is designated as neutralized. ||
+|| 1987 || The Foundation notes the existence of [[[SCP-4755]]] but fails to determine its source or nature. ||
+|| 1999/01/13 || Death is contained as [[[SCP-4260]]] after voluntarily manifesting and requesting medical assistance. ||
+|| 2003 || [[[APAS | Apollyon]]] manifests for the first time and destroys Site-17, but is turned back by Dr. Skyler. Dr. Weathers is contracted as the Provisional Site Director. ||
+|| 2005/05/13 || Irantu //Mark-LXXII// contacts the Foundation from the year 2103 CE regarding SCP-4755. ||
+|| 2010/01/04 || Apollyon completes a manifestation event and exits the local timeline. ||
+|| 2012/08 || Rainer Miller is contained as [[[SCP-4051]]]. ||
+|| 2015/09/08 || [[[SCP-4175 | Alex Conrad]]] is neutralized. ||
+|| 2016/02/13 || Foundation Administrator Ethan Horowitz becomes the heir to SCP-4260 in order to prevent a ΩK-Class (&#34;End-of-Death&#34;) Scenario. ||
+|| 2103 || The Foundation ascends to a Tier V conceptual anomaly, becoming SCP-4755. ||
 
+[[/&lt;]]
 [[/collapsible]]
-[[/tab]]
-[[tab That Which Can Be Done]]
-= &lt;reserved for future use&gt;
+[[/=]]
+
+Note that the ADMONITION Series is set in an alternate continuity which diverges from the above timeline on September 8, 2002. It is closed to collaboration, and its timeline will remain undisclosed so long as that is the case.
+
 [[/tab]]
 [[/tabview]]
 
-----
 @@ @@
 
+[[=]]
 [[include :scp-wiki:component:license-box
 |author=Liryn, Nagiros, and Placeholder McD]]
 [!-- N/A (No Images)  --]
-[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+[[include :scp-wiki:component:license-box-end]]
+[[/=]]
+
+@@ @@</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:40.658056.</em>
+    <em>Last updated 2024-01-25 19:20:42.455958.</em>
   
 </div>
 </body>

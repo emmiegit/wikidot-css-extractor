@@ -29,7 +29,8 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>
+          <pre><code>@import url(https://scp-wiki.wikidot.com/theme:magazine/code/3);
+
 .mmposter-wrap{
     display: flex;
     justify-content: center ;   
@@ -54,6 +55,10 @@
  display: none
 }
 
+.flex-pc{
+    display: flex;
+}
+
 
 .flex-wrap{
     display: flex;
@@ -65,18 +70,21 @@
     width: 100%;
 }
 
-
 @media (max-width: 500px) {
+  .flex-pc{
+    display: block;
+}
+
     .flex-wrap{
 flex-wrap:wrap;        
     }
-    
+
   .mmposter-semi  .mmposter-cell,
 
     .mmposter-cell{
         width: 100%;
 min-width: auto;
-      
+
     }    
     .mmposter-right{
 margin-top:2rem;
@@ -108,8 +116,6 @@ content:&#34; ←  &#34;;
         padding:0 0.2rem 0 0rem;
 
 }
-
-
 
 /*
 -----------------------------
@@ -206,7 +212,6 @@ Magazine theme - 00000000
 Customiz
 =====================================*/
 
-
 @import url(https://scp-wiki.wikidot.com/theme:magazine/code/1);
 
 #main-content{    
@@ -300,6 +305,7 @@ Collapsible Sidebar Source
     --SB-bg_PC:var(--page-bg);
 }
 
+
 #content-wrap{
      margin-left:0;
 }
@@ -318,6 +324,10 @@ display: none;
 
 #main-content::after {
 filter: sepia(50%) hue-rotate(150deg) saturate(150%);
+}
+
+div#extra-div-1 {
+    z-index: 9;
 }
 
 #side-bar{
@@ -350,9 +360,38 @@ filter: sepia(50%) hue-rotate(150deg) saturate(150%);
      background-color: var(--sidebar-bg-pc); 
 }
 
-div#extra-div-1 {
-    z-index: 9;
-}</code></pre>
+#side-bar :is(.media, .sns):has(a:nth-child(2)) a img{
+  --media_pd: 0.6em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(4)) a img{
+  --media_pd: 0.5em;
+}
+#side-bar :is(.media, .sns):has(a::nth-child(6)) a img{
+ --media_pd: 0.2em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(7)) a img{
+ --media_pd: 0.5em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(8)) a img{
+  --media_pd: 0.4em;
+}
+
+@media (max-width: 479px) {
+ #content-wrap #side-bar :is(.media, .sns) a img{
+      --media_pd: 0.6em;
+     --media_width:2em;
+  }   
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/*===================================
+Magazine Theme
+--------------
+Extensions 
+=====================================*/
+@import url(https://scp-wiki.wikidot.com/theme:magazine/code/3);</code></pre>
         </li>
       
         <li>
@@ -369,6 +408,186 @@ background: var(--hollow-image) center 0 repeat;
 #content-wrap #side-bar::before,
 #content-wrap #side-bar {
 background-color: transparent ;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/*===================================
+Magazine Theme
+中华异学会英文版 -  Abnormality Institute EN ver.
+--------------
+All the icons are under CC-BY-SA
+LOGO_YXH by Freedom Koo; LOGO_noricst by Enflowerz
+=====================================*/
+:root{
+    --tabNAV-bgHover:var(--color-navy);
+    --tabMain-border:var(--color-navy);
+    --visted-link:#333;
+  --header-title: &#34;Wonders Studie Association&#34; ;
+  --mob-title:&#34;W. S. A.&#34;;
+  --header-subtitle:&#34;Wondering about Marvels, Studying by Spirit, Associating the World&#34;;
+  --mob-subtitle:&#34;To wonder, To study, To associate&#34;;
+   --LOGO_position-mob:51% 0%;
+    
+   --LOGO_image-mob:url(&#39;https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_noricst.svg&#39;);
+
+--LOGO_sidebar:var(--icon-cn);
+--LOGO_sidebar-opacity:0.7;
+
+ --hr-image:var(--icon-cn);
+ --hr-color:192,192,192;
+    --icon-cn:url(&#39;https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_CN.svg&#39;);
+    --icon-yxh:url(&#39;https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_YXH.svg&#39;);
+}
+/*============================================
+正文
+============================================*/
+
+.mz-innerbox{
+}
+
+.mz-poem{
+    text-align: center;
+    font-family: var(--handwriting-font);
+    font-size: 1.8em
+}
+
+.yxh-img{
+    --yxh-size:15rem;
+    width: var(--yxh-size);
+    height: var(--yxh-size);
+    background-image: var(--icon-yxh);
+    background-size: cover;
+    margin: 0 auto;
+    opacity: 1;
+    filter: blur(1px);
+}
+
+.yxh-maxim{
+    border: solid 1px rgba(33,33,33,0.5);
+    text-align: center;
+    margin: 1em 3em;
+    font-size: 1.6rem;
+   font-family: &#39;Huiwen-Mincho&#39;;
+}
+
+@media (max-width: 500px){
+    .mz-innerbox{
+    font-size: 0.8rem;
+}
+.mz-poem{
+    font-size: 0.8rem;
+}
+ .yxh-maxim {
+    margin: 1em 1em;
+    font-size: 1.4rem;
+ }
+ .yxh-maxim p{
+padding: 0;
+     line-height: 0;
+ }
+}
+
+/*============================================
+分割线，来自woednaz
+============================================ */
+
+.mz-poem  hr {
+    border-top:1px solid #000 ;
+    background: rgb(0, 0, 0, 0);
+    border: 0;
+    height: 1rem;
+    width: 70%;
+    position: relative;
+    margin: 1.5rem auto;
+    }
+
+.mz-poem  hr::before {
+    content: &#34; &#34;;
+    background-image: var(--hr-image);
+    color: rgb(var(--hr-color));
+    display: inline-block;
+    position: absolute;
+    top: -0.2rem;
+    left: 0;
+    margin: 0 auto;
+    font-size: 0.938rem;
+    line-height: 0;
+    height: 1.6rem;
+    width:4rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: -webkit-calc(50% - 2rem);
+    margin-left: -moz-calc(50% - 2rem);
+    margin-left: calc(50% - 2rem);
+    background-color: transparent;
+    z-index: 1;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+.mz-poem  hr::after {
+    content: &#34; &#34;;
+    height: 0.1rem;
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    background: rgb(var(--hr-color));
+    left: 0;
+    top: 50%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-mask-image: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 630 23&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;%23E6EAF6&#39; d=&#39;M0,0v23h630V0H0z M334.9,15.9l1.4,4.6l-13.9,2.3h-14.8l-13.9-2.3l1.4-4.6l0.8-2.6l-2.1-1.6l-3.9-2.9l4.9-0.1 l2.7-0.1l0.9-2.5l1.6-4.6L315,0.1l15.1,1.4l1.6,4.6l0.9,2.5l2.7,0.1l4.9,0.1l-3.9,2.9l-2.1,1.6L334.9,15.9z&#39;/%3E%3C/svg%3E%0A&#34;);
+    mask-image: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 630 23&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;%23E6EAF6&#39; d=&#39;M0,0v23h630V0H0z M334.9,15.9l1.4,4.6l-13.9,2.3h-14.8l-13.9-2.3l1.4-4.6l0.8-2.6l-2.1-1.6l-3.9-2.9l4.9-0.1 l2.7-0.1l0.9-2.5l1.6-4.6L315,0.1l15.1,1.4l1.6,4.6l0.9,2.5l2.7,0.1l4.9,0.1l-3.9,2.9l-2.1,1.6L334.9,15.9z&#39;/%3E%3C/svg%3E%0A&#34;);
+    -webkit-mask-size: 43.375rem auto;
+    mask-size: 43.375rem auto;
+    -webkit-mask-position: center center;
+    mask-position: center center;
+}
+
+/*
+============================================
+杂项
+============================================
+ */
+
+/* ------------------假标签-------------------- */
+
+#main-content .page-tags {
+   display:{$page-tags};
+}
+
+div.pseudo-tags ul {
+    font-size: 85%;
+    border-top: 1px solid #BBB;
+    display: inline-block;
+    margin: 10px 0 0;
+    padding: 0 2px;
+    list-style: none;
+}
+
+div.pseudo-tags li {
+    color: #b01;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 1px;
+    cursor: pointer;
+}
+
+@media (max-width: 479px) {
+ .poem-7 {
+    font-size:120% ;
+ }
+
+ .yxh-maxim{
+    margin: 2rem;
+ }
+
+.yxh-outbox, .ej-outbox{
+   }
 }</code></pre>
         </li>
       
@@ -407,6 +626,34 @@ background-color: transparent ;
       
         <li>
           <pre><code>--tip-color:blue</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align:center</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align:center</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left:-2rem;position:relative;--tip-color:#abddba</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 0.5em 0 0.5em 0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left:-4rem;position:relative;--tip-color:#bbdcea</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 0.5em 0 0.5em 0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--color-notepage: blue;--color-rowline: green;--color-bookpage-txt:red</code></pre>
         </li>
       
         <li>
@@ -781,6 +1028,38 @@ background-color: transparent ;
         </li>
       
         <li>
+          <pre><code>mz-hr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hr-solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-hr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hr-double</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-hr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hr-dotted</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-hr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hr-contract</code></pre>
+        </li>
+      
+        <li>
           <pre><code>hr-solid</code></pre>
         </li>
       
@@ -1142,6 +1421,230 @@ background-color: transparent ;
       
         <li>
           <pre><code>mz-note</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hr-double</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lc-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-notepage-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>chew-top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lc-mid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rowline-none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-fullline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-footer</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-pc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-notepage-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>chew-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-sel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-notepage-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>chew-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-footer</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-footer</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-notequote-wrap  chew-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-footer</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hr-double</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mob-hid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-notebook-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mob-hid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-left  notebook-bookmark</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-sel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-notebook-wrap</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-mid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-note</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>note-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-note</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>note-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-mid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notebook-left/right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notepage-main</code></pre>
         </li>
       
         <li>
@@ -1622,6 +2125,22 @@ background-color: transparent ;
       
         <li>
           <pre><code>mz-tabcell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-tab</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-sel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mz-tab</code></pre>
         </li>
       
         <li>
@@ -2189,7 +2708,7 @@ Bird icon from https://pixabay.com/zh/vectors/eagle-bird-animal-perching-162199/
 
 /* 栏头 */
     --SB-topbox_size:8rem;
-    --SB-topbox_top222:1rem;   
+    --SB-topbox_top222:0rem;   
     --SB-phrase_size:2rem;
     --SB-phrase_top:calc(var(--SB-topbox_size) + 0.5rem);
 
@@ -2500,6 +3019,9 @@ PAD 根属性
 
 @media (max-width:1000px){
     :root{
+
+  --LOGO_image: var(--LOGO_image-mob);
+
  /* ----------------  侧边栏  ---------------------- */
     --SB-blank_right:0rem;
     --SB-blank_left:0rem;
@@ -3215,6 +3737,15 @@ height:105%;
     font-size:var(--TB-li_size);
 }
 
+#top-bar ul li a{
+display: unset
+}
+
+#top-bar ul li ul a{
+display: block
+}
+
+
 #header #top-bar .sfhover a{
     color: var(--accentColor);
    background-color:var(--color-kraft);
@@ -3459,11 +3990,8 @@ h2, h3, h4, h5, h6 {
     max-width: 100%;
     margin-left: 0;
     margin-right: 0;
-    margin:0 auto;
+       margin-top: var(--main-top);
     width:var(--main-width, 100vw);
-}
-
-#content-wrap{
     flex-grow: 1;
     width:var(--main-width, 100vw);
     padding: 0 0rem;
@@ -3473,7 +4001,6 @@ h2, h3, h4, h5, h6 {
     margin: 0 auto;
     width:var(--content-width, 56rem);
     max-width:calc(98% - var(--SB_width-total)); 
-    padding-top: var(--main-top);
     padding-right: var(--main-padding-right);
     padding-left:var(--main-padding-left);
     position: initial;
@@ -3534,6 +4061,9 @@ h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 479px) {
+ #content-wrap{
+        --main-top:var(--main-top_MOB);   
+   }
   #main-content{
     --PGtt_size: var(--PGtt_size_MOB);
     --PG-h1_size:150%; 
@@ -3542,7 +4072,6 @@ h2, h3, h4, h5, h6 {
     --PG-h4_size:110%;  
     --PG-h5_size:100%;  
     --PG-h6_size:90%;  
-    --main-top:var(--main-top_MOB);
     }
 }
 
@@ -3609,7 +4138,7 @@ margin-top: 0;   
 
 #side-bar div.side-block:not(.side-links) a  img{
     display: inline-block ;
-    padding: 0 0.2em;;
+    /*! padding: 0 0.1em; */;
 }
 
 #side-bar div.side-block img[alt*=&#34;cc-by-sa&#34;]{
@@ -3643,9 +4172,14 @@ margin-top: 0;   
 
 /* ------- 媒体图标 -------- */
 
+#side-bar .side-block:is(.media, .sns) {
+padding-bottom: 0 !important;
+}
+
 #side-bar :is(.media, .sns) img{
     transition:transform 0.2s;
     background-color: transparent;
+    width: var(--media_width,inherit)
 }
 
  #side-bar :is(.media, .sns) img:hover{
@@ -3658,6 +4192,41 @@ margin-top: 0;   
     transition:transform 0.1s;
      background-color: transparent;
 }
+
+#side-bar :is(.media, .sns) a img {
+  --media_pd: 0.1em;  /* 7 icons in en */
+  padding: 0;
+  padding-left:  var( --media_pd);
+   padding-right:  var( --media_pd);  
+   padding-bottom: 0.5em;
+}
+
+#side-bar :is(.media, .sns):has(a:nth-child(2)) a img{
+  --media_pd: 0.6em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(4)) a img{
+  --media_pd: 0.5em;
+}
+#side-bar :is(.media, .sns):has(a::nth-child(6)) a img{
+ --media_pd: 0.3em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(7)) a img{
+ --media_pd: 0.1em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(11)) a img{
+  --media_pd: 0.3em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(13)) a img{
+  --media_pd: 0.1em;
+}
+
+@media (max-width: 479px) {
+ #content-wrap #side-bar :is(.media, .sns) a img{
+      --media_pd: 0.6em;
+     --media_width:2em;
+  }   
+}
+
 
 /* fixed for JP*/
 #side-bar .sns div :is(a, a:hover){ 
@@ -4025,7 +4594,7 @@ grid-template-areas:
     border: solid 0px transparent; 
 }
 
-.creditRate :is(.creditButton, .creditButtonStandalone) a,
+.creditRate .creditButton,
 .page-rate-widget-box span.btn {
      font-size: var(--RATE-btn_size);
      height:var(--RATE-btn_height);
@@ -4050,7 +4619,7 @@ grid-template-areas:
     padding-bottom:0;
 }
 
-.creditRate :is(.creditButton, .creditButtonStandalone) a:before,
+.creditRate  .creditButton p,
 .page-rate-widget-box span.btn a{
     --flag-clip: polygon(100% 0, 100% 50%, 100% 100%, 50% var(--flag-delta-count), 0 100%, 0 0);
      background-color:  var(--RATE-btn_bgcolor);
@@ -4060,12 +4629,13 @@ grid-template-areas:
 
 
 .page-rate-widget-box span.btn a:hover,
-.creditRate :is(.creditButton, .creditButtonStandalone):hover a:before{
+.creditRate .creditButton:hover p a{
           background-color:var(--RATE_bg_HOV);
           color:var(--RATE_txt_HOV);
           border-radius: 0;
           text-decoration: none;
 }
+
 
 /* ---------------------------------
 著作信息栏 || INFO BOX
@@ -4095,30 +4665,23 @@ grid-template-areas:
 .creditRate .creditButton{
     display: inline-flex;
     position: relative;
-    align-items: end; 
     margin-left: var(--RATE-btn_mgleft);
 }
  
-.creditRate :is(.creditButton, .creditButtonStandalone) a {
-    -webkit-filter: var(--RATE-btn_filter);
-    filter: var(--RATE-btn_filter);
+.creditRate .creditButton  a{
+   --RATE-txt_size: var(--RATE-txt_size);
+    font-size: var(--RATE-btn_size);
     margin: auto;
-    position: relative;    
-    justify-content:  center;
     background-color: transparent;
-}
-
-.creditRate :is(.creditButton, .creditButtonStandalone) a:before{  
-    --RATE-txt_size: var(--RATE-btn_size);
     color: var(--RATE-num_bg);
     left: unset;
     top: unset;
-    width: 100%;
-    height: var(--RATE-btn_height);
     display: inline-grid;
     justify-content: center;   
     align-items: center;
     grid-template-rows:var(--RATE-btn_width) auto;
+     height:var(--RATE-btn_height);
+     width: var(--RATE-btn_width);
  }
  
 
@@ -4473,6 +5036,8 @@ box-shadow: 0 1px 3px rgba(0,0,0,.2);
 
 .mz-note.note-left:after{
    float: left;
+    right: unset;
+    left: 0;
 }
 
 .mz-note .blockquote,
@@ -4559,6 +5124,15 @@ a.footnoteref::after{
  a.footnoteref  {
     font-size:80%;
   }
+}
+
+/* 非脚注的注释 */
+.hovertip:not(:has(.f-heading))  .content {
+    --tip-dogear-size:0;
+    --tip-dogearoll-size:0;
+    --tip-dogear-padding:0.5rem 1em;
+    --tip-color:var(--color-grey-pale);
+    letter-spacing: 1px
 }
 
 /*--------------便签纸-----------------*/
@@ -4708,10 +5282,18 @@ hr{
     width: 100%;
 }
 
+.hr-double hr{
+    --color-hr: var(--color-dark);
+    height:3px;
+border-top: var(--color-hr) solid 3px;  
+border-bottom: var(--color-hr) solid 3px;  
+    
+}
+
 /* 缩减  */
 
 blockquote hr,
-div:is(.mz-cover, .yui-content, .mz-board, .mz-blockquote, .blockquote) hr {
+div:is(.mz-cover, .yui-content, .mz-board, .mz-blockquote, .blockquote, .authorcontent) hr {
     border-top: var(--color-hr) solid 2px;
     margin: 1em 1.5em;
 }
@@ -5075,310 +5657,6 @@ display: block;
 #page-content .mz-tt.tt-box  h1 {
   font-size:130%;
 }
-}
-
-
-
-/*--------------------------------
-对话框
-----------------------------------*/
- 
-.mz-talking-wrap{
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
- /* 变量 */
-    --tk-img-width:5rem;
-    --tk-img-heigh:var(--tk-img-width);
-    --tk-img-margin:0rem 1.2rem;
-    --tk-img-left:var(--icon-scp);
-    --tk-img-right:var(--icon-magazine);
-    --tk-delta-width:0.5rem;
-    --tk-delta-width:0.5rem;
-    --tk-box-bg: var(--page-bg);
-    --tk-txt-padd:1rem;
-    --tk-delta-size:2rem;
-    --tk-delta-horiz: -0.5rem; /* 似乎低配版chrome无法用负数margin实现该功能*/
-    --tk-delta-verti: -1rem;
-    --tk-delta-path: polygon(50% 0, 100% 0, 100% 50%, 0 100%);
-    --tk-bd-weight:1px;
-    --tk-bdops-weight:-1px;
-    --tk-img-out:calc(var(--tk-img-heigh) * -0.8);
-    --tk-img-out-ops:calc(var(--tk-img-out) * -1);
-    
-    --line-border-shadow:
-        drop-shadow(var(--tk-bd-weight) 0px 0px var(--shadow-line)) drop-shadow(0px var(--tk-bd-weight) 0px var(--shadow-line)) 
-        drop-shadow(var(--tk-bdops-weight) 0px 0px var(--shadow-line)) drop-shadow(0px var(--tk-bdops-weight) 0px var(--shadow-line));  /* 放这里让变量可以直接在style中修改 */ 
-}
-
-.mz-talking-wrap :is(.talking-left,.talking-right){
-    display: inline-flex;
-    width: 100%;
-    margin-bottom: var(--tk-delta-size);
-}
-
-.talking-img{
-    margin: var(--tk-img-margin);
-    min-height: var(--tk-img-heigh);
-    min-width:  var(--tk-img-width);
-    background-image: var(--tk-img-left);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;  
-}
-
-.talking-right .talking-img{
-    background-image: var(--tk-img-right);
-}
-
-.mz-talking-wrap .talking-img.no-image, 
-.mz-talking-wrap .no-image .talking-img,
-.mz-talking-wrap.no-image  .talking-img{
-    background-image: none;
-}
-
-.talking-box p:first-child{
-    margin: 0;
-}
-
-#page-content .talking-box{
-        max-width: 40%;
-}
-
-.talking-box{
-    display:flex;
-    flex-wrap: wrap;
-    max-width: 60%;
-    padding:var(--tk-txt-padd);
-    background-color: var(--tk-box-bg);  
-    -webkit-filter: var(--line-border-shadow);
-    filter: var(--line-border-shadow);
-    align-self:   center;
-}
-
-.talking-box::after,
-.talking-box:before{
-   content: &#39; &#39;;
-   width: var(--tk-delta-size);
-   height: var(--tk-delta-size);
-   display: inline-flex;
-   position: absolute;
-    align-self: end;   
-    background-repeat: no-repeat;
-
-   background-color: inherit;
-  -webkit-clip-path:var(--tk-delta-path);
-    clip-path: var(--tk-delta-path);
-    z-index: -1;
- 
-    left: var(--tk-delta-horiz);
-    bottom:var(--tk-delta-verti);
-}
-
-.talking-box::after{
-    display: none ;
-}
-
-.talking-right, .talking-right .talking-box{
-    flex-direction: row-reverse;
-}
-
-.talking-right, .talking-right .talking-box p{
-   text-align: left;
-    flex-basis: 100%;
-}
-
-
-.talking-right .talking-box:before, 
-.talking-right .talking-box:after{
-    -moz-transform:scaleX(-1);
-    -webkit-transform:scaleX(-1);
-    -o-transform:scaleX(-1);
-    transform:scaleX(-1);
-    left: unset;
-    right: var(--tk-delta-horiz);
-}
-
-.talking-center{
-    margin: 0 auto;
-    display:flex;
-    align-items:  center;
-}
-
-.talking-center *{
-    margin: 0 0.2rem;
-}
-
-/*------ 手机 -------*/
-
-@media (max-width: 500px) {
-    .talking-img{
-        display: none;
-    }
-    
-    .mz-talking-wrap div:is(.talkimg-upper, .talkimg-below){
-        margin: 0 0 var(--tk-delta-size) 0;
-    }
-
-   #page-content .talking-box{
-        max-width: 80%;
-   }
-}
-
-
-/* 方向 */
-.talking-box.talkbox-righttop:before,
-.talking-box.talkbox-lefttop:before, 
-.talking-box.talkbox-righttop:after,
-.talking-box.talkbox-lefttop:after {
-     align-self: start;
-    
-    right: var(--tk-delta-horiz);
-    top:var(--tk-delta-verti);
-    bottom:unset;
-    
-     -moz-transform:scaleY(-1);
-    -webkit-transform:scaleY(-1);
-    -o-transform:scaleY(-1);
-    transform:scaleY(-1);
-}
-
-.talking-box.talkbox-righttop:before,
-.talking-box.talkbox-righttop:after{
-   -moz-transform:scale(-1,-1);
-    -webkit-transform:scale(-1,-1);
-    -o-transform:scale(-1,-1);
-     transform:scale(-1,-1);
-    
-    left:unset;
-    right: var(--tk-delta-horiz);
-    top:var(--tk-delta-verti);
-    bottom:unset;
-}
-
-.talkbox-inby{
-     align-self: start;
-}
-
-.talkbox-inby::before,
-.talkbox-inby::after {
-       -moz-transform:scaleY(-1);
-    -webkit-transform:scaleY(-1);
-    -o-transform:scaleY(-1);
-    transform:scaleY(-1);
-
-    left: var(--tk-delta-verti);
-    bottom:0;
-}
-
-.talkbox-inby.talkbox-lefttop::before,
-.talkbox-inby.talkbox-lefttop::after{
-     transform:scaleY(1);
-    left:var(--tk-delta-verti);
-    right: unset;
-    top:0;
-    bottom:unset;
-}
-
-.talking-right .talkbox-inby::before, 
-.talking-right .talkbox-inby::after{
-    -moz-transform:scale(-1);
-    -webkit-transform:scale(-1);
-    -o-transform:scale(-1);
-   transform:scale(-1);
-    left:unset;
-    right:var(--tk-delta-verti);
-    top:unset;
-    bottom:0;
-}
-
-.talkbox-inby.talkbox-righttop::before,
-.talkbox-inby.talkbox-righttop::after {
-   -moz-transform:scale(-1,1);
-    -webkit-transform:scale(-1,1);
-    -o-transform:scale(-1,1);
-        transform:scale(-1,1);
-    left:unset;
-    right:var(--tk-delta-verti);
-    top:0;
-    bottom:unset;
-}
-
-/* 内折 */
-.talkbox-round.talkbox-inby{
-   --tk-delta-verti: var(--tk-delta-horiz)
-}
-
-/*------ 自定义 -------*/
-
-.talkbox-round{
-    border-radius:40px;
-}
-
-.talkbox-dark, div:is(.talking-box:before, .talking-box:after) {
-   background-color: var(--shadow-line);
-   color: var(--page-bg);
-}
-
-.talkbox-doubleline{
-    -webkit-filter: var(--RATE-btn_filter);
-    filter: var(--RATE-btn_filter);
-}
-
-/* 图片位置 */
-.mz-talking-wrap .talkimg-below {
-    margin-bottom: var(--tk-img-out-ops);
-}
-.mz-talking-wrap .talkimg-upper {
-    margin-top: var(--tk-img-out-ops);
-}
-
-.talkimg-below .talking-img{
-    background-position: bottom center;
-    position: relative;
-    bottom: var(--tk-img-out);
-}
-
-.talkimg-upper .talking-img{
-    background-position: top center;
-    position: relative;
-    top: var(--tk-img-out);
-}
-
-/* 思考气泡 */
-.talkbox-bubles.talking-box {
-    margin-bottom: 1.5rem 
-}
-
-.talkbox-bubles.talking-box::after {
-display: block;
-}
-
-.talkbox-bubles.talking-box::before,
-.talkbox-bubles.talking-box::after{
- --tk-delta-path: polygon(0 74%, 41% 74%, 41% 100%, 0 100%);
-}
-
-.talkbox-bubles.talking-box::before {
-    --tk-delta-path:polygon(0 65%, 40% 65%, 39% 100%, 0 100%);
-    --tk-delta-size:3rem;
-    --tk-delta-horiz: -0.5rem;
-    --tk-delta-verti: -1rem;
-}
-
-.talkbox-bubles.talking-box::after {
-    --tk-delta-path:polygon(0 65%, 40% 65%, 39% 100%, 0 100%);
-    --tk-delta-size:2rem;
-    --tk-delta-horiz: -1.2rem;
-    --tk-delta-verti: -2rem;
-}
-
-.talkbox-round.talkbox-bubles.talking-box::before {
-    --tk-delta-path:circle(28% at 50% 50%);
-}
-
-.talkbox-round.talkbox-bubles.talking-box::after {
-    --tk-delta-path:circle(20% at 50% 50%);
 }
 
 /*=====================================
@@ -5872,6 +6150,10 @@ display: none;
 
 /*---------- 各项 -----------*/
 
+.wd-editor-toolbar-panel ul {
+  display: flex;
+}
+
 .wd-editor-toolbar-panel ul li ul a::before {
     content: &#34;H&#34;;
     font-size: var(--EDIT-ui_size-sub);
@@ -6021,8 +6303,11 @@ display: none;
 .wd-editor-toolbar-panel a.weditor-footnote::before {
     content:&#34;\f0f6&#34;;
     transform:  rotateX(180deg);
-    margin-top: 1px
-    
+    margin-top: 1px   
+}
+
+.wd-editor-toolbar-panel li:nth-child(6){
+ order: 10
 }
 
 .wd-editor-toolbar-panel a.weditor-math::before {
@@ -6525,6 +6810,12 @@ padding-left: 0;
   position:relative;
 }
 
+/*  Anomaly Class Bar */
+.w-cell &gt; hr{
+border-width: 2px;
+border-color: transparent;
+}
+
 /*=====================================
 外文站排版修复 fixed for other sites
 =====================================*/
@@ -6701,9 +6992,920 @@ ssssssssssssssssssssssssss
   }
 }
 [[/code]]
+[!---------------------------
+33333333333333333333333
+----------------------------]
+[[code type=&#34;CSS&#34;]]
+/*=====================================
+    Magazine Theme
+----------------------------------
+    Extensions Source
+=====================================*/
+
+
+@import url(https://scp-wiki.wikidot.com/local--files/theme:magazine/IMG-source_base64.css);
+
+:root{
+--img-chew444: var(--MASK-chew222);
+}
+
+/* ==================
+笔记本组件
+====================*/
+
+:root{
+ --color-notepage: var(--color-light);
+ --NOTEBOOK-bookmark_color:var(--color-dark);
+  --color-header-footer:var(--color-notepage);
+
+ --cl-a1:235,235,225,1;
+  --cl-a2:222,210,220,1;
+  --cl-a3:210,200,195,1;
+  --cl-a4:25,25,25,1;
+   --page-color:#f3f3f3;
+
+/* 书本厚度描框 */
+--box-bk-0:0.0625rem 0.0625rem 0 rgba(var(--cl-a1)), 0.125rem 0.125rem 0 rgba(var(--cl-a2)), 0.1875rem 0.1875rem 0 rgba(var(--cl-a2)), 0.25rem 0.25rem 0 rgba(var(--cl-a3)), 0.3125rem 0.3125rem 0 rgba(var(--cl-a2)), 0.375rem 0.375rem 0 rgba(var(--cl-a2)), 0.4375rem 0.4375rem 0 rgba(var(--cl-a2)), 0.8rem 0.8rem 0 rgba(var(--cl-a4));
+/* 书籍拱起描边 */ 
+  --NOTE-book-arch:drop-shadow(0px -1px 0px rgb(var(--cl-a4))) drop-shadow(0px -1px 0px rgb(var(--cl-a4))) drop-shadow(0px -1px 0px rgb(var(--cl-a4))) drop-shadow(0px -1px 0px rgb(var(--cl-a4))) drop-shadow(0px -1px 0px rgb(var(--cl-a4)));
+
+/**/    
+
+  --NOTEPAGE-txt_size: 1.1rem; 
+  --NOTEPAGE-p_padding-top:0em;  
+
+    --NOTEPAGE-line_size: 1.5em;
+
+    --NOTEPAGE-line-height: 1.5em; 
+    --NOTEPAGE-line-height_half: calc(var(--NOTEPAGE-line-height) / 2);
+    --NOTEPAGE-line-height_half-OPS: calc( 0em -  var(--NOTEPAGE-line-height_half));
+--color-rowline: #c0c0c0;
+    
+
+
+    --NOTEPAGE-side_width: 1rem;
+   --NOTEPAGE-side_height: 100%; 
+    --NOTEPAGE-txt_border-size: 0;
+
+    --MASK-chew_repeat: repeat;
+    --MASK-chew_size:100%;
+
+    /* 小 */
+    --NOTE-quote_bg:#e9e8e0;
+    --NOTE-quote_line: var(--NOTE-quote_bg);
+    --NOTE-quote_width:2em;
+    --NOTE-quote_shadow: drop-shadow(1px 1px 2px rgba(11,11,11,0.5)); 
+
+    --NOTE-quote_bg-size:  calc(var(--NOTEPAGE-line_size) * 1.4) calc(var(--NOTEPAGE-line_size) * 1.4);
+     --NOTE-quote_height:100%;
+     --NOTE-quote-side_position: 0 0.5em;
+    --NOTE-quote-side_clip: inset(0 0 0 25%);
+     --NOTE-quote_padding_lr: 0.5em; 
+     --NOTE-quote_padding: var(--NOTEPAGE-line-height_half) var( --NOTE-quote_padding_lr); 
+    
+    /* 书缝 */
+        --NOTE-bookseam_bg: 55,55,55;
+     --NOTE-bookseam_width: 2rem;
+    --NOTE-bookseam_width-half: -1rem;
+
+}
+
+@media (max-width: 550px) {    
+   .notebook-body, .notepage-body{
+     --NOTEPAGE-txt_size: 0.9rem; 
+     --NOTE-bookmark_display:none;
+     --NOTE-bookseam_display:none;
+    }  
+
+    .mz-notebook-wrap {        
+    --NOTEBOOK-grid:&#39;left&#39; &#39;right&#39;;
+    --NOTEBOOK-grid-columns:auto;
+    --NOTEBOOK-mid_display:none;
+    --NOTEBOOK-bookmark_display:none;    
+    --box-bk-0:none;
+     --NOTEPAGE-side_width: 0.6rem;
+     --NOTEBOOK_padding:0 0 1em 0;
+        --NOTEBOOK_border:3px solid #bbb;
+    }
+
+    .notebook-right{
+        --NOTEBOOK-bookmark_display:none;
+        margin-top: calc( 0em - var(--NOTEPAGE-line-height) / 2);
+    }
+
+}
+
+/*---------------------------
+整本
+--------------------------*/
+
+.notebook-body{   
+    display:grid;
+     grid-template-areas:  var(--NOTEBOOK-grid,&#39;left mid right&#39;);
+    grid-template-columns: var(--NOTEBOOK-grid-columns, 50% auto 50%);
+    
+    -moz-box-shadow:  var(--box-bk-0);
+    -webkit-box-shadow: var(--box-bk-0);
+    -o-box-shadow: var(--box-bk-0);
+    -ms-box-shadow: var(--box-bk-0);
+    box-shadow: var(--box-bk-0);
+    background-color: #f3f3f3;
+    background-color: var(--page-color);
+    border:var(--NOTEBOOK_border, 1px solid #cccccc); 
+    background-color: var(--color-notepage);
+    padding: var(--NOTEBOOK_padding, 0);
+}
+
+
+.notebook-left{
+    grid-area: left;
+}
+
+.notebook-mid{
+    grid-area: mid;
+    width: 0.15em;
+    height: 100%;
+    background-color: var(--color-dark);
+    display: var(--NOTEBOOK-mid_display, inline-grid);
+    grid-template-rows: 100% 0%;
+}
+
+.notebook-right{
+    grid-area: right;
+}
+
+.notebook-body .notepage-main{
+   margin: 0 var(--NOTEPAGE-side_width) var(--NOTEPAGE-side_width) var(--NOTEPAGE-side_width); 
+    height: 100%;
+    width: calc(100% - var(--NOTEPAGE-side_width) * 2 );
+    align-self: flex-start;
+    align-items: flex-start;
+    align-content: flex-start
+}
+
+.notebook-mid:before{
+     content: &#39; &#39;;
+    display: inline-grid;     
+}
+
+.notebook-mid:after{
+   content: &#39;▲&#39;;
+    display: inline-grid;
+    position: relative;
+    width: 0rem;
+    height: 0rem;
+    left:-0.55rem;
+    bottom:-0.4rem;
+   color: var(--page-bg);
+    font-size: 1.2rem;
+    line-height: 0;
+
+   -webkit-filter: var(--NOTE-book-arch);
+    filter: var(--NOTE-book-arch);  
+}
+
+.mz-notebook-wrap .notebook-body:before{
+    content: &#34;&#34;;
+    display:  var(--NOTE-bookseam_display, inline-grid);
+    grid-area: right;
+    width: var(--NOTE-bookseam_width);
+    margin-left: var(--NOTE-bookseam_width-half);
+    position: relative;
+    background-image: linear-gradient(to left,transparent 0%, transparent 20%, rgba(var(--NOTE-bookseam_bg),0.1) 40%, rgba(var(--NOTE-bookseam_bg),0.2) 50%, rgba(var(--NOTE-bookseam_bg),0.1) 60%, transparent 80%, transparent 100%);
+}
+
+.notebook-noseam{
+    --NOTE-bookseam_display:none;
+}
+
+
+/*---------- 书签 --------------*/
+.notebook-bookmark{
+    display:grid;
+    grid-template-areas: &#39;mid &#39;;
+}
+
+.notebook-bookmark:before{
+    grid-area: mid;
+    content: &#39; &#39;;
+    display:var(--NOTEBOOK-bookmark_display,block);
+    position: relative;
+    width: var(--NOTEBOOK-bookmark_width, 1.2rem);
+    height:var(--NOTEBOOK-bookmark_height, 20rem);
+    max-height: 40%; 
+    background-color: var(--NOTEBOOK-bookmark_color);
+    margin-top: -1px;
+    margin-left:var(--NOTEBOOK-bookmark_left, 90%);
+    z-index: 2;
+
+-webkit-clip-path:var(--NOTEBOOK-bookmark-clip);
+clip-path: var(--NOTEBOOK-bookmark-clip);
+
+    --NOTEBOOK-bookmark-clip:polygon(0 0, 100% 0, 100% 100%, 50% 95%, 0 100%);
+
+}
+
+/*---------------------------
+单页与边缘
+--------------------------*/
+
+.mz-notepage-wrap{
+    width: 100%;
+    margin: 0 auto;
+   -webkit-filter:drop-shadow(1px 2px 2px #333);
+    filter: drop-shadow(1px 2px 2px #333);
+    height: auto;
+}
+
+.notepage-body{
+ display: inline-grid;
+    grid-template-areas:
+        &#39;header header header&#39;
+        &#39;left top  right&#39;
+        &#39;left mid right&#39;
+        &#39;left bottom right&#39;
+        &#39;footer footer footer&#39;;
+    grid-gap: 0;
+    
+}
+
+.notepage-body:before,
+.notepage-body:after{
+        content: &#39; &#39;;
+    width: var(--NOTEPAGE-side_width);
+    height: var(--NOTEPAGE-side_height); 
+    -webkit-mask-position: left;
+            mask-position: top;
+     -webkit-mask-repeat:var(--MASK-chew_repeat);
+         mask-repeat: var(--MASK-chew_repeat);
+     -webkit-mask-size: var(--MASK-chew_size);
+         mask-size:var(--MASK-chew_size);
+            background-color: var(--color-notepage);
+}
+
+.notepage-body:before{
+    grid-area: var(--NOTEPAGE-before_area,left);  
+    -webkit-mask-image:var(--MASK-chew-before);
+            mask-image:var(--MASK-chew-before);
+    margin: var(--MASK-chew-before_margin);
+    display: var(--NOTEPAGE-before_display, inherit);  
+}
+
+.notepage-body:after{
+    grid-area:var(--NOTEPAGE-after_area,right);  
+            -webkit-mask-image:var(--MASK-chew-after);
+            mask-image:var(--MASK-chew-after);
+        margin: var(--MASK-chew-after_margin);
+    display: var(--NOTEPAGE-after_display, inherit);  
+}
+
+.mz-notepage-wrap :is(.blockquote, blockquote):before{
+    content: &#34; &#34;;
+    display: block;
+    position: absolute; 
+    margin:-2.5em 0em 0 -0.5em;
+    width: 1.5em;
+    height: 6em;
+    background: var(--NOTE-tap_bg, rgba(55,55,55,0.1));
+    transform: rotate(45deg);
+    border: var(--NOTE-tap_bd, rgba(33,33,33,0.4) solid 1.5px);
+}
+
+/* 撕痕 */
+.chew-left .notepage-body:before{
+   --MASK-chew-before: var(--MASK-chew);
+    --NOTEPAGE-before_display:inline-grid;
+}
+
+.chew-right .notepage-body:after{
+   --MASK-chew-after: var(--MASK-chew);
+   --NOTEPAGE-after_display:inline-grid;
+   -webkit-transform:scale(-1);
+    transform: scale(-1);
+}
+
+.chew-bottom,
+.chew-top{
+    --NOTEPAGE-txt_border-size:0.8em;
+    --NOTEPAGE-before_area:header;
+    --NOTEPAGE-after_area:footer;
+    --NOTEPAGE-side_width: 100%;
+   --NOTEPAGE-side_height: 1rem; 
+     --MASK-chew_repeat: repeat-x;
+    --MASK-chew_size:14rem;
+    --NOTEPAGE-before_display:none;
+    --NOTEPAGE-after_display:none;
+    --NOTEPAGE-header_font-size:0;
+    --NOTEPAGE-footer_font-size:0; 
+
+    --NOTE-quote_width:100%;
+    --NOTE-quote_bg-size:3em;
+    --NOTE-quote_height:3em;
+     --NOTE-quote-side_clip:inset(0 0 25% 0);
+   --NOTE-quote-side_position: 0em 0;
+  --NOTE-quote-side_repeat:repeat-x;
+}
+
+.chew-top {
+        --NOTEPAGE-before_display:inline-grid;
+        --MASK-chew-before_margin:0px 0 -1px 0;
+        --NOTEPAGE-footer_font-size:0.8em;
+        --NOTEPAGE-header_display:none;
+
+}
+
+.chew-bottom {
+     --MASK-chew-after_margin: -1px 0 0 0;  
+    --NOTEPAGE-after_display:inline-grid;
+    --NOTEPAGE-header_font-size:1.5em;
+}
+
+.chew-bottom .notepage-body:after{
+    --MASK-chew-after: var(--MASK-chew222);
+}
+
+.chew-top .notepage-body:before{
+    --MASK-chew-before: var(--MASK-chew222);
+    transform: scaleY(-1);
+}
+
+/*---------- 头尾 --------------*/
+
+.notepage-header{
+    grid-area: top;  
+    min-height:var(--NOTEPAGE-header_min-height, 1.5rem);
+    height: var(--NOTEPAGE-header_height);
+    background-color:var(--color-header-footer);
+    display: var(--NOTEPAGE-header_display, inherit);  
+      font-size: var(--NOTEPAGE-header_font-size, inherit);    
+}
+
+.notepage-footer{
+    grid-area: bottom; 
+    min-height:var(--NOTEPAGE-footer_min-height, 1.5rem);
+    height: var(--NOTEPAGE-footer_height);    
+    width: 100%;
+    background-color: var(--color-header-footer);
+    display: var(--NOTEPAGE-footer_display, inherit);  
+    font-size: var(--NOTEPAGE-footer_font-size, inherit);  
+}
+
+/*---------- 正文 --------------*/
+.notepage-main:before, .notepage-main:after{
+  content: &#39; &#39;;    
+    height: 100%;
+}
+.notepage-main{
+    grid-area: mid;   
+    display: var(--NOTE-main_display, inline-grid);
+  --NOTEPAGE-rowline :linear-gradient(to top ,var(--color-rowline) 0em, var(--color-rowline) 0.05em, transparent 0.06em, transparent 0.16em,#c0c0c0 0.17em, var(--color-rowline) 0.22em, transparent 0.25em,transparent 100%);
+  --NOTEPAGE-rowline_single:linear-gradient(to top , var(--color-rowline) 0em,  var(--color-rowline) 0.12em, transparent 0.15em); 
+}
+
+.notepage-main :is(.blockquote, blockquote),
+.notepage-main{
+    white-space:normal;
+    font-style: normal;
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: transparent;
+    background-origin: padding-box;
+    background-repeat: repeat;
+    background-position: 0rem 0;
+    background-size: 100% var(--NOTEPAGE-line_size);
+    background-image: var(--NOTEPAGE-rowline);
+    background-color: var(--color-notepage);
+    padding-top: var(--NOTEPAGE-p_padding-top);
+    border-left: var(--NOTEPAGE-txt_border-size)  var(--color-notepage) solid;
+    border-right: var(--NOTEPAGE-txt_border-size)   var(--color-notepage) solid;
+    color:var(--color-bookpage-txt, inherit);
+            font-size: var(--NOTEPAGE-txt_size); 
+}
+
+#page-content .notepage-main p{
+        font-size: var(--NOTEPAGE-txt_size);
+        line-height: var(--NOTEPAGE-line-height); 
+        padding:var(--NOTEPAGE-txt_padding, 0 0.5em);
+        margin-top: var(--NOTEPAGE-line-height);
+  margin-bottom: 0
+}
+
+/*-------------- 洞洞书页 ------------------*/
+.mz-notequote-wrap{
+     --NOTE-quote_line: var(--color-grey-darkest);
+    --NOTEPAGE-footer_display:inline-grid;
+    --color-header-footer: var(--NOTE-quote_bg);
+    --NOTEPAGE-header_min-height:1.2em;
+    --NOTEPAGE-footer_min-height:1.2em;
+        --NOTEPAGE-before_display:none;
+        --NOTEPAGE-after_display:none;
+   --MASK-chew: none;
+    --MASK-chew222:none;
+    --page-color:red;
+
+}
+
+.mz-notequote-wrap .notepage-main,
+.notepage-main :is(.blockquote, blockquote){
+    background-color:  var(--NOTE-quote_bg);
+   background-image: linear-gradient(to top ,var(--NOTE-quote_line) 0%, var(--NOTE-quote_bg) 10%);        
+    border: 0;
+    margin-top: var(--NOTEPAGE-line-height);
+    margin-bottom: 0;
+    background-position: 0 var(--NOTEPAGE-line-height_half);
+    padding: var(--NOTE-quote_padding);
+    -webkit-filter: var(--NOTE-quote_shadow);
+            filter: var(--NOTE-quote_shadow);
+}
+
+.mz-notequote-wrap .notepage-body:before,
+.mz-notequote-wrap .notepage-body:after,
+.mz-notequote-wrap :is(.blockquote, blockquote):before{
+   content: &#39;  &#39;;
+    width:var(--NOTE-quote_width);
+    height: var(--NOTE-quote_height);
+    margin: var(--NOTEPAGE-line-height_half-OPS) 0  var(--NOTEPAGE-line-height_half-OPS) var(--NOTE-quote_margin-left);
+    position: relative;
+    float: left;
+    background-image: radial-gradient(transparent 38%,var(--NOTE-quote_bg) 41%); /* 标准的语法（必须放在最后） */
+     background-size:var( --NOTE-quote_bg-size);
+     background-position: var( --NOTE-quote-side_position);
+    background-repeat: var( --NOTE-quote-side_repeat); 
+}
+
+.notepage-main :is(.blockquote, blockquote){
+    --NOTE-quote_width:var(--NOTE-inerquote_width, 1.5em);
+    --NOTE-quote_height: calc(100% + var(--NOTEPAGE-line-height_half) * 2);
+    --NOTE-quote_bg-size:var( --NOTE-quote_width) var( --NOTE-quote_width);
+    --NOTE-quote-side_repeat:repeat-y;
+    --NOTEPAGE-txt_padding:0;
+     --NOTE-quote-side_position:auto;
+    --NOTE-quote_margin-left: calc(0em - var(--NOTE-quote_width) - var(--NOTE-quote_padding_lr) );  
+}
+
+.mz-notequote-wrap .notepage-main {
+            margin-top: 0;
+    -webkit-filter: none;
+            filter: none;   
+}
+
+.mz-notequote-wrap .notepage-body{
+        -webkit-filter: var(--NOTE-quote_shadow);
+          filter: var(--NOTE-quote_shadow);
+}
+
+.mz-notequote-wrap .notepage-body:before,
+.mz-notequote-wrap .notepage-body:after{
+    margin: 0    ;
+    float: none;
+    font-size: var(--NOTEPAGE-txt_size); 
+    background-color: transparent;
+-webkit-clip-path:  var(--NOTE-quote-side_clip);
+clip-path: var(--NOTE-quote-side_clip);
+}
+
+.mz-notequote-wrap .notepage-body:before{
+    display: var(--NOTEPAGE-before_display, inline-grid);
+}
+.mz-notequote-wrap .notepage-body:after{
+    display: var(--NOTEPAGE-after_display, inline-grid);
+}
+/*------------ 其他 --------------*/
+
+#page-content .notepage-main :is(.blockquote, blockquote) p{
+   margin: 0;
+}
+
+.notepage-main hr{
+    border: none;
+    height:  1px;
+    margin: 0 auto;
+    position: relative;
+    top: 0.5em;
+    box-shadow: 0 0.2em 0px 1px var(--color-dark);
+    width: 90%;  
+}
+
+
+.notepage-main .mz-note :is(.blockquote, blockquote){
+    -webkit-filter: none;
+    filter: none;
+    background-image: none;
+    background-color: var(--QUOTE_bg222);
+    border: 2px dashed var(--QUOTE_border);
+    margin-top: 0
+}
+
+.notepage-main ul{
+    margin: 0;
+}
+.notepage-main ul li{
+    line-height: var(--NOTEPAGE-line-height);  
+}
+/*------------ 扩展 --------------*/
+
+.rowline-single .notepage-main, .notepage-main.rowline-single{
+        background-image: var(--NOTEPAGE-rowline_single);  
+}
+
+.rowline-none, .rowline-none *{
+        background-image: none;  
+}
+
+ /* ====================
+对话框
+===================== */
+
+.mz-talking-wrap{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+ /* 变量 */
+    --tk-img-width:5rem;
+    --tk-img-heigh:var(--tk-img-width);
+    --tk-img-margin:0rem 1.2rem;
+    --tk-img-left:var(--icon-scp);
+    --tk-img-right:var(--icon-magazine);
+    --tk-delta-width:0.5rem;
+    --tk-delta-width:0.5rem;
+    --tk-box-bg: var(--page-bg);
+    --tk-txt-padd:1rem;
+    --tk-delta-size:2rem;
+    --tk-delta-horiz: -0.5rem; /* 似乎低配版chrome无法用负数margin实现该功能*/
+    --tk-delta-verti: -1rem;
+    --tk-delta-path: polygon(50% 0, 100% 0, 100% 50%, 0 100%);
+    --tk-bd-weight:1px;
+    --tk-bdops-weight:-1px;
+    --tk-img-out:calc(var(--tk-img-heigh) * -0.8);
+    --tk-img-out-ops:calc(var(--tk-img-out) * -1);
+    
+    --line-border-shadow:
+        drop-shadow(var(--tk-bd-weight) 0px 0px var(--shadow-line)) drop-shadow(0px var(--tk-bd-weight) 0px var(--shadow-line)) 
+        drop-shadow(var(--tk-bdops-weight) 0px 0px var(--shadow-line)) drop-shadow(0px var(--tk-bdops-weight) 0px var(--shadow-line));  /* 放这里让变量可以直接在style中修改 */ 
+}
+
+.mz-talking-wrap :is(.talking-left,.talking-right){
+    display: inline-flex;
+    width: 100%;
+    margin-bottom: var(--tk-delta-size);
+}
+
+.talking-img{
+    margin: var(--tk-img-margin);
+    min-height: var(--tk-img-heigh);
+    min-width:  var(--tk-img-width);
+    background-image: var(--tk-img-left);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;  
+}
+
+.talking-right .talking-img{
+    background-image: var(--tk-img-right);
+}
+
+.mz-talking-wrap .talking-img.no-image, 
+.mz-talking-wrap .no-image .talking-img,
+.mz-talking-wrap.no-image  .talking-img{
+    background-image: none;
+}
+
+.talking-box p:first-child{
+    margin: 0;
+}
+
+#page-content .talking-box{
+        max-width: 40%;
+}
+
+.talking-box{
+    display:flex;
+    flex-wrap: wrap;
+    max-width: 60%;
+    padding:var(--tk-txt-padd);
+    background-color: var(--tk-box-bg);  
+    -webkit-filter: var(--line-border-shadow);
+    filter: var(--line-border-shadow);
+    align-self:   center;
+}
+
+.talking-box::after,
+.talking-box:before{
+   content: &#39; &#39;;
+   width: var(--tk-delta-size);
+   height: var(--tk-delta-size);
+   display: inline-flex;
+   position: absolute;
+    align-self: end;   
+    background-repeat: no-repeat;
+
+   background-color: inherit;
+  -webkit-clip-path:var(--tk-delta-path);
+    clip-path: var(--tk-delta-path);
+    z-index: -1;
+ 
+    left: var(--tk-delta-horiz);
+    bottom:var(--tk-delta-verti);
+}
+
+.talking-box::after{
+    display: none ;
+}
+
+.talking-right, .talking-right .talking-box{
+    flex-direction: row-reverse;
+}
+
+.talking-right, .talking-right .talking-box p{
+   text-align: left;
+    flex-basis: 100%;
+}
+
+
+.talking-right .talking-box:before, 
+.talking-right .talking-box:after{
+    -moz-transform:scaleX(-1);
+    -webkit-transform:scaleX(-1);
+    -o-transform:scaleX(-1);
+    transform:scaleX(-1);
+    left: unset;
+    right: var(--tk-delta-horiz);
+}
+
+.talking-center{
+    margin: 0 auto;
+    display:flex;
+    align-items:  center;
+}
+
+.talking-center *{
+    margin: 0 0.2rem;
+}
+
+/*------ 手机 -------*/
+
+@media (max-width: 500px) {
+    .talking-img{
+        display: none;
+    }
+    
+    .mz-talking-wrap div:is(.talkimg-upper, .talkimg-below){
+        margin: 0 0 var(--tk-delta-size) 0;
+    }
+
+   #page-content .talking-box{
+        max-width: 80%;
+   }
+}
+
+
+/* 方向 */
+.talking-box.talkbox-righttop:before,
+.talking-box.talkbox-lefttop:before, 
+.talking-box.talkbox-righttop:after,
+.talking-box.talkbox-lefttop:after {
+     align-self: start;
+    
+    right: var(--tk-delta-horiz);
+    top:var(--tk-delta-verti);
+    bottom:unset;
+    
+     -moz-transform:scaleY(-1);
+    -webkit-transform:scaleY(-1);
+    -o-transform:scaleY(-1);
+    transform:scaleY(-1);
+}
+
+.talking-box.talkbox-righttop:before,
+.talking-box.talkbox-righttop:after{
+   -moz-transform:scale(-1,-1);
+    -webkit-transform:scale(-1,-1);
+    -o-transform:scale(-1,-1);
+     transform:scale(-1,-1);
+    
+    left:unset;
+    right: var(--tk-delta-horiz);
+    top:var(--tk-delta-verti);
+    bottom:unset;
+}
+
+.talkbox-inby{
+     align-self: start;
+}
+
+.talkbox-inby::before,
+.talkbox-inby::after {
+       -moz-transform:scaleY(-1);
+    -webkit-transform:scaleY(-1);
+    -o-transform:scaleY(-1);
+    transform:scaleY(-1);
+
+    left: var(--tk-delta-verti);
+    bottom:0;
+}
+
+.talkbox-inby.talkbox-lefttop::before,
+.talkbox-inby.talkbox-lefttop::after{
+     transform:scaleY(1);
+    left:var(--tk-delta-verti);
+    right: unset;
+    top:0;
+    bottom:unset;
+}
+
+.talking-right .talkbox-inby::before, 
+.talking-right .talkbox-inby::after{
+    -moz-transform:scale(-1);
+    -webkit-transform:scale(-1);
+    -o-transform:scale(-1);
+   transform:scale(-1);
+    left:unset;
+    right:var(--tk-delta-verti);
+    top:unset;
+    bottom:0;
+}
+
+.talkbox-inby.talkbox-righttop::before,
+.talkbox-inby.talkbox-righttop::after {
+   -moz-transform:scale(-1,1);
+    -webkit-transform:scale(-1,1);
+    -o-transform:scale(-1,1);
+        transform:scale(-1,1);
+    left:unset;
+    right:var(--tk-delta-verti);
+    top:0;
+    bottom:unset;
+}
+
+/* 内折 */
+.talkbox-round.talkbox-inby{
+   --tk-delta-verti: var(--tk-delta-horiz)
+}
+
+/*------ 自定义 -------*/
+
+.talkbox-round{
+    border-radius:40px;
+}
+
+.talkbox-dark, div:is(.talking-box:before, .talking-box:after) {
+   background-color: var(--shadow-line);
+   color: var(--page-bg);
+}
+
+.talkbox-doubleline{
+    -webkit-filter: var(--RATE-btn_filter);
+    filter: var(--RATE-btn_filter);
+}
+
+/* 图片位置 */
+.mz-talking-wrap .talkimg-below {
+    margin-bottom: var(--tk-img-out-ops);
+}
+.mz-talking-wrap .talkimg-upper {
+    margin-top: var(--tk-img-out-ops);
+}
+
+.talkimg-below .talking-img{
+    background-position: bottom center;
+    position: relative;
+    bottom: var(--tk-img-out);
+}
+
+.talkimg-upper .talking-img{
+    background-position: top center;
+    position: relative;
+    top: var(--tk-img-out);
+}
+
+/* 思考气泡 */
+.talkbox-bubles.talking-box {
+    margin-bottom: 1.5rem 
+}
+
+.talkbox-bubles.talking-box::after {
+display: block;
+}
+
+.talkbox-bubles.talking-box::before,
+.talkbox-bubles.talking-box::after{
+ --tk-delta-path: polygon(0 74%, 41% 74%, 41% 100%, 0 100%);
+}
+
+.talkbox-bubles.talking-box::before {
+    --tk-delta-path:polygon(0 65%, 40% 65%, 39% 100%, 0 100%);
+    --tk-delta-size:3rem;
+    --tk-delta-horiz: -0.5rem;
+    --tk-delta-verti: -1rem;
+}
+
+.talkbox-bubles.talking-box::after {
+    --tk-delta-path:polygon(0 65%, 40% 65%, 39% 100%, 0 100%);
+    --tk-delta-size:2rem;
+    --tk-delta-horiz: -1.2rem;
+    --tk-delta-verti: -2rem;
+}
+
+.talkbox-round.talkbox-bubles.talking-box::before {
+    --tk-delta-path:circle(28% at 50% 50%);
+}
+
+.talkbox-round.talkbox-bubles.talking-box::after {
+    --tk-delta-path:circle(20% at 50% 50%);
+}
+
+ /* ====================
+翻页
+===================== */
+
+.mz-tab .yui-navset{
+     filter: drop-shadow(-1px 0px 1px var(--tab-shadow)) drop-shadow(1px 1px 1px var(--tab-shadow));
+}
+
+.mz-tab  .yui-navset .yui-content {
+    border: none;
+    border-top: solid 4px var(--accentColor);
+    color:  var(--tabMain-txt);
+    background-color: var(--tabMain-bg);
+    display: flex;
+flex-wrap:wrap;
+
+}
+
+.mz-tab  .yui-navset .yui-content div[id*=&#34;wiki-tab&#34;]{
+    width: 100%;
+    margin: 0 -0.2rem 0 -0.2rem;
+    padding: 1rem;
+}
+
+.mz-tab  .yui-navset .yui-content:after{
+     display: block;
+    content: &#39;  &#39;;
+    border: none;
+    border-top: solid 0px transparent;
+    padding:0rem 0;
+     margin: 0;
+    color: #ece3e3;
+    width: 100%;
+    height: 10rem;
+           height:auto;
+    background-color: var(--tabMain-bg);
+
+ -webkit-mask-repeat: repeat-x;
+         mask-repeat: repeat-x;
+ -webkit-mask-size: 10rem;
+         mask-size: 12rem;
+    -webkit-mask-image:var(--img-chew444);
+    mask-image:var(--img-chew444);
+    -webkit-mask-position: bottom;
+   mask-position:bottom;
+     position: relative;
+margin:0 0 -1rem 0;
+    z-index: 1;
+     top:0rem;
+
+}
+
+/**/
+.mz-tab  .yui-content div[style*=&#34;display: none;&#34;][id*=&#34;wiki-tab&#34;]{
+transform:rotateX(-180deg);    
+    left: 0rem;
+
+    position: absolute;
+    opacity: 0;
+    display: block !important;
+    top:0%;
+        transform-origin:  50% 0;  
+height: 0;
+    visibility:  hidden;
+    border: 1px solid rgba(33,33,33,.8);
+     border-top:0px solid rgba(33,33,33,0);
+    background: #fffcf8;
+    transition:   all 0s;
+    height: 0 ;
+
+   z-index: -0 !important;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+
+}
+
+.mz-tab  .yui-content div[style*=&#34;display: block;&#34;][id*=&#34;wiki-tab&#34;]{
+transform:rotateX(0deg);
+        left: 0rem;
+        position:     relative;
+    top:0;
+    transform-origin:  50% 0;   
+z-index:0;
+height: auto;
+background:  var(--tabMain-bg);
+    border: 1px solid rgba(33,33,33,0);
+        transition:   all 1s;
+transform-style: preserve-3d;
+}
+
+[[/code]]
 [[/collapsible]]
-
-
 
 
 [!---------------------------
@@ -6990,16 +8192,23 @@ A horizontal rule can be created with 5 hyphens &#34;-----&#34; and extends acro
 @@@@
 @@@@
 
-
-+++* Customized horizontal rule
-
-
-
-[[div class=&#34;mz-hr hr-contract hr-solid&#34; ]]
-
+[[div class=&#34;mz-hr hr-contract&#34; ]]
 ------
-
 [[/div]]
+[[div class=&#34;mz-hr hr-solid&#34; ]]
+------
+[[/div]]
+[[div class=&#34;mz-hr hr-double&#34; ]]
+------
+[[/div]]
+[[div class=&#34;mz-hr hr-dotted&#34; ]]
+------
+[[/div]]
+[[div class=&#34;mz-hr hr-contract hr-solid&#34; ]]
+------
+[[/div]]
+
+
 
 @@@@
 @@@@
@@ -7013,6 +8222,7 @@ A horizontal rule can be created with 5 hyphens &#34;-----&#34; and extends acro
 * **Reduce hrs&#39; size：**hr-contract
 * **Change hrs to solid ：**hr-solid
 * **To dotted：**hr-dotted
+* **Double line:** hr-double
 
 [[/div]]
 [[div class=&#34;mmposter-cell&#34;]]
@@ -7374,11 +8584,7 @@ content
 @@[[/div]]@@
 [[/div]]
 
-@@@@
-
-------
-
-@@@@
++ Note pages
 
 [[div class=&#34;flex-wrap&#34;]]
 [[div class=&#34;note-page&#34;]]
@@ -7411,9 +8617,160 @@ Swap the background color of note:
 [[/div]]
 [[/div]]
 
-------
 
-++ Dialogues
+[[div class=&#34;hr-double&#34; style=&#34;text-align:center&#34;]]
+------
+++ Row-striped pages
+------
+[[/div]]
+
+[[div class=&#34;lc-wrap&#34;]]
+[[div class=&#34;mz-notepage-wrap chew-top lc-mid&#34;]]
+[[div class=&#34;notepage-body rowline-none&#34;]]
+[[div_ class=&#34;notepage-header&#34;]]
+[[/div]]
+[[div class=&#34;notepage-main&#34; ]]
+&gt; Usage
+To enable the style of row-striped pages and notebook pages bellow, add a line of code in the include: 
+
+@@[[include :scp-wiki-cn:theme:magazine@@
+__|extensions=true__
+@@]]@@
+
+@@@@
+To use more similar stuff, see [http://scp-wiki-cn.wikidot.com/component:note-template the component here].
+[[div class=&#34;page-fullline&#34;]]
+[[/div]]
+[[/div]]
+[[div class=&#34;notepage-footer&#34;]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+@@@@
+@@@@
+[[div class=&#34;flex-pc&#34;]]
+[[div class=&#34;mz-notepage-wrap chew-left&#34;]]
+[[div class=&#34;notepage-body&#34;]]
+[[div_ class=&#34;notepage-header&#34;]]
+[[/div]]
+[[div class=&#34;notepage-main&#34;]]
+[[div class=&#34;no-sel &#34;]]
+@@[[div class=&#34;mz-notepage-wrap chew-left&#34;]]@@[[footnote]] 
+ In &#34;chew-xxx&#34;, &#34;xxx&#34; can be replaced with  left/right/top/bottom/both/none to adjust the position of the torn edge.[[/footnote]]
+@@[[div class=&#34;notepage-body&#34;]]@@
+@@[[div_ class=&#34;notepage-header&#34;]]@@
+Top text.
+@@[[/div]]@@
+@@[[div class=&#34;notepage-main&#34;]]@@
+Main text.
+@@[[/div]]@@
+@@[[div class=&#34;notepage-footer&#34;]]@@
+Bottom  text, usually the page number.
+@@[[/div]]@@
+@@[[/div]]@@
+@@[[/div]]@@
+[[/div]]
+@@@@
+[[/div]]
+[[div class=&#34;notepage-footer&#34;]]
+[[/div]]
+[[/div]]
+[[/div]]
+@@@@
+@@@@
+[[div class=&#34;mz-notequote-wrap  chew-left&#34;]]
+[[div class=&#34;notepage-body&#34;]]
+[[div_ class=&#34;notepage-header&#34;]]
+[[/div]]
+[[div class=&#34;notepage-main&#34;]]
+The usage method is the same as above, just replace
+
+**mz-notepage-wrap**
+
+to:
+
+**mz-notequote-wrap**
+
+That&#39;s done.
+@@@@
+@@@@
+@@@@
+@@@@
+[[/div]]
+[[div class=&#34;notepage-footer&#34;]]
+[[/div]]
+[[/div]]
+[[/div]]
+
+@@@@
+[[/div]]
+[[div class=&#34;hr-double mob-hid&#34; style=&#34;text-align:center&#34;]]
+------
+++ Notebook
+------
+[[/div]]
+
+[[div class=&#34;mz-notebook-wrap mob-hid&#34;]]
+[[div class=&#34;notebook-body&#34;]]
+[[div class=&#34;notebook-left  notebook-bookmark&#34;]]
+[[div class=&#34;notepage-main&#34;]]
+[[div class=&#34;no-sel &#34;]]
+@@[[div class=&#34;mz-notebook-wrap&#34;]]@@
+@@[[div class=&#34;notebook-body&#34;]]@@
+@@[[div class=&#34;notebook-left&#34;]]@@
+@@[[div class=&#34;notepage-main&#34;]]@@
+@@     @@Left text. 
+@@[[/div]]@@
+@@[[/div]]@@
+@@[[div class=&#34;notebook-mid&#34;]]@@
+@@[[/div]]@@
+@@[[div class=&#34;notebook-right &#34;]]@@
+@@[[div class=&#34;notepage-main &#34;]]@@
+@@     @@Right text.
+@@[[/div]]@@
+@@[[/div]]@@
+@@[[/div]]@@
+@@[[/div]]@@
+[[/div]]
+@@ @@
+[[div class=&#34;mz-note note-left&#34; style=&#34;left:-2rem;position:relative;--tip-color:#abddba&#34;]]
+[[div_ style=&#34;margin: 0.5em 0 0.5em 0&#34;]]
+@@       @@Hey, it look like a tab[[footnote]] 
+Maybe you would need some color codes: 
+#bbdcea #f3a2aa #f0dd8e #bbdcea #b5b6ae [[/footnote]].
+[[/div]]
+[[/div]]
+@@ @@
+[[div_ class=&#34;mz-note note-left&#34; style=&#34;left:-4rem;position:relative;--tip-color:#bbdcea&#34;]]
+[[div_ style=&#34;margin: 0.5em 0 0.5em 0&#34;]]
+ Widening the page of site and folding the sidebar may improve the visual effect of this block.
+[[/div]]
+[[/div]]
+
+
+[[/div]]
+[[/div]]
+[[div class=&#34;notebook-mid&#34;]]
+[[/div]]
+[[div class=&#34;notebook-right&#34;]]
+[[div class=&#34;notepage-main&#34;]]
+
+**Note:**
+* This block only displays the full appearance on a wide screen, and changes to the row-striped page style above on a narrow screen.
+* To modify the color of background/row-stripes/text of bookpage separately, add //@@style=&#34;--color-notepage: blue;--color-rowline: green;--color-bookpage-txt:red&#34;@@//  to the div which //class=&#34;notebook-body&#34;//.
+* To remove the bookseam style in the middle of the notebook, add //notebook-noseam// in the div which class=&#34;notebook-body&#34;.
+* To enable the bookmark, add //notebook-bookmark// in the div which class=&#34;notebook-left/right&#34;.
+*  To change the default row stripe style of the bookpage block to single stripe,  add //rowline-single// in the div which class=&#34;notepage-main&#34;.
+ * Add //rowline-none// to remove the stripe.
+
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+@@@@
+@@@@
++ Dialogues
 
 [[div class=&#34;mz-talking-wrap pc-width&#34; style=&#34;width:60%;margin: 0 auto&#34;]]
 [[div class=&#34;talking-left talkimg-below&#34; ]]
@@ -7433,9 +8790,11 @@ See the folow to create a sheet of speech bubbles.
 [[/div]]
 [[/div]]
 
+[[collapsible show=&#34;+ Here we go&#34; hide=&#34;- close&#34;]]
 [[div class=&#34;flex-wrap&#34;]]
 [[div class=&#34;blockquote no-sel&#34; style=&#34;margin: 0 auto;&#34;]]
 ++* Code
+@@[[include :scp-wiki-cn:theme:magazine@@ __extensions=true__]]{{Add the code at include.}}
 
 @@[[div class=&#34;mz-talking-wrap&#34;]]@@ {{The Beginning-block}}
 @@[[div class=&#34;talking-left talkimg-below&#34; ]]@@{{The Dialog-block}}
@@ -7623,6 +8982,7 @@ Add the __//talkbox-round//__ to make them round).
 
 
 [[/div]]
+[[/collapsible]]
 @@@@
 @@@@
 
@@ -7656,9 +9016,6 @@ This is a tab view.
    
 
 [[/div]]
-
-
-
 [[/tab]]
 
 [[tab Tabulation]]
@@ -7666,8 +9023,6 @@ Hey look, more text here.
 
 How quaint.
 [[/tab]]
-
-
 [[tab Long Tab]]
 [[div class=&#34;mz-tabcell&#34;]]
 
@@ -7715,6 +9070,34 @@ vvvvvvvvvvv
 [[/tab]]
 [[/tabview]]
 
+@@@@
+@@@@
+
+++* Teared tab
+[[div class=&#34;mz-tab&#34;]]
+[[tabview]]
+[[tab Tabulator]]
+This teared tab flipped the second time it was selected.
+
+Not good.
+[[/tab]]
+[[tab Code]]
+[[div class=&#34;mz-blockquote no-sel&#34;]]
+@@[[include :scp-wiki-cn:theme:magazine@@
+|extensions=true
+@@]]@@
+
+@@[[div class=&#34;mz-tab&#34;]]@@
+@@[[tabview]]@@
+@@[[tab Tabulate]]@@
+
+@@[[/tab]]@@
+@@[[/tabview]]@@
+@@[[/div]]@@
+[[/div]]
+[[/tab]]
+[[/tabview]]
+[[/div]]
 
 @@@@
 @@@@
@@ -8131,6 +9514,7 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 -------------------------------------------------]
 
 [[module css]]
+@import url(https://scp-wiki.wikidot.com/theme:magazine/code/3);
 
 .mmposter-wrap{
     display: flex;
@@ -8156,6 +9540,10 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
  display: none
 }
 
+.flex-pc{
+    display: flex;
+}
+
 
 .flex-wrap{
     display: flex;
@@ -8167,18 +9555,21 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     width: 100%;
 }
 
-
 @media (max-width: 500px) {
+  .flex-pc{
+    display: block;
+}
+
     .flex-wrap{
 flex-wrap:wrap;        
     }
-    
+
   .mmposter-semi  .mmposter-cell,
 
     .mmposter-cell{
         width: 100%;
 min-width: auto;
-      
+
     }    
     .mmposter-right{
 margin-top:2rem;
@@ -8210,8 +9601,6 @@ content:&#34; ←  &#34;;
         padding:0 0.2rem 0 0rem;
 
 }
-
-
 
 /*
 -----------------------------
@@ -8301,7 +9690,6 @@ max-width:100% !important;
 }
 [[/module]]
 
-
 [!--
 ccccccccccccccccccccccccc
 --]
@@ -8310,7 +9698,6 @@ ccccccccccccccccccccccccc
 [[/div]]
 
 ------
-
 [[/iftags]]
 
 
@@ -8321,7 +9708,6 @@ Magazine theme - 00000000
 ------------------------------
 Customiz
 =====================================*/
-
 
 @import url(https://scp-wiki.wikidot.com/theme:magazine/code/1);
 
@@ -8427,6 +9813,7 @@ Collapsible Sidebar Source
     --SB-bg_PC:var(--page-bg);
 }
 
+
 #content-wrap{
      margin-left:0;
 }
@@ -8445,6 +9832,10 @@ display: none;
 
 #main-content::after {
 filter: sepia(50%) hue-rotate(150deg) saturate(150%);
+}
+
+div#extra-div-1 {
+    z-index: 9;
 }
 
 #side-bar{
@@ -8477,10 +9868,41 @@ filter: sepia(50%) hue-rotate(150deg) saturate(150%);
      background-color: var(--sidebar-bg-pc); 
 }
 
-div#extra-div-1 {
-    z-index: 9;
+#side-bar :is(.media, .sns):has(a:nth-child(2)) a img{
+  --media_pd: 0.6em;
 }
+#side-bar :is(.media, .sns):has(a:nth-child(4)) a img{
+  --media_pd: 0.5em;
+}
+#side-bar :is(.media, .sns):has(a::nth-child(6)) a img{
+ --media_pd: 0.2em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(7)) a img{
+ --media_pd: 0.5em;
+}
+#side-bar :is(.media, .sns):has(a:nth-child(8)) a img{
+  --media_pd: 0.4em;
+}
+
+@media (max-width: 479px) {
+ #content-wrap #side-bar :is(.media, .sns) a img{
+      --media_pd: 0.6em;
+     --media_width:2em;
+  }   
+}
+
 [[/module]]
+[!---============= 扩展 ================---]
+[[iftags [[#ifexpr {$extensions} == (true) | - ]]]]
+[[module CSS]]
+/*===================================
+Magazine Theme
+--------------
+Extensions 
+=====================================*/
+@import url(https://scp-wiki.wikidot.com/theme:magazine/code/3);
+[[/module]]
+[[/iftags]]
 [!---============= 自定义网页背景图 ================---]
 [[iftags [[#ifexpr {$my-background} == (true) | - ]]]]
 [[module CSS]]
@@ -8499,6 +9921,188 @@ background: var(--hollow-image) center 0 repeat;
 background-color: transparent ;
 }
 [[/module]]
+[[/iftags]]
+[!---============= 异学会================---]
+[[iftags [[#ifexpr {$yxh} == (true) | - ]]]]
+[[module CSS]]
+/*===================================
+Magazine Theme
+中华异学会英文版 -  Abnormality Institute EN ver.
+--------------
+All the icons are under CC-BY-SA
+LOGO_YXH by Freedom Koo; LOGO_noricst by Enflowerz
+=====================================*/
+:root{
+    --tabNAV-bgHover:var(--color-navy);
+    --tabMain-border:var(--color-navy);
+    --visted-link:#333;
+  --header-title: &#34;Wonders Studie Association&#34; ;
+  --mob-title:&#34;W. S. A.&#34;;
+  --header-subtitle:&#34;Wondering about Marvels, Studying by Spirit, Associating the World&#34;;
+  --mob-subtitle:&#34;To wonder, To study, To associate&#34;;
+   --LOGO_position-mob:51% 0%;
+    
+   --LOGO_image-mob:url(&#39;https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_noricst.svg&#39;);
+
+--LOGO_sidebar:var(--icon-cn);
+--LOGO_sidebar-opacity:0.7;
+
+ --hr-image:var(--icon-cn);
+ --hr-color:192,192,192;
+    --icon-cn:url(&#39;https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_CN.svg&#39;);
+    --icon-yxh:url(&#39;https://scp-wiki.wikidot.com/local--files/theme:magazine/LOGO_YXH.svg&#39;);
+}
+/*============================================
+正文
+============================================*/
+
+.mz-innerbox{
+}
+
+.mz-poem{
+    text-align: center;
+    font-family: var(--handwriting-font);
+    font-size: 1.8em
+}
+
+.yxh-img{
+    --yxh-size:15rem;
+    width: var(--yxh-size);
+    height: var(--yxh-size);
+    background-image: var(--icon-yxh);
+    background-size: cover;
+    margin: 0 auto;
+    opacity: 1;
+    filter: blur(1px);
+}
+
+.yxh-maxim{
+    border: solid 1px rgba(33,33,33,0.5);
+    text-align: center;
+    margin: 1em 3em;
+    font-size: 1.6rem;
+   font-family: &#39;Huiwen-Mincho&#39;;
+}
+
+@media (max-width: 500px){
+    .mz-innerbox{
+    font-size: 0.8rem;
+}
+.mz-poem{
+    font-size: 0.8rem;
+}
+ .yxh-maxim {
+    margin: 1em 1em;
+    font-size: 1.4rem;
+ }
+ .yxh-maxim p{
+padding: 0;
+     line-height: 0;
+ }
+}
+
+/*============================================
+分割线，来自woednaz
+============================================ */
+
+.mz-poem  hr {
+    border-top:1px solid #000 ;
+    background: rgb(0, 0, 0, 0);
+    border: 0;
+    height: 1rem;
+    width: 70%;
+    position: relative;
+    margin: 1.5rem auto;
+    }
+
+.mz-poem  hr::before {
+    content: &#34; &#34;;
+    background-image: var(--hr-image);
+    color: rgb(var(--hr-color));
+    display: inline-block;
+    position: absolute;
+    top: -0.2rem;
+    left: 0;
+    margin: 0 auto;
+    font-size: 0.938rem;
+    line-height: 0;
+    height: 1.6rem;
+    width:4rem;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-left: -webkit-calc(50% - 2rem);
+    margin-left: -moz-calc(50% - 2rem);
+    margin-left: calc(50% - 2rem);
+    background-color: transparent;
+    z-index: 1;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size: contain;
+}
+
+.mz-poem  hr::after {
+    content: &#34; &#34;;
+    height: 0.1rem;
+    width: 100%;
+    position: absolute;
+    margin: 0 auto;
+    background: rgb(var(--hr-color));
+    left: 0;
+    top: 50%;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-mask-image: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 630 23&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;%23E6EAF6&#39; d=&#39;M0,0v23h630V0H0z M334.9,15.9l1.4,4.6l-13.9,2.3h-14.8l-13.9-2.3l1.4-4.6l0.8-2.6l-2.1-1.6l-3.9-2.9l4.9-0.1 l2.7-0.1l0.9-2.5l1.6-4.6L315,0.1l15.1,1.4l1.6,4.6l0.9,2.5l2.7,0.1l4.9,0.1l-3.9,2.9l-2.1,1.6L334.9,15.9z&#39;/%3E%3C/svg%3E%0A&#34;);
+    mask-image: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 630 23&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;%23E6EAF6&#39; d=&#39;M0,0v23h630V0H0z M334.9,15.9l1.4,4.6l-13.9,2.3h-14.8l-13.9-2.3l1.4-4.6l0.8-2.6l-2.1-1.6l-3.9-2.9l4.9-0.1 l2.7-0.1l0.9-2.5l1.6-4.6L315,0.1l15.1,1.4l1.6,4.6l0.9,2.5l2.7,0.1l4.9,0.1l-3.9,2.9l-2.1,1.6L334.9,15.9z&#39;/%3E%3C/svg%3E%0A&#34;);
+    -webkit-mask-size: 43.375rem auto;
+    mask-size: 43.375rem auto;
+    -webkit-mask-position: center center;
+    mask-position: center center;
+}
+
+/*
+============================================
+杂项
+============================================
+ */
+
+/* ------------------假标签-------------------- */
+
+#main-content .page-tags {
+   display:{$page-tags};
+}
+
+div.pseudo-tags ul {
+    font-size: 85%;
+    border-top: 1px solid #BBB;
+    display: inline-block;
+    margin: 10px 0 0;
+    padding: 0 2px;
+    list-style: none;
+}
+
+div.pseudo-tags li {
+    color: #b01;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 1px;
+    cursor: pointer;
+}
+
+@media (max-width: 479px) {
+ .poem-7 {
+    font-size:120% ;
+ }
+
+ .yxh-maxim{
+    margin: 2rem;
+ }
+
+.yxh-outbox, .ej-outbox{
+   }
+}
+[[/module]]
 [[/iftags]]</textarea></pre>
   </div>
 
@@ -8506,7 +10110,7 @@ background-color: transparent ;
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:41.016448.</em>
+    <em>Last updated 2024-01-25 19:20:42.851679.</em>
   
 </div>
 </body>

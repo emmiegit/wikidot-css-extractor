@@ -255,6 +255,10 @@
     <ul class="css-classes">
       
         <li>
+          <pre><code>limit</code></pre>
+        </li>
+      
+        <li>
           <pre><code>anchor</code></pre>
         </li>
       
@@ -1425,8 +1429,9 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div class=&#34;anchor&#34;]]
-[[div class=&#34;authorbox&#34;]]
+    <pre><textarea class="page-source" readonly>[[div class=&#34;limit&#34;]]
+  [[div class=&#34;anchor&#34;]]
+    [[div class=&#34;authorbox&#34;]]
 [[module ListPages name=&#34;=&#34;]]
 ||~ %%title%% ||
 ||= **By:** %%created_by_linked%% ||
@@ -1434,9 +1439,9 @@
 [[/module]]
 
 [[iftags +theme]]
-[[div class=&#34;flavorbox&#34;]]
+      [[div class=&#34;flavorbox&#34;]]
 This is a working example of the {{authorbox}}. Consult the **[#Sideboxes Sideboxes]** subsection for further info.
-[[/div]]
+      [[/div]]
 = ⮤ This is a {{flavorbox}} ⮥
 [[=]]
 To create one, copy the following div
@@ -1444,7 +1449,8 @@ and paste it inside your {{authorbox}}:
 [[/=]]
 = {{@@[[div class=&#34;flavorbox&#34;]]@@}}
 [[/iftags]]
-[[/div]]
+    [[/div]]
+  [[/div]]
 [[/div]]
 
 [[iftags +theme]]
@@ -1556,7 +1562,7 @@ Flopstyle: LITE
 [[/div]]
 
 [[div class=&#34;pseudocrumbs&#34;]]
-[[[sigma-9-themes|Sigma-9 Themes]]] &gt;&gt; Flopstyle: LITE
+[[[sigma-9-themes|Sigma Themes]]] &gt;&gt; Flopstyle: LITE
 [[/div]]
 
 [[&gt;]]
@@ -2126,14 +2132,11 @@ __Source Code__
 [[div class=&#34;templateInfo&#34;]]
 +* What Is This?
 ----
-This is a theme style created by [[*user Lt Flops]] for use in her articles.
-
-It is an aesthetic improvement over **Sigma-9** (the Wiki&#39;s main theme) and exists so I can easily update it, independent of all the pages that include it. Expect the CSS to subtly change over time.
+This is a theme created by [[*user Lt Flops]]. It is an aesthetic improvement and extension of **Sigma-10** (the Wiki&#39;s main theme).
 
 Only use this if you understand what you&#39;re doing.
 
-This theme is **__incompatible__** with **Black Highlighter**, **BASALT**, and **Sigma+**. If your page includes Black Highlighter, BASALT, or Sigma+, **__do not__** use this theme, or it will introduce major errors.
-
+This theme is **__incompatible__** with **Black Highlighter**, **BASALT**, and **Sigma+**.
 [[/div]]
 [[div class=&#34;templateInfo&#34;]]
 +++* Dark Mode Counterpart
@@ -2150,7 +2153,7 @@ To use this theme, please copy and paste this syntax onto the top of your page:
 = **##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki:theme:flopstyle##**##var(--c-keyword)|]]##**
 [[/div]]
 
-If you wish to use this theme with another Sigma-9 theme, paste Flopstyle __**first**__ and your chosen theme in the next line. Some fine-tuning may be necessary.
+If you wish to use this theme with another Sigma theme, paste Flopstyle __**first**__ and your chosen theme in the next line. Some fine-tuning may be necessary.
 
 Please also note that this theme uses the following components:
 
@@ -2164,9 +2167,9 @@ Please also note that this theme uses the following components:
 [[/div]]
 @@ @@
 [[div class=&#34;templateInfo&#34;]]
-+++* [[[component:centered-header-sigma-9|Centered Header Sigma-9]]]
++++* [[[component:centered-header-sigma-9|Centered Header Sigma]]]
 ----
-To use this component, please paste the following syntax //after// Flopstyle. If your page uses another custom Sigma-9 theme, please paste the following syntax //after// the custom theme:
+To use this component, please paste the following syntax //after// Flopstyle. If your page uses another custom Sigma theme, please paste the following syntax //after// the custom theme:
 
 [[div class=&#34;code terminal&#34;]]
 = **##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki:component:centered-header-sigma-9##**##var(--c-keyword)|]]##**
@@ -2507,7 +2510,6 @@ If necessary, you can also edit any of these CSS properties to better suit your 
 }
  #top-bar .open-menu a{
      border-radius: unset;
-     border-width: .1em;
 }
 
 /* -------- SIDE-BAR -------- */
@@ -2761,20 +2763,22 @@ If necessary, you can also edit any of these CSS properties to better suit your 
      --barColour: hsl(0, 89%, 18%);
 }
 
- .u-faq {
-     display: none;
-}
-
  .info-container .collapsible-block-link {
      font-size: 100%;
 }
 
  .info-container div.collapsible-block-content {
-     padding: 0 .5em 30px;
+     padding: 0 .6rem 3rem;
 }
 
- .info-container div.collapsible-block-content .wiki-content-table,
- .footer-wikiwalk-nav .collapsible-block .wiki-content-table {
+ @media (max-width: 767px) {
+     .info-container div.collapsible-block-content div {
+          margin-right: 0;
+          margin-left: 0;
+    }
+}
+
+ .info-container .wiki-content-table {
      width: 90%;
 }
 
@@ -3389,112 +3393,126 @@ If necessary, you can also edit any of these CSS properties to better suit your 
      font-size: 170%;
 }
 
-/* -------- YUI TAB BASE -------- */
- .yui-navset .yui-nav a,.yui-navset .yui-navset-top .yui-nav a{background-color:inherit;background-image:inherit}.yui-navset .yui-nav a:hover,.yui-navset .yui-nav a:focus{background:inherit;text-decoration:inherit}.yui-navset .yui-nav .selected a,.yui-navset .yui-nav .selected a:focus,.yui-navset .yui-nav .selected a:hover{color:inherit;background:inherit}.yui-navset .yui-nav,.yui-navset .yui-navset-top .yui-nav{border-color:inherit}.yui-navset li{line-height:inherit}
+/* ==== YUI TAB BASE ==== */
+.yui-navset .yui-nav a,.yui-navset .yui-navset-top .yui-nav a{background-color:inherit;background-image:inherit}.yui-navset .yui-nav a:hover,.yui-navset .yui-nav a:focus{background:inherit;text-decoration:inherit}.yui-navset .yui-nav .selected a,.yui-navset .yui-nav .selected a:focus,.yui-navset .yui-nav .selected a:hover{color:inherit;background:inherit}.yui-navset .yui-nav,.yui-navset .yui-navset-top .yui-nav{border-color:inherit}.yui-navset li{line-height:inherit}
 
-/* -------- YUI TAB CUSTOMIZATION --------
+/* ==== YUI TAB CUSTOMIZATION ====
  * Adapted From &#39;Black Highlighter Theme&#39;
 **/
- .yui-navset *{
-     transition:
-          color 80ms cubic-bezier(.4, 0, .2, 1),
-          background-color 80ms cubic-bezier(.4, 0, .2, 1);
+ .yui-navset * {
+    transition:
+       color 80ms cubic-bezier(.4, 0, .2, 1),
+       background-color 80ms cubic-bezier(.4, 0, .2, 1);
 }
+
  .yui-navset .yui-nav,
- .yui-navset .yui-navset-top .yui-nav{
-     display: flex;
-     flex-wrap: wrap;
-     width: calc(100% - .125rem);
-     margin: 0 auto;
+ .yui-navset .yui-navset-top .yui-nav {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% - .125rem);
+    margin: 0 auto;
 
-     border-color: hsl(360, 94%, 20%);
-     box-shadow: 0 calc(.0625rem * 5) 0 0 hsl(360, 94%, 20%);
+    border-color: hsl(360, 94%, 20%);
+    box-shadow: 0 calc(.0625rem * 5) 0 0 hsl(360, 94%, 20%);
 }
- .yui-navset .yui-nav a, /* ---- Link Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav a{
-     color: hsl(0, 0%, 5%);
-     /* ---- Tab Background Colour | [UNSELECTED] ---- */
-     background-color: hsl(0, 0%, 99%);
-     /* -------- */
-     background-image: none;
-     border: unset;
+
+ .yui-navset .yui-nav a, /* == Link Modifier == */
+ .yui-navset .yui-navset-top .yui-nav a {
+    color: hsl(0, 0%, 5%);
+    /* ==== Tab Background Colour | [UNSELECTED] ==== */
+    background-color: hsl(0, 0%, 99%);
+    /* ==== */
+    background-image: none;
+    border: unset;
 }
+
  .yui-navset .yui-nav a:hover,
- .yui-navset .yui-nav a:focus{
-     color: hsl(0, 0%, 96%);
-     /* ---- Tab Background Colour | [HOVER] ---- */
-     background-color: hsl(360, 100%, 27%);
-     /* -------- */
+ .yui-navset .yui-nav a:focus {
+    color: hsl(0, 0%, 96%);
+    /* ==== Tab Background Colour | [HOVER] ==== */
+    background-color: hsl(360, 100%, 27%);
+    /* ==== */
 }
- .yui-navset .yui-nav li, /* ---- Listitem Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav li{
-     position: relative;
-     display: flex;
-     flex-grow: 2;
-     max-width: 100%;
-     margin: 0;
-     padding: 0;
 
-     background-color: hsl(0, 0%, 96%);
-     border-color: transparent;
-     box-shadow: 0 0 0 .0625rem hsl(360, 94%, 20%);
+ .yui-navset .yui-nav li, /* == Listitem Modifier == */
+ .yui-navset .yui-navset-top .yui-nav li {
+    position: relative;
+    display: flex;
+    flex-grow: 2;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+
+    background-color: hsl(0, 0%, 96%);
+    border-color: transparent;
+    box-shadow: 0 0 0 .0625rem hsl(360, 94%, 20%);
 }
+
  .yui-navset .yui-nav li a,
  .yui-navset-top .yui-nav li a,
- .yui-navset-bottom .yui-nav li a{
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 100%;
+ .yui-navset-bottom .yui-nav li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
 }
- .yui-navset .yui-nav li em{
-     border: unset;
+
+ .yui-navset .yui-nav li em {
+    border: unset;
 }
+
  .yui-navset .yui-nav a em,
- .yui-navset .yui-navset-top .yui-nav a em{
-     padding: .35em .75em;
+ .yui-navset .yui-navset-top .yui-nav a em {
+    padding: .35em .75em;
 
-     text-overflow: ellipsis;
-     overflow: hidden;
-     white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
- .yui-navset .yui-nav .selected, /* ---- Selection Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav .selected{
-     flex-grow: 2;
-     margin: 0;
-     padding: 0;
 
-     /* ---- Tab Background Colour | [SELECTED] ---- */
-     background-color: hsl(360, 94%, 20%);
-     /* -------- */
+ .yui-navset .yui-nav .selected, /* == Selection Modifier == */
+ .yui-navset .yui-navset-top .yui-nav .selected {
+    flex-grow: 2;
+    margin: 0;
+    padding: 0;
+
+    /* ==== Tab Background Colour | [SELECTED] ==== */
+    background-color: hsl(360, 94%, 20%);
+    /* ==== */
 }
+
  .yui-navset .yui-nav .selected a,
- .yui-navset .yui-nav .selected a em{
-     border: hsl(360, 94%, 20%);
+ .yui-navset .yui-nav .selected a em {
+    border: hsl(360, 94%, 20%);
 }
- .yui-navset .yui-nav .selected a{
-     width: 100%;
 
-     color: hsl(0, 0%, 96%) !important;
-     background-image: none;
+ .yui-navset .yui-nav .selected a {
+    width: 100%;
+
+    color: hsl(0, 0%, 96%) !important;
+    background-image: none;
 }
+
  .yui-navset .yui-nav .selected a:focus,
- .yui-navset .yui-nav .selected a:active{
-     color: hsl(0, 0%, 96%);
-     background-color: hsl(360, 94%, 20%);
+ .yui-navset .yui-nav .selected a:active {
+    color: hsl(0, 0%, 96%);
+    background-color: hsl(360, 94%, 20%);
 }
- .yui-navset .yui-nav .selected a:hover{
-     cursor: default;
+
+ .yui-navset .yui-nav .selected a:hover {
+    cursor: default;
 }
- .yui-navset-left .yui-content{
-     /* ---- Content Background ---- */
-     background-color: hsl(0, 0%, 99%);
-     /* -------- */
+
+ .yui-navset-left .yui-content {
+    /* ==== Content Background ==== */
+    background-color: hsl(0, 0%, 99%);
+    /* ==== */
 }
+
  .yui-navset .yui-content,
- .yui-navset .yui-navset-top .yui-content{
-     padding: .5em;
-     border-color: hsl(0, 0%, 60%);
+ .yui-navset .yui-navset-top .yui-content {
+    padding: .5em;
+    border-color: hsl(0, 0%, 60%);
 }
 
 /* -------- PAGE TAGS -------- */
@@ -3717,7 +3735,7 @@ If necessary, you can also edit any of these CSS properties to better suit your 
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:41.003520.</em>
+    <em>Last updated 2024-01-25 19:20:42.836403.</em>
   
 </div>
 </body>

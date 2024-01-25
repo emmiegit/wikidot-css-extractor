@@ -31,44 +31,24 @@
         <li>
           <pre><code>/* ==== SITE BANNER ==== */
  :root {
-    --lgurl: url(https://scp-wiki.wdfiles.com/local--files/workbench%3Aflops/Transgender_Pride_flag.svg);
-    --header-title: &#34;FLOPS’ AUTHOR PAGE&#34;;
-    --header-subtitle: &#34;SUPPORT TRANS PEOPLE&#34;;
+    --header-subtitle: &#34;NO VEIL CAN HOLD THE HEAVENS&#34;;
 
-    --titleColor: var(--transPink);
-    --subtitleColor: var(--textColorHigh);
+    --accentColor: hsl(180, 60%, 50%);
+    --accentColorLite: hsla(180, 60%, 60%, .5);
+    --hue: 180deg;
 
-    --transBlue: hsl(197, 95%, 65%);
-    --transPink: hsl(348, 95%, 85%);
+    --bgColor: hsl(220, 59%, 27%);
+    --mgColor: hsl(222, 22%, 9%);
+    --fgColor: hsla(0, 0%, 0%, .4);
+
+     --borderColor: var(--accentColor);
+     --bgBadgeColor: var(--fgColor);
 }
 
- @media only screen and (max-width: 768px) {
-     :root {
-    	--header-title: &#34;FLOPS’ PAGE&#34;;
-    }
-}
-
- .top-bar::before,
- .mobile-top-bar::before {
-    --textColor: hsla(0, 0%, 100%, .92);
-}
-
- #top-bar,
- #top-bar a {
-    --accentColor: var(--transBlue);
-}
-
- #top-bar .open-menu a,
- #login-status a {
-    --accentColor: var(--textColor);
-}
-
- #extra-div-1 {
-    height: 11.067em;
-
-    background-repeat: repeat-x;
-
-    filter: opacity(.33);
+ body {
+    background-attachment: fixed;
+    background-color: var(--mgColor);
+    background-image: url(https://scp-wiki.wikidot.com/local--files/floppyphoenix/bg-grad.png);
 }
 
  @media (min-width: 768px) {
@@ -79,6 +59,44 @@
 
  :where(h1, h2, h3, h4, h5) {
     color: var(--textColorMid);
+}
+
+ .lite-heading.extra-wide {
+    position: relative;
+    left: calc(-33vw + 50%);
+    width: 66vw;
+    max-width: 66vw;
+
+    background:
+       linear-gradient(
+    	to right,
+    	transparent,
+    	var(--fgColor) 10% 90%,
+    	transparent);
+}
+
+ @media (max-width: 767px) {
+     .lite-heading.extra-wide {
+    	left: unset;
+    	width: unset;
+    	max-width: unset;
+    }
+}
+
+ .lite-heading.extra-wide hr {
+    height: .3rem;
+
+    background:
+       linear-gradient(
+    	to right,
+    	transparent,
+    	var(--accentColor) 10% 90%,
+    	transparent);
+    border: 0;
+}
+
+ .lite-heading.extra-wide h1 {
+    font-size: 2.95rem;
 }
 
 /* ==== BOOKSHELF ==== */
@@ -93,7 +111,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 5.8rem;
+    height: 6rem;
 }
 
  @media (max-width: 768px) {
@@ -106,11 +124,15 @@
     margin: 0;
 }
 
-/* ==== MEGA COOL AUTHOR PAGE TOOL ==== */
+/* ==== TABS ==== */
  .yui-navset .yui-content {
     padding-top: 2rem;
+}
 
-    background: hsla(222, 16%, 15%, .4);
+ .yui-navset .yui-nav .selected a,
+ .yui-navset .yui-nav .selected a:active,
+ .yui-navset .yui-nav .selected a:focus {
+    color: var(--keyColor);
 }
 
  .translations .collapsible-block-link::before,
@@ -120,6 +142,7 @@
     content: &#34;&#34;;
 }
 
+/* ==== MEGA COOL AUTHOR PAGE TOOL ==== */
  .content-box {
     margin-bottom: 1rem !important;
 }
@@ -141,29 +164,6 @@
 
  #page-content .tooltip &gt; a[href*=&#34;dark-achievement-badges&#34;] {
     border-bottom: 0;
-}
-
-/* ==== WANDERERS&#39; LIBRARY ==== */
- .fancyborder {
-    color: hsl(47, 100%, 68%);
-    background: hsl(120, 22%, 23%);
-    border-radius: 3vw;
-}
-
- .fancyborder h1 {
-    color: hsl(47, 100%, 68%);
-
-    font-family: &#34;EB Garamond&#34;, &#34;Big Caslon&#34;, &#34;Book Antiqua&#34;, &#34;Palatino Linotype&#34;, &#34;Georgia&#34;, serif;
-}
-
- .fancyborder a {
-    --accentColorLite: hsla(46, 79%, 60%, .5);
-    color: hsl(47, 100%, 68%);
-}
-
- .fancyborder a:hover {
-    --accentColor: hsl(46, 79%, 50%);
-    color: var(--keyColor);
 }
 
 /* ==== FLOPSTYLE: DARK MODS ==== */
@@ -189,13 +189,7 @@
 
      .blockquote.lightweight.exhibit {
     	width: 500px;
-    	height: 350px;
-    }
-
-     .blockquote.lightweight.trans-help {
-    	width: fit-content;
-    	height: unset;
-    	margin: auto;
+    	height: 360px;
     }
 }
 
@@ -238,6 +232,7 @@
 
  .cv strong {
     color: var(--textColorMid);
+    font-size: .95rem;
 }
 
  .cv strong::after {
@@ -305,8 +300,6 @@
     width: fit-content;
     margin: auto;
 
-    box-shadow: 3px 3px var(--keyColor);
-
     font-size: .85rem;
 }
 
@@ -336,9 +329,6 @@
  @media (min-width: 992px) and (max-width: 1199px) {
      #header h1 a { font-size: calc(.75em + 2vw); }
      #header h2 { font-size: calc(.75em + 1vw); }
-}
-
- @media (min-width: 992px) and (max-width: 1199px) {
      #header h1 a::before { font-size: unset; }
      #header h2::before { font-size: unset; }
 }</code></pre>
@@ -350,7 +340,15 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          <pre><code>border-radius: 1rem; opacity: .8</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:inline-block;padding:.4rem 1rem;background:hsl(180, 60%, 45%);border-radius:.5rem;cursor:pointer</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#fff;font:bold 14px/1 sans-serif;text-decoration:none</code></pre>
         </li>
       
         <li>
@@ -371,6 +369,14 @@
       
         <li>
           <pre><code>color: hsl(212, 71%, 73%); font-weight: bold</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:inline-block;margin-top:1rem;padding:0 1rem;background:hsl(180, 60%, 45%);border-radius:.5rem;cursor:pointer</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#fff;font:bold 14px/1 sans-serif;text-decoration:none</code></pre>
         </li>
       
     </ul>
@@ -876,6 +882,74 @@
   
 
   
+    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
     <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
   
 
@@ -1166,39 +1240,15 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>meta-title</code></pre>
+          <pre><code>lite-heading</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>extra-wide</code></pre>
         </li>
       
         <li>
           <pre><code>pseudocrumbs</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>lightweight</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>exhibit</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>trans-help</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bookshelf</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>book</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>book</code></pre>
         </li>
       
         <li>
@@ -1270,10 +1320,6 @@
         </li>
       
         <li>
-          <pre><code>book</code></pre>
-        </li>
-      
-        <li>
           <pre><code>lite-heading</code></pre>
         </li>
       
@@ -1283,10 +1329,6 @@
       
         <li>
           <pre><code>tb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>idle</code></pre>
         </li>
       
         <li>
@@ -1534,11 +1576,7 @@
         </li>
       
         <li>
-          <pre><code>darkbox</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>centered</code></pre>
+          <pre><code>idle</code></pre>
         </li>
       
         <li>
@@ -1785,78 +1823,43 @@
           <pre><code>blockquote</code></pre>
         </li>
       
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div style=&#34;display: none&#34;]]
-[[include :scp-wiki:theme:flopstyle-dark
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:flopstyle-dark
 |witch=a]]
-[[/div]]
 [[include :scp-wiki:theme:turbo-vision
 |blocks=-]]
 
 [!-- CSS is located at the bottom. --]
 
-[[div class=&#34;meta-title&#34;]]
-Flops’ Author Page
-[[/div]]
+[[=image postgender-pride-flag.png width=&#34;640px&#34; style=&#34;border-radius: 1rem; opacity: .8&#34;]]
 
+[[div class=&#34;lite-heading extra-wide&#34;]]
+----
++ __Flops’ Author Page__
 [[div class=&#34;pseudocrumbs&#34;]]
 [[[Authors’ Pages]]] &gt;&gt; Flops’ Author Page
 [[/div]]
-
-@@ @@
-
-[[div class=&#34;blockquote lightweight exhibit trans-help&#34;]]
-++++ Trans, Non-Binary, and Gender-Diverse Resources
 ----
-  [[div class=&#34;bookshelf&#34;]]
-    [[div class=&#34;book&#34;]]
-
-+++++ [*https://www.thetrevorproject.org The Trevor Project]
-= [[size 300%]]##FFF|🏳️‍🌈##[[/size]]
-
-    [[/div]]
-    [[div class=&#34;book&#34;]]
-
-+++++ [*https://www.transgendermap.com/ Transgender Map]
-= [[size 300%]]##FFF|🏳️‍⚧️##[[/size]]
-
-    [[/div]]
-  [[/div]]
 [[/div]]
 ~~~~
 [[div class=&#34;blockquote lightweight exhibit offset-left left-3&#34;]]
-++++ My Newest Pages!
+++++ NEW PAGES
 ----
-1. **[TALE]** 🕸️🕷️ [*/samara-be-the-itsy-bitsy-spider Samara: Be the Itsy Bitsy Spider.]
-* For [*/romcon RomCon: an SCP OCT], Round 1.
-2. **[TALE TRILOGY]** 🏞️👻 [[span class=&#34;tb&#34;]]Pursuing Ghosts [[size 80%]][To Be Continued][[/size]][[/span]]
+1. **[JOKE SCP]** 🧙‍♂️🎭 [*/abraka-davids-proposal CODENAME: Abraka David&#39;s Proposal: A Peak Behind the Curtain]
+* Collab with [[user Metaphysician]], [[user Uncle Nicolini]], [[user LORDXVNV]], [[user Calibold]], [[user Sherf]], [[user Jack Ike]], [[user Guezma]], [[user Ralliston]], [[user Yossipossi]], [[user Placeholder McD]], [[user Guaire]], [[user Grigori Karpin]], and [[user Dr Balthazaar]]!
+2. **[TALE]** 🕸️🕷️ [*/samara-be-the-itsy-bitsy-spider Samara: Be the Itsy Bitsy Spider.]
+* For [*/romcon RomCon: an SCP OCT].
+3. **[TALE TRILOGY]** 🏞️👻 [[span class=&#34;tb&#34;]]Pursuing Ghosts [[size 80%]][To Be Continued][[/size]][[/span]]
 * [*/an-old-familiar-dream A Prologue: An Old, Familiar Dream]
 * [*/pursuing-ghosts-part-1 Part I]
-3. **[HUB]** 🥛ℹ️ [*/milk-hub Milk Hub]
-* Collab with [[[LORDXVNV]]]!
-4. **[SCP]** 🔮👴 [*/scp-7723 SCP-7723: Revolving in a Glass, Intact and Trapped]
-* For the [*/coldpostcon 2023 ColdpostCon]!
 [[/div]]
 
 [[div class=&#34;blockquote lightweight exhibit offset-right right-3&#34;]]
-++++ My Socials!
+++++ SOCIALS
 ----
   [[div class=&#34;bookshelf&#34;]]
-    [[div class=&#34;book&#34;]]
-++++++ Ko-Fi
-[[html]]
-&lt;div align=&#34;center&#34;&gt;
-&lt;script type=&#39;text/javascript&#39; src=&#39;https://storage.ko-fi.com/cdn/widget/Widget_2.js&#39;&gt;&lt;/script&gt;&lt;script type=&#39;text/javascript&#39;&gt;kofiwidget2.init(&#39;Support Me on Ko-fi! 🤍&#39;, &#39;hsl(325, 80%, 50%)&#39;, &#39;A0A1TGT6&#39;);kofiwidget2.draw();&lt;/script&gt;
-&lt;/div&gt;
-[[/html]]
-
-    [[/div]]
     [[div class=&#34;book&#34;]]
 
 ++++++ Bluesky
@@ -1877,14 +1880,16 @@ Flops’ Author Page
     [[/div]]
     [[div class=&#34;book&#34;]]
 
-++++++ Twitter
-[*https://twitter.com/flops_SCP @flops_SCP]
+++++++ Wanderers&#39; Library
+[*http://wanderers-library.wikidot.com/lampyra-the-watcher Lampyra, the Watcher]
 
     [[/div]]
     [[div class=&#34;book&#34;]]
 
-++++++ Wanderers&#39; Library
-[*http://wanderers-library.wikidot.com/lampyra-the-watcher Lampyra, the Watcher]
+++++++ Ko-Fi
+[[div style=&#34;display:inline-block;padding:.4rem 1rem;background:hsl(180, 60%, 45%);border-radius:.5rem;cursor:pointer&#34;]]
+[[a href=&#34;*https://ko-fi.com/A0A1TGT6&#34; style=&#34;color:#fff;font:bold 14px/1 sans-serif;text-decoration:none&#34;]]Consider Supporting Me on Ko-Fi! 🤍[[/a]]
+[[/div]]
 
     [[/div]]
   [[/div]]
@@ -1901,7 +1906,6 @@ Flops’ Author Page
 [[div class=&#34;report-box&#34; style=&#34;width: fit-content; margin: 1rem auto&#34;]]
 = [[span class=&#34;tb&#34;]]The following tabs contain:[[/span]]
 # List of My Works [[span class=&#34;idle&#34;]](Article Showcase)[[/span]]
-# Author Page Archive [[span class=&#34;idle&#34;]](Mar 2018–Jun 2023)[[/span]]
 # Page Commentary Archive [[span class=&#34;idle&#34;]](Apr 2017–Jun 2018)[[/span]]
 # Translations [[span class=&#34;idle&#34;]](By the SCP International Community)[[/span]]
 # Fan Art [[span class=&#34;idle&#34;]](By the SCP Artist Community)[[/span]]
@@ -1934,6 +1938,7 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 [#2021 2021]
 [#2022 2022]
 [#2023 2023]
+[#2024 2024]
     [[/div]]
 
     [[div class=&#34;narration centered FL_child&#34;]]
@@ -1962,32 +1967,32 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 * [[[SCP-3309]]]: Where We Go When We Fade, Fade Away [[span class=&#34;idle&#34;]](with [[user PhamtomGuy]])[[/span]]
 +++++ May
 * [[[SCP-3464]]]: Olive Garden regularly communes with DEMONIC ENTITIES to summon their SATANIC sempiternal garlic bread
-* [[[bird|Team Bird Hub]]] (Series Hub) [[span class=&#34;idle&#34;]](with [[user notgull]])[[/span]]
-* **Team Bird** [[[SPC-507]]]: EAGER NETHERENDER
+* **The Sharkest Timeline** [[[bird|Team Bird Hub]]] (Series Hub) [[span class=&#34;idle&#34;]](with [[user notgull]])[[/span]]
+* **The Sharkest Timeline** **Team Bird** [[[SPC-507]]]: EAGER NETHERENDER
 +++++ June
-* **Team Bird** [[[scp-3570|EE-3570]]]: Umbral Ultimatum
-* **Team Bird** [[[The Sacred Djehuti]]] [[span class=&#34;idle&#34;]](with [[user Ayers]])[[/span]]
-* **Team Bird** [[[Avian Anthology I]]] [[span class=&#34;idle&#34;]](with [[user notgull]], [[user Ayers]], &amp; [[user Quantum Physician]])[[/span]]
-* **Team Bird** [[[umbral-migratory-sequence|UMBRAL_MIGRATORY_SEQUENCE.txt]]]
-* **Team Bird** [[[Avian Anthology II]]] [[span class=&#34;idle&#34;]](with [[user notgull]], [[user Ayers]], &amp; [[user Quantum Physician]])[[/span]]
+* **The Sharkest Timeline** **Team Bird** [[[scp-3570|EE-3570]]]: Umbral Ultimatum
+* **The Sharkest Timeline** **Team Bird** [[[The Sacred Djehuti]]] [[span class=&#34;idle&#34;]](with [[user Ayers]])[[/span]]
+* **The Sharkest Timeline** **Team Bird** [[[Avian Anthology I]]] [[span class=&#34;idle&#34;]](with [[user notgull]], [[user Ayers]], &amp; [[user Quantum Physician]])[[/span]]
+* **The Sharkest Timeline** **Team Bird** [[[umbral-migratory-sequence|UMBRAL_MIGRATORY_SEQUENCE.txt]]]
+* **The Sharkest Timeline** **Team Bird** [[[Avian Anthology II]]] [[span class=&#34;idle&#34;]](with [[user notgull]], [[user Ayers]], &amp; [[user Quantum Physician]])[[/span]]
 +++++ August
 * **[[[apotheosis-hub|Apotheosis]]]** [[[SCP-4420]]]: A Potato Thirst
 +++++ September
-* **Void Dancer** [[[the-abyss-gazes-back|The Abyss Gazes Back]]] (and It&#39;s ASCII on a CRT Screen)
-* **Void Dancer** [[[buggy-hardware|Buggy Hardware]]] (or Why I Don&#39;t Play Violent Video Games)
+* **WITCH** **Void Dancer** [[[the-abyss-gazes-back|The Abyss Gazes Back]]] (and It&#39;s ASCII on a CRT Screen)
+* **WITCH** **Void Dancer** [[[buggy-hardware|Buggy Hardware]]] (or Why I Don&#39;t Play Violent Video Games)
 +++++ October
 * **[[[rat-s-nest-hub|Rat&#39;s Nest]]]** [[[what-lurks|What Lurks in the Dark?]]]
 +++++ November
-* [[[SCP-4416]]]: Tails of Site-42: Why The Foundation Punches Sharks
+* **The Sharkest Timeline** [[[SCP-4416]]]: Tails of Site-42: Why The Foundation Punches Sharks
 +++++ December
-* **[[[aiad-homescreen|AIAD]]]** [[[SCP-2]]]: A Eulogy for 2wo
+* **WITCH / [[[aiad-homescreen|AIAD]]]** **Void Dancer** [[[SCP-2]]]: A Eulogy for 2wo
 * [[[SCP-4031]]]: The Amnesiac Redemption
 * **[[[end-of-death-hub|End of Death]]]** [[[The Doctor&#39;s Dilemma]]]
 [[# 2019]]
 + 2019
 ----
 +++++ January
-* **[[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-3739]]]: [[span class=&#34;moo&#34;]]Mind-Milk™ by Moosphere, Inc.[[/span]] [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]KindlyTurtleClem[[/span]])[[/span]]
+* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-3739]]]: [[span class=&#34;moo&#34;]]Mind-Milk™ by Moosphere, Inc.[[/span]] [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]KindlyTurtleClem[[/span]])[[/span]]
 +++++ March
 * **The Sharkest Timeline** [[[crispy-sex-pirates|A Surprise Encounter with Crispy Sex Pirates]]]
 * **The Sharkest Timeline** [[[SPC-993]]]: BOBBLE THE CLOWN SHARK
@@ -2016,13 +2021,13 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 + 2020
 ----
 +++++ January
-* **Void Dancer** [[[a-scene-from-a-meme|A Scene From a Meme]]](-ory)
+* **WITCH** **Void Dancer** [[[a-scene-from-a-meme|A Scene From a Meme]]](-ory)
 +++++ February
-* **[[[broken-masquerade-hub|Broken Masquerade]]]** [[[broken-masquerade-epistolary|Snippets of an Unveiled World]]] (Collaboration) [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]Nykacolaquantum[[/span]])[[/span]]
+* **[[[broken-masquerade-hub|Broken Masquerade]]]** [[[broken-masquerade-epistolary|Snippets of an Unveiled World]]] (Collaboration) [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]newnykacolaquantum[[/span]])[[/span]]
 +++++ March
-* **[[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-5990]]]: Out of my head, out of my mind
-* **[[[broken-masquerade-hub|Broken Masquerade]]]** [[[no-sense-crying|Spilled Milk]]]
-* **[[[broken-masquerade-hub|Broken Masquerade]]] / The Lost Glade** “[[[Scattersomnia]]]”: A Disease of the Wise and Drowsy Wanderers
+* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-5990]]]: Out of my head, out of my mind
+* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** [[[no-sense-crying|Spilled Milk]]]
+* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** **The Lost Glade** “[[[Scattersomnia]]]”: A Disease of the Wise and Drowsy Wanderers
 +++++ April
 * [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/cave-story Cave Story][[/span]] ⁂ [[span style=&#34;color: hsl(212, 71%, 73%); font-weight: bold&#34;]]2020 //Wanderers&#39; Depths Contest//, First Place[[/span]]
 +++++ August
@@ -2034,18 +2039,18 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 [[div class=&#34;translator&#34;]]
 * [[[SCP-101-FR]]]: Y@u aɹe hëre -- Written by [[user DrGemini]]. Translated into English by [[user macro_au_micro]] and I.
 [[/div]]
-* [[[Void Dancer Hub]]] (Series Hub)
+* **WITCH** [[[Void Dancer Hub]]] (Series Hub)
 * [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/interplanetary-colonization Interplanetary Colonization][[/span]]
-* **The Lost Glade** [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/take-you-to-the-parashops I&#39;ll Take You to the Parashops][[/span]]
-* **The Lost Glade** [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/lampyra-the-watcher Lampyra, the Watcher][[/span]] (Author Page)
+* **WITCH** **The Lost Glade** [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/take-you-to-the-parashops I&#39;ll Take You to the Parashops][[/span]]
+* **WITCH** **The Lost Glade** [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/lampyra-the-watcher Lampyra, the Watcher][[/span]] (Author Page)
 +++++ February
 * [[[SCP-5810]]]: Of Guilt, Fear, and Hollowness of Heart
 +++++ March
 * [[span class=&#34;library&#34;]]**[*https://wanderers-library.wikidot.com/last-light-hub Last Light]** [*https://wanderers-library.wikidot.com/talk-of-the-town Talk of the Town][[/span]] (Collaboration)
 * [[[saturn-s-corner|Introducing: April Protocol, 2021]]] / [[[saturn-s-corner|SATURN&#39;S CORNER]]]
 +++++ April
-* **[[[I, Hub]]] (April Fools)** [[span class=&#34;tb&#34;]]I, Thread[[/span]] (One-Day Collaboration)
-* **[[[Cack Hub]]] (April Fools)** [[[fifthist family picnic]]]
+* **[[[I, Hub]]]** [[span class=&#34;tb&#34;]]I, Thread[[/span]] (One-Day Collaboration) (April Fools)
+* **[[[Cack Hub]]]** [[[fifthist family picnic]]] (April Fools)
 +++++ May
 * [[[departments-complete-list|A Semi-Comprehensive List of Foundation Departments]]] (Collaboration) (Resource)
 +++++ August
@@ -2063,13 +2068,13 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 + 2022
 ----
 +++++ January
-* **WITCH** [[[SCP-6327]]]: A Door Unstuck in Time
+* **WITCH / Metafoundation** [[[SCP-6327]]]: A Door Unstuck in Time
 +++++ February
   [[div class=&#34;editor&#34;]]
 * [[[SCP-6881]]]: Project: SERAPIS -- Written by Ben Counter in twelve installments for the podcast //SCP Archives//. Ben Counter is an author and regular contributor to the //Warhammer 40K// franchise. Together with the efforts of [[user LordStonefish]], we provided editing and formatting services to help port all twelve installments to the SCP Wiki.
   [[/div]]
 +++++ April
-* **[[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-6705]]]: The Bicameral Milk [[span class=&#34;idle&#34;]](with [[user LordStonefish]])[[/span]]
+* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-6705]]]: The Bicameral Milk [[span class=&#34;idle&#34;]](with [[user LordStonefish]])[[/span]]
 +++++ May
 * [[[SCP-6481]]]: Nipple Centipedes [[span class=&#34;idle&#34;]](with [[user Ellie3]])[[/span]]
 +++++ July
@@ -2081,57 +2086,27 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 ----
 +++++ January
 * **WITCH** [[[SCP-7723]]]: Revolving in a Glass, Intact and Trapped
-* [[[Milk Hub]]] [[span class=&#34;idle&#34;]](with [[user LORDXVNV]])[[/span]]
+* **WITCH** [[[Milk Hub]]] [[span class=&#34;idle&#34;]](with [[user LORDXVNV]])[[/span]]
 +++++ February
-* **WITCH / The Lost Glade** [[[an-old-familiar-dream|A Prologue: An Old, Familiar Dream]]]
-* **WITCH / The Lost Glade** [[[pursuing-ghosts-part-1|Pursuing Ghosts, Part I]]]
+* **WITCH** **The Lost Glade** [[[an-old-familiar-dream|A Prologue: An Old, Familiar Dream]]]
+* **WITCH** **The Lost Glade** [[[pursuing-ghosts-part-1|Pursuing Ghosts, Part I]]]
 +++++ May
 * **WITCH** [[[samara-be-the-itsy-bitsy-spider|Samara: Be the Itsy Bitsy Spider.]]]
 +++++ June
-* [[[SCP-6830]]]: The Great Hymn to the Aten [[span class=&#34;idle&#34;]](with [[user AriadnesThread]])[[/span]]
-+++++ July
+* [[[SCP-6830]]]: Oops! All Atens! [[span class=&#34;idle&#34;]](with [[user AriadnesThread]])[[/span]]
++++++ November
+* [[[abraka-davids-proposal|CODENAME: Abraka David&#39;s Proposal]]]: A Peak Behind the Curtain (Joke Article) [[span class=&#34;idle&#34;]](with [[user Metaphysician]], [[user Uncle Nicolini]], [[user LORDXVNV]], [[user Calibold]], [[user Sherf]], [[user Jack Ike]], [[user Guezma]], [[user Ralliston]], [[user Yossipossi]], [[user Placeholder McD]], [[user Guaire]], [[user Grigori Karpin]], and [[user Dr Balthazaar]])[[/span]]
+[[# 2024]]
++ 2024
+----
+[[module ListPages limit=&#34;1&#34; category=&#34;*&#34; order=&#34;updated_at desc&#34;]]
++++++ %%updated_at|%B%%
+[[/module]]
 * //UPCOMING//
 ----
 +++ &lt;&lt; [#BTT BACK TO TOP] &gt;&gt;
 [[/div]]
 
-  [[/tab]]
-  [[tab Author Page Archive]]
-
-[[div class=&#34;darkbox centered&#34;]]
-++ __WELCOME__
-
-This file contains an activated **GAY FROGS**-Class **DANK ANTIMEME**. You are instructed to run. In the event that you&#39;re lazy, you are to proceed at a velocity directly proportional to your daily cholesterol intake.
-
-… What&#39;s that? //Fine,// you can catch up on //Grey&#39;s Anatomy// first. But make sure you make your way right back here after, mmkay?
-----
--- Um, probably someone with, like, a //super// high clearance level. Or someone&#39;s Mary Sue OC.
-[[/div]]
-
-[[include :snippets:bs-image
-|heading=LIMP FIREBIRD
-|link=https://scp-wiki.wdfiles.com/local--files/floppyphoenix/lt-flops.jpg
-|image=lt-flops.jpg
-|caption=The initial sighting.
-|width=300px
-|float=middle
-|alt=A white heron stands tall and regal in a shallow marshland.
-|kind=primary
-]]
-
-Hi there! You&#39;ve stumbled on my personnel file.
-
-Wait, //please// don&#39;t leave.
-
-No, come back!
-
-@@ @@
-
-Ah, they&#39;re gone. Anyway, //apparently,// this is the place where I get to show you all the wonderful works I&#39;ve written? Don&#39;t worry -- I&#39;m surprised too. Just, don&#39;t step away from the terminal, and continue reading until you&#39;ve learned about all the things (and stuff) that I&#39;ve worked on.
-
-I&#39;ll get you a juice box. Or some bourbon.
-
-Don&#39;t like it? Well, that&#39;s too darn bad, hun, isn&#39;t it?
   [[/tab]]
   [[tab Page Commentary Archive]]
 
@@ -2640,7 +2615,7 @@ All credit goes to the artists.
 [[include :snippets:bs-image
 |heading=SCP-3309
 by SunnyClockwork
-|image=https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/intermediary/f/ec13709a-43f2-4b25-9089-5967ff8b5874/dd18t6k-c477e5fd-79a8-4e91-ba6f-88ee1e24871c.jpg
+|image=https://i.postimg.cc/kDrV3f17/SCP-3309-by-Sunny-Clockwork.jpg
 |width=400px
 |kind=none
 ]]
@@ -2664,7 +2639,7 @@ by DianaBerry
 [[include :snippets:bs-image
 |heading=SCP-3309
 by BIRANG
-|image=https://i.imgur.com/ecGAKqv.jpg
+|image=https://i.postimg.cc/zDkW9r5Q/SCP-3309-By-BIRANG.jpg
 |width=400px
 |kind=none
 ]]
@@ -2674,7 +2649,7 @@ by BIRANG
 [[include :snippets:bs-image
 |heading=SCP-3309
 by Olicus
-|image=https://scpsandboxcn.wdfiles.com/local--files/04/3309.png
+|image=https://i.postimg.cc/L4k7wnJM/SCP-3309-By-Olicus.png
 |width=400px
 |kind=none
 ]]
@@ -2686,7 +2661,7 @@ by Olicus
 [[include :snippets:bs-image
 |heading=SCP-3309
 by Zal Cryptid
-|image=https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4eec5159-a60c-4609-9648-95233048a0a2/deulqpl-815b052c-8753-47b7-beb2-1c34d3a0ac7a.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRlZWM1MTU5LWE2MGMtNDYwOS05NjQ4LTk1MjMzMDQ4YTBhMlwvZGV1bHFwbC04MTViMDUyYy04NzUzLTQ3YjctYmViMi0xYzM0ZDNhMGFjN2EucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.eUge2WJQpPPhTDiHY483aAB5t2p0qiuJCopEKcNCVCA
+|image=https://i.postimg.cc/rccLCk0L/SCP-3309-By-Zal-Cryptid.png
 |width=400px
 |kind=none
 ]]
@@ -2698,13 +2673,13 @@ by Zal Cryptid
 [[include :snippets:bs-image
 |heading=EE-3570
 by CelesteKara
-|image=https://i.imgur.com/1H5YkQA.png
+|image=https://i.postimg.cc/kGtxrVcP/EE-3570-by-Celeste-Kara.png
 |width=400px
 |kind=none
 ]]
 
 [[include :snippets:bs-image
-|image=https://i.imgur.com/78joXgz.png
+|image=https://i.postimg.cc/Y9P1yNQx/EE-3570-x2-by-Celeste-Kara.png
 |width=400px
 |kind=none
 ]]
@@ -2728,7 +2703,7 @@ by Ofirgdraw
 [[include :snippets:bs-image
 |heading=SCP-3739
 by ratking666
-|image=https://i.imgur.com/7ih0Wov.png
+|image=https://i.postimg.cc/JMz0xJDm/SCP-3739-by-ratking666.png
 |width=400px
 |kind=none
 ]]
@@ -2740,7 +2715,7 @@ by ratking666
 [[include :snippets:bs-image
 |heading=SCP-3739
 by SunnyClockwork
-|image=https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ec13709a-43f2-4b25-9089-5967ff8b5874/dfa4rdw-95c4d2a7-d5a8-4344-a5f8-f685a059f4a8.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VjMTM3MDlhLTQzZjItNGIyNS05MDg5LTU5NjdmZjhiNTg3NFwvZGZhNHJkdy05NWM0ZDJhNy1kNWE4LTQzNDQtYTVmOC1mNjg1YTA1OWY0YTgucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.F2teye4G-WKWA1W2AItkcA8htXz60nFmJgKW8ZPwOL4
+|image=https://i.postimg.cc/cJ2zf36V/SCP-3739-by-Sunny-Clockwork.png
 |width=400px
 |kind=none
 ]]
@@ -2764,7 +2739,7 @@ by MontagueETC
 [[include :snippets:bs-image
 |heading=SCP-3739
 by Zal Cryptid
-|image=https://pbs.twimg.com/media/Fc_MHr4WYAAe0Oa?format=jpg
+|image=https://i.postimg.cc/VkTgh81t/SCP-3739-by-Zal-Cryptid.jpg
 |width=400px
 |kind=none
 ]]
@@ -2776,7 +2751,7 @@ by Zal Cryptid
 [[include :snippets:bs-image
 |heading=SCP-3787
 by SunnyClockwork
-|image=https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ec13709a-43f2-4b25-9089-5967ff8b5874/dd4bw6j-b8561f04-9578-4d86-a1fc-628b7beb709c.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2VjMTM3MDlhLTQzZjItNGIyNS05MDg5LTU5NjdmZjhiNTg3NFwvZGQ0Ync2ai1iODU2MWYwNC05NTc4LTRkODYtYTFmYy02MjhiN2JlYjcwOWMuanBnIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.hlculysMf6jzgo6bEbt-YuHUyvUWSKA3lz6Md5iKRg4
+|image=https://i.postimg.cc/br3H9X3s/SCP-3787-by-Sunny-Clockwork.jpg
 |width=400px
 |kind=none
 ]]
@@ -2788,7 +2763,7 @@ by SunnyClockwork
 [[include :snippets:bs-image
 |heading=SCP-4031
 by Zevaxtians
-|image=https://pbs.twimg.com/media/FhZIrL6WIAQ0q_x?format=jpg
+|image=https://i.postimg.cc/3RhXMrqk/SCP-4031-by-Zevaxtians.jpg
 |width=400px
 |kind=none
 ]]
@@ -2798,7 +2773,7 @@ by Zevaxtians
 [[include :snippets:bs-image
 |heading=SCP-4420
 by Scary Lemon
-|image=https://lselden.github.io/scp-to-epub/pixel-art-collab/images/xd63a0c621e5fa57392ebf4ed4926f465.png
+|image=https://i.postimg.cc/Jh5ykNTh/SCP-4420-by-Scary-Lemon.png
 |width=400px
 |kind=none
 ]]
@@ -2808,13 +2783,13 @@ by Scary Lemon
 [[include :snippets:bs-image
 |heading=SCP-4420
 by Olicus
-|image=https://pbs.twimg.com/media/FBBitisUYAg3FgE?format=jpg
+|image=https://i.postimg.cc/PT7D8K60/SCP-4420-by-Olicus.jpg
 |width=400px
 |kind=none
 ]]
 
 [[include :snippets:bs-image
-|image=https://pbs.twimg.com/media/FBBitioVgAA4e8W?format=jpg
+|image=https://i.postimg.cc/qvfgDbSR/SCP-4420-Sad-by-Olicus.jpg
 |width=400px
 |kind=none
 ]]
@@ -2826,7 +2801,7 @@ by Olicus
 [[include :snippets:bs-image
 |heading=Dr. Michaels (SCP-4428)
 by hawkguyy
-|image=https://64.media.tumblr.com/ee339ae95fd099913201d368e58426c9/tumblr_pz37i968LG1ywcrt3o1_500.png
+|image=https://i.postimg.cc/MXJx54HJ/Dr-Michaels-SCP-4428-by-hawkguyy.png
 |width=400px
 |kind=none
 ]]
@@ -2836,7 +2811,7 @@ by hawkguyy
 [[include :snippets:bs-image
 |heading=Dr. Michaels (SCP-4428)
 by ratking666
-|image=https://i.imgur.com/u3zq91q.png
+|image=https://i.postimg.cc/fWG01R0D/Dr-Michaels-SCP-4428-by-ratking666.png
 |width=400px
 |kind=none
 ]]
@@ -2848,7 +2823,7 @@ by ratking666
 [[include :snippets:bs-image
 |heading=Dr. Michaels (SCP-4428)
 by Slime Bunny
-|image=https://64.media.tumblr.com/35305f9bf6da32d90eb8cf0a953557a0/438620020398f2a4-c0/s1280x1920/79416b1d13f6a722a2d5f23dc28396a61a8ca662.png
+|image=https://i.postimg.cc/DfJXCX0x/Dr-Michaels-SCP-4428-by-Slime-Bunny-AKA-Toasty-Doodles.png
 |width=400px
 |kind=none
 ]]
@@ -2858,7 +2833,7 @@ by Slime Bunny
 [[include :snippets:bs-image
 |heading=Dr. Michaels (SCP-4428)
 by Z-ComiX
-|image=https://64.media.tumblr.com/0bfec49910bb3e27f7608f06765ef22a/9d537028f6a5fbfb-75/s500x750/f16fb9cea0e6d91708b15fa519e4abea87c40243.png
+|image=https://i.postimg.cc/KzVmk4yz/Dr-Michaels-SCP-4428-by-Z-Comi-X.png
 |width=400px
 |kind=none
 ]]
@@ -2871,7 +2846,7 @@ by Z-ComiX
 |heading=SCP-4475
 SCP Tarot Card - Queen of Cups
 by SunnyClockwork
-|image=https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/ec13709a-43f2-4b25-9089-5967ff8b5874/deco30s-c0d2e71c-f886-406d-86ab-9cb9562673d7.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZWMxMzcwOWEtNDNmMi00YjI1LTkwODktNTk2N2ZmOGI1ODc0XC9kZWNvMzBzLWMwZDJlNzFjLWY4ODYtNDA2ZC04NmFiLTljYjk1NjI2NzNkNy5qcGcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.KJOKNkYDZet-eZmQCfR5uYRj-w7L44i5AU1hecwPOlM
+|image=https://i.postimg.cc/Y9pNmy8j/SCP-4475-SCP-Tarot-Card-Queen-of-Cups-by-Sunny-Clockwork.jpg
 |width=400px
 |kind=none
 ]]
@@ -2883,7 +2858,7 @@ by SunnyClockwork
 [[include :snippets:bs-image
 |heading=SCP-4519
 by fairydoctor
-|image=https://i.imgur.com/ro6wuLJ.jpg
+|image=https://i.postimg.cc/mkf2phpn/SCP-4519-by-fairydoctor.jpg
 |width=400px
 |kind=none
 ]]
@@ -2895,7 +2870,7 @@ by fairydoctor
 [[include :snippets:bs-image
 |heading=SCP-4795
 by Jakob17
-|image=https://i.imgur.com/3TB9IeL.jpg
+|image=https://i.postimg.cc/VNJfYX3T/SCP-4795-by-Jakob17.jpg
 |width=400px
 |kind=none
 ]]
@@ -2907,7 +2882,7 @@ by Jakob17
 [[include :snippets:bs-image
 |heading=SCP-4795
 by Aethris
-|image=https://i.imgur.com/Kb7wtFR.png
+|image=https://i.postimg.cc/YCn2KdyY/SCP-4795-by-Aethris.png
 |width=400px
 |kind=none
 ]]
@@ -2936,7 +2911,7 @@ by CaimanChameleon
 [[include :snippets:bs-image
 |heading=Void Dancer Hub
 by Olicus
-|image=https://scpsandboxcn.wdfiles.com/local--files/04/%E8%99%9A%E7%A9%BA%E8%88%9E%E8%80%85.png
+|image=https://i.postimg.cc/0QCHFBVq/Void-Dancer-Hub-by-Olicus.png
 |width=400px
 |kind=none
 ]]
@@ -2948,7 +2923,7 @@ by Olicus
 [[include :snippets:bs-image
 |heading=fifthist family picnic
 by Rob is not a deer
-|image=https://64.media.tumblr.com/acc30f07ecc04bdae765ef7322c13ba0/2d990bb4eaa4501d-a8/s1280x1920/1fd5f25a0a235445c0eb173770ffd407accfeac5.png
+|image=https://i.postimg.cc/02zc0j1v/fifthist-family-picnic-by-Rob-is-not-a-deer.png
 |width=400px
 |kind=none
 ]]
@@ -2972,7 +2947,7 @@ by DrGooday
 [[include :snippets:bs-image
 |heading=SCP-2
 by Zal Cryptid
-|image=https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4eec5159-a60c-4609-9648-95233048a0a2/dev5qgl-2dde04f7-e161-4426-b383-cb21f0df54c9.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRlZWM1MTU5LWE2MGMtNDYwOS05NjQ4LTk1MjMzMDQ4YTBhMlwvZGV2NXFnbC0yZGRlMDRmNy1lMTYxLTQ0MjYtYjM4My1jYjIxZjBkZjU0YzkucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.Tsi4N57YZ4dgp3W5P9HFJVm5o7GcSVYskL3ZvXJdl_Y
+|image=https://i.postimg.cc/ry3HD3KQ/SCP-2-by-Zal-Cryptid.png
 |width=400px
 |kind=none
 ]]
@@ -2989,7 +2964,7 @@ by Zal Cryptid
 |heading=Mobile Task Force Eta-4
 “Begone Thoth”
 by UncertaintyCrossing
-|image=https://64.media.tumblr.com/e337cd5743708a910d72aebfc0800080/e393a6d5de8dd853-07/s1280x1920/4ba5958f68279dcf62b1f142b83641de8cf4e8b7.jpg
+|image=https://i.postimg.cc/YCkbgHkf/Mobile-Task-Force-Eta-4-Begone-Thoth-by-Uncertainty-Crossing.jpg
 |caption=Trans Rights!
 |width=400px
 |kind=none
@@ -3002,7 +2977,7 @@ by UncertaintyCrossing
 [[include :snippets:bs-image
 |heading=The Watchers of The Lost Glade
 by EstrellaYoshte
-|image=https://i.imgur.com/SNq3hzL.png
+|image=https://i.postimg.cc/65x0JX7J/The-Watchers-of-The-Lost-Glade-by-Estrella-Yoshte.png
 |width=400px
 |kind=none
 ]]
@@ -3014,7 +2989,7 @@ by EstrellaYoshte
 [[include :snippets:bs-image
 |heading=Heather Mason &amp; Adamo Smalls
 by Olicus
-|image=https://olicus.wdfiles.com/local--files/characters/Heather%26Adamo.png
+|image=https://i.postimg.cc/tCm4nXF8/Heather-Mason-Adamo-Smalls-by-Olicus.png
 |width=400px
 |kind=none
 ]]
@@ -3025,15 +3000,15 @@ by Olicus
 
 [[include :snippets:bs-image
 |heading=Heather Mason &amp; Adamo Smalls
-Christmas Eve
+on Christmas Eve
 by Olicus
-|image=https://olicus.wdfiles.com/local--files/characters/VD_1.PNG
+|image=https://i.postimg.cc/1549QLbB/Heather-Mason-Adamo-Smalls-Christmas-Eve-by-Olicus.png
 |width=400px
 |kind=none
 ]]
 
 [[include :snippets:bs-image
-|image=https://olicus.wdfiles.com/local--files/characters/VD_2.PNG
+|image=https://i.postimg.cc/BQyJQm00/Heather-Mason-Adamo-Smalls-Christmas-Eve-x2-by-Olicus.png
 |width=400px
 |kind=none
 ]]
@@ -3044,9 +3019,9 @@ by Olicus
 
 [[include :snippets:bs-image
 |heading=Heather Mason &amp; Adamo Smalls
-Halloween
+on Halloween
 by Olicus
-|image=https://pbs.twimg.com/media/Fgafi_hXgAQMgJ6?format=jpg
+|image=https://i.postimg.cc/fWCLZ7yz/Heather-Mason-Adamo-Smalls-Halloween-by-Olicus.jpg
 |width=400px
 |kind=none
 ]]
@@ -3058,12 +3033,12 @@ by Olicus
 [[include :snippets:bs-image
 |heading=Flops the Phoenix
 by Phoenixfire003
-|image=https://scp-wiki.wdfiles.com/local--files/floppyphoenix/flops-the-phoenix.png
+|image=https://i.postimg.cc/4NwBz03D/Flops-the-Phoenix-by-Phoenixfire003.png
 |width=400px
 |kind=none
 ]]
 
-» [[[*https://twitter.com/phoenixfire003|Artist&#39;s Page]]] «
+» [[[*https://www.wikidot.com/user:info/phoenixfire003|Artist&#39;s Page]]] «
 [[/=]]
 
 @@ @@
@@ -3099,6 +3074,7 @@ by Phoenixfire003
 [[[SCP-4246]]] -- Thalassomania, or The Dreams of the Firstborn by [[user Metaphysician]]
 [[[SCP-4405]]] -- Time Ends on a Fridays by [[user OthellotheCat]] &amp; [[user DolphinSlugchugger]]
 [[[SCP-4857]]] -- [DESIGNATION AVAILABLE] by [[user Pr10r]]
+[[[SCP-4922]]] -- The Rainbow Connection by [[user daveyoufool]]
 [[[SCP-4982]]] -- Heavy lies the crown. by [[user Uncle Nicolini]]
 [[[SCP-5002]]] -- A Death in Containment by [[user psul]]
 [[[SCP-5038]]] -- La Rue Macabre is CLOSED by [[user MalyceGraves]] &amp; [[user plaidypus]]
@@ -3117,6 +3093,7 @@ by Phoenixfire003
 ----
 [[[Astronomical]]] by [[user Sophia Light]]
 [[[Winding Down]]] by [[user Sophia Light]]
+[[[Three Sleepless Nights]]] by [[user Djoric]]
 [[[Mud on the Carpet]]] by [[user Djoric]]
 [[[they-call-him-he-who-cannot-see-his-reflection|To The Dreams He Is No Nobody]]] by [[user SoullessSingularity]]
 [[[Mission Statement]]] by [[user Dr Reach]]
@@ -3187,14 +3164,14 @@ by Phoenixfire003
 [[[*http://wanderers-library.wikidot.com/the-last-will-and-testament|The Last Will and Testament of Lyle Alan Burnley, Heresiographer]]] by Gaffsey
 [[[*https://wanderers-library.wikidot.com/memocide|Memocide]]] by [[user MaliceAforethought]]
 [[[*https://wanderers-library.wikidot.com/sleepless-walkers|Sleepless Walkers]]] by [[user Din-Bidor]]
-[[[*http://wanderers-library.wikidot.com/glass-apartments-for-janelle|Glass Apartments (For Janelle)]]] by [[user carolynn ivy]]
+[[[*http://wanderers-library.wikidot.com/glass-apartments-for-janelle|Glass Apartments (For Janelle)]]] by [[user carolynn w]]
 [[[*http://wanderers-library.wikidot.com/sludge-thompkins-in-the-lair-of-the-mutant-bubblegum-lizards|Sludge Thompkins in: The Lair of the Mutant Bubblegum Lizards!]]] by [[user CadaverCommander]]
 [[/div]]
 
 [[div class=&#34;blockquote solid&#34;]]
 ++ Other
 ----
-[[[poetry-as-distillation|Poetry As Distillation: An Essay on Good Poems]]] by [[user carolynn ivy]]
+[[[poetry-as-distillation|Poetry As Distillation: An Essay on Good Poems]]] by [[user carolynn w]]
 [[/div]]
 ----
 +++ &lt;&lt; [#BTT BACK TO TOP] &gt;&gt;
@@ -3245,6 +3222,12 @@ by Phoenixfire003
 [[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored-header= --]]]
 
 [[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
+|name=abraka-davids-proposal
+|feat=Metaphysician, Uncle Nicolini, LORDXVNV, Calibold, Sherf, Jack Ike, Guezma, Ralliston, Yossipossi, Placeholder McD, Guaire, Grigori Karpin, and Dr Balthazaar
+|language=en
+]]
+
+[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
 |name=scp-7010
 |feat=stormbreath
 |language=en
@@ -3276,7 +3259,7 @@ by Phoenixfire003
 
 [[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
 |name=i-hub
-|feat=Elenee FishTruck, Azamo, basirskipreader, Calibold, CelesteKara, Dysadron, Ellie3, Esperanza_Cai, gee0765, Hexick, Ihnaaimc, JackalRelated, JakdragonX, Joreth, Limeyy, Lt Flops, Machen2, Nykacolaquantum, Oboebandgeek99, PeppersGhost, Placeholder McD, pr0m37h3um, Ralliston, Rounderhouse, Sherf, Snapdragon133, UnnaHuz, Vincent Van Gone, &amp; Westrin
+|feat=Elenee FishTruck, Azamo, basirskipreader, Calibold, CelesteKara, Dysadron, Ellie3, Esperanza_Cai, gee0765, Hexick, Ihnaaimc, JackalRelated, JakdragonX, Joreth, Limeyy, Lt Flops, Machen2, newnykacolaquantum, Oboebandgeek99, PeppersGhost, Placeholder McD, pr0m37h3um, Ralliston, Rounderhouse, Sherf, Snapdragon133, UnnaHuz, Vincent Van Gone, &amp; Westrin
 |language=en
 ]]
 
@@ -3288,7 +3271,7 @@ by Phoenixfire003
 
 [[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
 |name=broken-masquerade-epistolary
-|feat=Nykacolaquantum, IFBench, Westrin, &amp; Deadly Bread
+|feat=newnykacolaquantum, IFBench, Westrin, &amp; Deadly Bread
 |language=en
 ]]
 
@@ -3415,50 +3398,55 @@ by Phoenixfire003
 [[/tabview]]
 
 @@ @@
-
 [[=]]
+[!--Qualifications, 2023-09-23--]
 [[include :scp-wiki:component:sybadge code=tsf]]
+[[include :scp-wiki:component:sybadge code=str]]
+[!--60+ pages, not counting themes/components--]
 [[include :scp-wiki:component:sybadge code=mww]]
+[!--SCP-3309, 11+ translations--]
 [[include :scp-wiki:component:sybadge code=scl]]
 [[include :scp-wiki:component:sybadge code=clb]]
+[!--23+ co-authors--]
 [[include :scp-wiki:component:sybadge code=dda]]
+[!--SPC, Serpent&#39;s Hand, Prometheus, WWS--]
 [[include :scp-wiki:component:sybadge code=gsa]]
+[!--SAPPHIRE, from -FR--]
 [[include :scp-wiki:component:sybadge code=tlt]]
+[!--23+ Tales--]
 [[include :scp-wiki:component:sybadge code=tbe]]
-[[include :scp-wiki:component:sybadge code=str]]
+[!--1st instance of CotSH &amp; Fifthist cooperation--]
+[[include :scp-wiki:component:sybadge code=awb]]
+[!--SCP-7723 and a couple of implicitly antagonistic--]
 [[include :scp-wiki:component:sybadge code=pbs]]
 [[include :scp-wiki:component:sybadge code=spa]]
+[!--3 seminars: Flash-Fiction, Action, Site Orientation--]
 [[include :scp-wiki:component:sybadge code=srs]]
+[!--2018-present--]
 [[include :scp-wiki:component:sybadge code=knl]]
+[!--A Semi-Comprehensive List of Foundation Departments--]
+[[include :scp-wiki:component:sybadge code=pdp]]
+[!--WITCH (no hub), contributed 16+ articles--]
 [[include :scp-wiki:component:sybadge code=pvr]]
+[!--≥4095 votes--]
 [[include :scp-wiki:component:sybadge code=cda]]
+[!--doomsday2018, Original Character Tournament 2018, halloween2018, jam-con2019, collab-con2019, jam-con2020, jam-con2021, Creck Fection Con 2021, 7000, coldpostcon2023, romcon2023-unofficial--]
+[[include :scp-wiki:component:sybadge code=lgbt]]
 [[/=]]
-
-[!-- QUALIFICATIONS [DATED APRIL/2021]:
-TSF: 61 pages (update)
-MWW: 10+ translations of 4031
-SCL: stopped counting at 30 in-depth crits
-CLB: 16+ distinct co-authors on record (update)
-DDA: SPC, Serpent&#39;s Hand, Prometheus, &amp; WWS
-GSA: SAPPHIRE (from FR)
-TLT: 18 tales (update)
-TBE: 1st instance of Second Hytoth &amp; Fifthist collaboration
-STR: 24 SCPs, 19 Tales, 6 GOI Formats, 4 Hubs, 1 Resource, 7 Themes = 61 (update)
-PBS: yes
-SPA: image licensing, flash fiction, &amp; orientation seminars
-SRS: active since 2017
-KNL: A Semi-Comprehensive List of Foundation Departments
-PVR: &gt;3000 (update)
-CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7000 Contest (update)
---]
 
 [[div class=&#34;lite-heading&#34;]]
 ----
-++ Thanks for reading!
++ Thanks for reading!
 ----
 [[/div]]
 
 [[module Rate]]
+
+[[=]]
+[[div style=&#34;display:inline-block;margin-top:1rem;padding:0 1rem;background:hsl(180, 60%, 45%);border-radius:.5rem;cursor:pointer&#34;]]
+[[a href=&#34;*https://ko-fi.com/A0A1TGT6&#34; style=&#34;color:#fff;font:bold 14px/1 sans-serif;text-decoration:none&#34;]]Consider Supporting Me on Ko-Fi! 🤍[[/a]]
+[[/div]]
+[[/=]]
 
 [[div class=&#34;footing&#34;]]
 [[/div]]
@@ -3466,18 +3454,10 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
 [[include :scp-wiki:component:license-box]]
 =====
 [[div class=&#34;blockquote&#34;]]
-**Filename:** Transgender_Pride_flag.svg
-**Author:** Monica Helms
-**License:** Public Domain
-**Source Link:** [*https://commons.wikimedia.org/wiki/File:Transgender_Pride_flag.svg Wikimedia Commons]
-[[/div]]
-
-[[div class=&#34;blockquote&#34;]]
-**Filename:** lt-flops.jpg
-**Name:** White Heron Safari Park 2
-**Author:** [*https://commons.wikimedia.org/wiki/User:Abdulmominbd Abdul Momin]
-**License:** [*https://creativecommons.org/licenses/by-sa/4.0/ Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)]
-**Source Link:** [*https://commons.wikimedia.org/wiki/File:White_Heron_Safari_Park_2.jpg Wikimedia Commons]
+**Filename(s):** postgender-pride-flag.png, bg-grad.png
+**Author:** [[*user Lt Flops]]
+**License:** [*https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
+**Source Link(s):** Self 
 [[/div]]
 =====
 [[include :scp-wiki:component:license-box-end]]
@@ -3485,44 +3465,24 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
 [[module CSS]]
 /* ==== SITE BANNER ==== */
  :root {
-    --lgurl: url(https://scp-wiki.wdfiles.com/local--files/workbench%3Aflops/Transgender_Pride_flag.svg);
-    --header-title: &#34;FLOPS’ AUTHOR PAGE&#34;;
-    --header-subtitle: &#34;SUPPORT TRANS PEOPLE&#34;;
+    --header-subtitle: &#34;NO VEIL CAN HOLD THE HEAVENS&#34;;
 
-    --titleColor: var(--transPink);
-    --subtitleColor: var(--textColorHigh);
+    --accentColor: hsl(180, 60%, 50%);
+    --accentColorLite: hsla(180, 60%, 60%, .5);
+    --hue: 180deg;
 
-    --transBlue: hsl(197, 95%, 65%);
-    --transPink: hsl(348, 95%, 85%);
+    --bgColor: hsl(220, 59%, 27%);
+    --mgColor: hsl(222, 22%, 9%);
+    --fgColor: hsla(0, 0%, 0%, .4);
+
+     --borderColor: var(--accentColor);
+     --bgBadgeColor: var(--fgColor);
 }
 
- @media only screen and (max-width: 768px) {
-     :root {
-    	--header-title: &#34;FLOPS’ PAGE&#34;;
-    }
-}
-
- .top-bar::before,
- .mobile-top-bar::before {
-    --textColor: hsla(0, 0%, 100%, .92);
-}
-
- #top-bar,
- #top-bar a {
-    --accentColor: var(--transBlue);
-}
-
- #top-bar .open-menu a,
- #login-status a {
-    --accentColor: var(--textColor);
-}
-
- #extra-div-1 {
-    height: 11.067em;
-
-    background-repeat: repeat-x;
-
-    filter: opacity(.33);
+ body {
+    background-attachment: fixed;
+    background-color: var(--mgColor);
+    background-image: url(https://scp-wiki.wikidot.com/local--files/floppyphoenix/bg-grad.png);
 }
 
  @media (min-width: 768px) {
@@ -3533,6 +3493,44 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
 
  :where(h1, h2, h3, h4, h5) {
     color: var(--textColorMid);
+}
+
+ .lite-heading.extra-wide {
+    position: relative;
+    left: calc(-33vw + 50%);
+    width: 66vw;
+    max-width: 66vw;
+
+    background:
+       linear-gradient(
+    	to right,
+    	transparent,
+    	var(--fgColor) 10% 90%,
+    	transparent);
+}
+
+ @media (max-width: 767px) {
+     .lite-heading.extra-wide {
+    	left: unset;
+    	width: unset;
+    	max-width: unset;
+    }
+}
+
+ .lite-heading.extra-wide hr {
+    height: .3rem;
+
+    background:
+       linear-gradient(
+    	to right,
+    	transparent,
+    	var(--accentColor) 10% 90%,
+    	transparent);
+    border: 0;
+}
+
+ .lite-heading.extra-wide h1 {
+    font-size: 2.95rem;
 }
 
 /* ==== BOOKSHELF ==== */
@@ -3547,7 +3545,7 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 5.8rem;
+    height: 6rem;
 }
 
  @media (max-width: 768px) {
@@ -3560,11 +3558,15 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
     margin: 0;
 }
 
-/* ==== MEGA COOL AUTHOR PAGE TOOL ==== */
+/* ==== TABS ==== */
  .yui-navset .yui-content {
     padding-top: 2rem;
+}
 
-    background: hsla(222, 16%, 15%, .4);
+ .yui-navset .yui-nav .selected a,
+ .yui-navset .yui-nav .selected a:active,
+ .yui-navset .yui-nav .selected a:focus {
+    color: var(--keyColor);
 }
 
  .translations .collapsible-block-link::before,
@@ -3574,6 +3576,7 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
     content: &#34;&#34;;
 }
 
+/* ==== MEGA COOL AUTHOR PAGE TOOL ==== */
  .content-box {
     margin-bottom: 1rem !important;
 }
@@ -3595,29 +3598,6 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
 
  #page-content .tooltip &gt; a[href*=&#34;dark-achievement-badges&#34;] {
     border-bottom: 0;
-}
-
-/* ==== WANDERERS&#39; LIBRARY ==== */
- .fancyborder {
-    color: hsl(47, 100%, 68%);
-    background: hsl(120, 22%, 23%);
-    border-radius: 3vw;
-}
-
- .fancyborder h1 {
-    color: hsl(47, 100%, 68%);
-
-    font-family: &#34;EB Garamond&#34;, &#34;Big Caslon&#34;, &#34;Book Antiqua&#34;, &#34;Palatino Linotype&#34;, &#34;Georgia&#34;, serif;
-}
-
- .fancyborder a {
-    --accentColorLite: hsla(46, 79%, 60%, .5);
-    color: hsl(47, 100%, 68%);
-}
-
- .fancyborder a:hover {
-    --accentColor: hsl(46, 79%, 50%);
-    color: var(--keyColor);
 }
 
 /* ==== FLOPSTYLE: DARK MODS ==== */
@@ -3643,13 +3623,7 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
 
      .blockquote.lightweight.exhibit {
     	width: 500px;
-    	height: 350px;
-    }
-
-     .blockquote.lightweight.trans-help {
-    	width: fit-content;
-    	height: unset;
-    	margin: auto;
+    	height: 360px;
     }
 }
 
@@ -3692,6 +3666,7 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
 
  .cv strong {
     color: var(--textColorMid);
+    font-size: .95rem;
 }
 
  .cv strong::after {
@@ -3759,8 +3734,6 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
     width: fit-content;
     margin: auto;
 
-    box-shadow: 3px 3px var(--keyColor);
-
     font-size: .85rem;
 }
 
@@ -3790,9 +3763,6 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
  @media (min-width: 992px) and (max-width: 1199px) {
      #header h1 a { font-size: calc(.75em + 2vw); }
      #header h2 { font-size: calc(.75em + 1vw); }
-}
-
- @media (min-width: 992px) and (max-width: 1199px) {
      #header h1 a::before { font-size: unset; }
      #header h2::before { font-size: unset; }
 }
@@ -3803,7 +3773,7 @@ CDA: DoomCon, HalloweenCon, JamCon2019, CollabCon, JamCon2020, JamCon2021, SCP-7
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:37.205514.</em>
+    <em>Last updated 2024-01-25 19:20:38.693672.</em>
   
 </div>
 </body>

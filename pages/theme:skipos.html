@@ -29,8 +29,8 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;https://basalt-team.github.io/Basalt/normalize-min.css&#39;);
-@import url(&#39;https://basalt-team.github.io/Basalt/basalt-bedrock-min.css&#39;);</code></pre>
+          <pre><code>@import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/normalize-min.css&#39;);
+@import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/basalt-bedrock-min.css&#39;);</code></pre>
         </li>
       
         <li>
@@ -194,8 +194,8 @@
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[iftags +theme]]
 [[module css]]
-@import url(&#39;https://basalt-team.github.io/Basalt/normalize-min.css&#39;);
-@import url(&#39;https://basalt-team.github.io/Basalt/basalt-bedrock-min.css&#39;);
+@import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/normalize-min.css&#39;);
+@import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/basalt-bedrock-min.css&#39;);
 [[/module]]
 
 [[&gt;]]
@@ -221,6 +221,8 @@ To change local time or the wallpaper, input the following command:
 }
 @@[[/module]]@@
 [[/div]]
+
+SkipOS is based on the [[[theme:bedrock|Bedrock]]] kernel.
 
 + Examples
 
@@ -366,8 +368,8 @@ Body font is Inter.
 ++ Source Code
 [[collapsible show=&#34;Display&#34; hide=&#34;Collapse&#34;]]
 [[code type=&#34;css&#34;]]
-@import url(&#39;https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&amp;display=swap&#39;);
+@import url(&#39;https://api.fonts.coollabs.io/css2?family=Red+Hat+Display:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://api.fonts.coollabs.io/css2?family=Fira+Code:wght@400;700&amp;display=swap&#39;);
 
 :root {
     --basalt-primary-color: 36,35,50;
@@ -587,12 +589,12 @@ input[type=&#34;checkbox&#34;], [type=&#34;radio&#34;],
 }
 
 div[id*=&#34;page-options-bottom&#34;] {
-    --po-padding: 0.875rem;
+    --_po-padding: 0.875rem;
     border-radius: var(--window-radius);
     box-shadow: var(--window-shadow);
 }
 #page-options-bottom-2 {
-    padding-top: var(--po-padding);
+    padding-top: var(--_po-padding);
     margin-block-start: 0.875rem;
 }
 
@@ -600,16 +602,21 @@ div[id*=&#34;page-options-bottom&#34;] {
     border-radius: calc(var(--window-radius)*0.375);
 }
 #delete-button {
-    inset-block-start: var(--po-padding);
-    height: calc(100% - var(--po-padding)*2);
+    inset-block-start: var(--_po-padding);
+    height: calc(100% - var(--_po-padding)*2);
 }
 
 #action-area a.action-area-close { border-radius: calc(var(--window-radius)*0.5); }
 
-#revision-list, #main-content .page-source {
+#revision-list,
+#main-content .page-source,
+#who-rated-page-area&gt;div,
+#action-area&gt;ul[style=&#34;list-style: none&#34;] {
     background-color: rgb(var(--header-background-color), var(--basalt-UI-opacity));
     border-radius: var(--window-radius);
-    padding: 1rem 1.25rem;
+    padding: 1rem;
+    -webkit-backdrop-filter: blur(var(--basalt-UI-blur));
+    backdrop-filter: blur(var(--basalt-UI-blur));
 }
  
 #edit-page-form .wd-editor-toolbar-panel div &gt; ul &gt; li:is(.sfhover, :hover, :focus-within) &gt; a:not(:hover, :focus) {
@@ -640,7 +647,10 @@ div[id*=&#34;page-options-bottom&#34;] {
     border-radius: calc(var(--window-radius)*0.75);
     box-shadow: var(--window-shadow);
 }
-:is(.image-block, .scp-image-block) :is(.image-caption, .scp-image-caption) { background: transparent; }
+:is(.image-block, .scp-image-block) :is(.image-caption, .scp-image-caption) {
+    background: transparent;
+    width: 100%;
+}
 :is(.image-block, .scp-image-block)::before {
     content: counter(image-count, decimal-leading-zero) &#34;.mci&#34;;
     display: block;
@@ -978,7 +988,7 @@ div.skip_side::-webkit-scrollbar { width: 0rem; }
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:41.034087.</em>
+    <em>Last updated 2024-01-25 19:20:42.870328.</em>
   
 </div>
 </body>

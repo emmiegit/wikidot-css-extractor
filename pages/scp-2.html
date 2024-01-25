@@ -29,25 +29,156 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* HEADER */
- :root{
-   --titleColor: hsl(180, 100%, 50%);
-   --subtitleColor: hsl(27, 100%, 63%);
-   --lgurl: url(https://scp-wiki.wdfiles.com/local--files/component:pride-highlighter/tg_logo.svg);
+          <pre><code>/* == COMMON == */
+ :root {
+    --sp_header-logo: url(https://scp-wiki.wdfiles.com/local--files/component:pride-highlighter/tg_logo_blk.svg);
+    --fnColor: rgb(var(--techno-secondary));
 }
- body{
-   --linkColour: hsl(27, 100%, 63%);
-     font-family: &#34;Verdana&#34;, &#34;Arial&#34;, &#34;Helvetica&#34;, sans-serif;
+
+ #page-content {
+    font-size: calc(15px * 1.15);
 }
- #header h1 a::before,
- #header h2::before{
-     font-family: &#34;Orbitron&#34;, sans-serif;
+
+ #page-content :is(h1, h2, h3, h4, h5, h6) {
+    display: flex;
+    justify-content: center;
+
+    text-underline-offset: 25%;
 }
- #page-title{
-     display: none;
+
+ #page-content :is(h1) span span {
+    font-size: 115%;
 }
- #page-content{
-     font-size: unset;
+
+ #page-title {
+    display: none;
+}
+
+ .meta-title,
+ .pseudocrumbs {
+    text-align: center;
+}
+
+ .pseudocrumbs {
+    display: block;
+    margin-top: -.6rem;
+}
+
+/* == CONTENT WARNING == */
+ .content-warning {
+    width: 75%;
+    margin: 1rem auto;
+    padding: 0 1rem;
+
+    background: white;
+    border: 3px double black;
+
+    text-align: center;
+}
+
+ @media (max-width: 767px) {
+     .content-warning {
+    	width: fit-content;
+    }
+}
+
+/* == FORMATTING | [GENERAL] == */
+ hr {
+    height: 0;
+    margin: .325rem 0;
+
+    background: transparent;
+    border-top: 2px solid rgb(var(--techno-dark));
+}
+
+ hr::before, hr::after {
+    display: none;
+}
+
+/* == FORMATTING | [SPECIAL] == */
+/* == ListPages Navigator ==
+ * Adapted From:
+ *	SCP-5552 by Captain Kirby
+**/
+ .listPagesNav {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 0 0 3rem;
+}
+
+ .listPagesNav-prev,
+ .listPagesNav-next {
+    width: 45%;
+    padding: 0 1%;
+
+    background: rgb(var(--techno-secondary) / .2);
+}
+
+ .listPagesNav-prev {
+    float: left;
+
+    border-left: thick solid rgb(var(--techno-secondary));
+
+    text-align: left;
+}
+
+ .listPagesNav-next {
+    float: right;
+
+    border-right: thick solid rgb(var(--techno-secondary));
+
+    text-align: right;
+}
+
+ .listPagesNav-prev p,
+ .listPagesNav-next p {
+    font-size: 1.05rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+ @media (max-width: 767px) {
+     .listPagesNav-prev p,
+     .listPagesNav-next p {
+    	font-size: .95rem;
+    }
+}
+
+/* == FOOTING == */
+ .footing::before {
+    position: absolute;
+    right: 0;
+    bottom: .27rem;
+    left: 0;
+    content: &#34;&#34;;
+
+    border-bottom: 4px solid hsl(0, 0%, 40%);
+}
+
+ .footing,
+ .footing::after {
+    position: relative;
+}
+
+ .footing {
+    margin: 1rem 0;
+    padding-top: 1.6rem;
+}
+
+ .footing::after {
+    display: block;
+    top: .13rem;
+    content: &#34;&#34;;
+
+    border-bottom: 2px solid hsl(0, 0%, 60%);
+}
+
+ @media (max-width: 767px) {
+     .footing::before,
+     .footing::after {
+    	margin: 0 -5%;
+    }
 }</code></pre>
         </li>
       
@@ -57,34 +188,13 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>color: transparent;</code></pre>
+          <pre><code>color: transparent</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:flopstyle" target="_blank"><code>:scp-wiki:theme:flopstyle</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:flopstyle.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
       
         <li>
   
@@ -98,6 +208,74 @@
     
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/theme:technoblast.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:betterfootnotes" target="_blank"><code>:scp-wiki:component:betterfootnotes</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:betterfootnotes.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:croqstyle" target="_blank"><code>:scp-wiki:component:croqstyle</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>:scp-wiki:component:fade-in</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar" target="_blank"><code>:scp-wiki:component:toggle-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar.html" target="_blank">info</a>]
   </span>
 
   
@@ -160,17 +338,33 @@
     <ul class="css-classes">
       
         <li>
+          <pre><code>content-warning</code></pre>
+        </li>
+      
+        <li>
           <pre><code>footing</code></pre>
         </li>
       
         <li>
-          <pre><code>centered</code></pre>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[!-- For Maintenance and Translators
+    <pre><textarea class="page-source" readonly>[!--
 https://scp-wiki.wikidot.com/scp-2 (You Are Here)
 https://scp-wiki.wikidot.com/fragment:scp-2-1
 https://scp-wiki.wikidot.com/fragment:scp-2-2
@@ -178,36 +372,15 @@ https://scp-wiki.wikidot.com/fragment:scp-2-3
 https://scp-wiki.wikidot.com/fragment:scp-2-4
 --]
 
-[[include component:preview
+[[include :scp-wiki:theme:technoblast]]
+[[include :scp-wiki:component:betterfootnotes]]
+[[include :scp-wiki:component:croqstyle]]
+[[include :scp-wiki:component:fade-in speed=1]]
+[[include :scp-wiki:component:toggle-sidebar]]
+[[include :scp-wiki:component:preview
 |text=I&#39;m going to take a Tylenol for my tension headache, grab some tea, and get to work on this never-ending backlog of technical issues plaguing my inbox.]]
 
-[[div style=&#34;display: none;&#34;]]
-[[include :scp-wiki:theme:flopstyle]]
-[[/div]]
-[[include :scp-wiki:theme:technoblast]]
-
-[[module CSS]]
-/* HEADER */
- :root{
-   --titleColor: hsl(180, 100%, 50%);
-   --subtitleColor: hsl(27, 100%, 63%);
-   --lgurl: url(https://scp-wiki.wdfiles.com/local--files/component:pride-highlighter/tg_logo.svg);
-}
- body{
-   --linkColour: hsl(27, 100%, 63%);
-     font-family: &#34;Verdana&#34;, &#34;Arial&#34;, &#34;Helvetica&#34;, sans-serif;
-}
- #header h1 a::before,
- #header h2::before{
-     font-family: &#34;Orbitron&#34;, sans-serif;
-}
- #page-title{
-     display: none;
-}
- #page-content{
-     font-size: unset;
-}
-[[/module]]
+[!-- CSS is located at the bottom. --]
 
 [[include :scp-wiki:component:info-ayers
 |lang=en
@@ -217,10 +390,10 @@ https://scp-wiki.wikidot.com/fragment:scp-2-4
 @@ @@ 
 &gt; = The sun, aching temperature, punishing what time could only take, turning threats against dark champions 
  
-= [[span style=&#34;color: transparent;&#34;]]She knows.[[/span]] 
+= [[span style=&#34;color: transparent&#34;]]She knows.[[/span]] 
 ----
 **SCP-2:** A Eulogy for 2wo 
-**Author:** [[*user Lt Flops]] 
+**By:** [[*user Lt Flops]] 
 **Published on 4 Dec 2018** 
 **This article contains excerpts from //When We Two Parted// by Lord Byron (Public Domain)** 
  
@@ -228,7 +401,7 @@ This article is set in the **[*/aiad-homescreen AIAD]** canon.
  
 **Behind The Scenes:** This Tale was created as a challenge, in response to a known r/SCP glitch. The glitch involved the subreddit&#39;s main bot (/u/The-Paranoid-Android, otherwise known as &#34;Marv&#34;) linking to &#34;SCP-2&#34; -- a non-existent article -- seemingly at random. The phenomenon persisted for a few years, and sometime after I published this article, it was finally fixed. 
  
-For extra context, see any of the following threads: **[*https://redd.it/61u0mv 1] [*https://redd.it/694o4x 2] [*https://redd.it/9f5sgi 3] [*https://redd.it/a1df2u 4] [*https://redd.it/a45sgq 5]** 
+For extra context, see any of the following threads: **[*https://redd.it/61u0mv 1] / [*https://redd.it/694o4x 2] / [*https://redd.it/9f5sgi 3] / [*https://redd.it/a1df2u 4] / [*https://redd.it/a45sgq 5]** 
 ----
 [[include :scp-wiki:more-by:lt-flops]]
 [[/div]]
@@ -236,6 +409,12 @@ For extra context, see any of the following threads: **[*https://redd.it/61u0mv 
 [[=]]
 [[module Rate]]
 [[/=]]
+
+[[div class=&#34;content-warning&#34;]]
+= **AUTHOR NOTE**
+
+This Tale has **four** different iterations. Please see the navigation links at the bottom of each page to view the next part of the article.
+[[/div]]
 
 @@ @@
 
@@ -251,45 +430,210 @@ For extra context, see any of the following threads: **[*https://redd.it/61u0mv 
 
 @@ @@
 
-[[div class=&#34;centered&#34;]]
+[[=]]
 [[include :scp-wiki:component:license-box]]
 [[&lt;]]
 =====
-&gt; **Filename:** infotech_dept.png
-&gt; **Name:** Infotech Department Logo
-&gt; **Author:** [https://www.wikidot.com/user:info/estrellayoshte EstrellaYoshte]
-&gt; **License:** [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
-&gt; **Source Link:** [[[https://scp-wiki.wikidot.com/desk-of-junior-designer-s-yvonne|Desk of Junior Designer S. Yvonne]]]
+[[div class=&#34;blockquote&#34;]]
+**Filename:** infotech_dept.png
+**Name:** Infotech Department Logo
+**Author:** [[*user EstrellaYoshte]]
+**License:** [*https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
+**Source Link:** [[[desk-of-junior-designer-s-yvonne | ]]]
+[[/div]]
 
-&gt; **Filename:** fodder.png
-&gt; **Name:** Fodder
-&gt; **Author:** [https://www.wikidot.com/user:info/lt-flops Lt Flops] (With [http://www.heromachine.com/heromachine-3-lab/ HeroMachine 3])
-&gt; **License:** [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
-&gt; **Source Link:** https://scp-wiki.wdfiles.com/local--files/scp-2/fodder.png
+[[div class=&#34;blockquote&#34;]]
+**Filename:** fodder.png
+**Name:** Fodder
+**Author:** [[*user Lt Flops]]
+**License:** [*https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
+**Source Link:** [*/local--files/scp-2/fodder.png Self]
+**Note:** Created with [*http://www.heromachine.com/heromachine-3-lab/ HeroMachine 3].
+[[/div]]
 
-&gt; **Filename:** leonidas.png
-&gt; **Name:** Leonidas
-&gt; **Author:** [https://www.wikidot.com/user:info/lt-flops Lt Flops] (With [http://www.heromachine.com/heromachine-3-lab/ HeroMachine 3])
-&gt; **License:** [https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
-&gt; **Source Link:** https://scp-wiki.wdfiles.com/local--files/scp-2/leonidas.png
+[[div class=&#34;blockquote&#34;]]
+**Filename:** leonidas.png
+**Name:** Leonidas
+**Author:** [[*user Lt Flops]]
+**License:** [*https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
+**Source Link:** [*/local--files/scp-2/leonidas.png Self]
+**Note:** Created with [*http://www.heromachine.com/heromachine-3-lab/ HeroMachine 3].
+[[/div]]
 
-&gt; **Name:** //When We Two Parted//
-&gt; **Author:** George Gordon Byron (Lord Byron)
-&gt; **License:** Public Domain
-&gt; **Additional Notes:** This article contains excerpts from the listed poem.
+[[div class=&#34;blockquote&#34;]]
+**Name:** //When We Two Parted//
+**Author:** George Gordon Byron (Lord Byron)
+**License:** Public Domain
+**Source Link:** [*https://en.wikisource.org/wiki/The_Works_of_Lord_Byron_(ed._Coleridge,_Prothero)/Poetry/Volume_3/When_we_Two_parted Wikisource]
+**Note:** This article contains excerpts from the listed poem.
+[[/div]]
 =====
 [[/&lt;]]
 [[include :scp-wiki:component:license-box-end]]
-[[/div]]
+[[/=]]
 
-@@ @@</textarea></pre>
+@@ @@
+
+[[module CSS]]
+/* == COMMON == */
+ :root {
+    --sp_header-logo: url(https://scp-wiki.wdfiles.com/local--files/component:pride-highlighter/tg_logo_blk.svg);
+    --fnColor: rgb(var(--techno-secondary));
+}
+
+ #page-content {
+    font-size: calc(15px * 1.15);
+}
+
+ #page-content :is(h1, h2, h3, h4, h5, h6) {
+    display: flex;
+    justify-content: center;
+
+    text-underline-offset: 25%;
+}
+
+ #page-content :is(h1) span span {
+    font-size: 115%;
+}
+
+ #page-title {
+    display: none;
+}
+
+ .meta-title,
+ .pseudocrumbs {
+    text-align: center;
+}
+
+ .pseudocrumbs {
+    display: block;
+    margin-top: -.6rem;
+}
+
+/* == CONTENT WARNING == */
+ .content-warning {
+    width: 75%;
+    margin: 1rem auto;
+    padding: 0 1rem;
+
+    background: white;
+    border: 3px double black;
+
+    text-align: center;
+}
+
+ @media (max-width: 767px) {
+     .content-warning {
+    	width: fit-content;
+    }
+}
+
+/* == FORMATTING | [GENERAL] == */
+ hr {
+    height: 0;
+    margin: .325rem 0;
+
+    background: transparent;
+    border-top: 2px solid rgb(var(--techno-dark));
+}
+
+ hr::before, hr::after {
+    display: none;
+}
+
+/* == FORMATTING | [SPECIAL] == */
+/* == ListPages Navigator ==
+ * Adapted From:
+ *	SCP-5552 by Captain Kirby
+**/
+ .listPagesNav {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 0 0 3rem;
+}
+
+ .listPagesNav-prev,
+ .listPagesNav-next {
+    width: 45%;
+    padding: 0 1%;
+
+    background: rgb(var(--techno-secondary) / .2);
+}
+
+ .listPagesNav-prev {
+    float: left;
+
+    border-left: thick solid rgb(var(--techno-secondary));
+
+    text-align: left;
+}
+
+ .listPagesNav-next {
+    float: right;
+
+    border-right: thick solid rgb(var(--techno-secondary));
+
+    text-align: right;
+}
+
+ .listPagesNav-prev p,
+ .listPagesNav-next p {
+    font-size: 1.05rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+ @media (max-width: 767px) {
+     .listPagesNav-prev p,
+     .listPagesNav-next p {
+    	font-size: .95rem;
+    }
+}
+
+/* == FOOTING == */
+ .footing::before {
+    position: absolute;
+    right: 0;
+    bottom: .27rem;
+    left: 0;
+    content: &#34;&#34;;
+
+    border-bottom: 4px solid hsl(0, 0%, 40%);
+}
+
+ .footing,
+ .footing::after {
+    position: relative;
+}
+
+ .footing {
+    margin: 1rem 0;
+    padding-top: 1.6rem;
+}
+
+ .footing::after {
+    display: block;
+    top: .13rem;
+    content: &#34;&#34;;
+
+    border-bottom: 2px solid hsl(0, 0%, 60%);
+}
+
+ @media (max-width: 767px) {
+     .footing::before,
+     .footing::after {
+    	margin: 0 -5%;
+    }
+}
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:38.393401.</em>
+    <em>Last updated 2024-01-25 19:20:39.963199.</em>
   
 </div>
 </body>

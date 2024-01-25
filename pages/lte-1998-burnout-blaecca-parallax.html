@@ -29,7 +29,29 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* ===SIDEBOX DIV=== */
+          <pre><code>
+:root {
+    --toggle-button-bg: rgb(var(--white-monochrome));
+    --toggle-border-color: rgb(var(--medium-accent));
+    --toggle-icon-color: rgb(var(--medium-accent));
+    --toggle-roundness: 0;
+    --fnColor: #A4C2EC;
+}
+
+.info-container{
+    --barColour: #A4C2EC;
+}
+
+body .italic,
+body .italic *,
+body em,
+body em *,
+body i,
+body i * {
+    --slnt: 7;
+}
+
+/* === SIDEBOX DIV === */
 /* Originally based on EstrellaYoshte&#39;s Sideboxes from the Penumbra Theme */
 
 .limit {
@@ -61,198 +83,175 @@
 
 @media (max-width: 80.625rem) {
     .sidebox {
-     right: calc(((100vw - 1em - var(--body-width-on-desktop)) / 2) * -1);
-     left: initial;
-     width: auto;
-     max-width: 50vw;
-     overflow-x: hidden;
-     overflow-y: hidden;
-     transition:
-     max-width 0.2s ease-in-out 0.1s,
-     color 0.2s ease-in-out 0.1s,
-     box-shadow 0.5s ease-in-out 0.1s,
-     background-color 0s ease-in-out 0s,
-     border-right-width 0.1s ease-in-out 0.1s;
-     border: none;
-     border-right: solid 0.25rem rgb(var(--dark-accent));
-     background-color: rgba(0, 0, 0, 0);
-     box-shadow: 0 0 0 0 rgb(var(--dark-accent));
-     color: rgba(0, 0, 0, 0);
-     pointer-events: none;
-     scrollbar-width: thin;
+        right: calc(((100vw - 1em - var(--body-width-on-desktop)) / 2) * -1);
+        left: initial;
+        width: auto;
+        max-width: 50vw;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        transition:
+        max-width 0.2s ease-in-out 0.1s,
+        color 0.2s ease-in-out 0.1s,
+        box-shadow 0.5s ease-in-out 0.1s,
+        background-color 0s ease-in-out 0s,
+        border-right-width 0.1s ease-in-out 0.1s;
+        border: none;
+        border-right: solid 0.25rem rgb(var(--dark-accent));
+        background-color: rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgb(var(--dark-accent));
+        color: rgba(0, 0, 0, 0);
+        pointer-events: none;
+        scrollbar-width: thin;
     }
 
     .sidebox::-webkit-scrollbar {
-     width: 0.5em;
+        width: 0.5em;
     }
 
     .sidebox * {
-     transition: opacity 0.2s ease-in-out 0.1s;
-     opacity: 0;
+        transition: opacity 0.2s ease-in-out 0.1s;
+        opacity: 0;
     }
 
     .sidebox::before,
     .sidebox::after {
-     content: &#34; &#34;;
-     position: absolute;
-     right: 0;
-     pointer-events: all;
+        content: &#34; &#34;;
+        position: absolute;
+        right: 0;
+        pointer-events: all;
     }
 
     .sidebox::before {
-     z-index: 10;
-     top: calc(50% - 0.75rem);
-     width: 0;
-     height: 0;
-     transition: border 0.1s ease-in-out 0.1s;
-     border-top: 0.75rem solid transparent;
-     border-right: 0.75rem solid rgb(var(--dark-accent));
-     border-bottom: 0.75rem solid transparent;
+        z-index: 10;
+        top: calc(50% - 0.75rem);
+        width: 0;
+        height: 0;
+        transition: border 0.1s ease-in-out 0.1s;
+        border-top: 0.75rem solid transparent;
+        border-right: 0.75rem solid rgb(var(--dark-accent));
+        border-bottom: 0.75rem solid transparent;
     }
 
     .sidebox::after {
-     z-index: -1;
-     top: 0;
-     width: 100%;
-     max-width: 0.75rem;
-     height: 100%;
-     max-height: calc(100vh - 18rem);
-     transition:
-     box-shadow 0.5s ease-in-out 0.1s,
-     max-width 0.5s ease-in-out 0.1s,
-     border-top-left-radius 0.5s ease-in-out 0.1s,
-     border-bottom-left-radius 0.5s ease-in-out 0.1s,
-     border-top 0.25s ease-in-out 0.1s;
-     background-color: rgb(245, 245, 245);
-     box-shadow: 0.125rem 0 0 0 rgb(245, 245, 245);
-     box-sizing: border-box;
+        z-index: -1;
+        top: 0;
+        width: 100%;
+        max-width: 0.75rem;
+        height: 100%;
+        max-height: calc(100vh - 18rem);
+        transition:
+        box-shadow 0.5s ease-in-out 0.1s,
+        max-width 0.5s ease-in-out 0.1s,
+        border-top-left-radius 0.5s ease-in-out 0.1s,
+        border-bottom-left-radius 0.5s ease-in-out 0.1s,
+        border-top 0.25s ease-in-out 0.1s;
+        background-color: rgb(245, 245, 245);
+        box-shadow: 0.125rem 0 0 0 rgb(245, 245, 245);
+        box-sizing: border-box;
     }
 
     .sidebox:hover,
     .sidebox:active {
-     overflow-y: auto;
-     transition:
-     max-width 0.5s ease-in-out 0.2s,
-     color 0.5s ease-in-out 0.2s,
-     box-shadow 0.5s ease-in-out 0.1s,
-     background-color 0s ease-in-out 0.6s,
-     right 0.5s ease-in-out 0.1s,
-     border-right-width 0.1s ease-in-out 0.1s;
-     background-color: rgb(245, 245, 245);
-     color: rgb(var(--swatch-text-general));
-     border-right-width: 0rem;
-     pointer-events: all;
+        overflow-y: auto;
+        transition:
+        max-width 0.5s ease-in-out 0.2s,
+        color 0.5s ease-in-out 0.2s,
+        box-shadow 0.5s ease-in-out 0.1s,
+        background-color 0s ease-in-out 0.6s,
+        right 0.5s ease-in-out 0.1s,
+        border-right-width 0.1s ease-in-out 0.1s;
+        background-color: rgb(245, 245, 245);
+        color: rgb(var(--swatch-text-general));
+        border-right-width: 0rem;
+        pointer-events: all;
     }
 
     .sidebox:hover *,
     .sidebox:active * {
-     transition: opacity 0.5s ease-in-out 0.2s;
-     opacity: 1;
+        transition: opacity 0.5s ease-in-out 0.2s;
+        opacity: 1;
     }
 
     .sidebox:hover::before,
     .sidebox:active::before {
-     border-top: 0vw solid transparent;
-     border-bottom: 0vw solid transparent;
+        border-top: 0vw solid transparent;
+        border-bottom: 0vw solid transparent;
     }
 
     .sidebox:hover::after,
     .sidebox:active::after {
-     right: 0;
-     max-width: 100%;
-     border-top: solid 0.125rem rgb(var(--dark-accent));
-     border-top-left-radius: 0rem;
-     border-bottom-left-radius: 0rem;
-     box-shadow: 0 -0.125rem 0 0 rgb(var(--swatch-primary-darkest));
+        right: 0;
+        max-width: 100%;
+        border-top: solid 0.125rem rgb(var(--dark-accent));
+        border-top-left-radius: 0rem;
+        border-bottom-left-radius: 0rem;
+        box-shadow: 0 -0.125rem 0 0 rgb(var(--swatch-primary-darkest));
     }
 }
 
 @media (min-width: 56.25rem) and (max-width: 80.625rem) {
     .sidebox {
-     right: calc(((100vw - (var(--body-width-on-desktop)*1.25 + var(--sidebar-width-on-desktop) - 8rem))/2) * -1 - 1.5em);
+        right: calc(((100vw - (var(--body-width-on-desktop)*1.25 + var(--sidebar-width-on-desktop) - 8rem))/2) * -1 - 1.5em);
     }
 }
 
 @media only screen and (max-width:56.25rem) {
     .anchor {
-     top: calc(var(--topbar-height-on-mobile) + 0.75rem);
+        top: calc(var(--topbar-height-on-mobile) + 0.75rem);
     }
 
     .sidebox,
     .sidebox:hover,
     .sidebox:active {
-     right: calc(((100vw - (100% - 2.75rem))/2) * -1 + 1.5em);
+        right: calc(((100vw - (100% - 2.75rem))/2) * -1 + 1.5em);
     }
 
     .sidebox::before,
     .sidebox::after {
-     content: &#34; &#34;;
-     position: absolute;
-     right: 0;
-     pointer-events: all;
+        content: &#34; &#34;;
+        position: absolute;
+        right: 0;
+        pointer-events: all;
     }
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>body .italic, body .italic *, body em, body em *, body i, body i * {
- --slnt: 7;
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>:root {
---toggle-button-bg: rgb(var(--white-monochrome));
---toggle-border-color: rgb(var(--medium-accent));
---toggle-icon-color: rgb(var(--medium-accent));
---toggle-roundness: 0;
 }
 
-   #page-title::after,
-    .meta-title::after,
-    #page-title::before,
-    .meta-title::before {
-        content: &#34;&#34;;
-        flex-grow: 1;
-        height: 0.0625rem;
-        background: rgb(var(--swatch-primary));
-    }
- 
-    #page-title::before,
-    .meta-title::before {
-        margin: auto 1.25rem auto auto;
-    }
-
 div.blockquote {
+    border: none;
     border-right: 5px solid rgb(var(--medium-accent));
+    border-left: 5px solid rgb(var(--medium-accent));
+    box-shadow: 1px 1px 4px #27549582;
 }
 
 .addendum {
-   background: #F5F5F5;
-   border: none;
-   border-left: 6px solid #275495;
-   border-right: 6px solid #275495;
+    background: #F5F5F5;
+    border: none;
+    border-left: 6px solid rgb(var(--dark-accent));
+    border-right: 6px solid rgb(var(--dark-accent));
     width:85%;
     padding:10px 15px;
     margin: 10px auto;
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+.warning {
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+.scp-image-caption {
+    color: rgb(var(--white-monochrome));
+    background-color: rgb(var(--dark-accent)) !important;
+    box-shadow: none;
+}
+
+.image-block,
+.scp-image-block {
+    box-shadow: 1px 1px 4px #27549582;
 }
 
 table.wiki-content-table th {
-text-align: center;
+    text-align: center;
 }
 </code></pre>
-        </li>
-      
-        <li>
-          <pre><code>.info-container{
---barColour: #A4C2EC;
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>:root {
-    --fnColor: #A4C2EC;
-}</code></pre>
         </li>
       
     </ul>
@@ -269,7 +268,7 @@ text-align: center;
         </li>
       
         <li>
-          <pre><code>border: solid 2px; border-style: outset; border-color: rgb(var(--bright-accent));</code></pre>
+          <pre><code>border: solid 3px; border-style: outset; border-color: rgb(var(--bright-accent)); box-shadow: 1px 1px 4px #27549582;</code></pre>
         </li>
       
         <li>
@@ -536,7 +535,29 @@ text-align: center;
 [[include :scp-wiki:component:betterfootnotes]]
 
 [[module css]]
-/* ===SIDEBOX DIV=== */
+
+:root {
+    --toggle-button-bg: rgb(var(--white-monochrome));
+    --toggle-border-color: rgb(var(--medium-accent));
+    --toggle-icon-color: rgb(var(--medium-accent));
+    --toggle-roundness: 0;
+    --fnColor: #A4C2EC;
+}
+
+.info-container{
+    --barColour: #A4C2EC;
+}
+
+body .italic,
+body .italic *,
+body em,
+body em *,
+body i,
+body i * {
+    --slnt: 7;
+}
+
+/* === SIDEBOX DIV === */
 /* Originally based on EstrellaYoshte&#39;s Sideboxes from the Penumbra Theme */
 
 .limit {
@@ -568,198 +589,175 @@ text-align: center;
 
 @media (max-width: 80.625rem) {
     .sidebox {
-     right: calc(((100vw - 1em - var(--body-width-on-desktop)) / 2) * -1);
-     left: initial;
-     width: auto;
-     max-width: 50vw;
-     overflow-x: hidden;
-     overflow-y: hidden;
-     transition:
-     max-width 0.2s ease-in-out 0.1s,
-     color 0.2s ease-in-out 0.1s,
-     box-shadow 0.5s ease-in-out 0.1s,
-     background-color 0s ease-in-out 0s,
-     border-right-width 0.1s ease-in-out 0.1s;
-     border: none;
-     border-right: solid 0.25rem rgb(var(--dark-accent));
-     background-color: rgba(0, 0, 0, 0);
-     box-shadow: 0 0 0 0 rgb(var(--dark-accent));
-     color: rgba(0, 0, 0, 0);
-     pointer-events: none;
-     scrollbar-width: thin;
+        right: calc(((100vw - 1em - var(--body-width-on-desktop)) / 2) * -1);
+        left: initial;
+        width: auto;
+        max-width: 50vw;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        transition:
+        max-width 0.2s ease-in-out 0.1s,
+        color 0.2s ease-in-out 0.1s,
+        box-shadow 0.5s ease-in-out 0.1s,
+        background-color 0s ease-in-out 0s,
+        border-right-width 0.1s ease-in-out 0.1s;
+        border: none;
+        border-right: solid 0.25rem rgb(var(--dark-accent));
+        background-color: rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgb(var(--dark-accent));
+        color: rgba(0, 0, 0, 0);
+        pointer-events: none;
+        scrollbar-width: thin;
     }
 
     .sidebox::-webkit-scrollbar {
-     width: 0.5em;
+        width: 0.5em;
     }
 
     .sidebox * {
-     transition: opacity 0.2s ease-in-out 0.1s;
-     opacity: 0;
+        transition: opacity 0.2s ease-in-out 0.1s;
+        opacity: 0;
     }
 
     .sidebox::before,
     .sidebox::after {
-     content: &#34; &#34;;
-     position: absolute;
-     right: 0;
-     pointer-events: all;
+        content: &#34; &#34;;
+        position: absolute;
+        right: 0;
+        pointer-events: all;
     }
 
     .sidebox::before {
-     z-index: 10;
-     top: calc(50% - 0.75rem);
-     width: 0;
-     height: 0;
-     transition: border 0.1s ease-in-out 0.1s;
-     border-top: 0.75rem solid transparent;
-     border-right: 0.75rem solid rgb(var(--dark-accent));
-     border-bottom: 0.75rem solid transparent;
+        z-index: 10;
+        top: calc(50% - 0.75rem);
+        width: 0;
+        height: 0;
+        transition: border 0.1s ease-in-out 0.1s;
+        border-top: 0.75rem solid transparent;
+        border-right: 0.75rem solid rgb(var(--dark-accent));
+        border-bottom: 0.75rem solid transparent;
     }
 
     .sidebox::after {
-     z-index: -1;
-     top: 0;
-     width: 100%;
-     max-width: 0.75rem;
-     height: 100%;
-     max-height: calc(100vh - 18rem);
-     transition:
-     box-shadow 0.5s ease-in-out 0.1s,
-     max-width 0.5s ease-in-out 0.1s,
-     border-top-left-radius 0.5s ease-in-out 0.1s,
-     border-bottom-left-radius 0.5s ease-in-out 0.1s,
-     border-top 0.25s ease-in-out 0.1s;
-     background-color: rgb(245, 245, 245);
-     box-shadow: 0.125rem 0 0 0 rgb(245, 245, 245);
-     box-sizing: border-box;
+        z-index: -1;
+        top: 0;
+        width: 100%;
+        max-width: 0.75rem;
+        height: 100%;
+        max-height: calc(100vh - 18rem);
+        transition:
+        box-shadow 0.5s ease-in-out 0.1s,
+        max-width 0.5s ease-in-out 0.1s,
+        border-top-left-radius 0.5s ease-in-out 0.1s,
+        border-bottom-left-radius 0.5s ease-in-out 0.1s,
+        border-top 0.25s ease-in-out 0.1s;
+        background-color: rgb(245, 245, 245);
+        box-shadow: 0.125rem 0 0 0 rgb(245, 245, 245);
+        box-sizing: border-box;
     }
 
     .sidebox:hover,
     .sidebox:active {
-     overflow-y: auto;
-     transition:
-     max-width 0.5s ease-in-out 0.2s,
-     color 0.5s ease-in-out 0.2s,
-     box-shadow 0.5s ease-in-out 0.1s,
-     background-color 0s ease-in-out 0.6s,
-     right 0.5s ease-in-out 0.1s,
-     border-right-width 0.1s ease-in-out 0.1s;
-     background-color: rgb(245, 245, 245);
-     color: rgb(var(--swatch-text-general));
-     border-right-width: 0rem;
-     pointer-events: all;
+        overflow-y: auto;
+        transition:
+        max-width 0.5s ease-in-out 0.2s,
+        color 0.5s ease-in-out 0.2s,
+        box-shadow 0.5s ease-in-out 0.1s,
+        background-color 0s ease-in-out 0.6s,
+        right 0.5s ease-in-out 0.1s,
+        border-right-width 0.1s ease-in-out 0.1s;
+        background-color: rgb(245, 245, 245);
+        color: rgb(var(--swatch-text-general));
+        border-right-width: 0rem;
+        pointer-events: all;
     }
 
     .sidebox:hover *,
     .sidebox:active * {
-     transition: opacity 0.5s ease-in-out 0.2s;
-     opacity: 1;
+        transition: opacity 0.5s ease-in-out 0.2s;
+        opacity: 1;
     }
 
     .sidebox:hover::before,
     .sidebox:active::before {
-     border-top: 0vw solid transparent;
-     border-bottom: 0vw solid transparent;
+        border-top: 0vw solid transparent;
+        border-bottom: 0vw solid transparent;
     }
 
     .sidebox:hover::after,
     .sidebox:active::after {
-     right: 0;
-     max-width: 100%;
-     border-top: solid 0.125rem rgb(var(--dark-accent));
-     border-top-left-radius: 0rem;
-     border-bottom-left-radius: 0rem;
-     box-shadow: 0 -0.125rem 0 0 rgb(var(--swatch-primary-darkest));
+        right: 0;
+        max-width: 100%;
+        border-top: solid 0.125rem rgb(var(--dark-accent));
+        border-top-left-radius: 0rem;
+        border-bottom-left-radius: 0rem;
+        box-shadow: 0 -0.125rem 0 0 rgb(var(--swatch-primary-darkest));
     }
 }
 
 @media (min-width: 56.25rem) and (max-width: 80.625rem) {
     .sidebox {
-     right: calc(((100vw - (var(--body-width-on-desktop)*1.25 + var(--sidebar-width-on-desktop) - 8rem))/2) * -1 - 1.5em);
+        right: calc(((100vw - (var(--body-width-on-desktop)*1.25 + var(--sidebar-width-on-desktop) - 8rem))/2) * -1 - 1.5em);
     }
 }
 
 @media only screen and (max-width:56.25rem) {
     .anchor {
-     top: calc(var(--topbar-height-on-mobile) + 0.75rem);
+        top: calc(var(--topbar-height-on-mobile) + 0.75rem);
     }
 
     .sidebox,
     .sidebox:hover,
     .sidebox:active {
-     right: calc(((100vw - (100% - 2.75rem))/2) * -1 + 1.5em);
+        right: calc(((100vw - (100% - 2.75rem))/2) * -1 + 1.5em);
     }
 
     .sidebox::before,
     .sidebox::after {
-     content: &#34; &#34;;
-     position: absolute;
-     right: 0;
-     pointer-events: all;
+        content: &#34; &#34;;
+        position: absolute;
+        right: 0;
+        pointer-events: all;
     }
 }
-[[/module]]
-
-[[module CSS]]
-body .italic, body .italic *, body em, body em *, body i, body i * {
- --slnt: 7;
-}
-[[/module]]
-
-[[module css]]
-:root {
---toggle-button-bg: rgb(var(--white-monochrome));
---toggle-border-color: rgb(var(--medium-accent));
---toggle-icon-color: rgb(var(--medium-accent));
---toggle-roundness: 0;
-}
-
-   #page-title::after,
-    .meta-title::after,
-    #page-title::before,
-    .meta-title::before {
-        content: &#34;&#34;;
-        flex-grow: 1;
-        height: 0.0625rem;
-        background: rgb(var(--swatch-primary));
-    }
- 
-    #page-title::before,
-    .meta-title::before {
-        margin: auto 1.25rem auto auto;
-    }
 
 div.blockquote {
+    border: none;
     border-right: 5px solid rgb(var(--medium-accent));
+    border-left: 5px solid rgb(var(--medium-accent));
+    box-shadow: 1px 1px 4px #27549582;
 }
 
 .addendum {
-   background: #F5F5F5;
-   border: none;
-   border-left: 6px solid #275495;
-   border-right: 6px solid #275495;
+    background: #F5F5F5;
+    border: none;
+    border-left: 6px solid rgb(var(--dark-accent));
+    border-right: 6px solid rgb(var(--dark-accent));
     width:85%;
     padding:10px 15px;
     margin: 10px auto;
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+.warning {
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+.scp-image-caption {
+    color: rgb(var(--white-monochrome));
+    background-color: rgb(var(--dark-accent)) !important;
+    box-shadow: none;
+}
+
+.image-block,
+.scp-image-block {
+    box-shadow: 1px 1px 4px #27549582;
 }
 
 table.wiki-content-table th {
-text-align: center;
+    text-align: center;
 }
 
-[[/module]]
-
-[[module CSS]]
-.info-container{
---barColour: #A4C2EC;
-}
-[[/module]]
-
-[[module CSS]]
-:root {
-    --fnColor: #A4C2EC;
-}
 [[/module]]
 
 -----
@@ -811,7 +809,7 @@ text-align: center;
 ##102141|**Authorized Response Level:**##
 **##red|--[[size 130%]]3[[/size]]--## --(Moderate Threat)--  ##red|[[size 130%]]N/A[[/size]]## (Confirmed Destroyed, File Archived)**
 
-##102141|**Description:**## Threat was a Gen+2/TanGenT paratechnological train-like vehicle created and used by [[[prometheus-labs-hub|Prometheus Laboratories]]] between 1994 and 1998 in accordance with the original order from [[[marshall-carter-and-dark-hub|Marshall, Carter and Dark Ltd]]], which was made in late 1993. 
+##102141|**Description:**## Threat was a Gen+2/TanGenT paratechnological train-like vehicle created and used by [[[prometheus-labs-hub|Prometheus Laboratories]]] between 1994 and 1998 in accordance with the original order from [[[marshall-carter-and-dark-hub|Marshall, Carter &amp; Darke Ltd]]], which was made in late 1993. 
 
 Its primary paranormal traits were its extreme durability, its ability to warp through the local layers of reality[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]See -- briefing appended below.[[/span]] without destabilizing its structure, its ability to continue operation without any tracks below it, interpreting any solid body / gas / liquid as a suitable host, and its ectologically-powered engine, whose proper utilization in accordance with Prometheus&#39; operation protocols allowed for the vehicle to remain in motion near-indefinitely.
 
@@ -842,14 +840,14 @@ Further details regarding Operation Orpheus and its consequences are available i
 = **[[size larger]]##102141|PSYCHE Division Database##[[/size]]**
 -----
 
-[[=image founders3.png style=&#34;border: solid 2px; border-style: outset; border-color: rgb(var(--bright-accent));&#34;]]
+[[=image founders3.png style=&#34;border: solid 3px; border-style: outset; border-color: rgb(var(--bright-accent)); box-shadow: 1px 1px 4px #27549582;&#34;]]
 = [[size 85%]] {{Those present during the funding of Prometheus Laboratories in 1892, original directors, main researchers, and other co-founders.}} [[/size]]
 
 [...] To understand why Prometheus Laboratories would ever build and utilize PTE-1998-Burnout-Blaecca-Parallax despite knowing fully well it was a drastic infringement on international paralaw agreements regarding maintenance of reality stability, we need to first put forward some of the context that surrounded the company&#39;s status in the late 20th century.
 
 In its early days, Prometheus wasn&#39;t primarily a weapons company -- it was, just as its founding goals intended, a scientific institution, hellbent on taking the &#34;Laboratories&#34; in its name and making the best of it. And, for more than fifty years, it has worked. Riding on the wave of the ongoing post-Sixth Occult War paranormal renaissance, Prometheus was able to significantly expand the understanding of the unknown. From every corner of the paranormal world, one research order or gigantic breakthrough project came, one after the other -- but then came the Seventh Occult War and the Cold War after it. And, well, Prometheus did the only thing it could to survive in times when the only thing everyone that mattered cared about was weapons. It adapted.
 
-Practically every month, it churned out a new eigenweapon powerful enough to level a whole continent, earning absurd amounts of money from whatever Soviet or American crazyman was generous enough to give them the order. The Coalition did indeed make the first attempt to offer Prometheus a position at the Council of 108 after [http://scp-int.wikidot.com/partager-le-vin SAPPHIRE&#39;s leave in 1953], but Prometheus declined, as such a decision would have significantly decreased its paraweaponry trade. But then... then the War ended. With nobody wanting any more magic nukes and the paratech black market being flooded with illegal post-Soviet paraweapons, Prometheus Labs was suddenly left almost entirely alone -- alone with nobody but Marshall, Carter and Dark by its side. So it took up the only chance it had to not entirely fall apart in just months -- and it happened that that chance was whatever the hell the twisted minds of Marshall, Carter, and Darke wanted to be delivered to them.
+Practically every month, it churned out a new eigenweapon powerful enough to level a whole continent, earning absurd amounts of money from whatever Soviet or American crazyman was generous enough to give them the order. The Coalition did indeed make the first attempt to offer Prometheus a position at the Council of 108 after [http://scp-int.wikidot.com/partager-le-vin SAPPHIRE&#39;s leave in 1953], but Prometheus declined, as such a decision would have significantly decreased its paraweaponry trade. But then... then the War ended. With nobody wanting any more magic nukes and the paratech black market being flooded with illegal post-Soviet paraweapons, Prometheus Labs was suddenly left almost entirely alone -- alone with nobody but Marshall, Carter &amp; Darke by its side. So it took up the only chance it had to not entirely fall apart in just months -- and it happened that that chance was whatever the hell the twisted minds of Marshall, Carter, and Darke wanted to be delivered to them.
 
 Prometheus isn&#39;t evil. Just like the science it so loves, its usage entirely depends on who wields it -- which is to say, it depends on who gives money to Prometheus. And, well, it so happened that the ones that became its masters didn&#39;t particularly care for international laws. They wanted their magic hell train to give them absurd amounts of profit from selling souls en-masse, so its dog listened, not wishing to literally die, since that was the only other option it had. And that&#39;s how we arrive at PTE-1998-Burnout-Blaecca-Parallax, a threat to not only the stability of afterlives, but also baseline reality as we know it. Naturally, there&#39;s only one way to go about it, liquidation. But, here&#39;s the thing -- the same thing doesn&#39;t have to happen to Prometheus Labs, which without their golden train, would inevitably fail in less than a decade, as predicted by the Servants of the Silicon Nornir and their supercomputers.
 
@@ -866,7 +864,7 @@ Shortly after the above paper was written, the motion described in it was put to
 [[=image assembly.png width=&#34;100px&#34;]]
 = **[[size larger]]##102141|53rd Session of the GOC General Assembly##[[/size]]**
 -----
-**Proposal:** &#34;Instead of putting Prometheus Laboratories in front of the International Court For the Paranormal for breaking several of its guidelines regarding PTE-1998-Burnout-Blaecca-Parallax, treat it as a victim of Marshall, Carter and Dark Ltd and as a neutral, manipulated third party. Once again offer it a seat at the Council of 108 after the organization itself, with the help from Coalition, will liquidate the PTE-1998-Burnout-Blaecca-Parallax, allowing it to officially become a fully funded and independent member of the United Nations Global Occult Coalition.&#34;
+**Proposal:** &#34;Instead of putting Prometheus Laboratories in front of the International Court For the Paranormal for breaking several of its guidelines regarding PTE-1998-Burnout-Blaecca-Parallax, treat it as a victim of Marshall, Carter &amp; Darke Ltd and as a neutral, manipulated third party. Once again offer it a seat at the Council of 108 after the organization itself, with the help from Coalition, will liquidate the PTE-1998-Burnout-Blaecca-Parallax, allowing it to officially become a fully funded and independent member of the United Nations Global Occult Coalition.&#34;
 -----
 [[div class=&#34;addendum&#34;]]
 ||~ UNGOC/GA53-011 Voting ||
@@ -891,7 +889,7 @@ The Global Occult Coalition&#39;s Council of 108 has officially decided to once 
  _
 In addition to securing a stable future for Prometheus&#39;s financing, such a change would also lead to the clarification of any misunderstandings related to your previous violations of the international paralaw regarding maintenance of reality stability. This would include the forgiveness of the most recent one; posing an active threat to the Coalition&#39;s Third Mission (Protection) by the Prometheus-created, illegally-operating extrauniversal paratrade vehicle. _
  _
-Prometheus&#39; willingness to cooperate in the capacity of an official member of the Council of 108 would guarantee it a status of a neutral party manipulated by Marshall, Carter and Dark Ltd, mitigating the felony in eyes of the International Court for the Paranormal to the latter group entirely. In the process, it would be judged as innocent. _
+Prometheus&#39; willingness to cooperate in the capacity of an official member of the Council of 108 would guarantee it a status of a neutral party manipulated by Marshall, Carter &amp; Darke Ltd, mitigating the felony in eyes of the International Court for the Paranormal to the latter group entirely. In the process, it would be judged as innocent. _
  _
 We hope that you will make the best decision, keeping in mind the benefit of both the Coalition and yourself. _
  _
@@ -905,7 +903,7 @@ On 19/06/1998, the PSYCHE Division received an official response from Prometheus
 [[div style=&#34;width: 95%; margin: auto&#34;]]
 ||||||||~ __Prometheus Laboratories__||
 ||~ Sender||Liaison Mercado||~ Recipient||Ambassador Harrison||
-||||||~ Subject|| Re: A Proposal||
+||||||~ Subject|| Re:A Proposal||
 |||||||| Mister Harrison, _
  _
 Although our holistic and effectively collaborative aggregates have accurately formulated a distinctive and ethical appreciation application, the collective committees of our integrated networks cannot in the client-focused spirit of this engineered experience adaptively and accurately deploy acceptance information. The unbashingly surprisingly intellectual human capital and organic infrastructure our leadership, partnerships, and benefactors function off on cannot be effectively enabled in such a technique as to authorize this scientific conglomerate to strategically and frictionlessly embrace such competitive employmentship offers. _
@@ -953,7 +951,7 @@ Due to Prometheus&#39; apparent rejection of the proposal, Coalition High Comman
 [[div style=&#34;border-bottom: 2px solid #275495;&#34;]]
 [[/div]]
 
-[...] However, such an extrauniversal vehicle wouldn&#39;t simply travel to //any// of the existent stacks of reality around baseline reality. Indeed, to properly carry out its trade without any possible issues that would arise from high levels of human freedom, it would primarily target volatile and entirely defenseless and easy-to-harvest sapient souls inside of afterlife stacks of reality, which would not only power the train&#39;s engines, but could also be sold for high monetary resources to other clients of Marshall, Carter and Dark.^^[((bibcite darke))]^^
+[...] However, such an extrauniversal vehicle wouldn&#39;t simply travel to //any// of the existent stacks of reality around baseline reality. Indeed, to properly carry out its trade without any possible issues that would arise from high levels of human freedom, it would primarily target volatile and entirely defenseless and easy-to-harvest sapient souls inside of afterlife stacks of reality, which would not only power the train&#39;s engines, but could also be sold for high monetary resources to other clients of Marshall, Carter &amp; Darke.^^[((bibcite darke))]^^
 
 [[include :scp-wiki:component:image-features-source |hover-enlarge=--]
 |enlarge-amount=5
@@ -1232,7 +1230,7 @@ KTE-1998-Burnout-Blaecca-Parallax and KTE-1852-Indigo-Léon have been reclassifi
 [[div style=&#34;height: 1px&#34;]]
 [[/div]]
 
-Due to LTE-1998-Burnout-Blaecca-Parallax&#39;s position as a pillar to the entirety of Prometheus Labs&#39; infrastructure, the organization was now left without any monetary sources significant enough to support its existence. That -- paired with Marshall, Carter and Dark abandoning all of its previous sponsorship over the group -- resulted in official collapse of the primary holding company and the dissolution of the whole Prometheus conglomerate on 01/09/1998.
+Due to LTE-1998-Burnout-Blaecca-Parallax&#39;s position as a pillar to the entirety of Prometheus Labs&#39; infrastructure, the organization was now left without any monetary sources significant enough to support its existence. That -- paired with Marshall, Carter &amp; Darke abandoning all of its previous sponsorship over the group -- resulted in official collapse of the primary holding company and the dissolution of the whole Prometheus conglomerate on 01/09/1998.
 
 As a result of this, many groups and organizations -- including the Coalition -- have decided [[[t-minus|to acquire and secure]]] the leftover Prometheus [[[SCP-148|projects]]], [[[SCP-2897|resources]]], [[[the-analog-kid|personnel]]], and now [[[SCP-2176|independent companies]]] which led to chaos in anomalous society over the following months. Additionally, during this process, much of the expertise and knowledge about many fields of parascience were lost, setting research in some areas back by over a decade. The consequences of this incident are still being fully compiled.
 
@@ -1247,7 +1245,7 @@ Ah, yes. LTE-1998-Burnout-Blaecca-Parallax. The big Coalition fuck-up case. The 
 
 It&#39;s undeniable the entire case was handled awfully. From the first approach to literally sending a death squad as the primary contact, it was... a catastrophe, and a many-layered one at that. Even with the knowledge that the times were different and that we were desperate, that doesn&#39;t truly change much -- the unfortunate truth is that we tried to set Prometheus free, but instead of killing the vulture that feasted on its liver or destroying its shackles, we smashed its skull with the impact of our badly calibrated weapon.
 
-Yes, we let the once biggest and most potent paratech company fall because we were too stupid to see we needed to be more careful. Yes, Marshall, Carter and Dark are still unpunished, even despite the egregious sins they&#39;ve committed before and since. Yes, that is entirely our fault, and we just cannot blame anyone else for it, even if most of us would jump at any opportunity to do so.
+Yes, we let the once biggest and most potent paratech company fall because we were too stupid to see we needed to be more careful. Yes, Marshall, Carter &amp; Darke are still unpunished, even despite the egregious sins they&#39;ve committed before and since. Yes, that is entirely our fault, and we just cannot blame anyone else for it, even if most of us would jump at any opportunity to do so.
 
 But we can&#39;t let that define our //modus operandi//. We can&#39;t let that define our relationships with others. We can&#39;t let that define //us//.
 
@@ -1357,7 +1355,7 @@ United Nations Global Occult Coalition
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:37.958280.</em>
+    <em>Last updated 2024-01-25 19:20:39.498900.</em>
   
 </div>
 </body>

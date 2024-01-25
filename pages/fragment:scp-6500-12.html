@@ -29,36 +29,28 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>body {
-    background-image: linear-gradient(
-        to bottom,
-        #5c3, #2F333C 200px,
-        #2F333C 200px, #2F333C 100%);
-}
+          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Courgette&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,800&amp;display=swap&#39;);
 
 :root {
-  --header-title: &#34;OVERWATCH&#34;;
-  --header-subtitle: &#34;SACRIFICE CONFERS POWER&#34;;
-  --lgurl: url(&#39;https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-6500-12/overwatchheadervanguard.svg&#39;);
-  --accentColor: #5c3;
+  --head-font: &#39;Monserrat&#39;, sans-serif;
+  
+  --link-txt-color: rgb(var(--accent)) !important;
+  --one-color: var(--accent);
 }
 
-div#extra-div-1 {
-    filter: brightness(100%);
-    height: 100px;
-    margin-top: 30px;
+.fancyhr,
+.fancyborder {
+  filter: hue-rotate(60deg);
 }
 
-#header h1 a::before {
-    color: transparent;
+#page-content .table0 {
+  --accent: 175, 175, 175;
+  --link-txt-color: rgb(175, 175, 175);
 }
 
-#header h2::before {
-    color: transparent;
-}
-
-.bt {
-    filter: none;
+#page-content .bt {
+  color: rgb(var(--accent));
 }
 
 @keyframes rotation {
@@ -70,66 +62,96 @@ div#extra-div-1 {
   }
 }
 
-.no {
-    font-size: 125%;
+#page-content tr th {
+  text-align: center !important;
 }
 
-.no:hover {
-    filter: opacity(0.5);
-    cursor: not-allowed;
-}
-
-#login-status {
-    color: #21252E;
-}
-#login-status a {
-    color: #21252E;
-}
-#login-status ul a {
-    color: #ededed;
-    background: #21252E;
-}
-#login-status ul a:hover {
-    color: #21252E;
-}
-#account-topbutton{
-    border: solid 1px #21252E;
-}
-
-.fancyborder {
-    border-radius: 5rem;
+:is(.fancyborder) {
+  border-radius: 4vb;
 }
 
 .fancyborder .fnnum::after {
-    color: #000;
-}
-
-@media (max-width: 706px) {
-    .fancyborder {
-        border-radius: 1rem;
-    }
+  border-bottom: 1px solid var(--dark-bg-1);
 }
 
 .cards {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
-.cards &gt; .image-container {
-    padding: 1px;
+.cards &gt; div {
+  margin: -12px;
 }
 
-.yui-navset {
-    margin: 2%;
+.cards a {
+  border-bottom: none !important;
 }
 
-.graybox {
-    --accentColor: #ddcfee;
+.cards a:hover,
+.cards a::selection {
+  background-color: rgb(var(--accent));
 }
 
-.fancyhr {
-    filter: hue-rotate(60deg);
+.cards.main &gt; :is(:nth-child(1), :nth-child(2)) {
+  --accent: 175, 175, 175;
+  filter: opacity(.33);
+  cursor: not-allowed;
+  color: transparent !important;
+  background-color: transparent !important;
+}
+
+.cards.tabs &gt; div:nth-child(1) {
+  --accent: 175, 175, 175;
+  filter: opacity(.33);
+  cursor: not-allowed;
+}
+
+@media (max-width: 767px) {
+  .cards.tabs &gt; div:nth-child(1) {
+    display: none;
+  }
+}
+
+.cards.main &gt; :nth-child(3),
+.cards.tabs &gt; div:nth-child(2) .yui-navset .yui-nav li:nth-of-type(1) {
+  --accent: var(--six-color) !important;
+}
+
+@keyframes emissary {
+  0%   { filter: none; }
+  100% { filter: invert(1) hue-rotate(180deg);  }
+}
+
+.cards.main &gt; :nth-child(4):hover {
+  filter: invert(1) hue-rotate(180deg);
+  animation-name: emissary;
+  animation-duration: .5s;
+}
+
+.yui-navset .yui-nav {
+  border: none !important;
+}
+
+.yui-navset .yui-nav li {
+  min-width: 25%;
+}
+
+.yui-navset .yui-content {
+  background: none !important;
+  margin-top: -1px;
+  padding: 0;
+}
+
+.yui-navset .yui-content &gt; div {
+  background: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.yui-navset .yui-content .modal {
+  width: auto;
+  margin: auto;
 }</code></pre>
         </li>
       
@@ -139,38 +161,33 @@ div#extra-div-1 {
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none;</code></pre>
+          <pre><code>text-indent: 6em;</code></pre>
         </li>
       
         <li>
-          <pre><code>filter: opacity(0.3); width: 50%;</code></pre>
+          <pre><code>font-family: &#39;Courgette&#39;;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: 50%;</code></pre>
+          <pre><code>width: 100%; margin-bottom: 1em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 50%; min-width: 300px; margin: 2px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 50%; min-width: 300px; margin: 2px;</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:placestyle" target="_blank"><code>:scp-wiki:theme:placestyle</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:placestyle.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
       
         <li>
   
@@ -199,11 +216,11 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>darkbox</code></pre>
+          <pre><code>notation</code></pre>
         </li>
       
         <li>
-          <pre><code>blockquote</code></pre>
+          <pre><code>jotting</code></pre>
         </li>
       
         <li>
@@ -227,7 +244,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>graybox</code></pre>
+          <pre><code>main</code></pre>
         </li>
       
         <li>
@@ -235,11 +252,39 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>cards</code></pre>
+          <pre><code>tabs</code></pre>
         </li>
       
         <li>
-          <pre><code>blockquote</code></pre>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table0</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notation</code></pre>
         </li>
       
         <li>
@@ -249,42 +294,36 @@ div#extra-div-1 {
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div style=&#34;display: none;&#34;]]
-[[include :scp-wiki:theme:placestyle]]
-[[/div]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:foxtrot
+vanguard=a|
+dark=a|
+wide=a|
+hidetitle=a]]
 [[include :scp-wiki:component:fade-in speed=1]]
 
 [[module css]]
-body {
-    background-image: linear-gradient(
-        to bottom,
-        #5c3, #2F333C 200px,
-        #2F333C 200px, #2F333C 100%);
-}
+@import url(&#39;https://fonts.googleapis.com/css2?family=Courgette&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,800;1,800&amp;display=swap&#39;);
 
 :root {
-  --header-title: &#34;OVERWATCH&#34;;
-  --header-subtitle: &#34;SACRIFICE CONFERS POWER&#34;;
-  --lgurl: url(&#39;https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-6500-12/overwatchheadervanguard.svg&#39;);
-  --accentColor: #5c3;
+  --head-font: &#39;Monserrat&#39;, sans-serif;
+  
+  --link-txt-color: rgb(var(--accent)) !important;
+  --one-color: var(--accent);
 }
 
-div#extra-div-1 {
-    filter: brightness(100%);
-    height: 100px;
-    margin-top: 30px;
+.fancyhr,
+.fancyborder {
+  filter: hue-rotate(60deg);
 }
 
-#header h1 a::before {
-    color: transparent;
+#page-content .table0 {
+  --accent: 175, 175, 175;
+  --link-txt-color: rgb(175, 175, 175);
 }
 
-#header h2::before {
-    color: transparent;
-}
-
-.bt {
-    filter: none;
+#page-content .bt {
+  color: rgb(var(--accent));
 }
 
 @keyframes rotation {
@@ -296,141 +335,221 @@ div#extra-div-1 {
   }
 }
 
-.no {
-    font-size: 125%;
+#page-content tr th {
+  text-align: center !important;
 }
 
-.no:hover {
-    filter: opacity(0.5);
-    cursor: not-allowed;
-}
-
-#login-status {
-    color: #21252E;
-}
-#login-status a {
-    color: #21252E;
-}
-#login-status ul a {
-    color: #ededed;
-    background: #21252E;
-}
-#login-status ul a:hover {
-    color: #21252E;
-}
-#account-topbutton{
-    border: solid 1px #21252E;
-}
-
-.fancyborder {
-    border-radius: 5rem;
+:is(.fancyborder) {
+  border-radius: 4vb;
 }
 
 .fancyborder .fnnum::after {
-    color: #000;
-}
-
-@media (max-width: 706px) {
-    .fancyborder {
-        border-radius: 1rem;
-    }
+  border-bottom: 1px solid var(--dark-bg-1);
 }
 
 .cards {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
-.cards &gt; .image-container {
-    padding: 1px;
+.cards &gt; div {
+  margin: -12px;
 }
 
-.yui-navset {
-    margin: 2%;
+.cards a {
+  border-bottom: none !important;
 }
 
-.graybox {
-    --accentColor: #ddcfee;
+.cards a:hover,
+.cards a::selection {
+  background-color: rgb(var(--accent));
 }
 
-.fancyhr {
-    filter: hue-rotate(60deg);
+.cards.main &gt; :is(:nth-child(1), :nth-child(2)) {
+  --accent: 175, 175, 175;
+  filter: opacity(.33);
+  cursor: not-allowed;
+  color: transparent !important;
+  background-color: transparent !important;
+}
+
+.cards.tabs &gt; div:nth-child(1) {
+  --accent: 175, 175, 175;
+  filter: opacity(.33);
+  cursor: not-allowed;
+}
+
+@media (max-width: 767px) {
+  .cards.tabs &gt; div:nth-child(1) {
+    display: none;
+  }
+}
+
+.cards.main &gt; :nth-child(3),
+.cards.tabs &gt; div:nth-child(2) .yui-navset .yui-nav li:nth-of-type(1) {
+  --accent: var(--six-color) !important;
+}
+
+@keyframes emissary {
+  0%   { filter: none; }
+  100% { filter: invert(1) hue-rotate(180deg);  }
+}
+
+.cards.main &gt; :nth-child(4):hover {
+  filter: invert(1) hue-rotate(180deg);
+  animation-name: emissary;
+  animation-duration: .5s;
+}
+
+.yui-navset .yui-nav {
+  border: none !important;
+}
+
+.yui-navset .yui-nav li {
+  min-width: 25%;
+}
+
+.yui-navset .yui-content {
+  background: none !important;
+  margin-top: -1px;
+  padding: 0;
+}
+
+.yui-navset .yui-content &gt; div {
+  background: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.yui-navset .yui-content .modal {
+  width: auto;
+  margin: auto;
 }
 [[/module]]
 
 = [[span class=&#34;bt&#34;]]__ADDENDUM II:__[[/span]] Timeline Observations
 
-[[div class=&#34;darkbox&#34;]]
+[[div class=&#34;notation&#34;]]
+
 @@ @@
-[[=image https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-6500-12/LockBroken.png]]
+
+[[=image https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-6500-12/LockBroken.png style=&#34;width: 33%; min-width: 300px;]]
+
 @@ @@
 ----
 @@ @@
+
 [[=]]
 + ##eee|PROPOSAL 6500-Ω:## ACTIVE
 [[/=]]
+
 @@ @@
 [[/div]]
 
+@@ @@
+
 Following O5 Council Conference #X-2737B, the Temporal Anomalies Department alerted administrative personnel to the passing of a critical Pivot in time. It is believed this occurred as a direct result of the conference&#39;s events.
 
-[[div class=&#34;blockquote&#34;]]
-@@      @@//&#34;In temporal theory, a [[span class=&#34;bt&#34;]]Pivot[[/span]] is any non-predeterminable event; when a Pivot occurs, it results in the &#39;branching&#39; of its timeline into multiple timelines, each corresponding to one of the possible outcomes of the event. A [[span class=&#34;bt&#34;]]critical Pivot[[/span]] is one that occurs in all timelines which are &#39;branches&#39; of the Prime-Timeline, despite the vast differences between said branches. Critical Pivots are rare, unavoidable &#39;branching&#39; events and/or decisions with immense consequences on the fundamental trajectory and stability of their timelines -- if a critical Pivot has two outcomes, one will almost always cause a gradual decline in stability, eventually resulting in total temporal failure and timeline collapse.&#34;//
+@@ @@
+
+[[div class=&#34;jotting&#34; style=&#34;text-indent: 6em;&#34;]]
+
+//&#34;In temporal theory, a [[span class=&#34;bt&#34;]]Pivot[[/span]] is any non-determinstic event; when a Pivot occurs, it results in the &#39;branching&#39; of its timeline into multiple timelines, each corresponding to one of the possible outcomes of the event. A [[span class=&#34;bt&#34;]]critical Pivot[[/span]] is one that occurs in all timelines which are &#39;branches&#39; of the Prime-Timeline, despite the vast differences between said branches. Critical Pivots are rare, unavoidable &#39;branching&#39; events and/or decisions with immense consequences on the fundamental trajectory and stability of their timelines -- if a critical Pivot has two outcomes, one will almost always cause a gradual decline in stability, eventually resulting in total temporal failure and timeline collapse.&#34;//
+
 [[&gt;]]
 //-- [*/time-travel Elementary Time Travel and Causal Analysis, Second Edition]//
 [[/&gt;]]
 [[/div]]
 
-Critical Pivots can only be detected after they occur. Due to the immense ramifications posed by the &#39;wrong&#39; outcome of a critical Pivot, the Temporal Anomalies Department is tasked with monitoring the stability of newly-created &#39;branches&#39;. This entails observing the actions of individual Foundation personnel following the critical Pivot; detailed reports of such are to be appended to this document and presented in keeping with [[span class=&#34;bt&#34;]]PROTOCOL SIXTH SUN[[/span]], in case of lingering SCP-6500 effect.
 @@ @@
+
+Critical Pivots can only be detected after they occur. Due to the immense ramifications posed by the &#39;wrong&#39; outcome of a critical Pivot, the Temporal Anomalies Department is tasked with monitoring the stability of newly-created &#39;branches&#39;. This entails observing the actions of individual Foundation personnel following the critical Pivot; detailed reports of such are to be appended to this document and presented in keeping with [[span class=&#34;bt&#34;]]PROTOCOL SIXTH SUN[[/span]], in case of lingering SCP-6500 effect.
+
+@@ @@
+
+@@ @@
+
 [[div_ class=&#34;fancyhr&#34;]]
 ----
 [[/div]] 
-[[=]]
-+ //Choose Your Path//
-[[/=]]
+
 @@ @@
-[[div class=&#34;cards&#34;]]
-[[div class=&#34;graybox&#34; style=&#34;filter: opacity(0.3); width: 50%;&#34;]]
-[[div class=&#34;cards&#34;]]
-[[f=image https://i.imgur.com/ODYqAnz.png width=&#34;180px&#34;]]
-[[f=image https://i.imgur.com/SUgdvNC.png width=&#34;180px&#34;]]
+
+@@ @@
+
+[[=]]
++ [[span style=&#34;font-family: &#39;Courgette&#39;;&#34;]]//Choose Your Path//[[/span]]
+[[/=]]
+
+@@ @@
+
+[[div class=&#34;cards main&#34; style=&#34;width: 100%; margin-bottom: 1em;&#34;]]
+[[f=image https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-6500-2/warlockcard.png width=&#34;100%&#34;]]
+[[f=image https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-6500-2/reliquarianscard.png width=&#34;100%&#34;]]
+[[f=image https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-6500-2/voyagercard.png link=&#34;https://scp-wiki.wikidot.com/scp-6500/offset/15&#34; width=&#34;100%&#34;]]
+[[f=image https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-6500-2/emmissarycard.png link=&#34;https://scp-wiki.wikidot.com/scp-6500/offset/16&#34; width=&#34;100%&#34;]]
 [[/div]]
-[[div height=&#34;5px&#34;]]
-[[/div]]
+
+[[&lt;]]
+[[div class=&#34;cards tabs&#34; style=&#34;width: 100%;&#34;]]
+[[div style=&#34;width: 50%; min-width: 300px; margin: 2px;&#34;]]
 [[tabview]]
+
 [[tab RESTRICTED TO TEMPORAL DEPT.]]
+[[div class=&#34;modal table0&#34;]]
 = **{{[/scp-6500/offset/12 LOCKED]}}**
+[[/div]]
 [[/tab]]
+
 [[/tabview]]
 [[/div]]
-[[div style=&#34;width: 50%;&#34;]]
-[[div class=&#34;cards&#34;]]
-[[f=image https://i.imgur.com/3Y5HzCK.png link=&#34;https://scp-wiki.wikidot.com/scp-6500/offset/15&#34; width=&#34;180px&#34;]]
-[[f=image https://i.imgur.com/I7yLWQ8.png link=&#34;https://scp-wiki.wikidot.com/scp-6500/offset/16&#34; width=&#34;180px&#34;]]
-[[/div]]
-[[div height=&#34;5px&#34;]]
-[[/div]]
+
+[[div style=&#34;width: 50%; min-width: 300px; margin: 2px;&#34;]]
 [[tabview]]
 [[tab VOYAGER]]
-= Take a disorienting tour through the life of an immortal Temporal Agent as she attempts to fix her jumpwatch; become a witness to a different world, both the good and the bad.
+
+[[div class=&#34;modal table6&#34;]]
+[[span class=&#34;bt&#34;]]Take a disorienting tour[[/span]] through the life of an immortal Temporal Agent as she attempts to fix her jumpwatch; become a witness to a different world, both the good and the bad.
+[[/div]]
+
 [[/tab]]
+
 [[tab EMISSARY]]
-= A group of former adversaries, prominent minds, and representatives of the anomalous world gather to discuss just what shape the future of the once mighty Foundation should take.
+
+[[div class=&#34;modal&#34;]]
+[[span class=&#34;bt&#34;]]A group of former adversaries[[/span]], prominent minds, and representatives of the anomalous world gather to discuss just what shape the future of the once mighty Foundation should take.
+[[/div]]
+
 [[/tab]]
+
 [[/tabview]]
 [[/div]]
 [[/div]]
-----
-[[div class=&#34;blockquote&#34;]]
+[[/&lt;]]
+
+@@ @@
+
+
+
+@@ @@
+
+[[div class=&#34;notation&#34;]]
 = {{TEMPORAL CREDENTIALS VERIFIED. WELCOME, AGENT.}}
 [[/div]]
 
+@@ @@
+
 = If you have reviewed **__all previous files__**, please submit a timeline stability report.
+
 @@ @@
+
 ||= [/scp-6500/offset/17 » BEGIN REPORT «] ||
+
 @@ @@
+
+@@ @@
+
 [[div_ class=&#34;fancyhr&#34;]]
 ----
 [[/div]]</textarea></pre>
@@ -440,7 +559,7 @@ Critical Pivots can only be detected after they occur. Due to the immense ramifi
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:37.493708.</em>
+    <em>Last updated 2024-01-25 19:20:38.994175.</em>
   
 </div>
 </body>

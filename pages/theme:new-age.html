@@ -587,7 +587,7 @@ display: none !important;
 
 ----
 [[=]]
-+++++ This is New Age, a theme made for [[span class=&#34;hilighter&#34;]]**SIMULACRUM**[[/span]] which is written mostly by [[*user JakdragonX]]. This theme is based off [[[scp-2744|TATTLETALE]]], which is the first article that references **SIMULACRUM**.
++++++ This is New Age, a theme made for [[span class=&#34;hilighter&#34;]][[[/simulacrum-project-hub|The SIMULACRUM Project]]][[/span]] which is written mostly by [[*user JakdragonX]]. This theme is based off [[[scp-2744|TATTLETALE]]], which is the first article that references **SIMULACRUM**.
 [[/=]]
 ----
 
@@ -734,7 +734,7 @@ Text where sidebox scroll past.
 [[/=]]
 + Examples
 
-[[include component:image-block name=https://scp-wiki.wikidot.com/local--files/theme:new-age/logo.png|caption=Informatics Logo, courtesy of [[*user EstrellaYoshte]]!|width=200px]]
+[[include component:image-block name=http://scp-wiki.wikidot.com/local--files/theme:new-age/simlogo3.webp|caption=**SIMULACRUM** Logo, courtesy of [[*user tertiaryspirit]]!|width=200px]]
 
 A horizontal rule can be created with 5 hyphens &#34;@@-----@@&#34; and extends across the whole page if it&#39;s not placed inside anything (eg a blockquote). The lines separating sections of this document are horizontal rules.[[footnote]] This is a footnote[[/footnote]]
 
@@ -853,7 +853,7 @@ All of the other icons in the memo&#39;s were also made by Estrella and robbed f
     --theme-name: &#34;New Age&#34;;
     --header-title: &#34;SIMULACRUM&#34;;
     --header-subtitle: &#34;NEW CONNECTION ESTABLISHED&#34;;
-    --logo-image: url(https://scp-wiki.wikidot.com/local--files/theme:new-age/logo.png);
+    --logo-image: url(&#34;http://scp-wiki.wikidot.com/local--files/theme:new-age/simlogo3.webp&#34;);
     --accent-color: var(--deep-crimson);
 
     /* These are the other colors beyond the accented ones. All of the themes uses these values. */
@@ -911,8 +911,8 @@ All of the other icons in the memo&#39;s were also made by Estrella and robbed f
     --visited-link-color: var(--accent-color);
     --hover-link-color: var(--silver-lining);
     --newpage-color: var(--accent-color);
-    --min-font-size: 14px;
-    --max-font-size: 16px;
+    --min-font-size: 16px;
+    --max-font-size: 18px;
     --toggle-border-color: rgb(var(--accent-color));
     --modal-header-txt: var(--pitch-black);
     --modal-header-stripe: var(--accent-color);
@@ -926,6 +926,7 @@ All of the other icons in the memo&#39;s were also made by Estrella and robbed f
     --hoverblock-footer-bg: var(--swatch-tertiary-color);
     --rating-module-text-hover-color: var(--pitch-black);
 }
+
 
 /* The logo image is way too bright. I figured I&#39;d just bring down it&#39;s opacity in case someone wants to use a different logo image that&#39;s also insanely bright. */
 #header::before {
@@ -1074,7 +1075,14 @@ div#container-wrap {
     --footnotes-footer-num-color: var(--link-color);
     --footnotes-footer-num-hover-color: var(--hover-link-color);
     --footnotes-footer-text-color: var(--swatch-text-general);
-    --pagetags-title-text: var(--pitch-black)
+    --pagetags-title-text: var(--pitch-black);
+    --toc-header-bg-color: var(--accent-color);
+    --toc-header-text-color: var(--pitch-black);
+    --toc-header-text-hover-color: var(--pitch-black);
+    --toc-directory-lines-color: var(--accent-color);
+    --toc-body-link-color: var(--link-color);
+    --toc-body-link-hover-color: var(--pitch-black);
+    --toc-body-hover-arrow-color: var(--accent-color);
 }
 
 #header div#top-bar {
@@ -1182,7 +1190,7 @@ div.page-rate-widget-box {
     box-shadow: 0 0.125rem 0 0 rgb(var(--accent-color));
 }
 
-hr {
+#main-content hr {
     height: 0.0925rem;
     border-top: 0.0625rem solid rgba(var(--accent-color));
     background-color: rgba(var(--accent-color));
@@ -1224,6 +1232,10 @@ div.blockquote {
     border-left: 5px solid rgb(var(--accent-color));
     box-shadow: 4px 0px 8px 0px rgba(var(--pitch-black), 0.8);
     border-radius: 4px;
+}
+
+:is(blockquote,.blockquote,div.blockquote,[class*=blockquote]) {
+    margin: 1ex 2ch;
 }
 
 /* Title and image block stuff. */
@@ -1385,6 +1397,8 @@ span.hilighter {
     line-height: 1.2;
     border-radius: 4px;
 }
+
+/* Special divs. */
 
 .overwatch_notice {
     background: url(https://scp-wiki.wikidot.com/local--files/theme:new-age/O5_logo.png), rgb(var(--dark-midnight));
@@ -1906,9 +1920,10 @@ div.page-rate-widget-box .rate-points {
      box-shadow: none;
 }
 
-/* Shown below are the different color variants that can be used independently from the primary theme accent color. These have been broken down into &#34;Red,&#34; &#34;Blue,&#34; &#34;Orange,&#34; &#34;Green,&#34; and &#34;Pink&#34; respectively. */
+/* Shown below are the different color variants that can be used independently from the primary theme accent color. These have been broken down into &#34;Red,&#34; &#34;Blue,&#34; &#34;Orange,&#34; &#34;Green,&#34; &#34;Teal&#34; &#34;Pink&#34; and &#34;Violet&#34; respectively. */
 
 .green {
+    --accent-color: var(--mutant-green);
     border-color: rgb(var(--mutant-green));
 }
 
@@ -2035,6 +2050,7 @@ background-color: rgb(var(--mutant-green));
 }
 
 .blue {
+    --accent-color: var(--skylight-blue);
     border-color: rgb(var(--skylight-blue));
 }
 
@@ -2158,6 +2174,7 @@ background-color: rgb(var(--skylight-blue));
 }
 
 .orange {
+    --accent-color: var(--neon-orange);
     border-color: rgb(var(--neon-orange));
 }
 
@@ -2280,6 +2297,7 @@ background-color: rgb(var(--neon-orange));
 }
 
 .red {
+    --accent-color: var(--deep-crimson);
     border-color: rgb(var(--deep-crimson));
 }
 
@@ -2402,6 +2420,7 @@ background-color: rgb(var(--deep-crimson));
 }
 
 .pink {
+    --accent-color: var(--lipstick-pink);
     border-color: rgb(var(--lipstick-pink));
 }
 
@@ -2524,6 +2543,7 @@ background-color: rgb(var(--lipstick-pink));
 }
 
 .violet {
+    --accent-color: var(--lavender-violet);
     border-color: rgb(var(--lavender-violet));
 }
 
@@ -2646,6 +2666,7 @@ background-color: rgb(var(--lavender-violet));
 }
 
 .teal {
+    --accent-color: var(--seamfoam-teal);
     border-color: rgb(var(--seafoam-teal));
 }
 
@@ -2776,7 +2797,7 @@ background-color: rgb(var(--seafoam-teal));
 [[&lt;]]
 Department logos used in the memo divs were created by EstrellaYoshte. Source: https://scp-wiki.wikidot.com/desk-of-junior-designer-s-yvonne. All other images were created by Liryn, and are released under CC-BY-SA 3.0. Source: https://scp-wiki.wikidot.com/theme:basalt
 
-The SVG used in this theme is made from https://www.svgbackgrounds.com/, which is licensed as CC BY-SA 4.0 according to their website.
+The SVG used in this theme is made from https://www.svgbackgrounds.com/, which is licensed as CC BY 4.0 according to their website.
 
 [[/&lt;]]
 =====
@@ -2911,7 +2932,7 @@ display: none !important;
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:41.020441.</em>
+    <em>Last updated 2024-01-25 19:20:42.856908.</em>
   
 </div>
 </body>

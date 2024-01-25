@@ -29,7 +29,1102 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>
+:root {
+        /* header measurements */
+        --header-height-on-desktop: 15rem;
+        --header-height-on-mobile: 15rem;
+        --header-h1-font-size: clamp(2rem, 5vw, 2.8125rem);
+        --header-h2-font-size: clamp(0.875rem, 3vw, 0.9375rem);
+ 
+        --logo-image: url(&#34;https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg&#34;);
+    }
+ 
+    #header {
+        --search-textbox-text-color: var(--swatch-secondary-color);
+        background: none;
+    }
+ 
+    #header::before {
+        content: &#34; &#34;;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0.75rem;
+        background-image: var(--logo-image);
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: auto calc(var(--header-height-on-desktop) - 1.5rem);
+        opacity: 0.8;
+        pointer-events: none;
+    }
+ 
+    #header h1,
+    #header h2 {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: var(--header-height-on-desktop);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+ 
+    #header h1 a,
+    #header h1 a::before,
+    #header h2 span,
+    #header h2 span::before {
+        margin: 0;
+        padding: 0;
+        z-index: 0;
+        display: block;
+        text-align: center;
+    }
+ 
+    #header h1 {
+        z-index: 1;
+    }
+ 
+    #header h1 a::before,
+    #header h1 a::after {
+        content: var(--header-title);
+    }
+ 
+#header h1 a::before {
+    z-index: -1;
+} 
+    #header h1 a::after {
+        color: rgb(var(--swatch-headerh1-color));
+        z-index: 1;
+    }
+ 
+    #header h2 {
+        z-index: 0;
+        text-transform: uppercase;
+        pointer-events: none;
+    }
+ 
+    #header h2 span {
+        margin-top: 5px;    
+}
+ 
+    #header h2 span::before,
+    #header h2 span::after {
+        --wght: 600;
+        content: var(--header-subtitle);
+        position: absolute;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        width: 100%;
+        text-align: center;
+    }
+ 
+    #header h2 span::after {
+        color: rgb(var(--swatch-headerh2-color));
+        z-index: 1;
+    }
+ 
+    #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
+        color: rgba(0, 0, 0, 0);
+    }
+ 
+    @media (min-width: 36rem) {
+ 
+        #login-status {
+            flex-grow: 1;
+            left: 3%;
+            right: initial;
+        }
+ 
+         #login-status::before {
+            --mask-image: none;
+            background-color: transparent;
+        }
+ 
+        #login-status:not(:focus-within) {
+            color: rgb(var(--login-line-divider-color));
+            -webkit-user-select: initial;
+            -moz-user-select: initial;
+            -ms-user-select: initial;
+            user-select: initial;
+        }
+ 
+        #login-status #account-topbutton,
+        #login-status:not(:focus-within) #account-topbutton {
+            --clip-path:
+                    polygon( 0 0, 100% 0, 100% 100%, 0 100% );
+            background-color: rgba(var(--login-arrow-color), 0);
+ 
+        }
+ 
+        #login-status #account-topbutton::before{
+            --clip-path:
+                    polygon( 30% 35%, 70% 35%, 50% 60%, 50% 60% );
+            --mask-image: initial;
+            content: &#34;&#34;;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--login-arrow-color), 1);
+            -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+        }
+ 
+        #login-status #account-topbutton::before,
+        #login-status:not(:focus-within) #account-topbutton::before,
+        #login-status:not(:focus-within) #account-topbutton:hover::before {
+            --clip-path:
+                    polygon( 30% 35%, 70% 35%, 50% 60%, 50% 60% );
+            --mask-image: initial;
+        }
+ 
+        #login-status:not(:focus-within) #account-topbutton::after {
+            display: none;
+        }
+ 
+        #login-status:not(:focus-within) *:not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
+            --clip-path:
+                    polygon(
+                        0 0,
+                        100% 0,
+                        100% 100%,
+                        0 100%
+                    );
+            pointer-events: all;
+            -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+        }
+ 
+        #login-status:not(:focus-within) *:not(#account-topbutton):not(#account-options):not([href*=&#34;account/messages&#34;]) {
+            opacity: 1;
+        }
+ 
+        #login-status #my-account {
+            --wght: 300;
+        }
+ 
+        #account-options {
+            background: var(--gradient-header);
+        }
+ 
+        #search-top-box {
+            top: 1.5em;
+            right: 3%;
+            background: rgba(var(--search-focus-textbox-bg-color), 0.4);
+        }
+ 
+         #search-top-box:focus-within ~ #login-status {
+            opacity: 1;
+        }
+ 
+        #search-top-box::after {
+            transition:
+                background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+                -webkit-clip-path 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition:
+                background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+                clip-path 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition:
+                background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+                clip-path 150ms cubic-bezier(0.4, 0, 0.2, 1),
+                -webkit-clip-path 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+ 
+        #search-top-box:not(:focus-within)::after {
+            --clip-path:
+                    polygon(
+                        0 0,
+                        100% 0,
+                        100% 100%,
+                        0% 100%
+                    );
+            background-color: rgba(var(--search-icon-bg-color, --dark-accent), 1);
+            -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+        }
+ 
+        #search-top-box:not(:focus-within):hover::after {
+            --clip-path:
+                    polygon(
+                        0 0,
+                        100% 0,
+                        100% 100%,
+                        0 100%
+                    );
+            background-color: rgb(var(--search-icon-hover-bg-color));
+        }
+ 
+        #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) {
+            max-width: var(--search-width);
+        }
+ 
+        #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
+            max-width: var(--search-width);
+            padding: 0 var(--search-height) 0 1em;
+            outline-width: 0;
+            background-color: rgb(var(--search-focus-textbox-bg-color), 0.35);
+            color: rgba(var(--search-textbox-text-color), 0.4);
+            cursor: pointer;
+        }
+ 
+        #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;submit&#34;],
+        #search-top-box form[id=&#34;search-top-box-form&#34;]:focus-within input[type=&#34;submit&#34;] {
+            pointer-events: all;
+            border: none;
+        }
+ 
+    }
+ 
+    #page-title::after,
+    .meta-title::after,
+    #page-title::before,
+    .meta-title::before {
+        content: &#34;&#34;;
+        flex-grow: 1;
+        height: 0.0625rem;
+        background: rgb(var(--swatch-primary));
+    }
+ 
+    #page-title::before,
+    .meta-title::before {
+        margin: auto 1.25rem auto auto;
+    }
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Rubik:wght@300&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;display=swap&#39;);
+
+/* ROOT VARS
+   ============================= */
+
+/* Structural elements generally part of standard HTML spec as well as Wikidot&#39;s base structural elements */
+
+/* ===DIRECTORY===
+    0. =CUSTOM MEDIA DEFINITIONS
+    1. =S-CSS-P INTEGRATION
+    2. =HEADER ELEMENTS
+    3. =TYPEFACES
+    	3.1 =BASE FONT SIZE &amp; LINE HEIGHT
+    	3.2 =HEADER TITLE FONT SIZES
+    4. =VARIABLE FONT SETTINGS
+    	4.1 =VARIABLE MONO FONT SETTINGS
+    5. =OPENTYPE FEATURE SETTINGS
+    6. =STANDARD THEME COLORS
+    7. =PRIMARY COLORS
+    	8.1. =GENERAL COLORS
+    	8.2. =GENERAL TEXT COLORS
+    8. =BACKGROUND &amp; HEADER COLORS
+    9. =MENU COLORS
+    	9.1 =MENU BACKGROUND COLORS
+    	9.2 =MENU TEXT COLORS
+    10. =SECONDARY &amp; TERTIARY COLORS
+    11. =PRIMARY GRADIENTS
+    12. =STRUCTURAL SPACING ELEMENTS
+    	14.1 =HEADER MEASUREMENTS
+    	14.2 =TOPBAR MEASUREMENTS
+    	14.3 =FINAL HEADER + TOPBAR MEASUREMENTS
+    	14.4 =SIDEBAR MEASUREMENTS
+
+    ===============================
+    ======= SPECIFIC COLORS =======
+    ===============================
+    13. =BACKGROUND GRADIENT
+    	13.1 =GENERAL BACKGROUND
+    	13.2 =HEADER GRADIENT
+    	13.3 =TOPBAR GRADIENT
+    14. =LINK COLORS
+    15. =CODE BLOCK COLORS
+    16. =HEADER ELEMENTS
+    	16.1 =HEADER TITLES
+    	16.2 =SEARCH ELEMENT
+    	16.3 =LOGIN BOX ELEMENT
+    17. =TOPBAR ELEMENTS
+    	17.1 =TOPBAR CATEGORIES
+    	17.2 =DROPDOWN MENU
+    18. =SIDE-BAR ELEMENTS
+    	18.1 =SIDE-BAR GENERAL
+    	18.2 =SOCIAL MEDIA ICONS
+    	18.3 =SIDEBLOCK MENU
+    	18.4 =MENU-ITEMS
+    	18.5 =SIDEBAR COLLAPSIBLES
+    	18.5 =INTERWIKI ELEMENTS
+    19. =FOOTER
+    20. =LICENSE AREA
+
+    21. =MAIN CONTENT UI ELEMENTS
+    	21.1 =UI ICONS
+    		21.1.1 =PAGE OPTIONS ICONS
+    		21.1.2 =TEXT EDITOR ICONS
+    	21.2 =TABS
+    	21.3 =TABLES
+    	21.4 =BLOCKQUOTES
+    	21.5 =FOOTNOTES/BIBLIOGRAPHY FOOTER
+    	21.6 =TOC
+
+    22. =GLOBAL ELEMENTS
+    	22.1 =UI BUTTONS
+    	22.2 =RATING MODULE
+    	22.3 =MODALS
+    	22.4 =FOOTNOTES HOVER BLOCK
+    	22.5 =LISTPAGES PAGER
+    	22.6 =ANIMATIONS
+
+    ===============================
+    ======== TEXT ELEMENTS ========
+    ===============================
+
+    23. =HARDCODED TEXT
+
+    ===============================
+    ========= DEPRECIATED =========
+    ===============================
+    24. =LEGACY VARS
+  =============== */
+
+/* ===CUSTOM MEDIA DEFINITIONS=== */
+
+@custom-media --viewport-desktop only screen and (width &gt;= 56.25rem);
+@custom-media --viewport-tablet only screen and (width &lt;= 56.25rem);
+@custom-media --viewport-mobile only screen and (width &lt;= 30rem);
+
+:root {
+    /* ===S-CSS-P INTEGRATION=== */
+    /* If you&#39;re making a new CSS theme, please include the following three variables at minimum. */
+    --theme-base: &#34;black-highlighter&#34;;
+    /* must be either &#34;black-highlighter&#34; or &#34;sigma9&#34; */
+    --theme-id: &#34;nonumb3rstheme&#34;;
+    /* set this to the URL of your theme&#39;s page - eg for &#34;component:ar-theme&#34;, set it to &#34;ar-theme&#34; */
+    --theme-name: &#34;Black Highlighter Theme&#34;;
+    /* set this to your theme&#39;s full name */
+
+    /* ===HEADER ELEMENTS=== */
+    --logo-image: url(&#34;http://scp-wiki.wikidot.com/local--files/scp-6620/6620logo.png&#34;);
+    --header-title: &#34;SCP-6620&#34;;
+    --header-subtitle: none;
+
+    --diagonal-stripes: none;
+
+    /* ===TYPEFACES=== */
+    --body-font: &#34;Rubik&#34;;
+    --UI-font: PTRootUI, -apple-system, system-ui, BlinkMacSystemFont, &#34;Segoe UI&#34;, Roboto, Oxygen-Sans, Ubuntu, Cantrell, &#34;Helvetica Neue&#34;, sans-serif, &#34;Apple Color Emoji&#34;, &#34;Segoe UI Emoji&#34;, &#34;Segoe UI Symbol&#34;;
+    --header-font: &#34;Poppins&#34;;
+    --title-font: &#34;Poppins&#34;;
+    --mono-font: Recursive, Consolas, Monaco, monospace;
+
+    /* ===BASE FONT SIZE &amp; LINE HEIGHT=== */
+    --min-font-size: 0.8125rem; /* 13px */
+    --max-font-size: 0.9375rem; /* 15px */
+
+    --base-font-size: max(var(--min-font-size), min(2vw, var(--max-font-size)));
+
+    --base-line-height: 1.5;
+
+    /* ===HEADER TITLE FONT SIZES=== */
+    --header-h1-font-size: calc(var(--base-font-size) * (40 / 9));
+
+    --header-h2-font-size: var(--base-font-size);
+}
+
+/* Temporary fix until either Safari fixes itself or another solution reveals itself */
+:root {
+    @media (--viewport-tablet) {
+    	--base-font-size: var(--min-font-size);
+    }
+}
+
+:root {
+    /* ===VARIABLE FONT SETTINGS=== */
+    /* SETTING  |  ============== DESCRIPTION			|	FONT: 	RANGE 	 */
+    /* SETTING  |  ============== Weight				|	Body: 100 - 900  */
+    --wght: 400;
+    /* SETTING  |  ============== Weight for UI			|	  UI: 100 - 700  */
+    --ui-wght: 500;
+    /* SETTING  |  ============== Hover Weight for UI	|	  UI: 100 - 700  */
+    --ui-hvr-wght: 500;
+    /* ========================== Body Font Italic 		| 	Body:   0 - 1    */
+    --ital: 0;
+
+    /* ===VARIABLE MONO FONT SETTINGS=== */
+    /* See here for Recursive Font information: https://www.recursive.design/ */
+    /* =========================== Mono Font Weight 		| 	Mono: 300 - 1000 */
+    --mono-wght: 350;
+    /* ========================== Mono Font Italic 		| 	Mono: -15 - 0    */
+    --slnt: 0;
+    /* ========================== Mono Font Casual Amnt | 	Mono:   0 - 1    */
+    --CASL: 0;
+    /* ========================== Mono Font Cursive Amnt|	Mono:   0 - 1    */
+    --CRSV: 0;
+    /* ========================== Mono Font Mono Amnt	| 	Mono:   0 - 1    */
+    --MONO: 1;
+
+    /* ===OPENTYPE FEATURE SETTINGS=== */
+    /* See here for detailed explainations: https://sparanoid.com/lab/opentype-features/ */
+    /* ========================== Lining Numerals		|	Any: 	0 OR 1	 */
+    --lnum: 1;
+    /* ========================== Proportional Numerals	|	Any: 	0 OR 1	 */
+    --pnum: 1;
+    /* ========================== Kerning				|	Any: 	0 OR 1	 */
+    --kern: 1;
+    /* ========================== Capital Spacing		|	Any: 	0 OR 1	 */
+    --cpsp: 1;
+    /* ========================== Case Alternatives		|	Any: 	0 OR 1	 */
+    --liga: 1;
+    /* ========================== Standard Ligature		|	Any: 	0 OR 1	 */
+    --case: 1;
+    /* ========================== Contextual Ligature	|	Any: 	0 OR 1	 */
+    --clig: 1;
+    /* ========================== Discretionary Ligature|	Any: 	0 OR 1	 */
+    --dlig: 0;
+    /* ========================== Contextual Alternate	|	Any: 	0 OR 1	 */
+    --calt: 1;
+    /* ========================== Access All Alternates	|	Any: 	0 OR 1	 */
+    --aalt: 0;
+    /* ========================== Stylistic Sets		|	Any: 	0 OR 1	 */
+    /* ========================== SS 1 | Open Digits	|	Inter: 	0 OR 1	 */
+    --ss01: 1;
+    /* ========================== SS 2 | Disambiguation	|	Inter: 	0 OR 1	 */
+    --ss02: 0;
+    /* ========================== SS 3 | Curved R		|	Inter: 	0 OR 1	 */
+    --ss03: 1;
+    /* ========================== SS 4 | SS2 w/o zero	|	Inter: 	0 OR 1	 */
+    --ss04: 1;
+    /* ========================== Slashed Zero			|	Inter: 	0 OR 1	 */
+    --zero: 1;
+    /* ========================== Single Story a		|	Inter: 	0 OR 1	 */
+    --cv11: 0;
+
+    /* ===STANDARD THEME COLORS=== */
+    /* white */
+    --white-monochrome: 247, 247, 247;
+    /* v light gray for blockquotes and stuff */
+    --pale-gray-monochrome: 236, 236, 234;
+    /* very light pale gray for misc. use */
+    --light-pale-gray-monochrome: 242, 242, 241;
+    /* very light accent gray for misc. use */
+    --very-light-gray-monochrome: 224, 225, 221;
+    /* light accent gray for login status */
+    --light-gray-monochrome: 224, 225, 221;
+    /* gray */
+    --gray-monochrome: 149, 155, 163;
+    /* dark accent gray for sidebar background */
+    --dark-gray-monochrome: 13, 27, 42;
+    /* black */
+    --black-monochrome: 13, 20, 28;
+    /* subdued theme color */
+    --pale-accent: 210, 20, 20;
+    /* vivid theme color the &#34;default&#34; accent color */
+    --bright-accent: 231, 191, 191;
+    /* theme color */
+    --medium-accent: 220, 193, 193;
+    /* darker theme color */
+    --dark-accent: 203, 159, 159;
+    /* alternate accent color for newpage links */
+    --alt-accent: 65, 90, 119;
+
+    /* ===PRIMARY COLORS=== */
+    /* ===GENERAL COLORS=== */
+    --swatch-primary: var(--bright-accent);
+    --swatch-primary-darker: var(--medium-accent);
+    --swatch-primary-darkest: var(--dark-accent);
+    --swatch-border-color: var(--black-monochrome);
+
+    /* ===GENERAL TEXT COLORS=== */
+    --swatch-text-dark: var(--black-monochrome);
+    --swatch-text-light: var(--white-monochrome);
+    --swatch-text-general: var(--swatch-text-light);
+    --swatch-important-text: var(--bright-accent);
+
+    /* ===MENU COLORS=== */
+    /* ===MENU BACKGROUND COLORS=== */
+    --swatch-menubg-color: var(--white-monochrome);
+    --swatch-menubg-light-color: var(--pale-gray-monochrome);
+    --swatch-menubg-medium-color: var(--light-gray-monochrome);
+    --swatch-menubg-medium-dark-color: var(--gray-monochrome);
+    --swatch-menubg-dark-color: var(--dark-gray-monochrome);
+    --swatch-menubg-black-color: var(--black-monochrome);
+    --swatch-menubg-hover-color: var(--black-monochrome);
+
+    /* ===MENU TEXT COLORS=== */
+    --swatch-menutxt-dark-color: var(--black-monochrome);
+    --swatch-menutxt-light-color: var(--white-monochrome);
+    --swatch-menutxt-general-color: var(--swatch-menutxt-dark-color);
+
+    /* ===SECONDARY &amp; TERTIARY COLORS=== */
+    /* Editing these will edit a vast majority of theme elements. Useful for making dark themes */
+
+    /* Colors for Secondary &amp; Tertiary items like Blockquote and YUI Tabs */
+    --swatch-secondary-color: var(--swatch-menubg-light-color);
+    --swatch-tertiary-color: var(--swatch-menubg-medium-color);
+    --swatch-alternate-color: var(--swatch-menubg-dark-color);
+
+    /* Text Colors for Secondary &amp; Tertiary items like Sidebar Headers and Top-Bar Menu Text */
+    --swatch-text-secondary-color: var(--swatch-menutxt-light-color);
+    --swatch-text-tertiary-color: var(--swatch-menutxt-dark-color);
+
+    /* ===STRUCTURAL SPACING ELEMENTS=== */
+    --body-width-on-desktop: 60rem;
+    --body-width-on-mobile: 100%;
+    --scrollbar-width: 1ch;
+
+    /* ===HEADER MEASUREMENTS=== */
+    --header-width-on-desktop: 61.25rem;
+    --header-width-on-mobile: 100vw;
+    --header-height-on-desktop: 15rem;
+    --header-height-on-mobile: 15rem;
+    --header-background-image-size: 100% var(--header-height-on-desktop);
+
+    /* ===TOPBAR MEASUREMENTS=== */
+    --topbar-height-on-desktop: 1.875rem;
+    --topbar-height-on-mobile: 3rem;
+
+    /* ===FINAL HEADER + TOPBAR MEASUREMENTS=== */
+    /* These Vars should not be edited unless necessary. */
+    --final-header-height-on-desktop: calc(var(--header-height-on-desktop) + var(--topbar-height-on-desktop));
+    --final-header-height-on-mobile: calc(var(--header-height-on-mobile) + var(--topbar-height-on-mobile));
+
+    /* ===SIDEBAR MEASUREMENTS=== */
+    --sidebar-width-on-desktop: min(calc(var(--base-font-size) * (266 / 15)), calc((100vw - var(--body-width-on-desktop))));
+    --sidebar-width-on-mobile: calc(var(--base-font-size) * (238 / 15));
+    --sidebar-internal-border-thickness: 0.125rem;
+}
+
+/*  ===============================
+    	======= SPECIFIC COLORS =======
+    	===============================
+
+/* Colors for Buttons, Tabs, Tables, Footnotes Hover/Modal, Etc. */
+
+:root {
+    /* ===BACKGROUND GRADIENT=== */
+
+    /* ===GENERAL BACKGROUND=== */
+    /* Overall Page Background Color */
+    --swatch-background: var(--black-monochrome);
+    --background-gradient-color: var(--black-monochrome);
+
+
+    /* ===HEADER GRADIENT=== */
+    /* Colors forming the header gradient used in --gradient-header var */
+    --header-gradient-color-bottom: 13, 27, 42;
+    --header-gradient-color-middle: 13, 27, 42;
+    --header-gradient-color-top: 13, 27, 42;
+
+    /* ===TOPBAR GRADIENT=== */
+    /* Colors used in the --gradient-topmenu var to give the topbar its color */
+    --swatch-topmenu-bg-color: var(--swatch-menubg-medium-dark-color);
+    --swatch-topmenu-border-color: var(--swatch-menubg-black-color);
+
+    /* ===LINK COLORS=== */
+    --link-color: var(--pale-accent);
+    --visited-link-color: var(--swatch-primary-darkest);
+    --hover-link-color: var(--swatch-primary);
+    --newpage-color: var(--alt-accent);
+
+    /* ===CODE BLOCK COLORS=== */
+    --swatch-code-text-general: var(--swatch-text-dark);
+
+    --swatch-code-text-comment: 102 111 120; /* Greyish Blue */
+    --swatch-code-text-quotes: 183 83 1; /* Redish Orange */
+    --swatch-code-text-string: 86 122 13; /* Green */
+    --swatch-code-text-identifier: 1 84 147; /* Blue */
+    --swatch-code-text-reserved: 128 51 120; /* Dark Purple */
+
+    --swatch-code-text-builtin: var(--swatch-code-text-quotes);
+    --swatch-code-text-inlinedoc: var(--swatch-code-text-identifier);
+    --swatch-code-text-var: var(--swatch-code-text-string);
+    --swatch-code-text-url: var(--swatch-code-text-identifier);
+    --swatch-code-text-special: var(--swatch-code-text-identifier);
+    --swatch-code-text-number: var(--swatch-code-text-quotes);
+    --swatch-code-text-inlinetags: var(--swatch-code-text-quotes);
+}
+
+#header {
+    /* ===HEADER ELEMENTS=== */
+    /* ===HEADER TITLES=== */
+    /* Header H1 and H2 colors */
+    --swatch-headerh1-color: var(--swatch-text-light);
+    --swatch-headerh2-color: var(--swatch-text-light);
+
+    /* ===SEARCH ELEMENT=== */
+    --search-icon-color: var(--swatch-text-secondary-color);
+    --search-icon-hover-color: var(--swatch-text-secondary-color);
+    --search-icon-hover-bg-color: var(--swatch-alternate-color);
+    --search-textbox-text-color: 0, 0, 0, 0;
+    /* Focus is when the search box has been clicked on */
+    --search-icon-focus-color: var(--swatch-text-secondary-color);
+    --search-icon-focus-bg-color: var(--swatch-primary);
+    --search-focus-outline-color: var(--swatch-primary);
+    --search-focus-textbox-bg-color: var(--swatch-alternate-color);
+    --search-focus-textbox-text-color: var(--swatch-text-secondary-color);
+
+    /* ===LOGIN BOX ELEMENT=== */
+    --login-line-divider-color: var(--swatch-text-secondary-color);
+    --login-username-color: var(--swatch-text-secondary-color);
+    --login-myaccount-color: var(--swatch-text-secondary-color);
+    --login-myaccount-hover-color: var(--login-myaccount-color);
+    --login-myaccount-underline-color: var(--swatch-primary-darkest);
+    --login-myaccount-hover-bg-color: var(--swatch-primary-darkest);
+    --login-arrow-color: var(--search-icon-color);
+    /* Dropdown Box when arrow is clicked */
+    --login-dropdown-bg-color: var(--swatch-menubg-color);
+    --login-dropdown-bg-image: var(--gradient-header);
+    --login-dropdown-border-color: var(--swatch-text-tertiary-color), 0.5;
+    --login-dropdown-text-color: var(--swatch-text-secondary-color);
+    --login-dropdown-text-hover-color: var(--swatch-text-secondary-color);
+    --login-dropdown-bg-hover-color: var(--swatch-primary);
+
+    /* Mobile Icon Styling */
+    --login-mobile-icon-color: var(--search-icon-color);
+    --login-mobile-icon-hover-color: var(--search-icon-hover-color);
+    --login-mobile-icon-hover-bg-color: var(--search-icon-hover-bg-color);
+}
+
+#top-bar {
+    /* ===TOPBAR ELEMENTS=== */
+
+    /* ===TOPBAR CATEGORIES=== */
+    --topmenu-category-color: var(--swatch-text-secondary-color);
+    --topmenu-category-hover-color: var(--swatch-text-secondary-color);
+    --topmenu-category-hover-bg: 0, 0, 0, 0; /* Transparent */
+    --topmenu-hover-border-color: var(--swatch-primary);
+
+    --mobile-topmenu-sidebar-button-color: var(--swatch-text-secondary-color);
+
+    /* ===DROPDOWN MENU=== */
+    --dropdown-bg-color: var(--swatch-alternate-color), 0.9;
+    --dropdown-border-color: var(--swatch-text-tertiary-color), 0.5;
+    --dropdown-links-color: var(--swatch-text-secondary-color);
+    --dropdown-links-bg-color: 0, 0, 0, 0; /* Transparent */
+    --dropdown-links-hover-color: var(--swatch-text-secondary-color);
+    --dropdown-links-hover-bg-color: var(--swatch-primary);
+}
+
+#side-bar,
+#interwiki {
+    /* ===SIDE-BAR ELEMENTS=== */
+
+    /* ===SIDE-BAR GENERAL=== */
+    --sidebar-bg-color: var(--);
+    --sidebar-resources-bg-color: var(--swatch-primary-darker), 0.25;
+    --sidebar-media-bg-color: var(--swatch-primary-darker), 0.125;
+
+    /* ===SOCIAL MEDIA ICONS=== */
+    --discord-icon-color: 88, 101, 242; /* BLURPLE */
+    --deviantart-icon-color: 0, 199, 135;
+    --facebook-icon-color: 59, 89, 152;
+    --github-icon-color: 25, 23, 23;
+    --instagram-icon-color: 240, 148, 51;
+    --instagram-icon-gradient: linear-gradient(45deg, rgb(240 148 51) 0%, rgb(230 104 60) 25%, rgb(220 39 67) 50%, rgb(204 35 102) 75%, rgb(188 24 136) 100%);
+    --reddit-icon-color: 225, 69, 0;
+    --sandbox-icon-color: 35, 140, 120;
+    --steam-icon-color: 8, 20, 40;
+    --tiktok-icon-color: 12, 12, 12;
+    --tiktok-icon-gradient: linear-gradient(125deg, rgb(37 244 238) 0%, rgb(37 244 238) 50%, rgb(254 44 85) calc(50% + 0.0625rem), rgb(254 44 85) 100%);
+    --twitch-icon-color: 100, 65, 165;
+    --twitter-icon-color: 29, 161, 242;
+    --youtube-icon-color: 255, 0, 0;
+
+    --social-icon-hover-color: var(--swatch-primary);
+
+    /* ===SIDEBLOCK MENU=== */
+    --sideblock-bg-color: 0, 0, 0, 0; /* Transparent */
+    --sideblock-heading-border-color: var(--swatch-primary);
+    --sideblock-heading-bg-color: 0, 0, 0, 0; /* Transparent */
+    --sideblock-heading-text-color: var(--swatch-primary-darker);
+
+    /* ===MENU-ITEMS=== */
+    --sidebar-border-color: var(--swatch-border-color), 0.08;
+    --sidebar-subtext-color: var(--swatch-text-light);
+
+    --sidebar-links-text: var(--swatch-text-light);
+    --sidebar-links-bg-color: 0, 0, 0, 0; /* Transparent */
+    --sidebar-links-hover-bg-color: var(--swatch-primary);
+    --sidebar-links-hover-text-color: var(--swatch-text-secondary-color);
+
+    /* ===SIDEBAR COLLAPSIBLES=== */
+    /* Folded Colors */
+    --sidebar-collapsible-fld-link-bg: var(--swatch-primary-darker), 0.25;
+    --sidebar-collapsible-fld-link-color: var(--sideblock-heading-text-color);
+    --sidebar-collapsible-fld-link-hover-bg: var(--swatch-primary-darker);
+    --sidebar-collapsible-fld-link-hover-color: var(--swatch-text-secondary-color);
+    --sidebar-collapsible-fld-arrow-color: var(--swatch-text-tertiary-color);
+    --sidebar-collapsible-fld-arrow-hover-color: var(--swatch-text-secondary-color);
+
+    /* Unfolded Colors */
+    --sidebar-collapsible-ufld-link-bg: var(--sidebar-collapsible-fld-link-bg);
+    --sidebar-collapsible-ufld-link-color: var(--sideblock-heading-text-color);
+    --sidebar-collapsible-ufld-link-hover-bg: var(--swatch-primary);
+    --sidebar-collapsible-ufld-link-hover-color: var(--sidebar-collapsible-fld-link-hover-color);
+    --sidebar-collapsible-ufld-arrow-color: var(--sidebar-collapsible-fld-arrow-color);
+    --sidebar-collapsible-ufld-arrow-hover-color: var(--sidebar-collapsible-fld-arrow-hover-color);
+
+    /* Unfolded Body Colors */
+    --sidebar-collapsible-body-bg: var(--swatch-primary), 0.125;
+    --sidebar-collapsible-link-color: var(--sidebar-links-text);
+    --sidebar-collapsible-link-hover-bg: var(--sidebar-links-hover-bg-color);
+    --sidebar-collapsible-link-hover-color: var(--sidebar-links-hover-text-color);
+}
+
+/* ===INTERWIKI ELEMENTS=== */
+
+#interwiki {
+    --base-font-size: var(--max-font-size);
+}
+
+@media only screen and (max-width: 14rem) {
+    #interwiki {
+    	--base-font-size: var(--min-font-size);
+    }
+}
+
+/* ===FOOTER=== */
+
+#footer {
+    --footer-bg-color: var(--swatch-primary-darkest);
+    --footer-text-color: var(--swatch-text-secondary-color);
+    --footer-link-color: var(--swatch-text-secondary-color);
+    --footer-link-hover-color: var(--swatch-primary);
+    --footer-link-hover-bg-color: var(--swatch-secondary-color);
+}
+
+/* ===LICENSE AREA=== */
+
+#license-area {
+    --license-bg-color: var(--swatch-alternate-color);
+    --license-text-color: var(--swatch-text-secondary-color);
+    --license-link-color: var(--swatch-text-secondary-color);
+    --license-link-hover-color: var(--swatch-primary);
+    --license-link-hover-bg-color: var(--swatch-secondary-color);
+}
+
+#main-content {
+    /* ===MAIN CONTENT UI ELEMENTS */
+    /* ===UI ICONS=== */
+    /* ===PAGE OPTIONS ICONS=== */
+    --ui-icon-color: var(--swatch-text-secondary-color);
+    --ui-icon-bg: var(--swatch-primary-darkest);
+    --ui-icon-hover-color: var(--swatch-text-secondary-color);
+    --ui-icon-hover-bg: var(--swatch-primary);
+
+    /* ===TEXT EDITOR ICONS=== */
+    --editor-icon-color: var(--swatch-menutxt-general-color);
+    --editor-icon-bg: 0, 0, 0, 0; /* Transparent */
+    --editor-icon-hover-color: var(--swatch-background);
+    --editor-icon-hover-bg: var(--swatch-primary);
+    --editor-icon-submenu-bg: var(--swatch-secondary-color);
+
+    /* ===TABS=== */
+    --tabs-bg: var(--swatch-secondary-color);
+    --tabs-txt: var(--swatch-text-tertiary-color);
+    --tabs-hover-bg: var(--swatch-primary-darker);
+    --tabs-hover-txt: var(--swatch-text-secondary-color);
+    --tabs-selected-bg: var(--swatch-primary);
+    --tabs-selected-txt: var(--swatch-text-secondary-color);
+    --tabs-selected-outline: var(--swatch-primary);
+    --tabs-bottom-border-color: var(--swatch-primary-darker);
+
+    --tabs-content-bg-color: var(--swatch-secondary-color), 0.25;
+    --tabs-content-border-color: var(--swatch-tertiary-color);
+
+    /* ===TABLES=== */
+    --tables-header-bg: var(--swatch-primary-darkest);
+    --tables-header-txt: var(--swatch-text-secondary-color);
+    --tables-border: var(--swatch-tertiary-color);
+    --tables-body-bg: var(--swatch-background);
+    --tables-body-txt: var(--swatch-text-dark);
+
+    /* ===BLOCKQUOTES=== */
+    --blockquote-bg-color: var(--swatch-secondary-color), 0.25;
+    --blockquote-border-color: var(--swatch-tertiary-color);
+    /* Color for special .colorbar-quote blockquote class */
+    --blockquote-colorbar-color: var(--swatch-primary), 1;
+
+    /* ===FOOTNOTES/BIBLIOGRAPHY FOOTER=== */
+    --footnotes-footer-bg-color: var(--swatch-secondary-color);
+    --footnotes-footer-colorbar-color: var(--swatch-primary-darkest);
+    --footnotes-footer-title-bg-color: var(--swatch-primary-darkest);
+    --footnotes-footer-title-text-color: var(--swatch-text-secondary-color);
+    --footnotes-footer-num-color: var(--link-color);
+    --footnotes-footer-num-hover-color: var(--hover-link-color);
+    --footnotes-footer-text-color: var(--swatch-text-dark);
+
+    /* ===TOC=== */
+    --toc-header-bg-color: var(--swatch-primary-darkest);
+    --toc-header-text-color: var(--swatch-text-secondary-color);
+    --toc-header-text-hover-color: var(--swatch-text-secondary-color);
+
+    --toc-body-bg-color: var(--swatch-menubg-color);
+    --toc-directory-lines-color: var(--swatch-tertiary-color);
+
+    --toc-body-link-color: var(--link-color);
+    --toc-body-link-hover-color: var(--link-color);
+    --toc-body-hover-arrow-color: var(--link-color);
+
+    /* ===PAGE TAGS=== */
+    --pagetags-title-bg: var(--swatch-primary-darkest);
+    --pagetags-title-text: var(--swatch-text-secondary-color);
+    --pagetags-text-color: var(--swatch-primary-darkest);
+    --pagetags-text-hover-color: var(--swatch-background);
+    --pagetags-text-hover-bg-color: var(--swatch-primary);
+
+    /* ===DEFINITION LISTS */
+    --dl-content-bg-color: var(--swatch-secondary-color), 0.25;
+    --dl-content-border-color: var(--swatch-tertiary-color);
+
+    --dt-bg-color: var(--swatch-primary-darkest);
+    --dt-text-color: var(--swatch-text-secondary-color);
+
+    --dd-left-border-color: var(--dt-bg-color);
+}
+
+/* ===GLOBAL ELEMENTS=== */
+
+/* ===UI BUTTONS=== */
+@define-mixin bhl-btn $maxwidth {
+    --wght: var(--ui-wght);
+
+    display: inline-flex;
+    container-type: normal;
+    position: relative;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    min-width: $maxwidth;
+    margin: 0;
+    padding: 0.25em;
+    overflow: hidden;
+    transition:
+    	border-color 0.2s var(--ease-in-out),
+    	box-shadow 0.2s var(--ease-in-out),
+    	color 0.15s var(--ease-in-out),
+    	background-color 0.15s var(--ease-in-out),
+    	font-weight 0.2s var(--ease-in-out),
+    	font-variation-settings 0.2s var(--ease-in-out);
+    border: 0.0625rem solid rgba(var(--swatch-primary), 0.05);
+    outline: 0 solid rgb(var(--swatch-primary));
+    background-color: rgb(var(--ui-button-bg));
+    box-shadow:
+    	-0.125rem 0 0.25rem 0 rgba(var(--swatch-tertiary-color), 0.25),
+    	inset 0 -0.0625rem 0 0 rgba(var(--swatch-tertiary-color), 0.75),
+    	0 0 0 0 rgb(var(--ui-button-bg));
+    color: rgb(var(--ui-button-txt));
+    font-family: var(--UI-font);
+    font-weight: var(--wght);
+    text-decoration: none;
+    will-change: border-color, box-shadow, color, background-color, font-weight, font-variation-settings;
+
+    @supports (font-size:0.75cqi) {
+    	font-size: calc(max(var(--min-font-size),min(0.75cqi,var(--max-font-size))) * 1.8);
+    }
+
+    &amp;:is(:hover, :active, :focus, :focus-within) {
+    	--wght: var(--ui-hvr-wght);
+
+    	border-color: transparent;
+    	outline: 0 solid rgb(var(--swatch-primary));
+    	background-color: rgb(var(--ui-button-hover-bg));
+    	box-shadow: 0 0 0 0 rgba(var(--swatch-tertiary-color), 0), inset 0 0 0 0 rgba(var(--swatch-tertiary-color), 0), 0 0 0 0.125rem rgb(var(--ui-button-hover-outline));
+    	color: rgb(var(--ui-button-hover-txt));
+    	font-weight: var(--wght);
+    	text-decoration: none;
+    	cursor: pointer;
+    }
+
+    @supports (font-size: 1cqi) {
+    	font-size: max(var(--min-font-size), min(0.75cqi, var(--max-font-size)));
+    }
+}
+
+:root {
+    --ui-button-bg: var(--swatch-secondary-color);
+    --ui-button-txt: var(--swatch-text-tertiary-color);
+    --ui-button-hover-bg: var(--swatch-primary);
+    --ui-button-hover-txt: var(--swatch-text-secondary-color);
+    --ui-button-hover-outline: var(--swatch-primary);
+
+    /* ===RATING MODULE=== */
+
+    --rating-module-button-plus-color: var(--theme-color);
+    --rating-module-button-negative-color: var(--theme-color);
+    --rating-module-button-cancel-color: var(--swatch-tertiary-color);
+    --rating-module-button-credit-color: var(--swatch-secondary-color);
+
+    --rating-module-bg-color: var(--swatch-background);
+    --rating-module-bottom-border-color: var(--swatch-primary);
+
+    --rating-module-text-color: var(--swatch-text-light);
+    --rating-module-text-hover-color: var(--swatch-text-light);
+    --font-family: &#34;Poppins&#34;;
+
+    /* ===MODALS=== */
+
+    --modal-bg: var(--swatch-secondary-color);
+    --modal-body-text: var(--swatch-text-tertiary-color);
+    --modal-body-header-txt: var(--swatch-text-tertiary-color); /* h1/h2/h3/h4/h5/h6 */
+
+    --modal-header-bg: var(--swatch-primary-darkest);
+    --modal-header-txt: var(--swatch-text-secondary-color);
+    --modal-header-stripe: var(--swatch-primary);
+
+    /* ===FOOTNOTES HOVER BLOCK=== */
+    --hoverblock-bg: var(--swatch-secondary-color);
+    --hoverblock-txt: var(--swatch-text-tertiary-color);
+    --hoverblock-header-bg: var(--swatch-primary-darker);
+    --hoverblock-header-txt: var(--swatch-text-secondary-color);
+    --hoverblock-footer-bg: var(--swatch-tertiary-color);
+    --hoverblock-footer-txt: var(--swatch-text-tertiary-color);
+
+    /* ===LISTPAGES PAGER=== */
+    --pager-text: var(--swatch-text-dark);
+    --pager-link: var(--link-color);
+
+    --pager-link-hover: var(--swatch-text-secondary-color);
+    --pager-hover-bg: var(--swatch-primary-darkest);
+
+    --pager-selected-bg: var(--swatch-primary);
+    --pager-selected-link: var(--swatch-text-secondary-color);
+}
+
+/* ===ANIMATIONS=== */
+:root {
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fade-in {
+    from {
+    	opacity: 0;
+    }
+
+    to {
+    	opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    from {
+    	translate: 1rem 1rem;
+    }
+
+    to {
+    	translate: 0 0;
+    }
+}
+
+
+@supports not (translate: 1rem 1rem) {
+    @keyframes slide-in {
+    	from {
+    		transform: translate(1rem, 1rem);
+    	}
+
+    	to {
+    		transform: translate(0, 0);
+    	}
+    }
+}
+
+@keyframes slide-down {
+    from {
+    	max-height: 0;
+    }
+
+    to {
+    	max-height: var(--header-height-on-desktop);
+    }
+}
+
+@keyframes lift-in {
+    from {
+    	box-shadow: 0 0 0 0 rgba(var(--swatch-alternate-color), 0.25), inset 0 0 0 0.0625rem rgb(var(--swatch-primary-darkest));
+    }
+
+    to {
+    	box-shadow: 0.25rem 0.125rem 0.5rem 0 rgba(var(--swatch-alternate-color), 0.25), inset 0 0 0 0.0625rem rgb(var(--swatch-primary-darkest));
+    }
+}
+
+/*  ===============================
+    	======== TEXT ELEMENTS ========
+    	===============================
+
+/* ===HARDCODED TEXT=== */
+
+:root {
+    /* Found in Wikidot Structure */
+    --text-tags: &#34;TAGS\0021b4&#34;;
+    --text-editor-desc: &#34;Short Description of Changes:&#34;;
+    --text-pagehistory-rev: &#34;rev.&#34;;
+    --text-pagehistory-flags: &#34;flags&#34;;
+    --text-pagehistory-actions: &#34;actions&#34;;
+    --text-pagehistory-by: &#34;by&#34;;
+    --text-pagehistory-date: &#34;date&#34;;
+    --text-sitetools: &#34;Site Tools&#34;;
+
+    /* Found in Elements */
+    --text-creditview-back: &#34;Back&#34;;
+    --text-tableofcontents: &#34;Table of Contents&#34;;
+
+    /* Found in Header */
+    --text-messages: &#34;Messages&#34;;
+}
+
+/*  ===============================
+    	========= DEPRECIATED =========
+    	===============================
+
+/* ===LEGACY VARIABLES=== */
+
+/* These Vars are being left for now in case they are used in various these but will eventually be removed */
+:root {
+    /* Legacy Var -- No longer used */
+    --gradient-sidemenu-header: linear-gradient(10deg, rgba(var(--swatch-primary-darker), 0.45) 0%, rgba(var(--swatch-primary-darker), 0.55) 100%);
+
+    --rating-module-button-color: var(--swatch-menutxt-general-color);
+
+    --border-styling: solid 0.0625rem rgb(var(--swatch-border-color));
+
+    --border-radius-width: 0.0625rem;
+
+    /* Box-Shadow 1px Borders */
+    --box-border-bottom: 0 0.0625rem 0 0 rgb(var(--swatch-border-color));
+    --box-border-top: 0 -0.0625rem 0 0 rgb(var(--swatch-border-color));
+    --box-border-left: -0.0625rem 0 0 0 rgb(var(--swatch-border-color));
+    --box-border-right: 0.0625rem 0 0 0 rgb(var(--swatch-border-color));
+    --box-border-all: 0 0 0 0.0625rem rgb(var(--swatch-border-color));
+
+    --sidebar-transition-timing: 0.5s var(--ease-in-out) 0.1s;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>:root{
+  --base-color: rgb(66, 66, 72);
+  --hover-color: rgb(236, 203, 217);
+  --click-color: rgb(216, 151, 178);
+}
+
+#page-title {
+  display: none;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+.document {
+     background-color: white;
+     padding: 40px;
+     width: 70%;
+     margin: auto;
+}</code></pre>
         </li>
       
     </ul>
@@ -38,7 +1133,51 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>filter: blur(0.3px);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>filter: blur(0.5px);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>filter: blur(1px);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>filter: blur(1.5px);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>filter: blur(2px);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>filter: blur(2.5px);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>filter: blur(3px);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;</code></pre>
         </li>
       
     </ul>
@@ -51,13 +1190,115 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:classic" target="_blank"><code>:scp-wiki:theme:classic</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:classic.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:collapsible-sidebar" target="_blank"><code>:scp-wiki:component:collapsible-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:collapsible-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>:scp-wiki:component:fade-in</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>:scp-wiki:component:ratio-bar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:ratio-bar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
   </span>
 
   
@@ -103,51 +1344,1624 @@
     <ul class="css-classes">
       
         <li>
+          <pre><code>no-addendum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>center-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>document</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-addendum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>center-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>document</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-addendum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>center-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>document</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>no-addendum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>center-collapse</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>document</code></pre>
+        </li>
+      
+        <li>
           <pre><code>footer-wikiwalk-nav</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:classic]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:collapsible-sidebar]]
+[[include :scp-wiki:component:fade-in speed=1]]
+[[include :scp-wiki:component:ratio-bar base=-- |ex=--]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[module css]]
+
+:root {
+        /* header measurements */
+        --header-height-on-desktop: 15rem;
+        --header-height-on-mobile: 15rem;
+        --header-h1-font-size: clamp(2rem, 5vw, 2.8125rem);
+        --header-h2-font-size: clamp(0.875rem, 3vw, 0.9375rem);
+ 
+        --logo-image: url(&#34;https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg&#34;);
+    }
+ 
+    #header {
+        --search-textbox-text-color: var(--swatch-secondary-color);
+        background: none;
+    }
+ 
+    #header::before {
+        content: &#34; &#34;;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0.75rem;
+        background-image: var(--logo-image);
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: auto calc(var(--header-height-on-desktop) - 1.5rem);
+        opacity: 0.8;
+        pointer-events: none;
+    }
+ 
+    #header h1,
+    #header h2 {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: var(--header-height-on-desktop);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+ 
+    #header h1 a,
+    #header h1 a::before,
+    #header h2 span,
+    #header h2 span::before {
+        margin: 0;
+        padding: 0;
+        z-index: 0;
+        display: block;
+        text-align: center;
+    }
+ 
+    #header h1 {
+        z-index: 1;
+    }
+ 
+    #header h1 a::before,
+    #header h1 a::after {
+        content: var(--header-title);
+    }
+ 
+#header h1 a::before {
+    z-index: -1;
+} 
+    #header h1 a::after {
+        color: rgb(var(--swatch-headerh1-color));
+        z-index: 1;
+    }
+ 
+    #header h2 {
+        z-index: 0;
+        text-transform: uppercase;
+        pointer-events: none;
+    }
+ 
+    #header h2 span {
+        margin-top: 5px;    
+}
+ 
+    #header h2 span::before,
+    #header h2 span::after {
+        --wght: 600;
+        content: var(--header-subtitle);
+        position: absolute;
+        left: 50%;
+        transform: translateY(-50%) translateX(-50%);
+        width: 100%;
+        text-align: center;
+    }
+ 
+    #header h2 span::after {
+        color: rgb(var(--swatch-headerh2-color));
+        z-index: 1;
+    }
+ 
+    #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
+        color: rgba(0, 0, 0, 0);
+    }
+ 
+    @media (min-width: 36rem) {
+ 
+        #login-status {
+            flex-grow: 1;
+            left: 3%;
+            right: initial;
+        }
+ 
+         #login-status::before {
+            --mask-image: none;
+            background-color: transparent;
+        }
+ 
+        #login-status:not(:focus-within) {
+            color: rgb(var(--login-line-divider-color));
+            -webkit-user-select: initial;
+            -moz-user-select: initial;
+            -ms-user-select: initial;
+            user-select: initial;
+        }
+ 
+        #login-status #account-topbutton,
+        #login-status:not(:focus-within) #account-topbutton {
+            --clip-path:
+                    polygon( 0 0, 100% 0, 100% 100%, 0 100% );
+            background-color: rgba(var(--login-arrow-color), 0);
+ 
+        }
+ 
+        #login-status #account-topbutton::before{
+            --clip-path:
+                    polygon( 30% 35%, 70% 35%, 50% 60%, 50% 60% );
+            --mask-image: initial;
+            content: &#34;&#34;;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(var(--login-arrow-color), 1);
+            -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+        }
+ 
+        #login-status #account-topbutton::before,
+        #login-status:not(:focus-within) #account-topbutton::before,
+        #login-status:not(:focus-within) #account-topbutton:hover::before {
+            --clip-path:
+                    polygon( 30% 35%, 70% 35%, 50% 60%, 50% 60% );
+            --mask-image: initial;
+        }
+ 
+        #login-status:not(:focus-within) #account-topbutton::after {
+            display: none;
+        }
+ 
+        #login-status:not(:focus-within) *:not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
+            --clip-path:
+                    polygon(
+                        0 0,
+                        100% 0,
+                        100% 100%,
+                        0 100%
+                    );
+            pointer-events: all;
+            -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+        }
+ 
+        #login-status:not(:focus-within) *:not(#account-topbutton):not(#account-options):not([href*=&#34;account/messages&#34;]) {
+            opacity: 1;
+        }
+ 
+        #login-status #my-account {
+            --wght: 300;
+        }
+ 
+        #account-options {
+            background: var(--gradient-header);
+        }
+ 
+        #search-top-box {
+            top: 1.5em;
+            right: 3%;
+            background: rgba(var(--search-focus-textbox-bg-color), 0.4);
+        }
+ 
+         #search-top-box:focus-within ~ #login-status {
+            opacity: 1;
+        }
+ 
+        #search-top-box::after {
+            transition:
+                background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+                -webkit-clip-path 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition:
+                background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+                clip-path 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            transition:
+                background-color 150ms cubic-bezier(0.4, 0, 0.2, 1),
+                clip-path 150ms cubic-bezier(0.4, 0, 0.2, 1),
+                -webkit-clip-path 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        }
+ 
+        #search-top-box:not(:focus-within)::after {
+            --clip-path:
+                    polygon(
+                        0 0,
+                        100% 0,
+                        100% 100%,
+                        0% 100%
+                    );
+            background-color: rgba(var(--search-icon-bg-color, --dark-accent), 1);
+            -webkit-clip-path: var(--clip-path);
+            clip-path: var(--clip-path);
+        }
+ 
+        #search-top-box:not(:focus-within):hover::after {
+            --clip-path:
+                    polygon(
+                        0 0,
+                        100% 0,
+                        100% 100%,
+                        0 100%
+                    );
+            background-color: rgb(var(--search-icon-hover-bg-color));
+        }
+ 
+        #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) {
+            max-width: var(--search-width);
+        }
+ 
+        #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
+            max-width: var(--search-width);
+            padding: 0 var(--search-height) 0 1em;
+            outline-width: 0;
+            background-color: rgb(var(--search-focus-textbox-bg-color), 0.35);
+            color: rgba(var(--search-textbox-text-color), 0.4);
+            cursor: pointer;
+        }
+ 
+        #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;submit&#34;],
+        #search-top-box form[id=&#34;search-top-box-form&#34;]:focus-within input[type=&#34;submit&#34;] {
+            pointer-events: all;
+            border: none;
+        }
+ 
+    }
+ 
+    #page-title::after,
+    .meta-title::after,
+    #page-title::before,
+    .meta-title::before {
+        content: &#34;&#34;;
+        flex-grow: 1;
+        height: 0.0625rem;
+        background: rgb(var(--swatch-primary));
+    }
+ 
+    #page-title::before,
+    .meta-title::before {
+        margin: auto 1.25rem auto auto;
+    }
+
+[[/module]]
+[[module css]]
+@import url(&#39;https://fonts.googleapis.com/css2?family=Rubik:wght@300&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;display=swap&#39;);
+
+/* ROOT VARS
+   ============================= */
+
+/* Structural elements generally part of standard HTML spec as well as Wikidot&#39;s base structural elements */
+
+/* ===DIRECTORY===
+    0. =CUSTOM MEDIA DEFINITIONS
+    1. =S-CSS-P INTEGRATION
+    2. =HEADER ELEMENTS
+    3. =TYPEFACES
+    	3.1 =BASE FONT SIZE &amp; LINE HEIGHT
+    	3.2 =HEADER TITLE FONT SIZES
+    4. =VARIABLE FONT SETTINGS
+    	4.1 =VARIABLE MONO FONT SETTINGS
+    5. =OPENTYPE FEATURE SETTINGS
+    6. =STANDARD THEME COLORS
+    7. =PRIMARY COLORS
+    	8.1. =GENERAL COLORS
+    	8.2. =GENERAL TEXT COLORS
+    8. =BACKGROUND &amp; HEADER COLORS
+    9. =MENU COLORS
+    	9.1 =MENU BACKGROUND COLORS
+    	9.2 =MENU TEXT COLORS
+    10. =SECONDARY &amp; TERTIARY COLORS
+    11. =PRIMARY GRADIENTS
+    12. =STRUCTURAL SPACING ELEMENTS
+    	14.1 =HEADER MEASUREMENTS
+    	14.2 =TOPBAR MEASUREMENTS
+    	14.3 =FINAL HEADER + TOPBAR MEASUREMENTS
+    	14.4 =SIDEBAR MEASUREMENTS
+
+    ===============================
+    ======= SPECIFIC COLORS =======
+    ===============================
+    13. =BACKGROUND GRADIENT
+    	13.1 =GENERAL BACKGROUND
+    	13.2 =HEADER GRADIENT
+    	13.3 =TOPBAR GRADIENT
+    14. =LINK COLORS
+    15. =CODE BLOCK COLORS
+    16. =HEADER ELEMENTS
+    	16.1 =HEADER TITLES
+    	16.2 =SEARCH ELEMENT
+    	16.3 =LOGIN BOX ELEMENT
+    17. =TOPBAR ELEMENTS
+    	17.1 =TOPBAR CATEGORIES
+    	17.2 =DROPDOWN MENU
+    18. =SIDE-BAR ELEMENTS
+    	18.1 =SIDE-BAR GENERAL
+    	18.2 =SOCIAL MEDIA ICONS
+    	18.3 =SIDEBLOCK MENU
+    	18.4 =MENU-ITEMS
+    	18.5 =SIDEBAR COLLAPSIBLES
+    	18.5 =INTERWIKI ELEMENTS
+    19. =FOOTER
+    20. =LICENSE AREA
+
+    21. =MAIN CONTENT UI ELEMENTS
+    	21.1 =UI ICONS
+    		21.1.1 =PAGE OPTIONS ICONS
+    		21.1.2 =TEXT EDITOR ICONS
+    	21.2 =TABS
+    	21.3 =TABLES
+    	21.4 =BLOCKQUOTES
+    	21.5 =FOOTNOTES/BIBLIOGRAPHY FOOTER
+    	21.6 =TOC
+
+    22. =GLOBAL ELEMENTS
+    	22.1 =UI BUTTONS
+    	22.2 =RATING MODULE
+    	22.3 =MODALS
+    	22.4 =FOOTNOTES HOVER BLOCK
+    	22.5 =LISTPAGES PAGER
+    	22.6 =ANIMATIONS
+
+    ===============================
+    ======== TEXT ELEMENTS ========
+    ===============================
+
+    23. =HARDCODED TEXT
+
+    ===============================
+    ========= DEPRECIATED =========
+    ===============================
+    24. =LEGACY VARS
+  =============== */
+
+/* ===CUSTOM MEDIA DEFINITIONS=== */
+
+@custom-media --viewport-desktop only screen and (width &gt;= 56.25rem);
+@custom-media --viewport-tablet only screen and (width &lt;= 56.25rem);
+@custom-media --viewport-mobile only screen and (width &lt;= 30rem);
+
+:root {
+    /* ===S-CSS-P INTEGRATION=== */
+    /* If you&#39;re making a new CSS theme, please include the following three variables at minimum. */
+    --theme-base: &#34;black-highlighter&#34;;
+    /* must be either &#34;black-highlighter&#34; or &#34;sigma9&#34; */
+    --theme-id: &#34;nonumb3rstheme&#34;;
+    /* set this to the URL of your theme&#39;s page - eg for &#34;component:ar-theme&#34;, set it to &#34;ar-theme&#34; */
+    --theme-name: &#34;Black Highlighter Theme&#34;;
+    /* set this to your theme&#39;s full name */
+
+    /* ===HEADER ELEMENTS=== */
+    --logo-image: url(&#34;http://scp-wiki.wikidot.com/local--files/scp-6620/6620logo.png&#34;);
+    --header-title: &#34;SCP-6620&#34;;
+    --header-subtitle: none;
+
+    --diagonal-stripes: none;
+
+    /* ===TYPEFACES=== */
+    --body-font: &#34;Rubik&#34;;
+    --UI-font: PTRootUI, -apple-system, system-ui, BlinkMacSystemFont, &#34;Segoe UI&#34;, Roboto, Oxygen-Sans, Ubuntu, Cantrell, &#34;Helvetica Neue&#34;, sans-serif, &#34;Apple Color Emoji&#34;, &#34;Segoe UI Emoji&#34;, &#34;Segoe UI Symbol&#34;;
+    --header-font: &#34;Poppins&#34;;
+    --title-font: &#34;Poppins&#34;;
+    --mono-font: Recursive, Consolas, Monaco, monospace;
+
+    /* ===BASE FONT SIZE &amp; LINE HEIGHT=== */
+    --min-font-size: 0.8125rem; /* 13px */
+    --max-font-size: 0.9375rem; /* 15px */
+
+    --base-font-size: max(var(--min-font-size), min(2vw, var(--max-font-size)));
+
+    --base-line-height: 1.5;
+
+    /* ===HEADER TITLE FONT SIZES=== */
+    --header-h1-font-size: calc(var(--base-font-size) * (40 / 9));
+
+    --header-h2-font-size: var(--base-font-size);
+}
+
+/* Temporary fix until either Safari fixes itself or another solution reveals itself */
+:root {
+    @media (--viewport-tablet) {
+    	--base-font-size: var(--min-font-size);
+    }
+}
+
+:root {
+    /* ===VARIABLE FONT SETTINGS=== */
+    /* SETTING  |  ============== DESCRIPTION			|	FONT: 	RANGE 	 */
+    /* SETTING  |  ============== Weight				|	Body: 100 - 900  */
+    --wght: 400;
+    /* SETTING  |  ============== Weight for UI			|	  UI: 100 - 700  */
+    --ui-wght: 500;
+    /* SETTING  |  ============== Hover Weight for UI	|	  UI: 100 - 700  */
+    --ui-hvr-wght: 500;
+    /* ========================== Body Font Italic 		| 	Body:   0 - 1    */
+    --ital: 0;
+
+    /* ===VARIABLE MONO FONT SETTINGS=== */
+    /* See here for Recursive Font information: https://www.recursive.design/ */
+    /* =========================== Mono Font Weight 		| 	Mono: 300 - 1000 */
+    --mono-wght: 350;
+    /* ========================== Mono Font Italic 		| 	Mono: -15 - 0    */
+    --slnt: 0;
+    /* ========================== Mono Font Casual Amnt | 	Mono:   0 - 1    */
+    --CASL: 0;
+    /* ========================== Mono Font Cursive Amnt|	Mono:   0 - 1    */
+    --CRSV: 0;
+    /* ========================== Mono Font Mono Amnt	| 	Mono:   0 - 1    */
+    --MONO: 1;
+
+    /* ===OPENTYPE FEATURE SETTINGS=== */
+    /* See here for detailed explainations: https://sparanoid.com/lab/opentype-features/ */
+    /* ========================== Lining Numerals		|	Any: 	0 OR 1	 */
+    --lnum: 1;
+    /* ========================== Proportional Numerals	|	Any: 	0 OR 1	 */
+    --pnum: 1;
+    /* ========================== Kerning				|	Any: 	0 OR 1	 */
+    --kern: 1;
+    /* ========================== Capital Spacing		|	Any: 	0 OR 1	 */
+    --cpsp: 1;
+    /* ========================== Case Alternatives		|	Any: 	0 OR 1	 */
+    --liga: 1;
+    /* ========================== Standard Ligature		|	Any: 	0 OR 1	 */
+    --case: 1;
+    /* ========================== Contextual Ligature	|	Any: 	0 OR 1	 */
+    --clig: 1;
+    /* ========================== Discretionary Ligature|	Any: 	0 OR 1	 */
+    --dlig: 0;
+    /* ========================== Contextual Alternate	|	Any: 	0 OR 1	 */
+    --calt: 1;
+    /* ========================== Access All Alternates	|	Any: 	0 OR 1	 */
+    --aalt: 0;
+    /* ========================== Stylistic Sets		|	Any: 	0 OR 1	 */
+    /* ========================== SS 1 | Open Digits	|	Inter: 	0 OR 1	 */
+    --ss01: 1;
+    /* ========================== SS 2 | Disambiguation	|	Inter: 	0 OR 1	 */
+    --ss02: 0;
+    /* ========================== SS 3 | Curved R		|	Inter: 	0 OR 1	 */
+    --ss03: 1;
+    /* ========================== SS 4 | SS2 w/o zero	|	Inter: 	0 OR 1	 */
+    --ss04: 1;
+    /* ========================== Slashed Zero			|	Inter: 	0 OR 1	 */
+    --zero: 1;
+    /* ========================== Single Story a		|	Inter: 	0 OR 1	 */
+    --cv11: 0;
+
+    /* ===STANDARD THEME COLORS=== */
+    /* white */
+    --white-monochrome: 247, 247, 247;
+    /* v light gray for blockquotes and stuff */
+    --pale-gray-monochrome: 236, 236, 234;
+    /* very light pale gray for misc. use */
+    --light-pale-gray-monochrome: 242, 242, 241;
+    /* very light accent gray for misc. use */
+    --very-light-gray-monochrome: 224, 225, 221;
+    /* light accent gray for login status */
+    --light-gray-monochrome: 224, 225, 221;
+    /* gray */
+    --gray-monochrome: 149, 155, 163;
+    /* dark accent gray for sidebar background */
+    --dark-gray-monochrome: 13, 27, 42;
+    /* black */
+    --black-monochrome: 13, 20, 28;
+    /* subdued theme color */
+    --pale-accent: 210, 20, 20;
+    /* vivid theme color the &#34;default&#34; accent color */
+    --bright-accent: 231, 191, 191;
+    /* theme color */
+    --medium-accent: 220, 193, 193;
+    /* darker theme color */
+    --dark-accent: 203, 159, 159;
+    /* alternate accent color for newpage links */
+    --alt-accent: 65, 90, 119;
+
+    /* ===PRIMARY COLORS=== */
+    /* ===GENERAL COLORS=== */
+    --swatch-primary: var(--bright-accent);
+    --swatch-primary-darker: var(--medium-accent);
+    --swatch-primary-darkest: var(--dark-accent);
+    --swatch-border-color: var(--black-monochrome);
+
+    /* ===GENERAL TEXT COLORS=== */
+    --swatch-text-dark: var(--black-monochrome);
+    --swatch-text-light: var(--white-monochrome);
+    --swatch-text-general: var(--swatch-text-light);
+    --swatch-important-text: var(--bright-accent);
+
+    /* ===MENU COLORS=== */
+    /* ===MENU BACKGROUND COLORS=== */
+    --swatch-menubg-color: var(--white-monochrome);
+    --swatch-menubg-light-color: var(--pale-gray-monochrome);
+    --swatch-menubg-medium-color: var(--light-gray-monochrome);
+    --swatch-menubg-medium-dark-color: var(--gray-monochrome);
+    --swatch-menubg-dark-color: var(--dark-gray-monochrome);
+    --swatch-menubg-black-color: var(--black-monochrome);
+    --swatch-menubg-hover-color: var(--black-monochrome);
+
+    /* ===MENU TEXT COLORS=== */
+    --swatch-menutxt-dark-color: var(--black-monochrome);
+    --swatch-menutxt-light-color: var(--white-monochrome);
+    --swatch-menutxt-general-color: var(--swatch-menutxt-dark-color);
+
+    /* ===SECONDARY &amp; TERTIARY COLORS=== */
+    /* Editing these will edit a vast majority of theme elements. Useful for making dark themes */
+
+    /* Colors for Secondary &amp; Tertiary items like Blockquote and YUI Tabs */
+    --swatch-secondary-color: var(--swatch-menubg-light-color);
+    --swatch-tertiary-color: var(--swatch-menubg-medium-color);
+    --swatch-alternate-color: var(--swatch-menubg-dark-color);
+
+    /* Text Colors for Secondary &amp; Tertiary items like Sidebar Headers and Top-Bar Menu Text */
+    --swatch-text-secondary-color: var(--swatch-menutxt-light-color);
+    --swatch-text-tertiary-color: var(--swatch-menutxt-dark-color);
+
+    /* ===STRUCTURAL SPACING ELEMENTS=== */
+    --body-width-on-desktop: 60rem;
+    --body-width-on-mobile: 100%;
+    --scrollbar-width: 1ch;
+
+    /* ===HEADER MEASUREMENTS=== */
+    --header-width-on-desktop: 61.25rem;
+    --header-width-on-mobile: 100vw;
+    --header-height-on-desktop: 15rem;
+    --header-height-on-mobile: 15rem;
+    --header-background-image-size: 100% var(--header-height-on-desktop);
+
+    /* ===TOPBAR MEASUREMENTS=== */
+    --topbar-height-on-desktop: 1.875rem;
+    --topbar-height-on-mobile: 3rem;
+
+    /* ===FINAL HEADER + TOPBAR MEASUREMENTS=== */
+    /* These Vars should not be edited unless necessary. */
+    --final-header-height-on-desktop: calc(var(--header-height-on-desktop) + var(--topbar-height-on-desktop));
+    --final-header-height-on-mobile: calc(var(--header-height-on-mobile) + var(--topbar-height-on-mobile));
+
+    /* ===SIDEBAR MEASUREMENTS=== */
+    --sidebar-width-on-desktop: min(calc(var(--base-font-size) * (266 / 15)), calc((100vw - var(--body-width-on-desktop))));
+    --sidebar-width-on-mobile: calc(var(--base-font-size) * (238 / 15));
+    --sidebar-internal-border-thickness: 0.125rem;
+}
+
+/*  ===============================
+    	======= SPECIFIC COLORS =======
+    	===============================
+
+/* Colors for Buttons, Tabs, Tables, Footnotes Hover/Modal, Etc. */
+
+:root {
+    /* ===BACKGROUND GRADIENT=== */
+
+    /* ===GENERAL BACKGROUND=== */
+    /* Overall Page Background Color */
+    --swatch-background: var(--black-monochrome);
+    --background-gradient-color: var(--black-monochrome);
+
+
+    /* ===HEADER GRADIENT=== */
+    /* Colors forming the header gradient used in --gradient-header var */
+    --header-gradient-color-bottom: 13, 27, 42;
+    --header-gradient-color-middle: 13, 27, 42;
+    --header-gradient-color-top: 13, 27, 42;
+
+    /* ===TOPBAR GRADIENT=== */
+    /* Colors used in the --gradient-topmenu var to give the topbar its color */
+    --swatch-topmenu-bg-color: var(--swatch-menubg-medium-dark-color);
+    --swatch-topmenu-border-color: var(--swatch-menubg-black-color);
+
+    /* ===LINK COLORS=== */
+    --link-color: var(--pale-accent);
+    --visited-link-color: var(--swatch-primary-darkest);
+    --hover-link-color: var(--swatch-primary);
+    --newpage-color: var(--alt-accent);
+
+    /* ===CODE BLOCK COLORS=== */
+    --swatch-code-text-general: var(--swatch-text-dark);
+
+    --swatch-code-text-comment: 102 111 120; /* Greyish Blue */
+    --swatch-code-text-quotes: 183 83 1; /* Redish Orange */
+    --swatch-code-text-string: 86 122 13; /* Green */
+    --swatch-code-text-identifier: 1 84 147; /* Blue */
+    --swatch-code-text-reserved: 128 51 120; /* Dark Purple */
+
+    --swatch-code-text-builtin: var(--swatch-code-text-quotes);
+    --swatch-code-text-inlinedoc: var(--swatch-code-text-identifier);
+    --swatch-code-text-var: var(--swatch-code-text-string);
+    --swatch-code-text-url: var(--swatch-code-text-identifier);
+    --swatch-code-text-special: var(--swatch-code-text-identifier);
+    --swatch-code-text-number: var(--swatch-code-text-quotes);
+    --swatch-code-text-inlinetags: var(--swatch-code-text-quotes);
+}
+
+#header {
+    /* ===HEADER ELEMENTS=== */
+    /* ===HEADER TITLES=== */
+    /* Header H1 and H2 colors */
+    --swatch-headerh1-color: var(--swatch-text-light);
+    --swatch-headerh2-color: var(--swatch-text-light);
+
+    /* ===SEARCH ELEMENT=== */
+    --search-icon-color: var(--swatch-text-secondary-color);
+    --search-icon-hover-color: var(--swatch-text-secondary-color);
+    --search-icon-hover-bg-color: var(--swatch-alternate-color);
+    --search-textbox-text-color: 0, 0, 0, 0;
+    /* Focus is when the search box has been clicked on */
+    --search-icon-focus-color: var(--swatch-text-secondary-color);
+    --search-icon-focus-bg-color: var(--swatch-primary);
+    --search-focus-outline-color: var(--swatch-primary);
+    --search-focus-textbox-bg-color: var(--swatch-alternate-color);
+    --search-focus-textbox-text-color: var(--swatch-text-secondary-color);
+
+    /* ===LOGIN BOX ELEMENT=== */
+    --login-line-divider-color: var(--swatch-text-secondary-color);
+    --login-username-color: var(--swatch-text-secondary-color);
+    --login-myaccount-color: var(--swatch-text-secondary-color);
+    --login-myaccount-hover-color: var(--login-myaccount-color);
+    --login-myaccount-underline-color: var(--swatch-primary-darkest);
+    --login-myaccount-hover-bg-color: var(--swatch-primary-darkest);
+    --login-arrow-color: var(--search-icon-color);
+    /* Dropdown Box when arrow is clicked */
+    --login-dropdown-bg-color: var(--swatch-menubg-color);
+    --login-dropdown-bg-image: var(--gradient-header);
+    --login-dropdown-border-color: var(--swatch-text-tertiary-color), 0.5;
+    --login-dropdown-text-color: var(--swatch-text-secondary-color);
+    --login-dropdown-text-hover-color: var(--swatch-text-secondary-color);
+    --login-dropdown-bg-hover-color: var(--swatch-primary);
+
+    /* Mobile Icon Styling */
+    --login-mobile-icon-color: var(--search-icon-color);
+    --login-mobile-icon-hover-color: var(--search-icon-hover-color);
+    --login-mobile-icon-hover-bg-color: var(--search-icon-hover-bg-color);
+}
+
+#top-bar {
+    /* ===TOPBAR ELEMENTS=== */
+
+    /* ===TOPBAR CATEGORIES=== */
+    --topmenu-category-color: var(--swatch-text-secondary-color);
+    --topmenu-category-hover-color: var(--swatch-text-secondary-color);
+    --topmenu-category-hover-bg: 0, 0, 0, 0; /* Transparent */
+    --topmenu-hover-border-color: var(--swatch-primary);
+
+    --mobile-topmenu-sidebar-button-color: var(--swatch-text-secondary-color);
+
+    /* ===DROPDOWN MENU=== */
+    --dropdown-bg-color: var(--swatch-alternate-color), 0.9;
+    --dropdown-border-color: var(--swatch-text-tertiary-color), 0.5;
+    --dropdown-links-color: var(--swatch-text-secondary-color);
+    --dropdown-links-bg-color: 0, 0, 0, 0; /* Transparent */
+    --dropdown-links-hover-color: var(--swatch-text-secondary-color);
+    --dropdown-links-hover-bg-color: var(--swatch-primary);
+}
+
+#side-bar,
+#interwiki {
+    /* ===SIDE-BAR ELEMENTS=== */
+
+    /* ===SIDE-BAR GENERAL=== */
+    --sidebar-bg-color: var(--);
+    --sidebar-resources-bg-color: var(--swatch-primary-darker), 0.25;
+    --sidebar-media-bg-color: var(--swatch-primary-darker), 0.125;
+
+    /* ===SOCIAL MEDIA ICONS=== */
+    --discord-icon-color: 88, 101, 242; /* BLURPLE */
+    --deviantart-icon-color: 0, 199, 135;
+    --facebook-icon-color: 59, 89, 152;
+    --github-icon-color: 25, 23, 23;
+    --instagram-icon-color: 240, 148, 51;
+    --instagram-icon-gradient: linear-gradient(45deg, rgb(240 148 51) 0%, rgb(230 104 60) 25%, rgb(220 39 67) 50%, rgb(204 35 102) 75%, rgb(188 24 136) 100%);
+    --reddit-icon-color: 225, 69, 0;
+    --sandbox-icon-color: 35, 140, 120;
+    --steam-icon-color: 8, 20, 40;
+    --tiktok-icon-color: 12, 12, 12;
+    --tiktok-icon-gradient: linear-gradient(125deg, rgb(37 244 238) 0%, rgb(37 244 238) 50%, rgb(254 44 85) calc(50% + 0.0625rem), rgb(254 44 85) 100%);
+    --twitch-icon-color: 100, 65, 165;
+    --twitter-icon-color: 29, 161, 242;
+    --youtube-icon-color: 255, 0, 0;
+
+    --social-icon-hover-color: var(--swatch-primary);
+
+    /* ===SIDEBLOCK MENU=== */
+    --sideblock-bg-color: 0, 0, 0, 0; /* Transparent */
+    --sideblock-heading-border-color: var(--swatch-primary);
+    --sideblock-heading-bg-color: 0, 0, 0, 0; /* Transparent */
+    --sideblock-heading-text-color: var(--swatch-primary-darker);
+
+    /* ===MENU-ITEMS=== */
+    --sidebar-border-color: var(--swatch-border-color), 0.08;
+    --sidebar-subtext-color: var(--swatch-text-light);
+
+    --sidebar-links-text: var(--swatch-text-light);
+    --sidebar-links-bg-color: 0, 0, 0, 0; /* Transparent */
+    --sidebar-links-hover-bg-color: var(--swatch-primary);
+    --sidebar-links-hover-text-color: var(--swatch-text-secondary-color);
+
+    /* ===SIDEBAR COLLAPSIBLES=== */
+    /* Folded Colors */
+    --sidebar-collapsible-fld-link-bg: var(--swatch-primary-darker), 0.25;
+    --sidebar-collapsible-fld-link-color: var(--sideblock-heading-text-color);
+    --sidebar-collapsible-fld-link-hover-bg: var(--swatch-primary-darker);
+    --sidebar-collapsible-fld-link-hover-color: var(--swatch-text-secondary-color);
+    --sidebar-collapsible-fld-arrow-color: var(--swatch-text-tertiary-color);
+    --sidebar-collapsible-fld-arrow-hover-color: var(--swatch-text-secondary-color);
+
+    /* Unfolded Colors */
+    --sidebar-collapsible-ufld-link-bg: var(--sidebar-collapsible-fld-link-bg);
+    --sidebar-collapsible-ufld-link-color: var(--sideblock-heading-text-color);
+    --sidebar-collapsible-ufld-link-hover-bg: var(--swatch-primary);
+    --sidebar-collapsible-ufld-link-hover-color: var(--sidebar-collapsible-fld-link-hover-color);
+    --sidebar-collapsible-ufld-arrow-color: var(--sidebar-collapsible-fld-arrow-color);
+    --sidebar-collapsible-ufld-arrow-hover-color: var(--sidebar-collapsible-fld-arrow-hover-color);
+
+    /* Unfolded Body Colors */
+    --sidebar-collapsible-body-bg: var(--swatch-primary), 0.125;
+    --sidebar-collapsible-link-color: var(--sidebar-links-text);
+    --sidebar-collapsible-link-hover-bg: var(--sidebar-links-hover-bg-color);
+    --sidebar-collapsible-link-hover-color: var(--sidebar-links-hover-text-color);
+}
+
+/* ===INTERWIKI ELEMENTS=== */
+
+#interwiki {
+    --base-font-size: var(--max-font-size);
+}
+
+@media only screen and (max-width: 14rem) {
+    #interwiki {
+    	--base-font-size: var(--min-font-size);
+    }
+}
+
+/* ===FOOTER=== */
+
+#footer {
+    --footer-bg-color: var(--swatch-primary-darkest);
+    --footer-text-color: var(--swatch-text-secondary-color);
+    --footer-link-color: var(--swatch-text-secondary-color);
+    --footer-link-hover-color: var(--swatch-primary);
+    --footer-link-hover-bg-color: var(--swatch-secondary-color);
+}
+
+/* ===LICENSE AREA=== */
+
+#license-area {
+    --license-bg-color: var(--swatch-alternate-color);
+    --license-text-color: var(--swatch-text-secondary-color);
+    --license-link-color: var(--swatch-text-secondary-color);
+    --license-link-hover-color: var(--swatch-primary);
+    --license-link-hover-bg-color: var(--swatch-secondary-color);
+}
+
+#main-content {
+    /* ===MAIN CONTENT UI ELEMENTS */
+    /* ===UI ICONS=== */
+    /* ===PAGE OPTIONS ICONS=== */
+    --ui-icon-color: var(--swatch-text-secondary-color);
+    --ui-icon-bg: var(--swatch-primary-darkest);
+    --ui-icon-hover-color: var(--swatch-text-secondary-color);
+    --ui-icon-hover-bg: var(--swatch-primary);
+
+    /* ===TEXT EDITOR ICONS=== */
+    --editor-icon-color: var(--swatch-menutxt-general-color);
+    --editor-icon-bg: 0, 0, 0, 0; /* Transparent */
+    --editor-icon-hover-color: var(--swatch-background);
+    --editor-icon-hover-bg: var(--swatch-primary);
+    --editor-icon-submenu-bg: var(--swatch-secondary-color);
+
+    /* ===TABS=== */
+    --tabs-bg: var(--swatch-secondary-color);
+    --tabs-txt: var(--swatch-text-tertiary-color);
+    --tabs-hover-bg: var(--swatch-primary-darker);
+    --tabs-hover-txt: var(--swatch-text-secondary-color);
+    --tabs-selected-bg: var(--swatch-primary);
+    --tabs-selected-txt: var(--swatch-text-secondary-color);
+    --tabs-selected-outline: var(--swatch-primary);
+    --tabs-bottom-border-color: var(--swatch-primary-darker);
+
+    --tabs-content-bg-color: var(--swatch-secondary-color), 0.25;
+    --tabs-content-border-color: var(--swatch-tertiary-color);
+
+    /* ===TABLES=== */
+    --tables-header-bg: var(--swatch-primary-darkest);
+    --tables-header-txt: var(--swatch-text-secondary-color);
+    --tables-border: var(--swatch-tertiary-color);
+    --tables-body-bg: var(--swatch-background);
+    --tables-body-txt: var(--swatch-text-dark);
+
+    /* ===BLOCKQUOTES=== */
+    --blockquote-bg-color: var(--swatch-secondary-color), 0.25;
+    --blockquote-border-color: var(--swatch-tertiary-color);
+    /* Color for special .colorbar-quote blockquote class */
+    --blockquote-colorbar-color: var(--swatch-primary), 1;
+
+    /* ===FOOTNOTES/BIBLIOGRAPHY FOOTER=== */
+    --footnotes-footer-bg-color: var(--swatch-secondary-color);
+    --footnotes-footer-colorbar-color: var(--swatch-primary-darkest);
+    --footnotes-footer-title-bg-color: var(--swatch-primary-darkest);
+    --footnotes-footer-title-text-color: var(--swatch-text-secondary-color);
+    --footnotes-footer-num-color: var(--link-color);
+    --footnotes-footer-num-hover-color: var(--hover-link-color);
+    --footnotes-footer-text-color: var(--swatch-text-dark);
+
+    /* ===TOC=== */
+    --toc-header-bg-color: var(--swatch-primary-darkest);
+    --toc-header-text-color: var(--swatch-text-secondary-color);
+    --toc-header-text-hover-color: var(--swatch-text-secondary-color);
+
+    --toc-body-bg-color: var(--swatch-menubg-color);
+    --toc-directory-lines-color: var(--swatch-tertiary-color);
+
+    --toc-body-link-color: var(--link-color);
+    --toc-body-link-hover-color: var(--link-color);
+    --toc-body-hover-arrow-color: var(--link-color);
+
+    /* ===PAGE TAGS=== */
+    --pagetags-title-bg: var(--swatch-primary-darkest);
+    --pagetags-title-text: var(--swatch-text-secondary-color);
+    --pagetags-text-color: var(--swatch-primary-darkest);
+    --pagetags-text-hover-color: var(--swatch-background);
+    --pagetags-text-hover-bg-color: var(--swatch-primary);
+
+    /* ===DEFINITION LISTS */
+    --dl-content-bg-color: var(--swatch-secondary-color), 0.25;
+    --dl-content-border-color: var(--swatch-tertiary-color);
+
+    --dt-bg-color: var(--swatch-primary-darkest);
+    --dt-text-color: var(--swatch-text-secondary-color);
+
+    --dd-left-border-color: var(--dt-bg-color);
+}
+
+/* ===GLOBAL ELEMENTS=== */
+
+/* ===UI BUTTONS=== */
+@define-mixin bhl-btn $maxwidth {
+    --wght: var(--ui-wght);
+
+    display: inline-flex;
+    container-type: normal;
+    position: relative;
+    z-index: 2;
+    align-items: center;
+    justify-content: center;
+    min-width: $maxwidth;
+    margin: 0;
+    padding: 0.25em;
+    overflow: hidden;
+    transition:
+    	border-color 0.2s var(--ease-in-out),
+    	box-shadow 0.2s var(--ease-in-out),
+    	color 0.15s var(--ease-in-out),
+    	background-color 0.15s var(--ease-in-out),
+    	font-weight 0.2s var(--ease-in-out),
+    	font-variation-settings 0.2s var(--ease-in-out);
+    border: 0.0625rem solid rgba(var(--swatch-primary), 0.05);
+    outline: 0 solid rgb(var(--swatch-primary));
+    background-color: rgb(var(--ui-button-bg));
+    box-shadow:
+    	-0.125rem 0 0.25rem 0 rgba(var(--swatch-tertiary-color), 0.25),
+    	inset 0 -0.0625rem 0 0 rgba(var(--swatch-tertiary-color), 0.75),
+    	0 0 0 0 rgb(var(--ui-button-bg));
+    color: rgb(var(--ui-button-txt));
+    font-family: var(--UI-font);
+    font-weight: var(--wght);
+    text-decoration: none;
+    will-change: border-color, box-shadow, color, background-color, font-weight, font-variation-settings;
+
+    @supports (font-size:0.75cqi) {
+    	font-size: calc(max(var(--min-font-size),min(0.75cqi,var(--max-font-size))) * 1.8);
+    }
+
+    &amp;:is(:hover, :active, :focus, :focus-within) {
+    	--wght: var(--ui-hvr-wght);
+
+    	border-color: transparent;
+    	outline: 0 solid rgb(var(--swatch-primary));
+    	background-color: rgb(var(--ui-button-hover-bg));
+    	box-shadow: 0 0 0 0 rgba(var(--swatch-tertiary-color), 0), inset 0 0 0 0 rgba(var(--swatch-tertiary-color), 0), 0 0 0 0.125rem rgb(var(--ui-button-hover-outline));
+    	color: rgb(var(--ui-button-hover-txt));
+    	font-weight: var(--wght);
+    	text-decoration: none;
+    	cursor: pointer;
+    }
+
+    @supports (font-size: 1cqi) {
+    	font-size: max(var(--min-font-size), min(0.75cqi, var(--max-font-size)));
+    }
+}
+
+:root {
+    --ui-button-bg: var(--swatch-secondary-color);
+    --ui-button-txt: var(--swatch-text-tertiary-color);
+    --ui-button-hover-bg: var(--swatch-primary);
+    --ui-button-hover-txt: var(--swatch-text-secondary-color);
+    --ui-button-hover-outline: var(--swatch-primary);
+
+    /* ===RATING MODULE=== */
+
+    --rating-module-button-plus-color: var(--theme-color);
+    --rating-module-button-negative-color: var(--theme-color);
+    --rating-module-button-cancel-color: var(--swatch-tertiary-color);
+    --rating-module-button-credit-color: var(--swatch-secondary-color);
+
+    --rating-module-bg-color: var(--swatch-background);
+    --rating-module-bottom-border-color: var(--swatch-primary);
+
+    --rating-module-text-color: var(--swatch-text-light);
+    --rating-module-text-hover-color: var(--swatch-text-light);
+    --font-family: &#34;Poppins&#34;;
+
+    /* ===MODALS=== */
+
+    --modal-bg: var(--swatch-secondary-color);
+    --modal-body-text: var(--swatch-text-tertiary-color);
+    --modal-body-header-txt: var(--swatch-text-tertiary-color); /* h1/h2/h3/h4/h5/h6 */
+
+    --modal-header-bg: var(--swatch-primary-darkest);
+    --modal-header-txt: var(--swatch-text-secondary-color);
+    --modal-header-stripe: var(--swatch-primary);
+
+    /* ===FOOTNOTES HOVER BLOCK=== */
+    --hoverblock-bg: var(--swatch-secondary-color);
+    --hoverblock-txt: var(--swatch-text-tertiary-color);
+    --hoverblock-header-bg: var(--swatch-primary-darker);
+    --hoverblock-header-txt: var(--swatch-text-secondary-color);
+    --hoverblock-footer-bg: var(--swatch-tertiary-color);
+    --hoverblock-footer-txt: var(--swatch-text-tertiary-color);
+
+    /* ===LISTPAGES PAGER=== */
+    --pager-text: var(--swatch-text-dark);
+    --pager-link: var(--link-color);
+
+    --pager-link-hover: var(--swatch-text-secondary-color);
+    --pager-hover-bg: var(--swatch-primary-darkest);
+
+    --pager-selected-bg: var(--swatch-primary);
+    --pager-selected-link: var(--swatch-text-secondary-color);
+}
+
+/* ===ANIMATIONS=== */
+:root {
+    --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes fade-in {
+    from {
+    	opacity: 0;
+    }
+
+    to {
+    	opacity: 1;
+    }
+}
+
+@keyframes slide-in {
+    from {
+    	translate: 1rem 1rem;
+    }
+
+    to {
+    	translate: 0 0;
+    }
+}
+
+
+@supports not (translate: 1rem 1rem) {
+    @keyframes slide-in {
+    	from {
+    		transform: translate(1rem, 1rem);
+    	}
+
+    	to {
+    		transform: translate(0, 0);
+    	}
+    }
+}
+
+@keyframes slide-down {
+    from {
+    	max-height: 0;
+    }
+
+    to {
+    	max-height: var(--header-height-on-desktop);
+    }
+}
+
+@keyframes lift-in {
+    from {
+    	box-shadow: 0 0 0 0 rgba(var(--swatch-alternate-color), 0.25), inset 0 0 0 0.0625rem rgb(var(--swatch-primary-darkest));
+    }
+
+    to {
+    	box-shadow: 0.25rem 0.125rem 0.5rem 0 rgba(var(--swatch-alternate-color), 0.25), inset 0 0 0 0.0625rem rgb(var(--swatch-primary-darkest));
+    }
+}
+
+/*  ===============================
+    	======== TEXT ELEMENTS ========
+    	===============================
+
+/* ===HARDCODED TEXT=== */
+
+:root {
+    /* Found in Wikidot Structure */
+    --text-tags: &#34;TAGS\0021b4&#34;;
+    --text-editor-desc: &#34;Short Description of Changes:&#34;;
+    --text-pagehistory-rev: &#34;rev.&#34;;
+    --text-pagehistory-flags: &#34;flags&#34;;
+    --text-pagehistory-actions: &#34;actions&#34;;
+    --text-pagehistory-by: &#34;by&#34;;
+    --text-pagehistory-date: &#34;date&#34;;
+    --text-sitetools: &#34;Site Tools&#34;;
+
+    /* Found in Elements */
+    --text-creditview-back: &#34;Back&#34;;
+    --text-tableofcontents: &#34;Table of Contents&#34;;
+
+    /* Found in Header */
+    --text-messages: &#34;Messages&#34;;
+}
+
+/*  ===============================
+    	========= DEPRECIATED =========
+    	===============================
+
+/* ===LEGACY VARIABLES=== */
+
+/* These Vars are being left for now in case they are used in various these but will eventually be removed */
+:root {
+    /* Legacy Var -- No longer used */
+    --gradient-sidemenu-header: linear-gradient(10deg, rgba(var(--swatch-primary-darker), 0.45) 0%, rgba(var(--swatch-primary-darker), 0.55) 100%);
+
+    --rating-module-button-color: var(--swatch-menutxt-general-color);
+
+    --border-styling: solid 0.0625rem rgb(var(--swatch-border-color));
+
+    --border-radius-width: 0.0625rem;
+
+    /* Box-Shadow 1px Borders */
+    --box-border-bottom: 0 0.0625rem 0 0 rgb(var(--swatch-border-color));
+    --box-border-top: 0 -0.0625rem 0 0 rgb(var(--swatch-border-color));
+    --box-border-left: -0.0625rem 0 0 0 rgb(var(--swatch-border-color));
+    --box-border-right: 0.0625rem 0 0 0 rgb(var(--swatch-border-color));
+    --box-border-all: 0 0 0 0.0625rem rgb(var(--swatch-border-color));
+
+    --sidebar-transition-timing: 0.5s var(--ease-in-out) 0.1s;
+}
+
+[[/module]]
 [[&gt;]]
 [[module Rate]]
+[[include :scp-wiki:component:author-label-source start=--
+|name=nonumb3rs
+|no-right-margin=*]]
+[[include :scp-wiki:component:author-label-source end=--]]
 [[/&gt;]]
+[[include :scp-wiki:component:bhl-style-collapse-source
+|scp-number=6620]]
+[[module css]]
+:root{
+  --base-color: rgb(66, 66, 72);
+  --hover-color: rgb(236, 203, 217);
+  --click-color: rgb(216, 151, 178);
+}
 
-**Item #:** SCP-6620
+#page-title {
+  display: none;
+}
+[[/module]]
+[[module css]]
 
-**Object Class:** Keter
+.document {
+     background-color: white;
+     padding: 40px;
+     width: 70%;
+     margin: auto;
+}
+[[/module]]
 
-**Special Containment Procedures:** Foundation agents are currently cooperating with several space agencies in order to prevent the public release of knowledge concerning SCP-6620&#39;s existence. The [[[SCP-6187 | Foundation Anomalous Space Telescope]]] is to monitor SCP-6620 at all times throughout its approach, while Site-19&#39;s IT Division have been tasked with identifying instances of SCP-6620-1 using facial recognition software.
-
-Mobile Task Force Pi-205 (&#39;Comet Chasers&#39;) are to monitor instances of SCP-6620-1 following their return to Earth.
-
-**Description:** SCP-6620 is an anomalous cometary body found in the inner solar system. SCP-6620 is significantly smaller than similar objects, the nucleus possessing a diameter of 12 meters, and the tail measuring around 10,000 kilometers in length. Telescopic observation has revealed SCP-6620 to be unusually luminous, and it is currently believed to produce its own light through unknown means.
-
-Located on SCP-6620&#39;s surface are a 400mm telescope situated on a tripod stand, and a plastic lawn chair adorned with a single white cushion. These objects are stationary, and do not appear to be affected by SCP-6620&#39;s minimal gravitational pull.
-
-With an orbital period of 7.14 years, SCP-6620 regularly comes within a distance of &lt;100,000 kilometers of the Earth. During perigee[[footnote]]The point wherein an astronomical object makes its closest approach to the planet Earth.[[/footnote]], a living human (designated SCP-6620-1) will vanish from their current location, and re-manifest atop SCP-6620. Instances of SCP-6620-1 show no effect whatsoever from temperature, vacuum or radiation exposure.
-
-The selection of SCP-6620-1 appears to be entirely random, although subsequent background checks have shown all instances exhibit the following qualities:
-
-* Low self-esteem
-* High levels of anxiety and stress
-* Discontentment with work
-* Difficulty forming and maintaining social relationships
-
-Instances of SCP-6620-1 typically remain on SCP-6620&#39;s surface for a duration of between sixty and ninety minutes. Once they have traveled a distance greater than three million kilometers from the Earth&#39;s surface, the subject will abruptly reappear at their previous location, retaining no recollection of the preceding events. 
-
-Discrete monitoring of confirmed SCP-6620-1 instances in the months following has shown gradual changes in terms of personality and behavior. This includes increased confidence, lower aversion to risk, greater sociability and an interest in astronomy.
-
-[[footnoteblock]]
-
-------
-
+@@
+@@
+@@
+@@
 [[=]]
-[*http://scp-wiki.wikidot.com/dr-leonerd-s-author-page More from this author...]
++ YOU HAVE SERVED YOUR PURPOSE
 [[/=]]
+@@
+@@
+@@
+@@
+[[div_ class=&#34;no-addendum&#34;]]
+[[div_ class=&#34;center-collapse&#34;]]
+[[collapsible show=&#34;recovered.6620-exrpt1-29/09/23.pdf&#34; hide=&#34;recovered.6620-exrpt1-29/09/23.pdf&#34;]]
+@@
+@@
+@@
+@@
+
+[[div class=&#34;document&#34;]]
+
+[[image http://scp-wiki.wikidot.com/local--files/scp-6620/header2.png]]
+
+@@
+@@
+@@
+@@
+
+[[image http://scp-wiki.wikidot.com/local--files/scp-6620/acs.png]]
+
+@@
+@@
+@@
+@@
+
+[[span style=&#34;font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;&#34;]]**Special Containment Procedures:** I’m only using the SCP document format so that this page blends in with the rest of the printing work. This document only exists to make a brief progress report - well, more like a goodbye. As far as I’m aware, they don’t sift through employee documents unless they’re uploaded to the database. Either way, even if they do, I’ve already finished my work. If your name is Hewlett, Kubitz, or O5-whatever, then it’s far too late for you to do anything. The end has been spelled out for you. Good luck.
+[[/span]]
+[[/div]]
+
+@@
+@@
+@@
+@@
 
 ------
+
+Dr. Evelyn Harper studied the intricately welded structure of the cargo bed that bound her. She figured it an act of acceptance; she had come to terms with her entrapment. She had accepted that she was bound to this cage until she reached -- well, wherever this pickup truck was taking her. 
+
+She had no intent of escaping, anyway. If her kidnappers were simple extorters, they wouldn&#39;t drive her to such a secluded location. If they had more sinister intentions, the same goes. Insurgency members? Doubt it, their approach to breaches are more &#34;loud and proud&#34;, and she can&#39;t remember anything odd about the day before she was taken. Plus, she&#39;s not an easy target anyway. The only people that could have so swiftly captured her had to know exactly what she&#39;s capable of - and there&#39;s only one group of people that fit that description. She wasn&#39;t scared of them.
+
+An undisclosed, completely remote location in Nevada isn&#39;t where she had planned to carry out her plan; her plan that she had been working towards for 8 years of her life. But it would have to do.
+
+It was refreshing, really. It was almost poetic that her kidnappers would be taking her to an empty, barren, forgotten land. It reflected on their situation hilariously well. 
+
+She reminisced about her time at the Foundation as she stared out from the window. The excitement welling up inside of her wasn&#39;t from the occasional sand dune whizzing past; it was from the anticipation of the chaos she was about to unleash.
+
+//This is it, Evelyn. All you have to do now is wait.//
+
+So she waited. 
+
+...
+
+She had fallen asleep by the time she had reached her destination. What woke her was the distinct sound of a key entering a lock, and metal hinges creaking open. Her vision was blurry, but she could make out two armed silhouettes standing at the opening of the cargo bed. Groggily, she got up and started walking out. //Step. Step.// She was almost immediately stopped by the two figures, who needed to do no more than outstretch their arms in order to completely stop her in her tracks. Evelyn huffed. 
+
+The makeshift barrier vanished just as two hands found their place on Dr. Harper&#39;s upper back. With a less-than-gentle push, Evelyn&#39;s legs ceased their idleness, and began to take steps in the same direction, one after the other. //Step. Step.//
+
+The hands pushed her towards a hallway that forced a metallic taste into her mouth. It was crappy and abandoned, and her concern failed to dissipate upon being able to properly assess her surroundings. 
+
+Her vision had adjusted, which allowed her to examine the many dingy properties of this undisclosed location. The buzzing fluorescent lights, half of which had ceased to function. The musty smell of mold and dirt. Another push forward. //Step. Step.//
+
+The dead potted plants, once a sign of a bustling office, neglected for years on end. 
+&#34;Hurry it up,&#34; said an invasive voice. She jolted, and took a few more steps forward.
+
+The popcorn walls, grainy and uncomfortable. Evelyn imagined how it would feel to scrape her fingernails across it. The rigidity, the bumpiness, the discomfort it would cause. Just the thought was enough to send shivers down her spine. //Step. Step.//
+
+The occasional painting that was hung up on the wall, reminiscent of a 70s-era therapists office. Depictions of a wide range of things, such as potted plants, landscapes, and elegantly-posed models. A bulletin board with yellowed paper and sticky notes, detailing meeting times and staff events. These details mattered to Dr. Harper. She felt safer now.
+
+&#34;We&#39;re here,&#34; boomed the voice yet again. She was forced to stop and turn to face a door with a passcode-lock on it.
+
+INTERROGATION ROOM C. That’s what the door’s sign read. It looked too modern to be part of this office, and Evelyn certainly hadn&#39;t seen any signs like it on her stroll through the deteriorated hallway. She almost wanted to scoff at the sign&#39;s deceit. //Step.//
+
+&#34;Wrong way.&#34;
+
+Damn this place.
+
+@@
+@@
+------
+@@
+@@
+
+An unfamiliar face stood across from her. A female face. A face worn down severely by age and stress, the face of an old smoker in a European city. The smell matched the profile, too. Below the mysterious woman&#39;s feet, a suitcase stood upright, leaning against the shoddy leg of the table, and a binder of documents sat on the woman&#39;s lap.
+
+The woman possessed a certain aura about her. An unusual aura, even for the things Evelyn&#39;s seen in her time as a Foundation researcher. 
+
+Evelyn heard a door closing. She looked to her left, and found a man draped in thick, military-grade attire. He held a rifle close to his chest. One of the guards from before, probably. She noted the SCP emblem embedded on the man&#39;s vest. Her suspicions were confirmed. This is it.
+
+She looked back at the woman again, and noted her casual outfit. She was wearing a black fleece shirt, enclosed within a red coat. The outfit was considerably wrinkly. Evelyn considered the clothing to be unusual, especially for such an occasion. No high-level Researcher or Site Director would make work-related appearances in anything but formal attire, no matter how private or informal the setting may be.
+
+She broke the silence.
+
+&#34;Who are you?&#34;
+
+The woman stared her down with a disgruntled look. She went to respond truthfully, but thought better of it. The woman stretched her arms out to the sides and yawned, as the flaky 70s-era chair groaned from old age. 
+
+Evelyn figured as much. If this was about what she thought it was, she didn&#39;t deserve to know the identity of who she was speaking to. According to the Foundation, that is.
+
+The woman wasted no time getting to the reason Evelyn was brought all the way out here. She regarded the clipboard sitting atop the small, decrepit desk.
+
+&#34;Dr. Evelyn Harper. Level 4 Scientific Researcher. Valuable researcher for SCPs [[[scp-7210 | 7210]]], [[[scp-4205 | 4205]]], [[[scp-2085 | 2085]]], [[[scp-2480 | 2480]]], and other reality-bending anomalies. A crucial asset to the Foundation, to be sure. Won a high-distinction scientific achievement award, but refused to accept it because you&#39;d like to &#34;keep to yourself&#34;. You also seem to be somewhat focused on SCPs that are related to the Global Occult Coalition, though when questioned you insist that its a coincidence.&#34;
+
+The woman leaned back in her chair. The chair&#39;s audible groan echoed Evelyn&#39;s inaudible groan. If the woman wasn&#39;t jaded enough to lack any outwards display of emotion, she might have appeared smug.
+
+&#34;Oh, and one more thing. Unauthorized research of 6620.&#34; The woman made sure to enunciate every syllable. &#34;For a spy, you&#39;re pretty damn lousy, Grace.&#34;
+
+Grace feigned just the right amount of bewilderment; she made sure not to exaggerate it. &#34;I&#39;m sorry?&#34; she responded.
+
+If she allowed herself to, the woman might have rolled her eyes. &#34;Cut the bullshit. We&#39;ve got you down to rights, Grace. You left a trail. GOC&#39;s got an ID on you; we raided their data catalogue. A lot of suspicious VPN activity coming from your living quarters. You didn&#39;t let anyone in your room, either, not even the occasional cleaner. Not too suspicious on its own, but couple it with the rest, and you&#39;ve got enough for an investigation.&#34;
+
+The woman reached underneath the desk and pulled out a binder of documents, and opened it. Grace recognized the documents well.
+
+&#34;Piles of documents. They&#39;re all signed by Grace, not Evelyn; you were never planning on bringing this to the Foundation&#39;s attention. Confidential information, less-than-scientific diagrams, documents for an unknown SCP, I mean, I&#39;m honestly baffled as to how your Site Director has let you get this far up the food chain!&#34;
+
+She leaned in, and stared Grace down.
+
+&#34;Listen, Grace. I&#39;m gonna ask you a couple of questions. Depending on how you answer them, you might leave this place in one piece.&#34;
+
+Grace said nothing, and nodded.
+
+The woman regarded her for a second before beginning.
+
+&#34;Right, then. First question. Easy one. For roughly how long did you know about 6620?&#34;
+
+Grace had to drop the façade. This would go far quicker if she gave them the answers they wanted, as frustrating as it may be to do so. 
+
+She leaned back in her chair, and answered truthfully. &#34;Since its conception.&#34;
+
+The woman leaned back in her chair and raised one eyebrow, intrigued.
+
+&#34;And how is that?&#34;
+
+Grace wondered how the Foundation hadn&#39;t deduced this already. She was wildly unimpressed.
+
+&#34;I made it.&#34;
+
+------
+
+[[/collapsible]]
+[[/div]]
+[[/div]]
+
+@@
+@@
+@@
+@@
+
+[[div_ class=&#34;no-addendum&#34;]]
+[[div_ class=&#34;center-collapse&#34;]]
+[[collapsible show=&#34;recovered.6620-exrpt2-29/09/23.pdf&#34; hide=&#34;recovered.6620-exrpt2-29/09/23.pdf&#34;]]
+
+@@
+@@
+@@
+@@
+
+[[div class=&#34;document&#34;]]
+[[span style=&#34;font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;&#34;]]**Description:** It&#39;s an orb. It&#39;s got the text &#34;you&#39;ve served your purpose&#34; on it. It floats around. It&#39;s fragile. That&#39;s not what really matters though. What matters is what it represents; the fragility of this goddamn place. The survival of the Foundation depends on the survival of the orb, to say the least.
+
+I don&#39;t know what else to put here other than the fact that it makes me incredibly uncomfortable. Whether it&#39;s because it kind of represents the Foundation, or it&#39;s just so fucking powerful that it makes my skull feel prickly whenever I go near it, who knows. I&#39;ve worked here for eight years. I&#39;ve seen this huge [[[scp-682 | fucked up lizard that can&#39;t be killed]]], I&#39;ve seen a [[[scp-2317 | cult ritual for some scaly ass demon that keeps the world alive]]], I&#39;ve seen [[[scp-231 | containment procedures to allow unspeakable things to be done to a little girl]]], and yet... I&#39;ve never seen anything that can make me feel as uncomfortable as this damn orb has. But I love it. I&#39;ve never loved anything more in my entire life. That feeling I get from being near it... I can&#39;t get enough of it. 
+
+And it makes me think. I&#39;ve met so many people here. I&#39;ve forged relationships, friendships, I&#39;ve gained enemies, I&#39;ve been part of all the office drama and gossip. I&#39;ve won awards, for Christ&#39;s sake. Couldn&#39;t risk accepting them, obviously, but still. It really does make me feel bad sometimes that I&#39;ve come here with ulterior motives, honestly, it does. But we&#39;re all here to do our jobs, right?
+
+[[/span]]
+[[/div]]
+
+@@
+@@
+@@
+@@
+
+------
+
+@@
+@@
+@@
+@@
+
+&#34;You made it?&#34;
+
+&#34;Yes.&#34;
+
+The chair groaned. The woman&#39;s face remained unchanged, but her body language was more authoritative.
+
+&#34;I thought so-- no, //we// thought so, we KNEW so, but Hewlett wouldn&#39;t listen. Neither would the Ethics Committee. It was glaringly obvious, really, but you got the benefit of the doubt. Everyone loved Dr. Harper. Hmph. Can I ask why you made it?&#34;
+
+Grace answered with another question. &#34;Do you know what it does?&#34;
+
+&#34;Yes.&#34;
+
+&#34;Then isn&#39;t it obvious?&#34;
+
+The woman grunted. She bent over, picked up the briefcase, and put it on the desk. 
+
+Admittedly, her plan was not as easy as she thought it was. Beads of sweat were already beginning to conglomerate on her forehead. Just like in the truck, she was beginning to accept her fate. But she could not, under any circumstances, fail at her mission.
+
+&#34;Listen, Grace. I know you think your confidence is going to get you somewhere. I know you think that you&#39;re a personality, or something.&#34; The woman was becoming more aggressive. Grace&#39;s plan was working flawlessly. 
+
+The woman continued. &#34;But you&#39;re just gonna make this harder for yourself if you keep up with the attitude. So it&#39;s better for both of us if you just continue as normal. Got it?&#34;
+
+Grace rolled her eyes. The woman huffed.
+
+&#34;Got. It?&#34;
+
+&#34;...Sure.&#34; 
+
+A sigh, and the sound of jewelry clinking. 
+
+&#34;I expected more from you. I thought you&#39;d put up more of a fight,&#34; says the smoker. 
+
+Grace presses her lips together. This isn&#39;t a fight, at least not in her mind. If it is, she has already won. 
+
+&#34;Moving on, then. Do you associate with the GOC in any way?&#34;
+
+Grace went to answer truthfully, but thought better of it. 
+
+&#34;Yes,&#34; she lied. 
+
+The woman exhaled. &#34;Then you&#39;re making this a lot easier for me.&#34;
+
+Her hand was resting on the briefcase. 
+
+The woman stared at the briefcase for a silent few seconds, before returning her gaze to Grace.
+
+&#34;Grace, are you trying to get yourself killed?&#34;
+
+&#34;No,&#34; she lied.
+
+The woman sighed, and rose from her talkative chair. She traced a pattern in the thick layer of dust that caked the desk separating them. Grace wiped her right index finger on her pants to clean off the imaginary dust.
+
+&#34;Let me ask you something. Do you know why we&#39;re here, Grace?&#34; asked the ashy woman.
+
+&#34;You&#39;re here to kill me.&#34; 
+
+&#34;It&#39;s not just that. The fact is, we&#39;ve tried everything. We&#39;ve exhausted every possible ethical possibility to get rid of you. We tried amnesticizing you, but somehow, you&#39;re immune. We tried physically keeping you out of Site-23, but you kept finding your way back in. We tried using countless Thaumiel SCPs to contain you, but you kept finding your way out. You&#39;re anomalous, Grace! And excuse me if I&#39;m uneducated, but I cannot possibly wrap my head around the fact that a GOC member could be anomalous! So please, educate me, Grace. Entertain me.&#34;
+
+The woman went to open the briefcase. &#34;Tell me exactly why you&#39;re lying to me, and trying to get yourself killed,&#34; she grunted.
+
+Grace refused to feel intimidated. She still needed to complete her mission.
+
+&#34;I can&#39;t tell you that.&#34;
+
+The woman kept staring at her. &#34;It&#39;s better for both of us if you go along with this, Grace. I&#39;m sure you&#39;re smart enough to know what&#39;s in this briefcase, and you&#39;re smart enough to know that it&#39;s better if it stays closed.&#34;
+
+More beads of sweat began congregating, all of them ready to watch the event unfold.
+
+&#34;I can&#39;t. Tell you.&#34;
+
+Slam. The woman&#39;s fist met with the briefcase. &#34;Tell me!&#34; 
+
+This was going nowhere.
+
+&#34;Fine. No, I don&#39;t associate with them. The GOC probably caught wind of my experiments and kept an eye on me; that&#39;s the only reason I might be in their data catalog. I&#39;m not a member. I&#39;m just... inspired. I appreciate their work, but I don&#39;t agree with their motives. I don&#39;t hate anomalies. They just don&#39;t belong in this world, this... plane of existence. It&#39;s cruelty, for them, and for us. Or, I guess, since you&#39;ve classified me as &#39;anomalous&#39;, for us and for you.&#34;
+
+It was a good response; and only a minor detour. 
+
+&#34;So why lie?&#34;
+
+&#34;I guess it was simpler to explain.&#34;
+
+She wasn&#39;t as satisfied with that response. 
+[[/collapsible]]
+[[/div]]
+[[/div]]
+
+@@
+@@
+@@
+@@
+
+[[div_ class=&#34;no-addendum&#34;]]
+[[div_ class=&#34;center-collapse&#34;]]
+[[collapsible show=&#34;recovered.6620-exrpt3-29/09/23.pdf&#34; hide=&#34;recovered.6620-exrpt3-29/09/23.pdf&#34;]]
+
+@@
+@@
+@@
+@@
+
+[[div class=&#34;document&#34;]]
+
+[[span style=&#34;font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;&#34;]]**Addendum (if applicable):** If applicable? I dunno. I guess I&#39;ll just preface this by saying that I think this needed to be done. SCP-6620 needed to be... well, found. Anomalies haven&#39;t existed forever, you know. They only started coming around when there were too many humans - probably nature&#39;s way of balancing everything out, I guess. And it worked, at least for a while. The parents, they&#39;d have something to discipline the kids with. Venturing off into the forest alone? The baba yaga&#39;s going to have a word with you! The teens, they&#39;d have something to curiously chase after and make wonderful horror stories about. They&#39;d go hunting bigfoots and bunyips in the forest. The older folk, they found comfort in the existence of the supernatural. Once they died, they were going to become an apparition, watching over as their legacy unfolds through generations to come. And it was all true. 
+
+Then, a certain century rolled around, and people grew out of their fantastical curiosity. It was deplorable, insane, unbelievable to even mention ghosts! Believing in werewolves and witches? Couldn&#39;t be me! The belief that there was anything beyond the &#39;natural&#39; was taboo. So, we get the &#39;bright&#39; idea of locking these things up, and never speaking of them again, in order to benefit ourselves. To keep the public safe and blissfully unaware. But it didn&#39;t benefit us at all. Truth is, everyone&#39;s dull now. No one believes in anything out of the ordinary, and if they do, they&#39;re a nutjob. Nature had to make more anomalies to compensate for the amount that we were putting away. But as the number of humans in the free world grew, and the number of anomalies in the free world diminished, the world became imbalanced. Now, it&#39;s only a matter of time before it completely tips over. 
+
+I don&#39;t hate the Foundation in particular. They hire good people, and if they didn&#39;t do what they did, then someone else would have. Regardless, they are the ones doing it. They need to be corrected.[[/span]]
+[[/div]]
+
+@@
+@@
+@@
+@@
+
+------
+
+@@
+@@
+@@
+@@
+
+The woman looked on suspiciously, and slowly took a seat once again. A raspy mechanical groan was heard. The sound was getting in her head; it felt like needles in her skull. Grace let out a sigh of relief once it seceded. 
+
+The pair stared at each other, as a fuzzy feeling grew more prominent in Grace&#39;s head. She had to look away, but she couldn&#39;t. She fidgeted with her thumbs, and tried to focus on the sound of the clock on the wall. //Tick. Tick. Tick.//
+
+The woman let five... ten... fifteen seconds pass in complete silence. It was an intimidation tactic. It would&#39;ve worked, if Grace wasn&#39;t distracted by the buzzing in her head. Then two more... then three more...
+
+The tension had reached its peak. Grace patiently awaited the woman&#39;s response. //Tick. Tick. Tick.// How may seconds had passed by now? Twenty-five... maybe thirty... 
+
+The buzzing stopped as soon as the woman&#39;s lips deafeningly spread apart. Grace could hear every ridge on her lip, every string of saliva. She finally began speaking.
+
+&#34;I think I understand you now, Grace,&#34; she said softly. &#34;You&#39;ve accepted death, because there&#39;s no other option. Even if we let you go, you wouldn&#39;t be given access to anything at the Foundation. We can&#39;t amnesticize you, capture you, or kick you out, but we can sure as hell demote you all the way down the ladder. And yet, you know that that&#39;s the more... convoluted option. You know that we&#39;ve spent enough resources getting you all the way out here. We&#39;ve already made a cover story. You know that you were never going to leave here alive. And you know that that&#39;s the easiest option for all of us.&#34;
+
+The woman nods to herself. &#34;And I applaud you, I really do. Most people would be panicking. Begging for their lives. Negotiating in any way they can. You? You see it how it is.&#34; 
+
+Grace, unwavering, continued making direct eye contact with the woman. 
+
+&#34;Why are you here?&#34; she muttered, barely a whisper.
+
+&#34;Simple, Grace. Your name is Evelyn Harper to everyone except for us, the Ethics Committee, and the Site Director. The Ethics Committee reluctantly approved of this little field trip, but they obviously weren&#39;t going to be the ones to do it. The Site Director Hewlett is already deep into it, after struggling with you to get your anomaly off of your hands. We advised against him coming out here. And out of the whole Council, I was the most interested in... well, //you//. That&#39;s why I&#39;m here, Grace.&#34;
+
+If she allowed herself to, Grace might have solemnly nodded.
+
+The woman leaned in. Another groan, more needles. 
+
+&#34;I have to ask. are you really ready to give up your life&#39;s work, your... orb?&#34;
+
+&#34;Yes, If it&#39;s what I have to do.&#34;
+
+&#34;You don&#39;t seem so sure.&#34;
+
+&#34;You said it best. What other option do I have?&#34;
+
+The woman seemed satisfied, nodded, and leaned back. Groan. Needles. 
+
+&#34;You&#39;re smart, Grace.&#34; She said nothing as her hands made their way towards the briefcase. //Click. Click.//
+
+This was it. This was Grace&#39;s opportunity. If they were going to kill her, they&#39;d have to kill... //it//, along with her. 
+
+She had spent years of her life at the Foundation, gathering all the information she needed to build SCP-6620.
+[[&gt;]]
+She heard fabric rustling.
+[[/&gt;]]
+And it was all paying off, now, in the middle of the Nevada desert.
+[[&gt;]]
+Metallic clicking.
+[[/&gt;]]
+It wasn&#39;t easy. It was never going to be easy, and she knew that. But she needed to show those GOC shmucks that they&#39;ve been doing it all wrong.
+[[&gt;]]
+The woman sighed.
+[[/&gt;]]
+Her solution was the best one yet. Not even the coalition&#39;s smartest lab-coats could figure this out. Never in a million years. 
+[[&gt;]]
+&#34;This&#39;ll be quick and painless, alright?&#34;
+[[/&gt;]]
+Of course she didn&#39;t want to show them her work. They didn&#39;t deserve to get their hands on her invention. Besides, all those GOC smartasses have been going about it all wrong. Normal people. Guns. No, you need to fight fire with fire.
+[[&gt;]]
+&#34;Grace?&#34;
+[[/&gt;]]
+Perhaps this isn&#39;t quite the way she wanted to go out. She was planning on getting the Foundation to &#39;accidentally&#39; destroy the orb themselves. Make a big show of it. But this worked too.
+[[&gt;]]
+The briefcase slammed shut.
+[[/&gt;]]
+She leaned back in her chair, sat in silence, and counted the amount of flecks on the popcorn ceiling. 1. 2. 3. No, counting in twos is easier. 2. 4. No, wait. Fives. 5. 10. 15. 20. 25. 
+[[&gt;]]
+[[span style=&#34;filter: blur(0.3px);&#34;]]&#34;Run out of things to say, Grace?&#34;[[/span]]
+[[/&gt;]]
+Yes, she had. 30. 35. 40. 45.
+[[&gt;]]
+[[span style=&#34;filter: blur(0.5px);&#34;]]The old woman sighed. &#34;Figured as much.&#34;[[/span]]
+[[/&gt;]]
+She heard the chair let out a final groan. Out of her peripheral view, she saw a metallic, silver barrel pointed at her temple. It made her lose count, for a very brief period of time. 20...5. 30. 35. 40.
+[[&gt;]]
+[[span style=&#34;filter: blur(1px);&#34;]]The barrel lowered itself from her peripheral view. The woman grunted. &#34;Diaz, uh, can you get a team on 6620&#39;s containment chamber? Just in case, you know.&#34;[[/span]]
+[[/&gt;]]
+45. 50. 55. 60.
+[[&gt;]]
+[[span style=&#34;filter: blur(1.5px);&#34;]]&#34;On it,&#34; said Diaz. The door shut behind him, and Grace could her a walkie-talkie bleep, followed by indistinct chatter.[[/span]]
+[[/&gt;]]
+She kept counting. 65. She felt a twinge in the back of her neck. She was getting close. 66... 67... Another twinge.
+[[&gt;]]
+[[span style=&#34;filter: blur(2px);&#34;]]She saw the barrel re-enter her peripherals.[[/span]]
+[[/&gt;]]
+Her fingernails against the popcorn ceiling. She imagined it. She felt it. 67. 67. 
+[[&gt;]]
+[[span style=&#34;filter: blur(2.5px);&#34;]]The gun cocks.[[/span]]
+[[/&gt;]]
+What color was it again? Blue... no, black. That was it. The feeling of scraping fingernails against the bumps on concrete... 67... black...
+
+And then she saw it: a black sphere. It was only in her mind, but she saw it. She saw it right there, in front of her. She was scared of it, as much as she didn&#39;t want to admit it to herself. It made her feel bumpy... empty... she could taste the color of it. 67... that number made her so uncomfortable. Her will, her determination. It was a black sphere that tasted like a prime number and felt bumpy... she had a feeling she was the only one who felt this way.
+[[&gt;]]
+[[span style=&#34;filter: blur(3px);&#34;]]&#34;Any last words?&#34;[[/span]]
+[[/&gt;]]
+The woman&#39;s voice was nothing but an echo. Grace&#39;s head was full of buzzing flies. A drone of cicadas. An electronic hum.
+
+She couldn&#39;t take it anymore. She never wanted it to end like this, but now, more than anything, she wanted the damn lady to kill her and that... thing.
+
+&#34;Shoot,&#34; Grace whispered.
+[[=]]
+The sphere shattered. 
+[[/=]]
+------
+
+[[/collapsible]]
+[[/div]]
+[[/div]]
+@@
+@@
+@@
+@@
+
+[[div_ class=&#34;no-addendum&#34;]]
+[[div_ class=&#34;center-collapse&#34;]]
+[[collapsible show=&#34;recovered.6620-exrpt4-29/09/23.pdf&#34; hide=&#34;recovered.6620-exrpt4-29/09/23.pdf&#34;]]
+@@
+@@
+@@
+@@
+[[div class=&#34;document&#34;]]
+[[span style=&#34;font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;&#34;]]
+So the world is imbalanced, right? The anomalies are all in captivity, or being killed off, but the amount of humans keeps growing, and growing, and growing. At this point, the anomalies have almost practically been hardwired to remain captive.
+
+Humans needed anomalies, and they didn&#39;t realize it. Anomalies __don&#39;t__ need humans, and they don&#39;t realize it. The amount of free humans has outnumbered the amount of free anomalies so drastically, that the scale is going to tip over very soon. But the anomalies cannot fall with them. They have a more divine purpose that needs to be fulfilled. They have a bigger part to play in the grand scheme of things.[[/span]]
+[[span style=&#34;font-size:20px;font-family:&#39;Courier Prime&#39;;color:black;&#34;]]
+Every time SCP-6620 has been damaged, which has happened a few times now, a number of SCPs suddenly &#39;vanish&#39;. They&#39;re gone, there&#39;s no trace of their physical existence, no nothing. Only the documentation and the cell they were in. Additionally, the rate at which the Foundation finds new anomalies decreases. 
+
+Truth is, they&#39;re not exactly &#39;vanished&#39;. Just removed from this plane of existence. Call it the orb teasing what it can do. 
+
+The world&#39;s going to fall into chaos very soon anyway, and the supernatural cannot be there to succumb to it. When SCP-6620 is destroyed, the job will be done. Every single anomaly will be relocated. Removed from a world that doesn&#39;t respect them. The world is free to do whatever it wants before the scale tips. After that, humankind will fall. It will be slow, it will be ugly, and it will be painful. And it will be their own fault.[[/span]]
+[[/div]]
+@@
+@@
+@@
+@@
+[[/collapsible]]
+[[/div]]
+[[/div]]
+
+@@
+@@
+@@
+@@
+@@
+@@
+@@
+@@
 
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
 [[=]]
@@ -155,8 +2969,12 @@ Discrete monitoring of confirmed SCP-6620-1 instances in the months following ha
 [[/=]]
 [[/div]]
 
+@@
+@@
+@@
+@@
+
 [[include :scp-wiki:component:license-box]]
-[!-- N/A (No Images)  --]
 [[include :scp-wiki:component:license-box-end]]</textarea></pre>
   </div>
 
@@ -164,7 +2982,7 @@ Discrete monitoring of confirmed SCP-6620-1 instances in the months following ha
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:40.174070.</em>
+    <em>Last updated 2024-01-25 19:20:41.828641.</em>
   
 </div>
 </body>

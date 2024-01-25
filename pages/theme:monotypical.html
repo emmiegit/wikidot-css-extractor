@@ -30,17 +30,13 @@
       
         <li>
           <pre><code>@import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/normalize-min.css&#39;);
-@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme:monotypical/5&#34;);</code></pre>
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme:monotypical/5&#39;);</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Inline Styles</h2>
     <ul class="inline-styles">
-      
-        <li>
-          <pre><code>border: solid 1px var(--borderColor); border-radius: var(--radius-adjust); padding: 1rem; margin: 1rem auto;</code></pre>
-        </li>
       
         <li>
           <pre><code>border: solid 1px var(--borderColor); border-radius: var(--radius-adjust); padding: 1rem; margin: 1rem auto;</code></pre>
@@ -74,23 +70,6 @@
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:croqstyle" target="_blank"><code>:scp-wiki:component:croqstyle</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
       
         <li>
   
@@ -211,17 +190,22 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:croqstyle]]
-[[module css]]
+    <pre><textarea class="page-source" readonly>[[module css]]
 @import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/normalize-min.css&#39;);
-@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme:monotypical/5&#34;);
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme:monotypical/5&#39;);
 [[/module]]
+
 [[div_ id=&#34;mono-structure&#34;]]
-[[a id=&#34;sb-button&#34; href=&#34;#container&#34;]]
+[[a id=&#34;sb-button&#34; href=&#34;#container-wrap&#34;]]
 ≡
 [[/a]]
 [[a id=&#34;no-more-menu&#34; href=&#34;##&#34;]][[/a]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme:monotypical/5
+]]
 [[/div]]
+
 [[iftags +theme]]
 
 [[div class=&#34;meta-title&#34;]]
@@ -355,7 +339,7 @@ This is also a long tab. It contains a lot of text.
 @@ @@
 
 [[div class=&#34;header-center&#34;]]
-+++++* Header font is Century Gothic/Quicksand.
++++++* Header and UI font is Urbanist.
 
 Body font is Ubuntu.
 
@@ -366,10 +350,6 @@ Body font is Ubuntu.
 @@ @@
 
 + Deep Dive
-
-[[div style=&#34;border: solid 1px var(--borderColor); border-radius: var(--radius-adjust); padding: 1rem; margin: 1rem auto;&#34;]]
-[[[component:croqstyle|]]] is included with this theme.
-[[/div]]
 
 [[div style=&#34;border: solid 1px var(--borderColor); border-radius: var(--radius-adjust); padding: 1rem; margin: 1rem auto;&#34;]]
 {{@@[[div class=&#34;monoboxical&#34;]]@@}}
@@ -412,7 +392,7 @@ Monotypical&#39;s appearance is controlled by the following variables:
 
     --primaryBackgroundColor: #F9F9F9;
     --secondaryBackgroundColor: #EFEFEF;
-    --tertiaryBackgroundColor: #E0E0E0;
+    --tertiaryBackgroundColor: #E2E2E2;
     --borderColor: #C6C6C6;
 
     --shadow: rgba(0,0,0,0.225);
@@ -423,15 +403,17 @@ Monotypical&#39;s appearance is controlled by the following variables:
 
     /*----- Technical Variables -----*/
 
-    --body-font: &#39;Ubuntu&#39;, sans-serif;
-    --header-font: &#39;Century Gothic&#39;, &#39;Quicksand&#39;, sans-serif;
+    --body-font: &#39;Ubuntu&#39;, system-ui, sans-serif;
+    --header-font: &#39;Urbanist&#39;, Nanum Gothic, sans-serif;
+    --UI-font: var(--header-font);
+    --mono-font: &#39;Fira Code&#39;, Courier, monospace;
     --header-title: &#39;SCP FOUNDATION&#39;;
 
-    --sidebar-width: 15rem;
+    --sidebar-width: 17rem;
     --sidebar-timing: 0.275s ease-out;
-    --page-content-width: 954px;
+    --page-content-width: 60rem;
 
-    --radius-adjust: 0.95rem;
+    --radius-adjust: 1.125rem;
     --link-timing: .125s ease-out;
 }
 [[/code]]
@@ -503,9 +485,6 @@ All of these can be changed to alter the default look of Monotypical. Here are s
     --textColor: #F8F8F2;
     --textColor-alt: #6272A4;
 }
-::-webkit-scrollbar-track {
-    background: var(--secondaryBackgroundColor);
-}
 [[/code]]
 [[/div]]
 ----
@@ -528,100 +507,126 @@ Feel free to experiment with your own color scheme!
       Paperstack Theme by EstrellaYoshte
       Penumbra Theme by EstrellaYoshte
       Black Highlighter by Woedenaz
+      Sigma+ by EstrellaYoshte
+      Bedrock Theme by EstrellaYoshte
 */
-@import url(&#39;https://fonts.googleapis.com/css2?family=Quicksand&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Ubuntu&amp;display=swap&#39;);
+@import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/normalize-min.css&#39;);
 
-/*---- Dismantling and Rebuilding the Structure ----*/
+@import url(&#39;https://api.fonts.coollabs.io/css2?family=Urbanist:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://api.fonts.coollabs.io/css2?family=Ubuntu&amp;display=swap&#39;);
+@import url(&#39;https://api.fonts.coollabs.io/css2?family=Fira+Code:wght@400;700&amp;display=swap&#39;);
 
-div#container-wrap {
-    display: grid;
-    grid-template-columns: var(--sidebar-width) 1fr;
-    grid-template-rows: auto 1fr auto auto auto;
-    overflow: hidden;
-    background: none;
-}
-#container, #content-wrap {
-    display: contents;
-}
+/*-------------------*/
+/*---- NORMALIZE ----*/
+/*-------------------*/
 
-#header {
-    grid-row-start: 1;
-    grid-row-end: 2;
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
+/* Document
+   ========================================================================== */
 
-#main-content {
-    grid-row-start: 2;
-    grid-row-end: 3;
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-#footer {
-    grid-row-start: 3;
-    grid-row-end: 4;
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-#license-area {
-    grid-row-start: 4;
-    grid-row-end: 5;
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
-#footer-bar {
-    grid-row-start: 5;
-    grid-row-end: 6;
-    grid-column-start: 1;
-    grid-column-end: 3;
+/**
+ * 1. Correct the line height in all browsers.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
+ */
+
+html {
+  line-height: 1.15; /* 1 */
+  -webkit-text-size-adjust: 100%; /* 2 */
 }
 
-#side-bar {
-    grid-row-start: 1;
-    grid-row-end: 5;
-    grid-column-start: 1;
-    grid-column-end: 2;
+/**
+ * 1. Correct the inheritance and scaling of font size in all browsers.
+ * 2. Correct the odd `em` font sizing in all browsers.
+ */
+
+pre {
+  font-family: monospace, monospace; /* 1 */
+  font-size: 1em; /* 2 */
 }
 
-/*-------Basic Layout---------*/
-
-#header, #top-bar {
-     width: 100%;
-     max-width: 100%;
-     margin: 0;
-     padding: 0;
+img {
+  border-style: none;
 }
 
-#main-content {
-    position: relative;
-    margin: 0;
-    max-width: 100%;
+/* Forms
+   ========================================================================== */
+
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
 }
 
-#footer {
-    margin-top: 0;
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+
+button,
+input { /* 1 */
+  overflow: visible;
 }
 
-#footer-bar {
-    z-index: 0;
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+
+button,
+select { /* 1 */
+  text-transform: none;
 }
 
-#side-bar {
-    position: fixed;
-    top: 0;
-    left: 0;
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
 
-    margin: 0;
-    padding: 0;
-
-    width: var(--sidebar-width);
-    height: 100vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    z-index: 0;
+button,
+[type=&#34;button&#34;],
+[type=&#34;reset&#34;],
+[type=&#34;submit&#34;] {
+  -webkit-appearance: button;
 }
-#side-bar:focus-within { z-index: 99; }
+
+/**
+ * Remove the inner border and padding in Firefox.
+ */
+
+button::-moz-focus-inner,
+[type=&#34;button&#34;]::-moz-focus-inner,
+[type=&#34;reset&#34;]::-moz-focus-inner,
+[type=&#34;submit&#34;]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+
+/**
+ * Restore the focus styles unset by the previous rule.
+ */
+
+button:-moz-focusring,
+[type=&#34;button&#34;]:-moz-focusring,
+[type=&#34;reset&#34;]:-moz-focusring,
+[type=&#34;submit&#34;]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+
+/**
+ * Correct the padding in Firefox.
+ */
+
+fieldset {
+  padding: 0.35em 0.75em 0.625em;
+}
 
 
 /*--------------------------------------------------------*/
@@ -633,7 +638,7 @@ div#container-wrap {
 
     --primaryBackgroundColor: #F9F9F9;
     --secondaryBackgroundColor: #EFEFEF;
-    --tertiaryBackgroundColor: #E0E0E0;
+    --tertiaryBackgroundColor: #E2E2E2;
     --borderColor: #C6C6C6;
 
     --shadow: rgba(0,0,0,0.225);
@@ -644,152 +649,180 @@ div#container-wrap {
 
     /*----- Technical Variables -----*/
 
-    --body-font: &#39;Ubuntu&#39;, sans-serif;
-    --header-font: &#39;Century Gothic&#39;, &#39;Quicksand&#39;, sans-serif;
+    --body-font: &#39;Ubuntu&#39;, system-ui, sans-serif;
+    --header-font: &#39;Urbanist&#39;, Nanum Gothic, sans-serif;
+    --UI-font: var(--header-font);
+    --mono-font: &#39;Fira Code&#39;, Courier, monospace;
+
     --header-title: &#39;SCP FOUNDATION&#39;;
+    --header-height: 10.5rem;
 
-    --sidebar-width: 15rem;
+    --sidebar-width: 17rem;
     --sidebar-timing: 0.275s ease-out;
-    --page-content-width: 954px;
 
-    --radius-adjust: 0.95rem;
+    --page-content-width: 60rem;
+    --page-content-side-margin: 1.5rem;
+
+    --radius-adjust: 1.125rem;
     --link-timing: .125s ease-out;
 }
 
 
 body {
     font-family: var(--body-font);
-    font-size: 0.9675rem;
+    font-size: .9725em;
     color: var(--textColor);
     background-color: var(--primaryBackgroundColor);
 }
-body, li, p { line-height: 1.5; }
-
+body { line-height: 1.6; }
+li, p { line-height: inherit; }
 
 img {
     max-width: 100%;
 }
 
-tt {
-    background-color: var(--secondaryBackgroundColor);
-    font-size: .925em;
-}
-code {
+tt, code, .code, .code pre, #edit-page-textarea, .page-source {
     font-family: var(--mono-font);
-}
-#edit-page-textarea, .code pre, .code p, .code, .page-source {
-    font-size: .95em;
+    font-size: 1em;
 }
 
-#main-content {
-    background-color: var(--primaryBackgroundColor);
-    padding: 1em 3em;
+sup {
+    vertical-align: top;
+    position: relative;
+    top: -.375em;
 }
 
-span.printuser {
+/* Selection */
+::selection {
+    background: var(--selectionColor);
+    color: var(--textColor);
+}
+
+/*--------------------*/
+/*--- USER DISPLAY ---*/
+/*--------------------*/
+
+.printuser a { margin-right: 0; }
+
+.printuser {
     display: inline-flex;
     align-items: baseline;
+    gap: 0.175em;
+    text-indent: 0;
 }
-#main-content span.printuser.deleted img,
-.hovertip span.printuser a:first-of-type,
-#main-content span.printuser a:first-of-type {
-    display: inline-block;
-    height: 1em;
-    position: relative;
-    margin-right: 0;
+.printuser &gt; a:first-child {
+    display: flex;
     user-select: none;
+    align-self: center;
+    min-width: max-content;
+    background: initial; border: initial;
+}
+.printuser &gt; a:first-child img {
+    height: 1.25em;
+    width: 1.25em;
+    padding: 0;
+    padding-left: 0.5em;
+    object-fit: contain;
+    background-size: cover;
+    overflow: hidden;
 }
 
-#page-content {
-    width: 100%;
-    max-width: var(--page-content-width);
-    margin: 0 auto 2rem;
-    min-height: 100vh;
+#avatar-hover-container {
+    display: none;
 }
 
-#page-content a:not(#u-sb-button, #u-no-more-menu, .page-rate-widget-box a, .creditRate a, .printuser.avatarhover a:first-child, ul.yui-nav a, .scp-image-block a) {
+
+/* ---- LINK ---- */
+
+a {
+    color: var(--linkColor);
+}
+
+:where(#main-content, #odialog-hovertips) a {
     color: var(--textColor);
-    padding: 0.1em;
+    padding-inline: 0.125em;
     text-decoration: none;
 
-    border-bottom: solid 2px var(--linkColor);
+    border-bottom: solid .1em var(--linkColor);
     background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
     background-size: 100% 0;
     background-position: 0 100%;
     background-repeat: no-repeat;
     transition: background-size var(--link-timing);
 }
-#page-content a:not(#u-sb-button, #u-no-more-menu, .page-rate-widget-box a, .creditRate a, .printuser.avatarhover a:first-child, ul.yui-nav a, .scp-image-block a):hover,
-#page-content a:not(#u-sb-button, #u-no-more-menu, .page-rate-widget-box a, .creditRate a, .printuser.avatarhover a:first-child, ul.yui-nav a, .scp-image-block a):focus {
+:where(#main-content, #odialog-hovertips) a:is(:hover,:focus) {
     background-size: 100% 100%;
 }
 
-#page-content a.newpage {
+:where(#main-content, #odialog-hovertips) a.newpage {
     --linkColor: var(--linkColor-newpage);
 }
 
-/* adjusting avatar username spacing */
-.printuser.avatarhover a:first-child {
-    margin-left: 0.15em;
-}
-.printuser.avatarhover a:nth-child(2) {
-    margin-left: -0.45em;
-}
 
 /* ---- SCROLLBAR ---- */
  
+* {
+    scrollbar-color: var(--linkColor) var(--tertiaryBackgroundColor);
+    scrollbar-width: thin;
+}
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 0.5rem;
     background: transparent;
 }
- 
 ::-webkit-scrollbar-track {
     background: var(--tertiaryBackgroundColor);
 }
- 
 ::-webkit-scrollbar-thumb {
     background: var(--linkColor);
-    border: none;
-    border-radius: var(--radius-adjust);
-}
-/* firefox support */
-:root,
-#side-bar {
-    scrollbar-color: var(--linkColor) var(--tertiaryBackgroundColor);
-    scrollbar-width: thin; 
 }
 
 /*---- HEADER ----*/
 
-#header {
-    z-index: 4;
-    background: var(--primaryBackgroundColor);
+#header, #top-bar {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
 }
 
-#page-title,
+#header {
+    display: grid;
+    grid-template-areas:
+        &#34;. . user search . &#34;
+        &#34;. h1 h1 h1 .&#34;
+        &#34;top-bar top-bar top-bar top-bar top-bar&#34;;
+    grid-template-columns: var(--page-content-side-margin) 1fr auto auto var(--page-content-side-margin);
+    grid-template-rows: auto 1fr auto;
+    min-height: var(--header-height);
+    padding-block-start: .325rem;
+    box-sizing: border-box;
+}
+
 #header h2 {
     display: none;
 }
 
 #header h1 {
+    grid-area: h1;
     margin-left: 0;
     padding: 0;
     float: none;
     width: 100%;
+    padding-block: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 #header h1 a {
-    display: block;
-    width: -moz-fit-content;
-    width: fit-content;
-    vertical-align: middle;
-    font-size: 3.25rem;
-    padding: 0.5rem 0.5rem 0;
-    margin: auto;
+    font-size: min(calc(2.5rem + 2.5vw), 4.75rem);
+    padding: 0;
     text-align: center;
     text-shadow: none;
     color: var(--textColor);
     font-family: var(--header-font);
-    font-weight: lighter;
+    font-weight: 300;
+    line-height: 1;
 }
 /* Hide the existing text */
 #header h1 span { font-size: 0; display: none; }
@@ -798,40 +831,59 @@ span.printuser {
 }
 
 #login-status {
-    position: absolute;
-    top: 0.4rem;
-    right: 3.25em;
+    position: relative;
+    inset: initial;
+    grid-area: user;
+    font-size: 0;
+    text-align: end;
+    display: flex;
+    gap: .25rem;
+    align-items: center;
     width: max-content;
-    font-size: 0.78em;
-    text-align: center;
+    margin-inline-end: 1rem;
     z-index: 10;
 }
-#login-status, #login-status a {
+ #login-status a {
     color: var(--textColor);
 }
-#login-status span.printuser  {
-    font-size: 0;
+
+#login-status .printuser { order: 1; }
+#login-status .printuser &gt; a {
+    font-size: 1rem;
 }
-#login-status span.printuser img {
-    font-size: 0;
-    transform: translate(6px, 5px);
-}
+
 #login-status a#my-account {
     display: none;
 }
-#account-topbutton {
+a#account-topbutton {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
     border: none;
-    margin-left: -0.1rem;
-    padding: 0 0.5rem;
+    border-radius: var(--radius-adjust);
+    margin-left: 0;
+    padding: 0.125rem;
+    width: 1.75rem;
+    background-color: var(--secondaryBackgroundColor);
+    box-sizing: border-box;
+    font-family: var(--mono-font);
+    font-size: 1rem;
+    order: 2;
 }
 
 div#account-options {
-    right: 0;
+    font-family: var(--UI-font);
+    font-size: .875rem;
+    inset: unset;
+    inset-inline-end: 0;
+    inset-block-start: 100%;
     background-color: var(--primaryBackgroundColor);
-    width: 10rem;
+    width: max-content;
+    text-align: center;
     border: none;
     border-radius: calc(var(--radius-adjust)*0.3725);
-    box-shadow: 0 0 5px 1px var(--shadow);
+    box-shadow: 0 0 .325rem var(--shadow);
 
     display: block!important;
     opacity: 0;
@@ -860,7 +912,7 @@ div#account-options li a {
     background-position: 0 100%;
     background-repeat: no-repeat;
     transition: background-size var(--link-timing);
-    padding: 0.25rem 0;
+    padding: 0.325rem;
 }
 div#account-options li a:hover,
 div#account-options li a:focus {
@@ -876,20 +928,25 @@ div#account-options li:last-of-type a {
 }
 
 
+#login-status :is(.login-status-create-account, .login-status-sign-in),
+#login-status .login-status-create-account + span {
+    font-size: .875rem;
+}
+
+/*----------------------------*/
+
 div#search-top-box {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 1.6rem;
-    z-index: 31;
+    position: relative;
+    grid-area: search;
+    inset: initial;
+    width: 1.75rem;
+    height: 1.75rem;
+    z-index: 9;
 }
 div#search-top-box::before {
     content: &#34;&#34;;
-    display: block;
-    width: 100%;
-    height: 100%;
     position: absolute;
-    top: 0; right: 0.05rem;
+    inset: 0;
     background-color: var(--linkColor);
     pointer-events: none;
     z-index: 32;
@@ -904,55 +961,43 @@ div#search-top-box::before {
     opacity: 1;
     transition: opacity 0.25s ease;
 }
-div#search-top-box:focus-within::before { opacity: 0; }
 
 div#search-top-box form {
     display: flex;
     justify-content: flex-end;
+    height: 100%;
+    width: 100%;
 }
 
-div#search-top-box form input[type=&#34;text&#34;]:not(:focus),
-div#search-top-box form input[type=&#34;text&#34;]:not(:focus):not(:hover) {
-    position: relative;
-    color: transparent;
-    cursor: pointer;
-    display: inline-block;
-    font-family: var(--body-font);
-    width: 1.6rem;
-    height: 1.6rem;
-    padding: 0.1em 0.5em;
-    box-sizing: border-box;
-    border-radius: var(--radius-adjust);
-    border: none;
-    box-shadow: 0 0 2px 1.5px var(--shadow);
-}
-
-div#search-top-box form input[type=&#34;text&#34;],
-div#search-top-box form input[type=&#34;text&#34;]:hover,
-div#search-top-box form input[type=&#34;text&#34;]:focus {
-    background-color: var(--primaryBackgroundColor)!important;
-    color: var(--textColor);
-    display: inline-block;
-    border: none;
-    height: 1.6rem;
-    width: 9rem;
-    transition: width .25s;
-    outline: none;
-    border-radius: var(--radius-adjust);
-    box-shadow: 0 0 2px 1.5px var(--shadow);
-}
-
-div#search-top-box form input[type=&#34;submit&#34;] {
+div#search-top-box form input[type=&#34;text&#34;] {
     display: none;
+}
+
+
+div#search-top-box form input[type=&#34;submit&#34;].button {
+    display: block;
+    appearance: none;
+    font-size: 0;
+    height: 100%;
+    aspect-ratio: 1;
+    border: none;
+    background-color: var(--primaryBackgroundColor);
+    box-shadow: 0 0 0.175rem .075rem var(--shadow);
+    border-radius: var(--radius-adjust);
+    margin: 0;
+    cursor: pointer;
 }
 
 
 /*------ Top Bar, unfortunately un-reborn -------*/
 
 #top-bar {
+    grid-area: top-bar;
     z-index: 9;
     height: auto;
     right: initial;
+    font-family: var(--UI-font);
+    --_radius: calc(var(--radius-adjust)*1.125);
 }
 
 #top-bar .mobile-top-bar .open-menu, #side-bar a.close-menu {
@@ -964,7 +1009,7 @@ div#search-top-box form input[type=&#34;submit&#34;] {
 }
 
 #top-bar div[class*=top-bar] {
-    font-size: 100%;
+    font-size: 1em;
     max-width: var(--page-content-width);
     margin: 0 auto;
 }
@@ -988,18 +1033,40 @@ div#search-top-box form input[type=&#34;submit&#34;] {
     position: relative;
     flex-grow: 1;
 }
+
 #top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a {
     flex-grow: 1;
+    font-size: min(calc(.675em + .75vw), 1em);
+    max-height: initial;
     padding: 0.5rem;
-    border-radius: calc(var(--radius-adjust)*0.5);
+    border-radius: var(--_radius);
+    position: relative;
     transition: background-color var(--link-timing);
+    --_arrow-size: 1.25rem;
 }
-#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a:hover,
-#top-bar div[class*=top-bar] &gt; ul &gt; li.sfhover &gt; a,
-#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a:focus,
-#top-bar div[class*=top-bar] &gt; ul &gt; li:focus-within &gt; a {
+#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a:is(:hover,:focus),
+#top-bar div[class*=top-bar] &gt; ul &gt; li:is(.sfhover,:focus-within) &gt; a {
     background-color: var(--tertiaryBackgroundColor);
 }
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a:not(:only-child)::after {
+    content: &#34;&#34;;
+    position: absolute;
+    bottom: 0; left: calc(50% - var(--_arrow-size)*.5);
+    width: var(--_arrow-size);
+    height: calc(var(--_arrow-size)*.5);
+    margin: calc(var(--_arrow-size)*-.5) auto 0;
+    background: var(--primaryBackgroundColor);
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    opacity: 0;
+    z-index: 10;
+    pointer-events: none;
+    transition: opacity var(--link-timing);
+}
+#top-bar div[class*=top-bar] &gt; ul &gt; li:is(:hover,:focus-within) a::after {
+    opacity: 1;
+}
+
 
 #top-bar div[class*=top-bar] &gt; ul &gt; li &gt; ul {
     visibility: visible;
@@ -1007,32 +1074,23 @@ div#search-top-box form input[type=&#34;submit&#34;] {
     opacity: 0;
     pointer-events: none;
     display: flex;
+    flex-direction: column;
     width: max-content;
     min-width: 100%;
-    flex-direction: column;
+    left: 50%;
+    transform: translate(-50%, 0);
     background: var(--primaryBackgroundColor);
-    border-radius: calc(var(--radius-adjust)*0.5);
-    box-shadow: 0 0 6px 2px var(--shadow);
+    border-radius: var(--_radius);
+    box-shadow: 0 0 .5rem var(--shadow);
 
     transition: opacity var(--link-timing);
 }
-#top-bar div[class*=top-bar] &gt; ul &gt; li:hover &gt; ul,
-#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; ul:hover,
-#top-bar div[class*=top-bar] &gt; ul &gt; li:focus-within &gt; ul,
-#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; ul:focus-within {
+#top-bar div[class*=top-bar] &gt; ul &gt; li:is(:hover,:focus-within) &gt; ul,
+#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; ul:is(:hover,:focus-within) {
     opacity: 1;
     pointer-events: all;
 }
-#top-bar div[class*=top-bar] ul li ul::after {
-    content: &#34;&#34;;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -8px;
-    border-width: 8px;
-    border-style: solid;
-    border-color: transparent transparent var(--primaryBackgroundColor) transparent;
-}
+
 
 #top-bar div[class*=top-bar] &gt; ul &gt; li &gt; ul &gt; li {
     position: relative;
@@ -1044,7 +1102,7 @@ div#search-top-box form input[type=&#34;submit&#34;] {
 #top-bar li ul li:hover a:hover {
     height: auto;
     max-height: none;
-    padding: 0.4rem;
+    padding: 0.425em;
     width: auto;
     text-align: center;
 
@@ -1060,12 +1118,12 @@ div#search-top-box form input[type=&#34;submit&#34;] {
 }
 
 #top-bar div[class*=top-bar] ul li ul li:first-of-type a {
-    border-top-left-radius: calc(var(--radius-adjust)*0.5);
-    border-top-right-radius: calc(var(--radius-adjust)*0.5);
+    border-top-left-radius: var(--_radius);
+    border-top-right-radius: var(--_radius);
 }
 #top-bar div[class*=top-bar] ul li ul li:last-of-type a {
-    border-bottom-left-radius: calc(var(--radius-adjust)*0.5);
-    border-bottom-right-radius: calc(var(--radius-adjust)*0.5);
+    border-bottom-left-radius: var(--_radius);
+    border-bottom-right-radius: var(--_radius);
 }
 
 #top-bar div[class*=top-bar] &gt; ul:first-of-type &gt; li:last-of-type &gt; ul {
@@ -1074,10 +1132,6 @@ div#search-top-box form input[type=&#34;submit&#34;] {
 }
 
 @media only screen and (max-width: 767px) {
-    #top-bar {
-        width: 95%;
-        margin: 0.1rem auto;
-    }
     #top-bar div.mobile-top-bar {
         display: block;
     }
@@ -1090,17 +1144,28 @@ div#search-top-box form input[type=&#34;submit&#34;] {
 /*---- SIDEBAR ----*/
 
 #side-bar {
-    display: block;
-    box-sizing: border-box;
-    background-color: var(--secondaryBackgroundColor);
-    border-right: solid 2px var(--borderColor);
-}
-#side-bar::-webkit-scrollbar {
-    width: 0;
-    background: transparent;
-}
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
 
-#side-bar .side-block {
+    width: var(--sidebar-width);
+    height: 100%;
+    box-sizing: border-box;
+    font-family: var(--UI-font);
+    background-color: var(--secondaryBackgroundColor);
+    border-right: solid .05rem var(--borderColor);
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: -1;
+    direction: rtl;
+}
+#side-bar:focus-within { z-index: 99; }
+#side-bar &gt; * { direction: ltr; }
+#interwiki { font-family: var(--UI-font); }
+
+:is(#side-bar,#interwiki) .side-block {
     box-shadow: none;
     border: none;
     border-radius: 0;
@@ -1125,36 +1190,33 @@ div#search-top-box form input[type=&#34;submit&#34;] {
     text-align: right;
 }
 
+#side-bar .side-block.media {
+    padding: 0.5rem!important;
+}
 #side-bar .side-block.media &gt; * {
     display: flex;
     justify-content: space-evenly;
-}
-
-#side-bar .side-block.media {
-    border-bottom: solid 2px var(--borderColor);
 }
 
 #side-bar .side-block .menu-item &gt; .image {
     display: none;
 }
 
-#side-bar .heading {
+:is(#side-bar,#interwiki) .heading {
     color: var(--textColor);
     background-color: var(--tertiaryBackgroundColor);
-    border-top: solid 2px var(--borderColor);
     border-bottom: none;
-
     font-family: var(--header-font);
     font-weight: bold;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-    padding: 0.1rem 0.3rem;
-    margin-top: 0.75rem;
-    text-align: right;
+    font-size: 0.95em;
+    padding: .125em.5em;
+    margin: .75em;
+    border-radius: var(--radius-adjust);
+    text-align: center;
 }
-#side-bar .heading p { margin: 0; }
+:is(#side-bar,#interwiki) .heading p { margin: 0; }
 
-#side-bar div.menu-item, #side-bar div.menu-item &gt; p {
+:is(#side-bar,#interwiki) div.menu-item, #side-bar div.menu-item &gt; p {
     display: flex;
     flex-basis: auto;
     flex-wrap: wrap;
@@ -1168,17 +1230,16 @@ div#search-top-box form input[type=&#34;submit&#34;] {
 #side-bar div.menu-item.small { font-size: 0; }
 #side-bar div.menu-item.small a { font-size: 0.75rem; }
 
-#side-bar div.menu-item a {
+:is(#side-bar,#interwiki) div.menu-item a {
     font-weight: normal;
     color: var(--textColor);
     text-decoration: none;
 
     justify-content: center;
     width: auto;
-    padding: .2rem .4rem;
+    padding: .325em .875em;
     flex-grow: 1;
     font-size: 0.875rem;
-    border-bottom: solid 1px var(--linkColor);
 
     background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
     background-size: 100% 0;
@@ -1189,45 +1250,35 @@ div#search-top-box form input[type=&#34;submit&#34;] {
 #side-bar div.menu-item a[href=&#34;/&#34;],
 #side-bar div.menu-item a[href*=&#34;/forum:start&#34;],
 #side-bar div.menu-item a[href*=&#34;scp-series&#34;] {
-    padding: .25rem;
     text-align: center;
 }
-#side-bar div.menu-item a[href=&#34;/&#34;],
-#side-bar div.menu-item a[href*=&#34;/forum:start&#34;] {
-    border-bottom: none;
-    padding: 0.25em 0;
-    font-weight: bold;
-    margin-top: 0.5rem;
-}
 
-#side-bar div.menu-item a:hover,
-#side-bar div.menu-item a:focus {
+:is(#side-bar,#interwiki) div.menu-item a:is(:hover,:focus) {
     background-size: 100% 100%;
 }
 
 iframe.scpnet-interwiki-frame, div.scpnet-interwiki-wrapper {
-    width: var(--sidebar-width);
+    width: 100%;
     margin: 0 auto;
+}
+div.scpnet-interwiki-wrapper :is(.list-pages-box, .list-pages-box, p) { display: contents; }
+:is(#interwiki,#side-bar) .menu-item img {
+    display: none;
 }
 
 /*---- Sidebar Transition Mechanism----*/
 
-#header,
-#main-content,
-#footer,
-#license-area,
-#footer-bar {
+#container-wrap-wrap { overflow-x: hidden; isolation: isolate; }
+#container-wrap { display: contents; }
+
+#container {
+    background-color: var(--primaryBackgroundColor);
     position: relative;
     left: 0;
     transition: left var(--sidebar-timing);
 }
 
-#container:target #header,
-#container:target #main-content,
-#container:target #u-sb-button,
-#container:target #footer,
-#container:target #license-area,
-#container:target #footer-bar {
+:where(#container-wrap:target) #container {
     left: var(--sidebar-width);
 }
 
@@ -1239,65 +1290,133 @@ iframe.scpnet-interwiki-frame, div.scpnet-interwiki-wrapper {
 #u-sb-button {
     position: fixed;
     z-index: 10;
-    top: 0; left: 0;
+    top: 0;
+    left: 0;
     transition: left var(--sidebar-timing);
 
-    display: block;
-    height: 2.6rem;
-    width: 2.6rem;
-    background-color: var(--primaryBackgroundColor);
-    color: var(--textColor);
-    font-weight: bold;
-    font-size: 2rem;
-    line-height: 0.8rem;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    width: 2.875rem;
+    color: var(--textColor-alt);
+    font-family: var(--mono-font);
+    font-size: 2.875rem;
+    line-height: 0;
     text-align: center;
     text-decoration: none;
-}  
+    background: initial; border: initial;
+    -webkit-backdrop-filter: blur(.325rem);
+    backdrop-filter: blur(.325rem);
+}
+#container-wrap:target #u-sb-button {
+    left: var(--sidebar-width);
+}
+
+#u-sb-button &gt; br { display: none; }
 
 #u-no-more-menu {
     display: none;
-}
-#container:target #u-no-more-menu {
-    display: block;
     position: fixed;
     width: calc(100% - var(--sidebar-width));
     height: 100%;
     top: 0;
     right: 0;
+    background: initial; border: initial;
     z-index: 12;
-    pointer-events: all;
+}
+:where(#container-wrap:target) #u-no-more-menu {
+    display: block;
 }
 
+/* ---- MAIN ---- */
+
+
+#main-content {
+    display: grid;
+    grid-template-areas:
+            &#34;action-area-top action-area-top&#34;
+            &#34;page-title page-title&#34;
+            &#34;page-content page-content&#34;
+            &#34;page-info-break page-info-break&#34;
+            &#34;page-tags page-options-container&#34;
+            &#34;page-tags page-options-container&#34;
+            &#34;action-area action-area&#34;
+            &#34;ad ad&#34;;
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    column-gap: 1rem;
+    position: relative;
+    margin-block: .75rem;
+    margin-inline: auto;
+    max-width: calc(100% - var(--page-content-side-margin)*2);
+}
+#action-area-top {
+    grid-area: action-area-top;
+}
+#page-title {
+    grid-area: page-title;
+}
+#page-content {
+    grid-area: page-content;
+    min-height: 100vh;
+    margin-block-end: 1.5rem;
+    margin-inline: auto;
+    max-width: var(--page-content-width);
+    width: 100%;
+}
+#page-info-break {
+    grid-area: page-info-break;
+}
+div.page-tags {
+    grid-area: page-tags;
+}
+#page-options-container {
+    grid-area: page-options-container;
+}
+#action-area {
+    grid-area: action-area;
+}
+#wad-scp-wiki-below-content {
+    grid-area: ad;
+}
+
+#page-title {
+    display: none;
+    font-family: var(--header-font);
+    font-size: 2.25em;
+    line-height: 1.05;
+    border: none;
+}
 
 /* ---- META-TITLE ---- */
 
 .meta-title {
     display: flex;
     align-items: center;
+    gap: calc(.325rem + .25em);
     text-align: center;
     border-bottom: none;
     margin: 0.5rem 0;
     color: var(--textColor);
     font-family: var(--header-font);
-    font-size: 215%;
+    font-size: 2.25em;
+    line-height: 1.05;
 }
 .meta-title::before,
 .meta-title::after {
     content: &#34;&#34;;
     flex-grow: 1;
     height: 0.1rem;
-    margin: auto auto auto 0.65rem;
+    min-width: 1.5rem;
     background-color: var(--borderColor);
-}
-.meta-title::before {
-    margin: auto 0.65rem auto auto;
 }
 
 /* ---- BREADCRUMBS ---- */
 
 #breadcrumbs, #page-content .pseudocrumbs {
     font-size: 0.95em;
-    line-height: 1.15em;
+    line-height: 1.25;
+    font-family: var(--UI-font);
 }
 #breadcrumbs a,
 #main-content #page-content .pseudocrumbs &gt; a {
@@ -1335,252 +1454,173 @@ iframe.scpnet-interwiki-frame, div.scpnet-interwiki-wrapper {
 
 
 
-/* ---- TABS ---- */
+/*--- TABS ---*/
  
-/* ---- YUI TAB BASE ---- */
-.yui-navset .yui-nav a,.yui-navset .yui-navset-top .yui-nav a{background-color:inherit;background-image:inherit}.yui-navset .yui-nav a:hover,.yui-navset .yui-nav a:focus{background:inherit;text-decoration:inherit}.yui-navset .yui-nav .selected a,.yui-navset .yui-nav .selected a:focus,.yui-navset .yui-nav .selected a:hover{color:inherit;background:inherit}.yui-navset .yui-nav,.yui-navset .yui-navset-top .yui-nav{border-color:inherit}.yui-navset li{line-height:inherit}
+.yui-navset {
+    clear: both;
+    --_radius: calc(var(--radius-adjust)*1);
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
  
-/* ---- YUI TAB CUSTOMIZATION ----*/
+.yui-navset .yui-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    font-family: var(--UI-font);
+    border: none;
+}
+.yui-navset.yui-navset-top .yui-nav :is(li, .selected) {
+    display: block;
+    margin: 0;
+    padding: 0;
+    flex-grow: 1;
+}
+.yui-navset.yui-navset-top .yui-nav li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    border-width: 0.05rem;
+    border-radius: var(--_radius);
+    box-sizing: border-box;
+    padding: 0.325rem 0.625rem;
+}
  
- .yui-navset .yui-nav,
- .yui-navset .yui-navset-top .yui-nav {
-     display: flex;
-     flex-wrap: wrap;
-     width: calc(100% - .125rem);
-     margin: 0 auto;
-     border-color: var(--linkColor);
-     box-shadow: none;
-     border-width: 0 1px 2px;
+.yui-navset.yui-navset-top .yui-nav :is(li, .selected) a em {
+    position: static;
+    inset: unset;
+    border: none;
+    padding: 0;
 }
- .yui-navset .yui-nav a, /* ---- Link Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav a {
-     color: var(--textColor-alt);
-    /* ---- Tab Background Colour | [UNSELECTED] ---- */
-     background-color: var(--secondaryBackgroundColor);
-     border: unset;
-     box-shadow: none;
-}
- .yui-navset .yui-nav a:hover,
- .yui-navset .yui-nav a:focus {
-     color: var(--textColor)!important;
-     text-decoration: none;
-    /* ---- Tab Background Colour | [HOVER] ---- */
-     background-color: var(--linkColor);
-}
- .yui-navset .yui-nav li, /* ---- Listitem Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav li {
-     position: relative;
-     display: flex;
-     flex-grow: 2;
-     max-width: 100%;
-     margin: 0;
-     padding: 0;
-     background-color: var(--secondaryBackgroundColor);
-     border: solid 1px var(--linkColor); border-bottom: none; border-top-width: 2px;
-     box-shadow: none;
-}
- .yui-navset .yui-nav li a,
- .yui-navset-top .yui-nav li a,
- .yui-navset-bottom .yui-nav li a {
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 100%;
-}
- .yui-navset .yui-nav li em{
-     border: unset;
-}
- .yui-navset .yui-nav a em,
- .yui-navset .yui-navset-top .yui-nav a em {
-     padding: .35em .75em;
  
-     text-overflow: ellipsis;
-     overflow: hidden;
-     white-space: nowrap;
+/* ------------------------- */
+.yui-navset.yui-navset-top .yui-nav li a {
+    color: var(--textColor);
+    background: var(--primaryBackgroundColor);
+    border-color: var(--secondaryBackgroundColor);
+    transition: all 0.25s ease-out;
 }
- .yui-navset .yui-nav .selected, /* ---- Selection Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav .selected {
-     flex-grow: 2;
-     margin: 0;
-     padding: 0;
-    /* ---- Tab Background Colour | [SELECTED] ---- */
-     background-color: var(--linkColor);
+ 
+.yui-navset.yui-navset-top .yui-nav li a:where(:hover,:focus) {
+    background-color: var(--secondaryBackgroundColor);
 }
- .yui-navset .yui-nav .selected a,
- .yui-navset .yui-nav .selected a em {
-     border: none;
+ 
+.yui-navset.yui-navset-top .yui-nav .selected a {
+    background-color: var(--tertiaryBackgroundColor);
+    border-color: var(--tertiaryBackgroundColor);
+    font-weight: bold;
 }
- .yui-navset .yui-nav .selected a {
-     width: 100%;
-     color: var(--textColor);
-}
- .yui-navset .yui-nav .selected a:focus,
- .yui-navset .yui-nav .selected a:active {
-     color: var(--textColor);
-     background-color: var(--linkColor);
-}
- #page-content .yui-navset .yui-content {
+
+.yui-navset .yui-content {
     background-color: var(--primaryBackgroundColor);
-    box-shadow: none;
-    border: solid 2px var(--borderColor);
-}
- .yui-navset .yui-content,
- .yui-navset .yui-navset-top .yui-content {
-     padding: .5em;
-     border: none;
+    padding: calc(var(--_radius)*.5) var(--_radius);
+    box-shadow: 0 0 .325rem var(--shadow);
+    border: none;
+    border-radius: var(--_radius);
 }
 
 /* ---- AYERS INFO BAR ---- */
+
 .info-container {
     --barColour: var(--borderColor);
     --linkColour: var(--primaryBackgroundColor);
 }
-#page-content .info-container &gt; .collapsible-block &gt; .collapsible-block-folded .collapsible-block-link::before,
-#page-content .info-container &gt; .collapsible-block &gt; .collapsible-block-unfolded .collapsible-block-link::before {
-    visibility: hidden;
-}
 
-/* ---- INFO PANE ---- */
-
-#page-content .creditRate{
-    margin: unset;
-    margin-bottom: 4px;
-}
-#page-content .rate-box-with-credit-button {
-    background-color: var(--primaryBackgroundColor);
-    border: none;
-    box-shadow: 0 0 3px 1px var(--shadow);
-    border-radius: var(--radius-adjust);
-    padding: 0.275rem;
-}
-#page-content .rate-box-with-credit-button .page-rate-widget-box { border: none; }
-
-#page-content a.fa {
-    transform: none;
-} 
-#page-content .rate-box-with-credit-button .fa-info {
-    border: none;
-    color: var(--textColor);
-
-    padding-top: 0.25rem;
-    padding-bottom: 0.0725rem;
-    width: 0.9rem;
-    margin-left: -0.1rem;
-    margin-right: 0.1rem;
-
-    background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
-    background-size: 100% 0;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size var(--link-timing);
-}
- 
-#page-content .rate-box-with-credit-button .fa-info:hover,
-#page-content .rate-box-with-credit-button .fa-info:focus {
-    background-size: 100% 100%;
-}
- 
-.rate-box-with-credit-button .cancel {
-    border: solid 1px var(--primaryBackgroundColor);
-}
-
-#page-content .creditButtonStandalone {
-    margin: 0.125rem 0;
-}
-#page-content .creditButtonStandalone p a {
-    border-radius: 1rem;
-    color: var(--textColor);
-    text-align: center;
-    background: initial;
-    box-shadow: 0 0 2px 1px var(--shadow);
-    padding: 0.24rem;
-
-    background: none;
-    background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    background-size: 100% 0;
-    transition: background-size var(--link-timing);
-}
-#page-content .creditButtonStandalone p a:hover,
-#page-content .creditButtonStandalone p a:hover {
-    text-decoration: none;
-    background: none;
-    background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}
 
 /* ---- PAGE RATING ---- */
- 
-.page-rate-widget-box {
+
+div.page-rate-widget-box, .rate-box-with-credit-button { font-family: var(--UI-font); }
+
+div.page-rate-widget-box {
     display: inline-block;
-    box-shadow: none;
     margin: unset;
-    margin-bottom: 4px;
     background-color: var(--primaryBackgroundColor);
     border-radius: var(--radius-adjust);
-    box-shadow: 0 0 3px 1px var(--shadow);
-    padding: 0.275rem;
+    box-shadow: 0 0 .325rem var(--shadow);
+    padding: 0.325rem;
+    margin-block: .5rem;
+    line-height: 1.325;
 }
 
-.page-rate-widget-box .rateup a:hover,
-.page-rate-widget-box .ratedown a:hover,
-.page-rate-widget-box .cancel a:hover,
-.page-rate-widget-box .rateup a:focus,
-.page-rate-widget-box .ratedown a:focus,
-.page-rate-widget-box .cancel a:focus {
+div.page-rate-widget-box .rate-points {
+    background-color: transparent;
+    color: var(--textColor);
+    border: none;
+    padding-inline: calc(var(--radius-adjust)*.325);
+    text-transform: capitalize;
+}
+div.page-rate-widget-box :is(.rateup,.ratedown,.cancel) {
+    display: contents;
+    text-transform: uppercase;
+}
+ 
+div.page-rate-widget-box :is(.rateup,.ratedown,.cancel) a {
+    padding: .125rem;
+    box-sizing: border-box;
+    display: inline-grid;
+    width: 1.25em;
+    height: 1.25em;
+    place-content: center;
+    border-radius: var(--radius-adjust);
+    color: var(--textColor);
+    background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
+    background-size: 100% 0;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    border: none;
+    transition: background-size var(--link-timing);
+}
+
+div.page-rate-widget-box :is(.rateup,.ratedown,.cancel) a:is(:hover,:focus) {
     color: var(--textColor);
     background: unset;
     background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
     background-size: 100% 100%;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    border-radius: 0;
-}
-
-.page-rate-widget-box .rate-points {
-    background-color: var(--primaryBackgroundColor) !important;
-    color: var(--textColor) !important;
-    border: solid 1px var(--primaryBackgroundColor);
     border-radius: var(--radius-adjust);
 }
-.page-rate-widget-box .rateup,
-.page-rate-widget-box .ratedown {
-    background-color: var(--primaryBackgroundColor);
-    border-top: solid 1px var(--primaryBackgroundColor);
-    border-bottom: solid 1px var(--primaryBackgroundColor);
-}
- 
-.page-rate-widget-box .rateup a,
-.page-rate-widget-box .ratedown a {
-    padding: 0 0.25rem;
-    margin: 0 0.05rem;
 
-    color: var(--textColor);
-    background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
-    background-size: 100% 0;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size var(--link-timing);
-}
+/* ---- INFO PANE ---- */
 
-.page-rate-widget-box .cancel {
+#page-content .creditRate {
+    margin: unset;
+    margin-block: .5rem;
+}
+#page-content .rate-box-with-credit-button {
+
     background-color: var(--primaryBackgroundColor);
-    border: solid 1px var(--primaryBackgroundColor);
+    border: none;
+    box-shadow: 0 0 .325rem var(--shadow);
     border-radius: var(--radius-adjust);
-    margin-right: 0.05rem;
-    text-transform: uppercase;
+    padding: 0.325rem;
+    display: inline-flex;
+    gap: .175em;
+    align-items: center;
 }
- 
-.page-rate-widget-box .cancel a {
+#page-content .rate-box-with-credit-button .page-rate-widget-box { padding: 0; margin: 0; }
+
+.rate-box-with-credit-button .creditButton p { display: contents; }
+.rate-box-with-credit-button .creditButton p a {
+    margin: 0;
+    border: none;
+    display: inline-grid;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1em;
+    padding: .125em;
+    box-sizing: border-box;
+    place-content: center;
+    border-radius: var(--radius-adjust);
     color: var(--textColor);
-    background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
-    background-size: 100% 0;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size var(--link-timing);
+    background-color: var(--secondaryBackgroundColor);
+}
+.rate-box-with-credit-button .creditButton p a:is(:hover,:focus) {
+    color: var(--primaryBackgroundColor);
+    background-color: var(--linkColor);
 }
 
 /*---- PAGE ELEMENTS ----*/
@@ -1602,29 +1642,19 @@ h6 {
 h2, h3, h4, h5, h6 {
     letter-spacing: -0.01em;
 }
-#page-content h1 {font-size: 2em;}
-#page-content h2 {font-size: 1.8em;}
-#page-content h3 {font-size: 1.6em;}
-#page-content h4 {font-size: 1.4em;}
-#page-content h5 {font-size: 1.2em;}
-#page-content h6 {font-size: 1em;}
+h1 {font-size: 2em;}
+h2 {font-size: 1.8em;}
+h3 {font-size: 1.6em;}
+h4 {font-size: 1.4em;}
+h5 {font-size: 1.2em;}
+h6 {font-size: 1em;}
 
-#page-content h1 span,
-#page-content h2 span,
-#page-content h3 span,
-#page-content h4 span,
-#page-content h5 span,
-#page-content h6 span {
+#page-content :is(h1,h2,h3,h4,h5,h6) span {
     padding: 0 0.1em;
     display: inline-flex;
 }
 
-#page-content h1 span::before,
-#page-content h2 span::before,
-#page-content h3 span::before,
-#page-content h4 span::before,
-#page-content h5 span::before,
-#page-content h6 span::before {
+#page-content :is(h1,h2,h3,h4,h5,h6) span::before {
     content: &#34;#&#34;;
     color: var(--textColor-alt);
     font-size: 70%;
@@ -1643,8 +1673,6 @@ h2, h3, h4, h5, h6 {
     background-color: var(--borderColor);
 }
 
-
-
 /* horizontal rule */
 hr {
     margin: 2rem 0;
@@ -1656,6 +1684,12 @@ hr {
 #page-content .collapsible-block {
     margin: 0.5em auto;
 }
+
+#page-content :is(.collapsible-block-folded, .collapsible-block-unfolded) .collapsible-block-link {
+    overflow-wrap: anywhere;
+    padding-block: .25em;
+}
+
 #page-content .collapsible-block-folded .collapsible-block-link::before,
 #page-content .collapsible-block-unfolded .collapsible-block-link::before  {
     content: &#34;&gt; &#34;;
@@ -1665,10 +1699,7 @@ hr {
     color: var(--linkColor);
     transition: color var(--link-timing);
 }
-#page-content .collapsible-block-folded .collapsible-block-link:hover::before,
-#page-content .collapsible-block-unfolded .collapsible-block-link:hover::before,
-#page-content .collapsible-block-folded .collapsible-block-link:focus::before,
-#page-content .collapsible-block-unfolded .collapsible-block-link:focus::before {
+#page-content :is(.collapsible-block-folded, .collapsible-block-unfolded) .collapsible-block-link:is(:hover,:focus)::before {
     color: var(--textColor);
 }
 #page-content .collapsible-block-unfolded .collapsible-block-link::before {
@@ -1682,6 +1713,12 @@ hr {
     from { transform: rotate(0deg);  }
     to { transform: rotate(90deg); }
 }
+
+.licensebox .collapsible-block-link {
+    opacity: .25;
+    transition: all var(--link-timing);
+}
+.licensebox .collapsible-block-link:is(:hover,:focus) { opacity: 1; }
 
 /* Blockquotes and ToC */
 
@@ -1708,22 +1745,18 @@ blockquote, div.blockquote {
 .scp-image-block {
     border: none;
     border-radius: var(--radius-adjust);
-    box-shadow: 0 0 5px 1px var(--shadow);
+    box-shadow: 0 0 .325rem .05rem var(--shadow);
     box-sizing: border-box;
+    overflow: hidden;
 }
 .scp-image-block.block-left { float: left; }
 .scp-image-block.block-right { float: right; }
 
-.scp-image-block img {
-    border-radius: var(--radius-adjust) var(--radius-adjust) 0 0;
-}
 .scp-image-block .scp-image-caption {
     background-color: var(--secondaryBackgroundColor);
     box-sizing: border-box;
     border: none;
-    border-radius: 0 0 var(--radius-adjust) var(--radius-adjust);
-    padding: 0.25rem 0.1rem;
-    color: var(--textColor);
+    padding: 0.25em;
     text-align: center;
 }
 .scp-image-block.block-left { margin-left: 0; margin-right: 1.5rem; }
@@ -1754,10 +1787,8 @@ blockquote, div.blockquote {
 
 /* Footnotes (&amp; Bibliography, but no one cares) */
 a.footnoteref {
-    line-height: 0.625rem;
-    margin: 0 0.15em;
-    position: relative;
-    top: -0.625rem;
+    line-height: 1.15;
+    margin-inline: 0 0.15em;
 }
 
 .hovertip {
@@ -1766,12 +1797,6 @@ a.footnoteref {
     border: none !important;
     box-shadow: 0 0 5px 1px var(--shadow);
     padding: 0.3rem 0.35rem;
-}
-.hovertip a:not(.printuser.avatarhover a:first-child) {
-    color: var(--textColor);
-    padding: 0.1em;
-    text-decoration: none;
-    border-bottom: solid 2px var(--linkColor);
 }
 
 .footnote .f-heading {
@@ -1815,23 +1840,30 @@ a.footnoteref {
 
 /*---- Outside #page-content elements ----*/
 
-/* Selection */
-::selection {
-    background: var(--selectionColor);
-    color: var(--textColor);
-}
-
 /* .owindow */
 
-#owindow-1 { padding-bottom: 0.25rem; }
+#odialog-container:where([style*=&#34;block&#34;]) {
+    display: flex!important;
+    justify-content: center;
+    place-items: center;
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+}
 
 .owindow {
     background-color: var(--primaryBackgroundColor);
     border: none;
     box-sizing: border-box;
     border-radius: var(--radius-adjust);
-    max-width: calc(100% - 3rem);
+    min-width: min(50vw, var(--page-content-width));
+    max-width: calc(100% - var(--page-content-side-margin)*2);
+    position: static!important;
+    text-align: start;
 }
+.owindow:is(.osuccess,.owait) { text-align: center; }
+
 .owindow .title {
     background-color: var(--secondaryBackgroundColor);
     border-radius: var(--radius-adjust) var(--radius-adjust) 0 0;
@@ -1964,59 +1996,19 @@ a.footnoteref {
   }
 }
 
-/*---- Bottom areas Grid-ification ----*/
-#main-content {
-    display: grid;
-    grid-template-areas:
-            &#34;action-area-top action-area-top&#34;
-            &#34;page-title page-title&#34;
-            &#34;page-content page-content&#34;
-            &#34;page-info-break page-info-break&#34;
-            &#34;page-tags page-options-container&#34;
-            &#34;page-tags page-options-container&#34;
-            &#34;action-area action-area&#34;
-            &#34;ad ad&#34;;
-    grid-template-columns: 1fr 1fr;
-}
-#action-area-top {
-    grid-area: action-area-top;
-}
-#page-title {
-    grid-area: page-title;
-}
-#page-content {
-    grid-area: page-content;
-}
-#page-info-break {
-    grid-area: page-info-break;
-}
-div.page-tags {
-    grid-area: page-tags;
-}
-#page-options-container {
-    grid-area: page-options-container;
-}
-#action-area {
-    grid-area: action-area;
-}
-#wad-scp-wiki-below-content {
-    grid-area: ad;
-}
-
 /*--------------*/
 
 /* Tags */
 #main-content div.page-tags {
     padding: 0;
-    margin: 0 2.5rem 0.5rem 0;
 }
 #main-content div.page-tags::before {
     content: &#34;tags&#34;;
     color: var(--textColor-alt);
-    font-size: 80%;
+    font-family: var(--UI-font);
+    font-size: .775em;
     display: block;
     padding: 0 0.25em;
-    margin-bottom: 0.25rem;
 }
 
 #main-content .page-tags span {
@@ -2024,23 +2016,22 @@ div.page-tags {
     border-top: none;
     display: flex;
     flex-wrap: wrap;
+    gap: .325rem;
+    font-family: var(--mono-font);
 }
  
 #main-content .page-tags a {
-    height: 0.9rem;
-    width: max-content;
-    line-height: 0.9rem;
-    font-size: 0.8rem;
-    margin: 0.15rem 0.225rem;
-    padding: 0.25rem 0.1rem;
+    display: flex;
+    margin: 0;
+    font-size: 0.9125em;
+    padding: 0 0.25em;
 
     color: var(--textColor);
-
     background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
     background-size: 100% 0;
     background-position: 0 100%;
     background-repeat: no-repeat;
-    border-bottom: solid 0.1em var(--linkColor);
+    border: none;
     transition: background-size var(--link-timing);
 }
 #main-content .page-tags a:hover,
@@ -2060,34 +2051,22 @@ div.page-tags {
     color: var(--textColor);
 }
 
+#main-content .page-tags a[href^=&#39;/system:page-tags/tag/_&#39;] {
+    display: none;
+}
+
 #page-info {
     color: var(--textColor-alt);
     margin: 0;
-    font-size: 80%;
+    font-family: var(--UI-font);
+    font-size: .775em;
     text-align: right;
 }
 div.page-watch-options {
-    font-size: 80%;
-    margin: 0.325rem 0 0.75rem;
-    line-height: 1.5em;
-}
-
-#page-options-container a:not(a#more-options-button),
-#action-area a:not(#wd-editor-toolbar-panel a, .printuser.avatarhover a:first-child, a.action-area-close.btn.btn-danger, .page-rate-widget-box a) {
-    color: var(--textColor);
-    text-decoration: none;
-
-    border-bottom: solid 2px var(--linkColor);
-    background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
-    background-size: 100% 0;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size var(--link-timing);
-}
-#page-options-container a { padding: 0.1em; }
-#page-options-container a:not(a#more-options-button):hover,
-#action-area a:not(#wd-editor-toolbar-panel a, .printuser.avatarhover a:first-child, a.action-area-close.btn.btn-danger, .page-rate-widget-box a):hover {
-    background-size: 100% 100%;
+    font-family: var(--mono-font);
+    font-size: .75em;
+    margin: 0;
+    line-height: 1.5;
 }
 
 .page-options-bottom {
@@ -2096,16 +2075,20 @@ div.page-watch-options {
     height: auto;
     line-height: normal;
     width: 100%;
-
+    font-family: var(--UI-font);
     display: flex;
     flex-wrap: wrap;
+    gap: .5rem;
+    margin-block: .5rem;
 }
 #page-options-container .page-options-bottom &gt; a {
     flex-grow: 1;
-    flex-shrink: 1;
-    min-width: 4rem;
-    padding: 0.25rem;
-    margin: 0.25rem 0.2rem;
+    flex-basis: 5.75em;
+    min-width: 4em;
+    padding: 0.325em .675em;
+    margin: 0;
+    border: solid 0.05rem var(--tertiaryBackgroundColor);
+    border-radius: var(--radius-adjust);
 }
 
 #page-options-container .page-options-bottom &gt; a#more-options-button,
@@ -2113,13 +2096,13 @@ div.page-watch-options {
 #owindow-1 .button-bar.modal-footer a {
     box-sizing: border-box;
     min-width: 100%;
-    padding: 0.5rem 1rem;
+    padding: 0.375rem .75rem;
     margin-right: 0;
     color: var(--textColor);
+    background: unset;
     background-color: var(--secondaryBackgroundColor);
-    border: solid 2px var(--borderColor);
-    border-radius: calc(var(--radius-adjust)*1.5);
-    font-family: var(--body-font);
+    border: solid .05rem var(--borderColor);
+    border-radius: var(--radius-adjust);
     transition: background-color var(--link-timing);
 }
 #page-options-container .page-options-bottom &gt; a#more-options-button:hover,
@@ -2137,12 +2120,12 @@ div.page-watch-options {
 /*-------------------*/
 
 div.buttons input, input.button, button, file, a.button {
-    margin: 0.1rem;
+    margin: 0;
     padding: 0.275em 0.75em;
     cursor: pointer;
     text-decoration: none;
     background-color: var(--secondaryBackgroundColor);
-    border: solid 2px var(--borderColor);
+    border: solid .05rem var(--borderColor);
     border-radius: var(--radius-adjust);
     color: var(--textColor);
     transition: background-color var(--link-timing);
@@ -2157,9 +2140,9 @@ div.buttons input:hover, input.button:hover, button:hover, file:hover, a.button:
 form#edit-page-form table.form #edit-page-title,
 #edit-page-textarea,
 #edit-page-comments {
-    color: var(--textColor);
+    color: inherit;
     background-color: var(--primaryBackgroundColor);
-    border: solid 1px var(--borderColor);
+    border: solid .05rem var(--borderColor);
 }
 table.form td div.sub, form div.sub {
     color: var(--textColor-alt);
@@ -2183,7 +2166,7 @@ form#edit-page-form {
         &#34;bottom bottom&#34;
         &#34;hdn hdn&#34;
         &#34;button button&#34;;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0,1fr) auto;
 }
 form#edit-page-form table.form { grid-area: title; }
 form#edit-page-form #wd-editor-toolbar-panel { grid-area: toolbar; }
@@ -2196,7 +2179,7 @@ form#edit-page-form .buttons.alignleft { grid-area: button; }
 
 /* Title area*/
 form#edit-page-form table.form {
-    margin: 0 0 0.5em 0!important;
+    margin:0!important;
     width: 100%;
     font-family: var(--header-font);
     font-size: 1.2em;
@@ -2223,29 +2206,286 @@ form#edit-page-form table.form #edit-page-title {
 #wd-editor-toolbar-panel {
     grid-area: toolbar;
     width: 100%;
-    display: grid;
-    margin: 1.5em auto 0.75em;
-    grid-template-columns: repeat(auto-fill, minmax(1.5em, 1fr));
-    grid-gap: 0.125em;
 }
-#wd-editor-toolbar-panel &gt; div,
-#wd-editor-toolbar-panel &gt; div &gt; ul {
+.wd-editor-toolbar-panel {
+    /* Edit textbox button masks, made by and with courtesy of Woedenaz */
+    --h1-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;H1-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M22.4 160V40h14.5v53.4h64V40h14.5v120h-14.5v-53.7h-64V160H22.4zM177.6 40v120h-14.5V61.1h-.9c-.5 1.1-2 2.3-4.2 3.7-2.3 1.4-5.2 2.6-8.8 3.6s-7.7 1.6-12.3 1.6V57.8c4.6 0 8.7-.8 12.1-2.5 3.4-1.7 6.2-3.7 8.5-5.9 2.3-2.3 4-4.3 5.2-6.2 1.2-1.8 1.9-2.9 2.1-3.2h12.8z&#39;/%3E%3C/svg%3E&#34;);
+    --h2-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;H2-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M10.2 160.8v-120h14.5v53.4h64V40.8h14.5v120H88.7v-53.7h-64v53.7H10.2zm106.8 0v-10.5l39.6-43.4c4.6-5.1 8.5-9.5 11.5-13.3 3-3.8 5.2-7.3 6.7-10.7s2.2-6.8 2.2-10.5c0-4.2-1-7.9-3-11-2-3.1-4.8-5.5-8.2-7.1-3.5-1.7-7.4-2.5-11.7-2.5-4.6 0-8.6.9-12 2.8-3.4 1.9-6.1 4.5-7.9 7.9s-2.8 7.4-2.8 12h-13.8c0-7 1.6-13.2 4.9-18.5 3.2-5.3 7.7-9.5 13.3-12.4 5.6-3 11.9-4.5 18.9-4.5 7 0 13.3 1.5 18.7 4.5 5.4 3 9.7 7 12.8 12s4.6 10.6 4.6 16.8c0 4.4-.8 8.7-2.4 12.9-1.6 4.2-4.3 8.9-8.2 14-3.9 5.1-9.3 11.4-16.1 18.8l-27 28.8v.9h55.8v12.9H117z&#39;/%3E%3C/svg%3E&#34;);
+    --h3-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;H3-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M6.1 160V40h14.5v53.4h64V40h14.5v120H84.6v-53.7h-64V160H6.1zm147.3 1.6c-7.7 0-14.6-1.3-20.7-4s-10.8-6.4-14.4-11.1c-3.5-4.7-5.5-10.3-5.8-16.6h14.8c.3 3.9 1.6 7.2 4 10 2.3 2.8 5.4 5 9.2 6.5 3.8 1.5 8 2.3 12.6 2.3 5.2 0 9.7-.9 13.7-2.7 4-1.8 7.1-4.3 9.4-7.5 2.3-3.2 3.4-6.9 3.4-11.1 0-4.4-1.1-8.3-3.3-11.7-2.2-3.4-5.4-6-9.6-7.9-4.2-1.9-9.4-2.9-15.5-2.9h-9.6V92h9.6c4.8 0 9-.9 12.6-2.6 3.6-1.7 6.4-4.1 8.5-7.3 2.1-3.1 3.1-6.8 3.1-11 0-4.1-.9-7.6-2.7-10.6-1.8-3-4.3-5.4-7.6-7-3.3-1.7-7.1-2.5-11.5-2.5-4.1 0-8 .8-11.7 2.3-3.7 1.5-6.6 3.7-8.9 6.5-2.3 2.8-3.6 6.2-3.8 10.2h-14.1c.2-6.3 2.1-11.8 5.7-16.6 3.6-4.7 8.2-8.4 14-11.1 5.8-2.7 12.1-4 19-4 7.4 0 13.8 1.5 19.1 4.5 5.3 3 9.4 6.9 12.2 11.8 2.9 4.9 4.3 10.2 4.3 15.8 0 6.8-1.8 12.5-5.3 17.3-3.5 4.8-8.3 8.1-14.4 9.9v.9c7.6 1.3 13.5 4.5 17.8 9.6 4.3 5.2 6.4 11.6 6.4 19.2 0 6.5-1.8 12.4-5.3 17.5-3.5 5.2-8.3 9.2-14.4 12.2s-13 4.6-20.8 4.6z&#39;/%3E%3C/svg%3E&#34;);
+    --h4-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;H4-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M83.2 93.4h-64V40H4.6v120h14.6v-53.7h64V160h14.5V40H83.2zm112.2 29.1H179V40h-17.7l-52.7 83.4v12h56.5V160h13.8v-24.6h16.4v-12.9zm-71.1-.9 39.8-63h.9v64h-40.8v-1z&#39;/%3E%3C/svg%3E&#34;);
+    --h5-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;H5-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M6.4 159.2v-120h14.5v53.4h64V39.2h14.5v120H84.9v-53.7h-64v53.7H6.4zm147.6 1.6c-6.9 0-13.1-1.4-18.6-4.1s-9.9-6.5-13.2-11.2c-3.3-4.8-5.1-10.2-5.4-16.3h14.1c.5 5.4 3 9.9 7.4 13.4s9.7 5.3 15.8 5.3c4.9 0 9.3-1.2 13.2-3.5 3.8-2.3 6.9-5.5 9.1-9.5s3.3-8.6 3.3-13.7c0-5.2-1.1-9.9-3.4-14s-5.4-7.4-9.4-9.8c-4-2.4-8.5-3.6-13.7-3.6-3.7 0-7.4.5-11.3 1.7-3.9 1.2-7.1 2.6-9.6 4.4l-13.6-1.6 7.3-59.1h62.3v12.9h-50.2l-4.2 35.4h.7c2.5-2 5.5-3.6 9.3-4.9s7.6-1.9 11.6-1.9c7.3 0 13.9 1.7 19.7 5.2 5.8 3.5 10.3 8.3 13.6 14.3 3.3 6.1 5 13 5 20.7 0 7.7-1.7 14.5-5.1 20.5-3.4 6-8.1 10.7-14.1 14.2s-13 5.2-20.6 5.2z&#39;/%3E%3C/svg%3E&#34;);
+    --h6-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;H6-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M5 160.1v-120h14.5v53.4h64V40.1H98v120H83.5v-53.7h-64v53.7H5zm149.9 1.7c-4.9-.1-9.8-1-14.8-2.8s-9.4-4.8-13.5-9.1-7.3-10.1-9.8-17.4c-2.5-7.3-3.7-16.5-3.7-27.6 0-10.7 1-20.1 3-28.4s4.9-15.2 8.7-20.9c3.8-5.7 8.4-10 13.7-12.9s11.4-4.4 18.2-4.4c6.7 0 12.7 1.3 18 4s9.5 6.4 12.9 11.2c3.3 4.8 5.5 10.3 6.4 16.6h-14.3c-1.3-5.5-3.9-10-7.7-13.6s-8.9-5.4-15.2-5.4c-9.3 0-16.6 4.1-21.9 12.2-5.3 8.1-8 19.5-8.1 34.2h.9c2.2-3.3 4.8-6.2 7.8-8.5 3-2.4 6.4-4.2 10-5.5s7.6-1.9 11.7-1.9c6.9 0 13.2 1.7 18.9 5.1 5.7 3.4 10.3 8.1 13.7 14.1 3.4 6 5.2 12.9 5.2 20.6 0 7.4-1.7 14.2-5 20.4s-8 11-14 14.6c-5.9 3.7-13 5.4-21.1 5.4zm0-12.9c4.9 0 9.3-1.2 13.3-3.7s7-5.8 9.3-9.9c2.3-4.1 3.4-8.8 3.4-13.8s-1.1-9.5-3.3-13.6c-2.2-4.1-5.2-7.3-9.1-9.8-3.8-2.4-8.2-3.6-13.2-3.6-3.7 0-7.2.7-10.4 2.2s-6 3.5-8.4 6c-2.4 2.5-4.3 5.4-5.7 8.7-1.4 3.3-2.1 6.7-2.1 10.3 0 4.8 1.1 9.2 3.4 13.4 2.2 4.1 5.3 7.5 9.3 10 4.1 2.5 8.5 3.8 13.5 3.8z&#39;/%3E%3C/svg%3E&#34;);
+    --bold-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Bold-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M53.9 159.4V40h47.8c8.8 0 16.1 1.3 22 3.9 5.9 2.6 10.3 6.2 13.2 10.8 3 4.6 4.4 9.9 4.4 15.9 0 4.7-.9 8.8-2.8 12.3s-4.4 6.4-7.7 8.6c-3.2 2.2-7 3.8-11.1 4.8v1.2c4.5.2 8.8 1.5 12.8 3.8 4 2.4 7.2 5.7 9.7 9.9 2.5 4.3 3.7 9.3 3.7 15.2 0 6.3-1.6 12-4.7 16.9-3.1 5-7.7 8.9-13.9 11.8-6.1 2.9-13.6 4.3-22.6 4.3H53.9zM79.2 90h18.7c3.5 0 6.5-.6 9.2-1.8 2.7-1.2 4.8-3 6.4-5.2 1.6-2.3 2.4-5 2.4-8.1 0-4.3-1.5-7.8-4.6-10.4-3.1-2.6-7.4-4-13-4H79.2V90zm0 48.8h20.6c7 0 12.2-1.4 15.4-4.1 3.2-2.7 4.8-6.3 4.8-10.8 0-3.3-.8-6.2-2.4-8.7-1.6-2.5-3.9-4.5-6.8-5.9-2.9-1.4-6.4-2.2-10.5-2.2H79.2v31.7z&#39;/%3E%3C/svg%3E&#34;);
+    --italic-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Italic-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;m136.4 52.9 2.2-12.9H81.4l-2.1 12.9h21.3l-15.7 94.2H63.6L61.4 160h57.2l2.1-12.9H99.4l15.7-94.2z&#39;/%3E%3C/svg%3E&#34;);
+    --underline-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Underline-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M30 172.5h140v10H30zM131.5 40h14.3v78c0 8.1-1.9 15.2-5.7 21.5-3.8 6.3-9.1 11.3-16 14.9-6.9 3.6-14.9 5.4-24.2 5.4-9.2 0-17.3-1.8-24.2-5.4-6.9-3.6-12.2-8.6-16-14.9C55.9 133.2 54 126 54 118V40h14.3v76.9c0 5.8 1.3 10.9 3.8 15.3 2.5 4.5 6.1 8 10.8 10.5 4.7 2.6 10.3 3.8 16.9 3.8s12.2-1.3 16.9-3.8c4.7-2.6 8.3-6.1 10.8-10.5 2.5-4.5 3.8-9.6 3.8-15.3V40z&#39;/%3E%3C/svg%3E&#34;);
+    --strikethrough-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Strike-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M30 95h140v10H30z&#39;/%3E%3Cpath d=&#39;M127.5 69.8c-.7-5.9-3.6-10.5-8.6-13.8s-11-5-18.3-5c-5.3 0-10 .9-13.9 2.6-4 1.7-7.1 4.1-9.3 7.1-2.2 3-3.3 6.4-3.3 10.3 0 3.2.8 5.9 2.3 8.2 1.5 2.3 3.5 4.2 5.9 5.7 2.4 1.5 5 2.7 7.6 3.7 2.7 1 5.1 1.7 7.3 2.3l12.2 3.3c3.1.8 6.6 2 10.5 3.4 3.8 1.4 7.5 3.4 11.1 5.9s6.5 5.7 8.8 9.5 3.5 8.6 3.5 14.2c0 6.5-1.7 12.3-5.1 17.6-3.4 5.2-8.3 9.4-14.8 12.5s-14.3 4.6-23.5 4.6c-8.6 0-16-1.4-22.3-4.2s-11.2-6.6-14.8-11.6c-3.6-5-5.6-10.7-6.1-17.3h15c.4 4.5 1.9 8.3 4.6 11.2 2.7 3 6.1 5.1 10.2 6.6 4.1 1.4 8.6 2.1 13.3 2.1 5.5 0 10.5-.9 14.9-2.7s7.9-4.4 10.5-7.6c2.6-3.3 3.9-7.1 3.9-11.5 0-4-1.1-7.2-3.3-9.7s-5.2-4.5-8.8-6.1-7.6-2.9-11.8-4.1l-14.8-4.2c-9.4-2.7-16.8-6.5-22.3-11.5s-8.2-11.5-8.2-19.6c0-6.7 1.8-12.6 5.5-17.6 3.7-5 8.6-8.9 14.8-11.7 6.2-2.8 13.1-4.2 20.8-4.2 7.7 0 14.6 1.4 20.6 4.1s10.8 6.5 14.3 11.3c3.5 4.8 5.4 10.2 5.6 16.2h-14z&#39;/%3E%3C/svg%3E&#34;);
+    --teletype-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Teletype-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M166 70.9c-.3-.3-.8-.5-1.3-.5h-34.4V43.9c0-.4-.1-.8-.2-1l-.6-.6c-.2-.2-.6-.2-1-.2h-9.8v28.3H67.4V43.9c0-.4-.1-.8-.2-1l-.6-.6c-.2-.2-.6-.2-1-.2h-9.8v28.3H33.5V79c0 .3 0 .6.1.8l.3.6c.2.2.4.3.6.3.2.1.5.1.8.1h20.5V126c0 6.3.8 11.5 2.4 15.6 1.6 4.1 3.9 7.4 6.8 9.8 2.9 2.4 6.3 4.1 10.1 5 3.8 1 7.9 1.5 12.2 1.5h14.6c.7 0 1.1-.2 1.4-.5.3-.3.4-.8.4-1.5v-8.8H88.3c-3.7 0-6.9-.3-9.5-1-2.6-.7-4.7-1.8-6.4-3.5-1.7-1.7-2.9-4-3.7-6.9-.8-3-1.2-6.7-1.2-11.2V80.8h51.3V126c0 6.3.8 11.5 2.4 15.6 1.6 4.1 3.9 7.4 6.8 9.8 2.9 2.4 6.3 4.1 10.1 5s7.9 1.5 12.2 1.5h14.6c.7 0 1.1-.2 1.4-.5.3-.3.4-.8.4-1.5v-8.8h-15.4c-3.7 0-6.9-.3-9.5-1-2.6-.7-4.7-1.8-6.4-3.5-1.7-1.7-2.9-4-3.7-6.9-.8-3-1.2-6.7-1.2-11.2V80.8h36.2v-8.6c-.2-.5-.4-1-.7-1.3z&#39;/%3E%3C/svg%3E&#34;);
+    --quote-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Quote-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M114.8 150v-37.2c0-4.1.2-8.6.5-13.7.3-4 .8-8 1.8-12.4.8-3.8 2.2-7.5 4-11.2 1.8-3.5 4.3-6.9 7.5-10.1 5.4-5.4 10.8-8.9 16.5-10.6 3.1-.9 6.2-1.8 9.4-2.6v10c-3.2 1.5-5.9 3.2-8.1 5.1-3.6 3.2-6.3 6.7-8.2 10.4-1.7 3.4-2.9 7.1-3.4 11v.4c-.4 3.4-.6 6.4-.6 9.1v10h20.3V150h-39.7zm-69.3 0v-37.2c0-4.1.2-8.6.5-13.7.3-4.1.9-8.1 1.8-12.2 1-4 2.3-7.8 4.2-11.5 1.6-3.3 4.1-6.6 7.4-9.7l.2-.2.2-.2c4.9-5.2 10.4-8.7 16.2-10.4 3.1-.9 6.3-1.8 9.6-2.6v10.1c-3.2 1.5-5.9 3.2-8.1 5.1-3.6 3.2-6.3 6.7-8.2 10.4-1.7 3.4-2.9 7.1-3.4 11v.4c-.4 3.4-.6 6.4-.6 9.1v10h20.3V150H45.5z&#39;/%3E%3C/svg%3E&#34;);
+    --superscript-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Superscript-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;m33.9 39.9 30.9 49.9h.9l30.9-49.9h17.1L76 99.9l37.7 60h-17l-30.9-49h-.9l-30.9 49H16.8l38.7-60-38.7-60h17.1zm92.6 60v-9.1l27.4-24.4c2.7-2.4 5-4.6 6.9-6.5 1.8-1.9 3.2-3.8 4.2-5.6.9-1.8 1.4-3.7 1.4-5.7 0-3.5-1.3-6.3-4-8.4-2.7-2.1-6-3.1-10-3.1-4.2 0-7.6 1.1-10.2 3.4-2.6 2.2-3.9 5.2-3.9 8.8H126c0-6.7 2.5-12.1 7.4-16.1 5-4.1 11.3-6.1 19-6.1 5.2 0 9.7.9 13.6 2.8 3.9 1.9 7 4.4 9.1 7.6s3.3 6.9 3.3 10.9c0 3.2-.6 6.2-1.9 8.9-1.3 2.7-3.3 5.6-6 8.5s-6.2 6.3-10.5 10l-15.2 13.4v.5h35.9V100h-54.2z&#39;/%3E%3C/svg%3E&#34;);
+    --subscript-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Subscript-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;m35.6 39.9 30.9 49.9h.9l30.9-49.9h17.1l-37.7 60 37.7 60h-17l-30.9-49h-.9l-30.9 49H18.4l38.7-60-38.7-60h17.2zm89.2 140.6v-9.1l27.4-24.4c2.7-2.4 5-4.6 6.9-6.5 1.8-1.9 3.2-3.8 4.2-5.6.9-1.8 1.4-3.7 1.4-5.7 0-3.5-1.3-6.3-4-8.4s-6-3.1-10-3.1c-4.2 0-7.6 1.1-10.2 3.4s-3.9 5.2-3.9 8.8h-12.2c0-6.7 2.5-12.1 7.4-16.1s11.3-6.1 19-6.1c5.2 0 9.7.9 13.6 2.8s7 4.4 9.1 7.6 3.3 6.9 3.3 10.9c0 3.2-.6 6.2-1.9 8.9-1.3 2.7-3.3 5.6-6 8.5s-6.2 6.3-10.5 10l-15.2 13.4v.5H179v10.3h-54.2z&#39;/%3E%3C/svg%3E&#34;);
+    --rawtext-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Raw-Text-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M104.3 109.8V98.5H81.1L65.6 71.4H35.8v.1l-13.1 36 10.6 3.9 10.5-28.7h8.7l-17.3 47.6H12.8v11.3h30.4l7.4-20.5 32.7 39 8.7-7.3-36.9-44 7.3-20.1 12.1 20.9v.2zm-37.2-42c3.2 1.2 6.4 1 9.5-.4 3.1-1.5 5.3-3.8 6.4-7 1.2-3.2 1-6.4-.4-9.5-1.5-3.1-3.8-5.3-7.1-6.5-3.2-1.2-6.3-1-9.5.5-3.1 1.5-5.3 3.8-6.5 7s-1 6.4.4 9.5c1.6 3 4 5.2 7.2 6.4z&#39;/%3E%3Cpath d=&#39;M183.4 72.7C180.8 66 177 60.2 172 55.3c-5-4.9-11-8.6-18.2-11.3-7.1-2.6-15.2-4-24.3-4-9.8 0-18.5 1.4-26.2 4.3-5.6 2.1-10.6 4.9-15 8.4.6 3.1.4 6.3-.7 9.3-1.5 4.3-4.6 7.7-8.9 9.8l-.1.2c-1.9.8-3.8 1.3-5.7 1.5-.1.1-.1.3-.2.4L84 93.5h.4c.4-3.9 1.3-7.6 2.4-11.2 1.9-5.6 4.7-10.4 8.5-14.5s8.5-7.4 14.2-9.7c5.7-2.3 12.3-3.4 19.9-3.4 4.4 0 8.7.4 12.8 1.3 4.2.9 8 2.3 11.6 4.2 3.6 1.9 6.7 4.4 9.4 7.5 2.7 3.1 4.8 6.8 6.3 11.1s2.3 9.4 2.3 15.1c0 5.9-.4 10.8-1.1 14.7s-1.8 6.7-3.2 8.5c-1.4 1.9-3.2 2.8-5.3 2.8-1.5 0-2.8-.6-3.7-1.7-.9-1.2-1.4-2.8-1.4-4.9V68.7h-14.3v5.1h-.6c-.5-1.3-1.8-2.6-4-3.7-2.1-1.2-4.7-2-7.8-2.5-3.1-.5-6.3-.5-9.8 0-3 .4-6.1 1.4-9.1 2.9s-5.7 3.6-8.2 6.3c-2.4 2.7-4.4 6-5.9 9.9-.8 2.1-1.4 4.4-1.7 6.9h13.6v21.3H97.4c1.4 4 3.3 7.4 5.8 10.1 2.5 2.8 5.3 4.9 8.5 6.3 3.2 1.5 6.6 2.3 10.2 2.5 3.4.2 6.7-.1 9.7-.9 3.1-.8 5.6-2 7.8-3.4 2.1-1.5 3.6-3.1 4.3-5h.5c.3 2.1 1.1 3.9 2.2 5.5s2.8 2.7 5 3.5c2.2.8 5.1 1.1 8.6.8 4.9-.3 9.1-1.4 12.6-3.4s6.3-4.8 8.4-8.3c2.1-3.5 3.7-7.6 4.7-12.3 1-4.7 1.5-9.8 1.5-15.4.1-8.1-1.2-15.5-3.8-22.2zm-42.9 37.5c-1 2.8-2.5 4.9-4.7 6.4-2.2 1.4-5.2 2.1-8.9 2.1-4 0-7.1-.9-9.5-2.7s-4-4.1-5-7c-1-2.9-1.5-5.9-1.6-9.2 0-3.5.7-6.5 1.9-9.1 1.2-2.6 3-4.6 5.4-6 2.4-1.4 5.2-2.1 8.6-2.1 3.9 0 6.9.7 9.1 2 2.2 1.3 3.7 3.3 4.6 5.8.9 2.5 1.4 5.6 1.4 9.3.1 4.2-.4 7.7-1.3 10.5z&#39;/%3E%3Cpath d=&#39;M149.4 142.5c-2.7.7-5.7 1.3-9.1 1.8-3.3.5-6.8.8-10.3.8-7.4 0-14-1-19.7-2.9-5.7-1.9-10.5-4.8-14.4-8.6-3.9-3.8-6.8-8.4-8.8-14-.6-1.5-1-3.2-1.4-4.8H69.5v-3.9l-1.4-2.4c.3 3.4.8 6.7 1.5 9.8L99 153.4l-.8.7c1.6.7 3.2 1.4 4.9 1.9 7.6 2.6 16.2 3.9 25.9 3.9 4.3 0 8.5-.3 12.6-.9 4.1-.6 7.8-1.4 11-2.3 3.3-1 5.9-2 7.8-3.1l-4.5-13.2c-1.7.7-3.8 1.4-6.5 2.1z&#39;/%3E%3C/svg%3E&#34;);
+    --hr-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;hr-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;10&#39; d=&#39;M160 40v30H40V40m0 120v-30h120v30&#39;/%3E%3Cpath d=&#39;M175 110H25V90h150v20z&#39;/%3E%3C/svg%3E&#34;);
+    --divblock-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Div-Block-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;m59.5 65.5-18.8 69.7H30.3L49 65.5h10.5zm17.1 61.6c-3.3 0-6.3-.9-9-2.6-2.7-1.7-4.8-4.2-6.4-7.6-1.6-3.3-2.3-7.4-2.3-12.3 0-5 .8-9.2 2.4-12.5 1.6-3.3 3.8-5.8 6.4-7.5 2.7-1.7 5.6-2.5 8.8-2.5 2.4 0 4.5.4 6.1 1.2 1.6.8 3 1.8 4 3.1 1 1.2 1.8 2.4 2.3 3.6h.4V68.2h12.1v58.2H89.5v-7H89c-.6 1.2-1.4 2.4-2.4 3.6-1 1.2-2.4 2.2-4 2.9s-3.7 1.2-6 1.2zm3.8-9.6c2 0 3.6-.5 5-1.6s2.4-2.6 3.1-4.5c.7-1.9 1.1-4.2 1.1-6.8s-.4-4.8-1.1-6.8c-.7-1.9-1.8-3.4-3.1-4.4s-3-1.6-5-1.6-3.7.5-5 1.6-2.4 2.6-3.1 4.5c-.7 1.9-1.1 4.1-1.1 6.6s.4 4.8 1.1 6.7c.7 1.9 1.7 3.5 3.1 4.5s3 1.8 5 1.8zm35-40.4c-1.8 0-3.3-.6-4.6-1.8-1.3-1.2-1.9-2.6-1.9-4.3s.6-3.1 1.9-4.3c1.3-1.2 2.8-1.8 4.6-1.8 1.8 0 3.4.6 4.6 1.8 1.3 1.2 1.9 2.6 1.9 4.3 0 1.7-.6 3.1-1.9 4.3-1.3 1.2-2.8 1.8-4.6 1.8zm-6.1 49.3V82.7h12.1v43.6h-12.1zm60.4-43.7-15.3 43.6h-13.6l-15.3-43.6h12.8l9.1 31.2h.5l9-31.2h12.8z&#39;/%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-width=&#39;10&#39; d=&#39;M42.4 160H5V40h37.4m115.2 0H195v120h-37.4&#39;/%3E%3C/svg%3E&#34;);
+    --clearfloat-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Clear-Both-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M150 50v100H50V50h100m10-10H40v120h120V40z&#39;/%3E%3Cpath d=&#39;m160 58.2 28 41.8-28 41.8V58.2m-.1-18.2H150v120h9.9l40.1-60-40.1-60zM40 58.2v83.6L12 100l28-41.8M50 40h-9.9L0 100l40.1 60H50V40zm77.3 102.7-70-69.9 15.4-15.5 70.1 70-15.5 15.4zm-54.7 0-15.4-15.4 70-70 15.4 15.5-70 69.9z&#39;/%3E%3C/svg%3E&#34;);
+    --clearfloatleft-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Clear-Left-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M170 50v100H70V50h100m10-10H60v120h120V40z&#39;/%3E%3Cpath d=&#39;M60 58.2v83.6L32 100l28-41.8M70 40h-9.9L20 100l40.1 60H70V40zm77.3 102.7-70-69.9 15.4-15.5 70.1 70-15.5 15.4zm-54.7 0-15.4-15.4 70-70 15.4 15.5-70 69.9z&#39;/%3E%3C/svg%3E&#34;);
+    --clearfloatright-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Clear-Right-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M130 50v100H30V50h100m10-10H20v120h120V40z&#39;/%3E%3Cpath d=&#39;m140 58.2 28 41.8-28 41.8V58.2m-.1-18.2H130v120h9.9l40.1-60-40.1-60zm-32.6 102.7-70-69.9 15.4-15.5 70.1 70-15.5 15.4zm-54.7 0-15.4-15.4 70-70 15.4 15.5-70 69.9z&#39;/%3E%3C/svg%3E&#34;);
+    --table-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Tables-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M165 50v100H35V50h130m10-10H25v120h150V40z&#39;/%3E%3Cpath d=&#39;M25 40h150v30H25z&#39;/%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;10&#39; d=&#39;M115 70v90m5-50H25&#39;/%3E%3C/svg%3E&#34;);
+    --toc-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;TOC-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M66.5 50.5v9.1H40.2v-9.1h26.3zM46.2 40.1h12.1v40.7c0 1.1.2 2 .5 2.6s.8 1 1.4 1.3c.6.2 1.3.4 2.1.4.6 0 1.1-.1 1.7-.2s1-.2 1.3-.2l1.9 9c-.6.2-1.5.4-2.6.7-1.1.3-2.4.4-4 .5-2.9.1-5.5-.3-7.7-1.2-2.2-.9-3.9-2.3-5.1-4.1-1.2-1.9-1.8-4.2-1.8-7.1V40.1h.2zM90.1 95c-4.4 0-8.2-.9-11.4-2.8-3.2-1.9-5.7-4.5-7.4-7.9-1.7-3.4-2.6-7.3-2.6-11.8s.9-8.5 2.6-11.8c1.7-3.4 4.2-6 7.4-7.9 3.2-1.9 7-2.8 11.4-2.8s8.2.9 11.4 2.8c3.2 1.9 5.7 4.5 7.4 7.9 1.7 3.4 2.6 7.3 2.6 11.8s-.9 8.4-2.6 11.8-4.2 6-7.4 7.9c-3.1 1.9-7 2.8-11.4 2.8zm.1-9.3c2 0 3.7-.6 5-1.7s2.4-2.7 3.1-4.7 1-4.3 1-6.8-.3-4.8-1-6.8-1.7-3.6-3.1-4.7c-1.3-1.2-3-1.7-5-1.7s-3.7.6-5.1 1.7c-1.4 1.2-2.4 2.7-3.1 4.7s-1 4.3-1 6.8.3 4.8 1 6.8 1.7 3.6 3.1 4.7 3.1 1.7 5.1 1.7zm47.4 9.3c-4.5 0-8.3-1-11.5-2.9s-5.7-4.5-7.4-7.9c-1.7-3.4-2.6-7.3-2.6-11.7 0-4.5.9-8.4 2.6-11.8s4.2-6 7.4-7.9c3.2-1.9 7-2.9 11.4-2.9 3.8 0 7.1.7 10 2.1 2.9 1.4 5.1 3.3 6.8 5.8s2.6 5.4 2.8 8.8h-11.4c-.3-2.2-1.2-3.9-2.5-5.3-1.4-1.3-3.2-2-5.4-2-1.9 0-3.5.5-4.9 1.5s-2.5 2.5-3.3 4.4c-.8 1.9-1.2 4.3-1.2 7 0 2.8.4 5.2 1.2 7.1s1.9 3.4 3.3 4.5c1.4 1 3 1.5 4.9 1.5 1.4 0 2.6-.3 3.7-.9 1.1-.6 2-1.4 2.8-2.5.7-1.1 1.2-2.4 1.4-3.9h11.4c-.2 3.3-1.1 6.3-2.7 8.8s-3.8 4.5-6.7 5.9c-2.9 1.6-6.2 2.3-10.1 2.3z&#39;/%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-width=&#39;10&#39; d=&#39;M70 155h80m-80-28.8h80&#39;/%3E%3Cpath stroke=&#39;%23000000&#39; stroke-width=&#39;2.5&#39; d=&#39;M50.2 131.2v-10l10 5zm0 29v-10l10 5z&#39;/%3E%3C/svg%3E&#34;);
+    --codeblock-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Code-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M165 50v100H35V50h130m10-10H25v120h150V40z&#39;/%3E%3Cpath d=&#39;M60.5 86.4c-2.9 1.3-5.6 2.5-8.3 3.7-2.7 1.2-5.3 2.4-7.7 3.5v13.5c0 .3 0 .5.1.6.1.2.2.3.4.5s.4.3.6.4c3.5 1.6 7.1 3.1 10.7 4.7 3.5 1.6 7.1 3.1 10.6 4.7s7.1 3.1 10.6 4.7v-9.5c0-.4-.1-.7-.1-.8-.1-.2-.3-.3-.7-.5-.9-.4-2.3-1-4.1-1.8-1.8-.8-3.9-1.8-6.3-2.8-2.4-1-4.8-2.1-7.3-3.2-2-.9-3.8-1.7-5.5-2.4V100c1.2-.6 2.6-1.2 4-1.8 1.9-.9 3.9-1.7 5.8-2.6 2-.8 3.8-1.7 5.6-2.5 1.8-.8 3.4-1.5 4.7-2.1s2.4-1 3.1-1.4c.3-.2.6-.4.7-.6.1-.2.1-.4.1-.8v-9.4c-2.7 1.2-5.5 2.4-8.4 3.7-2.9 1.4-5.8 2.7-8.6 3.9zm54.8 38.4c-2.5-6.3-4.9-12.7-7.3-19.1-2.5-6.4-4.9-12.8-7.4-19.1-2.5-6.4-4.9-12.7-7.4-19.1-.1-.1-.1-.3-.2-.3-.1-.1-.2-.1-.3-.1H82.5c2.8 7.2 5.6 14.4 8.4 21.7 2.8 7.3 5.6 14.5 8.4 21.8 2.8 7.3 5.6 14.5 8.3 21.8.1.3.3.5.5.6.2.1.4.2.6.2h9.8c-.6-1.3-1.1-2.7-1.6-4.1s-1.1-2.9-1.6-4.3zm40.2-30.9c-.1-.2-.2-.4-.4-.5-.2-.2-.4-.3-.6-.4-3.6-1.5-7.1-3.1-10.6-4.7s-7.1-3.1-10.6-4.7c-3.6-1.5-7.1-3.1-10.6-4.7v9.4c0 .4 0 .6.1.8.1.2.3.4.7.6.9.4 2.3 1 4.1 1.8 1.8.8 3.9 1.8 6.3 2.8 2.4 1.1 4.8 2.1 7.3 3.2 2 .9 3.8 1.7 5.6 2.4v1.6c-1.2.6-2.6 1.2-4 1.8-1.9.9-3.9 1.7-5.8 2.6-2 .9-3.8 1.7-5.6 2.5s-3.4 1.5-4.7 2.1c-1.3.6-2.4 1-3.1 1.3-.4.2-.6.4-.7.5-.1.2-.1.4-.1.8v9.5c2.7-1.2 5.5-2.5 8.4-3.8 2.9-1.2 5.7-2.5 8.6-3.8 2.8-1.3 5.6-2.5 8.3-3.8 2.7-1.2 5.3-2.4 7.7-3.5V94.3c-.2 0-.3-.2-.3-.4z&#39;/%3E%3C/svg%3E&#34;);
+    --codewiz-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Code-Wizard-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M60.5 86.4c-2.9 1.3-5.6 2.5-8.3 3.7-2.7 1.2-5.3 2.4-7.7 3.5v13.5c0 .3 0 .5.1.6.1.2.2.3.4.5s.4.3.6.4c3.5 1.6 7.1 3.1 10.7 4.7 3.5 1.6 7.1 3.1 10.6 4.7s7.1 3.1 10.6 4.7v-9.5c0-.4-.1-.7-.1-.8-.1-.2-.3-.3-.7-.5-.9-.4-2.3-1-4.1-1.8-1.8-.8-3.9-1.8-6.3-2.8-2.4-1-4.8-2.1-7.3-3.2-2-.9-3.8-1.7-5.5-2.4V100c1.2-.6 2.6-1.2 4-1.8 1.9-.9 3.9-1.7 5.8-2.6 2-.8 3.8-1.7 5.6-2.5 1.8-.8 3.4-1.5 4.7-2.1s2.4-1 3.1-1.4c.3-.2.6-.4.7-.6.1-.2.1-.4.1-.8v-9.4c-2.7 1.2-5.5 2.4-8.4 3.7-2.9 1.4-5.8 2.7-8.6 3.9zm54.8 38.4c-2.5-6.3-4.9-12.7-7.3-19.1-2.5-6.4-4.9-12.8-7.4-19.1l-2.1-5.4-8.6-8.6-5.6-5.6h-1.8c2.8 7.2 5.6 14.4 8.4 21.7 2.8 7.3 5.6 14.5 8.4 21.8 2.8 7.3 5.6 14.5 8.3 21.8.1.3.3.5.5.6.2.1.4.2.6.2h9.8c-.6-1.3-1.1-2.7-1.6-4.1s-1.1-2.8-1.6-4.2zm12.1-14.7c-.3.1-.6.3-.9.4-1.3.6-2.4 1-3.1 1.3-.4.2-.6.4-.7.5-.1.2-.1.4-.1.8v9.5c2.7-1.2 5.5-2.5 8.4-3.8 1.2-.5 2.4-1.1 3.6-1.6l-7.2-7.1zM140.7 50H165v24.3l10 10V40h-44.3z&#39;/%3E%3Cpath d=&#39;m169.4 152.2-4.4-4.5v2.3H35V50h63.3l10-10H25v120h150v-2.3z&#39;/%3E%3Cpath d=&#39;m199.1 122.5-57-57-22.6-22.6-22.6 22.6 22.6 22.6 57 57 22.6-22.6zM119.5 57l8.5 8.5-8.5 8.5-8.5-8.5 8.5-8.5z&#39;/%3E%3C/svg%3E&#34;);
+    --url-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Link-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M96 100.9c-5.3 6.9-15.6-1.2-10.3-8.1l4-5.1c8.5-10.9 20.3-11.9 29.7-7.4 3.5 1.5 6.9 4.1 9.3 7.2 6.7 8 8.6 19.8.2 30.7l-25.1 32.2c-5.8 7.4-13.2 10.1-20.4 9.5-9.1 0-18.7-6.6-22-15.2-4.7-9.7-2-19.3 6.3-28.7 2.5 3.5 6.3 6.4 10.3 8-1.8 2.4-5 5.8-5.3 8.8-1.7 7.8 5.7 15.4 13.6 13.8 2.6-.3 5.1-1.6 7.2-4.3 5.9-7.5 25.1-32.3 25.1-32.3 1.5-1.9 2.2-3.9 2.4-5.9 1.3-11.7-13.7-17.8-20.9-8.5l-4.1 5.3z&#39;/%3E%3Cpath d=&#39;M114.2 107.2c5.3-6.8-5-14.9-10.3-8.1l-4 5.1c-7.2 9.3-22.2 3.2-20.9-8.5.1-2 .9-4 2.4-5.9 0 0 19.2-24.7 25.1-32.3 2.1-2.7 4.6-4 7.2-4.3 7.9-1.6 15.3 6 13.6 13.8-.3 3.1-3.4 6.4-5.3 8.8 4 1.6 7.8 4.5 10.3 8 8.3-9.4 11-18.9 6.3-28.7-3.3-8.6-12.8-15.1-22-15.2-7.2-.6-14.6 2.1-20.4 9.5L71.1 81.6c-8.5 10.9-6.5 22.7.2 30.7 2.4 3 5.7 5.7 9.3 7.2 9.4 4.5 21.2 3.5 29.7-7.4l3.9-4.9z&#39;/%3E%3C/svg%3E&#34;);
+    --urlwiz-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Link-Wizard-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M52.5 100.9c-5.3 6.9-15.6-1.2-10.3-8.1l4-5.1c8.5-10.9 20.3-11.9 29.7-7.4 3.5 1.5 6.9 4.1 9.3 7.2 6.7 8 8.6 19.8.2 30.7l-25.1 32.2c-5.8 7.4-13.2 10.1-20.4 9.5-9.1 0-18.7-6.6-22-15.2-4.7-9.7-2-19.3 6.3-28.7 2.5 3.5 6.3 6.4 10.3 8-1.8 2.4-5 5.8-5.3 8.8-1.7 7.8 5.7 15.4 13.6 13.8 2.6-.3 5.1-1.6 7.2-4.3 5.9-7.5 25.1-32.3 25.1-32.3 1.5-1.9 2.2-3.9 2.4-5.9 1.3-11.7-13.7-17.8-20.9-8.5l-4.1 5.3z&#39;/%3E%3Cpath d=&#39;m60.5 99.1-4 5.1c-7.2 9.3-22.2 3.2-20.9-8.5.1-2 .9-4 2.4-5.9 0 0 19.2-24.7 25.1-32.3 2.1-2.7 4.6-4 7.2-4.3 4.1-.9 8.1.8 10.7 3.8l9.3-9.3C85.8 43.1 79.4 40 73.2 40c-7.2-.6-14.6 2.1-20.4 9.5L27.7 81.7c-8.5 10.9-6.5 22.7.2 30.7 2.4 3 5.7 5.7 9.3 7.2 9.4 4.5 21.2 3.5 29.7-7.4l4-5.1c5.1-6.8-5.2-14.9-10.4-8zm128.3 23.4-57-57-22.6-22.6-22.6 22.6 22.6 22.6 57 57 22.6-22.6zM109.2 57l8.5 8.5-8.5 8.5-8.5-8.5 8.5-8.5z&#39;/%3E%3C/svg%3E&#34;);
+    --pagelink-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Page-Link-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M96 100.9c-5.3 6.9-15.6-1.2-10.3-8.1l4-5.1c8.5-10.9 20.3-11.9 29.7-7.4 3.5 1.5 6.9 4.1 9.3 7.2 6.7 8 8.6 19.8.2 30.7l-25.1 32.2c-5.8 7.4-13.2 10.1-20.4 9.5-9.1 0-18.7-6.6-22-15.2-4.7-9.7-2-19.3 6.3-28.7 2.5 3.5 6.3 6.4 10.3 8-1.8 2.4-5 5.8-5.3 8.8-1.7 7.8 5.7 15.4 13.6 13.8 2.6-.3 5.1-1.6 7.2-4.3 5.9-7.5 25.1-32.3 25.1-32.3 1.5-1.9 2.2-3.9 2.4-5.9 1.3-11.7-13.7-17.8-20.9-8.5l-4.1 5.3z&#39;/%3E%3Cpath d=&#39;M114.2 107.2c5.3-6.8-5-14.9-10.3-8.1l-4 5.1c-7.2 9.3-22.2 3.2-20.9-8.5.1-2 .9-4 2.4-5.9 0 0 19.2-24.7 25.1-32.3 2.1-2.7 4.6-4 7.2-4.3 7.9-1.6 15.3 6 13.6 13.8-.3 3.1-3.4 6.4-5.3 8.8 4 1.6 7.8 4.5 10.3 8 8.3-9.4 11-18.9 6.3-28.7-3.3-8.6-12.8-15.1-22-15.2-7.2-.6-14.6 2.1-20.4 9.5L71.1 81.6c-8.5 10.9-6.5 22.7.2 30.7 2.4 3 5.7 5.7 9.3 7.2 9.4 4.5 21.2 3.5 29.7-7.4l3.9-4.9z&#39;/%3E%3Cpath d=&#39;M35.9 150V50h70.7l10-10H25.9v120h150v-10z&#39;/%3E%3Cpath d=&#39;m165.9 140 10-10v30h-10zm-140-70h69.9V40H25.9v30zm39.9-20h10v10h-10V50zm-19.9 0h10v10h-10V50z&#39;/%3E%3C/svg%3E&#34;);
+    --pagelinkwiz-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Page-Link-Wizard-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M35.9 150V70h28.6l10.7-13.7c6.8-8.6 16.1-13.4 26.3-13.4.8 0 1.6 0 2.4.1 1.5 0 3 .2 4.6.4l1.8-1.8L112 40H25.9v120h12.4c-1.2-2.9-2.1-6.3-2.4-10zm10-100h10v10h-10V50zm124.4 102.2-4.4-4.5v2.3h-52.2l-7.8 10h70v-2.3z&#39;/%3E%3Cpath d=&#39;M82.8 113.9c-5.3 6.9-15.6-1.2-10.3-8.1l4-5.1c8.5-10.9 20.3-11.9 29.7-7.4 3.5 1.5 6.9 4.1 9.3 7.2 6.7 8 8.6 19.8.2 30.7l-25.1 32.2c-5.8 7.4-13.2 10.1-20.4 9.5-9.1 0-18.7-6.6-22-15.2-4.7-9.7-2-19.3 6.3-28.7 2.5 3.5 6.3 6.4 10.3 8-1.8 2.4-5 5.8-5.3 8.8-1.7 7.8 5.7 15.4 13.6 13.8 2.6-.3 5.1-1.6 7.2-4.3 5.9-7.5 25.1-32.3 25.1-32.3 1.5-1.9 2.2-3.9 2.4-5.9 1.3-11.7-13.7-17.8-20.9-8.5l-4.1 5.3zm117.2 8.6-57-57-22.6-22.6-22.6 22.6 22.6 22.6 57 57 22.6-22.6zM120.4 57l8.5 8.5-8.5 8.5-8.5-8.5 8.5-8.5z&#39;/%3E%3Cpath d=&#39;m90.7 112.1-4 5.1c-7.2 9.3-22.2 3.2-20.9-8.5.1-2 .9-4 2.4-5.9 0 0 19.2-24.7 25.1-32.3 1.6-2.1 3.5-3.4 5.5-4l-1-1 11.6-11.6c-2-.6-4-.9-6-.9-7.2-.6-14.6 2.1-20.4 9.5L57.9 94.7c-8.5 10.9-6.5 22.7.2 30.7 2.4 3 5.7 5.7 9.3 7.2 9.4 4.5 21.2 3.5 29.7-7.4l4-5.1c5.2-6.8-5.1-14.9-10.4-8z&#39;/%3E%3C/svg%3E&#34;);
+    --imageblock-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Image-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M25 40v120h150V40H25zm10 110v-20.3l24.1-24.1 21.6 21.6L130 78l35 35v37H35zm28-89c8.3 0 15 6.7 15 15s-6.7 15-15 15-15-6.7-15-15c0-8.2 6.7-15 15-15z&#39;/%3E%3C/svg%3E&#34;);
+    --imagewiz-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Image-Wizard-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M175 83.9V40h-43.9zm-10 63.5v2.6H35v-20.3l24.1-24.1 21.6 21.6 32-32-22.6-22.7-7.1-7 7.1-7.1L108.5 40H25v120h150v-2.6l-10-10zM63 61c8.3 0 15 6.7 15 15s-6.7 15-15 15-15-6.7-15-15c0-8.2 6.7-15 15-15z&#39;/%3E%3Cpath d=&#39;m199.4 122.5-57-57-22.6-22.6-22.6 22.6 22.6 22.6 57 57 22.6-22.6zM119.8 57l8.5 8.5-8.5 8.5-8.5-8.5 8.5-8.5z&#39;/%3E%3C/svg%3E&#34;);
+    --htmlblock-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;HTML-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M76.5 110.6c-1.7.8-3.3 1.5-4.9 2.2s-3.1 1.4-4.6 2.1v8c0 .2 0 .3.1.4.1.1.1.2.2.3s.2.2.4.2c2.1.9 4.2 1.8 6.4 2.8 2.1.9 4.2 1.8 6.3 2.8s4.2 1.8 6.3 2.8v-5.6c0-.2-.1-.4-.1-.5-.1-.1-.2-.2-.4-.3-.5-.2-1.4-.6-2.4-1.1-1.1-.5-2.3-1.1-3.7-1.7-1.4-.6-2.8-1.2-4.3-1.9-1.2-.5-2.3-1-3.3-1.4v-1c.7-.4 1.5-.7 2.4-1.1 1.1-.5 2.3-1 3.4-1.5 1.2-.5 2.3-1 3.3-1.5 1.1-.5 2-.9 2.8-1.2.8-.4 1.4-.6 1.8-.8.2-.1.4-.2.4-.4.1-.1.1-.2.1-.5v-5.6c-1.6.7-3.3 1.4-5 2.2-1.9.8-3.6 1.6-5.2 2.3zm14 25.3c-.3.8-.6 1.7-.9 2.4h5.8c.1 0 .2-.1.4-.1.1-.1.2-.2.3-.4 1.6-4.3 3.3-8.6 4.9-12.9s3.3-8.6 5-12.9c1.7-4.3 3.3-8.6 5-12.9h-6.1c-.1 0-.1 0-.2.1-.1 0-.1.1-.1.2-1.5 3.8-2.9 7.5-4.4 11.3-1.5 3.7-2.9 7.5-4.4 11.3-1.4 3.8-2.8 7.6-4.3 11.3-.4.9-.7 1.8-1 2.6zm42.4-20.9c-.1-.1-.1-.2-.2-.3-.1-.1-.2-.2-.4-.2-2.1-.9-4.2-1.8-6.3-2.8-2.1-.9-4.2-1.8-6.3-2.8-2.1-.9-4.2-1.8-6.3-2.8v5.6c0 .2 0 .4.1.5l.4.4c.5.2 1.4.6 2.4 1.1 1.1.5 2.3 1.1 3.7 1.7 1.4.7 2.8 1.2 4.3 1.9 1.2.5 2.3 1 3.3 1.4v.9c-.7.4-1.5.7-2.4 1.1-1.1.5-2.3 1-3.4 1.5-1.2.5-2.3 1-3.3 1.5-1.1.5-2 .9-2.8 1.2-.8.4-1.4.6-1.8.8-.2.1-.4.2-.4.3-.1.1-.1.2-.1.5v5.6c1.6-.7 3.3-1.5 5-2.3 1.7-.7 3.4-1.5 5.1-2.3 1.7-.8 3.3-1.5 4.9-2.3 1.6-.7 3.1-1.4 4.6-2.1v-8c-.1.2-.1.1-.1-.1z&#39;/%3E%3Cpath d=&#39;M110.7 38.3H51.6v123.5h96.8V75.9l-37.7-37.6zm4.4 33.3V57l14.6 14.6h-14.6zm23.1 10.2v69.8H61.7V48.4h43.2v33.3h33.3z&#39;/%3E%3C/svg%3E&#34;);
+    --ordered-list-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;OL-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-width=&#39;15&#39; d=&#39;M65 150h110M65 100h110M65 50h110&#39;/%3E%3Cpath d=&#39;M49.2 60.5c-1.7-.4-4.5 0-6.7-.1V33.2c-.9-1.3-6-.2-7.7-.5-2.4 1.6-5 3.4-7.4 5.1.2.3-.3 8.3.2 8.2 2.7-.8 5.2-3.5 6.6-6.1h1v20.5h-8.8c.1 2-.2 4.8.1 6.8 7 .4 15.7 0 22.8.1-.1-1.8.3-5-.1-6.8zm.5 50.3c-4.9-.5-11.8-.2-16.3 1.2.2-7.1 10.8-8.1 14-13.5 6.7-12.1-5.4-19-16.2-15.1-5.7 1.3-3.9 4.7-4.1 9h1c3.4-2.4 10.8-5 13.7-1.2.8 7.6-13.2 8.8-14.8 16.1-1 2.6-1.3 7.5-.6 10.2 7.3.2 16.3 0 23.6.1-.3-2 .1-4.9-.3-6.8zm-.7 43.1c-1.5-2.2-4.3-3.3-7.3-3.9v-1c9.3-.6 10.8-13.7 1.8-16.1-4.6-1.5-12.5-1.2-16.6.7-.3 2 0 4.9-.1 6.9 4.5-.4 11-3 15 .3 2.4 6.2-6.7 5.1-11.2 5.4-.8 11.4 1.7 4.7 10 7.9 3 1 2.9 5.4-.2 6.2-4.6 1.3-10-.1-14.5-1v6.6c.2 1.1 1 .9 2.4 1.3 9.3 2.6 26.5.1 20.7-13.3z&#39;/%3E%3C/svg%3E&#34;);
+    --unordered-list-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;UL-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-width=&#39;15&#39; d=&#39;M65 150h110M65 100h110M65 50h110&#39;/%3E%3Ccircle cx=&#39;37.5&#39; cy=&#39;50.2&#39; r=&#39;12.5&#39;/%3E%3Ccircle cx=&#39;37.5&#39; cy=&#39;100&#39; r=&#39;12.5&#39;/%3E%3Ccircle cx=&#39;37.5&#39; cy=&#39;150&#39; r=&#39;12.5&#39;/%3E%3C/svg%3E&#34;);
+    --inc-list-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Inc-List-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-width=&#39;15&#39; d=&#39;M90 140h110M90 100h110M90 60h110M58 40v120&#39;/%3E%3Cpath d=&#39;M0 125V75l30 25z&#39;/%3E%3C/svg%3E&#34;);
+    --dec-list-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Dec-List-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-width=&#39;15&#39; d=&#39;M90 140h110M90 100h110M90 60h110M58 40v120&#39;/%3E%3Cpath d=&#39;M30 75v50L0 100z&#39;/%3E%3C/svg%3E&#34;);
+    --def-list-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Def-List-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;M34.2 63.4c-1.5 0-2.9-.5-4-1.7-1.1-1.1-1.7-2.4-1.7-4 0-1.5.5-2.9 1.7-4 1.1-1.1 2.4-1.7 4-1.7 1.5 0 2.9.6 4 1.7s1.7 2.4 1.7 4c0 1-.3 2-.8 2.8-.5.9-1.2 1.5-2 2-.9.6-1.9.9-2.9.9zm0 32.2c-1.5 0-2.9-.5-4-1.7-1.1-1.1-1.7-2.4-1.7-4s.5-2.9 1.7-4c1.1-1.1 2.4-1.7 4-1.7 1.5 0 2.9.5 4 1.7 1.1 1.1 1.7 2.4 1.7 4 0 1-.3 2-.8 2.8-.5.9-1.2 1.5-2 2-.9.7-1.9.9-2.9.9zm19.2 8.2h-8.1L68.7 40h8l23.4 63.8H92L73 50.1h-.5l-19.1 53.7zm3-24.9H89v6.9H56.4v-6.9zm54.9-15.5c-1.5 0-2.9-.5-4-1.7-1.1-1.1-1.7-2.4-1.7-4 0-1.5.6-2.9 1.7-4s2.4-1.7 4-1.7 2.9.6 4 1.7 1.7 2.4 1.7 4c0 1-.3 2-.8 2.8-.5.9-1.2 1.5-2 2-1 .6-1.9.9-2.9.9zm0 32.2c-1.5 0-2.9-.5-4-1.7-1.1-1.1-1.7-2.4-1.7-4s.6-2.9 1.7-4 2.4-1.7 4-1.7 2.9.5 4 1.7 1.7 2.4 1.7 4c0 1-.3 2-.8 2.8s-1.2 1.5-2 2c-1 .7-1.9.9-2.9.9zm17.3 8.2V40h22.3c4.4 0 8.1.8 11 2.3s5 3.6 6.4 6.1c1.4 2.6 2.1 5.4 2.1 8.5 0 2.7-.5 5-1.4 6.8-1 1.8-2.2 3.2-3.8 4.2s-3.3 1.8-5.1 2.3v.6c2 .1 3.9.8 5.9 2.1 2 1.2 3.6 3 5 5.4s2 5.2 2 8.5c0 3.2-.7 6.1-2.2 8.6s-3.7 4.6-6.9 6.1c-3.1 1.5-7.2 2.2-12.2 2.2h-23.1zm7.7-35.8h14.3c2.3 0 4.4-.5 6.3-1.4 1.9-.9 3.4-2.2 4.5-3.9 1.1-1.7 1.7-3.6 1.7-5.9 0-2.8-1-5.2-2.9-7.1s-5-2.9-9.3-2.9h-14.6V68zm0 28.9h15.3c5 0 8.6-1 10.8-2.9s3.2-4.3 3.2-7.1c0-2.2-.6-4.2-1.7-6-1.1-1.8-2.7-3.3-4.7-4.4-2-1.1-4.4-1.7-7.2-1.7h-15.7v22.1z&#39;/%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-width=&#39;10&#39; d=&#39;M69.9 154.2h80m-80-28.8h80&#39;/%3E%3Cpath stroke=&#39;%23000000&#39; stroke-width=&#39;2.5&#39; d=&#39;M50.1 130.4v-10l10 5-10 5zm0 29v-10l10 5-10 5z&#39;/%3E%3C/svg%3E&#34;);
+    --footnote-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Footnotes-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;10&#39; d=&#39;M127.9 84.7v14.6H73.5v15.4&#39;/%3E%3Cpath d=&#39;M185 125.1v30h-75v-30h75m5-5h-85v40h85v-40zM75 77.4H10v-5h65v5zm-20-15H10v-5h45v5zm40-15H10v-5h85v5z&#39;/%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;5&#39; d=&#39;M95 44.9H10m45 15H10m65 15H10&#39;/%3E%3Cpath d=&#39;M130.4 44.9v30H125V50.2h-.2l-7 4.5v-5l7.5-4.8h5.1zm-54.7 80.2v30h-5.4v-24.7h-.2l-7 4.5v-5l7.5-4.8h5.1z&#39;/%3E%3C/svg%3E&#34;);
+    --math-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Math-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;none&#39; stroke=&#39;%23000000&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;10&#39; d=&#39;M160 157H40m0-110h120&#39;/%3E%3Cpath d=&#39;m65.1 142-3-7.1 29.1-35.7-28.7-29.1 3-8.1h60.1l5.2 4.3V83h-8.4l-5.6-10.7H82.4l28.5 28.6v4.7l-24.6 28h35.4l4.2-10.8h6.8V142H65.1z&#39;/%3E%3C/svg%3E&#34;);
+    --inline-math-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Inline-Math-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath d=&#39;m65.1 142-3-7.1 29.1-35.7-28.7-29.1 3-8.1h60.1l5.2 4.3V83h-8.4l-5.6-10.7H82.4l28.5 28.6v4.7l-24.6 28h35.4l4.2-10.8h6.8V142H65.1z&#39;/%3E%3Cpath d=&#39;m65.8 103.4-54.9 28v-10.9L53 100.2l-.3.7v-1.7l.3.7-42.1-20.4V68.6l54.9 28v6.8zm69.3-6.8 54.9-28v10.9l-42.1 20.3.3-.7v1.7l-.3-.7 42.1 20.3v10.9l-54.9-28v-6.7z&#39;/%3E%3C/svg%3E&#34;);
+    --eq-def-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; id=&#39;Equation-Ref-Icon&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath fill=&#39;none&#39; d=&#39;M.5 0h200v200H.5z&#39;/%3E%3Cpath d=&#39;m145.7 106.1.9-25-21.1 13.4L120 85l22.3-11.6L120 61.8l5.5-9.5 21.1 13.4-.9-25h10.9l-.9 25 21.1-13.4 5.5 9.5L160 73.4 182.3 85l-5.5 9.5-21.1-13.4.9 25h-10.9zM21 160V87.3h45.6v9.4H32v22.2h32.2v9.4H32v22.3h35v9.4H21zm100.9 20.5h-10.6v-28.9h-.6c-.6 1.2-1.6 2.5-2.8 4s-2.8 2.8-4.9 3.9c-2.1 1.1-4.8 1.7-8.1 1.7-4.4 0-8.3-1.1-11.8-3.4-3.4-2.3-6.1-5.5-8.1-9.7s-2.9-9.3-2.9-15.1 1-10.9 3-15.1c2-4.2 4.7-7.4 8.1-9.6 3.5-2.2 7.4-3.3 11.8-3.3 3.4 0 6.1.6 8.2 1.7 2.1 1.1 3.7 2.4 4.8 3.9 1.1 1.5 2 2.8 2.7 3.9h.9v-8.8H122v74.8zm-10.5-47.8c0-3.8-.5-7.1-1.6-9.9-1.1-2.8-2.7-5.1-4.8-6.6-2.1-1.6-4.7-2.4-7.8-2.4-3.2 0-5.9.8-8 2.5-2.1 1.7-3.7 3.9-4.8 6.8-1.1 2.9-1.6 6.1-1.6 9.7 0 3.6.5 6.9 1.6 9.8 1.1 2.9 2.7 5.2 4.8 6.9 2.1 1.7 4.8 2.5 7.9 2.5 3.1 0 5.6-.8 7.8-2.4 2.1-1.6 3.7-3.9 4.8-6.8 1.2-2.9 1.7-6.2 1.7-10.1z&#39;/%3E%3C/svg%3E&#34;);
+    --bib-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cpath id=&#39;Bibliography-Icon&#39; d=&#39;M165.6 110.1c2.6-6.4 2.6-13.8 0-20.2 2.7-6.7 2.6-14.6-.4-21.2-.2-.5-.6-.9-1-1.1l-46.4-27.1c-.4-.3-1-.4-1.5-.3l-81.4 6.9h-.5c-.1 0-.2.1-.2.1s-.1 0-.1.1c-.1 0-.2.1-.2.1l-.1.1-.2.2-.1.1-.2.2s-.1.1-.1.2-.1.1-.1.2-.1.1-.1.2-.1.1-.1.2 0 .1-.1.2v1.4c0 .1 0 .2.1.2 2.6 5.7 2.6 12.5 0 18.2v.1c0 .1-.1.2-.1.3v.1c0 .1 0 .3-.1.4v.6c0 .1 0 .2.1.3 0 .1 0 .1.1.2 0 .1 0 .1.1.2 2.6 5.7 2.6 12.5 0 18.2v.1c0 .1-.1.2-.1.3v.1c0 .1 0 .3-.1.4v.6c0 .1 0 .2.1.3 0 .1 0 .1.1.2 0 .1 0 .1.1.2 2.6 5.7 2.6 12.5 0 18.2v.1c0 .1-.1.2-.1.3v.1c0 .1 0 .3-.1.4v.6c0 .1 0 .2.1.3 0 .1 0 .1.1.2 0 .1 0 .1.1.2 2.6 5.7 2.6 12.5 0 18.2-.5 1.2-.1 2.5 1 3.2l46.4 27.1c.4.2.8.3 1.3.3h.2l81.4-6.9c.9-.1 1.7-.6 2.1-1.5 3-6.6 3.1-14.5.4-21.3 2.1-7 2.1-14.4-.4-20.8zm-81.3 6.7c2.5-6.4 2.4-13.7-.1-20 0-.1.1-.2.1-.2l76.1-6.5c0 .3.1.6.2.8 2.6 5.7 2.6 12.5 0 18.2-.2.4-.2.8-.2 1.2l-76.1 6.5zm-4.8-38.5c1.9 4.7 2.1 10 .7 14.8l-42-24.6c1.5-4.4 1.9-9.2 1.1-13.8l34.8 20.4 5.4 3.2zm0 20.2c1.9 4.7 2.1 10 .7 14.8l-42-24.6c1.5-4.4 1.9-9.2 1.1-13.8l40.2 23.6zm0 20.3c1.9 4.7 2.1 10 .7 14.8l-42-24.6c1.5-4.4 1.9-9.2 1.1-13.8l40.2 23.6zm.6 35-42-24.6c1.5-4.4 1.9-9.2 1.1-13.8l40.1 23.5.1.1c2 4.7 2.2 10 .7 14.8zm81-5.6-76 6.5c1.6-5.7 1.2-11.9-.9-17.4 0-.1.1-.2.1-.2l76.1-6.5c0 .3.1.6.2.8 2.3 5.2 2.5 11.4.5 16.8z&#39;/%3E%3C/svg%3E&#34;);
+    --bib-cite-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0&#39; y=&#39;0&#39; baseProfile=&#39;tiny&#39; overflow=&#39;visible&#39; version=&#39;1.2&#39; viewBox=&#39;0 0 200 200&#39; xml:space=&#39;preserve&#39;%3E%3Cg id=&#39;Bibliography-Cite-Icon&#39;%3E%3Cpath d=&#39;m145.2 106.1.9-25L125 94.5l-5.5-9.5 22.3-11.6-22.3-11.6 5.5-9.5 21.1 13.4-.9-25h10.9l-.9 25 21.1-13.4 5.5 9.5-22.3 11.6L181.8 85l-5.5 9.5-21.1-13.4.9 25h-10.9z&#39;/%3E%3Cpath d=&#39;m165.9 99.7.2 6 .1 2.6c.8-2.4 1.2-5 1.3-7.6l-1.6-1zm.5 12.8.1 3.6h-31.7l.1-3.6-50.7 4.3c2.5-6.4 2.4-13.7-.1-20 0-.1.1-.2.1-.2l29-2.5-2.4-4.2-5.2-9 9.2-4.8 5.2-2.7-5.2-2.7-9.2-4.8 5.2-9 5.5-9.5 3.3-5.8-1.9-1.1c-.4-.3-1-.4-1.5-.3l-81.4 6.9h-.5c-.1 0-.2.1-.2.1s-.1 0-.1.1c-.1 0-.2.1-.2.1l-.1.1-.2.2-.1.1-.2.2s-.1.1-.1.2-.1.1-.1.2-.1.1-.1.2-.1.1-.1.2 0 .1-.1.2v1.4c0 .1 0 .2.1.2 2.6 5.7 2.6 12.5 0 18.2v.1c0 .1-.1.2-.1.3v.1c0 .1 0 .3-.1.4v.6c0 .1 0 .2.1.3 0 .1 0 .1.1.2 0 .1 0 .1.1.2 2.6 5.7 2.6 12.5 0 18.2v.1c0 .1-.1.2-.1.3v.1c0 .1 0 .3-.1.4v.6c0 .1 0 .2.1.3 0 .1 0 .1.1.2 0 .1 0 .1.1.2 2.6 5.7 2.6 12.5 0 18.2v.1c0 .1-.1.2-.1.3v.1c0 .1 0 .3-.1.4v.6c0 .1 0 .2.1.3 0 .1 0 .1.1.2 0 .1 0 .1.1.2 2.6 5.7 2.6 12.5 0 18.2-.5 1.2-.1 2.5 1 3.2l46.4 27.1c.4.2.8.3 1.3.3h.2l81.4-6.9c.9-.1 1.7-.6 2.1-1.5 3-6.6 3.1-14.5.4-21.3 1.9-6.2 2.2-12.6.5-18.4zm-86.3 41.3-42-24.6c1.5-4.4 1.9-9.2 1.1-13.8l40.1 23.5.1.1c2 4.7 2.2 10 .7 14.8zm0-20.2-42-24.6c1.5-4.4 1.9-9.2 1.1-13.8l40.2 23.5c2 4.7 2.2 10.1.7 14.9zm0-20.2-42-24.6c1.5-4.4 1.9-9.2 1.1-13.8l40.2 23.5c2 4.7 2.2 10 .7 14.9zm0-20.3-42-24.6c1.5-4.4 1.9-9.2 1.1-13.8L74 75.1l5.4 3.2c2 4.7 2.2 10 .7 14.8zm81 55.1-76 6.5c1.6-5.7 1.2-11.9-.9-17.4 0-.1.1-.2.1-.2l76.1-6.5c0 .3.1.6.2.8 2.3 5.2 2.5 11.4.5 16.8z&#39;/%3E%3C/g%3E%3C/svg%3E%0A&#34;);
+}
+
+#wd-editor-toolbar-panel, #np-editor-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: calc(var(--edit-area-toolbar-icon-size)/4);
+    border-bottom: 0;
+    padding: 0.5rem;
+    --edit-area-toolbar-icon-size: 2rem;
+}
+:is(#wd-editor-toolbar-panel, #np-editor-panel) &gt; div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: auto;
+    gap: calc(var(--edit-area-toolbar-icon-size)/4);
+}
+:is(#wd-editor-toolbar-panel, #np-editor-panel) &gt; div &gt; ul {
     display: contents;
 }
 
-.wd-editor-toolbar-panel ul li:hover ul, .wd-editor-toolbar-panel ul li.sfhover ul {
-    background-color: var(--primaryBackgroundColor);
-    border: 2px solid var(--borderColor);
+:is(#wd-editor-toolbar-panel, #np-editor-panel) &gt; div &gt; ul &gt; li {
+    float: none;
+    position: relative;
+    margin: 0;
+    padding: 0;
 }
-.wd-editor-toolbar-panel li.hseparator {
-    background-color: var(--borderColor);
-    margin: 0 auto;
-    height: 1.5em;
+.wd-editor-toolbar-panel li.hseparator { display: none; }
+.wd-editor-toolbar-panel ul li a,
+.wd-editor-toolbar-panel ul li a:hover {
+    background-image: none;
+}
+.wd-editor-toolbar-panel ul li a {
+    display: block;
+    height: var(--edit-area-toolbar-icon-size);
+    width: var(--edit-area-toolbar-icon-size);
+    background-color: transparent;
+    position: relative;
+}
+
+form[id] div.wd-editor-toolbar-panel ul li ul {
+    position: absolute;
+    display: flex;
+    border: none;
+    border-inline-start: solid calc(var(--edit-area-toolbar-icon-size)/16) var(--borderColor);
+    background-color: var(--primaryBackgroundColor);
+    left: 0;
+    inset-block-start: 100%;
+    inset-inline-start: 0;
+    clip-path: inset(0 100% 0 0);
+    pointer-events: none;
+    transition: clip-path 0.175s ease-out;
+}
+form[id] div.wd-editor-toolbar-panel ul li.sfhover ul,
+form[id] div.wd-editor-toolbar-panel ul li:is(:hover, :focus-within) ul {
+    clip-path: inset(0);
+    pointer-events: auto;
+}
+
+.wd-editor-toolbar-panel ul li ul li a {
+    height: calc(var(--edit-area-toolbar-icon-size)*15/16);
+    width: calc(var(--edit-area-toolbar-icon-size)*15/16);
+}
+
+.wd-editor-toolbar-panel ul li a:focus {
+    outline: none;
+}
+.wd-editor-toolbar-panel ul li a::before,
+.wd-editor-toolbar-panel ul li a::after {
+    content: &#34;&#34;;
+    display: block;
+    width: 100%; height: 100%;
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+}
+.wd-editor-toolbar-panel ul li a::after {
+    background-color: var(--textColor);
+    -webkit-mask-image: var(--edit-area-toolbar-icon-mask);
+    mask-image: var(--edit-area-toolbar-icon-mask);
+    -webkit-mask-size: 80%;
+    mask-size: 80%;
+    -webkit-mask-position: center;
+    mask-position: center;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    transition: background-color .125s ease-out;
+}
+.wd-editor-toolbar-panel ul li a::before {
+    background-color: var(--linkColor);
+    height: 0;
+    transition: all .125s ease-out;
+}
+.wd-editor-toolbar-panel ul li a:is(:hover, :focus)::before { height: 100%; }
+.wd-editor-toolbar-panel div &gt; ul &gt; li.sfhover &gt; a:not(:hover, :focus)::before,
+.wd-editor-toolbar-panel div &gt; ul &gt; li:focus-within &gt; a:not(:hover, :focus)::before {
+    height: 100%;
+    background-color: var(--linkColor);
+}
+
+.wd-editor-toolbar-panel a.weditor-h1::after {
+    --edit-area-toolbar-icon-mask: var(--h1-mask);
+}
+.wd-editor-toolbar-panel a.weditor-h2::after {
+    --edit-area-toolbar-icon-mask: var(--h2-mask);
+}
+.wd-editor-toolbar-panel a.weditor-h3::after {
+    --edit-area-toolbar-icon-mask: var(--h3-mask);
+}
+.wd-editor-toolbar-panel a.weditor-h4::after {
+    --edit-area-toolbar-icon-mask: var(--h4-mask);
+}
+.wd-editor-toolbar-panel a.weditor-h5::after {
+    --edit-area-toolbar-icon-mask: var(--h5-mask);
+}
+.wd-editor-toolbar-panel a.weditor-h6::after {
+    --edit-area-toolbar-icon-mask: var(--h6-mask);
+}
+.wd-editor-toolbar-panel a.weditor-bold::after {
+    --edit-area-toolbar-icon-mask: var(--bold-mask);
+}
+.wd-editor-toolbar-panel a.weditor-italic::after {
+    --edit-area-toolbar-icon-mask: var(--italic-mask);
+}
+.wd-editor-toolbar-panel a.weditor-underline::after {
+    --edit-area-toolbar-icon-mask: var(--underline-mask);
+}
+.wd-editor-toolbar-panel a.weditor-strikethrough::after {
+    --edit-area-toolbar-icon-mask: var(--strikethrough-mask);
+}
+.wd-editor-toolbar-panel a.weditor-teletype::after {
+    --edit-area-toolbar-icon-mask: var(--teletype-mask);
+}
+.wd-editor-toolbar-panel a.weditor-quote::after {
+    --edit-area-toolbar-icon-mask: var(--quote-mask);
+}
+.wd-editor-toolbar-panel a.weditor-superscript::after {
+    --edit-area-toolbar-icon-mask: var(--superscript-mask);
+}
+.wd-editor-toolbar-panel a.weditor-subscript::after {
+    --edit-area-toolbar-icon-mask: var(--subscript-mask);
+}
+.wd-editor-toolbar-panel a.weditor-raw::after {
+    --edit-area-toolbar-icon-mask: var(--rawtext-mask);
+}
+.wd-editor-toolbar-panel a.weditor-hr::after {
+    --edit-area-toolbar-icon-mask: var(--hr-mask);
+}
+.wd-editor-toolbar-panel a.weditor-div::after {
+    --edit-area-toolbar-icon-mask: var(--divblock-mask);
+}
+.wd-editor-toolbar-panel a.weditor-clearfloat::after {
+    --edit-area-toolbar-icon-mask: var(--clearfloat-mask);
+}
+.wd-editor-toolbar-panel a.weditor-clearfloatleft::after {
+    --edit-area-toolbar-icon-mask: var(--clearfloatleft-mask);
+}
+.wd-editor-toolbar-panel a.weditor-clearfloatright::after {
+    --edit-area-toolbar-icon-mask: var(--clearfloatright-mask);
+}
+.wd-editor-toolbar-panel a.weditor-table::after {
+    --edit-area-toolbar-icon-mask: var(--table-mask);
+}
+.wd-editor-toolbar-panel a.weditor-toc::after {
+    --edit-area-toolbar-icon-mask: var(--toc-mask);
+}
+.wd-editor-toolbar-panel a.weditor-code::after {
+    --edit-area-toolbar-icon-mask: var(--codeblock-mask);
+}
+.wd-editor-toolbar-panel a.weditor-codewiz::after {
+    --edit-area-toolbar-icon-mask: var(--codewiz-mask);
+}
+.wd-editor-toolbar-panel a.weditor-uri::after {
+    --edit-area-toolbar-icon-mask: var(--url-mask);
+}
+.wd-editor-toolbar-panel a.weditor-uriwiz::after {
+    --edit-area-toolbar-icon-mask: var(--urlwiz-mask);
+}
+.wd-editor-toolbar-panel a.weditor-pagelink::after {
+    --edit-area-toolbar-icon-mask: var(--pagelink-mask);
+}
+.wd-editor-toolbar-panel a.weditor-pagelinkwiz::after {
+    --edit-area-toolbar-icon-mask: var(--pagelinkwiz-mask);
+}
+.wd-editor-toolbar-panel a.weditor-image::after {
+    --edit-area-toolbar-icon-mask: var(--imageblock-mask);
+}
+.wd-editor-toolbar-panel a.weditor-imagewiz::after {
+    --edit-area-toolbar-icon-mask: var(--imagewiz-mask);
+}
+.wd-editor-toolbar-panel a.weditor-html::after {
+    --edit-area-toolbar-icon-mask: var(--htmlblock-mask);
+}
+.wd-editor-toolbar-panel a.weditor-numlist::after {
+    --edit-area-toolbar-icon-mask: var(--ordered-list-mask);
+}
+.wd-editor-toolbar-panel a.weditor-bullist::after {
+    --edit-area-toolbar-icon-mask: var(--unordered-list-mask);
+}
+.wd-editor-toolbar-panel a.weditor-incindent::after {
+    --edit-area-toolbar-icon-mask: var(--inc-list-mask);
+}
+.wd-editor-toolbar-panel a.weditor-decindent::after {
+    --edit-area-toolbar-icon-mask: var(--dec-list-mask);
+}
+.wd-editor-toolbar-panel a.weditor-deflist::after {
+    --edit-area-toolbar-icon-mask: var(--def-list-mask);
+}
+.wd-editor-toolbar-panel a.weditor-footnote::after {
+    --edit-area-toolbar-icon-mask: var(--footnote-mask);
+}
+.wd-editor-toolbar-panel a.weditor-math::after {
+    --edit-area-toolbar-icon-mask: var(--math-mask);
+}
+.wd-editor-toolbar-panel a.weditor-mathinline::after {
+    --edit-area-toolbar-icon-mask: var(--inline-math-mask);
+}
+.wd-editor-toolbar-panel a.weditor-eqref::after {
+    --edit-area-toolbar-icon-mask: var(--eq-def-mask);
+}
+.wd-editor-toolbar-panel a.weditor-bib::after {
+    --edit-area-toolbar-icon-mask: var(--bib-mask);
+}
+.wd-editor-toolbar-panel a.weditor-bibcite::after {
+    --edit-area-toolbar-icon-mask: var(--bib-cite-mask);
 }
 
 /* Edit area */
 form#edit-page-form div:nth-of-type(2) { min-width: 100%; }
-form#edit-page-form #edit-page-textarea { min-width: inherit; }
+form#edit-page-form #edit-page-textarea {
+    box-sizing: border-box;
+    font-family: var(--mono-font);
+    min-width: inherit;
+}
 
 /* Size buttons + help area */
 form#edit-page-form .change-textarea-size {
@@ -2260,11 +2500,9 @@ form#edit-page-form .change-textarea-size {
 }
 form#edit-page-form .change-textarea-size a {
     background-color: var(--primaryBackgroundColor);
-    border-width: 1px 1px 2px;
-    border-top-color: var(--borderColor);
-    border-left-color: var(--borderColor);
-    border-right-color: var(--borderColor);
-    padding: 3px;
+    border-width: 1px;
+    border-color: var(--borderColor);
+    padding: .125rem;
     text-decoration: none;
     display: inline-block;
     width: 1.2rem;
@@ -2282,6 +2520,7 @@ form#edit-page-form .edit-help-34 {
 form#edit-page-form .edit-help-34 a { font-size: 0.625rem; }
 
 /* Bottom area */
+
 form#edit-page-form table.edit-page-bottomtable tr {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(calc(var(--page-content-width)/2.5), 100%), 1fr));
@@ -2303,22 +2542,25 @@ form#edit-page-form table.edit-page-bottomtable tr td &gt; div &gt; #edit-page-c
     min-height: 6em;
 }
 
-form#edit-page-form #lock-info {
+#lock-info {
     background-color: var(--primaryBackgroundColor);
     border: none;
     padding: 1em;
     margin: 0;
+    font-family: var(--mono-font);
     border-radius: calc(var(--radius-adjust)*0.5);
-    border-bottom: solid 0.2rem var(--linkColor);
+    border-bottom: solid 0.25rem var(--linkColor);
     box-sizing: border-box;
-    box-shadow: 0 1px 3px 0 var(--shadow);
+    box-shadow: 0 0 .25rem var(--shadow);
 }
 
 /* Save button area */
 div.buttons.alignleft {
+    font-family: var(--UI-font);
     text-align: center;
     display: flex;
     flex-wrap: wrap;
+    gap: .5rem;
 }
 .buttons.alignleft &gt; * {
     flex-grow: 1;
@@ -2417,7 +2659,7 @@ div.buttons.alignleft {
 /*-------------------*/
 
 #action-area .page-source {
-    border: solid 2px var(--borderColor);
+    border: solid .05rem var(--borderColor);
     padding: 1.75em;
     font-size: 0.85rem;
     box-sizing: border-box;
@@ -2433,13 +2675,16 @@ div.buttons.alignleft {
 
 
 /*---- FOOTER &amp; LICENSE-AREA &amp; FOOTER-BAR----*/
+
+
 #footer {
     display: flex!important;
     justify-content: space-between;
-    background-color: var(--primaryBackgroundColor);
     color: var(--textColor-alt);
+    font-family: var(--UI-font);
     font-size: 0rem;
     padding: 0.15rem 0.35rem;
+    margin-top: 0;
     flex-wrap: wrap;
     grid-gap: 0.125rem 1.5rem;
 }
@@ -2458,20 +2703,19 @@ div.buttons.alignleft {
 
 #license-area {
     color: var(--textColor);
-    background-color: var(--tertiaryBackgroundColor);
-    border-top: solid 2px var(--borderColor);
-    font-family: var(--header-font);
+    background-color: var(--secondaryBackgroundColor);
+    border-top: solid .05rem var(--borderColor);
+    font-family: var(--UI-font);
     font-size: 0.75rem;
     font-weight: bold;
-    padding: 0.25rem;
-    padding-bottom: 0.5rem;
+    padding: .675rem;
     line-height: 0.8rem;
     text-align: center;
 }
 #license-area a {
     color: var(--textColor);
 
-    border-bottom: solid 3px var(--linkColor);
+    border-bottom: solid .175em var(--linkColor);
     background-color: transparent;
     background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
     background-size: 100% 0;
@@ -2479,20 +2723,26 @@ div.buttons.alignleft {
     background-repeat: no-repeat;
     transition: background-size var(--link-timing);
 }
-#license-area a:hover, #license-area a:focus {
+#license-area a:is(:hover,:focus) {
     background-size: 100% 100%;
     text-decoration: none;
 }
 
 #footer-bar {
+    color: var(--textColor);
     background-color: var(--secondaryBackgroundColor);
     width: 100%;
     max-width: 100%;
     margin: 0;
-    border-top: solid 2px var(--borderColor);
+    border-top: none;
     padding: 0.5em 1em;
+    text-align: center;
     box-sizing: border-box;
+    z-index: 0;
 }
+
+#footer-bar h2 { justify-content: center; }
+
 #footer-bar .units {
     box-sizing: border-box;
     margin: 0 auto;
@@ -2505,14 +2755,14 @@ div.buttons.alignleft {
 #footer-bar .units .unit h3 a {
     margin: 0 auto;
     color: var(--textColor);
-    border-bottom: solid 2px var(--linkColor);
+    border-bottom: solid .05em var(--linkColor);
     background-image: linear-gradient(to bottom, var(--linkColor) 0%, var(--linkColor) 100%);
     background-size: 100% 0;
     background-position: 0 100%;
     background-repeat: no-repeat;
     transition: background-size var(--link-timing);
 }
-#footer-bar .units .unit h3 a:hover, #footer-bar .units .unit h3 a:focus {
+#footer-bar .units .unit h3 a:is(hover,:focus) {
     background-size: 100% 100%;
 }
 
@@ -2572,21 +2822,14 @@ div.buttons.alignleft {
 
 /*---- MOBILE QUERY ----*/
 @media only screen and (max-width: 767px) {
-    :root {
-        --link-timing: .05s ease-out;
-    }
-
-    #header h1 a {
-        font-size: 2.5rem;
-        padding-top: 1.45rem;
-    }
+    #top-bar div[class*=top-bar] &gt; ul &gt; li { position: static; }
+    #top-bar div[class*=top-bar] &gt; ul &gt; li &gt; ul { left: 0; transform: none; }
 
     .meta-title {
         font-size: 200%;
     }
 
     #main-content {
-        padding: 1em 1.5em;
         grid-template-areas:
             &#34;action-area-top action-area-top&#34;
             &#34;page-title page-title&#34;
@@ -2598,16 +2841,8 @@ div.buttons.alignleft {
             &#34;ad ad&#34;;
     }
 
-    #main-content div.page-tags {
-        margin: 0.5rem 0 1rem;
-        width: 100%;
-    }
-    #page-options-container {
-        margin-top: 2.5rem; margin-bottom: 2rem;
-    }
-
     #page-info, div.page-watch-options {
-        text-align: left;
+        text-align: start;
     }
 
     #who-rated-page-area&gt;div {
@@ -2635,7 +2870,6 @@ div.buttons.alignleft {
     }
     #revision-list table.page-history tr td:nth-child(6) { display: none; }
 }
-
 [[/code]]
 [[/collapsible]]
 
@@ -2646,7 +2880,7 @@ div.buttons.alignleft {
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:41.019257.</em>
+    <em>Last updated 2024-01-25 19:20:42.855570.</em>
   
 </div>
 </body>

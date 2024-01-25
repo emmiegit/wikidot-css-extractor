@@ -34,6 +34,7 @@
     background-color: transparent;
     padding: 0;
     border: none;
+    counter-reset: series;
 }
 .content-panel .yui-navset .yui-nav {
     border: none;
@@ -88,8 +89,33 @@
     text-align: center;
     transition: opacity 0.35s ease-out;
 }
-.content-panel .yui-navset .yui-content &gt; div:first-child &gt; p { display: contents; }
+.content-panel .yui-navset .yui-content &gt; div:first-child &gt; p { display: contents; } /* iframe p de-wrapping */
 
+.content-panel .divider {
+    position: relative;
+    color: #bfbfbf;
+    font-weight: 600;
+    margin-block: 1.25rem;
+    font-size: 0;
+    counter-increment: series;
+}
+.content-panel .divider::before {
+    content: &#34;&#34;;
+    display: block;
+    height: .1rem;
+    width: 100%;
+    background: linear-gradient(to right, transparent, currentcolor, transparent);
+}
+.content-panel .divider::after {
+    content: counter(series, upper-roman);
+    font-size: .675rem;
+    background: #fcfdfb;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-inline: .25rem;
+}
 
 /*
 Some browsers assume that when &#34;display:none&#34; is applied to replaced elements, the visual info for that element is no longer needed. This is to prevent the iframe from re-rendering every time the tab is clicked off and on.
@@ -113,6 +139,10 @@ https://stackoverflow.com/questions/2730046/javascript-problem-with-iframe-thats
       
         <li>
           <pre><code>width: 100%; border: solid 1px black;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: inline-block;width: 194px;height: 16px;font-size: 0;background: url(https://scp-wiki.wdfiles.com/local--files/scp-001/sdl-ihp-001.gif) no-repeat;vertical-align: text-bottom;background-size: 192px;</code></pre>
         </li>
       
     </ul>
@@ -179,7 +209,51 @@ https://stackoverflow.com/questions/2730046/javascript-problem-with-iframe-thats
         </li>
       
         <li>
+          <pre><code>content-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>standalone</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>series</code></pre>
+        </li>
+      
+        <li>
           <pre><code>image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
         </li>
       
     </ul>
@@ -207,6 +281,7 @@ If there are any problems or you can&#39;t figure this out, contact a member of 
     background-color: transparent;
     padding: 0;
     border: none;
+    counter-reset: series;
 }
 .content-panel .yui-navset .yui-nav {
     border: none;
@@ -261,8 +336,33 @@ If there are any problems or you can&#39;t figure this out, contact a member of 
     text-align: center;
     transition: opacity 0.35s ease-out;
 }
-.content-panel .yui-navset .yui-content &gt; div:first-child &gt; p { display: contents; }
+.content-panel .yui-navset .yui-content &gt; div:first-child &gt; p { display: contents; } /* iframe p de-wrapping */
 
+.content-panel .divider {
+    position: relative;
+    color: #bfbfbf;
+    font-weight: 600;
+    margin-block: 1.25rem;
+    font-size: 0;
+    counter-increment: series;
+}
+.content-panel .divider::before {
+    content: &#34;&#34;;
+    display: block;
+    height: .1rem;
+    width: 100%;
+    background: linear-gradient(to right, transparent, currentcolor, transparent);
+}
+.content-panel .divider::after {
+    content: counter(series, upper-roman);
+    font-size: .675rem;
+    background: #fcfdfb;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-inline: .25rem;
+}
 
 /*
 Some browsers assume that when &#34;display:none&#34; is applied to replaced elements, the visual info for that element is no longer needed. This is to prevent the iframe from re-rendering every time the tab is clicked off and on.
@@ -569,8 +669,14 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
   &lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
     &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
-    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://scp-wiki.wikidot.com/local--files/scp-001/001.css&#34;&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.scpwiki.com/theme/en/sigma/css/sigma.min.css&#34;&gt;
     &lt;style&gt;
+    .proposals { text-align: center; }
+    .proposals ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .content-panel.most-recent { background: rgb(251, 255, 201); }
     #new-ones {
         display: flex;
         flex-direction: column-reverse;
@@ -585,7 +691,7 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
   &lt;/head&gt;
   &lt;body&gt;
     &lt;div class=&#34;proposals&#34;&gt;
-        &lt;div class=&#34;most-recent&#34;&gt;
+        &lt;div class=&#34;most-recent content-panel standalone series&#34;&gt;
             &lt;h2&gt; Newly Declassified &lt;/h2&gt;
             &lt;ul id=&#34;new-ones&#34;&gt;
             &lt;/ul&gt;
@@ -642,6 +748,8 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
         &lt;li&gt;
             &lt;p&gt;&lt;a href=&#34;/wmdd-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: weizhong|thedeadlymoose|Drewbear|Dexanote&lt;/a&gt; - Project Palisade&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
+            &lt;p&gt;&lt;a href=&#34;/psul-001&#34; target=&#34;_top&#34;&gt;CODE NAME: psul&lt;/a&gt; - The Mementos&lt;/p&gt;&lt;/li&gt;
+        &lt;li&gt;
             &lt;p&gt;&lt;a href=&#34;/captain-kirby-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Captain Kirby&lt;/a&gt; - O5-13&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
             &lt;p&gt;&lt;a href=&#34;/pedantique-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Pedantique&lt;/a&gt; - Fishhook&lt;/p&gt;&lt;/li&gt;
@@ -664,7 +772,7 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
         &lt;li&gt;
             &lt;p&gt;&lt;a href=&#34;/manymeats-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Dr. Eates&lt;/a&gt; - A Test of Character&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;a href=&#34;https://scp-wiki.wikidot.com/keter-duty&#34; target=&#34;_top&#34;&gt;&lt;img src=&#34;https://scp-wiki.wdfiles.com/local--files/scp-001/sdl-ihp-001.gif&#34; alt=&#34;sdl-ihp-001.gif&#34; class=&#34;image&#34; height=&#34;10px&#34;&gt;&lt;/a&gt; - Keter Duty&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/keter-duty&#34; target=&#34;_top&#34;&gt;&lt;img src=&#34;https://scp-wiki.wdfiles.com/local--files/scp-001/sdl-ihp-001.gif&#34; alt=&#34;sdl-ihp-001.gif&#34; class=&#34;image&#34; height=&#34;11px&#34;&gt;&lt;/a&gt; - Keter Duty&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
             &lt;p&gt;&lt;a href=&#34;/pickman-blank-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Pickman/Blank&lt;/a&gt; - The Frontispiece&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
@@ -683,6 +791,13 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
             &lt;p&gt;&lt;a href=&#34;/jack-ike-s-proposal-iv&#34; target=&#34;_top&#34;&gt;CODE NAME: Null Sum&lt;/a&gt; - The Problem &lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
             &lt;p&gt;&lt;a href=&#34;/dyfscp0012&#34; target=&#34;_top&#34;&gt;CODE NAME: Dafydd Utica Foolfellow&#39;s Proposal&lt;/a&gt; -  [the] [HUMAN!] [element?] &lt;/p&gt;&lt;/li&gt;
+
+        &lt;li&gt;
+    &lt;p&gt;&lt;a href=&#34;/nico-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Nico&#39;s Proposal&lt;/a&gt; - The Throne of God&lt;/p&gt;&lt;/li&gt;
+
+        &lt;li&gt;
+    &lt;p&gt;&lt;a href=&#34;/dr-cimmerian-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Cimmerian&lt;/a&gt; - Ethical considerations with regards to the former inhabitants of 81 Galatine Two and Secace Epsilon Seven, colloquially known as the Sword Stars.&lt;/p&gt;&lt;/li&gt;
+        
       &lt;/ul&gt;
     &lt;/div&gt;
 
@@ -703,6 +818,10 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 [[tab Order Chronologically]]
 [!--Bot-readable list--]
 
+[[div_ class=&#34;divider&#34;]]
+Series 1
+[[/div]]
+
 [[[Jonathan Ball&#39;s Proposal|CODE NAME: Jonathan Ball]]] - Sheaf of Papers
 
 [[[Dr. Gears&#39;s Proposal|CODE NAME: Dr. Gears]]] - The Prototype
@@ -715,6 +834,10 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 
 [[[dr-manns-proposal|CODE NAME: Dr. Mann]]] - The Spiral Path
 
+[[div_ class=&#34;divider&#34;]]
+Series 2
+[[/div]]
+
 [[[mackenzie-s-proposal|CODE NAME: Dr. Mackenzie]]] - The Legacy
 
 [[[sandrewswann-s-proposal|CODE NAME: S. Andrew Swann]]] - The Database
@@ -722,6 +845,10 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 [[[scantron-s-proposal| CODE NAME: Scantron]]] - The Foundation
 
 [[[djoric-dmatix-proposal| CODE NAME: Djoric/Dmatix]]] - Thirty-Six
+
+[[div_ class=&#34;divider&#34;]]
+Series 3
+[[/div]]
 
 [[[Ouroboros| CODE NAME: djkaktus/TwistedGears]]] - Ouroboros
 
@@ -731,11 +858,19 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 
 [[[wrong proposal| CODE NAME: Wrong]]] - The Consensus
 
+[[div_ class=&#34;divider&#34;]]
+Series 4
+[[/div]]
+
 [[[shaggydredlocks-proposal| CODE NAME: S. D. Locke]]] - When Day Breaks
 
 [[[spikebrennan-s-proposal| CODE NAME: Spike Brennan]]] - God&#39;s Blind Spot
 
 [[[WJS Proposal| CODE NAME: WJS]]] - Normalcy
+
+[[div_ class=&#34;divider&#34;]]
+Series 5
+[[/div]]
 
 [[[billiths-proposal | CODE NAME: BILLITH]]] - The World at Large
 
@@ -753,6 +888,8 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 
 [[[wmdd-s-proposal | CODE NAME: weizhong|thedeadlymoose|Drewbear|Dexanote]]] - Project Palisade
 
+[[[psul-001 | CODE NAME: psul]]] - The Mementos
+
 [[[captain-kirby-s-proposal | CODE NAME: Captain Kirby]]] - O5-13
 
 [[[pedantique-s-proposal | CODE NAME: Pedantique]]] - Fishhook
@@ -762,6 +899,10 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 [[[jack-ike-s-proposal-i| CODE NAME: Meta Ike]]] - The Solution
 
 [[[jack-ike-s-proposal-ii| CODE NAME: Noir Box]]] - Tindalos Trinity
+
+[[div_ class=&#34;divider&#34;]]
+Series 6
+[[/div]]
 
 [[[tanhony-s-proposal-ii | CODE NAME: Tanhony II]]] - The Black Moon
 
@@ -775,13 +916,21 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 
 [[[manymeats-proposal | CODE NAME: Dr. Eates]]] - A Test of Character
 
-[[image sdl-ihp-001.gif link=&#34;https://scp-wiki.wikidot.com/keter-duty&#34; height=&#34;10px&#34;]]  - Keter Duty
+[[a href=&#34;https://scp-wiki.wikidot.com/keter-duty&#34; style=&#34;display: inline-block;width: 194px;height: 16px;font-size: 0;background: url(https://scp-wiki.wdfiles.com/local--files/scp-001/sdl-ihp-001.gif) no-repeat;vertical-align: text-bottom;background-size: 192px;&#34;]]CODE NAME: I. H. Pickman/S. D. Locke[[/a]]  - Keter Duty
+
+[[div_ class=&#34;divider&#34;]]
+Series 7
+[[/div]]
 
 [[[Pickman-Blank Proposal | CODE NAME: Pickman/Blank]]] - The Frontispiece
 
 [[[rounderhouse-gold-proposal | CODE NAME: ROUNDERHOUSE&#39;s Gold Proposal]]] - AMONI-RAM
 
 [[[ralliston-s-proposal| CODE NAME: Ralliston]]] - The Queen&#39;s Gambit
+
+[[div_ class=&#34;divider&#34;]]
+Series 8
+[[/div]]
 
 [[[http://scp-wiki.wikidot.com/dyfscp-001| CODE NAME: D. Ulysses Foole]]] - Last Ride of the Day
 
@@ -794,6 +943,11 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 [[[jack-ike-s-proposal-iv | CODE NAME: Null Sum]]] - The Problem
 
 [[[dyfscp0012| CODE NAME: Dafydd Utica Foolfellow&#39;s Proposal]]] - [the] [HUMAN!] [element?]
+
+[[[nico-proposal| CODE NAME: Nico&#39;s Proposal]]] - The Throne of God
+
+[[[dr-cimmerian-s-proposal| CODE NAME: Dr Cimmerian&#39;s Proposal]]] - Ethical considerations with regards to the former inhabitants of 81 Galatine Two and Secace Epsilon Seven, colloquially known as the Sword Stars.
+
 [[/tab]]
 [[/tabview]]
 [[/div]]
@@ -821,7 +975,7 @@ ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED 
 
 <div id="footer">
   
-    <em>Last updated 2023-07-15 21:44:38.391050.</em>
+    <em>Last updated 2024-01-25 19:20:39.959810.</em>
   
 </div>
 </body>
