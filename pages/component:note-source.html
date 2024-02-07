@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>笔记本组件 源代码</title>
 </head>
@@ -29,11 +29,27 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(http://scp-wiki-cn.wikidot.com/component:note-source/code/1);
+          <pre><code>@import url(https://scp-wiki-cn.wikidot.com/component:note-source/code/1);
 
 #content-wrap #main-content {
     min-width:{$main-content};
 }
+
+
+#page-content {
+    min-width:{$page-content};
+}
+
+#page-content,
+#content-wrap #main-content {
+    min-width:{$main-page-width};
+}
+
+
+#edit-page-form{
+    margin: 0 auto;
+}
+
 
 .note-wrap .note-bookmark{
         background-size:{$my-bookmark};
@@ -42,7 +58,6 @@
 @media (max-width: 495px) {
 #content-wrap #main-content {
 min-width: 0rem;
-}
 }
 
 /*
@@ -67,13 +82,11 @@ min-width: 0rem;
       
         <li>
           <pre><code>/* 可折叠侧边栏 */
-
-@import url(&#34;http://etinjat.wikidot.com/component:collapsible-sidebar/code/1&#34;);
+@import url(&#34;https://etinjat.wikidot.com/component:collapsible-sidebar/code/1&#34;);
 
 #main-content {
 min-width:52rem;
        max-width:70rem;
-
 }
 
 #page-content {
@@ -91,14 +104,6 @@ min-width:52rem;
      max-width:90vw ;
     }
 }
-
-
-/* 似乎能去掉折叠侧边栏在sigma-9版式底下的空白 */
-#side-bar{
-    overflow-y:  scroll;
-}
- 
-
 </code></pre>
         </li>
       
@@ -109,7 +114,7 @@ min-width:52rem;
 没有人版式
 ========================
 */
-@import url(&#34;http://scp-wiki-cn.wikidot.com/component:note-source/code/2&#34;);</code></pre>
+@import url(&#34;https://scp-wiki-cn.wikidot.com/component:note-source/code/2&#34;);</code></pre>
         </li>
       
         <li>
@@ -120,12 +125,11 @@ min-width:52rem;
 ========================
 */
 
-@import url(&#34;http://scp-wiki-cn.wikidot.com/component:note-source/code/3&#34;);</code></pre>
+@import url(&#34;https://scp-wiki-cn.wikidot.com/component:note-source/code/3&#34;);</code></pre>
         </li>
       
         <li>
-          <pre><code>
-.reserve-separator:before,
+          <pre><code>.reserve-separator:before,
 .reserve-separator:after,
 .note-leaf .note-page:after,
 .note-leaf .note-page:before {
@@ -138,7 +142,6 @@ min-width:52rem;
           <pre><code>/* 
 =======================
 此处放置个人偏好用的手写体，全局使用 
-
 犹豫：杨任东竹石体（4mb）样式还不错，但没有绞笔不大像手写体。
 =======================
 */
@@ -155,8 +158,7 @@ by 贾智勇
 =================
 */
 
-@import url(http://scpsandboxcn.wikidot.com/local--files/typeface/Typeface-ShouShuti.css);
-
+@import url(https://scpsandboxcn.wikidot.com/local--files/typeface/Typeface-ShouShuti.css);
 
 .note-nobody *{
     font-size:1.2rem;
@@ -205,11 +207,27 @@ by 贾智勇
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[module CSS]]
-@import url(http://scp-wiki-cn.wikidot.com/component:note-source/code/1);
+@import url(https://scp-wiki-cn.wikidot.com/component:note-source/code/1);
 
 #content-wrap #main-content {
     min-width:{$main-content};
 }
+
+
+#page-content {
+    min-width:{$page-content};
+}
+
+#page-content,
+#content-wrap #main-content {
+    min-width:{$main-page-width};
+}
+
+
+#edit-page-form{
+    margin: 0 auto;
+}
+
 
 .note-wrap .note-bookmark{
         background-size:{$my-bookmark};
@@ -218,7 +236,6 @@ by 贾智勇
 @media (max-width: 495px) {
 #content-wrap #main-content {
 min-width: 0rem;
-}
 }
 
 /*
@@ -245,6 +262,10 @@ min-width: 0rem;
 [[iftags +_源代码]]
 [[collapsible show=&#34;+ 显示里面的东西&#34; hide=&#34;- 隐藏里面的东西&#34;]]
 
+撕页边缘图片数据
+http://scp-wiki-cn.wikidot.com/fragment:note-img
+
+
 ++ 主要代码
 [[code type=&#34;css&#34;]]
 /*
@@ -257,31 +278,13 @@ min-width: 0rem;
 ==================
 */
 
-
-
-/*
-==================
-待解决问题
-==================
-*/
- 
-/*
-书签改成before后，absolute？
-笔记本添加折痕？
-书脊改成背景图像绘制？
-各种图片位置问题？
-多个无序列表上下位置？
- 
-*/
-
- 
 /*
 ==================
 变量
 ==================
 */
-
-
+/* 撕页图片 */
+@import url(&#39;http://scp-wiki-cn.wikidot.com/fragment:note-img/code/1&#39;);
 
 :root{
  
@@ -295,16 +298,12 @@ min-width: 0rem;
   --cl-a2:222,210,220,1;
   --cl-a3:210,200,195,1;
   --cl-a4:25,25,25,1;
-   --cl-a5:{$book-cover};
-
    --page-color:#f3f3f3;
 
  
     /* 书本厚度描框 */
  
 --box-bk-0:0.0625rem 0.0625rem 0 rgba(var(--cl-a1)), 0.125rem 0.125rem 0 rgba(var(--cl-a2)), 0.1875rem 0.1875rem 0 rgba(var(--cl-a2)), 0.25rem 0.25rem 0 rgba(var(--cl-a3)), 0.3125rem 0.3125rem 0 rgba(var(--cl-a2)), 0.375rem 0.375rem 0 rgba(var(--cl-a2)), 0.4375rem 0.4375rem 0 rgba(var(--cl-a2)), 0.8rem 0.8rem 0 rgba(var(--cl-a4));
-
---cover-color000:0.0625rem 0.0625rem 0 rgba(var(--cl-a1),1), 0.125rem 0.125rem 0 rgba(var(--cl-a2),1), 0.1875rem 0.1875rem 0 rgba(var(--cl-a2),1), 0.25rem 0.25rem 0 rgba(var(--cl-a3),1), 0.3125rem 0.3125rem 0 rgba(var(--cl-a2),1), 0.375rem 0.375rem 0 rgba(var(--cl-a2),1), 0.4375rem 0.4375rem 0 rgba(var(--cl-a2),1), 0.58rem 0.8rem 0 rgba({$cover-color});
  
 /* 文字大小，为避免calc出现问题故采用手动计算 */
     --txt-size: 1.5rem;
@@ -322,16 +321,9 @@ min-width: 0rem;
  
 --line-color:linear-gradient(to top ,transparent 0%,#c0c0c0 1%, transparent 5%, #c0c0c0 11%,transparent 12%,transparent 20%);
  
---line-color000:linear-gradient(to top ,transparent 0%, {$line-color}, transparent 5%, {$line-color} 11%,transparent 12%,transparent 20%);
-
-
---line-color-{$line-color}:linear-gradient(to top ,transparent 0%,#{$line-color} 1%, transparent 5%, #{$line-color} 11%,transparent 12%,transparent 20%);
-
 ----line-color-no:none;
 
 ----line-color-none:none;
---paper-image:($paper-image);
-
 
 /* 
 ------------------------------------
@@ -400,18 +392,6 @@ min-width: 0rem;
 
 --style-pad-line: linear-gradient(to top ,rgba(195, 182, 149,0.8) 0%, transparent 8%);
 
-    
-/* ---------------撕页--------------*/
- --img-chew111: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2ZXJzaW9uPScxLjAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgd2lkdGg9JzQwLjAwMDAwMHB0JyBoZWlnaHQ9JzE0MDAuMDAwMDAwcHQnIHZpZXdCb3g9JzAgMCA0MC4wMDAwMDAgMTQwMC4wMDAwMDAnIHByZXNlcnZlQXNwZWN0UmF0aW89J3hNaWRZTWlkIG1lZXQnPjxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDAuMDAwMDAwLDE0MDAuMDAwMDAwKSBzY2FsZSgwLjEwMDAwMCwtMC4xMDAwMDApJyBmaWxsPScjMDAwMDAwJyBzdHJva2U9J25vbmUnPjxwYXRoIGQ9J004MCAxMzk5MCBjMCAtNiAyMCAtMTkgNDUgLTMwIGw0NSAtMTkgMCAtNTQgYzAgLTU5IDE0IC04MCA2MyAtOTIgNTYgLTE0IDYwIC03NyA4IC0xMTUgLTIxIC0xNCAtMzQgLTM3IC00NSAtNzQgLTE4IC01OSAtMTQgLTgyIDE3IC0xMDggMjkgLTIzIDQ4IC0xMjAgMzQgLTE3MyAtOCAtMzMgLTcgLTQ3IDcgLTc3IDE2IC0zMiAxNiAtMzkgMiAtNzEgLTggLTE5IC0xMiAtMzcgLTEwIC00MCAzIC0zIDcgLTIzIDkgLTQ2IDIgLTIzIDkgLTUwIDE1IC02MiAxMyAtMjMgLTQgLTU0IC04OCAtMTYxIC0yNSAtMzIgLTQyIC02NCAtMzkgLTcyIDggLTE5IC0xOCAtMTAxIC00MiAtMTM1IC0zNiAtNTEgLTM2IC05MSAxIC0xNDIgOSAtMTQgNiAtMjQgLTIxIC01NyAtNTMgLTY4IC01NiAtOTAgLTI3IC0xNzYgMTQgLTQxIDI2IC04MCAyNiAtODYgMCAtNiAxMiAtMjcgMjYgLTQ2IGwyNiAtMzQgLTI3IC0zNiBjLTI2IC0zNCAtMjcgLTM2IC0xNSAtMTAyIDE5IC0xMDcgMjAgLTE0NSA4IC0xNzUgLTkgLTI0IC03IC0zNiAxNiAtODEgMjEgLTQxIDI1IC01OCAxOCAtNzcgLTUgLTEzIC0xMyAtNTMgLTE3IC04OSAtNCAtMzYgLTEzIC03NSAtMjEgLTg4IC0xMiAtMTggLTEzIC0zOCAtNSAtMTA1IDYgLTQ1IDE1IC0xNTYgMjEgLTI0NyA3IC05MSAxNiAtMTc4IDIxIC0xOTQgNyAtMjEgNCAtNDAgLTEyIC03NyAtMTkgLTQ0IC0yMCAtNTUgLTEwIC0xMTQgMTMgLTc0IDYgLTE1OCAtMTYgLTE5MyAtMTMgLTIyIC0xMiAtMzUgMTcgLTE0MyAzMSAtMTEzIDMyIC0xMjQgMjEgLTE5NCAtMTQgLTk1IDMgLTIyOSAyOCAtMjIxIDQ2IDE0IDU3IDE1IDcwIDcgMTAgLTcgMTEgLTEzIDEgLTMwIC05IC0xOCAtOCAtMzAgOCAtNjQgMzUgLTc2IDM3IC0xMDIgNyAtMTUzIGwtMjcgLTQ2IDQ3IC0xMTAgYzI2IC02MCA0NCAtMTE2IDQxIC0xMjMgLTMgLTggLTI1IC0yMCAtNTAgLTI2IC03OSAtMjAgLTg1IC01MCAtMTcgLTkzIGwzOSAtMjUgLTE5IC01MSBjLTEwIC0yNyAtMTkgLTU3IC0xOSAtNjUgMCAtOSAxOCAtMzggNDAgLTY2IDM5IC00OSA0NiAtNjYgNzQgLTE4MSBsMTQgLTU4IC0zMCAtMTUgYy0yNiAtMTMgLTMzIC0xMyAtNTggMCAtMzYgMTkgLTU1IDExIC03NSAtMjcgLTE5IC0zOCAtMTQgLTQ1IDQwIC01OSA1NiAtMTQgODQgLTQzIDY4IC02OSAtMTAgLTE0IC05IC0yMSAyIC0zMCAyNiAtMjEgMTcgLTQ2IC00MCAtMTE1IC0zMCAtMzcgLTU1IC03NCAtNTUgLTgxIDAgLTcgMTAgLTM0IDIyIC01OCAxOCAtMzkgMjAgLTQ5IDkgLTY5IC0xMSAtMjAgLTkgLTMxIDE0IC04MSAxNiAtMzUgMzUgLTYxIDUwIC02OCAyNCAtMTEgMzQgLTI4IDE2IC0yOCAtNSAwIC0yOSAtMTYgLTUzIC0zNSAtMjMgLTE5IC01NCAtNDMgLTY4IC01NCBsLTI1IC0yMCAyNiAtNDggYzIyIC00MCAyNiAtNTkgMjQgLTExNiAtMyAtNjQgLTEgLTY5IDIxIC03NyAyNyAtMTEgMzAgLTI4IDEwIC01NiAtOCAtMTAgLTEzIC0yOCAtMTAgLTM5IDMgLTE0IC03IC0zNyAtMzAgLTY3IC0zNiAtNDYgLTQ1IC04MSAtMjYgLTkzIDYgLTMgMTcgLTE5IDI1IC0zNSAxNCAtMjcgMTQgLTM1IC00IC04MyAtMTEgLTM0IC0xNSAtNjAgLTEwIC02OSAxMCAtMTggNDggLTM0IDEwMiAtNDMgNDggLTggNDQgLTI3IC05IC0zOCAtNjAgLTEzIC02OCAtMjEgLTcxIC02MSAtMiAtMzUgMSAtMzggNDAgLTU1IDIzIC0xMCA1MSAtMjggNjEgLTQwIDE5IC0yMCAxOSAtMjMgMyAtNTYgLTkgLTE5IC0yMiAtMzUgLTI4IC0zNSAtNiAwIC0yNyAtMTMgLTQ2IC0zMCAtMTggLTE2IC0zOSAtMzAgLTQ1IC0zMCAtNiAwIC0xOSAtNyAtMjkgLTE2IC0xNiAtMTQgLTE2IC0xOCAyIC02NiBsMTggLTUwIC0yNCAtMjQgYy0xMyAtMTMgLTMwIC0yNCAtMzggLTI0IC04IDAgLTIwIC02IC0yNiAtMTQgLTkgLTEwIC03IC0xOSA4IC0zNyAxNiAtMjAgMjEgLTIyIDM1IC0xMCAxMyAxMSAyMiAxMSA0MSAzIDMwIC0xNCAzMSAtMjIgNyAtNTMgLTEwIC0xMyAtMjQgLTQyIC0zMSAtNjQgLTcgLTIyIC0yMCAtNDggLTI5IC01OCAtMTQgLTE1IC0xMyAtMjAgMyAtNTEgMTggLTMzIDE4IC0zNiAxIC03NCAtMTAgLTIyIC0xNSAtNDUgLTEyIC01MSA0IC02IDAgLTM4IC05IC03MiAtMTUgLTU4IC0xNSAtNjIgMyAtODMgMzUgLTQwIDUxIC03MyA0MSAtODMgLTcgLTcgLTcgLTE4IC0yIC0yOSA2IC0xMSAxNyAtMzQgMjYgLTUyIDEwIC0xOSAxNCAtMzggMTEgLTQ0IC0zIC01IDIgLTE4IDExIC0yOCAxMyAtMTUgMTQgLTIzIDUgLTM5IC03IC0xNCAtOCAtMjcgLTEgLTM5IDEzIC0yNCA5IC04NSAtNyAtMTA0IC05IC0xMiAtOSAtMjEgNCAtNDYgMTEgLTI0IDEzIC0zNiA0IC01MiAtNyAtMTMgLTcgLTI2IC0xIC0zOCAxMSAtMjEgLTIgLTk1IC0yMyAtMTI3IC0xMiAtMTggLTExIC0yNCAxMCAtNDggNDIgLTQ5IDQyIC03NSAxIC0xMTIgLTIwIC0xOCAtMzkgLTQ1IC00MyAtNTkgLTYgLTI1IC0xIC0zNSA0MSAtOTIgNiAtOSAzIC0xOSAtOSAtMzMgLTMwIC0zMyAtMjQgLTcxIDE5IC0xMDYgbDM3IC0zMiAtMjQgLTM5IGMtMTMgLTIxIC0yNyAtNDQgLTMxIC01MCAtMyAtNiAyIC0yMiAxMSAtMzUgOSAtMTMgMTcgLTM5IDE3IC01OCAwIC0yOCA2IC0zNyAzMCAtNTEgNDAgLTIyIDQyIC00MyAxMSAtOTAgLTE0IC0yMiAtMjYgLTQ1IC0yNiAtNTEgMCAtNiAtMTYgLTI2IC0zNSAtNDMgLTI2IC0yNCAtMzkgLTQ4IC01MCAtOTEgLTE3IC02MyAtMjAgLTQ2IDQxIC0yMDcgMTcgLTQ0IDE3IC00OCAxIC02NiAtMjEgLTIzIC0yMiAtNTEgLTIgLTgwIDE1IC0yMCAxNCAtMjYgLTExIC03OSAtMjIgLTUwIC0yNSAtNjIgLTE1IC04OSAxOCAtNTEgMTMgLTgwIC0yNCAtMTI4IC00MSAtNTMgLTQxIC01NyAtMTUgLTExNCAyMCAtNDQgMjAgLTQ0IDAgLTg4IC0xOSAtNDEgLTE5IC00NiAtNSAtNjYgOCAtMTMgMTUgLTM0IDE1IC00OSAwIC0xOSAxMCAtMzUgMzUgLTUzIDQzIC0zMyA0NCAtNTEgNCAtOTggLTI2IC0zMiAtMjkgLTQzIC0yMyAtNzUgNCAtMjEgMTEgLTQ2IDE1IC01NSA2IC0xMCA1IC0xOSAtMSAtMjMgLTUgLTMgLTEwIC0xOCAtMTAgLTMyIDAgLTE0IC0xMCAtNDEgLTIxIC02MCAtMTcgLTI2IC0xOSAtMzkgLTEyIC01NiA4IC0xOCA1IC0yOSAtMTUgLTU1IC0yNCAtMzIgLTI0IC0zMyAtOCAtNjUgMTUgLTI3IDE2IC0zNiA1IC02MiAtNyAtMTYgLTE0IC01MiAtMTUgLTgwIC0xIC02NCAtMjAgLTExMyAtMzYgLTk3IC03IDcgLTE4IDEyIC0yNSAxMiAtMTggMCAtNyAtMTExIDEzIC0xNTIgOCAtMTUgMTcgLTY5IDIwIC0xMjAgNiAtOTMgMTYgLTE0MyAzNiAtMTg2IDEwIC0xOCA4IC0yOCAtMTEgLTUzIC0xOSAtMjYgLTIzIC00NCAtMjMgLTEwMyAtMSAtNDEgNyAtOTMgMTcgLTEyMyAxNyAtNTEgMTcgLTUzIC04IC0xMzUgLTM2IC0xMjAgLTM4IC0xMzEgLTI3IC0xODQgNiAtMjcgMTQgLTc0IDIwIC0xMDQgNSAtMzAgMjMgLTgxIDM5IC0xMTIgMTYgLTMyIDI1IC02MCAyMCAtNjMgLTQgLTMgLTE2IC0yMiAtMjUgLTQyIC0xNCAtMjkgLTE1IC0zOSAtNSAtNTUgNyAtMTIgMTkgLTM4IDI2IC01OSAxMiAtMzIgMTEgLTM5IDAgLTQ5IC0xMCAtOSAtMTMgLTMyIC0xMSAtODggMiAtNDMgLTEgLTg4IC02IC0xMDIgLTYgLTE0IC0xNCAtNTAgLTE4IC04MCAtNSAtMzAgLTE0IC04NCAtMjAgLTEyMCAtMTUgLTg1IDExIC0yNTQgNDcgLTMxNyAyMiAtMzkgMjQgLTQ2IDEzIC04MCAtNyAtMjEgLTE4IC00NyAtMjMgLTU4IC0zNSAtNjMgLTUwIC0xODYgLTI2IC0yMDEgNSAtMyA0IC0xNSAtMyAtMjcgLTE4IC0zNCAtMTggLTkwIC0xIC0xMTYgMTQgLTIyIDE0IC01NyAtMiAtOTMgLTcgLTE3IDQgLTE4IDE1NCAtMTggbDE2MSAwIDAgNzAwMCAwIDcwMDAgLTE2MCAwIGMtMTA0IDAgLTE2MCAtNCAtMTYwIC0xMHonLz48L2c+PC9zdmc+IA==);    
-
-
- --img-chew222: url(data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2ZXJzaW9uPScxLjAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgd2lkdGg9JzQwLjAwMDAwMHB0JyBoZWlnaHQ9JzE0MDAuMDAwMDAwcHQnIHZpZXdCb3g9JzAgMCA0MC4wMDAwMDAgMTQwMC4wMDAwMDAnIHByZXNlcnZlQXNwZWN0UmF0aW89J3hNaWRZTWlkIG1lZXQnPjxnIHRyYW5zZm9ybT0ndHJhbnNsYXRlKDAuMDAwMDAwLDE0MDAuMDAwMDAwKSBzY2FsZSgwLjEwMDAwMCwtMC4xMDAwMDApJyBmaWxsPScjMDAwMDAwJyBzdHJva2U9J25vbmUnPjxwYXRoIGQ9J00wIDcwMDAgbDAgLTcwMDAgMTYwIDAgYzEwNCAwIDE2MCA0IDE2MCAxMCAwIDYgLTIwIDE5IC00NSAzMCBsLTQ1IDE5IDAgNTQgYzAgNTkgLTE0IDgwIC02MyA5MiAtNTYgMTQgLTYwIDc3IC04IDExNSAyMSAxNCAzNCAzNyA0NSA3NCAxOCA1OSAxNCA4MiAtMTcgMTA4IC0yOSAyMyAtNDggMTIwIC0zNCAxNzMgOCAzMyA3IDQ3IC03IDc3IC0xNiAzMiAtMTYgMzkgLTIgNzEgOCAxOSAxMiAzNyAxMCA0MCAtMyAzIC03IDIzIC05IDQ2IC0yIDIzIC05IDUwIC0xNSA2MiAtMTMgMjMgNCA1NCA4OCAxNjEgMjUgMzIgNDIgNjQgMzkgNzIgLTggMTkgMTggMTAxIDQyIDEzNSAzNiA1MSAzNiA5MSAtMSAxNDIgLTkgMTQgLTYgMjQgMjEgNTcgNTMgNjggNTYgOTAgMjcgMTc2IC0xNCA0MSAtMjYgODAgLTI2IDg2IDAgNiAtMTIgMjcgLTI2IDQ2IGwtMjYgMzQgMjcgMzYgYzI2IDM0IDI3IDM2IDE1IDEwMiAtMTkgMTA3IC0yMCAxNDUgLTggMTc1IDkgMjQgNyAzNiAtMTYgODEgLTIxIDQxIC0yNSA1OCAtMTggNzcgNSAxMyAxMyA1MyAxNyA4OSA0IDM2IDEzIDc1IDIxIDg4IDEyIDE4IDEzIDM4IDUgMTA1IC02IDQ1IC0xNSAxNTYgLTIxIDI0NyAtNyA5MSAtMTYgMTc4IC0yMSAxOTQgLTcgMjEgLTQgNDAgMTIgNzcgMTkgNDQgMjAgNTUgMTAgMTE0IC0xMyA3NCAtNiAxNTggMTYgMTkzIDEzIDIyIDEyIDM1IC0xNyAxNDMgLTMxIDExMyAtMzIgMTI0IC0yMSAxOTQgMTUgMTAxIC0zIDIyOSAtMzEgMjIxIC00NiAtMTUgLTU0IC0xNiAtNjcgLTcgLTEwIDcgLTExIDEzIC0xIDMwIDkgMTggOCAzMCAtOCA2NCAtMzUgNzYgLTM3IDEwMiAtNyAxNTMgbDI3IDQ2IC00NyAxMTAgYy0yNiA2MCAtNDQgMTE2IC00MSAxMjMgMyA4IDI1IDIwIDUwIDI2IDc5IDIwIDg1IDUwIDE3IDkzIGwtMzkgMjUgMTkgNTEgYzEwIDI3IDE5IDU3IDE5IDY1IDAgOSAtMTggMzggLTQwIDY2IC0zOSA0OSAtNDYgNjYgLTc0IDE4MSBsLTE0IDU4IDMwIDE1IGMyNiAxMyAzMyAxMyA1OCAwIDM2IC0xOSA1NSAtMTEgNzUgMjcgMTkgMzggMTQgNDUgLTQwIDU5IC01NiAxNCAtODQgNDMgLTY4IDY5IDEwIDE0IDkgMjEgLTIgMzAgLTI2IDIxIC0xNyA0NiA0MCAxMTUgMzAgMzcgNTUgNzQgNTUgODEgMCA3IC0xMCAzNCAtMjIgNTggLTE4IDM5IC0yMCA0OSAtOSA2OSAxMSAyMCA5IDMxIC0xNCA4MSAtMTYgMzUgLTM1IDYxIC01MCA2OCAtMjQgMTEgLTM0IDI4IC0xNiAyOCA1IDAgMjkgMTYgNTMgMzUgMjMgMTkgNTQgNDMgNjggNTQgbDI1IDIwIC0yNiA0OCBjLTIyIDQwIC0yNiA1OSAtMjQgMTE2IDMgNjQgMSA2OSAtMjEgNzcgLTI3IDExIC0zMCAyOCAtMTAgNTYgOCAxMCAxMyAyOCAxMCAzOSAtMyAxNCA3IDM3IDMwIDY3IDM2IDQ2IDQ1IDgxIDI2IDkzIC02IDMgLTE3IDE5IC0yNSAzNSAtMTQgMjcgLTE0IDM1IDQgODMgMTEgMzQgMTUgNjAgMTAgNjkgLTEwIDE4IC00OCAzNCAtMTAyIDQzIC00OCA4IC00NCAyNyA5IDM4IDYwIDEzIDY4IDIxIDcxIDYxIDIgMzUgLTEgMzggLTQwIDU1IC0yMyAxMCAtNTEgMjggLTYxIDQwIC0xOSAyMCAtMTkgMjMgLTMgNTYgOSAxOSAyMiAzNSAyOCAzNSA2IDAgMjcgMTMgNDYgMzAgMTggMTYgMzkgMzAgNDUgMzAgNiAwIDE5IDcgMjkgMTYgMTYgMTQgMTYgMTggLTIgNjYgbC0xOCA1MCAyNCAyNCBjMTMgMTMgMzAgMjQgMzggMjQgOCAwIDIwIDYgMjYgMTQgOSAxMCA3IDE5IC04IDM3IC0xNiAyMCAtMjEgMjIgLTM1IDEwIC0xMyAtMTEgLTIyIC0xMSAtNDEgLTMgLTMwIDE0IC0zMSAyMiAtNyA1MyAxMCAxMyAyNCA0MiAzMSA2NCA3IDIyIDIwIDQ4IDI5IDU4IDE0IDE1IDEzIDIwIC0zIDUxIC0xOCAzMyAtMTggMzYgLTEgNzQgMTAgMjIgMTUgNDUgMTIgNTEgLTQgNiAwIDM4IDkgNzIgMTUgNTggMTUgNjIgLTMgODMgLTM1IDQwIC01MSA3MyAtNDEgODMgNyA3IDcgMTggMiAyOSAtNiAxMSAtMTcgMzQgLTI2IDUyIC0xMCAxOSAtMTQgMzggLTExIDQ0IDMgNSAtMiAxOCAtMTEgMjggLTEzIDE1IC0xNCAyMyAtNSAzOSA3IDE0IDggMjcgMSAzOSAtMTMgMjQgLTkgODUgNyAxMDQgOSAxMiA5IDIxIC00IDQ2IC0xMSAyNCAtMTMgMzYgLTQgNTIgNyAxMyA3IDI2IDEgMzggLTExIDIxIDIgOTUgMjMgMTI3IDEyIDE4IDExIDI0IC0xMCA0OCAtNDIgNDkgLTQyIDc1IC0xIDExMiAyMCAxOCAzOSA0NSA0MyA1OSA2IDI1IDEgMzUgLTQxIDkyIC02IDkgLTMgMTkgOSAzMyAzMCAzMyAyNCA3MSAtMTkgMTA2IGwtMzcgMzIgMjQgMzkgYzEzIDIxIDI3IDQ0IDMxIDUwIDMgNiAtMiAyMiAtMTEgMzUgLTkgMTMgLTE3IDM5IC0xNyA1OCAwIDI4IC02IDM3IC0zMCA1MSAtNDAgMjIgLTQyIDQzIC0xMSA5MCAxNCAyMiAyNiA0NSAyNiA1MSAwIDYgMTYgMjYgMzUgNDMgMjYgMjQgMzkgNDggNTAgOTEgMTcgNjMgMjAgNDYgLTQxIDIwNyAtMTcgNDQgLTE3IDQ4IC0xIDY2IDIxIDIzIDIyIDUxIDIgODAgLTE1IDIwIC0xNCAyNiAxMSA3OSAyMiA1MCAyNSA2MiAxNSA4OSAtMTggNTEgLTEzIDgwIDI0IDEyOCA0MSA1MyA0MSA1NyAxNSAxMTQgLTIwIDQ0IC0yMCA0NCAwIDg4IDE5IDQxIDE5IDQ2IDUgNjYgLTggMTMgLTE1IDM0IC0xNSA0OSAwIDE5IC0xMCAzNSAtMzUgNTMgLTQzIDMzIC00NCA1MSAtNCA5OCAyNiAzMiAyOSA0MyAyMyA3NSAtNCAyMSAtMTEgNDYgLTE1IDU1IC02IDEwIC01IDE5IDEgMjMgNSAzIDEwIDE4IDEwIDMyIDAgMTQgMTAgNDEgMjEgNjAgMTcgMjYgMTkgMzkgMTIgNTYgLTggMTggLTUgMjkgMTUgNTUgMjQgMzIgMjQgMzMgOCA2NSAtMTUgMjcgLTE2IDM2IC01IDYyIDcgMTcgMTQgNTMgMTUgODAgMSA2NCAyMCAxMTMgMzYgOTcgNyAtNyAxOCAtMTIgMjUgLTEyIDE4IDAgNyAxMTEgLTEzIDE1MiAtOCAxNSAtMTcgNjkgLTIwIDEyMCAtNiA5MyAtMTYgMTQzIC0zNiAxODYgLTEwIDE4IC04IDI4IDExIDUzIDE5IDI2IDIzIDQ0IDIzIDEwMyAxIDQxIC03IDkzIC0xNyAxMjMgLTE3IDUxIC0xNyA1MyA4IDEzNSAzNiAxMjAgMzggMTMxIDI3IDE4NCAtNiAyNyAtMTQgNzQgLTIwIDEwNCAtNSAzMCAtMjMgODEgLTM5IDExMiAtMTYgMzIgLTI1IDYwIC0yMCA2MyA0IDMgMTYgMjIgMjUgNDIgMTQgMjkgMTUgMzkgNSA1NSAtNyAxMiAtMTkgMzggLTI2IDU5IC0xMiAzMiAtMTEgMzkgMCA0OSAxMCA5IDEzIDMyIDExIDg4IC0yIDQzIDEgODggNiAxMDIgNiAxNCAxNCA1MCAxOCA4MCA1IDMwIDE0IDg0IDIwIDEyMCAxNSA4NSAtMTEgMjU0IC00NyAzMTcgLTIyIDM5IC0yNCA0NiAtMTMgODAgNyAyMSAxOCA0NyAyMyA1OCAzNSA2MyA1MCAxODYgMjYgMjAxIC01IDMgLTQgMTUgMyAyNyAxOCAzNCAxOCA5MCAxIDExNiAtMTQgMjIgLTE0IDU3IDIgOTQgNyAxNiAtNCAxNyAtMTU0IDE3IGwtMTYxIDAgMCAtNzAwMHonLz48L2c+PC9zdmc+IA==);
-  
-
---img-chew333:url(&#34;data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2ZXJzaW9uPScxLjAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgd2lkdGg9JzcwMC4wMDAwMDBwdCcgaGVpZ2h0PSc1MC4wMDAwMDBwdCcgdmlld0JveD0nMCAwIDcwMC4wMDAwMDAgNTAuMDAwMDAwJyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSd4TWlkWU1pZCBtZWV0Jz48ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgwLjAwMDAwMCw1MC4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCknIGZpbGw9JyMwMDAwMDAnIHN0cm9rZT0nbm9uZSc+PHBhdGggZD0nTTU3OTAgNDQyIGMtMTUgLTMzIC0yNSAtNzggLTI2IC0xMDcgMCAtMjcgLTEgLTU1IC0yIC02MiAtMyAtMTUgLTU5IC00MyAtODggLTQzIC0xMiAwIC0zMSAtMTEgLTQyIC0yNSAtMjUgLTMxIC0zNSAtMzEgLTc1IC0xIC0xOCAxNCAtNDQgMjkgLTU5IDM1IC0xNSA2IC0zNyAyNiAtNTAgNDQgLTEyIDE5IC00MSA0NyAtNjUgNjIgLTI0IDE1IC00MyAzNSAtNDMgNDQgMCA5IC02IDI1IC0xMyAzNiAtMjAgMjYgLTg0IDEzIC05OSAtMjEgLTEyIC0yNSAtMTMgLTI2IC05MCAtMTkgbC03OCA3IDAgLTU2IGMwIC00OCAtNCAtNjAgLTMxIC05MCAtMzkgLTQ1IC0xMTggLTEwMyAtMTQ0IC0xMDcgLTM4IC01IC03MCAyMiAtMTE1IDk5IC00OCA4MiAtOTAgMTE1IC0xNjIgMTI3IC0yOSA1IC00MSAyIC01NyAtMTQgLTE3IC0xNyAtMjQgLTE5IC00MCAtOSAtMTUgOSAtMzEgNCAtOTUgLTM1IC04NSAtNTIgLTkyIC01NCAtMTI0IC0zMSAtMTcgMTIgLTQzIDE1IC0xMDcgMTMgLTc0IC0zIC05NSAtOCAtMTY0IC00MCAtOTEgLTQzIC0xMzMgLTUxIC0xNzcgLTM0IC0xOSA4IC0zNyA5IC00NSA0IC0yMCAtMTMgLTI5IC0xMSAtMjkgNSAwIDEyIC0yMCAxNCAtMTE1IDEwIC0xNDIgLTUgLTE2OCA1IC0xODYgNjkgLTIxIDc5IC00MSAxMTUgLTgxIDE0OCAtNTEgNDAgLTU5IDMwIC01MyAtNjcgbDQgLTcyIC01OSAtMzcgYy0zMyAtMjEgLTYyIC00NSAtNjUgLTU0IC0xMCAtMzEgLTYxIC00NCAtMTU2IC0zOSAtODUgNSAtODkgNSAtMTA0IC0xOSAtMTYgLTIzIC0yMCAtMjQgLTgzIC0xNyAtMzcgMyAtNzkgMTMgLTk0IDIwIC0yMyAxMiAtMzEgMTIgLTU1IDAgLTMwIC0xNSAtOTggLTM0IC0xNTAgLTQzIC00OSAtOCAtMTI4IDM0IC0yMTUgMTE1IC00MyAzOSAtODggNzQgLTEwMSA3NyAtMTMgNCAtNjEgLTEgLTEwNyAtMTEgLTg3IC0xNyAtMTkxIC0xNCAtMjYxIDcgLTE5IDYgLTU2IDEwIC04NCAxMCAtNjQgLTIgLTgwIC0xOSAtNTggLTYzIDI1IC00OCA4IC04MSAtNDQgLTkwIC0yMyAtNCAtNTYgLTE3IC03MiAtMjkgLTU4IC00MyAtMjAwIC02IC0yNDYgNjUgLTEwIDE1IC0yOSAyNiAtNTUgMzAgLTIyIDMgLTQwIDEwIC00MCAxNCAwIDYgLTQ1IDMzIC0xMDIgNjAgLTUgMiAtOCAtMTQgLTggLTM3IDAgLTIyIC01IC00MyAtMTAgLTQ2IC02IC00IC0xMCAtMTYgLTggLTI4IDQgLTI4IC0yMyAtMjUgLTY3IDkgbC0zMiAyNCAtMjcgLTQwIGMtMzQgLTUyIC02MSAtNjggLTEzMyAtODEgLTc1IC0xMyAtMTIyIC0yIC0xOTIgNDYgLTI4IDE5IC01NyAzNSAtNjUgMzUgLTggMCAtMzAgOSAtNDkgMjAgLTM2IDIxIC01NCAyNyAtMTE5IDM3IGwtMzYgNSA1IC02MiA2IC02MiAtMzEgNiBjLTE2IDQgLTMzIDMgLTM2IC0yIC05IC0xNSAtMjE4IC02IC0yNTYgMTEgLTggNCAtMzYgMTMgLTYyIDIxIGwtNDggMTQgMCAtNTEgYzAgLTI5IC0zIC02OSAtNiAtOTAgbC03IC0zNyAzNDk3IDAgMzQ5NiAwIDAgOTAgYzAgODAgLTIgOTAgLTE4IDkwIC0xMCAwIC0zMSAtMTMgLTQ3IC0zMCAtMzIgLTM0IC04NyAtNDEgLTEyMSAtMTYgLTEwIDggLTI5IDEyIC00MSA5IC00MyAtMTAgLTcyIDUgLTk0IDUwIC0xOCAzNyAtMjUgNDMgLTQ4IDM5IC0xNCAtMiAtNTIgMSAtODQgNiBsLTU5IDkgNyAtMjYgYzMgLTE0IDkgLTUwIDEyIC04MCA1IC00NCAzIC01MyAtOCAtNDkgLTExMCA0MiAtMTQ3IDQ5IC0xODYgMzkgLTIyIC02IC00NiAtMTggLTUzIC0yNiAtMTkgLTIzIC0zMCAtMTggLTMwIDE2IDAgNTYgLTYxIDEzMCAtODEgOTggLTQgLTYgLTEyIC04IC0xOCAtNCAtMTYgOSAtNjIgMTEyIC02NyAxNTAgLTEwIDYzIC0yNSA5NSAtNDUgOTUgLTExIDAgLTIyIC04IC0yNSAtMTcgLTEyIC00MCAtMjMgLTQ4IC03MCAtNTQgLTU1IC03IC02NCAwIC02NCA0OCAwIDgzIC0zNSA4NSAtNzAgNXonLz48L2c+PC9zdmc+IA==&#34;);
-
---img-chew444: url(&#34;data:image/svg+xml;charset=utf-8;base64,PHN2ZyB2ZXJzaW9uPScxLjAnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zycgd2lkdGg9JzcwMC4wMDAwMDBwdCcgaGVpZ2h0PSc0OS4wMDAwMDBwdCcgdmlld0JveD0nMCAwIDcwMC4wMDAwMDAgNDkuMDAwMDAwJyBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSd4TWlkWU1pZCBtZWV0Jz48ZyB0cmFuc2Zvcm09J3RyYW5zbGF0ZSgwLjAwMDAwMCw0OS4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCknIGZpbGw9JyMwMDAwMDAnIHN0cm9rZT0nbm9uZSc+PHBhdGggZD0nTTEgMzQzIGMwIC04MiAzIC0xNTUgNyAtMTYzIDQgLTggMTYgLTE2IDI3IC0xOCAxMSAtMiAzNCAtMTcgNTAgLTMzIDM1IC0zMiA5MyAtNDAgMTE1IC0xNCA3IDggMzQgMTUgNjMgMTcgNTAgMyA1MyA0IDcyIDQ1IDIwIDQxIDIxIDQyIDcxIDQzIDI4IDAgNjYgMyA4NCA3IDMwIDYgMzMgNCAyNSAtMTMgLTggLTIwIC0yMCAtMTQ0IC0xNCAtMTQ0IDMgMCAyOSAxMCA1OSAyMSAzMCAxMiA3NiAyNCAxMDEgMjYgNDEgNCA1MSAxIDgyIC0yNiAzOSAtMzUgMzkgLTM1IDUxIDQwIDQgMjAgMTggNDkgMzMgNjMgMjMgMjMgMjggMjUgMzUgMTEgNSAtOCAxMyAtMTUgMTggLTE1IDE0IDAgNzMgMTMyIDgxIDE4NCA5IDUyIDMwIDgzIDQ4IDcyIDYgLTQgMTEgLTE4IDExIC0zMCAwIC0zMiAxNiAtNDIgNzMgLTQ4IDU1IC02IDYxIDAgNzAgNzUgbDcgNDcgLTU4NSAwIC01ODUgMCAxIC0xNDd6Jy8+PHBhdGggZD0nTTEyMDAgNDgxIGMwIC01IDEyIC0zNCAyNiAtNjUgMjAgLTQ0IDI0IC02NiAxOSAtOTMgLTcgLTQxIDExIC05NyAzMSAtODkgNyAzIDE1IC0xIDE3IC04IDMgLTggMTcgLTEyIDMyIC0xMSAyOCA0IDY1IC0yMSA2NSAtNDIgMCAtMTggMzUgLTE2IDUxIDMgMTYgMjAgNzEgNDkgODYgNDYgNyAtMiAxOSAxMCAyNyAyNSAxOCAzNiA2NCA3OSA5MyA4NyAxNSA1IDI2IDIwIDMzIDQ2IDYgMjIgMTQgNDIgMTkgNDUgMjEgMTIgNjcgLTggODQgLTM3IDE1IC0yNiAyMSAtMjkgNTAgLTI0IDE3IDMgNTEgOCA3NSAxMiBsNDIgNyAwIC01MyBjMCAtNjUgMjIgLTk3IDExMiAtMTY2IDU3IC00MyA2NCAtNDYgOTcgLTM4IDMwIDggNDIgMjEgODUgOTQgNTMgODkgOTEgMTE4IDE3MyAxMzUgMjYgNSAzMiAzIDM4IC0xNCA3IC0yMyAzNCAtMjggNTIgLTEwIDkgOSAyOSAxIDc4IC0zMCA5MiAtNTkgMTEzIC02NiAxMzYgLTQ1IDE1IDEzIDM5IDE3IDEwNyAxNyA4MiAwIDk1IC0zIDE2OCAtMzcgNjEgLTMwIDkwIC0zOCAxMjkgLTM3IDI4IDEgNjcgMiA4OCAyIDIxIDEgMzcgNiAzNyAxMyAwIDEyIDEyMyAxMyAxODYgMSA1NiAtMTAgMTA4IDMwIDEyMCA5NSAxMCA1MyAzOSAxMDIgNzcgMTMyIDMxIDI0IDM2IDI1IDQyIDEwIDMgLTkgMyAtNDUgLTEgLTc5IC03IC02NyAzIC05MyAzNSAtOTMgOSAwIDQyIC0yNCA3MiAtNTMgNTIgLTUxIDU5IC01NCAxMjAgLTYwIDM1IC0zIDgwIC0zIDk5IDIgMzAgNyAzOCA0IDU1IC0xNiAxMSAtMTMgMjkgLTI0IDQwIC0yNSAzMyAtMSAxNDYgMjEgMTU5IDMxIDcgNiAxOCA0IDMwIC01IDExIC04IDMwIC0xNCA0MiAtMTQgMTIgMCAzOCAtNyA1NyAtMTUgODMgLTM0IDE2MiAtNiAyNzQgOTggOTUgODggMTA0IDkxIDE4MyA3MyA3NCAtMTggMTg0IC0yMCAyNTAgLTUgNzkgMTggMTU5IDIyIDE3NCAxMCAxMiAtMTAgMTIgLTE2IDAgLTM5IC0yOSAtNTYgLTkgLTk5IDQ4IC0xMDUgMjAgLTIgNDggLTE0IDYzIC0yNiA2MCAtNDcgMTk3IC0xNiAyNTMgNTYgMTcgMjQgMzMgMzMgNTIgMzMgMTYgMCAzNSA2IDQyIDEzIDcgNyAzNCAyNSA2MSAzOSBsNDcgMjcgMCAtMzkgYzAgLTIxIDUgLTQyIDEwIC00NSA2IC00IDggLTE1IDUgLTI2IC0xMCAtMzIgMjEgLTM0IDYzIC01IDIxIDE0IDQxIDI2IDQ0IDI2IDQgMCAxNiAtMTYgMjggLTM0IDI5IC00OCA3NCAtNzMgMTQ2IC04MSA3MyAtOSAxMTQgMyAxODQgNTEgMjcgMTkgNTcgMzQgNjUgMzQgOSAwIDI3IDcgNDAgMTYgMjIgMTQgMTE2IDQ0IDE0MSA0NCA3IDAgOSAtMTcgNiAtNTAgLTYgLTY5IDAgLTgzIDMzIC02OCAyMCA5IDI4IDkgMzMgMSAxMSAtMTcgMjQ0IC0xMyAyNTcgNCA2IDcgMjUgMTUgNDQgMTggNzMgMTIgNzEgOCA3MSAxODUgbDAgMTYwIC0yOTAwIDAgYy0xNjYxIDAgLTI5MDAgLTQgLTI5MDAgLTl6Jy8+PC9nPjwvc3ZnPiA=&#34;);
-
 }
  
 
@@ -463,7 +443,6 @@ min-width: 0rem;
 
 
     background-image:var(--line-color);
-    background-image:{$page-line};
  /*! padding: 0em 1em 0 1em; */
 }
  
@@ -524,16 +503,6 @@ min-width: 0rem;
     margin:0 0.5rem 0 0.5rem;
 }
  
-/*
-.note-leaf .note-bookmark {
-  padding-top:1.5rem;
-}
- 
-.note-leaf   p:first-child{
-    margin-top:-3rem;
-}
-*/
- 
 @media (max-width: 495px) { 
  .note-leaf .note-page{
       padding:0;
@@ -548,12 +517,6 @@ min-width: 0rem;
   .note-page .note-bookmark p{
      overflow: hidden;/* 图片手机溢出 */
   }
- 
- /*
- .note-leaf   p:first-child{
-    margin-top:0rem;
- }
-*/
 }
  
 /*
@@ -586,22 +549,6 @@ min-width: 0rem;
 .note-left {
     margin:0 0.5rem 0 1rem;
 }
-/*
-.note-left p:last-child,
-.note-right p:last-child {
-    padding-bottom: 1.5rem ;
-}
- 
-.note-left p:first-child,
-.note-right p:first-child {
-    padding-top: 0;
-}
- 
- .note-left .note-bookmark,
- .note-right .note-bookmark {
-      padding-bottom:1rem;
-}
-*/
  
 @media (max-width: 500px) {
  
@@ -609,14 +556,6 @@ min-width: 0rem;
   .note-line  div{
     display: block;     
   }
- 
-/*
-    .note-right p:first-child,
-  .note-left p:first-child {
-     padding-top: 1.5rem ;
-  }
- 
-    */
  
   .note-line  .note-bookmark {
             padding:0 0.4rem 0 0.8rem;
@@ -656,11 +595,7 @@ min-width: 0rem;
  
 }
  
-/*
-.note-right p{
-    padding: 0 0em 0 1em;
-}
-*/
+
 
  
 /* 
@@ -766,7 +701,8 @@ position:  sticky;/**/
  
 .reserve-separator:after , 
 .note-leaf .note-page:after {
-    color:white; /* 应使用背景色，实际溢出，在其他背景色中会见到问题 */
+   color:#fff;
+    color:rgba(var(--swatch-background,255,255,255), 1); /* 应使用背景色，实际溢出，在其他背景色中会见到问题 */
 }
  
 .yui-content .reserve-separator:before ,
@@ -819,10 +755,7 @@ content:&#39; &#39;;
 .note-paper-right{
     background-color: #f2f2f2;
     background-color: var(--page-color);
-    background-color:{$page-color};
-    color:{$text-color};
 }
-
 
  
 /* 
@@ -830,9 +763,6 @@ content:&#39; &#39;;
 撕页 
 ------------------------
 */
-
-
-
 
 .note-paper-wrap{
     width: 100%;
@@ -853,22 +783,7 @@ content:&#39; &#39;;
 
 .note-paper-mid{
     width: 100%;
-   /* padding: 0 0.5rem 0rem 0rem; */
 }
-
-/*
-.chew-left-yes  .note-paper-mid{
-    padding-left: 0.5rem;
-}
-
-
-.note-paper-midner {
-    width: 100%;
-    padding: 0 0rem
-}
-
-*/
-
 
 .note-paper-midner {
     width:98%;
@@ -894,28 +809,22 @@ content:&#39; &#39;;
 
 /*------------ 左右齿痕 ------------*/
 
-
-.chew-paper-horiz   .note-paper-left  ,
-.chew-paper-horiz   .note-paper-right ,
-.chew-paper-left   .note-paper-left  ,
-.chew-paper-right  .note-paper-right { 
+div:is(.chew-paper-horiz, .chew-paper-left, .chew-paper-right)   div:is(.note-paper-left, .note-paper-right) { 
          height:auto;
  -webkit-mask-repeat: repeat-y;
          mask-repeat: repeat-y;
- -webkit-mask-size: 1rem;
-         mask-size: 1rem;
+ -webkit-mask-size: 1.05rem;
+         mask-size: 1.05rem;
 }
 
-.chew-paper-horiz   .note-paper-left,
-.chew-paper-left .note-paper-left{   
+div:is(.chew-paper-horiz, .chew-paper-left)  .note-paper-left{   
     -webkit-mask-image:var(--img-chew111);
             mask-image:var(--img-chew111);
     -webkit-mask-position: left;
             mask-position: left;
 }
 
-.chew-paper-horiz   .note-paper-right, 
-.chew-paper-right .note-paper-right {   
+div:is(.chew-paper-horiz,  .chew-paper-right)  .note-paper-right {   
     -webkit-mask-image:var(--img-chew222);
     -webkit-mask-position: right;
     mask-image:var(--img-chew222);
@@ -928,9 +837,8 @@ content:&#39; &#39;;
     min-width:0.5rem;
 }
 
-
 div[class*=&#34;chew-paper&#34;]:not([class*=&#34;$chew&#34;])  .note-paper-left ,
-div[class*=&#34;chew-paper&#34;]:not([class*=&#34;$chew&#34;])   .note-paper-right { 
+div[class*=&#34;chew-paper&#34;]:not([class*=&#34;$chew&#34;])   .note-paper-right {
  -webkit-mask-size: 0.5rem;
          mask-size: 0.5rem;
 }
@@ -944,18 +852,13 @@ div[class*=&#34;chew-paper&#34;]:not([class*=&#34;$chew&#34;])   .note-paper-
 
 /*------------------ 上下齿痕 ------------------ */
 
-.chew-paper-verti .note-paper-main,
-.chew-paper-top .note-paper-main,
-.chew-paper-bottom .note-paper-main{
+
+
+div:is(.chew-paper-verti, .chew-paper-top, .chew-paper-bottom) .note-paper-main{
   flex-direction:  column;
 }
 
-.chew-paper-verti .note-paper-midner p,
-.chew-paper-verti .note-paper-under p,
-.chew-paper-top .note-paper-midner p,
-.chew-paper-top .note-paper-under p,
-.chew-paper-bottom .note-paper-midner p,
-.chew-paper-bottom .note-paper-under p {
+div:is(.chew-paper-verti, .chew-paper-top, .chew-paper-bottom) div:is(.note-paper-midner, .note-paper-under) p {
   margin:0 1rem;
 }
 
@@ -969,19 +872,49 @@ div[class*=&#34;chew-paper&#34;]:not([class*=&#34;$chew&#34;])   .note-paper-
   min-height: 2rem;
  }
 
-/*
-.chew-paper-verti .note-paper-leftner,
-.chew-paper-verti .note-paper-rightner,
-.chew-paper-verti .note-paper-under,
-.chew-paper-top .note-paper-leftner,
-.chew-paper-top .note-paper-rightner,
-.chew-paper-top .note-paper-under {
-    width: 100%;
-    height: 100%;
-  min-width:2rem;
-  min-height:2rem;
+div:is(.chew-paper-verti, .chew-paper-top, .chew-paper-bottom) div:is(.note-paper-left, .note-paper-right){
+  min-width:1rem;
+  /*! min-height: 2rem; */
 }
-*/
+
+
+
+div:is(.chew-paper-verti, .chew-paper-top)  .note-paper-left ,
+div:is(.chew-paper-verti, .chew-paper-bottom)  .note-paper-right {
+         height:auto;
+ -webkit-mask-repeat: repeat-x;
+         mask-repeat: repeat-x;
+ -webkit-mask-size: 10.5rem;
+         mask-size: 10.5rem;
+}
+
+
+
+
+.chew-paper-verti .note-paper-left,
+.chew-paper-top .note-paper-left{
+    -webkit-mask-image:var(--img-chew333);
+    mask-image:var(--img-chew333);
+    -webkit-mask-position: bottom;
+    mask-position:bottom;
+margin-bottom: -0.1rem;
+}
+
+.chew-paper-verti .note-paper-right,
+.chew-paper-bottom .note-paper-right {   
+      -webkit-mask-image:var(--img-chew444);
+    mask-image:var(--img-chew444);
+    -webkit-mask-position: top;
+    mask-position: top;
+    margin-top: -0.1rem;
+}
+
+.chew-paper-top .note-paper-right,
+.chew-paper-bottom .note-paper-left {   
+min-height:0;
+}
+
+
 
 .chew-paper-verti   .note-paper-left  ,
 .chew-paper-verti   .note-paper-right,
@@ -1022,10 +955,8 @@ min-height:0;
     min-width:0.5rem;
 }
 
-.chew-paper-verti .note-paper-left ,
-.chew-paper-verti .note-paper-right,
-.chew-paper-top .note-paper-left ,
-.chew-paper-bottom .note-paper-right {
+div:is(.chew-paper-verti, .chew-paper-top) .note-paper-left ,
+div:is(.chew-paper-verti, .chew-paper-bottom) .note-paper-right {
  -webkit-mask-size: 10rem !important;
          mask-size: 10rem !important;
 }
@@ -1065,20 +996,16 @@ min-height:0;
 }
 
 
-.crease-left-top .crease-set-corner:before,
-.crease-left-bottom .crease-set-corner:before,
-.crease-right-top .crease-set-corner:after,
-.crease-right-bottom .crease-set-corner:after {
+div:is(.crease-left-top,   .crease-left-bottom) .crease-set-corner:before,
+div:is(.crease-right-top, .crease-right-bottom) .crease-set-corner:after {
    content:&#39;  &#39;;
    position:absolute;
    width:3rem;
    height:3rem;
 }
 
-.chew-paper-horiz   .crease-set-corner:before,
-.chew-paper-horiz   .crease-set-corner:after,
-.chew-paper-left .crease-set-corner:before,
-.chew-paper-right .crease-set-corner:after {
+div:is(.chew-paper-horiz, .chew-paper-left)  .crease-set-corner:before,
+div:is(.chew-paper-horiz, .chew-paper-right)  .crease-set-corner:after{
     content:&#39;&#39;;
     width:0rem;
   height:0rem;
@@ -1125,33 +1052,6 @@ min-height:0;
    border-radius:0;
  }
 }
-
-/* 太大
- .crease-left-top .crease-set-corner:before {
-    
-  background-image: linear-gradient(-68deg,transparent 0%,  transparent 93.5%, rgba(0, 0, 0, 0.15) 95.5%,rgba(0, 0, 0, 0.1) 96%, rgba(0, 0, 0, 0.2) 96.5%,rgba(0, 0, 0, 0.25) 96.5%,rgba(0, 0, 0, 0.2) 97%, rgba(0, 0, 0, 0.3) 100%); 
-}
-
-.crease-left-bottom .crease-set-corner:before {
-     bottom:0;
-     background-image: linear-gradient(250deg,transparent 0%,  transparent 93.5%, rgba(0, 0, 0, 0.15) 95.5%,rgba(0, 0, 0, 0.1) 96%, rgba(0, 0, 0, 0.2) 96.5%,rgba(0, 0, 0, 0.25) 96.5%,rgba(0, 0, 0, 0.2) 97%, rgba(0, 0, 0, 0.3) 100%); 
-}
-
-
-.crease-right-top .crease-set-corner:after {
-     right:0;
-     background-image: linear-gradient(65deg,transparent 0%,  transparent 93.5%,rgba(0, 0, 0, 0.1) 95%, rgba(0, 0, 0, 0.1) 95.5%, rgba(0, 0, 0, 0.2) 96%,rgba(0, 0, 0, 0.1) 96.5%,rgba(0, 0, 0, 0.2) 97%, rgba(0, 0, 0, 0.25) 100%); 
-}
-
-.crease-right-bottom .crease-set-corner:after {
-     bottom:0;
-     right:0;
-     background-image: linear-gradient(115deg,transparent 0%,  transparent 93.5%, rgba(0, 0, 0, 0.15) 95.5%,rgba(0, 0, 0, 0.1) 96%, rgba(0, 0, 0, 0.2) 96.5%,rgba(0, 0, 0, 0.25) 96.5%,rgba(0, 0, 0, 0.2) 97%, rgba(0, 0, 0, 0.3) 100%); 
-}
-
-*/
-
-
 
 
 /*  div[class*=&#34;crease&#34;]:not([class*=&#34;$crease&#34;]) 禁止两种折痕同时出现  */
@@ -1200,17 +1100,12 @@ min-height:0;
    margin-bottom: var(--txt-size-opp-2-1);
 }
 
-.upon-set-left p,
-.upon-set-right p,
-.upon-set-center p,
-.under-set-left p,
-.under-set-right p,
-.under-set-center p{
+div:is(.upon-set-left, .upon-set-right, .upon-set-center, .under-set-left, .under-set-right, .under-set-center) p{
   visibility:visible;
   padding:0rem 0;
 }
 
-.upon-set-left,
+.upon-set-left, 
 .under-set-left{
   text-align:left;
         display:block;
@@ -1229,8 +1124,6 @@ min-height:0;
     display:block;
 }
 
-
-
 /*
 ----------------------------------
 附加组件 - 卷轴
@@ -1239,23 +1132,20 @@ min-height:0;
 
 
 /* ----------------- 横向卷轴 ----------------- */
-.accessory-scroll-left .note-paper-setbox,
-.accessory-scroll-right .note-paper-setbox,
-.accessory-scroll-horiz .note-paper-setbox{
+
+div:is(.accessory-scroll-left, .accessory-scroll-right, .accessory-scroll-horiz) .note-paper-setbox{
   display:flex;
 }
 
 /* 卷轴的轴 */
-.accessory-scroll-horiz .note-reserve-top,
-.accessory-scroll-horiz .note-reserve-bottom {
+.accessory-scroll-horiz div:is(.note-reserve-top, .note-reserve-bottom) {
   background:var(--scroll-roll);
 min-width:3rem;
 height:auto;
 border-radius:0.5rem;
 }
 
-.accessory-scroll-horiz .note-reserve-top:before,
-.accessory-scroll-horiz .note-reserve-bottom:before {
+.accessory-scroll-horiz div:is(.note-reserve-top, .note-reserve-bottom)::before {
   content:&#39; &#39;;
   background:var(--scroll-bar);
 
@@ -1267,8 +1157,7 @@ position:absolute;
 margin:-1rem 0 0 0.8rem;
 }
 
-.accessory-scroll-horiz .note-reserve-top:after,
-.accessory-scroll-horiz .note-reserve-bottom:after {
+.accessory-scroll-horiz div:is(.note-reserve-top, .note-reserve-bottom)::after {
   content:&#39; &#39;;
   bottom:0;
   background:var(--scroll-bar);
@@ -1283,8 +1172,7 @@ margin:0rem 0 -1rem 0.8rem;
 
 /* 垂直卷轴 */
 
-.accessory-scroll-verti .note-reserve-top,
-.accessory-scroll-verti .note-reserve-bottom {
+.accessory-scroll-verti div:is(.note-reserve-top, .note-reserve-bottom)  {
   background-size:90%;
   min-height:2.5rem;
   border-radius:0.5rem;
@@ -1293,8 +1181,7 @@ margin:0rem 0 -1rem 0.8rem;
 
 }
 
-.accessory-scroll-verti .note-reserve-top:before,
-.accessory-scroll-verti .note-reserve-bottom:before {
+.accessory-scroll-verti div:is(.note-reserve-top, .note-reserve-bottom)::before {
   content:&#39; &#39;;
   background:var(--scroll-bar);
   min-width:1rem;
@@ -1304,8 +1191,7 @@ margin:0rem 0 -1rem 0.8rem;
   margin:0.7rem 0 0rem -1rem;
 }
 
-.accessory-scroll-verti .note-reserve-top:after,
-.accessory-scroll-verti .note-reserve-bottom:after {
+.accessory-scroll-verti div:is(.note-reserve-top, .note-reserve-bottom)::after {
   content:&#39; &#39;;
   right:0;
   background:var(--scroll-bar);
@@ -1319,8 +1205,7 @@ margin:0rem 0 -1rem 0.8rem;
 /* 如果不懒的话，用cale计算。都是1.5rem的变数。卷轴柄的大小等于文字的一半，向外溢出自身宽/高的一半，等等。*/
 
 @media (max-width: 495px) {
-  .accessory-scroll-horiz .note-reserve-top,
-  .accessory-scroll-horiz .note-reserve-bottom {
+  .accessory-scroll-horiz div:is(.note-reserve-top, .note-reserve-bottom)  {
      display:none
    }
 }
@@ -1379,7 +1264,6 @@ margin:0rem 0 -1rem 0.8rem;
     border-bottom-right-radius:0;
 }
 
-
 /*
 ----------------------------------
 附加组件 - 纸堆（未适应）
@@ -1402,23 +1286,11 @@ margin:0rem 0 -1rem 0.8rem;
 }
 
 
-.accessory-pile  .note-paper-unset222:before,
-.accessory-pile .note-paper-unset222:after,
-.accessory-pile  .note-paper-unset333:before,
-.accessory-pile .note-paper-unset333:after,
-.accessory-pile .chew-paper-verti .crease-set-corner:before,
-.accessory-pile .chew-paper-verti .crease-set-corner:after,
-.accessory-pile .chew-paper-horiz .crease-set-corner:before,
-.accessory-pile .chew-paper-horiz .crease-set-corner:after {
+.accessory-pile  :is(.note-paper-unset222, .note-paper-unset333, .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):before,
+.accessory-pile  :is(.note-paper-unset222, .note-paper-unset333, .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):after{
     background-color:rgba(243,243,243,1);
-    background-color:{$page-color};
-    background-color:{$pile-color};
-    /* 使用动画时，可能需要出现背景
-  background-image:var(--line-color);
-background-repeat: repeat;
-background-size: 100% var(--txt-size);
-    */
 }
+
 
 
 .accessory-pile   .note-paper-unset222{
@@ -1433,10 +1305,8 @@ background-size: 100% var(--txt-size);
     filter: drop-shadow(0px 0.5px 1px rgba(0, 0, 0,0.6));
 }
 
-.accessory-pile  .note-paper-unset333:before,
-.accessory-pile  .note-paper-unset222:before,
-.accessory-pile .note-paper-unset333:after,
-.accessory-pile .note-paper-unset222:after{
+.accessory-pile div:is(.note-paper-unset222, .note-paper-unset333):before,
+.accessory-pile div:is(.note-paper-unset222, .note-paper-unset333):after{
     content: &#34; &#34;;
     height: 100%;
     width: 96%;
@@ -1523,7 +1393,6 @@ mask-image: var(--img-chew222);
 
 .accessory-pile .chew-paper-horiz  .crease-set-corner:after{
 background: rgba(243,243,243,1);
-        background-color:{$page-color};
     z-index: -3;
        content: &#34; &#34;;
     height: 100%;
@@ -1651,16 +1520,12 @@ mask-image: var(--img-chew444);
 .accessory-pile .chew-paper-verti  .crease-set-corner:after,
 .accessory-pile .chew-paper-verti .crease-set-corner:before{
         background: rgba(243,243,243,1);;
-        background-color:{$page-color};
 }
 
 
 
-
-.accessory-pile .note-paper-unset222.chew-paper-verti:after,
-.accessory-pile .chew-paper-verti .note-paper-unset333:after,
-.accessory-pile .note-paper-unset222.chew-paper-verti:before,
-.accessory-pile .chew-paper-verti .note-paper-unset333:before {
+.accessory-pile :is(.note-paper-unset222.chew-paper-verti, .chew-paper-verti .note-paper-unset333):after,
+.accessory-pile :is(.note-paper-unset222.chew-paper-verti, .chew-paper-verti .note-paper-unset333):before {
       height:3rem;
     width: 96%;
         mask-repeat: repeat-x;
@@ -1691,7 +1556,7 @@ mask-image: var(--img-chew444);
     top:-1rem;
 }
 
-.accessory-pile .chew-paper-verti  .crease-set-corner:after,
+.accessory-pile .chew-paper-verti .crease-set-corner:after,
 .accessory-pile .chew-paper-verti .crease-set-corner:before{
     transform: rotate(-2.6deg);  
     z-index: -2;
@@ -1733,18 +1598,12 @@ mask-image: var(--img-chew444);
 /*------------ 纸堆动画 ------------*/
 
 
-.note-nobody[class*=&#34;piling&#34;] .note-paper-unset111,
-.note-nobody[class*=&#34;piling&#34;] .note-paper-unset222,
-.note-nobody[class*=&#34;piling&#34;] .note-paper-unset333,
-.note-nobody[class*=&#34;piling&#34;] .note-paper-main{
+.note-nobody[class*=&#34;piling&#34;] div:is(.note-paper-unset111, .note-paper-unset222, .note-paper-unset333, .note-paper-main) {
     opacity: 0;
 }
 
 
-.note-nobody[class*=&#34;piling&#34;] .note-paper-unset111,
-.note-nobody[class*=&#34;piling&#34;] .note-paper-unset222,
-.note-nobody[class*=&#34;piling&#34;] .note-paper-unset333,
-.note-nobody[class*=&#34;piling&#34;] .note-paper-main{
+.note-nobody[class*=&#34;piling&#34;] div:is(.note-paper-unset111, .note-paper-unset222, .note-paper-unset333, .note-paper-main){
        opacity: 0;
        animation-name:Opac0to1;
       animation-duration:0.5s;
@@ -1785,60 +1644,30 @@ mask-image: var(--img-chew444);
 
 /*------------ 预设样式的垫底颜色 ------------*/
 
-.preset-style-notepaper .accessory-pile  .note-paper-unset222:before,
-.preset-style-notepaper .accessory-pile .note-paper-unset222:after,
-.preset-style-notepaper .accessory-pile  .note-paper-unset333:before,
-.preset-style-notepaper .accessory-pile .note-paper-unset333:after,
-.preset-style-notepaper .accessory-pile .chew-paper-verti .crease-set-corner:before,
-.preset-style-notepaper .accessory-pile .chew-paper-verti .crease-set-corner:after,
-.preset-style-notepaper .accessory-pile .chew-paper-horiz .crease-set-corner:before,
-.preset-style-notepaper .accessory-pile .chew-paper-horiz .crease-set-corner:after {
+.preset-style-notepaper .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):before,
+.preset-style-notepaper .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):after{
     background-color:rgb(231, 233, 220) ;
 }
 
 
-.preset-style-pad .accessory-pile  .note-paper-unset222:before,
-.preset-style-pad .accessory-pile .note-paper-unset222:after,
-.preset-style-pad .accessory-pile  .note-paper-unset333:before,
-.preset-style-pad .accessory-pile .note-paper-unset333:after,
-.preset-style-pad .accessory-pile .chew-paper-verti .crease-set-corner:before,
-.preset-style-pad .accessory-pile .chew-paper-verti .crease-set-corner:after,
-.preset-style-pad .accessory-pile .chew-paper-horiz .crease-set-corner:before,
-.preset-style-pad .accessory-pile .chew-paper-horiz .crease-set-corner:after {
+.preset-style-pad .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):before,
+.preset-style-pad .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):after{
     background-color:#faf4dc ;
 }
 
-.preset-style-scroll .accessory-pile  .note-paper-unset222:before,
-.preset-style-scroll .accessory-pile .note-paper-unset222:after,
-.preset-style-scroll .accessory-pile  .note-paper-unset333:before,
-.preset-style-scroll .accessory-pile .note-paper-unset333:after,
-.preset-style-scroll .accessory-pile .chew-paper-verti .crease-set-corner:before,
-.preset-style-scroll .accessory-pile .chew-paper-verti .crease-set-corner:after,
-.preset-style-scroll .accessory-pile .chew-paper-horiz .crease-set-corner:before,
-.preset-style-scroll .accessory-pile .chew-paper-horiz .crease-set-corner:after {
+.preset-style-scroll .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):before,
+.preset-style-scroll ..accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):after{
     background-color:#2d0609  ;
 }
 
 
-.preset-style-oldpaper .accessory-pile  .note-paper-unset222:before,
-.preset-style-oldpaper .accessory-pile .note-paper-unset222:after,
-.preset-style-oldpaper .accessory-pile  .note-paper-unset333:before,
-.preset-style-oldpaper .accessory-pile .note-paper-unset333:after,
-.preset-style-oldpaper .accessory-pile .chew-paper-verti .crease-set-corner:before,
-.preset-style-oldpaper .accessory-pile .chew-paper-verti .crease-set-corner:after,
-.preset-style-oldpaper .accessory-pile .chew-paper-horiz .crease-set-corner:before,
-.preset-style-oldpaper .accessory-pile .chew-paper-horiz .crease-set-corner:after {
+.preset-style-oldpaper .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):before,
+.preset-style-oldpaper .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):after{
     background-color:#fbdba6 ;
 }
 
-.preset-style-oldletter .accessory-pile  .note-paper-unset222:before,
-.preset-style-oldletter .accessory-pile .note-paper-unset222:after,
-.preset-style-oldletter .accessory-pile  .note-paper-unset333:before,
-.preset-style-oldletter .accessory-pile .note-paper-unset333:after,
-.preset-style-oldletter .accessory-pile .chew-paper-verti .crease-set-corner:before,
-.preset-style-oldletter .accessory-pile .chew-paper-verti .crease-set-corner:after,
-.preset-style-oldletter .accessory-pile .chew-paper-horiz .crease-set-corner:before,
-.preset-style-oldletter .accessory-pile .chew-paper-horiz .crease-set-corner:after {
+.preset-style-oldletter .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):before,
+.preset-style-oldletter .accessory-pile  :is(.note-paper-unset222, .note-paper-unset333,  .chew-paper-verti .crease-set-corner, .chew-paper-horiz .crease-set-corner):after {
     background-color:#ead1b3 ;
 }
 
@@ -1851,38 +1680,31 @@ mask-image: var(--img-chew444);
 */
 
 
-
 /* ---------------  古卷 ---------------*/
 /* 水平轴 */
 
-.preset-style-scroll .accessory-scroll-verti .note-reserve-top:after,
-.preset-style-scroll .accessory-scroll-verti .note-reserve-bottom:after {
+.preset-style-scroll .accessory-scroll-verti div:is(.note-reserve-top, .note-reserve-bottom):after {
     background:var(--scroll-bar);
 }
 
-.preset-style-scroll  .accessory-scroll-horiz .note-reserve-top,
-.preset-style-scroll  .accessory-scroll-horiz .note-reserve-bottom {
+.preset-style-scroll  .accessory-scroll-horiz div:is(.note-reserve-top, .note-reserve-bottom):after{
     background:var(--scroll-roll);
 }
 
-.preset-style-scroll  .accessory-scroll-horiz .note-reserve-top:before,
-.preset-style-scroll  .accessory-scroll-horiz .note-reserve-bottom:before {
+.preset-style-scroll  .accessory-scroll-horiz div:is(.note-reserve-top, .note-reserve-bottom):before {
     background:var(--scroll-bar);
 }
 
-.preset-style-scroll  .accessory-scroll-horiz .note-reserve-top:after,
-.preset-style-scroll  .accessory-scroll-horiz .note-reserve-bottom:after {
+.preset-style-scroll  .accessory-scroll-horiz div:is(.note-reserve-top, .note-reserve-bottom):after {
     background:var(--scroll-bar);
 }
 
-.preset-style-scroll  .chew-paper-verti .note-paper-left,
-.preset-style-scroll  .chew-paper-verti  .note-paper-right{
+.preset-style-scroll  .chew-paper-verti div:is(.note-paper-left,.note-paper-right){
     -webkit-mask-size: 20rem;
     mask-size: 20rem;
 }
 
-.preset-style-scroll .chew-paper-horiz .note-paper-left,
-.preset-style-scroll  .chew-paper-horiz  .note-paper-right{
+.preset-style-scroll .chew-paper-horiz div:is(.note-paper-left,.note-paper-right){
     -webkit-mask-size: 2.5rem ;
     mask-size: 2.5rem ;
 }
@@ -1891,30 +1713,22 @@ mask-image: var(--img-chew444);
     min-width: 2.5rem ;
 }
 
-.preset-style-scroll .chew-paper-bottom .note-paper-left,
-.preset-style-scroll .chew-paper-top  .note-paper-left,
-.preset-style-scroll .chew-paper-horiz .note-paper-left{
+.preset-style-scroll div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-horiz) .note-paper-left{
   background:var(--scroll-top);
 }
 
 
 /* 水平展开 */
 
-.preset-style-scroll .chew-paper-left .note-paper-mid,
-.preset-style-scroll .chew-paper-right .note-paper-mid,
-.preset-style-scroll .chew-paper-horiz .note-paper-mid{
+.preset-style-scroll div:is(.chew-paper-left, .chew-paper-right, .chew-paper-horiz) .note-paper-mid{
   background:var(--scroll-mid-verti);
 }
 
-.preset-style-scroll .chew-paper-right .note-paper-left,
-.preset-style-scroll .chew-paper-left  .note-paper-left,
-.preset-style-scroll .chew-paper-horiz .note-paper-left {
+.preset-style-scrolldiv:is(.chew-paper-left, .chew-paper-right, .chew-paper-horiz)  .note-paper-left{
   background:var(--scroll-left);
 }
 
-.preset-style-scroll .chew-paper-left  .note-paper-right,
-.preset-style-scroll .chew-paper-right  .note-paper-right,
-.preset-style-scroll .chew-paper-horiz  .note-paper-right{
+.preset-style-scroll div:is(.chew-paper-left, .chew-paper-right, .chew-paper-horiz) .note-paper-right{
   background:var(--scroll-right);
 }
 
@@ -1924,42 +1738,33 @@ mask-image: var(--img-chew444);
 /* 垂直轴 */
 
 
-.preset-style-scroll  .accessory-scroll-verti .note-reserve-top,
-.preset-style-scroll  .accessory-scroll-verti .note-reserve-bottom {
+.preset-style-scroll  .accessory-scroll-verti div:is(.note-reserve-top, .note-reserve-bottom){
   background:var(--scroll-roll);
 }
 
-.preset-style-scroll  .accessory-scroll-verti .note-reserve-top:before,
-.preset-style-scroll  .accessory-scroll-verti .note-reserve-bottom:before {
+.preset-style-scroll  .accessory-scroll-verti div:is(.note-reserve-top, .note-reserve-bottom):before {
   background:var(--scroll-bar);
 }
 
-.preset-style-scroll  .accessory-scroll-verti .note-reserve-top:after,
-.preset-style-scroll  .accessory-scroll-verti .note-reserve-bottom:after {
+.preset-style-scroll  .accessory-scroll-verti div:is(.note-reserve-top, .note-reserve-bottom):after {
   background:var(--scroll-bar);
 }
 
-.preset-style-scroll .chew-paper-top .note-paper-left,
-.preset-style-scroll .chew-paper-bottom .note-paper-left,
-.preset-style-scroll .chew-paper-verti .note-paper-left{
+.preset-style-scroll div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-verti)   .note-paper-left{
   background:var(--scroll-top);
 }
 
 
-.preset-style-scroll .chew-paper-top .note-paper-mid,
-.preset-style-scroll .chew-paper-bottom .note-paper-mid,
-.preset-style-scroll .chew-paper-verti  .note-paper-mid{
+.preset-style-scroll  div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-verti)   .note-paper-mid{
   background:var(--scroll-mid-horiz);
 }
 
-.preset-style-scroll  .chew-paper-top .note-paper-right,
-.preset-style-scroll  .chew-paper-bottom .note-paper-right,
-.preset-style-scroll  .chew-paper-verti .note-paper-right{
+.preset-style-scroll  div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-verti)   .note-paper-right{
   background:var(--scroll-bottom);
 }
 
 .preset-style-scroll  .chew-paper-verti .note-paper-main div{
-min-width:2rem
+min-width:2rem;
 
 }
 
@@ -1969,21 +1774,17 @@ min-width:2rem
 
 /*---------------古页----------------*/
 
-.preset-style-oldpaper .chew-paper-left .note-paper-mid,
-.preset-style-oldpaper .chew-paper-right .note-paper-mid,
-.preset-style-oldpaper .chew-paper-horiz .note-paper-mid{
+
+
+.preset-style-oldpaper div:is(.chew-paper-left, .chew-paper-right, .chew-paper-horiz) .note-paper-mid{
   background:var(--style-oldpaper-mid);
 }
 
-.preset-style-oldpaper .chew-paper-left   .note-paper-right,
-.preset-style-oldpaper .chew-paper-right   .note-paper-right,
-.preset-style-oldpaper .chew-paper-horiz   .note-paper-right{
+.preset-style-oldpaper  div:is(.chew-paper-left, .chew-paper-right, .chew-paper-horiz) .note-paper-right {
   background:var(--style-oldpaper-right);
 }
 
-.preset-style-oldpaper .chew-paper-left  .note-paper-left,
-.preset-style-oldpaper .chew-paper-right  .note-paper-left,
-.preset-style-oldpaper .chew-paper-horiz  .note-paper-left{
+.preset-style-oldpaper  div:is(.chew-paper-left, .chew-paper-right, .chew-paper-horiz) .note-paper-left{
   background:var(--style-oldpaper-left);
 }
 
@@ -1991,21 +1792,15 @@ min-width:2rem
     background-image: var(--paper-image);
 }
 
-.preset-style-oldpaper .chew-paper-top   .note-paper-mid,
-.preset-style-oldpaper .chew-paper-bottom   .note-paper-mid,
-.preset-style-oldpaper .chew-paper-verti   .note-paper-mid{
+.preset-style-oldpaper div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-verti) .note-paper-mid{
   background:var(--style-oldpaper-midverti);
 }
 
-.preset-style-oldpaper .chew-paper-top   .note-paper-right,
-.preset-style-oldpaper .chew-paper-bottom   .note-paper-right,
-.preset-style-oldpaper .chew-paper-verti   .note-paper-right{
+.preset-style-oldpaper div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-verti)   .note-paper-right{
   background:var(--style-oldpaper-bottom);
 }
 
-.preset-style-oldpaper .chew-paper-top  .note-paper-left,
-.preset-style-oldpaper .chew-paper-bottom  .note-paper-left,
-.preset-style-oldpaper .chew-paper-verti  .note-paper-left{
+.preset-style-oldpaper div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-verti)  .note-paper-left{
   background:var(--style-oldpaper-top);
 }
 
@@ -2021,8 +1816,8 @@ min-width:2rem
 }
 
 
-.preset-style-notepaper  .chew-paper-none .note-paper-left,
-.preset-style-notepaper  .chew-paper-none .note-paper-right{    
+.preset-style-notepaper .chew-paper-none .note-paper-left,
+.preset-style-notepaper .chew-paper-none .note-paper-right{    
 display: none;
 }
 
@@ -2047,9 +1842,7 @@ border-top-right-radius:10px;
 
 /* ---------------  拍纸簿（未适应）  ---------------*/
 
-.preset-style-pad  .note-paper-main .note-paper-mid,
-.preset-style-pad  .note-paper-main .note-paper-left,
-.preset-style-pad  .note-paper-main .note-paper-right{
+.preset-style-pad  .note-paper-main div:is(.note-paper-left,  .note-paper-mid, .note-paper-right){
   background-color:#faf4dc;
 }
 
@@ -2063,15 +1856,7 @@ border-top-right-radius:10px;
 }
 
 
-.preset-style-pad  .chew-paper-top .note-paper-right,
-.preset-style-pad  .chew-paper-top  .note-paper-left,
-.preset-style-pad  .chew-paper-top  .note-paper-mid,
-.preset-style-pad  .chew-paper-bottom  .note-paper-right,
-.preset-style-pad  .chew-paper-bottom .note-paper-left,
-.preset-style-pad  .chew-paper-bottom .note-paper-mid,
-.preset-style-pad  .chew-paper-verti .note-paper-right,
-.preset-style-pad  .chew-paper-verti  .note-paper-left,
-.preset-style-pad  .chew-paper-verti  .note-paper-mid{
+.preset-style-pad  div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-verti) div:is(.note-paper-left, .note-paper-mid, .note-paper-right){
     background-image:var(--line-pad-0);
     background-repeat: repeat;
     background-position: 8rem 0;
@@ -2082,29 +1867,11 @@ border-top-right-radius:10px;
 
 
 
-.preset-style-pad .chew-paper-none .note-paper-upon,
-.preset-style-pad .chew-paper-none .note-paper-midner,
-.preset-style-pad .chew-paper-none .note-paper-under,
-.preset-style-pad .chew-paper-left .note-paper-upon,
-.preset-style-pad .chew-paper-left .note-paper-midner,
-.preset-style-pad .chew-paper-left .note-paper-under,
-.preset-style-pad .chew-paper-right .note-paper-upon,
-.preset-style-pad .chew-paper-right .note-paper-midner,
-.preset-style-pad .chew-paper-right .note-paper-under,
-.preset-style-pad .chew-paper-horiz .note-paper-upon,
-.preset-style-pad .chew-paper-horiz .note-paper-midner,
-.preset-style-pad .chew-paper-horiz .note-paper-under {
+.preset-style-pad div:is(.chew-paper-none, .chew-paper-left, .chew-paper-right, .chew-paper-horiz) div:is(.note-paper-upon, .note-paper-midner, .note-paper-under ) {
     border-left: 0.2rem double var(--line-pad-color);
 }
 
-.preset-style-pad  .chew-paper-none .note-paper-left,
-.preset-style-pad  .chew-paper-none  .note-paper-right,
-.preset-style-pad  .chew-paper-left .note-paper-left ,
-.preset-style-pad  .chew-paper-left  .note-paper-right,
-.preset-style-pad  .chew-paper-right .note-paper-left ,
-.preset-style-pad  .chew-paper-right .note-paper-right,
-.preset-style-pad  .chew-paper-horiz .note-paper-left,
-.preset-style-pad  .chew-paper-horiz .note-paper-right{
+.preset-style-pad div:is(.chew-paper-none, .chew-paper-left, .chew-paper-right, .chew-paper-horiz) div:is(.note-paper-left, .note-paper-right){
     margin:0rem 0 0 0;
     padding-top:1rem;
     background-image: var(--style-pad-line); 
@@ -2120,36 +1887,10 @@ border-top-right-radius:10px;
 
 
 
-.preset-style-pad  .chew-paper-left .note-paper-leftner   p,
-.preset-style-pad  .chew-paper-left  .note-paper-rightner p,
-.preset-style-pad  .chew-paper-right .note-paper-leftner  p,
-.preset-style-pad  .chew-paper-right .note-paper-rightner p,
-.preset-style-pad  .chew-paper-horiz .note-paper-leftner  p,
-.preset-style-pad  .chew-paper-horiz .note-paper-rightner p{
+.preset-style-pad  div:is(.chew-paper-none, .chew-paper-left, .chew-paper-right, .chew-paper-horiz) div:is(.chew-paper-leftner, .chew-paper-rightner) p{
    font-size:110%;
    line-height: 1.5rem;
    margin-top:-2rem; 
-}
-
-/*
-.preset-style-pad  .chew-paper-left .note-paper-leftner p:before,
-.preset-style-pad  .chew-paper-left  .note-paper-rightner p:before,
-.preset-style-pad  .chew-paper-right .note-paper-leftner  p:before,
-.preset-style-pad  .chew-paper-right .note-paper-rightner p:before,
-.preset-style-pad  .chew-paper-horiz .note-paper-leftner  p:before,
-.preset-style-pad  .chew-paper-horiz .note-paper-rightner p:before{
-  display:block;
- content:&#39; &#39;;
-}
-*/
-
-
-.preset-style-pad  .chew-paper-top .note-paper-leftner   p,
-.preset-style-pad  .chew-paper-top  .note-paper-rightner p,
-.preset-style-pad  .chew-paper-bottom .note-paper-leftner  p,
-.preset-style-pad  .chew-paper-bottom .note-paper-rightner p,
-.preset-style-pad  .chew-paper-verti .note-paper-leftner  p,
-.preset-style-pad  .chew-paper-verti .note-paper-rightner p{
     display:none;
 }
 
@@ -2160,15 +1901,7 @@ border-top-right-radius:10px;
 }
 
 @media (max-width: 459px) {  
-.preset-style-pad  .chew-paper-top .note-paper-right,
-.preset-style-pad  .chew-paper-top  .note-paper-left,
-.preset-style-pad  .chew-paper-top  .note-paper-mid,
-.preset-style-pad  .chew-paper-bottom  .note-paper-right,
-.preset-style-pad  .chew-paper-bottom .note-paper-left,
-.preset-style-pad  .chew-paper-bottom .note-paper-mid,
-.preset-style-pad  .chew-paper-verti .note-paper-right,
-.preset-style-pad  .chew-paper-verti  .note-paper-left,
-.preset-style-pad  .chew-paper-verti  .note-paper-mid{
+.preset-style-pad  div:is(.chew-paper-top, .chew-paper-bottom, .chew-paper-verti) div:is(.note-paper-left, .note-paper-mid, .note-paper-right) {
     background-position: 2rem 0;
   }
  .mob-pad{
@@ -2177,9 +1910,7 @@ border-top-right-radius:10px;
 }
 /* ---------------  信笺  ---------------*/
 
-.preset-style-oldletter .note-paper-midner,
-.preset-style-oldletter  .note-quote-inner,
-.preset-style-oldletter .note-page {
+.preset-style-oldletter  div:is(.note-paper-midner, .note-quote-inner,  .note-page)  {
     background-image: none;
      border:none;
 }
@@ -2189,12 +1920,10 @@ border-top-right-radius:10px;
 }
 
 
-
-.preset-style-oldletter .note-paper-midner,
-.preset-style-oldletter .note-paper-upon ,
-.preset-style-oldletter .note-paper-under {
+.preset-style-oldletter div:is(.note-paper-midner,  .note-paper-upon ,  .note-paper-under) {
         font-family:lisu,kaiti;
 }
+
 
  .note-nobody.preset-style-oldletter .note-paper-midner {
      width: 100%;
@@ -2271,17 +2000,13 @@ border-top-right-radius:10px;
      line-height: 3rem;
 }
 
-.note-nobody.preset-style-oldletter .upon-set-right + .note-paper-midner ,
-.note-nobody.preset-style-oldletter .upon-set-left + .note-paper-midner ,
-.note-nobody.preset-style-oldletter .upon-set-center + .note-paper-midner {
+.note-nobody.preset-style-oldletter div:is(.upon-set-right, .upon-set-left, .upon-set-center) + .note-paper-midner {
     margin-top: 0rem;
 }
 
 
-.note-nobody.preset-style-oldletter .under-set-left p,
-.note-nobody.preset-style-oldletter .under-set-right p,
-.note-nobody.preset-style-oldletter .under-set-center p{
-         line-height: 1.5rem;
+.note-nobody.preset-style-oldletter div:is(.upon-set-right, .upon-set-left, .upon-set-center) p{
+         /*! line-height: 1.5rem; */
 }
 
 
@@ -2291,9 +2016,7 @@ border-top-right-radius:10px;
     line-height: 0;
      position:relative;
     left: 0.28em;
-    left: {$monospace-left};
     top:-0.35em;
-    top: {$monospace-top};
     margin-top: 0rem;
     margin-bottom:-1em;
     font-family:  initial;
@@ -2608,12 +2331,7 @@ border-top-right-radius:10px;
  
 
 /* 文字标题 */
- .note-nobody h1,
- .note-nobody h2,
- .note-nobody h3, 
- .note-nobody h4, 
- .note-nobody h5, 
- .note-nobody h6 {
+ .note-nobody :is(h1, h2, h3, h4, h5, h6){
     margin-top: 1.5rem;
     margin-top:  var(--txt-size);
     margin-bottom: 0em;
@@ -2709,7 +2427,6 @@ position: initial;
     width: 100%;
     float:none ;
  /*background-size: 90% 1.5rem; */
-    font-size:{$phone-size};
 }
  
 #search-top-box-input{
@@ -2728,13 +2445,6 @@ display:none;
    border: 2px solid #968787;
 }
  
-    /*
-.note-wrap p{
-    padding:0 0.5rem 0 0.5rem;
-     padding:0 var(--txt-size-3-1) 0 var(--txt-size-3-1);
-}
-*/
- 
 .note-wrap{
     background: none ;
     padding:0rem ;
@@ -2746,12 +2456,6 @@ display:none;
 .note-bookmark{
     background-image: none ;
 }
- 
- /*
-.note-right p,.note-left p{
-padding: 0 3rem 0 0 ;
-}
-*/
 }
  
 /*
@@ -2767,6 +2471,10 @@ padding: 0 3rem 0 0 ;
 }
 
 
+.note-nobody  sup {
+  top: -0.8em;
+ /* vertical-align: text-top;*/
+}
 
 
 /* 分割线 */
@@ -2774,11 +2482,11 @@ padding: 0 3rem 0 0 ;
   margin: 0.75rem 0em -0.75rem 0em;
   height: 1.5px;
   color: #DDD;
-  background-color: #555545;
-/* background: linear-gradient(to right,transparent 5%, #6d6b82 20%, #555 50%, #6d6b82 80%, transparent 95%);*/
-
-  background: linear-gradient(to right,transparent 5%, #000 7%, #444 10%, #555 50%, #6d6b82 80%, transparent 95%);
-
+  background-color: transparent !important;
+  background-image: -webkit-linear-gradient(to right,transparent 5%, #6d6b82 20%, #555 50%, #6d6b82 80%, transparent 95%);
+  background-image: linear-gradient(to right,transparent 5%, #000 7%, #444 10%, #555 50%, #6d6b82 80%, transparent 95%);
+    
+    border: none;
 }
 
 .note-hr hr {
@@ -3169,11 +2877,8 @@ clear: both;
 .note-nobody  blockquote {
     padding: 0.5em 1em  1em 1em;
     margin: -0.5em  1em 0.5em 1em;
+  }
 }
-
-}
- 
-
 [[/code]]
 
 [[/collapsible]]
@@ -3183,13 +2888,11 @@ clear: both;
 [[iftags [[#ifexpr {$collapsible-sidebar} == (true) | - ]]]]
 [[module css]]
 /* 可折叠侧边栏 */
-
-@import url(&#34;http://etinjat.wikidot.com/component:collapsible-sidebar/code/1&#34;);
+@import url(&#34;https://etinjat.wikidot.com/component:collapsible-sidebar/code/1&#34;);
 
 #main-content {
 min-width:52rem;
        max-width:70rem;
-
 }
 
 #page-content {
@@ -3208,18 +2911,8 @@ min-width:52rem;
     }
 }
 
-
-/* 似乎能去掉折叠侧边栏在sigma-9版式底下的空白 */
-#side-bar{
-    overflow-y:  scroll;
-}
- 
-
-
 [[/module]] 
 [[/iftags]]
-
-
 
 
 [[iftags [[#ifexpr {$nobody} == (true) | - ]]]]
@@ -3230,7 +2923,7 @@ min-width:52rem;
 没有人版式
 ========================
 */
-@import url(&#34;http://scp-wiki-cn.wikidot.com/component:note-source/code/2&#34;);
+@import url(&#34;https://scp-wiki-cn.wikidot.com/component:note-source/code/2&#34;);
 [[/module]] 
 [[/iftags]]
 
@@ -3245,15 +2938,13 @@ min-width:52rem;
 ========================
 */
 
-@import url(&#34;http://scp-wiki-cn.wikidot.com/component:note-source/code/3&#34;);
+@import url(&#34;https://scp-wiki-cn.wikidot.com/component:note-source/code/3&#34;);
 [[/module]] 
 [[/iftags]]
 
 
-
 [[iftags [[#ifexpr {$no-ridge} == (true) | - ]]]]
 [[module css]]
-
 .reserve-separator:before,
 .reserve-separator:after,
 .note-leaf .note-page:after,
@@ -3272,7 +2963,6 @@ min-width:52rem;
 /* 
 =======================
 此处放置个人偏好用的手写体，全局使用 
-
 犹豫：杨任东竹石体（4mb）样式还不错，但没有绞笔不大像手写体。
 =======================
 */
@@ -3289,8 +2979,7 @@ by 贾智勇
 =================
 */
 
-@import url(http://scpsandboxcn.wikidot.com/local--files/typeface/Typeface-ShouShuti.css);
-
+@import url(https://scpsandboxcn.wikidot.com/local--files/typeface/Typeface-ShouShuti.css);
 
 .note-nobody *{
     font-size:1.2rem;
@@ -3316,7 +3005,7 @@ by 贾智勇
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:06.218969.</em>
+    <em>Last updated 2024-02-07 18:30:30.601248.</em>
   
 </div>
 </body>

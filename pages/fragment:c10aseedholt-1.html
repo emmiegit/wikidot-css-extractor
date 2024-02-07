@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>C10aseedholt 1</title>
 </head>
@@ -29,24 +29,23 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* Hide the original page title */
-#page-title {
-  display: none;
+          <pre><code>#page-title {
+    visibility: hidden;
+    position: relative;
 }
-
-/* Make my fake page title look like the original (thanks SCP-2998) */
-.page-title {
-  border-bottom: solid 1px #bbbbbb;
-  color: #990011;
-  font-weight: normal;
-  margin: 0 0 0.6em;
-  padding: 0 0 0.25em;
-  font-size: 200%;
-}
-.page-title p {
-  margin: 0;
-}
-</code></pre>
+#page-title::before {
+    content: &#34;SCP-501-FR&#34;;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: solid 1px var(--ct_col_page-title-border,#bbb);
+    color: var(--ct_col_page-title,#901);
+    font-weight: normal;
+    margin: 0 0 0.6em;
+    padding: 0 0 0.25em;
+}</code></pre>
         </li>
       
     </ul>
@@ -55,7 +54,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: block;</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -80,10 +79,6 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>page-title</code></pre>
-        </li>
-      
-        <li>
           <pre><code>pastille</code></pre>
         </li>
       
@@ -91,33 +86,32 @@
           <pre><code>rouge</code></pre>
         </li>
       
+        <li>
+          <pre><code>footer-wikiwalk-nav</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[module CSS]]
-/* Hide the original page title */
 #page-title {
-  display: none;
+    visibility: hidden;
+    position: relative;
 }
-
-/* Make my fake page title look like the original (thanks SCP-2998) */
-.page-title {
-  border-bottom: solid 1px #bbbbbb;
-  color: #990011;
-  font-weight: normal;
-  margin: 0 0 0.6em;
-  padding: 0 0 0.25em;
-  font-size: 200%;
+#page-title::before {
+    content: &#34;SCP-501-FR&#34;;
+    visibility: visible;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: solid 1px var(--ct_col_page-title-border,#bbb);
+    color: var(--ct_col_page-title,#901);
+    font-weight: normal;
+    margin: 0 0 0.6em;
+    padding: 0 0 0.25em;
 }
-.page-title p {
-  margin: 0;
-}
-
 [[/module]]
-
-[[div class=&#34;page-title&#34; style=&#34;display: block;&#34; id=&#34;#page-title&#34;]]
-SCP-501-FR
-[[/div]]
 
 **Objet n^^o^^ :** SCP-501-FR
 
@@ -183,7 +177,7 @@ Ces activités sont très discrètes et rapides de par les moyens anormaux utili
 &gt; 
 &gt; //Je n&#39;ai pas les autorisations pour en décrire tous les détails, mais Mars fut un mois éprouvant pour les services de renseignement de la branche anglaise, qui travaillaient en collaboration avec l&#39;U2I pour coincer l&#39;auteur d&#39;une série d&#39;attentats à la bombe au Texas. Le coupable, un certain Mark Anthony Conditt, avait une manière particulière de doper ses bombes : il utilisait les résidus éthériques de ses victimes précédentes afin d&#39;en faire de l&#39;ectoplasme qui, couplé à tout un système de réactions chimiques anormales, permettait des explosions très fortes avec un volume moindre, facilitant la dissimulation dans les colis postaux.// 
 &gt; 
-&gt; //Très logiquement, différents appareils de mesures furent utilisées par la FIM Alpha-4 (« Pony Express ») pour repérer les traces de ces résidus et arrêter Conditt, et c&#39;est là que le coup du sort a joué.//
+&gt; //Très logiquement, différents appareils de mesures furent utilisés par la FIM Alpha-4 (« Pony Express ») pour repérer les traces de ces résidus et arrêter Conditt, et c&#39;est là que le coup du sort a joué.//
 &gt; 
 &gt; //Les recherches finirent par payer, les forces d&#39;intervention encerclèrent le véhicule de Conditt, mais il déclencha un détonateur qui fit exploser sa voiture, et lui avec. Au-delà de la frustration de ne pas avoir pu arrêter ce terroriste pour qu&#39;il réponde de ses actes, les équipes de recherche ont pu observer autre chose sur leurs appareils : excepté l&#39;ectoplasme des bombes dans son coffre, il n&#39;y a avait plus la moindre trace de résidu étherique appartenant à Conditt.// 
 &gt; 
@@ -225,20 +219,28 @@ Les négociations sont toujours en cours.
 &gt; 
 &gt; //Mes pensées vont à sa famille, et j&#39;espère de tout mon cœur que dans un monde où les pires criminels ont une seconde chance, Julien en aura une aussi.//
 &gt; 
-&gt; //[http://fondationscp.wikidot.com/scp-501-fr/offset/1 Ce gamin a toujours donné du fil à retordre au destin.]//
+&gt; //**[http://fondationscp.wikidot.com/scp-501-fr/offset/1 Ce gamin a toujours donné du fil à retordre au destin.]**//
 
 **Addendum 501-FR-A-08 : Décision du Conseil O5**
 
 La situation étant jugée trop critique par le Conseil O5 suite à plusieurs membres du personnel perdus, la Fondation SCP s&#39;engage vers une pleine collaboration concernant SCP-501-FR avec les organismes et les services étatiques de gestion de l&#39;anormal majeurs, incluant la Coalition Mondiale Occulte, l&#39;U2I et le réseau PANGEA.
 
-[http://fondationscp.wikidot.com/documentation-commune-kleptoy Les premiers documents issus de cette collaboration] sont disponibles à la consultation pour le personnel autorisé.</textarea></pre>
+[http://fondationscp.wikidot.com/documentation-commune-kleptoy Les premiers documents issus de cette collaboration] sont disponibles à la consultation pour le personnel autorisé.
+
+[[footnoteblock]]
+
+[[div class=&#34;footer-wikiwalk-nav&#34;]]
+[[=]]
+&lt;&lt; [[[SCP-500-FR]]] | SCP-501-FR | [[[SCP-502-FR]]] &gt;&gt;
+[[/=]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:07.414341.</em>
+    <em>Last updated 2024-02-07 18:30:31.877837.</em>
   
 </div>
 </body>

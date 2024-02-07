@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>Dossier personnel d&#39;Alwaid</title>
 </head>
@@ -29,6 +29,21 @@
     <ul class="module-styles">
       
         <li>
+          <pre><code>.fancyborder {
+    box-sizing: border-box;
+    padding: 2vw;
+    border: 2vw solid rgba(0, 0, 0, 0.5);
+    border-image: url(&#34;http://fondationscp.wdfiles.com/local--files/vagabonds%3Atheme/wl_border.png&#34;) 600 round;
+    border-image-width: 6;
+}
+
+:root {
+    --header-title: &#34;FONDATION SCP&#34;;
+    --header-subtitle: &#34;Soleils, Comètes, Planètes&#34;;
+}</code></pre>
+        </li>
+      
+        <li>
           <pre><code>
 h1 {
 color:orange;
@@ -40,6 +55,17 @@ color:orange;
 
 a:visited {
 color:gold;
+}
+
+blockquote,
+.blockquote,
+div.blockquote,
+[class*=&#34;blockquote&#34;] {
+    border: 0.1875rem outset rgb(228, 180, 28);
+    background-color: rgb(220, 230, 220);
+    --link-color: rgb(228, 180, 28);
+    --visited-link-color: rgb(228, 180, 28);
+    --hover-link-color: rgb(30, 55, 30);
 }
 </code></pre>
         </li>
@@ -85,6 +111,23 @@ color:gold;
   
 
   
+    <a href="https://scp-wiki.wikidot.com/theme:space" target="_blank"><code>:scp-wiki:theme:space</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:space.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
     <a href="https://lefilet.wikidot.com/cyrielle:spaceboard-nologo" target="_blank"><code>:lefilet:cyrielle:spaceboard-nologo</code></a>
   
 
@@ -97,6 +140,28 @@ color:gold;
 
   
     <a href="https://scp-wiki.wikidot.com/component:coltop" target="_blank"><code>component:coltop</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:coltop" target="_blank"><code>component:coltop</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:colend" target="_blank"><code>component:colend</code></a>
   
 
   
@@ -180,14 +245,42 @@ Merci à [[user Cyrielle Centori]] pour le thème !
 ##transparent|DEEEEEEEEEEEEESSSSSSSSSS COLLAPSIIIIIIIIIIIIIBLES##
 ##transparent|Et imbriqués en plus, c&#39;est Mael qui serait content##
 
-[[collapsible show=&#34;+ Choses&#34; hide=&#34;- Fermer&#34;]]
+[[include :scp-wiki:theme:space]]
 
-[[module ListPages separate=&#34;no&#34; name=&#34;c10*&#34; order=&#34;created_at&#34; tags=&#34;+scp +fr&#34;  limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+[[module CSS]]
+.fancyborder {
+    box-sizing: border-box;
+    padding: 2vw;
+    border: 2vw solid rgba(0, 0, 0, 0.5);
+    border-image: url(&#34;http://fondationscp.wdfiles.com/local--files/vagabonds%3Atheme/wl_border.png&#34;) 600 round;
+    border-image-width: 6;
+}
+
+:root {
+    --header-title: &#34;FONDATION SCP&#34;;
+    --header-subtitle: &#34;Soleils, Comètes, Planètes&#34;;
+}
 [[/module]]
 
-[[module ListPages separate=&#34;no&#34; category=&#34;art:&#34; order=&#34;created_at&#34; limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+[[collapsible show=&#34;+ Choses&#34; hide=&#34;- Fermer&#34;]]
+
+[[module ListPages category=&#34;*&#34; parent=&#34;component:vaf-theme&#34;]]
+%%category%%
+
+%%name%%
+[[/module]]
+
+[[module ListPages separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+concours&#34;  limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires ||~ Auteur||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% || %%author%% ||
+[[/module]]
+[!-- enlever les /module pour le fun --]
+
+[[module ListPages separate=&#34;no&#34; order=&#34;rating desc&#34; tags=&#34;+concours -centre&#34;  limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires ||~ Auteur||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% || %%author%% ||
+[[/module]]
+
+[[module ListPages separate=&#34;no&#34; order=&#34;rating desc&#34; category=&#34;wanderer&#34;  limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires ||~ Auteur||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% || %%author%% ||
 [[/module]]
 
 [[/collapsible]]
@@ -208,6 +301,17 @@ color:orange;
 
 a:visited {
 color:gold;
+}
+
+blockquote,
+.blockquote,
+div.blockquote,
+[class*=&#34;blockquote&#34;] {
+    border: 0.1875rem outset rgb(228, 180, 28);
+    background-color: rgb(220, 230, 220);
+    --link-color: rgb(228, 180, 28);
+    --visited-link-color: rgb(228, 180, 28);
+    --hover-link-color: rgb(30, 55, 30);
 }
 
 [[/module]]
@@ -235,28 +339,49 @@ color:gold;
 
 + Liste des traductions
 
-223 ! :D (208 si on enlève les pages annexes type rapport d&#39;expérience)
+288 ! :D (275 si on enlève les pages annexes type rapport d&#39;expérience)
 
 [[collapsible show=&#34;+ Liste des traductions&#34; hide=&#34;- Fermer (liste des traductions)&#34;]]
 
 Mes trads solo et en collab postées par moi :
-[[module ListPages separate=&#34;no&#34; created_by=&#34;Alwaid&#34; order=&#34;created_at desc desc&#34; category=&#34;. vagabonds&#34; limit=&#34;600&#34; perPage=&#34;300&#34; tags=&#34;en pl jp ko es de it pt zh cn cs th nd vn ru ua -fr&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+
+[[=]]
++++ 1 à 100
+[[/=]]
+
+[[module ListPages separate=&#34;no&#34; created_by=&#34;Alwaid&#34; order=&#34;created_at desc desc&#34; category=&#34;. vagabonds&#34; limit=&#34;100&#34; perPage=&#34;100&#34; tags=&#34;en pl jp ko es de it pt zh cn cs th nd vn ru ua -fr&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+[[/module]]
+
+[[=]]
++++ 101 à 200
+[[/=]]
+
+[[module ListPages separate=&#34;no&#34; created_by=&#34;Alwaid&#34; order=&#34;created_at desc desc&#34; category=&#34;. vagabonds&#34; limit=&#34;100&#34; perPage=&#34;100&#34; tags=&#34;en pl jp ko es de it pt zh cn cs th nd vn ru ua -fr&#34; offset=&#34;100&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+[[/module]]
+
+[[=]]
++++ 201 à 300
+[[/=]]
+
+[[module ListPages separate=&#34;no&#34; created_by=&#34;Alwaid&#34; order=&#34;created_at desc desc&#34; category=&#34;. vagabonds&#34; limit=&#34;100&#34; perPage=&#34;100&#34; tags=&#34;en pl jp ko es de it pt zh cn cs th nd vn ru ua -fr&#34; offset=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 
 Les collabs avec [[*user Herolles]] qu&#39;il a postées lui-même :
-[[module ListPages separate=&#34;no&#34; created_by=&#34;Herolles&#34; tags=&#34;wilson mc&amp;d vn ua pl -classe-ésotérique -fr -format-gdi&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Posté le ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+[[module ListPages separate=&#34;no&#34; created_by=&#34;Herolles&#34; tags=&#34;wilson mc&amp;d vn ua pl ko hogslice -classe-ésotérique -fr -format-gdi&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Posté le ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 
-La collab avec [[*user DrMacro]] qu&#39;il a postée lui-même :
-[[module ListPages separate=&#34;no&#34; created_by=&#34;DrMacro&#34; tags=&#34;ua&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Posté le ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+La collab avec [[*user Macro_au_micro]] qu&#39;il a postée lui-même :
+[[module ListPages separate=&#34;no&#34; created_by=&#34;Macro_au_micro&#34; tags=&#34;ua&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Posté le ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 
 La collab avec [[*user Dr U N Owen]] qu&#39;il a postée lui-même :
 [[module ListPages separate=&#34;no&#34; created_by=&#34;Dr U N Owen&#34; tags=&#34;proposition-001 +aaron-siegel&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Posté le ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 
 [[/collapsible]]
@@ -265,6 +390,7 @@ La collab avec [[*user Dr U N Owen]] qu&#39;il a postée lui-même :
 
 1. **[[[another-goddamn-magic-system|]]]**
 Ma première traduction ! Un monstre de 60 000 caractères qui a dû donner du fil à retordre aux correcteurs... Mais j&#39;avais trouvé ce texte vraiment cool, ça parle de magie, de la Bibliothèque des Vagabonds et d&#39;une FIM qui s&#39;occupe de la communauté anormale. Il a été écrit pour le concours des FIM de 2016, comme [[[lessons-learned|]]], [[[nope-not-typing-all-that|la conférence au nom super long]]], et [[[nothing-says-promotion-like-a-bag-over-your-head|]]].
+
 ----
 2. **[[[scp-472|]]] - La Pierre de Sang**
 La pierre de sang est un rapport série I qui fout bien les chocottes et assez contraire à ce que j&#39;apprécie, avec le sang (bien qu&#39;illusoire) dans tous les sens. Il se tient quand même bien, avec son annexe ci-dessous.
@@ -600,7 +726,7 @@ Troisième écrit dans la série de la FIM Rhô-19, voici (pour changer) un form
 ----
 [!-- vieux module de listing caché
 [[module ListPages separate=&#34;no&#34; name=&#34;planetfal%&#34; created_by=&#34;Alwaid&#34; order=&#34;created_at&#34;]]
-|| 77-85 || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| 77-85 || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 --]
 77. **[[[planetfall|]]]**
@@ -843,18 +969,18 @@ Un Classe-D enfermé dans SCP-2152 (d&#39;où la trad précédente) et qui est e
 
 ----
 
-126. **[[[SCP-002-VN]]] - Funérailles (collab [[*user DrMacro]] et [[*user Herolles]])**
-Un des deux SCP étrangers ultra-courts qu&#39;on a rush en un soir avec [[*user DrMacro]] et [[*user Herolles]]. Ça cause d&#39;un cimetière où un ancien membre de la Fondation est enterré, et les morts autour apparaissent fantômatiquement pour lui rendre hommage.
+126. **[[[SCP-002-VN]]] - Funérailles (collab [[*user Macro_au_micro]] et [[*user Herolles]])**
+Un des deux SCP étrangers ultra-courts qu&#39;on a rush en un soir avec [[*user Macro_au_micro]] et [[*user Herolles]]. Ça cause d&#39;un cimetière où un ancien membre de la Fondation est enterré, et les morts autour apparaissent fantômatiquement pour lui rendre hommage.
 
 ----
 
-127. **[[[SCP-ZH-236|SCP-236-ZH]]] - Épuisement étudiant (Mal de mai) (collab [[*user DrMacro]] et [[*user Herolles]])**
-Un des deux SCP étrangers ultra-courts qu&#39;on a rush en un soir avec [[*user DrMacro]] et [[*user Herolles]]. Un SCP quasi-EX qui parle de la perte de moral chez les étudiants d&#39;Extrême-Orient quand vient la période des examens terminaux de l&#39;enseignement secondaire et qu&#39;ils s&#39;apprêtent à partir à la fac.
+127. **[[[SCP-ZH-236|SCP-236-ZH]]] - Épuisement étudiant (Mal de mai) (collab [[*user Macro_au_micro]] et [[*user Herolles]])**
+Un des deux SCP étrangers ultra-courts qu&#39;on a rush en un soir avec [[*user Macro_au_micro]] et [[*user Herolles]]. Un SCP quasi-EX qui parle de la perte de moral chez les étudiants d&#39;Extrême-Orient quand vient la période des examens terminaux de l&#39;enseignement secondaire et qu&#39;ils s&#39;apprêtent à partir à la fac.
 
 ----
 
-128. **[[[SCP-002-ND]]] - Un virus farceur (collab [[*user DrMacro]] et [[*user Herolles]])**
-Un autre SCP étranger court qu&#39;on a rush en un soir avec [[*user DrMacro]] et [[*user Herolles]]. Ça vous dit de vous coller des autocollants sur les yeux ?
+128. **[[[SCP-002-ND]]] - Un virus farceur (collab [[*user Macro_au_micro]] et [[*user Herolles]])**
+Un autre SCP étranger court qu&#39;on a rush en un soir avec [[*user Macro_au_micro]] et [[*user Herolles]]. Ça vous dit de vous coller des autocollants sur les yeux ?
 &#34;hé du coup on mettrait pas Société des PC pour traduire Standard Computer Products ?&#34;
 &#34;mais ça fait SPC, pas SCP !&#34;
 
@@ -958,8 +1084,8 @@ Le dernier conte manquant dans Cieux rendus étranges, que j&#39;avais laissé e
 
 ----
 
-147. **[[[SCP-2014-UA-EX]]] - SCP-2014-RU (collab [[*user DrMacro]] et [[*user Herolles]])**
-Traduit en une soirée avec [[*user DrMacro]] et [[*user Herolles]].
+147. **[[[SCP-2014-UA-EX]]] - SCP-2014-RU (collab [[*user Macro_au_micro]] et [[*user Herolles]])**
+Traduit en une soirée avec [[*user Macro_au_micro]] et [[*user Herolles]].
 Désolé pour le plantage Maz.
 
 ----
@@ -1428,19 +1554,435 @@ Aframos et Torne quittent la forêt pour arriver dans le Merais. Aframos n&#39;a
 
 Nos héros arrivent à une ville (!) dans le Merais (!) peuplée d&#39;&#34;hommes-poissons&#34; (!?).
 
+----
+
+224. **[[[vagabonds:81st-turn-seventh-year-eighteenth-cycle-tresday | 81ème tour, septième année, dix-huitième cycle, tresdi]]] (JAL #38)**   [!--38--]
+
+Plongée dans la partie sous-marine de la ville des hommes-poissons du Merais.
+
+----
+
+225. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-marday | 81ème tour, septième année, dix-neuvième cycle, mardi]]] (JAL #39)**   [!--39--]
+
+Nos protagonistes quittent la ville, chargés de vivres. Le livre d&#39;Aframos lui montre des images qui rappellent la Fonda.
+
+----
+
+226. **[[[SCP-2975]]] - Un autre Soleil**
+
+Un des rapports liés à [[[another-goddamn-magic-system|]]]. Il y a une partie monstrueuse en Twine (72 parties et une bonne dizaine de fins) qui m&#39;a pris 4 mois à faire (en grande partie parce que je n&#39;avais absolument pas envie de continuer parce que c&#39;était trop long).
+Mais au moins, c&#39;est fait !
+
+----
+
+227. **[[[vagabonds:the-island-chapter-2|NC 1.32 : L&#39;Île - Chapitre 2]]] (Ile#2)**
+
+(Chapitre 1 : #182)
+Arrivée sur l&#39;île, le narrateur gravit non sans mal son hôtel labyrinthique et fait la connaissance de Georges, noble représentant des procellariiformes.
+
+----
+
+228. **[[[cardiac-myxoma|]]]  (HPR#4.5 - collab [[*user Herolles]])**
+
+Petit interlude qu&#39;on a mis bien longtemps à finir de traduire !
+Tim reçoit son diagnostic pour le cœur et le prend plutôt bien, au grand dam de sa mère.
+
+----
+
+229. **[[[scp-268-ko|]]] - ERREUR STRUCTURELLE**
+
+Plié en 20 minutes, limite plus long de créer les pages et d&#39;adapter le code qu&#39;autre chose.
+
+----
+
+230. **[[[groups-of-interest-jp|]]]**
+
+C&#39;était un peu long à faire. Mais voici : la page des GDI japonais, qui a bénéficié d&#39;une mise à jour conséquente de la version INT.
+Parfois la traduction d&#39;origine est fortement hasardeuse...
+
+----
+
+231. **[[[department-of-mythology-and-folkloristics-hub|]]]**
+
+Un des hubs de départements développés pour le concours des Départements. Celui-ci est chargé d&#39;étudier les légendes et mythologies pour savoir si une anomalie a pu en être à l&#39;origine ou non, et d&#39;en déduire ce qui peut être utile pour le confinement de telles anomalies.
+
+----
+
+232. **[[[vagabonds:leavings-of-another-world|NC 0.02 : Exilés d&#39;un autre monde]]]**
+
+Un petit texte traduit en 40 minutes sur le pouvoir des mots, avec une possible origine des Hurleurs de motifs.
+
+----
+
+233. **[[[locations-of-interest-jp|]]]**
+
+Petite page sur les Lieux d&#39;Intérêt japonais, avec juste 4 entrées dont 2 reprennent pas mal des GdI japonais.
+
+----
+
+234. **[[[blue-lily-chains|]]]**
+
+C&#39;était le dernier lien mort dans [[[another-goddamn-magic-system|]]] ! Un format GDI Main du Serpent sur de petites chaînes de lis bleu tranquilles qui repoussent les effets négatifs avec une guerre en commentaires.
+
+----
+
+235. **[[[drdobermann-artworks|]]]**
+
+La galerie d&#39;un fanartiste coréen très qualitatif et assez prolifique (bonjour les 200 Mo d&#39;images). Il a notamment réalisé une BD reprenant l&#39;intégralité de SCP-5000, ce qui en fait une belle introduction à ce rapport. Merci à [[*user Al_W0onder]] pour les coups de main sur certains panels pénibles !
+
+----
+
+236. **[[[SCP-2347]]] - Le Phénix de Maxwell**
+
+Petite traduction rapide pour lancer le quatrième thème du PACTE. Le titre en jette mais en fait c&#39;est juste un gars qui absorbe la chaleur quand il est plus chaud que son environnement et se met à cramer s&#39;il chauffe trop, avant que ses os ne se rassemblent et qu&#39;il ne se reforme en absorbant la chaleur à nouveau.
+
+----
+
+237. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-rokday|]]] (JAL #40)**
+
+Des moines et des machines bizarres. Des boutons, aussi.
+
+----
+
+238. **[[[SCP-1718]]] - Unité de confinement expérimentale**
+
+Un rapport plein de science très compliquée qui a suscité de vifs débats sur la branche anglaise à sa sortie, entre amateurs de jargon scientifique et détracteurs de la complexité inutile et de l&#39;over-the-top...
+Quoi qu&#39;il en soit je le trouve intéressant pour explorer les limites du confinement de façon assez rationnelle et pour le mystère qui plane sur l&#39;anomalie elle-même.
+
+----
+
+239. **[[[vagabonds:hall-one|]]]**
+
+Idée intéressante que de faire un centre des galeries de fanart, des oeuvres audio et des thèmes. Pour la Fonda, tout regrouper serait monstrueux mais vu l&#39;étendue actuelle du truc sur la Bibliothèque, ça va largement (25 liens sur une page).
+
+----
+
+240. **[[[SCP-2710]]] - Une certaine brèche**
+
+Un rapport méta avec des lignes fantastiques[[footnote]] Cease interfering with my words! You have no idea who I am, do you? Well, I will tell you then. I am the Pulse of the World. I am the Flame in the South, mankind&#39;s ambition. I am the adorable little kitten that snuggles at humanity&#39;s feet, who sniffs upon the catnip of its redemption and sneezes little cat sneezes of greatness, I- GAH.
+
+No no, don&#39;t stop, you&#39;re really starting to sell me on this. [[/footnote]]
+(Je suis désolé mais ça me fume ça)
+
+[[/collapsible]]
+
+[[collapsible show=&#34;+ Traductions 241-260&#34; hide=&#34;- Fermer (trads 241-260)&#34;]]
+
+241. **[[[SCP-4479]]] - D-11424 et le Pays des Trop Nombreuses Portes**
+
+Un rapport mi-long sur une poignée de porte qui permet d&#39;&#34;ouvrir&#34; ce sur quoi on la fixe. Avec un Classe-D qui est un poti blagueur.
+
+----
+
+242. **[[[cliche-con-2019|]]]**
+
+La page du concours anglais éponyme qui s&#39;est déroulé en 2019. SCP-4479 est une des entrées du concours, que j&#39;ai découvert à cause du tag absent sur le guide des tags.
+
+----
+
+243. **[[[new-years-contest|]]]**
+
+La page du concours anglais éponyme qui s&#39;est déroulé en 2013. C&#39;est de là que viennent une bonne partie des canons de la liste, dont certains canons très méconnus.
+
+----
+
+244. **[[[the-lombardi-tales|]]]**
+
+Un minihub que j&#39;avais prévu de faire et qui se plie en deux-deux. J&#39;ai limite passé plus de temps à optimiser le code qu&#39;à traduire (même si les jeux de mots des titres étaient chiants).
+
+----
+
+245. **[[[time-contest|]]]**
+
+La page du concours anglais éponyme qui s&#39;est déroulé en 2013. Comment le temps affecte-t-il les SCP ?
+
+----
+
+246. **[[[scp2000contesthub|]]]**
+
+La page du concours anglais de SCP-2000, toujours en 2013. Le thème était &#34;science-fiction&#34; et a compté 30 entrées (pour le 7000, en comparaison il y en avait 119...).
+
+----
+
+247. **[[[under-appreciated-contest|]]]**
+
+La page du concours anglais des SCP mal aimés, où le principe est d&#39;écrire sur un ou des SCP à moins de +40. 2014, cette fois.
+
+----
+
+248. **[[[goi-contest-2014|]]]**
+
+La page du concours anglais sur les GdI de 2014, afin de structurer les GDI et leurs objets.
+
+----
+
+249. **[[[vagabonds:atlas-burden-hub|]]]**
+
+Le Fardeau d&#39;Atlas, une série d&#39;histoires sur un monde plongé dans la brume et dont les résidents peinent à survivre. Un centre made in Bibliothèque des Vagabonds.
+
+----
+
+250. **[[[vagabonds:river-canon|]]]**
+
+Le canon de la Rivière, un ensemble d&#39;histoires centré sur les rivières. Un autre centre made in Bibliothèque des Vagabonds.
+
+----
+
+251. **[[[SCP-2837]]] - Physique ancienne**
+
+Un petit rapport plein de physique tordue pour le PACTE.
+
+----
+
+252. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-byrday|]]] (JAL #41)**
+
+Très très court, juste pour du buildup.
+
+----
+
+253. **[[[an-anthropological-approach-to-sarkicism-case-study-02-the-d|]]]**
+
+Un long conte aux allures de journal de recherche sur une communauté tchèque de sarkites. C&#39;est une des entrées d&#39;une série de cinq textes similaires qui sont franchement chouettes. Il faut avoir l&#39;estomac bien accroché mais ça offre une nouvelle perspective sur les sarkites.
+
+----
+
+254. **[[[chapter-4-nobody-prays-for-february|]]] (A4 #5)**
+
+Un conte Automne Noir IV pour le PACTE 5.
+
+----
+
+255. **[[[vagabonds:the-island-chapter-3|NC 3.43 : L&#39;Île - Chapitre 3]]] (Ile#3)**
+
+(Chapitre 2 : #227)
+Le narrateur part en vadrouille sur l&#39;île au soir de son arrivée et part profiter d&#39;un verre et d&#39;une assiette de fruits de mer.
+
+----
+
+256. **[[[vagabonds:the-island-chapter-4|NC 1.90 : L&#39;Île - Chapitre 4]]] (Ile#4)**
+
+Ça part en steak. Dans son état complètement défoncé, le narrateur se trouve coincé dans une allée en boucle dans le brouillard. Un îlien le sort de là et ils partent boire un verre en quête de réponses.
+
+----
+
+257. **[[[vagabonds:the-island-chapter-5|NC 6.65 : L&#39;Île - Chapitre 5]]] (Ile#5)**
+
+Après s&#39;être séparé de son nouvel ami, le narrateur rentre se coucher dans un état toujours déplorable et puis BAM LE CLIFFHANGER
+
+----
+
+258. **[[[SCP-505-KO]]] - Sac à dos**
+
+Un sac pour faire de la --nourriture-- pour les Classes D.
+Avec le grand et beau [[*user Herolles]] !
+
+----
+
+259. **[[[SCP-1279]]] - Les Hommes-Chiens**
+
+Un corgi cool, des chiens qui parlent et qui insultent les chercheurs. Simple et efficace, pour le PACTE 6 !
+
+----
+
+260. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-skalday|]]]** (JAL #42)
+
+LA VAGUE D&#39;ARBRES WEEEEE
+
+[[/collapsible]]
+
+[[collapsible show=&#34;+ Traductions 261-280&#34; hide=&#34;- Fermer (trads 261-280)&#34;]]
+
+261. **[[[into-the-void-hub|]]]**
+
+Un petit hub de rapports SCP sur l&#39;espace pour bien commencer la nouvelle année, avec un thème plutôt cool (dispo là : [[[theme:last-frontier|]]]).
+
+----
+
+262. **[[[SCP-2643]]] - Un animal gardé en mémoire**
+
+Première partie de mon cadeau du 35 décembre pour [[*user Herolles]], sur un souvenir fictif de chat ayant aidé des enfants en situation difficile. Une belle histoire comme on les aime.
+
+----
+
+263. **[[[SCP-3773]]] - 9000 vies**
+
+Seconde partie de mon cadeau du 35 décembre pour [[*user Herolles]], toujours dans un thème félin.  C&#39;est un collier pour chat permettant à celui qui le porte (le chat, hein) de se transformer en d&#39;autres chats ayant touché ce collier ou en un mélange de ces chats. Un petit rapport qui chauffe le cœur.
+
+----
+
+264. **[[[SCP-1243]]] - Service de relocalisation**
+
+Une autre traduction pour le PACTE 6, sur un site internet vieillot qui propose de kidnapper des gens pour un prix horriblement élevé. (N&#39;oubliez pas le noir c&#39;est #000000)
+
+----
+
+265. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-erevday|]]]** (JAL #43)
+
+Les espaces négatifs apparaissent partout autour de nos protagonistes, qui se dépêchent de revenir sur leurs pas.
+
+----
+
+266. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-tresday|]]]** (JAL #44)
+
+Le Moteur est mort, vive le Moteur. Les moines du Moteur en pleine métamorphose subite chargent nos protagonistes de trouver la truite de leur salut.
+
+----
+
+267. **[[[vagabonds:chroday|]]]** (JAL #45)
+
+Ça part en couilles. L&#39;orthographe se délite mais pas de poisson en vue !
+
+----
+
+268. **[[[vagabonds:marday|]]]** (JAL #46)
+
+LA TRUITE
+
+----
+
+269. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-rokday2|]]]** (JAL #47)
+
+Le monde d&#39;Aframos se réinitialise cinq ou six jours avant et il est donc surpris de voir les entrées de son journal qu&#39;il ne se souvient pas avoir écrites.
+
+----
+
+270. **[[[wandsmen-orientation|Introduction aux Arpenteurs]]]**
+
+Pour le PACTE7, une partie de présentation in-universe du centre des Arpenteurs s&#39;est retrouvée sur une autre page.
+
+----
+
+271. **[[[SCP-148-CS]]]** - Des choses à régler
+
+Petite trad tchèque (la première du site). Une dimension parallèle où l&#39;on doit finir quelque chose que l&#39;on a commencé.
+
+----
+
+272. **[[[SCP-4658]]]** - Manette paraphilique
+
+Une manette Arcadia kinky.
+
+----
+
+273. **[[[SCP-747-TH]]]** - La Boîte noire (collab [[*user Herolles]])
+
+Une boîte noire qui retransmet des informations sur des vols dans le futur avec un avion géant qui en mange d&#39;autres. C&#39;est la première traduction thaïlandaise de la branche. Toujours du rapide en une soirée avec le majestueux [[*user Herolles]].
+
+----
+
+274. **[[[experiment-log-747-th|]]]** (collab [[*user Herolles]])
+
+La page annexe du rapport ci-dessus.
+
+----
+
+275. **[[[sarkic-case-study-01-the-vas-n-a-of-sarvi|]]]**
+
+Ça faisait longtemps que je n&#39;avais pas rendu une traduction en retard, c&#39;est un beau bébé de presque 50 000 caractères. Toujours intéressant de traduire des hallucinations cosmiques.
+
+----
+
+276. **[[[SCP-054-IT]]]** - Microcosmos
+
+Un petit rapport IT pour continuer mon tour des traductions des branches étrangères hors anglais.
+Rien de transcendant, c&#39;est une région de l&#39;espace au-dessus de la Terre où des étoiles miniatures font leur vie en accéléré.
+
+----
+
+277. **[[[the-bathrooms-wiki|]]]** (collab [[*user Herolles]])
+
+Une parodie des Backrooms en toilettes, une idée pour le 1er avril avec l&#39;éternel complice [[*user Herolles]].
+ON A NUCLÉARISÉ LES CHIOTTES
+
+----
+
+278. **[[[scp-cn-296|丂匚卩 丅丨尺乇丅 句乇凵乂 匚乇几丅 甲凵丹丅尺乇-丷丨几厶丅-丂乇丨乙乇 丅丨尺乇丅 匚几]]]** (collab [[*user Herolles]])
+
+Un SCP chinois qui affecte l&#39;écrit et transforme tout en //hanzi//, ces caractères chinois rappelant des lettres latines. Terminé à 1h30 du mat avec ce brave Herolles, il a fallu plus de temps pour transformer le texte en hanzi que pour le traduire.
+
+----
+
+279. **[[[SCP-250-DE]]] - Bielefeld ? Ça n&#39;existe pas (ou plus).**
+
+Une traduction faite pour le concours du lore international (en mettant trois fois trop longtemps puisqu&#39;elle est sortie à cinq jours de la fin de la phase de publication).
+Une ville déplacée dans une autre dimension, un démon tué par une explosion, une bouboule iridescente.
+
+----
+
+280. **[[[SCP-201-DE]]] - Dragon de métal**
+
+Littéralement ce qui est mis dans le titre, mais il mange des trucs radioactifs et passe au travers des obstacles en pliant l&#39;espace devant lui.
+
+[[/collapsible]]
+
+[[collapsible show=&#34;+ Traductions 281-300&#34; hide=&#34;- Fermer (trads 281-300)&#34;]]
+
+281. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-skalday2|]]] (JAL #48)**
+
+Putain les gars ça gratte l&#39;herbe
+
+----
+
+282. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-erevday2|]]] (JAL #49)**
+
+Le blaireau marin de l&#39;air avec une jambe de bois montre à ses invités la cité de lumière qui n&#39;apparaît qu&#39;au couchant.
+
+----
+
+283. **[[[SCP-7495]]] - Votre destin est éléphant de merité** (collab [[*user Herolles]])
+
+Un truc super court traduit en une heure à minuit, avec des éléphants de mer qui pop sur des membres de la Fonda sur le point de crever (et les tuent en les &#34;protégeant&#34;).
+
+----
+
+284. **[[[vagabonds:81st-turn-seventh-year-nineteenth-cycle-tresday2|]]] (JAL #50)**
+
+Des pâtés en rut !
+
+----
+
+285. **[[[vagabonds:81st-turn-seventh-year-twentieth-cycle-skyday|]]] (JAL #51)**
+
+Un tengu amical se fait recaler.
+
+----
+
+286. **[[[vagabonds:picturepalooza-contest|]]]**
+
+Le concours des images de 2022 de la Bibliothèque des Vagabonds.
+
+----
+
+287. **[[[vagabonds:vagabonds:wandercon-2021|]]]**
+
+Le concours par équipes de 2021 de la Bibliothèque des Vagabonds. C&#39;est de là que viennent la majorité des centres sur des Vagabonds.
+
+----
+
+288. **[[[SCP-5133]]] - Grenouilles-fruits**
+
+Cadeau du 35 décembre 2023 pour Lylah, c&#39;est une petite traduction plutôt sympa sur des grenouilles cools qui vivent dans un étang et sont faites de fruit, qu&#39;un vieux monsieur féérique vietnamien vend au marché.
+
+[[=]]
+&gt; Sky is the limot
+[[/=]]
+[[&gt;]]
+//--Uplyx//
+[[/&gt;]]
+
 [[/collapsible]]
 
 + Liste des inventions
 
 [[collapsible show=&#34;+ Montrer la liste&#34; hide=&#34;- Replier la liste&#34; hideLocation=&#34;both&#34;]]
-[[module ListPages separate=&#34;no&#34; created_by=&#34;Alwaid&#34; order=&#34;created_at desc desc&#34; category=&#34;. vagabonds&#34; limit=&#34;600&#34; perPage=&#34;200&#34; tags=&#34;+fr scp conte&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+[[module ListPages separate=&#34;no&#34; created_by=&#34;Alwaid&#34; order=&#34;created_at desc desc&#34; category=&#34;. vagabonds&#34; limit=&#34;600&#34; perPage=&#34;200&#34; tags=&#34;+fr scp conte entrée&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 [[/collapsible]]
 
 [[include component:coltop show=+ Quelques commentaires|hide=- Replier les commentaires]]
 [[module ListPages separate=&#34;no&#34; name=&#34;scp-409-fr&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
-|| %%title_linked%% - En mauvaise Voie || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| %%title_linked%% - En mauvaise Voie || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 Ce rapport a été écrit à six mains avec [[*user Ilu-Icey]] et [[*user Leo_Heliantas]] pour le [[[le-concours-des-404-ans|concours des 404 ans]]]. Après un stade initial peu productif où nous avons rencontré pas mal de problèmes pour définir l&#39;idée puis la construire suite aux critiques, il a été rédigé à la vitesse grand V en un peu plus d&#39;une semaine suite à une validation non vue.
 Ça parle d&#39;un thaumaturge amateur qui a essayé de créer une Voie, mais s&#39;est fait interrompre par un Agent pendant le rituel de création, résultant en un effondrement de ladite Voie et à la création de --quatre-- trois anomalies spatio-temporelles.
 Pas mon préféré, mais ça passe.
@@ -1449,21 +1991,22 @@ Pas mon préféré, mais ça passe.
 [[/module]]
 
 [[module ListPages separate=&#34;no&#34; name=&#34;scp-471-fr&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
-|| %%title_linked%% - //Riders on the Storm// || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
-Mon premier rapport en solitaire ! Parti d&#39;une idée un peu pourrie proposée en Chronocritique, l&#39;aiguillage par [[*user CretinusVox]] m&#39;a permis d&#39;arriver à une idée potable qui a fini par devenir ce rapport. Alors ça raconte quoi ? Ce sont des méduses immenses faites d&#39;Æther qui parcourent la haute atmosphère terrestre et se nourrissent dans les orages. Et quand je dis immenses, c&#39;est plusieurs dizaines de kilomètres... Leur effet anormal principal est de se défendre en libérant de plus en plus d&#39;électricité sur tout ce qui s&#39;approche d&#39;elles. Elles proviennent d&#39;Univers&#39;Île (un petit emprunt à [[*user DrMacro]]), et ont été étudiées par le... Département d&#39;Alchimie (hühü, on change pas une équipe qui gagne).
+|| %%title_linked%% - //Riders on the Storm// || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+Mon premier rapport en solitaire ! Parti d&#39;une idée un peu pourrie proposée en Chronocritique, l&#39;aiguillage par [[*user CretinusVox]] m&#39;a permis d&#39;arriver à une idée potable qui a fini par devenir ce rapport. Alors ça raconte quoi ? Ce sont des méduses immenses faites d&#39;Æther qui parcourent la haute atmosphère terrestre et se nourrissent dans les orages. Et quand je dis immenses, c&#39;est plusieurs dizaines de kilomètres... Leur effet anormal principal est de se défendre en libérant de plus en plus d&#39;électricité sur tout ce qui s&#39;approche d&#39;elles. Elles proviennent d&#39;Univers&#39;Île (un petit emprunt à [[*user Macro_au_micro]]), et ont été étudiées par le... Département d&#39;Alchimie (hühü, on change pas une équipe qui gagne).
 Là j&#39;en suis très content, même s&#39;il gagnerait peut-être à être plus développé, mais je ne suis pas sûr.
 Edit 18/04/21 : +25! o:
+Traduit sur INT par [[*user Mazdouk-Snoukza]] : http://scp-int.wikidot.com/scp-471-fr.
 
 [[/module]]
 
 Merci au Dr Sonitrok pour son fanart !
 
 [[include component:coltop show=+ Montrer|hide=- Cacher]]
-[[image https://cdn.discordapp.com/attachments/344973115303919619/870606675374116874/b_471-FR.png]]
+[[image http://fondationscp.wdfiles.com/local--files/dossier-personnel-d-alwaid/b_471-FR.png]]
 [[include component:colend]]
 
 [[module ListPages separate=&#34;no&#34; name=&#34;scp-473-fr&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
-|| %%title_linked%% - Chairs et mycoses || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| %%title_linked%% - Chairs et mycoses || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 Seconde participation de concours, cette fois pour celui des [[[le-concours-des-neuf-ans|Neuf Ans]]] en collaboration avec [[*user Slow-out]], avec comme contraintes le thème des [[[sarkicism-hub|cultes Sarkiques]]] et l&#39;esthétique Fongicentré (c&#39;est-à-dire tout ce qui tourne autour des champignons, les forêts sombres où il se trame des rituels, les cercles de champignons, la mort et les mondes souterrains).
 Alors ça raconte quoi ? Il s&#39;agit d&#39;un Kiraak (temple biologique des Sarkites) infecté, qui a en retour altéré et contaminé toute la zone forestière qui l&#39;entoure, les animaux et les arbres se décomposent, des champignons étranges y poussent... et les cadavres reviennent à la vie pour amener des humains au Kiraak. Les Sarkites l&#39;ayant construit l&#39;endorment pour cesser son extension, mais l&#39;[[[pzga-hub|APCCA]]], découvrant ces champignons et inconsciente du danger, y implante un laboratoire, ce qui réveille à nouveau le Kiraak. Ce dernier détruit le labo et remet le zbeul dans la zone. La Fonda est alertée par les incidents dans les villages voisins et un agent infiltré dans l&#39;APCCA, et confine la zone. Des Sarkites tentant de rendormir le Kiraak sont capturés mais finissent par aider la Fonda à le faire, non sans mal.
 Pas tout à fait satisfait, mais les rapports concours avec des contraintes et un temps limite, ça reste compliqué à faire...
@@ -1475,17 +2018,24 @@ Merci à [[*user SekaiMelji]] pour son fanart !
 [[/module]]
 
 [[include component:coltop show=+ Montrer|hide=- Cacher]]
-[[image https://cdn.discordapp.com/attachments/344973115303919619/837439542654795786/473_fr_fanart.png]]
+[[image http://fondationscp.wdfiles.com/local--files/dossier-personnel-d-alwaid/473_fr_fanart.png]]
+[[include component:colend]]
+
+Merci à [[*user DrJohannes]] pour son fanart !
+
+[[include component:coltop show=+ Montrer|hide=- Cacher]]
+[[image http://fondationscp.wdfiles.com/local--files/dossier-personnel-d-alwaid/17_-_Arpenter_les_chemins.png]]
 [[include component:colend]]
 
 [[module ListPages separate=&#34;no&#34; name=&#34;scp-476-fr&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
-|| %%title_linked%% - Poupées vaudous moléculaires || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| %%title_linked%% - Poupées vaudous moléculaires || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 Un &#34;petit&#34; rapport sur des molécules à la formule humanoïde qui modifient la forme du corps du sujet une fois injectées. Spéciale dédicace à Holt avec un Cobalt Stab !
 (L&#39;idée me vient de mes années prépa, quand on avait des molécules qui avaient une forme de grenouille. Et ça a fini par ressurgir un jour.)
+Traduit sur INT par moi-même : http://scp-int.wikidot.com/scp-476-fr.
 [[/module]]
 
 [[module ListPages separate=&#34;no&#34; name=&#34;scp-478-fr&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
-|| %%title_linked%% - Maudit par le sort || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| %%title_linked%% - Maudit par le sort || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 Troisième participation de concours, cette fois pour celui d&#39;[[[concours-halloween-2021|Halloween 2021]]], mais en solo. J&#39;ai commencé à l&#39;écrire pendant la phase de publication (gloups) suite à plusieurs allers-retours entre idées pas terribles et perte de motivation.
 De quoi ça parle ? Un ancien astronome qui est affecté par un effet négatif en lien avec une constellation chaque fois qu&#39;il regarde le ciel. Et petit à petit, les effets s&#39;intensifient, sa santé mentale en pâtit, jusqu&#39;à la m- Ah mais non attendez, c&#39;est pas ça la fin.
 (Si je peux j&#39;essaierai de lui donner une vraie fin un jour, là j&#39;essayais de faire peur mais je suis pas super convaincu)
@@ -1494,19 +2044,60 @@ On verra ce que ça donne~
 Edit : fin du concours à +9, 8ème place !
 [[/module]]
 
-[[module ListPages separate=&#34;no&#34; name=&#34;c10aalwaid&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
-|| %%title_linked%% - Bleu de cobalt || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+[[module ListPages separate=&#34;no&#34; name=&#34;scp-571-fr&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
+|| %%title_linked%% - Bleu de cobalt || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 Quatrième participation de concours pour [[[le-concours-des-dix-ans|]]], toujours en solo. AVEC LA MAX DE REFS !
 Un deuxième rapport avec Cobalt Stab : un gaz bleu cobalt qui fait voir aux gens des hallucinations avec lesquelles ils veulent se battre. Je suppose ici que ce gaz est le point faible de [[[SCP-3916]]] dans Insect Hell et parvient à stopper in extremis l&#39;apocalypse.
-Après m&#39;être inscrit sur un coup de tête pendant la phase de publication, c&#39;était sans doute une mauvaise idée. À réécrire.
+Après m&#39;être inscrit sur un coup de tête pendant la phase de publication, c&#39;était sans doute une mauvaise idée. À réécrire. (Et réécrit depuis)
 Fin du concours à +1, avant-dernier.
 [[/module]]
 
 [[module ListPages separate=&#34;no&#34; name=&#34;le-calme-apres-la-tempete&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
-|| %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 Un conte, incroyable !
 C&#39;est un récit en cinq parties sur le pendant et l&#39;après de l&#39;apocalypse déclenchée par SCP-3916, et constitue une fin alternative au canon de l&#39;Enfer insectoïde. La Terre a été sauvée mais profondément changée.
 Feat. Escale à Yokohama, un petit manga post-apo feelgood (aussi paradoxal que ça puisse sembler).
+Pas trop non plus, à réécrire de fond en comble.
+[[/module]]
+
+[[module ListPages separate=&#34;no&#34; name=&#34;ceux-qui-meurent-dans-l-encre&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
+|| %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+Un autre conte, lezgo
+Cette fois un conte SLM avec Bougret et Charolles qui poursuivent le tueur de Chambéry, qui assassine des mauvais écrivains. Concours Halloween 2022, équipe des villes.
+J&#39;ai beaucoup aimé caser un maximum de références dedans, pas tellement de références pour Sous le Monde, mais des références à des utilisateurs du site. Ce ne sera pas un conte monumental, mais je le garde dans mon cœur.
+[[/module]]
+
+[[module ListPages separate=&#34;no&#34; name=&#34;scp-575-fr&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
+|| %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+Ce rapport a été écrit principalement en août pour le Challanje de l&#39;été proposé par [[*user Skodamz]], avant d&#39;être mis en pause et retouché petit bout par petit bout tout l&#39;automne et d&#39;être enfin finalisé en décembre. Résultat j&#39;ai l&#39;impression qu&#39;il est kilométrique alors qu&#39;en fait pas tant que ça. Il y a pas mal de liens et de références à tout un tas de trucs en vrac avec le ciel et les Æthers.
+
+C&#39;était long mais je suis content d&#39;avoir pu en faire un truc sympa.
+[[/module]]
+
+[[module ListPages separate=&#34;no&#34; name=&#34;scp-671-fr&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
+|| %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+[[/module]]
+[[module ListPages separate=&#34;no&#34; category=&#34;vagabonds&#34; name=&#34;une-vache-dans-la-bibliotheque&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
+|| %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+[[=]]
+Tylko jedno w głowie mam
+Koksu pięc gram
+Odlecieć sam
+W krainę zapomnienia
+[[/=]]
+[[/module]]
+
+
+[[module ListPages separate=&#34;no&#34; name=&#34;lumiere-a-l-horizon&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
+|| %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+Encore un truc rushé mais finalement posté en avance avec le repoussement de la date butoir. Ecrit en partie au Brusc.
+Plutôt content de ça même si certaines parties voilées de mystère n&#39;ont pas vraiment d&#39;explication pour moi non plus.
+[[/module]]
+
+[[module ListPages separate=&#34;no&#34; name=&#34;ch2023alwaid&#34; prependLine=&#34;||~ Titre ||~ Posté le ||~ Taille ||~ Note ||~ Commentaires||&#34;]]
+|| %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
+Rapport concours pour le concours d&#39;Halloween 2023, bien fouillé sur le plan technique (le rapport repose sur 14 fragments et se décline en une partie immersive (en vert sur noir, sans sidebar) et une partie accessible (normal).
+L&#39;histoire ne casse pas des briques et le rapport non plus, mais j&#39;espère que certains y trouveront leur bonheur. Puis y a un zouli cercle d&#39;alchimie --qui m&#39;a pris deux heures à faire--.
 [[/module]]
 
 [[include component:colend]]
@@ -1515,41 +2106,43 @@ Feat. Escale à Yokohama, un petit manga post-apo feelgood (aussi paradoxal que 
 
 [[collapsible show=&#34;+ Montrer la liste&#34; hide=&#34;- Replier la liste&#34; hideLocation=&#34;both&#34;]]
 [[module ListPages separate=&#34;no&#34; created_by=&#34;Alwaid&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; tags=&#34;collaboration thème modèle concours&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 
 [[module ListPages separate=&#34;no&#34; created_by=&#34;CretinusVox&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; tags=&#34;collaboration-fr&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 
-[[module ListPages separate=&#34;no&#34; created_by=&#34;DrMacro&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; tags=&#34;concours&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
-|| #%%index%% || %%title_linked%% || %%created_at%% || %%size%% || +%%rating%% || %%comments%% ||
+[[module ListPages separate=&#34;no&#34; created_by=&#34;Macro_au_micro&#34; order=&#34;created_at desc desc&#34; category=&#34;*&#34; limit=&#34;600&#34; perPage=&#34;200&#34; name=&#34;le-concours-des-dix-ans&#34; prependLine=&#34;||~ Ordre ||~ Titre ||~ Date de publication ||~ Longueur ||~ Note ||~ Commentaires||&#34;]]
+|| #%%index%% || %%title_linked%% || %%created_at|%d/%m/%Y, %H:%M%% || %%size%% || +%%rating%% || %%comments%% ||
 [[/module]]
 [[/collapsible]]
 
 [[collapsible show=&#34;+ Quelques commentaires&#34; hide=&#34;- Cacher les commentaires&#34; hideLocation=&#34;both&#34;]]
 [[module ListPages separate=&#34;no&#34; name=&#34;scp-367-fr&#34; ]]
-|| %%title_linked%% - Chênes et limaces || %%created_at%% || +%%rating%% || %%comments%% ||
+|| %%title_linked%% - Chênes et limaces || %%created_at|%d/%m/%Y, %H:%M%% || +%%rating%% || %%comments%% ||
 Ce rapport est issu du Protocole de Recoupement Osiris, une page collaborative rédigée à... vingt-et-une personnes ? Pas vraiment ce que je pensais voir à la fin, mais intéressant comme concept. Des arbres inversés qui explosent, des glands qui transforment en arbre, des limaces grégaires...
 [[/module]]
 
-[[[theme:wandsmen-theme|]]] adapté avec l&#39;aide de [[*user DrMacro]] et [[*user Dr Lekter]] pour [[[wandsmen-hub|]]]. (Bon au final il faudrait le refaire de A à Z vu que ce chien l&#39;a changé genre deux semaines après la trad)
+[[[theme:wandsmen-theme|]]] adapté avec l&#39;aide de [[*user Macro_au_micro]] et [[*user Dr Lekter]] pour [[[wandsmen-hub|]]]. (Bon au final il faudrait le refaire de A à Z vu que ce chien l&#39;a changé genre deux semaines après la trad)
 
 [[[theme:scheme|]]] adapté avec l&#39;aide de [[*user Dr Lekter]] pour [[[v817m184|]]] (de [[*user Felter Finalis]]). 
 
 [[[concours-halloween-2021|]]] organisé avec [[*user Dr Lekter]], [[*user Seed Holt]] et [[*user Skodamz]]. 
 J&#39;ai fait une bonne partie du texte de la page (le flavor text et les règles reprises d&#39;anciens concours) et contribué à établir la liste des phobies (avec [[*user Seed Holt]]). [[*user Dr Lekter]] a fait presque tout le thème de la page.
 
-[[[initiatives-de-traduction|]]] avec un coup de main de [[*user Dr Attano]], [[*user DrMacro]] et [[*user Dr Lekter]]. Pour recenser les initiatives de traduction et proposer des objectifs communautaires de traduction.
+[[[initiatives-de-traduction|]]] avec un coup de main de [[*user Dr Attano]], [[*user Macro_au_micro]] et [[*user Dr Lekter]]. Pour recenser les initiatives de traduction et proposer des objectifs communautaires de traduction.
 
-[[[le-concours-des-dix-ans|]]] organisé avec [[*user Dr Lekter]], [[*user DrMacro]], [[*user DrJohannes]], [[*user DrCendres]], [[*user CretinusVox]], [[*user Gabitoon]], [[*user Herolles]] et [[*user Skodamz]]. 
-J&#39;ai contribué à établir la liste des contraintes finales, écrit les règles, les prix, le calendrier et aidé à la mise en forme, qui a surtout été faite par [[*user DrMacro]]. On a fini la page le jour J à 2h30 du matin...
+[[[le-concours-des-dix-ans|]]] organisé avec [[*user Dr Lekter]], [[*user Macro_au_micro]], [[*user DrJohannes]], [[*user DrCendres]], [[*user CretinusVox]], [[*user Gabitoon]], [[*user Herolles]] et [[*user Skodamz]]. 
+J&#39;ai contribué à établir la liste des contraintes finales, écrit les règles, les prix, le calendrier et aidé à la mise en forme, qui a surtout été faite par [[*user Macro_au_micro]]. On a fini la page le jour J à 2h30 du matin...
 
 [[[theme:night-rush-theme|]]] adapté avec un coup de main de [[*user Dr Lekter]] pour [[[fire-moth|]]]. Pas un thème trop dur à modifier, heureusement !
 
 [[[gudule|GUDULE section Bibliothèque]]] : Ajouts pour les persos de la Bibliothèque.
 
 [[[vagabonds:premiere-aile-fr|Première Aile française]]] : La liste des créations françaises pour la Bibliothèque !
+
+[[[theme:last-frontier|]]] : Thème du centre de la [[[into-the-void-hub|Dernière Frontière]]].
 
 [[/collapsible]]
 
@@ -1558,7 +2151,7 @@ J&#39;ai contribué à établir la liste des contraintes finales, écrit les rè
 ++ Relectures de traductions :
 
 [[collapsible show=&#34;+ Ouvrir&#34; hide=&#34;- Fermer&#34;]]
-82 !
+179 !
 
 Sans validation :
 * 1. [[[SCP-3088]]] par [[*user Olyas]] et [[*user JeanneOskoure]] (posté le 22/08/2019)
@@ -1566,7 +2159,7 @@ Sans validation :
 * 3. [[[scp-440-exploratory-log-a|]]] par [[*user Gabitoon]] (posté le 28/08/2019)
 * 4. [[[SCP-3043]]] par [[*user Felter Finalis]] (posté le 11/10/2019)
 * 5. [[[tales-from-the-bright-side-chapter-one|]]] par [[*user Dr Darell]] (et posté par [[*user Archiviste Judas]] le 04/11/2019)
-* 6. [[[SCP-2423]]] par [[*user dr dakukira]] (posté le 20/11/2019)
+* 6. [[[SCP-2423]]] par [[*user Fokyfebecr]] (posté le 20/11/2019)
 * 7. [[[SCP-615]]] par [[*user Jubaa_96]] (posté le 16/12/2019)
 * 8. [[[SCP-875]]] par [[*user Herolles]] (posté le 27/12/2019)
 * 9. [[[a-brief-history-of-foundation-rp|]]] par [[*user Dr Demiurge]] (posté le 27/12/2019)
@@ -1612,7 +2205,7 @@ Avec validation :
 * 48. [[[partition|]]] par [[*user Memelos]] (posté le 21/05/2021)
 * 49. [[[SCP-1668]]] par [[*user Horbeten]] (posté le 21/05/2021)
 * 50. [[[SCP-4309]]] par [[*user Affreux Jojo]] (posté le 22/05/2021)
-* 51. [[[SCP-2256]]] par [[*user Agent Sculder]] (posté le 24/05/2021)
+* 51. [[[SCP-2256]]] par [[*user AgentSculder]] (posté le 24/05/2021)
 * 52. [[[the-dark-web-dke79-o2rg5-4jlw6|]]] par [[*user Mmmmh_Monkey]] (posté le 15/07/2021)
 * 53. [[[SCP-5172]]] par [[*user L0ftus]] (posté le 18/07/2021)
 * 54. [[[SCP-5582]]] par [[*user Vaalxeny]] (posté le 20/07/2021)
@@ -1626,13 +2219,13 @@ Avec validation :
 * 62. [[[Ará Orún]]] par [[*user heryforce]] (posté le 30/07/2021)
 * 63. [[[mcd-art-by-oswaldo|]]] par [[*user Mmmmh_Monkey]] (posté le 11/08/2021)
 * 64. [[[SCP-3760]]] par [[*user L0ftus]] (posté le 11/08/2021)
-* 65. [[[SCP-5579]]] par [[*user Agent Sculder]] (posté le 11/08/2021)
+* 65. [[[SCP-5579]]] par [[*user AgentSculder]] (posté le 11/08/2021)
 * 66. [[[SCP-2998]]] par [[*user Fourmi1(MNIW)]] (posté le 19/08/2021)
 * 67. [[[an-unforgettable-performance-9s15f-fmur9-ay1d9|]]] par [[*user Mmmmh_Monkey]] (posté le 17/08/2021)
 * 68. [[[SCP-1094-EX]]] par [[*user Mamiebel]] (posté le xx/08/2021)
 * 69. [[[SCP-1245]]] par [[*user Squelle]] (posté le 22/08/2021)
 * 70. [[[incident-log-1245-043|]]] par [[*user Squelle]] (posté le 22/08/2021)
-* 71. [[[SCP-143-ES]]] par [[*user Agent Sculder]] (posté le 20/08/2021)
+* 71. [[[scp-es-143|SCP-143-ES]]] par [[*user AgentSculder]] (posté le 20/08/2021)
 * 72. [[[dream-daycare|]]] par [[*user Mmmmh_Monkey]] (posté le 24/08/2021)
 * 73. [[[SCP-1109]]] par [[*user Yageyan]] (posté le 25/08/2021)
 * 74. [[[SCP-6572]]] par [[*user Gesiatari]] (posté le 05/10/2021)
@@ -1640,17 +2233,114 @@ Avec validation :
 * 76. [[[SCP-6820]]] par [[*user Vaalxeny]] (posté le 06/01/2022)
 * 77. [[[SCP-1487]]] par [[*user Aurore de Gilead]] (posté le 13/01/2022)
 * 78. [[[SCP-6661]]] par [[*user Mmmmh_Monkey]] (posté le 11/01/2022)
-* 79. [[[SCP-1318]]] par [[*user Agent Sculder]] (posté le 06/02/2022)
+* 79. [[[SCP-1318]]] par [[*user AgentSculder]] (posté le 06/02/2022)
 * 80. [[[SCP-5636]]] par [[*user Vaalxeny]] (posté le 16/02/2022)
-* 81. [[[admonition-hub|]]] par [[*user Vaalxeny]] (posté le 24/03/2022)
+* 81. [[[admonition|]]] par [[*user Vaalxeny]] (posté le 24/03/2022)
 * 82. [[[SCP-2784]]] par [[*user Aurore de Gilead]] (posté le 08/04/2022)
-* 83. [[[adoption-poster-bonzo|]]] par [[*user Chercheuse_LN]] (posté le xx/04/2022)
+* 83. [[[adoption-poster-bonzo|]]] par [[*user Chercheuse_LN]] (posté le 30/04/2022)
+* 84. [[[SCP-5056]]] par [[*user Vaalxeny]] (posté le 03/08/2022)
+* 85. [[[SCP-3395]]] par [[*user Chercheur Joris]] (posté le 05/08/2022)
+* 86. [[[SCP-3691]]] par [[*user WXLPMNB]] (posté le 11/08/2021)
+* 87. [[[SCP-6659]]] par [[*user Vaalxeny]] (posté le 13/08/2022)
+* 88. [[[SCP-4703]]] par [[*user Koukin7Kun]] (posté le 05/10/2022)
+* 89. [[[SCP-3544]]] par [[*user Chercheur Joris]] (posté le 05/10/2022)
+* 90. [[[SCP-5110]]] par [[*user Vhital]] (posté le 05/10/2022)
+* 91. [[[SCP-5511]]] par [[*user Sempras]] (posté le 06/10/2022)
+* 92. [[[alone|]]] par [[*user Louis Monvoisin]]] (posté le 07/10/2022)
+* 93. [[[vagabonds:on-the-common-vampyre|]]] par [[*user Dr Bellefleur]] (posté le 12/10/2022)
+* 94. [[[SCP-4344]]] par [[*user thomKnight]] (posté le 12/10/2022)
+* 95. [[[SCP-3721]]] par [[*user Chercheur Joris]] (posté le 13/10/2022)
+* 96. [[[SCP-7002]]] par [[*user Vaalxeny]] (posté le 16/10/2022)
+* 97. [[[SCP-5904]]] par [[*user Olyas]] (posté le 16/10/2022)
+* 98. [[[SCP-6071]]] par [[*user Sempras]] (posté le 17/10/2022)
+* 99. [[[Robin]]] par [[*user The Pighead]] (posté le 17/10/2022)
+* 100. [[[SCP-3846]]] par [[*user Vhital]] (posté le 18/10/2022)
+* 101. [[[vagabonds:names|]]] par [[*user Dr Bellefleur]] (posté le 20/10/2022)
+* 102. [[[vagabonds:on-homer|]]] par [[*user Exergue]] (posté le 20/10/2022)
+* 103. [[[SCP-7179]]] par [[*user Olyas]] (posté le 21/10/2022)
+* 104. [[[SCP-4182]]] par [[*user DrJeanbobmichel5]] (posté le 23/10/2022)
+* 105. [[[SCP-5269]]] par [[*user 123SarahAngel]] (posté le 30/10/2022)
+* 106. [[[SCP-1188]]] par [[*user Mananta]] (posté le 31/10/2022)
+* 107. [[[SCP-3937]]] par [[*user DrJeanbobmichel5]] (posté le 01/11/2022)
+* 108. [[[note-your-name-is-nobody|]]] par [[*user 123SarahAngel]] (posté le 03/11/2022)
+* 109. [[[SCP-000-PL-J]]] par [[*user DrJeanbobmichel5]] (posté le 06/11/2022)
+* 110. [[[Reptilius]]] par [[*user Chercheur Joris]] (posté le 09/11/2022)
+* 111. [[[SCP-1361]]] par [[*user drDio_Brando_]] (posté le 13/11/2022)
+* 112. [[[SCP-1159]]] par [[*user 123SarahAngel]] (posté le 13/11/2022)
+* 113. [[[vagabonds:jack-of-trades|Touche-à-tout]]] par [[*user zilba23]] (posté le 20/11/2022)
+* 114. [[[dokumentacja-bezpiecznej-placowki-osrodek-101|]]] par [[*user DrJeanbobmichel5]] (posté le 14/11/2022)
+* 115. [[[SCP-5897]]] par [[*user Olyas]] (posté le 18/11/2022)
+* 116. [[[SCP-1565]]] par [[*user thomKnight]] (posté le 21/11/2022)
+* 117. [[[SCP-5113]]] par [[*user Olyas]] (posté le 29/11/2022)
+* 118. [[[SCP-1560]]] par [[*user Regiss]] (posté le 23/11/2022)
+* 119. [[[SCP-3035]]] par [[*user Vhital]] (posté le 27/11/2022)
+* 120. [[[SCP-7513]]] par [[*user ReporterThomas]] (posté le 29/11/2022)
+* 121. [[[habil-and-qabil|]]] par [[*user Chercheur Joris]] (posté le 03/12/2022)
+* 122. [[[christmas-dinner|]]] par [[*user Chercheur Joris]] (posté le 14/12/2022)
+* 123. [[[SCP-1655]]] par [[*user Vhital]] (posté le 17/12/2022)
+* 124. [[[theysayshelooksjustlikeo5-8|]]] par [[*user Olyas]] (posté le 23/12/2022)
+* 125. [[[SCP-1194]]] par [[*user Pr X Wyrdax]] (posté le 23/12/2022)
+* 126. [[[SCP-7999]]] par [[*user DrJeanbobmichel5]] et [[*user Olyas]] (posté le 08/01/2022)
+* 127. [[[secure-facility-dossier-site-98|]]] par [[*user Mmmmh_Monkey]] (posté le 27/12/2022)
+* 128. [[[SCP-1916]]] par [[*user wormmoon16]] (posté le 28/12/2022)
+* 129. [[[lucky-dinosaur|]]] par [[*user Chercheur Joris]] (posté le 12/01/2023)
+* 130. [[[SCP-1018-RU]]] par [[*user Chigurh]] (posté le 13/01/2023)
+* 131. [[[arcadia-hub|]]] par [[*user Faltazi]] (posté le 16/01/2023)
+* 132. [[[enter-stage-right|]]] par [[*user french_pain]]  (posté le 14/01/2023)
+* 133. [[[scp-pl-150|]]] par [[*user DrJeanbobmichel5]] (posté le 17/01/2023)
+* 134. [[[SCP-6187]]] par [[*user Mars la Grise]] (posté le 23/01/2023)
+* 135. [[[secure-facility-dossier-area-12|]]] par [[*user DrJeanbobmichel5]] (posté le 27/01/2023)
+* 136. [[[SCP-570]]] par [[*user Olyas]] (posté le 03/03/2023)
+* 137. [[[secure-facility-dossier-site-43|]]] par [[*user DrJeanbobmichel5]] (posté le 14/02/2023)
+* 138. [[[rescate-pozo-espantozo|]]] par [[*user Anoure]] (posté le 17/02/2023)
+* 139. [[[halloween-on-17th-street|]]] par [[*user Chercheur Joris]] (posté le 16/02/2023)
+* 140. [[[SCP-6372]]] par [[*user Mars la Grise]] (posté le 20/02/2023)
+* 141. [[[SCP-5066]]] par [[*user diviiniity]] (posté le 18/02/2023)
+* 142. [[[SCP-1197]]] par [[*user Mi123]] (posté le 27/02/2023)
+* 143. [[[SCP-1181]]] par [[*user DoctorAngelos]] (posté le 06/03/2023)
+* 144. [[[be-strange-or-be-forgotten|]]] par [[*user Gabitoon]] (posté le 25/02/2023)
+* 145.  [[[symonia-hub|]]] par [[*user DrJeanbobmichel5]] (posté le 27/02/2023)
+* 146. [[[SCP-3732]]] par [[*user OceanLys]]] (posté le xx/03/2023)
+* 147. [[[SCP-4138]]] par [[*user King Gorgo]]] (posté le 02/03/2023)
+* 148. [[[SCP-4997]]] par [[*user french_pain]]] (posté le 06/03/2023)
+* 149. [[[SCP-6375]]] par [[*user Mars la Grise]] (posté le 16/03/2023)
+* 150. [[[SCP-3465]]] par [[*user Mmmmh_Monkey]] (posté le 07/03/2023)
+* 151. [[[fire-on-the-horizon|]]] par [[*user Golden Marsouin]] (posté le 13/03/2023)
+* 152. [[[the-flesh-that-mates|]]] par [[*user Chercheur Joris]] (posté le 08/03/2023)
+* 153. [[[SCP-1556]]] par [[*user Dr Osprey Gold]] (posté le xx/04/2023)
+* 154. [[[SCP-1007-RU]]] par [[*user AlexSender]] (posté le 15/03/2023)
+* 155. [[[SCP-6666]]] par [[*user 123SarahAngel]], [[*user Chercheur Joris]], [[*user Jaan Kask]] (posté le 18/03/2023)
+* 156. [[[dance-the-danse|]]] par [[*user Koukin7Kun]] (posté le 26/03/2023)
+* 157. [[[SCP-1531]]] par [[*user Regiss]] (posté le 02/04/2023)
+* 158. [[[SCP-6082]]] par [[*user Mars la Grise]] (posté le xx/04/2023)
+* 159. [[[SCP-4564]]] par [[*user Chercheur Joris]] (posté le 01/04/2023)
+* 160. [[[SCP-3676]]] par [[*user Mmmmh_Monkey]] (posté le 02/04/2023)
+* 161. [[[scp-pl-174|SCP-174-PL]]] par [[*user DrJeanbobmichel5]] (posté le 06/04/2023)
+* 162. [[[SCP-1349]]] par [[*user Volcantre]] (posté le 07/04/2023)
+* 163. [[[SCP-1196]]] par [[*user Chercheur Joris]] (posté le 07/04/2023)
+* 164. [[[SCP-1078-RU]]] par [[*user ManiacMakyr]] (posté le 18/08/2023)
+* 165. [[[SCP-6488]]] par [[*user Vaalxeny]] (posté le 26/08/2023)
+* 166. [[[vagabonds:on-demons]]] par [[*user Dr Bellefleur]] (posté le 29/08/2023)
+* 167. [[[SCP-1371]]] par [[*user Anoure]] (posté le 03/09/2023)
+* 168. [[[SCP-5242]]] par [[*user Vaalxeny]] (posté le 16/09/2023)
+* 169. [[[jak-zburzylem-wieze-babel|]]] par [[*user DrJeanbobmichel5]] (posté le 01/10/2023)
+* 170. [[[SCP-1251]]] par [[*user La Catoune]] (posté le ??)
+* 171. [[[SCP-PL-203]]] par [[*user DrJeanbobmichel5]] et [[*user Chercheur Joris]] (posté le 21/10/2023)
+* 172. [[[resurrection|]]] par [[*user Chercheur Joris]] (posté le 09/11/2023)
+* 173. [[[niram-art|]]] par [[*user Chercheur Joris]] (posté le 08/11/2023)
+* 174. [[[SCP-1255]]] par [[*user AzuraLee]] (posté le 22/11/2023)
+* 175. [[[SCP-4408]]] par [[*user Volcantre]] (posté le 01/12/2023)
+* 176. [[[SCP-1548-EX]]] par [[*user Yumei_B]] (posté le 30/11/2023)
+* 177. [[[facilities-complete-list|]]] par [[*user DrJeanbobmichel5]], [[*user Vaalxeny]] et [[*user Chercheur Joris]] (posté le 26/12/2023)
+* 178. [[[SCP-2211-JP]]] par [[*user DrJeanbobmichel5]] (posté le 29/12/2023)
+* 179. [[[hellomuddah|]]] par [[*user Chercheur Joris]] (posté le 29/12/2023)
+
 [[/collapsible]]
 
 ++ Relecture de contes et rapports français :
 
 [[collapsible show=&#34;+ Ouvrir&#34; hide=&#34;- Fermer&#34;]]
-25 !
+27 !
 * 1. Les fearys-mèmes rêvent-ils de moutons mémétiques ? par [[*user Dr Demiurge]] (posté le 21/10/2019)
 * 2. Conte en critique : La poursuite du Messager par [[*user LeHag]] (pas posté)
 * 3. [[[SCP-437-FR]]] &#34;Veuillez garder le silence&#34; - Entrée du C8A d&#39;[[*user Herolles]] et [[*user Ilu-Icey]] (posté le 23/04/2020)
@@ -1663,9 +2353,9 @@ Avec validation :
 * 10. [[[SCP-415-FR]]] &#34;Théories et méthodes sur l&#39;Immortalité&#34; par [[*user Maeltudal]] (posté le 10/04/2021)
 * 11. [[[Hoshito et le Projet Shufuku]]] par [[*user Lochsry]] pour le C9A (avec [[*user Henry Von Kartoffen]]) (posté le 25/04/2021)
 * 12. [[[SCP-461-FR]]] &#34;Tout et Rien&#34; par [[*user Agent Stanislav]], [[*user Ilu-Icey]] et [[*user Archityran]] pour le C9A (avec [[*user Maeltudal]]) (posté le 25/04/2021)
-* 13. [[[SCP-433-FR]]] &#34;Une interminable journée d&#39;école&#34; par [[*user Agent Sculder]] (avec [[*user Maeltudal]]) (posté le 22/07/2021)
+* 13. [[[SCP-433-FR]]] &#34;Une interminable journée d&#39;école&#34; par [[*user AgentSculder]] (avec [[*user Maeltudal]]) (posté le 22/07/2021)
 * 14. [[[quand-les-sapins-iront-mieux|]]] par [[*user Felter Finalis]] (posté le 26/07/2021)
-* 15. [[[SCP-483-FR]]] &#34;Épidémie de reflets assoiffés de sang&#34; par [[*user Agent Sculder]] (posté le 25/10/2021)
+* 15. [[[SCP-483-FR]]] &#34;Épidémie de reflets assoiffés de sang&#34; par [[*user AgentSculder]] (posté le 25/10/2021)
 * 16. [[[SCP-487-FR]]] &#34;Le Phonographe&#34; par [[*user Dr U N Owen]] (posté le 26/10/2021) petit ange parti trop tôt :&#39;(
 * 17. [[[nostalgie-de-la-secheresse|]]] par [[*user Henka]] (posté le 28/10/2021)
 * 18. [[[bouteille-a-la-mer-dpwl|]]] par [[*user Felter Finalis]] (posté le 29/10/2021)
@@ -1673,9 +2363,11 @@ Avec validation :
 * 20. [[[et-le-monde-cessa-de-rever|]]] par [[*user Agent Stanislav]], [[*user Herolles]], et [[*user Maeltudal]] (posté le 31/10/2021)
 * 21. [[[dans-l-orbite-de-jack|]]] par [[*user DataAnalyst-a7]] (posté le 31/10/2021)
 * 22. [[[SCP-465-FR]]] &#34;Mort-12&#34; par [[*user antarctus]] (posté le 31/10/2021)
-* 23. SCP-500-FR : Éléonore par [[*user Dr U N Owen]] (posté le 26/04/2021)
-* 24. SCP-500-FR : l&#39;enfant-animal par [[*user Emmarmelade]] (posté le 26/04/2021)
-* 25. SCP-500-FR : la Religion SCP par [[*user Reyas]] (posté le 27/04/2021)
+* 23. [[[SCP-587-FR]]] &#34;Éléonore&#34; par [[*user Dr U N Owen]] (posté le 26/04/2022)
+* 24. [[[SCP-528-FR]]] &#34;L&#39;enfant-animal&#34; par [[*user Emmarmelade]] (posté le 26/04/2022)
+* 25. [[[SCP-555-FR]]] &#34;la Religion SCP&#34; par [[*user Reyas]] (posté le 27/04/2022)
+* 26. [http://fondationscp.wikidot.com/forum/t-16386891/idee-a-critiquer-les-garcons-a-la-mauvaise-influence-linguis#post-6218494 Critique du rapport sur les chocolatines] par [[*user Dr anakin775]] (avec [[*user Agent Stanislav]])
+* 27. SCP-666-FR - Les Damnés par [[*user Felixou]] (avec [[*user jtdn]])
 
 [[/collapsible]]
 
@@ -1684,19 +2376,83 @@ Avec validation :
 Certains :
 * poursuivre et finir [[[take-it-away-my-darling|]]] avec [[*user Herolles]] (16/21) et trucs reliés
 * terminer et mettre à jour le canon du [[[the-alchemy-department-hub|Département d&#39;Alchimie]]] (23/26)
-* faire les traductions des écrits des FIM Sigma-3 &#34;Les Bibliothécaires&#34; pour le [[[mobile-task-force-contest|concours des FIM 2016]]] :
- * --**Rapport post-opération : [[[Lessons Learned|]]]**-- par [[*user Dexanote]]
- * --**Conte : [[[nope-not-typing-all-that|]]]**-- par [[*user Gaffsey]]
- * --**Conte : [[[Nothing Says &#34;Promotion&#34; Like a Bag Over Your Head|]]]**-- par [[*user TwistedGears]]
- * --**Conte : [[[Making a Scene|]]]**-- par [[*user TwistedGears]]
- * --**Conte : [[[another-goddamn-magic-system|]]]**-- par [[*user thedeadlymoose]]
- * **Format GDI : [[[The Conspiracy Of Sigma-3 | La Conspiration de &#34;Sigma-3&#34; (&#34;Les Diables&#34;)]]]** par [[*user thedeadlymoose]]
- * **Article SCP : [[[SCP-2975]]] - Un autre Soleil** par [[*user thedeadlymoose]]
 * faire des bannières pour le Département d&#39;Alchimie, Alagadda, l&#39;Agent Navarro, Rhô-19, le CASSOULET, la FOUGASSE... :sueur:
+* finir le grand chelem des traductions internationales :
+ * anglais ##green|ok## ([[[another-goddamn-magic-system|]]])
+ * japonais ##green|ok## ([[[SCP-280-JP]]])
+ * polonais ##green|ok## ([[[pzga-hub|]]])
+ * chinois traditionnel ##green|ok## ([[[SCP-ZH-236]]])
+ * nordique (hors concours, non officielle) ##green|ok## ([[[SCP-002-ND]]])
+ * coréen ##green|ok## ([[[question-exclamation-exclamation]]])
+ * tchèque ##green|ok## ([[[SCP-148-CS]]])
+ * thaïlandais ##green|ok## ([[[SCP-747-TH]]])
+ * italien ##green|ok## ([[[SCP-054-IT]]])
+ * chinois simplifié ##green|ok## ([[[SCP-CN-296|]]])
+ * allemand ##green|ok## ([[[SCP-250-DE]]])
+ * vietnamien ##green|ok## ([[[SCP-002-VN]]])
+ * ukrainien ##green|ok## ([[[SCP-056-UA]]])
+ * espagnol ##red|à faire##
+ * russe ##red|à faire##
+ * portugais ##red|à faire##
 Un jour peut-être (ce n&#39;est rien de réservé, les liens sont là pour check si quelqu&#39;un les a faits) :
-* des rapports en bazar (--[[[SCP-1336]]]--, --[[[SCP-1666]]]--, --[[[SCP-1687]]]--, [[[SCP-2402]]], [[[SCP-2518]]], --[[[SCP-2579]]]--, --[[[SCP-2631]]]--, --[[[SCP-2686]]]--, --[[[SCP-3132]]]--, [[[SCP-3137]]], [[[SCP-3507]]], [[[SCP-3609]]], --[[[SCP-4046]]]--, [[[SCP-4132]]], [[[SCP-4211]]], [[[SCP-4344]]], --[[[SCP-4488]]]--, [[[SCP-4494]]], --[[[SCP-4557]]]--, [[[SCP-4568]]], --[[[SCP-4644]]]--, [[[SCP-4850]]], [[[SCP-4930]]], [[[SCP-5406]]], --[[[SCP-5630]]]--, [[[SCP-5710]]]...)
-* des contes en bazar aussi ([[[are-we-there-yet|Are We There Yet?]]], [[[arm-ageddon|Arm-ageddon]]] (BRAS-POCALYPSE), [[[blue-lily-chains|Blue Lily Chains]]], [[[dark-side-hub|Dark Side Hub]]], [[[little-pleasures|Little Pleasures]]], [[[twistedgears-personnel-file|Agent Navarro&#39;s personnel file]]]...)
-* continuer les histoires en lien avec Alagadda, notamment --[[[there-are-no-children-in-alagadda|There Are No Children in Alagadda]]]--, --[[[midnight-parade|Midnight Parade]]]--
+* des rapports en bazar :
+ * [[[SCP-1770]]], un être fait de chaînes qui peut contrôler les gens avec ses chaînes
+ * [[[SCP-2402]]], une mélodie qui change les états quantiques des particules et régénère les objets
+ * [[[SCP-2471]]], des cookies de fortune ?
+ * [[[SCP-3137]]], un bloc-notes informatique qui provoque un effet anormal en fonction de ce qui est écrit
+ * [[[SCP-3335]]], les molécules du fun
+ * [[[SCP-3426]]], un phénomène tueur de civilisations
+ * [[[SCP-3507]]], un samourai tueur de yokai
+ * [[[SCP-3696]]], une anomalie gravitationnelle fonçant vers nous et éclatant les galaxies sur son passage
+ * [[[SCP-3722]]], une cité qui change un jour par an de sorte à reproduire un jour passé
+ * [[[SCP-3933]]], TYRANNOSAURUS FLEX
+ * [[[SCP-4131]]], un Anomalocaris avec plein d&#39;armes qui veut exploser des tas de trilobites
+ * [[[SCP-4132]]], une cabine montrant des évènements d&#39;une époque passée spécifiée à l&#39;intérieur
+ * [[[SCP-4211]]], un rapport stylé techniquement avec des choix multiples et qui part en couilles
+ * [[[SCP-4246]]], des rêves morbides de l&#39;océan (long)
+ * [[[SCP-4495]]], un roi cochon qui produit des tripes en continu
+ * [[[SCP-4568]]], deux (autres) serpents géants qui se mettent sur la tronche
+ * [[[SCP-4652]]], des rots superdestructeurs
+ * [[[SCP-4792]]], un sacrophage sur une étoile qui aurait dû confiner un dieu
+ * [[[SCP-4850]]], des otaries plieuses de réalité
+ * [[[SCP-4880]]], du chewing-gum qui fait dire à son consommateur que c&#39;est de la balle avant de l&#39;intégrer dans une masse affreuse
+ * [[[SCP-4899]]], un corps noir dans l&#39;espace provoquant des altérations étranges sur Terre dans des sites de la Fonda
+ * [[[SCP-5096]]], un papillon qui fait se manifester un livre d&#39;entomologie qui transforme son environnement en ce qui est dépeint dedans
+ * [[[SCP-5159]]], une anomalie d&#39;identité qui se transfère grâce à un nom (lié à SCP-4000)
+ * [[[SCP-5213]]], une structure souterraine sous le Mont Parnasse en rapport avec 4000
+ * [[[SCP-5637]]], une dimension parallèle en sépia (Projet Heimdall)
+ * [[[SCP-5687]]], une librairie des Arpenteurs
+ * [[[SCP-5749]]], une écrevisse qui te démotive
+ * [[[SCP-6710]]], le grand chat dans le ciel
+ * [[[SCP-6711]]], le voyage temporel dans un lieu où le temps est ralenti à mort (concours 6000)
+ * [[[SCP-6996]]], ##red|rouge##
+ * [[[http://scp-int.wikidot.com/scp-2626-jp|SCP-2626-JP]]], un rapport JP sur des noeuds qui s&#39;emmêlent et des trucs irlandais
+* des contes en bazar aussi :
+ * [[[are-we-there-yet|Are We There Yet?]]], 
+ * [[[arm-ageddon|Arm-ageddon]]] (BRAS-POCALYPSE), 
+ * [[[dark-side-hub|Dark Side Hub]]], 
+ * [[[twistedgears-personnel-file|Agent Navarro&#39;s personnel file]]]...
+ * [[[rat-s-nest-hub|]]]
+ * [[[freaks-friends-and-fiends|Freaks, Friends and Fiends]]] (alchimie chez Hermann Fuller)
+ * [[[analysis-of-the-plokamisuchus|Analysis of the Plokamisuchus]]] (alchimie dans War On All Fronts)
+ * [[[mainline-hub|Mainline Hub]]] (petit hub sur une série avec de la drogue anormale et des yakuza)
+ * [[[flow-hub|Flow Hub]]] (hub d&#39;une série avec des anartistes)
+ * [[[the-lombardi-tales|The Lombardi Tales]]] (petit hub de série)
+ * [[[endless-light|Some are born to endless light]]] (un conte sur une boule à neige à explosion nucléaire)
+ * [[[hecatoncheires-cycle-hub|Hecatoncheires Cycle Hub]]] (je sais pas ce que c&#39;est ??)
+ * [[[gentle-wings-flutter-quietly-in-the-dark|Gentle Wings Flutter Quietly in the Dark]]] (un conte Kiryu sur 4000)
+ * [[[saffronsands-hub|In Saffron Sands]]] (la Fonda en Inde)
+ * [[[damocles|The Damocles Initiative]]] (Troisième Loi dans l&#39;espace)
+ * [[[an-anthropological-approach-to-sarkicism-case-study-04-house|An Anthropological Approach to Sarkicism - Case Study 04: House Kurinuka]]]
+ * [[[sarkic-case-study-05-korean-seulga|An Anthropological Approach to Sarkicism - Case Study 05: Seŭlga of the Korean Peninsular]]]
+ * [[[hanging-on-the-telephone|Hanging On The Telephone]]] (un conte sur les écoutes téléphoniques pour trouver des trucs anormaux)
+ * [[[rise|Rise]]] (Flamme, 921)
+ * [[[favors-part-one|Favors-Part One]]] (Breath, 921)
+ * [[[favors-part-two|Favors-Part Two]]]
+ * [[[Ichor|Ichor]]] 
+ * [[[breath-pulse-blood-spine|Breath, Pulse, Blood, Spine]]] (921)
+ * [[[most-beautiful-things|Most Beautiful Things]]] (4000)
+* continuer les histoires en lien avec Alagadda
 * lister les sociétés-écran de la Fondation de toutes les branches ([http://scp-int-sandbox.wikidot.com/alwaid on est pas rendus])
 * pages de concours ! → portes d&#39;entrée sur plein de petites grappes de traductions
 
@@ -1705,7 +2461,7 @@ Un jour peut-être (ce n&#39;est rien de réservé, les liens sont là pour chec
 **Nom :** Dr Aster Alwaid
 **Niveau :** 2
 **Surnom :** Dr Origami (en raison de sa manie de faire de l&#39;origami dans son temps libre, et d&#39;en avoir partout dans son bureau)
-**Âge :** 33 ans (né en 1987)
+**Âge :** 36 ans (né en 1987)
 **Spécialité :** Chimie anormale [peut-être un peu vaste], intérêt pour l&#39;Alchimie
 **Site :** █████
 **Description :**
@@ -1718,22 +2474,31 @@ Un jour peut-être (ce n&#39;est rien de réservé, les liens sont là pour chec
 **Recrutement par la Fondation :** [mise au jour de phénomènes chimiques anormaux ? récupéré par la Fondation]
 **Loisirs :** origami, [[[salut-a-toi|joue du saxophone]]]
 
-[[collapsible show=&#34;+ Il a même des fanarts ce monsieur !&#34; hide=&#34;- Et de deux !&#34;]]
+[[collapsible show=&#34;+ Il a même des fanarts ce monsieur !&#34; hide=&#34;- Et de quatrre!&#34;]]
 Par [[*user SekaiMelji]], posté le 04/12/20 sur Discord ! ([https://discord.com/channels/135851878675251200/344973115303919619/784478648022466611 lien])
 [[=image nemphi_and_the_other_memes.jpg]]
 
 Par [[*user Yersinia Pestis]], offert pour le 35 décembre 2020 !
 [[=image Pour_Alwaid.jpg]]
+
+Par [[*user SekaiMelji]], posté le 27/07/22 sur Discord ! 
+([https://discord.com/channels/135851878675251200/344973115303919619/1001943489875034184 lien])
+[[=image http://fondationscp.wdfiles.com/local--files/dossier-personnel-d-alwaid/Alawaid.jpg]]
+
+Par [[*user jtdn]] (quel talent cet homme) pour le 35 décembre 2022 :
+[[=image https://i.imgur.com/GODUpzR.jpeg]]
 [[/collapsible]]
 
 Demandez-moi si vous voulez utiliser le perso ! J&#39;accepterai volontiers. (même si vous voulez l&#39;affubler d&#39;un nouveau trait ou changer un truc vu qu&#39;il a pas encore été très utilisé)
 Apparitions :
 * [[[salut-a-toi|]]] par [[*user Trank]]
 * [[[SCP-476-FR]]] par moi-même
+* [[[revue-es-aw-1921|]]] dans une version début XX^^ème^^ alternative par [[*user jtdn]]
+* [[[ci-gisent-les-cranes|]]] par [[*user DrGemini]]
 
 + Présentation perso (IRL)
 **Nom véritable :** A██ C████
-**Âge :** j&#39;aurai 24 ans en 2021.
+**Âge :** j&#39;aurai 26 ans en 2023.
 **Fondanniversaire :** 01/08/2019
 **Description :** 1 m 72 / 70 kg / Cheveux noirs mi-longs, bouclés au bout + barbe drue mais pas longue + moustache / Yeux marron / Lunettes / Souvent en noir ou des couleurs unies
 **Occupation :** Doctorant en chimie théorique (2019-2022), //bientôt un docteur à la Fonda//
@@ -1751,13 +2516,15 @@ Apparitions :
 **Origine du pseudo :** en fait c&#39;est [https://en.wikipedia.org/wiki/Beta_Draconis ça] (je vous promets j&#39;avais pas réfléchi à l&#39;étymo du nom). Il s&#39;agit aussi d&#39;un groupe de metal français, mais je ne le connaissais pas non plus (mais c&#39;est cool)
 
 **Ce que j&#39;aime bien à la Fonda, les thèmes qui m&#39;intéressent :**
-* le Département d&#39;Alchimie et ce qui touche à l&#39;alchimie et à la chimie en général
-* ce qui touche à la chimie et à l&#39;astronomie
-* les scènes d&#39;action
-* l&#39;humour
-* les trucs doux et mignons (The Place Where You Find Yourself, le début de Histoires que mon père m&#39;a racontées)
-* donc ce ce qui concerne l&#39;Agent Navarro (beaucoup trop fun comme personnage)
-* l&#39;horreur lovecraftienne comme le Roi pendu (SCP-701) et Alagadda (SCP-2264)
+* le [[[the-alchemy-department-hub|Département d&#39;Alchimie]]] et ce qui touche à l&#39;[[[lepidoptraetheia|alchimie]]] et à la [[[scp-1336|chimie]]] en général
+* ce qui touche à la chimie et à l&#39;[[[scp-2474|astronomie]]]
+* les [[[an-arm-y-of-two|scènes d&#39;action]]]
+* l&#39;aventure et l&#39;[[[vagabonds:the-journal-of-aframos-longjourney|exploration d&#39;autres mondes]]]
+* les bibliothèques et les livres
+* l&#39;[[[the-bathrooms-wiki|humour]]]
+* les trucs [[[the-place-to-find-yourself|doux]]] et [[[take-it-away-my-darling|chouettes]]]
+* donc ce ce qui concerne l&#39;[[[nothing-says-promotion-like-a-bag-over-your-head|Agent Navarro]]] (beaucoup trop fun comme personnage)
+* l&#39;horreur lovecraftienne comme le [[[the-hanged-king-s-comedy|Roi pendu]]] (SCP-701) et [[[there-are-no-children-in-alagadda|Alagadda]]] (SCP-2264)
 * l&#39;étymo et la linguistique en général
 **Ce que j&#39;aime moins ou pas du tout :**
 * les trucs qui tapent trop fort dans mon petit cœur
@@ -1784,7 +2551,8 @@ Ce qu&#39;en disent les copaings :
 * **Auteur confirmé** (3 rapports) depuis le 23/04/2021
 * **##green|Staff junior##** 30/05/2021 - 01/09/2021
 * **##blue|Staff senior##** 01/09/2021 - 21/03/2022
-* **##purple|Staff vétéran##** depuis le 21/03/2022
+* **##purple|Staff vétéran##** 21/03/2022 - 05/11/2022
+* **##blue|Staff senior##** depuis le 05/11/2022
 
 ++ Achèvements
 
@@ -1806,14 +2574,21 @@ Ce qu&#39;en disent les copaings :
 * 120 traductions : 20/09/2021 
 * 130 traductions : 21/11/2021
 * 140 traductions : 28/12/2021 
-* 150 traductions : (total actuel : **153**)
+* 150 traductions : 02/04/2022
+* 160-220 traductions : 12/05/2022
+* 230 traductions : 13/07/2022
+* 240 traductions : 14/08/2022 
+* 250 traductions : 14/09/2022 
+* 260 traductions : 25/12/2022 
+* 270 traductions : 05/01/2023 (total actuel : **252**)
 
 ++++ Traductions de rapports
 
 * 10 traductions de rapports : 06/05/2020
 * 20 traductions de rapports : 25/10/2020
 * 30 traductions de rapports : 07/06/2021
-* 40 traductions de rapports : 12/11/2021 (total actuel : **48**)
+* 40 traductions de rapports : 12/11/2021 
+* 50 traductions de rapports : 04/07/2022 (total actuel : **55**)
 
 ++++ Traductions de rapports anglais
 
@@ -1833,11 +2608,13 @@ Ce qu&#39;en disent les copaings :
 * 40 traductions de contes : 11/02/2021
 * 50 traductions de contes : 05/03/2021 
 * 60 traductions de contes : 15/08/2021 
-* 70 traductions de contes : 30/12/2021 (total actuel : **75**)
+* 70 traductions de contes : 30/12/2021 (total actuel : **77**)
 
 ++++ Traductions hors-rapports et contes
 
-* (traductions de centres : total actuel **9**)
+* 10 et 20 traductions de centres : 12/05/2022
+* 30 traductions de centres : 13/07/2022 
+* 40 traductions de centres : 14/09/2022 (total actuel : **40**)
 * (traductions de formats GDI : total actuel **7**)
 * (traductions de propositions 001 : total actuel **1**)
 * (adaptations de thèmes de leurs morts : total actuel **2**)
@@ -1850,7 +2627,7 @@ Ce qu&#39;en disent les copaings :
 
 ++++ Traductions internationales
 
-* 10 traductions internationales : 01/04/2022 (total actuel **11**)
+* 10 traductions internationales : 01/04/2022 (total actuel **16**)
 
 +++ Relectures
 
@@ -1861,15 +2638,20 @@ Ce qu&#39;en disent les copaings :
 * 50 relectures de traductions : 21/05/2021
 * 60 relectures de traductions : 27/07/2021 
 * 70 relectures de traductions : 20/08/2021 
-* 80 relectures de traductions : 16/02/2021 (total actuel : **83**)
+* 80 relectures de traductions : 16/02/2022
+* 90 relectures de traductions : 05/10/2022 
+* 100 relectures de traductions : 18/10/2022
+* 110 relectures de traductions : 9/11/2022
+* 120 relectures de traductions : 29/11/2022
+* 130 relectures de traductions : 13/01/2023 (total actuel : **138**)
 
 * 10 critiques : 10/04/2021
 * 20 critiques : 31/10/2021 (total actuel : **22**)
 
 +++ Originaux
 
-* (rapports originaux : total actuel **5**)
-* (contes originaux : total actuel **0**)
+* (rapports originaux : total actuel **7**)
+* (contes originaux : total actuel **2**)
 
 +++ Par année
 
@@ -1880,7 +2662,10 @@ Ce qu&#39;en disent les copaings :
 62 traductions, 4 originaux
 
 ++++ Année 3 (01/08/21 - 31/07/22)
-47 traductions, 1 original
+125 traductions, 3 originaux
+
+++++ Année 4 (01/08/22 - 31/07/23)
+50 traductions, 4 originaux
 
 [[/collapsible]]
 
@@ -1898,7 +2683,7 @@ Ce qu&#39;en disent les copaings :
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:06.789782.</em>
+    <em>Last updated 2024-02-07 18:30:31.350889.</em>
   
 </div>
 </body>

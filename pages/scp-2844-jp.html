@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>SCP-2844-JP</title>
 </head>
@@ -29,89 +29,75 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>:root {
-    --title: &#34;FOUNDATION&#34;;
-    --subtitle: &#34;SITE-17 DEEPWELL&#34;;
-    --sidesubtitle: &#34;SITE-17 DEEPWELL&#34;;
+          <pre><code>
+/* ==== root (Light Mode) ==== */
+
+:root {
+    --header-title: &#39;SITE-17&#39; !important;
+    --main-content-width: 55rem;
+    --admo-color-bright: 150,90,170;
+    --admo-color-alt: 180,90,200;
+    --basalt-tertiary-color: 100,70,120;
+    --link-visited-color: var(--link-color);
+    --image-caption-background-color: 220,220,230;
     --logo: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-162-djiy/s17_negate.png);
-    --invert-bg: 240,240,240;
-    --side-accent-bg: #F4F4F4;
-    --side-accent-txt: #333333;
-}
-.invert {
-    filter: invert(1);
-    -webkit-filter: invert(1);
-    -moz-filter: invert(1);
-}
-.fear {
-    color: #a100ff;
-}
-.middle {
-    vertical-align: -1.5px;
+    --basalt-main-text-color: 10,10,10;
 }
 
-#side-bar {
-    margin: 0;
-    text-transform: unset;
+#content-wrap{margin-bottom:3vh}#header{background: linear-gradient(180deg,rgb(70,30,100) -50%,rgb(120,40,140));--header-title-color:240,240,240;--top-bar-link-color:240,240,240;--side-bar-button-color:240,240,240}#side-bar::after{--side-bar-button-color:240,240,240}div[id*=page-options-bottom] {--general-border-color: 20,10,10,.25;--basalt-tertiary-color: 200,150,150,.25;background-color: rgba(var(--basalt-secondary-color),.25);}#license-area, #footer {--bottom-area-text-color: var(--basalt-main-text-color),.75;--link-color: var(--basalt-main-text-color),.75;}#footer{--footer-link-color: var(--basalt-main-text-color),.75}.titleitem-2:before{border-color:rgb(var(--general-border-color))!important}@media (max-width:600px){.titlebanner-1{opacity:50%}}div[id*=&#34;page-options-bottom&#34;]&gt;a {color: rgb(var(--basalt-main-text-color),.75) !important;}#license-area a {color: rgb(var(--basalt-main-text-color),.75);}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+/* Basaltテーマの初期改造 */
+
+@import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:wght@800&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&amp;display=swap&#39;);
+
+.quote_desc { font-size: 90%; font-style: italic; opacity: .9; }
+.image-block, .scp-image-block { border-color: rgb(var(--general-border-color)); }
+.top-left-box&gt;.item { display: unset !important; }
+
+#header h1 a span::before {font-family: &#39;Montserrat&#39;, sans-serif; font-weight: 800; letter-spacing: 0;}
+
+span:is(.specialtext, .st) { font-family: unset; }
+:is(#page-content table:not(.form), table.wiki-content-table) th :is(div.blockquote, .blockquote, blockquote) { font-family: var(--body-font); letter-spacing: 0 !important; word-spacing: 0 !important; font-size: unset; }
+#page-content a:any-link { font-weight: bold; }
+:root:lang(ja) { --body-font-fallback: &#39;Inter&#39;, verdana,arial,helvetica,sans-serif !important; }
+
+/* ==== Localize ==== */
+
+#top-bar ul li a{line-height:unset;max-height:unset}@media (min-width:1291px){#page-content{font-size: 12.8px;}}#top-bar .open-menu a{background-color:unset!important}@media (max-width:1290px){:root{--base-font-size:12.5px!important}}@media (min-width:1291px){.sandbox3 {display: none !important;}}div.rate-box-with-credit-button .creditButton &gt; p &gt; a::after{background-color: rgb(var(--basalt-main-text-color)) !important;}:is(#page-content table:not(.form), table.wiki-content-table) th {font-size: unset !important;} #side-bar:target { border: none !important; }.fnnum { padding-right: 3px; }
+
+/* ==== Credit Module Fix ==== */
+
+.rate-box-with-credit-button{padding:.5em 0.2em!important}div.rate-box-with-credit-button .creditButton{padding-left:0;padding-right: 0.325em;border:none!important;box-shadow:none!important;margin:.25rem 0;border-radius:0;text-align:center;background-color:unset!important}.creditButton a{display:block;position:relative;width:100%;height:100%;padding:0;margin:0;border:none;color:transparent!important;background-color:transparent;box-sizing:border-box;transition:all 0.095s linear}.fa-info:before{content:&#34;&#34;;display:block;background-color:unset!important;position:absolute;width:100%;height:100%}.fa-info:after{content:&#39;&#39;;display:block;background-color:rgb(var(--rate-module-text-color));position:absolute;width:100%;height:100%;-webkit-mask-image:var(--vote-info-mask);mask-image:var(--vote-info-mask);-webkit-mask-size:27.5%;mask-size:27.5%;-webkit-mask-size:40%;mask-size:40%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}.rate-box-with-credit-button{background-color:rgb(var(--rate-module-background-color))!important}div.page-rate-widget-box{background-color: rgb(var(--rate-module-background-color))!important;align-items: center;}.creditRate .page-rate-widget-box{width:100%;height:100%}div.page-rate-widget-box .rate-points{font-family:var(--body-font-fallback)}.page-rate-widget-box .cancel{padding:unset!important}div.page-rate-widget-box span.btn{border-bottom:solid .05em rgb(var(--general-border-color))}.modalcontainer{display:flex;align-items:center;width:95%;height:fit-content;max-width:500px!important}.modalbox{border:solid .2rem rgb(var(--general-border-color))!important}.modalbox .modalbox-title&gt;h2{color:rgb(var(--basalt-main-text-color))!important}.modalbox .modalbox-title{width:90%;border-bottom:solid .2rem rgb(var(--general-border-color))!important;margin:0 auto 1rem}#u-credit-view .modalbox&gt;div.credit{padding-bottom:3rem;text-align: left;}.modalbox .page-rate-widget-box{background-color:rgb(var(--rate-module-background-color))!important}.page-rate-widget-box .number {font-size: 14px !important;}.rate-box-with-credit-button {min-width: unset !important;}:is(#u-credit-view, #u-credit-otherwise) .modalbox &gt; div:first-child { background-color: unset !important; }#page-content .creditRate{text-align: center !important;}
+
+/* ==== TitleBanner ==== */
+
+:root {
+    --titlebanner-logo: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-328-e12v/s17logo_Purple.png);
+    --titlebanner-logo-blur: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-329-lb86/s17logo_Blur.png);
 }
-#page-content {
-    font-size: 90%;
-}
-.page-rate-widget-box {
-    box-shadow: none;
-    margin: 0;
-}
-.page-rate-widget-box .cancel a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    height: 16px;
-    padding: 2px 5px;
-}
-.rate-box-with-credit-button .creditButton {
-    border: none 0 !important;
-    background: none !important;
-    box-shadow: none !important;
-}
-.rate-box-with-credit-button .creditButton a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 16px;
-}
-.modalbox {
-    color: black;
-}
-.modalbox .modalbox-title {
-    border-radius: 0;
-}
-.modalbox .page-rate-widget-box {
-    box-shadow: 0px 0px 7px #999999;
-}
-@media (min-width: 768px) {
-    #main-content {
-        max-width: 75%;
-    }
-}
-@media (max-width: 767px) {
-a.btn.btn-primary {
-    float: inherit !important;
-    position: absolute !important;
-    left: 3em !important;
-    top: 1.5em !important;
-  }
-#page-content {
-    font-size: 80%;
-  }
-#page-content &gt; hr {
-    margin: 1em 5%;
-  }
-}
-.top-left-box&gt;.item {
-    display: initial !important;
-}
-.blinkbar {animation: blink 1.5s infinite; letter-spacing: -0.13em;}@keyframes blink{to{opacity: .0;}}@keyframes flicker {0% {opacity: 0.9890; }5% {opacity: 0.5842; }10% {opacity: 0.9865; }15% {opacity: 0.0412; }20% {opacity: 0.6255; }25% {opacity: 0.3157; }30% {opacity: 0.7328; }35% {opacity: 0.4654; }40% {opacity: 0.9128; }45% {opacity: 0.2449; }50% {opacity: 0.5485; }55% {opacity: 0.6438; }60% {opacity: 0.1180; }65% {opacity: 0.9085; }70% {opacity: 0.0266; }75% {opacity: 0.6795; }80% {opacity: 0.7812; }85% {opacity: 0.0117; }90% {opacity: 0.2239; }95% {opacity: 0.8897; }100% {opacity: 0.2260; }}@keyframes overlay-anim {0% {visibility: hidden; }10% {visibility: hidden; }11% {visibility: visible; }50% {visibility: hidden; }100% {visibility: hidden; }}
+
+.titlebanner-1{position:absolute;width:100vw;height:100vh;z-index:-2;inset:0;overflow:hidden}.titlebanner-1:before{content:&#39;&#39;;position:absolute;width:50vw;background:var(--titlebanner-logo-blur) center no-repeat;background-size:contain;inset:0;margin:auto;margin-right:0;opacity:50%}.titlebanner-1:after{content:&#39;&#39;;position:absolute;width:50vw;background:var(--titlebanner-logo) center no-repeat;background-size:contain;inset:0;margin:auto;margin-right:0}@media (max-width:600px){.titlebanner-1:after,.titlebanner-1:before{width:calc(100vw * 650 / 600);margin-right:calc(-1 * 100vw * 150 / 600)}}.titlebanner-credit{padding-bottom:100vh;margin-top:3vh}.titlebanner-2{position:absolute;z-index: -1;width:100vw;height:100vh;inset:0;overflow:hidden}.titleitem-1{position:absolute;width:50vw;height:fit-content;inset:0;margin:auto;margin-left:5vw;margin-bottom:30vh;user-select: none;pointer-events: none;}.titleitem-2{position:absolute;width:fit-content;height:fit-content;inset:0;margin:auto;margin-left:5vw;margin-bottom:24vh;text-decoration:none!important}.titleitem-2:before{content:&#39;VIEW ACCESSIBILITY MODE&#39;;font-family:&#39;Roboto Condensed&#39;,var(--UI-font-fallback);font-size:20px;border:solid 3px rgb(var(--basalt-overtone));box-sizing:border-box;background:rgb(var(--admo-color-dark))!important;padding:15px 20px;color:rgb(var(--basalt-main-text-color))}.titleitem-2:hover:before{color:rgb(var(--admo-color-dark));background:rgb(var(--basalt-main-text-color))!important;border-color:rgb(var(--basalt-main-text-color))!important}.titleitem-2.access:before{content:&#39;VIEW DARK MODE&#39;!important}@media (max-width:600px){.titleitem-1{width:80vw!important}.titleitem-2:before{font-size:16px}}
+
+/* ==== accent ==== */
+
+.accent { color: rgb(149,80,171); font-weight: bold; }
+.accent2 { color: rgb(193,51,90); font-weight: bold; }
+
+/* === update (2023/06/29) ==== */
+
+.custom_table th:nth-child(1), .custom_table td:nth-child(1) { width: 25%; }
+.custom_collapsible .collapsible-block-folded, .custom_collapsible .collapsible-block-unfolded-link { text-align: center; font-size: 110%; }
+.custom_collapsible .collapsible-block-folded { margin-bottom: 50vh; }
+
+.error_b { color: transparent; background: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-161-mdgn/ErrorBlock_2.jpg) center no-repeat; background-size: cover; }
+.error_r { color: transparent !important; background: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-138-577a/ErrorBlock_3.jpg) center no-repeat; background-size: cover; }
+
+.cognitohazard:before{content:&#39;&#39;;position:absolute;width:100vw;height:200vh;background:linear-gradient(0deg,transparent,rgb(var(--admo-color-dark)) 75%,rgb(var(--admo-color-dark))),url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-332-2xri/cognitohazard%20PC.png) center bottom no-repeat;background-size:cover;z-index:-1;left:0;bottom:0}@media (max-width:600px){.cognitohazard:before{background:linear-gradient(0deg,transparent,rgb(var(--admo-color-dark)) 85%,rgb(var(--admo-color-dark))),url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-331-ydbq/cognitohazard.png) center bottom no-repeat;background-size:cover}}.cognitohazard_box{width:100%;max-width:800px!important;margin:auto;text-align:center;padding:20px;background:rgb(10 0 0 / 80%);border-radius:150px / 65px;box-sizing:border-box;color:rgb(217 43 70);font-size:160%;font-weight:700}.cognitohazard_inline_box{color:rgb(var(--admo-color-dark));font-size:75%;margin:10vh auto;font-style:italic;opacity:.8}@media (max-width:600px){.cognitohazard_box{font-size:110%}.cognitohazard_inline_box{font-size:85%}}
 </code></pre>
         </li>
       
@@ -121,27 +107,35 @@ a.btn.btn-primary {
     <ul class="inline-styles">
       
         <li>
-          <pre><code>float: right;</code></pre>
+          <pre><code>--swatch-menubg-black-color: 50,50,50;--three-color: 255,211,0;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));</code></pre>
+          <pre><code>font-style: italic; font-size: 95%;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;</code></pre>
+          <pre><code>margin: 5vh auto;</code></pre>
         </li>
       
         <li>
-          <pre><code>width:300px;</code></pre>
+          <pre><code>margin: 2vh auto;</code></pre>
         </li>
       
         <li>
-          <pre><code>width:100%;</code></pre>
+          <pre><code>text-align: end;font-style: italic;</code></pre>
         </li>
       
         <li>
-          <pre><code>width:100%;</code></pre>
+          <pre><code>font-size: 90%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 5vh auto;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 100%;</code></pre>
         </li>
       
         <li>
@@ -149,23 +143,39 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>width: 100%;</code></pre>
+          <pre><code>margin: 5vh auto;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));</code></pre>
+          <pre><code>font-size: 95%; font-style: italic;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>float: right;</code></pre>
+          <pre><code>margin: 5vh auto;</code></pre>
         </li>
       
         <li>
           <pre><code>width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 5vh auto;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 5vh auto;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 2vh auto; filter: brightness(.3);</code></pre>
         </li>
       
         <li>
@@ -173,6 +183,10 @@ a.btn.btn-primary {
         </li>
       
         <li>
+          <pre><code>font-size: 90%; font-style: italic;</code></pre>
+        </li>
+      
+        <li>
           <pre><code>width: 100%;</code></pre>
         </li>
       
@@ -193,23 +207,15 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>width:250px;</code></pre>
+          <pre><code>color: #0087BD; font-weight: bold;</code></pre>
         </li>
       
         <li>
-          <pre><code>width:100%;</code></pre>
+          <pre><code>color: #0087BD; font-weight: bold;</code></pre>
         </li>
       
         <li>
-          <pre><code>width:100%;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;</code></pre>
+          <pre><code>margin: 5vh auto;</code></pre>
         </li>
       
         <li>
@@ -217,19 +223,27 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>color: #dc0233 !important;</code></pre>
+          <pre><code>color: rgb(193,51,90); font-weight: 600;</code></pre>
         </li>
       
         <li>
-          <pre><code>text-align: center</code></pre>
+          <pre><code>text-align: center; color: rgba(var(--basalt-main-text-color),.8); margin: 50vh auto;</code></pre>
         </li>
       
         <li>
-          <pre><code>filter: blur(2px);</code></pre>
+          <pre><code>filter: blur(2px); max-width: 800px; margin: auto;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin: 10vh auto;</code></pre>
         </li>
       
         <li>
           <pre><code>float: right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--swatch-menubg-black-color: 50,50,50;--five-color: 196,2,51;</code></pre>
         </li>
       
         <li>
@@ -245,19 +259,19 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));</code></pre>
+          <pre><code>margin: 10vh auto;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>float: right;</code></pre>
+          <pre><code>margin: 10vh auto;</code></pre>
         </li>
       
         <li>
           <pre><code>width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>filter: brightness(.3);</code></pre>
         </li>
       
         <li>
@@ -269,55 +283,7 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>text-align: center; font-style: italic;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: 85%; margin: auto; background: #f24; padding: 6px; border-radius: 16px;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>outline: 10px solid; background: rgb(10, 10, 10); width: auto; margin: 0; text-align: center; font-size: 140%; font-weight: 700; color: #f24; padding: 0.6rem; border: dotted 3px #f24 !important; background-image: url(http://scp-jp-storage.wikidot.com/local--files/file:6759963-177-evjp/fractal-bg.jpg); background-attachment: fixed;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>background-color: rgba(0,0,0,.85); font-family: &#39;Work Sans&#39;;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>background-color: rgba(0,0,0,.85); font-family: &#39;Work Sans&#39;, &#39;Noto Sans JP&#39;;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>background-color: rgba(0,0,0,.85); text-align: left; font-size: small; font-family: &#39;Inter&#39;; font-weight: initial !important; color: rgb(var(--one-color)) !important;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0 10px; color: white;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: #f24;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(20 20 20) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>text-align: center; font-weight: 900; color: #FF2244; font-style: italic; font-size: 110%;</code></pre>
+          <pre><code>border: 1px dashed #999 !important; padding: 20px !important; background-color: #f4f4f4 !important; margin-bottom: 20vh;</code></pre>
         </li>
       
     </ul>
@@ -341,6 +307,17 @@ a.btn.btn-primary {
   
 
   
+    <a href="https://scp-jp.wikidot.com/credit:cc4" target="_blank"><code>:scp-jp:credit:cc4</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
     <a href="https://scp-jp.wikidot.com/credit:end" target="_blank"><code>:scp-jp:credit:end</code></a>
   
 
@@ -352,13 +329,13 @@ a.btn.btn-primary {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:admo" target="_blank"><code>:scp-wiki:theme:admo</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/theme:admo.html" target="_blank">info</a>]
   </span>
 
   
@@ -369,7 +346,40 @@ a.btn.btn-primary {
   
 
   
-    <a href="https://testsite-000.wikidot.com/basalt-sidebox-code" target="_blank"><code>:testsite-000:basalt-sidebox-code</code></a>
+    <a href="https://scp-jp.wikidot.com/component:image-block-base" target="_blank"><code>:scp-jp:component:image-block-base</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-jp.wikidot.com/component:image-block-base" target="_blank"><code>:scp-jp:component:image-block-base</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-jp.wikidot.com/component:image-block-base" target="_blank"><code>:scp-jp:component:image-block-base</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-jp.wikidot.com/component:image-block-base" target="_blank"><code>:scp-jp:component:image-block-base</code></a>
   
 
   
@@ -381,7 +391,19 @@ a.btn.btn-primary {
     <ul class="css-classes">
       
         <li>
-          <pre><code>modal</code></pre>
+          <pre><code>titlebanner-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlebanner-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titleitem-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlebanner-credit</code></pre>
         </li>
       
         <li>
@@ -389,27 +411,31 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>limit</code></pre>
+          <pre><code>table4</code></pre>
         </li>
       
         <li>
-          <pre><code>tableb</code></pre>
+          <pre><code>st</code></pre>
         </li>
       
         <li>
-          <pre><code>fear</code></pre>
+          <pre><code>st</code></pre>
         </li>
       
         <li>
-          <pre><code>anchor</code></pre>
+          <pre><code>accent</code></pre>
         </li>
       
         <li>
-          <pre><code>sidebox</code></pre>
+          <pre><code>accent</code></pre>
         </li>
       
         <li>
           <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
         </li>
       
         <li>
@@ -417,303 +443,15 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>tableb</code></pre>
+          <pre><code>table4</code></pre>
         </li>
       
         <li>
-          <pre><code>fear</code></pre>
+          <pre><code>st</code></pre>
         </li>
       
         <li>
-          <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>limit</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>invert</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>anchor</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>sidebox</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>tableb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>scp-image-block</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>block-right</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>scp-clear-false</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>scp-image-caption</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>tableb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>wiki-content-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>limit</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>anchor</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>sidebox</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>invert</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>tableb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table6</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>wiki-content-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>invert</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>tableb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table6</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>wiki-content-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fear</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>wiki-content-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>wiki-content-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>tableb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>table6</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>scp-image-block</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>block-right</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>scp-clear-false</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>scp-image-caption</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>tableb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>wiki-content-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
+          <pre><code>accent</code></pre>
         </li>
       
         <li>
@@ -721,19 +459,499 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>fear</code></pre>
+          <pre><code>st</code></pre>
         </li>
       
         <li>
-          <pre><code>modal</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>modal</code></pre>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>jotting</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table</code></pre>
         </li>
       
         <li>
           <pre><code>tableb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notation</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tableb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notation</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tableb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>custom_table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table5</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>jotting</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tableb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notation</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tableb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fear</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notation</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table6</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tableb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>quote_desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notation</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>table5</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent</code></pre>
         </li>
       
         <li>
@@ -745,47 +963,19 @@ a.btn.btn-primary {
         </li>
       
         <li>
+          <pre><code>table5</code></pre>
+        </li>
+      
+        <li>
           <pre><code>scp-image-caption</code></pre>
         </li>
       
         <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
+          <pre><code>accent</code></pre>
         </li>
       
         <li>
           <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>limit</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>anchor</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>sidebox</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>invert</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>tableb</code></pre>
         </li>
       
         <li>
@@ -793,23 +983,15 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>modal</code></pre>
+          <pre><code>st</code></pre>
         </li>
       
         <li>
-          <pre><code>wiki-content-table</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>invert</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>wiki-content-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
@@ -817,15 +999,7 @@ a.btn.btn-primary {
         </li>
       
         <li>
-          <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>modal</code></pre>
+          <pre><code>table5</code></pre>
         </li>
       
         <li>
@@ -833,535 +1007,603 @@ a.btn.btn-primary {
         </li>
       
         <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notation</code></pre>
+        </li>
+      
+        <li>
           <pre><code>table5</code></pre>
         </li>
       
         <li>
-          <pre><code>document</code></pre>
+          <pre><code>tableb</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>st</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>middle</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>fnnum</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>fncon</code></pre>
+          <pre><code>accent2</code></pre>
         </li>
       
         <li>
-          <pre><code>blinkbar</code></pre>
+          <pre><code>accent2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>st</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>custom_collapsible</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_b</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_b</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_b</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_b</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_b</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_b</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_r</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_r</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_r</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>error_r</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cognitohazard</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cognitohazard_box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cognitohazard_inline_box</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-jp:credit:start]]
+    <pre><textarea class="page-source" readonly>[[div class=&#34;titlebanner-1&#34;]]
+[[/div]]
+[[div class=&#34;titlebanner-2&#34;]]
+[[div class=&#34;titleitem-1&#34;]]
+[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-330-qp7b/HeaderText.png]]
+[[/div]][[/div]]
+
+[[div class=&#34;titlebanner-credit&#34;]]
+[[include :scp-jp:credit:start]]
+
 **タイトル:** SCP-2844-JP - 認知的不協和
-**著者:** ©[[*user Enderman_desu]]
+**著者:** [[*user Enderman_desu]]
 **作成年:** 2022
 ----
-[[[author:enderman-desu|この著者の他の作品]]]
+//[*http://scp-jp.wikidot.com/author:enderman-desu この著者の他の作品]//
+
+[[include :scp-jp:credit:cc4]]
 [[include :scp-jp:credit:end]]
+[[/div]]
 
-[[include :scp-wiki:theme:basalt]]
-[[include :testsite-000:basalt-sidebox-code]]
+
+[[include :scp-wiki:theme:admo astral=a]]
 [[module CSS]]
+
+/* ==== root (Light Mode) ==== */
+
 :root {
-    --title: &#34;FOUNDATION&#34;;
-    --subtitle: &#34;SITE-17 DEEPWELL&#34;;
-    --sidesubtitle: &#34;SITE-17 DEEPWELL&#34;;
+    --header-title: &#39;SITE-17&#39; !important;
+    --main-content-width: 55rem;
+    --admo-color-bright: 150,90,170;
+    --admo-color-alt: 180,90,200;
+    --basalt-tertiary-color: 100,70,120;
+    --link-visited-color: var(--link-color);
+    --image-caption-background-color: 220,220,230;
     --logo: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-162-djiy/s17_negate.png);
-    --invert-bg: 240,240,240;
-    --side-accent-bg: #F4F4F4;
-    --side-accent-txt: #333333;
-}
-.invert {
-    filter: invert(1);
-    -webkit-filter: invert(1);
-    -moz-filter: invert(1);
-}
-.fear {
-    color: #a100ff;
-}
-.middle {
-    vertical-align: -1.5px;
+    --basalt-main-text-color: 10,10,10;
 }
 
-#side-bar {
-    margin: 0;
-    text-transform: unset;
-}
-#page-content {
-    font-size: 90%;
-}
-.page-rate-widget-box {
-    box-shadow: none;
-    margin: 0;
-}
-.page-rate-widget-box .cancel a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    height: 16px;
-    padding: 2px 5px;
-}
-.rate-box-with-credit-button .creditButton {
-    border: none 0 !important;
-    background: none !important;
-    box-shadow: none !important;
-}
-.rate-box-with-credit-button .creditButton a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 16px;
-}
-.modalbox {
-    color: black;
-}
-.modalbox .modalbox-title {
-    border-radius: 0;
-}
-.modalbox .page-rate-widget-box {
-    box-shadow: 0px 0px 7px #999999;
-}
-@media (min-width: 768px) {
-    #main-content {
-        max-width: 75%;
-    }
-}
-@media (max-width: 767px) {
-a.btn.btn-primary {
-    float: inherit !important;
-    position: absolute !important;
-    left: 3em !important;
-    top: 1.5em !important;
-  }
-#page-content {
-    font-size: 80%;
-  }
-#page-content &gt; hr {
-    margin: 1em 5%;
-  }
-}
-.top-left-box&gt;.item {
-    display: initial !important;
-}
-.blinkbar {animation: blink 1.5s infinite; letter-spacing: -0.13em;}@keyframes blink{to{opacity: .0;}}@keyframes flicker {0% {opacity: 0.9890; }5% {opacity: 0.5842; }10% {opacity: 0.9865; }15% {opacity: 0.0412; }20% {opacity: 0.6255; }25% {opacity: 0.3157; }30% {opacity: 0.7328; }35% {opacity: 0.4654; }40% {opacity: 0.9128; }45% {opacity: 0.2449; }50% {opacity: 0.5485; }55% {opacity: 0.6438; }60% {opacity: 0.1180; }65% {opacity: 0.9085; }70% {opacity: 0.0266; }75% {opacity: 0.6795; }80% {opacity: 0.7812; }85% {opacity: 0.0117; }90% {opacity: 0.2239; }95% {opacity: 0.8897; }100% {opacity: 0.2260; }}@keyframes overlay-anim {0% {visibility: hidden; }10% {visibility: hidden; }11% {visibility: visible; }50% {visibility: hidden; }100% {visibility: hidden; }}
+#content-wrap{margin-bottom:3vh}#header{background: linear-gradient(180deg,rgb(70,30,100) -50%,rgb(120,40,140));--header-title-color:240,240,240;--top-bar-link-color:240,240,240;--side-bar-button-color:240,240,240}#side-bar::after{--side-bar-button-color:240,240,240}div[id*=page-options-bottom] {--general-border-color: 20,10,10,.25;--basalt-tertiary-color: 200,150,150,.25;background-color: rgba(var(--basalt-secondary-color),.25);}#license-area, #footer {--bottom-area-text-color: var(--basalt-main-text-color),.75;--link-color: var(--basalt-main-text-color),.75;}#footer{--footer-link-color: var(--basalt-main-text-color),.75}.titleitem-2:before{border-color:rgb(var(--general-border-color))!important}@media (max-width:600px){.titlebanner-1{opacity:50%}}div[id*=&#34;page-options-bottom&#34;]&gt;a {color: rgb(var(--basalt-main-text-color),.75) !important;}#license-area a {color: rgb(var(--basalt-main-text-color),.75);}
 
 [[/module]]
 
-@@ @@
 
-[[div class=&#34;modal&#34;]]
-[[include :scp-wiki:component:anomaly-class-bar-source
+[[module CSS]]
+
+/* Basaltテーマの初期改造 */
+
+@import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:wght@800&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600;700;900&amp;display=swap&#39;);
+
+.quote_desc { font-size: 90%; font-style: italic; opacity: .9; }
+.image-block, .scp-image-block { border-color: rgb(var(--general-border-color)); }
+.top-left-box&gt;.item { display: unset !important; }
+
+#header h1 a span::before {font-family: &#39;Montserrat&#39;, sans-serif; font-weight: 800; letter-spacing: 0;}
+
+span:is(.specialtext, .st) { font-family: unset; }
+:is(#page-content table:not(.form), table.wiki-content-table) th :is(div.blockquote, .blockquote, blockquote) { font-family: var(--body-font); letter-spacing: 0 !important; word-spacing: 0 !important; font-size: unset; }
+#page-content a:any-link { font-weight: bold; }
+:root:lang(ja) { --body-font-fallback: &#39;Inter&#39;, verdana,arial,helvetica,sans-serif !important; }
+
+/* ==== Localize ==== */
+
+#top-bar ul li a{line-height:unset;max-height:unset}@media (min-width:1291px){#page-content{font-size: 12.8px;}}#top-bar .open-menu a{background-color:unset!important}@media (max-width:1290px){:root{--base-font-size:12.5px!important}}@media (min-width:1291px){.sandbox3 {display: none !important;}}div.rate-box-with-credit-button .creditButton &gt; p &gt; a::after{background-color: rgb(var(--basalt-main-text-color)) !important;}:is(#page-content table:not(.form), table.wiki-content-table) th {font-size: unset !important;} #side-bar:target { border: none !important; }.fnnum { padding-right: 3px; }
+
+/* ==== Credit Module Fix ==== */
+
+.rate-box-with-credit-button{padding:.5em 0.2em!important}div.rate-box-with-credit-button .creditButton{padding-left:0;padding-right: 0.325em;border:none!important;box-shadow:none!important;margin:.25rem 0;border-radius:0;text-align:center;background-color:unset!important}.creditButton a{display:block;position:relative;width:100%;height:100%;padding:0;margin:0;border:none;color:transparent!important;background-color:transparent;box-sizing:border-box;transition:all 0.095s linear}.fa-info:before{content:&#34;&#34;;display:block;background-color:unset!important;position:absolute;width:100%;height:100%}.fa-info:after{content:&#39;&#39;;display:block;background-color:rgb(var(--rate-module-text-color));position:absolute;width:100%;height:100%;-webkit-mask-image:var(--vote-info-mask);mask-image:var(--vote-info-mask);-webkit-mask-size:27.5%;mask-size:27.5%;-webkit-mask-size:40%;mask-size:40%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}.rate-box-with-credit-button{background-color:rgb(var(--rate-module-background-color))!important}div.page-rate-widget-box{background-color: rgb(var(--rate-module-background-color))!important;align-items: center;}.creditRate .page-rate-widget-box{width:100%;height:100%}div.page-rate-widget-box .rate-points{font-family:var(--body-font-fallback)}.page-rate-widget-box .cancel{padding:unset!important}div.page-rate-widget-box span.btn{border-bottom:solid .05em rgb(var(--general-border-color))}.modalcontainer{display:flex;align-items:center;width:95%;height:fit-content;max-width:500px!important}.modalbox{border:solid .2rem rgb(var(--general-border-color))!important}.modalbox .modalbox-title&gt;h2{color:rgb(var(--basalt-main-text-color))!important}.modalbox .modalbox-title{width:90%;border-bottom:solid .2rem rgb(var(--general-border-color))!important;margin:0 auto 1rem}#u-credit-view .modalbox&gt;div.credit{padding-bottom:3rem;text-align: left;}.modalbox .page-rate-widget-box{background-color:rgb(var(--rate-module-background-color))!important}.page-rate-widget-box .number {font-size: 14px !important;}.rate-box-with-credit-button {min-width: unset !important;}:is(#u-credit-view, #u-credit-otherwise) .modalbox &gt; div:first-child { background-color: unset !important; }#page-content .creditRate{text-align: center !important;}
+
+/* ==== TitleBanner ==== */
+
+:root {
+    --titlebanner-logo: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-328-e12v/s17logo_Purple.png);
+    --titlebanner-logo-blur: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-329-lb86/s17logo_Blur.png);
+}
+
+.titlebanner-1{position:absolute;width:100vw;height:100vh;z-index:-2;inset:0;overflow:hidden}.titlebanner-1:before{content:&#39;&#39;;position:absolute;width:50vw;background:var(--titlebanner-logo-blur) center no-repeat;background-size:contain;inset:0;margin:auto;margin-right:0;opacity:50%}.titlebanner-1:after{content:&#39;&#39;;position:absolute;width:50vw;background:var(--titlebanner-logo) center no-repeat;background-size:contain;inset:0;margin:auto;margin-right:0}@media (max-width:600px){.titlebanner-1:after,.titlebanner-1:before{width:calc(100vw * 650 / 600);margin-right:calc(-1 * 100vw * 150 / 600)}}.titlebanner-credit{padding-bottom:100vh;margin-top:3vh}.titlebanner-2{position:absolute;z-index: -1;width:100vw;height:100vh;inset:0;overflow:hidden}.titleitem-1{position:absolute;width:50vw;height:fit-content;inset:0;margin:auto;margin-left:5vw;margin-bottom:30vh;user-select: none;pointer-events: none;}.titleitem-2{position:absolute;width:fit-content;height:fit-content;inset:0;margin:auto;margin-left:5vw;margin-bottom:24vh;text-decoration:none!important}.titleitem-2:before{content:&#39;VIEW ACCESSIBILITY MODE&#39;;font-family:&#39;Roboto Condensed&#39;,var(--UI-font-fallback);font-size:20px;border:solid 3px rgb(var(--basalt-overtone));box-sizing:border-box;background:rgb(var(--admo-color-dark))!important;padding:15px 20px;color:rgb(var(--basalt-main-text-color))}.titleitem-2:hover:before{color:rgb(var(--admo-color-dark));background:rgb(var(--basalt-main-text-color))!important;border-color:rgb(var(--basalt-main-text-color))!important}.titleitem-2.access:before{content:&#39;VIEW DARK MODE&#39;!important}@media (max-width:600px){.titleitem-1{width:80vw!important}.titleitem-2:before{font-size:16px}}
+
+/* ==== accent ==== */
+
+.accent { color: rgb(149,80,171); font-weight: bold; }
+.accent2 { color: rgb(193,51,90); font-weight: bold; }
+
+/* === update (2023/06/29) ==== */
+
+.custom_table th:nth-child(1), .custom_table td:nth-child(1) { width: 25%; }
+.custom_collapsible .collapsible-block-folded, .custom_collapsible .collapsible-block-unfolded-link { text-align: center; font-size: 110%; }
+.custom_collapsible .collapsible-block-folded { margin-bottom: 50vh; }
+
+.error_b { color: transparent; background: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-161-mdgn/ErrorBlock_2.jpg) center no-repeat; background-size: cover; }
+.error_r { color: transparent !important; background: url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-138-577a/ErrorBlock_3.jpg) center no-repeat; background-size: cover; }
+
+.cognitohazard:before{content:&#39;&#39;;position:absolute;width:100vw;height:200vh;background:linear-gradient(0deg,transparent,rgb(var(--admo-color-dark)) 75%,rgb(var(--admo-color-dark))),url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-332-2xri/cognitohazard%20PC.png) center bottom no-repeat;background-size:cover;z-index:-1;left:0;bottom:0}@media (max-width:600px){.cognitohazard:before{background:linear-gradient(0deg,transparent,rgb(var(--admo-color-dark)) 85%,rgb(var(--admo-color-dark))),url(http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-331-ydbq/cognitohazard.png) center bottom no-repeat;background-size:cover}}.cognitohazard_box{width:100%;max-width:800px!important;margin:auto;text-align:center;padding:20px;background:rgb(10 0 0 / 80%);border-radius:150px / 65px;box-sizing:border-box;color:rgb(217 43 70);font-size:160%;font-weight:700}.cognitohazard_inline_box{color:rgb(var(--admo-color-dark));font-size:75%;margin:10vh auto;font-style:italic;opacity:.8}@media (max-width:600px){.cognitohazard_box{font-size:110%}.cognitohazard_inline_box{font-size:85%}}
+
+[[/module]]
+
+
+
+[[div style=&#34;--swatch-menubg-black-color: 50,50,50;--three-color: 255,211,0;&#34;]]
+[[include :scp-jp:component:customizable-acs
 |item-number= 2844-JP
 |clearance= 3
 |container-class= euclid
 |disruption-class= vlam
 |risk-class= caution
-]]
-[[/div]]
-----
-[[div class=&#34;modal&#34;]]
-**注記:** 等級特別定義の適用によって、本報告書は改訂されました。新規に更新されたリビジョンを閲覧する場合、最新のクリアランス/トークンが要求されます。暫定的な処置として、本報告書の安定的なリビジョンを展開しています - 必要に応じ、RAISAアーカイブチームは貴方に適切な認証手段を提供します。
-
-[[div class=&#34;limit&#34;]]
-
-[[div class=&#34;tableb&#34;]]
-[[include :scp-wiki:component:image-block-base
-|name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-163-6bn3/s17-img.jpg
-|caption=Site-17, 建造エリア
-|width=250px
-|align=right]]
+|item-text= ITEM#:
+|level-text= LEVEL
+|clearance-number-text= 3
+|clearance-text= 機密
+|containment-text= オブジェクトクラス:
+|disruption-text= 撹乱クラス
+|risk-text= リスククラス:
+|inc-custom-text= --]]]
 [[/div]]
 
-**特別収容プロトコル:** 現行の曝露個体に確認されている能動的なSCP-2844-JPの伝搬作用について、現在も調査が進められています。SCP-2844-JPの活性状態において発生する一連の超自然的 / 超常的現象は包括的に[[span class=&#34;fear&#34;]]DREAD-STATE[[/span]]イベントに指定されますが、DREAD-STATEの発生頻度と規模、また一般社会における撹乱のリスクを理由に全ての収容は放棄され、財団が管理可能な一部のイベントのみが監視下にあります。根本的にSCP-2844-JPから曝露者を解放するために、現在の財団内部部門はあらゆる分野において研究を進行させています。
 
-[[div class=&#34;anchor&#34;]]
-[[div class=&#34;sidebox&#34;]]
+[[div class=&#34;modal table4&#34;]]
 
-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-162-djiy/s17_negate.png width=&#34;80px&#34; style=&#34;float: right;&#34;]]
+[[include :scp-jp:component:image-block-base name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-163-6bn3/s17-img.jpg|caption=サイト-17, 建造エリア。|width=250px|align=right]]
 
-+++ [*http://scp-jp.wikidot.com/site-17-hub サイト-17]
+[[span class=&#34;st&#34;]]注記:[[/span]] 等級特別定義の適用によって、本報告書は改訂されました。新規に更新されたリビジョンを閲覧する場合、最新のクリアランス/トークンが要求されます。暫定的な処置として、本報告書の安定的なリビジョンを展開しています。必要に応じ、RAISAアーカイブチームは貴方に適切な認証手段を提供します。
 
-サイト-17は主要な財団施設であり、低危険性の人間型存在の収容と研究を主眼に置いています。そのため、サイト-17の常置人員には多くの医療・精神医学のプロフェッショナルが含まれます。
+[[span class=&#34;st&#34;]]特別収容プロトコル:[[/span]] 現行の曝露個体に確認されている能動的なSCP-2844-JPの伝搬作用について、現在も調査が進められています。SCP-2844-JPの活性状態において発生する一連の超自然的 / 超常的現象は包括的に[[span class=&#34;accent&#34;]]震駭[[/span]]イベントに指定されますが、[[span class=&#34;accent&#34;]]震駭[[/span]]の発生頻度と規模、また一般社会における撹乱のリスクを理由に全ての収容は放棄され、財団が管理可能な一部のイベントのみが監視下にあります。根本的にSCP-2844-JPから曝露者を解放するために、現在の財団内部部門はあらゆる分野において研究を進行させています。
 
-サイト-17において、独立した概念物理学(//Essophysics//)の研究が進行しています。概念物理学は具現体の研究を行う学問であり、それは日常の神々の発見です。誰も人間の経験の高さと深さを知らず、誰も全能ではなく、全てが概念化の不一致の影響を受けます。
+[[div class=&#34;blockquote&#34; style=&#34;font-style: italic; font-size: 95%;&#34;]]
 
-[[/div]]
-[[/div]]
-[[/div]]
+サイト-17は主要な財団施設であり、低危険度の人間型存在の収容と研究を主眼に置いています。そのため、サイト-17の常置人員には多くの医療・精神医学のプロフェッショナルが含まれます。
 
-@@ @@
-
-サイト-17はWebクローラ、潜入資産、その他あらゆる媒体を通じて全てのメディア、文献、公共の知識について監視活動を継続します。あらゆる場合において - SCP-2844-JPが異常であるという事実が外部に流出する事態は防がなければなりません。
-
-[[div class=&#34;blockquote&#34;]]
-
-**SITE-17 主要連絡先:**
-
-ティルダ・ムース管理官 - //サイト-17共同管理官//
-
-ヴィルジール・ヴァリエ管理官 - //サイト-17共同管理官//
-
-プレースホルダー・マクドクトラート博士 - //概念物理学研究科部門長//
-
-ベッドロック・エンダース博士 - //サイト-17収容スペシャリスト//
-
-ジェイム・マーロウ博士 - //概念物理学研究科研究責任者//
-
-サイモン・グラス博士 - //心理監査評価班//
+サイト-17において、独立した[*http://scp-jp.wikidot.com/scp-6820 概念物理学]の研究が進行しています。概念物理学は具現体の研究を行う学問であり、日常における神格や崇拝の視覚化そのものです。人間の文化や学術が進展すると、アイデアや概念の形而下的実体は同期され、時間とともに変化します。これは、人間の思考やイデア的空間との比較により発見可能なものです。
 
 [[/div]]
-[[/div]]
-----
-[[div class=&#34;modal&#34;]]
-[[div class=&#34;tableb&#34;]]
-[[include :scp-wiki:component:image-block-base
-|name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-164-afsd/Fractal01.jpg
-|caption=SCP-2844-JPの忘却性を抽象化したフラクタルパターン。災害除去済
-|width=100%]]
+
+サイト-17はWebクローラ、潜入資産、その他あらゆる媒体を通じて全てのメディア、文献、公共の知識について監視活動を継続します。あらゆる場合において、SCP-2844-JPが異常であるという事実が外部に流出する事態は防がなければなりません。
+
 [[/div]]
 
-**説明:** SCP-2844-JPは不特定の領域で流通、伝搬を繰り返している未確認のミーム災害です。SCP-2844-JPは抽象的な複数のミーム複合体であり、その正確な性質を判断することは非常に困難です。SCP-2844-JPに内包される最も特徴的なミームは、典型的な情動的感性の1つであり、&#34;恐怖&#34;に酷似する感情として一般的に知られるものです。人間がSCP-2844-JPに曝露する具体的な条件は明らかになっていません。SCP-2844-JPに曝露した実体は様々な心理的/高次脳機能的異常を発露させ、多くは不明な要因によって死亡します。SCP-2844-JPは様々な状況下においてヒトの心理状態に反映され、心拍数の増加、震え、発汗などの身体的反応として観測することが可能です。生命兆候を喪失した曝露者は新規の異常性を獲得します - この曝露者の死体/遺骸などはSCP-2844-JP-Aとして指定され、財団目下の研究および隔離対象となります。
+
+[[include :scp-jp:component:image-block-base name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-164-afsd/Fractal01.jpg|caption=SCP-2844-JPの (特に誘引される) 忘却箇所を抽象化したフラクタルパターン。[[span class=&#34;accent&#34;]]震駭[[/span]]を含まない。|width=100%]]
+
+
+[[div class=&#34;modal table4&#34;]]
+
+[[span class=&#34;st&#34;]]説明:[[/span]] SCP-2844-JPは不特定の領域で流通、伝搬を繰り返している未確認のミーム災害です。SCP-2844-JPは抽象的なミーム複合体であり、その正確な性質を判断することは非常に困難です。SCP-2844-JPに内包される最も特徴的なミームは、典型的な情動的感性の1つであり、”恐怖 [[size 85%]](**震駭**)[[/size]]”に酷似する感情として一般的に知られるものです。人間がSCP-2844-JPに曝露する具体的な条件は明らかになっていません。SCP-2844-JPに曝露した実体は様々な心理的 / 高次脳機能的異常を発露させ、多くは不明な要因によって死亡します。SCP-2844-JPは様々な状況下においてヒトの心理状態に反映され、心拍数の増加、震え、発汗などの身体的反応として観測することが可能です。生命兆候を喪失した曝露者は新規の異常性を獲得します - この曝露者の死体/遺骸などはSCP-2844-JP-Aとして指定され、財団目下の研究および隔離対象となります。
 
 SCP-2844-JP-Aが新規に獲得する異常性は、前述のSCP-2844-JPを拡散する高度な認識災害です。SCP-2844-JP-A自体は単純なベクターであり、これを視認する、接触するなどの方法で認識する事により - 対象者はSCP-2844-JPに新たに曝露します。SCP-2844-JPはSCP-2844-JP-Aを媒体として拡散する伝染性のミーム災害であり、その異常性のために人的資源による処分が困難です。現在は人工知能徴募員による対応が主力であり、新規に発見されたSCP-2844-JP-A個体は即座に焼却処分されます。
 
-SCP-2844-JP-A個体からミーム性の災害を除去する明確な治療手段は確立されていません。SCP-2844-JPの存在は長期にわたり、未解明な状態でした。2021年に発生した致命的なSCP-2844-JPの拡大(//最初期の[[span class=&#34;fear&#34;]]DREAD-STATE[[/span]]イベント//)と社会的な混乱に伴い、必然的に財団はSCP-2844-JPの無力化を迫られました。
-[[/div]]
-----
+SCP-2844-JP-A個体からミーム性の災害を除去する明確な治療手段は確立されていません。SCP-2844-JPの存在は長期にわたり、未解明な状態でした。2021年に発生した致命的なSCP-2844-JPの拡大 (最初期の[[span class=&#34;accent&#34;]]震駭[[/span]]イベント) と社会的な混乱に伴い、必然的に財団はSCP-2844-JPの無力化を迫られました。
 
+[[/div]]
+
+
+[[div class=&#34;notation&#34; style=&#34;margin: 5vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.I:[[/span]] 概念物理学
+----
 @@ @@
-[[div style=&#34;width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));&#34;]]
-= **End of stream!**
-[[div style=&#34;width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;&#34;]]
-
-= 入力されたアクセストークンは存在しません - 1/3
-
-[[/div]]
-[[/div]]
-@@ @@
-
-----
-[[div class=&#34;modal&#34;]]
-[[div class=&#34;limit&#34;]]
-
-= **補遺Ⅰ/2844-JP:** 概念物理学
-----
-
-[[div class=&#34;invert&#34;]]
-= [[image https://nu-scptheme.github.io/Black-Highlighter/img/logo.svg width=&#34;70px&#34;]]
-[[/div]]
-
-= [[size 90%]]//概念物理学研究報告書抜粋 - プレースホルダー・マクドクトラート博士による//[[/size]]
-
-@@ @@
-
-[[div class=&#34;anchor&#34;]]
-[[div class=&#34;sidebox&#34;]]
-
-+++ [http://scp-jp.wikidot.com/scp-5242 プレースホルダー・マクドクトラート博士]
-
-プレースホルダー博士(//Dr. Placeholder McDoctorate//)は[http://scp-jp.wikidot.com/scp-3309 空想科学部門]長です。当初はIT部門に雇用されており、1996年にはSCP-5241の収容に果たした目覚ましい活躍から部門長に昇進しました。サイト管理官に昇進してからは、個人的に空想科学部門への異動を要望。理論空想科学の目覚ましい発展に寄与したことで、部門長へと昇進したのち、元型課(//Archetypicals Division//)を設立しました。同時期に、彼の名前は##blue|SCP-INTEGER##によって過去改変的に抽象化されてしまいました。
-
-//--　　　--[*http://scp-jp.wikidot.com/personnel-and-character-dossier 職員・人物ファイル]からの一部引用//
-
-[[/div]]
-[[/div]]
-[[/div]]
-
-文化とは模倣の連続です。生物の全ての進化は - 究極的には連鎖的な模倣からなり、これは生物学的進化においては「遺伝子」として知られます。複製 - 伝達 - 変異のプロセスが存在し、文化的にも同様の連鎖が起きているように、文化情報の伝搬は包括的に「ミーム」として知られています。最新のミーム学において、ミームとは脳から脳へと伝わる文化の最小単位であり、私たちの認識を受容、拡散、伝搬させます。例えば貴方が今着ている洋服は文化的ミームであり、朝の歯磨きは習慣的ミームです。概念的なミームにとっての最大の目的は自己の複製にあり、ミームの本質は非常に利己的です。私たちの心理や芸術、文化、習慣は全て - 利己的ミームの自己複製の為の媒体に過ぎません。かの有名なモナ・リザは、芸術的文化というミームを自己複製するのに有用であるからして存在し、現在も芸術的文化に大きく貢献しています。重要なのは、ミームは生存や知性の獲得といった私たちの利益に貢献する訳ではなく、自己複製に最適な形態を常に探しているという事です。
-
-ミームは初期の段階において、基本的な4つの&#34;衝動&#34;に基づいて広まるようになりました。戦闘、逃走、食欲、生殖 - 具体的な定義こそ存在しませんが、基本的にはこれらの4つです。そしてこれらの基本的な要素を含んだミームは、他のミームより急速に伝搬します - これがミームの進化です。こうした適応度の高いミームが現在まで生き残り、そして尚も複製を続けています。我々の文化はミームに依存しますが、必ずしもミームは生存に貢献しません。長期的にミームが存続する可能性がある場合、ミームは複製への利益を優先します。上記の&#34;衝動&#34;に加え、ミームは本能的に危険を回避します。自然淘汰によって安全を好む選択が為され、それには一定の感情が伴うようになりました。
-[[/div]]
-----
-
-[[div class=&#34;modal&#34;]]
-= **補遺Ⅱ/2844-JP:** 収容提起
-
-----
-
-2021年に確認された最初期のDREAD-STATEイベントが発生するまで、財団はSCP-2844-JPの共通した異常性を把握していませんでした。より具体的に、&#34;DREAD-STATE&#34;として認知されるこのイベントは、日本国広域で確認された民間人の不審死事件です。関係者の死亡により詳細が依然不明であるものの、本件の発端は - 特定の地域でSCP-2844-JPが発生したことに起因するものと考えられています。本件は財団81管区によって処理されましたが、後にDREAD-STATEが全世界的に発生するようになってからは、全ての区域の統括した管理をサイト-17が担当するようになりました。
-
-最初期の被害者(現在のSCP-2844-JP-A1)である佐藤 知彦氏は島根県在住であり、回収されたロケーション履歴は2021年10月9日に当人が埼玉県へ移動していたことを示しています。当人が所持していた携帯電話のWebアクティビティからは掲示板サイトへのアクセス履歴が確認され、具体的には - &#34;心霊スポット&#34;へ集団で侵入する事を目的としていました。言及された地点は情報のない廃屋であり、現在調査が進められています。
 
 [[div class=&#34;blockquote&#34;]]
 
-= **関係者聴取記録 - 佐藤 知彦**
+[[=image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-162-djiy/s17_negate.png width=&#34;60px&#34; style=&#34;margin: 2vh auto;&#34;]]
+
+文化とは模倣の連続です。生物の全ての進化は - 究極的には連鎖的な模倣からなり、これは生物学的進化においては「遺伝子」として知られます。複製 - 伝達 - 変異のプロセスが存在し、文化的にも同様の連鎖が起きているように、文化情報の伝搬は包括的に「ミーム」として知られています。最新のミーム学において、ミームとは脳から脳へと伝わる文化の最小単位であり、私たちの認識を受容、拡散、伝搬させます。例えば貴方が今着ている洋服は文化的ミームであり、朝の歯磨きは習慣的ミームです。概念的なミームにとっての最大の目的は自己の複製にあり、ミームの本質は非常に利己的です。私たちの心理や芸術、文化、習慣は全て、利己的ミームの自己複製の為の媒体に過ぎません。かの有名なモナ・リザは、芸術的文化というミームを自己複製するのに有用であるからして存在し、現在も芸術的文化に大きく貢献しています。重要なのは、ミームは生存や知性の獲得といった私たちの利益に貢献する訳ではなく、自己複製に最適な形態を常に探しているという事です。
+
+ミームは初期の段階において、基本的な4つの「衝動」に基づいて広まるようになりました。戦闘、逃走、食欲、生殖。具体的な定義こそ存在しませんが、基本的にはこれらの4つです。そしてこれらの基本的な要素を含んだミームは、他のミームより急速に伝搬します。これがミームの進化です。こうした適応度の高いミームが現在まで生き残り、そして尚も複製を続けています。
+
+我々の文化はミームに依存しますが、必ずしもミームは生存に貢献しません。長期的にミームが存続する可能性がある場合、ミームは複製への利益を優先します。上記の「衝動」に加え、ミームは本能的に危険を回避します。自然淘汰によって安全を好む選択が為され、それには一定の感情が伴うようになりました。
+
+@@ @@
+[[div style=&#34;text-align: end;font-style: italic;&#34;]]
+-- [*http://scp-jp.wikidot.com/scp-5242 プレースホルダー・マクドクトラート], PhD
+[[span style=&#34;font-size: 90%;&#34;]]概念物理学部門研究者 / 深淵博学者[[/span]]
+[[/div]]
+
+[[/div]]
+
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
+
+[[/div]]
+
+
+[[div class=&#34;jotting table tableb&#34; style=&#34;margin: 5vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.II:[[/span]] 収容提起
 ----
+@@ @@
 
-**インタビュアー:** 中澤研究員 - //財団支部81管区第41施設 聴取担当//
+2021年に確認された最初期の[[span class=&#34;accent&#34;]]震駭[[/span]]イベントが発生するまで、財団はSCP-2844-JPの共通した異常性を把握していませんでした。より具体的に、[[span class=&#34;accent&#34;]]震駭[[/span]]として認知されるこのイベントは、日本国広域で確認された民間人の不審死事件です。関係者の死亡により詳細が依然不明であるものの、本件の発端は特定の地域でSCP-2844-JPが発生したことに起因するものと考えられています。本件は財団81管区によって処理されましたが、後に[[span class=&#34;accent&#34;]]震駭[[/span]]が全世界的に発生するようになってからは、全ての区域の統括した管理をサイト-17が担当するようになりました。
 
-**インタビュー対象:** 佐藤 知彦 [[size 90%]](//注記: 本記録は当事者のナンバリング指定前であるため、氏名が記入されている。//)[[/size]]
+最初期の被害者 (現在のSCP-2844-JP-A1) である佐藤 知彦氏は島根県在住であり、回収されたロケーション履歴は2021年10月9日に当人が埼玉県へ移動していたことを示しています。当人が所持していた携帯電話のWebアクティビティからは掲示板サイトへのアクセス履歴が確認され、具体的には”心霊スポット”へ集団で侵入する事を目的としていました。言及された地点は情報のない廃屋であり、現在調査が進められています。
 
-**序文:** 佐藤氏に同行していた掲示板サイトの関係者らの不審死が報告され、容疑者として指定された佐藤氏を日本警察との協力の下、確保しました。当時はSCP-2844-JPに関する研究が始動しておらず、財団管理下の不祥事件として登録されていました。
+[[table style=&#34;width: 100%;&#34;]]
+[[row]]
+[[hcell]]
+関係者聴取ログ サイト-81██.I
+[[/hcell]]
+[[/row]]
+[[row]]
+[[cell]]
 
-----
+**インタビュアー:** 中澤研究員 [[size 85%]]//-- 財団支部81管区第██施設 聴取担当//[[/size]]
 
-= **&lt;ログ開始&gt;**
+**インタビュー対象:** 佐藤 知彦
 
-= &lt;//中澤研究員と佐藤氏がテーブルを挟み、着席している。//&gt;
+**前文:** 佐藤氏に同行していた掲示板サイトの関係者らの不審死が報告され、容疑者として指定された佐藤氏を日本警察との協力の下、確保しました。当時はSCP-2844-JPに関する研究が始動しておらず、財団管理下の不祥事件として登録されていました。
+
+[[/cell]]
+[[/row]]
+[[row]]
+[[hcell]]
+&lt;&lt;転写開始&gt;&gt;
+[[/hcell]]
+[[/row]]
+[[row]]
+[[hcell]]
+[[div class=&#34;blockquote&#34;]]
+
+[[span class=&#34;quote_desc&#34;]]&lt;中澤研究員と佐藤氏がテーブルを挟み、着席している。&gt;[[/span]]
 
 **中澤研究員:** - 検察官の中澤と申します、本日はよろしくお願いします。
 
-**佐藤氏:** (//躊躇って//) - はい、はい。
+**佐藤氏:** (//躊躇って//) -- はい、はい。
 
 **中澤研究員:** 最初にお伝えしますが、何も貴方が彼らの死亡に関与したと結論付けた訳ではありませんよ。もっとも、私は貴方が、当日何をしていたのか教えてほしいだけです。無理のない範囲で、どうかお聞かせいただけませんか？
 
-**佐藤氏:** アンタは...例え話がブッ飛んでるって言うか、荒唐無稽なコト言っても、その。分かってくれるか？俺が知ってることって - //例えば俺がアイツら殺したとかそういうんじゃない// - もっと奇妙な事なんだ。
+**佐藤氏:** アンタは...例え話がブッ飛んでるって言うか、荒唐無稽なコト言っても、その。分かってくれるか？俺が知ってることって -- //例えば俺が彼らを殺したとかそういうんじゃない// -- もっと奇妙な事なんだ。
 
-**中澤研究員:** 貴方が正確に事実を述べてくれるのなら、私はしっかりとソレを聞き入れますよ。疑いはしません。それを保証してくれるのなら - 貴方の身の潔白を証明するのにも役立ちますよ。
+**中澤研究員:** 貴方が正確に事実を述べてくれるのなら、私はしっかりとソレを聞き入れますよ。疑いはしません。それを保証してくれるのなら、貴方の身の潔白を証明するのにも役立ちますよ。
 
-**佐藤氏:** 分かった、分かったよ。んで、掲示板で話が合った奴らと一緒に埼玉行って - //有名じゃないが、そこそこ名の知れた心霊スポットに行こうって話で// - ホントに生きて帰れないって噂だったんだ、気になったんだよ。ちっさい建物で、倉庫みたいな場所だった。中は空気の通りが悪くて、生臭くて...如何にもって感じの雰囲気だった。1人は怖気づいて勝手に帰ったみたいだが - 正直俺もそうするべきだったな。
+**佐藤氏:** 分かった、分かったよ。んで、掲示板で話が合った奴らと一緒に埼玉行って。有名じゃないが、そこそこ名の知れた心霊スポットに行こうって話で。本当に生きて帰れないって噂だったんだ、気になったんだよ。小さな建物で、倉庫みたいな場所だった。中は空気の通りが悪くて、生臭くて...如何にもって感じの雰囲気だった。1人は怖気づいて勝手に帰ったみたいだが、正直俺もそうするべきだった。
 
 **中澤研究員:** 中に入ったのは何人ですか？
 
-**佐藤氏:** 6人だ。最初は7人だが、さっき言った通りだ。最初の階段を下りて、2分ぐらい歩いたな。その頃には月明かりも入らなくなって、ホントに真っ暗だった。手元のライトで照らすのが精いっぱい。何人かは興奮してそのまま進んだ - 俺もな。その他はビビリ散らして何とか着いてきた。それで...レプリカとかじゃない、血痕があったのを見た。ちょっとした出血じゃなかった - 何やったらこうなるんだってぐらい、あたり一面にドバーっと。暗くて分からんかったが、考えてみれば本当に...文字通り一面に血が滲んでた。
+**佐藤氏:** 6人だ。最初は7人だが、さっき言った通りだ。最初の階段を下りて、2分ぐらい歩いたな。その頃には月明かりも入らなくなって、ホントに真っ暗だった。手元のライトで照らすのが精いっぱい。何人かは興奮してそのまま進んだ、俺も含め。その他はビビリ散らして何とか着いてきた。それで...レプリカとかじゃない、血痕があったのを見た。ちょっとした出血じゃなかった。何やったらこうなるんだってぐらいに、あたり一面にドバーっと。暗くて分からんかったが、考えてみれば本当に...文字通り一面に血が滲んでた。
 
-= &lt;//佐藤氏が明らかに動揺し、椅子を揺らす。//&gt;
+[[span class=&#34;quote_desc&#34;]]&lt;佐藤氏が明らかに動揺し、椅子を揺らす。&gt;[[/span]]
 
 **中澤研究員:** 無理なさらずに。
 
-**佐藤氏:** 話した方が落ち着くんだ。で...いや、うう。...人が、いや人の死体があった。漫画で見るような白衣を着て、丸眼鏡かけた爺さんの死体。(//沈黙//) - 口から血ィ吐いてた。そしたら、ついてきたバカが真ん中照らしたんだよ - バカ野郎...クソッ。(//沈黙//) - ジジイは腹が無かった。胸の下から尻のあたりまで引き裂かれたみたいに、破かれてた。獣に食われたような跡じゃない、ありゃ人だ。人の手の跡だ。
+**佐藤氏:** 話した方が落ち着くんだ。で...いや、うう。...人が、いや人の死体があった。漫画で見るような白衣を着て、丸眼鏡かけた爺さんの死体。(//沈黙//) -- 口から血ィ吐いてた。そしたら、ついてきた馬鹿が真ん中照らしたんだよ。本当に馬鹿だ。 (//沈黙//) -- 爺さんは腹が無かった。胸の下から尻のあたりまで引き裂かれたみたいに、破かれてた。獣に食われたような跡じゃない、ありゃ人だ。人の手の跡だ。
 
 **中澤研究員:** 他の人間が攻撃した跡、という事でしょうか？
 
-**佐藤氏:** 知らねえよ...でも多分そんな感じだ。執拗に荒らされてて、マジで吐きそうだった。そっからだよ、アイツらがおかしくなったの。...保険のために言うけど、ホントに俺は何もしてない。指紋なり証拠品なり調べればいいさ、何も見つからんだろうよ。
+**佐藤氏:** 知らない...でも多分そんな感じだ。執拗に荒らされてて、マジで吐きそうだった。そっからだよ、彼らがおかしくなったの。...保険のために言うけど、ホントに俺は何もしてない。指紋なり証拠品なり調べればいいさ、何も見つからんだろうよ。
 
 **中澤研究員:** 改めて後日、精査します。その...おかしくなった、と言うのは？
 
-= &lt;//佐藤氏が頭を抱える。//&gt;
+[[span class=&#34;quote_desc&#34;]]&lt;佐藤氏が頭を抱える。&gt;[[/span]]
 
-**佐藤氏:** なんか...急に変なコト言い出して。怖くなって帰ろうとした。アイツらも続いてついてくるんだけど、明らかに様子が変だった。なんて言うか...抜け殻みたいだった。普通に空港に行って、アイツらを見送って、それで...後は知っての通りだ。家で首吊ったり、包丁で刺したり - ああクソ。まだ、聞こえる。
+**佐藤氏:** なんか...急に変なコト言い出して。怖くなって帰ろうとした。アイツらも続いてついてくるんだけど、明らかに様子が変だった。なんて言うか...抜け殻みたいだった。普通に空港に行って、アイツらを見送って、それで...後は知っての通りだ。家で首吊ったり、包丁で刺したり。ああクソ。まだ、聞こえる。
 
 **中澤研究員:** 何か、他に知っていることは。
 
-**佐藤氏:** (//沈黙//) - 何かに見られてるような気分だったのを、覚えてる。1つじゃない、無数の目が俺たちを見てたんだ。でも何もしてこなかった。何もできなかったのか？ - 知らねぇけど、しきりに叫んでた。頭ん中で響いて、割れるぐらいに&#34;鳴き声&#34;が聞こえて......何かを呼んでるような、そんな感じだった。
+**佐藤氏:** (//沈黙//) -- 何かに見られてるような気分だったのを、覚えてる。1つじゃない、無数の目が俺たちを見てたんだ。でも何もしてこなかった。何もできなかったのか？ - 知らねぇけど、しきりに叫んでた。頭ん中で響いて、割れるぐらいに&#34;鳴き声&#34;が聞こえて......何かを呼んでるような、そんな感じだった。
 
-= &lt;//沈黙。//&gt;
+[[span class=&#34;quote_desc&#34;]]&lt;沈黙。&gt;[[/span]]
 
 **佐藤氏:** ただ、頭の中で音が響いても、どこか一点だけ何も聞こえない所があった。それが何の空間なのか知らんが......目が何かを待っていたのなら、そりゃきっとあの空白に居た&#34;何か&#34;を待ってたんだろう、って思うよ。ひときわデカい何かが、本当はそこにあったんだ。でも今は無くて......なあ。
 
 **中澤研究員:** どうされましたか？
 
-**佐藤氏:** 鳥はさ - 親鳥ってさ、雛鳥に餌を与えるだろ？その為に自分の場所を空けて、##dc0233|飛び立つ##んだ。そう考えたら、何か納得いくものが無いか？ - あれを雛鳥だとして、親鳥は一体どこに行ったと思う？
+**佐藤氏:** 鳥はさ -- 親鳥ってさ、雛鳥に餌を与えるだろ？その為に自分の場所を空けて、[[span class=&#34;accent&#34;]]飛び立つ[[/span]]んだ。そう考えたら、何か納得いくものが無いか？ - あれを雛鳥だとして、親鳥は一体どこに行ったと思う？
 
-**中澤研究員:** さあ - 分かりません。
+**中澤研究員:** さあ -- 分かりません。
 
 **佐藤氏:** 餌を、狩りに行ったんじゃないかなって。俺たちは雛鳥の待つ巣に勝手に入った。自分の住処に侵入した奴を、親鳥はどうすると思う？或いは......その両方だとしたら？
 
-= &lt;//すすり泣く。//&gt;
+[[span class=&#34;quote_desc&#34;]]&lt;すすり泣く。&gt;[[/span]]
 
 **佐藤氏:** 俺たちは......血の匂いを、世界にバラ撒いたのかもしれねぇな。
 
-= **&lt;ログ終了&gt;**
+[[/div]]
+[[/hcell]]
+[[/row]]
+[[row]]
+[[hcell]]
+&lt;&lt;転写終了&gt;&gt;
+[[/hcell]]
+[[/row]]
+[[row]]
+[[cell]]
+
+**後文:** 当該人物の言動、行動、その他ミーム・認知心理学的な見地より、当該人物が[[span class=&#34;accent&#34;]]震駭[[/span]]として確認可能なファクターであると判断されました。当該人物は安全に処分され、SCP-2844-JP-A1は調査の目的で一時的に回収されました。
+
+[[/cell]]
+[[/row]]
+[[row]]
+[[hcell]]
+[[/hcell]]
+[[/row]]
+[[/table]]
+
+@@ @@
+
+一連の事件を秘匿する試みは、メディア関係者による即日の報道によって失敗しました。事件発覚以前、既にサイト掲示板の関係者らは全員死亡しており、この情報が当事者および遺族、親族、第三者によって拡散されたことにより、SCP-2844-JPのミーム災害は自然と全国に拡大しました。財団による情報統制の試みは秘密裏に達成されたものの、それまでに発信された情報の多くはSCP-2844-JPのファクターとなり、不特定多数の人物らに拡散したと考えられます。事件の発生からおよそ1週間後、全国で連鎖的な不詳事件が発生しました。財団はこの事案を最初期の[[span class=&#34;accent&#34;]]震駭[[/span]]イベントに指定し、より明確なSCP-2844-JPの特定と完全な収容を決定しました。
 
 ----
 
-**補足:** 佐藤氏はインタビューの終了後、適切な記憶処理の後に検察庁に移送されました。その2日後に佐藤氏の自殺が確認され、死体 - SCP-2844-JP-A1は調査の目的で一時的に回収されました。
+SCP-2844-JPに関する全ての概念について記憶することは非常に困難です。SCP-2844-JPの (仮にごく一部であったとしても) 本質を認識することは、即座にSCP-2844-JPに曝露することを意味します。初期段階においては通常通りの生命活動を維持できるものの、時間の経過に従って逆向性健忘に似た症状を呈し始めます。これは特にSCP-2844-JPの性質に関わる情報について急速に進み、新規に情報を得た場合でも、オブジェクトの正確な記憶を1時間以上保持しておくことは困難です。症状の進行に伴い、周辺状況の知覚能力も徐々に減退し、最終的には日常生活が不可能となります。
 
-[[/div]]
+SCP-2844-JPの保有する遡及的な忘却性のために、一般的にはSCP-2844-JPが異常であると認識することは出来ません。しかし、指数関数的に増幅したSCP-2844-JPのインシデントは世界規模での人間の死亡事故を誘発させ、潜在的な混乱をもたらしました。認識することが困難なSCP-2844-JPの異常性は、人間の死亡という明確な形態で広域に露見し、連鎖的にSCP-2844-JPを自己複製的に拡散する原因となっています。全てのイベントは後に財団によって[[span class=&#34;accent&#34;]]震駭[[/span]]として指定され、世界規模での観測が開始されました。財団の研究の焦点は、こうした異常が民間に露呈し、ヴェールが完全に瓦解する可能性を最小限に抑えることにありました。
 
-一連の事件を秘匿する試みは、メディア関係者による即日の報道によって失敗しました。事件発覚以前、既にサイト掲示板の関係者らは全員死亡しており、この情報が当事者および遺族、親族、第三者によって拡散されたことにより、SCP-2844-JPのミーム災害は自然と全国に拡大しました。財団による情報統制の試みは秘密裏に達成されたものの、それまでに発信された情報の多くはSCP-2844-JPのベクターとなり、不特定多数の人物らに拡散したと考えられます。事件の発生からおよそ1週間後、全国で連鎖的な不詳事件が発生しました。財団はこの事案を最初期のDREAD-STATEイベントに指定し、より明確なSCP-2844-JPの特定と完全な収容を決定しました。
+[[include :scp-jp:component:image-block-base name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-166-qe0r/Bleeding_finger.jpg|caption=[[span class=&#34;accent&#34;]]震駭[[/span]]の災害効果を含む血液の画像。災害除去済。|width=300px|align=right]]
 
-----
+SCP-2844-JPに関する研究は、抽象的な概念の研究を専門とする「概念物理学」の専門研究科で特に進行しました。そして、プレースホルダー博士によって起草されたSCP-2844-JPの実在性を検証すべく、同氏の立会いの下に様々な実験が行われてきました。最初期に行われた立証の試みは、SCP-2844-JPが何によって広く伝達されてきたのかを判別する単純なものでした。
 
-SCP-2844-JPに関する全ての概念について記憶することは非常に困難です。SCP-2844-JPの - 仮にごく一部であったとしても - 本質を認識することは、即座にSCP-2844-JPに曝露することを意味します。初期段階においては通常通りの生命活動を維持できるものの、時間の経過に従って逆向性健忘に似た症状を呈し始めます。これは特にSCP-2844-JPの性質に関わる情報について急速に進み、新規に情報を得た場合でも、オブジェクトの正確な記憶を1時間以上保持しておくことは困難です。症状の進行に伴い、周辺状況の知覚能力も徐々に減退し、最終的には日常生活が不可能となります。
-
-SCP-2844-JPの保有する遡及的な忘却性のために、一般的にはSCP-2844-JPが異常であると認識することは出来ません。しかし、指数関数的に増幅したSCP-2844-JPのインシデントは世界規模での人間の死亡事故を誘発させ、潜在的な混乱をもたらしました。認識することが困難なSCP-2844-JPの異常性は - 人間の死亡という明確な形態で広域に露見し、連鎖的にSCP-2844-JPを自己複製的に拡散する原因となっています。全てのイベントは後に財団によってDREAD-STATEとして指定され、世界規模での観測が開始されました。財団の研究の焦点は - こうした異常が民間に露呈し、ヴェールが完全に瓦解する可能性を最小限に抑えることにありました。
-
-----
-
-[[div class=&#34;tableb&#34;]]
-[[div class=&#34;scp-image-block block-right scp-clear-false&#34; style=&#34;width:300px;&#34;]]
-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-166-qe0r/Bleeding_finger.jpg style=&#34;width:100%;&#34; link=#]]
-[[div class=&#34;scp-image-caption&#34; style=&#34;width:100%;&#34;]]
-[[span class=&#34;fear&#34;]]DREAD-STATE[[/span]]イベントの災害効果を含む血液の画像。災害除去済
-[[/div]]
-[[/div]]
-[[/div]]
-
-SCP-2844-JPに関する研究は、抽象的な概念の研究を専門とする「概念物理学」の専門研究科で特に進行しました。そして、プレースホルダー博士によって起草されたSCP-2844-JPの実在性を検証すべく、同氏の立会いの下に様々な実験が行われてきました。最初期に行われた立証の試みは、SCP-2844-JPが何によって広く伝達されてきたのかを判別する単純なものでした。複数回にわたる被験体を用いた人体実験、収容下に置かれたアノマリーの関連性、その他多数の対照実験により、SCP-2844-JPの根本的な複製のプロセスは、既に曝露した個体の保有する物質に依存するものであると判断されました。具体的には、曝露した個体の[[span class=&#34;fear&#34;]]死体[[/span]]、[[span class=&#34;fear&#34;]]排泄物[[/span]]、[[span class=&#34;fear&#34;]]付着物[[/span]]、##dc0233|滴る血液##などが該当します。
+複数回にわたる被験体を用いた人体実験、収容下に置かれたアノマリーの関連性、その他多数の対照実験により、SCP-2844-JPの根本的な複製のプロセスは、既に曝露した個体の保有する物質に依存するものであると判断されました。具体的には、曝露した個体の[[span class=&#34;accent&#34;]]死体[[/span]]、[[span class=&#34;accent&#34;]]排泄物[[/span]]、[[span class=&#34;accent&#34;]]付着物[[/span]]、[[span class=&#34;accent2&#34;]]滴る血液[[/span]]などが該当します。
 
 [[div class=&#34;blockquote&#34; style=&#34;font-style: italic;&#34;]]
 
-サイト-17において実験が開始されてから、概ね、SCP-2844-JPが何であるかを識別する事が可能となってきました。SCP-2844-JPは云わば人間の認識の集合です。最初期の実験で、SCP-2844-JPに曝露し衰弱死したD-Classの付着物を認識した回収部隊の多くはSCP-2844-JPに&#34;感染&#34;しました。数名は判別不能な発言をするのみで - そして、私の事をまるで見ていませんでした。
+サイト-17において実験が開始されてから、概ね、SCP-2844-JPが何であるかを識別する事が可能となってきました。SCP-2844-JPは云わば人間の認識の集合です。最初期の実験で、SCP-2844-JPに曝露し、衰弱死したDクラスの付着物を認識した回収部隊の多くは、SCP-2844-JPに感染しました。数名は判別不能な発言をするのみで、そして、私の事をまるで見ていませんでした。
 
-私は概念物理学の専門家ではありませんが、ある一定の確証はあります。SCP-2844-JPは認識の歪みから来ています。SCP-2844-JPに曝露した人間は、それ自体の脅威を種に伝えようとします - それがどんな形であれ、明確に。死体は訓戒であり、##dc0233|染まる鮮血##は警告です。能動的に、被害者らは他の人々に危険を警告しています。
+私は概念物理学の専門家ではありませんが、ある一定の確証はあります。SCP-2844-JPは認識の歪みから来ています。SCP-2844-JPに曝露した人間は、それ自体の脅威を種に伝えようとします - それがどんな形であれ、明確に。死体は訓戒であり、[[span class=&#34;accent2&#34;]]染まる鮮血[[/span]]は警告です。能動的に、被害者らは他の人々に危険を警告しています。
 
-彼らの反応を見るに、私たちは理解せざるを得ないでしょう - これを知るべきで無かったと。
+彼らの反応を見るに、私たちは理解せざるを得ないでしょう -- これを知るべきで無かったと。
 
 [[&gt;]]
---　　　--サイモン・グラス, サイト-17 - 心理監査評価班
+-- サイモン・グラス
+[[size 90%]]サイト-17、心理監査評価班[[/size]]
 [[/&gt;]]
 [[/div]]
-[[/div]]
-----
-[[div class=&#34;modal&#34;]]
-= **補遺Ⅲ/2844-JP:** 物証
 
-----
-
-以下に記録される一連の文書は、最初期にSCP-2844-JPの影響に曝露したと見られるサイト-17研究員の報告書の抜粋です。文書には、研究員が観測したSCP-2844-JPの具体的な性質とDREAD-STATEイベントの詳細、及び当オブジェクトの研究上重要と見られる日誌を資料として添付しています。本項を閲覧している全ての財団職員は、SCP-2844-JPの更なる研究を進め、新たな発見があった場合には上層部への報告が推奨されます。
-
-[[div class=&#34;blockquote&#34;]]
-
-= **文書2844-JP.01:** 序説
-----
-
-以下に私の知る全てを記録する - 私が憶えている限り。
-
-この端末の中には私がこれまでSCP-2844-JP - //このオブジェクトナンバーを何故私が記憶していたのか、私自身にも説明できないのだが// - について知り得た全てを記録してある。概念物理的な独自の方程式を用いて、この端末に細工をした。恐らくあのオブジェクトの持つ異常性質 - //あえて仮称するならば「アンチ-ミーム」的な性質と言うべきか// - はこの端末には適用されない。そして、もしもこの&#34;財団サイトもどき&#34;の建物から発する脆弱な電波が外の世界に届いているのならば、端末に記録されたデータは現実世界の財団に到達しているはずだ。現実世界が通常に存続しているならば、の話だが。
-
-私自身に残された時間は恐らくもう僅かしかない。私は40年以上にわたると思われる自身の記憶――財団で研究者として過ごした記憶の大半を失ってしまった。今はこの端末に残された記録だけが、消去された脳内の間隙をか細い糸のように辛うじて繋ぎ止めている。だが、それももうすぐ終わるだろう。周囲の知覚能力が目に見えて減退しているのが判る。私は空き家に一人残された認知症の老人のように、自分自身が何者かであったかも忘れて死んでいくのだろう。
-
-しかし、恐らくこの研究を続けることに意味はある - このオブジェクトに曝露する人物は私が最後であるとは思えないからだ。君がインシデントに巻き込まれた研究員か、哀れなDクラスか、もしくは財団と全く関係の無い人物なのかはわからない。いずれにせよ、私の研究が君の命を助け、ここからの脱出の術を導く橋頭堡となることを願ってやまない。たとえ他の人々全てが光の中に有り、闇の中にいるのが私と君だけであったとしても、我々は暗闇の中に立ち続け、歩むことを止めてはならないのだ。
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
 
 [[/div]]
 
+
+[[div class=&#34;notation table6 tableb&#34; style=&#34;margin: 5vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.III:[[/span]] 物証
+----
+@@ @@
+
+[[div class=&#34;blockquote&#34; style=&#34;font-size: 95%; font-style: italic;&#34;]]
+
+**前文:** 以下に記録される一連の文書は、最初期にSCP-2844-JPの影響に曝露したと見られるサイト-17研究員の報告書の抜粋です。文書には、研究員が観測したSCP-2844-JPの具体的な性質と[[span class=&#34;accent&#34;]]震駭[[/span]]の詳細、及び当オブジェクトの研究上重要と見られる日誌を資料として添付しています。本項を閲覧している全ての財団職員は、SCP-2844-JPの更なる研究を進め、新たな発見があった場合には上層部への報告が推奨されます。
+
+[[/div]]
 [[div class=&#34;blockquote&#34;]]
 
-= **文書2844-JP.02:** DREAD-STATE
-----
+[[size 120%]]**序説:**[[/size]]
 
-##dc0233|理解可能な幻覚世界##は、SCP-2844-JPが形而上的に支配している異常空間であり、現実世界の”模造品”であるように見える。##dc0233|半永久的に拡大する野原##に取り込まれた人間(以下、対象)は - 恐らくその人物が記憶する様々な建造物/土地の特徴を混合した空間に転移する。この空間からの直接の脱出は不可能であると考えている。
+以下に私の知る全てを記録する。私が憶えている限り。
 
-空間内部のあらゆる原理/法則は、対象の記憶のある一点で停止しているように見える。あらゆる生物種は空間内部で発見されていない。テレビメディア、電車やインターネット等の社会的インフラも一切機能していない。しかし、水道や電気は通常通り使用可能な他、コンビニエンスストア等の商店内部には由来不明ながら非異常性の商品が新鮮な状態で陳列され、食品等は日を置いても腐敗する兆候を見せず、また消費した商品は数日後に補充されている。
+この端末の中には私がこれまでSCP-2844-JP -- //このオブジェクトナンバーを何故私が記憶していたのか、私自身にも説明できないのだが// -- について知り得た全てを記録してある。専用のプログラムを用いて、この端末に細工をした。恐らくあのオブジェクトの持つ異常性質 -- //あえて仮称するならば「アンチ-ミーム」的な性質と言うべきか// -- はこの端末には適用されない。そして、もしもこの”財団サイトもどき”の建物から発する脆弱な電波が外の世界に届いているのならば、端末に記録されたデータは現実世界の財団に到達しているはずだ。現実世界が通常に存続しているならば、の話だが。
+
+私自身に残された時間は恐らくもう僅かしかない。私は40年以上にわたると思われる自身の記憶...財団で研究者として過ごした記憶の大半を失ってしまった。今はこの端末に残された記録だけが、消去された脳内の間隙をか細い糸のように辛うじて繋ぎ止めている。だが、それももうすぐ終わるだろう。周囲の知覚能力が目に見えて減退しているのが判る。私は空き家に一人残された認知症の老人のように、自分自身が何者かであったかも忘れて死んでいくのだろう。
+
+しかし、恐らくこの研究を続けることに意味はある -- このオブジェクトに曝露する人物は私が最後であるとは思えないからだ。君がインシデントに巻き込まれた研究員か、哀れなDクラスか、もしくは財団と全く関係の無い人物なのかはわからない。いずれにせよ、私の研究が君の命を助け、ここからの脱出の術を導く橋頭堡となることを願ってやまない。たとえ他の人々全てが光の中に有り、闇の中にいるのが私と君だけであったとしても、我々は暗闇の中に立ち続け、歩むことを止めてはならないのだ。
+
+[[/div]]
+[[div class=&#34;blockquote&#34;]]
+
+[[span class=&#34;accent2&#34;]]理解可能な幻覚世界[[/span]]は、SCP-2844-JPが形而上的に支配している異常空間であり、現実世界の”模造品”であるように見える。[[span class=&#34;accent2&#34;]]半永久的に拡大する野原[[/span]]に取り込まれた人間 (以下、対象) は、恐らくその人物が記憶する様々な建造物 / 土地の特徴を混合した空間に転移する。この空間からの直接の脱出は不可能であると考えている。
+
+空間内部のあらゆる原理 / 法則は、対象の記憶のある一点で停止しているように見える。あらゆる生物種は空間内部で発見されていない。テレビメディア、電車やインターネット等の社会的インフラも一切機能していない。しかし、水道や電気は通常通り使用可能な他、コンビニエンスストア等の商店内部には由来不明ながら非異常性の商品が新鮮な状態で陳列され、食品等は日を置いても腐敗する兆候を見せず、また消費した商品は数日後に補充されている。
 
 短期間での散策の結果からは、空間内部の多くのエリアは、対象の記憶を中心とした様々な地域の歪な合成であるように見える。エリアは空間内部に侵入した人物と何らかの関連性がある場所が選ばれているようであり、人物の記憶や体験を反映して生成されたものではないかと推定可能だ。
 
-重要な事は - これが単なる幻覚ではなく、厳密に共通性を持つSCP-2844-JPの異常性によるものであるという事だ。##dc0233|記憶の断片が出力された幻覚世界##は、意図的に[[span class=&#34;fear&#34;]]恐怖[[/span]]を演出しているようにも考えられる。
+重要な事は、これが単なる幻覚ではなく、厳密に共通性を持つSCP-2844-JPの異常性によるものであるという事だ。[[span class=&#34;accent2&#34;]]記憶の断片が出力された幻覚世界[[/span]]は、意図的に[[span class=&#34;accent&#34;]]恐怖[[/span]]を演出しているようにも考えられる。
 
 [[/div]]
-
 [[div class=&#34;blockquote&#34;]]
-
-= **文書2844-JP.03:**
-----
-
-**__8月15日:__**
 
 私に何が起こったのか、今一つ正確に理解できていない。
 
-私はサイト-17でオブジェクトの研究に当たっていたはず……はずだった。気が付くと私はこの場所にいた -- 財団サイトと似ても似つかないこの場所に。私の隣には誰か - 名も知らない職員の死体がある……栄養失調による餓死のようだが、最近まで生きていたのか、腐敗はそれほど進んでいない。明日の私は彼女を片付けることから始めなくてはいけない。Dクラスの死体の処理なら新人時代に何度もやっているが、仲間の死体は初めての経験だ。とりあえず、付録に示されているサイト西棟の霊安所に運び込もうと思う。冷凍保存がここでどれだけ有益な行為なのかは不明だが、証拠を残す意味では焼いてしまうよりマシなのだろう。
+私はサイト-17でオブジェクトの研究に当たっていたはずだった。気が付くと私はこの場所にいた。財団サイトと似ても似つかないこの場所に。私の隣には誰か、名も知らない職員の[[span class=&#34;accent&#34;]]死体[[/span]]がある。栄養失調による餓死のようだが、最近まで生きていたのか、腐敗はそれほど進んでいない。明日の私は彼女を片付けることから始めなくてはいけない。Dクラスの死体の処理なら新人時代に何度もやっているが、仲間の死体は初めての経験だ。とりあえず、付録に示されているサイト西棟の霊安所に運び込もうと思う。冷凍保存がここでどれだけ有益な行為なのかは不明だが、証拠を残す意味では焼いてしまうよりマシなのだろう。
 
-私が既に狂気に囚われている可能性も含めて - 異常性は2つあると思う。1つ目、このアノマリーの異常能力が特定の人物を狙い撃ちにするタイプのそれだというもの。2つ目、こうして死体を置いて、仲間をおびき寄せるというもの……どちらにしても、私がドラマのように格好よく救出される最終回はあまり期待できない。
+私が既に[[span class=&#34;accent&#34;]]狂気[[/span]]に囚われている可能性も含めて...異常性は2つあると思う。1つ目、このアノマリーの異常能力が特定の人物を狙い撃ちにするタイプのそれだというもの。2つ目、こうして死体を置いて、仲間をおびき寄せるというもの。どちらにしても、私がドラマのように格好よく救出される最終回はあまり期待できない。
 
-ともかく、既に報告されているこの空間の異常性質が正しければ、私には最低1週間くらいは正気を保っていられる時間があるようだ。それにしても - ここの異常な色相を見てると吐き気がする。
+ともかく、既に報告されているこの空間の異常性質が正しければ、私には最低1週間くらいは正気を保っていられる時間があるようだ。それにしても...ここの異常な色相を見てると吐き気がする。
 
 [[/div]]
-
 [[div class=&#34;blockquote&#34;]]
-
-**__8月16日:__**
 
 状況は好転していない。
 
-1日かけて死体を調べたが、既に書かれていたような脳の外因的な損傷が見られた以外は異常性は発見できなかった -- ここには何かが居るのだろう。そしてそれが、彼女の頭を貪っている。-- 今後の苦痛に満ちた毎日を考えると、いっそ死んでしまったほうが楽なのかもしれない。霊安所の9人の遺体.はどれもやせ細ってはいたが、安らかに眠っているかのように見えた。皆自分が誰であるかも思い出せずに死んだわけで、ある意味幸福な最期だったのではないだろうか。
+1日かけて死体を調べたが、既に書かれていたような脳の外因的な損傷が見られた以外は異常性は発見できなかった。ここには何かが居るのだろう。そしてそれが、彼女の頭を貪っている。今後の苦痛に満ちた毎日を考えると、いっそ死んでしまったほうが楽なのかもしれない。霊安所の[[span class=&#34;accent&#34;]]9人の遺体[[/span]]はどれもやせ細ってはいたが、安らかに眠っているかのように見えた。皆自分が誰であるかも思い出せずに死んだわけで、ある意味幸福な最期だったのではないだろうか。
 
 [[/div]]
-
 [[div class=&#34;blockquote&#34;]]
 
-**__8月17日:__**
+記憶が残っているうちに書いておくと、私は初めてあの[[span class=&#34;accent2&#34;]]アノマリー[[/span]]の姿を見た。何度もこの日誌に書いていることだが改めて確信したことがある。あれは私を見ている。何らかの手段でこちらを観察している。私があれを認識したとき、あれも私を見つめ返した。あれは --
 
-記憶が残っているうちに書いておくと、私は初めてあのアノマリーの姿を見た -- 何度もこの日誌に書いていることだが改めて確信したことがある。あれは私を見ている。何らかの手段でこちらを観察している。私があれを認識したとき、あれも私を見つめ返した。あれは --
-
-この世界の物質の成分分析は、既に記録されているとおり、何の結果も出力しない。検査装置が壊れているのでなければだが、これは物理的な質量を持っておらず、また霊的実体でもないことになる。ただひとつ理解できたことは、この水からは血のような臭いがするということだけだ。
+この世界の物質の成分分析は、既に記録されているとおり、何の結果も出力しない。検査装置が壊れているのでなければだが、これは物理的な質量を持っておらず、また霊的実体でもないことになる。ただひとつ理解できたことは、この水からは[[span class=&#34;accent2&#34;]]血[[/span]]のような臭いがするということだけだ。
 
 [[/div]]
-
 [[div class=&#34;blockquote&#34;]]
-
-**__8月18日:__**
 
 凡そ2週間かけて、この不可解極まりない原理で動いている端末に外部からデータを送ることに成功した。外にあった携帯電話の無線基地局をキャンピングカーに移植して、PDA端末と接続したのだ。偽物のサイト内にいても、私の健忘が深刻化する以外に新しい発見はない。おそらく、サイト内に死体が安置されていない何人かは外部の探索を試みて力尽きたのだろうが、各地に無線基地局を建設しながらドライブしようとしている馬鹿は私ぐらいなものだろう。昔学んだ電気工学の知識がこんなところで役に立つとは思わなかった。
 
 キャンピングカーにはありったけの食料と工具、予備のガソリンを詰め込んでみたが、そもそも車で旅が出来るような場所なのか判然としない。せめてもう少しこの世界が狭ければ、ドローンを改造して何とか出来たのかも知れないが、数百キロを飛べる自動機械を製作していたらその間に半年ぐらい経ってしまうだろう。パイロット資格を持つエージェントでも来てくれればいいのだが。私自身がどうなろうとこの記録を残すことに意味はあると信じて、明日の早朝出発する。
 
 [[/div]]
-
 [[div class=&#34;blockquote&#34;]]
 
-**__8月19日:__**
-
-出発から1日が経過すると、世界から昼夜がなくなった。私は常にぬめるようなオレンジ色の中にいる。先程はニューヨークのブルックリン橋を渡ったが、今は長野県の松本市内だ……3日かけて日本アルプスもどきを迂回したのはどうやら無駄だったらしい。どちらの都市にせよ、郊外が殆ど無く名所や市街地のみが歪なコピー映像のように何重にも連結されている。どのように記憶を連結したらこんな魔境が出来上がるんだろうか。
+出発から1日が経過すると、世界から昼夜がなくなった。私は常にぬめるようなオレンジ色の中にいる。先程はニューヨークのブルックリン橋を渡ったが、今は長野県の松本市内だ。3日かけて日本アルプスもどきを迂回したのはどうやら無駄だったらしい。どちらの都市にせよ、郊外が殆ど無く名所や市街地のみが歪なコピー映像のように何重にも連結されている。どのように記憶を連結したらこんな魔境が出来上がるんだろうか。
 
 市内には私の実家があった。古ぼけた瓦屋根と整備の行き届いた庭は私の記憶にあるそのままで、今にも母が玄関の奥から私を迎え入れてきそうな雰囲気があった。私は玄関の前に立つと、中に本当に何者かの気配を感じて立ち止まった。正面に立たぬよう注意しながら引き戸を勢いよく開けると、中から鴉のような鳥が勢いよく飛び出してきた。直ぐに追いかけようと試みたが、気付くとカラスは消え失せていた。
 
-あれが本当に生物であったのか、単なる幻であったのかは判然としない。実家の扉の奥から流れてきた、猛獣の吐息のような風の匂いを嗅ぎ、私はその場から逃げ出した。もう二度とこの場所に立ち寄ることはないだろう。
+あれが本当に生物であったのか、単なる幻であったのかは判然としない。実家の扉の奥から流れてきた、[[span class=&#34;accent2&#34;]]猛獣の吐息のような風の匂い[[/span]]を嗅ぎ、私はその場から逃げ出した。もう二度とこの場所に立ち寄ることはないだろう。
 
 [[/div]]
-
 [[div class=&#34;blockquote&#34;]]
 
-**__8月20日:__**
-
-探し続けて1ヶ月、この世界の終点は、あっけなく見つかった。見渡す限り、無限に広がる赤い海。海に入る川の水はどれも普通だったのに。念のため数百倍に薄めて軽く指先で触れてみた。原因不明の頭痛に襲われた直後、直ぐに真っ白いタオルで手を拭いた。タオルは血に染まっていた。
+探し続けて1ヶ月、この世界の終点は、あっけなく見つかった。見渡す限り、無限に広がる[[span class=&#34;accent2&#34;]]赤い海[[/span]]。海に入る川の水はどれも普通だったのに。念のため数百倍に薄めて軽く指先で触れてみた。原因不明の頭痛に襲われた直後、直ぐに真っ白いタオルで手を拭いた。タオルは血に染まっていた。
 
 一日中車で走り続けていたが、海岸線はどこも似通っており、勿論船舶のような気の利いたものは存在していない。たぶん、行っても行っても同じ景色が広がっているのだろう。私はここから出るためなら、たとえ地獄に落ちても構わないと思っていた。だが、それは浅はかな考えだった。ここは地獄だ。私は自分の死よりも一足先に、地獄へ辿り着いてしまったのだ。
 
 [[/div]]
-
 [[div class=&#34;blockquote&#34;]]
-
-**__8月21日:__**
 
 来たはずの道が消えた。もう海岸から元に戻ることが出来ない。糞。糞糞糞糞糞。
 
 [[/div]]
-
 [[div class=&#34;blockquote&#34;]]
-
-[データ紛失]
-
-[[/div]]
-
-[[div class=&#34;blockquote&#34;]]
-
-**__8月[#]日:__**
 
 私は数十日ぶりにこのPDAを触っているようだ。
 
@@ -1375,19 +1617,21 @@ SCP-2844-JPに関する研究は、抽象的な概念の研究を専門とする
 
 [[/div]]
 
-= **&lt;抜粋終了&gt;**
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
+
 [[/div]]
+
+
+[[div class=&#34;notation table6 tableb&#34; style=&#34;margin: 5vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.IV:[[/span]] 時系列
 ----
-[[div class=&#34;modal&#34;]]
-= **補遺Ⅳ/2844-JP:** 時系列
+@@ @@
 
-----
+2021年11月12日、それまでに全世界で発生した大規模なSCP-2844-JPの拡大事象を理由に、財団は局所的な**βK-クラス&#34;捲られたヴェール&#34;イベント**の発生を宣言しました。当該イベントの正式な宣言は財団の保持する正常と異常の臨界「ヴェール」が局所的に崩壊したことを意味しており、この前例のない事情に最優先で対応するためでもありました。以下に記載されるのは2021年11月上旬までの特筆すべきタイムラインです。
 
-2021年11月12日、それまでに全世界で発生した大規模なSCP-2844-JPの拡大事象を理由に、財団は局所的な**βK-クラス&#34;捲られたヴェール&#34;イベント**の発生を宣言しました。当該イベントの正式な宣言は財団の保持する正常と異常の臨界 - 「ヴェール」が局所的に崩壊したことを意味しており、この前例のない事情に最優先で対応するためでもありました。以下に記載されるのは2021年11月上旬までの特筆すべきタイムラインです。
 
-[[div class=&#34;tableb table&#34;]]
-
-[[table class=&#34;wiki-content-table&#34; style=&#34;width: 100%;&#34;]]
+[[table class=&#34;custom_table&#34; style=&#34;width: 100%;&#34;]]
 [[row]]
 [[hcell]]
 日時
@@ -1402,7 +1646,7 @@ SCP-2844-JPに関する研究は、抽象的な概念の研究を専門とする
 2021/10/10
 [[/cell]]
 [[cell]]
-SCP-2844-JP-Aの最初期の目撃例(//SCP-2844-JP-A2~A7//)が発生。財団の察知以前に公共メディアによって日本国内に「男女5名の不審死事件」として報道される。渡航履歴から、SCP-2844-JP-A2, A5はそれぞれアメリカ、台湾に更に渡航したことが判明している。また匿名の人物によってSCP-2844-JP-A実体が撮影され、SNSに投稿されていた。投稿は1時間以内に財団Webクローラーが削除したが、閲覧に関するアナリティクスは少なくとも - 20万人以上、不特定多数のユーザーが画像を閲覧した事を示している。
+SCP-2844-JP-Aの最初期の目撃例 (//SCP-2844-JP-A2~A7//) が発生。財団の察知以前に公共メディアによって日本国内に「男女5名の不審死事件」として報道される。渡航履歴から、SCP-2844-JP-A2, A5はそれぞれアメリカ、台湾に更に渡航したことが判明している。また匿名の人物によってSCP-2844-JP-A実体が撮影され、SNSに投稿されていた。投稿は1時間以内に財団Webクローラーが削除したが、閲覧に関するアナリティクスは少なくとも -- 20万人以上、不特定多数のユーザーが画像を閲覧した事を示している。
 [[/cell]]
 [[/row]]
 
@@ -1438,7 +1682,7 @@ SCP-2844-JP-Aの最初期の目撃例(//SCP-2844-JP-A2~A7//)が発生。財団�
 2021/10/22
 [[/cell]]
 [[cell]]
-ジョー・バイデン合衆国大統領がSCP-2844-JP-A299実例として報告される。死亡時の記録が文面で公開された。イタリア支部におけるサイト-プルトーネ, ミネルヴァで初のSCP-2844-JP-A実例が報告される。[http://scp-jp.wikidot.com/scp-5000 プロジェクト・ラプラス]の検討が開始される。
+ジョー・バイデン合衆国大統領がSCP-2844-JP-A299実例として報告される。死亡時の記録が文面で公開された。イタリア支部におけるサイト-プルトーネ、ミネルヴァで初のSCP-2844-JP-A実例が報告される。[http://scp-jp.wikidot.com/scp-5000 プロジェクト・ラプラス]の検討が開始される。
 [[/cell]]
 [[/row]]
 
@@ -1447,7 +1691,7 @@ SCP-2844-JP-Aの最初期の目撃例(//SCP-2844-JP-A2~A7//)が発生。財団�
 2021/10/23
 [[/cell]]
 [[cell]]
-メディアの完全な情報統制の実現。全世界的なデモ活動、および暴徒化は継続している。世界オカルト連合、蛇の手、マナによる慈善財団など複数の超常団体が本格的な干渉を開始。財団内部の情報漏洩により、SCP-2844-JPに関する一部の研究資料が世界オカルト連合に渡る。SCP-2844-JPの撹乱クラスが**AMIDA-CLASS**に変更される。
+メディアの完全な情報統制の実現。全世界的なデモ活動、および暴徒化は継続している。世界オカルト連合、蛇の手、マナによる慈善財団など複数の超常団体が本格的な干渉を開始。財団内部の情報漏洩により、SCP-2844-JPに関する一部の研究資料が世界オカルト連合に渡る。SCP-2844-JPの撹乱クラスが[[span class=&#34;table5&#34;]][[span class=&#34;st&#34;]]AMIDA-CLASS[[/span]][[/span]]に変更される。
 [[/cell]]
 [[/row]]
 
@@ -1480,185 +1724,176 @@ SCP-2844-JP-Aの最初期の目撃例(//SCP-2844-JP-A2~A7//)が発生。財団�
 [[/cell]]
 [[/row]]
 [[/table]]
+
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
+
 [[/div]]
-[[/div]]
+
+
+[[div class=&#34;jotting table6 tableb&#34; style=&#34;margin: 5vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.V:[[/span]] 計画提言
 ----
 @@ @@
 
-[[div style=&#34;width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));&#34;]]
-= **Failed to login: Bad Login!**
-[[div style=&#34;width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;&#34;]]
-
-= 入力されたアクセストークンは警告されています、24時間後に再度お試しください - 2/3
-
-[[/div]]
-[[/div]]
-
-@@ @@
-----
-[[div class=&#34;modal&#34;]]
-= **補遺Ⅴ/2844-JP:** プロジェクトMONOGON
-
-----
-
-現時点で確認されているSCP-2844-JPの異常性は、一般的には人間の不審死と、それを認識した場合の異常な混乱という形で観測することが可能です。明確に事件当初と異なるのは、SCP-2844-JPおよびDREAD-STATEで確認される異常性そのものです。事件当初、不明な実体群を直接認識することでベクターとなる筈であったDREAD-STATEは、現在はSCP-2844-JP-Aベクターを媒体とすることでも拡大します。その範囲は具体的にSCP-2844-JP-Aに指定される&#34;死体&#34;に留まらず、関連する物質、存在、概念 - そして言語にまでも拡大しています。特筆すべきことに、これらの拡大のプロセスは言語の分野において、より顕著に見られます。
+現時点で確認されているSCP-2844-JPの異常性は、一般的には人間の不審死と、それを認識した場合の異常な混乱という形で観測することが可能です。明確に事件当初と異なるのは、SCP-2844-JPおよび[[span class=&#34;accent&#34;]]震駭[[/span]]で確認される異常性そのものです。事件当初、不明な実体群を直接認識することでファクターとなる筈であった[[span class=&#34;accent&#34;]]震駭[[/span]]は、現在はSCP-2844-JP-Aベクターを媒体とすることでも拡大します。その範囲は具体的にSCP-2844-JP-Aに指定される「死体」に留まらず、関連する物質、存在、概念、そして言語にまでも拡大しています。特筆すべきことに、これらの拡大のプロセスは言語の分野において、より顕著に見られます。
 
 この事態を踏まえ、概念物理学研究科、並びにサイト-17の上層部らは合同会議を開催しました。
 
-[[div class=&#34;blockquote&#34;]]
-
-= **合同会議 議事録**
-
-----
-
-**出席者:**
-
-ティルダ・ムース管理官 - //サイト-17共同管理官//
-
-ヴィルジール・ヴァリエ管理官 - //サイト-17共同管理官//
-
-プレースホルダー・マクドクトラート博士 - //概念物理学研究科部門長//
-
-ベッドロック・エンダース博士 - //サイト-17収容スペシャリスト//
-
-ジェイム・マーロウ博士 - //概念物理学研究科研究責任者//
-
-O5-1 - //監督評議会//
-
-O5-2 - //監督評議会//
-
-----
-
-= **&lt;ログ開始&gt;**
-
-= //&lt;テーブルを挟み、O5を除く5名が同席している。O5の2名はリモートで出席している。&gt;//
-
-**ムース管理官:** ええと - つまりSCP-2844-JPは私たちの認識を「啄んで」いるの？コソコソ隠れながらそうして餌を食べて - 生き延びていたと。そういう理解で合っているかしら、博士？
-
-**プレースホルダー博士:** ええ、その認識で問題ありません。SCP-2844-JPは特定のミーム、私たちの心に太古より巣食っています。非常に...非現実的でしょうが、2844-JPは生きていて、匂いを嗅いだり...或いは獲物を見つけるために動いています。これが何を意味するか分かりますか？
-
-= //&lt;沈黙。&gt;//
-
-**ヴァリエ管理官:** あまり年長者を試すような真似はしない方が良いですよ。皆が貴方のように空想が得意な訳では無いですから。
-
-**プレースホルダー博士:** 失礼しました。つまりですね、2844-JPは環境に適応するために進化するんです。例えば - 4chanのx板[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]超常現象板。[[/span]]が7万年前から存在していたと考える人は居ませんよね？2844-JPは太古からそのままだった訳ではありません。
-
-**エンダース博士:** 言い換えれば - SCP-2844-JPは予期しない行動を起こす可能性があるという事ですね？さも知性体のように。
-
-**プレースホルダー博士:** さも - というより、奴は実体を持たないだけで生きていると言ってよいでしょう。ヴェールの向こう側の人々は、私たちが恐怖を認識するまでの数百年の間 - ずっとSCP-2844-JPの脅威に曝されてきました。しかし財団も例外ではありません。
-
-**マーロウ博士:** 先日の&#34;隔離措置&#34;の事でしょうか？
-
-= //&lt;プレースホルダー博士が頷く。&gt;//
-
-**プレースホルダー博士:** ご名答。サイト-17において、2844-JPについて研究を進めていた研究員の内何人かが、実際に2844-JPに曝露しました。この場合 - &#34;感染&#34;と言った方が適切でしょうかね？
-
-**ムース管理官:** どちらでも。
-
-**エンダース博士:** 彼らが回復する見込みは無いのでしょうか？その...彼らの中には私の部下も居て、今後の行動に支障が出ては困るのです。
-
-**プレースホルダー博士:** 最善を尽くしますが...治療は混迷しています。恐らくは、明後日が峠かと。
-
-**エンダース博士:** クソ。
-
-**ヴァリエ管理官:** 状況は、我々が思う以上に深刻であるという事ですか？サイト-17が対応できる事はありますか？
-
-**プレースホルダー博士:** 外部との接触を極力避け、最小限の被害で留めるには - 独立したエリアを管理する必要があります。必要な情報にアクセスできるのは、ほんの一部でいい。
-
-**マーロウ博士:** 狂った職員らの残骸はどのように処分するのですか？暴徒化した職員の鎮圧は？
-
-**プレースホルダー博士:** [http://scp-jp.wikidot.com/aiad-homescreen Galileo.aic]が適任でしょう。彼に全ての管理を委任します。
-
-**エンダース博士:** その - //今思っただけで、私はミーム学に詳しくないのですが// - SCP-2844-JPがミームとして媒介しているなら、別のミームで上書きできるのではないでしょうか？
-
-**プレースホルダー博士:** 単純な名辞災害を応用して、遡及的に&#34;オーバーライド&#34;する事は難しくありません。しかし、効率的に上書き媒体を広める方法がありません。下手にプロトコルを実行すれば、ヴェール崩壊が先に起こるでしょう。
-
-**マーロウ博士:** だったらどうすれば良いんですか。私たちはこのクソみたいなミームが数年の間に世界を貪る様子を - 眺めていろと？この**##dc0233|[瘴気]##**[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]##dc0233|**VIOLENCE**##[[/span]]を -
-
-**プレースホルダー博士:** その名を使うな！
-
-**エンダース博士:** マニュアルに従え！除去作業班 --
-
-= //&lt;沈黙。&gt;//
-
-**マーロウ博士:** ...何も、起きませんね。我々は皆、正気を保っています。
-
-**プレースホルダー博士:** ああ、これは - いやいい。問題なければそれでいい。畜生。
-
-**ムース管理官:** 博士、何をしたんですか？
-
-**マーロウ博士:** ああ - 分かりませんが...私が取得した対抗ミームが働いているのではないでしょうか？
-
-**プレースホルダー博士:** 今なんと？
-
-**マーロウ博士:** &#34;対抗ミーム&#34;。
-
-**エンダース博士:** あ - 奴に対してもそれが有効なのか？認識を拒絶出来るのか、なら -
-
-= //&lt;プレースホルダー博士は所持していた端末を取り出し、&#34;機密文書&#34;にアクセスする。&gt;//
-
-**プレースホルダー博士:** 結論が出ました。マーロウ、貴方のおかげです - ただ、今後は気を付けてください。今考えたことですが - ミームは文化であり、汚染です。ならばどうするべきでしょう？
-
-= //&lt;沈黙。&gt;//
-
-**プレースホルダー博士:** 私たちは皆、書き換え可能な識別情報を持っています。-- それをオーバーライドすればいい。
-
-= //&lt;プレースホルダー博士は端末を見える位置に置く。端末には[http://scp-jp.wikidot.com/solvex-s-proposal 燃え盛るランプの映像]が流れる。&gt;//
-
-**プレースホルダー博士:** 重要なのは、視点を変えることです。もし、彼ら全てが異常を認識したら？ - それは異常ではなく、普遍的なものになります。
-
-**エンダース博士:** 話が早いですね。その為に必要なものは - サイト-17の資源だけで完結します。
-
-**プレースホルダー博士:** 管理部門へ申請した覚えはありませんが。
-
-**エンダース博士:** ご心配なく - 私たちは[*http://scp-jp.wikidot.com/ikkeby-v-s-proposal 無制限のリソース]を割くことが可能です。
-
-= **&lt;ログ終了&gt;**
-
-----
-
-プレースホルダー博士の提言は監督評議会と下位評議会によって承認され、SCP-2844-JPの収容に関する全ての試みは[[span class=&#34;fear&#34;]]プロジェクトMONOGON[[/span]]として確立されました。過去の[http://scp-jp.wikidot.com/scp-2994-jp 形式的な収容事例]に基づき、[http://scp-jp.wikidot.com/scp-2111 適切な研究部門]が介入します。
-
-[[/div]]
-@@ @@
-
-----
-
-@@ @@
-
-[[div class=&#34;limit&#34;]]
-[[div class=&#34;anchor&#34;]]
-[[div class=&#34;sidebox&#34;]]
-
-[[div class=&#34;invert&#34;]]
-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-169-uq08/%E5%BD%A2%E5%BC%8F%E9%83%A8%E9%96%80.svg width=&#34;80px&#34; style=&#34;float: right;&#34;]]
-[[/div]]
-
-+++ [*http://scp-jp.wikidot.com/formality-department-hub 形式部門]
-
-形式部門(//Formality Department//)は、超常が発生する際に不可欠な要素や条件といった”過程”を精査し、それらの組み合わせである”形式”の核を炙り出します。時に非科学的な”形式”を真剣に取り扱う業務内容から当部門を”儀典”部門と揶揄する者もいますが、形式部門はプロトコル作成や収容作戦立案の監修を担う、財団の屋台骨の一つです。
-
-//--　　　--形式部門からの一部引用//
-
-[[/div]]
-[[/div]]
-
-[[/div]]
-
-[[div class=&#34;tableb table6&#34;]]
-
-[[table class=&#34;wiki-content-table&#34; style=&#34;width: 100%;&#34;]]
+[[table style=&#34;width: 100%;&#34;]]
 [[row]]
 [[hcell]]
-PROJECT MONOGON
+音声映像転写 サイト-17.I
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 
-[[div class=&#34;invert&#34;]]
-= [[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-168-reno/Project%20MONOGON.svg width=&#34;150px&#34;]]
+**出席者:**
+
+* ティルダ・ムース管理官 [[size 85%]]//-- サイト-17共同管理官//[[/size]]、
+* ヴィルジール・ヴァリエ管理官 [[size 85%]]//-- サイト-17共同管理官//[[/size]]、
+* プレースホルダー・マクドクトラート博士 [[size 85%]]//-- 概念物理学研究科部門長//[[/size]]、
+* ベッドロック・エンダース博士 [[size 85%]]//-- サイト-17収容スペシャリスト//[[/size]]、
+* ジェイム・マーロウ博士 [[size 85%]]//-- 概念物理学研究科研究責任者//[[/size]]、
+* O5-1 [[size 85%]]//-- 監督評議会//[[/size]]、
+* O5-2 [[size 85%]]//-- 監督評議会//[[/size]]。
+
+[[/cell]]
+[[/row]]
+[[row]]
+[[hcell]]
+&lt;&lt;転写開始&gt;&gt;
+[[/hcell]]
+[[/row]]
+[[row]]
+[[hcell]]
+[[div class=&#34;blockquote&#34;]]
+
+[[span class=&#34;quote_desc&#34;]]&lt;テーブルを挟み、O5を除く5名が同席している。O5の2名はリモートで出席している。&gt;[[/span]]
+
+**ムース管理官:** ええと、つまりSCP-2844-JPは私たちの認識を「啄んで」いるの？コソコソ隠れながらそうして餌を食べて、生き延びていたと。そういう理解で合っているかしら、博士？
+
+**プレースホルダー博士:** ええ、その認識で問題ありません。SCP-2844-JPは特定のミーム、私たちの心に太古より巣食っています。非常に非現実的でしょうが、2844-JPは生きていて、匂いを嗅いだり、或いは獲物を見つけるために動いています。これが何を意味するか分かりますか？
+
+[[span class=&#34;quote_desc&#34;]]&lt;沈黙。&gt;[[/span]]
+
+**ヴァリエ管理官:** あまり年長者を試すような真似はしない方が良いですよ。皆が貴方のように空想が得意な訳では無いですから。
+
+**プレースホルダー博士:** 失礼しました。つまりですね、2844-JPは環境に適応するために進化するんです。2844-JPは太古からそのままだった訳ではありません。
+
+**エンダース博士:** 言い換えれば、SCP-2844-JPは予期しない行動を起こす可能性があるという事ですね？さも知性体のように。
+
+**プレースホルダー博士:** 「さも」というより、奴は実体を持たないだけで生きていると言ってよいでしょう。ヴェールの向こう側の人々は、私たちが恐怖を認識するまでの数百年の間、ずっとSCP-2844-JPの脅威に曝されてきました。しかし財団も例外ではありません。
+
+**マーロウ博士:** 先日の「隔離措置」の事でしょうか？
+
+[[span class=&#34;quote_desc&#34;]]&lt;プレースホルダー博士が頷く。&gt;[[/span]]
+
+**プレースホルダー博士:** ご名答。サイト-17において、2844-JPについて研究を進めていた研究員の内何人かが、実際に2844-JPに曝露しました。この場合「感染」と言った方が適切でしょうかね？
+
+**ムース管理官:** どちらでも。
+
+**エンダース博士:** 彼らが回復する見込みは無いのでしょうか？その...彼らの中には私の部下も居て、今後の行動に支障が出ては困るのです。
+
+**プレースホルダー博士:** 最善を尽くしますが、治療は混迷しています。恐らくは、明後日が峠かと。
+
+**エンダース博士:** クソ。
+
+**ヴァリエ管理官:** 状況は、我々が思う以上に深刻であるという事ですか？サイト-17が対応できる事はありますか？
+
+**プレースホルダー博士:** 外部との接触を極力避け、最小限の被害で留めるには、独立したエリアを管理する必要があります。必要な情報にアクセスできるのは、ほんの一部でいい。
+
+**マーロウ博士:** 狂った職員らの残骸はどのように処分するのですか？暴徒化した職員の鎮圧は？
+
+**プレースホルダー博士:** [http://scp-jp.wikidot.com/aiad-homescreen Galileo.aic]が適任でしょう。彼に全ての管理を委任します。
+
+**エンダース博士:** その、あー、私は概念物理学を専攻としている訳ではないので、ミームを具現体として捉えることは難しいのですが...SCP-2844-JPがミームとして媒介しているなら、別のミームで上書きできるのではないでしょうか？
+
+**プレースホルダー博士:** 単純な名辞災害を応用して、遡及的に”オーバーライド”する事は難しくありません。しかし、効率的に上書き媒体を広める方法がありません。下手にプロトコルを実行すれば、ヴェール崩壊が先に起こるでしょう。
+
+**マーロウ博士:** だったらどうすれば良いんですか？私たちはこのクソみたいなミームが数年の間に世界を貪る様子を。眺めていろと？この[[span class=&#34;accent2&#34;]]瘴気[[/span]]を -
+
+**プレースホルダー博士:** その名を使うな！
+
+**エンダース博士:** マニュアルに従え！除去作業班 --
+
+[[span class=&#34;quote_desc&#34;]]&lt;沈黙。&gt;[[/span]]
+
+**マーロウ博士:** ...何も、起きませんね。我々は皆、正気を保っています。
+
+**プレースホルダー博士:** ああ、これは -- いやいい。問題なければそれでいい。畜生。
+
+**ムース管理官:** 博士、何をしたんですか？
+
+**マーロウ博士:** 分からない、わから -- 私が取得した対抗ミームが働いているのではないでしょうか？
+
+**プレースホルダー博士:** 今なんと？
+
+**マーロウ博士:** 「対抗ミーム」。
+
+**エンダース博士:** あ -- 奴に対してもそれが有効なのか？認識を拒絶出来るのか、なら --
+
+= //&lt;プレースホルダー博士は所持していた端末を取り出し、”機密文書”にアクセスする。&gt;//
+
+**プレースホルダー博士:** 結論が出ました。マーロウ、貴方のおかげです。ただ、今後は気を付けてください。 (間を置く) -- 今考えたことですが、ミームは文化であり、汚染です。ならばどうするべきでしょう？
+
+[[span class=&#34;quote_desc&#34;]]&lt;沈黙。&gt;[[/span]]
+
+**プレースホルダー博士:** 私たちは皆、書き換え可能な識別情報を持っています。-- それをオーバーライドすればいい。
+
+[[span class=&#34;quote_desc&#34;]]&lt;プレースホルダー博士は端末を見える位置に置く。端末には[http://scp-jp.wikidot.com/solvex-s-proposal 燃え盛るランプの映像]が流れる。&gt;[[/span]]
+
+**プレースホルダー博士:** 重要なのは、視点を変えることです。もし、彼ら全てが異常を認識したら？それは異常ではなく、普遍的なものになります。
+
+**エンダース博士:** 話が早いですね。その為に必要なものは - サイト-17の資源だけで完結します。
+
+**プレースホルダー博士:** 管理部門へ申請した覚えはありませんが。
+
+**エンダース博士:** ご心配なく -- 私たちは[*http://scp-jp.wikidot.com/ikkeby-v-s-proposal 無制限のリソース]を割くことが可能です。
+
 [[/div]]
+[[/hcell]]
+[[/row]]
+[[row]]
+[[hcell]]
+&lt;&lt;転写終了&gt;&gt;
+[[/hcell]]
+[[/row]]
+[[row]]
+[[cell]]
+
+**後文:** プレースホルダー博士の提言は監督評議会と下位評議会によって承認され、SCP-2844-JPの収容に関する全ての試みは[[span class=&#34;table6&#34;]][[span class=&#34;st&#34;]]プロジェクト: モノゴン[[/span]][[/span]]として確立されました。過去の[http://scp-jp.wikidot.com/scp-2994-jp 形式的な収容事例]に基づき、[http://scp-jp.wikidot.com/scp-2111 適切な研究部門]が介入します。
+
+[[/cell]]
+[[/row]]
+[[row]]
+[[hcell]]
+[[/hcell]]
+[[/row]]
+[[/table]]
+
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
+
+[[/div]]
+
+
+[[div class=&#34;notation table6 tableb&#34; style=&#34;margin: 5vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.VI:[[/span]] プロジェクト・モノゴン
+----
+@@ @@
+
+[[table style=&#34;width: 100%;&#34;]]
+[[row]]
+[[hcell]]
+計画概要
+[[/hcell]]
+[[/row]]
+[[row]]
+[[cell]]
+
+[[=image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-168-reno/Project%20MONOGON.svg width=&#34;60px&#34; style=&#34;margin: 2vh auto; filter: brightness(.3);&#34;]]
 
 [[div style=&#34;font-size: 86%; text-align: center; font-style: italic;&#34;]]
 
@@ -1671,23 +1906,26 @@ PROJECT MONOGON
 2021/12/23
 
 [[/div]]
-
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 
-**序文:** 致命的な認識災害であるSCP-2844-JPは、遡及的な死亡事故の判明によって重大な脅威であると見做された。財団の現在の目的は、終末論的なAK-クラス(&#34;文明崩壊&#34;)シナリオの発生を未然に防ぎ、SCP-2844-JPを完全に収容することにある。プレースホルダー・マクドクトラート博士およびベッドロック・エンダース博士の共同提案により、財団の保有する無制限の潜在資産を本プロジェクトに投入し、世界規模でのプロトコルの実行が起草された。プロジェクトMONOGONの最大の関心は、財団の保有する低危険度の異常存在を用いた - 形而上的な概念の収容である。
+**序文:** 致命的な認識災害であるSCP-2844-JPは、遡及的な死亡事故の判明によって重大な脅威であると見做された。財団の現在の目的は、終末論的なAK-クラス(”文明崩壊”)シナリオの発生を未然に防ぎ、SCP-2844-JPを完全に収容することにある。プレースホルダー・マクドクトラート博士およびベッドロック・エンダース博士の共同提案により、財団の保有する無制限の潜在資産を本プロジェクトに投入し、世界規模でのプロトコルの実行が起草された。プロジェクト: モノゴンの最大の関心は、財団の保有する低危険度の異常存在を用いた -- 形而上的な概念の収容である。
 
-**概要:** SCP-2844-JPは恐怖という概念に固執する一方で、それ自体に依存して存在を確立させている。軽微な恐怖を発露させることによって対象者を生かし、その恐怖を拡散させることで自身を複製している。一方で、自らの脅威となり得る存在 - この場合はSCP-2844-JPの本質を見抜く者達 - を誘い、抹殺する。これがSCP-2844-JPの第2の異常性である。
+**概要:** SCP-2844-JPは[[span class=&#34;accent&#34;]]恐怖[[/span]]という概念に固執する一方で、それ自体に依存して存在を確立させている。軽微な恐怖を発露させることによって対象者を生かし、その恐怖を拡散させることで自身を複製している。一方で、自らの脅威となり得る存在 -- この場合はSCP-2844-JPの本質を見抜く者達 -- を誘い、抹殺する。これがSCP-2844-JPの第2の異常性である。
 
-形式部門の検証によって、特筆すべきSCP-2844-JPの反応と異常性の条件が判明した。以下に記載される:
+[[div class=&#34;blockquote&#34; style=&#34;font-size: 90%; font-style: italic;&#34;]]
 
-[[div class=&#34;tableb table6&#34;]]
+[*http://scp-jp.wikidot.com/formality-department-hub 形式部門]は、超常が発生する際に不可欠な要素や条件といった”過程”を精査し、それらの組み合わせである”形式”の核を炙り出します。時に非科学的な”形式”を真剣に取り扱う業務内容から当部門を”儀典”部門と揶揄する者もいますが、形式部門はプロトコル作成や収容作戦立案の監修を担う、財団の屋台骨の一つです。
 
-[[table class=&#34;wiki-content-table&#34; style=&#34;width: 100%;&#34;]]
+[[size 90%]]//--　　　--形式部門からの一部引用//[[/size]]
 
+[[/div]]
+
+**形式部門**の検証によって、特筆すべきSCP-2844-JPの反応と異常性の条件が判明した。以下に記載される。
+
+[[table style=&#34;width: 100%;&#34;]]
 [[row]]
 [[hcell]]
 条件
@@ -1696,83 +1934,72 @@ PROJECT MONOGON
 反応
 [[/hcell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-DREAD-STATEイベントの知覚 (死体の目視など)
+[[span class=&#34;accent&#34;]]震駭[[/span]]イベントの知覚 (死体の目視など)
 [[/cell]]
 [[cell]]
 [[span class=&#34;fear&#34;]]具体性の無い不安、恐怖心の拡散[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-DREAD-STATEイベントに対する、反復による条件付け (複数回の目撃, 知覚)
+[[span class=&#34;accent&#34;]]震駭[[/span]]に対する、反復による条件付け (複数回の目撃, 知覚)
 [[/cell]]
 [[cell]]
-##dc0233|やや深刻な、内在的SCP-2844-JPの弱体化##
+[[span class=&#34;accent2&#34;]]やや深刻な、内在的SCP-2844-JPの弱体化[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-装飾的な言葉遣いによる、不規則的なSCP-2844-JPへの命名 ([[span class=&#34;fear&#34;]]本能的な逃走の衝動[[/span]]など)
+装飾的な言葉遣いによる、不規則的なSCP-2844-JPへの命名 ([[span class=&#34;accent&#34;]]本能的な逃走の衝動[[/span]]など)
 [[/cell]]
 [[cell]]
-[[span class=&#34;fear&#34;]]無反応[[/span]]
+[[span class=&#34;accent&#34;]]無反応[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-機械的な、SCP-2844-JPに対する命名規則の集積記憶 (具体例: ##dc0233|Galileo.aic##)
+機械的な、SCP-2844-JPに対する命名規則の集積記憶 (具体例: [[span class=&#34;accent&#34;]]Galileo.aic[[/span]])
 [[/cell]]
 [[cell]]
-##dc0233|敵対的##
+[[span class=&#34;accent&#34;]]敵対的[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 SCP-2844-JPに曝露した対象者についての、あらゆる名辞
 [[/cell]]
 [[cell]]
-##dc0233|中立的 - 或いは敵対的##
+[[span class=&#34;accent2&#34;]]中立的 - 或いは敵対的[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 SCP-2844-JPに曝露した対象者に関連した物品
 [[/cell]]
 [[cell]]
-##dc0233|敵対的##, ##dc0233|**[削除済]**##
+[[span class=&#34;accent2&#34;]]敵対的、[削除済][[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-##dc0233|[データ崩壊]##に関する全ての名辞
+[[span class=&#34;accent2&#34;]][データ崩壊][[/span]]に関する全ての名辞
 [[/cell]]
 [[cell]]
-##dc0233|**[削除済]**##
+[[span class=&#34;accent2&#34;]][削除済][[/span]]
 [[/cell]]
 [[/row]]
-
 [[/table]]
-[[/div]]
 
-形式部門-ミーム部門の見解によると、こうした一連のプロセスは全て人間の深層心理に影響を与えるものであると考えられる。これらは共通して - [*https://ja.wikipedia.org/wiki/%E8%AA%8D%E7%9F%A5%E7%9A%84%E4%B8%8D%E5%8D%94%E5%92%8C 認知的不協和][[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]認知的不協和は、人が自身の認知とは異なる、矛盾した認知を持つ状態において発生する不快感を表す用語です。[[/span]]による認知の湾曲が関連している。
+形式部門-ミーム部門の見解によると、こうした一連のプロセスは全て人間の深層心理に影響を与えるものであると考えられる。これらは共通して[*https://ja.wikipedia.org/wiki/%E8%AA%8D%E7%9F%A5%E7%9A%84%E4%B8%8D%E5%8D%94%E5%92%8C 認知的不協和][[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]認知的不協和は、人が自身の認知とは異なる、矛盾した認知を持つ状態において発生する不快感を表す用語です。[[/span]]による認知の湾曲が関連している。
 
-[[table class=&#34;wiki-content-table&#34; style=&#34;width: 100%;&#34;]]
-
+[[table style=&#34;width: 100%;&#34;]]
 [[row]]
 [[hcell colspan=&#34;2&#34; style=&#34;text-align: center;&#34;]]
 曝露者がSCP-2844-JPの本質について思考する
 [[/hcell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 認知1
@@ -1781,7 +2008,6 @@ SCP-2844-JPに曝露した対象者に関連した物品
 曝露者はSCP-2844-JPについて理解しようと試みる (条件)
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 認知2
@@ -1790,19 +2016,16 @@ SCP-2844-JPに曝露した対象者に関連した物品
 SCP-2844-JPは明確に危険である (反応)
 [[/cell]]
 [[/row]]
-
 [[/table]]
 
-「理解しようとする」認知1と、「危険であると認識し、回避する」認知2は行動に矛盾を発生させる。こうした認知的不協和を解消するために、曝露者は論理的に - 複数の別の&#34;認知&#34;を代入する。
+「理解しようとする」認知1と、「危険であると認識し、回避する」認知2は行動に矛盾を発生させる。こうした認知的不協和を解消するために、曝露者は論理的に、複数の別の「認知」を代入する。
 
-[[table class=&#34;wiki-content-table&#34; style=&#34;width: 100%;&#34;]]
-
+[[table style=&#34;width: 100%;&#34;]]
 [[row]]
 [[hcell colspan=&#34;2&#34; style=&#34;text-align: center;&#34;]]
 論理的な認知の代入 / 追加の試行
 [[/hcell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 認知1
@@ -1811,7 +2034,6 @@ SCP-2844-JPは明確に危険である (反応)
 曝露者はSCP-2844-JPについて理解しようと試みる (条件)
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 認知2
@@ -1820,36 +2042,30 @@ SCP-2844-JPは明確に危険である (反応)
 SCP-2844-JPは明確に危険である (反応)
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-##0087BD|認知3##
+[[span style=&#34;color: #0087BD; font-weight: bold;&#34;]]認知3[[/span]]
 [[/cell]]
 [[cell]]
-##0087BD|SCP-2844-JP自体は脅威だが、そのリスクは同時に快楽でもある (反応)##
+[[span style=&#34;color: #0087BD; font-weight: bold;&#34;]]SCP-2844-JP自体は脅威だが、そのリスクは同時に快楽でもある (反応)[[/span]]
 [[/cell]]
 [[/row]]
-
 [[/table]]
 
-具体的には、SCP-2844-JPのリスクを、快楽を得るための&#34;スリル&#34;として正当化することにより、曝露者はSCP-2844-JPを理解しようと試みるのである。これが認知的不協和であり - SCP-2844-JPの本質でもある。正当化への論理的な変化こそが - 我々がSCP-2844-JPとして観測するものだ。
+具体的には、SCP-2844-JPのリスクを、快楽を得るための&#34;スリル&#34;として正当化することにより、曝露者はSCP-2844-JPを理解しようと試みるのである。これが認知的不協和であり - SCP-2844-JPの本質でもある。正当化への論理的な変化こそが、我々がSCP-2844-JPとして観測するものだ。
 
-----
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
 
-**方法:** 上述のように、SCP-2844-JPを形成するのは - 人間の論理回路である。財団はこれを概念物理的&#34;AND回路&#34;と呼称する - その意味の通り、認知1は認知2-3無しでは成立せず - 逆も然りである。財団が着目するのはこの点であり、プロジェクトMONOGONの収容原理は即ち - 「代入要素による論理の破綻」である。
+**方法:** 上述のように、SCP-2844-JPを形成するのは人間の論理回路である。財団はこれを概念物理的”AND回路”と呼称する。その意味の通り、認知1は認知2-3無しでは成立せず、逆も然りである。財団が着目するのはこの点であり、プロジェクト: モノゴンの収容原理は即ち「代入要素による論理の破綻」である。
 
-[[div class=&#34;tableb table6&#34;]]
-[[div class=&#34;scp-image-block block-right scp-clear-false&#34; style=&#34;width:250px;&#34;]]
-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-170-cm3e/ALABASTER.jpg style=&#34;width:100%;&#34; link=#]]
-[[div class=&#34;scp-image-caption&#34; style=&#34;width:100%;&#34;]]
-ALABASTERプログラムの可視的実例
-[[/div]]
-[[/div]]
-[[/div]]
+[[include :scp-jp:component:image-block-base name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-170-cm3e/ALABASTER.jpg|caption=ALABASTERプログラムの可視的実例|width=300px|align=right]]
 
-サイト-17のミーム部門によって開発された対抗ミーム - &#34;ALABASTERプログラム&#34;は、人工的に建造された疑似的な認識災害である。財団が保有する[http://scp-jp.wikidot.com/scp-001-jp 幾つかの効果的なオブジェクト]が投入され、結果として - 対象者に超常的な認識阻害能力を誘発させるものである。
+サイト-17のミーム部門によって開発された対抗ミーム「ALABASTERプログラム」は、人工的に建造された疑似的な認識災害である。財団が保有する[http://scp-jp.wikidot.com/scp-001-jp 幾つかの効果的なオブジェクト]が投入され、結果として対象者に超常的な認識阻害能力を誘発させるものである。
 
-ALABASTERプログラムは、以下に記述されるMONOGON管轄の複数のプロトコルによって人類種全体に拡散される。曝露者は恒久的かつ軽微な認識災害を獲得し、より具体的には - 不協和を解消するための手段を限定的にし、思考を最終的に「SCP-2844-JPの拒絶」へと繋げる。自然と認識を阻害させる事で、ALABASTERプログラムの違和感を解消させ、表面上の影響無くSCP-2844-JPの拡大を阻止する。より具体的に、以下の手段が存在する:
+ALABASTERプログラムは、以下に記述されるモノゴン管轄の複数のプロトコルによって人類種全体に拡散される。曝露者は恒久的かつ軽微な認識災害を獲得し、より具体的には不協和を解消するための手段を限定的にし、思考を最終的に「SCP-2844-JPの拒絶」へと繋げる。自然と認識を阻害させる事で、ALABASTERプログラムの違和感を解消させ、表面上の影響無くSCP-2844-JPの拡大を阻止する。より具体的に、以下の手段が存在する。
 
 * SCP-2844-JP-Aを普遍的な存在であると認識させ、その脅威を更にミームとして拡散させることを防止する
 
@@ -1857,62 +2073,50 @@ ALABASTERプログラムは、以下に記述されるMONOGON管轄の複数の�
 
 * 曝露者がSCP-2844-JP-Aへ変質するリスクを回避するように不協和を修正し、曝露者の死亡までの時間を延長する
 
-プログラムは致死性を有さず、より強力なミームで修正することも可能だ。SCP-2844-JPの致死性とその可能性はALABASTERプログラムのコンテンツによって上書きされ、その存在を遡及的に忘却する。概念物理学研究科-ミーム部門-形式部門はALABASTERプログラムの兵器化に伴い、必要な権限を取得した。ALABASTERプログラムは、SCP-2844-JPを無力化し - そして収容するために存在する。
+プログラムは致死性を有さず、より強力なミームで修正することも可能である。SCP-2844-JPの致死性とその可能性はALABASTERプログラムのコンテンツによって上書きされ、その存在を遡及的に忘却する。概念物理学研究科-ミーム部門-形式部門はALABASTERプログラムの兵器化に伴い、必要な権限を取得した。
 
 ++++ [http://scp-jp.wikidot.com/ikkeby-v-s-proposal 超現実的量子収束レイヤー]
 
-[http://scp-jp.wikidot.com/scp-5145 超現実部門]との共同開発によって設計された抽象的な兵器は、波動関数の収束を巨視的に観測し - 非論理的な超法則によって無制限の不確実性を現実に反映させる。 - これを応用しサイト-17は現在、事実上無制限のリソースを取得することに成功している。また、ALABASTERプログラムの変異性を自在にする事を可能にし、より効果的な選択肢を曝露者に提供する。
+[http://scp-jp.wikidot.com/scp-5145 超現実部門]との共同開発によって設計された抽象的な兵器は、波動関数の収束を巨視的に観測し - 非論理的な超法則によって無制限の不確実性を現実に反映させる。これを応用しサイト-17は現在、事実上無制限のリソースを取得することに成功している。また、ALABASTERプログラムの変異性を自在にする事を可能にし、より効果的な選択肢を曝露者に提供する。
 
 ++++ [http://scp-jp.wikidot.com/meshiochislash-s-proposal ヴェルダンディ-マリドラマギウアン 穿天性物語改変]
 
-[http://scp-jp.wikidot.com/scp-1730 スレッシャー・デバイス]として知られる - 認識災害ベクターを含む大規模な現実改変機構は、その性質を[http://scp-jp.wikidot.com/scp-3309 空想科学的側面]に部分適用することで、[http://scp-jp.wikidot.com/scp-2995-jp 物語構造]を完全に変容させることが出来る。理論は不完全であり - 現在はこれを時間的側面に適用し、無制限の思考時間を獲得することに成功している。
+[http://scp-jp.wikidot.com/scp-1730 スレッシャー・デバイス]として知られる認識災害ベクターを含む大規模な現実改変機構は、その性質を[http://scp-jp.wikidot.com/scp-3309 空想科学的側面]に部分適用することで、[http://scp-jp.wikidot.com/scp-2995-jp 物語構造]を完全に変容させることが出来る。理論は不完全であり - 現在はこれを時間的側面に適用し、無制限の思考時間を獲得することに成功している。
 
 ++++ [http://scp-jp.wikidot.com/solvex-s-proposal ベリーマン=ラングフォード 高度認識災害ベクター]
 
 ALABASTERプログラムを自然な自己複製プロセスに配置するには、社会的な文化ミームとして広く拡散させる事が最も安価で、そして効率的である。当該ベクターは抽象化された言語に感染し、一般社会に広く普及する。当該ベクターは[http://scp-jp.wikidot.com/scp-1390 異常な文法構造]であり、財団の保有する幾つかのオブジェクトが由来である。
 
-[[div class=&#34;blockquote&#34;]]
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
 
-= **追記:** プロジェクトMONOGONに関する、全ての手順は達成されました。
-
-[[/div]]
+= **追記:** プロジェクト: モノゴンに関する、全ての手順は達成されました。
 
 [[/cell]]
 [[/row]]
-[[/table]]
-[[/div]]
-
-[[/div]]
-----
-@@ @@
-
-[[div style=&#34;width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));&#34;]]
-= **Failed to login: a fatal error!**
-[[div style=&#34;width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;&#34;]]
-
-= アクセスは承認されませんでした - 3/3
-
-= 複数回の不正なアクセスを検知しました。駐屯機動部隊が貴方を拘束します。待機してください
-
-[[/div]]
-[[/div]]
-
-@@ @@
-----
-[[div class=&#34;modal&#34;]]
-= **補遺Ⅵ/2844-JP:** 不確実
-----
-= __**プロジェクトMONOGON 初期報告書**__
-
-//Documents reviewed: 231//
-//Documents remaining: 18,291//
-
-[[div class=&#34;tableb&#34;]]
-
-[[table class=&#34;wiki-content-table&#34; style=&#34;width: 100%;&#34;]]
 [[row]]
 [[hcell]]
-ITEMS OF INTEREST
+[[/hcell]]
+[[/row]]
+[[/table]]
+
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
+
+[[/div]]
+
+
+[[div class=&#34;notation table6 tableb&#34; style=&#34;margin: 5vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.VII:[[/span]] プロジェクト初期報告書
+----
+@@ @@
+
+[[table style=&#34;width: 100%;&#34;]]
+[[row]]
+[[hcell]]
+注目される情報
 [[/hcell]]
 [[/row]]
 [[row]]
@@ -1920,9 +2124,9 @@ ITEMS OF INTEREST
 
 ++++ ALABASTERプログラムの突然変異
 
-プロジェクトMONOGONの一環として開発され、人類種のほぼ全体に拡散されたALABASTERプログラムは、2021/12/27の時点で##dc0233|不明な要因##によって突然変異を起こしている事が確認された。変異した個体は全体の約4割であり、被害は急速に拡大している。プログラムの突然変異は - 全ての言語に共通する特定のイデアから発生している。以下は誤伝達部門によって抽象化された、起源とみられる一連の&#34;言葉&#34;である。
+プロジェクト: モノゴンの一環として開発され、人類種のほぼ全体に拡散されたALABASTERプログラムは、2021/12/27の時点で[[span class=&#34;accent2&#34;]]不明な要因[[/span]]によって突然変異を起こしている事が確認された。変異した個体は全体の約4割であり、被害は急速に拡大している。プログラムの突然変異は、全ての言語に共通する特定のイデアから発生している。以下は誤伝達部門によって抽象化された、起源とみられる一連の&#34;言葉&#34;である。
 
-[[div class=&#34;blockquote&#34; style=&#34;color: #dc0233 !important;&#34;]]
+[[div class=&#34;blockquote&#34; style=&#34;color: rgb(193,51,90); font-weight: 600;&#34;]]
 
 * 朧気ながら広がる幻想
 
@@ -1944,7 +2148,7 @@ ITEMS OF INTEREST
 
 [[/div]]
 
-変異したALABASTERプログラムのミーム学的構造は、神話(//Mythology//)、鳥綱(//Aves//)の2つのカテゴリに分類可能な概念を多く内包している。これより発生が予想されるあらゆる撹乱事象は、多くの場合はこれら2つの大規模なミームに依存するものと考えられる。また、上述の特定の&#34;言葉&#34;は生物研究科によると、SCP-2844-JPという概念存在を最初期に命名した人類祖先 - 太古ヒト型実体の抽象化したイメージが起源になるとされている。SCP-2844-JPは本来、概念として不確定な - 単純な認識/情報災害であり、人類種の保有する独自の概念と結びつけられたことによって、現在のような異常性を獲得したと推測されている。
+変異したALABASTERプログラムのミーム学的構造は、神話 [[size 85%]](//Mythology//)[[/size]]、鳥綱 [[size 85%]](//Aves//)[[/size]] の2つのカテゴリに分類可能な概念を多く内包している。これより発生が予想されるあらゆる撹乱事象は、多くの場合はこれら2つの大規模なミームに依存するものと考えられる。また、上述の特定の「言葉」は生物研究科によると、SCP-2844-JPという概念存在を最初期に命名した人類祖先 -- 太古ヒト型実体の抽象化したイメージが起源になるとされている。SCP-2844-JPは本来、概念として不確定な単純な認識/情報災害であり、人類種の保有する独自の概念と結びつけられたことによって、現在のような異常性を獲得したと推測されている。
 
 [[/cell]]
 [[/row]]
@@ -1952,19 +2156,18 @@ ITEMS OF INTEREST
 [[hcell]]
 [[/hcell]]
 [[/row]]
-
 [[row]]
-[[cell]]
-
-++++ 最終試行ログ
-
+[[hcell]]
+&lt;&lt;転写開始 (最終試行ログ抜粋)&gt;&gt;
+[[/hcell]]
+[[/row]]
+[[row]]
+[[hcell]]
 [[div class=&#34;blockquote&#34;]]
-
-= **&lt;ログ開始&gt;**
 
 **グラス博士:** それで、貴方は何を知っているのですか？
 
-**被験体:** 私は -- 夢の中であの奇妙な影を見たんだ。
+**被験体:** 私は...夢の中であの奇妙な影を見たんだ。
 
 **グラス博士:** すみません、具体的にお願いします。
 
@@ -1972,261 +2175,204 @@ ITEMS OF INTEREST
 
 **グラス博士:** 何故です？
 
-**被験体:** 言葉に気を付けて -- 貴方は勘違いしている、これを熱心に探究すべきじゃない。知らなくて良い事はあるんだ、本当だ。
+**被験体:** 言葉に気を付けてくれ。貴方は勘違いしている、これを熱心に探究すべきじゃない。知らなくて良い事はあるんだ、本当だ。
 
-**グラス博士:** あの、苛立たせないでください。私たちは貴方に、特定の感情を認識できないようにした筈です。そう##dc0233|恐れる##のは本当に不可解なのですが。
+**グラス博士:** あの、苛立たせないでください。私たちは貴方に、特定の感情を認識できないようにした筈です。そう[[span class=&#34;accent2&#34;]]恐れる[[/span]]のは本当に不可解なのですが。
 
-**被験体:** [間をおいて] -- 私の背中からは翼が生えて - 飛ぶことが出来た。でもそれは幸福のためじゃない、決して奴は慈悲の女神じゃない。
+**被験体:** //(間をおいて)// -- 私の背中からは翼が生えて...飛ぶことが出来た。でもそれは幸福のためじゃない、決して[[span class=&#34;accent2&#34;]]奴[[/span]]は慈悲の女神じゃない。
 
-**グラス博士:** 待ってください - どうして##dc0233|奴##に言及するのです？アラバスターは既に - [沈黙] - 医療班、急いで。
+**グラス博士:** 待ってください、どうしてそれに言及するのです？アラバスターは既に -- //(沈黙)// -- 医療班、急いで。
 
 **被験体:** 私は飛んでいる。荒野の空中を飛んでいる。これが非常に重大な問題であるとも知らず。
 
-**グラス博士:** 落ち着いてください。一体何が##dc0233|問題##だと言うんですか？
+**グラス博士:** 落ち着いてください。一体何が問題だと言うんですか？
 
-**被験体:** [呻く] - 奴が来る。飢えた獣、恐怖に依存するもの、最後に訪れるもの......急がなければ -- 私は逃げなければ！
+**被験体:** //(呻く)// 奴が来る。飢えた獣、恐怖に依存するもの、最後に訪れるもの......急がなければ -- 私は逃げなければ！
 
-**グラス博士:** 機動部隊 -- 終了許可を与えます！
+**グラス博士:** //(機動チームに向かって)// 処理してください！こいつを --
 
-**被験体:** 今、それは私を喰らい -- ##dc0233|**[災害除去済]**##[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]##dc0233|**COMING**##[[/span]]
+**被験体:** 今、それは私を喰らい -- [[span class=&#34;accent2&#34;]][災害除去済][[/span]]
 
-= //&lt;##dc0233|グラス博士##が叫ぶ。##dc0233|グラス博士##と##dc0233|被験体##は即座に取り押さえられるが - 間も無く生命兆候が確認されなくなった。&gt;//
-
-= **&lt;ログ終了&gt;**
+[[span class=&#34;quote_desc&#34;]]&lt;[[span class=&#34;accent2&#34;]]グラス博士[[/span]]が叫ぶ。[[span class=&#34;accent2&#34;]]グラス博士[[/span]]と[[span class=&#34;accent2&#34;]]被験体[[/span]]は即座に取り押さえられるが、間も無く生命兆候が確認されなくなる&gt;[[/span]]
 
 [[/div]]
-
-[[/cell]]
+[[/hcell]]
+[[/row]]
+[[row]]
+[[hcell]]
+&lt;&lt;転写終了&gt;&gt;
+[[/hcell]]
+[[/row]]
+[[row]]
+[[hcell]]
+[[/hcell]]
 [[/row]]
 [[/table]]
-[[/div]]
-[[/div]]
-@@ @@
 
-@@ @@
-
-@@ @@
-
-@@ @@
-
-@@ @@
-
-@@ @@
-
-[[div style=&#34;text-align: center&#34;]]
-
-・
-
-・
-
-//復号鍵2844-CRITICAL: 朝聞道、夕死可矣//
-
-・
-
-・
-
-//Unlocked//
-
-[[div style=&#34;filter: blur(2px);&#34;]]
-
-= [[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-172-3tnk/RED.jpg]]
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
 
 [[/div]]
 
-・
 
-・
+[[div style=&#34;text-align: center; color: rgba(var(--basalt-main-text-color),.8); margin: 50vh auto;&#34;]]
 
-//復号鍵2844-AMIDA: 散るは桜 落つるは花の 夕べかな//
+**復号鍵:** 朝聞道、夕死可矣
 
-・
+[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-172-3tnk/RED.jpg width=&#34;100%&#34; style=&#34;filter: blur(2px); max-width: 800px; margin: auto;&#34;]]
 
-・
+**復号鍵:** 散るは桜 落つるは花の 夕べかな
 
 [[/div]]
 
-@@ @@
 
-@@ @@
-
-@@ @@
-
-@@ @@
-
-[[div class=&#34;notation&#34;]]
+[[div class=&#34;notation&#34; style=&#34;margin: 10vh auto;&#34;]]
 
 [[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-162-djiy/s17_negate.png width=&#34;100px&#34; style=&#34;float: right;&#34;]]
 
-+ 認識災害警告
++ Cognitohazard Warning
 
-以下に記載される全ての情報は、サイト-17 DEEPWELLアーカイブに安全に収容されている必要があります。クラスW-ニクティクスを用いた適切な処置を経ずに以下の情報を認識した場合、閲覧者へ致命的かつ不可逆的な影響を齎すことが確実視されています。あなたが対抗措置を持たない知性存在である場合、速やかに閲覧を停止し、管理部門に申し出てください。
+以下に記載される全ての情報は、サイト-17・深淵アーカイブに安全に収容されている必要があります。クラスW-ニクティクスを用いた適切な処置を経ずに以下の情報を認識した場合、閲覧者へ致命的かつ不可逆的な影響を齎すことが確実視されています。あなたが対抗措置を持たない知性存在である場合、速やかに閲覧を停止し、管理部門に申し出てください。
 
 ----
 
-以下に記載される全ての情報は、適切な手段を用いて[[span class=&#34;fear&#34;]]深刻な異常実体[[/span]]について説明しています。ファイルのセキュリティレベルは明確な収容手順が確立されるまでLvl.5へと変更されています。提出された既知の問題はプロジェクトの共同リーダーであるプレースホルダー・マクドクトラート博士、ベッドロック・エンダース博士へと通達されます。
+以下に記載される全ての情報は、適切な手段を用いて[[span class=&#34;accent2&#34;]]深刻な異常実体[[/span]]について説明しています。ファイルのセキュリティレベルは明確な収容手順が確立されるまで引き上げられています。提出された既知の問題はプロジェクトの共同リーダーであるプレースホルダー・マクドクトラート博士、ベッドロック・エンダース博士へと通達されます。
 
 [[/div]]
 
-@@ @@
 
-----
+[[include :scp-wiki:component:customizable-acs
+|containment-class= apollyon
+|containment-image= https://scp-wiki.wdfiles.com/local--files/fragment%3Ascp-5618-offset-0/apollyon-icon.svg
+|containment-color= 196,2,51
+|inc-containment = --]]]
 
-@@ @@
-
-[[div class=&#34;modal&#34;]]
-[[include :scp-wiki:component:anomaly-class-bar-source
+[[div style=&#34;--swatch-menubg-black-color: 50,50,50;--five-color: 196,2,51;&#34;]]
+[[include :scp-jp:component:customizable-acs
 |item-number= 2844-JP
 |clearance= 5
-|container-class= esoteric
-|secondary-class= apollyon
-|secondary-icon= http://scp-jp.wdfiles.com/local--files/component%3Aanomaly-class-bar/apollyon-icon.svg
+|container-class= apollyon
 |disruption-class= amida
 |risk-class= critical
-]]
+|item-text= ITEM#:
+|level-text= LEVEL
+|clearance-number-text= 5
+|clearance-text= 最高機密
+|containment-text= オブジェクトクラス:
+|disruption-text= 撹乱クラス
+|risk-text= リスククラス:
+|inc-custom-text= --]]]
 [[/div]]
-----
-[[div class=&#34;modal&#34;]]
-**特別定義/APOLLYON:** アイテムは収容不能であり、能動的に世界の終焉を招きます。
 
-**特別収容プロトコル:** SCP-2844-JPが現行の人類種にもたらす致命的な災害について、財団は対抗手段の確立を急いでいます。世界規模で発生が観測されている##dc0233|**DREAD-STATE**##イベントへの即座の対応手順については、オペレーションマニュアル2844-JP-VINEを参照してください。財団は現在、世界規模で発生した異常な災害について、無制限のリソースを費やし対抗プロトコルを実行中です。
 
-[[div class=&#34;tableb&#34;]]
-[[div class=&#34;scp-image-block block-center&#34; style=&#34;width: 100%;&#34;]]
+[[div class=&#34;modal table5&#34;]]
+
+[[span class=&#34;st&#34;]]特別定義/APOLLYON:[[/span]] アイテムは収容不能であり、能動的に世界の終焉を招きます。
+
+[[span class=&#34;st&#34;]]特別収容プロトコル:[[/span]] SCP-2844-JPが現行の人類種にもたらす致命的な災害について、財団は対抗手段の確立を急いでいます。世界規模で発生が観測されている[[span class=&#34;accent&#34;]]震駭[[/span]]イベントへの即座の対応手順については、オペレーションマニュアル2844-JP-VINEを参照してください。財団は現在、世界規模で発生した異常な災害について、無制限のリソースを費やし対抗プロトコルを実行中です。
+
+[[/div]]
+
+
+[[div class=&#34;scp-image-block block-center table5&#34; style=&#34;width: 100%;&#34;]]
 [[html]]
 &lt;video style=&#34;width: 100%; height: 100%;&#34; autoplay muted loop&gt;
 &lt;source src=&#34;http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-173-dj6u/Fractal02.mp4&#34; type=&#34;video/mp4&#34;&gt;
 &lt;/video&gt;
 [[/html]]
 [[div class=&#34;scp-image-caption&#34; style=&#34;width: 100%;&#34;]]
-SCP-2844-JP, **DREAD-STATE**におけるフラクタルパターンの映像分析 (災害除去済)
-[[/div]]
+SCP-2844-JP、[[span class=&#34;accent&#34;]]震駭[[/span]]におけるフラクタルパターンの映像分析
 [[/div]]
 [[/div]]
 
-**更新:** SCP-2844-JPを構成する複数のミーム的概念は、財団が流布したALABASTERプログラムを掌握する形で全ての人類種個体に拡散しました。現在のSCP-2844-JPを活性化させる可能性がある単語は - 全ての言語のあらゆる文法構造の43%を占めています。SCP-2844-JPの最小単位の配列は、概ね - 特定の存在に対する恐怖、抑圧の感情で満たされています。
 
-突然変異したALABASTERプログラムは、プロジェクトMONOGONで予定されていた反ミーム的コンテンツに代わり - 支配的かつ難解な思考によって満たされるようになりました。ALABASTERプログラムが支配する概念は言語に留まらず、流行/習慣/伝統/掟/仕掛/伝説/物語/識別ミームなど複数の認識を連鎖的に侵食していきました。現在のALABASTERプログラムおよびSCP-2844-JPは、あらゆる生物種に対して敵対的であり - 不自然なことに、存在に対して肯定的です。
+[[div class=&#34;modal table5&#34;]]
 
-SCP-2844-JPは特に人間に対し##dc0233|好戦的##[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]##dc0233|**DURABILITY TEST**##[[/span]]であり、##dc0233|捕食##しようと試みます。SCP-2844-JPは即座に、鎮圧されなければなりません。
+[[span class=&#34;st&#34;]]更新:[[/span]] SCP-2844-JPを構成する複数のミーム的概念は、財団が流布したALABASTERプログラムを掌握する形で全ての人類種個体に拡散しました。現在のSCP-2844-JPを活性化させる可能性がある単語は、全ての言語のあらゆる文法構造の43%を占めています。SCP-2844-JPの最小単位の配列は、概ね特定の存在に対する恐怖、抑圧の感情で満たされています。
+
+突然変異したALABASTERプログラムは、プロジェクト: モノゴンで予定されていた反ミーム的コンテンツに代わり支配的かつ難読な思考によって満たされるようになりました。ALABASTERプログラムが支配する概念は言語に留まらず、流行 / 習慣 / 伝統 / 掟 / 仕掛 / 伝説 / 物語 / 識別ミームなど複数の認識を連鎖的に侵食していきました。現在のALABASTERプログラムおよびSCP-2844-JPは、あらゆる生物種に対して敵対的であり、実存に対して肯定的です。
+
+SCP-2844-JPは特に人間に対し[[span class=&#34;accent2&#34;]]好戦的[[/span]]であり、[[span class=&#34;accent2&#34;]]捕食[[/span]]しようと試みます。SCP-2844-JPは即座に鎮圧されなければなりません。
+
 [[/div]]
+
+
+[[div class=&#34;notation table5 tableb&#34; style=&#34;margin: 10vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.VIII:[[/span]] 疑念
 ----
 @@ @@
-
-[[div style=&#34;width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));&#34;]]
-= **Connection reset!**
-[[div style=&#34;width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;&#34;]]
-
-= ##dc0233|アクセスは問題ありません##
-
-= ##dc0233|端末の災害識別が超過 - 読み進めてください##
-
-[[/div]]
-[[/div]]
-
-@@ @@
-----
-[[div class=&#34;modal&#34;]]
-= **補遺Ⅶ/2844-JP:** 疑念 / 再生
-
-----
-
-概念物理学的なSCP-2844-JPの起源特定の試みは、部分的に進行しています。最初期のSCP-2844-JPを構成するミーム的構造の多くは - 和学、和文化など - 日本国の文化的なミームに多く依存しています。しかし、それらのミームは著しく改変されており、通常科学では不可能な、異常な生物学的構造、医療品、食料品、娯楽、兵器などが該当します。また、一部のミーム要素は遺伝的な概念 - この場合、文化的に顕著な過去200年ほど - が意図的に多く含まれており、全てのミームは##dc0233|日本古来からの伝統的な文化##に執着します。最も象徴的な1つのミームは、##dc0233|円形にくり抜かれた、生命を象徴する橙色のDNA構造##です。
-
-----
-
-SCP-2844-JPの影響による人類文明の致命的な崩壊を防ぐために、財団の潜在資産と複数のアノマリーによる認識論的な汚染除去 / 除外の試みが実行されました。以下に記載されるのはSCP-2844-JPの##dc0233|実験記録##です。
 
 [[div class=&#34;blockquote&#34;]]
 
-= **試行2844-JP.500 - 治癒**
+**前文:** 概念物理学的なSCP-2844-JPの起源特定の試みは、部分的に進行しています。最初期のSCP-2844-JPを構成するミーム的構造の多くは -- 和学、和文化など -- 日本国の文化的なミームに多く依存しています。しかし、それらのミームは著しく改変されており、通常科学では不可能な、異常な生物学的構造、医療品、食料品、娯楽、兵器などが該当します。また、一部のミーム要素は遺伝的な概念 -- この場合、文化的に顕著な過去200年ほど -- が意図的に多く含まれており、全てのミームは[[span class=&#34;accent2&#34;]]日本古来からの伝統的な文化[[/span]]に執着します。最も象徴的な1つのミームは、[[span class=&#34;accent2&#34;]]円形にくり抜かれた、生命を象徴する橙色のDNA構造[[/span]]です。これに関係する1つの人的コミュニティを調査中です。
 
 ----
+
+SCP-2844-JPの影響による人類文明の致命的な崩壊を防ぐために、財団の潜在資産と複数のアノマリーによる認識論的な汚染除去 / 除外の試みが実行されました。以下に記載されるのはSCP-2844-JPの[[span class=&#34;accent2&#34;]]実験記録[[/span]]です。
+
+[[/div]]
+[[div class=&#34;blockquote&#34;]]
+
+[[size 120%]]**試行2844-JP.500 - 治癒**[[/size]]
 
 **手順:** [http://scp-jp.wikidot.com/scp-500 SCP-500]の異常性を再現した複合的な抗生物質を曝露者に投与する。曝露者に該当する人物は、SCP-2844-JPへの曝露から明確に12時間以内、そして色覚、知覚に致命的な損傷が確認されていない。
 
-----
+**出力:** 隔離された曝露者は約2時間の拒絶反応の後に下半身不随となる後遺症を残し、認識、知覚、色覚異常の全てが完全に回復した。下半身不随は外傷なしに発生した症状であり、原因不明である。曝露者は適切なメンタルケアと記憶処理の後、精神鑑定を受け、完全に影響下から脱したとみられる。本人の所有するデータを回収するため、曝露者は一時的に[[span class=&#34;accent2&#34;]]職務に復帰[[/span]]した。
 
-**出力:** 隔離された曝露者は約2時間の拒絶反応の後に、下半身不随となる後遺症を残し - 認識、知覚、色覚異常の全てが完全に回復した。下半身不随は外傷なしに発生した症状であり - 原因不明である。曝露者は適切なメンタルケアと記憶処理の後 - 精神鑑定を受け、完全に影響下から脱したとみられる。本人の所有するデータを回収するため、曝露者は一時的に職務に復帰した。
-
-----
-
-**結果:** 曝露者は約3日後、再びSCP-2844-JPに不明な理由で曝露したとみられる。同時に、適切に除外された当人の記憶は##dc0233|完全に復元##されていることが確認された。本実験の試行およびクリアランスの付与を行った上位職員の情報は一切が不明であり - 明らかに内部構造を逸脱する異常が発生していると判断された。本件はRAISAにアーカイブとして登録され、重大な事例として**GEVURAH**クラスの脅威指定がされた。
+**注:** 曝露者は約3日後、再びSCP-2844-JPに不明な理由で曝露したとみられる。同時に、適切に除外された当人の記憶は[[span class=&#34;accent2&#34;]]完全に復元[[/span]]されていることが確認された。本実験の試行およびクリアランスの付与を行った上位職員の情報は一切が不明であり、明らかに内部構造を逸脱する異常が発生していると判断された。本件はRAISAにアーカイブとして登録され、重大な事例として**GEVURAH**クラスの脅威指定がされた。
 
 本件が意味する重大な情報災害について、現在も調査が進行中である。
 
 [[/div]]
-[[size 0%]]@@ @@[[/size]]
 [[div class=&#34;blockquote&#34;]]
 
-= **試行2844-JP.001 - 厄災**
+[[size 120%]]**試行2844-JP.001 - 厄災**[[/size]]
 
-----
+**手順:** 物語構造の重大な欠陥を応用し、[http://scp-jp.wikidot.com/scp-001-ex ERZATZエンジン]の反演算ノードに致命的な喪失ファイル - [http://scp-jp.wikidot.com/scp-048 SCP-048]のカタログナンバーを代入。虚空次元に分類されるSCP-048の伝達的構成要素 ([[span class=&#34;accent2&#34;]]呪詛[[/span]]) のため、SCP-2844-JPは遡及的に崩壊または抹消される。
 
-**手順:** 物語構造の重大な欠陥を応用し、[http://scp-jp.wikidot.com/scp-001-ex ERZATZエンジン]の反演算ノードに致命的な喪失ファイル - [http://scp-jp.wikidot.com/scp-048 SCP-048]のカタログナンバーを代入。超現実の逆算により、空欄となった048ナンバーへの、SCP-2844-JPの再指定順位を最優先に再定義。物語構造の##dc0233|呪縛##により - SCP-2844-JPは遡及的に崩壊または抹消される。
-----
-**出力:** ERZATZエンジンは自己に導入された喪失ファイルに続き、SCP-2844-JPの適切な情報を入力しようと試みた。一定の思考時間の後に、ERZATZエンジンは出力を##dc0233|拒緋##。物語構造のタイムアウトと不確実な超現実の崩壊により、SCP-048ナンバーは閲覧不可能な大規模のデータで圧迫された。
-----
-**結果:** SCP-2844-JPは不動である。
+**出力:** ERZATZエンジンは自己に導入された喪失ファイルに続き、SCP-2844-JPの適切な情報を入力しようと試みた。一定の思考時間の後に、ERZATZエンジンは出力を[[span class=&#34;accent2&#34;]]拒緋[[/span]]。SCP-048の無の構成要素が暴力的に破壊され、代わりに閲覧不可能な大規模のデータで圧迫された。
+
+[[/div]]
+[[div class=&#34;blockquote&#34;]]
+
+**後文:** 現時点で発生が確認される財団内外の複数のインシデントに抵抗するため、最終的なSCP-2844-JPの解体提言が提案されました。次の補遺を参照してください。
 
 [[/div]]
 
-----
-サイト-17の上層部らは、現時点で発生が確認される財団内外の複数のインシデントに抵抗するために - 最終的なSCP-2844-JPの解体提言を構築しました。
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
+
 [[/div]]
+
+
+[[div class=&#34;notation table5 tableb&#34; style=&#34;margin: 10vh auto;&#34;]]
+
+= [[span class=&#34;st&#34;]]補遺2844-JP.IX:[[/span]] オペレーション・サイアナイド
+----
 @@ @@
 
-[[div class=&#34;limit&#34;]]
-[[div class=&#34;anchor&#34;]]
-[[div class=&#34;sidebox&#34;]]
-
-[[div class=&#34;invert&#34;]]
-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-176-9smq/miscdept.svg width=&#34;80px&#34; style=&#34;float: right;&#34;]]
-[[/div]]
-
-+++ [*http://scp-jp.wikidot.com/domc-hub 誤伝達部門]
-
-エリ・フォークレイ博士によって設立された誤伝達部門(//Department of Miscommunications//)は、SCP財団内にある専門部署であり、以下のようなものを取り扱っています。
-
-* [[[SCP-4467|正確に説明する]]]ことが困難になるように言語やコミュニケーションを操作するアノマリー。
-* [[[SCP-4352|正確な収容]]]をある程度困難にするために上記を行うアノマリー。
-* それらのようなことはしていないが、[[[SCP-4517|十分な知識を持たない観察者にはそうしているように見える]]]アノマリー。
-* 上記を支援する、言語的および[[[SCP-4098|物理的]]]な技術の作成と維持。
-* ミーム学、言語学、反ミーム学、対抗概念学、形而上学、分析学、パラ-および異星言語学、データベース管理などの分野間における曖昧な学際的空間の探求および規制。
-ほとんどの部門における基準では小規模なものですが、非常に有望です。彼らは表向きには[[[SCP-426]]]のようなアノマリーに対処する人々です;それについて話したり、文書化することが厄介な場合、彼らはそれを覆す方法を考え出し、それを文書に書き留めます。
-
-//--　　　--誤伝達部門からの一部引用//
-
-[[/div]]
-[[/div]]
-
-[[/div]]
-
-[[div class=&#34;tableb table5&#34;]]
-[[div class=&#34;modal&#34;]]
-[[table class=&#34;wiki-content-table&#34; style=&#34;width: 100%;&#34;]]
-[[row]]
-[[cell]]
-SCP-2844-JPの実在性を巨視的に観測することは極めて困難であり、我々はそれが如何なる理由によるものなのかを長期にわたって思考していました。非存在であったから？或いは、空虚な概念であるから？ -- その多くは適切かもしれませんが、我々がそれを今まで正常に思考できたように、SCP-2844-JPにとってそれは重要ではありませんでした。
-
-狂気に呑まれて - //そして機能しなくなるまで探求を続けて// - 結論を見つけ出したのです。SCP-2844-JPは、非常に雄大で、神聖で、そして輪廻転生の上に位置する存在であるということ -- それは##dc0233|奴##が - まさしく神であるという事です。神すらも我々は凌駕します。SCP-2844-JPと対照的な1つの概念によって、この世界に真実を突き付けるのです。
-
-[[/cell]]
-[[/row]]
+[[table style=&#34;width: 100%;&#34;]]
 [[row]]
 [[hcell]]
-Operation CYANIDE
+オペレーション概要
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 
-[[div class=&#34;invert&#34;]]
-= [[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-175-c4g0/ALABASTER.svg width=&#34;150px&#34;]]
-[[/div]]
+SCP-2844-JPの実在を観測することは極めて困難であり、我々はそれが如何なる理由によるものなのかを長期にわたって思考していました。非存在であったから？或いは、空虚な概念であるから？ -- その多くは適切かもしれませんが、我々がそれを今まで正常に思考できたように、SCP-2844-JPにとってそれは重要ではありませんでした。
+
+狂気に呑まれて -- //そして機能しなくなるまで探求を続けて// -- 結論を見つけ出したのです。SCP-2844-JPは、非常に雄大で、神聖で、そして輪廻転生の上に位置する存在であるということ -- それは[[span class=&#34;accent2&#34;]]奴[[/span]]が - まさしく神であるという事です。神すらも我々は凌駕します。SCP-2844-JPと対照的な1つの概念によって、この世界に真実を突き付けるのです。
+
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
+
+= [[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-175-c4g0/ALABASTER.svg width=&#34;150px&#34; style=&#34;filter: brightness(.3);&#34;]]
 
 [[div style=&#34;font-size: 86%; text-align: center; font-style: italic;&#34;]]
 
-サイト-17 - 概念物理学研究科, ミーム部門, 形式部門, [http://scp-jp.wikidot.com/domc-hub 誤伝達部門], [http://scp-jp.wikidot.com/spikebrennan-s-proposal 戦術神学部門]
+サイト-17 -- 概念物理学研究科, ミーム部門, 形式部門, [http://scp-jp.wikidot.com/domc-hub 誤伝達部門], [http://scp-jp.wikidot.com/spikebrennan-s-proposal 戦術神学部門]
 
 ヴィルジール・ヴァリエ管理官, プレースホルダー・マクドクトラート博士, ベッドロック・エンダース博士
 
@@ -2238,16 +2384,14 @@ Operation CYANIDE
 
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 
-**序文:** プロジェクトMONOGONの致命的な失態は、人類規模での混乱と異常の拡大を招く結果となった。ヴェールの完全な瓦解を前提としながらも - 財団はSCP-2844-JPの完全/部分的な収容を試みている。形式部門の試算により、全言語にSCP-2844-JPが侵食し、そしてあらゆる認識の文化が崩壊するまで - 凡そ##dc0233|13日間前後の猶予##があると試算された。喫緊の課題であるSCP-2844-JPの収容を眼前に起草されたのは、SCP-2844-JPの異常性を応用した&#34;解体の試み&#34;である。
+**序文:** プロジェクト: モノゴンの致命的な失態は、人類規模での混乱と異常の拡大を招く結果となった。ヴェールの完全な瓦解を前提としながらも、財団はSCP-2844-JPの完全・部分的な収容を試みている。喫緊の課題であるSCP-2844-JPの収容を眼前に起草されたのは、SCP-2844-JPの異常性を応用した”解体の試み”である。
 
-**概要:** 現時点で、形式部門による条件の調査結果は以下のようになる:
+**概要:** 現時点で、形式部門による条件の調査結果は以下のようになる。
 
-[[table class=&#34;wiki-content-table&#34; style=&#34;width: 100%;&#34;]]
-
+[[table style=&#34;width: 100%;&#34;]]
 [[row]]
 [[hcell]]
 条件
@@ -2256,170 +2400,104 @@ Operation CYANIDE
 反応
 [[/hcell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-DREAD-STATEイベントの認識
+[[span class=&#34;accent&#34;]]震駭[[/span]]イベントの認識
 [[/cell]]
 [[cell]]
-##dc0233|**敵対的**##
+[[span class=&#34;accent2&#34;]]敵対的[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-DREAD-STATEイベントに対する、反復による条件付け
+[[span class=&#34;accent&#34;]]震駭[[/span]]イベントに対する、反復による条件付け
 [[/cell]]
 [[cell]]
-##dc0233|**敵対的**##
+[[span class=&#34;accent2&#34;]]敵対的[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 装飾的な言葉遣いによる、不規則的なSCP-2844-JPへの命名
 [[/cell]]
 [[cell]]
-##dc0233|**敵対的**##
+[[span class=&#34;accent2&#34;]]敵対的[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 機械的な、SCP-2844-JPに対する命名規則の集積記憶
 [[/cell]]
 [[cell]]
-##dc0233|**敵対的**##
+[[span class=&#34;accent2&#34;]]敵対的[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 SCP-2844-JPに曝露した対象者についての、あらゆる名辞
 [[/cell]]
 [[cell]]
-##dc0233|**敵対的**##
+[[span class=&#34;accent2&#34;]]敵対的[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
 SCP-2844-JPに曝露した対象者に関連した物品
 [[/cell]]
 [[cell]]
-##dc0233|**敵対的**##
+[[span class=&#34;accent2&#34;]]敵対的[[/span]]
 [[/cell]]
 [[/row]]
-
 [[row]]
 [[cell]]
-##dc0233|空想的な荒野##に関する全ての名辞
+[[span class=&#34;accent2&#34;]]空想的な荒野[[/span]]に関する全ての名辞
 [[/cell]]
 [[cell]]
-##dc0233|**敵対的**##
+[[span class=&#34;accent2&#34;]]敵対的[[/span]]
 [[/cell]]
 [[/row]]
 [[/table]]
 
-上記の通り、SCP-2844-JPの性質は明らかに変容している。誤伝達部門-戦術神学部門は、こうした「認知的不協和の不在」の状況が構築されている事を鑑み、今回のオペレーションを計画した。##dc0233|毒##を以て - 財団は神をも収容できる。
+上記の通り、SCP-2844-JPの性質は明らかに変容している。誤伝達部門-戦術神学部門は、こうした「認知的不協和の不在」の状況が構築されている事を鑑み、今回のオペレーションを計画した。[[span class=&#34;accent2&#34;]]毒[[/span]]を以て、財団は神をも収容できる。
 
-----
+**方法:** 対抗ミーム「ALABASTERプログラム」は、その一部分は未だ財団の管理下に置かれている。ALABASTERプログラムを改良し、特定の未使用の言語を散布する。仮にその言語にSCP-2844-JPが支配する概念の表現が存在しないとしたら、散布された言語によって認識を上書きされた対象は、恐怖たるSCP-2844-JPを拡散する事が困難になると仮定される。
 
-**方法:** 対抗ミーム - &#34;ALABASTERプログラム&#34;は、その一部分は未だ財団の管理下に置かれている。ALABASTERプログラムを改良し、特定の未使用の言語を散布する。仮にその言語に - SCP-2844-JPが支配する概念の表現が存在しないとしたら - 散布された言語によって認識を上書きされた対象は、恐怖たるSCP-2844-JPを拡散する事が困難になるだろう。
-
-ALABASTERプログラムは肯定である。「より強い認識」が干渉を開始した時、不協和の存在は、不協和自体を除去するために最も最適な判断を下すだろう - SCP-2844-JPは自己矛盾によって崩壊する。
+ALABASTERプログラムは肯定である。「より強い認識」が干渉を開始した時、不協和の存在は、不協和自体を除去するために最も最適な判断を下す。SCP-2844-JPは自己矛盾によって崩壊する。
 
 ++++ [http://scp-jp.wikidot.com/scp-444 ALABASTER-言語伝染プログラム]
 
 現行の人類種に対して[http://scp-jp.wikidot.com/kyougoku-s-proposal 肯定的]であるALABASTERプログラムは、現実改変によるSCP-2844-JPの自然消滅を促す。認識と伝達の齟齬によって - SCP-2844-JPはこれ以上拡散されない。
 
-@@ @@
-
-[[div class=&#34;blockquote&#34; style=&#34;text-align: center; font-style: italic;&#34;]]
-
-__**オペレーションCYANIDE 計画追加承認**__
-
-戦術神学部門　ステン・アルムクヴィスト参謀長
-
-誤伝達部門　エリ・フォークレイ博士
-
-[[/div]]
-
 [[/cell]]
 [[/row]]
+[[row]]
+[[hcell]]
+[[/hcell]]
+[[/row]]
 [[/table]]
-[[/div]]
-[[/div]]
 
-----
-
-@@ @@
-
-@@ @@
-
-[[div style=&#34;width: 85%; margin: auto; background: #f24; padding: 6px; border-radius: 16px;&#34;]]
-[[div class=&#34;notation&#34; style=&#34;outline: 10px solid; background: rgb(10, 10, 10); width: auto; margin: 0; text-align: center; font-size: 140%; font-weight: 700; color: #f24; padding: 0.6rem; border: dotted 3px #f24 !important; background-image: url(http://scp-jp-storage.wikidot.com/local--files/file:6759963-177-evjp/fractal-bg.jpg); background-attachment: fixed;&#34;]]
-
-[[div class=&#34;modal&#34; style=&#34;background-color: rgba(0,0,0,.85); font-family: &#39;Work Sans&#39;;&#34;]]
-##dc0233|ALERT! V-M GP-TALEMODIFIED has been damaged.##
-[[/div]]
-----
-[[div class=&#34;modal&#34; style=&#34;background-color: rgba(0,0,0,.85); font-family: &#39;Work Sans&#39;, &#39;Noto Sans JP&#39;;&#34;]]
-
-##dc0233|現実レイヤーの致命的な破損を確認##
-
-##dc0233|認識災害ベクターの自己崩壊の兆候##
-
-##dc0233|穿天性物語改変による即発臨界の可能性##
+= [[span class=&#34;st&#34;]]補遺終了[[/span]]
 
 [[/div]]
-----
-[[div class=&#34;modal&#34; style=&#34;background-color: rgba(0,0,0,.85); text-align: left; font-size: small; font-family: &#39;Inter&#39;; font-weight: initial !important; color: rgb(var(--one-color)) !important;&#34;]]
 
-[[size 120%]]**オペレーションCYANIDEに伴う二次被害**[[/size]]
-----
-[[div class=&#34;tableb table5&#34;]]
-[[include :scp-wiki:component:image-block
-name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-178-j9rs/V-M%20GP-TALEMODIFIED.jpg
-|caption=ヴェルダンディ-マリドラマギウアン 穿天性物語改変機構 - 図面
-|width=100%
-|align=center]]
-[[/div]]
 
-改変された新規のALABASTERプログラムは、SCP-2844-JPに対する人類種の共通認識を一時的に初期化しました。これに伴う基底現実の構成要素は断片的に崩壊が予想され、局所的なCK-クラスイベントを誘発させる可能性があります。SCP-2844-JPの完全な根絶に向けて - 財団はオペレーションCYANIDEを継続します。
+[[div class=&#34;custom_collapsible&#34;]]
+[[collapsible show=&#34;«最終収容試行ログが破損しています。復元しますか？»&#34; hide=&#34;«エラー！要求が拒否されました。財団の応答可能なデータベースが存在しません。»&#34;]]
 
-発見された[[a href=&#34;http://scp-jp.wikidot.com/scp-1500-jp&#34;]]##f24|日本支部の旧式報告書##[[/a]]は、SCP-2844-JPの起源にまつわる重要な実体について記述しているものと思われます。財団は現在 - この報告書に潜在的に記述される**太古の4実体**について調査を継続しています。
 
-[[/div]]
-----
-[[/div]]
-[[/div]]
+[[div class=&#34;blockquote&#34; style=&#34;border: 1px dashed #999 !important; padding: 20px !important; background-color: #f4f4f4 !important; margin-bottom: 20vh;&#34;]]
 
-@@ @@
+**アイテム番号:** SCP-[[span class=&#34;error_b&#34;]]██████[[/span]]
 
-@@ @@
+**オブジェクトクラス:** [[span class=&#34;error_b&#34;]]███████████[[/span]]
 
-@@ @@
+**特別収容プロトコル:** SCP-[[span class=&#34;error_b&#34;]]██████[[/span]]は収容不能であり、認識困難です。SCP-[[span class=&#34;error_b&#34;]]██████[[/span]]は即座に破壊されるべきです。SCP-[[span class=&#34;error_b&#34;]]██████[[/span]]を破壊してください。
 
-@@ @@
+**説明:** 音声転写開始、ログ出力開始。アレクサンドラ、大丈夫ですか？ ええ、続けましょう。...仮にこのトランスクリプションが復元されたとするなら、これを聞いている時点で焚書は解禁されたか、或いはアウトブレイクが起きたのでしょう。ええ、お話ししましょう、[[span class=&#34;error_b&#34;]]████[[/span]]が何であるかを。
 
-[[div class=&#34;document&#34;]]
+かつての財団日本支部において、[[a href=&#34;http://scp-jp.wikidot.com/scp-444-jp&#34; class=&#34;error_r&#34;]]██████████[[/a]]と呼ばれたアノマリーが存在していました。我々はその本性を知らず、無知なるままに封じ込めを解きました。空想の世界から[[span class=&#34;error_r&#34;]]██████████[[/span]]を解放しました。無謀にもその身を挺し、その存在を地の底に封印したかつての職員が存在しました。彼あるいは彼女の功績によって、それは長らくその存在を知られないよう、深く底に封じ込められていました。[[span class=&#34;error_r&#34;]]██████████[[/span]]は言葉に封じ込められ、そして言葉を散り散りになるまで破壊されていました。断片化され世界各地に分散され、しかしそれを復元しようと[*http://scp-jp.wikidot.com/joicl-hub 試みる者]も居ました。彼らは技術を持ち、しかし無知でした。解き放たれた[[span class=&#34;error_r&#34;]]██████████[[/span]]は、施設を貪り、そして彼らを亡き者にしました。恐らく、貴方が知っての通り。
 
-= {{Access Granted.}}
-
-----
-
-**アイテム番号:** SCP-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-122-7pyh/ErrorBlock_1.jpg class=&#34;middle&#34;]]
-@@ @@
-**オブジェクトクラス:** [[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-161-mdgn/ErrorBlock_2.jpg class=&#34;middle&#34;]]
-@@ @@
-**特別収容プロトコル:** SCP-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-122-7pyh/ErrorBlock_1.jpg class=&#34;middle&#34;]]は収容不能であり、認識困難です。SCP-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-122-7pyh/ErrorBlock_1.jpg class=&#34;middle&#34;]]は即座に破壊されるべきです。SCP-[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-122-7pyh/ErrorBlock_1.jpg class=&#34;middle&#34;]]を破壊してください。
-@@ @@
-**説明:** 音声転写開始、ログ出力開始。アレクサンドラ、大丈夫ですか？ - ええ、続けましょう。...仮にこのトランスクリプションが復元されたとするなら、これを聞いている時点で焚書は解禁されたか、或いはアウトブレイクが起きたのでしょう。ええ、お話ししましょう、[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-161-mdgn/ErrorBlock_2.jpg class=&#34;middle&#34;]]が何であるかを。
-
-かつての財団日本支部において、[[a href=&#34;http://scp-jp.wikidot.com/scp-444-jp&#34;]][[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-138-577a/ErrorBlock_3.jpg class=&#34;middle&#34;]][[/a]]と呼ばれたアノマリーが存在していました。我々はその本性を知らず、無知なるままに封じ込めを解きました。空想の世界から[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-138-577a/ErrorBlock_3.jpg class=&#34;middle&#34;]]を解放しました。無謀にもその身を挺し、その存在を地の底に封印したかつての職員が存在しました。彼あるいは彼女の功績によって、それは長らくその存在を知られないよう、深く底に封じ込められていました。[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-138-577a/ErrorBlock_3.jpg class=&#34;middle&#34;]]は言葉に封じ込められ、そして言葉を散り散りになるまで破壊されていました。- 断片化され世界各地に分散され、そして - それを復元しようと[http://scp-jp.wikidot.com/joicl-hub 試みる者]も居ました。彼らは技術を持ち、しかし無知でした。解き放たれた[[image http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-138-577a/ErrorBlock_3.jpg class=&#34;middle&#34;]]は、施設を貪り、そして彼らを亡き者にしました。 - 恐らく、貴方が知っての通り。
-
-アウトブレイクが発生したならば、恐らくその施設を貴方たちが発見したのでしょう。或いは - いえ、時間の問題であった事には変わりありません。奴が餌を食らい、そしてこの世界に存在するための心臓を持ち、それが止まる時まで奴は動き続けるでしょう。有限の時間であり、貴方たちにとっては恐ろしい程に長い時間。奴は生きています。餌を食らい、思考し、判断し、脈動している。そして - 何より奴は&#34;ミーム&#34;であったのです。ミームの本質は自己の複製。何よりも自らの存続を優先します。- 例え狩りの手を止めてでも。
+アウトブレイクが発生したならば、恐らくその施設を貴方たちが発見したのでしょう。或いは...いえ、時間の問題であった事には変わりありません。奴が餌を食らい、そしてこの世界に存在するための心臓を持ち、それが止まる時まで奴は動き続けるでしょう。有限の時間であり、貴方たちにとっては恐ろしい程に長い時間。奴は生きています。餌を食らい、思考し、判断し、脈動している。そして何より奴は&#34;ミーム&#34;であったのです。ミームの本質は自己の複製。何よりも自らの存続を優先します。例え狩りの手を止めてでも。
 
 貴方は奴の巣を見つけましたか？ -- なら、時間はありません。
 
@@ -2427,7 +2505,7 @@ name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-178-j9rs/V-M%
 
 貴方は暗闇に巣食う**奴ら**を見ましたか？ -- なら、等しく訪れるのは死のみです。
 
-彼らと同じ失敗を、貴方たちは繰り返してきました。唯一の可能性を、打ち砕きました。何故、貴方はそれを掘り起こしたのです？失敗を恐れず、それを白日の下に照らし出したのです？財団に必要なのは探求心などではありません。礎としての理念を見失い、彷徨っているのなら......破滅が待っているでしょう。どうか - どうか、全てをあるままにしてほしかった。貴方に暗闇の中で死んでほしかった。それで手遅れと言うのなら......せめてもの償いをしてください。
+彼らと同じ失敗を、貴方たちは繰り返してきました。唯一の可能性を、打ち砕きました。何故、貴方はそれを掘り起こしたのです？失敗を恐れず、それを白日の下に照らし出したのです？財団に必要なのは探求心などではありません。礎としての理念を見失い、彷徨っているのなら...破滅が待っているでしょう。どうか - どうか、全てをあるままにしてほしかった。貴方に暗闇の中で死んでほしかった。それで手遅れと言うのなら...せめてもの償いをしてください。
 
 雛鳥が全てを喰らって、そして全てが水泡に帰す前に、子らを封じ込めてください。
 
@@ -2437,56 +2515,13 @@ name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-178-j9rs/V-M%
 
 [[/div]]
 
-@@ @@
 
-@@ @@
+[[div class=&#34;cognitohazard&#34;]]
 
-@@ @@
-
-[[div style=&#34;width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: rgb(var(--four-color));&#34;]]
-= **You are not whitelisted on this server!**
-[[div style=&#34;width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0 10px; color: white;&#34;]]
-
-**復号データ:** 致命的なAK-クラスシナリオの発生は免れなかったものの、オペレーションCYANIDEの実行により - SCP-2844-JP実体の将来的な拡散のリスクを完全に回避することに成功しました。[[a href=&#34;http://scp-jp.wikidot.com/scp-2000&#34;]]##white|ガニメデ・プロトコル##[[/a]]は現在実行段階にあり、SCP-2000の再起動が正式に予定されています。残存するSCP-2844-JP曝露者は、ALABASTERプログラムを用いた適切な手段によって&#34;##dc0233|終了##&#34;されます。本報告書の執筆時点で財団の全ての機密情報は解禁され、手順Declassified-403に基づきシステムが自動化されます。全ての管理は各サイトの人工知能徴募員に委任され、本報告書の不適切な部分は改訂されます。
-
+[[div class=&#34;cognitohazard_box&#34;]]
+[[div class=&#34;cognitohazard_inline_box&#34;]]
+エラー！アクセス不許可のため、次のファイルを表示することができませんでした。サルベージ可能な情報のうち、以下のものを復元することに成功しました。
 [[/div]]
-[[/div]]
-
-@@ @@
-
-@@ @@
-
-@@ @@
-
-@@ @@
-
-@@ @@
-
-[[div style=&#34;width: 600px; margin: auto; padding: 4px 4px 4px 4px; background: #f24;&#34;]]
-
-= **A fatal error has occurred, this connection is terminated.**
-
-[[div style=&#34;width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;&#34;]]
-
-= ファイル: SCP-2844-JPの不正な要因による削除手順の膠着状態を確認
-
-= ファイルを##dc0233|削除します##
-
-[[/div]]
-[[size 0%]]@@ @@[[/size]]
-[[div style=&#34;width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(72 72 72) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;&#34;]]
-
-= ##dc0233|**[アクセス不許可]**##[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]##dc0233|**NOTHING**##[[/span]]
-
-[[/div]]
-[[size 0%]]@@ @@[[/size]]
-[[div style=&#34;width: auto; margin: auto auto auto auto; display: block; background: linear-gradient(180deg, rgb(20 20 20) 0%, rgb(0 0 0) 100%); border: solid 2px rgb(40, 40, 40); padding: 0; color: white;&#34;]]
-
-= //{{Welcoomomoommme__Userrr.}}**
-
-= {{This is for you.}}
-----
-[[div style=&#34;text-align: center; font-weight: 900; color: #FF2244; font-style: italic; font-size: 110%;&#34;]]
 
 五色絢爛に輝くは　物語の終りを告げる者
 
@@ -2512,36 +2547,23 @@ name=http://scp-jp-storage.wdfiles.com/local--files/file%3A6759963-178-j9rs/V-M%
 
 事実は真実足りえなくなる時　祝おうぞ
 
-我らが新しき　緋色の子らよ
-
-[[/div]]
-[[/div]]
-[[/div]]
+我らが新しき　緋色の鳥子らよ
 
 @@ @@
-
 @@ @@
-
 @@ @@
-
-= ##dc0233|**我ら其れを忘ること無し。[[span class=&#34;blinkbar&#34;]]|[[/span]]**##
-
 @@ @@
+[[/div]][[/div]]
 
-----
-= ターミナルからの応答を確認できません。タイムアウトしました。
-----
-
-@@ @@
-
-@@ @@</textarea></pre>
+[[/collapsible]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:12.907578.</em>
+    <em>Last updated 2024-02-07 18:30:37.519191.</em>
   
 </div>
 </body>

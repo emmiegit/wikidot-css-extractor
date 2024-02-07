@@ -31,7 +31,6 @@
         <li>
           <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
-@import url(&#34;https://scp-wiki.wdfiles.com/local--files/svg-animation/mcdLogo.css&#34;);
 
 .animSVG {
     width: 100%;
@@ -39,11 +38,12 @@
     background-position: center;
     background-size: contain;
     background-repeat: no-repeat;
-}</code></pre>
+}
+</code></pre>
         </li>
       
         <li>
-          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Ablack-market/1&#34;)</code></pre>
+          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--files/svg-animation/mcdLogo.css&#34;);</code></pre>
         </li>
       
     </ul>
@@ -53,6 +53,10 @@
       
         <li>
           <pre><code>width: 100%; padding-bottom: calc(100% / 64 * 31); background-image: var(--mcdLogo);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -116,14 +120,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
+    <a href="https://scp-cs.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-cs:component:bhl-dark-sidebar</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -148,7 +146,6 @@
 [[module CSS]]
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
 @import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
-@import url(&#34;https://scp-wiki.wdfiles.com/local--files/svg-animation/mcdLogo.css&#34;);
 
 .animSVG {
     width: 100%;
@@ -157,18 +154,12 @@
     background-size: contain;
     background-repeat: no-repeat;
 }
+
 [[/module]]
 
-[[include :scp-wiki:component:interwiki-style
-| priority=1
-| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
-]]
-
-[[include :scp-wiki:component:interwiki-style
-| priority=2
-| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
-]]
-
+[[module CSS]]
+@import url(&#34;https://scp-wiki.wdfiles.com/local--files/svg-animation/mcdLogo.css&#34;);
+[[/module]]
 [[div class=&#34;mcdLogo animSVG&#34; style=&#34;width: 100%; padding-bottom: calc(100% / 64 * 31); background-image: var(--mcdLogo);&#34;]]
 [[/div]]
 
@@ -223,9 +214,11 @@ To import this theme, add this to your page:
 | subcolor4-info=(100, 3, 100)
 | subcolor4-has-light-text=1
 ]]
+[[/iftags]]
 
-[[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[code type=&#34;css&#34;]]
+[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
+[[include :scp-cs:component:bhl-dark-sidebar]]
+[[module CSS show=&#34;true&#34;]]
 /*
     Marshall, Carter &amp; Dark
     [2014 Wikidot Theme, 2019 Update]
@@ -237,39 +230,30 @@ To import this theme, add this to your page:
 
 /* ROOT - Header &amp; General Recoloring */
 :root {
-    /* Intro */
+/* Intro */
     --theme-base: &#34;nuscp&#34;
-    	--theme-id: &#34;black-market-theme&#34;
-    	--theme-name: &#34;Black Market Theme&#34;;
+    --theme-id: &#34;black-market-theme&#34;
+    --theme-name: &#34;Black Market Theme&#34;;
 
-    /* Header Images */
-    --logo-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Ablack-market/mcdpride.png&#34;);
+/* Header Images */
+    --logo-image: url(&#34;http://scp-cs.wikidot.com/local--files/theme:mcd/MCDLogo2-small.png&#34;);
     --gradient-header: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Ablack-market/mcd.png&#34;);
     --header-background-image-size: 290px 9rem;
-    --header-height-on-desktop: 9rem;
+    --header-height-on-desktop:  9rem;
     --header-height-on-mobile: 9rem;
     --diagonal-stripes: none;
 
-    /* Colors */
-    --pale-gray-monochrome: 248, 230, 238;
-    /* light purple for quoteblocks and such */
-    --light-gray-monochrome: 160, 140, 160;
-    /* light purple-gray */
-    --gray-monochrome: 61, 43, 61;
-    /* dark purple-gray */
-    --dark-gray-monochrome: 52, 31, 52;
-    /* darker purple-gray */
+/* Colors */
+    --pale-gray-monochrome: 248, 230, 238; /* light purple for quoteblocks and such */
+    --light-gray-monochrome: 160, 140, 160; /* light purple-gray */
+    --gray-monochrome: 61, 43, 61; /* dark purple-gray */
+    --dark-gray-monochrome: 52, 31, 52;  /* darker purple-gray */
 
-    --pale-accent: 216, 39, 216;
-    /* light purple */
-    --bright-accent: 180, 35, 180;
-    /* bright purple*/
-    --medium-accent: 140, 20, 140;
-    /* medium purple*/
-    --dark-accent: 100, 3, 100;
-    /* dark purple*/
-    --newpage-color: 221, 102, 221;
-    /* pale purple*/
+    --pale-accent: 216, 39, 216; /* light purple */
+    --bright-accent: 180, 35, 180; /* bright purple*/
+    --medium-accent: 140, 20, 140; /* medium purple*/
+    --dark-accent: 100, 3, 100; /* dark purple*/
+    --newpage-color: 221, 102, 221; /* pale purple*/
 
     --light-pale-gray-monochrome: var(--pale-gray-monochrome);
     --rating-module-button-color: var(--pale-gray-monochrome);
@@ -277,8 +261,7 @@ To import this theme, add this to your page:
     --barColour: rgb(100, 3, 100);
 }
 
-#side-bar,
-#interwiki {
+#side-bar {
     --sidebar-links-text: var(--pale-gray-monochrome);
 }
 
@@ -294,17 +277,17 @@ To import this theme, add this to your page:
 /* Undo the mobile Image Resize */
 @media only screen and (max-width: 768px) {
     #header {
-    	background-size: 0.625rem 2.500rem;
-    	background-repeat: no-repeat;
-    	background-position: left 0.75rem top 1.1875rem;
-    	background-clip: border-box;
-    	background-size: auto 5.375rem;
+        background-size: 0.625rem 2.500rem;
+        background-repeat: no-repeat;
+        background-position: left 0.75rem top 1.1875rem;
+        background-clip: border-box;
+        background-size: auto 5.375rem;
     }
 }
 
 /* LOG-IN INFO */
 #login-status #account-options {
-    background-image: none;
+     background-image: none;
 }
 
 /* PAGE-TITLE */
@@ -332,50 +315,40 @@ div.sexy-box div.image-container img {
 .code {
     border: none;
     background-color: rgba(var(--blockquote-bg-color));
-    box-shadow: inset 0 0 0 .0625rem rgba(var(--blockquote-border-color), .5), inset .0625rem 0 0 0 rgba(var(--blockquote-border-color), .5), inset 0 -.0625rem 0 0 rgba(var(--blockquote-border-color), .75);
+    box-shadow: inset 0 0 0 .0625rem rgba(var(--blockquote-border-color),.5),inset .0625rem 0 0 0 rgba(var(--blockquote-border-color),.5),inset 0 -.0625rem 0 0 rgba(var(--blockquote-border-color),.75);
 }
-
 /* RATING AND INFO MODULES */
 .page-rate-widget-box,
 #page-content .rate-box-with-credit-button {
     background: linear-gradient(to top,
-    		rgba(var(--dark-accent), 1) 0%,
-    		rgba(var(--dark-accent), 1) 100%);
+        rgba(var(--dark-accent),1) 0%,
+        rgba(var(--dark-accent), 1) 100%);
     border-color: rgb(var(--gray-monochrome));
     border-bottom-width: 0.0625rem;
     box-shadow: none;
 }
 
-#page-content .rate-box-with-credit-button&gt;.creditButton&gt;p&gt;a::before {
+#page-content .rate-box-with-credit-button &gt; .creditButton &gt; p &gt; a::before {
     background-color: rgb(var(--pale-gray-monochrome));
 }
 
-#page-content .rate-box-with-credit-button&gt;.creditButton:hover {
+#page-content .rate-box-with-credit-button &gt; .creditButton:hover {
     background: rgba(var(--bright-accent), 0.8);
 }
 
 #page-content .modalbox {
-    border-radius: 0;
-    box-shadow: 0 2px 6px rgba(var(--bright-accent), 0.5);
+     border-radius: 0;
+     box-shadow: 0 2px 6px rgba(var(--bright-accent), 0.5);
 }
-[[/code]]
-[[/collapsible]]
-[[/iftags]]
-[[include :scp-wiki:component:bhl-dark-sidebar]]
-[[module css]]
-@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Ablack-market/1&#34;)
 [[/module]]
-[[include :scp-wiki:component:interwiki-style
-| priority=3
-| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Ablack-market/1
-]]</textarea></pre>
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:42.823695.</em>
+    <em>Last updated 2024-02-07 18:30:41.325773.</em>
   
 </div>
 </body>

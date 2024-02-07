@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>SCP 链接重定向模块</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">SCP 链接重定向模块</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/scp-redirecter" target="_blank">SCP 链接重定向模块</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>.options table.wiki-content-table td {
+    border: none;
+    padding: 0.7em 1em;
+}
+.nohr + hr {
+    display: none;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:croqstyle" target="_blank"><code>:scp-wiki:component:croqstyle</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/component:scp-redirecter-tool" target="_blank"><code>:scp-wiki-cn:component:scp-redirecter-tool</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>options</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>options</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>options</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>options</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>options</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nohr</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:croqstyle -=- ]]
+[[module css]]
+.options table.wiki-content-table td {
+    border: none;
+    padding: 0.7em 1em;
+}
+.nohr + hr {
+    display: none;
+}
+[[/module]]
+
+[[&gt;]]
+[[module rate]]
+[[/&gt;]]
+
+2023/12/23，Wikidot 出现了一个致命的漏洞，导致站点名称中含有「scp」且页面名称长度大于 3 的链接均会出现以下错误：
+&gt; **Fatal error:** Function name must be a string in **/wikidot/app/releases/962533faf5b3667841198082c99c744e579f6796/web/router.php** on **line 52**
+--原因不明-- 原因为 Wikidot 服务器在用户未提供 [https://zh.wikipedia.org/wiki/HTTP%E5%8F%83%E7%85%A7%E4%BD%8D%E5%9D%80 HTTP 来源地址]（或称 HTTP referer）的情况下错误地解析了一个空的来源地址。且由于该错误出现在服务器端，我们（包括所有 SCP 站务）并没有办法解决这个问题。这个问题会使得大部分发布在站外（包括 QQ 群、Discord 等）的链接，甚至是书签等失效。该模块通过重定向的方式向 Wikidot 提供了一个来自 github.io 的来源地址，使其可以被正确解析。
+
+但例外总是存在的。该方法并不适用于未开启 SSL 的站点，即只能使用 http 形式作为链接的站点。由于 Wikidot 会在将 https 链接跳转为 http 链接时将来源地址清空，所以在重定向至未开启 SSL 的站点时将使得 Wikidot 获取到空来源地址，继而导致 bug 出现。
+
+**由于漏洞已被修复，该模块已无使用场景。**但其将将因兼容性原因继续保留。
+
+**使用方法：**
+SCP 链接重定向模块的本体为下面的链接：
+&gt; https://hoah2333.github.io/Archived-works/SCP/scp-redirecter/main.html
+只需要在链接后面加上参数便可重定向至任意页面，格式如下：
+&gt; @@本体@@?**参数名1**=**参数1**&amp;**参数名2**=**参数2**
+
+可用参数：
+[[div class=&#34;options&#34;]]
+||**@@                           @@**|| ||
+||**name**||页面名称，默认为主页。||
+||**site**||站点名称，默认为「scp-wiki-cn」，即 SCP 基金会中文分部。||
+||**url**||网页链接，默认为空。||
+[[/div]]
+
+在指定参数后，页面将会重定向至以下链接处：
+@@https://@@**site**@@.wikidot.com/@@**name**
+或在指定 url 后，页面重定向至 url 处。
+
+使用例：
+[[div class=&#34;options&#34;]]
+||**重定向前链接**|| ||**重定向后链接**||
+||https://hoah2333.github.io/Archived-works/SCP/scp-redirecter/main.html?name=scp-173&amp;site=scp-wiki-cn||→||https://scp-wiki-cn.wikidot.com/scp-173||
+|| || || ||
+||https://hoah2333.github.io/Archived-works/SCP/scp-redirecter/main.html?url=https://scp-wiki-cn.wikidot.com/scp-173||→||https://scp-wiki-cn.wikidot.com/scp-173||
+[[/div]]
+不介意的话，它也可以被用作链接加长模块，比如:
+[[div class=&#34;options&#34;]]
+||https://hoah2333.github.io/Archived-works/SCP/scp-redirecter/main.html?url=https://www.baidu.com/||→||https://www.baidu.com/||
+[[/div]]
+----
+特别地，你可以省略所有参数名，直接在「?」后面写上页面名称：
+[[div class=&#34;options&#34;]]
+||https://hoah2333.github.io/Archived-works/SCP/scp-redirecter/main.html?scp-173||→||https://scp-wiki-cn.wikidot.com/scp-173||
+[[/div]]
+
+即使带上「/」也没关系，你可以将论坛链接截断并复制到此处，如
+[[div class=&#34;options&#34;]]
+||https://hoah2333.github.io/Archived-works/SCP/scp-redirecter/main.html?forum/t-16536700/8||→||https://scp-wiki-cn.wikidot.com/forum/t-16536700/8||
+[[/div]]
+----
+你同样可以使用由 [[*user W Asriel]] 制作的 [https://scp-wiki-cn.wikidot.com/component:scp-redirecter-tool SCP 链接跳转工具]来生成一个重定向链接。
+[[div class=&#34;nohr&#34;]]
+[[/div]]
+[[include :scp-wiki-cn:component:scp-redirecter-tool]]
+
+由于此 bug 终有一天会被解决，所以请勿将其用在永久链接中（比如写在文内），或在 bug 被修复后及时修正。本模块完全免费开源，你可以在[https://github.com/hoah2333/Archived-works/tree/main/SCP/scp-redirecter 我的 Github 仓库]中查看它的源码。
+----
+此处另附一个由 [[*user smlt]] 制作的[https://redirect.crom.avn.sh/script.user.js 自动重定向脚本]，可以帮助你在遇到此错误之后自动重定向至正确的页面。该脚本需要使用 Tampermonkey 或类似的浏览器插件作为前置。</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2024-02-07 18:30:40.167300.</em>
+  
+</div>
+</body>

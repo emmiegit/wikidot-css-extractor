@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>レーダーチャート - バックエンド</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">レーダーチャート - バックエンド</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/user-component:radar-chart-base" target="_blank">レーダーチャート - バックエンド</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>:root{
+  --deg-3: 0.86602540378;
+  --deg-4: 1;
+  --deg-5: 0.95105651629;
+  --deg-6: 0.86602540378;
+  --deg-7: 0.78183148246;
+  --deg-8: 0.70710678118;
+  --deg-9: 0.64278760968;
+  --deg-10: 0.58778525229;
+  --bg-color: {$bg-color};
+  --line-color: {$line-color};
+}
+
+.circle-{$no}{
+  width: {$size};
+  height: {$size};
+  background: var(--bg-color);
+  position: relative;
+  border-radius: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  pointer-events: none;
+}
+
+.circle-{$no}.circle-left{
+  display: inline-block;
+  float: left;
+  margin: 0 2em 1em 2em;
+}
+
+.circle-{$no}.circle-right{
+  display: inline-block;
+  float: right;
+  margin: 0 2em 1em 2em;
+}
+
+@media (max-width: 768px) {
+  .circle-{$no}.circle-clear{
+  display: block;
+    float: none;
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+.circle-{$no} .scale-box div.scale,
+.circle-{$no} .line-box div.line,
+.circle-{$no} .graph-box div.graph,
+.circle-{$no} .label-box div.label{
+  display: none;
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(-n + {$stage}),
+.circle-{$no} .line-box div.line:nth-of-type(-n + {$item}),
+.circle-{$no} .graph-box div.graph:nth-of-type(-n + {$item}),
+.circle-{$no} .label-box div.label:nth-of-type(-n + {$item}){
+  display: block;
+}
+
+
+.circle-{$no} .scale-box .scale{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: solid 2px var(--line-color);
+}
+
+.circle-{$no} .scale-box div.scale:nth-of-type(1){
+  width: calc(100% / {$stage} * 1);
+  height: calc(100% / {$stage} * 1);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(2){
+  width: calc(100% / {$stage} * 2);
+  height: calc(100% / {$stage} * 2);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(3){
+  width: calc(100% / {$stage} * 3);
+  height: calc(100% / {$stage} * 3);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(4){
+  width: calc(100% / {$stage} * 4);
+  height: calc(100% / {$stage} * 4);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(5){
+  width: calc(100% / {$stage} * 5);
+  height: calc(100% / {$stage} * 5);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(6){
+  width: calc(100% / {$stage} * 6);
+  height: calc(100% / {$stage} * 6);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(7){
+  width: calc(100% / {$stage} * 7);
+  height: calc(100% / {$stage} * 7);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(8){
+  width: calc(100% / {$stage} * 8);
+  height: calc(100% / {$stage} * 8);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(9){
+  width: calc(100% / {$stage} * 9);
+  height: calc(100% / {$stage} * 9);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(10){
+  width: calc(100% / {$stage} * 10);
+  height: calc(100% / {$stage} * 10);
+}
+
+
+.circle-{$no} .line-box div.line:nth-of-type(2),
+.circle-{$no} .graph-box div.graph:nth-of-type(2),
+.circle-{$no} .label-box .label:nth-of-type(2){
+  transform: rotate(calc(360deg / {$item} * 1));
+}
+.circle-{$no} .line-box div.line:nth-of-type(3),
+.circle-{$no} .graph-box div.graph:nth-of-type(3),
+.circle-{$no} .label-box .label:nth-of-type(3){
+  transform: rotate(calc(360deg / {$item} * 2));
+}
+.circle-{$no} .line-box div.line:nth-of-type(4),
+.circle-{$no} .graph-box div.graph:nth-of-type(4),
+.circle-{$no} .label-box .label:nth-of-type(4){
+  transform: rotate(calc(360deg / {$item} * 3));
+}
+.circle-{$no} .line-box div.line:nth-of-type(5),
+.circle-{$no} .graph-box div.graph:nth-of-type(5),
+.circle-{$no} .label-box .label:nth-of-type(5){
+  transform: rotate(calc(360deg / {$item} * 4));
+}
+.circle-{$no} .line-box div.line:nth-of-type(6),
+.circle-{$no} .graph-box div.graph:nth-of-type(6),
+.circle-{$no} .label-box .label:nth-of-type(6){
+  transform: rotate(calc(360deg / {$item} * 5));
+}
+.circle-{$no} .line-box div.line:nth-of-type(7),
+.circle-{$no} .graph-box div.graph:nth-of-type(7),
+.circle-{$no} .label-box .label:nth-of-type(7){
+  transform: rotate(calc(360deg / {$item} * 6));
+}
+.circle-{$no} .line-box div.line:nth-of-type(8),
+.circle-{$no} .graph-box div.graph:nth-of-type(8),
+.circle-{$no} .label-box .label:nth-of-type(8){
+  transform: rotate(calc(360deg / {$item} * 7));
+}
+.circle-{$no} .line-box div.line:nth-of-type(9),
+.circle-{$no} .graph-box div.graph:nth-of-type(9),
+.circle-{$no} .label-box .label:nth-of-type(9){
+  transform: rotate(calc(360deg / {$item} * 8));
+}
+.circle-{$no} .line-box div.line:nth-of-type(10),
+.circle-{$no} .graph-box div.graph:nth-of-type(10),
+.circle-{$no} .label-box .label:nth-of-type(10){
+  transform: rotate(calc(360deg / {$item} * 9));
+}
+
+
+.circle-{$no} .line-box .line,
+.circle-{$no} .graph-box .graph{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 2px;
+  height: 50%;
+  background: var(--line-color);
+  transform-origin: 50% 100%;
+}
+
+.circle-{$no} .graph-box div.graph::after{
+  content: &#34;&#34;;
+  position: absolute;
+  left: 1px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 100%;
+  transform: skewY(calc(-90deg + 360deg / {$item}));
+  border-style: solid;
+  border-color: transparent transparent transparent {$color};
+}
+
+
+.circle-{$no} .graph-box div.graph:nth-of-type(1)::after{
+  border-width: calc({$size} / {$max} * {$data1} / 2) 0 0 calc({$size} / {$max} * {$data2} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(2)::after{
+  border-width: calc({$size} / {$max} * {$data2} / 2) 0 0 calc({$size} / {$max} * {$data3} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(3)::after{
+  border-width: calc({$size} / {$max} * {$data3} / 2) 0 0 calc({$size} / {$max} * {$data4} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(4)::after{
+  border-width: calc({$size} / {$max} * {$data4} / 2) 0 0 calc({$size} / {$max} * {$data5} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(5)::after{
+  border-width: calc({$size} / {$max} * {$data5} / 2) 0 0 calc({$size} / {$max} * {$data6} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(6)::after{
+  border-width: calc({$size} / {$max} * {$data6} / 2) 0 0 calc({$size} / {$max} * {$data7} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(7)::after{
+  border-width: calc({$size} / {$max} * {$data7} / 2) 0 0 calc({$size} / {$max} * {$data8} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(8)::after{
+  border-width: calc({$size} / {$max} * {$data8} / 2) 0 0 calc({$size} / {$max} * {$data9} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(9)::after{
+  border-width: calc({$size} / {$max} * {$data9} / 2) 0 0 calc({$size} / {$max} * {$data10} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(10)::after{
+  border-width: calc({$size} / {$max} * {$data10} / 2) 0 0 calc({$size} / {$max} * {$data1} / 2 * var(--deg-{$item}));
+}
+
+
+.circle-{$no} .graph-box div.graph:nth-of-type({$item})::after{
+  border-width: calc({$size} / {$max} * {$data{$item}} / 2) 0 0 calc({$size} / {$max} * {$data1} / 2 * var(--deg-{$item}));
+}
+
+
+.circle-{$no} .label-box .label{
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-weight: 900;
+  transform-origin: 50% calc({$size} / 2);
+}
+
+.circle-{$no} .label-box .label p{
+  display: inline-block;
+  margin:0;
+}
+
+.circle-{$no} .label-box .label:nth-of-type(2) p{
+  transform: rotate(calc(-360deg / {$item} * 1));
+}
+.circle-{$no} .label-box .label:nth-of-type(3) p{
+  transform: rotate(calc(-360deg / {$item} * 2));
+}
+.circle-{$no} .label-box .label:nth-of-type(4) p{
+  transform: rotate(calc(-360deg / {$item} * 3));
+}
+.circle-{$no} .label-box .label:nth-of-type(5) p{
+  transform: rotate(calc(-360deg / {$item} * 4));
+}
+.circle-{$no} .label-box .label:nth-of-type(6) p{
+  transform: rotate(calc(-360deg / {$item} * 5));
+}
+.circle-{$no} .label-box .label:nth-of-type(7) p{
+  transform: rotate(calc(-360deg / {$item} * 6));
+}
+.circle-{$no} .label-box .label:nth-of-type(8) p{
+  transform: rotate(calc(-360deg / {$item} * 7));
+}
+.circle-{$no} .label-box .label:nth-of-type(9) p{
+  transform: rotate(calc(-360deg / {$item} * 8));
+}
+.circle-{$no} .label-box .label:nth-of-type(10) p{
+  transform: rotate(calc(-360deg / {$item} * 9));
+}
+
+.circle-{$no}.sushi .label-box .label{
+  color: #000000;
+  text-shadow:1px 1px 1px #ffffff,-1px 1px 1px #ffffff,1px -1px 1px #ffffff,-1px -1px 1px #ffffff;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>graph-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scale</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>line</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>label</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[iftags +コンポーネント・バックエンド]]
+このユーザーコンポーネントのリファレンスは[[[reference:radar-chart|]]]です。
+[[/iftags]]
+
+[[iftags -コンポーネント・バックエンド -コンポーネント]]
+[[module css]]
+:root{
+  --deg-3: 0.86602540378;
+  --deg-4: 1;
+  --deg-5: 0.95105651629;
+  --deg-6: 0.86602540378;
+  --deg-7: 0.78183148246;
+  --deg-8: 0.70710678118;
+  --deg-9: 0.64278760968;
+  --deg-10: 0.58778525229;
+  --bg-color: {$bg-color};
+  --line-color: {$line-color};
+}
+
+.circle-{$no}{
+  width: {$size};
+  height: {$size};
+  background: var(--bg-color);
+  position: relative;
+  border-radius: 50%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  pointer-events: none;
+}
+
+.circle-{$no}.circle-left{
+  display: inline-block;
+  float: left;
+  margin: 0 2em 1em 2em;
+}
+
+.circle-{$no}.circle-right{
+  display: inline-block;
+  float: right;
+  margin: 0 2em 1em 2em;
+}
+
+@media (max-width: 768px) {
+  .circle-{$no}.circle-clear{
+  display: block;
+    float: none;
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+.circle-{$no} .scale-box div.scale,
+.circle-{$no} .line-box div.line,
+.circle-{$no} .graph-box div.graph,
+.circle-{$no} .label-box div.label{
+  display: none;
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(-n + {$stage}),
+.circle-{$no} .line-box div.line:nth-of-type(-n + {$item}),
+.circle-{$no} .graph-box div.graph:nth-of-type(-n + {$item}),
+.circle-{$no} .label-box div.label:nth-of-type(-n + {$item}){
+  display: block;
+}
+
+
+.circle-{$no} .scale-box .scale{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto auto;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: solid 2px var(--line-color);
+}
+
+.circle-{$no} .scale-box div.scale:nth-of-type(1){
+  width: calc(100% / {$stage} * 1);
+  height: calc(100% / {$stage} * 1);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(2){
+  width: calc(100% / {$stage} * 2);
+  height: calc(100% / {$stage} * 2);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(3){
+  width: calc(100% / {$stage} * 3);
+  height: calc(100% / {$stage} * 3);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(4){
+  width: calc(100% / {$stage} * 4);
+  height: calc(100% / {$stage} * 4);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(5){
+  width: calc(100% / {$stage} * 5);
+  height: calc(100% / {$stage} * 5);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(6){
+  width: calc(100% / {$stage} * 6);
+  height: calc(100% / {$stage} * 6);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(7){
+  width: calc(100% / {$stage} * 7);
+  height: calc(100% / {$stage} * 7);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(8){
+  width: calc(100% / {$stage} * 8);
+  height: calc(100% / {$stage} * 8);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(9){
+  width: calc(100% / {$stage} * 9);
+  height: calc(100% / {$stage} * 9);
+}
+.circle-{$no} .scale-box div.scale:nth-of-type(10){
+  width: calc(100% / {$stage} * 10);
+  height: calc(100% / {$stage} * 10);
+}
+
+
+.circle-{$no} .line-box div.line:nth-of-type(2),
+.circle-{$no} .graph-box div.graph:nth-of-type(2),
+.circle-{$no} .label-box .label:nth-of-type(2){
+  transform: rotate(calc(360deg / {$item} * 1));
+}
+.circle-{$no} .line-box div.line:nth-of-type(3),
+.circle-{$no} .graph-box div.graph:nth-of-type(3),
+.circle-{$no} .label-box .label:nth-of-type(3){
+  transform: rotate(calc(360deg / {$item} * 2));
+}
+.circle-{$no} .line-box div.line:nth-of-type(4),
+.circle-{$no} .graph-box div.graph:nth-of-type(4),
+.circle-{$no} .label-box .label:nth-of-type(4){
+  transform: rotate(calc(360deg / {$item} * 3));
+}
+.circle-{$no} .line-box div.line:nth-of-type(5),
+.circle-{$no} .graph-box div.graph:nth-of-type(5),
+.circle-{$no} .label-box .label:nth-of-type(5){
+  transform: rotate(calc(360deg / {$item} * 4));
+}
+.circle-{$no} .line-box div.line:nth-of-type(6),
+.circle-{$no} .graph-box div.graph:nth-of-type(6),
+.circle-{$no} .label-box .label:nth-of-type(6){
+  transform: rotate(calc(360deg / {$item} * 5));
+}
+.circle-{$no} .line-box div.line:nth-of-type(7),
+.circle-{$no} .graph-box div.graph:nth-of-type(7),
+.circle-{$no} .label-box .label:nth-of-type(7){
+  transform: rotate(calc(360deg / {$item} * 6));
+}
+.circle-{$no} .line-box div.line:nth-of-type(8),
+.circle-{$no} .graph-box div.graph:nth-of-type(8),
+.circle-{$no} .label-box .label:nth-of-type(8){
+  transform: rotate(calc(360deg / {$item} * 7));
+}
+.circle-{$no} .line-box div.line:nth-of-type(9),
+.circle-{$no} .graph-box div.graph:nth-of-type(9),
+.circle-{$no} .label-box .label:nth-of-type(9){
+  transform: rotate(calc(360deg / {$item} * 8));
+}
+.circle-{$no} .line-box div.line:nth-of-type(10),
+.circle-{$no} .graph-box div.graph:nth-of-type(10),
+.circle-{$no} .label-box .label:nth-of-type(10){
+  transform: rotate(calc(360deg / {$item} * 9));
+}
+
+
+.circle-{$no} .line-box .line,
+.circle-{$no} .graph-box .graph{
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 2px;
+  height: 50%;
+  background: var(--line-color);
+  transform-origin: 50% 100%;
+}
+
+.circle-{$no} .graph-box div.graph::after{
+  content: &#34;&#34;;
+  position: absolute;
+  left: 1px;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  transform-origin: 0 100%;
+  transform: skewY(calc(-90deg + 360deg / {$item}));
+  border-style: solid;
+  border-color: transparent transparent transparent {$color};
+}
+
+
+.circle-{$no} .graph-box div.graph:nth-of-type(1)::after{
+  border-width: calc({$size} / {$max} * {$data1} / 2) 0 0 calc({$size} / {$max} * {$data2} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(2)::after{
+  border-width: calc({$size} / {$max} * {$data2} / 2) 0 0 calc({$size} / {$max} * {$data3} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(3)::after{
+  border-width: calc({$size} / {$max} * {$data3} / 2) 0 0 calc({$size} / {$max} * {$data4} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(4)::after{
+  border-width: calc({$size} / {$max} * {$data4} / 2) 0 0 calc({$size} / {$max} * {$data5} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(5)::after{
+  border-width: calc({$size} / {$max} * {$data5} / 2) 0 0 calc({$size} / {$max} * {$data6} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(6)::after{
+  border-width: calc({$size} / {$max} * {$data6} / 2) 0 0 calc({$size} / {$max} * {$data7} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(7)::after{
+  border-width: calc({$size} / {$max} * {$data7} / 2) 0 0 calc({$size} / {$max} * {$data8} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(8)::after{
+  border-width: calc({$size} / {$max} * {$data8} / 2) 0 0 calc({$size} / {$max} * {$data9} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(9)::after{
+  border-width: calc({$size} / {$max} * {$data9} / 2) 0 0 calc({$size} / {$max} * {$data10} / 2 * var(--deg-{$item}));
+}
+.circle-{$no} .graph-box div.graph:nth-of-type(10)::after{
+  border-width: calc({$size} / {$max} * {$data10} / 2) 0 0 calc({$size} / {$max} * {$data1} / 2 * var(--deg-{$item}));
+}
+
+
+.circle-{$no} .graph-box div.graph:nth-of-type({$item})::after{
+  border-width: calc({$size} / {$max} * {$data{$item}} / 2) 0 0 calc({$size} / {$max} * {$data1} / 2 * var(--deg-{$item}));
+}
+
+
+.circle-{$no} .label-box .label{
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  font-weight: 900;
+  transform-origin: 50% calc({$size} / 2);
+}
+
+.circle-{$no} .label-box .label p{
+  display: inline-block;
+  margin:0;
+}
+
+.circle-{$no} .label-box .label:nth-of-type(2) p{
+  transform: rotate(calc(-360deg / {$item} * 1));
+}
+.circle-{$no} .label-box .label:nth-of-type(3) p{
+  transform: rotate(calc(-360deg / {$item} * 2));
+}
+.circle-{$no} .label-box .label:nth-of-type(4) p{
+  transform: rotate(calc(-360deg / {$item} * 3));
+}
+.circle-{$no} .label-box .label:nth-of-type(5) p{
+  transform: rotate(calc(-360deg / {$item} * 4));
+}
+.circle-{$no} .label-box .label:nth-of-type(6) p{
+  transform: rotate(calc(-360deg / {$item} * 5));
+}
+.circle-{$no} .label-box .label:nth-of-type(7) p{
+  transform: rotate(calc(-360deg / {$item} * 6));
+}
+.circle-{$no} .label-box .label:nth-of-type(8) p{
+  transform: rotate(calc(-360deg / {$item} * 7));
+}
+.circle-{$no} .label-box .label:nth-of-type(9) p{
+  transform: rotate(calc(-360deg / {$item} * 8));
+}
+.circle-{$no} .label-box .label:nth-of-type(10) p{
+  transform: rotate(calc(-360deg / {$item} * 9));
+}
+
+.circle-{$no}.sushi .label-box .label{
+  color: #000000;
+  text-shadow:1px 1px 1px #ffffff,-1px 1px 1px #ffffff,1px -1px 1px #ffffff,-1px -1px 1px #ffffff;
+}
+[[/module]]
+
+
+[[div class=&#34;circle-{$no} circle-{$align} [[#if {$clear} | circle-clear ]] [[#if {$sushi} | sushi ]]&#34;]]
+[[div class=&#34;graph-box&#34;]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[div class=&#34;graph&#34;]]
+[[/div]]
+[[/div]]
+[[div class=&#34;scale-box&#34;]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[div class=&#34;scale&#34;]]
+[[/div]]
+[[/div]]
+[[div class=&#34;line-box&#34;]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[div class=&#34;line&#34;]]
+[[/div]]
+[[/div]]
+[[div class=&#34;label-box&#34;]]
+[[div class=&#34;label&#34;]]
+{$label1}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label2}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label3}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label4}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label5}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label6}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label7}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label8}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label9}
+[[/div]]
+[[div class=&#34;label&#34;]]
+{$label10}
+[[/div]]
+[[/div]]
+[[/div]]
+[[/iftags]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2024-02-07 18:30:41.700865.</em>
+  
+</div>
+</body>

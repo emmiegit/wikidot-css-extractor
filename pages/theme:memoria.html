@@ -29,12 +29,286 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);</code></pre>
+          <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/normalize.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/black-highlighter.min.css&#34;);
+@import url(&#39;https://scp-wiki.wdfiles.com/theme:memoria/code/1&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&amp;display=swap&#39;);
+
+#header {
+    background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/TitleLogo.png&#39;);
+}
+
+#side-bar:hover, #side-bar:active {
+background:
+linear-gradient(
+    rgba(var(--swatch-menubg-color),1) 30%,
+    rgba(var(--swatch-menubg-color),0)),
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0),
+    rgba(var(--swatch-menubg-color),1) 70%) 0 100%,
+radial-gradient(farthest-side at 50% 0,
+    rgba(var(--swatch-primary-darkest),.5),
+    rgba(var(--black-monochrome),0)),
+radial-gradient(farthest-side at 50% 100%,
+    rgba(var(--swatch-primary-darkest),.5),
+    rgba(var(--black-monochrome),0)) 0 100%;
+}
+#side-bar {
+background:
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0) 30%,
+    rgba(var(--swatch-menubg-color),0)),
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0),
+    rgba(var(--swatch-menubg-color),0) 70%) 0 100%,
+radial-gradient(farthest-side at 50% 0,
+    rgba(var(--swatch-primary-darkest),0),
+    rgba(var(--black-monochrome),0)),
+radial-gradient(farthest-side at 50% 100%,
+    rgba(var(--swatch-primary-darkest),0),
+    rgba(var(--black-monochrome),0)) 0 100%;
+}
+
+#page-title{display:none}
+
+@supports(--css:variables) {
+
+    :root {
+     --header-title: &#34;In Memoria, Adytum&#34;;
+     --header-subtitle: &#34;Echoes of Kalmaktama.&#34;;
+     --header-font: &#39;Nanum Brush Script&#39;, cursive;
+     --background-gradient-distance:60rem; !important
+    }
+}
+
+
+    @supports (background-blend-mode: screen) {
+    
+     #extrac-div-1 {
+     width: 100%;
+     height: var(--header-height-on-desktop);
+     position: absolute;
+     top: 0;
+     left: 0;
+     background-image: var(--gradient-header), url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;);
+     background-size: var(--header-background-image-size) 100%, 100%, 100%;
+     background-blend-mode: normal;
+     pointer-events: none;
+     }
+
+     div#extra-div-1 {
+     width: 100%;
+     height: calc(100% - var(--final-header-height-on-desktop));
+     position: absolute;
+     top: calc(var(--final-header-height-on-desktop));
+     left: 0;
+     z-index: -1;
+     background-color: rgba(222, 222, 222, 1);
+     background-color: rgba(var(--swatch-background), 1);
+     mask: var(--gradient-background);
+     -webkit-mask: var(--gradient-background);
+     background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;), var(--gradient-background);
+     background-size: 100%, 80% var(--background-gradient-distance);
+     background-blend-mode: difference;
+     background-repeat: no-repeat, repeat-x;
+     pointer-events: none;
+     }
+
+    }
+
+.type1 {
+    display: block;
+    overflow: hidden;
+    font-family: &#39;Nanum Brush Script&#39;, cursive;
+    font-style: normal;
+    font-size: 170%;
+    color: rgb(57, 0, 0);
+
+    background-attachment: scroll;
+    background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/textback.jpg&#39;);
+
+    background-clip: border-box;
+    background-color: rgb(222, 222, 222);
+    background-origin: padding-box;
+    background-repeat: repeat;
+    background-size: 100%;
+
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2)
+    }
+
+.textbox {
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    background-color: rgb(var(--white-monochrome));
+}
+
+.scp-image-block.block-right {
+    padding: 1em !important;
+    background: var(--gradient-header);
+}
+
+.scp-image-block img {
+    padding-bottom: 1em;
+}
+
+.status {
+    font-family: var(--title-font);
+    font-weight: 900;
+    font-size: 200%;
+    display: flex:
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.status span.active {
+    color: rgb(var(--white-monochrome));
+    -webkit-box-shadow:
+        inset 100vw 0 0 0 rgb(var(--rating-module-button-plus-color)),
+        0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+        -0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+        -0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+        0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color));
+        -moz-box-shadow:
+            inset 100vw 0 0 0 rgb(var(--rating-module-button-plus-color)),
+            0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+            -0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+            -0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+            0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color));
+                box-shadow:
+                    inset 100vw 0 0 0 rgb(var(--rating-module-button-plus-color)),
+                    0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+                    -0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+                    -0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+                    0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color));
+}
+</code></pre>
         </li>
       
         <li>
-          <pre><code>@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Amemoria/1&#34;)</code></pre>
+          <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/normalize.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/black-highlighter.min.css&#34;);
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/component:collapsible-sidebar/1&#34;);
+@import url(&#39;https://scp-wiki.wdfiles.com/theme:memoria/code/1&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&amp;display=swap&#39;);
+
+#header {
+    background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/TitleLogo.png&#39;);
+}
+
+#page-title{display:none}
+
+@supports(--css:variables) {
+
+    :root {
+     --header-title: &#34;In Memoria, Adytum&#34;;
+     --header-subtitle: &#34;Echoes of Kalmaktama.&#34;;
+     --header-font: &#39;Nanum Brush Script&#39;, cursive;
+     --background-gradient-distance:75rem; !important
+    }
+}
+
+
+    @supports (background-blend-mode: screen) {
+    
+     #extrac-div-1 {
+     width: 100%;
+     height: var(--header-height-on-desktop);
+     position: absolute;
+     top: 0;
+     left: 0;
+     background-image: var(--gradient-header), url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;);
+     background-size: var(--header-background-image-size) 100%, 100%, 100%;
+     background-blend-mode: normal;
+     pointer-events: none;
+     }
+
+     div#extra-div-1 {
+     width: 100%;
+     height: calc(100% - var(--final-header-height-on-desktop));
+     position: absolute;
+     top: calc(var(--final-header-height-on-desktop));
+     left: 0;
+     z-index: -1;
+     background-color: rgba(222, 222, 222, 1);
+     background-color: rgba(var(--swatch-background), 1);
+     mask: var(--gradient-background);
+     -webkit-mask: var(--gradient-background);
+     background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;), var(--gradient-background);
+     background-size: 100%, 80% var(--background-gradient-distance);
+     background-blend-mode: difference;
+     background-repeat: no-repeat, repeat-x;
+     pointer-events: none;
+     }
+    }
+
+.type1 {
+    display: block;
+    overflow: hidden;
+    font-family: &#39;Nanum Brush Script&#39;, cursive;
+    font-style: normal;
+    font-size: 170%;
+    color: rgb(57, 0, 0);
+
+    background-attachment: scroll;
+    background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/textback.jpg&#39;);
+
+    background-clip: border-box;
+    background-color: rgb(222, 222, 222);
+    background-origin: padding-box;
+    background-repeat: repeat;
+    background-size: 100%;
+
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2)
+    }
+
+.textbox {
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    background-color: rgb(var(--white-monochrome));
+}
+
+#side-bar:hover, #side-bar:active {
+background:
+linear-gradient(
+    rgba(var(--swatch-menubg-color),1) 30%,
+    rgba(var(--swatch-menubg-color),0)),
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0),
+    rgba(var(--swatch-menubg-color),1) 70%) 0 100%,
+radial-gradient(farthest-side at 50% 0,
+    rgba(var(--swatch-primary-darkest),.5),
+    rgba(var(--black-monochrome),0)),
+radial-gradient(farthest-side at 50% 100%,
+    rgba(var(--swatch-primary-darkest),.5),
+    rgba(var(--black-monochrome),0)) 0 100%;
+}
+#side-bar {
+background:
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0) 30%,
+    rgba(var(--swatch-menubg-color),0)),
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0),
+    rgba(var(--swatch-menubg-color),0) 70%) 0 100%,
+radial-gradient(farthest-side at 50% 0,
+    rgba(var(--swatch-primary-darkest),0),
+    rgba(var(--black-monochrome),0)),
+radial-gradient(farthest-side at 50% 100%,
+    rgba(var(--swatch-primary-darkest),0),
+    rgba(var(--black-monochrome),0)) 0 100%;
+}
+</code></pre>
         </li>
       
     </ul>
@@ -154,23 +428,6 @@
   
 </li>
       
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:collapsible-sidebar" target="_blank"><code>:scp-wiki:component:collapsible-sidebar</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:collapsible-sidebar.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
@@ -208,20 +465,168 @@
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[iftags +theme]]
+
 [[module css]]
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css&#34;);
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/normalize.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/black-highlighter.min.css&#34;);
+@import url(&#39;https://scp-wiki.wdfiles.com/theme:memoria/code/1&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&amp;display=swap&#39;);
+
+#header {
+    background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/TitleLogo.png&#39;);
+}
+
+#side-bar:hover, #side-bar:active {
+background:
+linear-gradient(
+    rgba(var(--swatch-menubg-color),1) 30%,
+    rgba(var(--swatch-menubg-color),0)),
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0),
+    rgba(var(--swatch-menubg-color),1) 70%) 0 100%,
+radial-gradient(farthest-side at 50% 0,
+    rgba(var(--swatch-primary-darkest),.5),
+    rgba(var(--black-monochrome),0)),
+radial-gradient(farthest-side at 50% 100%,
+    rgba(var(--swatch-primary-darkest),.5),
+    rgba(var(--black-monochrome),0)) 0 100%;
+}
+#side-bar {
+background:
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0) 30%,
+    rgba(var(--swatch-menubg-color),0)),
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0),
+    rgba(var(--swatch-menubg-color),0) 70%) 0 100%,
+radial-gradient(farthest-side at 50% 0,
+    rgba(var(--swatch-primary-darkest),0),
+    rgba(var(--black-monochrome),0)),
+radial-gradient(farthest-side at 50% 100%,
+    rgba(var(--swatch-primary-darkest),0),
+    rgba(var(--black-monochrome),0)) 0 100%;
+}
+
+#page-title{display:none}
+
+@supports(--css:variables) {
+
+    :root {
+     --header-title: &#34;In Memoria, Adytum&#34;;
+     --header-subtitle: &#34;Echoes of Kalmaktama.&#34;;
+     --header-font: &#39;Nanum Brush Script&#39;, cursive;
+     --background-gradient-distance:60rem; !important
+    }
+}
+
+
+    @supports (background-blend-mode: screen) {
+    
+     #extrac-div-1 {
+     width: 100%;
+     height: var(--header-height-on-desktop);
+     position: absolute;
+     top: 0;
+     left: 0;
+     background-image: var(--gradient-header), url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;);
+     background-size: var(--header-background-image-size) 100%, 100%, 100%;
+     background-blend-mode: normal;
+     pointer-events: none;
+     }
+
+     div#extra-div-1 {
+     width: 100%;
+     height: calc(100% - var(--final-header-height-on-desktop));
+     position: absolute;
+     top: calc(var(--final-header-height-on-desktop));
+     left: 0;
+     z-index: -1;
+     background-color: rgba(222, 222, 222, 1);
+     background-color: rgba(var(--swatch-background), 1);
+     mask: var(--gradient-background);
+     -webkit-mask: var(--gradient-background);
+     background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;), var(--gradient-background);
+     background-size: 100%, 80% var(--background-gradient-distance);
+     background-blend-mode: difference;
+     background-repeat: no-repeat, repeat-x;
+     pointer-events: none;
+     }
+
+    }
+
+.type1 {
+    display: block;
+    overflow: hidden;
+    font-family: &#39;Nanum Brush Script&#39;, cursive;
+    font-style: normal;
+    font-size: 170%;
+    color: rgb(57, 0, 0);
+
+    background-attachment: scroll;
+    background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/textback.jpg&#39;);
+
+    background-clip: border-box;
+    background-color: rgb(222, 222, 222);
+    background-origin: padding-box;
+    background-repeat: repeat;
+    background-size: 100%;
+
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2)
+    }
+
+.textbox {
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    background-color: rgb(var(--white-monochrome));
+}
+
+.scp-image-block.block-right {
+    padding: 1em !important;
+    background: var(--gradient-header);
+}
+
+.scp-image-block img {
+    padding-bottom: 1em;
+}
+
+.status {
+    font-family: var(--title-font);
+    font-weight: 900;
+    font-size: 200%;
+    display: flex:
+    align-content: center;
+    justify-items: center;
+    text-align: center;
+}
+
+.status span.active {
+    color: rgb(var(--white-monochrome));
+    -webkit-box-shadow:
+        inset 100vw 0 0 0 rgb(var(--rating-module-button-plus-color)),
+        0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+        -0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+        -0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+        0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color));
+        -moz-box-shadow:
+            inset 100vw 0 0 0 rgb(var(--rating-module-button-plus-color)),
+            0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+            -0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+            -0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+            0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color));
+                box-shadow:
+                    inset 100vw 0 0 0 rgb(var(--rating-module-button-plus-color)),
+                    0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+                    -0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+                    -0.25rem 0.25rem 0 rgb(var(--rating-module-button-plus-color)),
+                    0.25rem -0.25rem 0 rgb(var(--rating-module-button-plus-color));
+}
+
 [[/module]]
-
-[[include :scp-wiki:component:interwiki-style
-| priority=1
-| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/normalize.min.css
-]]
-
-[[include :scp-wiki:component:interwiki-style
-| priority=2
-| theme=https://nu-scptheme.github.io/Black-Highlighter/css/min/black-highlighter.min.css
-]]
 
 [[&gt;]]
 [[module Rate]]
@@ -277,12 +682,12 @@ You&#39;ll need to use the &#34;@@@@@@ @@@@@@&#34; symbols to separate paragraph
 
 + What this is:
 
-&gt; This theme was developed by [[*user MalyceGraves]] to be used in conjunction with tales and SCP articles written in and for the Canon  [[[memoria-adytum|In Memoria, Adytum]]]. 
-&gt; 
+&gt; This theme was developed by [[*user MalyceGraves]] to be used in conjunction with tales and SCP articles written in and for the Canon  [[[memoria-adytum|In Memoria, Adytum]]].
+&gt;
 &gt; This theme is licensed under CC BY-SA 3.0
 
 
-++ Additionally 
+++ Additionally
 This is a Black Highlighter + BHL Collapsible Sidebar based theme. You will need to import the Black Highlighter theme as well in order to use this theme. [[[theme:black-highlighter|To learn more go here.]]]
 
 -----
@@ -418,138 +823,134 @@ This is a long tab. It contains a lot of text.
 [[/div]]
 
 -----
-[[collapsible show=&#34;+ Show theme code&#34; hide=&#34;- Hide theme code&#34;]]
-[[code type=&#34;css&#34;]]
+[[/iftags]]
+[[module css]]
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/normalize.min.css&#34;);
+@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/black-highlighter.min.css&#34;);
+@import url(&#34;https://scp-wiki.wdfiles.com/local--code/component:collapsible-sidebar/1&#34;);
+@import url(&#39;https://scp-wiki.wdfiles.com/theme:memoria/code/1&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&amp;display=swap&#39;);
+
+#header {
+    background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/TitleLogo.png&#39;);
+}
+
+#page-title{display:none}
 
 @supports(--css:variables) {
 
     :root {
-    	--header-title: &#34;In Memoria, Adytum&#34;;
-    	--header-subtitle: &#34;Echoes of Kalmaktama.&#34;;
-    	--header-font: &#39;Nanum Brush Script&#39;, cursive;
-    	--background-gradient-distance: 75rem;
-    }
-
-    #header {
-    	background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/TitleLogo.png&#39;);
-    }
-
-    #page-title {
-    	display: none
-    }
-
-    @supports (background-blend-mode: screen) {
-
-    	#extrac-div-1 {
-    		width: 100%;
-    		height: var(--header-height-on-desktop);
-    		position: absolute;
-    		top: 0;
-    		left: 0;
-    		background-image: var(--gradient-header), url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;);
-    		background-size: var(--header-background-image-size) 100%, 100%, 100%;
-    		background-blend-mode: normal;
-    		pointer-events: none;
-    	}
-
-    	div#extra-div-1 {
-    		width: 100%;
-    		height: calc(100% - var(--final-header-height-on-desktop));
-    		position: absolute;
-    		top: calc(var(--final-header-height-on-desktop));
-    		left: 0;
-    		z-index: -1;
-    		background-color: rgba(222, 222, 222, 1);
-    		background-color: rgba(var(--swatch-background), 1);
-    		mask: var(--gradient-background);
-    		-webkit-mask: var(--gradient-background);
-    		background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;), var(--gradient-background);
-    		background-size: 100%, 80% var(--background-gradient-distance);
-    		background-blend-mode: difference;
-    		background-repeat: no-repeat, repeat-x;
-    		pointer-events: none;
-    	}
-    }
-
-    .type1 {
-    	display: block;
-    	overflow: hidden;
-    	font-family: &#39;Nanum Brush Script&#39;, cursive;
-    	font-style: normal;
-    	font-size: 170%;
-    	color: rgb(57, 0, 0);
-
-    	background-attachment: scroll;
-    	background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/textback.jpg&#39;);
-
-    	background-clip: border-box;
-    	background-color: rgb(222, 222, 222);
-    	background-origin: padding-box;
-    	background-repeat: repeat;
-    	background-size: 100%;
-
-    	border-radius: 10px;
-    	padding: 10px 10px;
-    	margin-bottom: 10px;
-
-    	box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2)
-    }
-
-    .textbox {
-    	border-radius: 10px;
-    	padding: 10px 10px;
-    	margin-bottom: 10px;
-    	background-color: rgb(var(--white-monochrome));
-    }
-
-    #side-bar:hover,
-    #side-bar:active {
-    	background:
-    		linear-gradient(rgba(var(--swatch-menubg-color), 1) 30%,
-    			rgba(var(--swatch-menubg-color), 0)),
-    		linear-gradient(rgba(var(--swatch-menubg-color), 0),
-    			rgba(var(--swatch-menubg-color), 1) 70%) 0 100%,
-    		radial-gradient(farthest-side at 50% 0,
-    			rgba(var(--swatch-primary-darkest), .5),
-    			rgba(var(--black-monochrome), 0)),
-    		radial-gradient(farthest-side at 50% 100%,
-    			rgba(var(--swatch-primary-darkest), .5),
-    			rgba(var(--black-monochrome), 0)) 0 100%;
-    }
-
-    #side-bar {
-    	background:
-    		linear-gradient(rgba(var(--swatch-menubg-color), 0) 30%,
-    			rgba(var(--swatch-menubg-color), 0)),
-    		linear-gradient(rgba(var(--swatch-menubg-color), 0),
-    			rgba(var(--swatch-menubg-color), 0) 70%) 0 100%,
-    		radial-gradient(farthest-side at 50% 0,
-    			rgba(var(--swatch-primary-darkest), 0),
-    			rgba(var(--black-monochrome), 0)),
-    		radial-gradient(farthest-side at 50% 100%,
-    			rgba(var(--swatch-primary-darkest), 0),
-    			rgba(var(--black-monochrome), 0)) 0 100%;
+     --header-title: &#34;In Memoria, Adytum&#34;;
+     --header-subtitle: &#34;Echoes of Kalmaktama.&#34;;
+     --header-font: &#39;Nanum Brush Script&#39;, cursive;
+     --background-gradient-distance:75rem; !important
     }
 }
-[[/code]]
-[[/collapsible]]
-[[/iftags]]
-[[include :scp-wiki:component:collapsible-sidebar]]
-[[module css]]
-@import url(&#34;https://scp-wiki.wdfiles.com/local--code/theme%3Amemoria/1&#34;)
-[[/module]]
-[[include :scp-wiki:component:interwiki-style
-| priority=3
-| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Amemoria/1
-]]</textarea></pre>
+
+
+    @supports (background-blend-mode: screen) {
+    
+     #extrac-div-1 {
+     width: 100%;
+     height: var(--header-height-on-desktop);
+     position: absolute;
+     top: 0;
+     left: 0;
+     background-image: var(--gradient-header), url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;);
+     background-size: var(--header-background-image-size) 100%, 100%, 100%;
+     background-blend-mode: normal;
+     pointer-events: none;
+     }
+
+     div#extra-div-1 {
+     width: 100%;
+     height: calc(100% - var(--final-header-height-on-desktop));
+     position: absolute;
+     top: calc(var(--final-header-height-on-desktop));
+     left: 0;
+     z-index: -1;
+     background-color: rgba(222, 222, 222, 1);
+     background-color: rgba(var(--swatch-background), 1);
+     mask: var(--gradient-background);
+     -webkit-mask: var(--gradient-background);
+     background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/background.jpg&#39;), var(--gradient-background);
+     background-size: 100%, 80% var(--background-gradient-distance);
+     background-blend-mode: difference;
+     background-repeat: no-repeat, repeat-x;
+     pointer-events: none;
+     }
+    }
+
+.type1 {
+    display: block;
+    overflow: hidden;
+    font-family: &#39;Nanum Brush Script&#39;, cursive;
+    font-style: normal;
+    font-size: 170%;
+    color: rgb(57, 0, 0);
+
+    background-attachment: scroll;
+    background: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme:memoria/textback.jpg&#39;);
+
+    background-clip: border-box;
+    background-color: rgb(222, 222, 222);
+    background-origin: padding-box;
+    background-repeat: repeat;
+    background-size: 100%;
+
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2)
+    }
+
+.textbox {
+    border-radius: 10px;
+    padding: 10px 10px;
+    margin-bottom: 10px;
+    background-color: rgb(var(--white-monochrome));
+}
+
+#side-bar:hover, #side-bar:active {
+background:
+linear-gradient(
+    rgba(var(--swatch-menubg-color),1) 30%,
+    rgba(var(--swatch-menubg-color),0)),
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0),
+    rgba(var(--swatch-menubg-color),1) 70%) 0 100%,
+radial-gradient(farthest-side at 50% 0,
+    rgba(var(--swatch-primary-darkest),.5),
+    rgba(var(--black-monochrome),0)),
+radial-gradient(farthest-side at 50% 100%,
+    rgba(var(--swatch-primary-darkest),.5),
+    rgba(var(--black-monochrome),0)) 0 100%;
+}
+#side-bar {
+background:
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0) 30%,
+    rgba(var(--swatch-menubg-color),0)),
+linear-gradient(
+    rgba(var(--swatch-menubg-color),0),
+    rgba(var(--swatch-menubg-color),0) 70%) 0 100%,
+radial-gradient(farthest-side at 50% 0,
+    rgba(var(--swatch-primary-darkest),0),
+    rgba(var(--black-monochrome),0)),
+radial-gradient(farthest-side at 50% 100%,
+    rgba(var(--swatch-primary-darkest),0),
+    rgba(var(--black-monochrome),0)) 0 100%;
+}
+
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:42.853335.</em>
+    <em>Last updated 2024-02-07 18:30:41.374009.</em>
   
 </div>
 </body>

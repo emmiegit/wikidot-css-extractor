@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>Hướng Dẫn Cho Dịch Giả</title>
 </head>
@@ -203,8 +203,68 @@ SCP đã tách bỏ khỏi nguồn gốc kinh dị của nó và trở thành m�
 @@ @@
 [[div style=&#34;background: #f1f1f1; padding: 10px; border: 1.6px solid #922B21; width: 95%; margin: auto;&#34;]]
 Wiki Chi Nhánh Việt Nam đã trải qua
-[[module ListPages limit=&#34;1&#34; separate=&#34;false&#34; order=&#34;dateCreatedAsc&#34; categories=&#34;admin,nav,search,system&#34;]]
-**%%date|%O %%** (số liệu tính đến bây giờ)
+[[module ListPages limit=&#34;1&#34; separate=&#34;true&#34; order=&#34;created_at&#34; categories=&#34;admin,nav,search,system&#34;]]
+[[%%content{0}%%html]]
+&lt;head&gt;
+    &lt;style type=&#34;text/css&#34;&gt;
+        @import url(https://d3g0gp89917ko0.cloudfront.net/v--edac79f846ba/common--modules/css/pagerate/PageRateWidgetModule.css);
+        @import url(https://d3g0gp89917ko0.cloudfront.net/v--edac79f846ba/common--theme/base/css/style.css);
+        @import url(https://d3g0gp89917ko0.cloudfront.net/v--edac79f846ba/common--theme/shiny/css/style.css);
+        @import url(https://scp-vn.wdfiles.com/local--code/theme%3Asite/1);
+
+        body {
+            -webkit-text-stroke: 0px !important;
+            -webkit-font-smoothing: antialiased !important;
+        }
+
+        /* tránh mờ chữ trong iframe */
+    &lt;/style&gt;
+    &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;p id=&#34;time&#34; style=&#34;margin: 0; padding: 0;&#34;&gt;&lt;/p&gt;
+    &lt;script&gt;
+        function dateDiff(startingDate, endingDate) {
+            let startDate = new Date(new Date(startingDate).toISOString().substr(0, 10));
+            if (!endingDate) {
+                endingDate = new Date().toISOString().substr(0, 10);
+            }
+            let endDate = new Date(endingDate);
+            if (startDate &gt; endDate) {
+                const swap = startDate;
+                startDate = endDate;
+                endDate = swap;
+            }
+            const startYear = startDate.getFullYear();
+            const february = (startYear % 4 === 0 &amp;&amp; startYear % 100 !== 0) || startYear % 400 === 0 ? 29 : 28;
+            const daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+            let yearDiff = endDate.getFullYear() - startYear;
+            let monthDiff = endDate.getMonth() - startDate.getMonth();
+            if (monthDiff &lt; 0) {
+                yearDiff--;
+                monthDiff += 12;
+            }
+            let dayDiff = endDate.getDate() - startDate.getDate();
+            if (dayDiff &lt; 0) {
+                if (monthDiff &gt; 0) {
+                    monthDiff--;
+                } else {
+                    yearDiff--;
+                    monthDiff = 11;
+                }
+                dayDiff += daysInMonth[startDate.getMonth()];
+            }
+
+            return yearDiff + &#39; năm &#39; + monthDiff + &#39; tháng &#39; + dayDiff + &#39; ngày&#39;;
+        }
+        const timeString = &#34;%%created_at%%&#34;.substring(7, 17);
+        const time = new Date(parseInt(timeString) * 1000);
+        document.getElementById(&#34;time&#34;).innerHTML = `&lt;strong&gt;${dateDiff(time, new Date())}&lt;/strong&gt; (số liệu tính đến bây giờ)`;
+    &lt;/script&gt;
+&lt;/body&gt;
+[[/html]]
 [[/module]]
 hoạt động và phát triển. Để có được một wiki dịch thuật chất lượng, đáp ứng nhu cầu độc giả, các dịch giả, quản trị viên và kiểm duyệt viên đã luôn cố gắng bỏ công sức và thời gian dịch thuật, xây dựng wiki. Qua đó, mình muốn nói rằng chúng mình luôn coi trọng **chất lượng hơn số lượng**. Chất lượng ở đây không phải dịch hay hay dịch dở, mà bạn dịch bằng ý muốn đóng góp, học hỏi hay chỉ thử cho vui. Bọn mình cảm ơn sự đóng góp của bạn thật lòng, nhưng bọn mình chỉ thực sự cảm kích những đóng góp bằng tâm huyết và sự kiên trì, đam mê.
 
@@ -362,7 +422,7 @@ Sau khi xong, thanh phân loại sẽ hiện dạng tiếng Việt, ví dụ:
 
 # Vào phần //**Chỉnh sửa**//
 # Tìm dòng code dạng: {{[[include :scp-wiki:component:license-box]]}}
-# Thay thành: [[include :scp-vn:component:license-box |author=[tên tác giả]}}
+# Thay thành: {{[[include :scp-vn:component:license-box |author=[tên tác giả] ]]}}
 # Tìm dòng code dạng: {{[[include :scp-wiki:component:license-box-end]]}}
 # Thay phần {{scp-wiki}} thành {{scp-vn}}
 [[/collapsible]] 
@@ -461,10 +521,10 @@ Cuối cùng, nếu bạn dịch SCP, vui lòng thực hiện sau:
 # Sao chép cả đoạn trên và vào Series tương ứng của SCP đó tại Wiki VN
 # Vào **//Chỉnh sửa//**
 # Bấm **Ctrl + F** và đánh mã SCP vào
-# Tô đen phần: {{@@[[[[SCP-XXXX]]]@@ - [TRUY CẬP THẤT BẠI]}}}
+# Tô đen phần: {{@@[[[SCP-XXXX]]]@@ - [TRUY CẬP THẤT BẠI]}}
 # Bấm tổ hợp **Ctrl + V**
 # Dịch phần văn bản sau {{@@[[[SCP-XXXX]]]@@ - }}
-# Tại phần //**Short description of changes**//, điền {{SCP-XXXX}} với {{XXXX}} là mã SCP đó.
+# Tại phần //**Tóm tắt thay đổi**//, điền {{SCP-XXXX}} với {{XXXX}} là mã SCP đó.
 # Bấm //**Lưu**//
 [[/div]]
 @@ @@
@@ -518,7 +578,7 @@ Dưới đây là các mẹo mình tổng hợp được khi dịch bài:
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.707068.</em>
+    <em>Last updated 2024-02-07 18:30:41.560817.</em>
   
 </div>
 </body>

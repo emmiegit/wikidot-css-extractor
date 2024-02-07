@@ -14,22 +14,526 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Site 7 Anomalous Phenomenon Classification System</title>
+  <title>Hệ Thống Phân Loại Dị Tượng Điểm-7</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Site 7 Anomalous Phenomenon Classification System</h1>
+    <h1 class="title">Hệ Thống Phân Loại Dị Tượng Điểm-7</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:s7-apcs" target="_blank">Site 7 Anomalous Phenomenon Classification System</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:s7-apcs" target="_blank">Hệ Thống Phân Loại Dị Tượng Điểm-7</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&amp;display=swap&#39;);
+
+body {
+  --apcs-border-color: #ccc;
+  --apcs-bg-color: white;
+  --apcs-fg-color: black;
+  --apcs-info-bg-color: #ccc;
+  --apcs-info-fg-color: black;
+  --apcs-info-shadow-color: rgba(0,0,0,0.7);
+  --apcs-vedist-bg-color: #505052;
+  --apcs-vedist-fg-color: white;
+  --apcs-hazard-icon-filter: none;
+  --apcs-info-line1-color: var(--apcs-fg-color);
+  --apcs-info-line2-color: var(--apcs-fg-color);
+  --apcs-info-line3-color: var(--apcs-fg-color);
+}
+
+.apcs-container {
+  border: 1px solid var(--apcs-border-color);
+  background: var(--apcs-bg-color);
+  color: var(--apcs-fg-color);
+  padding-bottom: 30px;
+  font-family: Oswald, sans-serif;
+  position: relative;
+}
+.apcs-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.apcs-container br {
+  display: none;
+}
+.apcs-container .apcs-main-content {
+  padding: 0 28px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+.apcs-container .apcs-confidential {
+  font-size: 36px;
+  line-height: 36px;
+}
+.apcs-container .apcs-confidential, .apcs-container .apcs-confidential:visited {
+  color: var(--apcs-fg-color);
+}
+.apcs-header {
+  width: 256px;
+  padding-top: 14px;
+}
+.apcs-container .apcs-text-lines {
+  font-size: 15px;
+  line-height: 21px;
+  margin-top: 26px;
+  min-height: 64px;
+  max-width: none !important; /* BHL compatibility */
+}
+.apcs-container .apcs-text-lines *[data-content^=&#34;{$&#34;]::before {
+  content: &#39; &#39;;
+  display: inline !important;
+}
+.apcs-container .apcs-text-lines *[data-content^=&#34;{$&#34;] * {
+  display: none;
+}
+.apcs-container .apcs-text-lines div:nth-child(1) {
+  color: var(--apcs-info-line1-color);
+}
+.apcs-container .apcs-text-lines div:nth-child(2) {
+  color: var(--apcs-info-line2-color);
+}
+.apcs-container .apcs-text-lines div:nth-child(3) {
+  color: var(--apcs-info-line3-color);
+}
+.apcs-hazards {
+  display: flex;
+  align-items: center;
+  margin-right: 32px;
+  height: 90px;
+  justify-content: center;
+}
+.apcs-hazards &gt; div {
+  position: relative;
+}
+.apcs-hazards .apcs-hazard {
+  width: 75px;
+  height: 75px;
+  background-size: contain;
+  background-position: center;
+  flex-shrink: 0;
+  margin: 2px;
+  position: relative;
+  filter: var(--apcs-hazard-icon-filter);
+}
+.apcs-hazards div:hover .apcs-tooltip {
+  display: block;
+}
+/* this implements optional arguments */
+.apcs-hazards div[data-hazard-type^=&#34;{$&#34;],
+.apcs-hazards div[data-hazard-type=&#34;none&#34;] {
+  display: none;
+}
+.apcs-class {
+  width: 100px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  line-height: 0;
+  background: var(--custom-color);
+  flex-shrink: 0;
+  --letter: attr(data-non-standard);
+  --name: attr(data-non-standard-tooltip);
+  color: white;
+  position: relative;
+}
+.apcs-class[data-non-standard^=&#34;{$&#34;] {
+  --letter: &#39;?&#39;;
+}
+.apcs-class::before {
+  content: var(--letter);
+}
+.apcs-class .apcs-class-name::before {
+  content: var(--name);
+}
+.apcs-class[style^=&#34;--custom-color: {$&#34;] {
+  background: #31869b;
+}
+.apcs-class.keter {
+  background: #b80000;
+  --letter: &#39;K&#39;;
+  --name: &#39;Keter&#39;;
+}
+.apcs-class.euclid {
+  background: #ffc000;
+  --letter: &#39;E&#39;;
+  --name: &#39;Euclid&#39;;
+}
+.apcs-class.safe {
+  background: #4e6c77;
+  --letter: &#39;S&#39;;
+  --name: &#39;Safe&#39;;
+}
+.apcs-class.thaumiel {
+  background: #7c35b1;
+  --letter: &#39;T&#39;;
+  --name: &#39;Thaumiel &#39;;
+}
+.apcs-class.neutralized {
+  background: #dddddd;
+  --letter: &#39;N&#39;;
+  --name: &#39;Neutralized&#39;;
+  color: black;
+}
+.apcs-class.uncontained {
+  background: black;
+  --letter: &#39;Ȼ&#39;;
+  --name: &#39;Uncontained&#39;;
+  color: white;
+}
+.apcs-class.uncontained::before {
+  position: relative;
+  top: -6px;
+}
+.apcs-class:hover .apcs-tooltip {
+  display: block;
+}
+.apcs-class span[data-non-standard-tooltip^=&#34;{$&#34;] {
+  --name: &#39;Phân loại&#39;;
+}
+.apcs-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  display: flex;
+  align-items: stretch;
+  background: var(--apcs-info-bg-color);
+  color: var(--apcs-info-fg-color);
+  clip-path: polygon(30px 0, 100% 0, 100% 100%, 0 100%);
+  font-size: 18px;
+  line-height: 18px;
+  pointer-events: none;
+  max-width: 100%;
+  white-space: nowrap;
+}
+/* this is a special duplicate div that handles mouse events and contains tooltips that are not clipped */
+.apcs-info-tooltips {
+  pointer-events: all;
+  background: none;
+  clip-path: none;
+}
+.apcs-info-tooltips::after {
+  display: none;
+}
+.apcs-info-tooltips &gt; * {
+  clip-path: none !important;
+  background: transparent !important;
+  color: transparent !important;
+}
+.apcs-info::after {
+  box-shadow: inset 5px 5px 4px -4px var(--apcs-info-shadow-color);
+  z-index: 0;
+  position: absolute;
+  content: &#39; &#39;;
+  left: 0; right: 0; top: 0; bottom: 0;
+  pointer-events: none;
+  transform: skew(-45deg) translate(16px, 0);
+}
+.apcs-info-activation {
+  width: 328px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apcs-info-number {
+  width: 162px;
+  padding-left: 15px;
+  margin-left: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apcs-info-vedist {
+  background: var(--apcs-vedist-bg-color);
+  clip-path: polygon(30px 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--apcs-vedist-fg-color);
+  width: 128px;
+  margin-left: -31px;
+  --title: &#39;?&#39;;
+  --tooltip: &#39;&#39;;
+  position: relative;
+}
+.apcs-info-vedist.vedist-1:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-2:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-3:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-4:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-5:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-6:hover .apcs-tooltip {
+  display: block;
+}
+.apcs-info-vedist .apcs-tooltip::after {
+  content: var(--tooltip);
+}
+.apcs-info-vedist::before {
+  content: var(--title);
+}
+.apcs-info-vedist.vedist-1 {
+  --title: &#39;Vedist I&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Mặt Nạ Vỡ&#39;;
+}
+.apcs-info-vedist.vedist-2 {
+  --title: &#39;Vedist II&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Cơn Bão Đằng Xa&#39;;
+}
+.apcs-info-vedist.vedist-3 {
+  --title: &#39;Vedist III&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Thiên Thần Xa Ngã&#39;;
+}
+.apcs-info-vedist.vedist-4 {
+  --title: &#39;Vedist IV&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Chỉ Đường Dẫn Lối&#39;;
+}
+.apcs-info-vedist.vedist-5 {
+  --title: &#39;Vedist V&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Sắc Như Dao Cạo&#39;;
+}
+.apcs-info-vedist.vedist-6 {
+  --title: &#39;Vedist VI&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Chân Không&#39;;
+}
+.apcs-info-risk {
+  background: var(--apcs-info-bg-color);
+  clip-path: polygon(30px 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+  padding: 0 30px;
+  margin-left: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 128px;
+  position: relative;
+  --risk-letter: attr(data-containment-risk);
+  --tooltip: &#39;&#39;;
+}
+.apcs-info-risk::after {
+  content: var(--risk-letter);
+}
+.apcs-info-risk .apcs-tooltip::after {
+  content: var(--tooltip);
+}
+.apcs-info-risk.risk-Q, .apcs-info-risk[data-containment-risk^=&#34;{$&#34;] {
+  --risk-letter: &#39;?&#39;;
+  --tooltip: &#39;Không đủ dữ liệu để phân tích sâu hơn&#39;;
+  color: black;
+}
+.apcs-info-risk.risk-TS {
+  --risk-letter: &#39;Ȼ&#39;;
+  --tooltip: &#39;Quản thúc là điều bất khả thi&#39;;
+  background: #848484;
+}
+.apcs-info-risk.risk-TS::before {
+  position: relative;
+  top: -1px;
+}
+.apcs-info-risk.risk-AAA {
+  --tooltip: &#39;Vi phạm quản thúc là không thể tránh khỏi dưới mọi nỗ lực khống chế dị thể&#39;;
+  background: black;
+}
+.apcs-info-risk.risk-EEE {
+  --tooltip: &#39;Khả năng vi phạm quản thúc là không thể&#39;;
+  background: white;
+  color: black;
+}
+.apcs-info-risk.risk-T {
+  --tooltip: &#39;Không gây ra mối đe dọa&#39;;
+  background: #7c35b1;
+}
+.apcs-info-risk.risk-A5,
+.apcs-info-risk.risk-B5,
+.apcs-info-risk.risk-C5,
+.apcs-info-risk.risk-D5,
+.apcs-info-risk.risk-E5,
+.apcs-info-risk.risk-C4,
+.apcs-info-risk.risk-D4,
+.apcs-info-risk.risk-E4 {
+  background: #4e6c77;
+}
+.apcs-info-risk.risk-A4,
+.apcs-info-risk.risk-B4,
+.apcs-info-risk.risk-B3,
+.apcs-info-risk.risk-C3,
+.apcs-info-risk.risk-D3,
+.apcs-info-risk.risk-E3,
+.apcs-info-risk.risk-D2,
+.apcs-info-risk.risk-E2 {
+  background: #ffa500;
+}
+.apcs-info-risk.risk-A3,
+.apcs-info-risk.risk-A2,
+.apcs-info-risk.risk-B2,
+.apcs-info-risk.risk-C2,
+.apcs-info-risk.risk-KC,
+.apcs-info-risk.risk-KETER {
+  background: #fd0000;
+}
+.apcs-info-risk.risk-KC {
+  --risk-letter: attr(data-k-class);
+  --tooltip: &#39;Một viễn cảnh tận thế có thể xảy ra nếu đối tượng vi phạm quản thúc&#39;;
+}
+.apcs-info-risk.risk-AAA:hover .apcs-tooltip,
+.apcs-info-risk.risk-EEE:hover .apcs-tooltip,
+.apcs-info-risk.risk-T:hover .apcs-tooltip,
+.apcs-info-risk.risk-KC:hover .apcs-tooltip,
+.apcs-info-risk.risk-TS:hover .apcs-tooltip,
+.apcs-info-risk.risk-Q:hover .apcs-tooltip {
+  display: block;
+}
+.apcs-tooltip {
+  font-family: verdana, arial, helvetica, sans-serif;
+  padding: 4px 8px;
+  font-size: 11px;
+  line-height: 16px;
+  border: 1px solid #333;
+  background: rgba(255,255,230,0.9);
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 20px;
+  display: none;
+  z-index: 9999;
+  white-space: nowrap;
+  color: black;
+  filter: none;
+}
+/* версия для маленьких десктопов */
+@media (max-width: 1185px) {
+  .apcs-container .apcs-main-content {
+    padding: 14px;
+  }
+  .apcs-header {
+    padding-top: 0;
+  }
+  .apcs-header .apcs-confidential {
+    font-size: 29px;
+    line-height: 29px;
+  }
+  .apcs-container .apcs-text-lines {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .apcs-hazards {
+    margin-right: 16px;
+    height: 80px;
+  }
+  .apcs-hazards .apcs-hazard {
+    width: 60px;
+    height: 60px;
+  }
+  .apcs-class {
+    width: 80px;
+    height: 80px;
+  }
+}
+/* мобильная версия для не до конца всратых экранов */
+@media (max-width: 1014px) {
+  .apcs-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+  .apcs-container .apcs-main-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px;
+  }
+  .apcs-container .apcs-header {
+    max-width: calc(100% - 90px - 16px) !important;
+  }
+  .apcs-class {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 90px;
+    height: 90px;
+  }
+  .apcs-info {
+    position: relative;
+    flex-wrap: wrap;
+    clip-path: none;
+    height: auto;
+    left: 0;
+  }
+  .apcs-info &gt; * {
+    min-height: 30px;
+    flex-grow: 1;
+    border-top: 1px solid var(--apcs-vedist-bg-color);
+  }
+  .apcs-info::after {
+    transform: none;
+    clip-path: none;
+  }
+  .apcs-info-tooltips {
+    position: absolute;
+  }
+  .apcs-info-activation {
+    width: 100%;
+  }
+  .apcs-info-risk {
+    margin-left: 0;
+    padding-left: 15px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+    width: 48px;
+  }
+  .apcs-info-vedist {
+    width: 80px;
+  }
+  .apcs-info-number {
+    padding-right: 7px;
+    padding-left: 30px;
+    width: 72px;
+  }
+  .apcs-hazards {
+    margin: 24px 0;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+  }
+  .apcs-hazards .apcs-hazard {
+    width: 50px;
+    height: 50px;
+  }
+  .apcs-tooltip {
+    white-space: normal;
+    text-align: center;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 100%;
+  }
+}
+/* мобильная версия для всратых экранов */
+@media (max-width: 425px) {
+  .apcs-hazards {
+    margin: 32px 0;
+    justify-content: center;
+  }
+  .apcs-hazards div {
+    position: relative;
+    margin-left: -16px;
+  }
+  .apcs-hazards div:first-of-type {
+    margin-left: 0;
+  }
+  .apcs-hazards div:nth-child(even) {
+    top: -16px;
+  }
+  .apcs-hazards div:nth-child(odd) {
+    top: 16px;
+  }
+}</code></pre>
         </li>
       
     </ul>
@@ -38,7 +542,31 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-1}.png&#39;)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-2}.png&#39;)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-3}.png&#39;)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-4}.png&#39;)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-5}.png&#39;)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-6}.png&#39;)</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--custom-color: {$non-standart-color}</code></pre>
         </li>
       
     </ul>
@@ -54,37 +582,809 @@
     <ul class="css-classes">
       
         <li>
-          (none)
+          <pre><code>apcs-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-main-content</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-confidential</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-text-lines</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>&#34;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>data-content=</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>&#34;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>data-content=</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>&#34;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>data-content=</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-hazards</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-hazard</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-hazard</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-hazard</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-hazard</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-hazard</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-hazard</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-class</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$scp-class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-class-name</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-activation</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-risk</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>risk-{$contaiment-risk}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$k-class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-vedist</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>vedist-{$threat-ind}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-number</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-tooltips</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-activation</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-risk</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>risk-{$contaiment-risk}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$k-class}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-vedist</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>vedist-{$threat-ind}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-tooltip</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>apcs-info-number</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:s7-apcs-base
-scp-number = {$scp-number} |
-scp-class = {$scp-class} |
-non-standard-class = {$non-standard-class} |
-non-standard-color = {$non-standard-color} | non-standard-color = #330000 |
-lineFirst = {$lineFirst} | lineFirst = none |
-lineSecond = {$lineSecond} | lineSecond = none |
-lineThird = {$lineThird} | lineThird = none |
-danger-select-1 = {$danger-select-1} | danger-select-1 = none |
-danger-select-2 = {$danger-select-2} | danger-select-2 = none |
-danger-select-3 = {$danger-select-3} | danger-select-3 = none |
-danger-select-4 = {$danger-select-4} | danger-select-4 = none |
-danger-select-5 = {$danger-select-5} | danger-select-5 = none |
-danger-select-6 = {$danger-select-6} | danger-select-6 = none |
-activation = {$activation} |
-threat-ind = {$threat-ind} |
-contaiment-risk = {$contaiment-risk} |
-k-class = {$k-class}]]</textarea></pre>
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+@import url(&#39;https://fonts.googleapis.com/css2?family=Oswald:wght@200;300&amp;display=swap&#39;);
+
+body {
+  --apcs-border-color: #ccc;
+  --apcs-bg-color: white;
+  --apcs-fg-color: black;
+  --apcs-info-bg-color: #ccc;
+  --apcs-info-fg-color: black;
+  --apcs-info-shadow-color: rgba(0,0,0,0.7);
+  --apcs-vedist-bg-color: #505052;
+  --apcs-vedist-fg-color: white;
+  --apcs-hazard-icon-filter: none;
+  --apcs-info-line1-color: var(--apcs-fg-color);
+  --apcs-info-line2-color: var(--apcs-fg-color);
+  --apcs-info-line3-color: var(--apcs-fg-color);
+}
+
+.apcs-container {
+  border: 1px solid var(--apcs-border-color);
+  background: var(--apcs-bg-color);
+  color: var(--apcs-fg-color);
+  padding-bottom: 30px;
+  font-family: Oswald, sans-serif;
+  position: relative;
+}
+.apcs-container * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.apcs-container br {
+  display: none;
+}
+.apcs-container .apcs-main-content {
+  padding: 0 28px;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+}
+.apcs-container .apcs-confidential {
+  font-size: 36px;
+  line-height: 36px;
+}
+.apcs-container .apcs-confidential, .apcs-container .apcs-confidential:visited {
+  color: var(--apcs-fg-color);
+}
+.apcs-header {
+  width: 256px;
+  padding-top: 14px;
+}
+.apcs-container .apcs-text-lines {
+  font-size: 15px;
+  line-height: 21px;
+  margin-top: 26px;
+  min-height: 64px;
+  max-width: none !important; /* BHL compatibility */
+}
+.apcs-container .apcs-text-lines *[data-content^=&#34;{$&#34;]::before {
+  content: &#39; &#39;;
+  display: inline !important;
+}
+.apcs-container .apcs-text-lines *[data-content^=&#34;{$&#34;] * {
+  display: none;
+}
+.apcs-container .apcs-text-lines div:nth-child(1) {
+  color: var(--apcs-info-line1-color);
+}
+.apcs-container .apcs-text-lines div:nth-child(2) {
+  color: var(--apcs-info-line2-color);
+}
+.apcs-container .apcs-text-lines div:nth-child(3) {
+  color: var(--apcs-info-line3-color);
+}
+.apcs-hazards {
+  display: flex;
+  align-items: center;
+  margin-right: 32px;
+  height: 90px;
+  justify-content: center;
+}
+.apcs-hazards &gt; div {
+  position: relative;
+}
+.apcs-hazards .apcs-hazard {
+  width: 75px;
+  height: 75px;
+  background-size: contain;
+  background-position: center;
+  flex-shrink: 0;
+  margin: 2px;
+  position: relative;
+  filter: var(--apcs-hazard-icon-filter);
+}
+.apcs-hazards div:hover .apcs-tooltip {
+  display: block;
+}
+/* this implements optional arguments */
+.apcs-hazards div[data-hazard-type^=&#34;{$&#34;],
+.apcs-hazards div[data-hazard-type=&#34;none&#34;] {
+  display: none;
+}
+.apcs-class {
+  width: 100px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 64px;
+  line-height: 0;
+  background: var(--custom-color);
+  flex-shrink: 0;
+  --letter: attr(data-non-standard);
+  --name: attr(data-non-standard-tooltip);
+  color: white;
+  position: relative;
+}
+.apcs-class[data-non-standard^=&#34;{$&#34;] {
+  --letter: &#39;?&#39;;
+}
+.apcs-class::before {
+  content: var(--letter);
+}
+.apcs-class .apcs-class-name::before {
+  content: var(--name);
+}
+.apcs-class[style^=&#34;--custom-color: {$&#34;] {
+  background: #31869b;
+}
+.apcs-class.keter {
+  background: #b80000;
+  --letter: &#39;K&#39;;
+  --name: &#39;Keter&#39;;
+}
+.apcs-class.euclid {
+  background: #ffc000;
+  --letter: &#39;E&#39;;
+  --name: &#39;Euclid&#39;;
+}
+.apcs-class.safe {
+  background: #4e6c77;
+  --letter: &#39;S&#39;;
+  --name: &#39;Safe&#39;;
+}
+.apcs-class.thaumiel {
+  background: #7c35b1;
+  --letter: &#39;T&#39;;
+  --name: &#39;Thaumiel &#39;;
+}
+.apcs-class.neutralized {
+  background: #dddddd;
+  --letter: &#39;N&#39;;
+  --name: &#39;Neutralized&#39;;
+  color: black;
+}
+.apcs-class.uncontained {
+  background: black;
+  --letter: &#39;Ȼ&#39;;
+  --name: &#39;Uncontained&#39;;
+  color: white;
+}
+.apcs-class.uncontained::before {
+  position: relative;
+  top: -6px;
+}
+.apcs-class:hover .apcs-tooltip {
+  display: block;
+}
+.apcs-class span[data-non-standard-tooltip^=&#34;{$&#34;] {
+  --name: &#39;Phân loại&#39;;
+}
+.apcs-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 30px;
+  display: flex;
+  align-items: stretch;
+  background: var(--apcs-info-bg-color);
+  color: var(--apcs-info-fg-color);
+  clip-path: polygon(30px 0, 100% 0, 100% 100%, 0 100%);
+  font-size: 18px;
+  line-height: 18px;
+  pointer-events: none;
+  max-width: 100%;
+  white-space: nowrap;
+}
+/* this is a special duplicate div that handles mouse events and contains tooltips that are not clipped */
+.apcs-info-tooltips {
+  pointer-events: all;
+  background: none;
+  clip-path: none;
+}
+.apcs-info-tooltips::after {
+  display: none;
+}
+.apcs-info-tooltips &gt; * {
+  clip-path: none !important;
+  background: transparent !important;
+  color: transparent !important;
+}
+.apcs-info::after {
+  box-shadow: inset 5px 5px 4px -4px var(--apcs-info-shadow-color);
+  z-index: 0;
+  position: absolute;
+  content: &#39; &#39;;
+  left: 0; right: 0; top: 0; bottom: 0;
+  pointer-events: none;
+  transform: skew(-45deg) translate(16px, 0);
+}
+.apcs-info-activation {
+  width: 328px;
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apcs-info-number {
+  width: 162px;
+  padding-left: 15px;
+  margin-left: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.apcs-info-vedist {
+  background: var(--apcs-vedist-bg-color);
+  clip-path: polygon(30px 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+  padding: 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--apcs-vedist-fg-color);
+  width: 128px;
+  margin-left: -31px;
+  --title: &#39;?&#39;;
+  --tooltip: &#39;&#39;;
+  position: relative;
+}
+.apcs-info-vedist.vedist-1:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-2:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-3:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-4:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-5:hover .apcs-tooltip,
+.apcs-info-vedist.vedist-6:hover .apcs-tooltip {
+  display: block;
+}
+.apcs-info-vedist .apcs-tooltip::after {
+  content: var(--tooltip);
+}
+.apcs-info-vedist::before {
+  content: var(--title);
+}
+.apcs-info-vedist.vedist-1 {
+  --title: &#39;Vedist I&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Mặt Nạ Vỡ&#39;;
+}
+.apcs-info-vedist.vedist-2 {
+  --title: &#39;Vedist II&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Cơn Bão Đằng Xa&#39;;
+}
+.apcs-info-vedist.vedist-3 {
+  --title: &#39;Vedist III&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Thiên Thần Xa Ngã&#39;;
+}
+.apcs-info-vedist.vedist-4 {
+  --title: &#39;Vedist IV&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Chỉ Đường Dẫn Lối&#39;;
+}
+.apcs-info-vedist.vedist-5 {
+  --title: &#39;Vedist V&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Sắc Như Dao Cạo&#39;;
+}
+.apcs-info-vedist.vedist-6 {
+  --title: &#39;Vedist VI&#39;;
+  --tooltip: &#39;Cấp độ vi phạm bảo mật: Chân Không&#39;;
+}
+.apcs-info-risk {
+  background: var(--apcs-info-bg-color);
+  clip-path: polygon(30px 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+  padding: 0 30px;
+  margin-left: -30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 128px;
+  position: relative;
+  --risk-letter: attr(data-containment-risk);
+  --tooltip: &#39;&#39;;
+}
+.apcs-info-risk::after {
+  content: var(--risk-letter);
+}
+.apcs-info-risk .apcs-tooltip::after {
+  content: var(--tooltip);
+}
+.apcs-info-risk.risk-Q, .apcs-info-risk[data-containment-risk^=&#34;{$&#34;] {
+  --risk-letter: &#39;?&#39;;
+  --tooltip: &#39;Không đủ dữ liệu để phân tích sâu hơn&#39;;
+  color: black;
+}
+.apcs-info-risk.risk-TS {
+  --risk-letter: &#39;Ȼ&#39;;
+  --tooltip: &#39;Quản thúc là điều bất khả thi&#39;;
+  background: #848484;
+}
+.apcs-info-risk.risk-TS::before {
+  position: relative;
+  top: -1px;
+}
+.apcs-info-risk.risk-AAA {
+  --tooltip: &#39;Vi phạm quản thúc là không thể tránh khỏi dưới mọi nỗ lực khống chế dị thể&#39;;
+  background: black;
+}
+.apcs-info-risk.risk-EEE {
+  --tooltip: &#39;Khả năng vi phạm quản thúc là không thể&#39;;
+  background: white;
+  color: black;
+}
+.apcs-info-risk.risk-T {
+  --tooltip: &#39;Không gây ra mối đe dọa&#39;;
+  background: #7c35b1;
+}
+.apcs-info-risk.risk-A5,
+.apcs-info-risk.risk-B5,
+.apcs-info-risk.risk-C5,
+.apcs-info-risk.risk-D5,
+.apcs-info-risk.risk-E5,
+.apcs-info-risk.risk-C4,
+.apcs-info-risk.risk-D4,
+.apcs-info-risk.risk-E4 {
+  background: #4e6c77;
+}
+.apcs-info-risk.risk-A4,
+.apcs-info-risk.risk-B4,
+.apcs-info-risk.risk-B3,
+.apcs-info-risk.risk-C3,
+.apcs-info-risk.risk-D3,
+.apcs-info-risk.risk-E3,
+.apcs-info-risk.risk-D2,
+.apcs-info-risk.risk-E2 {
+  background: #ffa500;
+}
+.apcs-info-risk.risk-A3,
+.apcs-info-risk.risk-A2,
+.apcs-info-risk.risk-B2,
+.apcs-info-risk.risk-C2,
+.apcs-info-risk.risk-KC,
+.apcs-info-risk.risk-KETER {
+  background: #fd0000;
+}
+.apcs-info-risk.risk-KC {
+  --risk-letter: attr(data-k-class);
+  --tooltip: &#39;Một viễn cảnh tận thế có thể xảy ra nếu đối tượng vi phạm quản thúc&#39;;
+}
+.apcs-info-risk.risk-AAA:hover .apcs-tooltip,
+.apcs-info-risk.risk-EEE:hover .apcs-tooltip,
+.apcs-info-risk.risk-T:hover .apcs-tooltip,
+.apcs-info-risk.risk-KC:hover .apcs-tooltip,
+.apcs-info-risk.risk-TS:hover .apcs-tooltip,
+.apcs-info-risk.risk-Q:hover .apcs-tooltip {
+  display: block;
+}
+.apcs-tooltip {
+  font-family: verdana, arial, helvetica, sans-serif;
+  padding: 4px 8px;
+  font-size: 11px;
+  line-height: 16px;
+  border: 1px solid #333;
+  background: rgba(255,255,230,0.9);
+  position: absolute;
+  top: calc(100% - 8px);
+  left: 20px;
+  display: none;
+  z-index: 9999;
+  white-space: nowrap;
+  color: black;
+  filter: none;
+}
+/* версия для маленьких десктопов */
+@media (max-width: 1185px) {
+  .apcs-container .apcs-main-content {
+    padding: 14px;
+  }
+  .apcs-header {
+    padding-top: 0;
+  }
+  .apcs-header .apcs-confidential {
+    font-size: 29px;
+    line-height: 29px;
+  }
+  .apcs-container .apcs-text-lines {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  .apcs-hazards {
+    margin-right: 16px;
+    height: 80px;
+  }
+  .apcs-hazards .apcs-hazard {
+    width: 60px;
+    height: 60px;
+  }
+  .apcs-class {
+    width: 80px;
+    height: 80px;
+  }
+}
+/* мобильная версия для не до конца всратых экранов */
+@media (max-width: 1014px) {
+  .apcs-container {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0;
+  }
+  .apcs-container .apcs-main-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px;
+  }
+  .apcs-container .apcs-header {
+    max-width: calc(100% - 90px - 16px) !important;
+  }
+  .apcs-class {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    width: 90px;
+    height: 90px;
+  }
+  .apcs-info {
+    position: relative;
+    flex-wrap: wrap;
+    clip-path: none;
+    height: auto;
+    left: 0;
+  }
+  .apcs-info &gt; * {
+    min-height: 30px;
+    flex-grow: 1;
+    border-top: 1px solid var(--apcs-vedist-bg-color);
+  }
+  .apcs-info::after {
+    transform: none;
+    clip-path: none;
+  }
+  .apcs-info-tooltips {
+    position: absolute;
+  }
+  .apcs-info-activation {
+    width: 100%;
+  }
+  .apcs-info-risk {
+    margin-left: 0;
+    padding-left: 15px;
+    clip-path: polygon(0 0, 100% 0, calc(100% - 30px) 100%, 0 100%);
+    width: 48px;
+  }
+  .apcs-info-vedist {
+    width: 80px;
+  }
+  .apcs-info-number {
+    padding-right: 7px;
+    padding-left: 30px;
+    width: 72px;
+  }
+  .apcs-hazards {
+    margin: 24px 0;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+  }
+  .apcs-hazards .apcs-hazard {
+    width: 50px;
+    height: 50px;
+  }
+  .apcs-tooltip {
+    white-space: normal;
+    text-align: center;
+    width: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 100%;
+  }
+}
+/* мобильная версия для всратых экранов */
+@media (max-width: 425px) {
+  .apcs-hazards {
+    margin: 32px 0;
+    justify-content: center;
+  }
+  .apcs-hazards div {
+    position: relative;
+    margin-left: -16px;
+  }
+  .apcs-hazards div:first-of-type {
+    margin-left: 0;
+  }
+  .apcs-hazards div:nth-child(even) {
+    top: -16px;
+  }
+  .apcs-hazards div:nth-child(odd) {
+    top: 16px;
+  }
+}
+[[/module]]
+
+[[div_ class=&#34;apcs-container&#34;]]
+  [[div_ class=&#34;apcs-main-content&#34;]]
+    [[div_ class=&#34;apcs-header&#34;]]
+      [[a class=&#34;apcs-confidential&#34; href=&#34;/s7-apcs-guide&#34;]]TỐI MẬT[[/a]]
+      [[div_ class=&#34;apcs-text-lines&#34;]]
+        [[div_ class=&#34;&#34; data-content=&#34;{$lineFirst}&#34;]]
+          {$lineFirst}
+        [[/div]]
+        [[div_ class=&#34;&#34; data-content=&#34;{$lineSecond}&#34;]]
+          {$lineSecond}
+        [[/div]]
+        [[div_ class=&#34;&#34; data-content=&#34;{$lineThird}&#34;]]
+          {$lineThird}
+        [[/div]]
+      [[/div]]
+    [[/div]]
+    [[div_ class=&#34;apcs-hazards&#34;]]
+      [[div_ data-hazard-type=&#34;{$danger-select-1}&#34;]]
+        [[div_ style=&#34;background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-1}.png&#39;)&#34; class=&#34;apcs-hazard&#34;]]
+        [[/div]]
+        [[span class=&#34;apcs-tooltip&#34;]]
+          {$danger-select-1}
+        [[/span]]
+      [[/div]]
+      [[div_ data-hazard-type=&#34;{$danger-select-2}&#34;]]
+        [[div_ style=&#34;background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-2}.png&#39;)&#34; class=&#34;apcs-hazard&#34;]]
+        [[/div]]
+        [[span class=&#34;apcs-tooltip&#34;]]
+          {$danger-select-2}
+        [[/span]]
+      [[/div]]
+      [[div_ data-hazard-type=&#34;{$danger-select-3}&#34;]]
+        [[div_ style=&#34;background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-3}.png&#39;)&#34; class=&#34;apcs-hazard&#34;]]
+        [[/div]]
+        [[span class=&#34;apcs-tooltip&#34;]]
+          {$danger-select-3}
+        [[/span]]
+      [[/div]]
+      [[div_ data-hazard-type=&#34;{$danger-select-4}&#34;]]
+        [[div_ style=&#34;background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-4}.png&#39;)&#34; class=&#34;apcs-hazard&#34;]]
+        [[/div]]
+        [[span class=&#34;apcs-tooltip&#34;]]
+          {$danger-select-4}
+        [[/span]]
+      [[/div]]
+      [[div_ data-hazard-type=&#34;{$danger-select-5}&#34;]]
+        [[div_ style=&#34;background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-5}.png&#39;)&#34; class=&#34;apcs-hazard&#34;]]
+        [[/div]]
+        [[span class=&#34;apcs-tooltip&#34;]]
+          {$danger-select-5}
+        [[/span]]
+      [[/div]]
+      [[div_ data-hazard-type=&#34;{$danger-select-6}&#34;]]
+        [[div_ style=&#34;background-image: url(&#39;http://scp-wiki.wdfiles.com/local--files/component%3As7-apcs-base/{$danger-select-6}.png&#39;)&#34; class=&#34;apcs-hazard&#34;]]
+        [[/div]]
+        [[span class=&#34;apcs-tooltip&#34;]]
+          {$danger-select-6}
+        [[/span]]
+      [[/div]]
+    [[/div]]
+    [[div_ class=&#34;apcs-class {$scp-class}&#34; data-non-standard=&#34;{$non-standart-class}&#34; style=&#34;--custom-color: {$non-standart-color}&#34;]]
+      [[span class=&#34;apcs-tooltip&#34;]]
+        Phân loại —
+        [[span class=&#34;apcs-class-name&#34; data-non-standard-tooltip=&#34;{$scp-class}&#34;]]
+        [[/span]]
+      [[/span]]
+    [[/div]]
+  [[/div]]
+  [!-- код продублирован из-за хака. сорян за количество дивов :p --]
+  [[div_ class=&#34;apcs-info&#34;]]
+    [[div_ class=&#34;apcs-info-activation&#34;]]
+      {$activation}
+    [[/div]]
+    [[div_ class=&#34;apcs-info-risk risk-{$contaiment-risk}&#34; data-containment-risk=&#34;{$contaiment-risk}&#34; data-k-class=&#34;{$k-class}&#34;]]
+    [[/div]]
+    [[div_ class=&#34;apcs-info-vedist vedist-{$threat-ind}&#34;]]
+    [[/div]]
+    [[div_ class=&#34;apcs-info-number&#34;]]
+      {$scp-number}
+    [[/div]]
+  [[/div]]
+  [[div_ class=&#34;apcs-info apcs-info-tooltips&#34;]]
+    [[div_ class=&#34;apcs-info-activation&#34;]]
+      {$activation}
+    [[/div]]
+    [[div_ class=&#34;apcs-info-risk risk-{$contaiment-risk}&#34; data-containment-risk=&#34;{$contaiment-risk}&#34; data-k-class=&#34;{$k-class}&#34;]]
+      [[span class=&#34;apcs-tooltip&#34;]]
+      [[/span]]
+    [[/div]]
+    [[div_ class=&#34;apcs-info-vedist vedist-{$threat-ind}&#34;]]
+      [[span class=&#34;apcs-tooltip&#34;]]
+      [[/span]]
+    [[/div]]
+    [[div_ class=&#34;apcs-info-number&#34;]]
+      {$scp-number}
+    [[/div]]
+  [[/div]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:38.402511.</em>
+    <em>Last updated 2024-02-07 18:30:30.619988.</em>
   
 </div>
 </body>

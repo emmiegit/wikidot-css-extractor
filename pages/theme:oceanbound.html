@@ -14,22 +14,34 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Oceanbound Theme</title>
+  <title>Oceanbound</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Oceanbound Theme</h1>
+    <h1 class="title">Oceanbound</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/theme:oceanbound" target="_blank">Oceanbound Theme</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/theme:oceanbound" target="_blank">Oceanbound</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--code/theme%3Aoceanbound/1);</code></pre>
+          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--code/theme%3Aoceanbound/1);
+
+:root {
+    --title-image: url(&#34;http://scp-vn.wikidot.com/local--files/theme:oceanbound/orcadiaVN.png&#34;); }
+
+#extra-div-1::after {
+    background-image: var(--title-image);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: calc(100% - var(--top-bar-height)/1.5);
+}
+</code></pre>
         </li>
       
     </ul>
@@ -66,14 +78,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:oceanbound" target="_blank"><code>:scp-wiki:theme:oceanbound</code></a>
+    <a href="https://scp-vn.wikidot.com/theme:oceanbound" target="_blank"><code>:scp-vn:theme:oceanbound</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:oceanbound.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -137,16 +143,28 @@
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[module css]]
 @import url(https://scp-wiki.wdfiles.com/local--code/theme%3Aoceanbound/1);
+
+:root {
+    --title-image: url(&#34;http://scp-vn.wikidot.com/local--files/theme:oceanbound/orcadiaVN.png&#34;); }
+
+#extra-div-1::after {
+    background-image: var(--title-image);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: calc(100% - var(--top-bar-height)/1.5);
+}
+
 [[/module]]
 [[include :scp-wiki:component:interwiki-style
 | priority=1
-| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Aoceanbound/1
+| theme=https://scp-vn.wdfiles.com/local--code/theme%3Aoceanbound/1
 ]]
 
 [[iftags +theme]]
 
 [[div style=&#34;display: none&#34;]]
-[[include component:image-block name= https://scp-wiki.wikidot.com/local--files/theme:oceanbound/orcadia.png|caption=.]]
+[[include component:image-block name= https://scp-vn.wikidot.com/local--files/theme:oceanbound/orcadia.png|caption=.]]
 [[/div]]
 
 [[&gt;]]
@@ -155,9 +173,9 @@
 
 This is a theme for the [[[seas-of-orcadia-hub|Orcadia]]] canon, made by [[*user EstrellaYoshte]]  for [[*user DrBleep]].
 
-To use the theme, insert the following:
+Để sử dụng theme này, hãy thêm đoạn mã dưới đây vào bài của bạn
 
-&gt; {{@@[[include :scp-wiki:theme:oceanbound]]@@}}
+&gt; {{@@[[include :scp-vn:theme:oceanbound]]@@}}
 
 ------
 
@@ -303,7 +321,7 @@ Body font is Inter.
     --header-height: 14.25rem;
     --top-bar-height: 2.75rem;
     --header-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Aoceanbound/orkn.jpg&#34;);
-    --title-image: url(&#34;https://scp-wiki.wikidot.com/local--files/theme:oceanbound/orcadia.png&#34;);
+    --title-image: url(&#34;orcadiaVN.png&#34;);
 
     --dark-depth: 38,48,54;
     --ocean-depth: 44,123,149;
@@ -525,7 +543,7 @@ div#search-top-box::before {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0; right: 0.1rem;
+    top: 0; right: 0.05rem;
     background-color: rgb(var(--lagoon-hue));
     pointer-events: none;
     z-index: 2;
@@ -537,9 +555,10 @@ div#search-top-box::before {
             mask-position: center;
     -webkit-mask-repeat: no-repeat;
             mask-repeat: no-repeat;
+    opacity: 1;
     transition: opacity 0.25s ease;
 }
-div#search-top-box:is(:hover,:focus-within)::before { background-color: rgb(var(--undersea-tone)); }
+div#search-top-box:focus-within::before { opacity: 0; }
  
 div#search-top-box form {
     display: flex;
@@ -551,7 +570,7 @@ div#search-top-box form input[type=&#34;text&#34;]:not(:focus):not(:hover) {
     position: relative;
     color: transparent;
     cursor: pointer;
-    display: none;
+    display: inline-block;
     font-family: var(--body-font);
     width: 1.6rem;
     height: 1.6rem;
@@ -578,20 +597,8 @@ div#search-top-box form input[type=&#34;text&#34;]:focus {
     border-radius: 0;
 }
  
-div#search-top-box form input[type=&#34;submit&#34;].button {
-    display: block;
-    height: 1.6rem;
-    width: 1.6rem;
-    border: none;
-    border-radius: 0;
-    color: transparent;
-    text-shadow: none;
-    box-shadow: none;
-    background: rgb(var(--undersea-tone));
-    appearance: none;
-}
-div#search-top-box form input[type=&#34;submit&#34;].button:is(:hover, :focus) {
-    background: rgb(var(--lagoon-hue));
+div#search-top-box form input[type=&#34;submit&#34;] {
+    display: none;
 }
 
 /*-------------------------------------*/
@@ -672,7 +679,7 @@ div#search-top-box form input[type=&#34;submit&#34;].button:is(:hover, :focus) {
         overflow-x: hidden;
     }
     #side-bar, #side-bar:target {
-        border: none; 
+        border: none;
         width: var(--side-bar-width);
     }
 }
@@ -683,10 +690,6 @@ div#search-top-box form input[type=&#34;submit&#34;].button:is(:hover, :focus) {
 
 #side-bar {
     box-sizing: border-box;
-}
-
-:is(#side-bar, #interwiki) a {
-    color: rgb(var(--lagoon-hue));
 }
 
 :is(#side-bar, #interwiki) .side-block {
@@ -845,7 +848,7 @@ hr::after {
 div.creditRate {
     margin-right: 0;
 }
-.page-rate-widget-box, 
+.page-rate-widget-box,
 div.rate-box-with-credit-button {
     font-family: var(--UI-font);
     box-shadow: none;
@@ -1161,7 +1164,7 @@ table.wiki-content-table th {
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:42.858189.</em>
+    <em>Last updated 2024-02-07 18:30:41.384667.</em>
   
 </div>
 </body>

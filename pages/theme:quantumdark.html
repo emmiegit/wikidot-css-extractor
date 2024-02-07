@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>Quantum Dark Theme</title>
 </head>
@@ -320,42 +320,24 @@ This is also a long tab. It contains a lot of text.
 Questo tema utilizza il seguente schema di colori:
 
 ||~ **Descrizione** ||~ **Variabile** ||~ **Valore** ||
-|| //Accent Color// || {{ct_col_link}} || **###e11|#e11##** ||
-|| Link già visitato || {{ct_col_link-visited}} || **###824|#824##** ||
-|| Header h1 || {{ct_col_h1-txt}} || **###b11|#b11##** ||
+|| //Accent Color// || {{ct_col_link}} || **#e11** ||
+|| Link già visitato || {{ct_col_link-visited}} || **#50C878** ||
+|| Header h1 || {{ct_col_h1-txt}} || **#e11** ||
 
 Lo schema colori slegato dalle variabili è invece il seguente:
 ||~ **Descrizione** ||~ **Colore** ||
-|| Background (main content) || **###19191B|#19191B##** ||
-|| Testo (main content) || **###d8d8d8|#d8d8d8##** ||
-|| Sfondo image-caption || **###333|#333##** ||
-|| Sfondo blockquote || **###202023|#202023##** ||
+|| Background (main content) || **#19191B** ||
+|| Testo (main content) || **#d8d8d8** ||
+|| Sfondo image-caption || **#333** ||
+|| Sfondo blockquote || **#202023** ||
 
 [[collapsible show=&#34;▶ Spiegazione Dettagliata&#34; hide=&#34;▽ Chiudi&#34;]]
 
-**Accent Color**: L&#39;//accent color// è controllato dalla variabile {{ct_col_link}}, valorizzata al colore **###e11|#e11##** nella {{root}} del CSS. L&#39;accent color ha molteplici ramificazioni: influenza il colore dei link &#34;nuovi&#34; (non già visitati), il colore dei //collapsible//, il colore dei tags, eccetera. È quindi uno dei colori più impattanti all&#39;interno di un color-scheme.
+**Accent Color**: L&#39;//accent color// è controllato dalla variabile {{ct_col_link}}. L&#39;accent color ha molteplici ramificazioni: influenza il colore dei link &#34;nuovi&#34; (non già visitati), il colore dei //collapsible//, il colore dei tags, eccetera. È quindi uno dei colori più impattanti all&#39;interno di un color-scheme.
 
-Il codice CSS che regola questo comportamento appartiene a Sigma-9 ed è il seguente:
-[[code]]
-a {
-    background: transparent;
-    color: #b01;
-    color: var(--ct_col_link);
-    text-decoration: none;
-}
-[[/code]]
+**Link già visitato**: Il colore dei link già visitati è controllato dalla variabile {{ct_col_link-visited}}. Esempio di un link: [*http://fondazionescp.wikidot.com/scp-001-it SCP-001-IT].
 
-**Link già visitato**: Il colore dei link già visitati è controllato dalla variabile {{ct_col_link-visited}}, valorizzato al colore **###824|#824##** nella {{root}} del CSS. Esempio di un link: [*http://fondazionescp.wikidot.com/scp-001-it SCP-001-IT].
-
-Il codice CSS che regola questo comportamento appartiene a Sigma-9 ed è il seguente:
-[[code]]
-a:visited {
-    color: #824;
-    color: var(--ct_col_link-visited);
-}
-[[/code]]
-
-**Header h1**: L&#39;//header h1// è l&#39;header di default più grande, nonché colorato diversamente (al contrario degli altri). In codice Wikidot, è quello che si ottiene anteponendo {{+}} al testo. Il suo colore è controllato dalla variabile {{ct_col_h1-txt}}, valorizzata al colore **###b11|#b11##** nella {{root}} del CSS.
+**Header h1**: L&#39;//header h1// è l&#39;header di default più grande, nonché colorato diversamente (al contrario degli altri). In codice Wikidot, è quello che si ottiene anteponendo {{+}} al testo. Il suo colore è controllato dalla variabile {{ct_col_h1-txt}}.
 
 **//Page Title//**: Il //Page Title//, ovvero il titolo della pagina (e.g., &#34;Quantum Dark Theme&#34;), è controllato dalla variabile {{ct_col_page-title}}, valorizzata (come sempre) nella {{root}} del CSS. È interessante osservare che questa variabile è legata alla variabile {{ct_col_h1-txt}}, quindi, modificando {{ct_col_h1-txt}}, si cambierà automaticamente anche il colore del //Page Title//. Ciò è conseguenza del seguente codice sorgente di Sigma 9:
 
@@ -440,30 +422,43 @@ In altre parole, potete utilizzare {{.post-it_quantumdark}} in tutti i vostri la
 [[module CSS show=&#34;true&#34;]]
 /*
     Quantum Dark Theme
-    [2021 Wikidot Theme - CC BY-SA 4.0]
+    [2022 Wikidot Theme - CC BY-SA 3.0]
     By QuantumCryptographer
-    Based On: Common-Theme-Dark-Mode by Dr_Grom
+    Applicable to -IT version of Sigma-9
 */
 
 /* ROOT VARIABILES */
 :root{
-   --ct_col_h1-txt: #b11;
+   --ct_col_h1-txt: #e11;
    --ct_col_link: #e11;
-   --ct_col_link-visited: #824;
+   --ct_col_link-visited: #50C878;
    --txtarea_scrollbar_track: #afafaf;
    --txtarea_scrollbar_thumb: #e5e5e5;
 }
 
+/* --- LINK COLOR --- */
+a {
+   color: var(--ct_col_link);
+}
+a:visited {
+   color: var(--ct_col_link-visited);
+}
+
+/* --- H1 and PAGE-TITLE COLOR --- */
+h1, #page-title {
+   color: var(--ct_col_h1-txt);
+}
+
 /* --- TOP PART --- */
 div#container-wrap{
-   background-image: url(&#39;https://grombald.github.io/Common-Theme/svg/body_bg_dark.svg&#39;);
+   background: url(http://aisen.wikidot.com/local--files/theme:black/body_bg.png) top left repeat-x;
 }
 
 /*--- SIDE BAR ---*/
 
 #side-bar .heading {
     border-bottom: 1px solid #766;
-    color: #900;
+    color: #ff8c00;
 }
 
 #side-bar .side-block {
@@ -490,6 +485,11 @@ div#container-wrap{
 }
 
 /* ---- MAIN BODY ---- */
+
+#content-wrap{
+   background-color: #19191B
+   color: #d8d8d8;
+}
 
 #container-wrap-wrap{
    background-color: #19191B;
@@ -572,7 +572,7 @@ table.wiki-content-table th{
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.544562.</em>
+    <em>Last updated 2024-02-07 18:30:41.396451.</em>
   
 </div>
 </body>

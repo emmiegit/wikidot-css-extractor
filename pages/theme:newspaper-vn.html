@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>Theme Tin Báo Việt Nam</title>
 </head>
@@ -29,7 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-vn.wdfiles.com/local--code/theme%3Anewspaper-vn/8&#39;);</code></pre>
         </li>
       
     </ul>
@@ -41,25 +41,10 @@
           <pre><code>width:48.5%;</code></pre>
         </li>
       
-        <li>
-          <pre><code>display: none</code></pre>
-        </li>
-      
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
       
         <li>
   
@@ -91,6 +76,17 @@
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
   </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
 
   
 </li>
@@ -215,7 +211,20 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +theme]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:toggle-sidebar]]
+[[include :scp-wiki:component:croqstyle]]
+
+[[module CSS]]
+@import url(&#39;https://scp-vn.wdfiles.com/local--code/theme%3Anewspaper-vn/8&#39;);
+[[/module]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-vn.wdfiles.com/local--code/theme%3Anewspaper-vn/8
+
+]]
+
+[[iftags +theme]]
 
 [[&gt;]]
 [[module rate]]
@@ -229,7 +238,7 @@
 
 -----
 
-+ Nguyên Tố Trang
++ Phần Tử Trang
 
 [[collapsible show=&#34;Hộp Sập - Bấm Vào Tôi&#34; hide=&#34;Hộp Sập - Bấm Vào Tôi&#34;]]
 +* Tiêu Đề Một
@@ -502,14 +511,7 @@ Font Thường là Montserrat.
 
 @@ @@
 + Mã Nguồn
-[[/iftags]]
-
-[[div [[iftags -theme]]style=&#34;display: none&#34;[[/iftags]]]]
-
-[[include :scp-wiki:component:toggle-sidebar]]
-[[include :scp-wiki:component:croqstyle]]
-
-[[module CSS show=&#34;true&#34;]]
+[[code type=&#34;CSS&#34;]]
 /*
     Newspaper Theme Vietnam
     [2021 Wikidot Theme]
@@ -523,8 +525,9 @@ Font Thường là Montserrat.
  
 :root {
     --accentColor: #58895d;
-    --lgurl: url(&#34;http://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newslogo.png&#34;);
-    --bgurl: url(&#34;http://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newshead.png&#34;);
+    --visitedColor: #79bd80;
+    --lgurl: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newslogo.png&#34;);
+    --bgurl: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Anewspaper/newshead.png&#34;);
     --primaryBackgroundColor: #f3f3f3;
     --textColor: #090B0C;
     --headerColor: #161B33;
@@ -560,7 +563,11 @@ code {
 a:not(.rate-box-with-credit-button a, .page-rate-widget-box a, yui-nav a) {
     color: var(--accentColor);
 }
- 
+
+a:not(.rate-box-with-credit-button a, .page-rate-widget-box a, yui-nav a):visited {
+    color: var(--visitedColor);
+}
+
 #page-content div {
     clear: unset;
 }
@@ -862,7 +869,8 @@ div#side-bar{
     overflow-x: hidden;
 }
  
-#side-bar .heading{
+#side-bar .heading,
+#interwiki .heading {
     color: var(--headerColor);
     font-family: var(--header-font);
     font-size: 0.94rem;
@@ -872,7 +880,8 @@ div#side-bar{
     padding-left: 0;
     text-align: center;
 }
-#side-bar .side-block {
+#side-bar .side-block,
+#interwiki .side-block {
     border: transparent;
     border-radius: 0;
     box-shadow: none;
@@ -892,7 +901,8 @@ div#side-bar{
     display: none;
 }
  
-#side-bar div.menu-item a {
+#side-bar div.menu-item a,
+#interwiki div.menu-item a {
     color: var(--accentColor);
 }
  
@@ -1170,9 +1180,9 @@ div#side-bar{
     border-radius: 0;
 }
  
-.page-rate-widget-box .rate-points {
-    background-color: var(--primaryBackgroundColor) !important;
-    color: var(--textColor) !important;
+div.page-rate-widget-box .rate-points {
+    background-color: var(--primaryBackgroundColor);
+    color: var(--textColor);
     border: solid 1px var(--primaryBackgroundColor);
     border-radius: 0;
 }
@@ -1293,8 +1303,29 @@ blockquote::after, div.blockquote::after {
 #toc-list {
     font-family: var(--header-font);
 }
+
+#toc-list &gt; div { position: relative; }
+
+#toc-list &gt; div:not([style*=&#34;margin-left: 1em;&#34;], [style*=&#34;margin-left: 2em;&#34;]) { display: none; }
 #toc-list &gt; div[style*=&#34;margin-left: 1em;&#34;] { margin-left: 0.5em!important; }
-#toc-list &gt; div:not([style*=&#34;margin-left: 1em;&#34;]) { display: none; }
+#toc-list &gt; div[style*=&#34;1em&#34;]::before {
+    content: &#34;•&#34;;
+    display: inline-block;
+    position: absolute;
+    left: -0.75em;
+    color: var(--accentColor);
+}
+
+#toc-list &gt; div[style*=&#34;margin-left: 2em;&#34;] { margin-left: 1.5em!important; font-size: 95%; }
+#toc-list &gt; div[style*=&#34;2em&#34;]::before {
+    content: &#34;┖&#34;;
+    display: inline-block;
+    position: absolute;
+    left: -1.25em;
+    color: var(--accentColor);
+    transform: scaleY(1.5);
+
+}
  
 .scp-image-block {
     border: solid 8px var(--primaryBackgroundColor);
@@ -1807,15 +1838,6 @@ a.action-area-close:hover {
     display: contents;
 }
  
-#toc-list &gt; div { position: relative; }
-#toc-list &gt; div[style*=&#34;1em&#34;]::before {
-    content: &#34;•&#34;;
-    display: inline-block;
-    position: absolute;
-    left: -0.75em;
-    color: var(--accentColor);
-}
- 
 @media (max-width: 1340px) {
     .anchor {
         filter: none;
@@ -1887,12 +1909,6 @@ a.action-area-close:hover {
     padding-top: 0;
 }
  
-/* ---- INTERWIKI ---- */
- 
-.scpnet-interwiki-frame{
-    filter: invert(100%) grayscale(100%) contrast(75%);
-}
- 
 /* ---- MOBiLE QUERY ---- */
 @media (max-width: 767px) {
  
@@ -1941,15 +1957,15 @@ a.action-area-close:hover {
 }
 
 
-[[/module]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.532734.</em>
+    <em>Last updated 2024-02-07 18:30:41.381831.</em>
   
 </div>
 </body>

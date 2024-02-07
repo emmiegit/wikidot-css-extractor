@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>星之梦 主题版式</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">星之梦 主题版式</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/theme:dream-of-the-stars" target="_blank">星之梦 主题版式</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>@import url(&#34;https://scp-wiki-cn.wdfiles.com/local--code/theme%3Adream-of-the-stars/1&#34;);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+/* Unfold Sidebar */
+
+#content-wrap {
+    grid-template-areas: &#34;side-bar . content .&#34;;
+    grid-template-columns: var(--sidebar-width-on-desktop) calc(50% - var(--body-width-on-desktop)/2 - (var(--sidebar-width-on-desktop))*3/2) 1fr calc(50% - var(--body-width-on-desktop)/2 - var(--sidebar-width-on-desktop)/2);
+}
+
+
+@media only screen and (min-width: 56.25rem) {
+    #side-bar .close-menu {
+        display: none;
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+        #side-bar .close-menu::before, #side-bar .close-menu::after {
+            content:none;
+        }
+
+    #side-bar:focus-within .close-menu {
+        pointer-events: auto;
+    }
+
+
+    #side-bar {
+        display: flex;
+        position: sticky;
+        z-index: 9;
+        top: 0;
+        left: inherit;
+        height: 100vh;
+        margin-top: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transition: background-color .15s cubic-bezier(.4,0,.2,1),scrollbar-color .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1);
+    }
+
+        #side-bar:focus-within {
+            left: inherit;
+        }
+
+        #side-bar .side-block {
+            margin-top: 0.5rem;
+            overflow: visible;
+            border-right-width: 0rem;
+            border-left-width: 0rem;
+            border-radius: 0;
+            background-color: rgba(var(--dark-accent),.15)!important;
+        }
+
+    #main-content::before {
+        content: none;
+        display: block;
+        position: absolute;
+        z-index: -1;
+        z-index: 99;
+        top: var(--final-header-height-on-desktop, 0);
+        right: 0;
+        width: var(--sidebar-width-on-desktop, 17em);;
+        height: calc(100% - var(--final-header-height-on-desktop, 0.688rem) - 2.313rem);
+        margin-left: 0;
+        padding-right: 0;
+        transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        -webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        -moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        -o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0.5;
+        background: rgb(var(--swatch-alternate-color, 0, 0, 0));
+        pointer-events: none;
+
+    }
+    #side-bar:focus-within ~ #main-content::before {
+        width: var(--sidebar-width-on-desktop, 17em);
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.scp-image-block.block-right {
+    margin: 1em 0 1.1em 2em;
+}
+
+.scp-image-block img {
+    min-width: 100%;
+    border: 0.5rem solid rgba(var(--pale-gray-monochrome));
+    box-sizing: border-box;
+}
+.colors_container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    font-weight: 700;
+    font-family: zuijinregular, serif;
+}
+
+.colors_container &gt;  .colors,
+.colors_container &gt;  .subcolors {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.colors &gt; .color,
+.subcolors &gt; .color {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.colors &gt; .color &gt; .sub,
+.subcolors &gt; .color &gt; .sub,
+.colors &gt; .color &gt; .sub &gt; .css-variable,
+.subcolors &gt; .color &gt; .sub &gt; .css-variable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.colors &gt; .color {
+    height: 7rem;
+    flex-basis: calc((100%/2) - 2rem);
+}
+
+.colors &gt; .color.one {
+    background-color: rgba(var(--gray-monochrome),1);
+}
+
+.colors &gt; .color.two {
+    background-color: rgba(var(--bright-accent),1);
+}
+
+.subcolors &gt; .color {
+    height: 4.3rem;
+    font-size: 75%;
+    text-align: center;
+    flex-basis: calc((100%/6) - 2rem);
+}
+
+.colors &gt; .color.one,
+.subcolors &gt; .color.two,
+.subcolors &gt; .color.three,
+.subcolors &gt; .color.four,
+.subcolors &gt; .color.five,
+.subcolors &gt; .color.six {
+    color: rgba(var(--swatch-text-light),1);
+}
+
+.subcolors &gt; .color.one {
+    background-color: rgba(var(--pale-gray-monochrome),1);
+}
+
+.subcolors &gt; .color.two {
+    background-color: rgba(var(--light-gray-monochrome),1);
+}
+
+.subcolors &gt; .color.three {
+    background-color: rgba(var(--dark-gray-monochrome),1);
+}
+
+.subcolors &gt; .color.four {
+    background-color: rgba(var(--medium-accent),1);
+}
+
+.subcolors &gt; .color.five {
+    background-color: rgba(var(--dark-accent),1);
+}
+
+.subcolors &gt; .color.six {
+    background-color: rgba(var(--newpage-color),1);
+}
+
+.color &gt; .sub &gt; .css-variable {
+    font-size: 75%;
+    letter-spacing: 0.1em;
+    font-family: var(--body-font);
+}
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display:none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: var(--header-font);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: var(--title-font);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-family: var(--mono-font);</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/credit:start" target="_blank"><code>:scp-wiki-cn:credit:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/credit:end" target="_blank"><code>:scp-wiki-cn:credit:end</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/theme:dream-of-the-stars" target="_blank"><code>:scp-wiki-cn:theme:dream-of-the-stars</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/theme:dream-of-the-stars" target="_blank"><code>:scp-wiki-cn:theme:dream-of-the-stars</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>colors_container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>colors</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>subcolors</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>one</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>two</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>three</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>four</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>five</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>six</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>css-variable</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancyhr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancyhr</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancyborder</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fancyborder</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module css]]
+@import url(&#34;https://scp-wiki-cn.wdfiles.com/local--code/theme%3Adream-of-the-stars/1&#34;);
+[[/module]]
+
+[!--  {$unfold-sidebar}]
+
+[[module css]]
+
+/* Unfold Sidebar */
+
+#content-wrap {
+    grid-template-areas: &#34;side-bar . content .&#34;;
+    grid-template-columns: var(--sidebar-width-on-desktop) calc(50% - var(--body-width-on-desktop)/2 - (var(--sidebar-width-on-desktop))*3/2) 1fr calc(50% - var(--body-width-on-desktop)/2 - var(--sidebar-width-on-desktop)/2);
+}
+
+
+@media only screen and (min-width: 56.25rem) {
+    #side-bar .close-menu {
+        display: none;
+        position: static;
+        top: auto;
+        left: auto;
+        width: auto;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+        #side-bar .close-menu::before, #side-bar .close-menu::after {
+            content:none;
+        }
+
+    #side-bar:focus-within .close-menu {
+        pointer-events: auto;
+    }
+
+
+    #side-bar {
+        display: flex;
+        position: sticky;
+        z-index: 9;
+        top: 0;
+        left: inherit;
+        height: 100vh;
+        margin-top: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+        transition: background-color .15s cubic-bezier(.4,0,.2,1),scrollbar-color .15s cubic-bezier(.4,0,.2,1),border-color .15s cubic-bezier(.4,0,.2,1);
+    }
+
+        #side-bar:focus-within {
+            left: inherit;
+        }
+
+        #side-bar .side-block {
+            margin-top: 0.5rem;
+            overflow: visible;
+            border-right-width: 0rem;
+            border-left-width: 0rem;
+            border-radius: 0;
+            background-color: rgba(var(--dark-accent),.15)!important;
+        }
+
+    #main-content::before {
+        content: none;
+        display: block;
+        position: absolute;
+        z-index: -1;
+        z-index: 99;
+        top: var(--final-header-height-on-desktop, 0);
+        right: 0;
+        width: var(--sidebar-width-on-desktop, 17em);;
+        height: calc(100% - var(--final-header-height-on-desktop, 0.688rem) - 2.313rem);
+        margin-left: 0;
+        padding-right: 0;
+        transition: transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        opacity 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        -webkit-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        -moz-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1),
+        -o-transform 300ms cubic-bezier(0.4, 0.0, 0.2, 1);
+        opacity: 0.5;
+        background: rgb(var(--swatch-alternate-color, 0, 0, 0));
+        pointer-events: none;
+
+    }
+    #side-bar:focus-within ~ #main-content::before {
+        width: var(--sidebar-width-on-desktop, 17em);
+        opacity: 0;
+        pointer-events: none;
+    }
+}
+
+[[/module]]
+
+[!--   --]
+
+[[iftags +版式]]
+
+[[module css]]
+.scp-image-block.block-right {
+    margin: 1em 0 1.1em 2em;
+}
+
+.scp-image-block img {
+    min-width: 100%;
+    border: 0.5rem solid rgba(var(--pale-gray-monochrome));
+    box-sizing: border-box;
+}
+.colors_container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    font-weight: 700;
+    font-family: zuijinregular, serif;
+}
+
+.colors_container &gt;  .colors,
+.colors_container &gt;  .subcolors {
+    width: 100%;
+    flex-shrink: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.colors &gt; .color,
+.subcolors &gt; .color {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 2;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 0.5rem;
+    margin: 0.5rem;
+}
+
+.colors &gt; .color &gt; .sub,
+.subcolors &gt; .color &gt; .sub,
+.colors &gt; .color &gt; .sub &gt; .css-variable,
+.subcolors &gt; .color &gt; .sub &gt; .css-variable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.colors &gt; .color {
+    height: 7rem;
+    flex-basis: calc((100%/2) - 2rem);
+}
+
+.colors &gt; .color.one {
+    background-color: rgba(var(--gray-monochrome),1);
+}
+
+.colors &gt; .color.two {
+    background-color: rgba(var(--bright-accent),1);
+}
+
+.subcolors &gt; .color {
+    height: 4.3rem;
+    font-size: 75%;
+    text-align: center;
+    flex-basis: calc((100%/6) - 2rem);
+}
+
+.colors &gt; .color.one,
+.subcolors &gt; .color.two,
+.subcolors &gt; .color.three,
+.subcolors &gt; .color.four,
+.subcolors &gt; .color.five,
+.subcolors &gt; .color.six {
+    color: rgba(var(--swatch-text-light),1);
+}
+
+.subcolors &gt; .color.one {
+    background-color: rgba(var(--pale-gray-monochrome),1);
+}
+
+.subcolors &gt; .color.two {
+    background-color: rgba(var(--light-gray-monochrome),1);
+}
+
+.subcolors &gt; .color.three {
+    background-color: rgba(var(--dark-gray-monochrome),1);
+}
+
+.subcolors &gt; .color.four {
+    background-color: rgba(var(--medium-accent),1);
+}
+
+.subcolors &gt; .color.five {
+    background-color: rgba(var(--dark-accent),1);
+}
+
+.subcolors &gt; .color.six {
+    background-color: rgba(var(--newpage-color),1);
+}
+
+.color &gt; .sub &gt; .css-variable {
+    font-size: 75%;
+    letter-spacing: 0.1em;
+    font-family: var(--body-font);
+}
+
+[[/module]]
+
+[[div_ style=&#34;display:none&#34;]]
+[[embed]]
+&lt;iframe src=&#34;https://scp-wiki-cn.wdfiles.com/local--files/nav%3Aside/styleFrame.html?bhl&#34; name=&#34;typeFrame&#34;&gt;&lt;/iframe&gt;
+[[/embed]]
+[[/div]]
+
+[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
+[[include :scp-wiki-cn:credit:start]]
+
+**作者：**[[*user Mercuresphere]]
+
+版头图片：https://pixabay.com/illustrations/banner-header-sky-night-stars-1557834/
+
+[[include :scp-wiki-cn:credit:end]]
+
+[[=]]
++ 主题颜色
+[[/=]]
+
+[[div_ class=&#34;colors_container&#34;]]
+[[div_ class=&#34;colors&#34;]]
+[[div_ class=&#34;color one&#34;]]
+[[div_ class=&#34;color sub&#34;]]
+[[span class=&#34;css-variable&#34;]]@@--gray-monochrome@@[[/span]][[span class=&#34;css-variable&#34;]]@@(43, 14, 116)@@[[/span]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;color two&#34;]]
+[[div_ class=&#34;color sub&#34;]]
+[[span class=&#34;css-variable&#34;]]@@--bright-accent@@[[/span]][[span class=&#34;css-variable&#34;]]@@(255, 219, 90)@@[[/span]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;subcolors&#34;]]
+[[div_ class=&#34;color one&#34;]]
+[[div_ class=&#34;color sub&#34;]]
+[[span class=&#34;css-variable&#34;]]@@--pale-gray-monochrome@@[[/span]][[span class=&#34;css-variable&#34;]]@@(233, 240, 255)@@[[/span]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;color two&#34;]]
+[[div_ class=&#34;color sub&#34;]]
+[[span class=&#34;css-variable&#34;]]@@--light-gray-monochrome@@[[/span]][[span class=&#34;css-variable&#34;]]@@(91, 97, 138)@@[[/span]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;color three&#34;]]
+[[div_ class=&#34;color sub&#34;]]
+[[span class=&#34;css-variable&#34;]]@@--dark-gray-monochrome@@[[/span]][[span class=&#34;css-variable&#34;]]@@(41, 26, 91)@@[[/span]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;color four&#34;]]
+[[div_ class=&#34;color sub&#34;]]
+[[span class=&#34;css-variable&#34;]]@@--medium-accent@@[[/span]][[span class=&#34;css-variable&#34;]]@@(228, 180, 28)@@[[/span]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;color five&#34;]]
+[[div_ class=&#34;color sub&#34;]]
+[[span class=&#34;css-variable&#34;]]@@--dark-accent@@[[/span]][[span class=&#34;css-variable&#34;]]@@(41, 26, 91)@@[[/span]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;color six&#34;]]
+[[div_ class=&#34;color sub&#34;]]
+[[span class=&#34;css-variable&#34;]]@@--newpage-color@@[[/span]][[span class=&#34;css-variable&#34;]]@@(153, 0, 255)@@[[/span]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]]
+
++ 关于本页
+
+这是一个以星空为主题的版式，不与任何设定相关，可以随意使用。版头背景来自于wallowing的[[[theme:the-flowing-night-sky|流动夜空]]]版式。
+
+与[[[wanderers:wanderers-station|流浪者站]]]版式不同，这个版式从设计理念上更接近（从地球上仰望）星空，而不是身在宇宙之中，因此这个版式没有选择使用深色背景。
+
+在你的作品开头添加如下语法以应用此版式：
+
+&gt; @@[[include :scp-wiki-cn:theme:dream-of-the-stars]]@@
+
+可以使用如下代码展开侧栏，来得到类似黑标暗色侧边栏的外观：
+
+&gt; @@[[include :scp-wiki-cn:theme:dream-of-the-stars unfold-sidebar=--]]@@
+
++ 示例
+
+可通过 5 个连字符“@@-----@@”创建水平分割线。若它未被放在其他部件（诸如引用块）中，则会左右延伸贯穿页面。这种将文件分割为多个部分的线就是分割线。
+
+-----
+
+如果将“@@-----@@”放入类（class）为 “fancyhr” 的 div 元素中，则可以显示另一种水平线样式，如下所示：
+&gt; @@[[div_ class=&#34;fancyhr&#34;]]@@
+&gt; @@-----@@
+&gt; @@[[/div]]@@
+
+效果如下：
+
+[[div_ class=&#34;fancyhr&#34;]]
+-----
+[[/div]]
+
+[[div_ class=&#34;fancyborder&#34;]]
+任何元素添加 “fancyborder” 类（class），即可显示特殊边框。例如，这是此方块的代码：
+[[div_ class=&#34;code&#34;]]
+@@[[div_ class=&#34;fancyborder&#34;]]@@
+@@文字内容@@
+@@[[/div]]@@
+[[/div]]
+[[/div]]
+
+标题可通过在一行字起始处输入 1 至 6 个加号“+”来创建
+
+[[collapsible show=&#34;+ Titles&#34; hide=&#34;- Titles&#34;]]
++ 1 级标题
+
+++ 2 级标题
+
++++ 3 级标题
+
+++++ 4 级标题
+
++++++ 5 级标题
+
+++++++ 6 级标题
+[[/collapsible]]
+
+@@ @@
+
+[[tabview]]
+[[tab 分页]]
+此为分页（tab view）。
+
+[[/tab]]
+[[tab 分页]]
+看，这有更多文字。
+
+多么精巧绝伦。
+[[/tab]]
+[[tab 长 Tab]]
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+
+这是一个长的 tab，它有很多文字。
+[[/tab]]
+[[tab 空 tab]]
+[[/tab]]
+[[tab 空 tab]]
+[[/tab]]
+[[tab 空 tab]]
+[[/tab]]
+[[tab 空 tab]]
+[[/tab]]
+[[tab 空 tab]]
+[[/tab]]
+[[tab 空 tab]]
+[[/tab]]
+[[/tabview]]
+
+&gt; 这是一个引用块，在一行字的起始处加上“&gt; ”来创建。
+&gt;
+&gt; 更多文字
+&gt; -----
+&gt; 一条分割线
+&gt;
+&gt;&gt; 嵌套引用块[[footnote]] 一个脚注 [[/footnote]]
+
+||~ 这是 ||~ 表格 ||
+||你应该老早 || 就知道怎么 ||
+||||做这个了吧 ||
+
+
+[[=]]
+正文字体为 Skolar Sans / 浏览器默认字体
+[[span style=&#34;font-family: var(--header-font);&#34;]]页眉字体为 Anonymous Pro / 王汉宗魏碑体。[[/span]]
+[[span style=&#34;font-family: var(--title-font);&#34;]]标题字体为 Zuijin / 王汉宗魏碑体。[[/span]]
+[[span style=&#34;font-family: var(--mono-font);&#34;]]等宽字为 Recursive / 仿宋及思源宋体。[[/span]]
+[[/=]]
+
+-----
+
+[[collapsible show=&#34;+ 显示代码&#34; hide=&#34;- 隐藏代码&#34; hideLocation=&#34;both&#34;]]
+[[code type=&#34;css&#34;]]
+
+/* Sister Luvere&#39;s Dream of the Stars Theme */
+/* 2022 Wikidot Theme */
+/* By Mercuresphere, Based off The Flowing Night Sky Theme by wallowing and Dustjacket Theme by Woedenaz and Croquembouche */
+/* Header Image: https://pixabay.com/illustrations/banner-header-sky-night-stars-1557834/ */
+/* CC BY-SA 3.0 */
+
+@import url(&#34;https://fastly.jsdelivr.net/gh/Crimone/crimson-anemone@2.3.16/dustjacket.css&#34;);
+
+/* ----BEGIN---- */
+
+:root {
+
+    /* S-CSS-P Integration */
+    /* If you&#39;re making a new CSS theme, please include the following three variables at minimum. */
+    --theme-base: &#34;nuscp&#34;;
+    /* must be either &#34;nuscp&#34; or &#34;sigma9&#34; */
+    --theme-id: &#34;dream-of-the-stars&#34;;
+    /* set this to the URL of your theme&#39;s page - eg for &#34;component:ar-theme&#34;, set it to &#34;ar-theme&#34; */
+    --theme-name: &#34;Sister Luvere&#39;s Dream of the Stars Theme&#34;;
+    /* set this to your theme&#39;s full name */
+
+    /* ===STANDARD THEME COLORS=== */
+    --white-monochrome: 252, 252, 252;
+    --pale-gray-monochrome: 233, 240, 255;
+    --light-pale-gray-monochrome: 251, 242, 255;
+    --very-light-gray-monochrome: 220, 222, 230;
+    --light-gray-monochrome: 91, 97, 138;
+    --gray-monochrome: 43, 14, 116;    
+    --dark-gray-monochrome: 41, 26, 91;
+    --alt-accent: 153, 0, 255;
+    --light-alt-accent: 117,89,136;
+
+    --gradient-header: url(&#34;https://evernight-aquarium.wdfiles.com/local--files/tale%3Aextracts/flowing.jpg&#34;);
+    --header-background-image-size: auto var(--header-height-on-desktop);
+
+    --link-color: 48, 0, 171;
+    --visited-link-color: 48, 0, 171;
+    --hover-link-color: 205, 0, 189;
+}
+
+:root:lang(cn) {
+    --header-title: &#34;被放逐者之图书馆&#34;;
+    --body-font: Texturina, Optima, Segoe, Segoe UI, Candara, Calibri, Arial, &#39;Noto Sans SC&#39;, sans-serif;
+    --header-font: zuijinregular,&#39;HanWang WeiBeiMedium-Gb5&#39;, &#39;Ma Shan Zheng&#39;, &#39;华文隶书&#39;, &#39;lisu&#39;, &#39;Noto Serif SC&#39;, Big Caslon, Book Antiqua, Palatino Linotype, Georgia, serif;
+    --title-font: &#34;EB Garamond&#34;, &#39;HanWang WeiBeiMedium-Gb5&#39;, &#39;Ma Shan Zheng&#39;, &#39;华文隶书&#39;, &#39;lisu&#39;, &#39;Noto Serif SC&#39;, Big Caslon, Book Antiqua, Palatino Linotype, &#39;Noto Serif SC&#39;, Georgia, serif;
+    --UI-font: &#34;EB Garamond&#34;, Big Caslon, Book Antiqua, Palatino Linotype, &#39;Noto Serif SC&#39;, Georgia, serif;
+    --mono-font: Recursive, Consolas, monaco, &#39;仿宋&#39;, &#39;Noto Serif SC&#39;, monospace;
+}
+
+/* ===yui-tabs=== */
+
+#main-content {
+    --tabs-bg: var(--swatch-secondary-color);
+    --tabs-txt: var(--swatch-text-tertiary-color);
+    --tabs-hover-bg: var(--gray-monochrome);
+    --tabs-hover-txt: var(--swatch-text-secondary-color);
+    --tabs-selected-bg: var(--dark-gray-monochrome);
+    --tabs-selected-txt: var(--swatch-text-secondary-color);
+    --tabs-selected-outline: var(--dark-gray-monochrome);
+    --tabs-bottom-border-color: var(--gray-monochrome);
+    --tabs-content-bg-color: var(--swatch-secondary-color), 0.25;
+    --tabs-content-border-color: var(--swatch-tertiary-color);
+}
+
+.yui-navset .yui-nav .selected {
+    background-color: rgb(var(--dark-gray-monochrome));
+}
+
+#header h1, #header h1 a, #header h1 a::before, #header h1 a::after {
+    top: -0.1rem;
+}
+
+/* ===compatibility patch=== */
+div.earthworm div.inner,
+div.earthworm div.inner &gt; div {
+    display: contents;
+}
+
+/* ===hr and border=== */
+hr:not(.fancyhr hr), #page-title::before, .meta-title::before, #page-title::after, .meta-title::after {
+    filter: hue-rotate(207deg) saturate(109.23%) brightness(36%);
+}
+
+.fancyhr hr {
+    border-image-source: url(&#34;https://evernight-aquarium.wdfiles.com/local--files/tale%3Aextracts/wl_hr.png&#34;);
+}
+
+.fancyborder {
+    box-sizing: border-box;
+    padding: 2vw;
+    border: 2vw solid rgba(0, 0, 0, 0.5);
+    border-image: url(&#34;https://evernight-aquarium.wdfiles.com/local--files/tale%3Aextracts/wl_border.png&#34;) 600 round;
+    border-image-width: 6;
+}
+
+blockquote, .blockquote, div.blockquote, [class*=&#34;blockquote&#34;] {
+    border: 0.1875rem outset rgb(131, 124, 156);
+}
+
+/* ===link hover=== */
+div.page-watch-options a, div.page-watch-options a:visited {
+    --hover-link-color: var(--hover-link-color);
+}
+
+#footer {
+    --footer-link-hover-color: var(--dark-gray-monochrome);
+}
+
+#license-area {
+    --license-link-hover-color: var(--dark-gray-monochrome);
+}
+
+div#extra-div-1 {
+    background-position: center;
+}
+
+#breadcrumbs a:before, #breadcrumbs a:visited:before, .pseudocrumbs a:before, .pseudocrumbs a:visited:before {
+    box-shadow: .0625rem .0625rem 0 0 rgba(var(--dark-gray-monochrome),1),.25rem .0625rem 0 0 rgba(255,255,255,.85),.25rem .0625rem 0 0 rgba(var(--dark-gray-monochrome),1),.3125rem .0625rem 0 0 rgba(var(--dark-gray-monochrome),1);
+}
+
+#breadcrumbs a:active:before, #breadcrumbs a:hover:before, .pseudocrumbs a:active:before, .pseudocrumbs a:hover:before {
+    background-color: rgb(var(--gray-monochrome));
+    box-shadow: 0 0 0 .25rem rgba(var(--gray-monochrome),1),0 0 0 0 rgba(var(--background-gradient-color),0),0 0 0 0 rgba(var(--swatch-background),0),0 0 0 0 rgba(var(--gray-monochrome),0)
+}
+
+#breadcrumbs a:focus-within:before,.pseudocrumbs a:focus-within:before {
+    background-color: rgb(var(--gray-monochrome));
+    box-shadow: 0 0 0 .25rem rgba(var(--gray-monochrome),1),0 0 0 0 rgba(var(--background-gradient-color),0),0 0 0 0 rgba(var(--swatch-background),0),0 0 0 0 rgba(var(--gray-monochrome),0)  
+}
+
+#breadcrumbs,.pseudocrumbs {
+    --swatch-text-secondary-color: var(--bright-accent);
+}
+
+#page-content .rate-box-with-credit-button &gt; .creditButton &gt; p &gt; a:after {
+    background-color: rgba(var(--light-alt-accent), 0.75);
+}
+
+/* ===mobile header font size=== */
+@media only screen and (max-width: 375px) {
+    #header h1 a {
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    div[id*=page-options-bottom] &gt; a:after {
+        left: 0.125rem;
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    div[id*=page-options-bottom] &gt; a:after {
+        left: 0.25rem;
+    }
+}
+
+@media (max-width: 375px) {
+    #odialog-container div.owindow {
+        width: 100%!important;
+    }
+}
+
+@media only screen and (max-width: 56.25rem) {
+    #search-top-box form[id=&#34;search-top-box-form&#34;]:not(:focus-within) input[type=&#34;text&#34;] {
+        background-color: rgba(0, 0, 0, 0);
+    }
+}
+
+/* ===默认收起用户信息栏和搜索栏=== */
+
+@media only screen and (min-width: 56.25rem) {
+    #search-top-box {
+        top: 2em;
+        right: 3%
+    }
+
+    #login-status {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        top: 2em;
+        right: calc(3% + var(--account-height) + .25em);
+        color: transparent;
+        pointer-events: none;
+        transition: color .2s cubic-bezier(.4,0,.2,1);
+        user-select: none
+    }
+
+    #login-status:active, #login-status:hover {
+        -webkit-user-select: initial;
+        -moz-user-select: initial;
+        -ms-user-select: initial;
+        color: rgb(var(--login-line-divider-color));
+        pointer-events: all;
+        user-select: auto
+    }
+
+    #login-status:focus-within {
+        -webkit-user-select: initial;
+        -moz-user-select: initial;
+        -ms-user-select: initial;
+        color: rgb(var(--login-line-divider-color));
+        pointer-events: all;
+        user-select: auto
+    }
+
+    #login-status:active #account-options, #login-status:hover #account-options {
+        pointer-events: all
+    }
+
+    #login-status:focus-within #account-options {
+        pointer-events: all
+    }
+
+    #login-status &gt; :not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
+        --clip-path: polygon(100% 0,100% 0,100% 100%,100% 100%);
+        -webkit-clip-path: var(--clip-path);
+        clip-path: var(--clip-path);
+        opacity: 0;
+        transition: box-shadow .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1),-webkit-text-decoration .2s cubic-bezier(.4,0,.2,1),-webkit-clip-path .2s cubic-bezier(.4,0,.2,1);
+        transition: box-shadow .2s cubic-bezier(.4,0,.2,1),text-decoration .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1),clip-path .2s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1);
+        transition: box-shadow .2s cubic-bezier(.4,0,.2,1),text-decoration .2s cubic-bezier(.4,0,.2,1),color .2s cubic-bezier(.4,0,.2,1),clip-path .2s cubic-bezier(.4,0,.2,1),opacity .2s cubic-bezier(.4,0,.2,1),-webkit-text-decoration .2s cubic-bezier(.4,0,.2,1),-webkit-clip-path .2s cubic-bezier(.4,0,.2,1)
+    }
+
+    #login-status:active &gt; :not(#account-topbutton):not([href*=&#34;account/messages&#34;]), #login-status:hover &gt; :not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
+        --clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+        -webkit-clip-path: var(--clip-path);
+        clip-path: var(--clip-path);
+        opacity: 1
+    }
+
+    #login-status:focus-within &gt; :not(#account-topbutton):not([href*=&#34;account/messages&#34;]) {
+        --clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+        -webkit-clip-path: var(--clip-path);
+        clip-path: var(--clip-path);
+        opacity: 1
+    }
+
+    #login-status #account-topbutton {
+        margin-left: 0;
+        background-color: initial;
+        pointer-events: all;
+        transition: background-color .15s cubic-bezier(.4,0,.2,1),-webkit-clip-path .15s cubic-bezier(.4,0,.2,1);
+        transition: clip-path .15s cubic-bezier(.4,0,.2,1),background-color .15s cubic-bezier(.4,0,.2,1);
+        transition: clip-path .15s cubic-bezier(.4,0,.2,1),background-color .15s cubic-bezier(.4,0,.2,1),-webkit-clip-path .15s cubic-bezier(.4,0,.2,1)
+    }
+
+    #login-status:hover #account-topbutton {
+        background-color: rgb(var(--login-arrow-color))
+    }
+
+    #login-status:before {
+        -webkit-mask-image: var(--user-account-mask);
+        -webkit-mask-size: calc(var(--account-height) - .5em);
+        -webkit-mask-position: center right;
+        -webkit-mask-repeat: no-repeat;
+        z-index: 2;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(var(--login-mobile-icon-color),0);
+        background-color: rgba(var(--login-mobile-icon-color),1);
+        content: &#34;&#34;;
+        cursor: pointer;
+        mask-image: var(--user-account-mask);
+        mask-position: center right;
+        mask-repeat: no-repeat;
+        mask-size: calc(var(--account-height) - .5em);
+        pointer-events: all;
+        transition: background-color .15s cubic-bezier(.4,0,.2,1)
+    }
+
+    #login-status:hover:before {
+        background-color: rgba(var(--login-mobile-icon-hover-color),1)
+    }
+
+    #login-status:active:after, #login-status:active:before, #login-status:hover:after, #login-status:hover:before {
+        background-color: rgba(var(--login-mobile-icon-hover-bg-color),0);
+        cursor: auto;
+        pointer-events: none
+    }
+
+    #login-status:focus-within:after, #login-status:focus-within:before {
+        background-color: rgba(var(--login-mobile-icon-hover-bg-color),0);
+        cursor: auto;
+        pointer-events: none
+    }
+
+    #login-status #account-topbutton {
+        --clip-path: polygon(0 0,100% 0,100% 100%,0 100%);
+        -webkit-clip-path: var(--clip-path);
+        background-color: rgba(var(--login-arrow-color),0);
+        clip-path: var(--clip-path)
+    }
+
+    #login-status:active #account-topbutton, #login-status:hover #account-topbutton {
+        --clip-path: polygon(30% 35%,70% 35%,50% 60%,50% 60%);
+        -webkit-clip-path: var(--clip-path);
+        background-color: rgb(var(--login-arrow-color));
+        clip-path: var(--clip-path)
+    }
+
+    #login-status:focus-within #account-topbutton {
+        --clip-path: polygon(30% 35%,70% 35%,50% 60%,50% 60%);
+        -webkit-clip-path: var(--clip-path);
+        background-color: rgb(var(--login-arrow-color));
+        clip-path: var(--clip-path)
+    }
+
+    #login-status #account-options {
+        margin: 0
+    }
+
+    #login-status a[href*=&#34;account/messages&#34;] {
+        color: rgb(var(--login-myaccount-color));
+        pointer-events: all
+    }
+}
+
+@media only screen and (min-width: 980px) {
+    #search-top-box {
+        right: calc(3% + (-100vw + var(--header-width-on-desktop)) / 2);
+    }
+
+    #login-status {
+        right: calc(3% + var(--search-height) + .25em + (-100vw + var(--header-width-on-desktop)) / 2);
+    }
+}
+/* ----END---- */
+
+[[/code]]
+
+[[/collapsible]]
+
+[[/iftags]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2024-02-07 18:30:41.341822.</em>
+  
+</div>
+</body>

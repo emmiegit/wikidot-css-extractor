@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>一环·云起</title>
 </head>
@@ -29,7 +29,55 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(http://scpsandboxcn.wikidot.com/collab:xianijng/code/1);</code></pre>
+          <pre><code>:root:lang(cn) {
+  --header-title: &#34;骊歌重案组&#34;;
+  --header-subtitle: &#34;远行之歌，宿命之道&#34;;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* This theme overrides some of the Swirling Ashes headers.
+ * Made by Croquembouche for djkaktus&#39; The Four Arcana. */
+ 
+/* Replace the sky with an aurora. */
+body::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/sky.webp);
+  background-size: 1500px calc(var(--header-height-on-desktop));
+  animation-duration: 360s;
+  filter: grayscale(70%);
+}
+ 
+/* Replace the buildings. */
+div#container-wrap-wrap::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/skyline.png);
+  filter: grayscale(70%);
+}
+ 
+@keyframes sky {
+  from { background-position: 1500px 0; }
+  to { background-position: 0 0; }
+}
+ 
+/* Replace fog layers with snow */
+div#container-wrap-wrap::after, body::after {
+  background-image: url(http://scp-sandbox-3.wikidot.com/local--files/croquemtest2/snow.webp);
+  background-size: var(--ashes-width);
+  background-repeat: repeat;
+  animation: ashes-move linear var(--ashes-move-duration) infinite;
+  opacity: 0.8;
+}
+div#container-wrap-wrap::after {
+  --ashes-move-duration: 37s;
+  --ashes-width: 250px;
+}
+body::after {
+  --ashes-move-duration: 30s;
+  --ashes-width: 400px;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) var(--ashes-width); }
+}</code></pre>
         </li>
       
     </ul>
@@ -45,6 +93,45 @@
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki-cn:theme:black-highlighter-theme</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/theme:swirling-ashes" target="_blank"><code>:scp-wiki-cn:theme:swirling-ashes</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:bhl-dark-sidebar" target="_blank"><code>:scp-wiki:component:bhl-dark-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:bhl-dark-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
       
         <li>
   
@@ -80,17 +167,69 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[module css]]
-@import url(http://scpsandboxcn.wikidot.com/collab:xianijng/code/1);
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki-cn:theme:black-highlighter-theme]]
+[[include :scp-wiki-cn:theme:swirling-ashes]]
+[[include :scp-wiki:component:bhl-dark-sidebar]]
+[[include :scp-wiki-cn:theme:xmas
+|xmas-snow-bhl= --]]]
+
+[[module CSS]]
+:root:lang(cn) {
+  --header-title: &#34;骊歌重案组&#34;;
+  --header-subtitle: &#34;远行之歌，宿命之道&#34;;
+}
+[[/module]]
+
+[[module css]]
+/* This theme overrides some of the Swirling Ashes headers.
+ * Made by Croquembouche for djkaktus&#39; The Four Arcana. */
+ 
+/* Replace the sky with an aurora. */
+body::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/sky.webp);
+  background-size: 1500px calc(var(--header-height-on-desktop));
+  animation-duration: 360s;
+  filter: grayscale(70%);
+}
+ 
+/* Replace the buildings. */
+div#container-wrap-wrap::before {
+  background-image: url(http://scp-wiki.wikidot.com/local--files/the-four-arcana/skyline.png);
+  filter: grayscale(70%);
+}
+ 
+@keyframes sky {
+  from { background-position: 1500px 0; }
+  to { background-position: 0 0; }
+}
+ 
+/* Replace fog layers with snow */
+div#container-wrap-wrap::after, body::after {
+  background-image: url(http://scp-sandbox-3.wikidot.com/local--files/croquemtest2/snow.webp);
+  background-size: var(--ashes-width);
+  background-repeat: repeat;
+  animation: ashes-move linear var(--ashes-move-duration) infinite;
+  opacity: 0.8;
+}
+div#container-wrap-wrap::after {
+  --ashes-move-duration: 37s;
+  --ashes-width: 250px;
+}
+body::after {
+  --ashes-move-duration: 30s;
+  --ashes-width: 400px;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) var(--ashes-width); }
+}
 [[/module]]
 
 
 [[include :scp-wiki-cn:credit:start]]
 本文作者为：[[*user HarryLinrui]]
 [http://scp-wiki-cn.wikidot.com/harrylinrui 欢迎观看我的作者页以了解“骊歌”小组的更多 ]
-页面CSS改编自：“以影衬光”板式，原作者：[[*user thrumuvethur]] [[*user Flea_ZER0 ]]
-@@@@
-[http://scp-wiki-cn.wikidot.com/shadow-relieved-against-light-hub “以影衬光”中心页连接]
+
 [[include :scp-wiki-cn:credit:end]]
 
 &gt; [*http://scp-wiki-cn.wikidot.com/suolian 上一篇，锁链·环生]
@@ -301,7 +440,7 @@
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:17.415551.</em>
+    <em>Last updated 2024-02-07 18:30:42.335556.</em>
   
 </div>
 </body>

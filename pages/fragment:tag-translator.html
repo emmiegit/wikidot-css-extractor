@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>標籤翻譯機</title>
 </head>
@@ -38,7 +38,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>background: url(http://scp-wiki.wdfiles.com/local--files/the-great-hippo/scp_trans.png) center no-repeat ; float: center; border: solid 2px #000000; padding: 1px 15px; box-shadow: 0 1px 3px rgba(0,0,0,.2);</code></pre>
+          <pre><code>background: url(http://scp-wiki.wdfiles.com/local--files/the-great-hippo/scp_trans.png) center no-repeat ; float: center; border: solid 2px #000000; padding: 1px 15px; box-shadow: 0 1px 3px rgba(0,0,0,.2);background-color:#f2f9fa;</code></pre>
         </li>
       
     </ul>
@@ -61,10 +61,51 @@
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[=]]
-[[div style=&#34;background: url(http://scp-wiki.wdfiles.com/local--files/the-great-hippo/scp_trans.png) center no-repeat ; float: center; border: solid 2px #000000; padding: 1px 15px; box-shadow: 0 1px 3px rgba(0,0,0,.2);&#34;]]
-++ ##003377|[[size 120%]] **標籤翻譯機** [[/size]]##
+
+[[div style=&#34;background: url(http://scp-wiki.wdfiles.com/local--files/the-great-hippo/scp_trans.png) center no-repeat ; float: center; border: solid 2px #000000; padding: 1px 15px; box-shadow: 0 1px 3px rgba(0,0,0,.2);background-color:#f2f9fa;&#34;]]
+++ ##0e8ae3|[[size 120%]] **標籤翻譯機** [[/size]]##
+
+[[[https://docs.google.com/spreadsheets/d/1BlGgn5L_Ug3LO67veKZ6fjMToWQO3dtTv0p4Y46fk2w/|標籤對照表]]]
 
 [[html]]
+&lt;div style=&#34;display:inline&#34;&gt;原本語言：&lt;/div&gt;
+&lt;select id=&#34;origin_lang&#34;&gt;
+    &lt;option&gt;en&lt;/option&gt;
+    &lt;option&gt;zh&lt;/option&gt;
+    &lt;option&gt;cn&lt;/option&gt;
+    &lt;option&gt;de&lt;/option&gt;
+    &lt;option&gt;es&lt;/option&gt;
+    &lt;option&gt;fr&lt;/option&gt;
+    &lt;option&gt;int&lt;/option&gt;
+    &lt;option&gt;it&lt;/option&gt;
+    &lt;option&gt;jp&lt;/option&gt;
+    &lt;option&gt;ko&lt;/option&gt;
+    &lt;option&gt;pl&lt;/option&gt;
+    &lt;option&gt;pt&lt;/option&gt;
+    &lt;option&gt;ru&lt;/option&gt;
+    &lt;option&gt;th&lt;/option&gt;
+    &lt;option&gt;ua&lt;/option&gt;
+    &lt;option&gt;vn&lt;/option&gt;
+&lt;/select&gt;
+&lt;div style=&#34;display:inline&#34;&gt;目標語言：&lt;/div&gt;
+&lt;select id=&#34;target_lang&#34;&gt;
+    &lt;option&gt;zh&lt;/option&gt;
+    &lt;option&gt;en&lt;/option&gt;
+    &lt;option&gt;cn&lt;/option&gt;
+    &lt;option&gt;de&lt;/option&gt;
+    &lt;option&gt;es&lt;/option&gt;
+    &lt;option&gt;fr&lt;/option&gt;
+    &lt;option&gt;int&lt;/option&gt;
+    &lt;option&gt;it&lt;/option&gt;
+    &lt;option&gt;jp&lt;/option&gt;
+    &lt;option&gt;ko&lt;/option&gt;
+    &lt;option&gt;pl&lt;/option&gt;
+    &lt;option&gt;pt&lt;/option&gt;
+    &lt;option&gt;ru&lt;/option&gt;
+    &lt;option&gt;th&lt;/option&gt;
+    &lt;option&gt;ua&lt;/option&gt;
+    &lt;option&gt;vn&lt;/option&gt;
+&lt;/select&gt;
 &lt;input type=&#34;text&#34; style=&#34;width:80%&#34; id=&#34;input_box&#34;&gt;
 &lt;input type=&#34;button&#34; value=&#34;翻譯&#34; onclick=&#34;tag_translate()&#34;&gt;
 &lt;p&gt;
@@ -73,99 +114,78 @@
 &lt;/p&gt;
 
 &lt;script&gt;
-const tag_list=[
-/*
-在中括號裡加入標籤的對應翻譯組
-格式如下：
-{en:&#34;原文標籤&#34;, zh:&#34;中文標籤&#34;},
-注意一：是用大括號框起來
-注意二：原文標籤和中文標籤都要用半形英文引號夾起來
-注意二：大括號的後面要有一個半形逗號用來分開前後的標籤組，所以最後一組標籤的大括號後面不加逗號。
-*/
-//以下為列表部分
-{en:&#34;scp&#34;, zh:&#34;scp&#34;},{en:&#34;goi-format&#34;, zh:&#34;goi格式&#34;},
 
-//下面這部分讀標籤程式出點問題所以是手打的。
+//讀取檔案
+const httpRequest = new XMLHttpRequest();
+var urls = &#39;https://docs.google.com/spreadsheets/d/e/2PACX-1vSngZjEjTh4vrohCypUBwnP1xkPTocH3UBNxqqxbBDEDzGI7gZ8utpYlAcNUkxMQ2lLzBKx8OLfBKkk/pub?gid=0&amp;single=true&amp;output=csv&#39;
+httpRequest.open(&#39;GET&#39;,urls, true)
+httpRequest.send()
 
-{en:&#34;safe&#34;, zh:&#34;safe&#34;},{en:&#34;euclid&#34;, zh:&#34;euclid&#34;},{en:&#34;keter&#34;, zh:&#34;keter&#34;},{en:&#34;thaumiel&#34;, zh:&#34;thaumiel&#34;},{en:&#34;apollyon&#34;, zh:&#34;apollyon&#34;},{en:&#34;archon&#34;, zh:&#34;archon&#34;},{en:&#34;neutralized&#34;, zh:&#34;無效化&#34;},{en:&#34;esoteric-class&#34;, zh:&#34;機密分級&#34;},{en:&#34;archived&#34;, zh:&#34;已歸檔&#34;},{en:&#34;joke&#34;, zh:&#34;搞笑&#34;},
+//切割成list of dict
+httpRequest.onreadystatechange = function () {
+    if (httpRequest.readyState == 4 &amp;&amp; httpRequest.status == 200) {
+        var tags_csv = httpRequest.responseText
+        tags_csv = tags_csv.split(&#39;\n&#39;)
+        for(var i=0;i&lt;tags_csv.length;i++){
+            tags_csv[i] = tags_csv[i].substring(0, tags_csv[i].length-1)
+            tags_csv[i] = tags_csv[i].split(&#39;,&#39;)
+        }
+        tags_list = []
+        for(var i=1;i&lt;tags_csv.length;i++){
+            tags_list[i-1] = {}
+            for(var j=0;j&lt;tags_csv[i].length;j++){
+                tags_list[i-1][tags_csv[0][j]] = tags_csv[i][j]
+            }
+        }
+    }
+};
 
-//creepypasta標籤也有問題所以手動補上
-{en:&#34;explained&#34;, zh:&#34;已解明&#34;},{en:&#34;001-proposal&#34;, zh:&#34;001提案&#34;},{en:&#34;supplement&#34;, zh:&#34;附加資料&#34;},{en:&#34;experiment&#34;, zh:&#34;實驗&#34;},{en:&#34;exploration&#34;, zh:&#34;探索&#34;},{en:&#34;incident&#34;, zh:&#34;事故&#34;},{en:&#34;interview&#34;, zh:&#34;採訪&#34;},{en:&#34;splash&#34;, zh:&#34;遮蔽頁&#34;},{en:&#34;tale&#34;, zh:&#34;故事&#34;},{en:&#34;creepypasta&#34;, zh:&#34;creepypasta&#34;},{en:&#34;collaboration&#34;, zh:&#34;合作&#34;},{en:&#34;co-authored&#34;, zh:&#34;合著&#34;},{en:&#34;contest&#34;, zh:&#34;競賽&#34;},{en:&#34;project&#34;, zh:&#34;計畫&#34;},{en:&#34;artwork&#34;, zh:&#34;藝術作品&#34;},{en:&#34;author&#34;, zh:&#34;作者頁面&#34;},{en:&#34;required&#34;, zh:&#34;必讀&#34;},{en:&#34;guide&#34;, zh:&#34;指導&#34;},{en:&#34;essay&#34;, zh:&#34;心得&#34;},{en:&#34;hub&#34;, zh:&#34;中心&#34;},{en:&#34;site&#34;, zh:&#34;站點&#34;},{en:&#34;sandbox&#34;, zh:&#34;沙盒&#34;},{en:&#34;workbench&#34;, zh:&#34;工作台&#34;},{en:&#34;template&#34;, zh:&#34;模板&#34;},{en:&#34;theme&#34;, zh:&#34;外觀主題&#34;},{en:&#34;component&#34;, zh:&#34;組件&#34;},{en:&#34;admin&#34;, zh:&#34;管理&#34;},{en:&#34;news&#34;, zh:&#34;新聞&#34;},{en:&#34;heritage&#34;, zh:&#34;傳承條目&#34;},{en:&#34;fragment&#34;, zh:&#34;段落&#34;},{en:&#34;prize-feature&#34;, zh:&#34;得獎展出&#34;},{en:&#34;featured&#34;, zh:&#34;展出&#34;},{en:&#34;event-featured&#34;, zh:&#34;活動展出&#34;},{en:&#34;reviewers-spotlight&#34;, zh:&#34;評論員焦點&#34;},{en:&#34;component-backend&#34;, zh:&#34;組件後端&#34;},{en:&#34;redirect&#34;, zh:&#34;重新導向&#34;},{en:&#34;metadata&#34;, zh:&#34;詮釋資料&#34;},
-
-//以下特性標籤
-{en:&#34;acoustic&#34;, zh:&#34;聲音&#34;},{en:&#34;adaptive&#34;, zh:&#34;適應性&#34;},{en:&#34;addictive&#34;, zh:&#34;成癮性&#34;},{en:&#34;airborne&#34;, zh:&#34;空中&#34;},{en:&#34;alive&#34;, zh:&#34;活物&#34;},{en:&#34;amorphous&#34;, zh:&#34;無定形&#34;},{en:&#34;animal&#34;, zh:&#34;動物&#34;},{en:&#34;antimemetic&#34;, zh:&#34;逆模因&#34;},{en:&#34;apian&#34;, zh:&#34;蜜蜂&#34;},{en:&#34;appliance&#34;, zh:&#34;家電用品&#34;},{en:&#34;aquatic&#34;, zh:&#34;水棲&#34;},{en:&#34;arachnid&#34;, zh:&#34;蜘蛛&#34;},{en:&#34;arboreal&#34;, zh:&#34;樹木&#34;},{en:&#34;arthropod&#34;, zh:&#34;節肢動物&#34;},{en:&#34;artistic&#34;, zh:&#34;藝術性&#34;},{en:&#34;artifact&#34;, zh:&#34;人造物品&#34;},{en:&#34;auditory&#34;, zh:&#34;聽覺影響&#34;},{en:&#34;automaton&#34;, zh:&#34;機器人&#34;},{en:&#34;autonomous&#34;, zh:&#34;自主&#34;},{en:&#34;avian&#34;, zh:&#34;鳥類&#34;},{en:&#34;bacteria&#34;, zh:&#34;細菌&#34;},{en:&#34;biohazard&#34;, zh:&#34;生物危害&#34;},{en:&#34;biological&#34;, zh:&#34;生物性&#34;},{en:&#34;bovine&#34;, zh:&#34;牛類&#34;},{en:&#34;building&#34;, zh:&#34;建築物&#34;},{en:&#34;cadaver&#34;, zh:&#34;屍體&#34;},{en:&#34;cactaceous&#34;, zh:&#34;仙人掌&#34;},{en:&#34;camelid&#34;, zh:&#34;駱駝&#34;},{en:&#34;canine&#34;, zh:&#34;犬類&#34;},{en:&#34;carnivorous&#34;, zh:&#34;肉食性&#34;},{en:&#34;cervine&#34;, zh:&#34;鹿類&#34;},{en:&#34;cephalopodic&#34;, zh:&#34;頭足類動物&#34;},{en:&#34;cetacean&#34;, zh:&#34;鯨類&#34;},{en:&#34;chelonian&#34;, zh:&#34;龜類&#34;},{en:&#34;chemical&#34;, zh:&#34;化學性&#34;},{en:&#34;city&#34;, zh:&#34;城市&#34;},{en:&#34;clay&#34;, zh:&#34;泥土&#34;},{en:&#34;clockwork&#34;, zh:&#34;發條&#34;},{en:&#34;clothing&#34;, zh:&#34;衣物&#34;},{en:&#34;cognitohazard&#34;, zh:&#34;認知危害&#34;},{en:&#34;compulsion&#34;, zh:&#34;強迫性&#34;},{en:&#34;computer&#34;, zh:&#34;電腦&#34;},{en:&#34;concept&#34;, zh:&#34;概念&#34;},{en:&#34;contagion&#34;, zh:&#34;傳染性&#34;},{en:&#34;container&#34;, zh:&#34;容器&#34;},{en:&#34;corrosive&#34;, zh:&#34;腐蝕性&#34;},{en:&#34;currency&#34;, zh:&#34;貨幣&#34;},{en:&#34;crystalline&#34;, zh:&#34;晶體&#34;},{en:&#34;cube&#34;, zh:&#34;立方體&#34;},{en:&#34;dental&#34;, zh:&#34;牙齒&#34;},{en:&#34;document&#34;, zh:&#34;文獻&#34;},{en:&#34;dinosaurian&#34;, zh:&#34;恐龍&#34;},{en:&#34;ectoentropic&#34;, zh:&#34;反熵&#34;},{en:&#34;electronic&#34;, zh:&#34;電子&#34;},{en:&#34;electrical&#34;, zh:&#34;電力&#34;},{en:&#34;electromagnetic&#34;, zh:&#34;電磁&#34;},{en:&#34;empathic&#34;, zh:&#34;共感&#34;},{en:&#34;engraved&#34;, zh:&#34;雕刻&#34;},{en:&#34;entropic&#34;, zh:&#34;熵&#34;},{en:&#34;equine&#34;, zh:&#34;馬類&#34;},{en:&#34;exchange&#34;, zh:&#34;交換&#34;},{en:&#34;extradimensional&#34;, zh:&#34;超維度&#34;},{en:&#34;extraterrestrial&#34;, zh:&#34;星際&#34;},{en:&#34;extremity&#34;, zh:&#34;肢體&#34;},{en:&#34;feline&#34;, zh:&#34;貓類&#34;},{en:&#34;fire&#34;, zh:&#34;火&#34;},{en:&#34;food&#34;, zh:&#34;食物&#34;},{en:&#34;formic&#34;, zh:&#34;螞蟻&#34;},{en:&#34;foundation-made&#34;, zh:&#34;基金會製造&#34;},{en:&#34;fungus&#34;, zh:&#34;真菌&#34;},{en:&#34;furniture&#34;, zh:&#34;家具&#34;},{en:&#34;future&#34;, zh:&#34;未來&#34;},{en:&#34;game&#34;, zh:&#34;遊戲&#34;},{en:&#34;gaseous&#34;, zh:&#34;氣體&#34;},{en:&#34;genetic&#34;, zh:&#34;基因&#34;},{en:&#34;geological&#34;, zh:&#34;地質&#34;},{en:&#34;glass&#34;, zh:&#34;玻璃&#34;},{en:&#34;gravity&#34;, zh:&#34;重力影響&#34;},{en:&#34;gustatory&#34;, zh:&#34;味覺影響&#34;},{en:&#34;hallucination&#34;, zh:&#34;幻覺&#34;},{en:&#34;historical&#34;, zh:&#34;歷史性&#34;},{en:&#34;hive-mind&#34;, zh:&#34;蜂巢思維&#34;},{en:&#34;hostile&#34;, zh:&#34;敵意&#34;},{en:&#34;humanoid&#34;, zh:&#34;人形&#34;},{en:&#34;immobile&#34;, zh:&#34;不可移動&#34;},{en:&#34;indestructible&#34;, zh:&#34;不可摧毀&#34;},{en:&#34;infohazard&#34;, zh:&#34;資訊危害&#34;},{en:&#34;interactive&#34;, zh:&#34;互動性&#34;},{en:&#34;insect&#34;, zh:&#34;昆蟲&#34;},{en:&#34;inscribed&#34;, zh:&#34;題寫&#34;},{en:&#34;inscription&#34;, zh:&#34;銘文&#34;},{en:&#34;instrument&#34;, zh:&#34;儀器&#34;},{en:&#34;intangible&#34;, zh:&#34;無形&#34;},{en:&#34;invertebrate&#34;, zh:&#34;無脊椎動物&#34;},{en:&#34;jewelry&#34;, zh:&#34;飾品&#34;},{en:&#34;k-class-scenario&#34;, zh:&#34;k級情景&#34;},{en:&#34;key&#34;, zh:&#34;鑰匙&#34;},{en:&#34;knowledge&#34;, zh:&#34;知識&#34;},{en:&#34;language&#34;, zh:&#34;語言&#34;},{en:&#34;lepidopteran&#34;, zh:&#34;鱗翅目&#34;},{en:&#34;leporine&#34;, zh:&#34;兔類&#34;},{en:&#34;light&#34;, zh:&#34;光照影響&#34;},{en:&#34;liquid&#34;, zh:&#34;液體&#34;},{en:&#34;location&#34;, zh:&#34;地點&#34;},{en:&#34;loop&#34;, zh:&#34;循環&#34;},{en:&#34;magnetic&#34;, zh:&#34;磁性&#34;},{en:&#34;map&#34;, zh:&#34;地圖&#34;},{en:&#34;mathematical&#34;, zh:&#34;數學性&#34;},{en:&#34;mechanical&#34;, zh:&#34;機械&#34;},{en:&#34;media&#34;, zh:&#34;媒體&#34;},{en:&#34;medical&#34;, zh:&#34;醫學性&#34;},{en:&#34;memetic&#34;, zh:&#34;模因效應&#34;},{en:&#34;memory-affecting&#34;, zh:&#34;記憶影響&#34;},{en:&#34;meta&#34;, zh:&#34;meta&#34;},{en:&#34;metallic&#34;, zh:&#34;金屬&#34;},{en:&#34;metamorphic&#34;, zh:&#34;型態變化&#34;},{en:&#34;meteorological&#34;, zh:&#34;氣象&#34;},{en:&#34;microscopic&#34;, zh:&#34;微觀&#34;},{en:&#34;military&#34;, zh:&#34;軍事&#34;},{en:&#34;mimetic&#34;, zh:&#34;擬態&#34;},{en:&#34;mind-affecting&#34;, zh:&#34;精神影響&#34;},{en:&#34;miniature&#34;, zh:&#34;微型&#34;},{en:&#34;mobile&#34;, zh:&#34;異常移動&#34;},{en:&#34;moon&#34;, zh:&#34;月球&#34;},{en:&#34;murine&#34;, zh:&#34;鼠類&#34;},{en:&#34;musical&#34;, zh:&#34;音樂性&#34;},{en:&#34;narrative&#34;, zh:&#34;敘述性&#34;},{en:&#34;neurological&#34;, zh:&#34;神經性&#34;},{en:&#34;nocturnal&#34;, zh:&#34;夜間活動&#34;},{en:&#34;observational&#34;, zh:&#34;觀察影響&#34;},{en:&#34;ocular&#34;, zh:&#34;眼睛&#34;},{en:&#34;olfactory&#34;, zh:&#34;嗅覺影響&#34;},{en:&#34;omnivorous&#34;, zh:&#34;雜食性&#34;},{en:&#34;online&#34;, zh:&#34;線上&#34;},{en:&#34;ontokinetic&#34;, zh:&#34;本質促動&#34;},{en:&#34;ophidian&#34;, zh:&#34;蛇類&#34;},{en:&#34;organic&#34;, zh:&#34;有機&#34;},{en:&#34;ovine&#34;, zh:&#34;羊類&#34;},{en:&#34;paradox&#34;, zh:&#34;悖論&#34;},{en:&#34;parasitic&#34;, zh:&#34;寄生性&#34;},{en:&#34;pattern-screamer&#34;, zh:&#34;相嘯魔&#34;},{en:&#34;performance&#34;, zh:&#34;表演&#34;},{en:&#34;physics&#34;, zh:&#34;反物理定律&#34;},{en:&#34;photographic&#34;, zh:&#34;攝像&#34;},{en:&#34;piscine&#34;, zh:&#34;魚類&#34;},{en:&#34;plant&#34;, zh:&#34;植物&#34;},{en:&#34;planet&#34;, zh:&#34;星球&#34;},{en:&#34;polyhedral&#34;, zh:&#34;多面體&#34;},{en:&#34;portal&#34;, zh:&#34;門徑&#34;},{en:&#34;predatory&#34;, zh:&#34;掠食性&#34;},{en:&#34;predictive&#34;, zh:&#34;預測性&#34;},{en:&#34;probability&#34;, zh:&#34;機率性&#34;},{en:&#34;radioactive&#34;, zh:&#34;放射性&#34;},{en:&#34;ranine&#34;, zh:&#34;蛙類&#34;},{en:&#34;reanimation&#34;, zh:&#34;復活&#34;},{en:&#34;recording&#34;, zh:&#34;記錄&#34;},{en:&#34;religious&#34;, zh:&#34;宗教&#34;},{en:&#34;reproductive&#34;, zh:&#34;生殖性&#34;},{en:&#34;reptilian&#34;, zh:&#34;爬行類動物&#34;},{en:&#34;ritual&#34;, zh:&#34;儀式性&#34;},{en:&#34;sapient&#34;, zh:&#34;智能&#34;},{en:&#34;satellite&#34;, zh:&#34;衛星&#34;},{en:&#34;sciurine&#34;, zh:&#34;松鼠&#34;},{en:&#34;sculpture&#34;, zh:&#34;雕塑&#34;},{en:&#34;selachian&#34;, zh:&#34;鯊類&#34;},{en:&#34;self-repairing&#34;, zh:&#34;自我修復&#34;},{en:&#34;self-replicating&#34;, zh:&#34;自我複製&#34;},{en:&#34;sensory&#34;, zh:&#34;感知影響&#34;},{en:&#34;sentient&#34;, zh:&#34;感知力&#34;},{en:&#34;sexual&#34;, zh:&#34;性&#34;},{en:&#34;shadow&#34;, zh:&#34;陰影&#34;},{en:&#34;simian&#34;, zh:&#34;猿類&#34;},{en:&#34;skeletal&#34;, zh:&#34;骨骼&#34;},{en:&#34;sleep&#34;, zh:&#34;睡眠&#34;},{en:&#34;spacetime&#34;, zh:&#34;時空&#34;},{en:&#34;species&#34;, zh:&#34;物種&#34;},{en:&#34;sphere&#34;, zh:&#34;球體&#34;},{en:&#34;sport&#34;, zh:&#34;體育&#34;},{en:&#34;statue&#34;, zh:&#34;雕像&#34;},{en:&#34;stone&#34;, zh:&#34;石頭&#34;},{en:&#34;structure&#34;, zh:&#34;結構物&#34;},{en:&#34;subterranean&#34;, zh:&#34;地下&#34;},{en:&#34;sun&#34;, zh:&#34;恆星&#34;},{en:&#34;swarm&#34;, zh:&#34;群體性&#34;},{en:&#34;tactile&#34;, zh:&#34;觸覺影響&#34;},{en:&#34;telekinetic&#34;, zh:&#34;念力&#34;},{en:&#34;telepathic&#34;, zh:&#34;心靈感應&#34;},{en:&#34;teleportation&#34;, zh:&#34;傳送&#34;},{en:&#34;temporal&#34;, zh:&#34;時間影響&#34;},{en:&#34;thermal&#34;, zh:&#34;熱量影響&#34;},{en:&#34;thermodynamic&#34;, zh:&#34;熱力學&#34;},{en:&#34;timepiece&#34;, zh:&#34;時鐘&#34;},{en:&#34;tool&#34;, zh:&#34;工具&#34;},{en:&#34;toxic&#34;, zh:&#34;毒性&#34;},{en:&#34;toy&#34;, zh:&#34;玩具&#34;},{en:&#34;transfiguration&#34;, zh:&#34;變形&#34;},{en:&#34;transmission&#34;, zh:&#34;通訊&#34;},{en:&#34;uncontained&#34;, zh:&#34;未收容&#34;},{en:&#34;ursine&#34;, zh:&#34;熊類&#34;},{en:&#34;vehicle&#34;, zh:&#34;載具&#34;},{en:&#34;vermian&#34;, zh:&#34;蠕蟲&#34;},{en:&#34;vibration&#34;, zh:&#34;震動&#34;},{en:&#34;virus&#34;, zh:&#34;病毒&#34;},{en:&#34;visual&#34;, zh:&#34;視覺性&#34;},{en:&#34;vulpine&#34;, zh:&#34;狐狸&#34;},{en:&#34;weapon&#34;, zh:&#34;武器&#34;},{en:&#34;wooden&#34;, zh:&#34;木質&#34;},{en:&#34;xenarthran&#34;, zh:&#34;異關節總目&#34;},
-
-//其他標籤
-//關注組織
-{en:&#34;abnormalities&#34;, zh:&#34;反常部&#34;},{en:&#34;alexylva&#34;, zh:&#34;alexylva大學&#34;},{en:&#34;ambrose-restaurant&#34;, zh:&#34;安布羅斯餐廳&#34;},{en:&#34;anderson&#34;, zh:&#34;安德森機器人&#34;},{en:&#34;are-we-cool-yet&#34;, zh:&#34;awcy&#34;},{en:&#34;asci&#34;, zh:&#34;asci&#34;},{en:&#34;black-queen&#34;, zh:&#34;黑皇后&#34;},{en:&#34;broken-god&#34;, zh:&#34;破碎之神教會&#34;},{en:&#34;chaos-insurgency&#34;, zh:&#34;渾沌反叛軍&#34;},{en:&#34;chicago-spirit&#34;, zh:&#34;芝加哥鬼靈&#34;},{en:&#34;children-of-the-torch&#34;, zh:&#34;火炬之子&#34;},{en:&#34;daevite&#34;, zh:&#34;殆瓦&#34;},{en:&#34;deer-college&#34;, zh:&#34;鹿學院&#34;},{en:&#34;dr-wondertainment&#34;, zh:&#34;wondertainment博士&#34;},{en:&#34;factory&#34;, zh:&#34;工廠&#34;},{en:&#34;fifthist&#34;, zh:&#34;第五教會&#34;},{en:&#34;gamers-against-weed&#34;, zh:&#34;反大麻玩家&#34;},{en:&#34;global-occult-coalition&#34;, zh:&#34;全球超自然聯盟&#34;},{en:&#34;gru-division-p&#34;, zh:&#34;格魯烏-P部門&#34;},{en:&#34;herman-fuller&#34;, zh:&#34;赫曼-富勒&#34;},{en:&#34;horizon-initiative&#34;, zh:&#34;地平線倡議&#34;},{en:&#34;ijamea&#34;, zh:&#34;ijamea&#34;},{en:&#34;manna-charitable-foundation&#34;, zh:&#34;瑪納慈善基金會&#34;},{en:&#34;marshall-carter-and-dark&#34;, zh:&#34;mc&amp;d&#34;},{en:&#34;medicea-accademia&#34;, zh:&#34;美第奇藝術學院&#34;},{en:&#34;nobody&#34;, zh:&#34;nobody&#34;},{en:&#34;reclamation&#34;, zh:&#34;伊斯蘭物品回收辦公室&#34;},{en:&#34;oneiroi&#34;, zh:&#34;夢神&#34;},{en:&#34;parawatch&#34;, zh:&#34;異視維基&#34;},{en:&#34;prometheus&#34;, zh:&#34;普羅米修斯實驗室&#34;},{en:&#34;sapphire&#34;, zh:&#34;藍寶石&#34;},{en:&#34;sarkic&#34;, zh:&#34;欲肉教&#34;},{en:&#34;serpents-hand&#34;, zh:&#34;蛇之手&#34;},{en:&#34;second-hytoth&#34;, zh:&#34;第二海托世教會&#34;},{en:&#34;shark-punching-center&#34;, zh:&#34;毆打鯊魚中心&#34;},{en:&#34;three-moons-initiative&#34;, zh:&#34;叁月協會&#34;},{en:&#34;unusual-cargo&#34;, zh:&#34;特殊貨物事務委員會&#34;},{en:&#34;unusual-incidents-unit&#34;, zh:&#34;uiu&#34;},{en:&#34;vikander-kneed&#34;, zh:&#34;維坎德-尼得&#34;},{en:&#34;wandsmen&#34;, zh:&#34;魔杖士&#34;},{en:&#34;wilsons-wildlife&#34;, zh:&#34;威爾遜生物應對組&#34;},{en:&#34;icsut&#34;, zh:&#34;icsut&#34;},{en:&#34;british-occult-service&#34;, zh:&#34;英國神秘情報局&#34;},{en:&#34;silicon-nornir&#34;, zh:&#34;矽諾倫&#34;},
-
-//GOI格式隱形標籤
-//備註： _asci, _children-of-the-torch, _daevite, _dr-wondertainment, _gamers-against-weed, _parawatch, _sarkic 以及所有次要關注組織，EN尚無使用隱形標籤。
-{en:&#34;_alexylva&#34;, zh:&#34;_alexylva大學-goi格式&#34;},{en:&#34;_ambrose-restaurant&#34;, zh:&#34;_安布羅斯餐廳-goi格式&#34;},{en:&#34;_anderson&#34;, zh:&#34;_安德森機器人-goi格式&#34;},{en:&#34;_are-we-cool-yet&#34;, zh:&#34;_awcy-goi格式&#34;},{en:&#34;_black-queen&#34;, zh:&#34;_黑皇后-goi格式&#34;},{en:&#34;_broken-god&#34;, zh:&#34;_破碎之神教會-goi格式&#34;},{en:&#34;_chaos-insurgency&#34;, zh:&#34;_渾沌反叛軍-goi格式&#34;},{en:&#34;_chicago-spirit&#34;, zh:&#34;_芝加哥鬼靈-goi格式&#34;},{en:&#34;_deer-college&#34;, zh:&#34;_鹿學院-goi格式&#34;},{en:&#34;_factory&#34;, zh:&#34;_工廠-goi格式&#34;},{en:&#34;_fifthist&#34;, zh:&#34;_第五教會-goi格式&#34;},{en:&#34;_global-occult-coalition&#34;, zh:&#34;_全球超自然聯盟-goi格式&#34;},{en:&#34;_gru-division-p&#34;, zh:&#34;_格魯烏-P部門-goi格式&#34;},{en:&#34;_herman-fuller&#34;, zh:&#34;_赫曼-富勒-goi格式&#34;},{en:&#34;_horizon-initiative&#34;, zh:&#34;_地平線倡議-goi格式&#34;},{en:&#34;_ijamea&#34;, zh:&#34;_ijamea-goi格式&#34;},{en:&#34;_manna-charitable-foundation&#34;, zh:&#34;_瑪納慈善基金會-goi格式&#34;},{en:&#34;_marshall-carter-and-dark&#34;, zh:&#34;_mc&amp;d-goi格式&#34;},{en:&#34;_medicea-accademia&#34;, zh:&#34;_美第奇藝術學院-goi格式&#34;},{en:&#34;_nobody&#34;, zh:&#34;_nobody-goi格式&#34;},{en:&#34;_reclamation&#34;, zh:&#34;_伊斯蘭物品回收辦公室-goi格式&#34;},{en:&#34;_oneiroi&#34;, zh:&#34;_夢神-goi格式&#34;},{en:&#34;_prometheus&#34;, zh:&#34;_普羅米修斯實驗室-goi格式&#34;},{en:&#34;_sapphire&#34;, zh:&#34;_藍寶石-goi格式&#34;},{en:&#34;_serpents-hand&#34;, zh:&#34;_蛇之手-goi格式&#34;},{en:&#34;_second-hytoth&#34;, zh:&#34;_第二海托世教會-goi格式&#34;},{en:&#34;_shark-punching-center&#34;, zh:&#34;_毆打鯊魚中心-goi格式&#34;},{en:&#34;_three-moons-initiative&#34;, zh:&#34;_叁月協會-goi格式&#34;},{en:&#34;_unusual-incidents-unit&#34;, zh:&#34;_uiu-goi格式&#34;},{en:&#34;_vikander-kneed&#34;, zh:&#34;_維坎德-尼得-goi格式&#34;},{en:&#34;_wilsons-wildlife&#34;, zh:&#34;_威爾遜生物應對組-goi格式&#34;},{en:&#34;_other&#34;, zh:&#34;_未知-goi格式&#34;},{en:&#34;_la-rue-macabre&#34;, zh:&#34;_異人街-goi格式&#34;},{en:&#34;_icsut&#34;, zh:&#34;_icsut-goi格式&#34;},{en:&#34;_eric&#34;, zh:&#34;_eric-goi格式&#34;},
-
-//次要關注組織
-{en:&#34;accelerate-the-future&#34;, zh:&#34;加速未來&#34;},{en:&#34;arcadia&#34;, zh:&#34;阿卡迪亞&#34;},{en:&#34;blackwood&#34;, zh:&#34;blackwood&#34;},{en:&#34;bonifay&#34;, zh:&#34;bonifay&#34;},{en:&#34;brothers-of-death&#34;, zh:&#34;死滅弟兄&#34;},{en:&#34;children-of-the-night&#34;, zh:&#34;夜之子&#34;},{en:&#34;children-of-the-torch&#34;, zh:&#34;火炬之子&#34;},{en:&#34;class-of-76&#34;, zh:&#34;1976年班&#34;},{en:&#34;ethics-committee&#34;, zh:&#34;倫理委員會&#34;},{en:&#34;miscommunications&#34;, zh:&#34;誤傳部&#34;},{en:&#34;obskura&#34;, zh:&#34;未明軍團&#34;},{en:&#34;golden-horde&#34;, zh:&#34;金帳軍&#34;},{en:&#34;pangloss&#34;, zh:&#34;潘洛斯&#34;},{en:&#34;pattern-screamer&#34;, zh:&#34;相嘯魔&#34;},{en:&#34;pentagram&#34;, zh:&#34;五角星&#34;},{en:&#34;pitch-haven&#34;, zh:&#34;瀝青色的避風港&#34;},{en:&#34;professor-aw&#34;, zh:&#34;aw教授&#34;},{en:&#34;sugarcomb-confectionery&#34;, zh:&#34;糖梳糕餅&#34;},{en:&#34;tactical-theology&#34;, zh:&#34;戰術神學部&#34;},{en:&#34;xia-dynasty&#34;, zh:&#34;夏異常&#34;},{en:&#34;nameless&#34;, zh:&#34;無名&#34;},{en:&#34;decommissioning-dept&#34;, zh:&#34;廢除部&#34;},
-
-//世界線中心
-{en:&#34;aiad&#34;, zh:&#34;aiad&#34;},{en:&#34;aces-and-eights&#34;, zh:&#34;死者手牌&#34;},{en:&#34;ad-astra&#34;, zh:&#34;星旅&#34;},{en:&#34;alchemy-department&#34;, zh:&#34;煉金部門&#34;},{en:&#34;antarctic-exchange&#34;, zh:&#34;南極交換&#34;},{en:&#34;apotheosis&#34;, zh:&#34;神化&#34;},{en:&#34;bellerverse&#34;, zh:&#34;鈴人之詩&#34;},{en:&#34;black-rabbit-company&#34;, zh:&#34;黑兔公司&#34;},{en:&#34;broken-masquerade&#34;, zh:&#34;毀壞假面&#34;},{en:&#34;the-coldest-war&#34;, zh:&#34;極冷戰&#34;},{en:&#34;cool-war-2&#34;, zh:&#34;cool戰爭&#34;},{en:&#34;competitive-eschatology&#34;, zh:&#34;末世論之爭&#34;},{en:&#34;deepwell-catalog&#34;, zh:&#34;深井目錄&#34;},{en:&#34;doctors-of-the-church&#34;, zh:&#34;教會聖師&#34;},{en:&#34;dread&amp;circuses&#34;, zh:&#34;恐懼與雜技&#34;},{en:&#34;end-of-death&#34;, zh:&#34;死亡終了&#34;},{en:&#34;from-120s-archives&#34;, zh:&#34;來自120站的檔案&#34;},{en:&#34;etdp&#34;, zh:&#34;etdp&#34;},{en:&#34;green-king&#34;, zh:&#34;綠王&#34;},{en:&#34;insect-hell&#34;, zh:&#34;昆蟲地獄&#34;},{en:&#34;lolfoundation&#34;, zh:&#34;歡樂基金會&#34;},{en:&#34;man-who-wasnt-there&#34;, zh:&#34;不在場者&#34;},{en:&#34;no-return&#34;, zh:&#34;不復返&#34;},{en:&#34;on-guard-43&#34;, zh:&#34;保衛43&#34;},{en:&#34;on-mount-golgotha&#34;, zh:&#34;各各他山上&#34;},{en:&#34;orcadia&#34;, zh:&#34;奧卡迪亞&#34;},{en:&#34;heimdall&#34;, zh:&#34;海姆達爾&#34;},{en:&#34;rats-nest&#34;, zh:&#34;鼠巢&#34;},{en:&#34;resurrection&#34;, zh:&#34;復生&#34;},{en:&#34;s&amp;c-plastic&#34;, zh:&#34;s&amp;c塑膠&#34;},{en:&#34;ship-in-a-bottle&#34;, zh:&#34;瓶中船&#34;},{en:&#34;sotm&#34;, zh:&#34;直進至曉&#34;},{en:&#34;the-gulf&#34;, zh:&#34;海灣&#34;},{en:&#34;the-trashfire&#34;, zh:&#34;廢色復燃&#34;},{en:&#34;third-law&#34;, zh:&#34;第三定律&#34;},{en:&#34;twisted-pines&#34;, zh:&#34;歪松&#34;},{en:&#34;unfounded&#34;, zh:&#34;未曾建立&#34;},{en:&#34;war-on-all-fronts&#34;, zh:&#34;全線戰爭&#34;},{en:&#34;wonderful-world&#34;, zh:&#34;美妙世界&#34;},{en:&#34;daybreak&#34;, zh:&#34;破曉&#34;},
-
-//競賽
-{en:&#34;1000&#34;, zh:&#34;en-1000&#34;},{en:&#34;2000&#34;, zh:&#34;en-2000&#34;},{en:&#34;3000&#34;, zh:&#34;en-3000&#34;},{en:&#34;4000&#34;, zh:&#34;en-4000&#34;},{en:&#34;5000&#34;, zh:&#34;en-5000&#34;},{en:&#34;6000&#34;, zh:&#34;en-6000&#34;},{en:&#34;173fest&#34;, zh:&#34;en-173慶&#34;},{en:&#34;cliche2019&#34;, zh:&#34;en-老梗2019&#34;},{en:&#34;af2016&#34;, zh:&#34;en-愚人節2016&#34;},{en:&#34;art2017&#34;, zh:&#34;en-藝術2017&#34;},{en:&#34;d-con2016&#34;, zh:&#34;en-D級競賽&#34;},{en:&#34;nyc2013&#34;, zh:&#34;en-新年競賽2013&#34;},{en:&#34;dc2014&#34;, zh:&#34;en-反烏2014&#34;},{en:&#34;doomsday2018&#34;, zh:&#34;en-末日2018&#34;},{en:&#34;five-questions&#34;, zh:&#34;en-五問&#34;},{en:&#34;gbc09&#34;, zh:&#34;en-gbc09&#34;},{en:&#34;goi2014&#34;, zh:&#34;en-goi2014&#34;},{en:&#34;halloween2018&#34;, zh:&#34;en-萬聖節2018&#34;},{en:&#34;hc2012&#34;, zh:&#34;en-萬聖節2012&#34;},{en:&#34;hiscon2017&#34;, zh:&#34;en-歷史競賽2017&#34;},{en:&#34;jam-con2018&#34;, zh:&#34;en-急迫競賽2018&#34;},{en:&#34;jam-con2019&#34;, zh:&#34;en-急迫競賽2019&#34;},{en:&#34;jam-con2020&#34;, zh:&#34;en-急迫競賽2020&#34;},{en:&#34;sc2015&#34;, zh:&#34;en-短文競賽2015&#34;},{en:&#34;collab-con2019&#34;, zh:&#34;en-合著競賽2019&#34;},{en:&#34;exquisite-corpse2020&#34;, zh:&#34;en-接力創作2020&#34;},{en:&#34;jam-con2021&#34;, zh:&#34;en-急迫競賽2021&#34;},{en:&#34;af2014&#34;, zh:&#34;en-愚人節2014&#34;},{en:&#34;memecon2021-unofficial&#34;, zh:&#34;en-非正式迷因競賽2021&#34;},{en:&#34;cupid2021&#34;, zh:&#34;en-邱比特2021&#34;},{en:&#34;nightmarefest&#34;, zh:&#34;en-夢魘盛會&#34;},
-
-//角色標籤
-{en:&#34;8-ball&#34;, zh:&#34;8號球&#34;},{en:&#34;aaron-siegel&#34;, zh:&#34;aaron-siegel&#34;},{en:&#34;able&#34;, zh:&#34;亞伯&#34;},{en:&#34;agent-green&#34;, zh:&#34;green特工&#34;},{en:&#34;agent-kazmarek&#34;, zh:&#34;kazmarek特工&#34;},{en:&#34;agent-laferrier&#34;, zh:&#34;laferrier特工&#34;},{en:&#34;agent-lament&#34;, zh:&#34;lament特工&#34;},{en:&#34;agent-lurk&#34;, zh:&#34;lurk特工&#34;},{en:&#34;agent-merlo&#34;, zh:&#34;merlo特工&#34;},{en:&#34;agent-navarro&#34;, zh:&#34;navarro特工&#34;},{en:&#34;agent-popescu&#34;, zh:&#34;popescu特工&#34;},{en:&#34;agent-strelnikov&#34;, zh:&#34;strelnikov特工&#34;},{en:&#34;agent-trauss&#34;, zh:&#34;trauss特工&#34;},{en:&#34;agent-yoric&#34;, zh:&#34;yoric特工&#34;},{en:&#34;aldon&#34;, zh:&#34;aldon&#34;},{en:&#34;alexandra&#34;, zh:&#34;alexandra&#34;},{en:&#34;alexei-belitrov&#34;, zh:&#34;alexei-belitrov&#34;},{en:&#34;alleged-god&#34;, zh:&#34;「上帝」&#34;},{en:&#34;bailey-brothers&#34;, zh:&#34;bailey-brothers&#34;},{en:&#34;big-cheese-horace&#34;, zh:&#34;大起司horace&#34;},{en:&#34;bobble-the-clown&#34;, zh:&#34;小丑鮑勃&#34;},{en:&#34;bones&#34;, zh:&#34;bones&#34;},{en:&#34;brainy-brian&#34;, zh:&#34;brainy-brian&#34;},{en:&#34;cain&#34;, zh:&#34;該隱&#34;},{en:&#34;chaz-ambrose&#34;, zh:&#34;查斯-安布羅斯&#34;},{en:&#34;cousin-johnny&#34;, zh:&#34;cousin-johnny&#34;},{en:&#34;d-7294&#34;, zh:&#34;d-7294&#34;},{en:&#34;d-11424&#34;, zh:&#34;d-11424&#34;},{en:&#34;dado&#34;, zh:&#34;dado&#34;},{en:&#34;dc-al-fine&#34;, zh:&#34;dc-al-fine&#34;},{en:&#34;director-aktus&#34;, zh:&#34;aktus主任&#34;},{en:&#34;director-bold&#34;, zh:&#34;bold主任&#34;},{en:&#34;director-diaghilev&#34;, zh:&#34;director-diaghilev&#34;},{en:&#34;director-mcinnis&#34;, zh:&#34;mcinnis主任&#34;},{en:&#34;director-mctiriss&#34;, zh:&#34;mctiriss主任&#34;},{en:&#34;director-moose&#34;, zh:&#34;moose主任&#34;},{en:&#34;director-lague&#34;, zh:&#34;lague主任&#34;},{en:&#34;django-bridge&#34;, zh:&#34;django-bridge&#34;},{en:&#34;doctor-asheworth&#34;, zh:&#34;asheworth博士&#34;},{en:&#34;doctor-bright&#34;, zh:&#34;bright博士&#34;},{en:&#34;doctor-cimmerian&#34;, zh:&#34;cimmerian博士&#34;},{en:&#34;doctor-clef&#34;, zh:&#34;clef博士&#34;},{en:&#34;doctor-dan&#34;, zh:&#34;dan博士&#34;},{en:&#34;doctor-edison&#34;, zh:&#34;edison博士&#34;},{en:&#34;doctor-elliott&#34;, zh:&#34;elliott博士&#34;},{en:&#34;doctor-everwood&#34;, zh:&#34;everwood博士&#34;},{en:&#34;doctor-fynegan&#34;, zh:&#34;fynegan博士&#34;},{en:&#34;doctor-gears&#34;, zh:&#34;gears博士&#34;},{en:&#34;doctor-gerald&#34;, zh:&#34;gerald博士&#34;},{en:&#34;doctor-glass&#34;, zh:&#34;glass博士&#34;},{en:&#34;doctor-heiden&#34;, zh:&#34;heiden博士&#34;},{en:&#34;doctor-hoygull&#34;, zh:&#34;hoygull博士&#34;},{en:&#34;doctor-iceberg&#34;, zh:&#34;iceberg博士&#34;},{en:&#34;doctor-king&#34;, zh:&#34;king博士&#34;},{en:&#34;doctor-kondraki&#34;, zh:&#34;Kondraki博士&#34;},{en:&#34;doctor-light&#34;, zh:&#34;light博士&#34;},{en:&#34;doctor-lillihammer&#34;, zh:&#34;lillihammer博士&#34;},{en:&#34;doctor-mann&#34;, zh:&#34;mann博士&#34;},{en:&#34;doctor-mcdoctorate&#34;, zh:&#34;mcdoctorate博士&#34;},{en:&#34;doctor-reynders&#34;, zh:&#34;reynders博士&#34;},{en:&#34;doctor-rights&#34;, zh:&#34;rights博士&#34;},{en:&#34;doctor-rivera&#34;, zh:&#34;rivera博士&#34;},{en:&#34;doctor-roget&#34;, zh:&#34;roget博士&#34;},{en:&#34;doctor-sinclair&#34;, zh:&#34;sinclair博士&#34;},{en:&#34;doctor-sorts&#34;, zh:&#34;sorts博士&#34;},{en:&#34;doctor-spanko&#34;, zh:&#34;spanko博士&#34;},{en:&#34;doctor-vang&#34;, zh:&#34;vang博士&#34;},{en:&#34;doctor-wettle&#34;, zh:&#34;wettle博士&#34;},{en:&#34;donkman&#34;, zh:&#34;donkman&#34;},{en:&#34;draven-kondraki&#34;, zh:&#34;卓文康卓奇&#34;},{en:&#34;eric&#34;, zh:&#34;eric&#34;},{en:&#34;esther-kogan&#34;, zh:&#34;esther-kogan&#34;},{en:&#34;faeowynn-wilson&#34;, zh:&#34;faeowynn-wilson&#34;},{en:&#34;finnegan&#34;, zh:&#34;finnegan&#34;},{en:&#34;fred&#34;, zh:&#34;弗雷德&#34;},{en:&#34;general-bowe&#34;, zh:&#34;bowe上將&#34;},{en:&#34;glacon&#34;, zh:&#34;glacon&#34;},{en:&#34;grabnok&#34;, zh:&#34;grabnok&#34;},{en:&#34;grand-karcist-ion&#34;, zh:&#34;大術士伊仰&#34;},{en:&#34;halyna-ieva&#34;, zh:&#34;halyna-ieva&#34;},{en:&#34;hanged-king&#34;, zh:&#34;受絞之王&#34;},{en:&#34;hard-to-kill-reptile&#34;, zh:&#34;不滅孽蜥&#34;},{en:&#34;heather-mason&#34;, zh:&#34;heather-mason&#34;},{en:&#34;holly-light&#34;, zh:&#34;holly-light&#34;},{en:&#34;icky&#34;, zh:&#34;icky&#34;},{en:&#34;iris-dark&#34;, zh:&#34;iris-dark&#34;},{en:&#34;iris-thompson&#34;, zh:&#34;iris-thompson&#34;},{en:&#34;isabel-v&#34;, zh:&#34;isabel五世&#34;},{en:&#34;jockjamsvol6&#34;, zh:&#34;jockjamsvol6&#34;},{en:&#34;jude-kriyot&#34;, zh:&#34;jude-kriyot&#34;},{en:&#34;judith-low&#34;, zh:&#34;judith-low&#34;},{en:&#34;judy-papill&#34;, zh:&#34;judy-papill&#34;},{en:&#34;kain-pathos-crow&#34;, zh:&#34;kain-pathos-crow&#34;},{en:&#34;kenneth-spencer&#34;, zh:&#34;kenneth-spencer&#34;},{en:&#34;kindness&#34;, zh:&#34;kindness&#34;},{en:&#34;legate-trunnion&#34;, zh:&#34;聖使者耳軸&#34;},{en:&#34;leslie&#34;, zh:&#34;leslie&#34;},{en:&#34;lewitt-zairi-family&#34;, zh:&#34;lewitt-zairi家族&#34;},{en:&#34;lombardi&#34;, zh:&#34;lombardi&#34;},{en:&#34;manny&#34;, zh:&#34;manny&#34;},{en:&#34;maria-jones&#34;, zh:&#34;maria-jones&#34;},{en:&#34;marion-wheeler&#34;, zh:&#34;marion-wheeler&#34;},{en:&#34;mark-kiryu&#34;, zh:&#34;馬克·桐生&#34;},{en:&#34;moon-champion&#34;, zh:&#34;月之鬥士&#34;},{en:&#34;mr-fish&#34;, zh:&#34;魚先生&#34;},{en:&#34;plague-doctor&#34;, zh:&#34;瘟疫醫生&#34;},{en:&#34;professor-bjornsen&#34;, zh:&#34;bjornsen教授&#34;},{en:&#34;rainer-miller&#34;, zh:&#34;rainer-miller&#34;},{en:&#34;researcher-conwell&#34;, zh:&#34;研究員conwell&#34;},{en:&#34;researcher-james&#34;, zh:&#34;研究員james&#34;},{en:&#34;researcher-labelle&#34;, zh:&#34;研究員labelle&#34;},{en:&#34;researcher-lloyd&#34;, zh:&#34;研究員lloyd&#34;},{en:&#34;researcher-rosen&#34;, zh:&#34;羅森研究員&#34;},{en:&#34;researcher-smalls&#34;, zh:&#34;研究員smalls&#34;},{en:&#34;researcher-talloran&#34;, zh:&#34;塔羅蘭研究員&#34;},{en:&#34;richard-chappell&#34;, zh:&#34;richard-chappell&#34;},{en:&#34;riven-mercer&#34;, zh:&#34;瑞文·摩瑟&#34;},{en:&#34;robert-bumaro&#34;, zh:&#34;robert-bumaro&#34;},{en:&#34;robin-thorne&#34;, zh:&#34;robin-thorne&#34;},{en:&#34;ruiz-duchamp&#34;, zh:&#34;ruiz-duchamp&#34;},{en:&#34;saint-hedwig&#34;, zh:&#34;聖海德威&#34;},{en:&#34;saturn-deer&#34;, zh:&#34;土星牡鹿&#34;},{en:&#34;scarlet-king&#34;, zh:&#34;猩紅之王&#34;},{en:&#34;sheldon-katz&#34;, zh:&#34;sheldon-katz&#34;},{en:&#34;siguross&#34;, zh:&#34;siguross&#34;},{en:&#34;simon-pietrykau&#34;, zh:&#34;simon-pietrykau&#34;},{en:&#34;tau-5-samsara&#34;, zh:&#34;tau-5輪迴&#34;},{en:&#34;thad-xyank&#34;, zh:&#34;thad-xyank&#34;},{en:&#34;the-administrator&#34;, zh:&#34;the-administrator&#34;},{en:&#34;the-engineer&#34;, zh:&#34;the-engineer&#34;},{en:&#34;the-old-man&#34;, zh:&#34;詭厄老者&#34;},{en:&#34;the-sculpture&#34;, zh:&#34;塑像173&#34;},{en:&#34;the-specter&#34;, zh:&#34;幽靈4494&#34;},{en:&#34;thilo-zwist&#34;, zh:&#34;thilo-zwist&#34;},{en:&#34;tim-wilson&#34;, zh:&#34;蒂姆威爾遜&#34;},{en:&#34;veronica-fitzroy&#34;, zh:&#34;veronica-fitzroy&#34;},{en:&#34;vincent-anderson&#34;, zh:&#34;vincent-anderson&#34;},{en:&#34;zyn-kiryu&#34;, zh:&#34;祁殷·桐生&#34;},
-
-//故事系列
-{en:&#34;classical-revival&#34;, zh:&#34;古典復興&#34;},{en:&#34;collector-tale&#34;, zh:&#34;收藏家故事&#34;},{en:&#34;harper&#34;, zh:&#34;哈帕&#34;},{en:&#34;kiryu-labs&#34;, zh:&#34;桐生實驗室&#34;},{en:&#34;mister&#34;, zh:&#34;小小先生&#34;},{en:&#34;olympia&#34;, zh:&#34;奧林匹亞&#34;},{en:&#34;orientation&#34;, zh:&#34;說明&#34;},{en:&#34;project-thaumiel&#34;, zh:&#34;雙極神計畫&#34;},
-
-//雜項
-{en:&#34;poetry&#34;, zh:&#34;詩歌&#34;},{en:&#34;art-exchange&#34;, zh:&#34;en-交換藝術&#34;},{en:&#34;project-crossover&#34;, zh:&#34;跨界計畫&#34;},{en:&#34;game_day&#34;, zh:&#34;比賽日&#34;},{en:&#34;three-portlands&#34;, zh:&#34;三波特蘭&#34;},{en:&#34;backdoor-soho&#34;, zh:&#34;蘇荷後門-&#34;},{en:&#34;la-rue-macabre&#34;, zh:&#34;異人街&#34;},{en:&#34;wanderers-library&#34;, zh:&#34;流浪者圖書館&#34;},{en:&#34;alagadda&#34;, zh:&#34;alagadda&#34;},{en:&#34;adult&#34;, zh:&#34;成人內容&#34;},{en:&#34;audio&#34;, zh:&#34;音頻&#34;},{en:&#34;video&#34;, zh:&#34;影片&#34;},{en:&#34;eurtec&#34;, zh:&#34;eurtec&#34;},
-
-]
-
-
-
-
-var tags_en=new Array()
-
-function get_tag_en(){
-//把輸入格裡的東西搬進來，然後用空格分割，存成Array tags_en
-var origin_str=document.getElementById(&#34;input_box&#34;).value
-tags_en=origin_str.split(&#34; &#34;)
-}
-
-var translator
-var translated=&#34;&#34;
-
+var translate_set
+var translate_list
 
 function tag_translate(){
- get_tag_en()
-for(i=0;i&lt;tags_en.length;i++){
+    document.getElementById(&#34;output_box&#34;).innerHTML = &#34;&#34;
 
-  translator=tag_list.find(
-  function(el){
-  return el.en==tags_en[i]}
-)
+    //取得參數
+    origin_lang = document.getElementById(&#34;origin_lang&#34;).value
+    target_lang = document.getElementById(&#34;target_lang&#34;).value
+    input_str = document.getElementById(&#34;input_box&#34;).value
+    input_list = input_str.split(&#39; &#39;)
 
 
-  if(translator!=null){
-   translated=translated+translator.zh+&#34; &#34;
+    for(var i=0;i&lt;input_list.length;i++){
+        if(input_list[i]==&#39;&#39;){
+            continue
+        }
+        //逐一比對
+        translate_set = new Set()
+        for(var j=0;j&lt;tags_list.length;j++){
+            if(tags_list[j][origin_lang] == input_list[i]){
+                if(tags_list[j][target_lang]!=&#39;&#39;){
+                    translate_set.add(tags_list[j][target_lang])
+break
+                }
+            }
+        }
+        //寫入html
+        if(translate_set.size&gt;0){
+            translate_list = Array.from(translate_set)
+            document.getElementById(&#34;output_box&#34;).innerHTML += `${translate_list.join(&#39;/&#39;)} `;
+        }
+        else{
+            document.getElementById(&#34;output_box&#34;).innerHTML += `&lt;span style=&#34;border:2px red solid&#34;&gt;${input_list[i]}&lt;/span&gt; `
+        }
+    }
+    if(target_lang===&#39;zh&#39; &amp;&amp; origin_lang!==&#39;zh&#39;){
+        document.getElementById(&#34;output_box&#34;).innerHTML += `${origin_lang} 翻譯`
+    }
 }
-  else{
-   translated=translated+&#34;\&lt;span style\=\&#34;border\:2px red solid\&#34;\&gt;&#34;+tags_en[i]+&#34;\&lt;\/span\&gt;&#34;+&#34; &#34;
-}
-}
-document.getElementById(&#34;output_box&#34;).innerHTML=translated
-translated=&#34;&#34;//重置translated變數，不然會越加越多
-}
-
-
 
 &lt;/script&gt;
 [[/html]]
-超級感謝[[*user vomiter ]]這個超讚翻譯機本體由他開發製作。
-由於標籤尚未翻譯完成，如有不存在對應原文的標籤，會顯示出原文外加紅色框框。
-部分標籤有經合併或棄用還請多加留意。
+&gt; 超級感謝[[*user vomiter ]]與[[*user surprising_mars ]]這個超讚翻譯機本體由他們開發製作。
+&gt; 由於標籤尚未翻譯完成，如有不存在對應原文的標籤，會顯示出原文外加紅色框框。
+&gt; 部分標籤有經合併或棄用還請多加留意。
 [[/=]]
 [[/div]]</textarea></pre>
   </div>
@@ -174,7 +194,7 @@ translated=&#34;&#34;//重置translated變數，不然會越加越多
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:08.157602.</em>
+    <em>Last updated 2024-02-07 18:30:32.653670.</em>
   
 </div>
 </body>

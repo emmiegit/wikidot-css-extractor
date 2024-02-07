@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>Series Truyện Việt Nam</title>
 </head>
@@ -29,68 +29,359 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>.content-panel .content-type-title &gt; p {
-  margin: 0;
+          <pre><code>:where(#page-content) h2 {
+    margin-block-start: 1rem;
+    padding-bottom: .25em;
+    border-bottom: solid 0.05rem #ccc;
 }
-.content-panel .content-type-title {
-  font-size: 120%;
-  font-weight: bold;
-  padding: 5px 20px;
-  background-color: #666;
-  color: #fff;
-  border-radius: 8px 8px 0 0;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.8),
-    inset 0 15px 1px rgba(255,255,255,.2),
-    inset 0 15px 10px rgba(255,255,255,.2);
+
+.info-wrapper {
+    display: grid;
+    grid-template-areas: &#34;info legend&#34;;
+    grid-template-columns: minmax(0,1fr) 15.75rem;
+    gap: 1rem;
+    font-size: .925em;
+    margin-block-end: 1.875rem;
 }
-.content-panel .content-type-description {
-padding: 0 20px;
-text-align: justify;
+@media screen and (max-width: 37.5rem) {
+.info-wrapper {
+    grid-template-areas:
+        &#34;info&#34;
+        &#34;legend&#34;;
+    grid-template-columns: minmax(0,1fr);
 }
-.content-panel.content-row .content-type-description {
-padding: 5px 20px;
 }
-.content-panel.content-row .content-type-description-2 {
-padding: 0 20px;
-text-align: justify;
+.info-wrapper &gt; br { display: none; }
+.info { grid-area: info; }
+
+.toc-wrapper {
+    display: block;
+    list-style: none;
+    padding: 0; margin: 0;
+    font-size: .95em;
 }
-.content-panel-table, .content-panel-table-row, .content-panel-table-cell
-{
-    border: 1px solid #000;
-    border-collapse: collapse;
+.toc-wrapper &gt; li {
+    display: grid;
+    grid-template-areas:
+        &#34;title action&#34;
+        &#34;list list&#34;;
+    grid-template-columns: 1fr 3.25rem;
+    row-gap: .425rem;
 }
-.content-panel-table-cell
-{
-    vertical-align: top;
-    padding: 0 2px;
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>.content-panel .content-type-title &gt; p {
-  margin: 0;
+.toc-wrapper :is(table,tbody, tr, td) {
+    display: contents;
 }
-.content-panel .content-type-title {
-  font-size: 150%;
-  font-weight: bold;
-  padding: 5px 20px;
-  background-color: #666;
-  color: #fff;
-  border-radius: 8px 8px 0 0;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.8),
-    inset 0 15px 1px rgba(255,255,255,.2),
-    inset 0 15px 10px rgba(255,255,255,.2);
+.toc-wrapper .foldable-list-container {
+    grid-area: action;
+    display: grid;
+    align-items: center;
+    justify-content: end;
+    border-bottom: solid 0.05rem #ccc;
 }
-.content-panel .content-type-description {
-padding: 0 20px;
-text-align: justify;
+:where(.folded) .foldable-list-container a:nth-child(2) { display: none; }
+:where(.unfolded) .foldable-list-container a:nth-child(1) { display: none; }
+
+#toc {
+    display: contents;
+    margin: initial;
+    padding: 0;
+    border: none;
+    background: transparent;
 }
-.content-panel.content-row .content-type-description {
-padding: 5px 2px;
+#toc-action-bar { display: none; }
+
+#toc-list {
+    grid-area: list;
+    margin: 0;
+    counter-reset: toc-index;
 }
-.content-panel.content-row .content-type-description-2 {
-padding: 0 2px;
-text-align: justify;
+:where(.folded) #toc-list { display: none; }
+
+#toc-list &gt; div {
+    margin-block: .45em;
+    margin-left: 0!important;
+    line-height: 1.15;
+}
+#toc-list &gt; div[style*=&#34;3em&#34;] {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    gap: .25rem;
+    align-items: baseline;
+    margin-left: 0!important;
+    font-size: .95em;
+}
+
+#toc-list &gt; div[style*=&#34;3em&#34;]::before {
+    counter-increment: toc-index;
+    content: counter(toc-index) &#34;.&#34;;
+    font-size: .75em;
+    text-align: end;
+    font-feature-settings: &#39;case&#39;,&#39;ss01&#39;,&#39;ss04&#39;,&#39;tnum&#39;;
+}
+#toc-list &gt; div[style*=&#34;3em&#34;] &gt; a {
+    grid-column: 2/3;
+    width: fit-content;
+}
+
+#toc .title {
+    grid-area: title;
+    display: grid;
+    align-items: center;
+    margin: 0;
+    padding: 0.425rem .175rem;
+    border-bottom: solid 0.05rem #ccc;
+    text-align: start;
+}
+.legend { grid-area: legend; }
+.legend table { width: 100%; margin: 0;}
+.legend table tr:first-child {
+    border-bottom: solid 0.05rem #ccc;
+}
+.legend table td {
+    border: none;
+    padding: .5rem .325rem;
+}
+.legend table tr:first-child td {
+    font-weight: bold;
+    padding-inline: .175rem;
+}
+.legend table tr td:first-child {
+    width: 2.25rem;
+}
+
+.feature-marker, .spotlight-marker, .complete-marker {
+    --_icon: var(--feature-icon);
+    display: block;
+    position: relative;
+    margin: auto;
+    font-size: 0;
+    height: 1.325rem; width: 1.325rem;
+    background-color: rgb(var(--feature-color));
+    -webkit-mask: var(--_icon) center no-repeat;
+    mask: var(--_icon) center no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+.spotlight-marker {
+    --_icon: var(--spotlight-icon);
+    width: 1.75rem;
+    background-color:  rgb(var(--spotlight-color));
+}
+
+.complete-marker {
+    display: inline-block;
+    height: 1rem; width: 1rem;
+    margin-inline: .125rem;
+    --_icon: var(--complete-icon);
+    background-color: currentColor;
+    vertical-align: text-bottom;
+}
+
+/*----------------------------*/
+
+#page-content {
+    --box-accent: #4b4848;
+    --feature-color: 253 183 34;
+    --spotlight-color: 37 161 224;
+    --feature-icon: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; data-name=&#39;Layer 1&#39; viewBox=&#39;0 0 90 86&#39;%3E%3Cpath fill-rule=&#39;evenodd&#39; d=&#39;m49 2.6 10.6 23.1a1.5 1.5 0 0 0 1.2 1l25.3 2.9a4.4 4.4 0 0 1 2.5 7.5L69.8 54.4a1.5 1.5 0 0 0-.5 1.4l5 25a4.3 4.3 0 0 1-6.3 4.7L45.8 72.9a1.5 1.5 0 0 0-1.6 0L22 85.5a4.4 4.4 0 0 1-6.4-4.7l5-25a1.5 1.5 0 0 0-.4-1.4L1.4 37A4.4 4.4 0 0 1 4 29.6l25.3-3a1.5 1.5 0 0 0 1.2-.9L41 2.6a4.4 4.4 0 0 1 8 0z&#39;/%3E%3C/svg%3E&#34;);
+    --spotlight-icon: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 58 44.6&#39;%3E%3Cpath d=&#39;M1 27h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2zm12-4a1 1 0 0 1-.5-.1l-11-6a1 1 0 1 1 1-1.8l11 6A1 1 0 0 1 13 23ZM2 41a1 1 0 0 1-.5-1.9l11-6a1 1 0 1 1 1 1.8l-11 6a1 1 0 0 1-.5.1ZM15 6a3 3 0 0 0 3-3 1 1 0 0 1 2 0 3 3 0 0 0 3 3 1 1 0 0 1 0 2 3 3 0 0 0-3 3 1 1 0 0 1-2 0 3 3 0 0 0-3-3 1 1 0 0 1 0-2zm4 2a5 5 0 0 1 1-1 5 5 0 0 1-1-1 5 5 0 0 1-1 1 5 5 0 0 1 1 1Zm25 10.6v18.6a3 3 0 0 1-2 2.8l-6 2.3V13.2l6.2 2.7a3 3 0 0 1 1.8 2.7Zm-2 .4a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0zm0 11a1 1 0 0 0-2 0v2a1 1 0 0 0 2 0zm10-1a1 1 0 0 1-1-1V0h2v28a1 1 0 0 1-1 1z&#39;/%3E%3Cpath d=&#39;M49 28a3 3 0 0 0 6 0v-7h3v14H46V21h3zM34 12.3v30.8l-4 1.5V10.5zM28 17v22a12 12 0 0 1 0-22Z&#39;/%3E%3C/svg%3E&#34;);
+    --complete-icon: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 90 90&#39;%3E%3Cpath d=&#39;M45 0a45 45 0 1 0 0 90 45 45 0 0 0 0-90Zm18.5 26.7a6.2 6.2 0 0 1 4.4 10.6l-24 24a6.2 6.2 0 0 1-5 2.7 6.2 6.2 0 0 1-5.2-2.7L22.1 49.7a6.2 6.2 0 0 1 4.3-10.6 6.2 6.2 0 0 1 4.4 1.9l8 8 20.4-20.4a6.2 6.2 0 0 1 4.3-1.9z&#39;/%3E%3C/svg%3E&#34;);
+}
+
+.series-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(10.5rem + 1.75vw),1fr));
+    gap: .75rem;
+    margin-block: 1.325rem 2.25rem;
+    clear: both;
+}
+
+.series-block {
+    --box-accent: inherit;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    font-size: .75em;
+    text-align: center;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 0.325rem rgb(0 0 0 / 0.25);
+}
+.series-block.collaboration { --box-accent: #3d8554; }
+
+.series-block .title {
+    display: flex;
+    font-weight: bold;
+    font-size: 1.275em;
+}
+.series-block .title a {
+    display: grid;
+    align-items: center;
+    flex-grow: 1;
+    padding: .425rem .5rem;
+}
+
+.series-block.reviewers-spotlight .title { background-color: rgb(var(--spotlight-color)/0.075); }
+.series-block.featured .title { background-color: rgb(var(--feature-color)/0.1); }
+.series-block:where(.featured, .reviewers-spotlight) .title::after,
+.large :where(.featured, .reviewers-spotlight) h3::after,
+.large :where(._complete) h3::before {
+    content: &#34;&#34;;
+    display: block;
+    min-width: 1.25rem;
+    min-height: 1.25rem;
+    margin-inline-end: .5rem;
+    -webkit-mask: var(--_icon) center no-repeat;
+    mask: var(--_icon) center no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+.reviewers-spotlight .title::after,
+.large :where(.reviewers-spotlight) h3::after {
+    min-width: 2rem;
+    --_icon: var(--spotlight-icon);
+    background-color: rgb(var(--spotlight-color));
+}
+.featured .title::after,
+.large :where(.featured) h3::after {
+    --_icon: var(--feature-icon);
+    background-color: rgb(var(--feature-color));
+}
+
+.large :where(._complete) h3::before {
+    --_icon: var(--complete-icon);
+    order: 2;
+    margin: 0;
+    background-color: currentColor;
+}
+
+/*---------------------------*/
+
+.series-block .metadata {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 1.125em;
+    border-top: solid 0.05rem rgb(0 0 0/.1);
+}
+.series-block .metadata div {
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+    padding: .425em;
+}
+
+.series-block .footer {
+    display: flex;
+    justify-content: end;
+    box-shadow: inset 0 -0.325rem 0 var(--box-accent);
+}
+.series-block .footer::before {
+    content: &#34;&#34;;
+    display: block;
+    width: 1.75em;
+    background: var(--box-accent);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    margin-inline-end: -0.05em;
+}
+
+.series-block .footer :is(.printuser, .co-au) {
+    color: #fff9;
+    display: inline-flex;
+    align-items: center;
+    padding: .225em .325em;
+    background: var(--box-accent);
+}
+.series-block .footer .printuser::before {
+    content: &#34;by&#34;;
+    padding-inline-end: .425ch;
+}
+.series-block .footer a { color: #fff; }
+
+.series-block .footer .co-au {
+    padding-inline-start: 0;
+    display: none;
+}
+.series-block.co-authored .footer .co-au { display: inline-flex; }
+
+.series-block .footer .deleted img { display: none; }
+
+.series-wrapper .pager {
+    grid-column: 1/-1;
+    border-bottom: solid 0.175rem var(--box-accent);
+}
+
+/*---------------------------*/
+
+.series-wrapper.large {
+    grid-template-columns: repeat(auto-fill, minmax(16.5rem,1fr));
+}
+
+.large .series-block {
+    --link-color: #b01;
+    display: flex;
+    gap: .475rem;
+    flex-direction: column;
+    padding-block-start: .5rem;
+    font-size: .85em;
+}
+.large .series-block &gt; img {
+    align-self: center;
+    height: 4.75rem !important;
+}
+.large h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.425em;
+    letter-spacing: initial;
+    padding-inline: .675rem;
+    margin: 0;
+    color: currentColor;
+}
+.large .series-block h3::after { margin: 0; }
+.large .series-block h3 &gt; span { flex-grow: 1; }
+
+.large .series-block .blurb {
+    flex-grow: 1;
+    padding-inline: 1.125em;
+    border-block-start: solid 0.05rem #ccc9;
+    text-align: start;
+}
+.large :is(.blurb, h3) a {
+    color: var(--link-color);
+}
+
+.tag-lead {
+    display: flex;
+    justify-content: end;
+    box-shadow: inset 0 -0.325rem 0 var(--box-accent);
+    font-size: .775em;
+    font-style: italic;
+    margin-block-start: -.5rem;
+}
+.tag-lead::before {
+    content: &#34;&#34;;
+    display: block;
+    width: 1.75em;
+    background: var(--box-accent);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    margin-inline-end: -0.05em;
+}
+.tag-lead a {
+    display: block;
+    padding: .225em .5em;
+    padding-inline-start: .125em;
+    color: #fff;
+    font-weight: bold;
+    background-color: var(--box-accent);
+}
+.tag-lead a::before {
+    content: &#34;See all works tagged&#34;;
+    display: inline-block;
+    padding-inline-end: .425ch;
+    color: #fff9;
+    font-weight: normal;
 }</code></pre>
         </li>
       
@@ -100,35 +391,11 @@ text-align: justify;
     <ul class="inline-styles">
       
         <li>
-          <pre><code>width: 100%;</code></pre>
+          <pre><code>color: #3d8554</code></pre>
         </li>
       
         <li>
-          <pre><code>font-weight: bold; color: #fff; background-color: #666;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 25%;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 18%; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; text-align: left;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; text-align: left;</code></pre>
+          <pre><code>font-family: &#39;Andale Mono&#39;, &#39;Courier New&#39;, Courier, monospace; font-size: .8125em; margin: 0; border-style: solid;</code></pre>
         </li>
       
     </ul>
@@ -141,8 +408,48 @@ text-align: justify;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:listpages-hubs" target="_blank"><code>component:listpages-hubs</code></a>
+    <a href="https://scp-wiki.wikidot.com/fragment:nav-generic-css" target="_blank"><code>:scp-wiki:fragment:nav-generic-css</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/fragment:nav-generic-css.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -153,150 +460,596 @@ text-align: justify;
     <ul class="css-classes">
       
         <li>
-          <pre><code>content-panel</code></pre>
+          <pre><code>info-wrapper</code></pre>
         </li>
       
         <li>
-          <pre><code>standalone</code></pre>
+          <pre><code>info</code></pre>
         </li>
       
         <li>
-          <pre><code>content-row</code></pre>
+          <pre><code>legend</code></pre>
         </li>
       
         <li>
-          <pre><code>content-type-title</code></pre>
+          <pre><code>feature-marker</code></pre>
         </li>
       
         <li>
-          <pre><code>content-type-description-2</code></pre>
+          <pre><code>spotlight-marker</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>series-wrapper</code></pre>
         </li>
       
         <li>
           <pre><code>content-type-description</code></pre>
         </li>
       
+        <li>
+          <pre><code>series-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>%%tags%%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>metadata</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>footer</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>co-au</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>complete-marker</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>series-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blurb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-lead</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>toc-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>folded</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>foldable-list-container</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[module CSS]]
-.content-panel .content-type-title &gt; p {
-  margin: 0;
-}
-.content-panel .content-type-title {
-  font-size: 120%;
-  font-weight: bold;
-  padding: 5px 20px;
-  background-color: #666;
-  color: #fff;
-  border-radius: 8px 8px 0 0;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.8),
-    inset 0 15px 1px rgba(255,255,255,.2),
-    inset 0 15px 10px rgba(255,255,255,.2);
-}
-.content-panel .content-type-description {
-padding: 0 20px;
-text-align: justify;
-}
-.content-panel.content-row .content-type-description {
-padding: 5px 20px;
-}
-.content-panel.content-row .content-type-description-2 {
-padding: 0 20px;
-text-align: justify;
-}
-.content-panel-table, .content-panel-table-row, .content-panel-table-cell
-{
-    border: 1px solid #000;
-    border-collapse: collapse;
-}
-.content-panel-table-cell
-{
-    vertical-align: top;
-    padding: 0 2px;
-}
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:fragment:nav-generic-css]]
+[[=]]
++* [[size 125%]]Chào mừng đến với Trang Lưu trữ Series Ngoại chuyện của Tổ Chức SCP
+[[/size]]
+[[/=]]
+
+[[div class=&#34;info-wrapper&#34;]]
+[[div class=&#34;info&#34;]]
+Đây là nơi lưu trữ các hub Series ngoại truyện của chi nhánh Tiếng Việt, được sắp xếp theo ngày xuất bản. 
+
+Vì lý do sắp xếp, canon sẽ không được liệt kê tại đây, mà thay đó [[[Canon Hub VN]]] sẽ nơi lưu trữ chúng.
+[[/div]]
+[[div class=&#34;legend&#34;]]
+|||| Chú giải ||
+||[[span class=&#34;feature-marker&#34;]]star[[/span]]|| Series [[[featured-tale-archive-ii|đặc sắc]]] ||
+||[[span class=&#34;spotlight-marker&#34;]]spotlight[[/span]]|| [[[reviewers-spotlight-archive-ii|Lựa chọn của Cộng đồng]]] ||
+|||| **[[span style=&#34;color: #3d8554&#34;]]Màu xanh[[/span]]** series mở.||
+[[/div]]
+[[/div]]
+
+++* Danh sách Hub truyện
+
+[[div class=&#34;series-wrapper content-type-description&#34;]]
+[[module ListPages order=&#34;created_at desc&#34; separate=&#34;false&#34; tags=&#34;@URL|_hub-truyện-vn&#34; perPage=&#34;24&#34; wrapper=&#34;no&#34;]]
+
+[[div class=&#34;series-block %%tags%%&#34;]]
+[[div_ class=&#34;title&#34;]]
+%%title_linked%%
+[[/div]]
+
+[[div_ class=&#34;metadata&#34;]]
+[[div_]]
+%%created_at|%Y.%m.%e|agohover%%
+[[/div]]
+[[div_]]
+%%comments%% 💬︎
+[[/div]]
+[[/div]]
+
+[[div_ class=&#34;footer&#34;]]
+[[user %%created_by%%]][[span class=&#34;co-au&#34;]] et al.[[/span]]
+[[/div]]
+[[/div]]
+
 [[/module]]
+[[/div]]
 
 
-&gt; **Lưu ý của Quản trị Hệ thống:** Trang này lưu trữ toàn bộ series truyện của Tổ Chức SCP. Thông tin thêm có được tìm thấy trong các hub.
------
+++* Series có tag riêng
+
+[[div class=&#34;info-wrapper&#34;]]
+[[div class=&#34;info&#34;]]
+Dưới đây là danh sách series có tag riêng. Series đã kết thúc sẽ có [[span class=&#34;complete-marker&#34;]]dấu tích [[/span]] ngay bên cạnh.
+
+[[collapsible show=&#34;+ Editorial Guide&#34; hide=&#34;- Editorial Guide&#34;]]
+These entries are added manually with the following template:
+[[div class=&#34;blockquote&#34; style=&#34;font-family: &#39;Andale Mono&#39;, &#39;Courier New&#39;, Courier, monospace; font-size: .8125em; margin: 0; border-style: solid;&#34;]]
+@@[[div_ class=&#34;series-block&#34;]]@@
+@@+++ [[[slug|Title]]]@@
+@@[[div class=&#34;blurb&#34;]]@@
+Blurb here.
+@@[[/div]]@@
+@@[[div_ class=&#34;tag-lead&#34;]]@@
+@@[https://scpwiki.com/system:page-tags/tag/name-of-tag name-of-tag]@@
+@@[[/div]]@@
+@@[[/div]]@@
+[[/div]]
+
+Append the class {{collaboration}}, {{featured}}, {{reviewers-spotlight}}, and {{_complete}} to the {{series-block}} div for open entry series, featured series and completed series, respectively.
+
+Authors may also append custom inline styling to their block and add a logo image, within reasonable bounds.
+
+Footers may not be altered outside specifications.
+[[/collapsible]]
+[[/div]]
+
+[[ul class=&#34;toc-wrapper&#34;]]
+[[li class=&#34;folded&#34;]]
+[[div_ class=&#34;foldable-list-container&#34;]]
+[# Mở][# Đóng]
+[[/div]]
+[[toc]]
+[[/li]]
+[[/ul]]
+[[/div]]
+
+
+
+
+
+
+[!-- Warning: CSS below. --]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [[module CSS]]
-.content-panel .content-type-title &gt; p {
-  margin: 0;
+:where(#page-content) h2 {
+    margin-block-start: 1rem;
+    padding-bottom: .25em;
+    border-bottom: solid 0.05rem #ccc;
 }
-.content-panel .content-type-title {
-  font-size: 150%;
-  font-weight: bold;
-  padding: 5px 20px;
-  background-color: #666;
-  color: #fff;
-  border-radius: 8px 8px 0 0;
-  box-shadow: inset 0 1px 1px rgba(255,255,255,.8),
-    inset 0 15px 1px rgba(255,255,255,.2),
-    inset 0 15px 10px rgba(255,255,255,.2);
+
+.info-wrapper {
+    display: grid;
+    grid-template-areas: &#34;info legend&#34;;
+    grid-template-columns: minmax(0,1fr) 15.75rem;
+    gap: 1rem;
+    font-size: .925em;
+    margin-block-end: 1.875rem;
 }
-.content-panel .content-type-description {
-padding: 0 20px;
-text-align: justify;
+@media screen and (max-width: 37.5rem) {
+.info-wrapper {
+    grid-template-areas:
+        &#34;info&#34;
+        &#34;legend&#34;;
+    grid-template-columns: minmax(0,1fr);
 }
-.content-panel.content-row .content-type-description {
-padding: 5px 2px;
 }
-.content-panel.content-row .content-type-description-2 {
-padding: 0 2px;
-text-align: justify;
+.info-wrapper &gt; br { display: none; }
+.info { grid-area: info; }
+
+.toc-wrapper {
+    display: block;
+    list-style: none;
+    padding: 0; margin: 0;
+    font-size: .95em;
+}
+.toc-wrapper &gt; li {
+    display: grid;
+    grid-template-areas:
+        &#34;title action&#34;
+        &#34;list list&#34;;
+    grid-template-columns: 1fr 3.25rem;
+    row-gap: .425rem;
+}
+.toc-wrapper :is(table,tbody, tr, td) {
+    display: contents;
+}
+.toc-wrapper .foldable-list-container {
+    grid-area: action;
+    display: grid;
+    align-items: center;
+    justify-content: end;
+    border-bottom: solid 0.05rem #ccc;
+}
+:where(.folded) .foldable-list-container a:nth-child(2) { display: none; }
+:where(.unfolded) .foldable-list-container a:nth-child(1) { display: none; }
+
+#toc {
+    display: contents;
+    margin: initial;
+    padding: 0;
+    border: none;
+    background: transparent;
+}
+#toc-action-bar { display: none; }
+
+#toc-list {
+    grid-area: list;
+    margin: 0;
+    counter-reset: toc-index;
+}
+:where(.folded) #toc-list { display: none; }
+
+#toc-list &gt; div {
+    margin-block: .45em;
+    margin-left: 0!important;
+    line-height: 1.15;
+}
+#toc-list &gt; div[style*=&#34;3em&#34;] {
+    display: grid;
+    grid-template-columns: 1.5rem 1fr;
+    gap: .25rem;
+    align-items: baseline;
+    margin-left: 0!important;
+    font-size: .95em;
+}
+
+#toc-list &gt; div[style*=&#34;3em&#34;]::before {
+    counter-increment: toc-index;
+    content: counter(toc-index) &#34;.&#34;;
+    font-size: .75em;
+    text-align: end;
+    font-feature-settings: &#39;case&#39;,&#39;ss01&#39;,&#39;ss04&#39;,&#39;tnum&#39;;
+}
+#toc-list &gt; div[style*=&#34;3em&#34;] &gt; a {
+    grid-column: 2/3;
+    width: fit-content;
+}
+
+#toc .title {
+    grid-area: title;
+    display: grid;
+    align-items: center;
+    margin: 0;
+    padding: 0.425rem .175rem;
+    border-bottom: solid 0.05rem #ccc;
+    text-align: start;
+}
+.legend { grid-area: legend; }
+.legend table { width: 100%; margin: 0;}
+.legend table tr:first-child {
+    border-bottom: solid 0.05rem #ccc;
+}
+.legend table td {
+    border: none;
+    padding: .5rem .325rem;
+}
+.legend table tr:first-child td {
+    font-weight: bold;
+    padding-inline: .175rem;
+}
+.legend table tr td:first-child {
+    width: 2.25rem;
+}
+
+.feature-marker, .spotlight-marker, .complete-marker {
+    --_icon: var(--feature-icon);
+    display: block;
+    position: relative;
+    margin: auto;
+    font-size: 0;
+    height: 1.325rem; width: 1.325rem;
+    background-color: rgb(var(--feature-color));
+    -webkit-mask: var(--_icon) center no-repeat;
+    mask: var(--_icon) center no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+.spotlight-marker {
+    --_icon: var(--spotlight-icon);
+    width: 1.75rem;
+    background-color:  rgb(var(--spotlight-color));
+}
+
+.complete-marker {
+    display: inline-block;
+    height: 1rem; width: 1rem;
+    margin-inline: .125rem;
+    --_icon: var(--complete-icon);
+    background-color: currentColor;
+    vertical-align: text-bottom;
+}
+
+/*----------------------------*/
+
+#page-content {
+    --box-accent: #4b4848;
+    --feature-color: 253 183 34;
+    --spotlight-color: 37 161 224;
+    --feature-icon: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; data-name=&#39;Layer 1&#39; viewBox=&#39;0 0 90 86&#39;%3E%3Cpath fill-rule=&#39;evenodd&#39; d=&#39;m49 2.6 10.6 23.1a1.5 1.5 0 0 0 1.2 1l25.3 2.9a4.4 4.4 0 0 1 2.5 7.5L69.8 54.4a1.5 1.5 0 0 0-.5 1.4l5 25a4.3 4.3 0 0 1-6.3 4.7L45.8 72.9a1.5 1.5 0 0 0-1.6 0L22 85.5a4.4 4.4 0 0 1-6.4-4.7l5-25a1.5 1.5 0 0 0-.4-1.4L1.4 37A4.4 4.4 0 0 1 4 29.6l25.3-3a1.5 1.5 0 0 0 1.2-.9L41 2.6a4.4 4.4 0 0 1 8 0z&#39;/%3E%3C/svg%3E&#34;);
+    --spotlight-icon: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 58 44.6&#39;%3E%3Cpath d=&#39;M1 27h12a1 1 0 0 1 0 2H1a1 1 0 0 1 0-2zm12-4a1 1 0 0 1-.5-.1l-11-6a1 1 0 1 1 1-1.8l11 6A1 1 0 0 1 13 23ZM2 41a1 1 0 0 1-.5-1.9l11-6a1 1 0 1 1 1 1.8l-11 6a1 1 0 0 1-.5.1ZM15 6a3 3 0 0 0 3-3 1 1 0 0 1 2 0 3 3 0 0 0 3 3 1 1 0 0 1 0 2 3 3 0 0 0-3 3 1 1 0 0 1-2 0 3 3 0 0 0-3-3 1 1 0 0 1 0-2zm4 2a5 5 0 0 1 1-1 5 5 0 0 1-1-1 5 5 0 0 1-1 1 5 5 0 0 1 1 1Zm25 10.6v18.6a3 3 0 0 1-2 2.8l-6 2.3V13.2l6.2 2.7a3 3 0 0 1 1.8 2.7Zm-2 .4a1 1 0 0 0-2 0v7a1 1 0 0 0 2 0zm0 11a1 1 0 0 0-2 0v2a1 1 0 0 0 2 0zm10-1a1 1 0 0 1-1-1V0h2v28a1 1 0 0 1-1 1z&#39;/%3E%3Cpath d=&#39;M49 28a3 3 0 0 0 6 0v-7h3v14H46V21h3zM34 12.3v30.8l-4 1.5V10.5zM28 17v22a12 12 0 0 1 0-22Z&#39;/%3E%3C/svg%3E&#34;);
+    --complete-icon: url(&#34;data:image/svg+xml;charset=utf8,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 90 90&#39;%3E%3Cpath d=&#39;M45 0a45 45 0 1 0 0 90 45 45 0 0 0 0-90Zm18.5 26.7a6.2 6.2 0 0 1 4.4 10.6l-24 24a6.2 6.2 0 0 1-5 2.7 6.2 6.2 0 0 1-5.2-2.7L22.1 49.7a6.2 6.2 0 0 1 4.3-10.6 6.2 6.2 0 0 1 4.4 1.9l8 8 20.4-20.4a6.2 6.2 0 0 1 4.3-1.9z&#39;/%3E%3C/svg%3E&#34;);
+}
+
+.series-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(10.5rem + 1.75vw),1fr));
+    gap: .75rem;
+    margin-block: 1.325rem 2.25rem;
+    clear: both;
+}
+
+.series-block {
+    --box-accent: inherit;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    font-size: .75em;
+    text-align: center;
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 0.325rem rgb(0 0 0 / 0.25);
+}
+.series-block.collaboration { --box-accent: #3d8554; }
+
+.series-block .title {
+    display: flex;
+    font-weight: bold;
+    font-size: 1.275em;
+}
+.series-block .title a {
+    display: grid;
+    align-items: center;
+    flex-grow: 1;
+    padding: .425rem .5rem;
+}
+
+.series-block.reviewers-spotlight .title { background-color: rgb(var(--spotlight-color)/0.075); }
+.series-block.featured .title { background-color: rgb(var(--feature-color)/0.1); }
+.series-block:where(.featured, .reviewers-spotlight) .title::after,
+.large :where(.featured, .reviewers-spotlight) h3::after,
+.large :where(._complete) h3::before {
+    content: &#34;&#34;;
+    display: block;
+    min-width: 1.25rem;
+    min-height: 1.25rem;
+    margin-inline-end: .5rem;
+    -webkit-mask: var(--_icon) center no-repeat;
+    mask: var(--_icon) center no-repeat;
+    -webkit-mask-size: contain;
+    mask-size: contain;
+}
+.reviewers-spotlight .title::after,
+.large :where(.reviewers-spotlight) h3::after {
+    min-width: 2rem;
+    --_icon: var(--spotlight-icon);
+    background-color: rgb(var(--spotlight-color));
+}
+.featured .title::after,
+.large :where(.featured) h3::after {
+    --_icon: var(--feature-icon);
+    background-color: rgb(var(--feature-color));
+}
+
+.large :where(._complete) h3::before {
+    --_icon: var(--complete-icon);
+    order: 2;
+    margin: 0;
+    background-color: currentColor;
+}
+
+/*---------------------------*/
+
+.series-block .metadata {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 1.125em;
+    border-top: solid 0.05rem rgb(0 0 0/.1);
+}
+.series-block .metadata div {
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+    padding: .425em;
+}
+
+.series-block .footer {
+    display: flex;
+    justify-content: end;
+    box-shadow: inset 0 -0.325rem 0 var(--box-accent);
+}
+.series-block .footer::before {
+    content: &#34;&#34;;
+    display: block;
+    width: 1.75em;
+    background: var(--box-accent);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    margin-inline-end: -0.05em;
+}
+
+.series-block .footer :is(.printuser, .co-au) {
+    color: #fff9;
+    display: inline-flex;
+    align-items: center;
+    padding: .225em .325em;
+    background: var(--box-accent);
+}
+.series-block .footer .printuser::before {
+    content: &#34;by&#34;;
+    padding-inline-end: .425ch;
+}
+.series-block .footer a { color: #fff; }
+
+.series-block .footer .co-au {
+    padding-inline-start: 0;
+    display: none;
+}
+.series-block.co-authored .footer .co-au { display: inline-flex; }
+
+.series-block .footer .deleted img { display: none; }
+
+.series-wrapper .pager {
+    grid-column: 1/-1;
+    border-bottom: solid 0.175rem var(--box-accent);
+}
+
+/*---------------------------*/
+
+.series-wrapper.large {
+    grid-template-columns: repeat(auto-fill, minmax(16.5rem,1fr));
+}
+
+.large .series-block {
+    --link-color: #b01;
+    display: flex;
+    gap: .475rem;
+    flex-direction: column;
+    padding-block-start: .5rem;
+    font-size: .85em;
+}
+.large .series-block &gt; img {
+    align-self: center;
+    height: 4.75rem !important;
+}
+.large h3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    font-size: 1.425em;
+    letter-spacing: initial;
+    padding-inline: .675rem;
+    margin: 0;
+    color: currentColor;
+}
+.large .series-block h3::after { margin: 0; }
+.large .series-block h3 &gt; span { flex-grow: 1; }
+
+.large .series-block .blurb {
+    flex-grow: 1;
+    padding-inline: 1.125em;
+    border-block-start: solid 0.05rem #ccc9;
+    text-align: start;
+}
+.large :is(.blurb, h3) a {
+    color: var(--link-color);
+}
+
+.tag-lead {
+    display: flex;
+    justify-content: end;
+    box-shadow: inset 0 -0.325rem 0 var(--box-accent);
+    font-size: .775em;
+    font-style: italic;
+    margin-block-start: -.5rem;
+}
+.tag-lead::before {
+    content: &#34;&#34;;
+    display: block;
+    width: 1.75em;
+    background: var(--box-accent);
+    clip-path: polygon(100% 0, 100% 100%, 0 100%);
+    margin-inline-end: -0.05em;
+}
+.tag-lead a {
+    display: block;
+    padding: .225em .5em;
+    padding-inline-start: .125em;
+    color: #fff;
+    font-weight: bold;
+    background-color: var(--box-accent);
+}
+.tag-lead a::before {
+    content: &#34;See all works tagged&#34;;
+    display: inline-block;
+    padding-inline-end: .425ch;
+    color: #fff9;
+    font-weight: normal;
 }
 [[/module]]
 
-[[div class=&#34;content-panel standalone content-row&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-Sắp xếp theo bảng chữ cái
-[[/div]]
 
-[[div class=&#34;content-type-description-2&#34;]]
 
-[[table style=&#34;width: 100%;&#34;]]
-[[row style=&#34;font-weight: bold; color: #fff; background-color: #666;&#34;]]
-[[cell style=&#34;padding: 0 2px; width: 25%;&#34;]]
-Hub
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; width: 18%; text-align: center;&#34;]]
-Người tạo
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; text-align: center;&#34;]]
-Trích đoạn
-[[/cell]]
-[[/row]]
-[[/table]]
 
-[[/div]]
 
-[[div class=&#34;content-type-description&#34;]]
+[[include :scp-wiki:component:license-box]]
+=====
+&gt; **Name:** Spotlight
+&gt; **Author:** Smalllike
+&gt; **License:** CC BY 3.0
+&gt; **Source Link:** [https://thenounproject.com/icon/spotlight-2163360/ Noun Project]
 
-[[module ListPages order=&#34;title&#34; prependLine=&#34;[[include component:listpages-hubs]]&#34; perPage=&#34;30&#34; appendLine=&#34;[[/table]]&#34; separate=&#34;false&#34; range=&#34;others&#34; tags=&#34;_hub-truyện-vn, -cuộc-thi, -cuộc-thi-vn, -_hub-truyện&#34;]]
-[[row]]
-[[cell style=&#34;vertical-align: top;&#34;]]
-%%title_linked%%
-[[/cell]]
-[[cell style=&#34;vertical-align: top; text-align: left;&#34;]]
-%%created_by%%
-[[/cell]]
-[[cell style=&#34;vertical-align: top; text-align: left;&#34;]]
-%%preview(53)%%
-[[/cell]]
-[[/row]]
-[[/module]]
+&gt; **Name:** Star
+&gt; **Author:** ratubilqis1986
+&gt; **License:** CC BY 3.0
+&gt; **Source Link:** [https://thenounproject.com/icon/star-5480646/ Noun Project]
 
-[[/div]]
-[[/div]]</textarea></pre>
+&gt; **Name:** Check Mark
+&gt; **Author:** Dan Craggs
+&gt; **License:** CC BY 3.0
+&gt; **Source Link:** [https://thenounproject.com/icon/check-mark-189703/ Noun Project]
+=====
+[[include :scp-wiki:component:license-box-end]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:15.654437.</em>
+    <em>Last updated 2024-02-07 18:30:40.468786.</em>
   
 </div>
 </body>

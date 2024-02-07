@@ -29,25 +29,457 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>:root {
-    /* REDMODE */
-    --basalt-UI-dark-palette: 50, 45, 45;
-    --basalt-bright-element-color: 215, 40, 40;
-    --basalt-primary-color: 15, 10, 12;
-    --basalt-secondary-color: 40, 20, 23;
-    --basalt-tertiary-color: 50, 40, 40;
-    --general-border-color: 80, 70, 70;
+          <pre><code>
+    /*---------------------*/
+    /*---- BASALT VARS ----*/
+    /*---------------------*/
+
+    --basalt-overtone: 10, 10, 11;
+    --basalt-undertone: var(--basalt-bright-element-color);
+    --basalt-UI-dark-palette: 50, 50, 51;
+    --basalt-bright-element-color: 150, 24, 43;
+    --basalt-dark-element-color: 105, 17, 30;
+    --basalt-alternate-color: 221, 119, 17;
+    --basalt-primary-color: 252, 252, 252;
+    --basalt-secondary-color: 240, 240, 244;
+    --basalt-tertiary-color: 229, 229, 238;
+    --basalt-main-text-color: 35, 35, 38;
+
+    --ACS-font: var(--header-font);
+    --basalt-th-background-color: var(--basalt-UI-dark-palette);
+    --basalt-th-text-color: var(--basalt-light-text-color);
+    --image-caption-text-color: var(--basalt-main-text-color);
+    --authorbox-background-color: var(--basalt-primary-color);
+    --floatbox-background-color: var(--basalt-secondary-color);
+    --document-background-color: 253, 253, 253;
+    --darkdocument-background-color: 30, 30, 35;
+
+    --basalt-th-background-color: var(--basalt-UI-dark-palette);
+    --basalt-th-text-color: var(--basalt-light-text-color);
+    --ACS-font: var(--header-font);
+    --authorbox-background-color: var(--basalt-primary-color);
+    --floatbox-background-color: var(--basalt-secondary-color);
+    --document-background-color: 253, 253, 253;
+    --darkdocument-background-color: 30, 30, 35;
+    --edit-area-ancillary-text-color: var(--basalt-main-text-color);
+
+    --header-drop-shadow-opacity: 0.1;
+    --window-border-radius: 8px;
+}
+
+span:is(.bigtext, .bt) {
+    font-family: var(--header-font);
+    font-weight: bold;
+}
+
+#page-content div:is(.document, .darkdocument) {
+    max-width: 45rem;
+}
+
+div:is(.document, .darkdocument) {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.5em;
+    padding: 1.5rem;
+    position: relative;
+    --posX: -20vw;
+}
+
+div.document {
+    background-color: 253, 253, 253;
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.2);
+    color: rgb(50, 50, 53);
+}
+
+div.darkdocument {
+    background-color: 30, 30, 35;
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.9);
+    color: rgb(195, 195, 200);
+}
+
+div:is(.document, .darkdocument)::before,
+div:is(.document, .darkdocument)::after {
+    content: &#34;&#34;;
+    height: 98%;
+    position: absolute;
+    width: 98%;
+    z-index: -1;
+}
+
+div:is(.document, .darkdocument)::before {
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+
+div:is(.document, .darkdocument)::after {
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+
+div:is(.document)::before,
+div:is(.document)::after {
+    background-color: rgb(var(--document-background-color));
+}
+
+div:is(.darkdocument)::before,
+div:is(.darkdocument)::after {
+    background-color: rgb(var(--darkdocument-background-color));
+    opacity: 90%;
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.1);
+}
+
+div.document::after {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.05);
+}
+
+div.darkdocument::before {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.9);
+}
+
+div.darkdocument::after {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.05);
+}
+
+@media only screen and (max-width: 1020px) {
+
+    div:is(.document, .darkdocument)::before,
+    div:is(.document, .darkdocument)::after {
+     display: none;
+    }
+}
+
+:is(div.blockquote, blockquote) {
+    color: rgb(var(--basalt-main-text-color));
+    overflow: auto;
+}
+
+:is(div.blockquote, blockquote):has(div.floatbox) {
+    overflow: unset;
+}
+
+#page-content div.notation {
+    max-width: 45rem;
+}
+
+div.notation {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding-inline: 1.1rem;
+    padding-block: 0.9rem;
+    background-color: rgb(var(--basalt-secondary-color));
+    border-left: solid 0.25rem rgb(var(--general-border-color));
+    border-right: solid 0.25rem rgb(var(--general-border-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div.modal {
+    max-width: 57rem;
+}
+
+div.modal {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.5rem;
+    background-color: rgb(var(--basalt-primary-color));
+    border: solid 0.2rem rgb(var(--general-border-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div.smallmodal {
+    max-width: 47rem;
+}
+
+div.smallmodal {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding-inline: 1rem;
+    padding-block: 0.2rem;
+    background-color: rgb(var(--basalt-primary-color));
+    border: solid 0.15rem rgb(var(--general-border-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div:is(.jotting, .transcript) {
+    max-width: 42rem;
+}
+
+div:is(.jotting, .transcript) {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.2rem;
+    background-color: rgb(var(--basalt-secondary-color));
+    border: dashed 0.15rem rgb(var(--general-border-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div.papernote {
+    max-width: 30rem;
+}
+
+div.papernote {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding: 1rem 2rem;
+    background-color: rgb(var(--basalt-tertiary-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div:is(.document, .darkdocument) {
+    max-width: 45rem;
+}
+
+div:is(.document, .darkdocument) {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.5em;
+    padding: 1.5rem;
+    position: relative;
+    --posX: -20vw;
+}
+
+div.document {
+    background-color: rgb(var(--document-background-color));
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.2);
+    color: rgb(50, 50, 53);
+}
+
+div.darkdocument {
+    background-color: rgb(var(--darkdocument-background-color));
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.9);
+    color: rgb(195, 195, 200);
+}
+
+div:is(.document, .darkdocument)::before,
+div:is(.document, .darkdocument)::after {
+    content: &#34;&#34;;
+    height: 98%;
+    position: absolute;
+    width: 98%;
+    z-index: -1;
+}
+
+div:is(.document, .darkdocument)::before {
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+
+div:is(.document, .darkdocument)::after {
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+
+div:is(.document)::before,
+div:is(.document)::after {
+    background-color: rgb(var(--document-background-color));
+}
+
+div:is(.darkdocument)::before,
+div:is(.darkdocument)::after {
+    background-color: rgb(var(--darkdocument-background-color));
+    opacity: 90%;
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.1);
+}
+
+div.document::after {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.05);
+}
+
+div.darkdocument::before {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.9);
+}
+
+div.darkdocument::after {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.05);
+}
+
+@media only screen and (max-width: 1020px) {
+
+    div:is(.document, .darkdocument)::before,
+    div:is(.document, .darkdocument)::after {
+     display: none;
+    }
+}
+
+div[class$=&#34;_memo&#34;] {
+    background: var(--memo-logo) rgba(var(--memo-color), 1);
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 4rem;
+    margin-inline: auto;
+    margin-block: 2rem;
+    padding-inline: 20px;
+    padding-block: 10px;
+    border: solid 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+div[class$=&#34;_memo&#34;]::before {
+    content: var(--memo-heading);
+    font-family: var(--UI-font);
+    font-weight: 900;
+    font-size: 1.3em;
+    text-align: center;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5em;
+}
+
+div.raisa_memo {
+    --memo-heading: &#34;NOTICE FROM THE RECORDS AND INFORMATION SECURITY ADMINISTRATION&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/RAISA_LIGHTLOGO.png);
+    --memo-color: 255, 243, 173;
+}
+
+div.classification_memo {
+    --memo-heading: &#34;CLASSIFICATION COMMITTEE MEMORANDUM&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/CLASSIFICATION_LIGHTLOGO.png);
+    --memo-color: 237, 245, 243;
+}
+
+div.ettra_memo {
+    --memo-heading: &#34;NOTICE FROM THE EMERGENT THREAT TACTICAL RESPONSE AUTHORITY&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/ETTRA_LIGHTLOGO.png);
+    --memo-color: 245, 215, 215;
+}
+
+div.ethics_memo {
+    --memo-heading: &#34;ETHICS COMMITTEE MEMORANDUM&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/ETHICS_LIGHTLOGO.png);
+    --memo-color: 255, 219, 196;
+}
+
+div.temporal_memo {
+    --memo-heading: &#34;TEMPORAL ANOMALIES DEPARTMENT&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/DELTA_T_LIGHTLOGO.png);
+    --memo-color: 255, 255, 255;
+}
+
+div.overwatch_memo {
+    --memo-heading: &#34;OVERWATCH COMMAND&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/O5_LIGHTLOGO.png);
+    --memo-color: 227, 227, 227;
+}
+
+div.miscomm_memo {
+    --memo-heading: &#34;NOTICE FROM THE DEPARTMENT OF MISCOMMUNICATIONS&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/MISCOMM_LIGHTLOGO.png);
+    --memo-color: 238, 237, 250;
+}
+
+.table1 {
+    --basalt-th-background-color: var(--one-color);
+}
+
+.table2 {
+    --basalt-th-background-color: var(--two-color);
+}
+
+.table3 {
+    --basalt-th-background-color: var(--three-color);
+    --basalt-th-text-color: var(--basalt-main-text-color);
+}
+
+.table4 {
+    --basalt-th-background-color: var(--four-color);
+}
+
+.table5 {
+    --basalt-th-background-color: var(--five-color);
+}
+
+.table6 {
+    --basalt-th-background-color: var(--six-color);
+}
+
+div:is(.table1, .table2, .table3, .table4, .table5, .table6) .scp-image-block {
+    border-bottom-color: rgba(var(--basalt-th-background-color), 0.75);
+}
+
+div.tableb :is(#page-content table:not(.form), table.wiki-content-table) {
+    border-collapse: separate;
+    border-spacing: 4px;
+}
+
+span:is(.bigtext, .bt) {
+    font-family: var(--header-font);
+    font-weight: bold;
+}
+
+span:is(.specialtext, .st) {
+    font-family: var(--UI-font);
+    font-weight: bold;
+}
+
+:is(.table1, .table2, .table3, .table4, .table5, .table6) span:is(.st, .specialtext) {
+    color: rgb(var(--basalt-th-background-color));
+}
+
+#page-content div.floatbox {
+    background-color: rgb(var(--floatbox-background-color));
+    float: left;
+    max-width: calc(var(--main-content-width)/2.25);
+    box-sizing: border-box;
+    margin: 0.25rem 1.25rem;
+    margin-left: clamp(calc(var(--main-content-width)/-4.5), calc((87.5vw - 95%)/-2), 0rem);
+    padding-inline: 1.2rem;
+    padding-block: 0.5rem;
+    font-size: 0.9125em;
+    border-radius: 7px;
+    border: solid 0.12rem rgba(var(--general-border-color), 0.4);
+}
+
+#page-content div.floatbox.right {
+    float: right;
+    margin-left: 1.25rem;
+    margin-right: clamp(calc(var(--main-content-width)/-4.5), calc((87.5vw - 95%)/-2), 0rem);
+}
+
+@media only screen and (max-width: 640px) {
+    #page-content div:is(.floatbox, .floatbox.right) {
+     float: none;
+     margin: 0.5rem auto;
+     width: 100%;
+    }
+}
+
+:is(.table-no-border, .authorbox) td {
+    border-color: transparent !important;
+}
+
+/*--------------*/
+/*---- MISC ----*/
+/*--------------*/
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+
+body,
+li,
+p {
+    line-height: 1.55;
 }</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>:root {
-.namethree {-webkit-filter: blur(3px);
-filter: blur(3px);
-}
-}
-.fncon {
-    background: #424248;</code></pre>
         </li>
       
     </ul>
@@ -56,7 +488,107 @@ filter: blur(3px);
     <ul class="inline-styles">
       
         <li>
-          <pre><code>text-align: center; margin-top: -20px;</code></pre>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:black</code></pre>
         </li>
       
     </ul>
@@ -69,14 +601,8 @@ filter: blur(3px);
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+    <a href="https://scp-wiki.wikidot.com/credit:start" target="_blank"><code>credit:start</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -86,14 +612,8 @@ filter: blur(3px);
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:betterfootnotes" target="_blank"><code>:scp-wiki:component:betterfootnotes</code></a>
+    <a href="https://scp-wiki.wikidot.com/credit:end" target="_blank"><code>credit:end</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:betterfootnotes.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -104,31 +624,7 @@ filter: blur(3px);
     <ul class="css-classes">
       
         <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
           <pre><code>darkdocument</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
         </li>
       
         <li>
@@ -148,50 +644,6 @@ filter: blur(3px);
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bigtext</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
           <pre><code>blockquote</code></pre>
         </li>
       
@@ -216,161 +668,590 @@ filter: blur(3px);
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>bigtext</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:basalt darkmode=a|hidetitle=a]]
-
+    <pre><textarea class="page-source" readonly>[[include credit:start]]
+**Titre original :** SCP-6655 - Testing Will Continue.
+**Auteurs :** [[user Limeyy]]
+**Traducteur :** [[user DrJohannes]]
+**Date de publication originale :** 26 octobre 2021
+[[include credit:end]]
 [[module CSS]]
-:root {
-    /* REDMODE */
-    --basalt-UI-dark-palette: 50, 45, 45;
-    --basalt-bright-element-color: 215, 40, 40;
-    --basalt-primary-color: 15, 10, 12;
-    --basalt-secondary-color: 40, 20, 23;
-    --basalt-tertiary-color: 50, 40, 40;
-    --general-border-color: 80, 70, 70;
+
+    /*---------------------*/
+    /*---- BASALT VARS ----*/
+    /*---------------------*/
+
+    --basalt-overtone: 10, 10, 11;
+    --basalt-undertone: var(--basalt-bright-element-color);
+    --basalt-UI-dark-palette: 50, 50, 51;
+    --basalt-bright-element-color: 150, 24, 43;
+    --basalt-dark-element-color: 105, 17, 30;
+    --basalt-alternate-color: 221, 119, 17;
+    --basalt-primary-color: 252, 252, 252;
+    --basalt-secondary-color: 240, 240, 244;
+    --basalt-tertiary-color: 229, 229, 238;
+    --basalt-main-text-color: 35, 35, 38;
+
+    --ACS-font: var(--header-font);
+    --basalt-th-background-color: var(--basalt-UI-dark-palette);
+    --basalt-th-text-color: var(--basalt-light-text-color);
+    --image-caption-text-color: var(--basalt-main-text-color);
+    --authorbox-background-color: var(--basalt-primary-color);
+    --floatbox-background-color: var(--basalt-secondary-color);
+    --document-background-color: 253, 253, 253;
+    --darkdocument-background-color: 30, 30, 35;
+
+    --basalt-th-background-color: var(--basalt-UI-dark-palette);
+    --basalt-th-text-color: var(--basalt-light-text-color);
+    --ACS-font: var(--header-font);
+    --authorbox-background-color: var(--basalt-primary-color);
+    --floatbox-background-color: var(--basalt-secondary-color);
+    --document-background-color: 253, 253, 253;
+    --darkdocument-background-color: 30, 30, 35;
+    --edit-area-ancillary-text-color: var(--basalt-main-text-color);
+
+    --header-drop-shadow-opacity: 0.1;
+    --window-border-radius: 8px;
+}
+
+span:is(.bigtext, .bt) {
+    font-family: var(--header-font);
+    font-weight: bold;
+}
+
+#page-content div:is(.document, .darkdocument) {
+    max-width: 45rem;
+}
+
+div:is(.document, .darkdocument) {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.5em;
+    padding: 1.5rem;
+    position: relative;
+    --posX: -20vw;
+}
+
+div.document {
+    background-color: 253, 253, 253;
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.2);
+    color: rgb(50, 50, 53);
+}
+
+div.darkdocument {
+    background-color: 30, 30, 35;
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.9);
+    color: rgb(195, 195, 200);
+}
+
+div:is(.document, .darkdocument)::before,
+div:is(.document, .darkdocument)::after {
+    content: &#34;&#34;;
+    height: 98%;
+    position: absolute;
+    width: 98%;
+    z-index: -1;
+}
+
+div:is(.document, .darkdocument)::before {
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+
+div:is(.document, .darkdocument)::after {
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+
+div:is(.document)::before,
+div:is(.document)::after {
+    background-color: rgb(var(--document-background-color));
+}
+
+div:is(.darkdocument)::before,
+div:is(.darkdocument)::after {
+    background-color: rgb(var(--darkdocument-background-color));
+    opacity: 90%;
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.1);
+}
+
+div.document::after {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.05);
+}
+
+div.darkdocument::before {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.9);
+}
+
+div.darkdocument::after {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.05);
+}
+
+@media only screen and (max-width: 1020px) {
+
+    div:is(.document, .darkdocument)::before,
+    div:is(.document, .darkdocument)::after {
+     display: none;
+    }
+}
+
+:is(div.blockquote, blockquote) {
+    color: rgb(var(--basalt-main-text-color));
+    overflow: auto;
+}
+
+:is(div.blockquote, blockquote):has(div.floatbox) {
+    overflow: unset;
+}
+
+#page-content div.notation {
+    max-width: 45rem;
+}
+
+div.notation {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding-inline: 1.1rem;
+    padding-block: 0.9rem;
+    background-color: rgb(var(--basalt-secondary-color));
+    border-left: solid 0.25rem rgb(var(--general-border-color));
+    border-right: solid 0.25rem rgb(var(--general-border-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div.modal {
+    max-width: 57rem;
+}
+
+div.modal {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.5rem;
+    background-color: rgb(var(--basalt-primary-color));
+    border: solid 0.2rem rgb(var(--general-border-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div.smallmodal {
+    max-width: 47rem;
+}
+
+div.smallmodal {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding-inline: 1rem;
+    padding-block: 0.2rem;
+    background-color: rgb(var(--basalt-primary-color));
+    border: solid 0.15rem rgb(var(--general-border-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div:is(.jotting, .transcript) {
+    max-width: 42rem;
+}
+
+div:is(.jotting, .transcript) {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.2rem;
+    background-color: rgb(var(--basalt-secondary-color));
+    border: dashed 0.15rem rgb(var(--general-border-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div.papernote {
+    max-width: 30rem;
+}
+
+div.papernote {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.4rem;
+    padding: 1rem 2rem;
+    background-color: rgb(var(--basalt-tertiary-color));
+    color: rgb(var(--basalt-main-text-color));
+}
+
+#page-content div:is(.document, .darkdocument) {
+    max-width: 45rem;
+}
+
+div:is(.document, .darkdocument) {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1.5em;
+    padding: 1.5rem;
+    position: relative;
+    --posX: -20vw;
+}
+
+div.document {
+    background-color: rgb(var(--document-background-color));
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.2);
+    color: rgb(50, 50, 53);
+}
+
+div.darkdocument {
+    background-color: rgb(var(--darkdocument-background-color));
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.9);
+    color: rgb(195, 195, 200);
+}
+
+div:is(.document, .darkdocument)::before,
+div:is(.document, .darkdocument)::after {
+    content: &#34;&#34;;
+    height: 98%;
+    position: absolute;
+    width: 98%;
+    z-index: -1;
+}
+
+div:is(.document, .darkdocument)::before {
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+
+div:is(.document, .darkdocument)::after {
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+
+div:is(.document)::before,
+div:is(.document)::after {
+    background-color: rgb(var(--document-background-color));
+}
+
+div:is(.darkdocument)::before,
+div:is(.darkdocument)::after {
+    background-color: rgb(var(--darkdocument-background-color));
+    opacity: 90%;
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.1);
+}
+
+div.document::after {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.05);
+}
+
+div.darkdocument::before {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.9);
+}
+
+div.darkdocument::after {
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 10, 0.8), 0px 6px 15px -4px rgba(0, 0, 7, 0.05);
+}
+
+@media only screen and (max-width: 1020px) {
+
+    div:is(.document, .darkdocument)::before,
+    div:is(.document, .darkdocument)::after {
+     display: none;
+    }
+}
+
+div[class$=&#34;_memo&#34;] {
+    background: var(--memo-logo) rgba(var(--memo-color), 1);
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    min-height: 4rem;
+    margin-inline: auto;
+    margin-block: 2rem;
+    padding-inline: 20px;
+    padding-block: 10px;
+    border: solid 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+div[class$=&#34;_memo&#34;]::before {
+    content: var(--memo-heading);
+    font-family: var(--UI-font);
+    font-weight: 900;
+    font-size: 1.3em;
+    text-align: center;
+    margin: 0 auto 1rem auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 0.5em;
+}
+
+div.raisa_memo {
+    --memo-heading: &#34;NOTICE FROM THE RECORDS AND INFORMATION SECURITY ADMINISTRATION&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/RAISA_LIGHTLOGO.png);
+    --memo-color: 255, 243, 173;
+}
+
+div.classification_memo {
+    --memo-heading: &#34;CLASSIFICATION COMMITTEE MEMORANDUM&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/CLASSIFICATION_LIGHTLOGO.png);
+    --memo-color: 237, 245, 243;
+}
+
+div.ettra_memo {
+    --memo-heading: &#34;NOTICE FROM THE EMERGENT THREAT TACTICAL RESPONSE AUTHORITY&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/ETTRA_LIGHTLOGO.png);
+    --memo-color: 245, 215, 215;
+}
+
+div.ethics_memo {
+    --memo-heading: &#34;ETHICS COMMITTEE MEMORANDUM&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/ETHICS_LIGHTLOGO.png);
+    --memo-color: 255, 219, 196;
+}
+
+div.temporal_memo {
+    --memo-heading: &#34;TEMPORAL ANOMALIES DEPARTMENT&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/DELTA_T_LIGHTLOGO.png);
+    --memo-color: 255, 255, 255;
+}
+
+div.overwatch_memo {
+    --memo-heading: &#34;OVERWATCH COMMAND&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/O5_LIGHTLOGO.png);
+    --memo-color: 227, 227, 227;
+}
+
+div.miscomm_memo {
+    --memo-heading: &#34;NOTICE FROM THE DEPARTMENT OF MISCOMMUNICATIONS&#34;;
+    --memo-logo: url(https://scp-wiki.wikidot.com/local--files/theme:basalt/MISCOMM_LIGHTLOGO.png);
+    --memo-color: 238, 237, 250;
+}
+
+.table1 {
+    --basalt-th-background-color: var(--one-color);
+}
+
+.table2 {
+    --basalt-th-background-color: var(--two-color);
+}
+
+.table3 {
+    --basalt-th-background-color: var(--three-color);
+    --basalt-th-text-color: var(--basalt-main-text-color);
+}
+
+.table4 {
+    --basalt-th-background-color: var(--four-color);
+}
+
+.table5 {
+    --basalt-th-background-color: var(--five-color);
+}
+
+.table6 {
+    --basalt-th-background-color: var(--six-color);
+}
+
+div:is(.table1, .table2, .table3, .table4, .table5, .table6) .scp-image-block {
+    border-bottom-color: rgba(var(--basalt-th-background-color), 0.75);
+}
+
+div.tableb :is(#page-content table:not(.form), table.wiki-content-table) {
+    border-collapse: separate;
+    border-spacing: 4px;
+}
+
+span:is(.bigtext, .bt) {
+    font-family: var(--header-font);
+    font-weight: bold;
+}
+
+span:is(.specialtext, .st) {
+    font-family: var(--UI-font);
+    font-weight: bold;
+}
+
+:is(.table1, .table2, .table3, .table4, .table5, .table6) span:is(.st, .specialtext) {
+    color: rgb(var(--basalt-th-background-color));
+}
+
+#page-content div.floatbox {
+    background-color: rgb(var(--floatbox-background-color));
+    float: left;
+    max-width: calc(var(--main-content-width)/2.25);
+    box-sizing: border-box;
+    margin: 0.25rem 1.25rem;
+    margin-left: clamp(calc(var(--main-content-width)/-4.5), calc((87.5vw - 95%)/-2), 0rem);
+    padding-inline: 1.2rem;
+    padding-block: 0.5rem;
+    font-size: 0.9125em;
+    border-radius: 7px;
+    border: solid 0.12rem rgba(var(--general-border-color), 0.4);
+}
+
+#page-content div.floatbox.right {
+    float: right;
+    margin-left: 1.25rem;
+    margin-right: clamp(calc(var(--main-content-width)/-4.5), calc((87.5vw - 95%)/-2), 0rem);
+}
+
+@media only screen and (max-width: 640px) {
+    #page-content div:is(.floatbox, .floatbox.right) {
+     float: none;
+     margin: 0.5rem auto;
+     width: 100%;
+    }
+}
+
+:is(.table-no-border, .authorbox) td {
+    border-color: transparent !important;
+}
+
+/*--------------*/
+/*---- MISC ----*/
+/*--------------*/
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+
+body,
+li,
+p {
+    line-height: 1.55;
 }
 [[/module]]
+**Objet n^^o^^ :** SCP-6655
 
-[[=]]
-[[module Rate]]
-[[/=]]
-[[div style=&#34;text-align: center; margin-top: -20px;&#34;]]
-[[size 80%]]##757575|by Limeyy##[[/size]]
-[[/div]]
-----
-[[include :scp-wiki:component:betterfootnotes]]
-[[module CSS]]
-:root {
-.namethree {-webkit-filter: blur(3px);
-filter: blur(3px);
-}
-}
-.fncon {
-    background: #424248;
-[[/module]]
-[[include :scp-wiki:component:anomaly-class-bar-source
+**Classe :** Keter
 
-|item-number= SCP-6655
+**Classe de Disruption :** Ekhi
 
-|clearance= 5
+**Procédures de Confinement Spéciales Archivées :** En attente. Les informations concernant SCP-6655 doivent être limitées au Site-55, qui a été placé en quarantaine noosphérique et verrouillé jusqu&#39;à nouvel ordre.
 
-|container-class= keter
+**Description Archivée :** SCP-6655 est un danger-info conceptuel hautement contagieux découvert par le Chercheur en Mémétique Morgan Riley le 10/03/2017. Bien que les spécificités dudit concept soient encore activement à l&#39;étude, SCP-6655 est extrêmement antithétique à la pensée humaine conventionnelle. Pour plus de détails, consulter le rapport de test.
 
-|disruption-class= ekhi
-
-|risk-class= critical
-
-]]
-[[span class=&#34;bigtext&#34;]]**Archived Special Containment Procedures:**[[/span]] Pending. Information regarding SCP-6655 is to be restricted to Site-55, which has undergone noospheric quarantine and placed under lockdown until further notice.
-
-[[span class=&#34;bigtext&#34;]]**Archived Description:**[[/span]] SCP-6655 is a highly contagious, infohazardous concept discovered by Memetics Researcher Morgan Riley on 3/10/2017. While the specifics are still under active research, SCP-6655 is extremely antithetical to conventional human thought. For further details, consult the testing log.
-
-[[span class=&#34;bigtext&#34;]]**Addendum:**[[/span]] Archived Testing log
+**Addendum :** Rapport de Test Archivé
 
 [[div class=&#34;darkdocument&#34;]]
-&gt; **Test Log 1**
+[[span style=&#34;color:black&#34;]]
+&gt; **Rapport de Test 1**
 &gt; 
-&gt; **Subject:** D-43724
+&gt; **Sujet :** D-43724
 &gt; 
-&gt; **Project lead:** Researcher Morgan Riley
+&gt; **Responsable du Projet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Procedure:** Subject introduced to SCP-6655 infected media and quarantined under standard information censor practices.
+&gt; **Procédure :** Sujet exposé à du média infecté par SCP-6655 et placé en quarantaine selon les pratiques standard de censure de l&#39;information.
 &gt; 
-&gt; **Results:** Within 6 hours, D-43724&#39;s communications became a vector for SCP-6655. After 24 hours, subject&#39;s behavior showed major deviations from known personality, including:
-&gt; * Decreased empathy
-&gt; * Increased proclivity for violent acts
-&gt; * Negligible attempts at self-preservation 
-&gt; * Incomprehensibility
+&gt; **Résultats :** En moins de 6 heures, toute communication avec D-43724 est devenue un vecteur de SCP-6655. Au bout de 24 heures, le comportement du sujet a commencé à présenter des déviations majeures par rapport à sa personnalité habituelle, notamment :
+&gt; * Une diminution de l&#39;empathie
+&gt; * Une propension accrue à commettre des actes violents
+&gt; * Une réduction des réflexes d&#39;auto-préservation 
+&gt; * Une compréhension réduite
 &gt; 
-&gt; After 48 hours, D-43724 was sedated and the test was terminated.
+&gt; Après 48 heures, D-43724 a été placé sous sédatif et le test a été interrompu.
+[[/span]]
 @@ @@
-&gt; **Test Log 2**
+&gt; [[span style=&#34;color:black&#34;]]**Rapport de Test 2**
 &gt; 
-&gt; **Subject:** D-43724
+&gt; **Sujet :** D-43724
 &gt; 
-&gt; **Project lead:** Researcher Morgan Riley
+&gt; **Responsable du Projet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Procedure:** Subject amnescitized to determine possible countermeasures to SCP-6655 infection.
+&gt; **Procédure :** Le sujet est amnésié pour identifier des contre-mesures possibles à l&#39;infection par SCP-6655.
 &gt; 
-&gt; **Results:** Conventional targeted amnestics failed to purge SCP-6655 symptoms from D-43724. Likewise, general amnestics capable of removing all memories after SCP-6655 infection also resulted in failure. 
+&gt; **Résultats :** Les amnésiants conventionnels ciblés n&#39;ont pas réussi à éliminer les symptômes de SCP-6655 chez D-43724. De même, les amnésiants généraux théoriquement capables de supprimer tous les souvenirs après une infection par SCP-6655 ont également été un échec.
 &gt; 
-&gt; After extensive testing, a mixture (hence referred to as RMD-6655) of Class D Amnestics, Class X Mnestics, Chlorpromazine and Lithium salts was successful in purging SCP-6655 from D-43724, although long term side-effects including severe photophobia, difficulty forming new memories, confusion, and insomnia make this inpractical as a treatment. The makeup of RMD-6655 can be requested by members of the Memetics Department.
+&gt; Après des tests approfondis, un mélange (désigné RMD-6655) d&#39;Amnésiants de Classe D, de Mnésiques de Classe X, de Chlorpromazine et de sels de Lithium a permis de faire disparaître SCP-6655 chez D-43724, bien que des effets secondaires à long terme, tels qu&#39;une photophobie sévère, des difficultés à créer de nouveaux souvenirs, de la confusion et de l&#39;insomnie, rendent ce traitement inapproprié. La composition exacte de RMD-6655 peut être demandée auprès des membres du Département de Mémétique.
+[[/span]]
 @@ @@
-&gt; **Test Log 3**
+&gt; [[span style=&#34;color:black&#34;]]**Rapport de Test 3**
 &gt; 
-&gt; **Subject:** Researcher Morgan Riley
+&gt; **Sujet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Project lead:** Researcher Morgan Riley
+&gt; **Responsable du Projet :** Chercheur Morgan Riley
 &gt; 
 &gt; 
-&gt; **Procedure:** Impromptu test. Subject amnescitized to determine possible countermeasures to SCP-6655 infection.
+&gt; **Procédure :** Test impromptu. Le sujet est amnésié pour identifier des contre-mesures possibles à l&#39;infection par SCP-6655.
 &gt; 
-&gt; **Results:** Following discovery of SCP-6655 infection during Test 1, Researcher Riley attempted to self medicate with a mixture of high-grade amnestics, mnestics, and mood stabilizing lithium salts. Experiment resulted in failure.
+&gt; **Résultats :** Après la découverte de son infection par SCP-6655 au cours du Test 1, le chercheur Riley a tenté de s&#39;auto-médicamenter à l&#39;aide d&#39;un mélange d&#39;amnésiants de haute qualité, de mnésiques et de sels de lithium stabilisant l&#39;humeur. L&#39;expérience s&#39;est soldée par un échec.
+[[/span]]
 @@ @@
-&gt; **Test Log 5**
+&gt; [[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 &gt; 
-&gt; **Subject:** Researcher Martha Smith
+&gt; **Sujet :** Chercheur Martha Smith
 &gt; 
-&gt; **Project lead:** Researcher Morgan Riley
+&gt; **Responsable du Projet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Procedure:** Subject introduced to SCP-6655 for research purposes.
+&gt; **Procédure :** Sujet exposé à SCP-6655 à des fins de recherche.
 &gt; 
-&gt; **Results:** Irrelevant.
+&gt; **Résultats :** Non pertinents.
+[[/span]]
 @@ @@
-= //[ ██ extraneous tests omitted]//
+= [[span style=&#34;color:black&#34;]]//[ ██ tests supplémentaires omis]//[[/span]]
 @@ @@
-&gt; [[span class=&#34;bigtext&#34;]]**Test Log 5**[[/span]]
+&gt; [[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 &gt; 
-&gt; **Subject:** Senior Researcher Michiko Nakajima
+&gt; **Sujet :** Chercheur Senior Michiko Nakajima
 &gt; 
-&gt; **Project lead:** Researcher Morgan Riley
+&gt; **Responsable du Projet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Procedure:** See Test Log 5.
+&gt; **Procédure :** Voir Rapport de Test 5.
 &gt; 
-&gt; **Results:** Irrelevant.
+&gt; **Résultats :** Non pertinents.
+[[/span]]
 @@ @@
-&gt; [[span class=&#34;bigtext&#34;]]**Test Log 5**[[/span]]
+&gt; [[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 &gt; 
-&gt; **Subject:** Senior Researcher Lucy Jones
+&gt; **Sujet :** Chercheur Senior Lucy Jones
 &gt; 
-&gt; **Project lead:** Researcher Morgan Riley
+&gt; **Responsable du Projet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Procedure:** See Test Log 5.
+&gt; **Procédure :** Voir Rapport de Test 5.
 &gt; 
-&gt; **Results:** Irrelevant.
+&gt; **Résultats :** Non pertinents.
+[[/span]]
 @@ @@
-= //[ ███ extraneous tests omitted]//
+= [[span style=&#34;color:black&#34;]]//[ ███ tests supplémentaires omis]//[[/span]]
 @@ @@
-&gt; [[span class=&#34;bigtext&#34;]]**Test Log 5**[[/span]]
+&gt; [[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 &gt; 
-&gt; **Subject:** Site Director Chol-Su Kim
+&gt; **Sujet :** Directeur de Site Chol-Su Kim
 &gt; 
-&gt; **Project lead:** Researcher Morgan Riley
+&gt; **Responsable du Projet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Procedure:** See Test Log 5.
+&gt; **Procédure :** Voir Rapport de Test 5.
 &gt; 
-&gt; **Results:** Irrelevant.
+&gt; **Résultats :** Non pertinents.
+[[/span]]
 [[/div]]
 @@ @@
 [[=]]
-+++ Following the dissolution of the Memetics Department and the recontainment of SCP-6655 by the Foundation Fifth Department, the above information is deemed irrelevant.
++++ Suite à la dissolution du Département de Mémétique et au re-confinement de SCP-6655 par le Cinquième Département de la Fondation, les informations ci-dessus sont considérées comme non pertinentes.
 [[/=]]
 @@ @@
 @@ @@
@@ -380,161 +1261,168 @@ filter: blur(3px);
 
 [[div class=&#34;darkdocument&#34;]]
 [[div class=&#34;blockquote&#34;]]
-[[span class=&#34;bigtext&#34;]]**Test Log 5**[[/span]]
+[[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 
-**Subject:** D-31255
+**Sujet :** D-31255
 
-**Project lead:** [[span class=&#34;bigtext&#34;]]Executive Site Administrator Chol-Su Kim[[/span]]
+**Responsable du Projet :** [[span class=&#34;bigtext&#34;]]Administratrice Exécutive du Site Chol-Su Kim[[/span]]
 
-**Procedure:** Stress test of Foundation Resources.
+[[span style=&#34;color:black&#34;]]**Procédure :** Test de résistance au stress du Personnel de la Fondation.
 
-**Results:** Subject treated with RMD-6655, causing immediate state of panic. Subject vomits and objects to Test 5, citing large piles of viscera inside the test chamber and coating the room&#39;s walls. The visceral build-up is noted to be far below that required to impede Test 5, and as such testing continues.
+**Résultats :** Le sujet est traité avec RMD-6655, ce qui provoque un état de panique immédiat. Le sujet vomit et s&#39;oppose au Test 5, citant d&#39;importants amas de viscères présents à l&#39;intérieur de la salle de test et recouvrant les murs de la pièce. Il est noté que l&#39;accumulation de viscères est largement inférieure au seuil qui empêcherait de réaliser le Test 5, et le test se poursuit donc.
 
-Testing continues.
+Les tests continuent.
 
-Approximately 33 hours later, testing concludes due to lack of viable Subject. Appropriate decontamination measures undertaken.
-
+Environ 33 heures plus tard, les tests s&#39;achèvent faute de sujet viable. Des mesures de décontamination appropriées sont prises.
+[[/span]]
 [[/div]]
 @@ @@
-&gt; [[span class=&#34;bigtext&#34;]]**Test Log 5**[[/span]]
+&gt; [[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 &gt; 
-&gt; **Subject:** Researcher Morgan Riley
+&gt; **Sujet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Project lead:** [[span class=&#34;bigtext&#34;]]Executive Site Administrator Chol-Su Kim[[/span]]
+&gt; **Responsable du Projet :** [[span class=&#34;bigtext&#34;]]Administratrice Exécutive du Site Chol-Su Kim[[/span]]
 &gt; 
-&gt; **Procedure:** Infliction of RMD-6655 to sever connection to SCP-6655
+&gt; [[span style=&#34;color:black&#34;]]**Procédure :** Application de RMD-6655 pour couper la connexion à SCP-6655
 &gt; 
-&gt; **Results:** Subject displays severe distress at surroundings for unknown reason, proceeding to vomit excessively before fainting. Research assistants administer stimulants to resuscitate subject, who enters a state of severe panic. 
+&gt; **Résultats :** Le sujet manifeste une grande détresse à l&#39;égard de son environnement pour une raison inconnue, puis se met à vomir excessivement avant de s&#39;évanouir. Les assistants de recherche administrent des stimulants pour réanimer le sujet, qui entre dans un état de sévère panique.
 &gt; 
-&gt; No further legible information could be gathered, and test was terminated. Subject returned to Foundation Employment following re-enlightenment.
+&gt; Aucune autre information utile n&#39;a pu être recueillie et le test a été interrompu. Le sujet a réintégré le Personnel de la Fondation après avoir de nouveau reçu l&#39;illumination.
+[[/span]]
 @@ @@
-&gt; **Test Log 1**
+&gt; [[span style=&#34;color:black&#34;]]**Rapport de Test 1**
 &gt; 
-&gt; **Subject:** Researcher Morgan Riley (Self)
+&gt; **Sujet :** Chercheur Morgan Riley (Moi-même)
 &gt; 
-&gt; **Project lead:** Researcher Morgan Riley
+&gt; **Responsable du Projet :** Chercheur Morgan Riley
 &gt; 
-&gt; **Procedure:** Exploration of long term suffering potential of RMD-6655 inflicted subjects via a daily application of Remedy.
+&gt; **Procédure :** Exploration du potentiel de souffrance à long terme des sujets traités avec RMD-6655 via une application quotidienne du Remède.
 &gt; 
-&gt; **Results:** Subject can barely even look at sunlight anymore. Memories come and go, subject cannot comprehensively put a mental timeline together. Several notable events are entirely missing. Whether this is due to trauma or RMD-6655 is unknown. Subject cannot sleep. Even if I could, the thought of the dreams make me sick. I need to get out of here.
+&gt; **Résultats :** Le sujet peut désormais à peine regarder la lumière du soleil. Sa mémoire est défaillante, le sujet ne pouvant pas reconstituer une chronologie mentale complète. Plusieurs événements notables sont totalement absents. On ignore si cela est dû à un traumatisme ou à RMD-6655. Le sujet ne peut plus dormir. Même si je le pouvais, l&#39;idée de rêver à nouveau de ces choses me rend malade. Il faut que je sorte d&#39;ici.
+[[/span]]
 @@ @@
 [[div class=&#34;blockquote&#34;]]
-**Test Log 2**
+[[span style=&#34;color:black&#34;]]**Rapport de Test 2**
 
-**Subject:** Morgan Riley (Me)
+**Sujet :** Morgan Riley (Moi)
 
-**Project lead:** Morgan Riley
+**Responsable du Projet :** Morgan Riley
 
-**Procedure:** Attempt to breach lockdown of Site-55.
+**Procédure :** Tentative de briser la quarantaine du Site-55.
  
-**Results:** There&#39;s no way out. Info quarantine has the site on lockdown and the elevator into the site&#39;s completely caved in. I&#39;m stuck here with //Them//.
+**Résultats :** Il n&#39;y a pas d&#39;issue. La quarantaine a complètement verrouillé le site et l&#39;ascenseur qui y conduit a été complètement détruit. Je suis coincée ici avec //Eux//.
+[[/span]]
 @@ @@
 [[/div]]
 @@ @@
 [[div class=&#34;blockquote&#34;]]
-[[span class=&#34;bigtext&#34;]]**Test Log 5**[[/span]]
+[[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 
-**Subject:** D-31247 to D-31254
+**Sujet :** D-31247 to D-31254
 
-**Project lead:** [[span class=&#34;bigtext&#34;]]Executive Site Administrator Chol-Su Kim[[/span]]
+**Responsable du Projet :** [[span class=&#34;bigtext&#34;]]Administratrice Exécutive du Site Chol-Su Kim[[/span]]
 
-**Procedure:** Testing of Procedure-47-Orún[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]__**Procedure-47-Orún**__
+[[span style=&#34;color:black&#34;]]**Procédure :** Test de la Procédure-47-Orún[[footnote]]__**Procédure-47-Orún**__
 @@ @@
 █████████  ██  ███  █████  ████  ██  ████████,  █████  ██  ██  ███  █  ███  █████  ██  ████  ██  ███.  ██&#39;█  █████  ███  ███ █████  ██  ███  ██&#39;█  ███  ██████  ████  ██  ███  █████.
 @@ @@
 ███ ███ - ██ ██████ - █████ ██████, ███████ ████ ███&#39;█ ████ ████ ██████ █████ ██ ██████████.
 @@ @@
-████ ████████ ██ ██████████. █████ █████ █ █████████ ████████, ██ ████████ ███ ██ ██/██/████ ██ Procedure-47-Orún ████ ████.
+████ ████████ ██ ██████████. █████ █████ █ █████████ ████████, ██ ████████ ███ ██ ██/██/████ ██ la Procédure-47-Orún ████ ████.
 @@ @@
+[[/footnote]]
+
+**Résultats :** Début du test.
+
+Sujets Familiarisés avec la Procédure 47-Orún. Plusieurs sujets manifestent une détresse extrême lorsqu&#39;on leur présente cette procédure. Après avoir tenté d&#39;attaquer [[span class=&#34;bigtext&#34;]]l&#39;Archiviste Steven Hound[[/span]] et de s&#39;échapper de la salle de test, les Sujets 1, 3 et 6 sont paralysés par perforation de la colonne vertébrale afin de s&#39;assurer qu&#39;ils se soumettent aux conditions du test.
+
+[[span style=&#34;color:black&#34;]]Le Sujet 1 a été éliminé par strangulation pendant la préparation de la procédure.
+
+Les Sujets 2 à 4 ont été éliminés par exsanguination pendant la procédure, celle-ci ayant entraîné une défaillance grave. Durée moyenne de 63 heures.
+
+Les Sujets 5 à 7 ont survécu à la totalité de la procédure. Aucun résultat anormal n&#39;a été enregistré. Début des tests de la Procédure 48-Orún.
 [[/span]]
-
-**Results:** Testing begins.
-
-Subjects Familiarized with Procedure-47-Orún. Several subjects display extreme distress upon being presented with such. Upon attempting to assault [[span class=&#34;bigtext&#34;]]Archivist Steven Hound[[/span]] and escape the research chamber, paralysis induced in Subjects 1, 3 and 6 via puncture to the spinal cord to ensure compliance with testing conditions.
-
-Subject 1 terminated via strangulation during preparation of procedure.
-
-Subjects 2-4 terminated via exsanguination during procedure, causing catastrophic failure. Mean duration of 63 hours.
-
-Subjects 5-7 survived full procedure. Zero anomalous results recorded. Testing of Procedure-48-Orún to begin.
-
 [[/div]]
 @@ @@
 
 [[div class=&#34;blockquote&#34;]]
-**Test Log 3**
+[[span style=&#34;color:black&#34;]]**Rapport de Test 3**
 
-**Subject:** Morgan Riley (Me)
+**Sujet :** Morgan Riley (Moi)
 
-**Project lead:** Morgan Riley
+**Responsable du Projet :** Morgan Riley
 
-**Procedure:** They don&#39;t even read this shit.
+**Procédure :** Ils ne lisent même pas ces conneries.
 
-**Results:** They just test. They just test over and over. There&#39;s nothing even left to test, they just continue in the name of testing like a fucked up reflection of a reflection of what was once a Foundation site.
+**Résultats :** Ils ne font que tester. Ils ne font que tester, encore et encore. Il n&#39;y a même plus rien à tester, ils continuent juste à tester pour tester, comme un foutu reflet tordu d&#39;un reflet de ce qui était autrefois un site de la Fondation.
 
-There&#39;s no life in Their eyes. They look like my coworkers - hell, they can even act like them sometimes. That&#39;s always the worst part. Lucy laughs in that cute way she always did, but now she&#39;s describing the best way to vivisect one of us. There&#39;s just something missing. The spark is gone, and trying to hold a conversation with Them makes me sick.
+Il n&#39;y a plus de vie dans leurs yeux. Ils ressemblent à mes collègues de travail - bon sang, parfois, ils peuvent même agir comme eux. C&#39;est ça le pire. Lucy rit comme elle le faisait toujours, mais ensuite elle décrit la meilleure façon de vivisecter l&#39;un d&#39;entre nous. Quelque chose a disparu en Eux. L&#39;étincelle n&#39;est plus là, et essayer de tenir une conversation avec Eux me rend malade.
+[[/span]]
 [[/div]]
 @@ @@
 [[div class=&#34;blockquote&#34;]]
-**Test Log 4**
+[[span style=&#34;color:black&#34;]]**Rapport de Test 4**
 
-**Subject:** Morgan Riley
+**Sujet :** Morgan Riley
 
-**Project lead:** Morgan Riley
+**Responsable du Projet :** Morgan Riley
 
 
-**Procedure:** I&#39;m keeping track of time here
+**Procédure :** Je garde la notion du temps via ce fichier
 
-**Results:** I don&#39;t know what&#39;s in this stuff I have to take to stay myself anymore, but it&#39;s heavy shit. Whatever it is, They can&#39;t tell I&#39;m here anymore. But there&#39;s just this... fog. Hours I can&#39;t account for, and what I can feels like a haze. When I sleep, I see what I did when I was Them.
+**Résultats :** Je ne sais pas ce qu&#39;il y a dans ces trucs que je dois prendre pour rester moi-même, mais c&#39;est une sacrée saloperie. Peu importe ce que c&#39;est, Ils ne doivent plus savoir que je suis ici. Mais il y a toujours ce... brouillard. Des heures dont je n&#39;arrive pas à me souvenir, et ce dont je me souviens est complètement flou. Quand je dors, je vois ce que je faisais quand j&#39;étais Eux.
 
-I don&#39;t sleep anymore.
+Je ne dors plus.
+[[/span]]
 [[/div]]
 @@ @@
 [[div class=&#34;blockquote&#34;]]
-**Test Log 6**
+[[span style=&#34;color:black&#34;]]**Rapport de Test 6**
 
-**Subject:** Me
+**Sujet :** Moi
 
-**Project lead:** Me
+**Responsable du Projet :** Moi
 
-**Procedure:** They&#39;re looking for me
+**Procédure :** Ils me cherchent
 
-**Results:** It must have been Lucy. I couldn&#39;t help it. Seeing her as Them makes me want to break down, but I just had to see if anything was left. I followed her for several days. I watched as she walked into the blood-lined testing wing and carried out acts I heave at the thought of. I watched for the tiniest sliver of hope until I couldn&#39;t bear it anymore. I shouted at her. Begged her, screamed at her to remember - herself, me, anything. Just a glimmer of her outside what They want her to be.
+**Résultats :** Il fallait que ce soit Lucy qui déclenche ça. Je n&#39;ai pas pu m&#39;en empêcher. La voir comme Eux me donne envie de hurler, mais il fallait que je voie s&#39;il restait quelque chose d&#39;elle. Je l&#39;ai suivie pendant plusieurs jours. Je l&#39;ai vue entrer dans l&#39;aile des tests maculée de sang, et accomplir des actes dont la simple idée me fait frémir. J&#39;ai guetté la moindre parcelle d&#39;espoir jusqu&#39;à ce que je craque. Je lui ai hurlé dessus. Je l&#39;ai suppliée, je lui ai crié de se souvenir - d&#39;elle, de moi, de quoi que ce soit. Juste pour entrevoir un minuscule fragment d&#39;elle en dehors de ce qu&#39;Ils veulent qu&#39;elle soit.
 
-There isn&#39;t. And now they know I&#39;m here.
+Il n&#39;y en a aucun. Et maintenant, ils savent que je suis là.
+[[/span]]
 [[/div]]
 @@ @@
 [[div class=&#34;blockquote&#34;]]
-[[span class=&#34;bigtext&#34;]]**Test Log 5**[[/span]]
+[[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 
-**Subject:** D-31256 to D-31263
+**Sujet :** D-31256 à D-31263
 
-**Project lead:** [[span class=&#34;bigtext&#34;]]Superior Fifth Researcher Lucy Jones[[/span]]
+**Responsable du Projet :** Cinquième Chercheur Supérieur Lucy Jones
 
-**Procedure:** Identification of unenlightened neurological patterns.
+**Procédure :** Identification de schémas neurologiques non illuminés.
 
-**Results:** Subject 1-8 administered RMD-6655. Direct Neurological investigation of Subject 1 fails after subject self-termination on research tools. Further subjects restrained. Testing Continues.
+**Résultats :** Les Sujets 1 à 8 se voient administrer RMD-6655. L&#39;Examen Neurologique Direct du Sujet 1 échoue après que le sujet se soit auto-éliminé avec des instruments de recherche. Les autres sujets sont immobilisés. Les tests continuent.
 
-Subjects 2-5 expired during processing with negligible practical data. Testing Continues. Subject 6-8 provided far more valuable data during long term neurological analysis. Experiment concluded after 45 hours due to lack of viable Subjects.
+Les Sujets 2 à 5 sont décédés pendant le traitement et les données utilisables recueillies sont insuffisantes. Les tests continuent. Les Sujets 6 à 8 ont fourni des données bien plus précieuses lors de l&#39;analyse neurologique à long terme. L&#39;expérience s&#39;achève au bout de 45 heures, faute de Sujets viables.
 
-Isolation of unenlightened neural pathways now feasible. Infrastructure for identification to be implemented.
-
-
+Il est désormais possible d&#39;isoler les voies neuronales non illuminées. Mise en place d&#39;une infrastructure d&#39;identification.
+[[/span]][[/span]]
 [[/div]]
 
 @@ @@
 [[div class=&#34;blockquote&#34;]]
-**Test Log 7**
+[[span style=&#34;color:black&#34;]]**Rapport de Test 7**
 
-**Subject:** me
+**Sujet :** moi
 
-**Project lead:** 
+**Responsable du Projet :** 
 
-**Procedure:** They&#39;re Outside
+**Procédure :** Ils sont Là[[/span]]
 
-**Results:** I&#39;ve blocked myself in one of Their fucked up &#39;research rooms&#39;. This isn&#39;t going to buy me long. Site&#39;s still under info quarantine, and I can hear them slamming into the door. It&#39;s been days since I&#39;ve slept and weeks since I&#39;ve been okay. I&#39;m done. I&#39;m tired. I hear her outside. She&#39;s begging me to let her in. It&#39;s still her voice, but everything inside it is gone. The care, the laugh, everything. It&#39;s the most disgusting thing I&#39;ve ever heard, but I can&#39;t even bring myself to care anymore. 
+[[span style=&#34;color:black&#34;]]**Résultats :** Je me suis barricadée dans l&#39;une de Leurs foutues &#39;salles de recherche&#39; à la con. Cela ne va pas me permettre de tenir longtemps. Le site est toujours en quarantaine, et je les entends essayer d&#39;enfoncer la porte. Cela fait des jours que je n&#39;ai pas dormi et des semaines depuis la dernière fois que je me suis sentie bien. J&#39;en ai assez. Je suis épuisée. Je l&#39;entends dehors. Elle me supplie de la laisser entrer. C&#39;est toujours sa voix, mais tout ce qu&#39;elle contenait a disparu. Sa tendresse, son rire, tout. C&#39;est la chose la plus révoltante que j&#39;aie jamais entendue, mais je n&#39;arrive même plus à en avoir quelque chose à faire. 
 
-I&#39;m tired.
+Je suis épuisée.
+[[/span]]
+[[/span]]
 [[/div]]
 @@ @@
 @@ @@
@@ -549,45 +1437,43 @@ I&#39;m tired.
 @@ @@
 @@ @@
 [[div class=&#34;blockquote&#34;]]
-[[span class=&#34;bigtext&#34;]]**Test Log 5**[[/span]]
+[[span style=&#34;color:black&#34;]]**Rapport de Test 5**
 
-**Subject:** [[span class=&#34;bigtext&#34;]]Her[[/span]]
+**Sujet :** Elle
 
-**Project lead:** [[span class=&#34;bigtext&#34;]]Superior Fifth Researcher Lucy Jones[[/span]]
+**Responsable du Projet :** Cinquième Chercheur Supérieur Lucy Jones[[/span]]
 [[include component:image-block
-| name=http://scpdsandbox.wdfiles.com/local--files/limey%3Anightmarefest/morgan.jpg
-| caption= [[span class=&#34;bigtext&#34;]]**CONTEXT IRRELEVANT**[[/span]]]]
+| name=http://fondationscp.wikidot.com/local--files/scp-6655/morgan.jpg
+| caption= **CONTEXTE NON PERTINENT**[[/span]]]]
 
-**Procedure:**  Insubordination.
+[[span style=&#34;color:black&#34;]]**Procédure :**  Insubordination.
 
-**Results:** Testing begins.
+**Résultats :** Début du test.
 
-Testing continues.
+Les tests continuent.
 
-Testing continues.
+Les tests continuent.
 
-Testing continues.
+Les tests continuent.
 
-Testing continues.
+Les tests continuent.
 
-Testing will continue.
+Les tests vont continuer.[[/span]]
+[[/span]]
 [[/div]]
 [[/div]]
 @@@@
 @@@@
 @@@@
 @@@@
------------------
-[[size 80%]]
-= With thanks to B4SlC, JakDragonX, Phantom8, fabledtiefling and GremlinGroup.
-[[/size]]</textarea></pre>
+-----------------</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:41.840967.</em>
+    <em>Last updated 2024-02-07 18:30:38.632717.</em>
   
 </div>
 </body>

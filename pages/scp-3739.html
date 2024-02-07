@@ -29,175 +29,155 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* HEADER */
- :root{
-   --header-title: &#34;‘PATADIGITAL ARCHIVES&#34;;
-   --header-subtitle: &#34;ARCHIVING APOTHEOSIS&#34;;
-   --titleColor: hsl(0, 0%, 91%);
-   --subtitleColor: hsl(0, 0%, 91%);
-   --lgurl: url(https://scp-wiki.wikidot.com/local--files/theme:pataphysics/pataphysicslogo-ani.svg);
-   --fnColor: hsl(268, 100%, 37%);
+          <pre><code>/* INFO BOX */
+sup{
+    vertical-align: top;
+    position: relative;
+    top: -0.5em;
+}
+.translation_block, .u-faq, #u-author_block{ display: none; }
+
+/* HEADER */
+#header h1 a::before{ content: &#34;Archivi Digitali Patafisici&#34;; }
+#header h2 span::before{ content: &#34;Archiviamo l&#39;Apoteosi&#34;; }
+ @media only screen and (max-width: 425px){
+     #header h1 a::before{
+         content: &#34;Pataphysical Digital Arc.&#34;;
+         font-size: 90%;
+    }
 }
 
- #page-title{
-     display: none;
+/* TERMINAL */
+.terminal{
+    border: 3px solid #BBB;
+    border-radius: 1.25em;
+    background-color: #20142e;
+    padding-bottom: 1.17em;
+    margin: 0;
+
+/* black shadow at the top of the terminal */
+    background-image: radial-gradient(ellipse 1000% 100% at 50% 90%, transparent, #191122);
+    background-position: center;
+
+/* shadow around the terminal */
+    box-shadow: inset 0 0 10em 1em rgba(0, 0, 0, .5);
+
+/* prevent scanline from forming a scrollwheel */
+    overflow: hidden;
+}
+.terminal hr{ background: rgba(230, 230, 230, .9); height: 1px; }
+.terminal-text{
+    padding: 34% 3em 0;
+    font-family: &#34;Lucida Console&#34;, Monaco, monospace;
+    font-size: 110%;
+    color: rgba(230, 230, 230, .9);
+}
+.scanline{
+    background: linear-gradient(to bottom, rgba(56, 56, 82, 0), rgba(56, 56, 112, .1));
+    margin-top: -40%;
+    height: 4.68em;
+
+/*animation */
+    position: relative;
+    pointer-events: none;
+    animation: scan 5s linear 0s infinite;
+    -moz-animation: scan 5s linear 0s infinite; /* SAFARI 4.0 - 8.0 */
+    -webkit-animation: scan 5s linear 0s infinite; /* SAFARI 4.0 - 8.0 */
 }
 
- #header::before{
-     opacity: .7;
-}
-
- #header h1 a::before{
-     text-shadow:
-          -1.75px -1.75px hsl(0, 0%, 5%),
-          0       -1.75px hsl(0, 0%, 5%),
-          1.75px  -1.75px hsl(0, 0%, 5%),
-          1.75px   0   hsl(0, 0%, 5%),
-          1.75px   1.75px hsl(0, 0%, 5%),
-          0        1.75px hsl(0, 0%, 5%),
-          -1.75px  1.75px hsl(0, 0%, 5%),
-          -1.75px  0   hsl(0, 0%, 5%);
-}
-
- #header h2::before{
-     text-shadow:
-          -1px -1px hsl(0, 0%, 5%),
-          0    -1px hsl(0, 0%, 5%),
-          1px  -1px hsl(0, 0%, 5%),
-          1px   0   hsl(0, 0%, 5%),
-          1px   1px hsl(0, 0%, 5%),
-          0     1px hsl(0, 0%, 5%),
-          -1px  1px hsl(0, 0%, 5%),
-          -1px  0   hsl(0, 0%, 5%);
-}
-
- #header-extra-div-1::before{
-     display: none;
-}
-
-/* INFO BAR */
- #u-author_block{
-     display: none;
-}
-
-/* FORMATTING */
- .moo{
-     color: hsl(214, 70%, 45%);
-
-     font-weight: bold;
-}
-
- .moo.choco { color: hsl(31, 70%, 30%); }
-
- .fnnum{
-     font-size: 85%;
-}
-
- .lite-heading h3{
-     color: var(--dark-violet);
-}
-
- .spangles{
-     padding: 0 .25rem;
-
-     color: hsl(0, 0%, 85%);
-     background: hsl(0, 0%, 10%);
+/* SAFARI 4.0 - 8.0 */
+@-webkit-keyframes scan{
+    from{ transform: translateY(-10%); }
+    to{ transform: translateY(2000%); }
 }
 
 /* DIV BLOCKS */
- .terminal{
-     background-color: hsl(268, 39%, 20%);
-     background-image:   /* black shadow at the top of the terminal */
-        radial-gradient(
-          ellipse 1000% 100% at 50% 90%,
-          transparent,
-          hsl(268, 33%, 10%));
-     border: 3px solid hsl(0, 0%, 73%);
-     border-radius: 1rem;
-     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);   /* shadow around the terminal */
-
-     overflow: hidden;   /* prevents scanline from forming a scrollwheel */
+.log{
+    background-color: #fafafa;
+    box-shadow: 0 2px 4px rgba(75, 75, 75, .5);
+    padding: .5em;
+    margin: .25em;
 }
-
- .terminal hr{
-     height: 2px;
-
-     background: 1px solid hsl(0, 0%, 81%);
+.log-bg{
+    background-color: #1F083A;
+    text-align: center;
 }
-
- .scanline{
-     position: relative;
-     height: 3.659em;
-     margin-top: -40%;
-
-     background:
-        linear-gradient(
-          hsla(240, 19%, 27%, 0),
-          hsla(240, 33%, 33%, .1));
-
-     animation: scan 5s linear 0s infinite;
-     -moz-animation: scan 5s linear 0s infinite;
-     -webkit-animation: scan 5s linear 0s infinite;
-     pointer-events: none;
+.quote-block{
+    background-color: #fafafa;
+    box-shadow: 0 2px 4px rgba(75, 75, 75, .5);
+    padding: .5em;
+    margin: .25em;
+    font-weight: bold;
+    color: gray;
 }
-
- @-webkit-keyframes scan{   /* SAFARI 4.0 - 8.0 */
-     from{
-          transform: translateY(-10%);
-    }
-     to{
-          transform: translateY(2000%);
+div.recording-block{
+    border: 3px double #999;
+    background-color: #f4f4f4;
+    padding: 0 1em;
+    margin: 1em 3em;
+}
+ @media (max-width: 479px){
+     div.recording-block{
+         margin: 1em 0;
     }
 }
-
- .terminal-text,
- .terminal-text h3{
-     color: hsl(0, 0%, 81%);
-
-     font-family: &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
+ @media (min-width: 480px) and (max-width: 580px){
+     div.recording-block{
+         margin: .5em;
+    }
+}
+.raisa-block{
+    border: 1px solid #d60000;
+    border-radius: .78em;
+    background-color: #e8e8e8;
+    background-clip: padding-box; /* IE9+ support */
+    box-shadow:
+    0 0 0 4px hsl(0, 0%, 80%),
+    0 0 0 7px hsl(0, 0%, 90%);
+    padding: .93em;
+ -moz-margin-start: 0;
+ -moz-margin-end: 0;
+ -webkit-margin-start: 0;
+ -webkit-margin-before: 1em;
+ -webkit-margin-after: 1em;
+ -webkit-margin-end: 0;
+}
+.related-flex{
+    display: flex;
+    justify-content: center;
+}
+.related{
+    border: 4px solid rgba(150, 150, 150, .5);
+    background: linear-gradient(10deg, rgba(150, 150, 150, .1), rgba(150, 150, 150, 0));
+    padding: 0 1em;
+    margin: 1em 0;
 }
 
- .terminal-text{
-     padding: 34% 3rem 0;
-
-     font-size: 115%;
+/* FORMATTING */
+a.collapsible-block-link{ font-size: 120%; }
+.lite-header hr{
+    display: block;
+    border: none;
+    background-color: #d9d9d9;
+    margin: auto;
+    height: 2px;
+    width: 45%;
 }
-
- .rouge{
-     color: hsl(9, 91%, 71%);
+.h2, .h3{
+    margin: .5em 0 .4em;
+    padding: 0;
+    letter-spacing: 1px;
+    font-family: &#34;Trebuchet MS&#34;, Trebuchet, Verdana, Arial, Helvetica;
 }
-
- .log-bg{
-     background: hsl(268, 76%, 13%);
-     box-shadow: 0 2px 4px hsla(0, 0%, 29%, .5);
-
-     text-align: center;
+.h2{ font-size: 150%; }
+.h3{
+    font-size: 130%;
+    font-weight: bold;
+    color: #1E122B;
 }
-
- .log{
-     margin: .25rem;
-     padding: .5rem;
-
-     background: hsl(0, 0%, 100%);
-     box-shadow: 0 2px 4px hsla(0, 0%, 29%, .5);
-}
-
- .raisa-block{
-     -moz-margin-start: 0;
-     -moz-margin-end: 0;
-     -webkit-margin-start: 0;
-     -webkit-margin-before: 1rem;
-     -webkit-margin-after: 1rem;
-     -webkit-margin-end: 0;
-     padding: 1rem;
-
-     background-clip: padding-box;     /* IE9+ support */
-     background-color: hsl(0, 0%, 91%);
-     border: 1px solid hsl(0, 100%, 42%);
-     border-radius: .75rem;
-     box-shadow:
-          0 0 0 4px hsl(0, 0%, 80%),
-          0 0 0 7px hsl(0, 0%, 90%);
+.spangles{
+    color: #f2f2f2;
+    background: #0c0c0c;
 }</code></pre>
         </li>
       
@@ -207,91 +187,177 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none</code></pre>
+          <pre><code>color: #2266C1; font-weight: bold;</code></pre>
         </li>
       
         <li>
-          <pre><code>color: gray</code></pre>
+          <pre><code>font-family: </code></pre>
         </li>
       
         <li>
-          <pre><code>color: gray</code></pre>
+          <pre><code>color: #f87963; word-break: unset;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: 100%</code></pre>
+          <pre><code>color: #f87963; word-break: unset;</code></pre>
         </li>
       
         <li>
-          <pre><code>text-align: left</code></pre>
+          <pre><code>color: #f87963;</code></pre>
         </li>
       
         <li>
-          <pre><code>color: gray</code></pre>
+          <pre><code>color: #f87963;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: 100%</code></pre>
+          <pre><code>color: #f87963;</code></pre>
         </li>
       
         <li>
-          <pre><code>text-align: left</code></pre>
+          <pre><code>color: #f87963; word-break: unset;</code></pre>
         </li>
       
         <li>
-          <pre><code>text-align: left</code></pre>
+          <pre><code>color: #f87963; word-break: unset;</code></pre>
         </li>
       
         <li>
-          <pre><code>padding: 3rem</code></pre>
+          <pre><code>color: gray;</code></pre>
         </li>
       
         <li>
-          <pre><code>color: gray</code></pre>
+          <pre><code>word-break: unset;</code></pre>
         </li>
       
         <li>
-          <pre><code>width: 100%</code></pre>
+          <pre><code>word-break: unset;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>word-break: unset;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>word-break: unset;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>word-break: unset;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border: none; width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-weight: 900;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align: right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-weight: 900; font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-weight: 900;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align: right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-weight: 900; font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: #2266C1; font-weight: bold;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: #2266C1; font-weight: bold;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: gray;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align: left;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-size: 120%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: gray;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width:100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align: left;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: #2266C1; font-weight: bold;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align: left;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: gray;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-bottom: 2px solid #777; margin-bottom: 1px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-bottom: 1px solid #777;</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Includes</h2>
     <ul class="includes">
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:betterfootnotes" target="_blank"><code>:scp-wiki:component:betterfootnotes</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:betterfootnotes.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/theme:flopstyle" target="_blank"><code>:scp-wiki:theme:flopstyle</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:flopstyle.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
       
         <li>
   
@@ -315,14 +381,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:centered-header-sigma-9" target="_blank"><code>:scp-wiki:component:centered-header-sigma-9</code></a>
+    <a href="https://scp-wiki.wikidot.com/credit:start" target="_blank"><code>credit:start</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:centered-header-sigma-9.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -332,14 +392,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:image-features-source" target="_blank"><code>:scp-wiki:component:image-features-source</code></a>
+    <a href="https://scp-wiki.wikidot.com/credit:end" target="_blank"><code>credit:end</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:image-features-source.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -349,14 +403,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:image-features-source" target="_blank"><code>:scp-wiki:component:image-features-source</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:image-features-source.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -366,14 +414,30 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:image-features-source" target="_blank"><code>:scp-wiki:component:image-features-source</code></a>
+    <a href="https://scp-sandbox-3.wikidot.com/image-zoom" target="_blank"><code>:scp-sandbox-3:image-zoom</code></a>
   
 
   
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:image-features-source.html" target="_blank">info</a>]
-  </span>
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-sandbox-3.wikidot.com/image-zoom" target="_blank"><code>:scp-sandbox-3:image-zoom</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-sandbox-3.wikidot.com/image-zoom" target="_blank"><code>:scp-sandbox-3:image-zoom</code></a>
+  
 
   
 </li>
@@ -382,18 +446,6 @@
 
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes">
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>log</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>log</code></pre>
-        </li>
       
         <li>
           <pre><code>terminal</code></pre>
@@ -408,39 +460,7 @@
         </li>
       
         <li>
-          <pre><code>rouge</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rouge</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rouge</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rouge</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rouge</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rouge</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rouge</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rouge</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>rouge</code></pre>
+          <pre><code>h3</code></pre>
         </li>
       
         <li>
@@ -448,199 +468,43 @@
         </li>
       
         <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>meta-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>pseudocrumbs</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
           <pre><code>log</code></pre>
         </li>
       
         <li>
-          <pre><code>lite-heading</code></pre>
+          <pre><code>lite-header</code></pre>
         </li>
       
         <li>
-          <pre><code>moo</code></pre>
+          <pre><code>h2</code></pre>
         </li>
       
         <li>
-          <pre><code>moo</code></pre>
+          <pre><code>h3</code></pre>
         </li>
       
         <li>
-          <pre><code>choco</code></pre>
+          <pre><code>lite-header</code></pre>
         </li>
       
         <li>
-          <pre><code>moo</code></pre>
+          <pre><code>lite-header</code></pre>
         </li>
       
         <li>
-          <pre><code>moo</code></pre>
+          <pre><code>h2</code></pre>
         </li>
       
         <li>
-          <pre><code>choco</code></pre>
+          <pre><code>h3</code></pre>
         </li>
       
         <li>
-          <pre><code>fnnum</code></pre>
+          <pre><code>lite-header</code></pre>
         </li>
       
         <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>lite-heading</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>log</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
+          <pre><code>quote-block</code></pre>
         </li>
       
         <li>
@@ -656,7 +520,19 @@
         </li>
       
         <li>
-          <pre><code>lite-heading</code></pre>
+          <pre><code>lite-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>h2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>h3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lite-header</code></pre>
         </li>
       
         <li>
@@ -668,55 +544,19 @@
         </li>
       
         <li>
-          <pre><code>moo</code></pre>
+          <pre><code>lite-header</code></pre>
         </li>
       
         <li>
-          <pre><code>fnnum</code></pre>
+          <pre><code>h2</code></pre>
         </li>
       
         <li>
-          <pre><code>fncon</code></pre>
+          <pre><code>h3</code></pre>
         </li>
       
         <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>lite-heading</code></pre>
+          <pre><code>lite-header</code></pre>
         </li>
       
         <li>
@@ -725,22 +565,6 @@
       
         <li>
           <pre><code>log</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
         </li>
       
         <li>
@@ -768,11 +592,7 @@
         </li>
       
         <li>
-          <pre><code>moo</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>moo</code></pre>
+          <pre><code>recording-block</code></pre>
         </li>
       
         <li>
@@ -780,7 +600,7 @@
         </li>
       
         <li>
-          <pre><code>footing</code></pre>
+          <pre><code>h3</code></pre>
         </li>
       
         <li>
@@ -798,821 +618,735 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:betterfootnotes]]
-[[div style=&#34;display: none&#34;]]
-[[include :scp-wiki:theme:flopstyle]]
-[[/div]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:info-ayers
+|lang=en
+|page=scp-3739
+|authorPage=http://www.scp-wiki.net/floppyphoenix
+|comments=**SCP-3739:** [[span style=&#34;color: #2266C1; font-weight: bold;&#34;]]Mind-Milk™ by Moosphere, Inc.
+]]
 [[include :scp-wiki:theme:pataphysics]]
-[[include :scp-wiki:component:centered-header-sigma-9]]
 
 [[module CSS]]
+/* INFO BOX */
+sup{
+    vertical-align: top;
+    position: relative;
+    top: -0.5em;
+}
+.translation_block, .u-faq, #u-author_block{ display: none; }
+
 /* HEADER */
- :root{
-   --header-title: &#34;‘PATADIGITAL ARCHIVES&#34;;
-   --header-subtitle: &#34;ARCHIVING APOTHEOSIS&#34;;
-   --titleColor: hsl(0, 0%, 91%);
-   --subtitleColor: hsl(0, 0%, 91%);
-   --lgurl: url(https://scp-wiki.wikidot.com/local--files/theme:pataphysics/pataphysicslogo-ani.svg);
-   --fnColor: hsl(268, 100%, 37%);
+#header h1 a::before{ content: &#34;Archivi Digitali Patafisici&#34;; }
+#header h2 span::before{ content: &#34;Archiviamo l&#39;Apoteosi&#34;; }
+ @media only screen and (max-width: 425px){
+     #header h1 a::before{
+         content: &#34;Pataphysical Digital Arc.&#34;;
+         font-size: 90%;
+    }
 }
 
- #page-title{
-     display: none;
+/* TERMINAL */
+.terminal{
+    border: 3px solid #BBB;
+    border-radius: 1.25em;
+    background-color: #20142e;
+    padding-bottom: 1.17em;
+    margin: 0;
+
+/* black shadow at the top of the terminal */
+    background-image: radial-gradient(ellipse 1000% 100% at 50% 90%, transparent, #191122);
+    background-position: center;
+
+/* shadow around the terminal */
+    box-shadow: inset 0 0 10em 1em rgba(0, 0, 0, .5);
+
+/* prevent scanline from forming a scrollwheel */
+    overflow: hidden;
+}
+.terminal hr{ background: rgba(230, 230, 230, .9); height: 1px; }
+.terminal-text{
+    padding: 34% 3em 0;
+    font-family: &#34;Lucida Console&#34;, Monaco, monospace;
+    font-size: 110%;
+    color: rgba(230, 230, 230, .9);
+}
+.scanline{
+    background: linear-gradient(to bottom, rgba(56, 56, 82, 0), rgba(56, 56, 112, .1));
+    margin-top: -40%;
+    height: 4.68em;
+
+/*animation */
+    position: relative;
+    pointer-events: none;
+    animation: scan 5s linear 0s infinite;
+    -moz-animation: scan 5s linear 0s infinite; /* SAFARI 4.0 - 8.0 */
+    -webkit-animation: scan 5s linear 0s infinite; /* SAFARI 4.0 - 8.0 */
 }
 
- #header::before{
-     opacity: .7;
-}
-
- #header h1 a::before{
-     text-shadow:
-          -1.75px -1.75px hsl(0, 0%, 5%),
-          0       -1.75px hsl(0, 0%, 5%),
-          1.75px  -1.75px hsl(0, 0%, 5%),
-          1.75px   0   hsl(0, 0%, 5%),
-          1.75px   1.75px hsl(0, 0%, 5%),
-          0        1.75px hsl(0, 0%, 5%),
-          -1.75px  1.75px hsl(0, 0%, 5%),
-          -1.75px  0   hsl(0, 0%, 5%);
-}
-
- #header h2::before{
-     text-shadow:
-          -1px -1px hsl(0, 0%, 5%),
-          0    -1px hsl(0, 0%, 5%),
-          1px  -1px hsl(0, 0%, 5%),
-          1px   0   hsl(0, 0%, 5%),
-          1px   1px hsl(0, 0%, 5%),
-          0     1px hsl(0, 0%, 5%),
-          -1px  1px hsl(0, 0%, 5%),
-          -1px  0   hsl(0, 0%, 5%);
-}
-
- #header-extra-div-1::before{
-     display: none;
-}
-
-/* INFO BAR */
- #u-author_block{
-     display: none;
-}
-
-/* FORMATTING */
- .moo{
-     color: hsl(214, 70%, 45%);
-
-     font-weight: bold;
-}
-
- .moo.choco { color: hsl(31, 70%, 30%); }
-
- .fnnum{
-     font-size: 85%;
-}
-
- .lite-heading h3{
-     color: var(--dark-violet);
-}
-
- .spangles{
-     padding: 0 .25rem;
-
-     color: hsl(0, 0%, 85%);
-     background: hsl(0, 0%, 10%);
+/* SAFARI 4.0 - 8.0 */
+@-webkit-keyframes scan{
+    from{ transform: translateY(-10%); }
+    to{ transform: translateY(2000%); }
 }
 
 /* DIV BLOCKS */
- .terminal{
-     background-color: hsl(268, 39%, 20%);
-     background-image:   /* black shadow at the top of the terminal */
-        radial-gradient(
-          ellipse 1000% 100% at 50% 90%,
-          transparent,
-          hsl(268, 33%, 10%));
-     border: 3px solid hsl(0, 0%, 73%);
-     border-radius: 1rem;
-     box-shadow: inset 0 0 10em 1em hsla(0, 0%, 0%, .5);   /* shadow around the terminal */
-
-     overflow: hidden;   /* prevents scanline from forming a scrollwheel */
+.log{
+    background-color: #fafafa;
+    box-shadow: 0 2px 4px rgba(75, 75, 75, .5);
+    padding: .5em;
+    margin: .25em;
 }
-
- .terminal hr{
-     height: 2px;
-
-     background: 1px solid hsl(0, 0%, 81%);
+.log-bg{
+    background-color: #1F083A;
+    text-align: center;
 }
-
- .scanline{
-     position: relative;
-     height: 3.659em;
-     margin-top: -40%;
-
-     background:
-        linear-gradient(
-          hsla(240, 19%, 27%, 0),
-          hsla(240, 33%, 33%, .1));
-
-     animation: scan 5s linear 0s infinite;
-     -moz-animation: scan 5s linear 0s infinite;
-     -webkit-animation: scan 5s linear 0s infinite;
-     pointer-events: none;
+.quote-block{
+    background-color: #fafafa;
+    box-shadow: 0 2px 4px rgba(75, 75, 75, .5);
+    padding: .5em;
+    margin: .25em;
+    font-weight: bold;
+    color: gray;
 }
-
- @-webkit-keyframes scan{   /* SAFARI 4.0 - 8.0 */
-     from{
-          transform: translateY(-10%);
-    }
-     to{
-          transform: translateY(2000%);
+div.recording-block{
+    border: 3px double #999;
+    background-color: #f4f4f4;
+    padding: 0 1em;
+    margin: 1em 3em;
+}
+ @media (max-width: 479px){
+     div.recording-block{
+         margin: 1em 0;
     }
 }
-
- .terminal-text,
- .terminal-text h3{
-     color: hsl(0, 0%, 81%);
-
-     font-family: &#34;Lucida Console&#34;, &#34;Monaco&#34;, monospace;
+ @media (min-width: 480px) and (max-width: 580px){
+     div.recording-block{
+         margin: .5em;
+    }
+}
+.raisa-block{
+    border: 1px solid #d60000;
+    border-radius: .78em;
+    background-color: #e8e8e8;
+    background-clip: padding-box; /* IE9+ support */
+    box-shadow:
+    0 0 0 4px hsl(0, 0%, 80%),
+    0 0 0 7px hsl(0, 0%, 90%);
+    padding: .93em;
+ -moz-margin-start: 0;
+ -moz-margin-end: 0;
+ -webkit-margin-start: 0;
+ -webkit-margin-before: 1em;
+ -webkit-margin-after: 1em;
+ -webkit-margin-end: 0;
+}
+.related-flex{
+    display: flex;
+    justify-content: center;
+}
+.related{
+    border: 4px solid rgba(150, 150, 150, .5);
+    background: linear-gradient(10deg, rgba(150, 150, 150, .1), rgba(150, 150, 150, 0));
+    padding: 0 1em;
+    margin: 1em 0;
 }
 
- .terminal-text{
-     padding: 34% 3rem 0;
-
-     font-size: 115%;
+/* FORMATTING */
+a.collapsible-block-link{ font-size: 120%; }
+.lite-header hr{
+    display: block;
+    border: none;
+    background-color: #d9d9d9;
+    margin: auto;
+    height: 2px;
+    width: 45%;
 }
-
- .rouge{
-     color: hsl(9, 91%, 71%);
+.h2, .h3{
+    margin: .5em 0 .4em;
+    padding: 0;
+    letter-spacing: 1px;
+    font-family: &#34;Trebuchet MS&#34;, Trebuchet, Verdana, Arial, Helvetica;
 }
-
- .log-bg{
-     background: hsl(268, 76%, 13%);
-     box-shadow: 0 2px 4px hsla(0, 0%, 29%, .5);
-
-     text-align: center;
+.h2{ font-size: 150%; }
+.h3{
+    font-size: 130%;
+    font-weight: bold;
+    color: #1E122B;
 }
-
- .log{
-     margin: .25rem;
-     padding: .5rem;
-
-     background: hsl(0, 0%, 100%);
-     box-shadow: 0 2px 4px hsla(0, 0%, 29%, .5);
-}
-
- .raisa-block{
-     -moz-margin-start: 0;
-     -moz-margin-end: 0;
-     -webkit-margin-start: 0;
-     -webkit-margin-before: 1rem;
-     -webkit-margin-after: 1rem;
-     -webkit-margin-end: 0;
-     padding: 1rem;
-
-     background-clip: padding-box;     /* IE9+ support */
-     background-color: hsl(0, 0%, 91%);
-     border: 1px solid hsl(0, 100%, 42%);
-     border-radius: .75rem;
-     box-shadow:
-          0 0 0 4px hsl(0, 0%, 80%),
-          0 0 0 7px hsl(0, 0%, 90%);
+.spangles{
+    color: #f2f2f2;
+    background: #0c0c0c;
 }
 [[/module]]
 
-[[include :scp-wiki:component:info-ayers
-|lang=en
-|page=scp-3739
-|comments=**SCP-3739:** [[span class=&#34;moo&#34;]]Mind-Milk™ by Moosphere, Inc.[[/span]] 
-**Authors:** [[*user Lt Flops]] &amp; KindlyTurtleClem 
-**Published on 22 Jan 2019** 
- 
-This article is set in the **[*/broken-masquerade-hub Broken Masquerade]** canon. 
- 
-[[div class=&#34;log&#34;]] 
-= [[size 110%]] **Special Thanks** [[/size]] 
-----
-* [[*user A Random Day]] and [[*user SonKingKong]] for dialogue help. 
-* [[*user Modulum]] and [[*user JackalRelated]] for helping greatly with the adverts. Modulum edited the coal miner advert &amp; Jackal helped sharpen and suggest changes for images. 
-* [[*user Uncle Nicolini]] for his CONSTANT help and critique on our draft, after each and every iteration. Can&#39;t thank him enough for sticking with our concept. 
-* [[*user DrChandra]], [[*user DarkStuff]], [[*user Connor MacWarren]], [[*user aismallard]], and Cyantreuse for giving finalizing advice, esp. the latter approving of it in the BM canon. 
-* [[*user Gekkoguy]], [[*user Gabriel Jade]], Cyantreuse, and [[*user televisionist]] for conceptual work and finalizing crit. 
-* [[*user Westrin]] and [[*user RockTeethMothEyes]] for beta reading. 
-[[/div]] 
- 
-[[div class=&#34;log&#34;]] 
-= [[size 110%]] **Sources** [[/size]] 
-----
-* [http://kontainer.djkakt.us/moosphere Our moosphere comments] 
- 
-**Definitions:** 
-* The definition of &#34;noösphere&#34; used here is sourced directly from [*/sirpudding-s-author-page#toc7 Sirpudding&#39;s Author Page], which grants permission for its use (among other items) with attribution. 
- 
-**Research Links:** 
-* [wikipedia:Digital_pathology Digital pathology] 
-* [wikipedia:Jungian_archetypes Jungian archetypes that turn into Bovine archetypes] 
-* [wikipedia:Bat_(goddess) Bat (goddess)] 
-* [wikipedia:Glossolalia#20th_century 20th Century Speaking in tongues] 
-* [wikipedia:Laying_on_of_hands Laying on of hands] 
- 
-**General Images** 
-* [https://commons.wikimedia.org/wiki/File:Snejanka-cave-udder.jpg Image 1] – Public Domain 
-* [https://commons.wikimedia.org/wiki/File:10_small_subunit.gif Image 2] – Public Domain 
-* [https://commons.wikimedia.org/wiki/File:PSM_V62_D565_Aswan_dam_during_eclipse_of_november_11_1901.png Image 3] – Public Domain 
-* [https://commons.wikimedia.org/wiki/File:Creepy_way_in_imambara.jpg Image 4] – CC-BY 3.0 
- 
-**Advert One** 
-* [https://upload.wikimedia.org/wikipedia/commons/7/79/Water_Drop_Icon_Vector.png Milk Droplets] – CC-BY-SA 4.0 
-* [https://upload.wikimedia.org/wikipedia/commons/3/3a/Mare_Imbrium-AS17-M-2444.jpg Mare Imbrium] – Public Domain 
- 
-**Advert Two** 
-* [https://commons.wikimedia.org/wiki/File:Bundesarchiv_B_145_Bild-F009360-0001,_Essen,_Bergm%C3%A4nner_mit_Milchflaschen.jpg Two Coalminers] – CC-BY-SA 3.0 
- 
-**Final Screen** 
-* [https://commons.wikimedia.org/wiki/Category:Freak_show#/media/File:Joseph_Carey_Merrick_.jpg Carey Merrick] – CC-BY-SA 3.0 
-* [wikipedia:Mastitis#/media/File:Ultrasound_Scan_ND_115254_1204420_cr.png Ultrasound] – CC-BY-SA 3.0 
-[[/div]] @@ @@
-]]
-
-[[=]]
-[[module Rate]]
-[[/=]]
-
-@@ @@
+[[include credit:start]]
+**Articolo:** SCP-3739 -- Latte-Mentale™ di Moosphere, Inc.
+**Autore:** [[*user Lt Flops]] e KindlyTurtleClem
+**Originale:** [http://www.scpwiki.com/scp-3739 SCP-3739]
+**Traduttore:** [[*user Dgctt]]
+[[include credit:end]]
 
 [[div class=&#34;terminal&#34;]]
 [[div class=&#34;scanline&#34;]]
 [[/div]]
 [[div class=&#34;terminal-text&#34;]]
-@@ @@
-+++ NOTICE From the Department Of
-+++ ‘Pataphysical and Digital Archivists
+[[span class=&#34;h3&#34; style=&#34;font-family: &#34;Lucida Console&#34;, Monaco, monospace; color: rgba(242, 242, 242, .9); word-break: unset;&#34;]]AVVISO dal Dipartimento di Patafisica e Archivisti Digitali[[/span]]
 
-= [[span class=&#34;rouge&#34;]]Advertisement-based inoculation disseminated.[[/span]]
+= [[span style=&#34;color: #f87963; word-break: unset;&#34;]]Inoculazione a base di Pubblicità effettuata[[/span]]
 ----
-//Need containment insurance? We&#39;ve got you covered.// **South-Central Protective Services**//, protecting you against malignant fae hexes, hemovore invasions, and flesh-eating Nälkän rituals since 1893.//
+//Avete bisogno di un&#39;assicurazione per il contenimento? Nessun Problema// **Servizi di Protezione del Centro-Sud**//, per proteggerti da Maledizioni Fae, invasioni di emovori e rituali Sarkic mangia-carne dal 1826.//
 ----
-= [[span class=&#34;rouge&#34;]]Advertisement-based inoculation completed.[[/span]]
-= [[span class=&#34;rouge&#34;]]Beginning biometric and neural scan.[[/span]]
+= [[span style=&#34;color: #f87963; word-break: unset;&#34;]]Inoculazione a base di Pubblicità completata. Inizio della scansione biometrica e neurale.[[/span]]
 ----
-~$ **Simurgh.aic:** [[span class=&#34;rouge&#34;]]nominal[[/span]]
-~$ **Last login:** [[span class=&#34;rouge&#34;]]2024-02-28 @ 06:45 PM (UTC−05)[[/span]]
-~$ **Memetic advertisements tracked and quarantined:** [[span class=&#34;rouge&#34;]] 45,214[[/span]]
-~$ **Anti-infiltration detection:** [[span class=&#34;rouge&#34;]]nominal[[/span]]
-~$ **Accessing intSCPFN:/files/SCP-3739/SPOILED_MILK_SEQUENCE**
+~$ **Simurgh.aic:** [[span style=&#34;color: #f87963;&#34;]]normale[[/span]]
+~$ **Ultimo login:** [[span style=&#34;color: #f87963;&#34;]]2024-02-28 @ 06:45 PM (UTC−05)[[/span]]
+~$ **Pubblicità memetica tracciata e messa in quarantena:** [[span style=&#34;color: #f87963;&#34;]] 45,214[[/span]]
+~$ **Rilevamento anti-infiltrazione:** [[span style=&#34;color: #f87963; word-break: unset;&#34;]]normale[[/span]]
+~$ **Accesso a intSCPFN:/files/SCP-3739/PIANO_LATTE_SCADUTO**
 ----
-= [[span class=&#34;rouge&#34;]]Biometric and neural scan completed.[[/span]]
-= [[span class=&#34;rouge&#34;]]Inoculation completed! You may proceed.[[/span]]
-@@ @@
+= [[span style=&#34;color: #f87963; word-break: unset;&#34;]]Scansione biometrica e neurale completata. Inoculazione completa! Puoi procedere.[[/span]]
 [[/div]]
 [[/div]]
 
-[[div class=&#34;log&#34; style=&#34;color: gray&#34;]]
-[[collapsible show=&#34;▷ SIMURGH.aic: SCP-3739-1 Quarantine History&#34; hide=&#34;△ Viewing secured&#34;]]
-**//&#34;Expect a 5% drop of optimization in your lactose tolerance! Buy all yeast shares, all yeast shares, all yeast shares.&#34;//** -- 2024-02-28 @ 9:56 PM (UTC−05)
+[[div class=&#34;log&#34; style=&#34;color: gray;&#34;]]
+[[collapsible show=&#34;▷ SIMURGH.aic: Cronologia Quarantena di SCP-3739-1 &#34; hide=&#34;△ Visualizzazione Protetta&#34;]]
 
-**//&#34;If the Moon is made of cream cheese, we&#39;ll sell it!&#34;//** -- 2024-02-28 @ 10:43 PM (UTC−05)
+[[span style=&#34;word-break: unset;&#34;]]**//&#34;Aspettatevi un 5% di ottimizzazione nella vostra tolleranza al lattosio! Compra tutte le quote di lievito, tutte le quote di lievito, tutte le quote di lievito.&#34;//** -- 2024-02-28 @ 9:56 PM (UTC−05)[[/span]]
 
-**//&#34;Milk! The Meaning of Life.&#34;//** -- 2024-02-29 @ 12:01 AM (UTC−05)
+[[span style=&#34;word-break: unset;&#34;]]**//&#34;Se la Luna è fatta di formaggio, noi la venderemo!&#34;//** -- 2024-02-28 @ 10:43 PM (UTC−05)[[/span]]
 
-**//&#34;You&#39;ll Wonder Where the Red Went When You Brush Your Teeth with [[span class=&#34;moo&#34;]]Moosphere Fresh Dreams™[[/span]]!&#34;//** -- 2024-02-29 @ 02:17 AM (UTC−05)
+[[span style=&#34;word-break: unset;&#34;]]**//&#34;Latte! Uno Scopo Di Vita&#34;//** -- 2024-02-29 @ 12:01 AM (UTC−05)[[/span]]
 
-**//&#34;Makes Children and Adults as Swollen as Cows!&#34;//** -- 2024-02-29 @ 04:00 AM (UTC−05)
+[[span style=&#34;word-break: unset;&#34;]]**//&#34;Ti Chiederai Dove È Finito Il Rosso Quando Ti Laverai I Denti Con &#34;Sogni Freschi Moosphere&#34;™!&#34;//** -- 2024-02-29 @ 02:17 AM (UTC−05)[[/span]]
+
+[[span style=&#34;word-break: unset;&#34;]]**//&#34;Rende I Bambini E Gli Adulti Grossi Come Le Mucche&#34;//** -- 2024-02-29 @ 04:00 AM (UTC−05)[[/span]]
 [[/collapsible]]
 [[/div]]
 
 @@ @@
 
-[[div class=&#34;meta-title&#34;]]
-SCP-3739
-[[/div]]
+[[table style=&#34;border: none; width: 100%;&#34;]]
+[[row]]
+[[cell]]
+[[span style=&#34;font-size: 120%;&#34;]][[span style=&#34;font-weight: 900;&#34;]]ELEMENTO #:[[/span]] SCP-3739[[/span]]
+[[/cell]]
+[[cell style=&#34;text-align: right;&#34;]]
+[[span style=&#34;font-weight: 900; font-size: 120%;&#34;]]LIVELLO 4/3739[[/span]]
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
+[[span style=&#34;font-size: 120%;&#34;]][[span style=&#34;font-weight: 900;&#34;]]CLASSE DI CONTENIMENTO:[[/span]] KETER[[/span]]
+[[/cell]]
+[[cell style=&#34;text-align: right;&#34;]]
+[[span style=&#34;font-weight: 900; font-size: 120%;&#34;]]SECRET[[/span]]
+[[/cell]]
+[[/row]]
+[[/table]]
 
-[[div class=&#34;pseudocrumbs&#34;]]
-[[[Canon Hub]]] &gt;&gt; [[[Broken Masquerade Hub]]] &gt;&gt; SCP-3739
-[[/div]]
-
-[[include :scp-wiki:component:flops-header
-|item=3739
-|containment=keter
-|level=4
-|security=secret
-|disruption=4/ekhi
-|disruption-bg-color=hsl(26, 100%, 37%)
+[[include :fondazionescp:component:floppy-disruption-bar
+|disruption-class=ekhi
+|disruption-bg-color=rgb(189, 82, 0)
+|disruption-text-color=rgb(252, 252, 252)
 ]]
 ----
-[[include :scp-wiki:component:image-block
-|name=snejanka-cave.png
-|caption=A natural [[span class=&#34;moo&#34;]]Moosphere, Inc.[[/span]] cave udder, photographed via VERITAS Resonance Imaging (right).
-|width=100%
-|align=center
-]]
+[[include component:image-block name=snejanka-cave.png|align=center|width=100%|caption=[[span style=&#34;font-size: 120%;&#34;]]Una naturale mammella cavernosa della [[span style=&#34;color: #2266C1; font-weight: bold;&#34;]]Moosphere, Inc.[[/span]], fotografata tramite risonanza VERITAS (a destra).[[/span]]]]
 ----
-**Special Containment Procedures:** Containment of SCP-3739 is focused on the introduction of a stable competitor product to gain a foothold in the paranormal market.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]This market, as it pertains to the dairy industry, consists of the following competitors: [[span class=&#34;moo&#34;]]Moosphere, Inc.[[/span]], [[[ambrose-thorn-valley|Ambrose Thorn Valley]]], [[[scp-4525|dado go]]], etc.[[/span]] To this end, Foundation front company [[[scp-3787|Stratford Cattle Productions]]][[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**Stratford Cattle Productions:** A parascientific bovine research firm and designer cattle farm.[[/span]] is to manufacture and market a legally safe anomalous dairy product. Cattle engineers are to distill dairy milk using bovine gene pool manipulation techniques and conceptual form separation. The Department of Economics is to reintroduce 13% of all revenue into Stratford Cattle Productions, and 87% into various other Foundation revenue streams.
+**Procedure Speciali di Contenimento:** Il contenimento di SCP-3739 è incentrato sull&#39;introduzione di un prodotto concorrente stabile per ottenere un punto d&#39;appoggio nel mercato del paranormale.[[footnote]] Questo mercato, per quanto riguarda l&#39;industria casearia, è composto dai seguenti concorrenti: Moosphere, Inc, [[[ambrose-thorn-valley|Ambrose Thorn Valley]]], [[[scp-4525|dado go]]], e altri. [[/footnote]] A tal fine, l&#39;obiettivo della società della Fondazione [[[scp-3787|Produzioni Casearie Stratford]]][[footnote]] **Produzioni Casearie Stratford:** Un&#39;azienda di ricerca parascientifica sui bovini e un allevamento di bovini. [[/footnote]] è quello di produrre e commercializzare un prodotto lattiero-caseario anomalo legalmente sicuro. Gli ingegneri che si occupano del bestiame devono distillare il latte usando tecniche di manipolazione del pool genetico bovino e la divisione concettuale delle formule. Il Dipartimento di Economia deve reintrodurre il 13% di tutte le entrate nelle Produzioni Casearie Stratford, e l&#39;87% in vari altri flussi di entrate della Fondazione.
 
-Meatspace Transitional Suppressor purification filters (or MEATS) are to replace normative methods and technologies used for gauging bovine health by 2025. Clinical trials and filter prototyping are to continue at Site-82 Command.
+I filtri di purificazione Meatspace Transitional Suppressor (o MEATS) sostituiranno i metodi normativi e le tecnologie usate per misurare la salute dei bovini entro il 2025. I test clinici e la prototipazione dei filtri continueranno al Comando del Sito-82.
 ----
-**Description:** SCP-3739 is a cognitohazardous vector spreading into human perception via hidden advertisements, which target the worldwide paranormal market. SCP-3739 manifests from the human noösphere[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**noösphere:** [[[scp-3662|The realm of memetic activity]]]. The existence of free memes implies the noösphere has an existence separate from physical reality. The precise nature of this existence is poorly understood. For more information on the ecosystem of memes, see: Hoygull, F. (2015). Memetics and Chill: The Power of Virulent Thoughtforms. //SCP Foundation Journal of Memetics and Informational Hazards, 48//(3), 192–207.[[/span]] as [[span class=&#34;moo&#34;]]Moosphere, Incorporated[[/span]]: A gestalt thought-based dairy corporation that presents the threat of an impending CK-Class restructuring event.
+**Descrizione:** SCP-3739 è un pericoloso vettore cognitivo che si diffonde nella percezione umana attraverso pubblicità nascoste, che mirano al mercato del paranormale mondiale. SCP-3739 si manifesta dalla noosfera umana[[footnote]] **Noosfera:** [[[scp-3662|La sfera del pensiero umano]]] Per maggiori informazioni sull&#39;ecosistema dei meme, vedere: Hoygull, F. (2015). Memetica e Brivido: Il potere delle forme pensiero-virulente. //Giornale della Fondazione SCP di Memetica e Rischi Informativi, 48//(3), 192-207. [[/footnote]] come [[span style=&#34;color: #2266C1; font-weight: bold;&#34;]]Moosphere, Inc[[/span]]: Una società lattiero-casearia basata sul pensiero gestaltico che minaccia un imminente evento di ristrutturazione di Classe-CK.
 
-[[span class=&#34;moo&#34;]]Moosphere[[/span]] uses microscopy technologies -- ordinarily used to transmit images visible only at 300 microns -- to produce invasive cognitohazardous catchphrases (designated **SCP-3739-1**). SCP-3739-1 instances are brand archetypes that anchor themselves onto symbols and signals already embedded in the consciousness of humanity. Transmission occurs when humans are unconscious: SCP-3739&#39;s archetypes and its related bovine motifs are only visible in REM sleep.
+Moosphere usa tecnologie di microscopia -- ordinariamente usate per trasmettere immagini visibili solo a 300 micron -- per produrre invasivi tormentoni cognito-minacciosi (designati SCP-3739-1). Le istanze di SCP-3739-1 sono archetipi di marca che si ancorano a simboli e segnali già incorporati nella coscienza dell&#39;umanità. La trasmissione avviene quando gli umani sono incoscienti: gli archetipi di SCP-3739 e i suoi motivetti bovini correlati sono visibili solo nel sonno REM.
 
-[[include :scp-wiki:component:image-features-source |hover-enlarge=--]
-|enlarge-amount=6
-|speed=250
-|float=true
-|align=right
-|width=200px
-|url=10_small_subunit.gif
-|add-caption=true
-|caption=Digital reconstruction of milk curdle build-up (blue). _
- _
-(Hover to enlarge.)
-]]
+[[include :scp-sandbox-3:image-zoom name=10_small_subunit.gif |caption=[[span style=&#34;font-size: 120%;&#34;]]Ricostruzione digitale dell&#39;accumulo di caglio del latte (blu).[[/span]]|width=200px|align=right]]
 
-[[span class=&#34;moo&#34;]]Moosphere[[/span]]&#39;s mass neurological advertisement campaign connects to a chain of legitimate products -- both real and dream-based -- produced by the human subconscious and esoteric sources. A significant sum of [[span class=&#34;moo&#34;]]Moosphere[[/span]] products come from the neural and memetic pathways of its market base.
+La campagna pubblicitaria neurologica di massa di Moosphere si collega a una catena di prodotti legittimi -- sia reali che basati sui sogni -- prodotti dal subconscio umano e da fonti esoteriche. Una somma significativa dei prodotti di Moosphere proviene dai percorsi neurali e memetici della sua clientela di base.[[footnote]] **Clientela di base:** La quantità totale di consumatori che usano o possono potenzialmente usare i beni o i servizi di un&#39;azienda. [[/footnote]]
 
-[[span class=&#34;moo&#34;]]Moosphere[[/span]] ectoentropically generates 31% of its flagship product, [[span class=&#34;moo&#34;]]Mind-Milk™[[/span]], from the hypothalamus and pineal gland (hormone release centers) respectively, while a metaphysical source secretes the remaining 69%. Regular consumers of [[span class=&#34;moo&#34;]]Moosphere[[/span]] products develop milk curdle build-up on portions of cerebral tissue, which further influences consumers to use [[span class=&#34;moo&#34;]]Moosphere[[/span]] products but does not otherwise negatively affect their health.
+Moosphere genera ectoentropicamente il 31% del suo prodotto di punta, Latte-Mentale™, rispettivamente dall&#39;ipotalamo e dalla ghiandola pineale (centri di rilascio ormonale), mentre una fonte metafisica secerne il restante 69%. I consumatori regolari di prodotti Moosphere sviluppano accumuli di caglio di latte su porzioni di tessuto cerebrale, il che influenza ulteriormente i consumatori ad usare i prodotti Moosphere ma non influisce negativamente sulla loro salute.
 
 @@ @@
 
-[[div class=&#34;log&#34; style=&#34;color: gray&#34;]]
-[[collapsible show=&#34;▷ WARNING: Memetic Ad Quarantined&#34; hide=&#34;△ Viewing secured&#34;]]
+[[div class=&#34;log&#34; style=&#34;color: gray;&#34;]]
+[[collapsible show=&#34;▷ ATTENZIONE: Pubblicità Memetica in Quarantena&#34; hide=&#34;△ Visualizzazione Protetta&#34;]]
 
 [[&gt;]]
-**Flagged** on 2024-02-29 @ 08:00 AM (UTC−05)
+**Segnalata** il 2024-02-29 @ 08:00 AM (UTC−05)
 [[/&gt;]]
 
-[[image final_ad_1.png style=&#34;width: 100%&#34;]]
+[[image final_ad_1-IT.jpg style=&#34;width: 100%;&#34;]]
 
 [[/collapsible]]
 [[/div]]
 
-[[div class=&#34;lite-heading&#34;]]
-----
-++ ADDENDUM 3739.1
-+++ EXPERIMENTATION LOG
+@@ @@
+[[div class=&#34;lite-header&#34;]]
 ----
 [[/div]]
-
-Site-82&#39;s Memetics Research Group C mail-ordered [[span class=&#34;moo&#34;]]Moosphere[[/span]] company products for testing. Researchers selected [[span class=&#34;moo choco&#34;]]Chocolate Mind-Milk™[[/span]] due to its popularity and unique production process. Testing occurred with the goal of understanding [[span class=&#34;moo&#34;]]Moosphere[[/span]]&#39;s use of literary archetypes in marketing, manufacturing, and product sales.
-
-Each [[span class=&#34;moo choco&#34;]]Chocolate Mind-Milk™[[/span]] packaging contained[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Alongside a dairy-based pun on the carton inset.[[/span]] the text &#34;What was your [[span class=&#34;moo&#34;]]Mind-Milk™[[/span]] experience like?&#34; with an attached phone number. Researchers consumed the product daily (before a full night&#39;s rest) over a 10-day period. Personnel noted any recurring dreams or motifs in a Standard Dream Report before relaying them to the phone line.
-
-Within two to five business days, each of the researchers encountered the following archetypal representations:
-
-||||~ Archetype 01: Trickster||
-||~ Moosphere expression||Outreach Specialists||
-||~ Moosphere manifestation||[[span class=&#34;moo&#34;]]Moosphere[[/span]] mascot &#34;Jackie the Clown Cow&#34; (**SCP-3739-1-A**) appeared to researchers. Subject possessed a lean bovine appearance and wore a mask resembling a fennec fox. Subject danced in the air, emitting bovine vocalizations and showering researchers in soy milk.||
-||||~ Archetype 07: Mother||
-||~ Moosphere expression||Mammary Mothers||
-||~ Moosphere manifestation||See Addendum 3739.4.||
-||||~ Archetype 08: Wounded Child||
-||~ Moosphere expression||Child Curdles/Coagulated Children||
-||~ Moosphere manifestation||A group of 15 &#34;Child Curdles&#34; (**SCP-3739-1-C**) appeared at the Research Group Supervisor&#39;s home at 4:07 AM. All subjects had varying levels of injuries and appeared as golden age animated cartoon characters.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Hand-drawn, rubber hose animation dating back to the 1920s.[[/span]] One of the instances, self-identifying as &#34;Creamy Charlie&#34;, recounted dairy-themed parables at 90 decibels. Most notably, the Supervisor&#39;s daughter, age 7, was diagnosed with hypocalcemia[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**hypocalcemia:** A medical condition wherein a patient has too little calcium in the blood.[[/span]] three weeks prior.||
-||||~ Archetype 14: The Flood||
-||~ Moosphere expression||{{N/A}}||
-||~ Moosphere manifestation||Researcher Mathias dreamt of a biblical flood sending tsunamis of milk into population centers. Upon reporting the motif to the phone line, an automated voice said &#34;Please hold&#34; before expelling milk from the receiver at 1 L/minute. This ended after five minutes when Mathias severed the phone line. Dream aligns with designated MF-Class &#34;Spilled Milk&#34; Scenario on the catastrophe classification list.||
-
-[[div class=&#34;lite-heading&#34;]]
-----
-++ ADDENDUM 3739.2
-+++ HISTORY, DISCOVERY, AND RECOVERY
+= [[span class=&#34;h2&#34;]]Addendum 3739.1[[/span]]
+= [[span class=&#34;h3&#34;]]REGISTRO ESPERIMENTI[[/span]]
+[[div class=&#34;lite-header&#34;]]
 ----
 [[/div]]
+@@ @@
 
-[[include :scp-wiki:component:image-features-source |hover-enlarge=--]
-|enlarge-amount=6
-|speed=250
-|float=true
-|align=right
-|width=300px
-|url=aswan-low-dam.png
-|add-caption=true
-|caption=Aswan Low Dam c. 1906. _
- _
-(Hover to enlarge.)
-]]
+Il Gruppo di Ricerca Memetica del Sito-82 ha ordinato per posta i prodotti dell&#39;azienda Moosphere per i test. I ricercatori hanno selezionato Latte-Mentale™ al Cioccolato a causa della sua popolarità e del suo unico processo di produzione. I test si sono svolti con l&#39;obiettivo di capire l&#39;uso che Moosphere fa degli archetipi letterari nel marketing, nella produzione e nella vendita dei prodotti.
 
-Egyptian Foundation personnel first became aware of SCP-3739-1-type neural advertising during the October 1952 survey of the upper Suez Canal. While conducting initial geological testing for the Aswan Low Dam renovation, Suez Canal Company workers accidentally breached an underwater chamber, releasing a flow of viscous white fluid. Workers 15 meters from the Lake Nasser embankment made physical contact with the fluid and experienced immediate glossolalia.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**glossolalia:** The phenomenon of speaking in an unknown language. Known colloquially as &#34;speaking in tongues.&#34;[[/span]]
+Ogni confezione di Latte-Mentale™ al Cioccolato conteneva [[footnote]] Accanto a un gioco di parole sul latte nell&#39;inserto del cartone. [[/footnote]] il testo &#34;Com&#39;è stata la tua esperienza con Latte-Mentale™?&#34; con un numero di telefono allegato. I ricercatori hanno consumato il prodotto quotidianamente (prima di una notte di riposo completo) per un periodo di 10 giorni. Il personale ha annotato qualsiasi sogno o motivo ricorrente su un Report Standard Dei Sogni prima di trasmetterli alla linea telefonica.
 
-Language interpretation officials[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]The Suez Canal Company employed a multitude of national and international specialists during its pre-Suez Crisis management of the Suez Canal region, which includes American, British, French, Saudi, and Egyptian nationals.[[/span]] identified the glossolalia as pre-Ptolemaic Era Egyptian. The phenomenon affected one Maat Mohamed (designated Person of Interest #11366) for the next three days. Mohamed later underwent medical evacuation at St. Sophia&#39;s Asylum -- a Foundation-owned medical facility -- under the guise of demonic possession affecting his memetic health. He became the first recorded vector for SCP-3739-1 phenomena.
+Entro due-cinque giorni lavorativi, ciascuno dei ricercatori ha incontrato le seguenti rappresentazioni archetipiche:
 
-The following is a translated excerpt of a key phrase spoken by Mohamed:
+||||~ Archetipo 01: Imbroglione||
+||~ Espressione di Moosphere||Specialisti dell&#39;Assistenza||
+||~ Manifestazione di Moosphere||La mascotte di Moosphere &#34;Jackie la Mucca Pagliaccio&#34; (SCP-3739-1-A) è apparsa ai ricercatori. Il soggetto possedeva l&#39;aspetto di un bovino magro e indossava una maschera che ricordava una volpe. Il soggetto danzava nell&#39;aria, emettendo vocalizzazioni di origine bovina e inondando i ricercatori di latte di soia.||
+||||~ Archetipo 07: Madre||
+||~ Espressione di Moosphere||Madri Mammarie||
+||~ Manifestazione di Moosphere||Vedi Addendum 3739.4.||
+||||~ Archetipo 08: Bambino Ferito||
+||~ Espressione di Moosphere||Bambini Cagliati/Bambini Coagulati||
+||~ Manifestazione di Moosphere||Un gruppo di 15 &#34;Bambini Cagliati&#34; (SCP-3739-1-C) è apparso a casa del Supervisore del Gruppo di Ricerca alle 4:07 del mattino. Tutti i soggetti avevano vari livelli di ferite e apparivano come personaggi di cartoni animati dell&#39;età dell&#39;oro.[[footnote]] Animazione disegnata a mano, con tubi di gomma, risalente agli anni &#39;20. [[/footnote]] Una delle istanze, che si autoidentificava come &#34;Creamy Charlie&#34;, raccontava parabole a tema caseario a 90 decibel. In particolare, alla figlia del supervisore, di 7 anni, fu diagnosticata l&#39;ipocalcemia [[footnote]] **Ipocalcemia:** Una condizione medica in cui un paziente ha troppo poco calcio nel sangue. [[/footnote]] tre settimane prima.||
+||||~ Archetipo 14: Il Diluvio||
+||~ Espressione di Moosphere||{{Non Disponibile}}||
+||~ Manifestazione di Moosphere||Il Ricercatore Mathias ha sognato un diluvio biblico che inviava tsunami di latte nei centri abitati. Dopo aver segnalato il motivo alla linea telefonica, una voce automatica ha detto &#34;Per favore attenda&#34; prima di espellere il latte dal ricevitore a 1 L/minuto. La cosa è finita dopo cinque minuti quando Mathias ha tagliato la linea telefonica. Il sogno si allinea con lo scenario di Classe-MF &#34;Latte Versato&#34; sulla lista di classificazione delle catastrofi.||
 
-[[div class=&#34;log&#34;]]
-**##gray|&#34;Bat,##**[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**Bat:** The name of a Middle Egyptian goddess associated with femininity and fertility, typically depicted as a cow or ox.[[/span]] **##gray|my Earthly mother. She leads me out of the depths of my head. She says it is nutritious. Should I siphon the teat?&#34;##**
+@@ @@
+[[div class=&#34;lite-header&#34;]]
+----
+[[/div]]
+= [[span class=&#34;h2&#34;]]Addendum 3739.2[[/span]]
+= [[span class=&#34;h3&#34;]]STORIA, SCOPERTA, E RECUPERO[[/span]]
+[[div class=&#34;lite-header&#34;]]
+----
+[[/div]]
+@@ @@
+
+[[include :scp-sandbox-3:image-zoom name=aswan-low-dam.png |caption=[[span style=&#34;font-size: 120%;&#34;]]Vecchia diga di Assuan, circa 1906 (seleziona per ingrandire).[[/span]]|width=300px|align=right]]
+
+Il personale egiziano della Fondazione venne a conoscenza per la prima volta della pubblicità neurale di SCP-3739-1 durante il sopralluogo dell&#39;Ottobre 1952 nel canale di Suez. Mentre conducevano i test geologici iniziali per la ristrutturazione della Diga di Assuan, i lavoratori della Compagnia del Canale di Suez fecero accidentalmente breccia in una camera subacquea, rilasciando un liquido bianco e viscoso. I lavoratori a 15 metri dall&#39;argine del Lago Nasser entrarono in contatto con il fluido e sperimentarono una glossolalia immediata.[[footnote]]  **Glossolalia:** Il fenomeno di parlare in una lingua sconosciuta. Conosciuto colloquialmente come &#34;parlare in lingue&#34;. [[/footnote]]
+
+Interpreti linguistici [[footnote]] La Compagnia del Canale di Suez ha impiegato una moltitudine di specialisti nazionali e internazionali durante la sua gestione della regione del Canale di Suez prima della crisi di Suez, che include cittadini americani, britannici, francesi, sauditi ed egiziani. [[/footnote]] hanno identificato la glossolalia come egiziana di epoca pre-tolemaica. Il fenomeno ha colpito un certo Maat Mohamed (designata Persona d&#39;Interesse #11366) per i successivi tre giorni. Mohamed ha poi ricevuto un&#39;evacuazione medica al Manicomio St. Sophia -- una struttura medica di proprietà della Fondazione -- con la scusa di una possessione demoniaca che colpiva la sua salute memetica. Divenne il primo vettore registrato del fenomeno SCP-3739-1.
+
+Quello che segue è un estratto tradotto di una frase chiave pronunciata da Mohamed:
+
+[[div class=&#34;quote-block&#34;]]
+&#34;//Bat,[[footnote]] **Bat:** Il nome di una dea del Medio Egitto associata alla femminilità e alla fertilità, tipicamente raffigurata come una mucca o un bue. [[/footnote]] la mia madre Terrestre. Mi conduce fuori dallo [sfintere/profondo] della mia testa. Dice che è nutriente. Devo [travasare/sfruttare] il capezzolo? Perché?//&#34;
 [[/div]]
 
-Whilst in the recreational room at St. Sophia&#39;s Asylum, Mohamed imitated marketing jargon from commercials and shows played on television. He produced SCP-3739-1 marketing jargon after viewing Coca-Cola advertisements.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Corporate advertisements used minor compulsion memetics (which POI-11366 was likely affected by) until the UNGOC Extranormal Advertisement Act passed in 1961. [[span class=&#34;moo&#34;]]Moosphere[[/span]] falls outside legal jurisdiction because of its location in metaphysical space.[[/span]] A week into his inpatient stay, Mohamed lactated, flooding his room. Mohamed displayed no further anomalous properties over the course of his month-long psychiatric containment.
+Mentre si trovava nella sala ricreativa del Manicomio di St. Sophia, Mohamed imitava il gergo del marketing dalle pubblicità e dagli spettacoli trasmessi in televisione. Ha prodotto il gergo di marketing SCP-3739-1 dopo aver visto le pubblicità della Coca-Cola.[[footnote]] Le pubblicità aziendali usavano la memetica della coercizione minore (di cui PDI-11366 era probabilmente affetto) fino alla legge sulla pubblicità extranormale dell&#39;UNGOC approvata nel 1961. Moospfera cade fuori dalla giurisdizione legale a causa della sua posizione nello spazio metafisico. [[/footnote]] Una settimana dopo il suo ricovero, Mohamed ha avuto una lattazione che ha inondato la sua stanza. Mohamed non ha mostrato altre proprietà anomale nel corso del suo mese di contenimento psichiatrico.
 
-Three months after his release, Mohamed fled Egypt, escaping Foundation surveillance. Local law enforcement discovered his apartment abandoned, containing the following materials:
+Tre mesi dopo il suo rilascio, Mohamed è fuggito dall&#39;Egitto, sfuggendo alla sorveglianza della Fondazione. Le forze dell&#39;ordine locali hanno scoperto il suo appartamento abbandonato, contenente i seguenti materiali:
 
-# Publications by Fyodor Dostoevsky and Sigmund Freud.
-# Books on cattle farming and entrepreneurship.
-# Several documents indicating plans to establish a dairy farm.
-# A bathroom containing 200 liters of curdled milk in the sinks, toilet, and bathtub.
+# Articoli di Fyodor Dostoevsky e Sigmund Freud.
+# Libri sull&#39;allevamento del bestiame e sull&#39;imprenditoria.
+# Diversi documenti che indicano i piani per creare una fattoria.
+# Un bagno con 200 litri di latte cagliato nei lavandini, nel gabinetto e nella vasca da bagno.
 
-The Foundation became aware of [[span class=&#34;moo&#34;]]Moosphere[[/span]] in 20██ following a sudden influx of online and television advertisements flagged with memetic and cognitohazardous properties. The advertisements drew a similarity to POI-11366&#39;s behavior, prompting a formal investigation. The Department of Analytics tracked [[span class=&#34;moo&#34;]]Moosphere[[/span]] company presence for several years but could not locate physical operation locations.
+La Fondazione è venuta a conoscenza di Moosphere nel 2014 a seguito di un improvviso afflusso di annunci pubblicitari online e televisivi con proprietà memetiche e pericoli cognitivi. Le pubblicità hanno richiamato una somiglianza con il comportamento di PDI-11366, inducendo un&#39;indagine formale. Il Dipartimento di Analisi ha tracciato la presenza della società Moosphere per diversi anni, ma non ha potuto localizzare le sedi fisiche delle operazioni.
 
-As of 2023, [[span class=&#34;moo&#34;]]Moosphere[[/span]] has reported a total global workforce of 61,000 employees. With anomalous control of an estimated 1% of the noöspheric market share, their product manufacturing output has a capacity 100 times a company of its size.
+A partire dal 2023, Moosphere ha riportato una forza lavoro globale di 61.000 dipendenti. Con il controllo anomalo di una quota stimata dell&#39;1% del mercato noosferico, la loro produzione di prodotti ha una capacità 100 volte superiore a quella di un&#39;azienda delle sue dimensioni.
 
-In June 2023, Analytics Management deployed field operatives (impersonating FDA inspectors) to multiple Eastern Wisconsin dairy farms flagged with irregularities. The following is one such inspection.
+Nel Giugno 2023, il Dipartimento di Analisi ha schierato degli operatori sul campo (spacciandosi per ispettori della FDA) in diverse fattorie lattiero-casearie del Wisconsin orientale segnalate come irregolari. Quella che segue è una di queste ispezioni.
 
 [[div class=&#34;log-bg&#34;]]
 [[div class=&#34;log&#34;]]
-[[collapsible hideLocation=&#34;both&#34; show=&#34;▷ Recovery Log 3739.2 ◁&#34; hide=&#34;△ Recovery Log 3739.2 △&#34;]]
+[[collapsible show=&#34;▷ Registro del Recupero 3739.2 ◁&#34; hide=&#34;△ Registro del Recupero 3739.2 △&#34;]]
 [[/div]]
-[[div style=&#34;text-align: left&#34;]]
+[[div style=&#34;text-align: left;&#34;]]
+[[=]]
 +++ VIDEO LOG
+[[/=]]
 ----
-= **[BEGIN LOG]**
+= **[INIZIO REGISTRAZIONE]**
 ----
-(//NOTE: Keys for format: Time | Source of Sound//)
+//(NOTA: Legenda:  Tempo | Fonte dei Suoni)//
 
-**0m 00s |** @@[@@//Field Agents Smith and Wollensky are inside a police car, driving on roads intersecting cornfields and distant barns. They pass fence posts outlining a ranch where ranchers wrangle up grazing cattle. A black warehouse, brown domicile, and red-walled livestock facility come into view. Wollensky eases the ignition and halts the vehicle near the facility before they both dismount.//@@]@@
+**0m 00s |** //[Gli agenti Smith e Wollensky sono all&#39;interno di un&#39;auto della polizia, guidando su strade che intersecano campi di mais e granai lontani. Passano davanti a pali di recinzione che delineano un ranch dove gli allevatori radunano il bestiame al pascolo. Un magazzino nero, un&#39;abitazione marrone e una struttura con pareti rosse per il bestiame compaiono alla vista. Wollensky spegne il veicolo vicino alla struttura prima che entrambi scendano.]//
 
-**1m 21s |** @@[@@//The ranch manager comes out to greet them. Behind him, farmhands haul cheese and milk products onto a forklift.//@@]@@
+**1m 21s |** //[Il manager del ranch esce per salutarli. Dietro di lui, i braccianti trasportano formaggio e prodotti lattiero-caseari su un carrello elevatore.]//
 
-**1m 31s | Agent Smith:** Hi there! Are you Gordon? Gordon Kazinsky?
+**1m 31s | Agente Smith:** Salve! Sei Gordon? Gordon Kazinsky?
 
-**1m 35s | Gordon Kazinsky:** My friends call me Gordon. You&#39;re with the FDA, aren&#39;t you?
+**1m 35s | Gordon Kazinsky:** I miei amici mi chiamano Gordon. Lei è della FDA, vero?
 
-**1m 40s | Smith:** Yessir. You can call me Smith, and this here is Wollensky. He&#39;s my deputy.
+**1m 40s | Smith:** Affermativo. Puoi chiamarmi Smith, e questo è Wollensky. È il mio vice.
 
-**1m 46s |** @@[@@//Wollensky nods. Smith extends his hand. The manager blinks and shrugs.//@@]@@
+**1m 46s |** //[Wollensky annuisce. Smith allunga la mano. Il manager sbatte le palpebre e lo ignora.]//
 
-**1m 50s | Smith:** You mind if I call you Gordon anyway?
+**1m 50s | Smith:** Ti dispiace se ti chiamo comunque Gordon?
 
-**1m 54s | Gordon:** You can call me Curdles the Cow for all I care. I just want to get back to work.
+**1m 54s | Gordon:** Puoi chiamarmi &#34;Curdles la Vacca&#34; per quello che mi interessa. Voglio solo tornare a lavorare.
 
-**2m 02s | Smith:** This&#39;ll be a real quick inspection.
+**2m 02s | Smith:** Sarà un&#39;ispezione molto veloce.
 
-**2m 04s | Gordon:** Right.
+**2m 04s | Gordon:** Bene.
 
-**2m 07s | Smith:** We&#39;ll hardly take much of your time. Hell, we passed by a Costco on the way here, so if you fine gents want some Coors Light after toiling in the sun all day, you can have some. We had a few cases we were taking back for tonight anyway.
+**2m 07s | Smith:** Non vi porteremo via molto tempo. Diavolo, siamo passati da un Costco mentre venivamo qui, quindi se voi bei signori volete un po&#39; di Coors Light dopo aver faticato sotto il sole tutto il giorno, potete averne un po&#39;. Avevamo comunque alcune casse che stavamo portando indietro per stasera.
 
-**2m 25s | Gordon:** That right?
+**2m 25s | Gordon:** Davvero?
 
-**2m 27s | Smith:** Absolutely, Gordon. Free of charge.
+**2m 27s | Smith:** Assolutamente, Gordon. Tutto gratis.
 
-**2m 30s | Gordon:** Well bud, if that&#39;s the case, consider that smudge of manure near the entrance your &#34;welcome mat.&#34; I&#39;ll show you around.
+**2m 30s | Gordon:** Beh, amico, se è così, considera quella macchia di letame vicino all&#39;ingresso il tuo &#34;tappetino di benvenuto&#34;. Ti faccio fare un giro.
 
-**2m 38s | Smith:** Wollensky&#39;s going to look at things out back near the warehouse. Again, for the sake of expediency.
+**2m 38s | Smith:** Wollensky guarderà le cose sul retro, vicino al magazzino. Di nuovo, per motivi di convenienza.
 
-**2m 45s |** @@[@@//Gordon gestures his hand toward the livestock facility, and Smith proceeds inside. Wollensky paces toward the black warehouse while nearby farmhands congregate, throwing brief glances at him. Wollensky&#39;s headset picks up children&#39;s laughter, but his body camera displays no children.//@@]@@
+**2m 45s |** //[Gordon fa un gesto con la mano verso la struttura del bestiame e Smith procede all&#39;interno. Wollensky cammina verso il magazzino nero mentre i braccianti vicini si riuniscono, lanciandogli brevi sguardi. Le cuffie di Wollensky captano le risate dei bambini, ma la sua videocamera nascosta non mostra alcun bambino.]//
 
-**3m 19s | Gordon:** You&#39;re here &#39;cause of that weird CGI Photoshop nonsense they got on LiveLeak, ain&#39;t you?
+**3m 19s | Gordon:** Sei qui per quella strana assurdità di CGI Photoshop che hanno messo su LiveLeak, vero?
 
-@@[@@//Whilst speaking, Gordon gesticulates. His right palm brushes against Smith&#39;s body camera. Video capture becomes obfuscated with a sticker of Jackie the Clown Cow. Audio reception from the headset remains operational. Smith fails to notice.//@@]@@
+//[Mentre parla, Gordon gesticola. Il suo palmo destro sfiora la telecamera del corpo di Smith. L&#39;acquisizione video viene offuscata da un adesivo di Jackie la Mucca Pagliaccio. La ricezione audio dalle cuffie rimane operativa. Smith non se ne accorge.]//
 @@ @@
 ----
 @@ @@
-||~ SMITH&#39;S POV | AUDIO ONLY||
+||~ PUNTO DI VISTA DI SMITH | SOLO AUDIO||
 
-**3m 25s | Smith:** Pardon?
+**3m 25s | Smith:** Mi scusi?
 
-**3m 26s | Gordon:** I can assure you, that was Dave. Always used to believe in &#34;guerrilla marketing,&#34; that man. Look, I can tell you this: Our quality assurance has gone untarnished for twenty-some-odd years.
+**3m 26s | Gordon:** Vi posso assicurare che era Dave. Ha sempre creduto nel &#34;guerrilla marketing&#34;, quell&#39;uomo. Guardi, posso dirle questo: La nostra garanzia di qualità è rimasta intatta per una ventina d&#39;anni.
 
 **3m 38s | Smith:** //Dave?//
 
-**3m 40s | Gordon:** @@[@@//He chuckles.//@@]@@ My //former// partner in crime.
+**3m 40s | Gordon:** //[Ride.]// Il mio //ex// socio.
 
-**3m 45s | Smith:** Registrar indicated he bought the farm first before dual-ownership.
+**3m 45s | Smith:** Il notaio ha indicato che ha comprato la fattoria prima della doppia proprietà.
 
-**3m 49s | Gordon:** It&#39;s just me now. Dave had a run-in with corporate. Nice guy and all, but he had to transfer.
+**3m 49s | Gordon:** Ora ci sono solo io. Dave ha avuto un battibecco con l&#39;azienda. Un bravo ragazzo e tutto il resto, ma ha dovuto trasferirsi.
 
-**3m 57s | Smith:** While the &#34;advertisement&#34; he marketed is a... Concern that I&#39;ll bring up later, we&#39;re primarily here for -- well, let&#39;s see. @@[@@//Pause.//@@]@@ Ah, loud noises heard in the middle of the night, run-off going into the lake over yonder. The one you use, that is. That sort of thing.
+**3m 57s | Smith:** Mentre la &#34;pubblicità&#34; che ha commercializzato è una... preoccupazione di cui parlerò più tardi, siamo qui principalmente per -- beh, dunque. //[Pausa.]// Ah, rumori forti sentiti nel cuore della notte, scolo che va a finire nel lago laggiù. Quello che usate voi, intendo. Questo genere di cose.
 
-**4m 14s | Gordon:** Complaints? By whom?
+**4m 14s | Gordon:** Reclami? Da chi?
 
-**4m 17s | Smith:** @@[@@//Pause.//@@]@@ Can&#39;t say, Gordon. I actually got a missing person&#39;s report on your business partner. //Dave//, isn&#39;t it?
+**4m 17s | Smith:** //[Pausa.]// Non posso dirlo, Gordon. In realtà ho ricevuto una denuncia di scomparsa del tuo socio in affari. //Dave//, vero?
 @@ @@
 ----
 @@ @@
-||~ WOLLENSKY&#39;S POV||
+||~ PUNTO DI VISTA DI WOLLENSKY||
 
-**4m 23s | Unidentified Farmhand:** We use the most up-to-date technology to produce the finest four gallons of dairy product this side of state. Before we pasteurize it, even! Ever taste it raw?
+**4m 23s | Bracciante non identificato:** Usiamo la tecnologia più moderna per produrre i migliori quattro galloni di prodotto lattiero-caseario di questo lato dello stato. Prima ancora di pastorizzarlo! L&#39;hai mai assaggiato crudo?
 @@ @@
 ----
 @@ @@
-||~ SMITH&#39;S POV | AUDIO ONLY||
+||~ PUNTO DI VISTA DI SMITH | SOLO AUDIO||
 
-**4m 24s | Gordon:** @@[@@//Toneless.//@@]@@ It&#39;s Mister Kazinsky to you.
+**4m 24s | Gordon:** //[Monotono.]// Per te è Mister Kazinsky.
 
-**4m 27s | Smith:** Now isn&#39;t that shooting yourself in the foot?
+**4m 27s | Smith:** Questo non è darsi la zappa sui piedi?
 
-**4m 31s | Gordon:** How you reckon?
+**4m 31s | Gordon:** Secondo te?
 
-= **&lt;LOG CUTS UNEXPECTEDLY&gt;**
+= **&lt;LA REGISTRAZIONE SI INTERROMPE IMPROVVISAMENTE&gt;**
 @@ @@
 ----
 @@ @@
-||~ WOLLENSKY&#39;S POV||
+||~ PUNTO DI VISTA DI WOLLENSKY||
 
-**12m 47s |** @@[@@//The facility&#39;s slide doors are open. Farmhands mix viscous fluids of varying color.//@@]@@
+**12m 47s |** //[Le porte scorrevoli della struttura sono aperte. I contadini mescolano fluidi viscosi di vario colore.]//
 
-**12m 52s |** @@[@@//The ranchers gather around the two agents. They greet and lead them through the slide doors.//@@]@@
+**12m 52s |** //[Gli allevatori si riuniscono intorno ai due agenti. Li salutano e li conducono attraverso le porte scorrevoli.]//
 
-= **&lt;LOG CUTS UNEXPECTEDLY&gt;**
+= **&lt;LA REGISTRAZIONE SI INTERROMPE IMPROVVISAMENTE&gt;**
 @@ @@
 ----
 @@ @@
-||~ SMITH&#39;S POV | AUDIO ONLY||
+||~ PUNTO DI VISTA DI SMITH | SOLO AUDIO||
 
-**41m 28s |** @@[@@//Smith is deep in conversation with Gordon and the other ranchers, querying how they produce their product. Ranchers relay cognitohazardous advertisement jargon to him.//@@]@@
+**41m 28s |** //[Smith è immerso in una conversazione con Gordon e gli altri allevatori, interrogandosi su come producono il loro prodotto. I contadini gli trasmettono un motivetto pubblicitario altera-mente.]//
 
-= **&lt;LOG CUTS UNEXPECTEDLY&gt;**
+= **&lt;LA REGISTRAZIONE SI INTERROMPE IMPROVVISAMENTE&gt;**
 @@ @@
 ----
 @@ @@
-||~ WOLLENSKY&#39;S POV | VIDEO ONLY||
+||~ PUNTO DI VISTA DI WOLLENSKY | SOLO VIDEO||
 
-[[include :scp-wiki:component:image-features-source |hover-enlarge=--]
-|enlarge-amount=6
-|speed=250
-|float=true
-|align=right
-|width=300px
-|url=Creepy_way_in_imambara.jpg
-|add-caption=true
-|caption=Image captured by Wollensky&#39;s camera, time-stamped 3h 35m 15s. _
- _
-(Hover to enlarge.)
-]]
+[[include :scp-sandbox-3:image-zoom name=Creepy_way_in_imambara.jpg |caption=[[span style=&#34;font-size: 120%;&#34;]]Immagine catturata dalla telecamera di Wollensky, 3h35m15s.[[/span]]|width=300px|align=right]]
 
-**NOTE:** Wollensky appears to have lost his headset. His view displays visuals separate from audio. Command received the audio with high amounts of white noise.
+**NOTA:** Wollensky sembra aver perso il suo auricolare. La sua vista mostra immagini separate dall&#39;audio. Il comando ha ricevuto un audio con elevate quantità di interferenza.
 
-**3h 34m 51s |** @@[@@//Camera captures aged concrete walls inked in white hieroglyphics. Wollensky moves forward and shines his flashlight onto dusty IBM 702 computers stationed on plastic-folding tables, each divided by cubicle walls. The camera pans downward and captures puddles of white liquid on hay-covered floors and manure.//@@]@@
+**3h 34m 51s |** //[La telecamera riprende muri di cemento invecchiato con geroglifici bianchi. Wollensky avanza e fa brillare la sua torcia su polverosi computer IBM 702 posizionati su tavoli pieghevoli di plastica, ognuno diviso da cubicoli. La telecamera si sposta verso il basso e cattura pozzanghere di liquido bianco su pavimenti coperti di fieno e letame.]//
 
-**3h 36m 04s | (COM):** @@[@@//A group of children laugh.//@@]@@
+**3h 36m 04s | (COM):** //[Un gruppo di bambini ride.]//
 
-**3h 36m 07s |** @@[@@//Wollensky stops, directing his mounted flashlight on a child. The camera shudders. The child giggles and shakes their head. They hold up an index finger, pointing. Wollensky rears his head toward a vacant location then turns back. The child flees, skipping across hay-covered floors and manure.//@@]@@
+**3h 36m 07s |** //[Wollensky si ferma, dirigendo la sua torcia su un bambino. La telecamera trema. Il bambino ridacchia e scuote la testa. Alza un dito indice, indicando qualcosa. Wollensky alza la testa, poi torna indietro. Il bambino fugge, saltando su pavimenti coperti di fieno e letame.]//
 
-**3h 36m 16s |** @@[@@//Wollensky follows. The child darts to the left corner. The manure displays countless footprints of varying shoe sizes impressed into it.//@@]@@
+**3h 36m 16s |** //[Wollensky lo segue. Il bambino sfreccia verso l&#39;angolo sinistro. Il letame mostra innumerevoli impronte di scarpe di varie dimensioni impresse in esso.]//
 
-= **&lt;LOG CUTS UNEXPECTEDLY&gt;**
+= **&lt;LA REGISTRAZIONE SI INTERROMPE IMPROVVISAMENTE&gt;**
 @@ @@
 ----
 @@ @@
-||~ WOLLENSKY&#39;S POV | VIDEO ONLY||
+||~ PUNTO DI VISTA DI WOLLENSKY | SOLO VIDEO||
 
-**4h 44m 41s |** @@[@@//Unknown person(s) apply a hot glue gun from above view. Wollensky&#39;s arms struggle against fifteen small, pale arms pressing against him. The body camera falls to his feet.//@@]@@
+**4h 44m 41s |** //[Sconosciuti applicano una pistola per la colla a caldo dall&#39;alto. Le braccia di Wollensky lottano contro quindici piccole braccia pallide che premono contro di lui. La telecamera cade ai suoi piedi.]//
 
-**4h 44m 58s |** @@[@@//A copious amount of white liquid drips from Wollensky&#39;s ears.//@@]@@
+**4h 44m 58s |** //[Una quantità abbondante di liquido bianco gocciola dalle orecchie di Wollensky.]//
 
-= **&lt;LOG CUTS UNEXPECTEDLY&gt;**
+= **&lt;LA REGISTRAZIONE SI INTERROMPE IMPROVVISAMENTE&gt;**
 @@ @@
 ----
 @@ @@
-||~ UNKNOWN CONTEXT | AUDIO ONLY||
+||~ CONTESTO SCONOSCIUTO | SOLO AUDIO||
 
-**??h ??m ??s | (COM):** @@[@@//Gurgling sounds emit for approximately 12 hours. Various moans, bovine and human, are audible periodically. This occurs until the audio equipment runs out of battery.//@@]@@
+**??h ??m ??s | (COM):** //[Suoni gorgoglianti vengono emessi per circa 12 ore. Vari gemiti, bovini e umani, sono udibili periodicamente. Questo avviene fino a quando l&#39;attrezzatura audio non esaurisce la batteria.]//
 ----
-= **[END LOG]**
+= **[FINE LOG]**
 ----
-++++ __RAISA POST-INVESTIGATION NOTICE__
+[[=]]
+++++ __AVVISO POST-INVESTIGAZIONE DELL&#39;ASIR__
+[[/=]]
 
-When a retrieval task force arrived at the farmland, the facilities were vacant, save for an undulating 1.7-meter-wide udder. The udder, branded with the initials &#34;M.M.&#34; on its lower end, emitted male vocalizations akin to sobbing.
+Quando una task force di recupero è arrivata al terreno agricolo, le strutture erano vuote, tranne che per una mammella ondeggiante di 1,7 metri di larghezza. La mammella, marchiata con le iniziali &#34;M.M.&#34; sulla sua estremità inferiore, emetteva vocalizzazioni maschili simili a singhiozzi.
 
-The current whereabouts of Agents Smith and Wollensky are unknown.
+La posizione attuale degli agenti Smith e Wollensky è sconosciuta.
 [[/collapsible]]
 [[/div]]
 [[/div]]
 
 @@ @@
 
-[[div class=&#34;log&#34; style=&#34;color: gray&#34;]]
-[[collapsible show=&#34;▷ WARNING: Memetic Ad Quarantined&#34; hide=&#34;△ Viewing secured&#34;]]
+[[div class=&#34;log&#34; style=&#34;color: gray;&#34;]]
+[[collapsible show=&#34;▷ ATTENZIONE: Pubblicità Memetica in Quarantena&#34; hide=&#34;△ Visualizzazione Protetta&#34;]]
 
 [[&gt;]]
-**Flagged** on 2024-02-29 @ 08:11 AM (UTC−05)
+**Segnalata** il 2024-02-29 @ 08:11 AM (UTC−05)
 [[/&gt;]]
 
-[[image final_ad_2.png style=&#34;width: 100%&#34;]]
+[[image final_ad_2-IT.jpg style=&#34;width:100%;&#34;]]
 
 [[/collapsible]]
 [[/div]]
 
-[[div class=&#34;lite-heading&#34;]]
-----
-++ ADDENDUM 3739.3
-+++ INITIAL INTERVIEW
+@@ @@
+[[div class=&#34;lite-header&#34;]]
 ----
 [[/div]]
+= [[span class=&#34;h2&#34;]]Addendum 3739.3[[/span]]
+= [[span class=&#34;h3&#34;]]INTERVISTA INIZIALE[[/span]]
+[[div class=&#34;lite-header&#34;]]
+----
+[[/div]]
+@@ @@
 
 [[div class=&#34;log-bg&#34;]]
 [[div class=&#34;log&#34;]]
-[[collapsible hideLocation=&#34;both&#34; show=&#34;▷ Interview Log 3739.3 ◁&#34; hide=&#34;△ Interview Log 3739.3 △&#34;]]
+[[collapsible show=&#34;▷ Registro Intervista 3739.3 ◁&#34; hide=&#34;△ Registro Intervista 3739.3 △&#34;]]
 [[/div]]
-[[div style=&#34;text-align: left&#34;]]
+[[div style=&#34;text-align: left;&#34;]]
+[[=]]
 +++ VIDEO LOG
+[[/=]]
 ----
-**INTERVIEWED:** Jacob Drauss, Head of Internet Outreach, [[span class=&#34;moo&#34;]]Moosphere, Inc.[[/span]]
+**INTERVISTATO:** Jacob Drauss, Responsabile Diffusione Su Internet, [[span style=&#34;color: #2266C1; font-weight: bold;&#34;]]Moosphere, Inc.[[/span]]
 
-**INTERVIEWER:** Dr. Michael Handler
+**INTERVISTATORE:** Dr. Michael Handler
 
-**DATE:** 10 June 2023
+**DATA:** 10 Giugno, 2023
 
-**NOTE:** Simurgh.aic intercepted various social media pages and local news articles with advertisements connected to SCP-3739-1 phenomena. An internet forensics team back-traced the IP addresses to a defunct compound in Bellevue, Wisconsin, which a unit of Mobile Task Force Eta-33 (&#34;Don&#39;t Have a Cow, Man&#34;) members raided. The unit found Jacob Drauss in a state of unconsciousness and under duress, with intravenous pumps injecting white liquid into his bloodstream from emptied milk containers.
+**NOTA:** Simurgh.aic ha intercettato varie pagine di social media e articoli di notizie locali con pubblicità collegate ai fenomeni SCP-3739-1. Una squadra forense di internet ha rintracciato gli indirizzi IP a un complesso abbandonato a Bellevue, Wisconsin, in cui un&#39;unità di membri della Squadra Speciale Mobile Eta-33 (&#34; Non avere una mucca, amico&#34;) ha fatto irruzione. L&#39;unità ha trovato Jacob Drauss in uno stato di incoscienza e sotto sequestro, con pompe intravenose che iniettavano liquido bianco nel suo sangue da contenitori di latte svuotati.
 ----
-= **[BEGIN LOG]**
+= **[INIZIO LOG]**
 ----
-@@[@@//Jacob Drauss regains consciousness 90 minutes after the start of the raid. Recording begins as Drauss leaks milk from his left ear canal at an approximate rate of 300 mL/minute.//@@]@@
+//[Jacob Drauss riprende conoscenza 90 minuti dopo l&#39;inizio dell&#39;incursione. La registrazione inizia mentre Drauss perde latte dal suo canale uditivo sinistro a una velocità approssimativa di 300 mL/minuto.]//
 
-**Jacob Drauss:** Ah fuck, all over the kitchen!
+**Jacob Drauss:** Ah cazzo, su tutta la cucina!
 
-**Dr. Michael Handler:** This is your house?
+**Dr. Michael Handler:** Questa è casa tua?
 
-**Drauss:** Yeah, man. I work from home.
+**Drauss:** Si, amico. Lavoro da casa.
 
-**Dr. Handler:** Noted. @@[@@//Aside.//@@]@@ Grab a bucket, please.
+**Dr. Handler:** Ricevuto. //[Ad un altro.]// Prendi un secchio, per favore.
 
-@@[@@//A member of Eta-33 places a bucket at Drauss&#39; side, catching the liquid.//@@]@@
+//[Un membro della Eta-33 mette un secchio al fianco di Drauss, raccogliendo il liquido.]//
 
-**Drauss:** We don&#39;t have time for this. They&#39;re going to be here any minute!
+**Drauss:** Non abbiamo tempo per tutto questo. Saranno qui a momenti!
 
-**Dr. Handler:** Well then, the clock is ticking, Jacob.
+**Dr. Handler:** Bene, allora il tempo scorre, Jacob.
 
-**Jacob Drauss:** What else do you need? You got my ID, my background check, academic certs, tungsten ring...
+**Jacob Drauss:** Cos&#39;altro ti serve? Hai la mia carta d&#39;identità, il mio background, i certificati accademici, l&#39;anello di tungsteno...
 
-**Dr. Handler:** My hands are tied. You&#39;ll have to play ball with us.
+**Dr. Handler:** Ho le mani legate. Dovrai giocare a palla con noi.
 
-**Drauss:** Playing ball means I won&#39;t be able to sleep without several gallons of milk pouring out my nostrils and mouth, goddamnit.
+**Drauss:** Giocare a palla significa che non potrò dormire senza che diversi litri di latte mi escano dalle narici e dalla bocca, dannazione.
 
-**Dr. Handler:** That&#39;s a risk you&#39;re willing to take. @@[@@//He taps on a folder on the desk.//@@]@@ Freedom&#39;s right within reach, Drauss. More than I can say for those poor sods you personally trapped with memetics. @@[@@//He opens the folder, flipping through birth certificates and passports.//@@]@@ We have a nice little home for you, out by the pier with Little Mary and Jonesy -- the four of you under a nice little carousel. You&#39;re taking out little Mary&#39;s favorite treats from a picnic basket; the sun&#39;s caressing your shoulders; the sand kernels are wedging between your toes. @@[@@//He slams the folder shut.//@@]@@ Come on, work for it! Work for your new life.
+**Dr. Handler:** È un rischio che sei disposto a correre. //[Tocca un raccoglitore sulla scrivania]// La libertà è a portata di mano, Drauss. Più di quanto possa dire di quei poveri stronzi che hai personalmente intrappolato con la memetica. //[Apre la cartella, sfogliando certificati di nascita e passaporti.]// Abbiamo una bella casetta per te, fuori dal molo con Little Mary e Jonesy -- voi quattro sotto una bella giostra. Stai prendendo da un cestino da picnic i dolcetti preferiti della piccola Mary; il sole ti accarezza le spalle; i granelli di sabbia si incastrano tra le dita dei piedi. //[Chiude la cartella.]// Dai, lavora per questo! Lavora per la tua nuova vita.
 
-**Drauss:** You make sure you protect them after I&#39;m gone, you hear? CEO&#39;s gonna assimilate me for revealing his secrets. @@[@@//He grunts.//@@]@@ There&#39;s that udder you found. At the warehouse, right?
+**Drauss:** Assicurati di proteggerli dopo che me ne sarò andato, capito? Il CEO mi assimilerà per aver rivelato i suoi segreti. //[Grugnisce.]// La mammella che hai trovato. Al magazzino, giusto?
 
-**Dr. Handler:** Any others?
+**Dr. Handler:** Le altre?
 
-**Drauss:** Couple. It&#39;s emergent aeonian bio-organic paratech. Or in other words -- the CEO expects his workers to become his product. Black warehouse, brown doors? With the cat poster, right? Yeah, that was Dave. Great guy, but not smart enough to avoid the CEO&#39;s ire. Tried to reveal what was going on anonymously and thought he was protected because he had fuckin&#39; NordVPN on. @@[@@//He shakes his head.//@@]@@ The last message he sent me said he got &#34;transferred.&#34;
+**Drauss:** Una coppia. È una paratecnica bio-organica eoniana emergente. O, in altre parole -- il CEO si aspetta che i suoi lavoratori diventino il suo prodotto. Magazzino nero, porte marroni? Con il poster del gatto, giusto? Sì, quello era Dave. Un bravo ragazzo, ma non abbastanza intelligente da evitare l&#39;ira del CEO. Ha cercato di rivelare cosa stava succedendo in modo anonimo e pensava di essere protetto perché aveva NordVPN acceso, cazzo. //[Scuote la testa.]// L&#39;ultimo messaggio che mi ha mandato diceva che era stato &#34;trasferito&#34;.
 
-**Dr. Handler:** E-mails we intercepted on the company intranet confirm that message was sent not too long ago, but we couldn&#39;t trace it back to any known source. We also couldn&#39;t find any technologies capable of doing that to your friend.
+**Dr. Handler:** Le e-mail che abbiamo intercettato sull&#39;intranet aziendale confermano che il messaggio è stato inviato non molto tempo fa, ma non siamo riusciti a risalire a nessuna fonte conosciuta. Non siamo nemmeno riusciti a trovare alcuna tecnologia in grado di fare questo al tuo amico.
 
-**Drauss:** That&#39;s because it&#39;s in here. @@[@@//He taps his temple.//@@]@@ It&#39;s like this. Imagine a valve being affixed to a piston. Or an artificial ventricle filled with blood, forming a unique mechanism capable of muscle contraction. We //dreamt up// our heat exchangers to pasteurize that damned dairy.
+**Drauss:** Questo perché è qui dentro. //[Si tocca la tempia.]// È così. Immaginate una valvola attaccata ad un pistone. O un ventricolo artificiale riempito di sangue, che forma un meccanismo unico capace di contrarre i muscoli. Abbiamo //sognato// i nostri scambiatori di calore per pastorizzare quel dannato latte.
 
-@@[@@//A large disembodied udder manifests in the corner of the room behind Drauss.//@@]@@
+//[Una grande mammella disincarnata si manifesta nell&#39;angolo della stanza dietro Drauss.]//
 
-**Dr. Handler:** The floating udder, Drauss?
+**Dr. Handler:** La mammella volante, Drauss?
 
-**Drauss:** @@[@@//He covers his face with his hands, disrupting the flow. He exhales.//@@]@@ Fuck!
+**Drauss:** //[Si copre il viso con le mani, interrompendo il flusso. Sospira.]// Cazzo!
 
-**Dr. Handler:** @@[@@//Aside.//@@]@@ You didn&#39;t bring the MEATS,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**Meatspace Transitional Suppressors (MEATS):** Provisional containment modules used to contain metaphysical threats. [[/span]] did you?
+**Dr. Handler:** //[Ad un altro.]// Non hai portato i MEATS,[[footnote]] **Meatspace Transitional Suppressors (MEATS):** Moduli di contenimento provvisori usati per contenere le minacce metafisiche. [[/footnote]] vero?
 
-**Eta-33 Lead:** We&#39;ll handle it. Just keep talking to the perp.
+**Eta-33 Lead:** Ce ne occupiamo noi. Continuate a parlare con il colpevole.
 
-**Dr. Handler:** Alright. @@[@@//Pause.//@@]@@ Jacob, how does someone get into this business?
+**Dr. Handler:** Va bene. //[Pausa.]// Jacob, come si fa a entrare in questo settore?
 
-**Drauss:** Handler, was it?
+**Drauss:** TI chiami Handler, vero?
 
-@@[@@//Dr. Handler nods.//@@]@@
+//[Dr. Handler annuisce.]//
 
-**Drauss:** Well, Handler, you know how they operate. It&#39;s all between-the-lines, through subliminal catchy slogan bullshit, brand deals, seasonal sales, et cetera. Once you get into it you can say bye-bye to whatever goodnight&#39;s sleep you had before.
+**Drauss:** Beh, Handler, sai come operano. È tutto tra le righe, attraverso stronzate subliminali di slogan accattivanti, offerte di marca, saldi stagionali, ecc. Una volta che ci sei dentro, puoi dire addio a qualsiasi buon sonno che avevi prima.
 
-**Dr. Handler:** Before this, you were a full-time Lyft driver. Can&#39;t imagine you were getting much sleep on those long nights out anyway. What&#39;s with the change in occupation?
+**Dr. Handler:** Prima di questo, eri un autista Lyft a tempo pieno. Non posso immaginare che tu dormissi molto durante quelle lunghe notti fuori casa, comunque. Come mai questo cambio di occupazione?
 
-**Drauss:** I was conscripted. See, it starts slowly. You get fatigued. So, you put a little more cheese in your diet, maybe pour a little more skim milk in your decaf. Espresso won&#39;t work. Pills won&#39;t work, and some days you collapse from exhaustion. And when the coma hits? @@[@@//He drops his palms to his lap.//@@]@@ That means you&#39;re hired. Your subconscious isn&#39;t your private property anymore, understand?
+**Drauss:** Sono stato arruolato. Vedi, inizia lentamente. Ti affatichi. Allora, metti un po&#39; più di formaggio nella tua dieta, magari versi un po&#39; più di latte scremato nel tuo decaffeinato. L&#39;espresso non funziona. Le pillole non funzionano, e alcuni giorni crolli per la stanchezza. E quando arriva il coma? //[Fa cadere i palmi delle mani sul suo grembo.]// Significa che sei assunto. Il tuo subconscio non è più una tua proprietà privata, capito?
 
-**Dr. Handler:** So then how did you propagate the advertisements? You were physically incapable of doing any typing from what I could tell.
+**Dr. Handler:** Allora come hai fatto a diffondere gli annunci? Eri fisicamente incapace di scrivere, da quello che ho capito.
 
-**Drauss:** Yeah, those? Written in legally distinct arcana via the amygdala: Drafted in emotion and fear, so they can&#39;t get sued by competitors in the Marketplace of Ideas.
+**Drauss:** Sì, quelli? Scritti con tecniche arcane giuridicamente distinte tramite l&#39;amigdala: Redatti nell&#39;emozione e nella paura, così non possono essere citati in giudizio dai concorrenti nel Mercato delle Idee.
 
-**Dr. Handler:** What else did you witness?
+**Dr. Handler:** A cos&#39;altro hai assistito?
 
-**Drauss:** After I was employed, it was all about [[span class=&#34;moo&#34;]]Moosphere Mind-Cubicles™[[/span]], [[span class=&#34;moo&#34;]]Moosphere[[/span]]-branded [[span class=&#34;moo&#34;]]Mind-Staplers™[[/span]], [[span class=&#34;moo&#34;]]Mind-Utilities™[[/span]], [[span class=&#34;moo&#34;]]Mind-Slaves™[[/span]], [[span class=&#34;moo&#34;]]Moosphere Grazing Barns™[[/span]], and a &#34;district manager&#34; with six leaky tits. I was busy filing tax returns for these primordial bovine entities. These– these things that expect you to drink yourself into oblivion. Oneiroi&#39;s Kangaroo Kourt system isn&#39;t going to recognize Staff mistreatment or unions if [[span class=&#34;moo&#34;]]Moosphere[[/span]] did it on company grounds.
+**Drauss:** Dopo che sono stato assunto, si trattava di Cubicoli-Mentali Moosphere™, Pinzatrici-Mentali Moosphere™, Servizi Pubblici-Mentali™, Schiavi-Mentali™, Fattorie Moosphere™, e un &#34;district manager&#34; con sei tette che gocciolavano. Ero occupato a compilare le dichiarazioni dei redditi per queste entità bovine primordiali. Queste... queste cose che si aspettano che tu beva fino all&#39;oblio. Il sistema Kangaroo Kourt di Oneiroi non riconoscerà il maltrattamento del personale o i sindacati se Moosphere l&#39;ha fatto sul terreno aziendale.
 
-@@[@@//The floating udder undulates. Sounds of retching emerge.//@@]@@
+//[La mammella fluttuante ondeggia. Emergono suoni di vomito.]//
 
-**Dr. Handler:** On company grounds?
+**Dr. Handler:** Su terreno aziendale?
 
-**Drauss:** The Marketplace of Ideas isn&#39;t a lie, Doctor Handler. That domain exists, and you&#39;re a part of it, whether you like it or not.
+**Drauss:** Il Mercato delle Idee non è una bugia, Dr. Handler. Quel dominio esiste, e lei ne fa parte, che le piaccia o no.
 
-**Dr. Handler:** How do you mean?
+**Dr. Handler:** In che senso?
 
-**Drauss:** I need you to listen very carefully when I tell you this. @@[@@//He sits up straight and sighs.//@@]@@ You should know that there are only two types of people in this world. Those of us who drink [[span class=&#34;moo&#34;]]Mind-Milk™[[/span]], and those of us who secrete it.
+**Drauss:** Ho bisogno che tu ascolti molto attentamente quando ti dico questo. Devi sapere che ci sono solo due tipi di persone a questo mondo. Quelli che bevono il Latte-Mentale™ e quelli che lo secernono.
 ----
-= **[END LOG]**
+= **[FINE LOG]**
 ----
-**NOTE:** //Mr. Drauss has refused to answer any further questions about [[span class=&#34;moo&#34;]]Moosphere[[/span]], his position in the company, or the Marketplace of Ideas. My team and I have taken him into limited protective custody for psychological evaluation and his own personal safety.//
+**NOTA:** //Il Signor Drauss ha rifiutato di rispondere a qualsiasi altra domanda su Moosphere, la sua posizione nella società, o il Mercato delle Idee. Io e la mia squadra lo abbiamo preso in custodia protettiva limitata per una valutazione psicologica e per la sua sicurezza personale.//
 
 [[&gt;]]
 --Dr. Michael Handler
-//Foundation Public Relations//
+//Pubbliche Relazioni della Fondazione//
 [[/&gt;]]
 [[/collapsible]]
 [[/div]]
 [[/div]]
 
-[[div class=&#34;lite-heading&#34;]]
-----
-++ ADDENDUM 3739.4
-+++ EXPLORATION LOG
+@@ @@
+[[div class=&#34;lite-header&#34;]]
 ----
 [[/div]]
+= [[span class=&#34;h2&#34;]]Addendum 3739.4[[/span]]
+= [[span class=&#34;h3&#34;]]REGISTRO ESPLORAZIONE[[/span]]
+[[div class=&#34;lite-header&#34;]]
+----
+[[/div]]
+@@ @@
 
 [[div class=&#34;log-bg&#34;]]
 [[div class=&#34;log&#34;]]
-[[collapsible hideLocation=&#34;both&#34; show=&#34;▷ OPERATION: LACTOSE INTOLERANCE ◁&#34; hide=&#34;△ CODENAME: How the Udder Half Lives △&#34;]]
+[[collapsible show=&#34;▷ OPERAZIONE: INTOLLERANZA AL LATTOSIO ◁&#34; hide=&#34;△ NOME IN CODICE: Come Vive La Metà Delle Mammelle △&#34;]]
 [[/div]]
-[[div style=&#34;text-align: left&#34;]]
+[[div style=&#34;text-align: left;&#34;]]
+[[=]]
 +++ VIDEO LOG
+[[/=]]
 ----
-**FOREWORD:** On 24 June 2023, a livestream containing surreal bovine imagery was posted to YouTube, triggering Simurgh.aic. The livestream, entitled &#34;Sights of Wausaukee, Northeastern Wisconsin,&#34; displayed normative footage of the town&#39;s attractions interspersed with shocking imagery of large, writhing, gelatinous bovine masses. Simurgh.aic could not determine a geolocation and blocked the stream.
+**PREMESSA:** Il 24 Giugno 2023, un livestream contenente immagini bovine surreali è stato pubblicato su YouTube, innescando Simurgh.aic. Il livestream, intitolato &#34; Luoghi di Wausaukee, Wisconsin nord-orientale&#34;, mostrava filmati regolari delle attrazioni della città intervallati da immagini scioccanti di grandi masse bovine gelatinose che si contorcevano. Simurgh.aic non ha potuto determinare una geolocalizzazione e ha bloccato lo stream.
 
-Foundation officials investigated Wausaukee as part of a mandatory sweep for anomalous threats. An attached crew of field pataphysicists detected an aberrant mass of 150,000 individual bovine memes in and around the town, most of which centered on a 640 m^^2^^ area. MTF-Eta-33 members initiated further investigation, and with the help of pataphysicists, tracked the memes to a nearby warehouse at the town&#39;s outskirts.
+I funzionari della Fondazione hanno investigato a Wausaukee come parte di un controllo obbligatorio per le minacce anomale. Un equipaggio di patafisici sul campo ha rilevato una massa aberrante di 150.000 meme bovini dentro e intorno alla città, la maggior parte dei quali si concentrava in un&#39;area di 640 m^^2^^. I membri della SSM-Eta-33 hanno avviato ulteriori indagini, e con l&#39;aiuto dei patafisici, hanno rintracciato i meme in un vicino magazzino alla periferia della città.
 
-A raid on the facility was scheduled for the following evening. Aware of the pataphysical findings, Site-82 Command became convinced of a likely risk to civilian populations and authorized the use of esoteric materials to combat potential oneiric threats and anomalous dairy entities.
+Un&#39;incursione nella struttura fu programmata per la sera successiva. A conoscenza dei risultati dei patafisici, il Comando del Sito-82 si convinse di un probabile rischio per le popolazioni civili e autorizzò l&#39;uso di materiali esoterici per combattere potenziali minacce oniriche ed entità lattifere anomale.
 ----
-**EXPLORATION TEAM:** MTF-η-33
+**MEMBRI DEL TEAM:** η-1, η-2, e η-3.
 
-**TEAM MEMBERS:**
-* η-1 / Samara Maclear
-* η-2 / Eli Hall
-* η-3 / Allen Foxglove
+**NOTE DEL TEAM:** Gli specialisti della squadra sono stati selezionati in base a:
+a) La loro capacità di lavorare in squadra.
+b) Marcatori patafisici che indicano il loro significato archetipico, necessario per un&#39;operazione di questa natura.
 
-**TEAM NOTES:** Task force specialists were selected based on:
-# Their teamwork skills.
-# Pataphysical markers pointing to their archetypal significance, necessary for an operation of this nature.
+**EQUIPAGGIAMENTO:**
+* Tre serie di armature standard in fibra Spectra. [[footnote]] Telecamere per il corpo dotate di un sistema di trasmissione e di un auricolare. [[/footnote]]
+* Tre fucili M4.
+* Un kit tattico di proiezione astrale e un sigillo subdermico portato da η-1.
+* Un drone da ricognizione e un controller remoto trasportato da η-2.
+* Un kit per lo sfondamento portato da η-3.
+* Varie granate multiuso e armi stordenti.
+* Visori a infrarossi specializzati.
+* Latte al miele di tipo-1 di [[[scp-3863|SCP-3863]]], 250 millilitri.
 
-**EQUIPMENT:**
-* Three sets of standard Spectra-fiber body armor. Each set is fitted with multiple built-in body cameras, a transmission stream, and headset.
-* Infrared night-vision goggles.
-* Three M4 carbines.
-* One tactical astral projection kit and subdermal sigil (carried by η-1).
-* One reconnaissance drone and a remote controller (carried by η-2).
-* One breach kit (carried by η-3).
-* [[[scp-3863|SCP-3863]]]-1-type milk-honey, 250 mL.
-
-**PREAMBLE:** A small team of MTF-η-33 specialists deployed via combat search and rescue helicopter. On arrival, the cast iron and steel roofing were partially collapsed, leaving a large breach above the warehouse.
+**PRECISAZIONE:** Una piccola squadra di specialisti SSM-Eta-33 si è dispiegata con un elicottero di ricerca e salvataggio. All&#39;arrivo, la copertura in ghisa e acciaio era parzialmente crollata, lasciando una grande apertura sopra il magazzino.
 ----
-= **[BEGIN LOG | 09:47 PM]**
+= **[INIZIO LOG | 09:47 PM]**
 ----
-**«9:47:»** η-1 and η-3 hold position outside the front entrance. η-2 operates a quadcopter drone over the exposed roof.
+**«9:47:»** η-1 e η-3 mantengono la posizione fuori dall&#39;ingresso principale. η-2 opera un drone sopra il tetto esposto.
 
-**«9:50:»** The drone enters a dimly lit interior containing 25 docile cows inside compact rooms, guarded behind slide-doors. The cows display fitted metallic portholes on their left flank and udders.
+**«9:50:»** Il drone entra all&#39;interno di un ambiente scarsamente illuminato che contiene 25 docili mucche in stanze compatte, sorvegliate da porte scorrevoli. Le mucche presentano degli oblò metallici montati sul fianco sinistro e sulle mammelle.
 
-**«9:52:»** Manure and hay compositions surround a hole directly beneath the roof&#39;s breach. Gelatinous purple tubing networks lead out of the hole and crisscross between compact cow stalls.
+**«9:52:»** Il letame e le compostiere di fieno circondano un buco direttamente sotto la frattura del tetto. Reti di tubi viola gelatinosi escono dal buco e si incrociano tra le stalle compatte delle mucche.
 
-**«9:57:»** The drone feed captures generic farming utilities, fertilizer, and seed bags.
+**«9:57:»** Il feed del drone riprende le attrezzature agricole generiche, il fertilizzante e i sacchi di sementi.
 
-**«9:58:»** Small outlines move within bushes near η-1&#39;s camera. η-1 shines her flashlight at the location of movement. After a moment, η-1 states, &#34;//Negative sighting, remain alert//.&#34;
+**«9:58:»** Piccole sagome si muovono tra i cespugli vicino alla telecamera di η-1. η-1 fa brillare la sua torcia sul luogo del movimento. Dopo un momento, η-1 dichiara: &#34;//Avvistamento negativo, state all&#39;erta//&#34;.
 
-**«9:58:»** η-1 gestures an &#34;all-clear&#34; signal. η-2 places the drone on auto-pilot and nods to η-3. η-3 installs a breach charge at the facility&#39;s front doors. The three pile behind a breaching blanket.
+**«9:58:»** η-1 gesticola un segnale di &#34;via libera&#34;. η-2 mette il drone sul pilota automatico e fa un cenno a η-3. η-3 installa una carica di sfondamento alle porte anteriori della struttura. I tre si ammassano dietro una coperta antisfondamento.
 
-**«9:59:»** The charge detonates. η-3 enters the facility, followed by η-2 and η-1.
+**«9:59:»** La carica esplode. η-3 entra nella struttura, seguito da η-2 e η-1.
 
-**«10:01:»** The team proceeds through a tight windowless vestibule into a wide foyer. No persons are present within, and the interior lacks light sources. Team members activate night-vision.
+**«10:01:»** La squadra procede attraverso uno stretto vestibolo senza finestre in un ampio atrio. Nessuna persona è presente all&#39;interno e mancano fonti di luce. I membri della squadra attivano la visione notturna.
 
-**«10:04:»** The team makes a thorough sweep of the area, and two-thirds of the way down, turns left. They encounter a door, ajar, to an open office space. The office displays hundreds of laminated posters, each sporting motivational messages overlaid onto stock images of persons consuming dairy products.
+**«10:04:»** La squadra fa un&#39;accurata perlustrazione dell&#39;area e, a due terzi del percorso, gira a sinistra. Incontrano una porta, socchiusa, di un ufficio aperto. L&#39;ufficio presenta centinaia di poster laminati, ognuno con messaggi motivazionali sovrapposti a immagini di persone che consumano latticini.
 
-**«10:06:»** η-1 discovers milk leaking from the ceiling. Drone feed captures undulating movement from no discernible source. η-2 whispers, &#34;//It&#39;s coming from everywhere//.&#34;
+**«10:06:»** η-1 scopre del latte che cola dal soffitto. Il feed del drone cattura un movimento ondulatorio da una fonte non distinguibile. η-2 sussurra: &#34;//Viene dappertutto//&#34;.
 
-**«10:07:»** η-1 takes a milk sample, enclosing it in a rally bag. The milk emits a faint green bioluminescence.
+**«10:07:»** η-1 prende un campione di latte, racchiudendolo in un sacchetto di raccolta. Il latte emette una debole bioluminescenza verde.
 
-**«10:08:»** η-3 leads the team into an antechamber at the back of the office and claims he &#34;//smells a sulfuric scent//.&#34; η-1 activates electro-photonic sensors and registers aetheric radiation[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]A byproduct of aetheric energy, which powers all Thaumatology.[[/span]] leaking from an adjacent chamber.
+**«10:08:»** η-3 conduce la squadra in un&#39;anticamera sul retro dell&#39;ufficio e afferma di &#34;//sentire un odore di zolfo//&#34;. η-1 attiva dei sensori elettro-fotonici e registra della radiazione eterea [[footnote]]. Un sottoprodotto dell&#39;energia eterea, che alimenta tutta la Taumatologia. [[/footnote]] fuoriuscire da una camera adiacente.
 
-**«10:09:»** η-3 pushes into the next chamber, which is filled with curdled milk. η-3 opens a metal door, drawing his carbine. A cow comes into view, mooing. Aetheric emission flows from its posterior, consistent with bovine flatulence.
+**«10:09:»** η-3 entra nella camera successiva, piena di latte cagliato. η-3 apre una porta di metallo, estraendo la sua carabina. Una mucca emerge dal buio, muggendo. Un&#39;emissione eterea fuoriesce dalla sua parte posteriore, coerente con la flatulenza bovina.
 
-**«10:11:»** The team returns to the foyer, traveling east through winding halls.
+**«10:11:»** La squadra ritorna al corridoio, proseguendo verso est attraverso sale tortuose.
 
-**«10:15:»** A tremor shakes the facility, followed by a long bovine vocalization. η-1&#39;s milk sample vibrates and grows ten times in volume. She abandons the sample.
+**«10:15:»** Una scossa scuote la struttura, seguita da una lunga vocalizzazione bovina. Il campione di latte di η-1 vibra e cresce di dieci volte in volume. Il campione viene abbandonato.
 
-**«10:18:»** η-3 reports a 3-meter-wide teat intersecting through support columns. The teat leaks faint green fluids.
+**«10:18:»** η-3 segnala un capezzolo largo 3 metri che si interseca attraverso le colonne di supporto. Il capezzolo perde fluidi verdi.
 
-**«10:19:»** η-1 makes incisions into the teat, revealing more flesh within. The flesh gurgles and pushes through the incision, consuming the cutting implement. She abandons cutting operation.
+**«10:19:»** η-1 fa delle incisioni nel capezzolo, rivelando più carne all&#39;interno. La carne gorgoglia e spinge attraverso l&#39;incisione, consumando l&#39;attrezzo da taglio. Rinuncia all&#39;operazione di taglio.
 
-**«10:20:»** The drone views cows either fleeing from, or charging toward, an indiscernible point.
+**«10:20:»** Il drone vede delle mucche che fuggono o che caricano verso un punto indistinguibile.
 
-**«10:23:»** η-3 heaves open frosted double doors into a massive chamber ~20 meters in height that slopes downward toward the center. A writhing light brown udder (hereafter &#34;**Udder**&#34;) of indeterminable width fills the chamber, producing hundreds of large teats, which stretch and collapse. Sleeping persons, presumably employees, levitate mid-air and upside down in groups of three around smaller teats. Cream cheese flows in bulk from their craniums down into a giant subterranean tank below.
+**«10:23:»** η-3 apre delle doppie porte smerigliate ed entra in una camera imponente, alta circa 20 metri, che pende verso il centro. Una contorcente mammella marrone chiaro (di seguito &#34;Mammella&#34;) di larghezza indeterminabile riempie la camera, producendo centinaia di grandi capezzoli, che si allungano e collassano. Persone addormentate, presumibilmente impiegati, levitano a mezz&#39;aria e a testa in giù in gruppi di tre intorno a mammelle più piccole. Il formaggio cremoso scorre alla rinfusa dai loro crani in un gigantesco serbatoio sotterraneo sottostante.
 
-**«10:24:»** η-2&#39;s drone captures footage of a cow falling from an upper walkway, yelping. A moment before striking the floor, the Udder trembles. The cow contacts the floor in slow-motion and dissolves into a translucent white liquid. This liquid flows toward the room&#39;s center.
+**«10:24:»** Il drone di η-2 cattura le riprese di una mucca che cade da una passerella superiore, guaendo. Un attimo prima di colpire il pavimento, la Mammella trema. La mucca tocca il pavimento al rallentatore e si dissolve in un liquido bianco traslucido. Questo liquido scorre verso il centro della stanza.
 
-**«10:25:»** Additional cows follow until all 25 have fallen. Newly transmogrified fluids spray the team members.
+**«10:25:»** Seguono altre mucche finché tutte e 25 sono cadute. I fluidi appena trasmutati schizzano i membri della squadra.
 
-**«10:27:»** A pale, floating pink udder (**SCP-3739-1-B**) approaches the trio. η-1 recoils, clutching her temples -- she receives a telepathic payload. η-1 asks, &#34;//What do you want?//&#34; The entity undulates as if laughing and approaches the team. η-3 fires on the entity. In due part to its apparent metaphysical nature, it does not take damage.
+**«10:27:»** Una pallida, fluttuante mammella rosa (SCP-3739-1-B) si avvicina al trio. η-1 indietreggia, stringendo le tempie - è stata colpita da un carico telepatico. η-1 chiede, &#34;//Cosa vuoi?//&#34; L&#39;entità ondeggia come se ridesse e si avvicina alla squadra. η-3 spara sull&#39;entità. In parte grazie alla sua apparente natura metafisica, non subisce danni.
 
-**«10:27:»** η-1 and η-3 share a nod. η-3 then stands at guard in front of her, and η-2 steps beside him. η-1 sets down her tool kit and unpacks it. She burns incense and reads an excerpt from her personal dream journal.
+**«10:27:»** η-1 e η-3 si scambiano un cenno con la testa. η-3 si mette di guardia di fronte a lei, e η-2 gli si affianca. η-1 posa il suo kit e lo disfa. Brucia dell&#39;incenso e legge un estratto dal suo diario personale dei sogni.
 
-**«10:28:»** The entity sports multiple arms that unfold from within each other and into view. It grows an attractive, plump face, spewing off-white fluids from its mouth. With a giggle and piercing shriek, it says, &#34;//Your mother wants you to finish your milk//.&#34;
+**«10:28:»** L&#39;entità sfoggia braccia multiple che si dispiegano l&#39;una dall&#39;altra e diventano visibili. Si fa crescere una faccia attraente e paffuta, sputando fluidi biancastri dalla bocca. Con una risatina e un urlo penetrante, dice: &#34;//Tua madre vuole che tu finisca il tuo latte//&#34;.
 
-**«10:29:»** η-2 trains the drone on a fleshy off-color sack near the middle of the Udder&#39;s anterior face. η-3 levels his carbine, waiting to fire.
+**«10:29:»** η-2 indirizza il drone su una sacca carnosa di colore sporco vicino al centro della faccia anteriore della Mammella. η-3 livella la sua carabina, in attesa di sparare.
 
-**«10:30:»** η-2 says, &#34;//I&#39;m lactose intolerant//,&#34; and curses the entity with reductionist profanities. The drone registers natural chemosignals[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Pheromones used to convey emotion and directions to those under its effect.[[/span]] emerging from the entity (hereafter &#34;**Mother**&#34;). Fifteen smaller bovine entities with the appearance of animated cartoon characters (SCP-3739-1-C, hereafter &#34;**Children**&#34;) separate from the Udder. Ten Children bombard η-2 with runny cream cheese projectiles. Others siphon fluids directly from the Mother and chant: &#34;//Eat it! Eat it!//&#34;
+**«10:30:»** η-2 dice: &#34;//Sono intollerante al lattosio//&#34;, e maledice l&#39;entità con profanità riduzioniste. Il drone registra chemiosegnali naturali [[footnote]]. Feromoni usati per trasmettere emozioni e indicazioni a chi è sotto il suo effetto. [[/footnote]] che emergono dall&#39;entità (di seguito &#34;Madre&#34;). Quindici entità bovine più piccole con l&#39;aspetto di personaggi dei cartoni animati (SCP-3739-1-C, di seguito &#34;Bambini&#34;) si separano dalla mammella. Dieci Bambini bombardano η-2 con proiettili di formaggio cremoso. Altri traggono fluidi direttamente dalla Madre e cantano: &#34;//Mangia! Mangia!//&#34;
 
-η-2 refuses to comply.
+η-2 si rifiuta di farlo.
 
-**«10:31:»** η-1 strikes a match, burning her thumb tip. She thumbs her tactical sigil, and then downs the milk-honey. Her body goes limp. An astral body sprouts up from her physical body&#39;s chest and flips toward the Mother. She grabs at loose teats and pulls.
+**«10:31:»** η-1 accende un fiammifero, bruciandosi la punta del pollice. Si mette il pollice sul suo sigillo tattico, e poi beve il latte al miele. Il suo corpo si affloscia. Un corpo astrale spunta dal petto del suo corpo fisico e vola verso la Madre. Afferra i capezzoli e tira.
 
-**«10:32:»** η-2 is fully covered in cream cheese but refuses to consume it. The Children drag him toward the Udder, causing him to drop the remote control as he fights to be freed. They force a leaking teat into his mouth. He has no choice but to comply.
+**«10:32:»** η-2 è completamente ricoperto di formaggio cremoso ma si rifiuta di consumarlo. I bambini lo trascinano verso la mammella, facendogli cadere il radiocomando mentre lotta per essere liberato. Forzano un capezzolo nella sua bocca. Non ha altra scelta che accettare.
 
-**«10:33:»** η-1 combats the Mother. Both scream, trading blows. η-3 walks to the Udder, aims, and fires at the exposed fleshy protrusion. He yells, &#34;//You&#39;re not real//.&#34; The flesh goes erect and sprays raw milk at him. He consumes the milk at will, downing liters without apparent stress.
+**«10:33:»** η-1 combatte la Madre. Entrambi urlano, scambiandosi colpi. η-3 cammina verso la Mammella, mira e spara alla sporgenza carnosa esposta. Grida: &#34;//Non sei reale//&#34;. La carne diventa eretta e gli spruzza addosso del latte crudo. Consuma il latte a volontà, mandandone giù litri senza apparente stress.
 
-**«10:34:»** η-1 spirals and pirouettes through the air, faster than the Mother. It squeezes green liquids at her. She grabs a teat and stretches it with ease. The Mother screams in shock, deflates, and then falls to the floor. A palpable wet smack echoes throughout the room. The entity finally becomes tangible, leaking the rest of its fluids.
+**«10:34:»** η-1 si muove a spirale e piroetta nell&#39;aria, più veloce della Madre. Le spruzza addosso dei liquidi verdi. Lei afferra un capezzolo e lo allunga con facilità. La Madre urla per lo shock, si sgonfia e cade a terra. Un palpabile schiocco bagnato riecheggia in tutta la stanza. L&#39;entità diventa finalmente tangibile, perdendo il resto dei suoi fluidi.
 
-**«10:35:»** η-2 is no longer visible. The large Udder shakes and spills raw milk into the vast room. η-1&#39;s astral body reconnects with her physical body. She ditches the astral projection kit. η-1 and η-3 escape.
+**«10:35:»** η-2 non è più visibile. La grande Mammella si scuote e versa latte crudo nella vasta stanza. Il corpo astrale di η-1 si ricollega al suo corpo fisico. Si libera del kit di proiezione astrale. η-1 e η-3 scappano.
 ----
-= **[END LOG | 10:35 PM]**
+= **[FINE LOG | 10:35 PM]**
 ----
-**EXTRACTION:** Post-log footage taken autonomously from η-2&#39;s drone records η-2 screaming in distress. This occurs for roughly 30 minutes as the warehouse fills with milk.
+**ESTRAZIONE:** Il filmato registrato autonomamente dal drone di η-2 registra le urla di η-2 in difficoltà. Questo accade per circa 30 minuti mentre il magazzino si riempie di latte.
 
-Near the end of the footage, η-2 emerges naked, and a disembodied cattle branding prosthesis marks him on the upper thigh. He shudders, mooing. The prosthesis spots the drone, extends, and emits electricity from a cattle prod, frying it.
+Verso la fine del filmato, η-2 emerge nudo, e una protesi disincarnata per marchiare il bestiame lo segna sulla parte superiore della coscia. Rabbrividisce, muggendo. La protesi individua il drone, si estende ed emette elettricità da un punteruolo per bestiame, friggendolo.
 [[/collapsible]]
 [[/div]]
 [[/div]]
@@ -1622,62 +1356,68 @@ Near the end of the footage, η-2 emerges naked, and a disembodied cattle brandi
 @@ @@
 
 [[div class=&#34;raisa-block&#34;]]
-++++ __RAISA POST-INVESTIGATION NOTICE__
+[[=]]
+++++ __AVVISO POST-INVESTIGAZIONE DELL&#39;ASIR__
+[[/=]]
 
-Between [[span class=&#34;spangles&#34;]]12 October[[/span]] and [[span class=&#34;spangles&#34;]]19 October 2023[[/span]], a wide-scale interrogation campaign across U.S. farmlands reveals that over 3,100 oneiric advertisements coerced dairy corporate executives, regional managers, and ranchers to sign away rights to their dreams.
+Tra il [[span class=&#34;spangles&#34;]]12 Ottobre[[/span]] e il [[span class=&#34;spangles&#34;]]19 Ottobre, 2023[[/span]], una campagna di interrogatori su larga scala attraverso i terreni agricoli degli Stati Uniti rivela che più di 3.100 pubblicità oniriche hanno costretto dirigenti di aziende lattiero-casearie, manager regionali e allevatori a cedere i diritti sui loro sogni.
 
-On [[span class=&#34;spangles&#34;]]21 November 2023[[/span]], several hundred livestock facilities experience bovine and human inflation. Like the entities seen in OPERATION: L.I., body fluids became replaced with a voluminous amount of non-anomalous milk product. MEATS filtration and conventional FDA regulations fail to contain public knowledge of oneiric dairy products. Wisconsin dreaming is the first to be assimilated. The REM sleep of thousands of citizens becomes irreversibly altered.
+Il [[span class=&#34;spangles&#34;]]21 Novembre, 2023[[/span]], diverse centinaia di strutture di allevamento sperimentano l&#39;inflazione bovina e umana. Come le entità viste nell&#39; OPERAZIONE: I.A.L, i fluidi corporei sono stati sostituiti con una voluminosa quantità di prodotto lattiero non anomalo. La filtrazione MEATS e i regolamenti convenzionali della FDA non riescono a contenere la conoscenza pubblica dei prodotti lattiero-caseari onirici. Il sogno del Wisconsin è il primo ad essere assimilato. Il sonno REM di migliaia di cittadini viene alterato in modo irreversibile.
 
-On [[span class=&#34;spangles&#34;]]30 January 2024[[/span]], Pennsylvania and Washington dreaming are assimilated. The REM sleep of thousands of citizens becomes irreversibly altered. Despite reintegration attempts made by Stratford Cattle Productions (via top-selling beef and yogurt products implanted with gustatory memetic agents), large numbers of civilians from these regions support CEO M.M.&#39;s presidential campaign, with running mate VP Jackie the Clown Cow.
+Il [[span class=&#34;spangles&#34;]]30 Gennaio, 2024[[/span]], I sogni di Pennsylvania e Washington vengono assimilati. Il sonno REM di migliaia di cittadini viene alterato in modo irreversibile. Nonostante i tentativi di reintegrazione fatti dalla Produzioni Casearie Stanford (attraverso la carne di manzo e i prodotti di yogurt più venduti, impiantati con agenti memetici), un gran numero di civili di queste regioni sostiene la campagna presidenziale del CEO M.M., con il Vice Presidente Jackie la Mucca Pagliaccio.
 
-On [[span class=&#34;spangles&#34;]]9 February 2024[[/span]], the CEO of [[span class=&#34;moo&#34;]]Moosphere[[/span]] interrupts all of Wisconsin, Pennsylvania, and Washington&#39;s major telecommunication broadcasts with a payload of cognitohazardous advertisements. [[span class=&#34;moo&#34;]]Moosphere[[/span]] employs affected populations by force. Televisions broadcast the following:
+Il [[span class=&#34;spangles&#34;]]9 Febbraio, 2024[[/span]], il CEO di Moosphere interrompe tutte le principali trasmissioni di telecomunicazione del Wisconsin, della Pennsylvania e di Washington con un sovraccarico di pubblicità a rischio cognitivo. Moosphere assume le popolazioni colpite con la forza. Le televisioni trasmettono quanto segue:
 
-[[div style=&#34;padding: 3rem&#34;]]
-= **[BEGIN LOG]**
+[[div class=&#34;recording-block&#34;]]
+[[=]]
++++ VIDEO LOG
+[[/=]]
 ----
-//CEO M.M. descends onto a podium, cranium inflamed. He sighs. He opens his mandibles and a bovine eye atop his brow. Cream cheese secretes from the two orifices. Palpable dripping and sloshing sounds are audible for the next three minutes and twenty-seven seconds.//
-
-//Undulating, it thinks.//
+= **[INIZIO LOG]**
 ----
-= **[END LOG]**
+//[Il CEO M.M. scende su un podio, con il cranio infiammato. Sospira. Apre le mandibole e un occhio bovino in cima alla fronte. Della panna fuoriesce da due orifizi. Per i successivi tre minuti e ventisette secondi si sentono rumori di sgocciolamento e agitazione.]//
+
+//[Ondeggiante, pensa.]//
+----
+= **[FINE LOG]**
 [[/div]]
 [[/div]]
 
-[[div class=&#34;log&#34; style=&#34;color: gray&#34;]]
-[[collapsible hideLocation=&#34;bottom&#34; show=&#34;▷ WARNING: Paused Footage Quarantined&#34; hide=&#34; &#34;]]
-+++ AMNESTIC INOCULATION FAILED
-+++ MTF AND PARAPHYSICIANS DISPATCHED
+[[div class=&#34;log&#34; style=&#34;color: gray;&#34;]]
+[[collapsible hideLocation=&#34;bottom&#34; show=&#34;▷ ATTENZIONE: Filmato in Pausa in Quarantena&#34; hide=&#34; &#34;]]
+[[=]]
+[[span class=&#34;h3&#34;]]INOCULAZIONE AMNESTICA FALLITA
+SSM E PARAFISICI INVIATI[[/span]]
+[[/=]]
 
 [[&gt;]]
-**Time-stamped:** 2m 59s
+**Ora:** 2m 59s
 -- 2024-02-29 @ 08:29 AM (UTC−05)
 [[/&gt;]]
 
-[[image final_guy.png style=&#34;width: 100%&#34;]]
+[[image final_guy.png style=&#34;width: 100%;&#34;]]
 
 [[/collapsible]]
 [[/div]]
+----
+[[footnoteblock]]
 
-@@ @@
-@@ @@
-@@ @@
-
-[[div class=&#34;footing&#34;]]
+[[div style=&#34;border-bottom: 2px solid #777; margin-bottom: 1px;&#34;]]
 [[/div]]
-
-[[div class=&#34;related-flex&#34;]]
-[[div class=&#34;related&#34;]]
-**__See Also:__**
-* **[[[Milk Hub]]]**
-* **[[[no-sense-crying|Spilled Milk]]]**
-* **[[[SCP-6705]]]** - The Bicameral Milk
-* **[[[SCP-4475]]]** - So Long, and Thanks for All the Milk
-[[/div]]
+[[div style=&#34;border-bottom: 1px solid #777;&#34;]]
 [[/div]]
 
 [[=]]
 [[module Rate]]
 [[/=]]
+
+[[div class=&#34;related-flex&#34;]]
+[[div class=&#34;related&#34;]]
+**__Articoli Correlati__:**
+* **[[[no-sense-crying|Latte Versato]]]**
+* **[[[SCP-4475]]]** - Addio, E Grazie Per Tutto Il Latte
+[[/div]]
+[[/div]]
 
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
 = &lt;&lt; [[[SCP-3738]]] | SCP-3739 | [[[SCP-3740]]] &gt;&gt;
@@ -1688,7 +1428,7 @@ On [[span class=&#34;spangles&#34;]]9 February 2024[[/span]], the CEO of [[span 
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:40.903394.</em>
+    <em>Last updated 2024-02-07 18:30:37.803298.</em>
   
 </div>
 </body>

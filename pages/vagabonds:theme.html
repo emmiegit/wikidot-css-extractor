@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>Thème Jaquette des Vagabonds</title>
 </head>
@@ -148,6 +148,10 @@
       
         <li>
           <pre><code>font-family: var(--mono-font);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
         </li>
       
     </ul>
@@ -498,6 +502,22 @@
 }
 
 [[/module]]
+
+Ce thème est celui de la Bibliothèque des Vagabonds. Pour utiliser ce thème sur votre article, copiez le code suivant en haut du code de votre page :
+[[/iftags]]
+
+[[include :fondationscp:component:modele-theme
+|notation=block
+|liens=block
+|footnote=block
+|image=block
+|titres6=block
+|onglets=block
+|citations=block
+|tableau=block
+]]
+
+[[iftags +thème]]
 [[&gt;]]
 [[module Rate]]
 [[/&gt;]]
@@ -552,20 +572,7 @@ Mango Tango [[span class=&#34;css-variable&#34;]]@@--newpage-color@@[[/span]][[s
 [[/div]]
 [[/div]]
 [[/div]]
-[[/iftags]]
 
-[[include :fondationscp:component:modele-theme
-|notation=block
-|liens=block
-|footnote=block
-|image=block
-|titres6=block
-|onglets=block
-|citations=block
-|tableau=block
-]]
-
-[[iftags +thème]]
 + Exemples
 
 A horizontal rule can be created with 5 hyphens &#34;@@-----@@&#34; and extends across the whole page if it&#39;s not placed inside anything (eg a blockquote). The lines separating sections of this document are horizontal rules.
@@ -601,8 +608,10 @@ La police de corps est Skolar Sans
 -----
 
 [[collapsible show=&#34;+ Montrer le code du thème&#34; hide=&#34;- Cacher le code du thème&#34;]]
-[[code type=&#34;css&#34;]]
+[[/iftags]]
 
+[[div [[iftags -thème]]style=&#34;display: none&#34;[[/iftags]]]]
+[[module CSS show=&#34;true&#34;]]
 /** Wanderers&#39; Dust Jacket Theme
  *    Developed by Woedenaz
  *    Built on Black Highlighter by Woedenaz and Croquembouche
@@ -1845,7 +1854,7 @@ table.wiki-content-table th:last-of-type {
 }
 
 #toc .title {
-    color: rgb(var(--bright-accent));
+   color: rgba(0,0,0,0);
 }
 
 /* Misc Divs */
@@ -2163,18 +2172,21 @@ table.wiki-content-table th:last-of-type {
 }
 
 /* Rating Module */
-.page-rate-widget-box {
+.page-rate-widget-box,
+.rate-box-with-credit-button .creditButton {
     background:
      linear-gradient(to top,
      rgba(30, 55, 30, 1) 0,
-     rgba(130, 160, 135, 1) 100%);
+     rgba(130, 160, 135, 1) 100%) !important;
     background:
      linear-gradient(to top,
      rgba(var(--swatch-menubg-dark-color), 1) 0,
-     rgba(var(--swatch-menubg-medium-color), 1) 100%);
+     rgba(var(--swatch-menubg-medium-color), 1) 100%) !important;
     letter-spacing: 0.05em;
 }
-
+.rate-box-with-credit-button .creditButton a {
+    color: rgb(var(--rating-module-text-color));
+}
 .page-rate-widget-box .rate-points,
 .page-rate-widget-box .rateup,
 .page-rate-widget-box .ratedown,
@@ -2185,6 +2197,25 @@ table.wiki-content-table th:last-of-type {
     font-family: var(--body-font);
     line-height: 2ch;
     --wght: 500;
+}
+.page-rate-widget-box &gt; *:not(:last-child) {
+    margin: 0;
+}
+.page-rate-widget-box &gt; * {
+    display: inline-flex;
+    place-items: center;
+    place-content: center;
+}
+.page-rate-widget-box {
+    display: inline-flex;
+    gap:  0.25rem;
+}
+.page-rate-widget-box .rateup a,
+.page-rate-widget-box .ratedown a,
+.page-rate-widget-box .cancel a {
+    width: 100%;
+    height: 100%;
+    margin: 0;
 }
 
 .fancyhr hr {
@@ -2765,16 +2796,15 @@ div.inner.shelf div.book::after {
      opacity: 0;
     }
 }
-[[/code]]
-[[/collapsible]]
-[[/iftags]]</textarea></pre>
+[[/module]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.875797.</em>
+    <em>Last updated 2024-02-07 18:30:41.758294.</em>
   
 </div>
 </body>

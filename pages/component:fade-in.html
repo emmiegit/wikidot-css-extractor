@@ -14,23 +14,23 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Fade In</title>
+  <title>Плавне завантаження</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Fade In</h1>
+    <h1 class="title">Плавне завантаження</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank">Fade In</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank">Плавне завантаження</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--code/component%3Afade-in/1);
-@import url(&#34;https://scp-wiki.wdfiles.com/local--code/component%3Afade-in/{$speed}&#34;);</code></pre>
+          <pre><code>@import url(https://scpsandbox-ua.wdfiles.com/local--code/component%3Afade-in/1);
+@import url(&#34;https://scpsandbox-ua.wdfiles.com/local--code/component%3Afade-in/{$speed}&#34;);</code></pre>
         </li>
       
     </ul>
@@ -52,14 +52,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>:scp-wiki:component:fade-in</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>component:fade-in</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -77,51 +71,50 @@
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[module CSS]]
-@import url(https://scp-wiki.wdfiles.com/local--code/component%3Afade-in/1);
-@import url(&#34;https://scp-wiki.wdfiles.com/local--code/component%3Afade-in/{$speed}&#34;);
+@import url(https://scpsandbox-ua.wdfiles.com/local--code/component%3Afade-in/1);
+@import url(&#34;https://scpsandbox-ua.wdfiles.com/local--code/component%3Afade-in/{$speed}&#34;);
 [[/module]]
 
-[[iftags +component]]
+[[iftags +_component]]
 [[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
-+ What this is
++ Що це таке
 
-A component that makes everything on the page smoothly fade in, instead of appearing instantly when the page loads.
+Шаблон, який змушує усе на сторінці поступово проявлятися, замість того аби з&#39;явитися одразу після завантаження сторінки. 
 
-The fade can also be staggered, with each thing on the page appearing one by one instead of all at once.
+Проява також може відбуватися у шаховому порядку, коли усі елементи на сторінці з&#39;являються по черзі.
 
-+ Usage
++ Використання
 
-On any wiki:
+На будь-якій вікі:
 
 [[div class=&#34;code&#34;]]
-@@[[include :scp-wiki:component:fade-in speed=1]]@@
+@@[[include component:fade-in speed=1]]@@
 [[/div]]
 
-speed=1: everything appears at the same time
-speed=2: everything appears 0.5s after the last thing
-speed=3: everything appears 0.25s after the last thing
+speed=1: усе проявляється одночасно.
+speed=2: усе проявляється поступово з затримкою у пів секунди
+speed=3: усе проявляється поступово з затримкою у чверть секунди
 
-+ Caveats
++ Застереження
 
-The fade-in effect will only apply to elements that are direct children of #page-content. It won&#39;t apply to nested elements (e.g. stuff inside a blockquote or a div) or other parts of the page (e.g the sidebar).
+Ефект прояви застосовуватиметься лише до тих елементів, які є дочірніми до #page-content. Він не пошириться на інтегровані елементи (наприклад, написи всередині блоку цитування або div) або інші частини сторінки (наприклад, бічну панель).
 
-//(You can use this to your advantage if there are other animations on your page that would conflict (e.g [[[component:acs-animation | ACS Animation]]]) by simply wrapping the problematic animated element in a div.)//
+//(Ви можете, якщо вам дуже кортить, використовувати його на сторінці разом з іншими анімаціями, які можуть конфліктувати (наприклад: [[[component:acs-animation | Анімована СКА]]]) просто помістивши проблемне місце у div.)//
 
-It also only applies to the first 15 elements on the page, and everything else after that will appear at the same time. This is enough for a smooth load-in experience when a reader opens the page, but if they want to scroll right to the bottom, they&#39;re able to do that without having to wait very long.
+Також, це стосується тільки перших 35 елементів на сторінці, усі інші будуть показуватися одночасно. Цього достатньо для плавного завантаження, коли читач відкриває сторінку, однак якщо хтось захоче прокрутити сторінку донизу, то він може зробити це, не чекаючи на повільне завантаження. 
+
 [[/div]]
 -----
 
-+ Source code
++ Джерельний код
 
 [[code type=&#34;css&#34;]]
-@media screen and (prefers-reduced-motion: no-preference) {
-  #page-title, #breadcrumbs, #page-content &gt; * {
-    animation-name: fadeIn;
-    animation-duration: 1s;
-    animation-iteration-count: 1;
-    animation-timing-function: ease-out;
-    animation-fill-mode: backwards;
-  }
+#page-title, #breadcrumbs, #page-content &gt; * {
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: ease-out;
+  animation-fill-mode: backwards;
 }
 
 #page-title { animation-delay: 0s; }
@@ -156,7 +149,27 @@ It also only applies to the first 15 elements on the page, and everything else a
 #page-content &gt; :nth-child(13) { animation-delay: calc(13 * var(--fade-in-delay)); }
 #page-content &gt; :nth-child(14) { animation-delay: calc(14 * var(--fade-in-delay)); }
 #page-content &gt; :nth-child(15) { animation-delay: calc(15 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(n+15) { animation-delay: calc(16 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(16) { animation-delay: calc(16 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(17) { animation-delay: calc(17 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(18) { animation-delay: calc(18 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(19) { animation-delay: calc(19 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(20) { animation-delay: calc(20 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(21) { animation-delay: calc(21 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(22) { animation-delay: calc(22 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(23) { animation-delay: calc(23 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(24) { animation-delay: calc(24 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(25) { animation-delay: calc(25 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(26) { animation-delay: calc(26 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(27) { animation-delay: calc(27 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(28) { animation-delay: calc(28 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(29) { animation-delay: calc(29 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(30) { animation-delay: calc(30 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(31) { animation-delay: calc(31 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(32) { animation-delay: calc(32 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(33) { animation-delay: calc(33 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(34) { animation-delay: calc(34 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(35) { animation-delay: calc(35 * var(--fade-in-delay)); }
+#page-content &gt; :nth-child(n+35) { animation-delay: calc(36 * var(--fade-in-delay)); }
 [[/code]]
 
 [[code type=&#34;css&#34;]]
@@ -178,7 +191,7 @@ It also only applies to the first 15 elements on the page, and everything else a
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:38.380010.</em>
+    <em>Last updated 2024-02-07 18:30:30.557285.</em>
   
 </div>
 </body>

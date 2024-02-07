@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Un spectacle pour Marw</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Un spectacle pour Marw</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/un-spectacle-pour-marw" target="_blank">Un spectacle pour Marw</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/credit:start" target="_blank"><code>credit:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/credit:end" target="_blank"><code>credit:end</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>choix</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[include credit:start]]
+**Titre :** Un spectacle pour Marw
+**Auteurs :** [[user Jeallucine]], [[user Anoure]] &amp; [[user Leo_heliantas]]
+**Date :** 27 juillet 2023
+**Images :** Illustrations réalisées par les auteurs :
+- Jeallucine : Spectacle de Pan &amp; Photo de famille de Marw.
+- Anoure : Brochures de cirque, Marw au bout de l&#39;intro &amp; Palais des glaces.
+**Remerciements :** Un GÉANT merci à [[user Leo_heliantas]] pour le code du texte à choix et sa mise en forme, ainsi qu&#39;à [[user DrJohannes]] pour sa relecture et ses corrections !
+//Conte écrit dans le cadre du Glorieux Concours des Lores et Esthétiques de 2023. Contraintes : Esthétique : **Fanfare**, Lore : **SCP-234-ES**.//
+[[include credit:end]]
+
+[[html]]
+&lt;style&gt;
+body {
+  font-family: Noto Sans, verdana, arial, helvetica, sans-serif;
+  color: rgb(51, 51, 51);
+  font-size: 18px;
+  line-height: 22.15px; 
+}
+.choix {
+  color: rgb(153, 0, 17);
+  display: block;
+  text-decoration: none;
+  
+  margin: 10px 0px 10px 0px;
+}
+.italic_text {
+    font-style: italic;
+}
+.bold_text {
+    font-weight: bold;
+}
+.choix:hover {
+  text-decoration-line: underline;
+  cursor: pointer;
+}
+
+.center {
+     display: block;
+     margin-left: auto;
+     margin-right: auto;
+}
+
+p {
+    text-indent: 30px;
+}
+&lt;/style&gt;
+    &lt;script&gt;
+        let story={};
+        
+          const range = (start, stop, step) =&gt; 
+          Array.from({ length: (stop - start) / step + 1}, (_, i) =&gt; start + (i * step))
+        
+          function parseChapterText(text, el_list) {
+            const index = text.indexOf(&#34;{&#34;);
+            if (index == -1) {
+    	const paragraph = document.createTextNode(text);
+    	el_list.push(paragraph);
+    	return el_list;
+            } else {
+    	parseChapterText(text.substring(0,index), el_list);
+                let paren = 1;
+                let end = -1;
+                let curr_str = &#39;&#39;;
+                const args = [];
+        
+                for (i of range(index+1, text.length, 1)) {
+    	    if (i &gt;= 1 &amp;&amp; text[i-1] == &#39;\\&#39;) {
+                        curr_str += text[i];
+                        continue;
+                    } else if (text[i] == &#39;{&#39;) {
+                        paren++;
+                    } else if (text[i] == &#39;}&#39;) {
+                        paren--;
+    		if (paren == 0) {
+    			args.push(curr_str);
+    			end = i;
+    			break;
+    		}
+                    } else if (text[i] == &#39;+&#39; &amp;&amp; paren == 1) {
+                        args.push(curr_str);
+                        curr_str = &#39;&#39;;
+                        continue;
+                    }
+
+    	curr_str += text[i];
+                }
+    	let res;
+                switch (args[0]) {
+                    case &#39;p&#39;:
+                        res = document.createElement(&#34;p&#34;);
+                        parseChapterText(args[1], []).forEach((el, i, arr) =&gt; {
+    			res.appendChild(el);
+    		});
+    		el_list.push(res);
+                        break;
+                    case &#39;image&#39;:
+                        res = document.createElement(&#34;img&#34;);
+                        res.src = &#39;/local--files/un-spectacle-pour-marw/&#39;+args[1];
+                        res.alt  = args[2];
+                        res.classList.add(&#34;center&#34;);
+                        el_list.push(res);
+                        break;
+                    case &#39;bold&#39;:
+                        res = document.createElement(&#34;span&#34;);
+                        res.classList.add(&#34;bold_text&#34;);
+    		parseChapterText(args[1], []).forEach((el, i, arr) =&gt; {
+    			res.appendChild(el);
+    		});
+    		el_list.push(res);
+                        break;
+                    case &#39;italic&#39;:
+                        res = document.createElement(&#34;span&#34;);
+                        res.classList.add(&#34;italic_text&#34;);
+    		parseChapterText(args[1], []).forEach((el, i, arr) =&gt; {
+    			res.appendChild(el);
+    		});
+    		el_list.push(res);
+                        break;
+                    case &#39;link&#39;:
+                        res = document.createElement(&#34;a&#34;);
+                        res.appendChild(document.createTextNode(args[1]));
+                        res.setAttribute(&#34;href&#34;, args[2]);
+                        res.setAttribute(&#34;target&#34;, &#34;_blank&#34;);
+    		el_list.push(res);
+                        break;
+                    case &#39;resetButton&#39;:
+                        res = document.createElement(&#34;a&#34;);
+                        res.setAttribute(&#34;href&#34;, &#34;#&#34;);
+                        res.appendChild(document.createTextNode(args[1]));
+                        res.addEventListener(&#34;click&#34;, () =&gt; reset(args[2]));
+                        el_list.push(res);
+                        break;
+                    default:
+                        parseChapterText(args[0], el_list);
+                        break;
+              }
+         parseChapterText(text.substring(end+1, text.length), el_list);
+         return el_list;
+            }
+          }
+        
+          function Chapter(name, text, choices) {
+            this.name     = name;
+            this.text        = text;
+            this.choices  = choices;
+        
+            this.write = function (el) {
+              /* creates a div with the relevant text and choice options
+                  then adds it to the DOM Tree after the given element
+                  (which should be the last chapter, since choices are removed after use) */
+        
+              const maindiv = document.createElement(&#34;p&#34;);
+              maindiv.classList.add(&#34;paragraphe&#34;);
+              maindiv.classList.add(name);
+          const children = parseChapterText(this.text, []);
+          children.forEach((c, i, arr) =&gt; {maindiv.appendChild(c);});
+    
+          const choicediv  = document.createElement(&#34;div&#34;);
+          choicediv.classList.add(&#34;boite_a_choix&#34;);
+          for (let key in this.choices) {
+    	
+              const choice = document.createElement(&#34;a&#34;);
+              choice.setAttribute(&#34;href&#34;,&#34;#&#34;);
+    	  choice.classList.add(&#34;choix&#34;);
+    	  choice.appendChild(document.createTextNode(key));
+    	  choice.addEventListener(&#34;click&#34;, (e) =&gt; { //when a choice is chosen
+    	      if (!(this.choices[key] in story)) {
+    	          console.log(&#34;Pas de chapitre de clé \&#34;&#34;+this.choices[key]+&#34;\&#34; dans l&#39;histoire&#34;);
+    	          return;
+    	      }
+    		      const prompt = document.createElement(&#34;div&#34;);
+    	      prompt.classList.add(&#34;paragraphe&#34;,&#34;prompt&#34;);
+    	      prompt.appendChild(document.createTextNode(&#34;&gt; &#34;+key));
+    	      maindiv.after(prompt);
+    	      story[this.choices[key]].write(prompt); // write the next chapter
+    	      e.target.parentElement.style.display = &#34;none&#34;;
+    		  //then hide the choices it was chosen from
+    	  });
+    	
+    	  choicediv.appendChild(choice);
+              }
+        
+              maindiv.appendChild(choicediv);
+        
+              el.after(maindiv);//append to the DOM Tree
+            }
+          }
+        
+          function ChapterCreator(obj) {
+            return new Chapter(obj[0], obj[1], obj[2]);
+          }
+        
+          function storyLoader(data) {
+            const storyObj = JSON.parse(data);
+            for (let key in storyObj) {
+              story[key] = ChapterCreator(storyObj[key]);
+            }
+          }
+
+          function reset(startChapter) {
+              const body = document.getElementsByTagName(&#34;main&#34;)[0];
+              const starter = document.createElement(&#34;div&#34;);
+              body.replaceChildren(starter);
+              story[startChapter].write(starter);
+              starter.remove();
+          }
+        
+          window.onload=function() {
+            fetch(&#39;/local--files/un-spectacle-pour-marw/histoire_fanfare.txt&#39;).then(response =&gt; response.text()).then((data) =&gt; {
+              storyLoader(data);
+              const starter = document.getElementById(&#34;start&#34;);
+              story[&#34;intro&#34;].write(starter);
+              starter.remove();
+            });
+          };
+    &lt;/script&gt;
+&lt;main&gt;
+&lt;div id=&#34;start&#34;&gt;
+Chargement des données, veuillez patienter... (Si le chargement est trop long, vérifiez que Javascript est activé.)
+&lt;span class=&#34;choix&#34; onclick=&#39;(el =&gt; {el.innerText=&#34;\nBen si frérot&#34;; el.classList.remove(&#34;choix&#34;);})(this)&#39;&gt;Non&lt;/span&gt;
+&lt;/div&gt;
+&lt;/main&gt;
+[[/html]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2024-02-07 18:30:41.644699.</em>
+  
+</div>
+</body>

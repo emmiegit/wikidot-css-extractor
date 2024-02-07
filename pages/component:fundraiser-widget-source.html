@@ -14,15 +14,15 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>source-for-widget-for-funding</title>
+  <title>筹资小组件 源代码</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">source-for-widget-for-funding</h1>
+    <h1 class="title">筹资小组件 源代码</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:fundraiser-widget-source" target="_blank">source-for-widget-for-funding</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:fundraiser-widget-source" target="_blank">筹资小组件 源代码</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
@@ -130,7 +130,7 @@
 
 }
 
-/* Black Highlighter Theme Color Scheme, 
+/* Black Highlighter Theme Color Scheme,
 with fallback values based on the core BHL color scheme. */
 
 .fr-widget.theme-fr-Black-Highlighter,
@@ -144,9 +144,9 @@ with fallback values based on the core BHL color scheme. */
 .fr-widget.theme-fr-BHL,
 .fr-widget.theme-fr-Bhl,
 .fr-widget.theme-fr-bhl {
---fr-title-font: var(--title-font, Inter), Poppins, Franklin Gothic Medium, Franklin Gothic, 
+--fr-title-font: var(--title-font, Inter), Poppins, Franklin Gothic Medium, Franklin Gothic,
     ITC Franklin Gothic, &#34;Helvetica Neue&#34;, &#34;Helvetica&#34;, Arial, sans-serif;
---fr-body-font: var(--body-font, Inter), Raleway, Arimo, Verdana, Geneva, &#34;Helvetica Neue&#34;, 
+--fr-body-font: var(--body-font, Inter), Raleway, Arimo, Verdana, Geneva, &#34;Helvetica Neue&#34;,
     &#34;Helvetica&#34;, Arial, sans-serif;
 --fr-logo-font: Orbitron, Verdana, Geneva, sans-serif;
 --fr-widget-bg-color: var(--swatch-secondary-color, 245, 245, 245), .25;
@@ -447,7 +447,8 @@ with fallback values based on the core BHL color scheme. */
 .fr-image img {
   width: 100%;
 }
-.fr-image.img-fr-none {
+.fr-image.img-fr-none,
+.fr-image.img-fr-无 {
   display: none;
 }
 .fr-title {
@@ -531,19 +532,13 @@ with fallback values based on the core BHL color scheme. */
 .shape-fr-bhl.fr-title.tb-fr-true a:hover::before {
   transform: translateX(-1rem);
 }
-.fr-title-text {
+.fr-title span.fr-title-text {
   display: inline-flex;
   align-content: flex-start;
   vertical-align: top;
   z-index: 2;
 }
-.fr-title-icon {
-  display: none;
-}
-.fr-title-icon span {
-  display: none;
-}
-.fr-title-icon.icon-fr-{$title_icon_name} {
+.fr-title.icon-fr-true span.fr-title-text::before {
   content: &#34; &#34;;
   background-image: url(&#34;{$title_icon_url}&#34;);
   background-repeat: no-repeat;
@@ -691,25 +686,21 @@ with fallback values based on the core BHL color scheme. */
 .fr-button-backup {
   display: none!important;
 }
-.fr-button-backup.donate-fr-none {
+.fr-button-backup.donate-fr-none,
+.fr-button-backup.donate-fr-无 {
   display: flex!important;
 }
-.fr-button-donate.donate-fr-none {
+.fr-button-donate.donate-fr-none,
+.fr-button-donate.donate-fr-无 {
   display: none!important;
 }
-.fr-button-text {
+.fr-button-cont span.fr-button-text {
   display: inline-flex;
   align-content: flex-start;
   vertical-align: top;
   z-index: 2;
 }
-.fr-button-icon {
-  display: none;
-}
-.fr-button-icon span {
-  display: none;
-}
-.fr-button-icon.icon-fr-{$donate_icon_name} {
+.fr-button-cont.icon-fr-true span.fr-button-text::before {
   content: &#34; &#34;;
   background-image: url(&#34;{$donate_icon_url}&#34;);
   background-repeat: no-repeat;
@@ -838,29 +829,12 @@ with fallback values based on the core BHL color scheme. */
         </li>
       
         <li>
-          <pre><code>{$aux_class}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>
+          <pre><code>{$aux_class}
       tb-fr-{$title_button}</code></pre>
         </li>
       
         <li>
-          <pre><code>fr-title-icon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>shape-fr-{$shape}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>{$aux_class}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>
-                                    icon-fr-{$title_icon_name}</code></pre>
+          <pre><code>icon-fr-{$title_icon_show}</code></pre>
         </li>
       
         <li>
@@ -1108,12 +1082,12 @@ with fallback values based on the core BHL color scheme. */
         </li>
       
         <li>
-          <pre><code>{$aux_class}</code></pre>
+          <pre><code>{$aux_class}
+        hide-fr-donate-{$hide_donate}</code></pre>
         </li>
       
         <li>
-          <pre><code>
-        hide-fr-donate-{$hide_donate}</code></pre>
+          <pre><code>icon-fr-{$donate_icon_show}</code></pre>
         </li>
       
         <li>
@@ -1130,23 +1104,6 @@ with fallback values based on the core BHL color scheme. */
       
         <li>
           <pre><code>donate-fr-{$donate_url}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fr-button-icon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>shape-fr-{$shape}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>{$aux_class}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>
-                                        icon-fr-{$donate_icon_name}</code></pre>
         </li>
       
         <li>
@@ -1175,23 +1132,6 @@ with fallback values based on the core BHL color scheme. */
       
         <li>
           <pre><code>donate-fr-{$donate_url}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fr-button-icon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>shape-fr-{$shape}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>{$aux_class}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>
-                                        icon-fr-{$donate_icon_name}</code></pre>
         </li>
       
         <li>
@@ -1323,7 +1263,7 @@ with fallback values based on the core BHL color scheme. */
 
 }
 
-/* Black Highlighter Theme Color Scheme, 
+/* Black Highlighter Theme Color Scheme,
 with fallback values based on the core BHL color scheme. */
 
 .fr-widget.theme-fr-Black-Highlighter,
@@ -1337,9 +1277,9 @@ with fallback values based on the core BHL color scheme. */
 .fr-widget.theme-fr-BHL,
 .fr-widget.theme-fr-Bhl,
 .fr-widget.theme-fr-bhl {
---fr-title-font: var(--title-font, Inter), Poppins, Franklin Gothic Medium, Franklin Gothic, 
+--fr-title-font: var(--title-font, Inter), Poppins, Franklin Gothic Medium, Franklin Gothic,
     ITC Franklin Gothic, &#34;Helvetica Neue&#34;, &#34;Helvetica&#34;, Arial, sans-serif;
---fr-body-font: var(--body-font, Inter), Raleway, Arimo, Verdana, Geneva, &#34;Helvetica Neue&#34;, 
+--fr-body-font: var(--body-font, Inter), Raleway, Arimo, Verdana, Geneva, &#34;Helvetica Neue&#34;,
     &#34;Helvetica&#34;, Arial, sans-serif;
 --fr-logo-font: Orbitron, Verdana, Geneva, sans-serif;
 --fr-widget-bg-color: var(--swatch-secondary-color, 245, 245, 245), .25;
@@ -1640,7 +1580,8 @@ with fallback values based on the core BHL color scheme. */
 .fr-image img {
   width: 100%;
 }
-.fr-image.img-fr-none {
+.fr-image.img-fr-none,
+.fr-image.img-fr-无 {
   display: none;
 }
 .fr-title {
@@ -1724,19 +1665,13 @@ with fallback values based on the core BHL color scheme. */
 .shape-fr-bhl.fr-title.tb-fr-true a:hover::before {
   transform: translateX(-1rem);
 }
-.fr-title-text {
+.fr-title span.fr-title-text {
   display: inline-flex;
   align-content: flex-start;
   vertical-align: top;
   z-index: 2;
 }
-.fr-title-icon {
-  display: none;
-}
-.fr-title-icon span {
-  display: none;
-}
-.fr-title-icon.icon-fr-{$title_icon_name} {
+.fr-title.icon-fr-true span.fr-title-text::before {
   content: &#34; &#34;;
   background-image: url(&#34;{$title_icon_url}&#34;);
   background-repeat: no-repeat;
@@ -1884,25 +1819,21 @@ with fallback values based on the core BHL color scheme. */
 .fr-button-backup {
   display: none!important;
 }
-.fr-button-backup.donate-fr-none {
+.fr-button-backup.donate-fr-none,
+.fr-button-backup.donate-fr-无 {
   display: flex!important;
 }
-.fr-button-donate.donate-fr-none {
+.fr-button-donate.donate-fr-none,
+.fr-button-donate.donate-fr-无 {
   display: none!important;
 }
-.fr-button-text {
+.fr-button-cont span.fr-button-text {
   display: inline-flex;
   align-content: flex-start;
   vertical-align: top;
   z-index: 2;
 }
-.fr-button-icon {
-  display: none;
-}
-.fr-button-icon span {
-  display: none;
-}
-.fr-button-icon.icon-fr-{$donate_icon_name} {
+.fr-button-cont.icon-fr-true span.fr-button-text::before {
   content: &#34; &#34;;
   background-image: url(&#34;{$donate_icon_url}&#34;);
   background-repeat: no-repeat;
@@ -1945,19 +1876,17 @@ with fallback values based on the core BHL color scheme. */
   [[div class=&#34;fr-image shape-fr-{$shape} {$aux_class} img-fr-{$image_url}&#34;]]
     [[image {$image_url} link=&#34;*{$main_url}&#34;]]
   [[/div]]
-  [[div_ class=&#34;fr-title shape-fr-{$shape} {$aux_class} 
-      tb-fr-{$title_button}&#34;]]
+  [[div_ class=&#34;fr-title shape-fr-{$shape} {$aux_class}
+      tb-fr-{$title_button} icon-fr-{$title_icon_show}&#34;]]
     [[a target=&#34;_blank&#34; href=&#34;{$main_url}&#34;]] \
-      [[span class=&#34;fr-title-icon shape-fr-{$shape} {$aux_class} 
-                                    icon-fr-{$title_icon_name}&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]] \
       [[span class=&#34;fr-title-text shape-fr-{$shape} {$aux_class}&#34;]]{$title}[[/span]] \
     [[/a]]
   [[/div]]
   [[div_ class=&#34;fr-content shape-fr-{$shape} {$aux_class}&#34;]]
-    [[div_ class=&#34;fr-progress-cont shape-fr-{$shape} {$aux_class}&#34; 
+    [[div_ class=&#34;fr-progress-cont shape-fr-{$shape} {$aux_class}&#34;
            style=&#34;display:[[#ifexpr {$goal} &gt; 0 | block | none]];&#34;]]
       [[div_ class=&#34;fr-prog-bar-cont shape-fr-{$shape} {$aux_class}&#34;]]
-        [[span class=&#34;fr-prog-bar shape-fr-{$shape} {$aux_class}&#34; 
+        [[span class=&#34;fr-prog-bar shape-fr-{$shape} {$aux_class}&#34;
                style=&#34;width: calc({$amt} / {$goal} * 100%);&#34;]]
         [[/span]]
       [[/div]]
@@ -2016,8 +1945,8 @@ with fallback values based on the core BHL color scheme. */
       [[#expr abs({$amt}) ]] \
     [[/span]] \
   [[/span]] \
-        [[span class=&#34;fr-prog-goal shape-fr-{$shape} {$aux_class}&#34; 
-               style=&#34;display: inline-flex;&#34;]] raised of \
+        [[span class=&#34;fr-prog-goal shape-fr-{$shape} {$aux_class}&#34;
+               style=&#34;display: inline-flex;&#34;]] 筹集总目标 \
   [[span class=&#34;fr-neg-before&#34; style=&#34;display:[[#ifexpr {$goal} &lt; 0 | inline | none]];&#34;]]- \
   [[/span]]{$curr_sym} \
   [[span class=&#34;fr-fig-huge&#34; style=&#34;display:[!-- if amt &gt;= 1,000,000,000,000 --]
@@ -2072,26 +2001,22 @@ with fallback values based on the core BHL color scheme. */
       [[#expr abs({$goal}) ]] \
     [[/span]] \
   [[/span]] \
-          [[span style=&#34;padding-left:0.25rem;&#34;]]goal![[/span]] \
+          [[span style=&#34;padding-left:0.25rem;&#34;]]！[[/span]] \
         [[/span]]
       [[/div]]
     [[/div]]
     [[div class=&#34;fr-desc shape-fr-{$shape} {$aux_class} hide-fr-desc-{$hide_desc}&#34;]]
       {$description}
     [[/div]]
-    [[div_ class=&#34;fr-button-cont shape-fr-{$shape} {$aux_class} 
-        hide-fr-donate-{$hide_donate}&#34;]]
-      [[a target=&#34;_blank&#34; href=&#34;{$donate_url}&#34; 
+    [[div_ class=&#34;fr-button-cont shape-fr-{$shape} {$aux_class}
+        hide-fr-donate-{$hide_donate} icon-fr-{$donate_icon_show}&#34;]]
+      [[a target=&#34;_blank&#34; href=&#34;{$donate_url}&#34;
           class=&#34;fr-button-donate shape-fr-{$shape} {$aux_class} donate-fr-{$donate_url}&#34;]] \
-        [[span class=&#34;fr-button-icon shape-fr-{$shape} {$aux_class} 
-                                        icon-fr-{$donate_icon_name}&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]] \
-        [[span class=&#34;fr-button-text shape-fr-{$shape} {$aux_class}&#34;]]Donate Now[[/span]] \
+        [[span class=&#34;fr-button-text shape-fr-{$shape} {$aux_class}&#34;]]立即捐赠[[/span]] \
       [[/a]] \
-      [[a target=&#34;_blank&#34; href=&#34;{$main_url}&#34; 
+      [[a target=&#34;_blank&#34; href=&#34;{$main_url}&#34;
           class=&#34;fr-button-backup shape-fr-{$shape} {$aux_class} donate-fr-{$donate_url}&#34;]] \
-        [[span class=&#34;fr-button-icon shape-fr-{$shape} {$aux_class} 
-                                        icon-fr-{$donate_icon_name}&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]] \
-        [[span class=&#34;fr-button-text shape-fr-{$shape} {$aux_class}&#34;]]Donate Now[[/span]] \
+        [[span class=&#34;fr-button-text shape-fr-{$shape} {$aux_class}&#34;]]立即捐赠[[/span]] \
       [[/a]] \
       [[span class=&#34;fr-logo shape-fr-{$shape} {$aux_class}&#34;]]{$logo_text}[[/span]]
     [[/div]]
@@ -2103,7 +2028,7 @@ with fallback values based on the core BHL color scheme. */
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:38.382420.</em>
+    <em>Last updated 2024-02-07 18:30:30.561316.</em>
   
 </div>
 </body>

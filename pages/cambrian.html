@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>风露暑期专题-寒武纪七日游</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">风露暑期专题-寒武纪七日游</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/cambrian" target="_blank">风露暑期专题-寒武纪七日游</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>
+@import url(&#34;https://skynight-sandbox.wdfiles.com/local--files/component%3Ablack-highlighter-theme/1.css&#34;);
+@import url(&#34;https://skynight-sandbox.wdfiles.com/local--files/component%3Ablack-highlighter-theme/2.css&#34;);
+
+@import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&amp;amp;display=swap&#39;);
+
+:root {
+/* 字体修正 */
+--body-font: &#34;Noto Sans SC&#34;, sans-serif;
+--header-font: &#34;Noto Sans SC&#34;, sans-serif;
+--title-font: &#34;Noto Sans SC&#34;, sans-serif;
+--mono-font:&#34;Noto Serif SC&#34;,&#34;ZCOOL QingKe HuangYou&#34;,&#34;Andale Mono&#34;,&#34;Courier New&#34;,Courier,monospace;
+
+/* logo修正 */
+--logo-image:url(http://skynight-sandbox.wdfiles.com/local--files/component%3Ablack-highlighter-theme/logo.svg);
+
+/* 颜色修正 */
+--black-monochrome: 0, 0, 0;
+--white-monochrome: 255, 255, 255;
+}
+
+/* Headers */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-family: &#34;Poppins&#34;, sans-serif;
+font-family: var(--title-font);
+}
+
+h1 {
+color: rgb(12, 12, 12);
+color: rgb(var(--black-monochrome));
+font-weight: 700;
+margin: 0.7em 0 0.6em;
+padding: 0 0 0.25em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-weight: 900;
+letter-spacing: 0.063rem;
+margin: 0.5em 0 0.4em;
+padding: 0;
+}
+
+ul {
+list-style: square;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/*雾气*/
+:root {
+  --sky-at-dawn: rgba(255, 255, 255, 0);
+  --sky-at-morning: rgba(255, 255, 255, 0);
+  --sky-at-daytime: rgba(255, 255, 255, 0);
+  --sky-at-evening: rgba(255, 255, 255, 0);
+  --sky-at-dusk: rgba(255, 255, 255, 0);
+  --sky-at-night: rgba(255, 255, 255, 0);
+  --sky-length: 15;
+  --sky-time: 60s;
+  --gradient-header: linear-gradient(transparent, transparent);
+  --diagonal-stripes: linear-gradient(transparent, transparent);
+}
+
+body::before,
+div#container-wrap-wrap::before,
+div#container-wrap::before,
+div#container-wrap-wrap::after,
+body::after {
+  content: &#34;&#34;;
+  position: absolute;
+  height: var(--header-height-on-desktop); width: 100%; top: 0; left: 0;
+  pointer-events: none;
+}
+
+body::before {
+  background: linear-gradient(
+                to top,
+                rgb(var(--sky-at-morning)) 0%,
+                rgb(var(--sky-at-morning)) 11%,
+                rgb(var(--sky-at-daytime)) 22%,
+                rgb(var(--sky-at-daytime)) 33%,
+                rgb(var(--sky-at-evening)) 44%,
+                rgb(var(--sky-at-dusk)) 55%,
+                rgb(var(--sky-at-night)) 66%,
+                rgb(var(--sky-at-night)) 77%,
+                rgb(var(--sky-at-dawn)) 88%,
+                rgb(var(--sky-at-morning)) 100%
+              );
+  background-size: 100% calc(var(--header-height-on-desktop)
+                             * var(--sky-length));
+  animation: sky linear var(--sky-time) infinite;
+}
+@keyframes sky {
+  from { background-position: 0 0; }
+  to {
+    background-position: 0 calc(var(--header-height-on-desktop)
+                                * var(--sky-length));
+  }
+}
+
+div#container-wrap-wrap::after, body::after {
+  background-size: var(--ashes-width) var(--header-height-on-desktop);
+  background-repeat: repeat-x;
+  animation: ashes-move linear var(--ashes-move-duration),
+             ashes-fade ease calc(var(--sky-time) * 3);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+div#container-wrap-wrap::after {
+  background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-large.png&#39;);
+  --ashes-move-duration: 27s;
+  --ashes-width: 500px;
+  --ashes-opacity: 0.5;
+}
+body::after {
+  background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-small.png&#39;);
+  --ashes-move-duration: 20s;
+  --ashes-width: 800px;
+  --ashes-opacity: 0.4;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) 0; }
+}
+@keyframes ashes-fade {
+  0%, 85%, 96%, 100% { opacity: var(--ashes-opacity); }
+  88.66%, 92.33% { opacity: 0.1; }
+}
+
+/*间隔*/
+
+/*#skrollr-body {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(http://scpsandboxcn.wdfiles.com/local--files/collab%3Amayca/M%E9%95%BF%E5%9B%BE%E6%94%B92);
+    background-repeat: repeat-x;
+    background-size: inherit;
+}
+@media only screen and (max-width: 768px) {
+    #skrollr-body {
+        width: 100%;
+        background-image: url(http://scpsandboxcn.wdfiles.com/local--files/collab%3Amayca/M%E7%9F%AD%E5%9B%BE%E6%94%B9);
+        background-size: inherit;
+        overflow: hidden;
+    }
+}*/</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/*版头图*/
+/*div#container-wrap {
+    background-image: url(http://scpsandboxcn.wikidot.com/local--files/guqnmiuwiki/h);*/
+}
+/*标题横线消失*/
+#page-title {
+    font-size: 3em;
+    border: none;
+    padding: 0;
+    margin: 0.5em 0 0.3em 0;
+}
+/*标题居中*/
+#page-title {
+    text-align: center !important;
+    font-family: var(--header-font);
+    font-size: 230%;
+}
+
+
+div#side-bar div.side-block {
+    background: rgb(164, 194, 244,0.4);
+}
+
+
+body {
+    background-color: #E1EBED ;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+div#header h1 a span {
+    font-size: 0px;
+}
+h1, #page-title {
+    color: rgb(100,0,0,0.7) !important; /*1级标题、页面标题颜色*/
+}
+
+body {
+    font-family: &#39;Noto Serif SC&#39;;
+}
+
+:root {      
+                  --theme-base: &#34;黑色标记笔&#34;;
+                  --theme-id: &#34;fenglulvshe&#34;;
+                  --theme-name: &#34;Site-CN-09&#34;;
+            /*↓ 页眉 ↓ */           
+                --logo-image: url(&#34;http://scpsandboxcn.wdfiles.com/local--files/breaddddd/wdh.png&#34;);
+                  --header-title: &#34;风露旅社&#34;;
+                  --header-subtitle: &#34;沐风饮露  徜徉八方&#34;;
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* HEADER */
+div#extra-div-1 {
+    height: 120px;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    background: url(&#34;https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500&#34;);
+    background-size: cover;
+    background-position: 50% 50%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.page-rate-widget-box .rateup a::before, .page-rate-widget-box .ratedown a::before, .page-rate-widget-box .cancel a::before {
+    background-color: rgba(0,0,0,0);
+}
+.page-rate-widget-box .rateup a, .page-rate-widget-box .ratedown a, .page-rate-widget-box .cancel a {
+    font-size: 1em;
+}
+.page-rate-widget-box .rateup a:hover::before, .page-rate-widget-box .ratedown a:hover::before, .page-rate-widget-box .cancel a:hover::before {
+    background-color: rgba(0,0,0,0);
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>border: solid 0px #000000; margin: 0 auto; display: inline-block; background-image: url(http://scp-wiki.wdfiles.com/local--files/gone/paper); background-repeat: repeat; padding: 10px; padding-top: 1em; background-color: #ffda80; box-shadow: 0 2px 4px rgba(68, 68, 68, .5); float:top; width:75%; align: center; margin: 2% 13% 2% 9%; padding: 5px 20px 5px 20px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width:85%; padding-top: 1em; padding-right: 1em; padding-left: 2em; padding-bottom: 1em; margin-bottom: 3em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: inline-block; border-width: 1px; border-style: solid; border-color: black; float:center; width:84%; padding:1px 15px; margin: 10px 10px 10px 40px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: inline-block; border-width: 1px; border-style: solid; border-color: black; float:center; width:84%; padding:1px 15px; margin: 10px 10px 10px 40px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: inline-block; border-width: 1px; border-style: solid; border-color: black; float:center; width:84%; padding:1px 15px; margin: 10px 10px 10px 40px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: inline-block; border-width: 1px; border-style: solid; border-color: black; float:center; width:84%; padding:1px 15px; margin: 10px 10px 10px 40px</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>:scp-wiki:component:fade-in</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>footer-wikiwalk-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-image-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>block-center</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-star</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+
+@import url(&#34;https://skynight-sandbox.wdfiles.com/local--files/component%3Ablack-highlighter-theme/1.css&#34;);
+@import url(&#34;https://skynight-sandbox.wdfiles.com/local--files/component%3Ablack-highlighter-theme/2.css&#34;);
+
+@import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&amp;amp;display=swap&#39;);
+
+:root {
+/* 字体修正 */
+--body-font: &#34;Noto Sans SC&#34;, sans-serif;
+--header-font: &#34;Noto Sans SC&#34;, sans-serif;
+--title-font: &#34;Noto Sans SC&#34;, sans-serif;
+--mono-font:&#34;Noto Serif SC&#34;,&#34;ZCOOL QingKe HuangYou&#34;,&#34;Andale Mono&#34;,&#34;Courier New&#34;,Courier,monospace;
+
+/* logo修正 */
+--logo-image:url(http://skynight-sandbox.wdfiles.com/local--files/component%3Ablack-highlighter-theme/logo.svg);
+
+/* 颜色修正 */
+--black-monochrome: 0, 0, 0;
+--white-monochrome: 255, 255, 255;
+}
+
+/* Headers */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-family: &#34;Poppins&#34;, sans-serif;
+font-family: var(--title-font);
+}
+
+h1 {
+color: rgb(12, 12, 12);
+color: rgb(var(--black-monochrome));
+font-weight: 700;
+margin: 0.7em 0 0.6em;
+padding: 0 0 0.25em;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+font-weight: 900;
+letter-spacing: 0.063rem;
+margin: 0.5em 0 0.4em;
+padding: 0;
+}
+
+ul {
+list-style: square;
+}
+[[/module]]
+
+[[include :scp-wiki:component:fade-in speed=1]]
+[[module css]]
+/*雾气*/
+:root {
+  --sky-at-dawn: rgba(255, 255, 255, 0);
+  --sky-at-morning: rgba(255, 255, 255, 0);
+  --sky-at-daytime: rgba(255, 255, 255, 0);
+  --sky-at-evening: rgba(255, 255, 255, 0);
+  --sky-at-dusk: rgba(255, 255, 255, 0);
+  --sky-at-night: rgba(255, 255, 255, 0);
+  --sky-length: 15;
+  --sky-time: 60s;
+  --gradient-header: linear-gradient(transparent, transparent);
+  --diagonal-stripes: linear-gradient(transparent, transparent);
+}
+
+body::before,
+div#container-wrap-wrap::before,
+div#container-wrap::before,
+div#container-wrap-wrap::after,
+body::after {
+  content: &#34;&#34;;
+  position: absolute;
+  height: var(--header-height-on-desktop); width: 100%; top: 0; left: 0;
+  pointer-events: none;
+}
+
+body::before {
+  background: linear-gradient(
+                to top,
+                rgb(var(--sky-at-morning)) 0%,
+                rgb(var(--sky-at-morning)) 11%,
+                rgb(var(--sky-at-daytime)) 22%,
+                rgb(var(--sky-at-daytime)) 33%,
+                rgb(var(--sky-at-evening)) 44%,
+                rgb(var(--sky-at-dusk)) 55%,
+                rgb(var(--sky-at-night)) 66%,
+                rgb(var(--sky-at-night)) 77%,
+                rgb(var(--sky-at-dawn)) 88%,
+                rgb(var(--sky-at-morning)) 100%
+              );
+  background-size: 100% calc(var(--header-height-on-desktop)
+                             * var(--sky-length));
+  animation: sky linear var(--sky-time) infinite;
+}
+@keyframes sky {
+  from { background-position: 0 0; }
+  to {
+    background-position: 0 calc(var(--header-height-on-desktop)
+                                * var(--sky-length));
+  }
+}
+
+div#container-wrap-wrap::after, body::after {
+  background-size: var(--ashes-width) var(--header-height-on-desktop);
+  background-repeat: repeat-x;
+  animation: ashes-move linear var(--ashes-move-duration),
+             ashes-fade ease calc(var(--sky-time) * 3);
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+div#container-wrap-wrap::after {
+  background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-large.png&#39;);
+  --ashes-move-duration: 27s;
+  --ashes-width: 500px;
+  --ashes-opacity: 0.5;
+}
+body::after {
+  background-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Aswirling-ashes/ashes-small.png&#39;);
+  --ashes-move-duration: 20s;
+  --ashes-width: 800px;
+  --ashes-opacity: 0.4;
+}
+@keyframes ashes-move {
+  from { background-position: 0 0; }
+  to { background-position: var(--ashes-width) 0; }
+}
+@keyframes ashes-fade {
+  0%, 85%, 96%, 100% { opacity: var(--ashes-opacity); }
+  88.66%, 92.33% { opacity: 0.1; }
+}
+
+/*间隔*/
+
+/*#skrollr-body {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-image: url(http://scpsandboxcn.wdfiles.com/local--files/collab%3Amayca/M%E9%95%BF%E5%9B%BE%E6%94%B92);
+    background-repeat: repeat-x;
+    background-size: inherit;
+}
+@media only screen and (max-width: 768px) {
+    #skrollr-body {
+        width: 100%;
+        background-image: url(http://scpsandboxcn.wdfiles.com/local--files/collab%3Amayca/M%E7%9F%AD%E5%9B%BE%E6%94%B9);
+        background-size: inherit;
+        overflow: hidden;
+    }
+}*/
+[[/module]]
+
+[[module CSS]]
+/*版头图*/
+/*div#container-wrap {
+    background-image: url(http://scpsandboxcn.wikidot.com/local--files/guqnmiuwiki/h);*/
+}
+/*标题横线消失*/
+#page-title {
+    font-size: 3em;
+    border: none;
+    padding: 0;
+    margin: 0.5em 0 0.3em 0;
+}
+/*标题居中*/
+#page-title {
+    text-align: center !important;
+    font-family: var(--header-font);
+    font-size: 230%;
+}
+
+
+div#side-bar div.side-block {
+    background: rgb(164, 194, 244,0.4);
+}
+
+
+body {
+    background-color: #E1EBED ;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+
+div#header h1 a span {
+    font-size: 0px;
+}
+h1, #page-title {
+    color: rgb(100,0,0,0.7) !important; /*1级标题、页面标题颜色*/
+}
+
+body {
+    font-family: &#39;Noto Serif SC&#39;;
+}
+
+:root {      
+                  --theme-base: &#34;黑色标记笔&#34;;
+                  --theme-id: &#34;fenglulvshe&#34;;
+                  --theme-name: &#34;Site-CN-09&#34;;
+            /*↓ 页眉 ↓ */           
+                --logo-image: url(&#34;http://scpsandboxcn.wdfiles.com/local--files/breaddddd/wdh.png&#34;);
+                  --header-title: &#34;风露旅社&#34;;
+                  --header-subtitle: &#34;沐风饮露  徜徉八方&#34;;
+
+[[/module]]
+
+[[module css]]
+/* HEADER */
+div#extra-div-1 {
+    height: 120px;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    background: url(&#34;https://images.pexels.com/photos/46253/mt-fuji-sea-of-clouds-sunrise-46253.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=1&amp;w=500&#34;);
+    background-size: cover;
+    background-position: 50% 50%;
+[[/module]]
+
+[[module css]]
+.page-rate-widget-box .rateup a::before, .page-rate-widget-box .ratedown a::before, .page-rate-widget-box .cancel a::before {
+    background-color: rgba(0,0,0,0);
+}
+.page-rate-widget-box .rateup a, .page-rate-widget-box .ratedown a, .page-rate-widget-box .cancel a {
+    font-size: 1em;
+}
+.page-rate-widget-box .rateup a:hover::before, .page-rate-widget-box .ratedown a:hover::before, .page-rate-widget-box .cancel a:hover::before {
+    background-color: rgba(0,0,0,0);
+}
+[[/module]]
+[[div class=&#34;footer-wikiwalk-nav&#34;]]
+[[=]]
+**[# 首页]**&gt;&gt;**[# 自由行]**&gt;&gt;**[# 暑期专题]**
+[[/=]]
+[[/div]]
+[[&gt;]]
+[[module rate]]
+[[/&gt;]]
+[[=]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd/wdh.png width=&#34;200px&#34;]]
+[[/=]]
+[[=]]
+[[size 150%]]__风露旅社第二季度数据库__[[/size]]
+[[/=]]
+[[=]]
+[[module ListUsers users=&#34;.&#34;]]
+++++ 欢迎您，顾客 %%title%%
+[[/module]]
+
+
+
+
+[请查阅您需要的项目]
+
+
+
+
+||~ 查阅|| 夏日消暑之旅-寒武纪七日游 ||
+
+
+
+
+[查询中]
+
+
+[[/=]]
+||~ 项目名称||夏日消暑之旅-寒武纪七日游||
+||~ 项目规格||自由行/家庭套餐||
+||~ 类型||定制||
+||~ 状态||开放销售/已上架||
+||~ 售出方式||网络渠道、线下实体店||
+||~ 服务目标||不限（十六岁以下需监护人陪同）||
+||~ 自由活动||全程，游客可自选是否遵循推荐路线||
+||~ 购物||有购物点，自由活动||
+||~ 服务语言||普通话/英语/宇宙语||
+||~ 套餐定价||自由行：700能量币/人；家庭套餐：850能量币/成人，儿童免费||
+||||~ wind.dew.travel.agency ||
+----
+[[&lt;]]
+* 旅行套餐详情介绍
+[[tabview]]
+[[tab 项目简介]]
+烈日高悬，暑气蒸腾，这样的日子里，蜗居在房间里，依靠风扇，空调或制冷奇术续命的您，是否向往一场从热浪中抽身，尽情拥抱欢乐的避暑之旅呢？如果您的回答是“yes”，那么请看这里——风露旅社联合多家异常机构共同打造的大型主题公园式项目“寒武纪七日游”，为您带来一段世外桃源般的梦幻旅程！
+
+**//旅行特色//**
+
+**货真价实的冰河之旅:**旅程开始时，旅客将乘坐时空迁跃载具，去往5亿年前，那个尚被冰川覆盖的第三行星。同时，借由片段式时空割离技术，每组游客抵达的目的地均为一处从现有时间线中提取出的复制品，让您在体验寒武纪原味风情时，完全不受拥挤及时间悖论问题的困扰。
+
+**丰富多彩的娱乐项目：**想要当一回探险家，让足迹遍布山巅到峡谷？想要亲眼见证生命大爆发，甚至介入其中决定物种进化？想要...好了打住，不论此刻您在想什么——以本社上月投放的调查问卷数据为参考，在虚拟感官增强技术辅助下，公园内涵盖了“夏日娱乐设施期待榜”及“史前娱乐项目期待榜”前十位的所有内容（无论它们有多么天马行空！），欢迎来到冰雪仙境！
+
+**高度自由的行动选择：**整座公园覆盖了大陆架边缘的一座浮岛，总面积近2万平方公里，依据特色划分为五片区域。在旅程开始时，我们将给每位游客发放定点传送手环，您可借此在一分钟内抵达岛上共计1739个特定坐标中的任意一个。同时，我们也准备了观光车，脚踏车，步行道等多种出行方式，您的行程完全由自己决定；而倘若您不擅长计划或者遇到了什么困难，手环自带的智能语音助手和遍布公园的仿真机械服务员正是为此而设。
+
+//科技赞助鸣谢：OB传媒，Dr.Wondertainment//
+[[/tab]]
+[[tab 景区服务]]
+* 住宿
+**1.基础住宿服务:**位于公园中心服务区的旅馆，房间规格可选，内置电视、电脑、独立卫生间、浴室等基础设施。无需额外收费。
+
+**2.北极光山巅营地：**位于冰川区域最高峰顶的临时露宿场地，视野开阔，专为摄影及探险爱好者而设，让您在确保安全的前提下与自然近距离接触。定价：15能量币/人/天。
+
+**3.珊瑚礁观景旅馆：**位于浮冰区海底火山附近的旅宿，玻璃制外墙，房间内附赠水下行动装备，是想以另类方式欣赏日出者的不二之选。定价：25能量币/人/天
+
+* 餐饮
+**1.基础餐饮服务:**每日固定时间段，游客可于游客服务中心餐饮区内从当日菜单中选择指定菜品，作为其当天伙食，无需额外收费。早餐：5：00~8：00，午餐：11：00~13：30，晚餐：17：00~19：30（此处时间均为二十四小时制标准地球时）
+
+**2.三叶虫甜品小食站：**位于溶洞区暗河上的流动餐饮点，使用溶洞内的天然冰凌为原料，主要售卖冷饮，甜食，兼售糕点与部分主食，价格较低，支持甜品DIY服务。
+
+**3.安布罗斯寒武纪分店：**位于雪原区边界的高档餐厅，菜品丰富，除火锅，烧烤，刺身，自助等多种基本餐饮形式外，限时提供夏日特供“怪谈套餐”，让听觉与味蕾交错，带来双重意义上的“清凉一夏”！
+
+[[/tab]]
+[[tab 区域详情：溶洞区]]
+[[&gt;]]
+[[include component:image-block
+| name=https://scpsandboxcn.wikidot.com/local--files/cat-and-cat-and-cat/%E6%9A%97%E6%B2%B3
+| caption=溶洞入口景观
+| width=200px
+]]
+[[/&gt;]]
+溶洞区位于公园东北侧，依托于一处大型天然洞穴而建，约占公园总面积的五分之一，最低海拔-351米，均温-23～-11℃。
+
+洞穴内部存在上千个空腔，呈蜂巢式排列，彼此间由一条暗河贯穿始终。
+
+该区域设有步行道和攀岩道，及沿河岸分布的多个停泊点，游客可依据自身爱好及能力自由选择游览路线，或乘坐入口处的观光船，遵循系统推荐路线前行。
+
+时间徘徊于这座在冰雪下沉睡数亿年的地下城堡内，狂妄地在每一根冰凌、每一块砾石上留下自己的签名；冰雪又将其捕捉，束缚，凝华成透明的结晶，拥入自己的怀抱中。
+
+而现在，我们将它呈现于您，请尽情追随生命最初的足迹，去一探那蔚蓝星球被遗忘的序章。
+
+
+[[/tab]]
+[[tab 区域详情：雪原区]]
+雪原区位于公园西南侧，与服务区紧密相连，占据了大部分陆地面积，平均海拔17米，均温19~23℃。
+
+该区域为公园内主要的娱乐设施分布带，建有水上乐园，露天剧场，科考模拟体验馆，室外滑冰场等大型场所，兼售纪念品及部分生活用品，如有需要可自行选购。
+
+北风其凉，雨雪其滂。雪是公正的象征，无论这片土地曾承载多少篇章，又曾孕育怎样的辉煌，都将在皑皑白雪面前一视同仁地被埋葬，只留一张纯白的画布供后来者泼墨遐想。
+
+既然如此，不妨缓步慢行于雪原之上，留下须臾间被再度涂抹的脚印，带走永不磨灭的回忆。
+
+[[/tab]]
+[[tab 区域详情：冰川区]]
+[[include component:image-block
+| name=https://scpsandboxcn.wikidot.com/local--files/cat-and-cat-and-cat/%E5%86%B0%E5%B7%9D
+| caption=冰川区俯视图（部分）
+| width=200px
+]]
+
+冰川区位于公园西侧沿海，由数十座被永久性冻土覆盖的纵向山脉组成，最高海拔3098米，均温-2~9℃。
+
+该区域开放步道，滑雪道及观光缆车，部分山顶观景点设有露天咖啡厅，并提供摄影器材出租及免费照片成像服务；同时，为保障特殊人群的观景体验，游客可在穿戴特定的传感设备后，通过远程遥控机械第一视角体验登山或滑翔项目。
+
+在现代地理学中，冰川是某种奇妙的存在：这些庞然大物中的大部分早就消失无踪，它们留下的痕迹却相当夺人眼目，让人忍不住遐想它们在全盛时期铺天盖地的模样。
+
+是时候去亲自造访这些透明的巨兽，验证您的遐想正确与否了，不是么？
+[[/tab]]
+[[tab 区域详情：浮冰区]]
+浮冰区位于公园东南侧，由岛链与海域组成，聚集了全公园九成以上的海滨项目。浮冰区是所有游客旅程的初始传送点，各位将在那里和我们的导游Sniceow第一次见面。
+
+&gt; //我们是在一次海滨旅行中无意间发现Sniceow的，这只羽蛇状的小家伙蜷缩着躲在石缝里，看上去奄奄一息了。最初把它带回来时，我们以为它是某个古老物种的唯一幸存者，直到那天我们的饲养员走进房间，看到两双一模一样的蓝眼睛一齐向她投来视线。//
+&gt; 
+&gt; //毫无疑问，Sniceow——它们中的每一位都有自己的名字，但似乎并不介意被使用统一的族名称呼——有着一套及其独特的冬眠机制，当气候变化时，个体可以将自身的意识剥离后，在同类的身躯中沉睡；而这一过程中，失去意识的躯体会被送往某个神秘而虚无的空间完美地存储下来，直到清醒着的守望者判断环境重新变得适宜生存为止。//
+&gt; 
+&gt; //一开始所有人都为这个发现雀跃，但很快问题接踵而至：Sniceow的总数比我们想象中多得多，饲养费用成了大问题。因此，我们现今不得不发布此文来寻求领养者。Sniceow们有着孩子一般的心智，性格温和或调皮，喜欢角色扮演和奶油蛋糕——如果您有收养意愿，随时欢迎与我们联系。//
+&gt; 
+&gt; ——摘自《威尔逊野生动物应对组公告：关于Sniceow》
+
+如果您刚才对为什么在有智能手环的情况下还需要导游有所困惑，想必现在也能明白了——是的，“导游”只是扮演游戏的初始角色。而Sniceow显然有着出众的学习和执行力，在项目测试环节中，即使是最严肃最对动物无感的工作人员，看见它们时也忍不住上前摸摸头——我是说，比起在屏幕前怀疑真假，为什么不自己亲自去验证一下呢？
+
+[[/tab]]
+[[tab 部分纪念品]]
+[[include component:image-block
+| name=https://scpsandboxcn.wikidot.com/local--files/cat-and-cat-and-cat/%E5%86%B0%E9%9B%95
+| caption= 动物冰雕（鹿）
+| width=150px
+]]
+
+* 卡通动物仿真冰雕
+使用奇术原料制成的雕塑，表面温度稳定维持10℃，即使在上千度高温环境下也不会融化，内置的简易机械结构更是让其具备基础的行动能力。
+
+尺寸13~20cm不等，规格可选，定价6能量币/个，累计购买三个及以上或家庭套餐可享八折优惠。
+
+* “凉夏回忆”主题相册
+当游客在公园中特定景点或道路活动时，该区域的自动拍摄无人机会启动并跟随，记录下您的游玩过程。当游客离开该景点时，可以从中挑选满意的照片进行印刷，行程中印刷的所有照片将在旅程结束时装订成册送至游客手中，支持定制封皮。
+
+印刷照片5能量币/10张，装订费10能量币，累计购买照片超过100张免除装订费。
+
+
+
+[[/tab]]
+[[/tabview]]
+[[/&lt;]]
+----
+* 旅客游记精选欣赏
+[[&lt;]]
+[[div style=&#34;border: solid 0px #000000; margin: 0 auto; display: inline-block; background-image: url(http://scp-wiki.wdfiles.com/local--files/gone/paper); background-repeat: repeat; padding: 10px; padding-top: 1em; background-color: #ffda80; box-shadow: 0 2px 4px rgba(68, 68, 68, .5); float:top; width:75%; align: center; margin: 2% 13% 2% 9%; padding: 5px 20px 5px 20px;&#34;]]
+某种意义上，这真是个奇妙的世界，各种看似无关甚至矛盾的身份都能归于同一人：比方说，谁能想到此刻伏案写下这篇游记的作家，半月前还忙着在暗巷中飞檐走壁和狱卒们展开一场生死决斗呢？
+
+更奇妙的是，这些看似无关的事物——我，狱卒，旅社，乃至构成这篇游记的文字和纸张——却都有着共同的起源。在旅程的倒数第二天，出于某些突发奇想，在得到许可后，我关闭了所有机械服务生的电源，刹时整片大陆的所有灯光全部熄灭，就如正确的历史上，这段时期应有的模样。
+
+然后，我打开了科技体验馆的玻璃柜，那里有许多经过基因改造的原始真菌，只要把它们放入馆内陈列的装置，再经过一些简单的操作，你就能看到它们依据环境快速向着特定方向进化;我把所有的原始生物一扫而空（说真的，它们长得几乎完全一样，唯一的区分方式就是罐子上的标签），然后越过了十七排模拟装置，穿过滑冰场和安布罗斯餐厅，向冰川区前进。
+
+路上我总共停下了两次。第一次是为了看地图以确认自己没有走错路，毕竟失去了灯光，光靠星星还不足以照亮一望无际的雪原；第二次则是被一道天边的白光吸引了注意——那是一颗陨石，在浓稠的天幕中掀起层层波浪。它是某个在宇宙中流浪的旅行家，想要到这里歇歇脚？还是某个古老文明最后的信号，承载了一颗星球的历史？这些想法驱使着我迈开脚步朝它落下的方向奔去，即使这偏离了我原先的路线。
+
+最后我还是没能如愿。那火光还不及落地便已熄灭，就像小女孩手中在风雪里燃尽的火柴，而它究竟有什么辉煌或平凡的过往，我再也无从得知了。这一行为消耗了不少时间，所以当我按来到北极光山巅营地时，比原定计划晚了好几个小时，我能感觉到怀中好几个玻璃瓶都已经开始摇摇晃晃，就像即将孵化的卵。
+
+我把一瓶营养液倒在火堆旁，然后把不耐烦的真菌们一股脑全撒了上去。一层粉末状的透明薄膜最先覆盖了地面，上下起伏着，有些像脚下这座冰山的缩略版；接着，在某一个时间点，许多气泡沸腾着突破了束缚，一些小小的，柔软，长条或披着甲壳的家伙落到冰雪融化形成的小水洼里，在这不算大的空间里伸展躯体。
+
+再接着是植物，像是某种儿童画板自带的染色游戏，浅绿，深绿，墨绿，暗绿，由浅至深的波纹在冰面上晕染开。拜现代技术所赐，自然界五千万年才演化出的奇迹，仅用短短半小时就在此复现。但这丝毫不影响它带给我的感触与震撼：如此繁杂的物种，却有着同根的源头，那么让时间再推进一些呢，我们，与被所谓帷幕分割的异常，是否也只是在漫长时光中疏远了而不自知的近亲？
+
+更微妙真挚的感受，恕我无力用语言描摹；那么为了不让过分的赘笔喧宾夺主，不妨言尽于此吧。
+[[&gt;]]
+附玉之瑛   //2025年/7月/28日留//
+[[/&gt;]]
+[[/div]]
+[[/&lt;]]
+----
+[[div class=&#34;scp-image-block block-center&#34; style=&#34;width:85%; padding-top: 1em; padding-right: 1em; padding-left: 2em; padding-bottom: 1em; margin-bottom: 3em;&#34;]]
+
+
+[[=]]
++++ 游客注意事项
+[[/=]]
+
+* 1.在乘坐时空穿梭载具时，请确保去除所有首饰，戒指等贴身金属制品，以防干扰信号波造成定位错乱。如需携带上述饰品，可与其他行李一起放入物品专用通道。
+
+* 2.由于公园内面积较大，露天项目较多且各项目区域存在温差，请游客务必自行准备适量防寒措施。
+
+* 3.部分项目内部地势崎岖，存在裂谷，冰面等地形，即使公园内配有完善的急救设施，依然请各位游客在旅程中注意安全，留心儿童，家庭出行者尤甚。
+
+* 4.旅社初始配发的手环具备抗寒，防水，防火功能，极难损坏，因此请不要在旅程中试图摘卸或破坏智能手环，否则可能导致返程时无法定位至正确时空。
+
+* 5.于溶洞区内游览时，请不要恶意破坏溶洞内部结构，以防造成坍塌；同理，请勿在冰川区山麓部分制造高分贝噪音，以防发生雪崩。
+
+* 6.请勿在公园中使用游客自身掌握时空穿梭或扭曲能力。手环配备的功能足以满足行程需求，计划外的时空扰动可能引起临时时间线波动或崩塌。
+
+* 7.每组游客抵达的公园都是从同一段时间线截取而出，但不同游客所见浮冰区内的Sniceow均为该种群的不同个体，它们依然会因外力受伤或死亡。所以请善待它们，如发现伤害行为，游客将被罚款75能量币，并强制结束该次旅行，预付金不退还。
+
+* 8.若游客有收养Sniceow个体的意向，请在旅程结束后向旅社提交申请，并附带自己的个人信息及旅程编码，我们会将其交由威尔逊野生动物应对组审查符合要求后，转告现饲主Dr.Wondertainment直接与您联络。
+
+* 9.若游客因违反上述条例，导致生命财产受损，本旅舍概不负责。
+
+----
+[[=]]
+//祝您旅途愉快！//
+[[/=]]
+[[&gt;]]
+——风露旅社运营处
+[[/&gt;]]
+[[/div]]
+----
+* 顾客评论反馈区
+[[div style=&#34;display: inline-block; border-width: 1px; border-style: solid; border-color: black; float:center; width:84%; padding:1px 15px; margin: 10px 10px 10px 40px&#34;]]
+++ 顾客#音烨是只红狐狸 ##grey|2025/7/26##
+----
+孤狼玩家探头！地图很大，互动性强，NPC智能高，推荐入...
+
+咳咳，不开玩笑了，认真评价。整体一圈下来，体验还是很棒的，只是在这里给后来者一个提醒：如果是单人出行，去溶洞区的时候一定要做观光船！即使没有惊吓点，一个人孤零零走在看不见尽头的地下迷宫里，那种氛围感都能把人逼疯了，甚至我一下没想起来可以用传送...
+[[&gt;]]
+[[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]]
+[[/&gt;]]
+[[/div]]
+[[div style=&#34;display: inline-block; border-width: 1px; border-style: solid; border-color: black; float:center; width:84%; padding:1px 15px; margin: 10px 10px 10px 40px&#34;]]
+++ 顾客#有两只猫的安奇 ##grey|2025/7/28##
+----
+[[include component:image-block
+| name=https://scpsandboxcn.wikidot.com/local--files/cat-and-cat-and-cat/QQ%E5%9B%BE%E7%89%8720220728193403.jpg
+| caption=海盗船长安奇和南瓜海怪米达！我已经尽力画了，嗯...
+| width=220px
+]]
+虽然神奇的事情也经历过不少了，但这场行程还是让我印象深刻...也许是因为上大学后第一次一个人出来旅游吧？
+
+仔细想想，这票钱似乎有点浪费了，因为很多项目实际上并没有去体验，但就我游玩过的内容而言，相当新奇有趣，真难以想象这是能在现实中复现的娱乐。不过，嗯...如果要说有什么遗憾，或许是我无法在旅程结束时立刻把米达带上？
+
+这位Sniceow似乎和宣传片或其他游客介绍中不同，在我们试图搭一个移动水箱带着他去冰川区转悠时，他忽然对我说想看一看如今的地球是什么样，因为当时他是最后醒来的，还没来得及看一眼外面的世界就和同类一起被收养了。
+
+我有一些饲养异常生物的经验，何况，米达让我想起我的另一位朋友。领养申请已经发送并通过了，我想后续事项应该很快就能处理完毕。
+
+[[&gt;]]
+[[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]]
+[[/&gt;]]
+[[/div]]
+[[div style=&#34;display: inline-block; border-width: 1px; border-style: solid; border-color: black; float:center; width:84%; padding:1px 15px; margin: 10px 10px 10px 40px&#34;]]
+++ 顾客#喵呜喵呜喵 ##grey|2025/7/29##
+
+服务态度和体验是很好啦，只是...
+
+这个定价也太离谱了吧！我能理解技术成本确实高，但是能不能把额外付费项目全部写清啊？真正要玩了才说另外买票是怎么回事啊！
+
+[[&gt;]]
+[[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]]
+[[/&gt;]]
+[[/div]]
+[[div style=&#34;display: inline-block; border-width: 1px; border-style: solid; border-color: black; float:center; width:84%; padding:1px 15px; margin: 10px 10px 10px 40px&#34;]]
+++ 顾客#华年不是托！ ##grey|2025/7/29##
+
+欸嘿，把冰川区的传感系统穿在代步机器身上然后看它们自己原地打转的样子也太喜感了吧...我打赌主办方设置这个项目的时候肯定没想到这个玩法，叫我寒武纪发明家！
+
+随便，呃，我不就是在“密室”主题怪谈套餐里仗着不会真正出事所以拉着鬼唠了会家常，这，这有过分到额外收费的地步吗？
+
+[[&gt;]]
+[[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]][[span class=&#34;fa fa-star&#34;]]@&lt;&amp;nbsp;&gt;@[[/span]]
+[[/&gt;]]
+[[/div]]
+[[&gt;]]
+++ 更多评论已折叠
+[[/&gt;]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2024-02-07 18:30:30.282555.</em>
+  
+</div>
+</body>

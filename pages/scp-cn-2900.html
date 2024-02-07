@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>SCP-CN-2900</title>
 </head>
@@ -31,132 +31,167 @@
         <li>
           <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&amp;display=swap&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext&#39;);
+@import url(&#39;https://fonts.googleapis.com/css?family=Noto+Sans+SC:wght@600&amp;display=swap&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext&#39;);
+@import url(&#39;https://fonts.googleapis.com/css?family=Noto+Sans+Egyptian+Hieroglyphs:wght@600&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Zen+Antique&amp;display=swap&#39;);
 
-#page-content::after {
-    content: &#34;机密&#34;;
-    display: block;
-    position: fixed;
-    top: calc(50% - 0.5em);
-    left: 0;
-    height: 1em;
-    width: 100%;
-    text-align: center;
-    font-size: 6em;
-    line-height: 1;
-    font-weight: bold;
-    opacity: 0.1;
-    z-index: -1;
+:root {
+    --body-font: &#34;Noto Sans SC&#34;, &#34;Noto Sans&#34;, &#34;Noto Sans Egyptian Hieroglyphs&#34;, sans-serif;
+    --title-font: &#34;Noto Serif SC&#34;, &#34;Noto Serif&#34;, serif;
+    --main-content-width: 800px;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --primaryBackgroundColor: rgb(252, 252, 252);
 }
 
-div#container-wrap {
-    background-image: none;
-}
-
-div#header, div#side-bar {
-    display: none;
-}
-
-div#page-title {
-    display: none;
-}
-
-body {
-    background-color: #FFF;
-    background-image: none;
-    font-family: &#34;Noto Sans SC&#34;, &#34;Noto Sans&#34;;
-}
-
-#main-content {
-    float: center;
-    margin: 0 auto;
-    padding: .5em;
-    max-width: 800px;
-    margin-top: 0;
-    padding-top: 0;
-}
-
-#footer, #license-area {
-    display: none !important;
-}
-
-/* body, #container-wrap-wrap, #container-wrap, #content-wrap, #page-content {
-    min-height: unset !important;
-} */
-
-.page-rate-widget-box {
-    background: transparent;
-    border-radius: 0;
-    border: none;
-    border-bottom: solid 1px #000;
-    box-shadow: 0 1px 0 #999;
-    margin-left: 0;
-    margin-right: 0;
-    text-align: center !important;
-}
-
-#page-content {
-    text-align: justify;
-    justify-align: both;
-}
-
-blockquote, div.blockquote {
-/* From SCP Style Resource */
-    border: solid 1px #999;
-    padding: 20px;
-    padding-bottom: 19px;
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #EEE;
-    background-image: linear-gradient(to top, #CCC 0%, #CCC 5%, transparent 5%);
-    background-origin: padding-box;
-    background-position: 0px 0px;
-    background-repeat: repeat;
-    background-size: 100% 20px;
-    line-height: 20px;
-}
-
-blockquote p, div.blockquote p {
-    margin: 0;
-}
-
-.curs {
-    font-family: &#39;Ma Shan Zheng&#39;, cursive !important;
-}
-
-div.letter {
-    text-indent: 2em;
-    font-family: &#39;Noto Serif SC&#39;, serif;
-}
-
-div.letter p:nth-child(1) {
-    text-indent: 0;
+div#header h1 a::before {
+    font-family: var(--title-font);
 }
 
 span.bc {
+    color: #000;
     background-color: #000;
 }
 
-.container .ctbar {
+blockquote,
+div.blockquote {
+    border: none;
+    border-radius: var(--radius-adjust);
+    box-shadow: none;
+    margin-left: 0;
+    margin-bottom: 3rem;
+}
+
+div.blockquote.rec,
+div.blockquote &gt; div.blockquote {
+    margin-bottom: 1rem;
+}
+
+div#page-content {
+    line-height: 150%;
+}
+
+div.blockquote.mail {
+    background-color: #EFEFEF;
+}
+
+div.blockquote &gt; div.blockquote {
+    background-color: #F9F9EF;
+}
+
+div.horizon-container {
+    position: relative;
+    width: 0;
+    height: 0.75rem;
+    margin: 2rem auto;
+}
+
+div.horizon {
+    position: absolute;
+    top: 0.25rem;
+    left: -50vw;
+    height: 0.5rem;
+    width: 100vw;
+    max-width: unset !important;
+    background-color: var(--primaryBackgroundColor);
+    box-shadow: 0 0 5px var(--shadow);
+    z-index: 1;
+}
+
+div.horizon::after {
+    content: &#34;&#34;;
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    width: 100%;
+    height: 0.3125rem;
+    background-color: var(--primaryBackgroundColor);
+    z-index: 2;
+}
+
+div.fkbutton {
+    position: absolute;
+    top: -0.75rem;
+    left: -1rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px var(--shadow);
+    background-color: var(--primaryBackgroundColor);
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    z-index: 6;
+}
+
+div.fkbutton p {
+    margin: 0;
+}
+
+div.container div.ctbar {
     flex-grow: 1;
     background-image: url(&#34;http://scp-wiki.wikidot.com/local--files/scp-style-resource/scp_trans.png&#34;), url(&#34;http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/apollyon-icon.svg&#34;);
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.blockquote.info {
-    font-family: monospace;
-    font-size: var(--base-font-size);
-    text-shadow: 0.5px 0.5px 1px #000;
-    background-color: #FFF;
+/* ruby fix */
+
+.ruby, ruby {
+  display: inline-table;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1;
+  height: 1em;
+  vertical-align: text-bottom;
 }
 
-div#container-wrap::after {
-    content: &#34;自豪地采用wikidot.com&#34;;
-    display: block;
-    background-color: #222;
-    color: #EEE;
+.rt, rt {
+  display: table-header-group;
+  font-size: 0.6em;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+div.spell {
+    font-family: &#39;Zen Antique&#39;;
     text-align: center;
+    font-size: 1.25rem;
+}
+
+div.spell span.ruby {
+    min-width: 2rem;
+}
+
+div.spell span.sentence {
+    display: inline-block;
+}
+
+div.secretBox,
+div.secretBox * {
+    cursor: default;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+div.scp-image-block.block-center {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FFF;
+}
+
+:root,
+#side-bar {
+    scrollbar-color: #FFF, #888;
 }</code></pre>
         </li>
       
@@ -166,7 +201,11 @@ div#container-wrap::after {
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>height: 1rem;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 20rem</code></pre>
         </li>
       
     </ul>
@@ -179,7 +218,29 @@ div#container-wrap::after {
   
 
   
-    <a href="https://scp-wiki-cn.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki-cn:theme:black-highlighter-theme</code></a>
+    <a href="https://ah-sandbox.wikidot.com/theme:ared-rock" target="_blank"><code>:ah-sandbox:theme:ared-rock</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/credit:start" target="_blank"><code>:scp-wiki-cn:credit:start</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki-cn.wikidot.com/credit:end" target="_blank"><code>:scp-wiki-cn:credit:end</code></a>
   
 
   
@@ -191,23 +252,35 @@ div#container-wrap::after {
     <ul class="css-classes">
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>mail</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>meta-title</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
@@ -219,19 +292,7 @@ div#container-wrap::after {
         </li>
       
         <li>
-          <pre><code>letter</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
@@ -239,7 +300,183 @@ div#container-wrap::after {
         </li>
       
         <li>
-          <pre><code>curs</code></pre>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sentence</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sentence</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>spell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sentence</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sentence</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
@@ -247,67 +484,99 @@ div#container-wrap::after {
         </li>
       
         <li>
-          <pre><code>curs</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>spell</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>sentence</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>ruby</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>ruby</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>ruby</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>ruby</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>ruby</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>sentence</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>ruby</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
@@ -315,43 +584,7 @@ div#container-wrap::after {
         </li>
       
         <li>
-          <pre><code>curs</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bc</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
@@ -359,354 +592,780 @@ div#container-wrap::after {
         </li>
       
         <li>
-          <pre><code>info</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>spell</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>sentence</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>ruby</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>rt</code></pre>
         </li>
       
         <li>
-          <pre><code>bc</code></pre>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sentence</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mail</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>horizon-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>horizon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fkbutton</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>secretBox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ruby</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rt</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[&gt;]]
-[[module rate]]
-[[/&gt;]]
+    <pre><textarea class="page-source" readonly>[[include :ah-sandbox:theme:ared-rock]]
 
-[[include :ah-sandbox:item-class-bar-horm
-|lang=cn
-|item-number=CN-2900
-|item-class=Aicalë
-|clearance=5
-|clearance-text=高度机密
-|disruption-class=dark
-]]
+[[include :scp-wiki-cn:credit:start]]
+**SCP-CN-2900：**
 
-**特殊收容措施**：SCP-CN-2900-β及其周围50米的区域已被基金会封锁，共设置了16个临时观察点，均指派机动特遣队Itírië-01（“观察者”）下辖战术小组驻扎。未经授权试图进入或离开封锁区域的任何智能实体都应被施以R-Kx标准净化程序并移送至Site-CN-2900。若有无法被标准程序净化的个体存在，则应就地处决之。
+**作者：**[[*user Dr Hormress]]，[http://scp-wiki-cn.wikidot.com/dr-hormress 人事页]
 
-**描述**：SCP-CN-2900-α/β指一座异常教堂及其周围总面积约3.4平方千米的异常区域。
-
-SCP-CN-2900-α位于浙江省文成县山区西北部，始建于唐[[span class=&#34;bc&#34;]]－－[[/span]]十二年（公元[[span class=&#34;bc&#34;]]–––[[/span]]年），原为景教十字寺，约自南宋末期起归属于基督教一似乎与欲肉教有关的不明宗教团体（当前已指定为GoI-CN-215）。SCP-CN-2900-α的主要异常性质包括：
-[[ul]]
-[[li]]
-SCP-CN-2900-α建筑本身存在空间异常，使得建筑内部空间约为其实际体积的2.5至3倍。该效应具体表现为内部空间的均匀扩展，任何联通SCP-CN-2900-α内外的通道，其内部间距均为外部间距的2.5倍左右。
-@@@@
-[[/li]]
-[[li]]
-建筑西侧外墙左数第3面窗户于建筑内部对应位置为完整墙体，此窗口玻璃无法被拆除或破坏，可能为额外空间异常的一部分。
-@@@@
-[[/li]]
-[[li]]
-圣坛上方[[footnote]]据推测原本用于安放十字架。[[/footnote]]约1立方米的空间无法被直接感知，所有观察者都反馈了此区域被感官自动忽略的结果。相关多媒体记录具有相同的异常性质。人工智能似乎不受此效应影响，但无法得到有效的识别数据。
-@@@@
-**更新**：利用人工智能操作员Anditar.aic自动处理的相关信息可被人类正常识别。经过处理的图像文件显示了古埃及字符“Ankh”[[footnote]]即带环状顶端的十字架，意为“生命”。[[/footnote]]与一极模糊的人形塑像，该塑像的原型尚不明确。
-@@@@
-[[/li]]
-
-[[li]]
-中殿地面中央有一坍塌坑洞，连接了一处地下天然洞穴，推测该洞穴内部亦存在空间异常。其向东北方向延伸，总长度与内部结构均未完全探明；在推定位于该洞穴正上方位置挖掘的尝试宣告失败。
-[[/li]]
-[[/ul]]
-SCP-CN-2900-β是以SCP-CN-2900-α为中心的异常区域。截止目前的所有记录中，未佩戴标准SCRAMBLE护具进入SCP-CN-2900-β内部的智能实体均记录到程度不同的幻觉、谵妄症状。
-
-SCP-CN-2900-β内分布着不少于15处祭祀遗迹（指派为SCP-CN-2900-β-L）。该类遗迹均以一块宽约1.3米、长约0.7米的石板为中心，周围地面成环形分布烧灼痕迹。包括烧痕在内的SCP-CN-2900-β-L总半径均处于1.2米至2.2米之间。
-
-处于上述石板上方、且新鲜血液滴落到石板表面的活体智慧生物通常会在30分钟内停止存在。
-
-从SCP-CN-2900-β内移出的物体若未施以净化程序，则可能使SCP-CN-2900-β范围扩大。据推测，SCP-CN-2900-β的范围最初仅包含了SCP-CN-2900-α本身。
-
-**附录CN-2900-A**：收容历史
-
-Site-CN-10-γ收容小组于19[[span class=&#34;bc&#34;]]––[[/span]]年9月初次注意到SCP-CN-2900。当年[[span class=&#34;bc&#34;]]－－[[/span]]大学一支考察队伍于文成[[span class=&#34;bc&#34;]]－－[[/span]]失踪，附近的平民报告了[[span class=&#34;bc&#34;]]－－[[/span]]而被收容小组注意到。对当地教堂遗址的调查与对周边区域的封锁很快完成；初步探索后收容小组发现了归档于附录CN-2900-B与附录CN-2900-C的纸质文件。
-
-**附录CN-2900-B**：回收的通信文件
-
-[[div class=&#34;blockquote letter&#34;]]
-**致梅[[span class=&#34;bc&#34;]]－－[[/span]]博士：**
-
-感谢您的来信。
-
-您提到的教堂已有上百年历史。镇政府在去年年初公布的古建筑保护计划中包含了那座教堂，但由于地形崎岖、周围天气变化频繁，相关工作一直没有实际开展。希望您能与我们合作，在考察的同时对教堂进行初步测绘，这也是为文物保护出一份力。
-
-此致
-敬礼！
-[[&gt;]]
-[[span class=&#34;bc&#34;]]－－－[[/span]]
-一九[[span class=&#34;bc&#34;]]－－[[/span]]年三月
-[[/&gt;]]
-[[/div]]
-
-**附录CN-2900-C**：回收的记录
-
-[[div class=&#34;blockquote curs&#34;]]
-尽管我没有记日记的习惯，我还是尽量在这几天抽出时间把我们在文成的行程记了下来。以下的记录是我从我的记忆和那些零散的段落中所能还原出的全部细节，不管有多匪夷所思，它们都是绝对真实的、我的亲身经历。
-@@@@
-衷心希望这个笔记本能被找到。
-[[/div]]
-[[div class=&#34;blockquote curs&#34;]]
-我的名字是周[[span class=&#34;bc&#34;]]－[[/span]]，出生在温州[[span class=&#34;bc&#34;]]－－[[/span]]，受过高等教育，学的是民俗。一切始于今年——如果我对时间的感知仍然正常的话，是19[[span class=&#34;bc&#34;]]––[[/span]]年——四月。
-@@@@
-当时我收到一封来信，署名是我大学时的前辈梅[[span class=&#34;bc&#34;]]－－[[/span]]（我叫他老梅），信上说他已经取得博士学位，打算到文成考察一座民间祭祀遗迹，邀请我一同前往。那段时间里我找不到正经工作，只能在家无所事事，对于有事做自然是求之不得。我回信表达了我的兴趣。几天后，我和老梅在永嘉县城见了一面。我们讨论的内容大致是关于这次考察的时间、地点，但老梅始终对他口中“遗迹”的具体情况只字不提。
-@@@@
-6月11日，我坐老梅的车穿过丽水，到达文成县。我们在一座小镇上（我不确定地名）和老梅所说的“考察队”会合。这支队伍除了我和老梅，另有三人（都是男性）：杭州人江[[span class=&#34;bc&#34;]]－[[/span]]、来自文成本地的黄[[span class=&#34;bc&#34;]]－－[[/span]]与不知国籍的外国人Johannes J[[span class=&#34;bc&#34;]]––––––[[/span]]。
-@@@@
-江[[span class=&#34;bc&#34;]]－[[/span]]四十多岁，蓄大胡子。他曾经当过保安，现在端着一把自制的猎枪充当我们这个队伍的安保力量。
-@@@@
-黄[[span class=&#34;bc&#34;]]－－[[/span]]也是我的校友，据说学的是历史。老梅说他一年前就到这附近考察过，但是最终没有到达目的地，这次由他来给我们带路。
-@@@@
-Johannes，约翰内斯（稍后我发现这是他本人常用的化名）。他可能不会汉语，极少与我们交流。在镇上的两天里我几次看到他对老梅耳语着什么。
-@@@@
-6月14日上午我们终于启程。中午我们到达了[[span class=&#34;bc&#34;]]－－[[/span]]镇[[span class=&#34;bc&#34;]]－－[[/span]]村——这里是离我们目的地最近的居民区。村子里大都是上了年纪的房屋，砖房侧面常常用石头垒起一座用防水布充作屋顶的侧屋。我们在这里稍作修整，灌满水壶，决定下午出发。
-@@@@
-老梅说[[span class=&#34;bc&#34;]]－－[[/span]]村离我们的目的地只有二十公里，那座遗迹就在远处一个山头的对面。我们在村子停留的这段时间里他把越野车后备箱里的工具装备都清点了一遍。只有他自己才会知道考察遗迹为什么要带冲击钻。
-@@@@
-下午两点，大雨倾盆（也许是地形所致，我们带着收音机，天气预报并没有预测到这场大雨）。越野车只开出去两公里就陷入泥潭中。之后三天，我们在泥路上蠕行。尽管山间夏日的雨景似乎值得大书特书，那雨实在是行程的一大阻碍。
-@@@@
-6月18日下午，天终于放晴了。黄[[span class=&#34;bc&#34;]]－－[[/span]]把车停在一处路边，告知我们接下来的一段路需要徒步。我们取出装备，穿进盘山公路一侧的老林，在依然泥泞、落满树叶的地面上走了一个小时。地面逐渐开始上坡，最终我们的步行变成攀登，我们爬上一座无名山峰，那遗迹就在我们眼前了。
-@@@@
-那个场景烙在我的脑海里。几只乌鸦从东边天际飞过，丘陵环绕之间是一块空地，地面是突兀的黑土。土地上不止一处仍在燃烧的火堆，排成环形的干柴中间是清灰的石板，有几处石板上甚至有无头的动物尸体。
-@@@@
-空地中央就是那座教堂。这可能不完全准确——它使用与那些石板相同的青石搭建起来，整体大致呈现十字形。面向我们这边的便是大门——阳光照不进建筑内部，在我们的角度只能看见黑暗。建筑周围的玻璃窗格似乎有意模仿教堂花窗，但做工粗糙，反而透出时光的沧桑。
-@@@@
-“十”字形建筑一横一竖的交叉点有一座尖塔。尖塔的表面盖着一层青苔，石砖上有濡湿的痕迹。那尖顶直指云霄，按理说我们在几公里外就能看到这教堂的顶端了。但是没有，我推测是接连的大雨让我们没能观察到建筑从山峰间露出的一角。
-@@@@
-尖顶仿佛古老的刑具，如同尖刺凝固着。我们爬下山，开始朝建筑走去。我打了个寒噤，余光看到江[[span class=&#34;bc&#34;]]－[[/span]]端起了他的枪。每走一步，我都感觉建筑变得比预想中更加庞大。
-@@@@
-爆炸声让我如梦初醒。声音是老梅制造的，他往建筑里扔了个爆竹。建筑物的压迫感似乎在一瞬间消失了。
-@@@@
-“入乡随俗，进宗教场所之前先驱个邪。”老梅说。我问他驱的邪究竟是什么，他没有回答。约翰内斯看了我一眼，若有所思。
-@@@@
-我们都戴上头灯，还从包里拿出照明灯，确定装备齐全后走进了教堂。建筑的地面仍然是青石，但墙上还有一层浅浮雕装饰的木板。从里面看，花窗显得更加清楚，但它们似乎全然不透光，看不到外面。浮雕和花窗上的纹样和图形都不在我的知识范围之内。只有能从敞开的大门看到的、下沉的夕阳能给我一丝安全感。
-@@@@
-好奇心驱使着我走近一面墙。未知的艺术家似乎在雕刻一个战争场景，但战场上的士兵们似乎都被赋予了风格化的外形。一些较为写实的部分中，身穿厚重盔甲、手持长矛的士兵与骑着马、带有明显游牧民族特征的士兵正在交战。另一部分画面中包含了一些仅仅基本具有人类轮廓的战斗人员，有几个看起来像是机器人，旁边还有一支肢体数量多于常人的畸形队伍。画面中央是一个身着长袍、手持青铜剑的男性，他似乎是画面中最重要、刻画最细致的人物。
-@@@@
-在接下来的雕刻中，我隐约看到了几个穿着现代装备的士兵。但我没能细看就被老梅叫了过去。老梅说，他这次来考察另有一个目的，是帮当地人民政府初步测绘这座建筑，我们的主要任务是把建筑内部尺寸量一遍。
-@@@@
-教堂里的照明设施只有几个燃尽的烛台，我们于是把预留的照明灯固定在墙上。卷尺很难直接在这里使用，老梅拿出两根木桩和一截绳索，把它们固定在教堂大门起数、左侧第一面墙下方。木桩钉在墙角的石板缝里，绳索系在它们之间、绷紧。确认绳索拉紧后，老梅在木桩固定的位置作上标记、取下绳索测量长度。
-@@@@
-接下来的几面墙，老梅都用相同的方法量出了长度，我和黄[[span class=&#34;bc&#34;]]－－[[/span]]都搭了把手。这时天已经暗下来，几声闷雷之后雨声再度响起。好在老梅预料到扎营的可能，带上了睡袋，我们在教堂前厅的地上睡下了。
-[[/div]]
-
-[[div class=&#34;blockquote curs&#34;]]
-睡梦中我感觉越来越热。
-@@@@
-一只手把我拍醒了，是江[[span class=&#34;bc&#34;]]－[[/span]]。我几乎睁不开眼睛。周围一片光明，但不是照明灯的光，而是火光。我爬起来，从大门望出去——雨似乎没有停过，但包围着教堂的烈焰没有被吹灭。如同前一天看到的那些祭祀石板一样……这所教堂仿佛成为一块大号的祭祀石板。就在这时我突然意识到一个问题——如果这里是多年无人踏足的遗迹，为什么那些石板外的一圈火焰仍在燃烧？
-@@@@
-“去中殿。”老梅说。
-@@@@
-我未曾注意的中殿此时也被照亮了。此刻教堂内部的空间大得异常，前一天晚上忘记拆卸的木桩之间，那绳索已经断裂在地上。墙壁延长了一倍，火光以违背常理的方式照亮了教堂内部的每个角落。稍远处两侧的花窗数量似乎并不一致，一侧缺了一面，空缺的位置被浮雕覆盖，上面似乎有些刻痕。
-@@@@
-中殿高处四周的地面，它的上方便是塔楼。我一直跑到圣坛下方，仰头看向天花板。
-@@@@
-没有想象中的穹顶或是壁画，当我直视上方时，遍布的光亮似乎突然消失了。我看不清上面有些什么，反而从塔楼侧面的旋转楼梯设计上联想到漩涡。旋转楼梯的起点就在中殿一侧，但我并没有踏足的兴趣。
-@@@@
-老梅半跪在地上，似乎在检查圣坛下方的什么东西。我凑近他，却发现他的身体软倒在地上。
-@@@@
-我以为他睡着了，但当他的脸转向我的方向时，我什么都没看到。
-@@@@
-什么也没有。除了身上穿的衣服是老梅来时所穿时，我甚至无法确定这是不是老梅——眼前的躯体、面部空无一物，没有五官，一张脸连成一片。我想叫喊出来，但却喊不出声。这时我发现江[[span class=&#34;bc&#34;]]－[[/span]]已经走到我身旁，举起了枪。
-@@@@
-他扣动扳机。两发子弹擦着我的衣服飞过去，打中了什么。我猛地回头，发现“老梅”身旁的地上，是一团没有定形的肉块，满地血迹。
-@@@@
-“真他妈邪门，”江[[span class=&#34;bc&#34;]]－[[/span]]说，“老梅跑哪去了？这又是什么玩意？”
-@@@@
-我没有回答。眼前的圣坛上缺少了十字架，此时我隐隐约约听到——仿佛是宗教颂歌的声音。同样不该存在的雾气在我们周围飘忽。黄[[span class=&#34;bc&#34;]]－－[[/span]]、江[[span class=&#34;bc&#34;]]－[[/span]]和Johannes此时都站在我身边，凝视着越发浓重的雾。
-@@@@
-啪嗒一声，“老梅”的衣服口袋里掉出一个笔记本。Johannes弯腰把它捡了起来，我只能在打开的页面中看到一两个词语。
-@@@@
-“狄瓦”和“罪”。
-@@@@
-Johannes翻看了一下这个本子，随后指了指旋转楼梯，第一个走了上去。比起下方诡异的火光和雾，塔中是刺骨的阴冷。令我意外的是，这里的窗是正常透光的，我走到边上时，从窗户望出去，看见教堂外的烈焰中似乎有白衣人影在游走。
-@@@@
-Johannes也看到了这些，眯起眼睛。我们向上攀登着，在几个楼梯似乎已经断裂、无法前进的地方，Johannes用手中——不知何时拿着的——冲击钻打孔、用绳索连接起来。仿佛这时间被无限地拉长了。
-@@@@
-雾气终于也漫上了塔楼。当我爬上几级台阶回头时，先是江[[span class=&#34;bc&#34;]]－[[/span]]、再是黄[[span class=&#34;bc&#34;]]－－[[/span]]，都似乎被浓雾吞没了。
-@@@@
-距离塔顶还剩几步距离时，印象中他第一次在我面前说话。
-@@@@
-“我该走了。”
-@@@@
-是生疏的汉语。Johannes把手上的工具放在地上，拿出一个似乎是十字形的物品。在昏暗中，我不确定那是不是十字架。他念诵着什么，把十字架猛地扎向胸口又拔出来，鲜血流下。他的身体从平台一侧歪倒下去。沉闷的撞击声之后，雾气似乎淡了，但照亮塔楼下方的光也闪烁几下，熄灭了。
-@@@@
-黄[[span class=&#34;bc&#34;]]－－[[/span]]、江[[span class=&#34;bc&#34;]]－[[/span]]、老梅、Johannes，我反复呼喊着这四个名字。但下行的绳索断裂了，塔楼下只能见到黑暗。
-@@@@
-隐隐约约还能听到雨声。眼前就是塔楼顶端的平台，对面是一扇门，与这座教堂格格不入的铁门。
-@@@@
-门上是一个我不知其意的符号——同心圆，三枚箭头指向中心。
-[[/div]]
-
-笔记本于此处开始被撕裂，之后的笔记均未被找到。
-
-**附录CN-2900-D**：[数据删除]
-
-[[div class=&#34;blockquote info&#34;]]
-**基金会人事档案表**
-@@@@
-**名**：[[span class=&#34;bc&#34;]]––––––[[/span]]
-**姓**：[[span class=&#34;bc&#34;]]––––––––[[/span]]
-**当前职务**：III级外勤特工
-**常用掩盖身份**：Johannes J[[span class=&#34;bc&#34;]]––––––[[/span]]
-**当前状态**：KIA
-**曾任职部门**：[[span class=&#34;bc&#34;]]反常部[[/span]]
-**最近的任务**：[[span class=&#34;bc&#34;]]仪式性信息反制[[/span]]
-[[/div]]
-
-[[include :scp-wiki-cn:theme:black-highlighter-theme]]
+**图源：**
+* https://www.pexels.com/zh-cn/photo/10472537/
+* https://www.pexels.com/zh-cn/photo/5418677/
+除上述两张外均为自制；上述两张图片的二次创作以 CC BY-SA 3.0 协议发布。
+[[include :scp-wiki-cn:credit:end]]
 
 [[module CSS]]
 @import url(&#39;https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&amp;display=swap&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Serif:wght@300;400;500;700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext&#39;);
+@import url(&#39;https://fonts.googleapis.com/css?family=Noto+Sans+SC:wght@600&amp;display=swap&#39;);
 @import url(&#39;https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;400;500;700&amp;subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext&#39;);
+@import url(&#39;https://fonts.googleapis.com/css?family=Noto+Sans+Egyptian+Hieroglyphs:wght@600&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Zen+Antique&amp;display=swap&#39;);
 
-#page-content::after {
-    content: &#34;机密&#34;;
-    display: block;
-    position: fixed;
-    top: calc(50% - 0.5em);
-    left: 0;
-    height: 1em;
-    width: 100%;
-    text-align: center;
-    font-size: 6em;
-    line-height: 1;
-    font-weight: bold;
-    opacity: 0.1;
-    z-index: -1;
+:root {
+    --body-font: &#34;Noto Sans SC&#34;, &#34;Noto Sans&#34;, &#34;Noto Sans Egyptian Hieroglyphs&#34;, sans-serif;
+    --title-font: &#34;Noto Serif SC&#34;, &#34;Noto Serif&#34;, serif;
+    --main-content-width: 800px;
+    --shadow: rgba(0, 0, 0, 0.1);
+    --primaryBackgroundColor: rgb(252, 252, 252);
 }
 
-div#container-wrap {
-    background-image: none;
-}
-
-div#header, div#side-bar {
-    display: none;
-}
-
-div#page-title {
-    display: none;
-}
-
-body {
-    background-color: #FFF;
-    background-image: none;
-    font-family: &#34;Noto Sans SC&#34;, &#34;Noto Sans&#34;;
-}
-
-#main-content {
-    float: center;
-    margin: 0 auto;
-    padding: .5em;
-    max-width: 800px;
-    margin-top: 0;
-    padding-top: 0;
-}
-
-#footer, #license-area {
-    display: none !important;
-}
-
-/* body, #container-wrap-wrap, #container-wrap, #content-wrap, #page-content {
-    min-height: unset !important;
-} */
-
-.page-rate-widget-box {
-    background: transparent;
-    border-radius: 0;
-    border: none;
-    border-bottom: solid 1px #000;
-    box-shadow: 0 1px 0 #999;
-    margin-left: 0;
-    margin-right: 0;
-    text-align: center !important;
-}
-
-#page-content {
-    text-align: justify;
-    justify-align: both;
-}
-
-blockquote, div.blockquote {
-/* From SCP Style Resource */
-    border: solid 1px #999;
-    padding: 20px;
-    padding-bottom: 19px;
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #EEE;
-    background-image: linear-gradient(to top, #CCC 0%, #CCC 5%, transparent 5%);
-    background-origin: padding-box;
-    background-position: 0px 0px;
-    background-repeat: repeat;
-    background-size: 100% 20px;
-    line-height: 20px;
-}
-
-blockquote p, div.blockquote p {
-    margin: 0;
-}
-
-.curs {
-    font-family: &#39;Ma Shan Zheng&#39;, cursive !important;
-}
-
-div.letter {
-    text-indent: 2em;
-    font-family: &#39;Noto Serif SC&#39;, serif;
-}
-
-div.letter p:nth-child(1) {
-    text-indent: 0;
+div#header h1 a::before {
+    font-family: var(--title-font);
 }
 
 span.bc {
+    color: #000;
     background-color: #000;
 }
 
-.container .ctbar {
+blockquote,
+div.blockquote {
+    border: none;
+    border-radius: var(--radius-adjust);
+    box-shadow: none;
+    margin-left: 0;
+    margin-bottom: 3rem;
+}
+
+div.blockquote.rec,
+div.blockquote &gt; div.blockquote {
+    margin-bottom: 1rem;
+}
+
+div#page-content {
+    line-height: 150%;
+}
+
+div.blockquote.mail {
+    background-color: #EFEFEF;
+}
+
+div.blockquote &gt; div.blockquote {
+    background-color: #F9F9EF;
+}
+
+div.horizon-container {
+    position: relative;
+    width: 0;
+    height: 0.75rem;
+    margin: 2rem auto;
+}
+
+div.horizon {
+    position: absolute;
+    top: 0.25rem;
+    left: -50vw;
+    height: 0.5rem;
+    width: 100vw;
+    max-width: unset !important;
+    background-color: var(--primaryBackgroundColor);
+    box-shadow: 0 0 5px var(--shadow);
+    z-index: 1;
+}
+
+div.horizon::after {
+    content: &#34;&#34;;
+    display: block;
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    width: 100%;
+    height: 0.3125rem;
+    background-color: var(--primaryBackgroundColor);
+    z-index: 2;
+}
+
+div.fkbutton {
+    position: absolute;
+    top: -0.75rem;
+    left: -1rem;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    border-radius: 1rem;
+    box-shadow: 0 0 5px var(--shadow);
+    background-color: var(--primaryBackgroundColor);
+    transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    z-index: 6;
+}
+
+div.fkbutton p {
+    margin: 0;
+}
+
+div.container div.ctbar {
     flex-grow: 1;
     background-image: url(&#34;http://scp-wiki.wikidot.com/local--files/scp-style-resource/scp_trans.png&#34;), url(&#34;http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/apollyon-icon.svg&#34;);
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-.blockquote.info {
-    font-family: monospace;
-    font-size: var(--base-font-size);
-    text-shadow: 0.5px 0.5px 1px #000;
-    background-color: #FFF;
+/* ruby fix */
+
+.ruby, ruby {
+  display: inline-table;
+  text-align: center;
+  white-space: nowrap;
+  line-height: 1;
+  height: 1em;
+  vertical-align: text-bottom;
 }
 
-div#container-wrap::after {
-    content: &#34;自豪地采用wikidot.com&#34;;
-    display: block;
-    background-color: #222;
-    color: #EEE;
-    text-align: center;
+.rt, rt {
+  display: table-header-group;
+  font-size: 0.6em;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
 }
-[[/module]]</textarea></pre>
+
+div.spell {
+    font-family: &#39;Zen Antique&#39;;
+    text-align: center;
+    font-size: 1.25rem;
+}
+
+div.spell span.ruby {
+    min-width: 2rem;
+}
+
+div.spell span.sentence {
+    display: inline-block;
+}
+
+div.secretBox,
+div.secretBox * {
+    cursor: default;
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+div.scp-image-block.block-center {
+    margin: 0 auto !important;
+    max-width: 100% !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #FFF;
+}
+
+:root,
+#side-bar {
+    scrollbar-color: #FFF, #888;
+}
+[[/module]]
+
+[[=]]
+欢迎您，##green|研究主管 柯瑞娜##
+
+您有 ##red|1## 条新信息
+[[/=]]
+
+[[div class=&#34;blockquote mail&#34;]]
+**发件人：**研究员 金叶 &lt;[# jy013@sitecn10.scpfn]&gt;
+**收件人：**研究主管 柯瑞娜 &lt;[# krn006@sitecn10.scpfn]&gt;
+**主题：**回收的文件
+----
+机动特遣队 Itírië-01在例行巡逻中发现了一个笔记本，推测是SCP-CN-2900范围性时空异常效应的抛出物。笔记本的内容是推测有关CN-2900的研究笔记，我们已经把电子版全部录入完毕，希望能对就CN-2900性质的进一步探索起到帮助。所有相关文件都在这封邮件的附件里附上。
+
+另外，现场小组持有的CN-2900文件是否是最新版本？我把我们手头的文件也放在附件里了，请您确认一下。
+[[/div]]
+
+[[div class=&#34;meta-title&#34;]]
+文件 CN-2900
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**项目编号：**SCP-CN-2900
+
+**项目等级：**Euclid
+
+**特殊收容措施：**SCP-CN-2900-β及其周围50米的区域已被基金会封锁，共设置了16个临时观察点，均指派机动特遣队Itírië-01（“观察者”）下辖战术小组驻扎。未经授权试图进入或离开封锁区域的任何智能实体都应被施以R-Kx标准净化程序并移送至Sector CN-2900。若有无法被标准程序净化的个体存在，则应就地处决之。
+
+**描述：**SCP-CN-2900-α/β指一座异常教堂及其周围总面积约3.4平方千米的异常区域。
+
+SCP-CN-2900-α是一个已废弃的景教十字寺建筑群，位于浙江省文成县西北部。根据已有的探索记录，SCP-CN-2900-α似乎曾被一个异常宗教团体占据，推测该团体是原欲肉的某种变体。
+
+SCP-CN-2900-β是以SCP-CN-2900-α为中心的异常区域。截止目前的所有记录中，未佩戴标准SCRAMBLE护具进入SCP-CN-2900-β内部的智能实体均记录到程度不同的幻觉、谵妄症状。
+
+SCP-CN-2900-β内分布着不少于15处祭祀遗迹（指派为SCP-CN-2900-β-L）。该类遗迹均以一块宽约1.3米、长约0.7米的石板为中心，周围地面成环形分布烧灼痕迹。包括烧痕在内的SCP-CN-2900-β-L总半径均处于1.2米至2.2米之间。
+
+处于上述石板上方、且新鲜血液滴落到石板表面的活体智慧生物通常会在30分钟内**[已编辑]**。
+
+从SCP-CN-2900-β内移出的物体若未施以净化程序，则可能使SCP-CN-2900-β范围扩大。据推测，SCP-CN-2900-β的范围最初仅包含了SCP-CN-2900-α本身。
+[[/div]]
+
+[[div class=&#34;meta-title&#34;]]
+回收的日志
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**扉页**
+
+//**注记：**笔记本扉页是空白页，中央有铅笔书写的潦草笔记。根据后方页面上的笔记印痕推测扉页铅笔笔记书写时间晚于之后的笔记。//
+
+[[div class=&#34;blockquote&#34;]]
+如果任何人看到这个笔记本，请立刻离开文成县山区，离得越远越好，尤其是不要接近任何带有宗教标记的建筑。如果可行，请把这个笔记本交给（//无法辩识//）教授，告诉他这个笔记本的主人被困在文成山里的十字寺建筑群。
+
+我尽力保持冷静撑到了现在，我的理智已经要崩溃了，这不是恶作剧而是求救信息（//无法辩识//）请把它交给（//无法辩识//）
+[[/div]]
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**第一部分**
+
+//**注记：**笔记描述了一支小队深入文成县山区进行田野调查的前期工作，他们的目标是确认并探索一个废弃的景教十字寺建筑群。根据笔记描述确认的小队成员信息符合[[span class=&#34;bc&#34;]]－－－－[[/span]]失踪人口报告。//
+
+[[div class=&#34;blockquote&#34;]]
+[[&gt;]]
+**06/29**
+[[/&gt;]]
+
+记之前先该讲一下前因。
+
+几天前我的老友、浙大民俗学系高材生梅修墨在电话上告诉我，他对温州本地一些古老迷信活动留下的遗迹产生了兴趣，并邀请我和他一起实地调查其中一处这样的遗址，地点在文成。这段时间我刚好在休假，我于是接受了他的邀请。一天前，我们在文成县城会合，老梅简单解释了情况：在文成西南的山里有一座可能是景教十字寺遗址的建筑群，但有过路人见到过遗址周围大量燃尽的火堆，便是他所说“与古代迷信关联的记号”。
+
+老梅知道我平时偶尔记些日记，于是把记录的工作丢给了我。今天是正式启程的日子，我的记录也就开始了。先简单介绍一下所谓“考察队”的人员构成：领队是梅修墨本人；老梅还请了一位之前说到的见过遗址边祭祀遗迹的本地人当向导，我不知道这位向导的名字，他只说自己姓黄；还有一位同样做民俗学研究但好像学识贯通几个领域的姓刘的女同学；再加上我这个打杂的兼记录员，四个人的队伍便如此构成了。
+
+我们在文成县城的一家宾馆集合。老梅和向导一起带着全套户外装备，还租了辆越野车。他们把背包、冲锋衣、登山杖之类的装备分给我和小刘，梅修墨甚至拿了一把匕首。整理好物资之后我们就乘上越野车从县城出发了。老梅说往深山里就走不了车了，我们得做好长距离徒步的准备。
+
+上午十点左右我们离开县城，接近中午才顺着盘山路找到离目的地最近的小村。这村的名字我没记下，只记得前往途中看见路牌上有个我念不出来的“峃”字。村子看上去有些年代了，房前水泥堆的斜坡蔓上了青苔，砖石小屋边上常有用防水布搭建的小棚。
+
+黄向导好像有亲戚住在这里，他于是暂时离开小队，去村里走了一圈，随后就领着我们到一户村民家里吃午餐。这户住的是一对老夫妻，说是向导某位长辈的表亲，向导好不容易路过一次，一定要请过路的所有人吃饭。看起来村子虽然外表破旧，基础设施还是足够完善的，水电都通、还有煤气。午餐不算丰盛，但很快就让我们补充了足够的能量。
+
+下午我们继续启程。还有一段越野车能开的路，但好巧不巧的是我们赶上了山间发作的大雨，使得我们的行驶速度赶不上双脚行走。唯一令人感到庆幸的是车为我们隔绝了湿气与泥泞。
+
+雨不知道下了多久，山路上更易打滑。我们在车上吃了晚餐，老梅第一个铺开睡袋。好在越野车空间充足，我们都在车上睡下了。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[&gt;]]
+**06/30**
+[[/&gt;]]
+
+我们在清晨六七点醒来。天仍未放晴，不过雨好像小一些了。突然想起我们出发前都查过天气预报，这几天不应该下雨，也许该说是天公不作美，又或者是山里的天气本来就多变，才让我们碰上这样一场雨。
+
+车在山路上蠕行，小刘好像在记录沿途所见的植物，她说她会常记录一些我们沿途环境的信息，如果我需要的话她可以提供给我。我也这才知道小刘的全名——她叫刘纭文，和老梅同样来自浙大，不过她不愿透露更多个人信息。
+
+这会儿老梅负责开车，向导也和我们聊了会天。他说这一带山雨不少，但是不会连着下很久，应该很快就会停掉。半天我们都在等待雨停，没有更多值得记录的事情。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[&gt;]]
+**06/31**
+[[/&gt;]]
+
+我昨天晚上睡得很浅，凌晨恍惚醒过几次，直到现在都感觉脑袋在嗡嗡叫。早上才知道，不止我一个，除了向导外的三个人都有不同程度的失眠。老梅开玩笑说，可能是这拦路的雨让我们精神压力太大了，只有向导是常年在山里走、经验十足的人。
+
+雨还是没停。整个上午和昨天气氛差不多，不过山里的天气和山下完全不同也是正常现象，除了我要负责记录之外我们都没太在意天气。
+
+下午，雨势又开始增大。在路边护栏外能看到几尊好像是陶土制的小雕像，做工粗糙，是双手合十盘腿而坐的人形。我一开始以为是当地佛会留下的佛像之类，但仔细一看却能发现它们的特异之处：所有雕像的面部都扭曲成螺旋形，像一个漩涡。这部分的做工格外细致。降雨使光学设备派不上用场，我们只能用纸笔大致记录它们的外形。当时是老梅在开车，他和向导换了班后我把那几张纸递给他，马上就得到了“正是我们在找的民间祭祀”这一回复。至于漩涡形图案的意义，他也尚无头绪。
+
+天快黑时，梅修墨指向远处一个山头，说我们的目的地就在那个方向，而公路在前面就要转向，明天开始我们必须步行了；好在我们都带着防水的大衣和帐篷，如果雨不停也能继续前进。我感觉在雨声中隐约听到了锣鼓声，越听越清晰，节奏分明——问了小刘，她也听得很清楚，顺手记下了节奏：
+
+[[=image http://ah-sandbox.wikidot.com/local--files/2900/muse.svg width=&#34;375px&#34;]]
+
+老梅说这应该也是本地民俗。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[&gt;]]
+**07/01**
+[[/&gt;]]
+
+不知昨夜所见是否是梦境。
+
+晚上我辗转反侧，彻夜难眠。我恍惚间感觉锣声鼓声越发震耳，其间混杂的人声也越发清晰。起先是低沉而缓慢重复的一句话，不带声调，近乎催眠，但让我感觉更加清醒。这句话是：
+
+[[div class=&#34;spell&#34;]]
+[[span class=&#34;sentence&#34;]][[span class=&#34;ruby&#34;]]臨[[span class=&#34;rt&#34;]]llen[[/span]][[/span]][[span class=&#34;ruby&#34;]]兵[[span class=&#34;rt&#34;]]beng[[/span]][[/span]][[span class=&#34;ruby&#34;]]鬥[[span class=&#34;rt&#34;]]dao[[/span]][[/span]][[span class=&#34;ruby&#34;]]者[[span class=&#34;rt&#34;]]zieh[[/span]][[/span]][[/span]]，[[span class=&#34;sentence&#34;]][[span class=&#34;ruby&#34;]]皆[[span class=&#34;rt&#34;]]ga[[/span]][[/span]][[span class=&#34;ruby&#34;]]陣[[span class=&#34;rt&#34;]]zang[[/span]][[/span]][[span class=&#34;ruby&#34;]]列[[span class=&#34;rt&#34;]]lli[[/span]][[/span]][[span class=&#34;ruby&#34;]]前[[span class=&#34;rt&#34;]]yyi[[/span]][[/span]][[span class=&#34;ruby&#34;]]行[[span class=&#34;rt&#34;]]ee[[/span]][[/span]][[/span]]
+[[/div]]
+
+是用温州话一字一顿念出的九字真言。我想拍醒老梅，但想来他也只会说是民间祭祀的一部分，还会谴责我打搅了他的睡眠。这似乎确实是仪式，但为何要在深夜大雨中进山举行这样的仪式呢？我想着这个问题，忽感灼热难耐，眼前一亮，忙睁眼探视——四周不再只有越野车的灯光了。雨幕中亮起点点火把，融在雨水中，好像整个山头都陷入火海，如同白昼。火把照亮了四周一切，却唯独没有照亮举着火把缓缓前行的黯淡人影。那些人在密林的每个角落踏着脚步，夜间本该停稳的越野车似乎被他们裹挟着前进。这队伍的方向正是早些时候老梅所指的我们的目的地。我已经无从判断自己是否身在现实中，只感到声光更盛，那吟唱声变成了咒语：
+
+[[div class=&#34;spell&#34;]]
+[[span class=&#34;sentence&#34;]][[span class=&#34;ruby&#34;]]天[[span class=&#34;rt&#34;]]ti[[/span]][[/span]][[span class=&#34;ruby&#34;]]火[[span class=&#34;rt&#34;]]fu[[/span]][[/span]][[span class=&#34;ruby&#34;]]燒[[span class=&#34;rt&#34;]]xe[[/span]][[/span]][[span class=&#34;ruby&#34;]]太[[span class=&#34;rt&#34;]]da[[/span]][[/span]][[span class=&#34;ruby&#34;]]陽[[span class=&#34;rt&#34;]]yi[[/span]][[/span]]，[[/span]][[span class=&#34;sentence&#34;]][[span class=&#34;ruby&#34;]]地[[span class=&#34;rt&#34;]]ddei[[/span]][[/span]][[span class=&#34;ruby&#34;]]火[[span class=&#34;rt&#34;]]fu[[/span]][[/span]][[span class=&#34;ruby&#34;]]燒[[span class=&#34;rt&#34;]]xe[[/span]][[/span]][[span class=&#34;ruby&#34;]]五[[span class=&#34;rt&#34;]]ng[[/span]][[/span]][[span class=&#34;ruby&#34;]]方[[span class=&#34;rt&#34;]]huo[[/span]][[/span]][[/span]]
+[[/div]]
+
+刹那间车窗外只剩下茫茫白光，那之后我便再无印象，也许是真正睡着了，也许从一开始这便是一场仿佛真实的梦境。但醒来后，我发现越野车后有两道二三十米长的胎痕，我们确实在刹车锁死的情况下前进了这段距离。
+
+除了我，没有人对那胎痕抱有疑虑。
+
+清晨，天仍阴沉，却只是落几滴小雨。我们把车开下公路，停在一块山间平地上。
+
+这是步行旅程的开始。尽管雨没停，山间行动不方便打伞，我们只用兜帽遮住头脸，全套防水服装保证了我们的干燥。泥泞的山坡上偶尔能看见山民留下的小路，路旁常有先前提到的雕像，但大都是粉碎的，偶尔有几个完整的也看上去被灼烧过，焦黑碳化。这些雕像的残存部分告诉我们它们完整时是空心的。焦黑的雕像周围偶尔会出现燃尽的火堆，也是某种祭祀的遗迹。
+
+先前提到过，我们的目的地是一座景教十字寺遗址，但沿途看见的祭祀遗迹都和景教的十字符号关联不大，更像是民间常见的将佛教（主要是密宗）和各路传统风俗融合在一起的迷信。可惜我们中没有人精通比较宗教学，难以梳理这些祭祀的脉络。
+
+沿着山路走了半天，我们最终还是找到了十字架。但这和景教使用的十字架区别很大。那是树立在草丛中形如墓碑的构造：竖立木桩捆绑着较短的横木，竖木桩的顶端被从中间劈开，用某种手段（大概是所谓的煣制）弯曲起来，绕成一个圈，在顶部捆绑起来。这一结构与其说是十字架，反倒更像古埃及圣书体中代表生命的符号“Ankh”（𓋹）。竖直木桩的底部有灼烧的痕迹，但高草丛已经覆满了周围的地面。
+
+一路上荆棘和各种带刺的植物慢慢增多，使我们的脚步慢了几分。这天晚上我们在一处稍平坦的林中扎营，再向前我们的必经之路被蔓生的植物覆盖，望不到头。老梅说，这一带最难走的地方就在前面，明天一早他和向导先去探路，预计能在中午前回来，否则我们一起找路有些为难小刘。于是我和刘纭文留下看守营地。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[&gt;]]
+**07/02**
+[[/&gt;]]
+
+我醒来时发现老梅和向导已经离开营地，刘纭文在她的帐篷前坐着。她见我从帐篷里探出身，便丢给我两块压缩饼干，说这是梅修墨嘱咐她带给我的爱心早餐。——这是几年前我和老梅当室友时他爱开的玩笑。
+
+今天阴云几乎散尽了，天空清亮。我说“几乎”是因为远处山头尚有几片雨云，但那雨也只落在远处。早上我把笔记本带在身上，因为没有任务所以闲着没事可以记一些随笔。
+
+我在这片空地周围转了几圈，采到几种野菜，还捡到一个用歪斜的九叠篆刻的“元始天王左护法印”的石质印章，看起来像是初学刻章的新手所刻，但仍可能与民间祭祀有关联，我便把它用塑料封袋套住放在包里。时间过得很快，久违的太阳升上高空，但一直等到下午一点都不见老梅和向导的身影，我有些担忧。
+
+我本来想让刘纭文留下来守着营地，我去前面寻找老梅，但刘纭文执意和我一同前往，还把我们的睡袋、火炉等设备全部带在身上，封闭了营地。拨开几条拦路的藤蔓，我们走进那片密林。植物大多叶片黑黄、茎蔓扭曲，不是营养不良枯萎伏地就是明显营养过剩，生长成病态畸形的肿胀团块。这里的地形若有若无带着一种恶意，不自然的坡度极易绊倒。杂草丛生，在本就缺少阳光的近地面处构建起一道密不透风的屏障，这些低矮的植物要么茎秆带刺，要么叶片带着锯齿，我裹得严严实实的长裤几乎被它们划破。小刘走在我身后几米处，也在植被缠绕中艰难前行。
+
+走了近一个小时，我身后几米的脚步声忽然停下了。我转头看向刘纭文，只见她望着一旁草丛里的什么东西怔住了。拨开几株我不清楚名称的大叶植物，我也看见了使小刘停住的东西——尽管焦黑、扭曲、几乎失去了任何可用于辨识的明显特征，我仍然一眼就能认出那是什么。那是一具尸体。
+
+这具尸体浑身焦黑，我确信是短时间高温灼烧的结果。死者身上的衣服——如果曾经有的话——已经被高温破坏殆尽了。尸体周围一些植物上部也被烧焦，但并不彻底。种种迹象表明这具尸体是最近才产生的。最让我感到恶心和畏怖的是尸体的四肢——尸体面部朝下，除了右臂压在身下外，左臂与双腿都以一种诡异的姿态扭曲着，从肩部到指尖、从骨盆到脚尖的每个关节似乎都被蛮力折断、拧动。每一块肌肉都脱落破碎，我能看见同样覆盖着灼烧痕迹的骨骼——似乎也被某种力量扭曲重塑过。
+
+尸体周围的草丛中有不少脚印，一些草叶被折断了。周围的印痕看上去是打斗留下的，十分混乱。但是哪种打斗能让死者如此凄惨而周围的杂草只有这么一点痕迹？我不得而知。
+
+我不清楚是什么力量促使我做出了这样一个令我后悔万分的决定：把那具尸体翻转过来。接下来看见的东西让我的理智在一瞬间崩溃。那是尸体的面部，那简直不能称之为面部——以鼻子为中心，这具尸体的面部被某种力量塑造成了可笑的螺旋形。被扭曲的碳化的皮肤和肌肉构成一个邪恶的漩涡，我能勉强分辨出夹缝中的嘴部和眼眶，但我不愿去思考眼球去了哪里。光是这幅场景就让我快把这两天吃的东西全吐出来了，但上天还让我注意到另一个不祥的预兆，那是尸体右手中握着的物体。那断裂的金属射出寒光，我不会认错，那正是这些天梅修墨一直使用的那把匕首。此刻，它在一具无名焦尸手中，上端折断。
+
+我强迫自己不去猜测尸体的真实身份。在巨大的恐怖下，我和小刘逃离了那里。山路不能阻挡人的逃亡，我们一路狂奔，直到日落。当我回过神来时，我发现我们离开时选择的方向恰好是目的地的方向，此刻已经能从山丘间隐约看见古建筑群留下的断垣残壁。
+
+整个晚上，我没有说一句话，刘纭文面色铁青，也一言不发。
+
+我们沉默着铺开睡袋。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[&gt;]]
+**07/03**
+[[/&gt;]]
+
+昨夜入睡前，我再次听到那个声音。咒语又有所变化，——事实上，前几次听见的咒语都是南方流行已久的辟邪咒语，但这次吟唱声中有几个字并不清晰，似乎有所更改。这一次我无法完全推知咒语的汉字写法：
+
+[[div class=&#34;spell&#34;]]
+[[span class=&#34;sentence&#34;]][[span class=&#34;ruby&#34;]]雷[[span class=&#34;rt&#34;]]lai[[/span]][[/span]][[span class=&#34;ruby&#34;]]火[[span class=&#34;rt&#34;]]fu[[/span]][[/span]][[span class=&#34;ruby&#34;]]執[[span class=&#34;rt&#34;]]zai[[/span]][[/span]][[span class=&#34;ruby&#34;]]常[[span class=&#34;rt&#34;]]jji[[/span]][[/span]][[span class=&#34;ruby&#34;]]法[[span class=&#34;rt&#34;]]ho[[/span]][[/span]]，[[/span]][[span class=&#34;sentence&#34;]][[span class=&#34;ruby&#34;]]燒[[span class=&#34;rt&#34;]]xe[[/span]][[/span]][[span class=&#34;ruby&#34;]]殺[[span class=&#34;rt&#34;]]sa[[/span]][[/span]][[span class=&#34;ruby&#34;]]諸[[span class=&#34;rt&#34;]]zii[[/span]][[/span]][[span class=&#34;ruby&#34;]]□[[span class=&#34;rt&#34;]]ssang[[/span]][[/span]][[span class=&#34;ruby&#34;]]□[[span class=&#34;rt&#34;]]yuo[[/span]][[/span]][[/span]]
+[[/div]]
+
+依照广为流传的版本，这里应该是“不祥”。然而我听到的却不是那样。
+
+[[/div]]
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**第二部分**
+
+//**注记：**笔记描述了对遗迹的探索过程。//
+
+[[div class=&#34;blockquote&#34;]]
+中午，我站在前一天傍晚看见的山丘上，俯视我们的目的地。
+
+遗址坐落在一处盆地内，堆筑的石墙从中心向外延伸，尽管大部分处于半坍塌的状态，它们仍然把这片土地划分成几个明确的区域，其中有一些远处看不明晰的结构。石墙的角度让我很不舒服，看似直角的角度总有第一眼捕捉不到、看久了却越发明显倾斜，仿佛一切都在规则与不规则的边缘。建筑群中心是一片平地，筑起几个基座，分别布置了几座殿堂，古老的木制结构意外地保存良好，与石墙对比明显，像是有人对它进行维护。
+
+尽管殿堂本身的建筑风格与佛教寺院相类似，其分布与后者依中轴线对称的特点差异很大，具体来说，它们和石墙一样，也从中心向四周发散排列，为四轴对称。主要建筑组成了一个横竖相等的十字架，许多附属建筑与连廊分布在它们之间，使我能看见的建筑几乎全部连成一个整体。靠近“十字架”两划交汇处的连廊连成一个封闭的环形，向内是一处建筑的真空——就像是凯尔特十字架上的圆环被挖空了。在这一空间的中心是一座塔形建筑：基座为八边形，靠近地面的墙壁与地垂直，每隔一面墙有门。这些墙面之上是一个类似拱顶的结构，很可能受到西方宗教建筑风格的影响；拱顶之上才是更接近中式塔建筑的结构。
+
+向山下走了几步，我看得更清晰一些——那些石墙之间的地面上是似乎随机分布的石板，被灼烧的痕迹围绕。石板的尺寸都在长宽两米以内，比较统一，可能是同时布置的；我也怀疑它们的位置存在我没有发现的规律性。石板上总有液体蒸发后留下的痕迹，其周围的灼烧痕迹形成一个半径两米左右的环形。
+
+刘纭文说那种环形结构很像她以前一个课题涉及到的祭祀方式，但具体细节已经记不清了。我们只能猜测那正是此处民间祭祀留下的痕迹。
+
+我们慢慢走下山，靠近建筑群。靠近石墙后，我就发现了更多不寻常的特性：这些石墙由松散的石块堆筑而成，靠近地面的石缝中被青苔填满；但这些青苔在离地面二十厘米处左右完全消失了，再往上的石头上没有一点苔藓的痕迹。这种现象可能是由于建造这些石墙的先人在上方使用了某种物质覆盖，抑制了苔藓的生长，就像金属制品的防护漆。
+
+我们穿过平地走进那些建筑物。木质结构饰以雕花，每一个屋檐下的雕刻都精细美观。最靠近我们的这座建筑，其屋檐下正中央是一枚装饰了圆环的等臂十字架，这枚十字架被八条互相缠绕的五爪龙围在中间——我之所以能数清楚龙的数量，是因为这八个龙头都朝向十字架的两臂交点，怒目而视。在这些雕饰的两侧，是两条龙头相对朝着中间的长龙，龙身向建筑物两侧延伸下去，伸出的木梁穿越龙身，像肋骨或橹。浮雕以下就是建筑的正门。
+
+门外看不清门内的景象。迈过门槛，一股阴冷湿淤之气扑面袭来。除了前后两扇通畅的大门外，建筑没有窗户，没有其他光源，因而难以视物。刘纭文及时打开了她的手电筒，我们才得以观察室内的情景。眼前的景象简直是震撼：我几乎要忘记这两天的诡异经历，全然沉浸在发现重要研究材料的巨大兴奋中了。这里的每一面墙都镶嵌着一块汉白玉浮雕，雕刻非常精细，这些浮雕此前隐藏在房间内的阴影里，直到小刘打开手电筒，它们才现出真身。
+
+浮雕描绘的内容主要是偶像与象征，这与此地的宗教性质密切相关。好几块浮雕以衣着华丽（这些服饰的风格像是受到西域文化的影响）的人物为中心，它们让我想起了犍陀罗的那些希腊式佛像。几个主要人物的脑后衬有光圈，再以火焰环绕。除了人物之外，浮雕的内容也有山水、建筑，它们刻画的地点似曾相识，但我无法在记忆力找出对应的地方；那些建筑的风格都与这处遗迹相似，甚至可能正是数百年前的这处遗迹。浮雕的一个显著特点在于，本应留白的部分全部用装饰性的阴刻线条填满，这些曲线连贯流畅，间距基本一致，但根据应用场景不同有细微的调整。
+
+十字架几乎在每一块浮雕上出现，多数是纯粹的装饰品。正十字与带圈十字（我们在树林里曾见过的木桩便是这一形状）的比例大约为一比一。有些正十字会用圆环或圆点加以装饰。带圈十字似乎与螺旋图样关联紧密，它们周围的装饰线总是卷曲缠绕成螺旋状，圆环中间也经常构成漩涡的图案。有些使用十字架图案较多的场景似乎与《圣经》故事有关，不过毕竟景教是最早传入中国的基督教分支之一，尽管经文内容其实还是原来的《圣经》，表现在浮雕上的人物风格已经完全没有基督教的影子了。我们用相机拍下了大部分浮雕，我希望这次考察结束后能够公开发表，为相关研究做出贡献。
+
+非常可惜的是，除了壁画之外，这座建筑是个空屋。地面上有几个稍高的台座，可能曾是十字架或雕像的基座，但不管那上面有过什么，那都不是我们所能知道的了。
+
+我们继续向建筑群的中心走去。一种模糊不清的预感刺激着我，让我迫不及待想要把每座建筑的每个角落翻个遍。走出第一座建筑后，我看了眼天色——天又阴沉下来，隐隐传来的隆隆声音预示着大雨将很快再次降临。我们快步走向前方的大殿，像我之前说的，前面的那些建筑都被连在一起，屋檐让雨无法成为我们探索的阻碍。
+
+大殿里同样没有照明，但墙上留出的孔位上装有几根熄灭的火把。这些火把是被人为熄灭而非燃尽，而且看上去是最近才放上去的。我心中多了一丝警惕，但仍然让小刘把手电筒递给了我。大殿的中心是一座雕像，材质差不多也是汉白玉。雕像与传统的佛像差不多，是盘腿坐姿，但浑身上下没有特别的象征物或标识。让我感到震悚的是雕像的面部：扭曲成漩涡状，没有五官，这让我想起那具尸体。
+
+大殿里的浮雕和前一座建筑风格一致，但含有人物的画面更多，浮雕本身的年代看上去也更久远。我发现大门旁的一块浮雕较低处有一圈阴影，似乎是某种污渍，于是走过去用手指抹了一下——略带潮湿的手指带出一片红色。
+
+这是还没有干透的血液。
+[[/div]]
+
+[[include :scp-wiki-cn:component:image-block
+|name=http://ah-sandbox.wikidot.com/local--files/2900/statue2.jpg
+|align=center
+|caption=夹在纸页中的照片
+]]
+
+[[div class=&#34;blockquote&#34;]]
+夜深了，外面雷声大作，暴雨倾盆。
+
+刘纭文已经睡着了。想必这几天的行动让她耗尽了全部体力，能在这大雨下的遗迹里入眠。但我就没那么幸运了——在这几乎要把木制屋顶掀飞的大雨中，每当我闭上双眼、试图入睡，关于咒语、火把、扭曲尸体的梦魇就会向我袭来。我怀疑墙上的血迹也与这次考察中的怪异经历有关，我在找出它们背后的联系前将无法安眠。
+
+我爬起来，但没有点亮手电筒。乌云遮住了月光，只有极微弱的光线能透过云雨的层层阻拦到达地面。大殿中间那座雕像扭曲的面部似乎被反射的微光照亮，模糊中竟有庄严肃穆之感。尽管没有五官，我的大脑正不由自主地想象着那座雕像的双眼——目光冷峻，紧盯着我。
+
+一阵雷声传来，但直到闪电到来，我才发现那不是雨声。闪电短暂照亮了大殿，我回头看到墙边的血迹狰狞地闪着光。往遗迹中心再走一点，再深入一些——诸如此类的念头充斥着我的头脑，不知为何，我相信了这一点，而马上朝前方的大门走去。好在连廊的屋顶已经挡不住大雨，雨滴打在身上让我冷静下来。我停下脚步，思考刚刚的冲动从何而来：或许是满壁的浮雕在电光与雨声的衬托下带有某种催眠效果，强化了我潜意识里的探索欲望。
+
+我的眼睛似乎已经适应了黑暗。微光映照下的遗迹地面上似乎有液体反光，我循着那痕迹的方向望去，那边有一道侧门，通向一处偏殿：殿内一片漆黑，但不知是不是错觉，在雨声稍弱时我能听到轻微的人声，那殿内也似有黑影移动。于是我终于鼓起勇气向那殿内走去。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+我走进偏殿。
+
+偏殿里没有光源，我身后的殿门好像透不了光。迟疑了片刻，我终于点亮手电筒。只见眼前瘫坐在墙边的，是穿着熟悉的大衣的人形。辨别出对方的身份前我就注意到了那和我身上一模一样的服装——那是启程前，梅修墨统一采购的服装。联想到那具扭曲的尸体，我不禁颤抖：我正面对着的究竟是什么？我走近这个人，正当我做好了见到失踪的向导的心理准备时，他微微动了动。这时我看清了他的脸。
+
+那是一张我不知见过多少次的脸——是一张我本以为不会再见到的脸。那正是本次考察的领队，梅修墨。
+
+他似乎看到了我。这时我才注意到他的腰上有一道可怖的伤口，像是猛兽的利爪所划伤的。伤口只经过简单的包扎，没有愈合的迹象，还在往外渗血。他应该已经非常虚弱，几乎失去了行动能力——他试着坐起来，但用尽力量也没能成功。
+
+“……周……”
+
+他勉强看向我，只吐出几个音。
+
+“……这是祭祀。小心……龙舟……”
+
+这几个不连贯的词汇似乎耗尽了他的力气，他吐出一口浊气，陷入昏迷中。我茫然地看着眼前的景象，不知如何是好。好亮，好热……我无来由地感受到一阵躁动。
+
+仿佛一声雷鸣在我身后炸开，我听到了最后一句咒语：
+
+[[div class=&#34;spell&#34;]]
+[[span class=&#34;sentence&#34;]][[span class=&#34;ruby&#34;]]龍[[span class=&#34;rt&#34;]]lae[[/span]][[/span]][[span class=&#34;ruby&#34;]]舟[[span class=&#34;rt&#34;]]jieu[[/span]][[/span]][[span class=&#34;ruby&#34;]]下[[span class=&#34;rt&#34;]]ho[[/span]][[/span]][[span class=&#34;ruby&#34;]]弱[[span class=&#34;rt&#34;]]xxia[[/span]][[/span]][[span class=&#34;ruby&#34;]]水[[span class=&#34;rt&#34;]]sii[[/span]][[/span]]，[[/span]][[span class=&#34;sentence&#34;]][[span class=&#34;ruby&#34;]]五[[span class=&#34;rt&#34;]]ng[[/span]][[/span]][[span class=&#34;ruby&#34;]]湖[[span class=&#34;rt&#34;]]wu[[/span]][[/span]][[span class=&#34;ruby&#34;]]四[[span class=&#34;rt&#34;]]sii[[/span]][[/span]][[span class=&#34;ruby&#34;]]海[[span class=&#34;rt&#34;]]he[[/span]][[/span]][[span class=&#34;ruby&#34;]]任[[span class=&#34;rt&#34;]]zang[[/span]][[/span]][[span class=&#34;ruby&#34;]]漂[[span class=&#34;rt&#34;]]pae[[/span]][[/span]][[span class=&#34;ruby&#34;]]蕩[[span class=&#34;rt&#34;]]duo[[/span]][[/span]][[/span]]
+[[/div]]
+
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+那光和热并不是我的错觉。我向窗外看去——火焰包围了建筑，周围的平地、远处的山坡上，是重重叠叠的火把，更近处则是燃着的火焰。此前我们看见的石墙和石板周围，此刻都在燃烧。
+
+大雨仍在继续，但竟与火光融在一处。举着火把的人影继续缓慢吟唱，直至更巨大的黑影逼近十字寺。火光把黑影的近处照亮，我在那一刻意识到那正是梅修墨口中的“龙舟”。
+
+那是由似乎直接砍伐的巨型原木切割成的独木舟，树皮并未被完全削下，而是经过菱形切割形成明显的鳞片外观。原木的一端被逐渐覆盖上某种暗红色的涂料，末端接上一枚似乎是石雕的龙首。龙首的雕刻手法与此前我见过的大殿屋檐下的雕塑如出一辙，只有那双眼睛好像是用宝石镶嵌的，此刻正映照出周围的火光。
+
+龙舟在空中行进，它的底部离地面至少有几米高。龙舟刺破雨帘，似乎没有任何东西能够阻挡它们。
+
+念诵声越来越响。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+梅修墨死了。
+
+听到最后一声咒语后，他试图用自己的双手把身体拖向大殿之外——很明显他的下半身已经失去控制。这让他的伤口更加撕裂，鲜血在地上划出暗红的条带。
+
+我顺着他爬行的方向看去，忽然意识到了我见过的尸体的来由。火光摇曳，有一刹那我看清了龙舟上的人影：面部扭曲成一个漩涡，四肢扭曲，双手似乎拉长成镰刀形——最令我毛骨悚然的是，它们的穿着都与普通浙南农民一般无异。
+
+当我回过神来时，梅修墨已经爬进火中。我不敢靠近那火焰，只能眼睁睁看着他的衣服、头发都燃烧起来。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+我跑回原来的大殿，发现刘纭文已经醒了。我看见她面对着大门，火光映在她的脸上。
+
+我似乎又进入了那种梦境般的状态，火焰好像融化成水，我周围的一切好像都浮在血红的海洋中。空气中有什么东西正在浮游、颤动，一层一层的泡泡把我和大殿隔离开来。时间和空间似乎都不存在，虚空中的每一寸虚无都被生命充满。我模模糊糊看到刘纭文拿出一把手枪——我觉得这也是某种幻觉，毕竟普通人不可能随意携带枪支。
+
+她说：“对不起。”
+
+她走出正门，朝火焰中走去。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+如果把睡眠、进食的周期算作一天的话，我在十字寺里已经待了三天。前来考察的其他两人都已经葬身于火海中，我是唯一存活的人。然而，我身上的食物已经见底，精神也在崩溃的边缘。二十几年的世界观让我无法理解眼前的情况。
+
+窗外的大雨和大火好似一个漩涡，把我和常识隔离开来。火把绕着十字寺缓缓旋转，我几乎要被裹挟着移动。
+
+现在，我走到任何一扇门、或一扇窗前，似乎都走到了同一处。我能看见十字寺中心的那座塔——塔顶上似乎有一座钟，随时都会敲响。
+
+四周的雕像透过扭曲涡旋的面部不怀好意地凝视着我。焦躁感驱使我在屋殿间辗转。
+
+我已经看不见生命的希望。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+龙舟又来了，朝着那座塔航行。
+
+这几天我已经在笔记本最前面写好了求救的信号，随时寻找机会把它扔出窗外，但我已经放弃这种想法。这四周的火焰会把笔记本烧成灰烬，而在十字寺内我不可能把它扔到更远的地方。
+
+好热。
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+那座塔，我要去那座塔。
+[[/div]]
+
+[[include :scp-wiki-cn:component:image-block
+|name=http://ah-sandbox.wikidot.com/local--files/2900/tower.jpg
+|align=center
+|caption=[-]
+]]
+
+[[div style=&#34;height: 1rem;&#34;]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;blockquote mail&#34;]]
+**发件人：**研究员 柯瑞娜 &lt;krn006@sitecn10.scpfn&gt;
+**收件人：**研究主管 金叶 &lt;jy013@sitecn10.scpfn&gt;
+**主题：**Re：回收的文件
+----
+感谢您与现场小组的工作，我们已经收到了相关附件，它们确实非常重要。此外，现场小组接受到的文件已经是最新版本了，暂时没有更新。
+[[/div]]
+
+[[div style=&#34;height: 20rem&#34;]]
+[[/div]]
+
+[[div class=&#34;horizon-container&#34;]]
+[[div class=&#34;horizon&#34;]]
+[[/div]]
+[[div class=&#34;fkbutton&#34;]]
+⟫
+[[/div]]
+[[/div]]
+
+[[=]]
+IV - 2900级权限已识别，当前已为您展示您所查询的文件对应您安保权限的最新分支。
+
+注意：该分支的展示版本已被设置为只读。
+[[/=]]
+
+[[div class=&#34;secretBox&#34;]]
+
+[[div class=&#34;meta-title&#34;]]
+文件 CN-2900
+[[/div]]
+
+= (BRANCH. IV)
+
+**项目识别码：**SCP-CN-2900
+
+**档案等级：**Euclid
+
+**收容等级：**AICALË
+
+**[[span class=&#34;ruby&#34;]]标准收容协议[[span class=&#34;rt&#34;]]Standard Containment Protocol[[/span]][[/span]]：**SCP-CN-2900的收容协议由以下几部分构成：
+
+[[ul]]
+[[li]]
+**代号“掩耳”：**SCP-CN-2900整体区域以SCP-CN-2900-α（“圣堂”）为核心划分为几个区域：面积约3.4平方千米的中心区域被指定为SCP-CN-2900-β，亦称区域I；区域I向外半径2km的区域被指定为区域II；余下称为区域III。
+
+区域III由基金会与异常十九局合作管理，以军事机密为由避免外来民众进入，完成实质性的封锁管制。该区域内原有居民大部分被迁移至他处，剩余拒绝迁移者进出封锁区域将被严格限制。尽管如此，区域III并不驻扎常设安保力量。
+
+区域II设置了临时站点Sector CN-2900，该站点内全部员工均无异常宗教表现部任职经历，并被告知SCP-CN-2900仅包含SCP-CN-2900-α/β。站内设置驻站特遣队Itírië-01（“观察者”）。
+
+区域I设置了16个临时观察点，均指派机动特遣队Itírië-01下辖战术小组驻扎。未经授权试图进入或离开封锁区域的任何智能实体都应被施以R-Kx标准净化程序并移送至Sector CN-2900。若有无法被标准程序净化的个体存在，则应就地处决之。
+[[/li]]
+
+[[li]]
+**代号“响铃”：**以SCP-CN-2900-α为核心的宗教活动应在不受外界干涉的情况下进行。该宗教似乎基于佛教密宗、景教以及**[已编辑]**，目前已在SCP-CN-2900区域内广泛传播。
+
+信仰该宗教的居民有规律地进行一系列祭祀活动，包含**[已编辑]**，应保证这些活动不受干扰地进行。
+[[/li]]
+[[/ul]]
+**描述：**SCP-CN-2900是浙江省温州市一个占地50平方千米以上的异常区域，由异常宗教表现部全权处理。SCP-CN-2900内的平均Akiva辐射达到12.0，休谟指数亦明显高于正常值。据推测，项目本身是对某一上位实体的遏制措施，以SCP-CN-2900-α为中心的仪式是其稳定运行的必要条件。
+
+余下信息均不必要。
+
+**附录：**项目负责人列表
+
+||~ 姓名 ||~ 时间 ||
+|| 林 妙音 || 1983 至 1990 ||
+|| 刘 纭文 || 1990 至 1991 ||
+|| 柯 瑞娜 || 1991 至今 ||
+
+@@@@
+@@@@
+@@@@
+
+= [[size 200%]]##DDD|֍##[[/size]]
+
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:14.767846.</em>
+    <em>Last updated 2024-02-07 18:30:39.581050.</em>
   
 </div>
 </body>

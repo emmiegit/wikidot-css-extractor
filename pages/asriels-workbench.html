@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>Asriel的工作台</title>
 </head>
@@ -89,17 +89,10 @@
 
 [[tab 删除宣告]]
 
-[[[*http://aelanna.com/Tools/deletion-time.html|删帖工具]]]
+[[[*http://aelanna.com/Tools/deletion-time.html|Aelanna删帖工具]]]
+[[[*https://scpwiki.github.io/timer/timer-selector.html?lang=cn|新版删帖工具]]]
 
 职员帖：删除宣告
-
-[[div style=&#34;padding:1em;border:1px solid black;&#34;]]
-@@由于条目的分数为#分，现根据[[[deletions-guide|删帖指导]]]，宣告将删除此页：@@
-
-#
-
-@@**如果你不是作者又想要重写该条目，请在此帖回复申请。请先取得作者（或管理员，如果此文档搬运自论坛的话）的同意，并将原文的源代码复制至沙盒里。除非你是工作人员，否则请勿就申请重写以外的范围回复此帖**@@
-[[/div]]
 
 -----
 由于已达到#的低分，且在宣告删除后72小时无异议，故删除#。
@@ -127,6 +120,14 @@
 @@您好，请标注图片来源。需注意图片的使用应遵循[[[http://scp-wiki-cn.wikidot.com/image-use-policy|图像使用原则]]]中的规定。@@
 
 -----
+
+[[div style=&#34;padding:1em;border:1px solid black;&#34;]]
+@@由于条目的分数为#分，现根据[[[deletions-guide|删帖指导]]]，宣告将删除此页：@@
+
+#
+
+@@**如果你不是作者又想要重写该条目，请在此帖回复申请。请先取得作者（或管理员，如果此文档搬运自论坛的话）的同意，并将原文的源代码复制至沙盒里。除非你是工作人员，否则请勿就申请重写以外的范围回复此帖**@@
+[[/div]]
 
 [[code]]
 您好，
@@ -177,12 +178,25 @@ Asriel
 
 [[tab 没删干净的页面]]
 
+[[collapsible show=&#34;+ deleted分类的页面&#34;]]
 [[module ListPages category=&#34;deleted&#34;]]
 
 [[[*%%link%%|%%title%%]]]
 @@  @@发布于：##003e3e|{{**%%created_at|%y.%m.%d%%  by %%created_by_linked%%**}}##
 
 [[/module]]
+[[/collapsible]]
+
+
+[!--
+[[collapsible show=&#34;&#34;]]
+[[module ListPages tags=&#34;原创&#34; limit=&#34;5&#34; order=&#34;size&#34; ]]
+
+[[[*%%link%%|%%title%%]]]
+@@  @@发布于：##003e3e|{{**%%created_at|%y.%m.%d%%  by %%created_by_linked%%**}}##
+[[/module]]
+[[/collapsible]]
+--]
 
 [[/tab]]
 
@@ -298,27 +312,47 @@ Asriel
 
 [[tab 备用搜索]]
 
-[[module ListPages category=&#34;.&#34; tags=&#34;+2019连写竞赛 -_长毛狗 -_垃圾小说 -_皆是大梦一场&#34;]]
-[[[*%%link%%|%%title%%]]]
+[[collapsible show=&#34;征文编辑时间排序&#34;]]
+[[module ListPages category=&#34;.&#34; tags=&#34;+cn3000&#34; order=&#34;updated_at desc&#34;]]
+[[[*%%link%%|%%title%%]]] %%updated_at%%
 [[/module]]
-
+[[/collapsible]]
 -----
 
-[[module ListPages category=&#34;.&#34; tags=&#34;+原创 +GoI格式&#34; order=&#34;rating desc&#34;]]
+[[collapsible show=&#34;没上过精的GoI按分数排序&#34;]]
+[[module ListPages category=&#34;.&#34; tags=&#34;+原创 +GoI格式 -精品 -主题精品&#34; order=&#34;rating desc&#34;]]
 [[[*%%link%%|%%title%%]]]
 **{{[+%%rating%% (+[[#expr (%%rating_votes%%+%%rating%%)/2]]/-[[#expr (%%rating_votes%%-%%rating%%)/2]])]}}**, **{{%%comments%%}}** 评论,  发布于：##003e3e|{{**%%created_at|%y.%m.%d%%  by %%created_by_linked%%**}}##
 [[/module]]
+[[/collapsible]]
 
-[[module ListPages category=&#34;wanderers&#34; tags=&#34;+原创&#34; order=&#34;rating desc&#34;]]
+[[collapsible show=&#34;没上过精的图书馆按分数排序&#34;]]
+[[module ListPages category=&#34;wanderers&#34; tags=&#34;+原创 -精品 -主题精品&#34; order=&#34;rating desc&#34;]]
 [[[*%%link%%|%%title%%]]]
 **{{[+%%rating%% (+[[#expr (%%rating_votes%%+%%rating%%)/2]]/-[[#expr (%%rating_votes%%-%%rating%%)/2]])]}}**, **{{%%comments%%}}** 评论,  发布于：##003e3e|{{**%%created_at|%y.%m.%d%%  by %%created_by_linked%%**}}##
 [[/module]]
+[[/collapsible]]
+
+请注意这在任何时候都不作为成为精品的标准
+
+[[collapsible show=&#34;alt分类下页面&#34;]]
+[[module ListPages category=&#34;alt&#34;]]
+[[[*%%link%%|%%title%%]]] %%created_by%%
+[[/module]]
+[[/collapsible]]
 
 [[/tab]]
 
 [[tab 各类投票计分板]]
 
-[[include :scpsandboxcn:top-rated-contest-pages  tag=2022冬季征文]]
+[[include :scpsandboxcn:top-rated-contest-pages  tag=cn3000]]
+
+[[/tab]]
+
+[[tab TODO]]
+
+1. 标签指导更新：主站最近更新了非常多标签，需要大规模翻新
+2. 图书馆首页：主站图书馆首页和导航系统完全重做，需要考虑翻新
 
 [[/tab]]
 
@@ -371,7 +405,7 @@ if (keyWord != &#34;&#34;) {
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:05.538307.</em>
+    <em>Last updated 2024-02-07 18:30:29.882811.</em>
   
 </div>
 </body>

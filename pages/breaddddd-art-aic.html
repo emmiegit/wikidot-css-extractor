@@ -1,0 +1,4350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>面包菌的AIC小房间</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">面包菌的AIC小房间</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/breaddddd-art-aic" target="_blank">面包菌的AIC小房间</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>/* Aic div base styling */
+.aic-art-folder-container {
+  width: 100%;
+  position: relative;
+  scroll-margin-top: 30px;
+}
+.aic-art-folder-panel-overflow-container {
+  width: 100%;
+  border-radius: 30px;
+  min-height: 500px;
+  max-height: 850px;
+  height: fit-content;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+.aic-art-folder-panel-inner-container {
+  min-height: 500px;
+  max-height: 850px;
+  height: fit-content;
+  position: relative;
+  display: grid;
+  grid-template-rows: 100%;
+  background-color: var(--aic-secondary-color);
+}
+.aic-art-folder-left {
+  display: flex;
+  flex-direction: column;
+  vertical-align: text-top;
+  height: 100%;
+  max-height: 850px;
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--aic-primary-color);
+  opacity: 0;
+  transition: opacity ease-in-out 1s;
+}
+.aic-art-folder-right {
+  display: flex;
+  flex-direction: column;
+  vertical-align: text-top;
+  height: 100%;
+  max-height: 850px;
+  grid-column: 2;
+  grid-row: 1;
+  background-color: var(--aic-primary-color);
+  opacity: 1;
+  transition: opacity ease-in-out 1s;
+}
+.aic-art-desc-title {
+  flex: initial;
+  color: #fff;
+  text-align: right;
+  margin: 25px 10px 0 10px;
+  font-size: 3em;
+  text-shadow:
+      -1px -1px 0 var(--aic-secondary-color),
+      1px -1px 0 var(--aic-secondary-color),
+      -1px 1px 0 var(--aic-secondary-color),
+      1px 1px 0 var(--aic-secondary-color);
+}
+.aic-art-desc {
+  flex: auto;
+  border-radius: 0 0 20px 0;
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px 10px 10px 15%;
+  overflow: auto;
+}
+.aic-art-avatar {
+  position: absolute;
+  width: 25%;
+  left: 0;
+  z-index: 1;
+  transform: translateX(0) translateY(var(--avatar-translateY));
+  bottom: 0;
+}
+.aic-art-avatar-1 {
+  --avatar-translateY: -184%;
+}
+.aic-art-avatar-2 {
+  --avatar-translateY: -92%;
+}
+.aic-art-avatar-3 {
+  --avatar-translateY: 0;
+}
+.aic-art-full-body {
+  position: relative;
+  flex: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
+  background-color: #fff;
+  font-size: 1.5em;
+}
+.aic-art-full-body img {
+  max-height: 100%;
+}
+.aic-art-full-body-text {
+  text-align: center;
+}
+
+/* Aic div panel toggle animations */
+.aic-art-toggle .aic-art-avatar {
+  transform: translateX(var(--avatar-translateX, 0)) translateY(var(--avatar-translateY));
+  transition-property: left, transform;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+.aic-art-toggle .aic-art-folder-panel-overflow-container {
+  border-radius: 0 30px 30px 30px;
+  transition: border-radius ease-in-out 1s;
+}
+.aic-art-toggle .aic-art-folder-panel-inner-container {
+  max-width: unset !important;
+  width: 180%;
+  left: -80%;
+  grid-template-columns: 50% 50%;
+  transition: left 1s ease-in-out;
+}
+.aic-art-no-toggle .aic-art-folder-panel-inner-container {
+  grid-template-columns: 10% 90%;
+}
+.aic-art-toggle:target .aic-art-folder-panel-overflow-container {
+  border-radius: 30px 0 30px 30px;
+}
+.aic-art-toggle:target .aic-art-folder-panel-inner-container {
+  left: 0;
+}
+.aic-art-toggle:target .aic-art-folder-left {
+  opacity: 1;
+}
+.aic-art-toggle:target .aic-art-folder-right {
+  opacity: 0;
+}
+.aic-art-toggle:target .aic-art-avatar {
+  --avatar-translateX: -100%;
+  left: 100%;
+}
+
+/* Aic div navigation and animations */
+.aic-art-nav {
+  border-radius: 30px 30px 0 0;
+  position: relative;
+  height: 40px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+.aic-art-nav a,
+.aic-art-nav a:hover,
+.aic-art-nav a:visited {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 20%;
+  height: 40px;
+  color: #fff;
+  background-color: var(--aic-secondary-color);
+  transition-property: left, right, transform, opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1s;
+  z-index: -1;
+}
+.aic-art-nav a::before {
+  position: absolute;
+  top: 50%;
+  text-shadow:
+      -1px 0 0 var(--aic-secondary-color),
+      1px 0 0 var(--aic-secondary-color),
+      0 -1px 0 var(--aic-secondary-color),
+      0 1px 0 var(--aic-secondary-color);
+}
+.aic-art-nav a::after {
+  content: &#34;&#34;;
+  display: block;
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  background-color: var(--aic-primary-color);
+}
+.aic-art-nav-right,
+.aic-art-nav-right:hover,
+.aic-art-nav-right:visited {
+  border-radius: 0 30px 0 0;
+  right: 80%;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.aic-art-nav-left,
+.aic-art-nav-left:hover,
+.aic-art-nav-left:visited {
+  border-radius: 30px 0 0 0;
+  left: 0;
+  transform: translateY(0);
+  opacity: 1;
+}
+.aic-art-toggle:target .aic-art-nav-right,
+.aic-art-toggle:target .aic-art-nav-right:hover,
+.aic-art-toggle:target .aic-art-nav-right:visited {
+  right: 0;
+  transform: translateY(0);
+  opacity: 1;
+}
+.aic-art-toggle:target .aic-art-nav-left,
+.aic-art-toggle:target .aic-art-nav-left:hover,
+.aic-art-toggle:target .aic-art-nav-left:visited {
+  left: 80%;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.aic-art-nav-right::after {
+  border-radius: 0 30px 0 0;
+  right: 50%;
+}
+.aic-art-nav-left::after {
+  border-radius: 30px 0 0 0;
+  left: 50%;
+}
+.aic-art-nav-right::before {
+  left: 0;
+  transform: translateX(-50%) translateY(-50%);
+}
+.aic-art-nav-left::before {
+  right: 0;
+  transform: translateX(50%) translateY(-50%);
+}
+
+/* Aic colors */
+:root {
+  /* fallback colors */
+  --aic-primary-color: #ccc;
+  --aic-secondary-color: #888;
+}
+#u-aic-pretta {
+  --aic-primary-color: #e1b8fa;
+  --aic-secondary-color: #9774ac;
+}
+#u-aic-spectabilis {
+  --aic-primary-color: #cbe2ff;
+  --aic-secondary-color: #70859f;
+}
+#u-aic-dawn {
+  --aic-primary-color: #68a1b0;
+  --aic-secondary-color: #3e6570;
+}
+#u-aic-almond {
+  --aic-primary-color: #e0f1bf;
+  --aic-secondary-color: #6a7460;
+}
+#u-aic-iv {
+  --aic-primary-color: #ffb8ce;
+  --aic-secondary-color: #a36f7f;
+}
+#u-aic-joanna {
+  --aic-primary-color: #ffd8a6;
+  --aic-secondary-color: #b8986f;
+}
+#u-aic-sasha {
+  --aic-primary-color: #ffc69b;
+  --aic-secondary-color: #b98259;
+}
+#u-aic-claire {
+  --aic-primary-color: #b19b90;
+  --aic-secondary-color: #866d66;
+}
+#u-aic-cradlenovos {
+  --aic-primary-color: #363f71;
+  --aic-secondary-color: #232949;
+}
+#u-aic-gabbro {
+  --aic-primary-color: #c8ddcc;
+  --aic-secondary-color: #7d9381;
+}
+#u-aic-mal {
+  --aic-primary-color: #ebddca;
+  --aic-secondary-color: #a89e90;
+}
+#u-aic-novichok {
+  --aic-primary-color: #9eb2e1;
+  --aic-secondary-color: #6679a4;
+}
+#u-aic-sofia {
+  --aic-primary-color: #ee9f9c;
+  --aic-secondary-color: #ab6663;
+}
+#u-aic-fiona {
+  --aic-primary-color: #ef9fee;
+  --aic-secondary-color: #a866a7;
+}
+#u-aic-comix {
+  --aic-primary-color: #a0777e;
+  --aic-secondary-color: #65353d;
+}
+#u-aic-mckee {
+  --aic-primary-color: #594d6b;
+  --aic-secondary-color: #453c53;
+}
+#u-aic-lanota {
+  --aic-primary-color: #ebebeb;
+  --aic-secondary-color: #bababa;
+}
+#u-aic-termerapa {
+  --aic-primary-color: #b8ffd3;
+  --aic-secondary-color: #8fd9ab;
+}
+#u-aic-bleriava {
+  --aic-primary-color: #365343;
+  --aic-secondary-color: #22372c;
+}
+#u-aic-tantalus {
+  --aic-primary-color: #a6f1ff;
+  --aic-secondary-color: #84c3ce;
+}
+#u-aic-md {
+  --aic-primary-color: #d8643a;
+  --aic-secondary-color: #aa4d2c;
+}
+#u-aic-totem {
+  --aic-primary-color: #459780;
+  --aic-secondary-color: #347261;
+}
+#u-aic-xuanxi {
+  --aic-primary-color: #7b7b7b;
+  --aic-secondary-color: #5e5e5e;
+}
+#u-aic-kallisti {
+  --aic-primary-color: #56ce94;
+  --aic-secondary-color: #43a274;
+}
+#u-aic-natasha {
+  --aic-primary-color: #f45056;
+  --aic-secondary-color: #bc3e43;
+}
+
+#u-aic-adria {
+  --aic-primary-color: #a3bbc4;
+  --aic-secondary-color: #80949c;
+}
+
+#u-aic-svetlana {
+  --aic-primary-color: #be8183;
+  --aic-secondary-color: #916263;
+}
+
+#u-aic-icey {
+  --aic-primary-color: #4567c1;
+  --aic-secondary-color: #344e92;
+}
+
+#u-aic-kaede {
+  --aic-primary-color: #ffb471;
+  --aic-secondary-color: #c88d58;
+}
+
+#u-aic-sumire {
+  --aic-primary-color: #9c4662;
+  --aic-secondary-color: #733448;
+}
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body-text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-toggle</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-nav-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fa-chevron-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-overflow-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-panel-inner-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-full-body</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-folder-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-desc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>aic-art-avatar-3</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module css]]
+/* Aic div base styling */
+.aic-art-folder-container {
+  width: 100%;
+  position: relative;
+  scroll-margin-top: 30px;
+}
+.aic-art-folder-panel-overflow-container {
+  width: 100%;
+  border-radius: 30px;
+  min-height: 500px;
+  max-height: 850px;
+  height: fit-content;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+}
+.aic-art-folder-panel-inner-container {
+  min-height: 500px;
+  max-height: 850px;
+  height: fit-content;
+  position: relative;
+  display: grid;
+  grid-template-rows: 100%;
+  background-color: var(--aic-secondary-color);
+}
+.aic-art-folder-left {
+  display: flex;
+  flex-direction: column;
+  vertical-align: text-top;
+  height: 100%;
+  max-height: 850px;
+  grid-column: 1;
+  grid-row: 1;
+  background-color: var(--aic-primary-color);
+  opacity: 0;
+  transition: opacity ease-in-out 1s;
+}
+.aic-art-folder-right {
+  display: flex;
+  flex-direction: column;
+  vertical-align: text-top;
+  height: 100%;
+  max-height: 850px;
+  grid-column: 2;
+  grid-row: 1;
+  background-color: var(--aic-primary-color);
+  opacity: 1;
+  transition: opacity ease-in-out 1s;
+}
+.aic-art-desc-title {
+  flex: initial;
+  color: #fff;
+  text-align: right;
+  margin: 25px 10px 0 10px;
+  font-size: 3em;
+  text-shadow:
+      -1px -1px 0 var(--aic-secondary-color),
+      1px -1px 0 var(--aic-secondary-color),
+      -1px 1px 0 var(--aic-secondary-color),
+      1px 1px 0 var(--aic-secondary-color);
+}
+.aic-art-desc {
+  flex: auto;
+  border-radius: 0 0 20px 0;
+  background-color: #fff;
+  margin: 10px;
+  padding: 10px 10px 10px 15%;
+  overflow: auto;
+}
+.aic-art-avatar {
+  position: absolute;
+  width: 25%;
+  left: 0;
+  z-index: 1;
+  transform: translateX(0) translateY(var(--avatar-translateY));
+  bottom: 0;
+}
+.aic-art-avatar-1 {
+  --avatar-translateY: -184%;
+}
+.aic-art-avatar-2 {
+  --avatar-translateY: -92%;
+}
+.aic-art-avatar-3 {
+  --avatar-translateY: 0;
+}
+.aic-art-full-body {
+  position: relative;
+  flex: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  border-radius: 20px 0 0 20px;
+  overflow: hidden;
+  background-color: #fff;
+  font-size: 1.5em;
+}
+.aic-art-full-body img {
+  max-height: 100%;
+}
+.aic-art-full-body-text {
+  text-align: center;
+}
+
+/* Aic div panel toggle animations */
+.aic-art-toggle .aic-art-avatar {
+  transform: translateX(var(--avatar-translateX, 0)) translateY(var(--avatar-translateY));
+  transition-property: left, transform;
+  transition-duration: 1s;
+  transition-timing-function: ease-in-out;
+}
+.aic-art-toggle .aic-art-folder-panel-overflow-container {
+  border-radius: 0 30px 30px 30px;
+  transition: border-radius ease-in-out 1s;
+}
+.aic-art-toggle .aic-art-folder-panel-inner-container {
+  max-width: unset !important;
+  width: 180%;
+  left: -80%;
+  grid-template-columns: 50% 50%;
+  transition: left 1s ease-in-out;
+}
+.aic-art-no-toggle .aic-art-folder-panel-inner-container {
+  grid-template-columns: 10% 90%;
+}
+.aic-art-toggle:target .aic-art-folder-panel-overflow-container {
+  border-radius: 30px 0 30px 30px;
+}
+.aic-art-toggle:target .aic-art-folder-panel-inner-container {
+  left: 0;
+}
+.aic-art-toggle:target .aic-art-folder-left {
+  opacity: 1;
+}
+.aic-art-toggle:target .aic-art-folder-right {
+  opacity: 0;
+}
+.aic-art-toggle:target .aic-art-avatar {
+  --avatar-translateX: -100%;
+  left: 100%;
+}
+
+/* Aic div navigation and animations */
+.aic-art-nav {
+  border-radius: 30px 30px 0 0;
+  position: relative;
+  height: 40px;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+.aic-art-nav a,
+.aic-art-nav a:hover,
+.aic-art-nav a:visited {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  width: 20%;
+  height: 40px;
+  color: #fff;
+  background-color: var(--aic-secondary-color);
+  transition-property: left, right, transform, opacity;
+  transition-timing-function: ease-in-out;
+  transition-duration: 1s;
+  z-index: -1;
+}
+.aic-art-nav a::before {
+  position: absolute;
+  top: 50%;
+  text-shadow:
+      -1px 0 0 var(--aic-secondary-color),
+      1px 0 0 var(--aic-secondary-color),
+      0 -1px 0 var(--aic-secondary-color),
+      0 1px 0 var(--aic-secondary-color);
+}
+.aic-art-nav a::after {
+  content: &#34;&#34;;
+  display: block;
+  position: absolute;
+  top: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  background-color: var(--aic-primary-color);
+}
+.aic-art-nav-right,
+.aic-art-nav-right:hover,
+.aic-art-nav-right:visited {
+  border-radius: 0 30px 0 0;
+  right: 80%;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.aic-art-nav-left,
+.aic-art-nav-left:hover,
+.aic-art-nav-left:visited {
+  border-radius: 30px 0 0 0;
+  left: 0;
+  transform: translateY(0);
+  opacity: 1;
+}
+.aic-art-toggle:target .aic-art-nav-right,
+.aic-art-toggle:target .aic-art-nav-right:hover,
+.aic-art-toggle:target .aic-art-nav-right:visited {
+  right: 0;
+  transform: translateY(0);
+  opacity: 1;
+}
+.aic-art-toggle:target .aic-art-nav-left,
+.aic-art-toggle:target .aic-art-nav-left:hover,
+.aic-art-toggle:target .aic-art-nav-left:visited {
+  left: 80%;
+  transform: translateY(100%);
+  opacity: 0;
+}
+.aic-art-nav-right::after {
+  border-radius: 0 30px 0 0;
+  right: 50%;
+}
+.aic-art-nav-left::after {
+  border-radius: 30px 0 0 0;
+  left: 50%;
+}
+.aic-art-nav-right::before {
+  left: 0;
+  transform: translateX(-50%) translateY(-50%);
+}
+.aic-art-nav-left::before {
+  right: 0;
+  transform: translateX(50%) translateY(-50%);
+}
+
+/* Aic colors */
+:root {
+  /* fallback colors */
+  --aic-primary-color: #ccc;
+  --aic-secondary-color: #888;
+}
+#u-aic-pretta {
+  --aic-primary-color: #e1b8fa;
+  --aic-secondary-color: #9774ac;
+}
+#u-aic-spectabilis {
+  --aic-primary-color: #cbe2ff;
+  --aic-secondary-color: #70859f;
+}
+#u-aic-dawn {
+  --aic-primary-color: #68a1b0;
+  --aic-secondary-color: #3e6570;
+}
+#u-aic-almond {
+  --aic-primary-color: #e0f1bf;
+  --aic-secondary-color: #6a7460;
+}
+#u-aic-iv {
+  --aic-primary-color: #ffb8ce;
+  --aic-secondary-color: #a36f7f;
+}
+#u-aic-joanna {
+  --aic-primary-color: #ffd8a6;
+  --aic-secondary-color: #b8986f;
+}
+#u-aic-sasha {
+  --aic-primary-color: #ffc69b;
+  --aic-secondary-color: #b98259;
+}
+#u-aic-claire {
+  --aic-primary-color: #b19b90;
+  --aic-secondary-color: #866d66;
+}
+#u-aic-cradlenovos {
+  --aic-primary-color: #363f71;
+  --aic-secondary-color: #232949;
+}
+#u-aic-gabbro {
+  --aic-primary-color: #c8ddcc;
+  --aic-secondary-color: #7d9381;
+}
+#u-aic-mal {
+  --aic-primary-color: #ebddca;
+  --aic-secondary-color: #a89e90;
+}
+#u-aic-novichok {
+  --aic-primary-color: #9eb2e1;
+  --aic-secondary-color: #6679a4;
+}
+#u-aic-sofia {
+  --aic-primary-color: #ee9f9c;
+  --aic-secondary-color: #ab6663;
+}
+#u-aic-fiona {
+  --aic-primary-color: #ef9fee;
+  --aic-secondary-color: #a866a7;
+}
+#u-aic-comix {
+  --aic-primary-color: #a0777e;
+  --aic-secondary-color: #65353d;
+}
+#u-aic-mckee {
+  --aic-primary-color: #594d6b;
+  --aic-secondary-color: #453c53;
+}
+#u-aic-lanota {
+  --aic-primary-color: #ebebeb;
+  --aic-secondary-color: #bababa;
+}
+#u-aic-termerapa {
+  --aic-primary-color: #b8ffd3;
+  --aic-secondary-color: #8fd9ab;
+}
+#u-aic-bleriava {
+  --aic-primary-color: #365343;
+  --aic-secondary-color: #22372c;
+}
+#u-aic-tantalus {
+  --aic-primary-color: #a6f1ff;
+  --aic-secondary-color: #84c3ce;
+}
+#u-aic-md {
+  --aic-primary-color: #d8643a;
+  --aic-secondary-color: #aa4d2c;
+}
+#u-aic-totem {
+  --aic-primary-color: #459780;
+  --aic-secondary-color: #347261;
+}
+#u-aic-xuanxi {
+  --aic-primary-color: #7b7b7b;
+  --aic-secondary-color: #5e5e5e;
+}
+#u-aic-kallisti {
+  --aic-primary-color: #56ce94;
+  --aic-secondary-color: #43a274;
+}
+#u-aic-natasha {
+  --aic-primary-color: #f45056;
+  --aic-secondary-color: #bc3e43;
+}
+
+#u-aic-adria {
+  --aic-primary-color: #a3bbc4;
+  --aic-secondary-color: #80949c;
+}
+
+#u-aic-svetlana {
+  --aic-primary-color: #be8183;
+  --aic-secondary-color: #916263;
+}
+
+#u-aic-icey {
+  --aic-primary-color: #4567c1;
+  --aic-secondary-color: #344e92;
+}
+
+#u-aic-kaede {
+  --aic-primary-color: #ffb471;
+  --aic-secondary-color: #c88d58;
+}
+
+#u-aic-sumire {
+  --aic-primary-color: #9c4662;
+  --aic-secondary-color: #733448;
+}
+
+[[/module]]
+
+[[&gt;]]
+[[module rate]]
+[[/&gt;]]
+
+[[=image http://scpsandboxcn.wikidot.com/local--files/breaddddd/spectabilis.png width=&#34;200px&#34;]]
+
+[[=]]
+[[size 1.5em]]**1-30 · [[[breaddddd-art-aic-2|31-60]]]**[[/size]]
+[[/=]]
+
+那么这里是一个aic小艺作。我会接一些委托或者画一些感兴趣的aic，以便以后有那种需要头像和对话框的文使用。每个aic会画三个q版小表情。
+
+感谢凿海制作的超棒div块！！！上面的小箭头是可以点的，可以切换文字和立绘。
+
+[[toc]]
+
+++ 普莱塔.aic
+[[div_ id=&#34;aic-pretta&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-pretta&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/pretta.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Pretta.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+通称普莱塔/普小姐，出场文档是[[[SCP-CN-2002]]]。曾经是基金会午夜论坛的aic管理员，后来似乎升职了，成为了怪谈部的元老。性格比较活泼，但多少有些坏坏的部分。被怀疑可能是坏女人。
+
+2002的情况是我、银冰、phage各贡献了一个角色塞进主角团（我——死了一千次的猫，银冰——温带海洋气候，phage——三横三竖三撇三捺），然后我额外塞了一个aic。这个角色本身在文档之前就有了，大概是我某天迷迷糊糊梦到了，醒了之后重新设计了一下，设计灵感是假面骑士exaid的帕拉德。所以整体配色也紫紫的。原本想顺势做游戏相关的角色，不过2002能用的到，就用了。
+
+普莱塔这个名字是一位已故友人起的，不过名字本身并没有什么意义。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-pretta-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-pretta-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-pretta-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ Spectabilis.aic
+[[div_ id=&#34;aic-spectabilis&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-spectabilis&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/spectabilis.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Spectabilis.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+之前在和phage合著[[[SCP-CN-2828]]]的时候出现了一下名字，我就顺手把人设画了。这位朋友还有自己的专属logo。自带一个小无人机，我也不知道干啥用的，随手就画上了。aic本身的话大概是那种比较全能的，偏管理的，主要负责项目是[[[irisnet-project|觉梦海棠花计划]]]。
+@@@@
+出场非常多，包括[[[gu-dao-de-lan-jing|我是一只化身孤岛的蓝鲸]]]、[[[SCP-CN-1004]]]、[[[secure-facility-dossier-site-cn-04|安保设施档案：Site-CN-04]]]。
+@@@@
+具体还是问phage吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-spectabilis-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-spectabilis-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-spectabilis-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 晨曦.aic
+[[div_ id=&#34;aic-dawn&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-dawn&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+近似影像请查看[[[breaddddd-art-1|此页面人设No.21]]]
+及[[[breaddddd-art-3|此页面“魔法少女Dawn”]]]。
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Dawn.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+晨曦.aic，负责语言翻译工作的。这里融合了初版形象和魔法少女形象，现在的主要特征是青色祥云块和电子蝴蝶结。
+@@@@
+出现在[[[jue-bie-bu-xu-li-ge|恒星风中如惊鸿掠过，诀别不须骊歌]]]和[[[the-long-oblivion|漫长的遗忘]]]。具体设定请去[[[phage-s-personnel-file|phage的人事页]]]。
+@@@@
+看上去就是一个脾气比较好的朋友。不过具体还是问phage吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-dawn-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-dawn-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-dawn-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ IV.aic
+[[div_ id=&#34;aic-iv&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-iv&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/IV.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+IV.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+一个也许以后会出场的aic，目前还在某个半坑掉的coc团里发光发热。一般可以称为Ivy或者小四。
+
+IV顾名思义就是第四代aic的意思，和CytusII没有什么关系。作为一张aic卡，这位朋友没有力量、体型和敏捷，HP等于电量，如果临时疯狂了就会出现不同程度的bug。因为我不会写介绍，所以直接引用cl写的介绍：
+
+&gt; 第四代aic原型机，⽬前尚处在开发阶段中，配置在⼀台外勤特化服务器和多台搭载⼩型奇术施法单元的便携终端和本次调查队员⼀起部署。其突破性功能为能够迅速将有不同记忆的⾃⾝副本整合并不损害⾃⾝⼼智完整性，因此它可以在任务中将副本分发给每⼀位外勤队员，在与指挥部通讯不畅的场合下迅速整合⾃⾝副本形成临时指挥站，并同时提供奇术⽀援功能。
+&gt;
+&gt; 以上档案不代表正式功能。如果你们看到这段话，说明基⾦会把还没开发完全的原型机送出去了。她可能有点bug之类的，但总体⽽⾔还是个好⼥孩。⽆论如何，祝你们愉快。⸺电⼦奇术研究部，⼯程师C.L.
+
+具体的性格和事迹还得等团内接下来的发展。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-iv-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-iv-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-iv-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 杏仁.aic
+[[div_ id=&#34;aic-almond&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-almond&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/almond.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Almond.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+是一个快乐的管法杖和制式武器的aic，一般称作小杏仁。也许以后会在什么文里出场也说不定。
+
+phage说看了魔女之旅，想要一个大帽子大袍子大靴子的角色，于是我就整了一个。但是黑色魔女帽的角色太多了，所以这次整了个白的，搭配了有点小军装感觉的衣服。杏仁这个名字纯属一拍脑袋想出来的，大概是因为杏仁豆腐是白色的（不过大部分豆腐都是白色的吧）。
+
+对不起！有人指出了杏仁豆腐不是豆腐！我向所有的杏仁和豆腐道歉！
+
+具体还是问phage吧。
+
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-almond-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-almond-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-almond-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 琼安.aic
+[[div_ id=&#34;aic-joanna&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-joanna&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/joanna.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Joanna.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+琼安.aic，应该是负责某些宗教学事务的aic。
+
+phage说需要这样一个角色，我就去把我以前画的塔罗牌翻出来了。这个角色就是根据当年画的教皇牌改的。
+
+具体还是问phage吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-joanna-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-joanna-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-joanna-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ Sasha.aic
+[[div_ id=&#34;aic-sasha&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-sasha&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+近似影像请查看[[[breaddddd-art-1|此页面人设No.51]]]
+及[[[silverart|此页面“请唤醒我”]]]。
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Sasha.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+银冰文中的坏女人，有人在文里给自己写了个cp，是谁我不说。在[[[page-and-view-infas|infas的访谈]]]中，infas和银冰本人石锤了这对大三角。
+
+出现在[[[reload-md|RELOAD.md]]]以及[[[oasis|行动记录：绿洲]]]。
+
+具体还是问银冰吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sasha-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sasha-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sasha-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 克莱尔.aic
+[[div_ id=&#34;aic-claire&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-claire&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/claire.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Claire.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+一个我梦到的aic，是个小秘书。在梦里大概穿了类似的小裙子，背后有个光环，光环上漂浮着四个石膏人头浮雕。但是我画不来人头石膏浮雕，所以给改成抽象派人头了。梦里我为了研究一个似乎可以百分百命中某个部位的玩具枪，试图向自己的小腿开一枪，被小秘书aic阻止了，可喜可贺。
+
+phage说需要一个秘书型aic，我正好想起我梦到过这个角色，连名字都梦到了，这也太方便了。
+
+具体还是问phage吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-claire-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-claire-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-claire-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ Cradle Novos.aic
+[[div_ id=&#34;aic-cradlenovos&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-cradlenovos&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+近似影像请查看[[[breaddddd-art-1|此页面人设No.87]]]
+及[[[breaddddd-art-3|此页面“魔法少女Electronova”]]]。
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Cradle Novos.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+一个很厉害的平行世界来的aic。也被称为歌羽暮叶。最近的出场是[[[acarc-hub|云销雨霁]]]。
+@@@@
+形象也是根据人设和魔法少女整合改的。总体来说大概稍微变复杂了一点点。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-cradlenovos-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-cradlenovos-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-cradlenovos-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ Gabbro.aic
+[[div_ id=&#34;aic-gabbro&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-gabbro&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+该aic的原型人物形象，请查看[[[breaddddd-art-1|此页面人设No.79]]]
+及[[[breaddddd-art-3|此页面“魔法少女Lumin”]]]。
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Gabbro.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+在轻百合企划（确信）[[[acarc-hub|云销雨霁]]]中是闪长岩小姐的贴身（贴脑？）aic，整体形象和闪长岩差不多，不过采用了2p色。根据TE的描述，是个软妹子。
+@@@@
+形象上就是把闪长岩（性转版本）的帽子移了个边，然后安上了我不知道什么时候画的麦宗魔法少女的制式服装。（我不会告诉你们这个服装还有infa子和sekai子的版本的。）
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-gabbro-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-gabbro-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-gabbro-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ MAL.aic
+[[div_ id=&#34;aic-mal&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-mal&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/mal.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+MAL.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+cl要的概率学aic，负责预测最坏情况。原梗是跑团群常用的骰子，在最近的某个团里出现了无数的大失败……
+@@@@
+设计思路大概是一只高科技小豆泥，不过并没有小豆泥那么大的眼睛，毛色也和小豆泥不太一样。采用了奇妙的拉线式猫耳。
+@@@@
+具体还是问cl吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-mal-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-mal-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-mal-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 诺维乔克.aic
+[[div_ id=&#34;aic-novichok&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-novichok&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+近似影像请查看[[[breaddddd-art-1|此页面人设No.82]]]。
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Novichok.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+虽然我很想说“这真的不是秀恩爱的产物吗”，但我忍住了（并没有）。连当时画人设的时候都是和62一期画的。
+@@@@
+总的来说，是在[[[SCP-CN-116-EX]]]中出现的aic。
+@@@@
+具体还是问62吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-novichok-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-novichok-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-novichok-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 索菲亚.aic
+[[div_ id=&#34;aic-sofia&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-sofia&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/sofia.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Sofia.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+st要的管空间站的aic。st最近沉迷白毛，点了一个白、红、棕配色的，穿着比较1920s的白毛盘发蓝瞳aic。虽然最后还是搞成了不是很1920s的东西……有一个非常复杂的盘发。
+@@@@
+出场了，但是是phage写的，赞美phage，质疑st！出场在[[[secure-facility-dossier-site-cn-169|安保设施档案：Site-CN-169]]]。
+@@@@
+具体还是去问st吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sofia-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sofia-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sofia-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ Fiona.aic
+[[div_ id=&#34;aic-fiona&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-fiona&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/fiona.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Fiona.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+大家很熟悉的，在discord用的查分机器人。为了感谢凿海帮忙做的div，于是整了一个……！总之凿海的要求是主色调粉色，偏单马尾，休闲服。于是搓了一个粉粉的角色，生气的时候会用看屑的眼神看人。
+@@@@
+在凿海的设定中，似乎是麦宗世界观下，一些人把意识上传之后，一些aic反过来整了点肉体玩的剧情。
+@@@@
+具体还是去问凿海吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-fiona-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-fiona-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-fiona-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ Comix.aic
+[[div_ id=&#34;aic-comix&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-comix&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+近似影像请查看[[[breaddddd-art-1|此页面人设No.175]]]。
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Comix.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+本身是一个设定很正常的服务器的aic，但是由于出现了[[[scplive-foundation-idol-project|scp live]]]这个东西，因此最终变得偶像化了。这一套是常服，还有别的live服装。
+@@@@
+生气（？）的时候会露出挺好颜。不也挺好吗.jpg
+@@@@
+具体还是去问cox吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-comix-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-comix-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-comix-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 麦基.aic
+[[div_ id=&#34;aic-mckee&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-mckee&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/McKee.JPG]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+McKee.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+Phage突然让我画一个aic，是研究ai做梦的，说要一个阴沉的小男孩。
+@@@@
+等等，什么，要我画小男孩？
+@@@@
+硬着头皮画了，感觉效果还行。加上了阴暗的海带头（但是为了没那么阴暗至少还是扎起来了），阴暗的蚊香眼，以及看起来很有阴谋的单片镜。期待今后的出场。phage，你快写啊！
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-mckee-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-mckee-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-mckee-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ Lanota.aic
+[[div_ id=&#34;aic-lanota&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-lanota&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/lanota.JPG]]
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Lanota.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+TE点的aic，理论上是曝光世界观下的，据说将来会在某个banner出场。看这名字就知道和音游相关。以下为TE原话：
+
+&gt; **忍不了了，爆了！**由Site-CN-133模因部和AIAD分部共同搭建的Lanota.aic终于不想天天模因来模因去了，它借助长期空余的大量算力，自行设计了live2D形象后，以虚拟主播“拉诺塔”的身份出道。--借助后门手段--在各个网络平台发布视频，包括歌回、杂谈、游戏回等等。由于和平民研究相比基金会技术太过先进，“拉诺塔”的业务能力爆杀一众虚拟主播（不管有没有中之人）。歌回招牌曲是//Brain Power//，而游戏回主要播音游，用计算机视觉而不是修改游戏数据玩，主打一个不作弊。啥音游都玩过了，但和她重名的Lanota除外。
+&gt; 
+&gt; 最近据说要以平民虚拟主播的身份和基金会联动进行带货，不知道效果会如何。
+
+要求是有点侦探感觉的I人，不过可以营业。加入了奈叶的标志性白色发带，不过因为有帽子所以被压下来了，发型反而更像小圆，不知是否是一种魔法少女回归性原理……
+
+旁边飘着的东西是高科技版侦探放大镜（赛博侦探也需要放大镜吗……）。看起来有点像简化的SCP标志，但其实灵感是Lanota（音游）的标志……
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-lanota-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-lanota-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-lanota-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 特米瑞帕.aic
+[[div_ id=&#34;aic-termerapa&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-termerapa&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+近似影像请查看[[[silverart|银冰的艺作页]]]……等等，他怎么没更新？？？
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Termerapa.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+在[[[SCP-CN-1276]]]出场，在[[[record-wav|RECORD.wav]]]中被提及的aic，这个很拗口的名字来自于Parameter的音节反拼。银冰说这是属于新一代aic，性能更加强大、个性更加听话，被训练成了那种很好用的忠诚的棋子的aic。银冰的原话是这么说的：
+
+&gt; Termerapa自己的性格是跳脱活泼的感觉，然后搭了一堆乱七八糟的库，可以理解成steam r18创意工坊之类的东西。
+
+是不是混入了什么不太好的东西，基金会，你好恶毒！总之具体还是问银冰吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-termerapa-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-termerapa-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-termerapa-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 波里维.aic
+[[div_ id=&#34;aic-bleriava&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-bleriava&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[div_ class=&#34;aic-art-full-body-text&#34;]]
+近似影像请查看[[[silverart|银冰的艺作页]]]……等等，他怎么也没更新？？？
+[[/div]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Bleriava.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+可喜可贺的本页面第二位男性aic，从其拗口的名字可以看出和上面的特米瑞帕多少有点联系。也是银冰的角色，在[[[record-wav|RECORD.wav]]]出场，特米瑞帕的前辈，Sasha叛逃前的同事（不知道Sasha是谁的请把这个页面往上翻）。据称是一个苦逼社畜，在有aic叛逃之后更苦逼了。穿着也是很社畜的西装。名字是Variable的音节反拼。
+
+不是，你们麦宗关系有点复杂啊？Infas银冰Sasha是个三角，Sasha和这位又有关系，这位和特米瑞帕又是前后辈，数据层情感大戏了属于是。
+
+总之具体还是去问银冰吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-bleriava-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-bleriava-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-bleriava-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 坦塔罗斯.aic
+[[div_ id=&#34;aic-tantalus&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-tantalus&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/tantalus.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Tantalus.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+大R他们好像在搞什么很大的活，我一听说有aic就来了。要求是白毛蓝瞳小男孩，服装随便，还给发了个星象仪的图。白毛蓝瞳让我一下想到了漫画版幼年送葬人，所以给他整了个光环！
+
+由于相关文章还没公布，这里只能说点谜语了。放点大R自己说的吧，剧透了也是他的问题：
+
+&gt; 某台机器的核心aic，似乎是为了某种不可告人的目的而被开发的。其他情报都是谜团。和[[[SCP-4260]]]里的同名aic，似乎有某些奇怪的关联……？
+
+虽然这里应该说“具体还是去问大R吧”，但我觉得他可能会越问越说、越说越漏，所以比起去问还不如赶紧催更吧，等发出来了我这就能同步更新了。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-tantalus-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-tantalus-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-tantalus-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 朝露.aic
+[[div_ id=&#34;aic-md&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-md&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/morning-dew.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Morning Dew.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+给晓楠画的风露客服aic。作为客服aic，脾气好是很必要的，所以即使生气的时候也只是会露出“您是否有问题.jpg”的表情。头上垂下来的那根线，是一根……呃，装饰用的耳麦电线，毕竟aic用耳麦也不需要真的插电吧……
+@@@@
+晓楠说这个aic可以用在风露的goi格式里，作为Q&amp;A一类的部分。希望大家能多帮客服小姐姐刷刷业绩。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-md-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-md-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-md-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 图腾.aic
+[[div_ id=&#34;aic-totem&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-totem&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/totem.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Totem.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+上面出场的晨曦的老哥，和晨曦的职能有点类似，是负责古代文化方面的。曾经没有形象，现在有了，所以整体设定正在经历大改。同样出场于[[[jue-bie-bu-xu-li-ge|恒星风中如惊鸿掠过，诀别不须骊歌]]]。
+@@@@
+他知道自家妹妹在外面当魔法少女吗……
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-totem-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-totem-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-totem-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 玄曦.aic
+[[div_ id=&#34;aic-xuanxi&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-xuanxi&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/xuanxi.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Xuanxi.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+西蒙要的aic其一，是个权限很高的家伙。人物形象的要求是hd娘化，这不巧了吗，胶带画那边的hd娘正在绘制中啊！于是就同步推进了，结果这边先画完了。玄曦，那可不就是Darklight嘛！
+@@@@
+光环和服装都是aic特供版，参考自hd人事里阳阳的那张画。研究员戴着光环上班也太引人注目了。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-xuanxi-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-xuanxi-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-xuanxi-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 卡里斯蒂.aic
+[[div_ id=&#34;aic-kallisti&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-kallisti&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/kallisti.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Kallisti.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+这是一个最初作为长夜孤舟衍生角色被创作出来的角色，是个马娘，毕竟……木马病毒也是马，是吧（确信）！
+@@@@
+也许会在今后的某篇文里登场，显然不是什么好人（大概不是吧），是个病毒。有着银冰同款的数据线尾巴，不过没银冰的高级，只有typeC一种接口。
+@@@@
+她还有一个精二立绘和整套技能组，但是在一个比较难找的地方……如果感兴趣且网络环境比较好的话，可以打开[[[http://scpsandboxcn.wikidot.com/collab:breaddddd5|这个沙盒链接]]]，点开“第七期”的折叠，找到第五个角色看看，那就是了。这个沙盒还在以非常缓慢的速度更新。她甚至还有一套dnd设定，在那个设定下她甚至是一个缸中之脑马娘，如果你还是感兴趣的话（这个不需要网络环境比较好因为图很少），可以打开[[[http://scpsandboxcn.wikidot.com/collab:dnd-pretty-derby|这个沙盒链接]]]，找到第九个tab。这个沙盒里仅存的设定是cl和dbj写的，现在已经坑了，所以请不要期待进一步更新。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-kallisti-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-kallisti-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-kallisti-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 娜塔莎.aic
+[[div_ id=&#34;aic-natasha&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-natasha&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/natasha.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Natasha.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+西蒙要的aic其二，似乎是某个基洛夫飞艇（其实是高科技战舰的样子）的主控aic，所以手里也拿了个小型版的，大概是投影吧。经典二次元毛妹都是白毛形象，服装配色和样式有参考俄航的空乘服。表情给整了一套面瘫的，会使用像素级的微笑以及像素级的生气。目前的主要出场在[[[jhor-and-ash|雾失楼台，月迷津渡]]]……好像比我想象中的健谈很多？和朝露一样也是个营业人啊！
+@@@@
+等等，我懂了，这是舰娘吧！空中战舰也是舰啊！
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-natasha-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-natasha-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-natasha-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 阿德里安.aic
+[[div_ id=&#34;aic-adria&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-adria&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/adria.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Adrià.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+有了舰娘那也有舰男人啊！（确信）总之这大概是某个GOC空中战舰的ai，具体是啥设定就等phage写出来再说吧，因为我也不知道是啥设定啊！设计上整体配色比较灰，衣服是参考了航母甲板的感觉。性格大概是天然黑。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-adria-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-adria-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-adria-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 斯维特拉娜.aic
+[[div_ id=&#34;aic-svetlana&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-svetlana&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/svetlana.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Svetlana.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+隶属于伦理道德委员会的一个古老的aic，生活在非常原始的电脑里（那年头怎么造出aic的？）处于断网状态，可能甚至还不知道苏联解体了。很明显是是个毛妹，枪械只是为了好看所以画了个超长款，请不要深究，面包人完全不懂枪，抓了手边的少前设定集就随便模仿了几个很长的枪的外轮廓。
+@@@@
+所以毛妹全是白毛是吗？
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-svetlana-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-svetlana-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-svetlana-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ Icey.aic
+[[div_ id=&#34;aic-icey&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-icey&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/icey.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Icey.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+据cox所说，是Comix.aic的小姐妹，管理23站在月球上的另一半服务器。拥有和comix一样的刘海和单马尾。cox说她是个社恐，所以安排了波奇酱同款的头发长度以及颜艺表情。当然也没有很颜艺，毕竟这是静态的，无法完全还原社恐内心的挣扎。
+@@@@
+但因为是社恐，所以多半当不了偶像了吧，可惜可惜。总不能套个纸箱子上台吧。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-icey-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-icey-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-icey-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 枫.aic
+[[div_ id=&#34;aic-kaede&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-kaede&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/kaede.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Kaede.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+事先声明，这个角色已经是2017年的创作了，那时候我还不知道基金会，她叫枫和素素也没有任何关系……
+@@@@
+phage说可以来点goc角色，我就翻箱倒柜把以前的一个角色翻出来了。她的最初设定其实也是一个舰娘……不对，按照作品neta（苍蓝钢铁的琶音）应该叫心智模型。但不是海军的，是陆军的。由于面包贫瘠的军事知识，当时的脑子里就只有“啊她大概会用枪用大炮和人打弹幕战吧！”的程度就结束了，希望phage能让她更具专业性地在基金会世界里发光发热。
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-kaede-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-kaede-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-kaede-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]
+@@@@
+++ 堇.aic
+[[div_ id=&#34;aic-sumire&#34; class=&#34;aic-art-folder-container aic-art-toggle&#34;]]
+[[div_ class=&#34;aic-art-nav&#34;]]
+[[a href=&#34;#u-aic-sumire&#34; class=&#34;aic-art-nav-left fa fa-chevron-left&#34;]]@@​@@[[/a]][[a href=&#34;###&#34; class=&#34;aic-art-nav-right fa fa-chevron-right&#34;]]@@​@@[[/a]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-panel-overflow-container&#34;]]
+[[div_ class=&#34;aic-art-folder-panel-inner-container&#34;]]
+[[div_ class=&#34;aic-art-folder-left&#34;]]
+[[div_ class=&#34;aic-art-full-body&#34;]]
+[[image http://scpsandboxcn.wdfiles.com/local--files/breaddddd2/sumire.JPG]]
+[[/div]]
+[[/div]]
+[[div_ class=&#34;aic-art-folder-right&#34;]]
+[[div_ class=&#34;aic-art-desc-title&#34;]]
+Sumire.aic
+[[/div]]
+[[div_ class=&#34;aic-art-desc&#34;]]
+看人物和名字大概也知道，和上面的枫.aic是姐妹，或者说同批次生产的aic。看起来是比较稳重的类型，觉得自己已经推理出来什么的时候眼镜会反光（确信）。
+@@@@
+她的初版人设显然也不是基金会的，是拿来化用的。由于初版人设的服装设计实在太过敷衍，就重新给了一套制服。
+@@@@
+话说几个goc角色怎么全是蓝发啊，因为goc的logo是蓝色的吗？
+[[/div]]
+[[/div]]
+[[/div]]
+[[/div]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sumire-normal.PNG class=&#34;aic-art-avatar aic-art-avatar-1&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sumire-nonsense.PNG class=&#34;aic-art-avatar aic-art-avatar-2&#34;]][[image https://scpsandboxcn.wdfiles.com/local--files/breaddddd2/aic-sumire-angry.PNG class=&#34;aic-art-avatar aic-art-avatar-3&#34;]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2024-02-07 18:30:30.229159.</em>
+  
+</div>
+</body>

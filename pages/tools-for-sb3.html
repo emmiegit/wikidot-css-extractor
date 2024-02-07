@@ -10,9 +10,9 @@
 
   <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
 <script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
-<script src="https://ammongit.github.io/wikidot-css-extractor/static/script.js" async></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
-<link rel="stylesheet" href="https://ammongit.github.io/wikidot-css-extractor/static/style.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
   <title>サンドボックスⅢをもっと便利にするお役立ち機能</title>
 </head>
@@ -202,6 +202,17 @@
   
 </li>
       
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sandbox-modifying-for-darktheme" target="_blank"><code>component:sandbox-modifying-for-darktheme</code></a>
+  
+
+  
+</li>
+      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
@@ -323,6 +334,14 @@
           <pre><code>alert-cont</code></pre>
         </li>
       
+        <li>
+          <pre><code>indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>indent</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
@@ -417,6 +436,8 @@ __タイプ**b**（ステータス順）__
 次に、perPage引数に半角で自然数を入力してください。これはリストにおけるそれぞれの項目で同時にいくつのページのリンクが表示されるかを指定する数字です。特に拘りがないならば、10とするのがおすすめです。入力しないと20になり、最大で250までを許容します。
 
 最後に、order引数にリストの並び順を指定する単語を入力してください。恐らくだいたいの方は「updated_at desc」（更新順）を使うでしょう。「title」（ページタイトル順）を選ぶ人もいるかもしれません。入力しないと「created_at desc」（作成順）になります。他の並び順を指定する単語は[*https://www.wikidot.com/doc-modules:listpages-module#toc3 こちら]を参照してください。
+
+**注意:** 現在、Wikidotの機能障害に起因する仕様変更により、ステータス未定義の記事を未定義のまま批評終了にすることができてしまいます。それをすると、カスタムポータルでは表示されないのでご注意ください。時間がある時に対応しようと思います。
 [[/collapsible]]
 [[/div]]
 
@@ -738,7 +759,7 @@ Wikidotサイトではよくあることですが、当人たちにとっては�
 ----
 + 無限Saving突破CSS
 [[&gt;]]
-Presented by [[*user RTa_technology]]
+Presented by [[*user R74]]
 [[/&gt;]]
 
 上記の7happy7さんの紹介している「編集エリア救助隊」、とても素晴らしいものです。
@@ -787,6 +808,79 @@ Presented by [[*user RTa_technology]]
 [[/div]]
 
 
++ ダークテーマ用カスタムUI
+[[&gt;]]
+Presented by [[*user iti119]]
+[[/&gt;]]
+
+ダークテーマ、好きですよね。
+
+サンドボックスでダークテーマを使ったことがあるなら、少なからず思ったことがあるでしょう。
+[[include :scp-jp:component:image-block
+|name= http://scp-jp-storage.wikidot.com/local--files/file:5722815-20-6nxb/black_collapsible.jpg
+|caption= 文字がつぶれている……。
+|width= 330px
+|align= center
+]]
+[[=]]
+[[size 85%]]##ccc|それに左下のちっちゃい点は何？##[[/size]]
+[[/=]]
+
+その他、個人的に気になったところ、他の人が気になりそうだと思ったところ (i.e. 結局のところ私が個人的に気になったところ) をまとめて改善する構文を作ってみました。具体的には、
+* [[[tools-for-sb3#toc2|カスタムINFOモジュール]]]に含まれるリンクの白色化
+* ページコンソール・批評コメントのアイコンの白色化
+* 批評タグ/カテゴリ/ジャンルのボタンデザインの調整
+* プレビューメッセージ (編集中のプレビューで右上に現れるボックス) の可読性向上
+* ページバージョン情報 (旧リビジョン閲覧中に右上に現れるボックス) の可読性向上
+* 批評コメントの折りたたみリンクの白色化
+* 批評コメントのコメントヘッダーの暗色化
+* レイアウト調整用の[[size 85%]]##ccc|非常に目立たない数ピクセルの点として現れる##[[/size]]極小の画像の不可視化
+です。
+
+[[collapsible show=&#34;+ 詳細&#34; hide=&#34;- 詳細&#34;]]
+[[include :scp-jp:component:image-block
+|name= http://scp-jp-storage.wikidot.com/local--files/file:5722815-17-0mv8/console_before_after.jpg
+|caption= ページコンソール周辺
+|width= 100%
+|align= center
+]]
+= @@ @@
+[[include :scp-jp:component:image-block
+|name= http://scp-jp-storage.wikidot.com/local--files/file:5722815-18-smmq/comment_before_after.jpg
+|caption= 批評コメント
+|width= 100%
+|align= center
+]]
+= @@ @@
+[[include :scp-jp:component:image-block
+|name= http://scp-jp-storage.wikidot.com/local--files/file:5722815-19-4l48/message_before_after.jpg
+|caption= プレビューメッセージ
+(ページバージョン情報も同様)
+|width= 100%
+|align= center
+]]
+[[/collapsible]]
+
+[[div class=&#34;indent&#34;]]
+++ 適用方法
+下書きページの一番下[[footnote]]文字通り一番下、カスタムINFOモジュールより更に下が望ましいです。(ukwhatn博士、お許しください！)[[/footnote]]に、以下のコードをコピペしてください。
+
+&gt; [[include component:sandbox-modifying-for-darktheme]]
+
+[[/div]]
+
+[[div class=&#34;indent&#34;]]
+
+++ 追加機能
+[[collapsible show=&#34;+ 開く&#34; hide=&#34;- 閉じる&#34;]]
+以下の引数を指定することで、色を任意で指定できます。
+||~ 引数 ||~ 説明 ||~ 補足 ||
+||= **font-color** || 各リンク・アイコンの文字色 || ページの文字色に合わせた白色を推奨します。デフォルトは**#fff**です。 ||
+||= **pvw-bg** || プレビューメッセージの背景色 || 白色の文字を乗せることを前提とした暗色を推奨します。デフォルトは##423|**#423**##です。 ||
+||= **rev-bg** || ページバージョン情報の背景色 || 同上。デフォルトは##135|**#135**##です。 ||
+||= **cmt-bg** || コメントヘッダーの背景色 || 同上。デフォルトは##444|**#444**##から##3f3e3e|**#3f3e3e**##のグラデーションです。 ||
+[[/collapsible]]
+[[/div]]
 
 [[module CSS]]
 .indent {
@@ -830,7 +924,7 @@ Presented by [[*user RTa_technology]]
 
 <div id="footer">
   
-    <em>Last updated 2022-05-18 16:02:16.675352.</em>
+    <em>Last updated 2024-02-07 18:30:41.532723.</em>
   
 </div>
 </body>

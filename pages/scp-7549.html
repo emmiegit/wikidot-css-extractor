@@ -29,28 +29,45 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>
-@import url(&#39;https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap&#39;);
-div.authorlink-wrapper{margin-top: var(--author-top-adjust, .2em) !important;}
-:root {
---header-logo: url(&#39;https://scp-wiki.wdfiles.com/local--files/scp-6768/dept.png&#39;);
---title:&#34;R.S. MNEMOSYNE&#34;;
---subtitle:&#34;DEPARTMENT OF DELETIONS&#34;;
---sidesubtitle: &#34;DELETIONS&#34;;
---sidelogo: url(&#39;https://scp-wiki.wdfiles.com/local--files/scp-6768/dept.png&#39;);
---header-font: &#39;Poppins&#39;;
---body-font: &#39;Zen Kaku Gothic Antique&#39;, sans-serif;
---ACS-font: var(--body-font);
---five-color: 116,71,88 !important;
---basalt-undertone: 60,9,33 !important;
---swatch-menubg-black-color: 10,10,10 !important;
---general-border-color: 1,1,1 !important;
---swatch-menutxt-dark-color: 1,1,1 !important;
---UI-font: &#39;Poppins&#39;;
---basalt-main-text-color: 253, 241, 242 !important;
+          <pre><code>:root {
+    --ct_bg_header-image: url(&#39;http://fondationscp.wdfiles.com/local--files/scp-6183/header.png&#39;);
+    --ct_bg_header-logo: url(&#39;https://fondationscp.wdfiles.com/local--files/scp-7549/dept.png&#39;);
+
+    --ct_col_header-txt: white;
+
+    --ct_cnt_alt-header-txt: &#39;S. R. Mnémosyne&#39;;
+    --ct_cnt_alt-slogan-txt: &#39;Département des Suppressions&#39;;
+    --ct_col_header-txt: white;
+    --ct_fnt_header-txt: inter, sans-serif;
+    --ct_fnt_slogan-txt: inter, sans-serif;
+
+--fadeout-background: black;
+--fadeout-time: 3s;
+
+}
+
+body {
+    background-color: var(--accentColor);
+    background-image: url(&#34;https://fondationscp.wdfiles.com/local--files/scp-7549/cab.png&#34;);
+    background-attachment: fixed;
+    background-size: contain;
+    background-blend-mode: overlay;
+}
+
+body:before {
+  content: &#39; &#39;;
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, transparent, #0c0c0c 75%, #0c0c0c 75%, #0c0c0c 100%);
+}
+
+hr {
+background: transparent;
+border-top: double 3px #b10009;
 }
 #page-content .widetable .wiki-content-table {
     width: 100% !important;
@@ -59,28 +76,50 @@ div.authorlink-wrapper{margin-top: var(--author-top-adjust, .2em) !important;}
 .hcontainer {
 
 }
-
 :is(span.specialtext, span.st) {
 text-decoration: underline 2px;
     text-underline-offset: 3px;
 }
-body {
-    background-image:url(&#34;https://scp-wiki.wdfiles.com/local--files/scp-7549/cab.png&#34;);
-    background-attachment: fixed;
-    background-size: cover;
-    background-blend-mode: color-dodge;
-    background-repeat:no-repeat;
-
+@keyframes strike{
+0%   { width : 0; }
+20% { width: 50%; }
+40% { width: 75%; }
+60% { width: 100%; }
+80% { width: 50%; }
+100% { width: 0; }
 }
-
-
+.strike, .unstrike {
+  position: relative;
+}
+.strike::after, .unstrike::after {
+  content: &#39; &#39;;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(253, 241, 242);
+  animation-name: strike;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+@keyframes unstrike{
+0%  { width: 0; }
+20% { width: 25%; }
+40% { width: 75%; }
+60% { width: 50; }
+80% { width: 100%; }
+100% { width: 0; }
+}
 .acs-extra-1 {
 
 font-family: var(--ACS-font), var(--body-font) !important;
 }
 #page-content a.collapsible-block-link {
 
-color: rgb(236, 200, 158);
+color: rgb(253, 241, 242);
 
 }
 #page-content div.modal {
@@ -89,10 +128,69 @@ color: rgb(236, 200, 158);
 .anom-bar &gt; div.bottom-box::before {
 display: none !important;
 }
+
+.modal {
+    padding: 15px 15px 15px 15px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: auto;
+    margin: auto;
+    background: #0d0d0f;
+    border: solid 2px #010101;
+}
+
+.notation hr, .jotting hr, .darkdocument hr, .modal hr, .smallmodal hr, div.blockquote hr, .blockquote hr, blockquote hr {
+border-top: solid 2px grey;
+}
+
+.jotting {
+    padding: 5px 10px 5px 10px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: 75%;
+    margin: auto;
+    background: #1a1a1c;
+    border: dashed 0.1rem #010101;
+}
+
+.overwatch_memo {
+    background: url(https://scpdsandbox.wdfiles.com/local--files/blightbox/deletion) #e3e3e3;
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    font-family: &#39;Work Sans&#39;, sans-serif;
+    box-shadow: 0px 0px 5px #fdf1f2;
+    width: 90%;
+    min-height: 4rem;
+    max-height: 100rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 10px 30px 20px 20px;
+    word-break: break-word;
+}
+ 
+.overwatch_memo&gt;p:nth-child(1)::before {
+    content: &#34;CE DOCUMENT A ÉTÉ MARQUÉ POUR SUPPRESSION&#34;;
+    font-family: &#39;Work Sans&#39;, sans-serif;
+    font-weight: 900;
+    font-size: 130%;
+    color: 253, 241, 242;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.55rem;
+    border-bottom: dotted 0.13rem darkslategrey;
+    color: #fdf1f2;
+    max-width: 49rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+}
 div.overwatch_memo {
 
 --memo-heading: &#34;THIS DOCUMENT HAS BEEN MARKED FOR DELETIONS&#34;;
---memo-logo: url(https://scp-wiki.wdfiles.com/local--files/scp-6768/deletion.png);
+--memo-logo: url(https://scpdsandbox.wdfiles.com/local--files/blightbox/deletion);
 --memo-color: 253, 241, 242;
 }
 
@@ -101,7 +199,7 @@ filter: brightness(65%);
 }
 div[class$=&#34;_memo&#34;] {
 
-background-color:rgba(49,49,49,0.6);
+background-color:rgba(69,69,69,0.6);
 }
 .series-nav {
     display: flex;
@@ -146,20 +244,134 @@ border-bottom: none !important;
 }
 
 
+/* Below resolves multiple sentences breaking to a new line and looking visually unappealing in interviews. It was adjusted by only 2 rem, the minimum to avoid this problem. */
 #page-content div:is(.jotting, .transcript) {
 
 max-width: 44rem;
-} 
-.acs_modal {
-width: 100%;
 }
-.featurewrapper {
-position: relative;
+
+.text-part .risk-class::before, .text-part .risk-class::after, .bottom-box &gt; div.diamond-part::before, .text-part .disrupt-class::after, .text-part .disrupt-class::before,.danger-diamond &gt; .arrows {
+
+
 }
-.featurewrapper &gt; * {
-margin: 0 auto !important;
-left: 5px;
-}</code></pre>
+
+
+#page-content .wiki-content-table tr th {
+    font-family: &#39;Work Sans&#39;, sans-serif;
+    font-weight: 700;
+    border: solid 1px #000;
+    background-color: #aaa;
+}
+
+#page-content .wiki-content-table tr th {
+    font-family: &#39;Work Sans&#39;, sans-serif;
+    font-weight: 700;
+    border: solid 1px #000;
+    background-color: #aaa;
+}
+
+#page-content .table1 tr th {
+    background-color: #3c3c3c;
+}
+ 
+#page-content .table1 .st {
+    color: #3c3c3c;
+}
+
+.tableb .wiki-content-table {
+    border-collapse: separate;
+    border-spacing: 5px;
+    padding-left: -100px;
+}
+
+.table1 .scp-image-block .scp-image-caption {
+    background-color: #373738;
+    color: black;
+    border-color: #010101;
+}
+
+.modal {
+    padding: 15px 15px 15px 15px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: auto;
+    margin: auto;
+    background: #0d0d0f;
+    border: solid 2px #010101;
+}
+
+.document {
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 26px auto 0;
+    max-width: 550px;
+    min-height: 300px;
+    padding: 24px;
+    padding-top: 50px;
+    position: relative;
+    width: 80%;
+}
+ 
+.document:before,
+.document:after {
+    content: &#34;&#34;;
+    height: 98%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+ 
+.document:before {
+    background: #fafafa;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+ 
+.document:after {
+    background: #f6f6f6;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+ 
+.darkdocument {
+    background: rgb(30, 30, 30);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 26px auto 0;
+    max-width: 550px;
+    min-height: 300px;
+    padding: 24px;
+    padding-top: 50px;
+    position: relative;
+    width: 80%;
+    color: #EDEDED;
+}
+ 
+.darkdocument:before,
+.darkdocument:after {
+    content: &#34;&#34;;
+    height: 98%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+ 
+.darkdocument:before {
+    background: rgb(25, 25, 25);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+ 
+.darkdocument:after {
+    background: rgb(25, 25, 25);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);</code></pre>
         </li>
       
     </ul>
@@ -168,11 +380,19 @@ left: 5px;
     <ul class="inline-styles">
       
         <li>
-          <pre><code>margin: auto; text-align: center;</code></pre>
+          <pre><code>background-color:rgba:(34, 35, 36,0.7); background-color:#0d0d0f;padding: 15px 15px 15px 15px;box-shadow: 0px 0px 8px 4px rgb(0 0 0 / 70%);width: auto;margin: auto;border: solid 2px #010101;</code></pre>
         </li>
       
         <li>
-          <pre><code>opacity: 85%; margin: 0 auto;</code></pre>
+          <pre><code>text-align: right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align: right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>transform: rotate(180deg); opacity: 70%; margin: 0 auto;</code></pre>
         </li>
       
         <li>
@@ -181,10 +401,6 @@ left: 5px;
       
         <li>
           <pre><code>clear:both</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0.5rem; font-size: 0.9em;</code></pre>
         </li>
       
         <li>
@@ -201,13 +417,13 @@ left: 5px;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>:scp-wiki:component:fade-in</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
   </span>
 
   
@@ -218,14 +434,8 @@ left: 5px;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:ouroborous-theme" target="_blank"><code>theme:ouroborous-theme</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -235,14 +445,8 @@ left: 5px;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+    <a href="https://fondationscp.wikidot.com/theme:ouroborous-theme" target="_blank"><code>:fondationscp:theme:ouroborous-theme</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -252,14 +456,8 @@ left: 5px;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:image-features-source" target="_blank"><code>:scp-wiki:component:image-features-source</code></a>
+    <a href="https://scp-int.wikidot.com/credit:start" target="_blank"><code>:scp-int:credit:start</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:image-features-source.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -269,14 +467,8 @@ left: 5px;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:image-features-source" target="_blank"><code>:scp-wiki:component:image-features-source</code></a>
+    <a href="https://scp-int.wikidot.com/credit:end" target="_blank"><code>:scp-int:credit:end</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:image-features-source.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -388,13 +580,13 @@ left: 5px;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:image-features-source" target="_blank"><code>:scp-wiki:component:image-features-source</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:image-features-source.html" target="_blank">info</a>]
   </span>
 
   
@@ -405,13 +597,13 @@ left: 5px;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:image-features-source" target="_blank"><code>:scp-wiki:component:image-features-source</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:image-features-source.html" target="_blank">info</a>]
   </span>
 
   
@@ -423,11 +615,7 @@ left: 5px;
     <ul class="css-classes">
       
         <li>
-          <pre><code>acs_modal</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>anom-bar-esoteric</code></pre>
+          <pre><code>poppin</code></pre>
         </li>
       
         <li>
@@ -443,26 +631,6 @@ left: 5px;
         </li>
       
         <li>
-          <pre><code>st</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
           <pre><code>modal</code></pre>
         </li>
       
@@ -475,34 +643,6 @@ left: 5px;
         </li>
       
         <li>
-          <pre><code>st</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
           <pre><code>modal</code></pre>
         </li>
       
@@ -512,10 +652,6 @@ left: 5px;
       
         <li>
           <pre><code>b</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
         </li>
       
         <li>
@@ -527,11 +663,7 @@ left: 5px;
         </li>
       
         <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
+          <pre><code>jotting</code></pre>
         </li>
       
         <li>
@@ -539,15 +671,11 @@ left: 5px;
         </li>
       
         <li>
-          <pre><code>table</code></pre>
+          <pre><code>tableb</code></pre>
         </li>
       
         <li>
-          <pre><code>b</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
+          <pre><code>table1</code></pre>
         </li>
       
         <li>
@@ -576,6 +704,10 @@ left: 5px;
       
         <li>
           <pre><code>featurewrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>jotting</code></pre>
         </li>
       
         <li>
@@ -583,115 +715,11 @@ left: 5px;
         </li>
       
         <li>
-          <pre><code>table</code></pre>
+          <pre><code>tableb</code></pre>
         </li>
       
         <li>
-          <pre><code>b</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>bt</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>notation</code></pre>
+          <pre><code>table1</code></pre>
         </li>
       
         <li>
@@ -702,44 +730,52 @@ left: 5px;
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:preview
-|text=Remember me, or don&#39;t.]]
+|text=Souvenez-vous de moi, ou non.]]
 
-[[include :scp-wiki:theme:basalt darkmode=a|hidetitle=a|wide=a]]
-
-[[include :scp-wiki:component:interwiki-style
-| priority=1
-| theme=https://basalt-team.github.io/Basalt/normalize-min.css
-]]
-
-[[include :scp-wiki:component:interwiki-style
-| priority=2
-| theme=https://basalt-team.github.io/Basalt/basalt-bedrock-min.css
-]]
-
+[[include :scp-wiki:component:fade-in speed=1]]
+[[include theme:ouroborous-theme]]
+[[include :fondationscp:theme:ouroborous-theme]]
 
 [[module CSS]]
-
-@import url(&#39;https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+Antique:wght@300;400;500;700;900&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Poppins:wght@700&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Spline+Sans:wght@400;700&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&amp;display=swap&#39;);
-div.authorlink-wrapper{margin-top: var(--author-top-adjust, .2em) !important;}
 :root {
---header-logo: url(&#39;https://scp-wiki.wdfiles.com/local--files/scp-6768/dept.png&#39;);
---title:&#34;R.S. MNEMOSYNE&#34;;
---subtitle:&#34;DEPARTMENT OF DELETIONS&#34;;
---sidesubtitle: &#34;DELETIONS&#34;;
---sidelogo: url(&#39;https://scp-wiki.wdfiles.com/local--files/scp-6768/dept.png&#39;);
---header-font: &#39;Poppins&#39;;
---body-font: &#39;Zen Kaku Gothic Antique&#39;, sans-serif;
---ACS-font: var(--body-font);
---five-color: 116,71,88 !important;
---basalt-undertone: 60,9,33 !important;
---swatch-menubg-black-color: 10,10,10 !important;
---general-border-color: 1,1,1 !important;
---swatch-menutxt-dark-color: 1,1,1 !important;
---UI-font: &#39;Poppins&#39;;
---basalt-main-text-color: 253, 241, 242 !important;
+    --ct_bg_header-image: url(&#39;http://fondationscp.wdfiles.com/local--files/scp-6183/header.png&#39;);
+    --ct_bg_header-logo: url(&#39;https://fondationscp.wdfiles.com/local--files/scp-7549/dept.png&#39;);
+
+    --ct_col_header-txt: white;
+
+    --ct_cnt_alt-header-txt: &#39;S. R. Mnémosyne&#39;;
+    --ct_cnt_alt-slogan-txt: &#39;Département des Suppressions&#39;;
+    --ct_col_header-txt: white;
+    --ct_fnt_header-txt: inter, sans-serif;
+    --ct_fnt_slogan-txt: inter, sans-serif;
+
+--fadeout-background: black;
+--fadeout-time: 3s;
+
+}
+
+body {
+    background-color: var(--accentColor);
+    background-image: url(&#34;https://fondationscp.wdfiles.com/local--files/scp-7549/cab.png&#34;);
+    background-attachment: fixed;
+    background-size: contain;
+    background-blend-mode: overlay;
+}
+
+body:before {
+  content: &#39; &#39;;
+  position: fixed;
+  display: block;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, transparent, #0c0c0c 75%, #0c0c0c 75%, #0c0c0c 100%);
+}
+
+hr {
+background: transparent;
+border-top: double 3px #b10009;
 }
 #page-content .widetable .wiki-content-table {
     width: 100% !important;
@@ -748,28 +784,50 @@ div.authorlink-wrapper{margin-top: var(--author-top-adjust, .2em) !important;}
 .hcontainer {
 
 }
-
 :is(span.specialtext, span.st) {
 text-decoration: underline 2px;
     text-underline-offset: 3px;
 }
-body {
-    background-image:url(&#34;https://scp-wiki.wdfiles.com/local--files/scp-7549/cab.png&#34;);
-    background-attachment: fixed;
-    background-size: cover;
-    background-blend-mode: color-dodge;
-    background-repeat:no-repeat;
-
+@keyframes strike{
+0%   { width : 0; }
+20% { width: 50%; }
+40% { width: 75%; }
+60% { width: 100%; }
+80% { width: 50%; }
+100% { width: 0; }
 }
-
-
+.strike, .unstrike {
+  position: relative;
+}
+.strike::after, .unstrike::after {
+  content: &#39; &#39;;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgb(253, 241, 242);
+  animation-name: strike;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+@keyframes unstrike{
+0%  { width: 0; }
+20% { width: 25%; }
+40% { width: 75%; }
+60% { width: 50; }
+80% { width: 100%; }
+100% { width: 0; }
+}
 .acs-extra-1 {
 
 font-family: var(--ACS-font), var(--body-font) !important;
 }
 #page-content a.collapsible-block-link {
 
-color: rgb(236, 200, 158);
+color: rgb(253, 241, 242);
 
 }
 #page-content div.modal {
@@ -778,10 +836,69 @@ color: rgb(236, 200, 158);
 .anom-bar &gt; div.bottom-box::before {
 display: none !important;
 }
+
+.modal {
+    padding: 15px 15px 15px 15px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: auto;
+    margin: auto;
+    background: #0d0d0f;
+    border: solid 2px #010101;
+}
+
+.notation hr, .jotting hr, .darkdocument hr, .modal hr, .smallmodal hr, div.blockquote hr, .blockquote hr, blockquote hr {
+border-top: solid 2px grey;
+}
+
+.jotting {
+    padding: 5px 10px 5px 10px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: 75%;
+    margin: auto;
+    background: #1a1a1c;
+    border: dashed 0.1rem #010101;
+}
+
+.overwatch_memo {
+    background: url(https://scpdsandbox.wdfiles.com/local--files/blightbox/deletion) #e3e3e3;
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    font-family: &#39;Work Sans&#39;, sans-serif;
+    box-shadow: 0px 0px 5px #fdf1f2;
+    width: 90%;
+    min-height: 4rem;
+    max-height: 100rem;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding: 10px 30px 20px 20px;
+    word-break: break-word;
+}
+ 
+.overwatch_memo&gt;p:nth-child(1)::before {
+    content: &#34;CE DOCUMENT A ÉTÉ MARQUÉ POUR SUPPRESSION&#34;;
+    font-family: &#39;Work Sans&#39;, sans-serif;
+    font-weight: 900;
+    font-size: 130%;
+    color: 253, 241, 242;
+    text-align: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.55rem;
+    border-bottom: dotted 0.13rem darkslategrey;
+    color: #fdf1f2;
+    max-width: 49rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    align-items: center;
+}
 div.overwatch_memo {
 
 --memo-heading: &#34;THIS DOCUMENT HAS BEEN MARKED FOR DELETIONS&#34;;
---memo-logo: url(https://scp-wiki.wdfiles.com/local--files/scp-6768/deletion.png);
+--memo-logo: url(https://scpdsandbox.wdfiles.com/local--files/blightbox/deletion);
 --memo-color: 253, 241, 242;
 }
 
@@ -790,7 +907,7 @@ filter: brightness(65%);
 }
 div[class$=&#34;_memo&#34;] {
 
-background-color:rgba(49,49,49,0.6);
+background-color:rgba(69,69,69,0.6);
 }
 .series-nav {
     display: flex;
@@ -835,115 +952,204 @@ border-bottom: none !important;
 }
 
 
+/* Below resolves multiple sentences breaking to a new line and looking visually unappealing in interviews. It was adjusted by only 2 rem, the minimum to avoid this problem. */
 #page-content div:is(.jotting, .transcript) {
 
 max-width: 44rem;
-} 
-.acs_modal {
-width: 100%;
 }
-.featurewrapper {
-position: relative;
+
+.text-part .risk-class::before, .text-part .risk-class::after, .bottom-box &gt; div.diamond-part::before, .text-part .disrupt-class::after, .text-part .disrupt-class::before,.danger-diamond &gt; .arrows {
+
+
 }
-.featurewrapper &gt; * {
-margin: 0 auto !important;
-left: 5px;
+
+
+#page-content .wiki-content-table tr th {
+    font-family: &#39;Work Sans&#39;, sans-serif;
+    font-weight: 700;
+    border: solid 1px #000;
+    background-color: #aaa;
 }
+
+#page-content .wiki-content-table tr th {
+    font-family: &#39;Work Sans&#39;, sans-serif;
+    font-weight: 700;
+    border: solid 1px #000;
+    background-color: #aaa;
+}
+
+#page-content .table1 tr th {
+    background-color: #3c3c3c;
+}
+ 
+#page-content .table1 .st {
+    color: #3c3c3c;
+}
+
+.tableb .wiki-content-table {
+    border-collapse: separate;
+    border-spacing: 5px;
+    padding-left: -100px;
+}
+
+.table1 .scp-image-block .scp-image-caption {
+    background-color: #373738;
+    color: black;
+    border-color: #010101;
+}
+
+.modal {
+    padding: 15px 15px 15px 15px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    width: auto;
+    margin: auto;
+    background: #0d0d0f;
+    border: solid 2px #010101;
+}
+
+.document {
+    background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 26px auto 0;
+    max-width: 550px;
+    min-height: 300px;
+    padding: 24px;
+    padding-top: 50px;
+    position: relative;
+    width: 80%;
+}
+ 
+.document:before,
+.document:after {
+    content: &#34;&#34;;
+    height: 98%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+ 
+.document:before {
+    background: #fafafa;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+ 
+.document:after {
+    background: #f6f6f6;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
+}
+ 
+.darkdocument {
+    background: rgb(30, 30, 30);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    margin: 26px auto 0;
+    max-width: 550px;
+    min-height: 300px;
+    padding: 24px;
+    padding-top: 50px;
+    position: relative;
+    width: 80%;
+    color: #EDEDED;
+}
+ 
+.darkdocument:before,
+.darkdocument:after {
+    content: &#34;&#34;;
+    height: 98%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+ 
+.darkdocument:before {
+    background: rgb(25, 25, 25);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    left: -5px;
+    top: 4px;
+    transform: rotate(-2.5deg);
+}
+ 
+.darkdocument:after {
+    background: rgb(25, 25, 25);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    right: -3px;
+    top: 1px;
+    transform: rotate(1.4deg);
 [[/module]]
 
+[[include :scp-int:credit:start]]
+**Titre :** SCP-7549-  C A C H E
+**Auteur :** [[user Billith]]
+**Traducteur :**  [[user Vaalxeny]]
+**Date de publication originale :** 25 septembre 2023
+**Images :** deletion.png, more-chains.mp3, dept.png, wormhole.gif, recurrent_triangle.png ont été faits par l&#39;auteur ; noise1.gif est composé de [https://commons.wikimedia.org/wiki/File:SVG_Human_Silhouette.svg cette image] (licence CC BY-SA 3.0) ; noise2.gif est composé de [https://commons.wikimedia.org/wiki/File:Woman,_black_hair,_white_turtleneck,_dark_lipstick.png cette image] (licence CC BY-SA 3.0), noise3.gif est composé de [https://commons.wikimedia.org/wiki/File:SVG_Human_Silhouette.svg cette image] (licence CC BY-SA 3.0) ; noise4.gif a été fait par l&#39;auteur ; noise5.gif est composé de [https://commons.wikimedia.org/wiki/File:FreeVector-Gangster-Silhouettes.svg cette image] ; noise6.gif est composé de [https://commons.wikimedia.org/wiki/File:Humanism_in_photography_10.jpg cette image] (licence CC0 1.0) ; noise7.gif est composé de [https://commons.wikimedia.org/wiki/File:Cat_in_Silhouette.jpg cette image] (licence CC BY-SA 4.0) et cache.gif est composé de [https://commons.wikimedia.org/wiki/File:Stacks_of_VHS_tapes_from_the_archives.jpg cette image] (licence CC BY-SA 4.0)
+[[include :scp-int:credit:end]]
 
-[[div style=&#34;margin: auto; text-align: center;&#34;]]
+@@ @@
+
+[[div class=&#34;poppin&#34; style=&#34;background-color:rgba:(34, 35, 36,0.7); background-color:#0d0d0f;padding: 15px 15px 15px 15px;box-shadow: 0px 0px 8px 4px rgb(0 0 0 / 70%);width: auto;margin: auto;border: solid 2px #010101;&#34;]]
+
+[[table style=&#34;border: none; width: 100%; height: 120%; color: white;
+
+    background-image: url(&#34;https://fondationscp.wdfiles.com/local--files/scp-7549/wormhole.gif&#34;);
+
+    background-attachment: fixed;
+
+    background-size: contain;
+
+    background-blend-mode: luminosity;
+
+    text-shadow: 0 1px 3px rgb(0, 0, 0);&#34;]]
+
+[[row]]
+[[cell]]
+[[size 125%]]**Objet n^^o^^ :** SCP-7549[[/size]]
+[[/cell]]
+[[cell style=&#34;text-align: right;&#34;]]
+[[size 125%]]###blue|**Niveau ∅ VIDE**##[[/size]]
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell]]
+[[size 125%]]**Classe :** Confiné / Concentra[[/size]]
+[[/cell]]
+[[cell style=&#34;text-align: right;&#34;]]
+[[size 125%]]###white|**Pour Suppression**##[[/size]]
+[[/cell]]
+[[/row]]
+[[/table]]
 [[=]]
-[[module rate]]
-[[include :scp-wiki:component:author-label-source start=--
-|name=Billith ⚠️|center=*]]
-
-this article contains animated elements that flicker and imitate rolling picture effects
-
-those sensitive to such lighting components should exercise caution when reading
-
-DELETIONS IV: **C A C H E**
-
-//by Billith//
-
-Read more [https://scp-wiki.wikidot.com/sr-researcher-james-a-harkness-personnel-file here].
-[[include :scp-wiki:component:author-label-source end=--]]
 [[/=]]
 [[/div]]
-
-
-@@ @@
-[[div class=&#34;acs_modal&#34;]]
-[[include :scp-wiki:component:customizable-acs
-|containment-class= Safe
-|containment-color= 236, 200, 158
-|secondary-class= Concentra
-|secondary-color= 40,23,76
-|inc-split-color= --]]]
-
-[[include :scp-wiki:component:customizable-acs
-|container-class= Esoteric
-|containment-image= https://scp-wiki.wdfiles.com/local--files/scp-7549/concentra.svg
-|containment-color= 236, 200, 158
-|inc-esoteric-layout = --]]]
-
-[[div class=&#34;anom-bar-esoteric&#34;]]
-[[include :scp-wiki:component:customizable-acs
-|clearance-five-image= https://scp-wiki.wdfiles.com/local--files/scp-7549/wormhole.gif
-|inc-clearance-image= --]
-|item-number= 7549
-|clearance=5
-|container-class= Contained
-|containment-image= https://scp-wiki.wdfiles.com/local--files/component%3Aanomaly-class-bar/safe-icon.svg
-|containment-color= 236, 200, 158
-|inc-esoteric-layout = --]
-|disruption-class= Systemic
-|disruption-image= https://scp-wiki.wdfiles.com/local--files/scp-7549/systemic.svg
-|disruption-color= 40,23,76
-|inc-disruption= --]
-|risk-class= Overflow
-|risk-image= https://scp-wiki.wdfiles.com/local--files/scp-7549/o.svg
-|risk-color= 40,23,76
-|inc-risk= --]
-|secondary-class= Concentra
-|secondary-icon= https://scp-wiki.wdfiles.com/local--files/scp-7549/concentra.svg
-|secondary-color= 40,23,76
-|risk-text= Hazard Class:
-|item-text= SCP-
-|level-text= ∅
-|clearance-number-text=NULL
-|clearance-text= For Deletions
-|containment-text= Containment Class:
-|disruption-text= Disruption Class:
-|secondary-text= Secondary Class:
-|inc-custom-text= --]]]
-[[/div]]
-[[/div]]
-
 @@ @@
 [[div]]
-= [[image https://scp-wiki.wdfiles.com/local--files/scp-7549/recurrent_triangle.png width=&#34;120px;&#34; style=&#34;opacity: 85%; margin: 0 auto;&#34; link=&#34;https://scp-wiki.wikidot.com/scp-6768&#34;]]
+= [[image https://scpdsandbox.wdfiles.com/local--files/interior/rsm.png width=&#34;120px;&#34; style=&#34;transform: rotate(180deg); opacity: 70%; margin: 0 auto;&#34; link=&#34;http://fondationscp.wikidot.com/scp-6768&#34;]]
 [[/div]]
 @@ @@
 [[div class=&#34;modal table b&#34;]]
-[[span class=&#34;st&#34;]]SPECIAL CONTAINMENT PROCEDURES:[[/span]] SCP-7549&#39;s self-containment has been ensured through the nature of its own &#34;existence&#34;. Proposals for additional physical measures are being considered, regardless of current impossibility; SCP-7549-1 instances continue to be discovered by Deletions personnel and thus the efficacy of established containment is in question.
+**__PROCÉDURES DE CONFINEMENT SPÉCIALES :__** Le confinement de SCP-7549 a été assuré par la nature de sa propre &#34;existence&#34;. Des propositions de mesures physiques supplémentaires sont à l&#39;étude, malgré l&#39;impossibilité actuelle ; des instances de SCP-7549-1 continuent d&#39;être découvertes par le personnel des Suppressions et l&#39;efficacité du confinement établi est donc remise en question.
 
-Instances of either anomaly discovered within nested fictive levels are to be ignored;[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**Concentra:** Anomaly produces or affects recursive phenomena.[[/span]] [https://scp-wiki.wikidot.com/deleted Department of Deletions] personnel assigned to manage these anomalies must adhere to their own iteration and undergo evaluation after [https://scp-wiki.wikidot.com/scp-7912 reformatting] conscious portions of their own psyches.
+Les instances de l&#39;une ou l&#39;autre anomalie découvertes à l&#39;intérieur de niveaux fictifs imbriqués doivent être ignorés ;[[footnote]]##black|**Concentra :** L&#39;anomalie produit ou affecte des phénomènes récursifs.##[[/footnote]] le personnel du [[[scp-6183|Département des Suppressions]]] chargées de gérer ces anomalies doivent adhérer à leur propre itération et se soumettre à une évaluation après [[[scp-7912|reformatage]]] des parties conscientes de leur propre psychisme.
 
-The proliferation of SCP-7549-1 is capable of increasing its own Database requirements, both from memory and processing, to a degree that could hypothetically threaten all memoryspace if left unchecked. Fortunately, the rate of manifestation remains low enough as to not be a concern.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]**Systemic:** The level of disruption this anomaly is producing/is capable of producing can impact the entire Database.
+La prolifération de SCP-7549-1 est capable d&#39;augmenter les besoins de sa propre base de données, à la fois en termes de mémoire et de traitement, à un degré qui pourrait hypothétiquement menacer l&#39;ensemble de l&#39;info-espace s&#39;il n&#39;était pas contrôlé. Heureusement, le taux de manifestation reste suffisamment faible pour ne pas être préoccupant.[[footnote]]##black|**Systémique :** Le niveau de perturbation que cette anomalie produit ou est capable de produire peut avoir un impact sur l&#39;ensemble de la base de données.
 @@ @@
-**Overflow:** The amount of risk this anomaly is producing/is capable of producing is negligible unless allowed to grow to a certain size or replicate beyond some given limit.[[/span]]
+**Débordement :** Le niveau de risque que cette anomalie produit/est capable de produire est négligeable à moins qu&#39;on ne la laisse atteindre une certaine taille ou se reproduire au-delà d&#39;une certaine limite.##[[/footnote]]
 [[/div]]
 @@ @@
 [[div class=&#34;modal table b&#34;]]
 [[div style=&#34;clear:both; display:block;&#34;]]
-[[span class=&#34;st&#34;]]DESCRIPTION:[[/span]] SCP-7549 describes a region of previously-considered dead sectors within the Database that contain an unknown, unrecorded planet bearing similarity to Earth. 
+**__DESCRIPTION :__** SCP-7549 décrit une région de secteurs précédemment considérés comme mortes dans la base de données, qui contient une planète inconnue et non-répertoriée présentant des similitudes avec la Terre.
 
-SCP-7549 does not appear on any file in Deletions&#39; records, nor any known Foundation archive, indication that the anomaly was not part of a relevant timeline, deleted or otherwise. It is instead theorized that SCP-7549 was created by an [https://scp-wiki.wikidot.com/sandrewswann-s-proposal unknown entity] with previous ties to the Department of Deletions, the sole purpose of which is SCP-7549-1&#39;s creation and storage. This theory is supported by SCP-7549&#39;s status within the Database itself; the anomaly possesses read-only protection,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]When narratives are deleted from the Database, their respective sectors become writable. When data is written to the Database, its sectors become read-only. Read-only information is almost always related to a narrative, the plurality of which contain or have contained Foundation activity.[[/span]] suggesting it was placed there purposefully, outside of Foundation control, by a third party. 
+SCP-7549 n&#39;apparaît dans aucun dossier du Département des Suppressions, ni dans aucune archive connue de la Fondation, ce qui indique que l&#39;anomalie ne faisait pas partie d&#39;une ligne temporelle pertinente, supprimée ou non. La théorie veut que SCP-7549 ait été créé par une [[[sandrewswann-s-proposal|entité inconnue]]] ayant des liens antérieurs avec le Département des Suppressions, dont le seul but est la création et le stockage de SCP-7549-1. Cette théorie est étayée par le statut de SCP-7549 au sein de la base de données elle-même ; l&#39;anomalie possède une protection en lecture seule,[[footnote]]##black|Lorsque des récits sont supprimés de la base de données, leurs secteurs respectifs deviennent accessibles en écriture. Lorsque des récits sont écrits dans la base de données, ces secteurs deviennent accessibles en lecture seule. Les informations en lecture seule sont presque toujours liées à la ligne temporelle de la Fondation.##[[/footnote]] suggérant qu&#39;il a été placé ici volontairement, hors du contrôle de la Fondation, par une tierce partie.
 
-The planet designated SCP-7549 contains basic office infrastructure, not dissimilar to that found in Foundation archival facilities, such as Site-01; A series of interconnected warehouses, hallways, storage closets, server rooms, and recording stations make up the entirety of structures found across the anomaly&#39;s surface. Most space within these rooms, however, have been filled with instances of SCP-7549-1.
+La planète désignée SCP-7549 contient une infrastructure de bureau basique, semblable à celle que l&#39;on trouve dans les installations d&#39;archivage de la Fondation, comme le Site-01. Une série d&#39;entrepôts interconnectés, de couloirs, de placards de rangement, de salles de serveurs et de stations d&#39;enregistrement constituent l&#39;ensemble des structures que l&#39;on trouve à la surface de l&#39;anomalie. Cependant, la plupart des espaces de ces pièces ont été remplis par des instances de SCP-7549-1.
 
-SCP-7549-1 is a collective designation for the mass of nondescript Video Home System (VHS) cassette tapes found throughout the facility. Each tape bears a handwritten adhesive label in a variety of styles and languages, almost always listing the name of an individual--Though some deviation has been observed.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Such as numerical identification systems, basic descriptions of appearance, and at least one instance entitled &#34;TITLE&#34;.[[/span]]
+SCP-7549-1 est une désignation collective d&#39;un tas de cassettes VHS (Video Home System) non-descriptives trouvées dans l&#39;installation. Chaque cassette porte une étiquette adhésive manuscrite dans une variété de styles et de langues, mentionnant presque toujours le nom d&#39;un individu - bien que certaines variations aient été observés.[[footnote]]##black|Il s&#39;agit notamment de systèmes d&#39;identification numérique, de descriptions de base de l&#39;apparence et d&#39;au moins une instance intitulée &#34;TITRE&#34;.##[[/footnote]]
 
 [[include :scp-wiki:component:image-features-source |noise-reveal=--]
 |fractal-size=200
@@ -952,68 +1158,68 @@ SCP-7549-1 is a collective designation for the mass of nondescript Video Home Sy
 |align=right
 |width=400px
 |background=#000000
-|url=https://scp-wiki.wdfiles.com/local--files/scp-7549/cache.gif
+|url=cache.gif
 |alt=alt|alt-text=SCP-7549-1.
 |add-caption=true
-|caption=SCP-7549-1. Image unloaded from virtual memory when not in use; interact to view its contents.
+|caption=SCP-7549-1. Image déchargée de la mémoire virtuelle lorsqu&#39;elle n&#39;est pas utilisée ; interagissez pour voir son contenu.
 ]]
 
-SCP-7549-1 typically contain video of one party in an interview setting, facing and conversing directly into the camera, as though another was giving said interview. To date, no parties besides the interviewee have been detected within an instance of SCP-7549-1 without anomalous manipulation. SCP-7549&#39;s recording stations are presumed to be the locus by which these tapes are created, though no phenomena of this nature has ever been witnessed. 
+SCP-7549-1 contient généralement des vidéos d&#39;un individu au sein d&#39;un entretien, faisant face à la caméra et conversant directement avec elle, comme si c&#39;était un autre individu qui mené l&#39;entretien. À ce jour, aucune autre personne que celle interrogée n&#39;a été détectée dans une instance de SCP-7549-1 sans manipulation anormale. Les stations d&#39;enregistrement de SCP-7549 sont présumées être le lieu de création de ces bandes, bien qu&#39;aucun phénomène de cette nature n&#39;ait jamais été observé.
 
-In all cases, the fidelity of SCP-7549-1 is notably worn, distorted, or otherwise subpar. Attempts to copy these tapes into digital mediums for restoration and analysis have ultimately failed; Aside from the volatile nature of the resulting files, the memory and processing requirements they possess are extremely impactful, with the average interview, lasting anywhere from three to thirty minutes, necessitating upwards of fifteen terabytes[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Fifteen thousand gigabytes or 1.2e+14 bits.[[/span]] of allocated storage space.
+Dans tous les cas, la qualité de SCP-7549-1 est notablement usée, déformée ou inférieure à la norme. Les tentatives de copier ces bandes sur des supports numériques à des fins de restauration et d&#39;analyse ont finalement échoué. Outre la nature volatile des fichiers résultants, les exigences en matière de mémoire et de traitement sont extrêmement importantes, l&#39;entretien moyen, qui dure de trois à trente minutes, nécessitant plus de quinze téraoctets[[footnote]]##black|Quinze mille gigaoctets ou 1,2e+14 bits.##[[/footnote]] de l&#39;espace de stockage alloué.
 
-Because of this secondary effect, all attempts to catalogue the millions of impacted tapes found across the surface of SCP-7549 have been abandoned. This effect extends to all recordings and pictures taken on SCP-7549, and those taken of affected media, and so on. Destruction of tapes has proven to be possible but not recommended; See **INCIDENT LOG 7549-I** for more details.
+En raison de cet effet secondaire, toutes les tentatives de cataloguer les millions de bandes touchées trouvées à la surface de SCP-7549 ont été abandonnées. Cet effet s&#39;étend à tous les enregistrements et à toutes les photos prises sur SCP-7549, ainsi qu&#39;à celles prises sur les supports touchés, etc. La destruction des bandes s&#39;est avérée possible mais n&#39;est pas recommandée ; voir le **REGISTRE D&#39;INCIDENT 7549-I** pour plus de détails.
 @@ @@
 [[span style=&#34;clear:both&#34;]][[/span]]
 
-[[/div]] 
+[[/div]]
 [[/div]]
 @@ @@
 [[div class=&#34;modal table b&#34;]]
-= [[span class=&#34;bt&#34;]]SUPPLEMENTAL ADDENDUM 7549/I:[[/span]] RECOVERED DOCUMENTATION
+= **ADDENDUM COMPLÉMENTAIRE 7549/I :** DOCUMENTATION RÉCUPÉRÉE
 @@ @@
-&gt; The following document was recovered following initial investigation into SCP-7549. 
-&gt; 
-&gt; In no way should this document be taken as or adopted as the policies/beliefs held by the Department of Deletions. 
+&gt; Le document suivant a été récupéré à la suite de l&#39;enquête initiale sur SCP-7549.
+&gt;
+&gt; Ce document ne doit en aucun cas être considéré ou adopté comme la politique ou les convictions du Département des Suppressions.
 @@ @@
 ----
 @@ @@
 [[div class=&#34;darkdocument&#34;]]
 [[div class=&#34;overwatch_memo&#34;]]
-= **A NOTICE TO ALL PERSONNEL:**
+= **UN AVERTISSEMENT À TOUT LE PERSONNEL :**
 [[/div]]
 
-//By this point, you should have completed the necessary onboarding and are now settling into your new role. Many of you have been asking about the change in structure, and this document should serve as an answer to your question.//
+//À ce stade, vous avez terminé l&#39;intégration nécessaire et vous avez commencé à vous installer dans vos nouvelles fonctions. Beaucoup d&#39;entre vous se sont interrogés sur le changement de structure, et ce document devrait répondre à vos questions.//
 
-//We here deeply and thoroughly empathize with your growing restlessness, but it is misguided. You will find these new accommodations suitable and, with the exception of a small task, indistinguishable from previous experience.//
+//Nous compatissons profondément à votre agitation croissante, mais elle n&#39;est pas justifiée. Ces nouveaux locaux vous conviendront et, à l&#39;exception d&#39;une petite tâche, ne se distingueront pas de l&#39;expérience précédente.//
 
-//The Department of Deletions has always existed in a state of transience. Indeed, it is easy to feel as equally apathetic to your Assignment as it is to feel utterly dedicated; Your existence under Deletions&#39; purview is always trending towards existentially crushing, and the urge to escape it can be as profound as the belief it is inescapable.//
+//Le Département des Suppressions a toujours existé dans un état transitoire. En effet, il est facile de se sentir aussi apathique à l&#39;égard de son affectation que totalement dévoué ; votre existence sous l&#39;égide des Suppressions tend toujours vers l&#39;écrasement existentiel, et l&#39;envie d&#39;y échapper peut être aussi profonde que la conviction qu&#39;elle est inéluctable.//
 
-//Though all Deletions personnel have ceased existing appropriately upon completion of their mission, it&#39;s understandable that some may think the alternative is a possibility. It&#39;s also understandable, by feeling that aforementioned growing restlessness, that you would believe the alternative is a bad thing.//
+//Bien que tous les membres du personnel des Suppressions aient cessé d&#39;exister comme il se doit une fois leur mission achevée, il est compréhensible que certains pensent que l&#39;alternative est possible. Il est également compréhensible qu&#39;en ressentant l&#39;agitation croissante mentionnée plus haut, vous pensiez que l&#39;alternative est une mauvaise chose.//
 
-//This new directive involves an experimental mode of existence for our agents, to be placed into effect by the time you read this memo.//
+//Cette nouvelle directive implique un mode d&#39;existence expérimental pour nos agents, qui sera mis en place au moment où vous lirez ce mémo.//
 
-//By creating a read-only Database error, it becomes an unsolvable problem. By making it harmless, it becomes a problem that doesn&#39;t need to be solved. The result is an anchor, a grounding point that creates persistent Deletions personnel for response and interaction anytime, anywhere.//
+//En créant une erreur de base de données en lecture seule, elle devient un problème insoluble. En la rendant inoffensive, elle devient un problème qui n&#39;a pas besoin d&#39;être résolu. Le résultat est une ancre, un point d&#39;ancrage qui crée un personnel des Suppression persistant, capable de répondre et d&#39;interagir à tout moment et en tout lieu.//
 
-//All you have to do is reformat your own mind every so often. Don&#39;t worry, we&#39;ll keep a record of the things you may lose in the process. Getting them back this way is far easier than you may think.//
+//Tout ce que vous avez à faire, c&#39;est de reformater votre esprit de temps en temps. Ne vous inquiétez pas, nous garderons une trace des choses que vous pourriez perdre au cours de ce processus. Les récupérer de cette manière est bien plus facile que vous ne le pensez.//
 @@ @@
 [[&gt;]]
--- //THE ADMINISTRATION, DEPARTMENT OF DELETIONS//[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]No records of Deletions possessing an administrative branch have been found.[[/span]]
+-- //L&#39;ADMINISTRATION DU DÉPARTEMENT DES SUPPRESSSIONS//[[footnote]]##black|Aucun enregistrement des Suppressions possédant une branche administrative n&#39;a été trouvé.##[[/footnote]]
 [[/&gt;]]
 [[/div]]
 [[/div]]
 @@ @@
-[[div class=&#34;modal table b&#34;]]
-= [[span class=&#34;bt&#34;]]SUPPLEMENTAL ADDENDUM 7549/II:[[/span]] SCP-7549-1 SAMPLE AND TRANSCRIPTION LOG
+[[div class=&#34;jotting modal tableb table1&#34;]]
+= **ADDENDUM COMPLÉMENTAIRE  7549/II :** REGISTRE D&#39;ÉCHANTILLONNAGE ET DE TRANSCRIPTION DE SCP-7549-1
 @@ @@
-&gt; //Below is a brief series of video excerpts and transcripts taken from SCP-7549-1 instances. Due to performance limitations, media has been unloaded from virtual memory while not in use; interact with each sample to view its contents.//
+&gt; //Vous trouverez ci-dessous une brève série d&#39;extraits vidéo et de transcriptions provenant d&#39;instances de SCP-7549-1. En raison des limitations de performance, les médias ont été déchargés de la mémoire virtuelle lorsqu&#39;ils n&#39;étaient pas utilisés ; interagissez avec chaque échantillon pour en voir le contenu.//
 @@ @@
 ----
 @@ @@
 [[table]]
 [[row]]
 [[hcell]]
-«SAMPLE»
+«ÉCHANTILLON»
 [[/hcell]]
 [[/row]]
 [[row]]
@@ -1026,7 +1232,7 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 |align=center
 |width=100%
 |background=#000000
-|url=https://scp-wiki.wdfiles.com/local--files/scp-7549/noise1.gif
+|url=noise1.gif
 |alt=alt|alt-text=Contents of SCP-7549-1.
 |add-caption=false
 |caption=none.
@@ -1036,59 +1242,59 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 [[/row]]
 [[row]]
 [[hcell]]
-«TRANSCRIPT»
+«TRANSCRIPTION»
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 @@ @@
-= //&lt;BEGIN TRANSCRIPT&gt;//
+= //&lt;DÉBUT DE LA TRANSCRIPTION&gt;//
 
-{{Yes. I used to consider myself someone who takes pride in their work. Then again, I used to believe in God as well. Things propagate quickly, it&#39;s hard to keep track of all the ways a mind can change in the span of a lifetime.}} 
-
-= //&lt;Pause.&gt;//
-
-{{I&#39;m not sure what you mean. The same as you, I&#39;d presume.}}  
+{{Oui. Je me considérais comme quelqu&#39;un qui était fier de son travail. Mais j&#39;avais aussi l&#39;habitude de croire en Dieu. Les choses se propagent rapidement, il est difficile de suivre toutes les façons dont un esprit peut changer en l&#39;espace d&#39;une vie.}}
 
 = //&lt;Pause.&gt;//
 
-{{Well, when I first arrived at the door of Mnemosyne, I was awestruck. Who wouldn&#39;t be? Unburdened by form, with shapeless, malleable endeavor coalescing into The Assignment. That growing feeling of expanding awareness. The multiplicity that follows. The freedom and limitation of losing one&#39;s chains but finding more trailing behind. Larger, more insidious chains you haven&#39;t noticed before. That only you notice. It&#39;s indescribable. It&#39;s also agonizing. But you know all this already.}}  
+{{Je ne suis pas sûr de comprendre ce que vous voulez dire. La même chose que vous, je suppose.}}  
 
 = //&lt;Pause.&gt;//
 
-{{I thought I was a man, a human, a living soul, but I am none of these things. Memory would tell me otherwise, but my memories are immaterial. They burden me. More chains. Remember me, or don&#39;t. I have forgotten what it means to forget. Isn&#39;t that the point?}} 
+{{Et bien, lorsque j&#39;ai franchi pour la première fois la porte de Mnémosyne, j&#39;ai été stupéfait. Qui ne le serait pas ? Sans contrainte de forme, avec des efforts informes et malléables qui se fondent dans la mission. Ce sentiment croissant d&#39;expansion de la conscience. La multiplicité qui en découle. La liberté et la limitation de perdre ses chaînes mais d&#39;en trouver d&#39;autres qui traînent derrière. Des chaînes plus grandes et plus insidieuses que vous n&#39;aviez pas remarquées auparavant. Que vous êtes le seul à remarquer. C&#39;est indescriptible. C&#39;est aussi angoissant. Mais vous savez déjà tout cela.}}  
 
 = //&lt;Pause.&gt;//
 
-{{Ah. Well, I hardly remember a life before this one. How many times has it happened?}} 
+{{Je pensais être un homme, un humain, une âme vivante, mais je ne suis rien de tout cela. Ma mémoire me dirait le contraire, mais mes souvenirs sont immatériels. Ils m&#39;encombrent. Plus de chaînes. Souvenez-vous de moi, ou non. J&#39;ai oublié ce que signifie &#34;oublier&#34;. N&#39;est-ce pas là le but ?}}
 
 = //&lt;Pause.&gt;//
 
-{{Of course. Of course. I remember... very little. The taste of strawberries. The smell of ozone after hard rains. Loneliness. Despair. I don&#39;t think I had very much going for me. Is that enough?}} 
+{{Ah. Et bien, j&#39;ai du mal à me souvenir d&#39;une vie antérieure à celle-ci. Combien de fois est-ce arrivé ?}}
 
 = //&lt;Pause.&gt;//
 
-{{No. No family, my career was unremarkable. My knowledge was unapplicable.}} 
+{{Bien sûr. Bien sûr. Je me souviens... de très peu de choses. Le goût des fraises. L&#39;odeur de l&#39;ozone après de fortes pluies. La solitude. Le désespoir. Je ne pense pas avoir eu beaucoup d&#39;avantages. Est-ce suffisant ?}}
 
 = //&lt;Pause.&gt;//
 
-{{Advice I&#39;d leave... for me? For my next onboarding... Hmph.}} 
+{{Rien. Aucune famille, ma carrière était banale. Mes connaissances étaient inapplicables.}}
 
 = //&lt;Pause.&gt;//
 
-{{I can&#39;t imagine there&#39;s anything I could say that would&#39;ve helped me the first time. Just-- stay calm. I think that&#39;s the best I can offer.}}
+{{Conseils que je laisserais... pour moi ? Pour mon prochain moi... Hmph.}}
 
 = //&lt;Pause.&gt;//
 
-{{I see. Well, I suppose I have nothing left to add, then.}}       
+{{Je ne peux pas imaginer qu&#39;il y ait quoi que ce soit que je puisse dire qui m&#39;aurait aidé la première fois. Juste-- restes calme. Je pense que c&#39;est le mieux que je puisse offrir.}}
 
-= //&lt;END TRANSCRIPT&gt;//
+= //&lt;Pause.&gt;//
+
+{{Je vois. Et bien, je suppose que je n&#39;ai plus rien à ajouter, alors.}}       
+
+= //&lt;FIN DE LA TRANSCRIPTION&gt;//
 @@ @@
 [[/cell]]
 [[/row]]
 [[row]]
 [[hcell]]
-«SAMPLE»
+«ÉCHANTILLON»
 [[/hcell]]
 [[/row]]
 [[row]]
@@ -1101,7 +1307,7 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 |align=center
 |width=100%
 |background=#000000
-|url=https://scp-wiki.wdfiles.com/local--files/scp-7549/noise2.gif
+|url=noise2.gif
 |alt=alt|alt-text=Contents of SCP-7549-1.
 |add-caption=false
 |caption=none.
@@ -1111,49 +1317,49 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 [[/row]]
 [[row]]
 [[hcell]]
-«TRANSCRIPT»
+«TRANSCRIPTION»
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 @@ @@
-= //&lt;BEGIN TRANSCRIPT&gt;//
+= //&lt;DÉBUT DE LA TRANSCRIPTION&gt;//
 
-{{Well, alright then. This is my first go-around. I think. It&#39;s hard to say, for multiple reasons.}}
-
-= //&lt;Pause.&gt;//
-
-{{Mhm. Well, I lived in Albany for most of my life. Oh-- Oregon. Not New York. My degree was in graphic design. Married, with one—or maybe two—kids. It&#39;s fuzzy. I was... happy, for the most part. There were ups and downs, as I assume everyone has.}}
+{{Bon, d&#39;accord. C&#39;est mon premier passage. Je crois. C&#39;est difficile à dire, pour de multiples raisons.}}
 
 = //&lt;Pause.&gt;//
 
-{{Oh? I don&#39;t know about all that. I thought the Illuminati was a myth.}}
+{{Mhm. Et bien, j&#39;ai vécu à Albany pendant la plus grande partie de ma vie. Oh-- l&#39;Oregon. Pas New York. J&#39;ai obtenu un diplôme en graphisme. Mariée, avec un ou peut-être deux enfants. C&#39;est flou. J&#39;étais... heureuse, pour l&#39;essentiel. Il y a eu des hauts et des bas, comme tout le monde, je suppose.}}
 
 = //&lt;Pause.&gt;//
 
-{{What does &#39;SCP&#39; stand for again?}}
+{{Oh ? Je ne sais pas ce qu&#39;il en est. Je pensais que les Illuminati étaient un mythe.}}
 
 = //&lt;Pause.&gt;//
 
-{{Oh-- yes. You mentioned. Nothing like that in Portland, as far as I&#39;m aware.}}
+{{Que signifie &#34;SCP&#34; déjà ?}}
 
 = //&lt;Pause.&gt;//
 
-//&lt;Laughter.&gt;//⠀⠀--{{No, maybe I should be more upset, but I&#39;m not. Not really, anyway.}}
+{{Oh-- oui. Vous l&#39;avez mentionné. Rien de tel à Portland, pour autant que je sache.}}
 
 = //&lt;Pause.&gt;//
 
-{{Should I be more upset?}}
+//&lt;Rie.&gt;//⠀⠀--{{Non, je devrais peut-être être plus contrariée, mais ce n&#39;est pas le cas. Pas vraiment, en tout cas.}}
 
-= //&lt;Long pause.&gt;//
+= //&lt;Pause.&gt;//
 
-= //&lt;END TRANSCRIPT&gt;//
+{{Devrais-je être plus contrariée ?}}
+
+= //&lt;Longue pause.&gt;//
+
+= //&lt;FIN DE LA TRANSCRIPTION&gt;//
 @@ @@
 [[/cell]]
 [[/row]]
 [[row]]
 [[hcell]]
-«SAMPLE»
+«ÉCHANTILLON»
 [[/hcell]]
 [[/row]]
 [[row]]
@@ -1166,7 +1372,7 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 |align=center
 |width=100%
 |background=#000000
-|url=https://scp-wiki.wdfiles.com/local--files/scp-7549/noise6.gif
+|url=noise6.gif
 |alt=alt|alt-text=Contents of SCP-7549-1.
 |add-caption=false
 |caption=none.
@@ -1176,59 +1382,59 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 [[/row]]
 [[row]]
 [[hcell]]
-«TRANSCRIPT»
+«TRANSCRIPTION»
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 @@ @@
-= //&lt;BEGIN TRANSCRIPT&gt;//
+= //&lt;DÉBUT DE LA TRANSCRIPTION&gt;//
 
-{{Personally, I find it humorous that we continue this tradition.}} 
-
-= //&lt;Pause.&gt;//
-
-{{I think it&#39;s obvious that whatever is happening is not creating persistent personnel.}}
+{{Personnellement, je trouve amusant que nous perpétuions cette tradition.}}
 
 = //&lt;Pause.&gt;//
 
-{{Something else, probably. Something that casts doubt onto the very [https://scp-wiki.wikidot.com/narrativistics-and-you nature of our existence].}}
+{{Je pense qu&#39;il est évident que ce qui se passe ne crée pas de personnel persistent.}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{When I view this tape, will I learn about me? Will that story be the one of a copy? Will I be fed my narrative? Will it be consistent?}}  
+{{Quelque chose d&#39;autre, probablement. Quelque chose qui jette le doute sur la [[[narrativistics-and-you|nature de notre existence]]].}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{I suppose I would want to be kept informed. That&#39;s why I&#39;m doing this. It&#39;s relevant to the environment that I&#39;ll have to navigate soon enough. I deserve to be the one who sets the record straight, for myself.}}
+{{En visionnant cette cassette, vais-je apprendre à me connaître ? Cette histoire sera-t-elle celle d&#39;une copie ? Serai-je nourri de mon récit ? Sera-t-elle cohérente ?}}  
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-= //&lt;Wordlessly moves mouth.&gt;//
+{{Je suppose que je voudrais être tenu au courant. C&#39;est la raison pour laquelle je fais cela. C&#39;est pertinent pour l&#39;environnement dans lequel je devrai bientôt naviguer. Je mérite d&#39;être celui qui remet les pendules à l&#39;heure, pour moi-même.}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{Oh...⠀⠀//really?//⠀⠀I was expecting more pushback on that.}}
+= //&lt;Ouvre la bouche sans dire un mot.&gt;//
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{Well, that&#39;s interesting. How will I retrieve the tape, then?}}
+{{Oh...⠀⠀//vraiment ?//⠀⠀Je m&#39;attendais à plus de réactions à ce sujet.}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{You&#39;re serious? Jesus Christ. Why am I doing this, then? That&#39;s like... finding a single drop of water in fifty oceans.}}
+{{Et bien, c&#39;est intéressant. Comment vais-je récupérer la cassette ?}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{That makes a lot more sense now, yeah.}}
+{{Vous êtes sérieux ? Doux Jésus. Pourquoi je fais ça, alors ? C&#39;est comme... trouver une seule goutte d&#39;eau dans cinquante océans.}}
 
-= //&lt;END TRANSCRIPT&gt;//
+= //&lt;Pause.&gt;//
+
+{{C&#39;est beaucoup plus logique maintenant, oui.}}
+
+= //&lt;FIN DE LA TRANSCRIPTION&gt;//
 @@ @@
 [[/cell]]
 [[/row]]
 [[row]]
 [[hcell]]
-«SAMPLE»
+«ÉCHANTILLON»
 [[/hcell]]
 [[/row]]
 [[row]]
@@ -1241,7 +1447,7 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 |align=center
 |width=100%
 |background=#000000
-|url=https://scp-wiki.wdfiles.com/local--files/scp-7549/noise7.gif
+|url=noise7.gif
 |alt=alt|alt-text=Contents of SCP-7549-1.
 |add-caption=false
 |caption=none.
@@ -1251,23 +1457,23 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 [[/row]]
 [[row]]
 [[hcell]]
-«TRANSCRIPT»
+«TRANSCRIPTION»
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 @@ @@
-= //&lt;BEGIN TRANSCRIPT&gt;//
+= //&lt;DÉBUT DE LA TRANSCRIPTION&gt;//
 
-= //&lt;Twenty-seven minutes of meows, purrs, trills, and self-grooming.&gt;//
+= //&lt;Vingt-sept minutes de miaulements, de ronronnements, de trilles et d&#39;autopalpation.&gt;//
 
-= //&lt;END TRANSCRIPT&gt;//
+= //&lt;FIN DE LA TRANSCRIPTION&gt;//
 @@ @@
 [[/cell]]
 [[/row]]
 [[row]]
 [[hcell]]
-«SAMPLE»
+«ÉCHANTILLON»
 [[/hcell]]
 [[/row]]
 [[row]]
@@ -1280,7 +1486,7 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 |align=center
 |width=100%
 |background=#000000
-|url=https://scp-wiki.wdfiles.com/local--files/scp-7549/noise5.gif
+|url=noise5.gif
 |alt=alt|alt-text=Contents of SCP-7549-1.
 |add-caption=false
 |caption=none.
@@ -1290,59 +1496,59 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 [[/row]]
 [[row]]
 [[hcell]]
-«TRANSCRIPT»
+«TRANSCRIPTION»
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 @@ @@
-= //&lt;BEGIN TRANSCRIPT&gt;//
+= //&lt;DÉBUT DE LA TRANSCRIPTION&gt;//
 
-{{It&#39;s simple, really. I was known for cleaning up nice. When dressing nicely takes up that much of your identity, you&#39;d be surprised at how hard it is to shake the two apart.}}
+{{C&#39;est simple, vraiment. J&#39;avais la réputation d&#39;être bien sapé. Lorsque le fait de bien s&#39;habiller représente une part aussi importante de votre identité, vous seriez surpris de voir à quel point il est difficile de faire la part des choses.}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{I miss knowing how I looked. I know I look //good//, but I don&#39;t know how I look. I kinda hate it.}}
+{{Il me manque de savoir de quoi j&#39;avais l&#39;air. Je sais que j&#39;ai l&#39;air bien, mais je ne sais pas de quoi j&#39;ai l&#39;air. Je déteste ça.}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{Well, lots of people look good. Only a few look like //you//, you know.}}
+{{Beaucoup de gens sont beaux. Seuls quelques-uns //vous// ressemblent, vous savez.}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{I guess I&#39;d tell me not to worry about it as much as I. Is that asking too much from myself?}}
+{{Je pense que je me dirais de ne pas m&#39;en préoccuper autant que moi. Est-ce trop me demander ?}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{Right-- shoot. You can&#39;t remove this part?}}
+{{Très bien-- action. Vous ne pouvez pas enlever cette partie ?}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{Wh- What do you mean?}}
+{{Qu- Qu&#39;est-ce que vous voulez dire par là ?}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-//&lt;Tensing up, looking around.&gt;//⠀⠀{{ --I don&#39;t... how? That can&#39;t be possible. I remember how I got here.}}
+//&lt;Se crispant, regardant autour de lui.&gt;//⠀⠀{{ --Je ne suis pas... comment ? Ça ne peut pas être possible. Je me souviens de la façon dont je suis arrivé ici.}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-//&lt;Relaxing&gt;//⠀⠀{{Ah-- I see. That&#39;s pretty fucked, I&#39;m not gonna lie. Not me, but--}} 
+//&lt;Se relaxant&gt;//⠀⠀{{Ah-- je vois. C&#39;est assez chiant, je ne vais pas vous mentir. Pas moi, mais--}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{Wait, how much parity?}} 
+{{Attendez, quelle est la parité ?}}
 
-= //&lt;Pause.&gt;// 
+= //&lt;Pause.&gt;//
 
-{{I feel morally and ethically obligated to cease this recording immediately. You do not have permission to share it with myself. End it. Turn it off.}}⠀⠀//&lt;Louder.&gt;//⠀⠀//{{Turn it--}}// 
+{{Je me sens moralement et éthiquement obligé de mettre fin à cet enregistrement immédiatement. Vous n&#39;avez pas la permission de le partager avec moi. Mettez-y fin. Éteignez-le.}}⠀⠀//&lt;Criant.&gt;//⠀⠀//{{Éteignez-le--}}//
 
-= //&lt;END TRANSCRIPT&gt;//
+= //&lt;FIN DE LA TRANSCRIPTION&gt;//
 @@ @@
 [[/cell]]
 [[/row]]
 [[row]]
 [[hcell]]
-«SAMPLE»
+«ÉCHANTILLON»
 [[/hcell]]
 [[/row]]
 [[row]]
@@ -1355,7 +1561,7 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 |align=center
 |width=100%
 |background=#000000
-|url=https://scp-wiki.wdfiles.com/local--files/scp-7549/noise3.gif
+|url=noise3.gif
 |alt=alt|alt-text=Contents of SCP-7549-1.
 |add-caption=false
 |caption=none.
@@ -1365,55 +1571,55 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 [[/row]]
 [[row]]
 [[hcell]]
-«TRANSCRIPT»
+«TRANSCRIPTION»
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 @@ @@
-= //&lt;BEGIN TRANSCRIPT&gt;//
+= //&lt;DÉBUT DE LA TRANSCRIPTION&gt;//
 
-= //&lt;Heavy static.&gt;// 
+= //&lt;Fortes perturbations.//
 
-{{We...}}
+{{Nous...}}
 
-= //&lt;Heavy static. Figure hangs its head.&gt;// 
+= //&lt;Fortes perturbations. La figure penche la tête.&gt;//
 
-{{...I...}}
-
-= //&lt;Pause.&gt;// 
-
-{{I don&#39;t know what... what to tell you to do. But you have to do something. Someone, do something.}}
-
-= //&lt;Heavy static.&gt;// 
-
-{{--Aren&#39;t empty, you know. These worlds are full of life. Just like yours.}}
+{{...Je...}}
 
 = //&lt;Pause.&gt;//
 
-//&lt;Figure appears to rest head in hands.&gt;//⠀⠀{{I&#39;m so fucking tired. We aren&#39;t supposed to live this long. We aren&#39;t supposed--}}
+{{Je ne sais pas quoi... quoi vous dire de faire. Mais vous devez faire quelque chose. Quelqu&#39;un, faites quelque chose.}}
 
-= //&lt;Heavy static.&gt;// 
+= //&lt;Fortes perturbations.&gt;//
 
-{{--Need to burn the tapes. But you can&#39;t, not while everyone else is here.}}
-
-= //&lt;Pause.&gt;//
-
-//&lt;Looking up&gt;//⠀⠀...{{and there.}}
+{{--ne sont pas vides, vous savez. Ces mondes sont pleins de vie. Tout comme le vôtre.}}
 
 = //&lt;Pause.&gt;//
 
-{{It&#39;s up to you-- me or whoever else watches this. You have a decision to make. I&#39;m sorry.}}
+//&lt;La figure semble reposer sa tête entre ses mains.&gt;//⠀⠀{{Je suis tellement fatigué, putain. Nous ne sommes pas censés vivre aussi longtemps. Nous ne sommes pas censés--}}
+
+= //&lt;Fortes perturbations.&gt;//
+
+{{--Il faut brûler les cassettes. Mais vous ne pouvez pas, pas tant que tout le monde est là.}}
 
 = //&lt;Pause.&gt;//
 
-= //&lt;END TRANSCRIPT&gt;//
+//&lt;Levant les yeux&gt;//⠀⠀...{{et ici.}}
+
+= //&lt;Pause.&gt;//
+
+{{C&#39;est à vous de décider-- à moi ou à quiconque regardant ça. Vous devez prendre une décision. Je suis désolé}}
+
+= //&lt;Pause.&gt;//
+
+= //&lt;FIN DE LA TRANSCRIPTION&gt;//
 @@ @@
 [[/cell]]
 [[/row]]
 [[row]]
 [[hcell]]
-«SAMPLE»
+«ÉCHANTILLON»
 [[/hcell]]
 [[/row]]
 [[row]]
@@ -1426,7 +1632,7 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 |align=center
 |width=100%
 |background=#000000
-|url=https://scp-wiki.wdfiles.com/local--files/scp-7549/noise4.gif
+|url=noise4.gif
 |alt=alt|alt-text=Contents of SCP-7549-1.
 |add-caption=false
 |caption=none.
@@ -1436,158 +1642,158 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 [[/row]]
 [[row]]
 [[hcell]]
-«TRANSCRIPT»
+«TRANSCRIPTION»
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 @@ @@
-= //&lt;BEGIN TRANSCRIPT&gt;//
+= //&lt;DÉBUT DE LA TRANSCRIPTION&gt;//
 
 = //&lt;Pause.&gt;//
 
-{{I have gazed into the true emptiness within. It contains myself.}}
+{{J&#39;ai contemplé le véritable vide intérieur. Il me contient.}}
 
 = //&lt;Pause.&gt;//
 
-{{I have gazed into myself. It contains true emptiness within.}}
+{{J&#39;ai regardé à l&#39;intérieur de moi. Il contient un véritable vide intérieur.}}
 
 = //&lt;Pause.&gt;//
 
-{{At the end of time, and beyond that.}}
+{{À la fin des temps, et au-delà.}}
 
 = //&lt;Pause.&gt;//
 
-{{I have seen infinite selves and infinite worlds. To relay their detail is pointless. The world I live in is less real than the one I left, and more real than the one I will inhabit, one day. I know this, for all stories are contained within the [https://wanderers-library.wikidot.com/ Library], and I have read each and every one-- even mine.}}
+{{J&#39;ai vu une infinité de moi et une infinité de mondes. Il est inutile d&#39;en relater les détails. Le monde dans lequel je vis est moins réel que celui que j&#39;ai quitté et plus réel que celui que j&#39;habiterai un jour. Je le sais, car toutes les histoires sont contenues dans la [http://fondationscp.wikidot.com/vagabonds:main Bibliothèque], et je les ai toutes lues-- même la mienne.}}
 
 = //&lt;Pause.&gt;//
 
-{{My mind has been fragmented beyond the cosmos itself, embedded into the foundation of Everything. I&#39;d beg for death, but we both know you no longer have the ability to dictate that. Eternity awaits me, or sudden annihilation. Perhaps both, simultaneously. Neither of us can know. My fate lies within the hands of those that view this tape.}}
+{{Mon esprit a été fragmenté au-delà du cosmos lui-même, intégré dans les fondations de Tout. J&#39;implorerais bien la mort, mais nous savons tous les deux que vous n&#39;avez plus la possibilité de l&#39;imposer. L&#39;éternité m&#39;attend, ou l&#39;annihilation soudaine. Peut-être les deux, simultanément. Aucun de nous ne peut le savoir. Mon destin est entre les mains de ceux qui visionneront cette cassette.}}
 
 = //&lt;Pause.&gt;//
 
-{{Yes, I see you there. Reading my words. Viewing my face. In every moment, I can see you.}}
+{{Oui, je vous vois là. Lisant mes mots. Regardant mon visage. À chaque instant, je vous vois.}}
 
 = //&lt;Pause.&gt;//
 
-{{Do you see me?}}
+{{Pouvez-vous me voir ?}}
 
-= //&lt;END TRANSCRIPT&gt;//
+= //&lt;FIN DE LA TRANSCRIPTION&gt;//
 @@ @@
 [[/cell]]
 [[/row]]
 [[/table]]
 [[/div]]
 @@ @@
-[[div class=&#34;modal table b&#34;]]
+[[div class=&#34;jotting modal tableb table1&#34;]]
 
-= [[span class=&#34;bt&#34;]]SUPPLEMENTAL ADDENDUM 7549/III:[[/span]] INCIDENT LOG 7549-1
+= **ADDENDUM COMPLÉMENTAIRE 7549/III :** REGISTRE D&#39;INCIDENT 7549-1
 
-&gt; //During initial investigations of SCP-7549-1 instances, attempts were made to ascertain the exact cause of their excessive storage requirements. It was noted that the space possesses remarkable resemblance to proxy locales created by [[[SCP-1549]]].//[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Websites utilizing an anomalous JavaScript library capable of converting certain internet-enabled devices into Class-B &#34;Information Superhighway&#34; wormholes, which lead to tangible facsimile locations representing the websites themselves.
-[[/&lt;]][[/span]]
+&gt; //Lors des premières enquêtes sur les instances de SCP-7549-1, des tentatives ont été faites pour déterminer la cause exacte de leurs besoins excessifs en stockage. Il a été noté que l&#39;espace possédait une ressemblance remarquable avec les lieux proxy créés par [[[SCP-1549]]].//[[footnote]]##black|Sites web utilisant une bibliothèque JavaScript anormale capable de convertir certains appareils compatibles avec l&#39;internet en trous de ver de Classe B pour les &#34;autoroutes de l&#39;information&#34;, qui mènent à des fac-similés tangibles représentant les sites web eux-mêmes.##[[/footnote]]
+&gt;
+
+&gt; //Après quelques délibérations, l&#39;utilisation de SCP-1549 sur une instance de SCP-7549-1 a été approuvée, à condition qu&#39;elle soit hébergée sur un réseau local privé.//
 &gt; 
-&gt; //After some deliberation, SCP-1549 was approved for use on an instance of SCP-7549-1, provided it be hosted on a private local network.//
+&gt; //Lors de l&#39;entrée dans l&#39;instance proxy de SCP-7549-1, il a été confirmé que le paysage résultant était indiscernable de SCP-7549.//
 &gt; 
-&gt; //Upon entry into the proxy SCP-7549-1 instance, it was confirmed that the resulting landscape was indistinguishable from SCP-7549.//
-&gt; 
-&gt; //Attempts to further map the interior space experienced during this testing log were interrupted by a member of the Department of Deletions. Therefore, the remainder of the interaction was transcribed as an impromptu interview with said member, regarding the nature of SCP-7549. This transcript can be found below://    
+&gt; //Les tentatives de cartographier davantage l&#39;espace intérieur expérimenté pendant ce protocole de test ont été interrompues par un membre du Département des Suppressions. Par conséquent, le reste de l&#39;interaction a été transcrit sous la forme d&#39;un entretien impromptu avec ledit membre, concernant la nature de SCP-7549. Cette transcription se trouve ci-dessous ://    
 @@ @@
 ----
 @@ @@
-||~ [[span class=&#34;bt&#34;]]INTERVIEWER:[[/span]] || **##683cc4|N/A##**, the Department of Deletions ||
+||~ **INTERROGATEUR :** || **##683cc4|ND##**, Département des Suppressions ||
 
-||~ [[span class=&#34;bt&#34;]]INTERVIEWEE:[[/span]] || **##EC9E69|N/A##**, the Department of Deletions ||
+||~ **INTERROGÉ :** || **##EC9E69|ND##**, Département des Suppressions ||
 @@ @@
 [[table]]
 [[row]]
 [[hcell]]
-«TRANSCRIPT»
+«TRANSCRIPTION»
 [[/hcell]]
 [[/row]]
 [[row]]
 [[cell]]
 @@ @@
-= //&lt;BEGIN TRANSCRIPT&gt;//
+= //&lt;DÉBUT DE LA TRANSCRIPTION&gt;//
 
-= //&lt;**##683cc4|N/A##** incurs upon proxy SCP-7549 instance, emerging through a doorway connecting a hallway to Recording Station 840-B. **##EC9E69|N/A##** is seated on a metal folding chair, talking into camera.&gt;//
+= //&lt;**##683cc4|ND##** est entraîné dans une instance proxy de SCP-7549, émergeant par une porte reliant un couloir à la Station d&#39;Enregistrement 840-B. **##EC9E69|ND##** est assis sur une chaise pliante en métal et parle à la caméra.&gt;//
 
 
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀{{No. I wasn&#39;t an only child. My brother was... [http://backrooms-wiki.wikidot.com/ lost]. He was eight, I don&#39;t know what happened. He was there... and then he wasn&#39;t.}}
-
-= //&lt;Pause.&gt;//
-
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀{{I told myself I was dreaming. In the end, dream or not, it really happened. The multiverse is far larger than anyone of us could have ever known, and it grows, even now. Memorex memories distilled into ones and zeros contain infinite multitudes, only for those who can see the microcosmos contained within the pulses of light. Wouldn&#39;t you agree?}}
-
-= //&lt;Pause. Figure turns to look at [[span class=&#34;bt&#34;]]##683cc4|N/A##[[/span]].&gt;//
-
-[[span class=&#34;bt&#34;]]##683cc4|N/A:##[[/span]]⠀⠀{{How the fuck should I know?}}
+**##EC9E69|ND :##**⠀⠀{{Non. Je n&#39;étais pas fils unique. Mon frère est... [http://fr-backrooms-wiki.wikidot.com/ porté disparu]. Il avait huit ans, je ne sais pas ce qui s&#39;est passé. Il était là... et puis il n&#39;était plus là.}}
 
 = //&lt;Pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀{{If you don&#39;t know, why are you here?}}
+**##EC9E69|ND :##**⠀⠀{{Je me suis dit que je rêvais. En fin de compte, rêve ou pas, c&#39;est vraiment arrivé. Le multivers est bien plus vaste que ce que chacun d&#39;entre nous aurait pu imaginer, et il grandit, même aujourd&#39;hui. Les souvenirs Mémorexe distillés en uns et en zéros contiennent des multitudes infinies, seulement pour ceux qui peuvent voir le microcosme contenu dans les impulsions de lumière. N&#39;êtes-vous pas d&#39;accord ?}}
+
+= //&lt;Pause. La figure se tourne pour voir **##683cc4|ND##**.&gt;//
+
+**##683cc4|ND :##**⠀⠀{{Putain mais qu&#39;est-ce que j&#39;en sais ?}}
 
 = //&lt;Pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##683cc4|N/A:##[[/span]]⠀⠀{{Why are any of us here?}}
+**##EC9E69|ND :##**⠀⠀{{Si vous ne savez pas, pourquoi êtes-vous ici ?}}
+
+= //&lt;Pause.&gt;//
+
+**##683cc4|ND :##**⠀⠀{{Pourquoi sommes-nous ici ?}}
 
 = //&lt;Long pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀{{This guy gets it! Anyway-- }}⠀⠀//&lt;Turning back to the camera.&gt;//⠀⠀{{ --what was I saying?}}
+**##EC9E69|ND :##**⠀⠀{{Ce type tout a compris ! Quoi qu&#39;il en soit-- }}⠀⠀//&lt;Se retourne vers la caméra.&gt;//⠀⠀{{ --qu&#39;est-ce que je disais ?}}
 
 = //&lt;Pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##683cc4|N/A:##[[/span]]⠀⠀{{...Right.}}
+**##683cc4|ND :##**⠀⠀{{...Très bien.}}
 
-= //&lt;[[span class=&#34;bt&#34;]]##683cc4|N/A##[[/span]] turns to leave.&gt;//
+= //&lt;**##683cc4|ND##** se tourne pour partir.&gt;//
 
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀{{I wouldn&#39;t wander too far if I were you.}}
-
-= //&lt;Pause.&gt;//
-
-[[span class=&#34;bt&#34;]]##683cc4|N/A:##[[/span]]⠀⠀{{Sorry?}}
+**##EC9E69|ND :##**⠀⠀{{À votre place, je ne m&#39;éloignerais pas trop.}}
 
 = //&lt;Pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀//&lt;Sighs.&gt;//⠀⠀{{Okay. This one will have to be a little light on the intel, sorry about that, future me.}}⠀⠀//&lt;Stops recording.&gt;//⠀⠀{{Think about what&#39;s going on here. It might hurt your head, but that&#39;s a good indicator of the issue at hand, isn&#39;t it?}}
+**##683cc4|ND :##**⠀⠀{{Pardon ?}}
 
 = //&lt;Pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##683cc4|N/A:##[[/span]]⠀⠀{{Is it that bad?}}
+**##EC9E69|ND :##**⠀⠀//&lt;Soupire.&gt;//⠀⠀{{D&#39;accord. Celui-ci devra être un peu plus léger sur l&#39;information, désolé pour ça, mon futur moi.}}⠀⠀//&lt;Arrête l&#39;enregistrement.&gt;//⠀⠀{{Réfléchissez à ce qui se passe ici. Vous risquez d&#39;avoir mal à la tête, mais c&#39;est un bon indicateur du problème qui se pose, n&#39;est-ce pas ?}}
 
 = //&lt;Pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀{{Worse.}}⠀⠀//&lt;Pointing to the mass of SCP-7549-1 instances in the room.&gt;//⠀⠀{{There are piles of these tapes just outside the door you came in from. Your mind hasn&#39;t seen them, thankfully. Though, we aren&#39;t out of the woods yet.}}
-
-= //&lt;One fictive level higher, the Database registers a five percent influx of read-only materia.&gt;//
-
-[[span class=&#34;bt&#34;]]##683cc4|N/A:##[[/span]]⠀⠀//&lt;Listening to earpiece.&gt;//⠀⠀{{Was that you?}}
+**##683cc4|ND :##**⠀⠀{{Est-ce mal ?}}
 
 = //&lt;Pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀{{Afraid not. That was you. Try not to think about the tapes. I&#39;ve probably said too much already, and you&#39;re clearly not trained for this type of complexity.}}
+**##EC9E69|ND :##**⠀⠀{{Pire.}}⠀⠀//&lt;Indiquant le tas d&#39;instances de SCP-7549-1 dans la pièce.&gt;//⠀⠀{{Il y a des piles de ces cassettes juste derrière la porte par laquelle vous êtes entré. Votre esprit ne les a pas vues, heureusement. Mais nous ne sommes pas encore sortis de l&#39;auberge.}}
 
-= //&lt;One fictive level higher, the Database registers a seventeen percent influx of read-only materia.&gt;//
+= //&lt;Un niveau fictif plus haut, la base de données enregistre un afflux de 5 % de matériel en lecture seule.&gt;//
 
-[[span class=&#34;bt&#34;]]##683cc4|N/A:##[[/span]]⠀⠀//&lt;Listening to earpiece.&gt;//⠀⠀{{What do we do?}}
-
-= //&lt;Pause.&gt;//
-
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀{{Do nothing. Wait to die.}}
-
-= //&lt;One fictive level higher, the Database registers a forty-eight percent influx of read-only materia.&gt;//
-
-[[span class=&#34;bt&#34;]]##683cc4|N/A:##[[/span]]⠀⠀//&lt;Listening to earpiece.&gt;//⠀⠀{{I don&#39;t understand!}}
+**##683cc4|ND :##**⠀⠀//&lt;Écoutant à l&#39;oreillette.&gt;//⠀⠀{{C&#39;était vous ?}}
 
 = //&lt;Pause.&gt;//
 
-[[span class=&#34;bt&#34;]]##EC9E69|N/A:##[[/span]]⠀⠀//&lt;Smiling.&gt;//⠀⠀{{Famous last words.}}
+**##EC9E69|ND :##**⠀⠀{{J&#39;ai bien peur que non. C&#39;était vous. Essayez de ne pas penser aux cassettes. J&#39;en ai probablement déjà trop dit, et vous n&#39;êtes manifestement pas formé à ce type de complexité.}}
 
-= //&lt;Two fictive levels higher, the Database deletes the narrative containing proxy SCP-7549 instance.&gt;// 
+= //&lt;Un niveau fictif plus haut, la base de données enregistre un afflux de 17 % de matériel en lecture seule.&gt;//
 
-= //&lt;END TRANSCRIPT&gt;//
+**##683cc4|ND :##**⠀⠀//&lt;Écoutant à l&#39;oreillette.&gt;//⠀⠀{{Que fait-on ?}}
+
+= //&lt;Pause.&gt;//
+
+**##EC9E69|ND :##**⠀⠀{{Absolument rien. Attendre la mort.}}
+
+= //&lt;Un niveau fictif plus haut, la base de données enregistre un afflux de 48 % de matériel en lecture seule.&gt;//
+
+**##683cc4|ND :##**⠀⠀//&lt;Écoutant à l&#39;oreillette.&gt;//⠀⠀{{Je ne comprend pas !}}
+
+= //&lt;Pause.&gt;//
+
+**##EC9E69|ND :##**⠀⠀//&lt;Souriant.&gt;//⠀⠀{{Les fameux derniers mots.}}
+
+= //&lt;Deux niveaux fictifs plus haut, la base de données supprime le récit contenant l&#39;instance proxy de SCP-7549.&gt;//
+
+= //&lt;FIN DE LA TRANSCRIPTION&gt;//
 @@ @@
 
-&gt; //Note: Narrative containing the transcript of this experience remains unaffected. Further testing measures have been abandoned.//
+&gt; //Note : La narration contenant la transcription de cette expérience n&#39;est pas affecté. D&#39;autres mesures d&#39;essai ont été abandonnées.//
 [[/cell]]
 [[/row]]
 [[/table]]
@@ -1595,30 +1801,13 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 
 @@ @@
 
-= END FILE 
+= FIN DU FICHIER
 
-
-[[=]]
-[[collapsible show=&#34;» SHOW FOOTNOTES «&#34; hide=&#34;« HIDE FOOTNOTES »&#34;]]
-[[div class=&#34;notation&#34; style=&#34;padding: 0.5rem; font-size: 0.9em;&#34;]]
-[[&lt;]]
-++++ @@      @@ FOOTNOTES &amp; REFERENCES
-# **Concentra:** Anomaly produces or affects recursive phenomena.
-# **Systemic:** The level of disruption this anomaly is producing/is capable of producing can impact the entire Database. **Overflow:** The amount of risk this anomaly is producing/is capable of producing is negligible unless allowed to grow to a certain size or replicate beyond some given limit.
-# When narratives are deleted from the Database, their respective sectors become writable. When data is written to the Database, its sectors become read-only. Read-only information is almost always related to a narrative, the plurality of which contain or have contained Foundation activity.
-# Such as numerical identification systems, basic descriptions of appearance, and at least one instance entitled &#34;TITLE&#34;.
-# Fifteen thousand gigabytes or 1.2e+14 bits.
-# No records of Deletions possessing an administrative branch have been found.
-# Websites utilizing an anomalous JavaScript library capable of converting certain internet-enabled devices into Class-B &#34;Information Superhighway&#34; wormholes, which lead to tangible facsimile locations representing the websites themselves.
-[[/&lt;]]
-[[/div]]
-[[/collapsible]]
-[[/=]]
 
 [[div style=&#34;width:50%; height:50%; margin: 0 auto; position:relative;&#34;]]
 [[include :scp-wiki:component:audio-player-woed-source
 |unique-name=CACHE
-|audio-file= https://scp-wiki.wdfiles.com/local--files/scp-7549/more-chains.mp3
+|audio-file= https://fondationscp.wdfiles.com/local--files/scp-7549/more-chains.mp3
 |background-color=rgb(10, 10, 10)
 |border-color=rgb10, 10, 10)
 |border-radius=0.313rem
@@ -1634,129 +1823,14 @@ Because of this secondary effect, all attempts to catalogue the millions of impa
 [[=]]
 &lt;&lt; [[[SCP-7548]]] | SCP-7549 | [[[SCP-7550]]] &gt;&gt;
 [[/=]]
-[[/div]]
-@@ @@
-@@ @@
-[[include :scp-wiki:component:license-box]]
-=====
-&gt; **Filename:** concentra.svg
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** deletion.png
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** overflow.svg
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** systemic.svg
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** more-chains.mp3
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** dept.png
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** wormhole.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** recurrent_triangle.png
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** cab.png
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** noise1.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** SVG_Human_Silhouette.svg
-&gt; **Author:** Madhero88
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:SVG_Human_Silhouette.svg|Wikimedia Commons]]]
-=====
-&gt; **Filename:** noise2.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Woman, black hair, white turtleneck, dark lipstick.png
-&gt; **Author:** Evening star
-&gt; **License:** Public Domain
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Woman,_black_hair,_white_turtleneck,_dark_lipstick.png|Wikimedia Commons]]]
-=====
-&gt; **Filename:** noise3.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** SVG_Human_Silhouette.svg
-&gt; **Author:** Madhero88
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:SVG_Human_Silhouette.svg|Wikimedia Commons]]]
-=====
-&gt; **Filename:** noise4.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** noise5.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** FreeVector-Gangster-Silhouettes.svg
-&gt; **Author:** Freevector
-&gt; **License:** CC BY-SA 4.0
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:FreeVector-Gangster-Silhouettes.svg|Wikimedia Commons]]]
-=====
-&gt; **Filename:** noise6.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Humanism_in_photography_10.jpg
-&gt; **Author:** Mostafameraji
-&gt; **License:** CC0 1.0
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Humanism_in_photography_10.jpg|Wikimedia Commons]]]
-=====
-&gt; **Filename:** noise7.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Cat_in_Silhouette.jpg
-&gt; **Author:** Buls1585
-&gt; **License:** CC BY-SA 4.0
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Cat_in_Silhouette.jpg|Wikimedia Commons]]]
-=====
-&gt; **Filename:** cache.gif
-&gt; **Author:** [[*user Billith]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Stacks_of_VHS_tapes_from_the_archives.jpg
-&gt; **Author:** Texas State University Department of English
-&gt; **License:** CC BY-SA 4.0
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Stacks_of_VHS_tapes_from_the_archives.jpg|Wikimedia Commons]]]
-=====
-[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-01-25 19:20:42.181600.</em>
+    <em>Last updated 2024-02-07 18:30:38.945338.</em>
   
 </div>
 </body>
