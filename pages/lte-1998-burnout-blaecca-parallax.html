@@ -29,7 +29,44 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* ===SIDEBOX DIV=== */
+          <pre><code>
+:root {
+    --toggle-button-bg: rgb(var(--white-monochrome));
+    --toggle-border-color: rgb(var(--medium-accent));
+    --toggle-icon-color: rgb(var(--medium-accent));
+    --toggle-roundness: 0;
+    --fnColor: #A4C2EC;
+}
+
+.info-container{
+    --barColour: #A4C2EC;
+}
+
+body .italic,
+body .italic *,
+body em,
+body em *,
+body i,
+body i * {
+    --slnt: 7;
+}
+
+#page-title::after,
+.meta-title::after,
+#page-title::before,
+.meta-title::before {
+    content: &#34;&#34;;
+    flex-grow: 1;
+    height: 0.33rem;
+    background: rgb(var(--bright-accent));
+}
+
+#page-title::before,
+.meta-title::before {
+    margin: auto 1.25rem auto auto;
+}
+
+/* === SIDEBOX DIV === */
 /* Originally based on EstrellaYoshte&#39;s Sideboxes from the Penumbra Theme */
 
 .limit {
@@ -61,193 +98,177 @@
 
 @media (max-width: 80.625rem) {
     .sidebox {
-     right: calc(((100vw - 1em - var(--body-width-on-desktop)) / 2) * -1);
-     left: initial;
-     width: auto;
-     max-width: 50vw;
-     overflow-x: hidden;
-     overflow-y: hidden;
-     transition:
-     max-width 0.2s ease-in-out 0.1s,
-     color 0.2s ease-in-out 0.1s,
-     box-shadow 0.5s ease-in-out 0.1s,
-     background-color 0s ease-in-out 0s,
-     border-right-width 0.1s ease-in-out 0.1s;
-     border: none;
-     border-right: solid 0.25rem rgb(var(--dark-accent));
-     background-color: rgba(0, 0, 0, 0);
-     box-shadow: 0 0 0 0 rgb(var(--dark-accent));
-     color: rgba(0, 0, 0, 0);
-     pointer-events: none;
-     scrollbar-width: thin;
+        right: calc(((100vw - 1em - var(--body-width-on-desktop)) / 2) * -1);
+        left: initial;
+        width: auto;
+        max-width: 50vw;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        transition:
+        max-width 0.2s ease-in-out 0.1s,
+        color 0.2s ease-in-out 0.1s,
+        box-shadow 0.5s ease-in-out 0.1s,
+        background-color 0s ease-in-out 0s,
+        border-right-width 0.1s ease-in-out 0.1s;
+        border: none;
+        border-right: solid 0.25rem rgb(var(--dark-accent));
+        background-color: rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgb(var(--dark-accent));
+        color: rgba(0, 0, 0, 0);
+        pointer-events: none;
+        scrollbar-width: thin;
     }
 
     .sidebox::-webkit-scrollbar {
-     width: 0.5em;
+        width: 0.5em;
     }
 
     .sidebox * {
-     transition: opacity 0.2s ease-in-out 0.1s;
-     opacity: 0;
+        transition: opacity 0.2s ease-in-out 0.1s;
+        opacity: 0;
     }
 
     .sidebox::before,
     .sidebox::after {
-     content: &#34; &#34;;
-     position: absolute;
-     right: 0;
-     pointer-events: all;
+        content: &#34; &#34;;
+        position: absolute;
+        right: 0;
+        pointer-events: all;
     }
 
     .sidebox::before {
-     z-index: 10;
-     top: calc(50% - 0.75rem);
-     width: 0;
-     height: 0;
-     transition: border 0.1s ease-in-out 0.1s;
-     border-top: 0.75rem solid transparent;
-     border-right: 0.75rem solid rgb(var(--dark-accent));
-     border-bottom: 0.75rem solid transparent;
+        z-index: 10;
+        top: calc(50% - 0.75rem);
+        width: 0;
+        height: 0;
+        transition: border 0.1s ease-in-out 0.1s;
+        border-top: 0.75rem solid transparent;
+        border-right: 0.75rem solid rgb(var(--dark-accent));
+        border-bottom: 0.75rem solid transparent;
     }
 
     .sidebox::after {
-     z-index: -1;
-     top: 0;
-     width: 100%;
-     max-width: 0.75rem;
-     height: 100%;
-     max-height: calc(100vh - 18rem);
-     transition:
-     box-shadow 0.5s ease-in-out 0.1s,
-     max-width 0.5s ease-in-out 0.1s,
-     border-top-left-radius 0.5s ease-in-out 0.1s,
-     border-bottom-left-radius 0.5s ease-in-out 0.1s,
-     border-top 0.25s ease-in-out 0.1s;
-     background-color: rgb(245, 245, 245);
-     box-shadow: 0.125rem 0 0 0 rgb(245, 245, 245);
-     box-sizing: border-box;
+        z-index: -1;
+        top: 0;
+        width: 100%;
+        max-width: 0.75rem;
+        height: 100%;
+        max-height: calc(100vh - 18rem);
+        transition:
+        box-shadow 0.5s ease-in-out 0.1s,
+        max-width 0.5s ease-in-out 0.1s,
+        border-top-left-radius 0.5s ease-in-out 0.1s,
+        border-bottom-left-radius 0.5s ease-in-out 0.1s,
+        border-top 0.25s ease-in-out 0.1s;
+        background-color: rgb(245, 245, 245);
+        box-shadow: 0.125rem 0 0 0 rgb(245, 245, 245);
+        box-sizing: border-box;
     }
 
     .sidebox:hover,
     .sidebox:active {
-     overflow-y: auto;
-     transition:
-     max-width 0.5s ease-in-out 0.2s,
-     color 0.5s ease-in-out 0.2s,
-     box-shadow 0.5s ease-in-out 0.1s,
-     background-color 0s ease-in-out 0.6s,
-     right 0.5s ease-in-out 0.1s,
-     border-right-width 0.1s ease-in-out 0.1s;
-     background-color: rgb(245, 245, 245);
-     color: rgb(var(--swatch-text-general));
-     border-right-width: 0rem;
-     pointer-events: all;
+        overflow-y: auto;
+        transition:
+        max-width 0.5s ease-in-out 0.2s,
+        color 0.5s ease-in-out 0.2s,
+        box-shadow 0.5s ease-in-out 0.1s,
+        background-color 0s ease-in-out 0.6s,
+        right 0.5s ease-in-out 0.1s,
+        border-right-width 0.1s ease-in-out 0.1s;
+        background-color: rgb(245, 245, 245);
+        color: rgb(var(--swatch-text-general));
+        border-right-width: 0rem;
+        pointer-events: all;
     }
 
     .sidebox:hover *,
     .sidebox:active * {
-     transition: opacity 0.5s ease-in-out 0.2s;
-     opacity: 1;
+        transition: opacity 0.5s ease-in-out 0.2s;
+        opacity: 1;
     }
 
     .sidebox:hover::before,
     .sidebox:active::before {
-     border-top: 0vw solid transparent;
-     border-bottom: 0vw solid transparent;
+        border-top: 0vw solid transparent;
+        border-bottom: 0vw solid transparent;
     }
 
     .sidebox:hover::after,
     .sidebox:active::after {
-     right: 0;
-     max-width: 100%;
-     border-top: solid 0.125rem rgb(var(--dark-accent));
-     border-top-left-radius: 0rem;
-     border-bottom-left-radius: 0rem;
-     box-shadow: 0 -0.125rem 0 0 rgb(var(--swatch-primary-darkest));
+        right: 0;
+        max-width: 100%;
+        border-top: solid 0.125rem rgb(var(--dark-accent));
+        border-top-left-radius: 0rem;
+        border-bottom-left-radius: 0rem;
+        box-shadow: 0 -0.125rem 0 0 rgb(var(--swatch-primary-darkest));
     }
 }
 
 @media (min-width: 56.25rem) and (max-width: 80.625rem) {
     .sidebox {
-     right: calc(((100vw - (var(--body-width-on-desktop)*1.25 + var(--sidebar-width-on-desktop) - 8rem))/2) * -1 - 1.5em);
+        right: calc(((100vw - (var(--body-width-on-desktop)*1.25 + var(--sidebar-width-on-desktop) - 8rem))/2) * -1 - 1.5em);
     }
 }
 
 @media only screen and (max-width:56.25rem) {
     .anchor {
-     top: calc(var(--topbar-height-on-mobile) + 0.75rem);
+        top: calc(var(--topbar-height-on-mobile) + 0.75rem);
     }
 
     .sidebox,
     .sidebox:hover,
     .sidebox:active {
-     right: calc(((100vw - (100% - 2.75rem))/2) * -1 + 1.5em);
+        right: calc(((100vw - (100% - 2.75rem))/2) * -1 + 1.5em);
     }
 
     .sidebox::before,
     .sidebox::after {
-     content: &#34; &#34;;
-     position: absolute;
-     right: 0;
-     pointer-events: all;
+        content: &#34; &#34;;
+        position: absolute;
+        right: 0;
+        pointer-events: all;
     }
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>body .italic, body .italic *, body em, body em *, body i, body i * {
- --slnt: 7;
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>:root {
---toggle-button-bg: rgb(var(--white-monochrome));
---toggle-border-color: rgb(var(--medium-accent));
---toggle-icon-color: rgb(var(--medium-accent));
---toggle-roundness: 0;
 }
 
-   #page-title::after,
-    .meta-title::after,
-    #page-title::before,
-    .meta-title::before {
-        content: &#34;&#34;;
-        flex-grow: 1;
-        height: 0.0625rem;
-        background: rgb(var(--swatch-primary));
-    }
- 
-    #page-title::before,
-    .meta-title::before {
-        margin: auto 1.25rem auto auto;
-    }
-
 div.blockquote {
+    border: none;
     border-right: 5px solid rgb(var(--medium-accent));
+    border-left: 5px solid rgb(var(--medium-accent));
+    box-shadow: 1px 1px 4px #27549582;
 }
 
 .addendum {
-   background: #F5F5F5;
-   border: none;
-   border-left: 6px solid #275495;
-   border-right: 6px solid #275495;
+    background: #F5F5F5;
+    border: none;
+    border-left: 6px solid rgb(var(--dark-accent));
+    border-right: 6px solid rgb(var(--dark-accent));
     width:85%;
     padding:10px 15px;
     margin: 10px auto;
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>.info-container{
---barColour: #A4C2EC;
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>:root {
-    --fnColor: #A4C2EC;
-}</code></pre>
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+.warning {
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+.scp-image-caption {
+    color: rgb(var(--white-monochrome));
+    background-color: rgb(var(--dark-accent)) !important;
+    box-shadow: none;
+    margin-top: -1px;
+    padding-top: 0.75ex !important;
+}
+
+.image-block,
+.scp-image-block {
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+table.wiki-content-table th {
+    text-align: center;
+}
+</code></pre>
         </li>
       
     </ul>
@@ -264,7 +285,7 @@ div.blockquote {
         </li>
       
         <li>
-          <pre><code>border: solid 2px; border-style: outset; border-color: rgb(var(--bright-accent));</code></pre>
+          <pre><code>border: solid 2.5px; border-style: outset; border-color: rgb(var(--bright-accent)); box-shadow: 1px 1px 4px #27549582;</code></pre>
         </li>
       
         <li>
@@ -341,8 +362,14 @@ div.blockquote {
   
 
   
-    <a href="https://scp-wiki-cn.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki-cn:theme:black-highlighter-theme</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -352,8 +379,14 @@ div.blockquote {
   
 
   
-    <a href="https://scp-wiki-cn.wikidot.com/theme:goc" target="_blank"><code>:scp-wiki-cn:theme:goc</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:goc" target="_blank"><code>:scp-wiki:theme:goc</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:goc.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -425,8 +458,14 @@ div.blockquote {
   
 
   
-    <a href="https://scp-wiki-cn.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki-cn:component:license-box-end</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -507,13 +546,50 @@ div.blockquote {
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki-cn:theme:black-highlighter-theme]]
-[[include :scp-wiki-cn:theme:goc]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:theme:goc]]
 [[include :scp-wiki:component:toggle-sidebar-bhl]]
 [[include :scp-wiki:component:betterfootnotes]]
 
 [[module css]]
-/* ===SIDEBOX DIV=== */
+
+:root {
+    --toggle-button-bg: rgb(var(--white-monochrome));
+    --toggle-border-color: rgb(var(--medium-accent));
+    --toggle-icon-color: rgb(var(--medium-accent));
+    --toggle-roundness: 0;
+    --fnColor: #A4C2EC;
+}
+
+.info-container{
+    --barColour: #A4C2EC;
+}
+
+body .italic,
+body .italic *,
+body em,
+body em *,
+body i,
+body i * {
+    --slnt: 7;
+}
+
+#page-title::after,
+.meta-title::after,
+#page-title::before,
+.meta-title::before {
+    content: &#34;&#34;;
+    flex-grow: 1;
+    height: 0.33rem;
+    background: rgb(var(--bright-accent));
+}
+
+#page-title::before,
+.meta-title::before {
+    margin: auto 1.25rem auto auto;
+}
+
+/* === SIDEBOX DIV === */
 /* Originally based on EstrellaYoshte&#39;s Sideboxes from the Penumbra Theme */
 
 .limit {
@@ -545,218 +621,205 @@ div.blockquote {
 
 @media (max-width: 80.625rem) {
     .sidebox {
-     right: calc(((100vw - 1em - var(--body-width-on-desktop)) / 2) * -1);
-     left: initial;
-     width: auto;
-     max-width: 50vw;
-     overflow-x: hidden;
-     overflow-y: hidden;
-     transition:
-     max-width 0.2s ease-in-out 0.1s,
-     color 0.2s ease-in-out 0.1s,
-     box-shadow 0.5s ease-in-out 0.1s,
-     background-color 0s ease-in-out 0s,
-     border-right-width 0.1s ease-in-out 0.1s;
-     border: none;
-     border-right: solid 0.25rem rgb(var(--dark-accent));
-     background-color: rgba(0, 0, 0, 0);
-     box-shadow: 0 0 0 0 rgb(var(--dark-accent));
-     color: rgba(0, 0, 0, 0);
-     pointer-events: none;
-     scrollbar-width: thin;
+        right: calc(((100vw - 1em - var(--body-width-on-desktop)) / 2) * -1);
+        left: initial;
+        width: auto;
+        max-width: 50vw;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        transition:
+        max-width 0.2s ease-in-out 0.1s,
+        color 0.2s ease-in-out 0.1s,
+        box-shadow 0.5s ease-in-out 0.1s,
+        background-color 0s ease-in-out 0s,
+        border-right-width 0.1s ease-in-out 0.1s;
+        border: none;
+        border-right: solid 0.25rem rgb(var(--dark-accent));
+        background-color: rgba(0, 0, 0, 0);
+        box-shadow: 0 0 0 0 rgb(var(--dark-accent));
+        color: rgba(0, 0, 0, 0);
+        pointer-events: none;
+        scrollbar-width: thin;
     }
 
     .sidebox::-webkit-scrollbar {
-     width: 0.5em;
+        width: 0.5em;
     }
 
     .sidebox * {
-     transition: opacity 0.2s ease-in-out 0.1s;
-     opacity: 0;
+        transition: opacity 0.2s ease-in-out 0.1s;
+        opacity: 0;
     }
 
     .sidebox::before,
     .sidebox::after {
-     content: &#34; &#34;;
-     position: absolute;
-     right: 0;
-     pointer-events: all;
+        content: &#34; &#34;;
+        position: absolute;
+        right: 0;
+        pointer-events: all;
     }
 
     .sidebox::before {
-     z-index: 10;
-     top: calc(50% - 0.75rem);
-     width: 0;
-     height: 0;
-     transition: border 0.1s ease-in-out 0.1s;
-     border-top: 0.75rem solid transparent;
-     border-right: 0.75rem solid rgb(var(--dark-accent));
-     border-bottom: 0.75rem solid transparent;
+        z-index: 10;
+        top: calc(50% - 0.75rem);
+        width: 0;
+        height: 0;
+        transition: border 0.1s ease-in-out 0.1s;
+        border-top: 0.75rem solid transparent;
+        border-right: 0.75rem solid rgb(var(--dark-accent));
+        border-bottom: 0.75rem solid transparent;
     }
 
     .sidebox::after {
-     z-index: -1;
-     top: 0;
-     width: 100%;
-     max-width: 0.75rem;
-     height: 100%;
-     max-height: calc(100vh - 18rem);
-     transition:
-     box-shadow 0.5s ease-in-out 0.1s,
-     max-width 0.5s ease-in-out 0.1s,
-     border-top-left-radius 0.5s ease-in-out 0.1s,
-     border-bottom-left-radius 0.5s ease-in-out 0.1s,
-     border-top 0.25s ease-in-out 0.1s;
-     background-color: rgb(245, 245, 245);
-     box-shadow: 0.125rem 0 0 0 rgb(245, 245, 245);
-     box-sizing: border-box;
+        z-index: -1;
+        top: 0;
+        width: 100%;
+        max-width: 0.75rem;
+        height: 100%;
+        max-height: calc(100vh - 18rem);
+        transition:
+        box-shadow 0.5s ease-in-out 0.1s,
+        max-width 0.5s ease-in-out 0.1s,
+        border-top-left-radius 0.5s ease-in-out 0.1s,
+        border-bottom-left-radius 0.5s ease-in-out 0.1s,
+        border-top 0.25s ease-in-out 0.1s;
+        background-color: rgb(245, 245, 245);
+        box-shadow: 0.125rem 0 0 0 rgb(245, 245, 245);
+        box-sizing: border-box;
     }
 
     .sidebox:hover,
     .sidebox:active {
-     overflow-y: auto;
-     transition:
-     max-width 0.5s ease-in-out 0.2s,
-     color 0.5s ease-in-out 0.2s,
-     box-shadow 0.5s ease-in-out 0.1s,
-     background-color 0s ease-in-out 0.6s,
-     right 0.5s ease-in-out 0.1s,
-     border-right-width 0.1s ease-in-out 0.1s;
-     background-color: rgb(245, 245, 245);
-     color: rgb(var(--swatch-text-general));
-     border-right-width: 0rem;
-     pointer-events: all;
+        overflow-y: auto;
+        transition:
+        max-width 0.5s ease-in-out 0.2s,
+        color 0.5s ease-in-out 0.2s,
+        box-shadow 0.5s ease-in-out 0.1s,
+        background-color 0s ease-in-out 0.6s,
+        right 0.5s ease-in-out 0.1s,
+        border-right-width 0.1s ease-in-out 0.1s;
+        background-color: rgb(245, 245, 245);
+        color: rgb(var(--swatch-text-general));
+        border-right-width: 0rem;
+        pointer-events: all;
     }
 
     .sidebox:hover *,
     .sidebox:active * {
-     transition: opacity 0.5s ease-in-out 0.2s;
-     opacity: 1;
+        transition: opacity 0.5s ease-in-out 0.2s;
+        opacity: 1;
     }
 
     .sidebox:hover::before,
     .sidebox:active::before {
-     border-top: 0vw solid transparent;
-     border-bottom: 0vw solid transparent;
+        border-top: 0vw solid transparent;
+        border-bottom: 0vw solid transparent;
     }
 
     .sidebox:hover::after,
     .sidebox:active::after {
-     right: 0;
-     max-width: 100%;
-     border-top: solid 0.125rem rgb(var(--dark-accent));
-     border-top-left-radius: 0rem;
-     border-bottom-left-radius: 0rem;
-     box-shadow: 0 -0.125rem 0 0 rgb(var(--swatch-primary-darkest));
+        right: 0;
+        max-width: 100%;
+        border-top: solid 0.125rem rgb(var(--dark-accent));
+        border-top-left-radius: 0rem;
+        border-bottom-left-radius: 0rem;
+        box-shadow: 0 -0.125rem 0 0 rgb(var(--swatch-primary-darkest));
     }
 }
 
 @media (min-width: 56.25rem) and (max-width: 80.625rem) {
     .sidebox {
-     right: calc(((100vw - (var(--body-width-on-desktop)*1.25 + var(--sidebar-width-on-desktop) - 8rem))/2) * -1 - 1.5em);
+        right: calc(((100vw - (var(--body-width-on-desktop)*1.25 + var(--sidebar-width-on-desktop) - 8rem))/2) * -1 - 1.5em);
     }
 }
 
 @media only screen and (max-width:56.25rem) {
     .anchor {
-     top: calc(var(--topbar-height-on-mobile) + 0.75rem);
+        top: calc(var(--topbar-height-on-mobile) + 0.75rem);
     }
 
     .sidebox,
     .sidebox:hover,
     .sidebox:active {
-     right: calc(((100vw - (100% - 2.75rem))/2) * -1 + 1.5em);
+        right: calc(((100vw - (100% - 2.75rem))/2) * -1 + 1.5em);
     }
 
     .sidebox::before,
     .sidebox::after {
-     content: &#34; &#34;;
-     position: absolute;
-     right: 0;
-     pointer-events: all;
+        content: &#34; &#34;;
+        position: absolute;
+        right: 0;
+        pointer-events: all;
     }
 }
-[[/module]]
-
-[[module CSS]]
-body .italic, body .italic *, body em, body em *, body i, body i * {
- --slnt: 7;
-}
-[[/module]]
-
-[[module css]]
-:root {
---toggle-button-bg: rgb(var(--white-monochrome));
---toggle-border-color: rgb(var(--medium-accent));
---toggle-icon-color: rgb(var(--medium-accent));
---toggle-roundness: 0;
-}
-
-   #page-title::after,
-    .meta-title::after,
-    #page-title::before,
-    .meta-title::before {
-        content: &#34;&#34;;
-        flex-grow: 1;
-        height: 0.0625rem;
-        background: rgb(var(--swatch-primary));
-    }
- 
-    #page-title::before,
-    .meta-title::before {
-        margin: auto 1.25rem auto auto;
-    }
 
 div.blockquote {
+    border: none;
     border-right: 5px solid rgb(var(--medium-accent));
+    border-left: 5px solid rgb(var(--medium-accent));
+    box-shadow: 1px 1px 4px #27549582;
 }
 
 .addendum {
-   background: #F5F5F5;
-   border: none;
-   border-left: 6px solid #275495;
-   border-right: 6px solid #275495;
+    background: #F5F5F5;
+    border: none;
+    border-left: 6px solid rgb(var(--dark-accent));
+    border-right: 6px solid rgb(var(--dark-accent));
     width:85%;
     padding:10px 15px;
     margin: 10px auto;
+    box-shadow: 1px 1px 4px #27549582;
 }
+
+.warning {
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+.scp-image-caption {
+    color: rgb(var(--white-monochrome));
+    background-color: rgb(var(--dark-accent)) !important;
+    box-shadow: none;
+    margin-top: -1px;
+    padding-top: 0.75ex !important;
+}
+
+.image-block,
+.scp-image-block {
+    box-shadow: 1px 1px 4px #27549582;
+}
+
+table.wiki-content-table th {
+    text-align: center;
+}
+
 [[/module]]
 
-[[module CSS]]
-.info-container{
---barColour: #A4C2EC;
-}
-[[/module]]
-
-[[module CSS]]
-:root {
-    --fnColor: #A4C2EC;
-}
-[[/module]]
-
------
-
-[[include :scp-wiki-cn:component:info-ayers
+[[include component:info-ayers
+|lang=en
 |page=lte-1998-burnout-blaecca-parallax
 |authorPage=
 |comments=
-**由[[*user Jasiu06]] 与 [[*user Ralliston]]合著**
+**Co-written by [[*user Jasiu06]] and [[*user Ralliston]]**
 
-**[http://scp-pl.wikidot.com/doslownie-1984 ► Jasiu06的作者页]**
-**[http://scp-wiki-cn.wikidot.com/ralliston-s-authorpage ► Ralliston的作者页]**
+**[http://scp-pl.wikidot.com/doslownie-1984 ► Jasiu06&#39;s Authorpage]**
+**[http://scp-wiki.wikidot.com/ralliston-s-authorpage ► Ralliston&#39;s Authorpage]**
 ]]
+
+[[&gt;]]
+[[module rate]]
+[[/&gt;]]
 
 @@ @@
 
 [[div class=&#34;warning&#34;]]
 
-+++ 依副秘书长命令
++++ BY ORDER OF THE UNDERSECRETARY GENERAL
 ----
-**以下文档描述一超威胁现象，其清理与交战行动错漏百出、执行不当。因此，超威胁被消灭后，本文档已成为GOC处理超常现象的反面案例。**
+**The following file describes a para-threat phenomenon whose liquidation and engagement have been deemed severely inappropriate and mishandled. As such, following its neutralization, it is now primarily used as an example of an improper GOC approach to phenomena it handles.**
 
-**__心智部门全体领导需阅读以下文档。__**
+**__The entire PSYCHE Division Directorship is required to read the below file.__**
 ----
-**最高指挥部**
+**HIGH COMMAND**
 **UNGOC**
 [[/div]]
 
@@ -766,146 +829,146 @@ div.blockquote {
 ------
 
 [[=]]
-+ __威胁实体数据库条目__
++ __Threat Entity Database Entry__
 [[/=]]
 
 [[div style=&#34;height: 1px&#34;]]
 [[/div]]
 
-##102141|**威胁ID：**##
-**LTE-1998-Burnout-Blaecca-Parallax（“通往地狱的列车”）**
+##102141|**Threat ID:** ##
+**LTE-1998-Burnout-Blaecca-Parallax (&#34;Train to Hell&#34;)**
 
-##102141|**授权应对等级：**##
-**##red|--[[size 130%]]3[[/size]]--## --（中等威胁）--  ##red|[[size 130%]]N/A[[/size]]##（确认已清理，文件归档）**
+##102141|**Authorized Response Level:**##
+**##red|[[size 130%]]--3--[[/size]]## --(Moderate Threat)--  ##red|[[size 130%]]N/A[[/size]]## (Confirmed Destroyed, File Archived)**
 
-##102141|**描述：**##威胁为[[[prometheus-labs-hub|普罗米修斯实验室]]]与[[[marshall-carter-and-dark-hub|Marshall、Carter和Dark有限公司]]]于1993年末合伙制造的一Gen+2/TanGenT超科技交通工具，运行方式类似火车。
+##102141|**Description:**## Threat was a Gen+2/TanGenT paratechnological train-like vehicle created and used by [[[prometheus-labs-hub|Prometheus Laboratories]]] between 1994 and 1998 in accordance with the original order from [[[marshall-carter-and-dark-hub|Marshall, Carter &amp; Darke Ltd]]], which was made in late 1993. 
 
-威胁极其难以摧毁——此为其主要超常性质——且能够在不破坏自身结构的情况下扭曲所在地区的现实层[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]见下方简介。[[/span]]。异常以鬼魂作为能源，无需轨道，能够以任何固体、气体、液体作为自身行驶的介质。若依照普罗米修斯的操作规章加以适当维护，该列车几乎能够无限期运行。
+Its primary paranormal traits were its extreme durability, its ability to warp through the local layers of reality[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]See -- briefing appended below.[[/span]] without destabilizing its structure, its ability to continue operation without any tracks below it, interpreting any solid body / gas / liquid as a suitable host, and its ectologically-powered engine, whose proper utilization in accordance with Prometheus&#39; operation protocols allowed for the vehicle to remain in motion near-indefinitely.
 
-LTE-1998-Burnout-Blaecca-Parallax主要用于普罗米修斯实验室的非法超麻醉品交易。该威胁能够前往被有意识生物的灵魂所占据的各现实层，常规流程如下：
+Prometheus Labs primarily utilized LTE-1998-Burnout-Blaecca-Parallax as a way to continuously carry out illegal paranarcotic trade in layers of reality occupied by the souls of conscious beings. The method through which this operation would usually be conducted is as follows:
 
-* **1.** 普罗米修斯利用LTE-1998-Burnout-Blaecca-Parallax进入某来生现实，将极具成瘾性的超麻醉品贩卖给当地人口；
-* **2.** 客户将不可避免地对上述超麻醉品上瘾，并耗尽所有可用于交易的物件，随后它们将抵押自己的灵魂；
-* **3.** 普罗米修斯接收客户的灵魂，然后将其加入LTE-1998-Burnout-Blaecca-Parallax发动机的灵魂完形体中，用以生产能量，驱动列车前往下一个宇宙；
-* **4.** 当灵魂无法为列车提供动力后，普罗米修斯会将其捕捉，连同献出灵魂之前用以交换超麻醉品的物件一起售卖给MC&amp;D。
+* **1.** Prometheus utilizes LTE-1998-Burnout-Blaecca-Parallax to enter an afterlife reality, distributing [[[uiu-file-2014-158|severely addicting paranarcotics]]] to its population;
+* **2.**  Following its clients inevitably running out of items they can offer in exchange for the paranarcotics they are now addicted to, they offer their souls as a payment method;
+* **3.**  Prometheus accepts the soul of the client, adding it to the soul gestalt hosted in LTE-1998-Burnout-Blaecca-Parallax&#39;s engine, using the energy generated this way to propel the train forward into another universe;
+* **4.**  Those souls that are unnecessary to keep the vehicle running are captured and sent to MC&amp;D for sale; a similar fate is suffered by the possessions of the souls which were exchanged for the paranarcotics before the soul payment.
 
-LTE-1998-Burnout-Blaecca-Parallax的每趟行程将访问1到147[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]记录中的最高数量。[[/span]]个来生现实，使普罗米修斯——及其合法所有者MC&amp;D——获取巨额利润，但该系统将会令灵魂遭受极大的痛苦，且列车返回始发站后将严重损害基准现实的稳定性。据现有估计，从首次运行直至最终无效化，LTE-1998-Burnout-Blaecca-Parallax总计完成了251次任务，对超过200 000名智能生物的灵魂造成了创伤。
+During a single trip, LTE-1998-Burnout-Blaecca-Parallax would visit between 1 and 147[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Highest recorded number.[[/span]] afterlife realities, allowing it -- and its proper owners, MC&amp;D -- to come into the possession of extreme monetary gain caused by the system, at the cost of severe soul suffering and rapid and extreme destabilizations of baseline reality in places it re-entered following the conclusion of its journey. It is currently estimated that between its initial launch and its neutralization, LTE-1998-Burnout-Blaecca-Parallax partook in as many as 251 voyages, inflicting damage to over 200 000 sapient souls.
 
-##102141|**清理过程：**##19/07/1998，LTE-1998-Burnout-Blaecca-Parallax被2013号攻击小队（“半自动”）成功摧毁。108议会认定，火车进出基准现实将迅速引发大规模的现实失稳现象，此为对第三任务（保护）不可忽视的威胁，而在更大程度上可能阻碍第二任务（隐蔽） 和第一任务（生存）的实现。并且，普罗米修斯的举动是对国际协议的公然践踏，不仅破坏了来生现实，还蓄意对不可计数的智能生物造成了不可估量的损害。以上原因最终促成了2013号攻击小队的行动。
+##102141|**Liquidation:**## LTE-1998-Burnout-Blaecca-Parallax was successfully terminated by Strike Team 2013 (&#34;Semiautomatic&#34;) on 19/07/1998 after the rapid and widespread destabilizations of baseline reality caused by the exits and entries into it by the train were deemed an unignorable danger to the goals of the Third Mission (Protection) and on a grander scale, with potential for Second (Concealment) and First (Survival) Mission breaches by the Council of 108. This -- paired with the fact Prometheus&#39; operations were deemed gross violations of international agreements for not only intervening with afterlife realities but actively causing immeasurable harm to uncounted sapient beings -- resulted in the aforementioned deployment of Strike Team 2013.
 
-俄耳甫斯行动及其后果的更多信息可于物理部门档案中找到，详见下方的心智部门简报。
+Further details regarding Operation Orpheus and its consequences are available in PHYSICS Division Casefiles, appended below the PSYCHE Division briefing.
 
 ------
 
 [[=]]
-+ __心智部门记录__
++ __PSYCHE Records__
 [[/=]]
 
 [[div style=&#34;height: 1px&#34;]]
 [[/div]]
 
 [[div class=&#34;blockquote&#34;]]
-[[=image https://scp-wiki.wdfiles.com/local--files/lte-1998-burnout-blaecca-parallax/psyche.png width=&#34;100px&#34;]]
-= **[[size larger]]##102141|心智部门数据库##[[/size]]**
+[[=image psyche.png width=&#34;100px&#34;]]
+= **[[size larger]]##102141|PSYCHE Division Database##[[/size]]**
 -----
 
-[[=image https://scpsandboxcn.wdfiles.com/local--files/vxeov/founders3.png style=&#34;border: solid 2px; border-style: outset; border-color: rgb(var(--bright-accent));&#34;]]
-= [[size 85%]] {{1892年普罗米修斯实验室成立典礼上，首任董事长、主要研究员和其他联合创始人齐聚一堂。}} [[/size]]
+[[=image founders3.png style=&#34;border: solid 2.5px; border-style: outset; border-color: rgb(var(--bright-accent)); box-shadow: 1px 1px 4px #27549582;&#34;]]
+= [[size 85%]] {{Those present during the funding of Prometheus Laboratories in 1892, original directors, main researchers, and other co-founders.}} [[/size]]
 
-[...] 普罗米修斯实验室明知此举是对维护现实稳定性的相关国际超自然法的严重侵犯，为什么要执意建造、利用PTE-1998-Burnout-Blaecca-Parallax呢？要想理解这一点，我们先得介绍这家公司在20世纪末的状况。
+[...] To understand why Prometheus Laboratories would ever build and utilize PTE-1998-Burnout-Blaecca-Parallax despite knowing fully well it was a drastic infringement on international paralaw agreements regarding maintenance of reality stability, we need to first put forward some of the context that surrounded the company&#39;s status in the late 20th century.
 
-早期的普罗米修斯并没有把业务重心放在贩卖武器上——正如成立之初的宗旨所言，它只是一家科学机构，死死地抓住名称里的“实验室”三个字不放，把科学发挥到极致。五十多年来，公司的行事方式始终如一。乘着第六次超自然战争后的超自然复兴浪潮，普罗米修斯极大地扩充了自己对未知事物的理解。一个个研究任务、一项项大突破项目接踵而至，普罗米修斯的业务扩展到了超自然世界的每个角落——但好景不长，很快第七次超自然战争就爆发了，然后马上又进入了冷战。所以，普罗米修斯为了生存，做出了当时唯一可以做的事情：满足各国重要人物的需求，而这些人脑子里只有一样东西——武器。公司变质了。
+In its early days, Prometheus wasn&#39;t primarily a weapons company -- it was, just as its founding goals intended, a scientific institution, hellbent on taking the &#34;Laboratories&#34; in its name and making the best of it. And, for more than fifty years, it has worked. Riding on the wave of the ongoing post-Sixth Occult War paranormal renaissance, Prometheus was able to significantly expand the understanding of the unknown. From every corner of the paranormal world, one research order or gigantic breakthrough project came, one after the other -- but then came the Seventh Occult War and the Cold War after it. And, well, Prometheus did the only thing it could to survive in times when the only thing everyone that mattered cared about was weapons. It adapted.
 
-公司开始以几乎每个月一款的速度推出新型本征武器，威力强大到一发可以抹除整个大洲，以此从美国和苏联的各种魔怔人——慷慨到愿意给他们订单的那种——手里赚到了天文数字般的利润。[http://scp-int.wikidot.com/partager-le-vin 1953年蓝宝石社退出108议会后]，联盟的确邀请过普罗米修斯来接替席位，但被拒绝了，因为这样做会严重挫败普罗米修斯的超常武器贸易。然而……冷战也有结束的那天。没人想要更多神奇核弹头了，各种超常技术和苏联留下的超常武器纷纷涌入了黑市。一瞬间，普罗米修斯实验室就已经孑然一身，只剩下Marshall、Carter和Dark还陪着它。为了不在几个月内完全倒闭，普罗米修斯只能抓住它唯一的机会——而这机会恰好是Marshall、Carter和Dark的某个变态提供的。
+Practically every month, it churned out a new eigenweapon powerful enough to level a whole continent, earning absurd amounts of money from whatever Soviet or American crazyman was generous enough to give them the order. The Coalition did indeed make the first attempt to offer Prometheus a position at the Council of 108 after [http://scp-int.wikidot.com/partager-le-vin SAPPHIRE&#39;s leave in 1953], but Prometheus declined, as such a decision would have significantly decreased its paraweaponry trade. But then... then the War ended. With nobody wanting any more magic nukes and the paratech black market being flooded with illegal post-Soviet paraweapons, Prometheus Labs was suddenly left almost entirely alone -- alone with nobody but Marshall, Carter &amp; Darke by its side. So it took up the only chance it had to not entirely fall apart in just months -- and it happened that that chance was whatever the hell the twisted minds of Marshall, Carter, and Darke wanted to be delivered to them.
 
-普罗米修斯并非生来邪恶。就跟它钟爱的科学一样，孰善孰恶完全取决于它的使用者——也就是取决于给普罗米修斯送钱的人。不巧，普罗米修斯的主人们根本不关心国际法。他们希望用魔法地狱列车大量出售灵魂，从而给他们带来高额利润，于是好狗听从了主人的命令——它不想真的死去，只好做出它唯一的选择。这就是PTE-1998-Burnout-Blaecca-Parallax的由来，它这不仅是对来生世界稳定的威胁，也是对我们所知的基准现实的威胁。我们想对付它，自然只有一个办法：清理。但问题是，这种事情没必要发生在普罗米修斯实验室身上，倘若没有了这辆黄金列车，公司肯定用不了十年就会破产，这是无法避免的，正如硅之诺伦仆从会和他们的超级计算机所预测的那样。
+Prometheus isn&#39;t evil. Just like the science it so loves, its usage entirely depends on who wields it -- which is to say, it depends on who gives money to Prometheus. And, well, it so happened that the ones that became its masters didn&#39;t particularly care for international laws. They wanted their magic hell train to give them absurd amounts of profit from selling souls en-masse, so its dog listened, not wishing to literally die, since that was the only other option it had. And that&#39;s how we arrive at PTE-1998-Burnout-Blaecca-Parallax, a threat to not only the stability of afterlives, but also baseline reality as we know it. Naturally, there&#39;s only one way to go about it, liquidation. But, here&#39;s the thing -- the same thing doesn&#39;t have to happen to Prometheus Labs, which without their golden train, would inevitably fail in less than a decade, as predicted by the Servants of the Silicon Nornir and their supercomputers.
 
-我们重新提出了之前已经尝试过的方案——将普罗米修斯实验室并入108议会。自从1997年新克里普提离开后，议会就一直空缺着一个席位，而我们，说实话，想不到比普罗米修斯更好的人选了。我们十分肯定它会加入，它想脱离Dark的控制，它想获得自由。尽管惹怒Darke先生这种强大人物是个不明智的举动，但也要想想，假如得到了我们组织的赞助，那将有多大的可能性呀。[[[grant-request-for-the-creation-of-remnant-hosts|我们可以携手打败死神]]]；[[[wniosek-o-dotacje-na-opracowanie-srodka-przeciwko-alergii|我们可以攻克疾病]]]；我们可以用成十上百的[[[grant-request-for-investigating-the-potential-application-of|轮回单位]]]来保卫和平。停下来，想象一下吧。
+We propose a solution to this problem which we have already tried once -- the integration of Prometheus Laboratories into the Council of 108. With the New Crypteia&#39;s leave of the body in 1997, there has been a single empty seat within its ranks -- and we, frankly, do not see a single better candidate to take it than Prometheus, and we are more than sure it would accept this time, wanting nothing but freedom from the Dark. While it would truly be unwise to annoy a man as powerful as [[[the-deathless-merchant-of-london|Mr. Darke]]], imagine the unlimited possibilities the group would have with our funding. The [[[grant-request-for-the-creation-of-remnant-hosts|death we could fight and defeat together]]], the [[[wniosek-o-dotacje-na-opracowanie-srodka-przeciwko-alergii|ilnesses we could cure]]], the peace we could upkeep with tens if not hundreds of its [[[grant-request-for-investigating-the-potential-application-of|Samsara units]]]. Just think about that, for a single moment.
 
-毕竟，维持普罗米修斯薪火不灭是我们的最高义举。不仅对我们自己如此，也对掌控它的人如此。 [...]
+After all, keeping up Prometheus&#39; undying flame is the best thing we can do. Both for ourselves and its bearers. [...]
 
-//——节选自《PTE-1998-Burnout-Blaecca-Parallax的和平处理方案》，Jane Miranda著，发表于UNGOC内刊（1998）。//
+//-- Excerpt from &#34;A Peaceful Approach to PTE-1998-Burnout-Blaecca-Parallax&#34; by Jane Miranda, released by internal UNGOC publishing (1998).//
 [[/div]]
 
-上述论文完成后不久，108议会在年度GOC大会上对其中描述的动议进行了投票表决。下面是投票记录。
+Shortly after the above paper was written, the motion described in it was put to a Council of 108 vote during the annual GOC General Assembly to either accept or reject it. Below attached is its log.
 
 [[div class=&#34;blockquote&#34;]]
-[[=image https://scp-wiki.wdfiles.com/local--files/lte-1998-burnout-blaecca-parallax/assembly.png width=&#34;100px&#34;]]
-= **[[size larger]]##102141|GOC大会第五十三届会议##[[/size]]**
+[[=image assembly.png width=&#34;100px&#34;]]
+= **[[size larger]]##102141|53rd Session of the GOC General Assembly##[[/size]]**
 -----
-**提议：**“对于普罗米修斯实验室利用PTE-1998-Burnout-Blaecca-Parallax破坏超自然国际法院若干规章之事，不应将其送上法庭，而应将其看作受害者，即被Marshall、Carter和Dark有限公司所操纵的中立第三方；在与联盟合作清理PTE-1998-Burnout-Blaecca-Parallax后，再次邀请普罗米修斯实验室加入108议会，使其正式成为由联合国全球超自然联盟全额资助的独立成员组织。”
+**Proposal:** &#34;Instead of putting Prometheus Laboratories in front of the International Court For the Paranormal for breaking several of its guidelines regarding PTE-1998-Burnout-Blaecca-Parallax, treat it as a victim of Marshall, Carter &amp; Darke Ltd and as a neutral, manipulated third party. Once again offer it a seat at the Council of 108 after the organization itself, with the help from Coalition, will liquidate the PTE-1998-Burnout-Blaecca-Parallax, allowing it to officially become a fully funded and independent member of the United Nations Global Occult Coalition.&#34;
 -----
 [[div class=&#34;addendum&#34;]]
-||~ UNGOC/GA53-011 投票结果 ||
-[[=image https://scpsandboxcn.wdfiles.com/local--files/vxeov/vote.png width=&#34;500px&#34;]]
-= **[[size 85%]]##5f95e6|█## 赞成：56.48%（61） | ##dc0000|█## 反对：25%（27） | ##caca27|█## 弃权：17.59%（19） | █ 缺席：0.92%（1）[[/size]]**
+||~ UNGOC/GA53-011 Voting ||
+[[=image vote.png width=&#34;500px&#34;]]
+= **[[size 85%]]##5f95e6|█## For: 56.48% (61) | ##dc0000|█## Against: 25% (27) | ##caca27|█## Abstain: 17.59% (19) | █ Absent: 0.93% (1)[[/size]]**
 
-= **投票结果：##5f95e6|动议通过##**
+= **Vote Summary: ##5f95e6|MOTION APPROVED##**
 [[/div]]
 -----
-**总结：**动议通过后，最高指挥部向心智部门大使下达了适当命令，要求其就普罗米修斯实验室加入108议会一事起草正式提议。
+**Conclusion:** With the motion approved, appropriate orders were forwarded to PSYCHE Division ambassadors by the High Command to issue an official proposal to Prometheus Labs regarding joining the Council of 108.
 [[/div]]
 
-心智部门于08/06/1998向普罗米修斯驻联盟联络人Dana Mercado发送了一封提议信。
+On 08/06/1998, PSYCHE Division sent an official proposal to Prometheus&#39; Coalition Liaison, Dana Mercado.
 
 [[div style=&#34;width: 95%; margin: auto&#34;]]
-||||||||~ __心智部门__||
-||~ 发件者||Harrison大使||~ 收件者|| Dana Mercado ||
-||||||~ 主题|| 一封提议 ||
-|||||||| 敬启者： _
+||||||||~ __PSYCHE Division__||
+||~ Sender||Ambassador Harrison||~ Recipient|| Dana Mercado ||
+||||||~ Subject|| A Proposal ||
+|||||||| To Whom It May Concern, _
  _
-全球超自然联盟108议会谨二度正式邀请普罗米修斯实验室入会。我们固然清楚你们之前的拒绝，但重念双方多年的友好合作，联盟决定再次阐明自己的立场。我们相信，在这飘忽不定的后冷战时代，若你们能重新考虑这项早就该做的决定，那么对双方组织都会有好处。 _
+The Global Occult Coalition&#39;s Council of 108 has officially decided to once again offer a position in its ranks to Prometheus Laboratories. Even keeping in mind your previous declination, remembering our years of good cooperation, we decided to repeat our proposition. We believe it would be in our mutual best interest for you to rethink this truly outdated decision in these unstable post-Cold War times. _
  _
-我们承诺，若你们愿意入会，联盟除为普罗米修斯日后的运作提供稳定资金外，还会出面澄清关于你们之前违反维护现实稳定性之国际超自然法的诸多误解。上述承诺包括宽恕最近的一起案件：普罗米修斯制造了一辆非法运行的外宇宙超常贸易用交通工具，蓄意对联盟的第三任务（保护）造成威胁。 _
+In addition to securing a stable future for Prometheus&#39;s financing, such a change would also lead to the clarification of any misunderstandings related to your previous violations of the international paralaw regarding maintenance of reality stability. This would include the forgiveness of the most recent one; posing an active threat to the Coalition&#39;s Third Mission (Protection) by the Prometheus-created, illegally-operating extrauniversal paratrade vehicle. _
  _
-一旦普罗米修斯以108议会正式成员的身份表现出合作意愿，联盟将担保、认定其性质为Marshall、Carter和Dark有限公司控制下的中立方，减轻超常国际法院对你们组织判处的刑罪。在此过程中，你们将被宣判无罪。 _
+Prometheus&#39; willingness to cooperate in the capacity of an official member of the Council of 108 would guarantee it a status of a neutral party manipulated by Marshall, Carter &amp; Darke Ltd, mitigating the felony in eyes of the International Court for the Paranormal to the latter group entirely. In the process, it would be judged as innocent. _
  _
-我们希望你们能作出正确的选择。请牢记你们和联盟的真正利益在何处。 _
+We hope that you will make the best decision, keeping in mind the benefit of both the Coalition and yourself. _
  _
-谨此 _
-Addison Harrison大使 _
-联合国全球超自然联盟 ||
+Sincerely, _
+Ambassador Addison Harrison _
+United Nations Global Occult Coalition ||
 [[/div]]
 
-心智部门于19/06/1998收到了普罗米修斯实验室对上述提议的官方回复。
+On 19/06/1998, the PSYCHE Division received an official response from Prometheus Laboratories regarding the above-mentioned proposal.
 
 [[div style=&#34;width: 95%; margin: auto&#34;]]
-||||||||~ __普罗米修斯实验室__||
-||~ 发件者||Mercado联络人||~ 收件者||Harrison大使||
-||||||~ 主题|| 回：一封提议||
-|||||||| Harrison先生： _
+||||||||~ __Prometheus Laboratories__||
+||~ Sender||Liaison Mercado||~ Recipient||Ambassador Harrison||
+||||||~ Subject|| Re:A Proposal||
+|||||||| Mister Harrison, _
  _
-尽管我们之前全面而有效的互相协作已精准地形成了一个独特而道德进步的应用平台，但我们合作网络的联合委员会无法以此精心规划的体验之客户至上的精神而灵活准确地阐述同意的信息。我领导层、合作者和赞助者之毋庸置疑具有惊人智力的人类头颅及器官基础无法以如此技术有效地授权战略地而又顺畅地接纳该科学联合提议的如此竞争性的雇佣关系邀请。 _
+Although our holistic and effectively collaborative aggregates have accurately formulated a distinctive and ethical appreciation application, the collective committees of our integrated networks cannot in the client-focused spirit of this engineered experience adaptively and accurately deploy acceptance information. The unbashingly surprisingly intellectual human capital and organic infrastructure our leadership, partnerships, and benefactors function off on cannot be effectively enabled in such a technique as to authorize this scientific conglomerate to strategically and frictionlessly embrace such competitive employmentship offers. _
  _
-我们的方法论——尽管超越常规、独特新颖、富有人工构造意味——展现了一种能够为此广播//等//行业提供有价值而又十分必要的资本及资源（同样，//等//）的亟需的支出。该干涉性的法律问题以及任何类似的无盈利功能查询不能也不应构成对公司主体运作的阻碍。关注客户的表现与这种战略链于当今已展现出其最高优先性且将//永久持续//，我们依然将上文所述的最终条件牢记心中。因此即便在拨款、报酬和增值之后，我们对客户的供应也不会以中断告终。 _
+Our methodologies -- albeit outside the box, highly innovative, and artificially architectured -- pose an imperative expense that grants valuable and frankly imperative capital and resources//et al// to this broadcaster (similarly //et al//). The interfering legalities as well as any such functionally unprofitable inquiries cannot and should not pose an intermission that should stall the subject&#39;s operation. Client-focused performance and this strategic chain pose utmost priority now and //ad infinitum//, still keeping in mind the above-appended ultimatum. Therefore the client supply will not result in termination, even under appropriation, consideration, and appreciation. _
  _
-无由会晤，谨祝颂时祺。此致 _
+We solemnly aspire this finds you well. _
  _
-敬礼 _
+Regards, _
 Liaison Dana Mercado _
-普罗米修斯实验室公共关系部 ||
+Public Relations Division, Prometheus Laboratories ||
 [[/div]]
 
 ------
 
 [[=]]
-+ __物理部门记录__
++ __PHYSICS Records__
 [[/=]]
 
-普罗米修斯显然拒绝了GOC的提议。因此，联盟最高指挥部认定必须正式将PTE-1998-Burnout-Blaecca-Parallax重新编级为KTE，授予3级（中等威胁） 应对等级，并以“俄耳甫斯行动”为形式正式制止该威胁的活动，希望普罗米修斯实验室在其主要非法资产被摧毁后，能重新考虑加入108议会的事宜。
+Due to Prometheus&#39; apparent rejection of the proposal, Coalition High Command determined that the only option was to officially reclassify PTE-1998-Burnout-Blaecca-Parallax to KTE, with Response Level 3 (Moderate Threat) as well as take official action to stop its operations in the form of Operation Orpheus, with the hope that Prometheus Labs will reconsider the proposal of joining the Council of 108 following the destruction of their primary illegal asset.
 
 [[div style=&#34;height: 1px&#34;]]
 [[/div]]
 
 [[div class=&#34;blockquote&#34;]]
-[[=image https://scp-wiki.wdfiles.com/local--files/lte-1998-burnout-blaecca-parallax/physics.png width=&#34;100px&#34;]]
-= **[[size larger]]##102141|物理部门记录数据库##[[/size]]**
+[[=image physics.png width=&#34;100px&#34;]]
+= **[[size larger]]##102141|PHYSICS Division Database##[[/size]]**
 -----
-**任务：**将传送设备同步至硅之诺伦仆从会超级计算机所预测的KTE-1998-Burnout-Blaecca-Parallax行驶路径；传送后立刻与威胁交战；消灭所有MC&amp;D生化电子人守卫；采用一切必要手段控制列车；并向车内的普罗米修斯实验室职员和平地传达联盟的提议。上述人员接受提议后，应将KTE-1998-Burnout-Blaecca-Parallax重新安全驶入基准现实的联盟基地，并依照适当程序将其清理。
+**Mission:** Via the usage of synchronized apportation with the path of KTE-1998-Burnout-Blaecca-Parallax as predicted by the Servants of the Silicon Nornir&#39;s Supercomputers, engage with the threat, eliminate MC&amp;D cyborg security present onboard, take control of the vehicle via any means necessary, and peacefully share the Coalition&#39;s offer to Prometheus Labs personnel within. Following the acceptance of the aforementioned proposal, safely re-direct KTE-1998-Burnout-Blaecca-Parallax to a Coalition base in baseline reality and liquidate it in accordance with appropriate protocols.
 
-**执行方：**2013号攻击小队（“半自动”），成员包括Camille Caldwell（队长）、9名携带Gen+2装备的联盟要员（队员）
+**Engaging Party:** Strike Team 2013 (&#34;Semiautomatic&#34;); Camille Caldwell (Team Captain), 9 Gen+2 Augmented Coalition Assets (Team Members)
 
-**附加简报：**下面是《批准制造外宇宙鬼魂动力列车以投入死后世界之超麻醉品贸易的申请》中“对策”部分的节选，David Wilson教授著，于普罗米修斯实验室内刊发表（1993）。
+**Appended Briefing:** Excerpt from the &#34;SOLUTION&#34; part of &#34;GRANT REQUEST FOR THE CREATION OF AN EXTRAUNIVERSAL ECTOLOGICALLY-POWERED VEHICLE TO ENGAGE IN POST-MORTEM PANANARCOTIC TRADE&#34; by Prof. David Wilson, released by internal Prometheus publishing (1993).
 
 -----
 
@@ -914,38 +977,38 @@ Liaison Dana Mercado _
 [[/div]]
 
 [[=]]
-++++ **对策**
+++++ **SOLUTION**
 [[/=]]
 
 [[div style=&#34;border-bottom: 2px solid #275495;&#34;]]
 [[/div]]
 
-[...] 但这种外宇宙的交通工具并不会前往//任何//基准现实周边已有的现实层。没错，为了正当地开展贸易，不对人类的高度自由权造成任何侵犯，我们主要还是针对那些不稳定的、根本无法自卫的、可以轻易获取的智能生物灵魂，也就是要去到来生的现实层。灵魂不仅可以为列车的发动机提供动力，而且还可以卖给Marshall、Carter和Dark的客户，从他们手里赚取大笔资金。^^[((bibcite darke))]^^
+[...] However, such an extrauniversal vehicle wouldn&#39;t simply travel to //any// of the existent stacks of reality around baseline reality. Indeed, to properly carry out its trade without any possible issues that would arise from high levels of human freedom, it would primarily target volatile and entirely defenseless and easy-to-harvest sapient souls inside of afterlife stacks of reality, which would not only power the train&#39;s engines, but could also be sold for high monetary resources to other clients of Marshall, Carter &amp; Darke.^^[((bibcite darke))]^^
 
 [[include :scp-wiki:component:image-features-source |hover-enlarge=--]
-|enlarge-amount=5
-|speed=15
+|enlarge-amount=7
+|speed=10
 |float=true
 |align=right
 |width=45%
-|url=https://scpsandboxcn.wdfiles.com/local--files/vxeov/graph.png
+|url=graph.png
 |add-caption=true
-|caption=**{{图2.1：}}**普罗米修斯对本地宇宙边缘处首次探索的图示。
+|caption=**{{Fig 2.1:}}** Visualization of the first Prometheus expedition to the borders of local universe.
 ]]
 
-目前，普罗米修斯行动的理论依据主要有两个：一个是Dr. Shanahan R&#39;yann[[[wniosek-o-dotacje-na-opracowanie-srodka-przeciwko-alergii|于1908年对已知现实边界之第一次探索的结果]]]，另一个是[[[scp-6172|斯克兰顿–迈克尔斯多元宇宙模型]]]；两种理论均认为基准现实周边存在其他的现实，且它们均可以算作本地宇宙的一部分，完全独立于多元宇宙罗盘^^[((bibcite micheals))]^^所示的其他平行现实。这组理论虽然准确无误、极具开创价值，但它们未能详细地区分本地宇宙的诸多现实：一种是可供生命正常活动的标准现实，一种是常被称为“来生”的另类现实，其主要居民为不灭的人类魂体（俗称灵魂）。这也说明，现有的理论无法充分支撑我们所提议的项目。因此，考虑到这一点，我们决心开展实验。
+Prometheus Laboratories has been, so far, operating primarily on the research of Dr. Shanahan R&#39;yann during his [[[wniosek-o-dotacje-na-opracowanie-srodka-przeciwko-alergii|first expedition to the borders of known existence in 1908]]] as well as the [[[scp-6172|Scranton-Micheals Multiverse Model]]], both of which assume there are realities around baseline reality that still count as a local universe and are entirely separate from the rest of the alternate realities inhabiting the Multiversal Compass.^^[((bibcite micheals))]^^ This set of assumptions -- whilst unquestionably true and revolutionary -- does not however account for the nuanced differences between standard realities in which life operates normally and those that are commonly referred to as &#34;afterlives&#34; and are mainly inhabited by undead human ectomorphs (or, colloquially, souls). This also means its model cannot be fully utilized as a proper set of theory for our proposed project. And so, with this in mind, we have decided to commit ourselves to research.
 
-我和我的团队很快就找到了区分正常宇宙和死后宇宙的秘诀。此后，我们提出了斯克兰顿–迈克尔斯多元宇宙模型的“威尔逊扩展解释”，其中详细说明了前文所述的区别。大家可以看到，各现实之间最主要的差异就在于“基准状态下住民有何种期望”，这种差异可以用其住民散发的EVE力场来区分。若现实的住民主要为生者，那么它们的“值”大多是“正数”（毕竟住民确实是活的）。而来生现实就不一样了，它们的“期望值”（简称VOE）主要是“负数”。^^[((bibcite wilson))]^^
+Shortly after, me and my team fully discovered how to differentiate between normal universes and those inhabited by the dead. We hereby then propose the Wilson Extension to the Scranton-Micheals Model, which accounts for the aforementioned nuances. For you see, the primary difference comes in the way a reality treats its &#34;expectation of the baseline state of its inhabitants&#34; based on the emitted EVE aura of its residents. While realities that are mostly populated by the living have this &#34;value&#34; set to a &#34;positive&#34; (since its inhabitants are, indeed, alive), afterlives do not; their &#34;value of expectation&#34; (or VOE for short) is set primarily to some &#34;negative&#34; number.^^[((bibcite wilson))]^^ 
 
-这项成果不仅对科学进步大有脾益，而且还能帮助我们建造本文构想的列车。倘若能在制造列车发动机和导航系统的时候用上这种方法，我们就可以让它想进哪个现实（比如来生现实）就进哪个现实了。当列车未能进入正确现实的时候，我们还能阻止它进入VOE为正的存在平面，同时避免一般情况下的动力损耗问题。 [...]
+This is not only useful for scientific purposes, but also for the needs of the train we propose building in this document. Utilizing such a method in the construction of the vehicle&#39;s engine and navigation system could allow it to freely enter the realities we wish for it to enter (i.e. afterlife realities), whilst simultaneously blocking its access to planes of existence with positive VOEs without losing any of its engine power of time should it fail to enter the right reality, as it would under normal circumstances. [...]
 
 [[div style=&#34;border-bottom: 2px solid #275495;&#34;]]
 [[/div]]
 
 [[bibliography title=&#34;Bibliography&#34;]]
-: darke : Darke, P. (1869). 《人类灵魂的价值》. //炼金学与超科学期刊//, 5-12.
-: micheals : Micheals, J. (1990). 《广义宇宙现实的本质》. //SCP基金会内刊//，于1992年超科学峰会向全球共享, 78-94.
-: wilson : Wilson, D. (1993). 《论多元宇宙及其来生世界》. //普罗米修斯实验室内刊//, 20-43.
+: darke : Darke, P. (1869). The Value Of A Human Soul. //Journal of Alchemy and Parascience//, 5-12.
+: micheals : Micheals, J. (1990). The Nature Of Omniversal Reality. //Internal SCP Foundation Publishing//, shared globally during the parascientific summit of 1992, 78-94.
+: wilson : Wilson, D. (1993). Regarding The Multiverse And Its Afterlives. //Internal Prometheus Publishing//, 20-43.
 [[/bibliography]]
 [[/div]]
 
@@ -954,10 +1017,10 @@ Liaison Dana Mercado _
 [[div style=&#34;height: 3px&#34;]]
 [[/div]]
 
-[[include component:image-block name=https://scp-int.wdfiles.com/local--files/centre-de-primordial/LogoSimple.png
+[[include component:image-block name=http://scp-int.wdfiles.com/local--files/centre-de-primordial/LogoSimple.png
 |align=right
 |width=125px
-|caption=原初公司的标志。
+|caption=The logo of the Primordial.
 ]]
 
 [[div class=&#34;limit&#34;]]
@@ -967,33 +1030,33 @@ Liaison Dana Mercado _
 [[/div]]
 
 [[=]]
-+++ __威胁实体数据库条目概要__
++++ __Threat Entity Database Entry Brief__
 [[/=]]
 
 [[div style=&#34;border-bottom: 2px solid #275495;&#34;]]
 [[/div]]
 
-##102141|**威胁ID：** ##
-[[size 90%]]**KTE-1852-Indigo-Léon（“静默死神”）**[[/size]]
+##102141|**Threat ID:** ##
+[[size 90%]]**KTE-1852-Indigo-Léon (&#34;The Silent Death&#34;)**[[/size]]
 
-##102141|**授权应对等级：**##
-**##red|[[size 120%]]2[[/size]]##** [[size 90%]]**（中低威胁）**[[/size]]
+##102141|**Authorized Response Level:**##
+**##red|[[size 120%]]2[[/size]]##** [[size 90%]]**(Sub-Moderate Threat)**[[/size]]
 
-##102141|**描述：**##一臭名昭著的//Homo sapiens sidhe//生化电子人（即“靛型”）佣兵。他被广泛认定为当前超自然黑市上最致命、最管用的士兵之一。他是非法佣兵组织“原初”的成员。其身体列装了大量非法的、仍处实验阶段的Gen+2/TanGenT零部件，包括但不限于：一组奇术促动激金刀刃、四肢内置的枪械、一套可代替翅膀的反重力仪器，以及使用恶魔动力的推进器。
+##102141|**Description:**## A notorious //Homo sapiens sidhe// cyborg -- Type Indigo -- mercenary. Widely regarded to be one of the deadliest and most effective warriors currently present on the paranormal black market. Member of the illegal mercenary organization, Primordial. Heavily augmented with numerous illegal and experimental Gen+2/TanGenT parts integrated into his body, including, but not limited to: a series of thaumokinetic irrilite blades, in-built limb firearms, set of gravity defiers that replace wings, and demonically-powered propellers.
 
-该威胁已被联盟通缉，罪名为：非法雇佣军队罪、586起在案的故意杀人罪、与若干非法团体和组织合作罪，以及多起违反《国际超自然法典》的雇佣任务。此外，他也同时被超过100个国家认定为战犯，正在接受通缉。
+Wanted by the Coalition on the warrant of illegal mercenarism, 586 confirmed kills, collaboration with several illegal groups and organizations, and several high breaches of the International Paralaw Codex due to the missions he was employed for. Considered a war criminal and a wanted man by over 100 countries.
 [[/div]]
 [[/div]]
 [[/div]]
 
-**主要威胁：**物理部门预计行动不会出现任何重大问题——即使恶劣的外宇宙环境中充满了无法预料的危险，也不会对2013号攻击小队的任务造成太大障碍，因为该小队的队员全部是高度改造过的人类，能够迅速适应此类条件——但是，依据心智部门未经证实的信息，KTE-1998-Burnout-Blaecca-Parallax的安保很可能由一位原初公司的重度改装佣兵S&#39;amh Armh（KTE-1852-Indigo-Léon）负责。若消息属实，该威胁将严重影响2013号攻击小队的行动，不过联盟信任他们的才能、改装技术和Caldwell队长的Gen+2/TanGenT装备，相信其能在不遇到显著困难的情况下消灭他。
+**Primary Threats:** Although the PHYSICS Division does not expect any major issues that could come up during the operation -- even the hostile extrauniversal environment, whose unexpected dangers won&#39;t prove a difficult challenge as Strike Team 2013 entirely consists of heavily augmented humans made resilient to the possibility such incidents -- PSYCHE Division personnel have obtained unconfirmed information that suggests that the KTE-1998-Burnout-Blaecca-Parallax security might employ heavy augmented [http://scp-int.wikidot.com/centre-de-primordial Primordial] mercenary Asset [[[everchase|S&#39;amh Armh]]] (KTE-1852-Indigo-Léon). Should this prove true, even though it could become a significant threat to Strike Team 2013, it is believed that due to their skill, augmentations, and Cptn. Caldwell&#39;s Gen+2/TanGenT augmentations, they would be able to eliminate him without any significant difficulties.
 [[/div]]
 
-29/07/1998，俄耳甫斯行动的所有要员均已正式准备就绪。当日傍晚，行动正式开始。下面是小队的任务记录。
+On 29/07/1998, all assets necessary for Operation Orpheus have been officially and fully prepared. The mission was then launched in the evening hours of the same day. Below attached is a log of their deployment.
 
 [[div class=&#34;blockquote&#34;]]
-[[=image https://scp-wiki.wdfiles.com/local--files/lte-1998-burnout-blaecca-parallax/strike.png width=&#34;100px&#34;]]
-= **[[size larger]]##102141|2013号攻击小队（“半自动”）任务记录##[[/size]]**
+[[=image strike.png width=&#34;100px&#34;]]
+= **[[size larger]]##102141|Strike Team 2013 (&#34;Semiautomatic&#34;) Mission Log##[[/size]]**
 -----
 
 [[div class=&#34;addendum&#34;]]
@@ -1001,183 +1064,183 @@ Liaison Dana Mercado _
 [[div style=&#34;border-bottom: 2px solid #275495;&#34;]]
 [[/div]]
 
-= **[记录开始]**
+= **[BEGIN LOG]**
 
 [[div style=&#34;border-bottom: 2px solid #275495;&#34;]]
 [[/div]]
 
-//九名人形传送至KTE-1998-Burnout-Blaecca-Parallax末尾的非发动机车厢中。站在队伍最前方的是Caldwell队长，她正在用改装过的眼睛扫视着周围。其余队员端好了武器，和她一样观察着周边环境。//
+//Nine figures get apportated in the final non-engine room of KTE-1998-Burnout-Blaecca-Parallax. At the front of the team stands  Captain Caldwell, scanning the surrounding area with her augmented eyes. The rest of the team readies their weapons, and similarly looks around themselves.//
 
-//车厢顶部有一系列不规则的窗户，透过它们可以看到一片[http://scp-pl.wikidot.com/scp-pl-389 硕大无朋的红色现实平面]。放眼望去，只有几座由骨骼构建的城市，顶上是一轮血红的太阳，仿佛一团被粗大的红色藤蔓缠绕住的黑色羽毛。城市一直延伸到地平线，里面居住着大量恶魔实体，让难以分别的街道和天空获得了一点生机。但列车似乎并没有受到阻碍。天空流着紫红色的血，而列车就在这天空中不停地前行，下面没有轨道。列车的位置很高，没有恶魔会注意到它、关心它，更别提对它采取任何行动了。//
+//On top of the wagon&#39;s walls, a series of irregular windows open up to reveal a [http://scp-pl.wikidot.com/scp-pl-389 gigantic red plane of existence]. It is filled with sprawling cities built from bone structures shielded from the red sun up by what looks like black feathers that are covered in thick, red vines. Stretching into the horizon, it is inhabited by a plethora of demonic entities, waking its skies and streets alike. The train, however, doesn&#39;t seem to be impeded; it simply threads the amaranthine, bleeding sky on nothing but air, relentlessly pushing forward, too high for any of the demons to notice, care, or even be able to take action.//
 
-//半自动-1走到窗户旁边，用机械手轻轻碰了碰窗户的暗色玻璃。就在此时，天空中突然出现了一道白色的线条，它一直移动到列车的发动机处，吓得半自动-1急忙避开。他蹲下身，发现它不只是一条射线，而是被机器吸入的一堆人类灵魂，其脸部露出了痛苦、恐惧的扭曲神情。行动员的眼皮跳了几下。//
+//SEMIAUTOMATIC-1 moves towards the window, gently touching its pane of dark glass with his mechanical hand. As he does so, he quickly moves away, startled by a white trail moving from the skies towards the engine of the train. He squints, and realizes that it isn&#39;t just one stream, but rather a series of human souls being sucked into it by the machine, their faces twisted in agony and terror. The operative&#39;s eye twitches.//
 
-**半自动-1：**天哪。
+**SEMIAUTOMATIC-1:** Jesus Christ.
 
-//Caldwell看着他，由人造皮肤组成的脸上无声地露出了一抹冷笑。//
+//Caldwell looks at him, scoffing silently with her artificially-skinned face.//
 
-**Caldwell：**行动起来吧，不然你的下场就得跟它们一样了。
+**Caldwell:** If you don&#39;t want to meet a similar fate, get moving.
 
-//Caldwell来到了车厢的尽头。她将食指按在车门的控制面板上，稍微闭了一会儿眼睛。几秒钟后，车门迅速打开。门后是维修车间，里面摆着一架通向列车顶部的梯子。Caldwell向队员们示意，让他们和自己一起上去。//
+//Caldwell is now located at the end of the room. She touches the door&#39;s control panel with her index finger, connecting the two, and briefly closes her eyes. Then, seconds later, the doors quickly open up, showing a technical room with a ladder leading towards the top of the train. Caldwell points her team to come up alongside her.//
 
-//队员们迅速爬上了列车的顶部，在Caldwell身后列好了阵。Caldwell示意众人停下，眼睛仔细扫视着周围的区域。突然，一连串子弹从前方凭空射出，但被队员们的防护力场挡住了。Caldwell抽出一把刀向前扔去。然而，刀刃被弹到了一边，空气里传来了金属之间碰撞的声音。一阵嗡嗡声后，敌人解除了隐身，显现出一名高大的、类似精灵族的生化电子人。他手部的枪管仍然灼热。//
+//The team rapidly ascends, coming up to the top of the train. They stand in a formation behind Caldwell, who shows them all to stop, carefully scanning the surrounding area with her eyes. A series of bullets comes from seemingly nowhere in front of them. The shots are deflected by the team&#39;s force shields. Caldwell takes one of her knives and throws it forward; however, it is deflected as metal against metal fills the air. With a buzzing sound, the invisibility of the enemy falls off, revealing a tall, Fae-like cyborg figure. The barrels of the guns located in his hands are still hot.//
 
-**Armh：**你们居然现身了，没想到啊。
+**Armh:** And here I was, thinking you wouldn&#39;t show up.
 
-//S&#39;ahm Arhm身高超过2米，全身由激金和钢铁组成，布满各种排气管、尖锐物和齿轮，身形类似一位普通精灵。他身上唯一可以算作“有机”的部位是眼睛。他伸出了手臂。精灵翅膀原本的位置被换成了一个喷气装置，外形特意打造成了类似生物结构的模样。他按了按那并不存在的指关节，随后露出一把庞大的激金武士刀，上面刻满了各种符文和记号，内含的奇术能量在不断回响。刀刃旁边出现了红色电流，不断传出噼啪的声音。//
+//S&#39;amh Arhm stands more than 2 meters tall. His entire body is built from irrilite and steel, riddled with various exhaust pipes, sharp items, and gears, imitating the looks of a normal Fae. The only thing that is still organic in him is his eyes. He stretches his arms. Where normal sidhe wings should be sits a jetpack contraption, constructed in such a way as to appear like the biological structure. He cracks his nonexistent knuckles and presents forward a large irrilite katana sword, buzzing with thaumaturgic energy rippling through its various runes and symbols. It crackles with red electricity.//
 
-**Caldwell：**//不许//——
+**Caldwell:** Do //n//--
 
-//她身后的九名队员开始射击。精灵再次微笑，还没等子弹飞行到他身前，他就伸出了武器，刀锋以音速斩断了一半的子弹。其余子弹要么没打中，要么就被武士刀所弹反，飞向了开枪的队员。两名半自动队员顿时呻吟一句，身体失去平衡，从列车顶部摔了下去；其中某位队员被一只巨大的骨质鸟叼走了，由金属打造的头颅也被压碎。Caldwell默默地叹了口气。//
+//The nine squad members behind her start to fire. The Fae smiles again and extends his sword, slashing half of the bullets at the speed of sound with the edge of his sword before they reach him. The rest of the ammo either misses or bounces off the side of his weapon, coming back at those that fired them. Two Semiautomatic members suddenly grunt, losing their balance and falling off the train; one of them gets picked up by a gigantic bone bird that smashes their metal head. Caldwell sighs silently.//
 
-**Caldwell：**……你妈逼。
+**Caldwell:** ...Fuck&#39;s sake.
 
-//Armh再次大笑起来。Caldwell恼怒地斜睨着他。//
+//Armh grins once more. Caldwell squints her eyes angrily.//
 
-**Armh：**哎呀，你别这么急好不好。我们还得玩上好久呢。
+**Armh:** Oh c&#39;mon, don&#39;t be grumpy. There&#39;s still a lot of fun to be had.
 
-//突然间，一队无人机从他背后的翅膀处飞了出来，开始迅速靠近队长背后仍有作战能力的七名队员。他看着众人，手中的刀在空中画起了圈。//
+//Suddenly, from the wings located on his back, a series of drones dispatch, beginning to rapidly approach the seven still remaining people behind the captain. He looks at them, and starts to move his sword in his hand in a circular manner.//
 
-**Armh：**干掉它们。但是呢——//&lt;指向Caldwell&gt;//别碰她。
+**Armh:** Go get &#39;em. But her -- //&lt;points at Caldwell&gt;// don&#39;t touch &#39;er.
 
-//随后，KTE-1998-Burnout-Blaecca-Parallax的发动机开始加速运转，发出纯粹能量被消耗时的嗡嗡声。Armh听到了声音，然后迅速朝Caldwell闪了过去。//
+//Then, as KTE-1998-Burnout-Blaecca-Parallax&#39;s engine starts to quickly rotate, it hums with pure energy. Armh notices it, and rapidly lounges forward towards Caldwell.//
 
-**Armh：**她交给我。
+**Armh:** She&#39;s mine.
 
-//列车驶入前方的一片黑暗，突破了现实的界限，准备进入另一个来世。刹那间，一切都陷入了黑暗，之后才伴随着钢铁碰撞的声音而重新显现。Caldwell将手臂变成一双振动长刀，格挡了Armh的攻击。她紧紧咬住嘴唇，向前推了一把。队长身后的一些行动员开始应付各自的无人机，与此同时，精灵吐出了一些嘲讽的话语。//
+//As the train plunges into the darkness in front of it, it breaches the boundaries of reality and jumps to another afterlife. For a split second, everything goes dark, only to then reappear as visible to the sound of clashing steel. Caldwell&#39;s arms, which now turned into long, vibrating blades, block the incoming attack from Arhm&#39;s sword. She clenches her lips and pushes forward. As some of the operatives behind the captain start to tackle their respective drones, the Fae begins to play with his word.//
 
-//他未作休整，直接从另一个角度再次发起了进攻。Caldwell更加轻易地将其格挡，刀刃开始振动起来。她用力向前推，试图砍断对方的刀刃，但她的力量被刀刃上的符文给挡住了。Armh假装尊敬地抬了抬眉毛。//
+//Instead of staying in place, he attacks again, this time from another angle. Caldwell parries it with more ease than before, her blades starting to vibrate. She forces them forward, trying to make the sword snap; however, its runes resist the force. Armh raises his eyebrows in pretended respect.//
 
-**Armh：**亚原子振动剑。挺花哨啊。
+**Armh:** Subatomic vibrating blades. Fancy as hell.
 
-//他随即从背后拔出一把刀，刺入了Caldwell的身体。她往后跳去，用手捂住伤口。//
+//He then grabs a knife from his back and stabs Caldwell, who jumps backwards, grabbing the wound.//
 
-**Armh：**但还不够花哨！
+**Armh:** But not fancy enough!
 
-//燃烧的背景已经消失，变成了一片延伸到无尽远方的浅湖泊。Caldwell顿时冷静下来，重新摆出了战斗姿态。她加速前进，几秒内就拉近了和Armh之间的距离。然后，她将双臂向前推，组合成一把长刀，直直地刺向敌人的头部。他咧嘴一笑，准备用刀挡住攻击，但正当Caldwell即将到达敌人面前时，她突然转向，瞄准了他背后的喷气“翅膀”。他无法及时阻挡，一部分装备被削下来，落入了下面的深渊。Armh咒骂一句，进入了防御态势。//
+//The burning landscape is now gone, replaced by a shallow lake, spreading into infinity. Caldwell suddenly regains her composure, coming back to her battle stance. She accelerates forward, closing the gap between her and Armh in a matter of seconds. She then thrusts her arm forward, forming it into a long blade, and aims for her enemy&#39;s head. He grins, preparing his own blade to block the attack, but before Caldwell reaches him, she suddenly changes the position to aim for his jetpack wings. He is unable to parry it in time, and part of his equipment gets slashed off, falling into the burning abyss below. Armh curses, and enters a defensive stance.//
 
-**Caldwell：**一样管用。
+**Caldwell:** Still gets the job done.
 
-//列车突然摇晃了起来，发动机里露出了能量的光芒。两人意识到，发动机又要开始吸食灵魂了。就在此时，一群类似鸟类的生物突然飞到了众人上方，它们既是对新敌人产生了愤怒，也是被潜伏在KTE-1998-Burnout-Blaecca-Parallax发动机附近的灵魂所引诱。Armh注意到了它们，一瞬间，他将目光从Caldwell转移到了鸟群上。//
+//The train suddenly starts to shake. Its engine glows with energy, and both realize it began to siphon souls once more. Suddenly, a series of bird-like creatures rapidly ascends up to the team, lured by both anger at their new enemy and the souls lurking near KTE-1998-Burnout-Blaecca-Parallax&#39;s engine. Armh notices it, and, for a split second, focuses on them instead of Caldwell.//
 
-//在他们得以再次交锋前，鸟群靠近了列车，开始涌向队员们。虽然Caldwell和Armh应付得过来，但其他人则被被鸟类和无人机的双重攻势给击垮了。一位半自动队员被鸟类生物压倒了，而他开始迅速敲击它的身体，直到它被弄下来，落入流向发动机的灵魂涌流中。//
+//Before they can clash once more, the bird horde approaches their train, beginning to storm the crew. While Caldwell and Armh have no issues eliminating the beings, the rest are overwhelmed by the duo of the birds and the drones. When one of the Semiautomatic members gets overwhelmed by the being, he starts knocking it profusely, until he gets it off, making it fall onto the soul-river flowing towards the engine.//
 
-//两者一接触，发动机就开始剧烈晃动起来，并发出刺耳的噪音。突然间，一名攻击小队队员对着前来攻击的鸟类连开了三枪，将其杀死。尸体几乎立即失去了动能，直挺挺地掉进了发动机，周围裹上了厚厚的一层灵魂。几分钟后，实体完全被机器吞噬。一瞬间，世界陷入了沉寂，所有余下的幸存者都呆呆地站在原地，疲惫地喘息着。//
+//When the two interact, the engine starts to cough and move roughly. Suddenly, one of the Strike Team members shoots the bird attacking them thrice, terminating it. Stopping to move almost immediately, its dead body falls into the engine, engulfed by a thick layer of souls clinging to it. Moments later, all of it gets swallowed by the machine. For a split second, everything is quiet, and all remaining survivors simply stand, panting with exhaustion.//
 
-//随后，发动机发生爆炸，闪光掩盖四方，声音响彻天际。引发爆炸的半自动队员瞬间蒸发了，其余人员则立即找地方躲避冲击波。众人发现发动机的运转速度加快了。当Armh再次起身时，火车再次加速，让他不禁睁大了眼睛。伴随着无数的吱呀声、咔嚓声和听起来不太对劲的轰鸣声，KTE-1998-Burnout-Blaecca-Parallax冲向前去，驶进了另一个现实。//
+//And then, as a blinding and deafening explosion coming from the engine engulfs the whole sky, the Semiautomatic member responsible for it evaporates in a second. The rest immediately take cover, ducking from the incoming shockwave. They notice the engine is rotating even more quickly than before. And, as Armh stands up again, the train starts to accelerate again. His eyes widen, and, with myriad coughs and clicks and booms that don&#39;t sound quite right, KTE-1998-Burnout-Blaecca-Parallax booms forward into another reality.//
 
-//一切又陷入了漆黑。这一次，当列车再次现身时，全体结构都剧烈摇晃了起来，发动机不断喷出明亮的蓝色烟雾，并发出可疑的声响。现场所有人都在努力保持平衡，Armh将手臂融入了车厢，Caldwell则用武器化的腿钩住了地板。//
+//Everything is black again. This time, when the train re-emerges, the entire structure starts to violently shake, the engine emitting bright blue smoke and suspicious sounds. All present atop it try not to lose their balance, with Armh making his arms fuse with the floor and Caldwell anchoring her weaponized legs to it.//
 
-**扬声器：**{{注意，本地现实映射系统出现严重错误。请保持冷静并执行BETA/4212标准紧急程序。}}
+**Speaker:** {{ATTENTION, CRITICAL ERROR OF LOCAL REALITY MAPPING SYSTEM  ENCOUNTERED. REMAIN CALM AND FOLLOW STANDARD EMERGENCY PROTOCOL BETA/4212.}}
 
-//Caldwell和Armh站在原地，一动不动；两人的躯体均已过热。他们互相看着对方，陷入了僵持，双方都不想做出任何动作。请注意，Armh眼睛里顽皮的笑意消失了，取而代之的是一种明显的忧虑，仿佛他开始失去优势了一样。//
+//Both Caldwell and Armh are standing, unmoving, their bodies overheating. They are deadlocked in looking at each other, unwilling to make any move. Noticeably, Armh&#39;s eyes no longer glow with a mischievous grin; it is now replaced with a visible presence of some worry, as if he was beginning to lose his ground.//
 
-**Armh：**//&lt;轻声：&gt;//为什么？我想问……为什么啊？
+**Armh:** //&lt;quietly:&gt;// Why? Just... Just why?
 
-//Caldwell扬起眉毛。//
+//Caldwell raises an eyebrow.//
 
-**Caldwell：**什么叫//为什么//？
+**Caldwell:** What //what//?
 
-//Armh伸出双手，指向了下方燃烧着的地平线。//
+//Armh extends his hands, pointing towards the horizon of the burning land below them.//
 
-**Armh：**为什么要来这里？为什么要跟普罗米修斯下地狱？没考虑过工资吗？
+**Armh:** Why come here? Why come into literally hell after Prometheus? Without even getting paid?
 
-**Caldwell：**你们这是在开展非法超——
+**Caldwell:** You were conducting illegal para--
 
-//Armh叹气。//
+//Armh sighs.//
 
-**Armh：**得了吧，别拿那套伪善的说辞给自己贴金了行不？你懂我意思的，跟我本人一样懂，Caldwell队长。//&lt;停顿&gt;//为什么你会来这里？
+**Armh:** Oh cut with the self-righteous bullshit, will you? You know what I mean just as well as I do, Captain Caldwell. //&lt;pause&gt;// Why are you here?
 
-//停顿。Caldwell吸了一口气。//
+//Pause. Caldwell inhales.//
 
-**Caldwell：**因为这是我职责所在。因为这是正义的举动。
+**Caldwell:** Because duty made me. Because that&#39;s the right thing to do.
 
-**Armh：**别说傻话。我看得出来，你和我一样都是爱势贪财的独狼。你渴望权力。既然你舍得做人体改造，想必不会只是为了好玩吧。
+**Armh:**  Don&#39;t be ridiculous. I can see you&#39;re just as much of a money-hungry lonely wolf as I am. You crave power. You wouldn&#39;t remake yourself just for the fun of it.
 
-//再次停顿。//
+//Another pause.//
 
-**Caldwell：**……所以呢？
+**Caldwell:** ...So?
 
-**Armh：**所以为什么不选那条简单点的路？为什么你不……为什么不对你那弱智的法西斯伪政府竖个大大的中指，然后想干啥就干啥呢？
+**Armh:** So why not choose the easy way out? Why not just... Why not just give your stupid fascist pseudo-government the middle finger and run to do whatever batshit insane things you want to get up to?
 
-//Caldwell双手叉腰。她身后的队员们紧张兮兮地互相看着对方，但她很快让大家镇静了下来。她冷笑一声。//
+//Caldwell crosses her arms. Her team behind her exchanges nervous looks, but she quickly silences them. She scoffs.//
 
-**Caldwell：**……比如加入你们这帮贩毒团伙吗？
+**Caldwell:** ...Like joining your little drug ring?
 
-//Armh叹气，翻了个白眼。//
+//Armh sighs, and rolls his eyes.//
 
-**Armh：**也不是不可以。但是你没提到重点。为什么不——
+**Armh:** For example, yes. But you&#39;re missing the point here. Why not just--
 
-**Caldwell：**哈。我也可以问你同一个问题。
+**Caldwell:** I could ask you the same, you know.
 
-**Armh：**啥？
+**Armh:** Huh?
 
-**Caldwell：**我问你，为什么不抛开这一切，还有你那摇摇欲坠的弱智承包商，然后加入我们？你得明白，联盟对有用又愿意合作的罪犯可是很宽容的。
+**Caldwell:** I could ask why you wouldn&#39;t just join us, going to hell with all of this and your stupid losing contractors. The Coalition is surprisingly lenient on criminals if it benefits them, and they want to cooperate, you know.
 
-**Armh：**因为没有道理啊！//你//说你妈呢！你怎么愿意下到这么深的地方去？就因为对人类有好处吗？扯淡！
+**Armh:** Because it&#39;s ridiculous! //You// are fucking ridiculous! You&#39;re willing to go so deep down because what? Because it helps humanity? I call bullshit!
 
-//Caldwell叹气。//
+//Caldwell sighs.//
 
-**Caldwell：**我们愿意下到这么深的地方去，是因为普罗米修斯有价值。它的价值高于你所能给我的任何东西。它是一口无限深的井，只要疯狂就可以从中收获智慧，而它只是被“缺钱”的现状所束缚住了而已。GOC什么都缺，就是不缺//钱//。想想看，我们可以用十个轮回单位做些什么？我们可以为世界上的冲突地区带来多少和平？再想象一下，假如有了一百个这样的部队，我们能做什么？我们能打败死神。我们能治愈一切疾病。我们能控制一切非人为的事物。想想吧。
+**Caldwell:** We&#39;re willing to go so deep down because Prometheus is valuable. Above anything you can offer me. It&#39;s an endless well of insanity-driven brilliance that is only held back by the fact it needs money. The GOC has nothing //but// money. Imagine what we could do with ten Samsara units. What peace we could bring into otherwise hostile regions of the world. Now imagine what we could do with one hundred of them. Imagine what we could do with death beaten. With every illness cured. With total control over everything that isn&#39;t humanity. Just imagine.
 
-//Armh冷笑着，摇了摇头，摆好他的剑，进入进攻态势。//
+//Armh scoffs, shakes his head, and readies his sword, entering an offensive stance.//
 
-**Armh：**你疯了。
+**Armh:** You&#39;re insane.
 
-//Caldwell咧嘴一笑，示意队员们端好枪械，自己也准备好向前进攻。//
+//Caldwell grins, showing her team to prepare their guns. She too readies to leap forward.//
 
-**Caldwell：**你用诡计为自己争取的时间也就到此为止了。
+**Caldwell:** And your trick to buy yourself more time has just run out.
 
-//两人再次向对方扑去，半自动队员们向Armh发射了一连串子弹。这次他未能将其全部抵挡。他的额头和腿部被连续击中。断裂的冷凝管中的液体溅到眼睛上，使他失明了一秒钟。而就在这一秒钟里，Caldwell用刀切断了他的右臂。他吼叫起来，但叫声被KTE-1998-Burnout-Blaecca-Parallax发动机重新运转的声音掩盖了。Caldwell睁大了眼睛。火车再次向前驶去。//
+//Both jump at each other again, Semiautomatic guns sending a flurry of firing bullets towards Armh. This time, he isn&#39;t able to deflect all of them, getting hit by a series in his forehead and legs. Broken cooling circuits spill liquid onto his eyes, making him blind for just a second. And, in that second, Caldwell&#39;s blade arms cut his right arm off. He screams, but the sound dies out as KTE-1998-Burnout-Blaecca-Parallax&#39;s engine starts to rotate once more, and Caldwell&#39;s eyes widen. The train shoots forward again.//
 
-//天上有一轮[[[shaggydredlocks-proposal|红色的太阳，灼烧着未经过滤的仇恨]]]——它照亮了她那完全由机器组成的躯体，映衬着[[[daybreak|未曾停歇的列车下方的尘灰色荒原]]]，模拟眼睛的屏幕中闪烁着纯粹的恐慌。其他半自动队员痛苦地扭动着，其身体逐渐融化，结合成一团血肉、眼球和牙齿的混合体。队长向后退去，她发现这个生物无法结合队员们的机械装置和武器；但这并不重要，生物仍然迅速变成了一团7米高的巨型肉块，横亘在Caldwell和Armh面前，展露出自己的饥渴难耐。前者小声呜咽了一句，端好了自己的武器。//
+//As a [[[shaggydredlocks-proposal|red sun, burning with unfiltered hatred]]] illuminates her wholly robotic body against the otherwise [[[daybreak|dust-gray wasteland below the non-stopping vehicle]]], the display imitating her eyes flicker with pure terror. The rest of the Semiautomatic members twist in agony, their bodies melting and merging into an amalgamation of flesh, eyes, and, teeth. The captain backs off, realizing the forming creature leaves behind her colleagues&#39; mechanical augments and weapons; that, however, doesn&#39;t stop it from quickly crafting its own body into a 7-meter-tall giant mass of flesh, hungrily looming over both Caldwell and Armh. The former lets out a quiet whimper, and readies her weapons.//
 
-//一阵剧痛传来，她身后的精灵族佣兵短促地惨叫一声，抓住了自己的右眼。他迅速关闭了眼部的透光孔，但为时已晚，他的眼睛已经融化成了几克液体，并开始慢慢靠近血肉巨兽，试图与它融合。他一边颤抖着，一边把发着光的刀举起来，由于另一条手臂已被砍断，他无法用手捂住眼睛原来的位置了。刹那间，Caldwell和Armh“四目”对视。他们点点头，互相靠近，然后抬头望向了面前的怪物。//
+//Behind her, the Fae mercenary cries out in a short expression of sharp pain, grabbing his right eye. He quickly closes the peephole into his eyes, but is already too late; the few grams of liquid that his eyes melted into already begin slowly moving towards the meat colossus, trying to merge with it. He shivers, and similarly raises his glowing sword up, unable to grab where his eye used to be moments before with his now nonexistent other arm. For a single second, the gazes of Caldwell and Armh meet. They simply nod, and come toward each other, looking up at the monster in front of them.//
 
-//两人随后冲向怪物，以完全同步的节奏挥舞着武器。仅仅几刀后，他们就迅速地砍断了巨人的腿，使它变矮了几厘米。然而，还没等它倒下，怪物的形体就已经迅速再生。它用由半自动特工的牙齿和眼睛构建的畸形下颚发出愤怒的咆哮，并向前扑去，试图咬住Armh的头部。他用剑划过它那腐烂的嘴部，让几大块血肉掉在了他的脸上。他甩开它们，发动二次攻击，这次刀锋直指眼睛。//
+//And then, they both charge at the creature, their weapons in perfect synchronization. With a quick few slashes, they cut the legs of the giant, bringing it a few centimeters down; however, before it can fall, its form quickly regenerates. It roars in fury with its malformed jaw, crafted from the teeth and eyes of the Semiautomatic agents, and it lunges forward, attempting to bite into the head of Armh. His sword slashes through the rotting mouth, sending chunks of flesh onto his face. He throws them off, and attacks again, this time aiming for the eyes.//
 
-//怪兽尖叫着，略微后退了几步。它完全没想到自己竟会遭到如此反击。Caldwell抓住了机会，迅速冲到巨人身后，将手臂对准了它的颈部。然而，正当她准备将其斩首前，背后的发动机再次颤抖了起来。虽然她的注意力只松懈了一瞬间，但也够怪物作出行动了。它向前扑去，将卷须捅入了Armh的体内。随着发动机逐渐启动，他也发出了惨叫。//
+//The beast screeches, and slightly backs off, shocked by such opposition to its own offensive. Caldwell doesn&#39;t waste the opportunity, rapidly running to the back of the giant, and aims her own arms at her enemy&#39;s neck. Before she can do that, however, the engine right behind her starts to tremble again. She loses just a second of attention, and the creature makes the most of it. It lunges forward, and drills its tendrils into Armh&#39;s body. He screams as the engine activates.//
 
-//Caldwell眼部的传感器适应了新环境。双方发现，KTE-1998-Burnout-Blaecca-Parallax已经不再前进，而是飘在一团浓密的、向四面八方无限延展的黑暗虚空当中；各种物体、水滩和无法辨认的现象在空间中悬浮，并同时向无方向和所有方向前进。虽然列车的发动机仍在作响，但它已经被[[[scp-3001|维度间虚空]]]中的原始汤给永远困住了。车辆已彻底停摆。//
+//When Caldwell&#39;s eye sensors adapt to the new environment, they realize KTE-1998-Burnout-Blaecca-Parallax is no longer threading forward. Instead, it is floating in a thick, black void that expands in every direction; throughout it, various objects, puddles of liquid, and unidentifiable phenomena levitate, going in no and all directions at the same time. Though the train&#39;s engine is still puffing, is it now permanently trapped by the primordial soup of the [[[scp-3001|interdimensional void]]]. The vehicle is effectively stuck.//
 
-**Caldwell：**//&lt;小声：&gt;//操！操，操，操！
+**Caldwell:** //&lt;quietly:&gt;// Fuck! Fuck, fuck, fuck!
 
-//她环顾四周，发现那团血肉依然站在列车的尾部。她摆好刀刃，开始加速向血肉团跑去。//
+//She looks around herself, and notices the flesh being standing tall at the end of the train. She readies her blade, and begins to move forward at increasing speeds.//
 
-**Caldwell：**日你妈。
+**Caldwell:** Goddamnit.
 
-//S&#39;amh Armh的尸体被生物压在身下，一动不动，上面有几处足以致命的伤口。虽然尸体少了一条腿，未断裂的手臂上也少了几根手指，但他的脸上依然挂着笑容。被折成两半的刀刃不断散发着魔法能量，而实体畸形手臂上的几道伤口里也渗出了同种能量。因受伤之故，敌人依附在KTE-1998-Burnout-Blaecca-Parallax上的卷须十分细小，孱弱不堪，几乎无法支撑其自身的重量。//
+//The unmoving cadaver of S&#39;amh Armh sits beneath the creature, several fatal cuts present atop it. Though the body also lacks a leg and a few fingers in the still present hand, his grin still persists on the facade of his face. The blade, now snapped in half, keeps radiating with magical energy, which also leaks out of several wounds in the malformed arms of the entity. Due to the damage done to them, the tendrils the enemy is clinging to KTE-1998-Burnout-Blaecca-Parallax with are thin and malnourished, barely supporting its weight.//
 
-//生物的成千上万对眼睛全都望向了Caldwell，唾液从它所有的下颚处滴出来，落在下方的钢制地板上。Caldwell盯着精灵雇佣兵的尸体，深吸一口气，闭上了眼睛。而当她重新睁眼时，眼中已充满炽热的决心。//
+//The being focuses its myriad eyes at nothing but Caldwell, making all its jaws drip saliva that starts to fall on the steel floor below. Caldwell looks at the body of the Fae mercenary, takes a deep breath, and closes her eyes. When she re-opens them, they are burning with determination.//
 
-//为不再浪费时间，她伸长刀刃，直至超越今晚的最长水平，随后干脆利落地冲向了实体。她砍了一刀又一刀，连反击都不怎么躲，即使被击中了几下，纳米修复单元也能及时运作，几乎不会留下任何损伤。她全身躯体开始过热并颤动起来，额头和眼睛里冒出了蒸汽和蓝色的冷却液。然而，她无视了这些过热的迹象，继续透过眼前的蓝色幕布，发动攻击。//
+//Wasting no further time, she readies her blades, making them take the longest form they have taken this evening, and smoothly begins to run at the entity. She throws one cut after another, barely dodging its attacks in return. Even if a few hit her, they do almost no damage as her nanorepair units do their job. Her entire body starts to shake with overheating, steam and blue cooling liquid start to leak out of her forehead and eyes. She ignores these signs, though, continuing her attack through the curtain of blue flooding her eyes.//
 
-//怪兽肉眼可见地缩小，有部分血肉被甩入了周围的虚空，但它也因此更加愤怒。它的攻击愈发疯狂、咄咄逼人，终于，它一发击中了Caldwell腹部的中央计算单元。她发出一声静默的吼叫，电路版和其他机械部件掉到了火车上，冷却液也从另一处腔孔中喷涌而出。但她并未退缩，反而将砍击频率翻了一番。//
+//The beast is now visibly smaller, parts of its flesh flung out into the void around it, but it gets angrier, too. Its attacks get more frantic and aggressive, eventually making one of them land directly onto the central computing unit of Caldwell located in her abdomen. She lets out a silent yelp as circuits and other mechanical parts fall onto the train, the cooling liquid flooding out of her other orifice, too. But she doesn&#39;t back down, instead doubling down on the frequency of her slashes.//
 
-//生物哼叫着，呻吟着，努力想跟上她的节奏，但这只会使队长的攻击速度变得更快，即使会折断关节、烧坏电路也在所不惜。由血肉构成的拳头愈发频繁地打在她的身体上，但毫无作用，因为拳头一接触过热的金属就几乎被蒸发了。//
+//The creature moans and groans as it struggles to keep up the tempo, only causing the captain to speed up, even through the failing joints and burning circuits. The fleshy punches land more and more frequently on her, but they have no impact on her overheated body, practically evaporating upon coming into contact with the burning metal skin.//
 
-//她不作任何喘息，一通刀光剑影后，怪物除头部以外的所有部位都被砍烂了。在临终之际，怪物想最后尝试能不能搏得她的怜悯，它深深地看着她的眼睛，上面挂满了虚情假意的哀求。Caldwell轻笑一声，向它吐了一口融化的硅，架好刀刃，准备发动最后的攻击。她闭上双眼，向她的敌人打出了最后一套连招，把它的头砍成了一滩肉质的液体，滴落到KTE-1998-Burnout-Blaecca-Parallax的天花板上，发出一声无法听见的回音。//
+//She refuses to even catch a breath as a storm of steel slashes everything but the head of the creature. In a final attempt at mercy, the monstrosity looks her deep into her eyes, fake pleading plastered all over it. Caldwell simply smiles and spits with melted silicon at it, readying her blades for the ultimate attack. And, she closes her eyes, she sends a final flurry of hits to her enemy, making its head nothing more than a puddle of liquid flesh that drips to the ceiling of KTE-1998-Burnout-Blaecca-Parallax with a silent echo.//
 
-//她满眼愤怒，用靴子碾碎了生物哭泣着的残骸。而现在，她只能大口喘气了。她的躯体无法再生；她的思绪无法停摆；她的灵魂无法离去。她远远地望了望眼前黑色的地平线，用力吞咽一口，然后倒在了地上，身体一动不动。//
+//Anger in her eyes, she smashes the crying remains of the creature with her boot. Now, she is only panting, her body unable to regenerate, her mind unable to stop, her soul unable to give up. She simply looks far onto the black horizon in front of her, swallows hard, and then falls to the floor, her body unmoving.//
 
-//她伸出颤抖的手，取到了一块斥外外宇宙硬盘。她又用手指猛地一舀，从盔甲处取出了摄像机，放在手上，然后轻轻地将硬盘塞进了存储器。她直视着镜头，在痛苦中微微一笑。//
+//With a shaking hand, she reaches for her exclusionary extrauniversal hard drive. With a violent scoop of her finger, she takes out the body camera from her armor onto her hand, and gently tucks it into the storage unit. She then looks directly into its lenses, and faintly smiles through pain.//
 
-**Caldwell：**我……我是半自动小队队长Camille Caldwell。大家——{{[系统严重错误。请立即前往最近的维修单元]}} //&lt;猛烈地咳嗽&gt;//大家死光了。Armh，我的队员，还有普罗米修斯的雇员——全死了。我……我尽力了，我做不了更多了。对……对不起。
+**Caldwell:** This... This is Captain Camille Caldwell of Semiautomatic speaking. They&#39;re-- {{[CRITICAL SYSTEM ERROR. HEAD TO THE CLOSEST REPAIR UNIT IMMEDIATELY]}} //&lt;coughs violently&gt;// They&#39;re dead. Armh, my team, Prometheus personnel -- they&#39;re all dead. I... I couldn&#39;t have done anything more than I did. I&#39;m... so sorry.
 
-//她休息了一会儿，想要尽力积攒足够的能量，好用来记录剩下的信息。虽然她成功了，但显然很勉强。//
+//She takes a moment to rest, trying her best to gather up enough energy to record the rest of the message. Though she succeeds, she clearly struggles in doing so.//
 
-**Caldwell：**这次任务的所有信息都在这儿了。简报，文件——全都有。请——{{[即将过热。已将自我维修提至最高优先级]}}请不要白白浪费这次的教训。
+**Caldwell:** Everything about the mission is here. The briefing, the files -- e-everything. Just-- {{[OVERHEATING IMMINENT. SELF-REPAIR DEDICATED AS UTMOST PRIORITY]}} Just please don&#39;t make any of this go to waste.
 
-//她向周边的无垠黑暗最后望了一眼，然后闭上了眼睛。//
+//She looks one final time into the dark infinity around her, and closes her eyes.//
 
-**Caldwell：**请不要让火熄灭。
+**Caldwell:** Don&#39;t let the flame die out.
 
-//所有活动均已停止。//
+//All movements cease.//
 
 [[div style=&#34;border-bottom: 2px solid #275495;&#34;]]
 [[/div]]
 
-= **[记录结束]**
+= **[END LOG]**
 
 [[div style=&#34;border-bottom: 2px solid #275495;&#34;]]
 [[/div]]
@@ -1186,47 +1249,47 @@ Liaison Dana Mercado _
 
 [[/div]]
 
-29/07/1998傍晚时分，Caldwell队长的账户向联盟23号斥外中继档案库发送了上述文件。该文件及其登录记录足以证实所有半自动队员的确已死亡，再加上不可能对位于跨维度虚空的个人建立任何形式的永久联系，因此联盟并未进一步尝试与其沟通。
+In the evening hours of 29/07/1998, the above file was recovered from Coalition Exclusionary Intermission Archive-23 as sent from Captain Caldwell&#39;s account. As the file and log-in records confirm the fact all Semiautomatic members did indeed perish and the fact that establishing any permanent contact with individuals located in the interdimensional void is entirely impossible, no further contact was initiated.
 
-KTE-1998-Burnout-Blaecca-Parallax和KTE-1852-Indigo-Léon已被重编级为LTE。
+KTE-1998-Burnout-Blaecca-Parallax and KTE-1852-Indigo-Léon have been reclassified to LTE.
 
 ------
 
 [[=]]
-+ __最高指挥部记录__
++ __High Command Records__
 [[/=]]
 
 [[div style=&#34;height: 1px&#34;]]
 [[/div]]
 
-由于LTE-1998-Burnout-Blaecca-Parallax支撑了普罗米修斯实验室的全部基础设施，该组织现已丧失所有足以支持其存在的资金来源。该事实——再加上Marshall、Carter和Dark放弃了之前对该组织的所有赞助——导致其主要控股公司正式倒闭，而整个普罗米修斯集团于01/09/1998解散。
+Due to LTE-1998-Burnout-Blaecca-Parallax&#39;s position as a pillar to the entirety of Prometheus Labs&#39; infrastructure, the organization was now left without any monetary sources significant enough to support its existence. That -- paired with Marshall, Carter &amp; Darke abandoning all of its previous sponsorship over the group -- resulted in official collapse of the primary holding company and the dissolution of the whole Prometheus conglomerate on 01/09/1998.
 
-因此，许多团体和组织——包括联盟——均决定要[[[t-minus|收购并控制]]]普罗米修斯遗留下来的[[[SCP-148|项目]]]、[[[SCP-2897|资源]]]、[[[the-analog-kid|人员]]]和现存的[[[SCP-2176|独立子公司]]]，引发了接下来几个月内异常社会的混乱。此外，在这个过程中，超科学领域遗失了许多专业技术和知识，某些学科的研究甚至倒退了十年以上。这一事故的后果仍未能完全整理。
+As a result of this, many groups and organizations -- including the Coalition -- have decided [[[t-minus|to acquire and secure]]] the leftover Prometheus [[[SCP-148|projects]]], [[[SCP-2897|resources]]], [[[the-analog-kid|personnel]]], and now [[[SCP-2176|independent companies]]] which led to chaos in anomalous society over the following months. Additionally, during this process, much of the expertise and knowledge about many fields of parascience were lost, setting research in some areas back by over a decade. The consequences of this incident are still being fully compiled.
 
-以下是D.C. al Fine对该情况的官方评论。
+Below attached is an official comment regarding the situation as made by Undersecretary General D.C. Al Fine.
 
 [[div class=&#34;blockquote&#34;]]
-[[=image https://scp-wiki.wdfiles.com/local--files/lte-1998-burnout-blaecca-parallax/highcommand.png width=&#34;100px&#34;]]
-= **[[size larger]]##102141|副秘书长办公室##[[/size]]**
+[[=image highcommand.png width=&#34;100px&#34;]]
+= **[[size larger]]##102141|Office of the Undersecretary-General##[[/size]]**
 -----
 
-啊，不错。LTE-1998-Burnout-Blaecca-Parallax。联盟玩脱了的典范。心智部门每个新人都听过的神圣案例。我认为，这起事件堪称我们最严重的差错之一，名副其实，毫不夸张。
+Ah, yes. LTE-1998-Burnout-Blaecca-Parallax. The big Coalition fuck-up case. The one they teach to all freshman PSYCHEs as some sort of holy warning lesson. I don&#39;t think it&#39;d be an overstatement to classify this entire fiasco as one of our worst mistakes. 
 
-我们不可否认，整件事情的处理方式都很糟糕。从一开始的接触，到派出一支实打实的敢死队去做初步处理，全都是……一场灾难，一场全方位无死角的灾难。我知道，那时候的大环境不一样；我明白，大家也很绝望，但也不能改变这件事的性质——事实很不幸，我们试图解放普罗米修斯，但我们并没有杀死吃它肝脏的秃鹰也没有击碎锁着它的枷锁，而是用校准得稀烂的武器砸碎了它的头颅。
+It&#39;s undeniable the entire case was handled awfully. From the first approach to literally sending a death squad as the primary contact, it was... a catastrophe, and a many-layered one at that. Even with the knowledge that the times were different and that we were desperate, that doesn&#39;t truly change much -- the unfortunate truth is that we tried to set Prometheus free, but instead of killing the vulture that feasted on its liver or destroying its shackles, we smashed its skull with the impact of our badly calibrated weapon.
 
-没错，我们让曾经最庞大、最先进的超科技公司倒闭了，因为我们太蠢，根本不懂谨慎的道理。没错，Marshall、Carter和Dark还是没有受到惩罚，尽管他们之前和之后都犯过许多骇人听闻的罪行。没错，这都是我们的问题，我们就是不可以把责任推给别人，即使大多数人要是有机会早就这样做了。
+Yes, we let the once biggest and most potent paratech company fall because we were too stupid to see we needed to be more careful. Yes, Marshall, Carter &amp; Darke are still unpunished, even despite the egregious sins they&#39;ve committed before and since. Yes, that is entirely our fault, and we just cannot blame anyone else for it, even if most of us would jump at any opportunity to do so.
 
-但我们不能让它规范我们的//行事作风//。我们不能让它限定我们与他人的关系。我们不能让它定义//自己//。
+But we can&#39;t let that define our //modus operandi//. We can&#39;t let that define our relationships with others. We can&#39;t let that define //us//.
 
-在文档里加这么一份批注，被我亲自指定负责数据库的大多数人都会因此而骂我吧，我知道的。但这番话不单止在过去要说，恐怕现在也要继续说。归根结底，我写这篇文章的原因只有一个——让你们变得更好。审视我们过去的事迹，不要再犯二十年前一帮自以为是的联合国官僚因傲慢而犯下的相同错误。不要竟已竟而不应竟之事。
+I realize most of the people I&#39;ve actually assigned to take care of the database will bash me for adding this note, but this simply needed and still needs to be said, I&#39;m afraid. Ultimately, I&#39;m writing this for one reason and one reason only -- so that you may be better. See what we&#39;ve done, and don&#39;t make the same mistakes some stuck-up UN bureaucrats made twenty years ago in their hubris. Be what we could have never been.
 
-做过的事情就是做了，但它的意义只有一个：我们只得尽可能地与它带来的包袱共存。而这种包袱我们不仅要承担——而且还要因之而改进。
+We did what we did, but that only truly means one thing: we simply need to live with its burden as best as we can. And it is a burden we are not only going to bear -- it is a burden we are going to improve because of.
 
-我们凭五重使命而立：
+We stand for our Fivefold Mission:
 
-教育。毁灭。保护。隐蔽。生存。
+Education. Destruction. Protection. Concealment. Survival.
 
-或许我们的确杀死了普罗米修斯。但我们仍可拾起他的火炬，托举起来，照亮世界的前路。
+We might have killed Prometheus. But that doesn&#39;t mean we can&#39;t take his torch and carry it into the world to come ourselves.
 
 [[div style=&#34;height: 25px&#34;]]
 [[/div]]
@@ -1234,8 +1297,8 @@ KTE-1998-Burnout-Blaecca-Parallax和KTE-1852-Indigo-Léon已被重编级为LTE�
 [[=]]
 [[image https://scp-wiki.wdfiles.com/local--files/goc-hub-page/dcaf%281%29.png]]
 
-副秘书长D.C. Al Fine
-联合国全球超自然联盟
+Undersecretary General D.C. Al Fine
+United Nations Global Occult Coalition
 [[/=]]
 
 [[div style=&#34;height: 1px&#34;]]
@@ -1248,77 +1311,75 @@ KTE-1998-Burnout-Blaecca-Parallax和KTE-1852-Indigo-Léon已被重编级为LTE�
 
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
 [[=]]
-| [[[from-120-s-archives-hub|120站档案馆]]] |
+| [[[from-120-s-archives-hub|From 120&#39;s Archives]]] |
 [[/=]]
 [[/div]]
 
 ------
 
 [[=]]
-[[include :scp-wiki-cn:component:license-box
-|author=Jasiu06、Ralliston
-|translator=vxeov
-]]
+[[include :scp-wiki:component:license-box
+|author=Jasiu06 and Ralliston]]
 =====
-&gt; **文件名：**assembly.png
-&gt; **图像作者：**[[*user Navla]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[https://scp-wiki.wikidot.com/navla-artwork SCP基金会维基]
+&gt; **Filename:** assembly.png
+&gt; **Author:** [[*user Navla]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [https://scp-wiki.wikidot.com/navla-artwork SCP Foundation Wiki]
 
-&gt; **文件名：**physics.png
-&gt; **图像作者：**[[*user Navla]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[https://scp-wiki.wikidot.com/navla-artwork SCP基金会维基]
+&gt; **Filename:** physics.png
+&gt; **Author:** [[*user Navla]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [https://scp-wiki.wikidot.com/navla-artwork SCP Foundation Wiki]
 
-&gt; **文件名：**strike.png
-&gt; **图像作者：**[[*user Navla]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[https://scp-wiki.wikidot.com/navla-artwork SCP基金会维基]
+&gt; **Filename:** strike.png
+&gt; **Author:** [[*user Navla]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [https://scp-wiki.wikidot.com/navla-artwork SCP Foundation Wiki]
 
-&gt; **文件名：**psyche.png
-&gt; **图像作者：**[[*user Navla]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[https://scp-wiki.wikidot.com/navla-artwork SCP基金会维基]
+&gt; **Filename:** psyche.png
+&gt; **Author:** [[*user Navla]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [https://scp-wiki.wikidot.com/navla-artwork SCP Foundation Wiki]
 
-&gt; **文件名：**highcommand.png
-&gt; **图像作者：**[[*user Navla]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[https://scp-wiki.wikidot.com/navla-artwork SCP基金会维基]
+&gt; **Filename:** highcommand.png
+&gt; **Author:** [[*user Navla]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [https://scp-wiki.wikidot.com/navla-artwork SCP Foundation Wiki]
 
-&gt; **文件名：**founders3.png
-&gt; **图像名：**THC 2003.902.299 Fixed Nitrogen Research Laboratory Group Photo.tif
-&gt; **图像作者：**N/A
-&gt; **授权协议：**公有领域
-&gt; **来源链接：**[https://commons.wikimedia.org/wiki/File:THC_2003.902.299_Fixed_Nitrogen_Research_Laboratory_Group_Photo.tif 维基媒体共享]
-&gt; **备注：**经[[*user Jasiu06]]编辑
+&gt; **Filename:** founders3.png
+&gt; **Name:** THC 2003.902.299 Fixed Nitrogen Research Laboratory Group Photo.tif
+&gt; **Author:** N/A
+&gt; **License:** Public Domain
+&gt; **Source Link:** [https://commons.wikimedia.org/wiki/File:THC_2003.902.299_Fixed_Nitrogen_Research_Laboratory_Group_Photo.tif Wikimedia Commons]
+&gt; **Additional Notes:** Edited by [[*user Jasiu06]]
 
-&gt; **文件名：**signature.png
-&gt; **图像作者：**[[*user Aelanna]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[https://scp-wiki.wikidot.com/goc-hub-page SCP基金会维基]
+&gt; **Filename:** signature.png
+&gt; **Author:** [[*user Aelanna]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [https://scp-wiki.wikidot.com/goc-hub-page SCP Foundation Wiki]
 
-&gt; **文件名：**vote.png
-&gt; **图像作者：**[[*user Ralliston]]与[[*user Jasiu06]]，基于[[*user shaftmetal]]的[http://scpkrsandbox.wikidot.com/component:108votebox 组件]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[https://scp-wiki.wikidot.com/lte-1998-burnout-blaecca-parallax SCP基金会维基]
+&gt; **Filename:** vote.png
+&gt; **Author:** [[*user Ralliston]] and [[*user Jasiu06]], based on [http://scpkrsandbox.wikidot.com/component:108votebox component] by [[*user shaftmetal]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [https://scp-wiki.wikidot.com/lte-1998-burnout-blaecca-parallax SCP Foundation Wiki]
 
-&gt; **文件名：**primordial.png
-&gt; **图像作者：**[[*user Fouin]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[http://fondationscp.wikidot.com/centre-de-primordial SCP-FR]
+&gt; **Filename:** primordial.png
+&gt; **Author:** [[*user Fouin]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [http://fondationscp.wikidot.com/centre-de-primordial SCP-FR]
 
-&gt; **文件名：**graph.png
-&gt; **图像作者：**[[*user Jasiu06]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[https://scp-wiki.wikidot.com/lte-1998-burnout-blaecca-parallax SCP基金会维基]
-&gt; **衍生自：**
+&gt; **Filename**: graph.png
+&gt; **Author**: [[*user Jasiu06]]
+&gt; **License**: CC BY-SA 3.0
+&gt; **Source Link:** [https://scp-wiki.wikidot.com/lte-1998-burnout-blaecca-parallax SCP Foundation Wiki]
+&gt; **Derivative Of:**
 
-&gt; **图像名：**Prometheus Laboratories Logo
-&gt; **图像作者：**[[*user tsucchii0301]]
-&gt; **授权协议：**CC BY-SA 3.0
-&gt; **来源链接：**[http://scp-int.wikidot.com/goi-icon SCP INT]
+&gt; **Name:** Prometheus Laboratories Logo
+&gt; **Author:** [[*user tsucchii0301]]
+&gt; **License:** CC BY-SA 3.0
+&gt; **Source Link:** [http://scp-int.wikidot.com/goi-icon SCP INT]
 =====
-[[include :scp-wiki-cn:component:license-box-end]]
+[[include :scp-wiki:component:license-box-end]]
 [[/=]]</textarea></pre>
   </div>
 
@@ -1326,7 +1387,7 @@ KTE-1998-Burnout-Blaecca-Parallax和KTE-1852-Indigo-Léon已被重编级为LTE�
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:30:33.906110.</em>
+    <em>Last updated 2024-02-07 18:34:37.278250.</em>
   
 </div>
 </body>

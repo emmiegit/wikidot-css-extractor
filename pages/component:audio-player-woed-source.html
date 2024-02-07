@@ -534,18 +534,18 @@ body {
 
 &lt;body&gt;
     &lt;div id=&#34;audio&#34; class=&#34;player-wrapper&#34;&gt;
-     &lt;audio-player file=&#34;{$audio-file}&#34;&gt;&lt;/audio-player&gt;
+    	&lt;audio-player file=&#34;{$audio-file}&#34;&gt;&lt;/audio-player&gt;
     &lt;/div&gt;
 
     &lt;script type=&#34;text/javascript&#34;&gt;
-     const convertTimeHHMMSS = val =&gt; {
-     let hhmmss = new Date(val * 1000).toISOString().substr(11, 8);
+    	const convertTimeHHMMSS = val =&gt; {
+    		let hhmmss = new Date(val * 1000).toISOString().substr(11, 8);
 
-     return hhmmss.indexOf(&#34;00:&#34;) === 0 ? hhmmss.substr(3) : hhmmss;
-     };
+    		return hhmmss.indexOf(&#34;00:&#34;) === 0 ? hhmmss.substr(3) : hhmmss;
+    	};
 
-     const AudioPlayer = {
-     template: `
+    	const AudioPlayer = {
+    		template: `
         &lt;div class=&#34;player&#34;&gt;
             &lt;div class=&#34;player-controls&#34;&gt;
                 &lt;div&gt;
@@ -609,126 +609,126 @@ body {
             &lt;audio :loop=&#34;innerLoop&#34; ref=&#34;audiofile&#34; :src=&#34;file&#34; preload=&#34;auto&#34; style=&#34;display: none;&#34;&gt;&lt;/audio&gt;
         &lt;/div&gt;
   `,
-     props: {
-     file: {
-     type: String,
-     default: null
-     },
+    		props: {
+    			file: {
+    				type: String,
+    				default: null
+    			},
 
-     autoPlay: {
-     type: Boolean,
-     default: false
-     },
+    			autoPlay: {
+    				type: Boolean,
+    				default: false
+    			},
 
-     loop: {
-     type: Boolean,
-     default: false
-     }
-     },
+    			loop: {
+    				type: Boolean,
+    				default: false
+    			}
+    		},
 
-     data: () =&gt; ({
-     audio: undefined,
-     currentSeconds: 0,
-     durationSeconds: 0,
-     innerLoop: false,
-     loaded: false,
-     playing: false,
-     previousVolume: 35,
-     showVolume: true,
-     volume: 100
-     }),
+    		data: () =&gt; ({
+    			audio: undefined,
+    			currentSeconds: 0,
+    			durationSeconds: 0,
+    			innerLoop: false,
+    			loaded: false,
+    			playing: false,
+    			previousVolume: 35,
+    			showVolume: true,
+    			volume: 100
+    		}),
 
-     computed: {
-     currentTime() {
-     return convertTimeHHMMSS(this.currentSeconds);
-     },
-     durationTime() {
-     return convertTimeHHMMSS(this.durationSeconds);
-     },
-     percentComplete() {
-     return parseInt(this.currentSeconds / this.durationSeconds * 100);
-     },
-     muted() {
-     return this.volume / 100 === 0;
-     }
-     },
+    		computed: {
+    			currentTime() {
+    				return convertTimeHHMMSS(this.currentSeconds);
+    			},
+    			durationTime() {
+    				return convertTimeHHMMSS(this.durationSeconds);
+    			},
+    			percentComplete() {
+    				return parseInt(this.currentSeconds / this.durationSeconds * 100);
+    			},
+    			muted() {
+    				return this.volume / 100 === 0;
+    			}
+    		},
 
-     watch: {
-     playing(value) {
-     if (value) {
-     return this.audio.play();
-     }
-     this.audio.pause();
-     },
-     volume(value) {
-     this.showVolume = true;
-     this.audio.volume = this.volume / 100;
-     }
-     },
+    		watch: {
+    			playing(value) {
+    				if (value) {
+    					return this.audio.play();
+    				}
+    				this.audio.pause();
+    			},
+    			volume(value) {
+    				this.showVolume = true;
+    				this.audio.volume = this.volume / 100;
+    			}
+    		},
 
-     methods: {
-     download() {
-     this.stop();
-     window.open(this.file, &#39;download&#39;);
-     },
-     load() {
-     if (this.audio.readyState &gt;= 2) {
-     this.loaded = true;
-     this.durationSeconds = parseInt(this.audio.duration);
-     return this.playing = this.autoPlay;
-     }
+    		methods: {
+    			download() {
+    				this.stop();
+    				window.open(this.file, &#39;download&#39;);
+    			},
+    			load() {
+    				if (this.audio.readyState &gt;= 2) {
+    					this.loaded = true;
+    					this.durationSeconds = parseInt(this.audio.duration);
+    					return this.playing = this.autoPlay;
+    				}
 
-     throw new Error(&#39;Failed to load sound file.&#39;);
-     },
-     mute() {
-     if (this.muted) {
-     return this.volume = this.previousVolume;
-     }
+    				throw new Error(&#39;Failed to load sound file.&#39;);
+    			},
+    			mute() {
+    				if (this.muted) {
+    					return this.volume = this.previousVolume;
+    				}
 
-     this.previousVolume = this.volume;
-     this.volume = 0;
-     },
-     seek(e) {
-     if (!this.playing || e.target.tagName === &#39;SPAN&#39;) {
-     return;
-     }
+    				this.previousVolume = this.volume;
+    				this.volume = 0;
+    			},
+    			seek(e) {
+    				if (!this.playing || e.target.tagName === &#39;SPAN&#39;) {
+    					return;
+    				}
 
-     const el = e.target.getBoundingClientRect();
-     const seekPos = (e.clientX - el.left) / el.width;
+    				const el = e.target.getBoundingClientRect();
+    				const seekPos = (e.clientX - el.left) / el.width;
 
-     this.audio.currentTime = parseInt(this.audio.duration * seekPos);
-     },
-     stop() {
-     this.playing = false;
-     this.audio.currentTime = 0;
-     },
-     update(e) {
-     this.currentSeconds = parseInt(this.audio.currentTime);
-     }
-     },
+    				this.audio.currentTime = parseInt(this.audio.duration * seekPos);
+    			},
+    			stop() {
+    				this.playing = false;
+    				this.audio.currentTime = 0;
+    			},
+    			update(e) {
+    				this.currentSeconds = parseInt(this.audio.currentTime);
+    			}
+    		},
 
-     created() {
-     this.innerLoop = this.loop;
-     },
-     mounted() {
-     this.audio = this.$el.querySelectorAll(&#39;audio&#39;)[0];
-     this.audio.addEventListener(&#39;timeupdate&#39;, this.update);
-     this.audio.addEventListener(&#39;loadeddata&#39;, this.load);
-     this.audio.addEventListener(&#39;pause&#39;, () =&gt; {
-     this.playing = false;
-     });
-     this.audio.addEventListener(&#39;play&#39;, () =&gt; {
-     this.playing = true;
-     });
-     }
-     };
+    		created() {
+    			this.innerLoop = this.loop;
+    		},
+    		mounted() {
+    			this.audio = this.$el.querySelectorAll(&#39;audio&#39;)[0];
+    			this.audio.addEventListener(&#39;timeupdate&#39;, this.update);
+    			this.audio.addEventListener(&#39;loadeddata&#39;, this.load);
+    			this.audio.addEventListener(&#39;pause&#39;, () =&gt; {
+    				this.playing = false;
+    			});
+    			this.audio.addEventListener(&#39;play&#39;, () =&gt; {
+    				this.playing = true;
+    			});
+    		}
+    	};
 
-     new Vue({
-     el: &#34;#audio&#34;,
-     components: {
-     AudioPlayer
-     }
-     });
+    	new Vue({
+    		el: &#34;#audio&#34;,
+    		components: {
+    			AudioPlayer
+    		}
+    	});
 
     &lt;/script&gt;
 &lt;/body&gt;
@@ -1094,18 +1094,18 @@ body {
 
 &lt;body&gt;
     &lt;div id=&#34;audio&#34; class=&#34;player-wrapper&#34;&gt;
-     &lt;audio-player file=&#34;{$audio-file}&#34;&gt;&lt;/audio-player&gt;
+    	&lt;audio-player file=&#34;{$audio-file}&#34;&gt;&lt;/audio-player&gt;
     &lt;/div&gt;
 
     &lt;script type=&#34;text/javascript&#34;&gt;
-     const convertTimeHHMMSS = val =&gt; {
-     let hhmmss = new Date(val * 1000).toISOString().substr(11, 8);
+    	const convertTimeHHMMSS = val =&gt; {
+    		let hhmmss = new Date(val * 1000).toISOString().substr(11, 8);
 
-     return hhmmss.indexOf(&#34;00:&#34;) === 0 ? hhmmss.substr(3) : hhmmss;
-     };
+    		return hhmmss.indexOf(&#34;00:&#34;) === 0 ? hhmmss.substr(3) : hhmmss;
+    	};
 
-     const AudioPlayer = {
-     template: `
+    	const AudioPlayer = {
+    		template: `
         &lt;div class=&#34;player&#34;&gt;
             &lt;div class=&#34;player-controls&#34;&gt;
                 &lt;div&gt;
@@ -1169,126 +1169,126 @@ body {
             &lt;audio :loop=&#34;innerLoop&#34; ref=&#34;audiofile&#34; :src=&#34;file&#34; preload=&#34;auto&#34; style=&#34;display: none;&#34;&gt;&lt;/audio&gt;
         &lt;/div&gt;
   `,
-     props: {
-     file: {
-     type: String,
-     default: null
-     },
+    		props: {
+    			file: {
+    				type: String,
+    				default: null
+    			},
 
-     autoPlay: {
-     type: Boolean,
-     default: false
-     },
+    			autoPlay: {
+    				type: Boolean,
+    				default: false
+    			},
 
-     loop: {
-     type: Boolean,
-     default: false
-     }
-     },
+    			loop: {
+    				type: Boolean,
+    				default: false
+    			}
+    		},
 
-     data: () =&gt; ({
-     audio: undefined,
-     currentSeconds: 0,
-     durationSeconds: 0,
-     innerLoop: false,
-     loaded: false,
-     playing: false,
-     previousVolume: 35,
-     showVolume: true,
-     volume: 100
-     }),
+    		data: () =&gt; ({
+    			audio: undefined,
+    			currentSeconds: 0,
+    			durationSeconds: 0,
+    			innerLoop: false,
+    			loaded: false,
+    			playing: false,
+    			previousVolume: 35,
+    			showVolume: true,
+    			volume: 100
+    		}),
 
-     computed: {
-     currentTime() {
-     return convertTimeHHMMSS(this.currentSeconds);
-     },
-     durationTime() {
-     return convertTimeHHMMSS(this.durationSeconds);
-     },
-     percentComplete() {
-     return parseInt(this.currentSeconds / this.durationSeconds * 100);
-     },
-     muted() {
-     return this.volume / 100 === 0;
-     }
-     },
+    		computed: {
+    			currentTime() {
+    				return convertTimeHHMMSS(this.currentSeconds);
+    			},
+    			durationTime() {
+    				return convertTimeHHMMSS(this.durationSeconds);
+    			},
+    			percentComplete() {
+    				return parseInt(this.currentSeconds / this.durationSeconds * 100);
+    			},
+    			muted() {
+    				return this.volume / 100 === 0;
+    			}
+    		},
 
-     watch: {
-     playing(value) {
-     if (value) {
-     return this.audio.play();
-     }
-     this.audio.pause();
-     },
-     volume(value) {
-     this.showVolume = true;
-     this.audio.volume = this.volume / 100;
-     }
-     },
+    		watch: {
+    			playing(value) {
+    				if (value) {
+    					return this.audio.play();
+    				}
+    				this.audio.pause();
+    			},
+    			volume(value) {
+    				this.showVolume = true;
+    				this.audio.volume = this.volume / 100;
+    			}
+    		},
 
-     methods: {
-     download() {
-     this.stop();
-     window.open(this.file, &#39;download&#39;);
-     },
-     load() {
-     if (this.audio.readyState &gt;= 2) {
-     this.loaded = true;
-     this.durationSeconds = parseInt(this.audio.duration);
-     return this.playing = this.autoPlay;
-     }
+    		methods: {
+    			download() {
+    				this.stop();
+    				window.open(this.file, &#39;download&#39;);
+    			},
+    			load() {
+    				if (this.audio.readyState &gt;= 2) {
+    					this.loaded = true;
+    					this.durationSeconds = parseInt(this.audio.duration);
+    					return this.playing = this.autoPlay;
+    				}
 
-     throw new Error(&#39;Failed to load sound file.&#39;);
-     },
-     mute() {
-     if (this.muted) {
-     return this.volume = this.previousVolume;
-     }
+    				throw new Error(&#39;Failed to load sound file.&#39;);
+    			},
+    			mute() {
+    				if (this.muted) {
+    					return this.volume = this.previousVolume;
+    				}
 
-     this.previousVolume = this.volume;
-     this.volume = 0;
-     },
-     seek(e) {
-     if (!this.playing || e.target.tagName === &#39;SPAN&#39;) {
-     return;
-     }
+    				this.previousVolume = this.volume;
+    				this.volume = 0;
+    			},
+    			seek(e) {
+    				if (!this.playing || e.target.tagName === &#39;SPAN&#39;) {
+    					return;
+    				}
 
-     const el = e.target.getBoundingClientRect();
-     const seekPos = (e.clientX - el.left) / el.width;
+    				const el = e.target.getBoundingClientRect();
+    				const seekPos = (e.clientX - el.left) / el.width;
 
-     this.audio.currentTime = parseInt(this.audio.duration * seekPos);
-     },
-     stop() {
-     this.playing = false;
-     this.audio.currentTime = 0;
-     },
-     update(e) {
-     this.currentSeconds = parseInt(this.audio.currentTime);
-     }
-     },
+    				this.audio.currentTime = parseInt(this.audio.duration * seekPos);
+    			},
+    			stop() {
+    				this.playing = false;
+    				this.audio.currentTime = 0;
+    			},
+    			update(e) {
+    				this.currentSeconds = parseInt(this.audio.currentTime);
+    			}
+    		},
 
-     created() {
-     this.innerLoop = this.loop;
-     },
-     mounted() {
-     this.audio = this.$el.querySelectorAll(&#39;audio&#39;)[0];
-     this.audio.addEventListener(&#39;timeupdate&#39;, this.update);
-     this.audio.addEventListener(&#39;loadeddata&#39;, this.load);
-     this.audio.addEventListener(&#39;pause&#39;, () =&gt; {
-     this.playing = false;
-     });
-     this.audio.addEventListener(&#39;play&#39;, () =&gt; {
-     this.playing = true;
-     });
-     }
-     };
+    		created() {
+    			this.innerLoop = this.loop;
+    		},
+    		mounted() {
+    			this.audio = this.$el.querySelectorAll(&#39;audio&#39;)[0];
+    			this.audio.addEventListener(&#39;timeupdate&#39;, this.update);
+    			this.audio.addEventListener(&#39;loadeddata&#39;, this.load);
+    			this.audio.addEventListener(&#39;pause&#39;, () =&gt; {
+    				this.playing = false;
+    			});
+    			this.audio.addEventListener(&#39;play&#39;, () =&gt; {
+    				this.playing = true;
+    			});
+    		}
+    	};
 
-     new Vue({
-     el: &#34;#audio&#34;,
-     components: {
-     AudioPlayer
-     }
-     });
+    	new Vue({
+    		el: &#34;#audio&#34;,
+    		components: {
+    			AudioPlayer
+    		}
+    	});
 
     &lt;/script&gt;
 &lt;/body&gt;
@@ -1304,7 +1304,7 @@ body {
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:30:30.527348.</em>
+    <em>Last updated 2024-02-07 18:34:36.145993.</em>
   
 </div>
 </body>

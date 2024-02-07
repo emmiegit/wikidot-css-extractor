@@ -29,7 +29,107 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>.content-panel .yui-navset .yui-content {
+    display: contents;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    counter-reset: series;
+}
+.content-panel .yui-navset .yui-nav {
+    border: none;
+    text-align: right;
+    margin: 0.25rem 0 -0.5rem;
+}
+#page-content .content-panel .yui-navset .yui-nav li {
+    margin: 0;
+    padding: 0;
+}
+#page-content .content-panel .yui-navset .yui-nav li a {
+    color: #b01;
+    font-size: 0.875em;
+}
+#page-content .content-panel .yui-navset .yui-nav li a:hover,
+#page-content .content-panel .yui-navset .yui-nav li a:focus,
+#page-content .content-panel .yui-navset .yui-nav li a:active {
+    text-decoration: underline;
+}
+#page-content .content-panel .yui-navset .yui-nav li a em {
+     margin: 0 0 0 auto;
+     padding: 0.175em 0;
+     width: max-content;
+}
+.content-panel .yui-navset .yui-nav a,
+.content-panel .yui-navset .yui-nav a:hover,
+.content-panel .yui-navset .yui-nav a em {
+    border: none;
+    background: transparent !important;
+}
+
+.content-panel .yui-navset .yui-nav li { pointer-events: none; }
+.content-panel .yui-navset .yui-nav li a em { pointer-events: auto; }
+
+.content-panel .yui-navset .yui-nav li a::before {
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+}
+.content-panel .yui-navset .yui-nav li:nth-of-type(1) a::before {
+    content: &#34;Displaying in release order&#34;;
+}
+.content-panel .yui-navset .yui-nav li:nth-of-type(2) a::before {
+    content: &#34;Displaying in random order&#34;;
+}
+.content-panel .yui-navset .yui-nav .selected {
+    display: none;
+}
+
+.content-panel .yui-navset .yui-content &gt; div {
+    padding: 0.25rem 0 1.5rem;
+    text-align: center;
+    transition: opacity 0.35s ease-out;
+}
+.content-panel .yui-navset .yui-content &gt; div:first-child &gt; p { display: contents; } /* iframe p de-wrapping */
+
+.content-panel .divider {
+    position: relative;
+    color: #bfbfbf;
+    font-weight: 600;
+    margin-block: 1.25rem;
+    font-size: 0;
+    counter-increment: series;
+}
+.content-panel .divider::before {
+    content: &#34;&#34;;
+    display: block;
+    height: .1rem;
+    width: 100%;
+    background: linear-gradient(to right, transparent, currentcolor, transparent);
+}
+.content-panel .divider::after {
+    content: counter(series, upper-roman);
+    font-size: .675rem;
+    background: #fcfdfb;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-inline: .25rem;
+}
+
+/*
+Some browsers assume that when &#34;display:none&#34; is applied to replaced elements, the visual info for that element is no longer needed. This is to prevent the iframe from re-rendering every time the tab is clicked off and on.
+
+https://stackoverflow.com/questions/2730046/javascript-problem-with-iframe-thats-hidden-before-loaded/2786429#2786429
+*/
+.content-panel .yui-navset .yui-content &gt; div[style*=&#34;none&#34;] {
+    display: block !important;
+    max-height: 0rem;
+    overflow: hidden;
+    padding: 0;
+    visibility: hidden;
+    opacity: 0;
+}</code></pre>
         </li>
       
     </ul>
@@ -39,6 +139,10 @@
       
         <li>
           <pre><code>width: 100%; border: solid 1px black;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: inline-block;width: 194px;height: 16px;font-size: 0;background: url(https://scp-wiki.wdfiles.com/local--files/scp-001/sdl-ihp-001.gif) no-repeat;vertical-align: text-bottom;background-size: 192px;</code></pre>
         </li>
       
     </ul>
@@ -105,44 +209,197 @@
         </li>
       
         <li>
+          <pre><code>content-panel</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>standalone</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>series</code></pre>
+        </li>
+      
+        <li>
           <pre><code>image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>divider</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[!-- NOTICE
+    <pre><textarea class="page-source" readonly>[!--
 
-JANGAN MENYUNTING HALAMAN INI KECUALI KAMU SEDANG MENGUNGGAH SEBUAH PROPOSAL 001.
+HOW TO ADD YOUR 001 PROPOSAL:
 
-TOLONG UNGGAH TAUTANMU DI BAGIAN PALING BAWAH DAFTAR INI. JANGAN GANTI URUTAN DAFTAR.
+1) Ctrl+F &#34;Bot-readable list&#34; or scroll down until you arrive at the &#34;Order Chronologically&#34; tab. Add yours to the bottom of the list in the same manner as any other link. Only the &#34;CODE NAME: X&#34; should be the link, with your title after that.
 
-FORMAT TAUTAN YANG BENAR ADALAH:
+2) Scroll back up to the HTML portion and add your proposal to the bottom of the list in the same format as the others, replacing the relevant portions:
 
-[[[namapengguna-s-proposal| NAMA SANDI: nama pengguna]]] - Judul
+&lt;li&gt;
+    &lt;p&gt;&lt;a href=&#34;/url-of-ur-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Your Name Here&lt;/a&gt; - Your Title Here&lt;/p&gt;&lt;/li&gt;
 
-JANGAN MENYUNTING ATAU MENCOBA MENGGANTI GAMBAR BAHAYA MEMETIK.
+Swap the url with the url of your proposal, the name with your code name of choice, and the title with your title. Save the page, and look over it to make sure its all displaying correctly.
 
-MELAKUKAN HAL TERSEBUT AKAN DIANGGAP SEBAGAI VANDALISME, DAN SEBUAH PELANGGARAN YANG DAPAT DIBERIKAN HUKUMAN BAN. --]
+If there are any problems or you can&#39;t figure this out, contact a member of staff.
+
+--]
+[[module CSS]]
+.content-panel .yui-navset .yui-content {
+    display: contents;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+    counter-reset: series;
+}
+.content-panel .yui-navset .yui-nav {
+    border: none;
+    text-align: right;
+    margin: 0.25rem 0 -0.5rem;
+}
+#page-content .content-panel .yui-navset .yui-nav li {
+    margin: 0;
+    padding: 0;
+}
+#page-content .content-panel .yui-navset .yui-nav li a {
+    color: #b01;
+    font-size: 0.875em;
+}
+#page-content .content-panel .yui-navset .yui-nav li a:hover,
+#page-content .content-panel .yui-navset .yui-nav li a:focus,
+#page-content .content-panel .yui-navset .yui-nav li a:active {
+    text-decoration: underline;
+}
+#page-content .content-panel .yui-navset .yui-nav li a em {
+     margin: 0 0 0 auto;
+     padding: 0.175em 0;
+     width: max-content;
+}
+.content-panel .yui-navset .yui-nav a,
+.content-panel .yui-navset .yui-nav a:hover,
+.content-panel .yui-navset .yui-nav a em {
+    border: none;
+    background: transparent !important;
+}
+
+.content-panel .yui-navset .yui-nav li { pointer-events: none; }
+.content-panel .yui-navset .yui-nav li a em { pointer-events: auto; }
+
+.content-panel .yui-navset .yui-nav li a::before {
+    font-weight: bold;
+    color: black;
+    display: inline-block;
+}
+.content-panel .yui-navset .yui-nav li:nth-of-type(1) a::before {
+    content: &#34;Displaying in release order&#34;;
+}
+.content-panel .yui-navset .yui-nav li:nth-of-type(2) a::before {
+    content: &#34;Displaying in random order&#34;;
+}
+.content-panel .yui-navset .yui-nav .selected {
+    display: none;
+}
+
+.content-panel .yui-navset .yui-content &gt; div {
+    padding: 0.25rem 0 1.5rem;
+    text-align: center;
+    transition: opacity 0.35s ease-out;
+}
+.content-panel .yui-navset .yui-content &gt; div:first-child &gt; p { display: contents; } /* iframe p de-wrapping */
+
+.content-panel .divider {
+    position: relative;
+    color: #bfbfbf;
+    font-weight: 600;
+    margin-block: 1.25rem;
+    font-size: 0;
+    counter-increment: series;
+}
+.content-panel .divider::before {
+    content: &#34;&#34;;
+    display: block;
+    height: .1rem;
+    width: 100%;
+    background: linear-gradient(to right, transparent, currentcolor, transparent);
+}
+.content-panel .divider::after {
+    content: counter(series, upper-roman);
+    font-size: .675rem;
+    background: #fcfdfb;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-inline: .25rem;
+}
+
+/*
+Some browsers assume that when &#34;display:none&#34; is applied to replaced elements, the visual info for that element is no longer needed. This is to prevent the iframe from re-rendering every time the tab is clicked off and on.
+
+https://stackoverflow.com/questions/2730046/javascript-problem-with-iframe-thats-hidden-before-loaded/2786429#2786429
+*/
+.content-panel .yui-navset .yui-content &gt; div[style*=&#34;none&#34;] {
+    display: block !important;
+    max-height: 0rem;
+    overflow: hidden;
+    padding: 0;
+    visibility: hidden;
+    opacity: 0;
+}
+[[/module]]
+
 
 [[=]]
-++ DOKUMEN BERIKUT INI TELAH DIGOLONGKAN
-+ [[size 200%]]SANGAT RAHASIA[[/size]]
+++ THE FOLLOWING FILES HAVE BEEN CLASSIFIED
 
-++ ATAS PERINTAH ADMINISTRATOR
++ [[size 200%]]TOP SECRET[[/size]]
+
+++ BY ORDER OF THE ADMINISTRATOR
 [[/=]]
 -----
 [[div class=&#34;content-panel standalone series&#34;]]
 [[==]]
-**PERINGATAN UMUM 001-Alpha:** Demi mencegah kebocoran informasi mengenai SCP-001, beberapa dokumen tidak benar dari SCP-001 telah dibuat bersama dengan dokumen yang sebenarnya. Semua dokumen tentang sifat SCP-001, termasuk umpannya, dilindungi oleh agen pembunuh memetik yang dirancang untuk menyebabkan serangan jantung kepada personnel tidak berwenang yang berusaha mengakses dokumen. Membeberkan sifat asli SCP-001 kepada khalayak publik akan berakibat eksekusi mati, terkecuali seperti yang telah ditentukan dalam ████-███-██████.
+**GENERAL NOTICE 001-Alpha:** In order to prevent knowledge of SCP-001 from being leaked, several/no false SCP-001 files have been created alongside the true file/files. All files concerning the nature of SCP-001, including the decoy/decoys, are protected by a memetic kill agent designed to immediately cause cardiac arrest in any nonauthorized personnel attempting to access the file. Revealing the true nature/natures of SCP-001 to the general public is cause for execution, except as required under ████-███-██████.
 [[/==]]
 [[/div]]
 -----
 [[=]]
-+ [[size 200%]]PERINGATAN:[[/size]]
++ [[size 200%]]WARNING:[[/size]]
 
-SETIAP PERSONEL TIDAK BERWENANG YANG MENGAKSES DOKUMEN INI AKAN DENGAN SEGERA DIMUSNAHKAN DENGAN AGEN PEMBUNUH MEMETIK **BERRYMAN-LANGFORD**. MENGGULIR KE BAWAH TANPA PENANGKAL MEMETIK YANG TEPAT AKAN MENGAKIBATKAN SERANGAN JANTUNG YANG KEMUDIAN SECARA LANGSUNG DIIKUTI DENGAN KEMATIAN.
-+ ANDA TELAH DIPERINGATKAN.
+ANY NON-AUTHORIZED PERSONNEL ACCESSING THIS FILE WILL BE IMMEDIATELY TERMINATED THROUGH **BERRYMAN-LANGFORD** MEMETIC KILL AGENT. SCROLLING DOWN WITHOUT PROPER MEMETIC INOCULATION WILL RESULT IN IMMEDIATE CARDIAC ARREST FOLLOWED BY DEATH.
+
++ YOU HAVE BEEN WARNED.
 [[/=]]
 -----
 @@@@
@@ -390,20 +647,21 @@ SETIAP PERSONEL TIDAK BERWENANG YANG MENGAKSES DOKUMEN INI AKAN DENGAN SEGERA DI
 @@@@
 @@@@
 @@@@
-[[=image fractal001.jpg style=&#34;width: 100%; border: solid 1px black;&#34;]]
+
+[[=image https://scp-wiki.wdfiles.com/local--files/scp-001/fractal-mka.jpeg style=&#34;width: 100%; border: solid 1px black;&#34;]]
 [[=]]
-**AGEN PEMBUNUH MEMETIK DIAKTIFKAN**
+**MEMETIC KILL AGENT ACTIVATED**
 
-**TANDA KELANJUTAN HIDUP TERKONFIRMASI**
+**CONTINUED LIFE SIGNS CONFIRMED**
 
-**MENGHAPUS KUNCI PENGAMAN**
+**REMOVING SAFETY INTERLOCKS**
 
-//Selamat datang, personel berwenang. Silahkan pilih dokumen yang anda inginkan.//
+//Welcome, authorized personnel. Please select your desired file.//
 [[/=]]
 -----
 [[div class=&#34;content-panel standalone series&#34;]]
 [[tabview]]
-[[tab Urutan Secara Acak]]
+[[tab Order Randomly]]
 [!-- Randomized list --]
 [[html class=&#34;iframe&#34;]]
 &lt;!DOCTYPE html&gt;
@@ -411,8 +669,14 @@ SETIAP PERSONEL TIDAK BERWENANG YANG MENGAKSES DOKUMEN INI AKAN DENGAN SEGERA DI
   &lt;head&gt;
     &lt;meta charset=&#34;UTF-8&#34;&gt;
     &lt;meta name=&#34;viewport&#34; content=&#34;width=device-width, initial-scale=1.0&#34;&gt;
-    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://scp-wiki.wikidot.com/local--files/scp-001/001.css&#34;&gt;
+    &lt;link rel=&#34;stylesheet&#34; href=&#34;https://cdn.scpwiki.com/theme/en/sigma/css/sigma.min.css&#34;&gt;
     &lt;style&gt;
+    .proposals { text-align: center; }
+    .proposals ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    .content-panel.most-recent { background: rgb(251, 255, 201); }
     #new-ones {
         display: flex;
         flex-direction: column-reverse;
@@ -427,104 +691,113 @@ SETIAP PERSONEL TIDAK BERWENANG YANG MENGAKSES DOKUMEN INI AKAN DENGAN SEGERA DI
   &lt;/head&gt;
   &lt;body&gt;
     &lt;div class=&#34;proposals&#34;&gt;
-        &lt;div class=&#34;most-recent&#34;&gt;
-            &lt;h2&gt; DOKUMEN BARU &lt;/h2&gt;
+        &lt;div class=&#34;most-recent content-panel standalone series&#34;&gt;
+            &lt;h2&gt; Newly Declassified &lt;/h2&gt;
             &lt;ul id=&#34;new-ones&#34;&gt;
             &lt;/ul&gt;
         &lt;/div&gt;
       &lt;ul id=&#34;zero-zero-ones&#34;&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/jonathan-ball-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Jonathan Ball&lt;/a&gt; - Setumpuk Kertas&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/jonathan-ball-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Jonathan Ball&lt;/a&gt; - Sheaf of Papers&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/dr-gears-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Dr. Gears&lt;/a&gt; - Purwarupa&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/dr-gears-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Dr. Gears&lt;/a&gt; - The Prototype&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/dr-clef-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Dr. Clef&lt;/a&gt; - Penjaga Gerbang&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/dr-clef-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Dr. Clef&lt;/a&gt; - The Gate Guardian&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/qntm-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: qntm&lt;/a&gt; - Gembok&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/qntm-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: qntm&lt;/a&gt; - The Lock&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/scp-001-o5&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Bright&lt;/a&gt; - Pabrik&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/scp-001-o5&#34; target=&#34;_top&#34;&gt;CODE NAME: Bright&lt;/a&gt; - The Factory&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/dr-manns-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Dr. Mann&lt;/a&gt; - Tapak Melingkar&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/dr-manns-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Dr. Mann&lt;/a&gt; - The Spiral Path&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/mackenzie-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Dr. Mackenzie&lt;/a&gt; - Peninggalan&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/mackenzie-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Dr. Mackenzie&lt;/a&gt; - The Legacy&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/sandrewswann-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: S. Andrew Swann&lt;/a&gt; - Pangkalan Data&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/sandrewswann-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: S. Andrew Swann&lt;/a&gt; - The Database&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/scantron-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Scantron&lt;/a&gt; - Yayasan&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/scantron-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Scantron&lt;/a&gt; - The Foundation&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/djoric-dmatix-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Djoric/Dmatix&lt;/a&gt; - Tiga Puluh Enam&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/djoric-dmatix-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Djoric/Dmatix&lt;/a&gt; - Thirty-Six&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/ouroboros&#34; target=&#34;_top&#34;&gt;NAMA SANDI: djkaktus/TwistedGears&lt;/a&gt; - Ouroboros&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/ouroboros&#34; target=&#34;_top&#34;&gt;CODE NAME: djkaktus/TwistedGears&lt;/a&gt; - Ouroboros&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/kate-mctiriss-s-proposal&#34;  target=&#34;_top&#34;&gt;NAMA SANDI: Kate McTiriss&lt;/a&gt; - Rekaman&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/kate-mctiriss-s-proposal&#34;  target=&#34;_top&#34;&gt;CODE NAME: Kate McTiriss&lt;/a&gt; - A Record&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/kalinins-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI&lt;/a&gt; - Masa Lalu dan Masa Depan&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/kalinins-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Kalinin&lt;/a&gt; - Past and Future&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/wrong-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI&lt;/a&gt; - Mufakat&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/wrong-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Wrong&lt;/a&gt; - The Consensus&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/shaggydredlocks-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: S. D. Locke&lt;/a&gt; - Saat Fajar Merekah&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/shaggydredlocks-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: S. D. Locke&lt;/a&gt; - When Day Breaks&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/spikebrennan-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Spike Brennan&lt;/a&gt; - Titik Buta Tuhan&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/spikebrennan-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Spike Brennan&lt;/a&gt; - God&#39;s Blind Spot&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/wjs-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: WJS&lt;/a&gt; - Keadaan Normal&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/wjs-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: WJS&lt;/a&gt; - Normalcy&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/billiths-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: BILLITH&lt;/a&gt; - Seluruh Dunia&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/billiths-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: BILLITH&lt;/a&gt; - The World at Large&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/tanhony-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Tanhony&lt;/a&gt; - Orang Mati&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/tanhony-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Tanhony&lt;/a&gt; - Dead Men&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/lily-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Lily&lt;/a&gt; - Dunia yang Indah&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/lily-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Lily&lt;/a&gt; - The World&#39;s Gone Beautiful&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/tuftos-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Tufto&lt;/a&gt; - Raja Merah Padam&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/tuftos-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Tufto&lt;/a&gt; - The Scarlet King&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/jim-north-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Jim North&lt;/a&gt; - Pengrajin Mainan yang Sederhana&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/jim-north-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Jim North&lt;/a&gt; - A Simple Toymaker&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/i-h-p-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: I.H. Pickman&lt;/a&gt; - Kisah Hidupmu&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/i-h-p-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: I.H. Pickman&lt;/a&gt; - Story of Your Life&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/scp-001-ex&#34; target=&#34;_top&#34;&gt;NAMA SANDI: The Great Hippo (feat. PeppersGhost)&lt;/a&gt; - Anak yang Baik&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/scp-001-ex&#34; target=&#34;_top&#34;&gt;CODE NAME: The Great Hippo (feat. PeppersGhost)&lt;/a&gt; - A Good Boy&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/wmdd-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: weizhong|thedeadlymoose|Drewbear|Dexanote&lt;/a&gt; - Proyek Embarau&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/wmdd-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: weizhong|thedeadlymoose|Drewbear|Dexanote&lt;/a&gt; - Project Palisade&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/captain-kirby-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Captain Kirby&lt;/a&gt; - O5-13&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/psul-001&#34; target=&#34;_top&#34;&gt;CODE NAME: psul&lt;/a&gt; - The Mementos&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/pedantique-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Pedantique&lt;/a&gt; - Kail Ikan&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/captain-kirby-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Captain Kirby&lt;/a&gt; - O5-13&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/not-a-seagull-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: not_a_seagull&lt;/a&gt; - Langit di atas Pelabuhan&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/pedantique-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Pedantique&lt;/a&gt; - Fishhook&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/jack-ike-s-proposal-i&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Meta Ike&lt;/a&gt; - Solusi&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/not-a-seagull-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: not_a_seagull&lt;/a&gt; - The Sky above the Port&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/jack-ike-s-proposal-ii&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Noir Box&lt;/a&gt; - Trinitas Tindalos&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/jack-ike-s-proposal-i&#34; target=&#34;_top&#34;&gt;CODE NAME: Meta Ike&lt;/a&gt; - The Solution&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/tanhony-s-proposal-ii&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Tanhony II&lt;/a&gt; - Bulan Hitam&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/jack-ike-s-proposal-ii&#34; target=&#34;_top&#34;&gt;CODE NAME: Noir Box&lt;/a&gt; - Tindalos Trinity&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/roget-s-conspiracy-theory-for-scp-001&#34; target=&#34;_top&#34;&gt;NAMA SANDI:&lt;/a&gt; Konspirasi&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/tanhony-s-proposal-ii&#34; target=&#34;_top&#34;&gt;CODE NAME: Tanhony II&lt;/a&gt; - The Black Moon&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/swelling-of-the-worlds&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Arbelict&lt;/a&gt; - Anda Adalah Sebuah Anomali, Tumor di Dunia Ini&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/roget-s-conspiracy-theory-for-scp-001&#34; target=&#34;_top&#34;&gt;CODE NAME:&lt;/a&gt; The Conspiracy&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/mcdoctorate-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: McDoctorate&lt;/a&gt; - Pengganti&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/swelling-of-the-worlds&#34; target=&#34;_top&#34;&gt;CODE NAME: Arbelict&lt;/a&gt; - You Are The Anomaly, Tumor Of The Worlds&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/rounderhouse-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: ROUNDERHOUSE&lt;/a&gt; - MEMENTO MORI&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/mcdoctorate-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: McDoctorate&lt;/a&gt; - The Placeholder&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/manymeats-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Dr. Eates&lt;/a&gt; - Pengujian Karakter&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/rounderhouse-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: ROUNDERHOUSE&lt;/a&gt; - MEMENTO MORI&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;a href=&#34;https://scp-idn.wikidot.com/keter-duty&#34; target=&#34;_top&#34;&gt;&lt;img src=&#34;https://scp-wiki.wdfiles.com/local--files/scp-001/sdl-ihp-001.gif&#34; alt=&#34;sdl-ihp-001.gif&#34; class=&#34;image&#34; height=&#34;10px&#34;&gt;&lt;/a&gt; - Kewajiban Keter&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/manymeats-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Dr. Eates&lt;/a&gt; - A Test of Character&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/pickman-blank-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Pickman/Blank&lt;/a&gt; - Frontispiece&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/keter-duty&#34; target=&#34;_top&#34;&gt;&lt;img src=&#34;https://scp-wiki.wdfiles.com/local--files/scp-001/sdl-ihp-001.gif&#34; alt=&#34;sdl-ihp-001.gif&#34; class=&#34;image&#34; height=&#34;11px&#34;&gt;&lt;/a&gt; - Keter Duty&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/rounderhouse-gold-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: ROUNDERHOUSE&#39;s Gold Proposal&lt;/a&gt; - AMONI-RAM&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/pickman-blank-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Pickman/Blank&lt;/a&gt; - The Frontispiece&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/ralliston-s-proposal&#34; target=&#34;_top&#34;&gt;NAMA SANDI: Ralliston&lt;/a&gt; - Langkah Pertama Ratu&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/rounderhouse-gold-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: ROUNDERHOUSE&#39;s Gold Proposal&lt;/a&gt; - AMONI-RAM&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/dyfscp-001&#34; target=&#34;_top&#34;&gt;KODE SANDI: D. Ulysses Foole&lt;/a&gt; - Pengendaraan Terakhir Suatu Hari&lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/ralliston-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Ralliston&lt;/a&gt; - The Queen&#39;s Gambit&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-    &lt;p&gt;&lt;a href=&#34;/nagiros-proposal&#34; target=&#34;_top&#34;&gt;KODE SANDI: Nagiros&lt;/a&gt; - R ¦ A ¦ G ¦ E&lt;/p&gt;&lt;/li&gt;
+    &lt;p&gt;&lt;a href=&#34;/dyfscp-001&#34; target=&#34;_top&#34;&gt;CODE NAME: D. Ulysses Foole&lt;/a&gt; - Last Ride of the Day&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/rounderhouse-jade-proposal&#34; target=&#34;_top&#34;&gt;KODE SANDI: ROUNDERHOUSE&#39;s Jade Proposal&lt;/a&gt; - MAMJUL &amp; KORAR &lt;/p&gt;&lt;/li&gt;
+    &lt;p&gt;&lt;a href=&#34;/nagiros-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Nagiros&lt;/a&gt; - R ¦ A ¦ G ¦ E&lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/plague-s-proposal&#34; target=&#34;_top&#34;&gt;KODE SANDI: Plague&#39;s Proposal&lt;/a&gt; - Mereka yang Berhasil Lari &lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/rounderhouse-jade-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: ROUNDERHOUSE&#39;s Jade Proposal&lt;/a&gt; - MAMJUL &amp; KORAR &lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/jack-ike-s-proposal-iv&#34; target=&#34;_top&#34;&gt;KODE SANDI: Null Sum&lt;/a&gt; - Masalah &lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/plague-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Plague&#39;s Proposal&lt;/a&gt; - The Ones That Got Away &lt;/p&gt;&lt;/li&gt;
         &lt;li&gt;
-            &lt;p&gt;&lt;a href=&#34;/dyfscp0012&#34; target=&#34;_top&#34;&gt;KODE SANDI: Dafydd Utica Foolfellow&#39;s Proposal&lt;/a&gt; -  [elemen?] [MANUSIA!] &lt;/p&gt;&lt;/li&gt;
+            &lt;p&gt;&lt;a href=&#34;/jack-ike-s-proposal-iv&#34; target=&#34;_top&#34;&gt;CODE NAME: Null Sum&lt;/a&gt; - The Problem &lt;/p&gt;&lt;/li&gt;
+        &lt;li&gt;
+            &lt;p&gt;&lt;a href=&#34;/dyfscp0012&#34; target=&#34;_top&#34;&gt;CODE NAME: Dafydd Utica Foolfellow&#39;s Proposal&lt;/a&gt; -  [the] [HUMAN!] [element?] &lt;/p&gt;&lt;/li&gt;
+
+        &lt;li&gt;
+    &lt;p&gt;&lt;a href=&#34;/nico-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Nico&#39;s Proposal&lt;/a&gt; - The Throne of God&lt;/p&gt;&lt;/li&gt;
+
+        &lt;li&gt;
+    &lt;p&gt;&lt;a href=&#34;/dr-cimmerian-s-proposal&#34; target=&#34;_top&#34;&gt;CODE NAME: Cimmerian&lt;/a&gt; - Ethical considerations with regards to the former inhabitants of 81 Galatine Two and Secace Epsilon Seven, colloquially known as the Sword Stars.&lt;/p&gt;&lt;/li&gt;
+        
       &lt;/ul&gt;
     &lt;/div&gt;
 
@@ -542,106 +815,144 @@ SETIAP PERSONEL TIDAK BERWENANG YANG MENGAKSES DOKUMEN INI AKAN DENGAN SEGERA DI
 [[/html]]
 [[/tab]]
 
-[[tab Urutan Secara Kronologis]]
+[[tab Order Chronologically]]
 [!--Bot-readable list--]
 
-[[[Jonathan Ball&#39;s Proposal| NAMA SANDI: Jonathan Ball]]] - Setumpuk Kertas
+[[div_ class=&#34;divider&#34;]]
+Series 1
+[[/div]]
 
-[[[Dr. Gears&#39;s Proposal| NAMA SANDI: Dr. Gears]]] - Purwarupa
+[[[Jonathan Ball&#39;s Proposal|CODE NAME: Jonathan Ball]]] - Sheaf of Papers
 
-[[[Dr. Clef&#39;s Proposal| NAMA SANDI: Dr. Clef]]] - Penjaga Gerbang
+[[[Dr. Gears&#39;s Proposal|CODE NAME: Dr. Gears]]] - The Prototype
 
-[[[qntm&#39;s Proposal| NAMA SANDI: qntm]]] - Gembok
+[[[Dr. Clef&#39;s Proposal|CODE NAME: Dr. Clef]]] - The Gate Guardian
 
-[[[scp-001-o5| NAMA SANDI: Bright]]] - Pabrik
+[[[qntm&#39;s Proposal|CODE NAME: qntm]]] - The Lock
 
-[[[dr-manns-proposal| NAMA SANDI: Dr. Mann]]] - Tapak Melingkar
+[[[scp-001-o5 |CODE NAME: Bright]]] - The Factory
 
-[[[mackenzie-s-proposal| NAMA SANDI: Dr. Mackenzie]]] - Peninggalan
+[[[dr-manns-proposal|CODE NAME: Dr. Mann]]] - The Spiral Path
 
-[[[sandrewswann-s-proposal| NAMA SANDI: S. Andrew Swann]]] - Pangkalan Data
+[[div_ class=&#34;divider&#34;]]
+Series 2
+[[/div]]
 
-[[[scantron-s-proposal| NAMA SANDI: Scantron]]] - Yayasan
+[[[mackenzie-s-proposal|CODE NAME: Dr. Mackenzie]]] - The Legacy
 
-[[[djoric-dmatix-proposal| NAMA SANDI: Djoric/Dmatix]]] - Tiga Puluh Enam
+[[[sandrewswann-s-proposal|CODE NAME: S. Andrew Swann]]] - The Database
 
-[[[Ouroboros| NAMA SANDI: djkaktus/TwistedGears]]] - Ouroboros
+[[[scantron-s-proposal| CODE NAME: Scantron]]] - The Foundation
 
-[[[Kate McTiriss&#39;s Proposal| NAMA SANDI: Kate McTiriss]]] - Rekaman
+[[[djoric-dmatix-proposal| CODE NAME: Djoric/Dmatix]]] - Thirty-Six
 
-[[[kalinins proposal| NAMA SANDI: Kalinin]]] - Masa Lalu dan Masa Depan
+[[div_ class=&#34;divider&#34;]]
+Series 3
+[[/div]]
 
-[[[wrong proposal| NAMA SANDI: Wrong]]] - Mufakat
+[[[Ouroboros| CODE NAME: djkaktus/TwistedGears]]] - Ouroboros
 
-[[[shaggydredlocks-proposal| NAMA SANDI: S. D. Locke]]] - Saat Fajar Merekah
+[[[Kate McTiriss&#39;s Proposal| CODE NAME: Kate McTiriss]]] - A Record
 
-[[[spikebrennan-s-proposal| NAMA SANDI: Spike Brennan]]] - Titik Buta Tuhan
+[[[kalinins proposal| CODE NAME: Kalinin]]] - Past and Future
 
-[[[WJS Proposal| NAMA SANDI: WJS]]] - Keadaan Normal
+[[[wrong proposal| CODE NAME: Wrong]]] - The Consensus
 
-[[[billiths-proposal | NAMA SANDI: BILLITH]]] - Seluruh Dunia
+[[div_ class=&#34;divider&#34;]]
+Series 4
+[[/div]]
 
-[[[tanhony-s-proposal | NAMA SANDI: Tanhony]]] - Orang Mati
+[[[shaggydredlocks-proposal| CODE NAME: S. D. Locke]]] - When Day Breaks
 
-[[[lily-s-proposal | NAMA SANDI: Lily]]] - Dunia yang Indah
+[[[spikebrennan-s-proposal| CODE NAME: Spike Brennan]]] - God&#39;s Blind Spot
 
-[[[tuftos-proposal | NAMA SANDI: Tufto]]] - Raja Merah Padam
+[[[WJS Proposal| CODE NAME: WJS]]] - Normalcy
 
-[[[jim-north-s-proposal | NAMA SANDI: Jim North]]] - Pengrajin Mainan yang Sederhana
+[[div_ class=&#34;divider&#34;]]
+Series 5
+[[/div]]
 
-[[[i-h-p-proposal | NAMA SANDI: I.H. Pickman]]] - Kisah Hidupmu
+[[[billiths-proposal | CODE NAME: BILLITH]]] - The World at Large
 
-[[[scp-001-ex | NAMA SANDI: The Great Hippo (feat. PeppersGhost)]]] - Anak yang Baik
+[[[tanhony-s-proposal | CODE NAME: Tanhony]]] - Dead Men
 
-[[[wmdd-s-proposal | NAMA SANDI: weizhong|thedeadlymoose|Drewbear|Dexanote]]] - Proyek Embarau
+[[[lily-s-proposal | CODE NAME: Lily]]] - The World&#39;s Gone Beautiful
 
-[[[captain-kirby-s-proposal | NAMA SANDI: Captain Kirby]]] - O5-13
+[[[tuftos-proposal | CODE NAME: Tufto]]] - The Scarlet King
 
-[[[pedantique-s-proposal | NAMA SANDI: Pedantique]]] - Kail Ikan
+[[[jim-north-s-proposal | CODE NAME: Jim North]]] - A Simple Toymaker
 
-[[[not-a-seagull-proposal | NAMA SANDI: not_a_seagull]]] - Langit di atas Pelabuhan
+[[[i-h-p-proposal | CODE NAME: I.H. Pickman]]] - Story of Your Life
 
-[[[jack-ike-s-proposal-i| NAMA SANDI: Meta Ike]]] - Solusi
+[[[scp-001-ex | CODE NAME: The Great Hippo (feat. PeppersGhost)]]] - A Good Boy
 
-[[[jack-ike-s-proposal-ii| NAMA SANDI: Noir Box]]] - Trinitas Tindalos
+[[[wmdd-s-proposal | CODE NAME: weizhong|thedeadlymoose|Drewbear|Dexanote]]] - Project Palisade
 
-[[[tanhony-s-proposal-ii | NAMA SANDI: Tanhony II]]] - Bulan Hitam
+[[[psul-001 | CODE NAME: psul]]] - The Mementos
 
-[[[roget-s-conspiracy-theory-for-scp-001 | NAMA SANDI:]]] Konspirasi
+[[[captain-kirby-s-proposal | CODE NAME: Captain Kirby]]] - O5-13
 
-[[[swelling-of-the-worlds | NAMA SANDI: Arbelict]]] - Anda Adalah Sebuah Anomali, Tumor di Dunia Ini
+[[[pedantique-s-proposal | CODE NAME: Pedantique]]] - Fishhook
 
-[[[mcdoctorate-s-proposal | NAMA SANDI: McDoctorate]]] - Pengganti
+[[[not-a-seagull-proposal | CODE NAME: not_a_seagull]]] - The Sky above the Port
 
-[[[rounderhouse-proposal | NAMA SANDI: ROUNDERHOUSE]]] - MEMENTO MORI
+[[[jack-ike-s-proposal-i| CODE NAME: Meta Ike]]] - The Solution
 
-[[[manymeats-proposal | NAMA SANDI: Dr. Eates]]] - Pengujian Karakter
+[[[jack-ike-s-proposal-ii| CODE NAME: Noir Box]]] - Tindalos Trinity
 
-[[image sdl-ihp-001.gif link=&#34;https://scp-idn.wikidot.com/keter-duty&#34; height=&#34;10px&#34;]]  - Kewajiban Keter
+[[div_ class=&#34;divider&#34;]]
+Series 6
+[[/div]]
 
-[[[Pickman-Blank Proposal | NAMA SANDI: Pickman/Blank]]] - Frontispiece
+[[[tanhony-s-proposal-ii | CODE NAME: Tanhony II]]] - The Black Moon
 
-[[[rounderhouse-gold-proposal | NAMA SANDI: ROUNDERHOUSE&#39;s Gold Proposal]]] - AMONI-RAM
+[[[roget-s-conspiracy-theory-for-scp-001 | CODE NAME:]]] The Conspiracy
 
-[[[ralliston-s-proposal| NAMA SANDI: Ralliston]]] - Langkah Pertama Ratu
+[[[swelling-of-the-worlds | CODE NAME: Arbelict]]] - You Are The Anomaly, Tumor Of The Worlds
 
-[[[dyfscp-001| NAMA SANDI: D. Ulysses Foole]]] - Pengendaraan Terakhir Suatu Hari
+[[[mcdoctorate-s-proposal | CODE NAME: McDoctorate]]] - The Placeholder
 
-[[[nagiros-proposal| NAMA SANDI: Nagiros]]] - R ¦ A ¦ G ¦ E
+[[[rounderhouse-proposal | CODE NAME: ROUNDERHOUSE]]] - MEMENTO MORI
 
-[[[rounderhouse-jade-proposal | NAMA SANDI: ROUNDERHOUSE&#39;S JADE PROPOSAL]]] - MAMJUL&amp;KORAR
+[[[manymeats-proposal | CODE NAME: Dr. Eates]]] - A Test of Character
 
-[[[plague-s-proposal | KODE SANDI: Plague&#39;s Proposal]]] - Mereka yang Berhasil Lari
+[[a href=&#34;https://scp-wiki.wikidot.com/keter-duty&#34; style=&#34;display: inline-block;width: 194px;height: 16px;font-size: 0;background: url(https://scp-wiki.wdfiles.com/local--files/scp-001/sdl-ihp-001.gif) no-repeat;vertical-align: text-bottom;background-size: 192px;&#34;]]CODE NAME: I. H. Pickman/S. D. Locke[[/a]]  - Keter Duty
 
-[[[jack-ike-s-proposal-iv | KODE SANDI: Null Sum]]] - Masalah
+[[div_ class=&#34;divider&#34;]]
+Series 7
+[[/div]]
 
-[[[dyfscp0012| KODE SANDI: Dafydd Utica Foolfellow&#39;s Proposal]]] - [elemen?] [MANUSIA!]
+[[[Pickman-Blank Proposal | CODE NAME: Pickman/Blank]]] - The Frontispiece
 
+[[[rounderhouse-gold-proposal | CODE NAME: ROUNDERHOUSE&#39;s Gold Proposal]]] - AMONI-RAM
 
+[[[ralliston-s-proposal| CODE NAME: Ralliston]]] - The Queen&#39;s Gambit
+
+[[div_ class=&#34;divider&#34;]]
+Series 8
+[[/div]]
+
+[[[http://scp-wiki.wikidot.com/dyfscp-001| CODE NAME: D. Ulysses Foole]]] - Last Ride of the Day
+
+[[[Nagiros&#39; Proposal|CODE NAME: Nagiros]]] - R ¦ A ¦ G ¦ E
+
+[[[rounderhouse-jade-proposal | CODE NAME: ROUNDERHOUSE&#39;s Jade Proposal]]] - MAMJUL &amp; KORAR
+
+[[[plague-s-proposal | CODE NAME: Plague&#39;s Proposal]]] - The Ones That Got Away
+
+[[[jack-ike-s-proposal-iv | CODE NAME: Null Sum]]] - The Problem
+
+[[[dyfscp0012| CODE NAME: Dafydd Utica Foolfellow&#39;s Proposal]]] - [the] [HUMAN!] [element?]
+
+[[[nico-proposal| CODE NAME: Nico&#39;s Proposal]]] - The Throne of God
+
+[[[dr-cimmerian-s-proposal| CODE NAME: Dr Cimmerian&#39;s Proposal]]] - Ethical considerations with regards to the former inhabitants of 81 Galatine Two and Secace Epsilon Seven, colloquially known as the Sword Stars.
 
 [[/tab]]
 [[/tabview]]
 [[/div]]
+
+
 
 [[include :scp-wiki:component:license-box
 |author=Staff]]
@@ -664,7 +975,7 @@ SETIAP PERSONEL TIDAK BERWENANG YANG MENGAKSES DOKUMEN INI AKAN DENGAN SEGERA DI
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:30:35.498586.</em>
+    <em>Last updated 2024-02-07 18:34:37.743726.</em>
   
 </div>
 </body>

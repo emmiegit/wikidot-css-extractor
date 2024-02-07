@@ -14,15 +14,15 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>报纸、书页和便利贴</title>
+  <title>Papers, Pages and Post-it Notes</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">报纸、书页和便利贴</h1>
+    <h1 class="title">Papers, Pages and Post-it Notes</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:pages" target="_blank">报纸、书页和便利贴</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:pages" target="_blank">Papers, Pages and Post-it Notes</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
@@ -51,6 +51,10 @@ td strong { white-space: nowrap; }
       
         <li>
           <pre><code>####var(--c-builtin)|display##: ##var(--c-value)|block##; ##var(--c-builtin)|margin-left##: ##var(--c-value)|auto##; ##var(--c-builtin)|margin-right##: ##var(--c-value)|auto##;##var(--c-string)|</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border: 1px solid #ddd; padding: 1em;</code></pre>
         </li>
       
         <li>
@@ -167,7 +171,11 @@ td strong { white-space: nowrap; }
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +样版]]
+    <pre><textarea class="page-source" readonly>[[iftags +component]]
+
+[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
 
 [[include :scp-wiki:component:croqstyle -=- ]]
 
@@ -180,50 +188,50 @@ td strong { white-space: nowrap; }
 [[/module]]
 
 [[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
-+ 这是什么
++ What this is
 
-一个将你的文本显示在分页上的组件，例如书页。
+A component that displays your text on separate pages, for example the pages of a book.
 
-由 [[*user Croquembouche]] 制作。
+Made by [[*user Croquembouche]].
 
-其他模仿分页的组件：
+Other components that simulate pagination:
 
-* [[[component:hf-book-left|赫曼·富勒书页 左]]]
-* [[[component:hf-book-right|赫曼·富勒书页 右]]]
-* [[[component:hf-book-right-start|赫曼·富勒书页 右（章节开始）]]]
-* [[[component:hf-start|赫曼·富勒 GOI：章节开始]]]
-* [[[component:hf-left|赫曼·富勒 GOI：左页 v2]]]
-* [[[component:hf-right|赫曼·富勒 GOI：右页 v2]]]
+* [[[component:hf-book-left | Herman Fuller Book Page Left]]]
+* [[[component:hf-book-right | Herman Fuller Book Page Right]]]
+* [[[component:hf-book-right-start | Herman Fuller Book Page Right (Chapter Start)]]]
+* [[[component:hf-start | Herman Fuller GOI: Chapter Start]]]
+* [[[component:hf-left | Herman Fuller GOI: Left Page v2]]]
+* [[[component:hf-right | Herman Fuller GOI: Right Page v2]]]
 
-+ 使用方法
++ Usage
 
-在任何维基网站上：
+On any wiki:
 
 [[div class=&#34;code terminal&#34;]]
-**##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki-cn:component:pages##
+**##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki:component:pages##
 **##var(--c-keyword)||##** **##var(--c-builtin)|medium##****##var(--c-keyword)|=##**##var(--c-symbol)|vintage-book##
 **##var(--c-keyword)||##** **##var(--c-builtin)|contents##****##var(--c-keyword)|=##**
-##var(--c-string)|&lt;h1&gt;你好，欢迎打开我的书。&lt;/h1&gt;
-希望你能&lt;em&gt;真正享受&lt;/em&gt;阅读这本书，这样书写它的一切痛苦都是值得的。##
+##var(--c-string)|&lt;h1&gt;Hello, welcome to my book.&lt;/h1&gt;
+I hope you &lt;em&gt;really enjoy&lt;/em&gt; it so that the pain it took to write it was worth it.##
 **##var(--c-keyword)|]]##**
 [[/div]]
 
-此组件有两个参数。
+There are two parameters for this component.
 
 [[div class=&#34;options&#34;]]
-|| **medium** || 你的文本将以什么样的媒介呈现？这会决定每一页的背景图片、字体等等。我开放允许添加更多选项——如果你有想法，请与我（[[user Croquembouche]]）联系。 _
-这些选项在此页底端有详细记录。 ||
-|| **contents** || 你的页面内容。可以添加非常简单的格式和图像。 ||
-|| **style** || 注入文件的 CSS 样式。 ||
+|| **medium** || What medium should your text be presented in? This determines the background image of each page, the font, etc. I&#39;m open to adding more options -- please contact me ([[user Croquembouche]]) if you have an idea. _
+These are documented in detail at the bottom of this page. ||
+|| **contents** || The contents of your pages. Can include very simple formatting and images. ||
+|| **style** || CSS styling to inject into the document. ||
 [[/div]]
 
-内容（contents）参数可以为任意行数。
+The contents parameter can spread across as many lines as you want.
 
-内容不能添加以下字符：
+The contents may not contain the following characters:
 
-* {{|}}（分隔符）
-* {{@@`@@}}（反引号），但可以添加在反斜线之后（{{\`}}）
-* {{]]}}（两个右括号），如果添加在一行末尾，必须在之后添加空格
+* {{|}} (pipe symbol)
+* {{@@`@@}} (backtick), unless it&#39;s preceded by a backslash ({{\`}})
+* {{]]}} (two closing brackets), but only if it&#39;s at the end of a line or followed by whitespace
 
 [[/div]]
 
@@ -231,72 +239,72 @@ td strong { white-space: nowrap; }
 
 [[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
 
-+ 文本格式
++ Text formatting
 
-内容（contents）参数不会由 Wikidot 呈现。它会输入一个我自己编写的解析器，并输出 HTML。
+The contents parameter won&#39;t be rendered by Wikidot. It goes straight through to a custom parser that I&#39;ve written myself that spits out HTML.
 
-你所熟知的所有可爱的 Wikidot 语法全都无效，相反，你需要写内联 HTML。
+All that lovely Wikidot syntax that you&#39;re used to goes out of the window. Instead, you&#39;ll have to write inline HTML.
 
-举例说明：
+For example:
 
-* 对于粗体字，需要写 {{&lt;b&gt;文本&lt;/b&gt;}}，而不是 {{@@**文本**@@}}。
-* 对于全角破折号，需要写原本的全角破折号（{{—}}），而不是 {{@@--@@}}。
-* 对于水平分割线，需要写 {{&lt;hr&gt;}}，而不是 {{@@-----@@}}。
+* To make bold text, instead of {{@@**text**@@}}, write {{&lt;b&gt;text&lt;/b&gt;}}.
+* To make an em dash, instead of {{@@--@@}}, write a literal em dash ({{—}}).
+* To make a horizontal rule, instead of @@-----@@, write {{&lt;hr&gt;}}.
 
-不像 HTML，你//不//需要在每一行写 {{&lt;p&gt;...&lt;/p&gt;}}。
+Unlike HTML, you //do not// need to write {{&lt;p&gt;...&lt;/p&gt;}} around each line.
 
 -----
 
-+ 图像
++ Images
 
-使用标准图像 HTML 添加图像：
+Include images using standard HTML for an image:
 
 [[div class=&#34;code terminal&#34;]]
-##var(--c-string)|&lt;img src=&#34;@@http://scp-wiki-cn.wdfiles.com/local--files/你的页面/你的图像.png@@&#34;&gt;##
+##var(--c-string)|&lt;img src=&#34;@@http://scp-wiki.wdfiles.com/local--files/your-page/your-image.png@@&#34;&gt;##
 [[/div]]
 
-你可以通过添加 {{position=&#34;top&#34;}} 或 {{position=&#34;bottom&#34;}} 来将图像移动至页面顶端或底端。无论是什么样的页面都可以用此方法移动图像。图像必须单独处于一行，位于文本之间的图像则无效：
+You can fix the image to the top or bottom of a page by adding either {{position=&#34;top&#34;}} or {{position=&#34;bottom&#34;}}. This will fix the image to either the top or the bottom of whatever page it would appear on. This only works for images that are on a line by themselves, not in the middle of text:
 
 [[div class=&#34;code terminal&#34;]]
 ##var(--c-string)|&lt;img position=&#34;top&#34; src=&#34;URL&#34;&gt;##
 [[/div]]
 
-在图像的 {{style}} 属性中直接添加如下 CSS 以水平居中：
+To horizontally centre an image, add this CSS to its {{style}} attribute directly:
 
 [[div class=&#34;code terminal&#34;]]
 ##var(--c-string)|&lt;img style=&#34;####var(--c-builtin)|display##: ##var(--c-value)|block##; ##var(--c-builtin)|margin-left##: ##var(--c-value)|auto##; ##var(--c-builtin)|margin-right##: ##var(--c-value)|auto##;##var(--c-string)|&#34; src=&#34;URL&#34;&gt;##
 [[/div]]
 
-如果一张图像太高，不能放置于一页中，那么它的底部会被截去。
+If an image is too tall to fit on a single page, the bottom of it will be chopped off.
 
 -----
 
-+ 分页
++ Page breaks
 
-有时你可能会说：“好了，就到这里为止。在新的一页开始下一段。这一页的剩余部分可以留空。”
+Sometimes you want to say &#34;okay, stop there. Start the next bit on a new page. The rest of this page can be empty.&#34;
 
-为此，你需要在单独一行上添加分页符：
+To do that, on a line by itself, add a page break:
 
 [[div class=&#34;code terminal&#34;]]
 ##var(--c-string)|&lt;br class=&#34;page-break&#34;&gt;##
 [[/div]]
 
-分页符之后的内容会在下一页上。如果分页符//之前//有一个带有 {{position=&#34;bottom&#34;}} 的图像，它会一如预期的那样仍然显示在页面底端。
+The thing that comes next after a page break will be on the next page. If there&#39;s an image with {{position=&#34;bottom&#34;}} just //before// the page break, it will still be at the bottom of that page, as expected.
 
 -----
 
-+ 进阶功能
++ Advanced usage
 
-你可以通过样式（style）参数添加 CSS，也可以在内容（contents）参数中嵌入 Javascript。
+You can include CSS via the style parameter, and embedded Javascript in the contents parameter.
 
-++ 使用 CSS
+++ Using CSS
 
-任何添加在样式参数中的 CSS 会被注入到页面中。使用它来例如调整内容、添加可以用在内容中的类（class）、以及改变字体。
+Any CSS you include in the style parameter will be injected into the pages. Use this to tweak things, add classes that you can use in your content, and change the font (for example).
 
-举例说明：
+For example:
 
 [[div class=&#34;code terminal&#34;]]
-**##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki-cn:component:pages##
+**##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki:component:pages##
 **##var(--c-keyword)||##** **##var(--c-builtin)|medium##****##var(--c-keyword)|=##**##var(--c-symbol)|vintage-book##
 **##var(--c-keyword)||##** **##var(--c-builtin)|style##****##var(--c-keyword)|=##**
 ##var(--c-operator)|@import## ##var(--c-builtin)|url##(##var(--c-string)|&#39;@@https://fonts.googleapis.com/css2?family=Architects+Daughter@@&#39;##);
@@ -310,34 +318,33 @@ td strong { white-space: nowrap; }
 @@  @@##var(--c-builtin)|color##: ##var(--c-value)|red##;
 }
 **##var(--c-keyword)||##** **##var(--c-builtin)|contents##****##var(--c-keyword)|=##**
-##var(--c-string)|文本将会显示为&lt;span class=&#34;red&#34;&gt;手写字体&lt;/span&gt;。##
+##var(--c-string)|This text will appear &lt;span class=&#34;red&#34;&gt;handwritten&lt;/span&gt;.##
 **##var(--c-keyword)|]]##**
 [[/div]]
 
-你不能在文章的其他地方使用 CSS 模块来设置这个组件的样式——这是唯一的方法。
+You can&#39;t style this component with a CSS module elsewhere on your article -- this is the only way.
 
-**提示！**你可以以任意顺序添加参数，但是最好将样式（style）参数放在内容（contents）参数//之上//。你的内容参数可能会非常、非常长——你会发现把所有设置和 CSS 放在顶端更加方便一些。
+**Tip!** You can add parameters in any order you like, but it&#39;s a good idea to put the style parameter //above// the contents parameters. Your contents parameter will probably be really, really long -- you might find it easier to have all the settings and CSS at the top.
 
-++ 使用 Javascript
+++ Using Javascript
 
-内容（contents）参数会被解析为 Javascript [https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/template_strings 模板字符串]，这也是为什么它不能包含反引号。
+The contents parameter will be parsed as a Javascript [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals template literal], which is why it can&#39;t contain a backtick.
 
-
-因此，你可以在内容参数中使用内嵌表达式（{{${表达式}}}）添加任意 Javascript，该表达式将会执行并替换回字符串中，例如：
+Because of that, you can include arbitrary Javascript in the contents parameter inside an embedded expression ({{${expression}}}), which will be executed and substituted back into the string. For example:
 
 [[div class=&#34;code terminal&#34;]]
-**##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki-cn:component:pages##
+**##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki:component:pages##
 **##var(--c-keyword)||##** **##var(--c-builtin)|medium##****##var(--c-keyword)|=##**##var(--c-symbol)|vintage-book##
 **##var(--c-keyword)||##** **##var(--c-builtin)|contents##****##var(--c-keyword)|=##**
-##var(--c-string)|今天是## ##var(--c-operator)|${####var(--c-keyword)|new## ##var(--c-builtin)|Date##().##var(--c-builtin)|toLocaleString##(##var(--c-string)|&#34;default&#34;##, { ##var(--c-symbol)|weekday##: ##var(--c-string)|&#34;long&#34;## })##var(--c-operator)|}####var(--c-string)|。##
+##var(--c-string)|The day today is## ##var(--c-operator)|${####var(--c-keyword)|new## ##var(--c-builtin)|Date##().##var(--c-builtin)|toLocaleString##(##var(--c-string)|&#34;default&#34;##, { ##var(--c-symbol)|weekday##: ##var(--c-string)|&#34;long&#34;## })##var(--c-operator)|}####var(--c-string)|.##
 **##var(--c-keyword)|]]##**
 [[/div]]
 
-这本书会告诉读者当天的日期。
+This book will tell the reader the name of the current day.
 
-你应该这样做吗？或许不是。但你//可以//。
+Should you do this? Probably not. But you //can//.
 
-请注意，虽然你可以添加任意 Javascript，但“或”运算符（{{||}}）不可用，因为它们是由禁止使用的分隔符组成的。但是，你可以使用“和”与“非”[https://stackoverflow.com/questions/8374895/how-to-make-logical-or-with-and-and-not 自己创建“或”]：非((非 x) 和 (非 y)) 等价于 (x 或 y)。在 Javascript 里就是 {{!((!x) &amp;&amp; (!y))}}。
+Please note that while you can include arbitrary Javascript, the OR operator ({{||}}) is unavailable because it&#39;s made of pipe symbols, which are forbidden. However, using AND and NOT, you can [https://stackoverflow.com/questions/8374895/how-to-make-logical-or-with-and-and-not create an OR yourself]: NOT((NOT x) AND (NOT y)) is equivalent to (x OR y). In Javascript, that&#39;s {{!((!x) &amp;&amp; (!y))}}.
 
 [[/div]]
 
@@ -345,21 +352,409 @@ td strong { white-space: nowrap; }
 
 [[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
 
-+ 媒介选项
++ Medium Options
 
-以下是可用的“媒介”（{{medium}}）参数选项。
+The following are your options for the &#39;{{medium}}&#39; parameter.
 
-我正在积极征求新的媒介选项需求。我的意思是，此组件的标题是//“报纸、书页和便利贴”//，但当下它只能制作一本古旧的书。这个组件的设计目的是尽可能地多功能化，但是现在它只能做一件事情。
+I am actively soliciting requests for new medium options. I mean, the title of this component is //&#39;Papers, Pages and Post-it Notes&#39;//, but right now it can only do a vintage book. This component is designed to be as versatile as possible, but right now, it can only do one thing.
 
-如果你对分页格式有任何需求，请联系我（[[user Croquembouche]]）。
+If you have any requests for paginated formats, please let me know ([[user Croquembouche]]).
 
-每种媒介都有固定的纵横比，会根据浏览器的宽度决定高度。
+Each medium has a fixed aspect ratio that determines its height for any browser width. 
 
 [[div class=&#34;previews&#34;]]
-||~ 媒介 ||~ 背景 ||~ 字体 ||~ 纵横比 ||~ 图像来源 ||
-|| {{朴素}}//（默认）// || [[image http://scp-wiki.wdfiles.com/local--files/component:pages/plain-preview.png]] || //浏览器默认// || 4:7 || ||
-|| {{古书}} || [[image http://scp-wiki.wdfiles.com/local--files/component:pages/book.300px.png]] || Libre Baskerville || 10:9 || [https://commons.wikimedia.org/wiki/File:Powiedz_ty_muzyko_moia.jpg 公共领域] ||
+||~ Medium ||~ Background ||~ Font ||~ y:x ||~ Source ||
+|| {{plain}} //(default)// || [[image plain-preview.png]] || //Browser default// || 4:7 || ||
+|| {{vintage-book}} || [[image book.300px.png]] || Libre Baskerville || 10:9 || [https://commons.wikimedia.org/wiki/File:Powiedz_ty_muzyko_moia.jpg Public Domain] ||
 [[/div]]
+
+[[/div]]
+
+ _
+
+[[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
+
++ Source code
+
+[[collapsible show=&#34;+ Show source code&#34;]]
+
+++ HTML
+
+Check the bottom of the page source for the {{@@[[html]]@@}} module.
+
+++ CSS
+
+[[code type=&#34;css&#34;]]
+/* Imports */
+/* Note that fonts MUST be imported synchronously using the link element,
+ * otherwise the page structure may not render properly */
+
+/* Styling */
+
+.pages-container {
+  font-size: min(4vw, 1rem);
+  position: relative;
+}
+
+/* A page without a medium needs some default styling. */
+.aspect-ratio {
+  margin: 1rem 0;
+  /* The padding-top should be the ratio of the bg image&#39;s width / height */
+  padding-top: calc(400 / 700 * 100%);
+  position: relative;
+}
+.page {
+  height: 0;
+  padding: 2rem 2rem 3rem;
+  position: absolute;
+  height: 100%; width: 100%; top: 0; left: 0;
+  box-sizing: border-box;
+}
+.page::before {
+  content: &#34;&#34;;
+  position: absolute;
+  height: 100%; width: 100%; top: 0; left: 0;
+  pointer-events: none;
+  background-image: linear-gradient(beige, antiquewhite);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.content &gt; * {
+  margin-block-start: 0.5em;
+  margin-block-end: 0.5em;
+}
+
+p, img, div { max-width: 100%; }
+h1, h2, h3, h4, h5, h6 { line-height: 1em; }
+  
+
+/* Each medium gets its own style. */
+
+.vintage-book {
+  font-family: &#39;Libre Baskerville&#39;, serif;
+  color: #514132;
+  line-height: 1.5em;
+  text-align: justify;
+}
+.vintage-book .aspect-ratio {
+  padding-top: calc(2500 / 2250 * 100%);
+}
+.vintage-book .page {
+  padding: 8vw 17vw;
+}
+.vintage-book .page::before {
+  background-image:
+    url(http://topia.wikidot.com/local--files/cqb:book/book.1000px.webp);
+}
+.vintage-book &gt; :nth-child(2n+1) .page::before {
+  transform: scaleX(-1);
+}
+.vintage-book .content {
+  transform: skewY(-0.5deg);
+}
+.vintage-book &gt; :nth-child(2n+1) .content {
+  transform: skewY(0.5deg);
+}
+.vintage-book .split-paragraph-start {
+  text-align-last: justify;
+}
+.vintage-book .content &gt; p:not(.split-paragraph-end):not(.is-image) {
+  text-indent: 2em;
+}
+
+.letter .page {}
+[[/code]]
+
+++ Javascript
+
+[[code type=&#34;javascript&#34;]]
+let pageCount = 1
+let resetCount = 0
+
+// contents is already defined, see [[html]]
+
+// Replace line breaks with &lt;p&gt;
+contents = contents
+  .split(&#34;\n&#34;)
+  .filter(line =&gt; line.length &gt; 0)
+  .map(line =&gt; {
+    return $(`&lt;p&gt;${line}&lt;${&#34;/p&#34;}&gt;`) // to fix Wikidot&#39;s syntax highlighting
+  })
+
+// Convert contents from text to jQuery objects
+contents = $($.map(contents, el =&gt; el.get()))
+
+// Remove empty objects
+contents = contents.filter(&#34;:not(:empty)&#34;)
+
+// Add flex order to paragraphs containing positioned images
+contents.map((index, element) =&gt; {
+  element = $(element)
+  if (
+    element.is(&#34;p&#34;) &amp;&amp;
+    element.text().length === 0 &amp;&amp;
+    element.children().length === 1 &amp;&amp;
+    element.children().first().is(&#34;img&#34;)
+  ) {
+    // Mark images
+    element.addClass(&#34;is-image&#34;)
+    if (
+      [&#34;top&#34;, &#34;bottom&#34;].includes(element.children().first().attr(&#34;position&#34;))
+    ) {
+      // Order positioned images
+      element.css(
+        &#34;order&#34;,
+        { top: -1, bottom: 1 }[element.children().first().attr(&#34;position&#34;)]
+      )
+    }
+  }
+})
+
+// Once everything is ready, render the pages
+// This includes image loading, so this is window load instead of document ready
+$(window).on(&#34;load&#34;, () =&gt; {
+  resetCount = 0
+  let thisDocument = $(&#34;.pages-container&#34;)
+  resetPage(thisDocument)
+  // Sometimes doesn&#39;t work after first load - try again
+  setTimeout(() =&gt; resetPage(thisDocument), 2000)
+
+  let windowWidth = $(window).width()
+
+  // Rerender the pages when the window size is changed
+  $(window).on(
+    &#34;resize&#34;,
+    debounce(() =&gt; {
+      if ($(window).width() !== windowWidth) {
+        windowWidth = $(window).width()
+        resetPage(thisDocument)
+      }
+    }, 200)
+  )
+})
+
+/**
+ * Debounces the execution of a function - it will only fire once its
+ * triggering events have stopped.
+ *
+ * By David Walsh: https://davidwalsh.name/javascript-debounce-function (MIT)
+ *
+ * @param func - The function to debounce.
+ * @param wait - Milliseconds after which to assume there&#39;ll be no more events.
+ */
+function debounce(func, wait) {
+  let timeout
+  return function executedFunction(...args) {
+    const later = () =&gt; {
+      clearTimeout(timeout)
+      func(...args)
+    }
+    clearTimeout(timeout)
+    timeout = setTimeout(later, wait)
+  }
+}
+
+function resetPage(thisDocument) {
+  thisDocument.empty()
+  pageCount = 1
+  thisPage = preparePage(thisDocument)
+  setTimeout(() =&gt; {
+    makePage(contents.clone(), thisPage, thisDocument)
+    checkPage(thisDocument)
+  }, 1)
+}
+
+function preparePage(thisDocument) {
+  const aspectBox = $(`&lt;div class=&#39;aspect-ratio&#39;&gt;&lt;/div&gt;`).appendTo(thisDocument)
+  return $(`&lt;div class=&#39;page&#39;&gt;&lt;/div&gt;`).appendTo(aspectBox)
+}
+
+/**
+ * Recursively creates pages and sorts text into them.
+ *
+ * @param contents - Array of (remaining) HTML paragraphs.
+ * @param thisPage - The current page as a jQuery element.
+ */
+function makePage(contents, thisPage, thisDocument) {
+  console.log(`Making page ${pageCount++}`)
+
+  let nextPageContents = []
+
+  // Add the contents to the page
+  thisPageContents = $(&#34;&lt;div class=&#39;content&#39;&gt;&lt;/div&gt;&#34;).appendTo(thisPage)
+  thisPageContents.empty().append(contents)
+
+  // The page height is the maximum height of page content
+  const pageHeight = thisPage.height()
+
+  // The content height is the actual height of page content
+  const contentHeight = thisPageContents.outerHeight()
+
+  // If the content exceeds the page, create a new one
+  if (
+    contentHeight &gt; pageHeight ||
+    thisPageContents.has(&#34;br.page-break&#34;).length &gt; 0
+  ) {
+    console.log(`Split needed (${contentHeight} &gt; ${pageHeight})`)
+
+    // Find the first element that can&#39;t fully appear on the page
+    // (or a page break)
+    const children = thisPageContents.children()
+    let lastParagraphIndex = -1
+    for (let index = 0; index &lt; children.length; index++) {
+      const child = $(children.eq(index))
+      // First, check for a page break
+      if (child.has(&#34;br.page-break&#34;).length &gt; 0) {
+        console.log(&#34;Splitting on page break&#34;)
+        lastParagraphIndex = index
+        break
+      }
+      // Second, check for an element that doesn&#39;t fit
+      // Do this by summing the height of all children up to and this one,
+      // then compare that to the desired page height
+      const childBottom =
+        children
+          .slice(0, index)
+          .toArray()
+          .reduce((height, child) =&gt; {
+            return height + $(child).outerHeight(true)
+          }, 0) + child.outerHeight(true)
+      console.log(index, childBottom, thisPage.height())
+      if (childBottom &gt; thisPage.height()) {
+        lastParagraphIndex = index
+        break
+      }
+    }
+
+    if (lastParagraphIndex === -1) {
+      // No elements can fit on this page!
+      // Genuinely unsure what to do here
+      // The default action is &#34;move everything&#34; so that&#39;s probably... fine...
+      console.log(&#34;No elements can fit on this page&#34;)
+    } else {
+      // There&#39;s an element that either can&#39;t be on the page, or partially can
+      console.log(`Splitting element with index ${lastParagraphIndex}`)
+
+      // Trim away the content that we already know will fit
+      nextPageContents = contents.splice(lastParagraphIndex)
+      // The partial element is the first of nextPageContents.
+
+      // Set the html to the contents we know will fit
+      thisPageContents.empty().append(contents)
+
+      // Extract a copy of the partial element from the next page
+      let partialElement = $(nextPageContents[0]).clone()
+
+      // If the partial element is p, it can be split up
+      if (partialElement.is(&#34;p&#34;) &amp;&amp; partialElement.text() != &#34;&#34;) {
+        // The element can be split across pages - move some of it back
+
+        partialElement.appendTo(thisPageContents)
+
+        const partialText = partialElement.text()
+        let keepWords = partialText.split(&#34; &#34;)
+        let moveWords = []
+
+        // Remove words one by one until the element fits
+        for (let index = keepWords.length; index &gt; 0; index--) {
+          if (thisPageContents.outerHeight(true) &lt;= thisPage.height()) {
+            // It fits! Declare split
+            console.log(
+              `Split successful after ${moveWords.length} words removed`
+            )
+            if (moveWords.length &gt; 0) {
+              partialElement.addClass(&#34;split-paragraph-start&#34;)
+            }
+            break
+          }
+          let word = keepWords.pop()
+          moveWords.unshift(word)
+          partialElement.text(keepWords.join(&#34; &#34;))
+        }
+
+        // Check if this was successful - might have just run out of words
+        if (keepWords.length === 0) {
+          // Not successful - undo everything
+          console.log(&#34;Split unsuccessful; partial element removed&#34;)
+          partialElement.remove()
+        } else {
+          // Success! Update the next page with the retained words
+          nextPageContents[0].textContent = moveWords.join(&#34; &#34;)
+        }
+      } else {
+        // The element can&#39;t be split, so don&#39;t move anything back
+        // If it&#39;s the first element, it probably came from the previous page
+        // If that&#39;s the case, jut dump it here
+        if (lastParagraphIndex == 0) {
+          console.log(&#34;Something couldn&#39;t be split, so it was dumped&#34;)
+          partialElement.appendTo(thisPageContents)
+          partialElement.css(&#34;height&#34;, pageHeight)
+          partialElement.css(&#34;overflow&#34;, &#34;hidden&#34;)
+          nextPageContents.shift()
+        }
+      }
+    }
+
+    // If the last element of this page was split, so it the first of the next
+    if (
+      thisPageContents.children().last().is(&#34;p.split-paragraph-start&#34;) &amp;&amp;
+      $(nextPageContents[0]).is(&#34;p&#34;)
+    ) {
+      nextPageContents[0].classList.add(&#34;split-paragraph-end&#34;)
+    }
+
+    // If the very first element of the next page is a page break, chuck it out
+    if ($(nextPageContents[0]).has(&#34;br.page-break&#34;).length &gt; 0) {
+      console.log(&#34;Scrapping a page break&#34;)
+      nextPageContents.shift()
+    }
+
+    // Slap an arbitrary limit on the recursion
+    if (pageCount &lt; 1000) {
+      // Create a new page
+      const nextPage = preparePage(thisDocument)
+      makePage(nextPageContents, nextPage, thisDocument)
+    } else {
+      console.log(&#34;Pages stopped after 1000&#34;)
+    }
+  } else {
+    console.log(&#34;No split needed&#34;)
+  }
+}
+
+function checkPage(thisDocument) {
+  if (resetCount &gt; 5) {
+    console.log(&#34;Overflow reset limit reached&#34;)
+    return
+  }
+  let shouldReset = 0
+  thisDocument.children().each((index, aspectBox) =&gt; {
+    aspectBox = $(aspectBox)
+    pageBox = $(aspectBox.children().first())
+    contentBox = $(pageBox.children().first())
+    if (contentBox.outerHeight(true) &gt; pageBox.height()) {
+      shouldReset++
+    }
+    if (shouldReset &gt; 1) {
+      console.log(`${shouldReset} pages overflowing, resetting`)
+      resetCount++
+      resetPage(thisDocument)
+      checkPage(thisDocument)
+    } else {
+      console.log(&#34;No overflow reset needed&#34;)
+    }
+  })
+}
+[[/code]]
+
+[[/collapsible]]
 
 [[/div]]
 
@@ -370,7 +765,7 @@ td strong { white-space: nowrap; }
 
 &lt;link href=&#34;https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap&#34; rel=&#34;stylesheet&#34;&gt;
 
-&lt;link href=&#34;http://scp-wiki.wdfiles.com/local--code/component%3Apages/1&#34; rel=&#34;stylesheet&#34;&gt;
+&lt;link href=&#34;https://scp-wiki.wikidot.com/component:pages/code/1&#34; rel=&#34;stylesheet&#34;&gt;
 
 &lt;style&gt;
   /* The user&#39;s CSS should override any existing CSS. */
@@ -381,12 +776,12 @@ td strong { white-space: nowrap; }
   &lt;div class=&#34;pages-container {$medium}&#34;&gt;&lt;/div&gt;
 &lt;/body&gt;
 
-&lt;script src=&#34;https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://code.jquery.com/jquery-3.5.1.slim.min.js&#34;&gt;&lt;/script&gt;
 &lt;script&gt;
   // Recieve book contents from include parameter
   let contents = `{$contents}`
 &lt;/script&gt;
-&lt;script src=&#34;http://scp-wiki.wdfiles.com/local--code/component%3Apages/2&#34;&gt;&lt;/script&gt;
+&lt;script src=&#34;https://scp-wiki.wikidot.com/component:pages/code/2&#34;&gt;&lt;/script&gt;
 [[/html]]</textarea></pre>
   </div>
 
@@ -394,7 +789,7 @@ td strong { white-space: nowrap; }
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:30:30.610018.</em>
+    <em>Last updated 2024-02-07 18:34:36.172759.</em>
   
 </div>
 </body>

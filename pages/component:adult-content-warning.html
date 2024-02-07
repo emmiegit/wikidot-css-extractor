@@ -29,130 +29,125 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>div#u-adult-warning {
-  width: fit-content;
-  margin: 0 auto 20px;
-  background: #ffffff;
-  border: 3px solid #333;
-}
-
-div#u-adult-warning&gt;.error-block {
-  color: unset;
-  padding: unset;
-  margin: unset;
-  border: unset;
-  margin-bottom: 1em
-}
-
-#page-content {
-  position: relative;
-}
-#page-content ul.modal-wrapper:not(.yui-nav) {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  height: 0;
-  display: contents;
+          <pre><code>#page-content { position: relative; }
+ul.modal-wrapper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 0;
+    display: contents;
 }
 @keyframes fademodal {
-  99% {
-    visibility: hidden;
-  }
-  100% {
+  99% { visibility: hidden; }
+  100% { visibility: visible; }
+}
+ul.modal-wrapper &gt; li {
+    list-style: none;
+    position: absolute;
+    top: -0.1rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    transition: opacity 0.15s ease-out;
+    animation: 0.15s fademodal;
+    animation-fill-mode: forwards;
+}
+ul.modal-wrapper &gt; li.unfolded {
     visibility: visible;
-  }
+    opacity: 1;
 }
-ul.modal-wrapper&gt;li {
-  position: absolute;
-  top: -0.1rem;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
-  transition: opacity 0.15s ease-out;
-  animation: 0.15s fademodal;
-  animation-fill-mode: forwards;
-}
-ul.modal-wrapper&gt;li.unfolded {
-  visibility: visible;
-  opacity: 1;
-}
-ul.modal-wrapper&gt;li.folded {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  user-select: none;
-}
-div#u-adult-warning {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  box-sizing: border-box;
-  color: black;
-  text-shadow: none;
+ul.modal-wrapper &gt; li.folded {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
 }
 
-#page-content div#u-adult-warning a {
-  color: #b01;
+div#u-adult-warning {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    color: black;
+    text-shadow: none;
 }
-#page-content div#u-adult-warning a.newpage {
-  color: #d61;
+div#u-adult-warning &gt; div#u-adult-header,
+div#u-adult-warning &gt; div#u-adult-header p { font-weight: bold; }
+#page-content div#u-adult-warning a { color: #b01; }
+#page-content div#u-adult-warning a.newpage { color: #d61; }
+#page-content div#u-adult-warning a:not(.newpage):visited { color: #824; }
+
+#u-adult-warning .content-descriptor {
+    text-align: left;
+    width: calc(100% - 3em);
+    max-width: max-content;
+    margin: 0 auto;
+    text-indent: -1.2em;
 }
-#page-content div#u-adult-warning a:not(.newpage):visited {
-  color: #824;
+#u-adult-warning .content-descriptor br { display: none; }
+#u-adult-warning .content-descriptor span {
+    display: none;
+    margin: 0.75em 0;
+}
+#u-adult-warning .content-descriptor span::before {
+    content: &#34;■&#34;;
+    margin-right: 0.5em;
 }
 #u-adult-warning .choice {
-  padding: 0.125em 0;
-  pointer-events: none;
+    padding: 0.125em 0;
 }
-#u-adult-warning .choice&gt;a {
-  pointer-events: initial;
-}
-
-
-
-
-/* JP orig */
-
-#page-content .wikisys--template-dialog_a {
-    width: 90%;
-    max-width: 500px;
-    margin: 2em auto;
-    padding: 2em;
-    background: #f9f9f9;
-    border-radius: 2em;
-    color: #330011!important;
-    border: solid 1px #b7b7b7
-}
-
-#page-content .wikisys--template-dialog_a&gt;.wikisys--template-dialog_a-header {
-    position: relative;
-    line-height: 1.5;
-    font-size: 1.3rem;
-    font-weight: 700;
-    padding: 5px 0 5px 12px;
-    box-shadow: -0.375rem 0 #93939333;
-}
-
-div#page-options-bottom-2:not([style=&#34;display:none&#34;]):before {
-    content: &#34;このページは成人向けコンテンツを含むページです。\Aページソースは18歳以上の方だけが閲覧できます。&#34;;
+#u-adult-warning .footer-wikiwalk-nav {
     display: flex;
-    background-color: #ff2800;
-    border: solid #333 5px;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0;
-    color: #fff;
-    font-size: 1.5em;
-    text-align: left;
-    white-space: break-spaces;
-}</code></pre>
+    justify-content: center;
+    grid-gap: 0.325em;
+    margin-top: 2.5rem;
+    background: unset;
+    color: inherit;
+}
+#u-adult-warning .footer-wikiwalk-nav span[class^=&#34;ww-{$&#34;] { display: none; }</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Inline Styles</h2>
     <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$gore} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$sexual-references} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$sexually-explicit} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$sexual-assault} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$child-abuse} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$self-harm} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$suicide} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$torture} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$custom} == 1 | block | none ]]</code></pre>
+        </li>
       
         <li>
           <pre><code>border: solid 2px #ededed; padding: 0.5rem; margin: 4px;</code></pre>
@@ -163,16 +158,7 @@ div#page-options-bottom-2:not([style=&#34;display:none&#34;]):before {
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>
-  
-  
-
-  
-    <a href="https://scp-jp.wikidot.com/component:adult-content-warning" target="_blank"><code>:scp-jp:component:adult-content-warning</code></a>
-  
-
-  
-</li>
+        <li>(none)</li>
       
     </ul>
 
@@ -188,11 +174,7 @@ div#page-options-bottom-2:not([style=&#34;display:none&#34;]):before {
         </li>
       
         <li>
-          <pre><code>wikisys--template-dialog_a</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>wikisys--template-dialog_a-header</code></pre>
+          <pre><code>content-descriptor</code></pre>
         </li>
       
         <li>
@@ -204,159 +186,175 @@ div#page-options-bottom-2:not([style=&#34;display:none&#34;]):before {
         </li>
       
         <li>
+          <pre><code>choice</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>footer-wikiwalk-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ww-{$prev}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ww-{$current}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ww-{$next}</code></pre>
+        </li>
+      
+        <li>
           <pre><code>blockquote</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[module css]]
-div#u-adult-warning {
-  width: fit-content;
-  margin: 0 auto 20px;
-  background: #ffffff;
-  border: 3px solid #333;
-}
-
-div#u-adult-warning&gt;.error-block {
-  color: unset;
-  padding: unset;
-  margin: unset;
-  border: unset;
-  margin-bottom: 1em
-}
-
-#page-content {
-  position: relative;
-}
-#page-content ul.modal-wrapper:not(.yui-nav) {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  height: 0;
-  display: contents;
+    <pre><textarea class="page-source" readonly>[[module CSS]]
+#page-content { position: relative; }
+ul.modal-wrapper {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    height: 0;
+    display: contents;
 }
 @keyframes fademodal {
-  99% {
-    visibility: hidden;
-  }
-  100% {
+  99% { visibility: hidden; }
+  100% { visibility: visible; }
+}
+ul.modal-wrapper &gt; li {
+    list-style: none;
+    position: absolute;
+    top: -0.1rem;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+    transition: opacity 0.15s ease-out;
+    animation: 0.15s fademodal;
+    animation-fill-mode: forwards;
+}
+ul.modal-wrapper &gt; li.unfolded {
     visibility: visible;
-  }
+    opacity: 1;
 }
-ul.modal-wrapper&gt;li {
-  position: absolute;
-  top: -0.1rem;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
-  transition: opacity 0.15s ease-out;
-  animation: 0.15s fademodal;
-  animation-fill-mode: forwards;
-}
-ul.modal-wrapper&gt;li.unfolded {
-  visibility: visible;
-  opacity: 1;
-}
-ul.modal-wrapper&gt;li.folded {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  user-select: none;
-}
-div#u-adult-warning {
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  box-sizing: border-box;
-  color: black;
-  text-shadow: none;
+ul.modal-wrapper &gt; li.folded {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
 }
 
-#page-content div#u-adult-warning a {
-  color: #b01;
+div#u-adult-warning {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    box-sizing: border-box;
+    color: black;
+    text-shadow: none;
 }
-#page-content div#u-adult-warning a.newpage {
-  color: #d61;
+div#u-adult-warning &gt; div#u-adult-header,
+div#u-adult-warning &gt; div#u-adult-header p { font-weight: bold; }
+#page-content div#u-adult-warning a { color: #b01; }
+#page-content div#u-adult-warning a.newpage { color: #d61; }
+#page-content div#u-adult-warning a:not(.newpage):visited { color: #824; }
+
+#u-adult-warning .content-descriptor {
+    text-align: left;
+    width: calc(100% - 3em);
+    max-width: max-content;
+    margin: 0 auto;
+    text-indent: -1.2em;
 }
-#page-content div#u-adult-warning a:not(.newpage):visited {
-  color: #824;
+#u-adult-warning .content-descriptor br { display: none; }
+#u-adult-warning .content-descriptor span {
+    display: none;
+    margin: 0.75em 0;
+}
+#u-adult-warning .content-descriptor span::before {
+    content: &#34;■&#34;;
+    margin-right: 0.5em;
 }
 #u-adult-warning .choice {
-  padding: 0.125em 0;
-  pointer-events: none;
+    padding: 0.125em 0;
 }
-#u-adult-warning .choice&gt;a {
-  pointer-events: initial;
-}
-
-
-
-
-/* JP orig */
-
-#page-content .wikisys--template-dialog_a {
-    width: 90%;
-    max-width: 500px;
-    margin: 2em auto;
-    padding: 2em;
-    background: #f9f9f9;
-    border-radius: 2em;
-    color: #330011!important;
-    border: solid 1px #b7b7b7
-}
-
-#page-content .wikisys--template-dialog_a&gt;.wikisys--template-dialog_a-header {
-    position: relative;
-    line-height: 1.5;
-    font-size: 1.3rem;
-    font-weight: 700;
-    padding: 5px 0 5px 12px;
-    box-shadow: -0.375rem 0 #93939333;
-}
-
-div#page-options-bottom-2:not([style=&#34;display:none&#34;]):before {
-    content: &#34;このページは成人向けコンテンツを含むページです。\Aページソースは18歳以上の方だけが閲覧できます。&#34;;
+#u-adult-warning .footer-wikiwalk-nav {
     display: flex;
-    background-color: #ff2800;
-    border: solid #333 5px;
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px 0;
-    color: #fff;
-    font-size: 1.5em;
-    text-align: left;
-    white-space: break-spaces;
+    justify-content: center;
+    grid-gap: 0.325em;
+    margin-top: 2.5rem;
+    background: unset;
+    color: inherit;
 }
+#u-adult-warning .footer-wikiwalk-nav span[class^=&#34;ww-{$&#34;] { display: none; }
 [[/module]]
 
 
 [[ul class=&#34;modal-wrapper&#34;]]
 [[li class=&#34;unfolded&#34;]]
 [[div id=&#34;adult-warning&#34;]]
-[[div_ class=&#34;wikisys--template-dialog_a&#34;]]
-[[div_ class=&#34;wikisys--template-dialog_a-header&#34;]]
-成人向けコンテンツを含むページです
+[[div id=&#34;adult-header&#34;]]
+ADULT CONTENT
 [[/div]]
-**このページには成人向けコンテンツが含まれています。**
-**あなたが18歳以上であり、これらのコンテンツの閲覧を希望される場合は、ご自身の責任で閲覧してください。**[[div_ class=&#34;foldable-list-container choice&#34;]]
-[# このページの内容を閲覧するには、ここをクリックしてください。]
+This article contains adult content that may not be suitable for all readers.
+[[div_ class=&#34;content-descriptor&#34;]]
+[[span style=&#34;display: [[#ifexpr {$gore} == 1 | block | none ]]&#34;]]Graphic depiction of blood, gore or mutilation of body parts[[/span]]
+[[span style=&#34;display: [[#ifexpr {$sexual-references} == 1 | block | none ]]&#34;]]Features sexual themes or language, but does not depict sexual acts.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$sexually-explicit} == 1 | block | none ]]&#34;]]Explicit depiction of sexual acts.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$sexual-assault} == 1 | block | none ]]&#34;]]Features non-consensual sexual acts.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$child-abuse} == 1 | block | none ]]&#34;]]Depiction of severe mistreatment of children[[/span]] 
+[[span style=&#34;display: [[#ifexpr {$self-harm} == 1 | block | none ]]&#34;]]Depiction of self-harm[[/span]]
+[[span style=&#34;display: [[#ifexpr {$suicide} == 1 | block | none ]]&#34;]]Depiction of suicide[[/span]]
+[[span style=&#34;display: [[#ifexpr {$torture} == 1 | block | none ]]&#34;]]Depiction of torture[[/span]]
+[[span style=&#34;display: [[#ifexpr {$custom} == 1 | block | none ]]&#34;]]{$custom-content}[[/span]]
 [[/div]]
+
+If you are above the age of 18+ and wish to read such content, then you may click Continue to view said content.
+[[div_ class=&#34;foldable-list-container choice&#34;]]
+[# Continue]
 [[/div]]
+[[div_ class=&#34;choice&#34;]]
+[/ Back to Front Page]
+[[/div]]
+
+[[div_ class=&#34;footer-wikiwalk-nav&#34;]]
+[[span class=&#34;ww-{$prev}&#34;]]&lt;&lt; [[[{$prev}|]]] |[[/span]][[span class=&#34;ww-{$current}&#34;]]{$current}[[/span]][[span class=&#34;ww-{$next}&#34;]]| [[[{$next}|]]] &gt;&gt;[[/span]]
+[[/div]]
+
 [[/div]]
 [[/li]]
 [[/ul]]
 
 
-[[iftags +コンポーネント]]
+[[iftags +component]]
 [[div style=&#34;border: solid 2px #ededed; padding: 0.5rem; margin: 4px;&#34;]]
-これは、ページを成人向けコンテンツとしてマークするために使用するコンポーネントです。
-使用するには、ページの先頭に次のように記述します。
+This is a component used by staff to mark content as adult.
+To use, put the following at the top of the page:
 
 [[div class=&#34;blockquote&#34;]]
-@@[[include :scp-jp:component:adult-content-warning]]@@
+@@[[include :scp-wiki:component:adult-content-warning@@
+|gore=1
+|sexual-references=1
+|sexually-explicit=1
+|sexual-assault=1
+|child-abuse=1
+|self-harm=1
+|suicide=1
+|torture=1
+|custom=1 |custom-content=Bespoke Content warning
+
+|prev=slug-of-previous-page
+|current=Title of current page
+|next=slug-of-next-page
+]]
 [[/div]]
+
+Omit any warning that doesn&#39;t apply. Only use approved custom content warnings. The Wikiwalk footer will not appear if no input is specified. Refer to the [[[Adult Content Warning Guide]]] or contact a member of the [http://05command.wikidot.com/maintenance-and-ancillary-staff-team-main Adult Content Curation team] for further information.
+
+For an article using listpages to display a series of fragment pages (LPT), put this component on the first fragment page.
 
 [[/div]]
 [[/iftags]]</textarea></pre>
@@ -366,7 +364,7 @@ div#page-options-bottom-2:not([style=&#34;display:none&#34;]):before {
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:30:30.514323.</em>
+    <em>Last updated 2024-02-07 18:34:36.142358.</em>
   
 </div>
 </body>

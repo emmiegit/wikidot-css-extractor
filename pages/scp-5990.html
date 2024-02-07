@@ -29,238 +29,175 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* Broken Masquerade CSS Theme by Cyantreuse on base code by InitHello with edits by CyrusFiredawn | Revisions by stormbreath | CC-by-SA-3.0 */
- 
-/* HEADER */
-div#container-wrap {
-    background-image: url(http://scp-wiki.wdfiles.com/local--files/theme%3Abroken-masquerade/background.png);
+          <pre><code>/* == COMMON == */
+ :root {
+    --bgColor: hsl(360, 6%, 21%);
+    --fgColor: hsl(360, 8%, 15%);
 }
- 
-#header {
-    background: url(http://scp-wiki.wdfiles.com/local--files/theme%3Abroken-masquerade/new_scp_logo.png) no-repeat left 20px;
-    background-size: 186px 104px;
+
+/* == A/V LOG FORMAT == */
+ .logs {
+    padding-top: .8rem;
+
+    font-family: var(--mono-font);
 }
- 
-#header span {
-     margin-left: 73px;
+
+ .logs hr {
+    border-color: var(--accentColorLite);
 }
- 
-#header h2 span {
-    color: transparent;
-    text-shadow: none;
-    margin-left: 73px;
+
+ table td {
+    line-height: 1.5;
 }
- 
-#header h2 span::before {
-    content: &#34;La Sicurezza Continua in Pubblico&#34;;
-    color: red;
-    text-shadow: 1px 1px 1px rgba(0,0,0,.8);
+
+ table.dialog {
+    display: block;
+    padding-top: 1.2rem;
+
+    border-collapse: collapse;
 }
- 
-/* User-Log In */
-#my-account,
-#account-topbutton {
-    color: white;
+
+ table.dialog th {
+    padding: 1.2rem .8rem 1.2rem 0;
+
+    border-right: thin solid var(--accentColorLite);
+
+    font: 1.05rem var(--header-font);
 }
- 
-/* Search-Bar */
-#search-top-box-input:hover,
-#search-top-box-input:focus {
-    background-color: #333 ;
+
+ table.dialog td,
+ table.dialog td.active tt {
+    opacity: .75;
+
+    font-style: italic;
 }
- 
-#search-top-box-input {
-    background-color: #2a2a2a;
-    color: white;
+
+ table.dialog td {
+    padding: 1.2rem 0 1.2rem .8rem;
+
+    font-family: var(--mono-font);
 }
- 
-#search-top-box-form input[type=&#34;submit&#34;],
-#search-top-box-form input[type=&#34;submit&#34;]:hover {
-    background: #2a2a2a;
-    color: white;
+
+ table.dialog td.active {
+    opacity: 1;
+
+    font: 100%/1.5 var(--body-font);
 }
- 
-/* TITLES */
-h1,
-#page-title {
-    color: black;
+
+ @media (max-width: 767px) {
+     table.dialog th {
+    	font-size: .85rem;
+    }
 }
- 
-/* TOP-BAR */
-#top-bar ul li.sfhover a,
-#top-bar ul li:hover a {
-    background: #f4f4f4;
+
+/* == BLACKLIGHT BOX == */
+ .modal,
+ .blbf-main &gt; div {
+    margin: 1.5rem .5rem;
 }
- 
-#top-bar ul li ul a,
-#top-bar a:hover {
-    background-color: silver;
+
+ .modal {
+    width: calc(100% - 3rem);
+    padding: 0 .75rem;
+
+    color: var(--textColorMid);
+    background: var(--fgColor);
+    border: thick solid var(--accentColorLite);
 }
- 
-/* BODY */
-body {
-    background-color: #fff;
-    color: #282828;
+
+ .blbf-main &gt; div {
+    border-width: thick;
+
+    hyphens: none;
 }
- 
-/* SIDE-BAR */
- 
-#side-bar .side-block {
-    border: 2px solid gray;
+
+ .blbf-main &gt; div::before {
+    font-family: var(--header-font);
+}
+
+ @media (max-width: 767px) {
+     .blbf-main &gt; div {
+    	padding-top: 0;
+    }
+}
+
+/* == COLLAPSIBLES == */
+ .collapsible-block-folded a.collapsible-block-link {
+    animation: flicker .8s ease-in-out infinite alternate;
+}
+
+ @keyframes flicker {
+     0% {
+    	color: transparent;
+    	border-bottom-color: transparent;
+    }
+
+     50%, 100% {
+    	color: var(--accentColor);
+    	border-bottom-color: var(--accentColor);
+    }
+}
+
+ a.collapsible-block-link:hover {
+    color: var(--alphaColor) !important;
+}
+
+ .unlock .collapsible-block-folded,
+ .unlock .collapsible-block-unfolded-link {
+    width: fit-content;
+    margin: 5rem auto;
+}
+
+ .unlock .collapsible-block-content {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+ .licensebox .collapsible-block-link {
+    animation: 0 !important;
+}
+
+/* == DIV BLOCKS == */
+ div.blockquote.lightweight {
     box-shadow: none;
-    background-color: white !important;
 }
- 
-#side-bar .heading {
-    border-bottom: 2px solid gray;
-    color: gray;
-}
- 
-iframe.scpnet-interwiki-frame {
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-}
- 
-/* LINKS (Throughout) */
-a,
-a:visited,
-a.newpage,
-#side-bar a:visited,
-#top-bar a,
-#top-bar ul li.sfhover a,
-#top-bar ul li:hover a,
-#login-status ul a,
-#login-status ul a:hover {
-    color: #d60000;
-}
- 
-/* RATING AND INFO MODULES */
-.page-rate-widget-box .rate-points {
-    background-color: black !important;
-    border: solid 1px #d60000;
-}
-.page-rate-widget-box .rateup,
-.page-rate-widget-box .ratedown {
-    background-color: #4a4a4a;
-    border-top: solid 1px #d60000;
-    border-bottom: solid 1px #d60000;
-}
- 
-.page-rate-widget-box .rateup a,
-.page-rate-widget-box .ratedown a {
-    background: transparent;
-    color: white;
-}
-.page-rate-widget-box .rateup a:hover,
-.page-rate-widget-box .ratedown a:hover {
-    background: black;
-    color: white;
-}
-.page-rate-widget-box .cancel {
-    background: transparent;
-    background-color: black;
-    border: solid 1px #d60000;
-}
-.page-rate-widget-box .cancel a {
-    color: white;
-}
-.page-rate-widget-box .cancel a:hover {
-    background: #4a4a4a;
-    color: white;
-}
- 
-/* INFO MODULE COMPATIBILITY */
-#page-content .rate-box-with-credit-button {
-    background-color: black ;
-    border: 1px solid #d60000 ;
-    border-radius: 5px ;
-}
-#page-content .rate-box-with-credit-button .creditButton p a {
-    border-left-color: #d60000;
-}
-.rate-box-with-credit-button .page-rate-widget-box .cancel {
-    border-radius: 0;
-}
-.rate-box-with-credit-button .page-rate-widget-box .rate-points {
-    border-left: 0;
-}
- 
-/* PAGE ELEMENTS (QUOTES, TABS, TABLES) */
-blockquote,
-div.blockquote {
-      margin: 1em 0;
-      border: 1px solid #d60000;
-      border-radius: 10px
-}
- 
-.gray1 blockquote,
-div.blockquote.gray1 {
-    background-color:#f4f4f4;
-}
- 
-.gray2 blockquote,
-div.blockquote.gray2 {
-    background-color: #e8e8e8;
-}
- 
-/* Tabs */
-.yui-navset .yui-nav .selected a,
-.yui-navset .yui-nav .selected a:focus,
-.yui-navset .yui-nav .selected a:hover {
-    background-color: #444;
-    background-image: none;
-}
- 
-.yui-navset .yui-nav a,
-.yui-navset .yui-navset-top .yui-nav a {
-    background-color: #848484;
-    background-image: none;
-    color: #efefef;
-}
- 
-.yui-navset .yui-nav a:hover,
-.yui-navset .yui-nav a:focus,
-.yui-navset .yui-navset-top .yui-nav a:hover,
-.yui-navset .yui-navset-top .yui-nav a:focus {
-    background-image: none;
-}
- 
-table.wiki-content-table th {
-    color: #000;
-}
- 
-@media (max-width: 767px) {
-    #header {
-         background-size: 140px 78px;
-         background-position-y: 50px;
-    }
- 
-     #side-bar {
-          background-color: #2a2a2a;
-     }
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code> body{
-     --barColour:hsl(0, 0%, 0%)
-}
- .footnotes-footer{
-     display:none;
-}
- #page-content .collapsible-block-folded a.collapsible-block-link{
-     animation: blink .8s ease-in-out infinite alternate;
-}
- @keyframes blink{
-     0%{
-        color: transparent;
-    }
-     50%, 100%{
-        color: hsl(0, 100%, 42%);
+
+ @media (min-width: 768px) {
+     div.blockquote.lightweight {
+    	width: 75%;
+    	margin: auto;
     }
 }
- .licensebox .collapsible-block-link{
-     animation: none !important;
+
+ .blockquote.lightweight.custom {
+    width: fit-content;
+    margin: 3.5rem auto;
+
+    box-shadow: 5px 5px var(--keyColor);
+}
+
+/* == TABLES == */
+ .abridged .wiki-content-table tr th {
+    margin: 3.5rem auto;
+    display: block;
+
+    box-shadow: 5px 5px var(--keyColor);
+
+    font: 1.15rem/1.2 var(--header-font);
+}
+
+/* == MISC. == */
+ .scp-header {
+    font-size: x-large;
+}
+
+ .icon-tint {
+    filter:
+    	invert(.3)
+    	sepia(.5)
+    	saturate(800%)
+    	hue-rotate(var(--tint))
+    	opacity(.8);
 }</code></pre>
         </li>
       
@@ -270,7 +207,23 @@ table.wiki-content-table th {
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none;</code></pre>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display:none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 100px; width: 100px; padding: 1rem</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: transparent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: transparent</code></pre>
         </li>
       
     </ul>
@@ -283,13 +236,13 @@ table.wiki-content-table th {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:flopstyle" target="_blank"><code>:scp-wiki:theme:flopstyle</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:blacklight-box-source" target="_blank"><code>:scp-wiki:component:blacklight-box-source</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:flopstyle.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:blacklight-box-source.html" target="_blank">info</a>]
   </span>
 
   
@@ -300,8 +253,14 @@ table.wiki-content-table th {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/credit:start" target="_blank"><code>credit:start</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:blacklight-box-source" target="_blank"><code>:scp-wiki:component:blacklight-box-source</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:blacklight-box-source.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -311,8 +270,14 @@ table.wiki-content-table th {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/credit:end" target="_blank"><code>credit:end</code></a>
+    <a href="https://scp-wiki.wikidot.com/more-by:lt-flops" target="_blank"><code>:scp-wiki:more-by:lt-flops</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/more-by:lt-flops.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -322,8 +287,14 @@ table.wiki-content-table th {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/credit:start" target="_blank"><code>credit:start</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:blacklight-box-source" target="_blank"><code>:scp-wiki:component:blacklight-box-source</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:blacklight-box-source.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -333,8 +304,82 @@ table.wiki-content-table th {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/credit:end" target="_blank"><code>credit:end</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:blacklight-box-source" target="_blank"><code>:scp-wiki:component:blacklight-box-source</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:blacklight-box-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:blacklight-box-source" target="_blank"><code>:scp-wiki:component:blacklight-box-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:blacklight-box-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:blacklight-box-source" target="_blank"><code>:scp-wiki:component:blacklight-box-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:blacklight-box-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -345,7 +390,183 @@ table.wiki-content-table th {
     <ul class="css-classes">
       
         <li>
+          <pre><code>limit</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>anchor</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>authorbox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tableb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lightweight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bt</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bb</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>byline</code></pre>
+        </li>
+      
+        <li>
           <pre><code>lite-heading</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>pseudocrumbs</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>icon-tint</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lite-heading</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>pseudocrumbs</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lightweight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>custom</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>abridged</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>modal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>unlock</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>overwatch-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lightweight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>justified</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dialog</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>active</code></pre>
         </li>
       
         <li>
@@ -353,7 +574,63 @@ table.wiki-content-table th {
         </li>
       
         <li>
-          <pre><code>o5-box</code></pre>
+          <pre><code>active</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>centered</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>active</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>centered</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>active</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fnnum</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>fncon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>centered</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>active</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>centered</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>active</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>active</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lightweight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>justified</code></pre>
         </li>
       
         <li>
@@ -367,420 +644,513 @@ table.wiki-content-table th {
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[module css]]
-/* Broken Masquerade CSS Theme by Cyantreuse on base code by InitHello with edits by CyrusFiredawn | Revisions by stormbreath | CC-by-SA-3.0 */
- 
-/* HEADER */
-div#container-wrap {
-    background-image: url(http://scp-wiki.wdfiles.com/local--files/theme%3Abroken-masquerade/background.png);
-}
- 
-#header {
-    background: url(http://scp-wiki.wdfiles.com/local--files/theme%3Abroken-masquerade/new_scp_logo.png) no-repeat left 20px;
-    background-size: 186px 104px;
-}
- 
-#header span {
-     margin-left: 73px;
-}
- 
-#header h2 span {
-    color: transparent;
-    text-shadow: none;
-    margin-left: 73px;
-}
- 
-#header h2 span::before {
-    content: &#34;La Sicurezza Continua in Pubblico&#34;;
-    color: red;
-    text-shadow: 1px 1px 1px rgba(0,0,0,.8);
-}
- 
-/* User-Log In */
-#my-account,
-#account-topbutton {
-    color: white;
-}
- 
-/* Search-Bar */
-#search-top-box-input:hover,
-#search-top-box-input:focus {
-    background-color: #333 ;
-}
- 
-#search-top-box-input {
-    background-color: #2a2a2a;
-    color: white;
-}
- 
-#search-top-box-form input[type=&#34;submit&#34;],
-#search-top-box-form input[type=&#34;submit&#34;]:hover {
-    background: #2a2a2a;
-    color: white;
-}
- 
-/* TITLES */
-h1,
-#page-title {
-    color: black;
-}
- 
-/* TOP-BAR */
-#top-bar ul li.sfhover a,
-#top-bar ul li:hover a {
-    background: #f4f4f4;
-}
- 
-#top-bar ul li ul a,
-#top-bar a:hover {
-    background-color: silver;
-}
- 
-/* BODY */
-body {
-    background-color: #fff;
-    color: #282828;
-}
- 
-/* SIDE-BAR */
- 
-#side-bar .side-block {
-    border: 2px solid gray;
-    box-shadow: none;
-    background-color: white !important;
-}
- 
-#side-bar .heading {
-    border-bottom: 2px solid gray;
-    color: gray;
-}
- 
-iframe.scpnet-interwiki-frame {
-    filter: grayscale(100%);
-    -webkit-filter: grayscale(100%);
-}
- 
-/* LINKS (Throughout) */
-a,
-a:visited,
-a.newpage,
-#side-bar a:visited,
-#top-bar a,
-#top-bar ul li.sfhover a,
-#top-bar ul li:hover a,
-#login-status ul a,
-#login-status ul a:hover {
-    color: #d60000;
-}
- 
-/* RATING AND INFO MODULES */
-.page-rate-widget-box .rate-points {
-    background-color: black !important;
-    border: solid 1px #d60000;
-}
-.page-rate-widget-box .rateup,
-.page-rate-widget-box .ratedown {
-    background-color: #4a4a4a;
-    border-top: solid 1px #d60000;
-    border-bottom: solid 1px #d60000;
-}
- 
-.page-rate-widget-box .rateup a,
-.page-rate-widget-box .ratedown a {
-    background: transparent;
-    color: white;
-}
-.page-rate-widget-box .rateup a:hover,
-.page-rate-widget-box .ratedown a:hover {
-    background: black;
-    color: white;
-}
-.page-rate-widget-box .cancel {
-    background: transparent;
-    background-color: black;
-    border: solid 1px #d60000;
-}
-.page-rate-widget-box .cancel a {
-    color: white;
-}
-.page-rate-widget-box .cancel a:hover {
-    background: #4a4a4a;
-    color: white;
-}
- 
-/* INFO MODULE COMPATIBILITY */
-#page-content .rate-box-with-credit-button {
-    background-color: black ;
-    border: 1px solid #d60000 ;
-    border-radius: 5px ;
-}
-#page-content .rate-box-with-credit-button .creditButton p a {
-    border-left-color: #d60000;
-}
-.rate-box-with-credit-button .page-rate-widget-box .cancel {
-    border-radius: 0;
-}
-.rate-box-with-credit-button .page-rate-widget-box .rate-points {
-    border-left: 0;
-}
- 
-/* PAGE ELEMENTS (QUOTES, TABS, TABLES) */
-blockquote,
-div.blockquote {
-      margin: 1em 0;
-      border: 1px solid #d60000;
-      border-radius: 10px
-}
- 
-.gray1 blockquote,
-div.blockquote.gray1 {
-    background-color:#f4f4f4;
-}
- 
-.gray2 blockquote,
-div.blockquote.gray2 {
-    background-color: #e8e8e8;
-}
- 
-/* Tabs */
-.yui-navset .yui-nav .selected a,
-.yui-navset .yui-nav .selected a:focus,
-.yui-navset .yui-nav .selected a:hover {
-    background-color: #444;
-    background-image: none;
-}
- 
-.yui-navset .yui-nav a,
-.yui-navset .yui-navset-top .yui-nav a {
-    background-color: #848484;
-    background-image: none;
-    color: #efefef;
-}
- 
-.yui-navset .yui-nav a:hover,
-.yui-navset .yui-nav a:focus,
-.yui-navset .yui-navset-top .yui-nav a:hover,
-.yui-navset .yui-navset-top .yui-nav a:focus {
-    background-image: none;
-}
- 
-table.wiki-content-table th {
-    color: #000;
-}
- 
-@media (max-width: 767px) {
-    #header {
-         background-size: 140px 78px;
-         background-position-y: 50px;
-    }
- 
-     #side-bar {
-          background-color: #2a2a2a;
-     }
-}
-[[/module]]
-
-[[div style=&#34;display: none;&#34;]]
-[[include :scp-wiki:theme:flopstyle]]
+    <pre><textarea class="page-source" readonly>[[div style=&#34;display: none&#34;]]
+[[include :scp-wiki:theme:flopstyle-dark
+|witch=a
+|ashes=a]]
 [[/div]]
 
-[[module CSS]]
- body{
-     --barColour:hsl(0, 0%, 0%)
-}
- .footnotes-footer{
-     display:none;
-}
- #page-content .collapsible-block-folded a.collapsible-block-link{
-     animation: blink .8s ease-in-out infinite alternate;
-}
- @keyframes blink{
-     0%{
-        color: transparent;
-    }
-     50%, 100%{
-        color: hsl(0, 100%, 42%);
-    }
-}
- .licensebox .collapsible-block-link{
-     animation: none !important;
-}
-[[/module]]
+[!-- CSS is located at the bottom. --]
 
-[[include credit:start]]
-**Articolo:** [http://scp-wiki.wikidot.com/scp-5990 SCP-5990 Out of my head, out of my mind]
-**Autore Originale:** [[*user Lt Flops]]
-**Traduzione:** [[*user TheBoxOfFun]]
-[[include credit:end]]
-
-[[include :fondazionescp:component:flops-header
-|item=5990
-|containment=keter
-|level=4
-|security=riservato
-|disruption=keneq
-|disruption-bg-color=hsl(50, 100%, 37%)
+[[include :scp-wiki:component:blacklight-box-source |inc-source= --]]]
+[[include :scp-wiki:component:blacklight-box-source |inc-colors= --]
+|color-family=dark
+|bg-color=var(--fgColor)
+|txt-color=var(--textColorMid)
+|border-color=var(--accentColorLite)
+|label-bg-color=var(--accentColor)
+|label-txt-color=var(--keyColor)
 ]]
-----
-**Procedure Speciali di Contenimento:** Il contenimento di SCP-5990 implica la messa in sicurezza del luogo di un evento SCP-5990 quando viene segnalato e l&#39;assistenza nella pulizia di eventuali danni, normativi o anomali.
 
-Al momento non sono noti dei mezzi per garantire il completo contenimento fisico di SCP-5990 senza l&#39;uso di trattamenti amnestici mondiali o reingegnerizzazione memetica. Gli sforzi sono invece diretti a migliorare i parametri ambientali, ecologici, sociali ed economici con qualsiasi mezzo a disposizione della Fondazione.
-----
-**Descrizione:** SCP-5990 è un evento dove la mente umana e il suo corrispondente contenitore fisico (il cervello) soffrono di una rapida espansione anomala.
+[[div class=&#34;limit&#34;]]
+  [[div class=&#34;anchor&#34;]]
+    [[div class=&#34;authorbox tableb&#34;]]
+[[module ListPages name=&#34;=&#34;]]
+||~ %%title%% ||
+||= [[span class=&#34;bt bb&#34;]]Byㅤ[[/span]] %%created_by_linked%% ||
+||= **[*https://youtu.be/Ugajy7IfHJw « Audio Version »]** ||
+||~ Published on %%created_at|%d %b %Y%% ||
+[[/module]]
+    [[/div]]
+  [[/div]]
+[[/div]]
 
-SCP-5990 avviene quando lo stress prolungato e altri fattori scatenanti [[footnote]]Per una lista completa dei fattori scatenanti conosciuti, contattare il porprio referente ASIR.[[/footnote]] creano una massa emotiva critica nella mente dell&#39;individuo. Ciò può portare ad un&#39;intensa ricaduta mentale che causa più comunemente l&#39;emicrania nella persona affetta. In casi estremi, ciò porta all&#39;aneurisma cerebrale, il rapido rigonfiamento del tessuto nervoso fino a raggiungere una dimensione maggiore rispetto a quella normale, e ad ondate psichiche a cascata, assieme ad altre anomalie non ancora accertate. SCP-5990 è estremamente raro, attualmente influenza ~71 000 persone all&#39;anno, [[footnote]]Un caso ogni 100 000 persone all&#39;anno, con un aumento dell&#39;1,1% di frequenza all&#39;anno dalla metà degli anni &#39;80.[[/footnote]] con un incidente su 500 che risulta fatale.
+[[include :scp-wiki:component:info-ayers
+|lang=en
+|page=scp-5990
+|authorPage=/floppyphoenix
+|comments=[[div class=&#34;blockquote lightweight&#34;]] 
+[[span class=&#34;bt bb&#34;]]SCP-5990[[/span]] Out of my head, out of my mind 
+[[span class=&#34;bt bb&#34;]]By[[/span]] [[*user Lt Flops]] 
+**Published on 9 Mar 2020** 
+----
+This article is part of the forthcoming **Weaving Imperceptible Threads Continuity Hub**. 
+[[/div]] 
+----
+[[include :scp-wiki:more-by:lt-flops]]
+[[/div]]
+
+[[module Rate]]
+
+[[div class=&#34;byline&#34;]]
+[[span style=&#34;display:none&#34;]].[[/span]]
+[[span]] 7 [[/span]]
+[[/div]]
 
 [[div class=&#34;lite-heading&#34;]]
 ----
-++ MATERIALI AGGIUNTIVI
++ __SCP-5990__
+[[div class=&#34;pseudocrumbs&#34;]]
+[[[scp-series-6|SCP Series VI]]] &gt;&gt; SCP-5990
+[[/div]]
 ----
 [[/div]]
 
-Quella che segue è una lista riassuntiva dei principali eventi di SCP-5990 in ordine cronologico.
-
-@@ @@
-
-|| **Storia** ||
-
-Nella bozza del 1976 del DSM-III, [[footnote]]Il //Manuale Diagnostico e Statistico dei Disturbi Mentali, 3a Edizione//.[[/footnote]] l&#39;Associazione Psichiatrica Americana dichiara per la prima volta la &#34;rapida espansione subconscia&#34; un raro fenomeno psicologico. L&#39;Organizzazione Mondiale della Parasanità (WPO) conduce un&#39;indagine approfondita sul fenomeno e osserva aumenti mentali significativi in studi clinici nel corso di quattro anni.
-
-Nel 1980, giungono alla conclusione che il fenomeno è anomalo, e che ha una probabilità variabile nel danneggiare la psicosfera umana condivisa a seguito di ogni evento.
-
-Quello che segue è una serie di tangenti mediche corporative; l&#39;espulsione di massa, la revisione e la distruzione totale della ricerca e dei dati clinici relativi al fenomeno; e il trattamento amnestico dei professionisti medici informati. Questi fattori portano al suo insabbiamento di massa nelle scienze tradizionali, compresa la sua rimozione dal DSM.
-
-@@ @@
-
-||~ Q3, 2008 ||
-
-Nel mezzo della recessione del 2008, il mercato paranormale degli Stati Uniti subisce un colpo significativo. La Coalizione Globale dell&#39;Occulto taglia i fondi a diverse organizzazioni, tra cui la WPO. Un numero record di persone nella comunità paranormale sperimenta il fenomeno per stress.
-
-@@ @@
-
-||~ 7 Marzo 2009 ||
-
-Il WPO trapela in segreto diversi documenti non censurati alla Fondazione. Dopo averne verificato la provenienza, la Fondazione designa il fenomeno come &#34;{{SCP-5990}}&#34;.
-
-Tutti i futuri incidenti SCP-5990 sotto il controllo del Dipartimento Medico della Fondazione vengono insabbiati come malattie mentali non anomale che causano una varietà di sintomi fisici.
-
-@@ @@
-
-||~ 1° Gennaio 2010 ||
-
-Fabian Keanes, residente a Portland, aderente al Gruppo d&#39;Interesse 004C &#34;Chiesa del Maxwellismo&#34;, festeggia il nuovo anno sotto l&#39;influenza di una droga Maxwellista del mercato nero. La droga — conosciuta con il suo nome di strada &#34;overcloxia&#34; — stimola gli aumenti craniali per migliorare temporaneamente le prestazioni mentali e i tempi di reazione e creare euforia. La droga ha effetti collaterali che possono causare il surriscaldamento del corpo e del cervello. Nella fase di rilassamento, riduce la velocità di elaborazione del cervello.
-
-Keanes va in overdose di overcloxia, facendo sì che il suo cervello subisca SCP-5990, che manda in cortocircuito i suoi aumenti. Gli impulsi elettrici partono dal suo cervelletto e devastano l&#39;edificio intorno a lui, incendiando il suo cranio e ferendo 12 persone nel complesso di case circostanti. Keanes viene dichiarato morto clinicamente alle 01:47 del Mattino Orario del Pacifico (PST).
-
-Keanes è la prima persona sotto la supervisione della Fondazione a sperimentare SCP-5990. Il fenomeno persiste negli individui ad un ritmo simile a quello osservato dal WPO.
-
-@@ @@
-
-||~ 12 Aprile 2013 ||
-
-[[[broken-masquerade-hub|Il Sipario della Segretezza si alza]]]; la Facciata salta. La Coalizione Globale dell&#39;Occulto e la Fondazione SCP vengono rivelate al pubblico, assieme ad altre agenzie di preservazione della normalità.
-
-@@ @@
-
-||~ 23 Ottobre 2013 ||
-
-Il Dipartimento delle Pubbliche Relazioni della Fondazione sostiene un&#39;alta pressione a livello amministrativo a causa della pubblicità eccessivamente negativa durante gli ultimi sei mesi.
-
-La co-direttrice delle Pubbliche Relazioni Tatiana Embla si barrica nel suo ufficio del Sito-89 e tenta il suicidio mediante impiccagione. Embla esibisce SCP-5990 prima della sua morte. A causa della sua esposizione non schermata a entità ontocinetiche durante i dieci anni della sua carriera, Embla mostra un raro e spontaneo emergere di capacità di Manipolazione della Realtà di Classe IV causate dal trauma. Molteplici disturbi ontocinetici di basso livello interessano il sito.
-
-* Il Direttore del Sito Cristian Darshan (l&#39;ex superiore di Embla, contro il quale ha sporto in passato diverse denunce non rivelate sul posto di lavoro) perde il controllo della vescica. La porta del suo alloggio privato scompare contemporaneamente, trasformandosi in un muro solido. Diverse centinaia di litri di urina inondano la stanza. La sicurezza del sito lo recupera nove ore dopo in abiti sporchi.
-
-* I 90 impiegati di Embla scoprono ognuno un anno intero di guadagni aggiunti nei loro conti bancari e un singolo Hershey&#39;s Kiss su ogni scrivania dell&#39;ufficio delle PR.
-
-All&#39;inizio, il Dipartimento delle Economie della Fondazione sequestra il reddito affermando che esso costituisce un&#39;interferenza anomala esterna. In seguito, un gruppo di sorveglianza delle organizzazioni di contenimento delle anomalie (noto come l&#39;Iniziativa Libera per il Rispetto delle Anomalie Reciproche o FIRMA) diffonde a diverse importanti organizzazioni giornalistiche dei rapporti scabrosi sul maltrattamento dei lavoratori della Fondazione. Di fronte alla schiacciante pressione dei media, una seduta d&#39;emergenza del Comitato Etico vota 30-13 a favore dell&#39;espansione dell&#39;Ufficio delle PR e dell&#39;aumento del suo finanziamento. Ogni dipendente riceve abbondanti incentivi in denaro.
-
-* Il cervello di Embla si gonfia in volume del 5 000% fino ad esplodere in un&#39;esplosione equivalente a ~25 kg di TNT, provocando danni strutturali significativi.
-
-@@ @@
-
-||~ 16 Aprile 2014 ||
-
-Un giornalista indipendente rilascia un rapporto anonimo alla CNN sulla corruzione dei funzionari russi nella città di Kursk. Il rapporto accusa ben 160 membri della polizia militare di partecipare a banchetti settimanali privati finanziati da fondi riciclati destinati alla costruzione di un ospedale per bambini. Questi banchetti comprendevano procedure rituali psichiche per uno scopo attualmente sconosciuto.
-
-All&#39;ultimo banchetto, viene riferito che nove ufficiali — sei uomini e tre donne — hanno partecipato a un rituale sessuale intenso basato sulla mente alveare sperimentando SCP-5990 al climax collettivo. Tutti e nove gli ufficiali sono poi scomparsi. Gli ufficiali hanno poi riferito di aver sentito odore di zolfo, segni di bruciature sulle pareti e sul soffitto, e profonde risate gutturali disincarnate. La loro posizione è attualmente sconosciuta.
-
-@@ @@
-
-||~ 10 Maggio 2015 ||
-
-SCP-5990 tende ad aumentare di frequenza dopo l&#39;espansione del consumo di &#34;Mindscaping&#34; nel mondo post-Velo. Mindscaping è una fiorente industria della New Age che coinvolge meccanismi psico-onirici che possono creare uno spazio immaginario condiviso, denominato &#34;mindscape&#34;. I Mindscape sono comuni di massa interconnessi che possono essere abitati a livello mentale, e differiscono dai collettivi onirici in quanto vi si può accedere sia nella veglia che nel sonno.
-
-Un mindscape può abitare uno spazio piccolo come un singolo cervello umano, che a sua volta può subire un&#39;esplosione di SCP-5990 alimentata da un massimo di 150 connessioni psichiche esterne.
-
-La comparsa del Mindscaping, assieme all&#39;aumento dei disordini sociali nelle comunità a basso reddito non anomale, porta ad un aumento drammatico di SCP-5990 tale da far sì che si ripresenti nelle comunità globali nei prossimi cinque anni.
-----
-
-@@ @@
-@@ @@
-
-[[div class=&#34;centered&#34;]]
-[[collapsible show=&#34;»GEAS MEMETICO RICHIESTO«&#34; hide=&#34;«CREDENZIALI DI LIV. 5 ACCETTATE»&#34;]]
+[[div class=&#34;modal&#34;]]
+[[=image https://scp-wiki.wdfiles.com/local--files/theme%3Aflopstyle-dark/alt_logo_bw.png class=&#34;icon-tint&#34; style=&#34;height: 100px; width: 100px; padding: 1rem&#34;]]
+[[div class=&#34;scp-header&#34;]]
+= **__SCP Database Entry__**
+[[/div]]
+[[include :scp-wiki:component:flops-header
+|item=5990
+|containment=keter
+|level=4
+|security=secret
+|disruption=3/keneq
+|disruption-bg-color=hsla(50, 100%, 37%, .6)
+]]
 [[/div]]
 
-[[&lt;]]
-Il 9 marzo 2020 alle ore 0600, il Comando dei Sovrintendenti tiene una riunione di emergenza al Sito-01. Dopo la riunione, O5-6 è stato registrato mentre comunica con una parte sconosciuta tramite telefono cellulare. La trascrizione è la seguente.
+[[include :scp-wiki:component:blacklight-box-source |inc-section-start= --]
+|color-family=dark
+|unique-name=special-containment-procedures
+|display-name=SPECIAL CONTAINMENT PROCEDURES
+]]
+The containment of SCP-5990 involves securing the location of an SCP-5990 event when it is reported and assisting in the clean-up of any damages, normative or anomalous.
 
-[[div class=&#34;o5-box&#34;]]
-= **[INIZIO LOG]**
+There is currently no known means of ensuring total containment of SCP-5990 without the use of worldwide amnestic treatment or memetic reengineering. Efforts are instead directed toward improving environmental, ecological, social, and economic parameters by any means available to The Foundation.
+[[include :scp-wiki:component:blacklight-box-source |inc-section-end= --]]]
+
+[[include :scp-wiki:component:blacklight-box-source |inc-section-start= --]
+|color-family=dark
+|unique-name=description
+|display-name=DESCRIPTION
+]]
+SCP-5990 is an occurrence wherein the human mind and its corresponding physical housing (the brain) undergo a rapid, anomalous expansion.
+
+SCP-5990 occurs when prolonged stress and other triggers create a critical emotional mass within an individual&#39;s mind.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]For a full list of known triggers, contact your RAISA liaison.[[/span]] This can lead to an [[[SCP-5043|intense mental fallout]]] that most commonly causes migraines in the affected person. On the extreme end, this leads to brain aneurysm, the rapid swelling of nervous tissue to many times its baseline size, and cascading psychic surges among other unaccounted for anomalies. SCP-5990 is extremely rare, currently affecting ~71 000 persons per year,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]One case per 100 000 persons per year, with a 1.1% increase in incidence per year since the mid-1980s.[[/span]] with one in 500 incidents being fatalities.
+[[include :scp-wiki:component:blacklight-box-source |inc-section-end= --]]]
+
+[[div class=&#34;lite-heading&#34;]]
 ----
-**O5-6:** Così tanti? Cazzo.
-
-@@[@@//Pausa.//@@]@@
-
-**O5-6:** Ti comprendo. È solo che non capisco perché non possano fare silenzio ogni tanto, sai? Non è necessario che succeda. Dopo avergli dato la colpa per tutto il tempo, lei ha dato di matto e gli è saltato addosso come un topo, l&#39;ha picchiato fino a farlo svenire e poi si è semplicemente alzato e se n&#39;è andato. E non abbiamo annullato l&#39;incontro o altro. Se ne sono andati tutti. Sono un branco di bambini, ma cosa posso farci, sai?
-
-@@[@@//Pausa.//@@]@@
-
-**O5-6:** No, non lo farò. E sai una cosa, lei fa sempre così, vero? Un giorno quella grossa testa che ha si gonfierà ed esploderà, e poi cosa?
-
-@@[@@//Pausa.//@@]@@
-
-**O5-6:** Dovremmo —cosa? Gettarla in una cassa?[[footnote]]Si ritiene che faccia riferimento alla CASSA o Cella per Anomalie Sapienti e Standard in Attesa.[[/footnote]] @@[@@//Ride.//@@]@@ Oh sì, ci starebbe. Ci starebbe bene per davvero. Solo, non guardarla negli occhi, o ti trasformerai in pietra.
-
-@@[@@//Pausa.//@@]@@
-
-**O5-6:** @@[@@//Sospira.//@@]@@ Vorrei solo che tutti, l&#39;intera razza umana, si dessero una calmata per un minuto, magari si guardassero intorno e capissero cosa diavolo hanno sotto la pelle. Cosa li ha fatti sentire così brutti dentro. Che cosa li faceva andare avanti e indietro in quelle loro teste doloranti. E guardare il quadro generale. Forse allora non dovremmo ritrovarci con le teste di tutti che esplodono o che vorrebbero che le teste degli altri lo facessero.
-
-@@[@@//Lunga pausa.//@@]@@
-
-**O5-6:** Oppure, che si fotta tutto. Forse non ne abbiamo bisogno. Forse non abbiamo bisogno di tutti loro che ci appesantiscono. Se solo avessimo una dannata rivoluzione umana e portassimo la testa tra le nuvole–
-
-**O5-6:** Voleremo tutti via.
+++ __ADDENDA MATERIALS__
+[[div class=&#34;pseudocrumbs&#34;]]
+**Abridged List of Major SCP-5990 Events**
+[[/div]]
 ----
-= **[FINE LOG]**
 [[/div]]
 
-Successivamente, O5-6 infila una mano nel suo cappotto, estrae un sigaro e lo accende. Pochi minuti dopo la sua testa si gonfia di cinque volte, si stacca dal corpo e fluttua nel cielo.
-[[/&lt;]]
+[[div class=&#34;blockquote lightweight custom&#34;]]
+++++ Background
+[[/div]]
+
+[[div class=&#34;modal&#34;]]
+In the 1976 draft of the DSM-III,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]The //Diagnostic and Statistical Manual of Mental Disorders, 3rd Edition//.[[/span]] the American Psychiatric Association first declares “rapid subconscious expansion” a rare psychological phenomenon. The World Parahealth Organization (WPhO) undergoes an extensive investigation into the phenomenon and observes significant mental flareups in clinical trials over four years.
+
+By 1980, they conclude that the phenomenon is anomalous, with a variable probability of damaging the shared human psychosphere after each occurrence.
+
+What follows is a series of corporate medical payoffs; the mass expungement, revision, and outright destruction of research and clinical data related to the phenomenon; and the amnestic treatment of in-the-know medical professionals. These factors lead to its mass cover-up in the mainstream sciences, including its removal from the DSM.
+[[/div]]
+
+[[div class=&#34;abridged&#34;]]
+||~ Q3 2008 ||
+
+[[div class=&#34;modal&#34;]]
+Amid the 2008 Recession, the United States&#39; paranormal market suffers a significant hit. The Global Occult Coalition slashes their funding of several organizations, including the WPhO. A record-high number of persons in the paranormal community experience the phenomenon out of stress.
+[[/div]]
+
+||~ 7 March 2009 ||
+
+[[div class=&#34;modal&#34;]]
+The WPhO leaks several uncensored documents to The Foundation in secret. After verifying the source, The Foundation designates the phenomenon as “{{SCP-5990}}.”
+
+All future SCP-5990 incidents under the purview of The Foundation Medical Department are covered up as non-anomalous mental illnesses causing a variety of physical symptoms.
+[[/div]]
+
+||~ 1 January 2010 ||
+
+[[div class=&#34;modal&#34;]]
+Portland resident Fabian Keanes, a [[[church-of-the-broken-god-hub|Church of Maxwellism]]] (GOI-004C) adherent, celebrates New Years while under the influence of a black market Maxwellist drug. The drug -- known by its street name “overcloxia” -- stimulates cranial augmentations to temporarily improve mental performance and reaction time and create euphoria. The drug has side-effects that may cause overheating of both the body and brain. In its comedown, it throttles brain processing speeds.
+
+Keanes overdoses on overcloxia, causing his brain to undergo SCP-5990, which short-circuits his augmentations. Electrical impulses arc from his cerebellum and raze the surrounding building, setting his cranium ablaze and injuring 12 people in the adjacent townhouse complex. Keanes is declared clinically dead at 01:47 AM PST.
+
+Keanes is the first person under Foundation purview to experience SCP-5990.
+
+The phenomenon continues in individuals at a similar rate as observed by the WPhO.
+[[/div]]
+
+||~ 26 April 2020 ||
+
+[[div class=&#34;modal&#34;]]
+The Veil of Normality falls; [[[broken-masquerade-hub|the Masquerade of secrecy breaks.]]] The UN Global Occult Coalition and The SCP Foundation are revealed to the public, among other normalcy-preservation agencies.
+[[/div]]
+
+||~ 23 October 2020 ||
+
+[[div class=&#34;modal&#34;]]
+The Foundation Department of Public Relations sustains high pressure at the administrative level because of overwhelmingly negative publicity over the last six months.
+
+Public Relations Co-Director Tatiana Embla barricades herself in her office at Site-89 and attempts suicide by hanging. Embla displays SCP-5990 before her death. Because of her unshielded exposure to ontokinetic entities over ten years of her career, Embla displays a rare and spontaneous emergence of Class-IV Reality Manipulation capabilities brought on by trauma. Multiple low-level ontokinetic disturbances strike the site.
+
+* Site Director Cristian Darshan (Embla&#39;s former superior, who she filed several undisclosed workplace reports against in the past) loses all bladder control. The door to his private quarters simultaneously disappears, transforming into a solid wall. Several hundred litres of urine flood the room. Site security recovers him nine hours later in soiled clothing.
+
+* Embla&#39;s staff of 90 employees each discover a full year of added earnings in their bank accounts and a single Hershey&#39;s Kiss on each desk in the PR Office.
+
+At first, The Foundation Department of Economics seizes the income with the claim that it constitutes external anomalous interference. Thereafter, a watchdog group for anomalous containment organizations (known as the Free Initiative for Respecting Mutual Anomalies or FIRMA) publishes scathing reports on Foundation worker mistreatment to several key news organizations. Facing overwhelming media pressure, an emergency sitting of the Ethics Committee votes 30–13 in favour of expanding the PR Office and increasing its funding. Each employee is awarded abundant cash bonuses.
+
+* Embla&#39;s brain inflates in volume by 5 000% and explodes with a ~25 kg of TNT-equivalent blast, causing significant structural damage.
+[[/div]]
+
+||~ 16 April 2021 ||
+
+[[div class=&#34;modal&#34;]]
+An independent journalist releases an anonymous report to CNN about corruption by Russian officials in the city of Kursk. The report accuses up to 160 Military Police members of attending private weekly banquets funded by laundered monies intended for the construction of a children&#39;s hospital. These banquets involved ritualistic psychic procedures for an as-yet unknown purpose.
+
+At the last banquet, nine officials -- six men and three women -- are reported to have engaged in an intensive hivemind-based sexual ritual and experienced SCP-5990 at collective climax. All nine officials then disappeared. Officials later reported the scent of sulphur, scorch marks on the walls and ceiling, and deep, disembodied guttural laughter. Their current location is unknown.
+[[/div]]
+
+||~ 10 May 2022 ||
+[[/div]]
+
+[[div class=&#34;modal&#34;]]
+SCP-5990 trends upwards in frequency after the consumer expansion of “Mindscaping” in the post-Veil world. Mindscaping is a burgeoning New Age industry involving psycho–oneiric mechanisms that can create a shared imagined space, referred to as a “mindscape.” Mindscapes are mass inter-connected communes that can be inhabited on a mental level, differing from Oneiric Collectives in that they can be accessed both in waking and in sleep.
+
+A mindscape can inhabit a space as small as a single human brain, which itself can undergo a one-time SCP-5990 explosion fuelled by up to 150 external psychic connections.
+
+The emergence of Mindscaping, alongside increased social upheaval in low-income non-anomalous communities, leads to a dramatic increase of SCP-5990 such that it recurs in global communities over the next two years.
+[[/div]]
+
+[[div class=&#34;unlock&#34;]]
+[[collapsible show=&#34;MEMETIC GEAS REQUIRED&#34; hide=&#34;LVL. 5 CREDENTIALS ACCEPTED&#34;]]
+
+[[div class=&#34;overwatch-box&#34;]]
+  [[div class=&#34;blockquote lightweight justified&#34; style=&#34;background: transparent&#34;]]
+On 9 March 2024 at 0600 hours, the Overseer Council holds an emergency meeting at Site-01. After the meeting, O5-6 is recorded communicating with an unknown party via mobile phone. A transcript is as follows.
+  [[/div]]
+
+@@ @@
++++ __ANNOTATED AUDIO LOG__
+@@ @@
+= {{**[ BEGIN LOG ]**}}
+[[table class=&#34;dialog&#34;]]
+
+  [[row]]
+    [[hcell]]
+**O5-6**
+    [[/hcell]]
+    [[cell class=&#34;active&#34;]]
+That many? Well, fuck me twice.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+    [[/hcell]]
+    [[cell class=&#34;centered&#34;]]
+Pause.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+**O5-6**
+    [[/hcell]]
+    [[cell class=&#34;active&#34;]]
+I hear ya&#39;. I just don&#39;t get why they all can&#39;t pipe the hell down sometime, y&#39;know? There&#39;s just, there ain&#39;t no need for that to happen. After throwin&#39; the blame on &#39;im the whole time, she lost &#39;er damned mind and jumped &#39;im like a mouse, beat &#39;im senseless, an&#39; then he just got up and walked out. And we didn&#39;t call off the meet&#39;in or nothin&#39;. Everyone just left. Bunch of children is what they are, but what can I do, y&#39;know?
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+    [[/hcell]]
+    [[cell class=&#34;centered&#34;]]
+Pause.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+**O5-6**
+    [[/hcell]]
+    [[cell class=&#34;active&#34;]]
+No, I won&#39;t. An&#39; you know what, she always does this, doesn&#39;t she? One day //her// big head&#39;ll balloon up an&#39; pop, an&#39; then what.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+    [[/hcell]]
+    [[cell class=&#34;centered&#34;]]
+Pause.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+**O5-6**
+    [[/hcell]]
+    [[cell class=&#34;active&#34;]]
+We should -- what? Toss &#39;er in a shack?[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]This is believed to reference the SHACC or Standard Humanoid Anomaly Containment Cell.[[/span]] {{He laughs.}} Oh yeah, that&#39;d do it. That&#39;d really do it. Just don&#39;t look &#39;er in the eye, or you&#39;ll change into stone.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+    [[/hcell]]
+    [[cell class=&#34;centered&#34;]]
+Pause.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+**O5-6**
+    [[/hcell]]
+    [[cell class=&#34;active&#34;]]
+{{He sighs.}} I just wish everyone, the whole human race, just calmed down for a minute, maybe looked around an&#39; figured what the hell they got under their skin. What made &#39;em feel they were so ugly inside. What made &#39;em go over an&#39; over in those pained heads o&#39; theirs. An&#39; just looked at the big picture. Maybe then we wouldn&#39;t have everyone&#39;s heads explodin&#39; or wishin&#39; them neighbours&#39; heads did.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+    [[/hcell]]
+    [[cell class=&#34;centered&#34;]]
+Long pause.
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+**O5-6**
+    [[/hcell]]
+    [[cell class=&#34;active&#34;]]
+Or, or damn the whole thing. Maybe we don&#39;t need &#39;em. Maybe we just don&#39;t need &#39;em all weighin&#39; us down. If we just had one damn human revolution an&#39; put our heads up in the clouds --
+    [[/cell]]
+  [[/row]]
+
+  [[row]]
+    [[hcell]]
+**O5-6**
+    [[/hcell]]
+    [[cell class=&#34;active&#34;]]
+We&#39;d all just fly away.
+    [[/cell]]
+  [[/row]]
+
+[[/table]]
+
+= {{**[ END LOG ]**}}
+
+  [[div class=&#34;blockquote lightweight justified&#34; style=&#34;background: transparent&#34;]]
+After this, O5-6 slips a hand in his coat, removes a cigar, and lights it. Minutes later, his head balloons in size by a factor of five, detaches from his body, and floats up into the sky.
+  [[/div]]
+[[/div]]
+
 [[/collapsible]]
-
-@@ @@
-@@ @@
-
-[[footnoteblock]]
+[[/div]]
 
 [[div class=&#34;footing&#34;]]
 [[/div]]
 
-[[include credit:start]]
-**Articolo:** [http://scp-wiki.wikidot.com/scp-5990 SCP-5990 Out of my head, out of my mind]
-**Autore Originale:** [[*user Lt Flops]]
-**Traduzione:** [[*user TheBoxOfFun]]
-[[include credit:end]]
+[[module Rate]]
 
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
-= &lt;&lt; [[[SCP-5989]]] | [[[SCP-5990]]] | [[[SCP-5991]]] &gt;&gt;
-[[/div]]</textarea></pre>
+= &lt;&lt; [[[SCP-5989]]] | [[[floppyphoenix|Lt Flops]]] | [[[SCP-5991]]] &gt;&gt;
+[[/div]]
+----
+[[include :scp-wiki:component:license-box]]
+[!-- N/A (No Images)  --]
+[[include :scp-wiki:component:license-box-end]]
+
+[[module CSS]]
+/* == COMMON == */
+ :root {
+    --bgColor: hsl(360, 6%, 21%);
+    --fgColor: hsl(360, 8%, 15%);
+}
+
+/* == A/V LOG FORMAT == */
+ .logs {
+    padding-top: .8rem;
+
+    font-family: var(--mono-font);
+}
+
+ .logs hr {
+    border-color: var(--accentColorLite);
+}
+
+ table td {
+    line-height: 1.5;
+}
+
+ table.dialog {
+    display: block;
+    padding-top: 1.2rem;
+
+    border-collapse: collapse;
+}
+
+ table.dialog th {
+    padding: 1.2rem .8rem 1.2rem 0;
+
+    border-right: thin solid var(--accentColorLite);
+
+    font: 1.05rem var(--header-font);
+}
+
+ table.dialog td,
+ table.dialog td.active tt {
+    opacity: .75;
+
+    font-style: italic;
+}
+
+ table.dialog td {
+    padding: 1.2rem 0 1.2rem .8rem;
+
+    font-family: var(--mono-font);
+}
+
+ table.dialog td.active {
+    opacity: 1;
+
+    font: 100%/1.5 var(--body-font);
+}
+
+ @media (max-width: 767px) {
+     table.dialog th {
+    	font-size: .85rem;
+    }
+}
+
+/* == BLACKLIGHT BOX == */
+ .modal,
+ .blbf-main &gt; div {
+    margin: 1.5rem .5rem;
+}
+
+ .modal {
+    width: calc(100% - 3rem);
+    padding: 0 .75rem;
+
+    color: var(--textColorMid);
+    background: var(--fgColor);
+    border: thick solid var(--accentColorLite);
+}
+
+ .blbf-main &gt; div {
+    border-width: thick;
+
+    hyphens: none;
+}
+
+ .blbf-main &gt; div::before {
+    font-family: var(--header-font);
+}
+
+ @media (max-width: 767px) {
+     .blbf-main &gt; div {
+    	padding-top: 0;
+    }
+}
+
+/* == COLLAPSIBLES == */
+ .collapsible-block-folded a.collapsible-block-link {
+    animation: flicker .8s ease-in-out infinite alternate;
+}
+
+ @keyframes flicker {
+     0% {
+    	color: transparent;
+    	border-bottom-color: transparent;
+    }
+
+     50%, 100% {
+    	color: var(--accentColor);
+    	border-bottom-color: var(--accentColor);
+    }
+}
+
+ a.collapsible-block-link:hover {
+    color: var(--alphaColor) !important;
+}
+
+ .unlock .collapsible-block-folded,
+ .unlock .collapsible-block-unfolded-link {
+    width: fit-content;
+    margin: 5rem auto;
+}
+
+ .unlock .collapsible-block-content {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+ .licensebox .collapsible-block-link {
+    animation: 0 !important;
+}
+
+/* == DIV BLOCKS == */
+ div.blockquote.lightweight {
+    box-shadow: none;
+}
+
+ @media (min-width: 768px) {
+     div.blockquote.lightweight {
+    	width: 75%;
+    	margin: auto;
+    }
+}
+
+ .blockquote.lightweight.custom {
+    width: fit-content;
+    margin: 3.5rem auto;
+
+    box-shadow: 5px 5px var(--keyColor);
+}
+
+/* == TABLES == */
+ .abridged .wiki-content-table tr th {
+    margin: 3.5rem auto;
+    display: block;
+
+    box-shadow: 5px 5px var(--keyColor);
+
+    font: 1.15rem/1.2 var(--header-font);
+}
+
+/* == MISC. == */
+ .scp-header {
+    font-size: x-large;
+}
+
+ .icon-tint {
+    filter:
+    	invert(.3)
+    	sepia(.5)
+    	saturate(800%)
+    	hue-rotate(var(--tint))
+    	opacity(.8);
+}
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:30:38.404438.</em>
+    <em>Last updated 2024-02-07 18:34:39.354940.</em>
   
 </div>
 </body>

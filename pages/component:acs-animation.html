@@ -14,22 +14,22 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Анімована СКА</title>
+  <title>ACS Animation</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Анімована СКА</h1>
+    <h1 class="title">ACS Animation</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/component:acs-animation" target="_blank">Анімована СКА</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:acs-animation" target="_blank">ACS Animation</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/component%3Aacs-animation/1&#39;);</code></pre>
         </li>
       
     </ul>
@@ -53,10 +53,6 @@
           <pre><code>font-family: monospace; font-size: 120%;</code></pre>
         </li>
       
-        <li>
-          <pre><code>display: none</code></pre>
-        </li>
-      
     </ul>
 
     <h2 class="header">Includes</h2>
@@ -67,8 +63,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:acs-animation" target="_blank"><code>component:acs-animation</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:acs-animation" target="_blank"><code>:scp-wiki:component:acs-animation</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:acs-animation.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -93,91 +95,87 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[iftags +_template]]
+    <pre><textarea class="page-source" readonly>[[iftags +component]]
 
 [[div style=&#34;border: solid 2px #ededed; padding: 0.5rem; margin: 4px;&#34;]]
 
-Це шаблон, який анімує **[[[anomaly-classification-system-guide|плашки СКА]]]** у вигляді завантаження.
+This is a component that animates the **[[[anomaly-classification-system-guide|ACS header]]]** upon loading.
 
-++ Як користуватись:
+++ How to use:
 
-Додайте це до вашої статті у будь-яке місце:
+Put this in anywhere in the article:
 
 [[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
-&gt; @@[[include component:acs-animation]]@@
+@@[[include :scp-wiki:component:acs-animation]]@@
 [[/div]]
 
-Й готово!
+And you&#39;re done!
 
-//Приклад:// **[[[SCP-5935]]]**
+//Example:// **[[[SCP-5935|]]]**
 
 @@ @@
 -----
 
-++ Примітка:
+++ Note:
 
-- Дві змінні, //@@--timeScale@@// та //@@--timeDelay@@//, контролюють час анімації. Наприклад:
+- Two variables, //@@--timeScale@@// and //@@--timeDelay@@//, control the timings of the animation. For example:
 
 [[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
-&gt; @@[[module CSS]]@@
-&gt; :root {
-&gt; @@    --timeScale: 2;@@
-&gt; @@    --timeDelay: 0.5s;@@
-&gt; }
-&gt; @@[[/module]]@@
+@@[[module CSS]]@@
+:root {
+@@    --timeScale: 2;@@
+@@    --timeDelay: 0.5s;@@
+}
+@@[[/module]]@@ 
 [[/div]]
 
-//@@--timeScale@@// уповільнює усю анімацію у 2 рази, а //@@--timeDelay@@// затримує початок анімації на пів секунди. Базово встановлено значення  1 та 0 секунд, відповідно.
+//@@--timeScale@@// slows down the entire animation by a factor of 2, and //@@--timeDelay@@// delays the starting point of the animation by half a second. Default values are 1 and 0s, respectively.
 
-Аби змінити базове значення додайте зазначене вище до поля {{[[include]]}}. //@@--timeDelay@@// рекомендовано, якщо СКА не є першим елементом контенту, або ви використовуєте його разом з іншими модулями анімації. (по типу **[[[component:fade-in|]]]**.)
+To change the default values, put the above after the {{[[include]]}}. //@@--timeDelay@@// is recommended if the ACS isn&#39;t the first content element, or you&#39;re using it in conjunction with other animation modules (a la **[[[component:fade-in|]]]**.)
 
 @@ @@
 
-- Може бути несумісним з іншими типами плашок СКА*.
+- Likely incompatible with other types of ACS headers*.
 
-*Аби використовувати модуль разом з [[[component:acs-peppo-lite|Спрощеною СКА]]] від [[*user PeppersGhost]]а, додайте наступну латку після {{[[include]]}}:
+*To use with [[*user PeppersGhost]]&#39;s [[[component:acs-peppo-lite|ACS Lite]]], add the following patch after the {{[[include]]}}:
 
 [[div class=&#34;blockquote&#34; style=&#34;font-family: monospace; font-size: 120%;&#34;]]
-&gt; @@[[module CSS]]@@
-&gt; @@/*-- Сполучна латка для Спрощеної СКА --*/@@
-&gt; .anom-bar &gt; .bottom-box::before { display: none; }
-&gt; .anom-bar &gt; .bottom-box { box-shadow: none!important; }
-&gt; div.diamond-part { clip-path: none; animation: none; box-shadow: none!important; }
-&gt; @media (max-width: 480px) {
-&gt;     div.top-right-box { clip-path: polygon(0% -30%, 100% -30%, 100% 130%, 0% 130%); }
-&gt; }
-&gt; @@[[/module]]@@
+@@[[module CSS]]@@
+@@/*-- ACS Lite Animation Compatibility Patch --*/@@
+.anom-bar &gt; .bottom-box::before { display: none; }
+.anom-bar &gt; .bottom-box { box-shadow: none!important; }
+div.diamond-part { clip-path: none; animation: none; box-shadow: none!important; }
+@media (max-width: 480px) {
+    div.top-right-box { clip-path: polygon(0% -30%, 100% -30%, 100% 130%, 0% 130%); }
+}
+@@[[/module]]@@
 [[/div]]
 
 @@ @@
 
-- Автор надихнувся роботами [[*user AnAnomalousWriter]].
+- Inspired by the works of [[*user AnAnomalousWriter]].
 
 [[/div]]
 
 -----
 
-++ Джерельний код:
+++ Source Code:
 
-[[/iftags]]
-
-[[div [[iftags -_template]]style=&#34;display: none&#34;[[/iftags]]]]
-[[module CSS show=&#34;true&#34;]]
-
+[[code type=&#34;CSS&#34;]]
 :root {
     --timeScale: 1;
     --timeDelay: 0s;
 }
-
+ 
 /* Converting middle divider from box-shadow to ::before pseudo-element */
-.anom-bar &gt; .bottom-box { box-shadow: none!important; }
-.anom-bar &gt; .bottom-box::before {
+.anom-bar &gt; div.bottom-box { box-shadow: none; position: relative; }
+.anom-bar &gt; div.bottom-box::before {
     position: absolute;
     content: &#34; &#34;;
     width: 100%;
     height: 0.5rem;
-    background-color: rgb(var(--black-monochrome, 12, 12, 12));
-    transform: translateY(-0.74rem);
+    bottom: 100%; left: 0;
+    background-color: rgb(var(--swatch-menubg-black-color, 12, 12, 12));
 }
  
 /* DIVIDER */
@@ -220,6 +218,9 @@ div.top-left-box &gt; *, div.top-right-box &gt; * {
     animation-fill-mode: backwards;
 }
  
+/*-----------------------------------*/
+/*-----------------------------------*/
+ 
 /* CONTAINMENT, DISRUPTION, RISK CLASSES */
 div.text-part &gt; * {
     clip-path: polygon( 0% 0%, 100% 0%, 100% 100%, 0% 100%);
@@ -246,6 +247,7 @@ div.main-class::before, div.main-class::after {
 }
  /* BOTTOM TEXT */
 div.main-class &gt; *,  div.disrupt-class &gt; *, div.risk-class &gt; * {
+    white-space: nowrap;
     animation-name: flowIn;
     animation-duration: calc(0.42s * var(--timeScale));
     animation-delay: calc(0.75s * var(--timeScale) + var(--timeDelay));
@@ -253,17 +255,20 @@ div.main-class &gt; *,  div.disrupt-class &gt; *, div.risk-class &gt; * {
     animation-timing-function: ease-out;
     animation-fill-mode: backwards;
 }
-
+ 
+/*-----------------------------------*/
+/*-----------------------------------*/
+ 
 /* DIAMOND */
 div.arrows {
     animation-name: arrowspin;
-    animation-duration: calc(0.7s * var(--timeScale));
-    animation-delay: calc(0.6s * var(--timeScale) + var(--timeDelay));
+    animation-duration: calc(0.65s * var(--timeScale));
+    animation-delay: calc(0.55s * var(--timeScale) + var(--timeDelay));
     animation-iteration-count: 1;
     animation-timing-function: cubic-bezier(.12,.41,.27,.99);
     animation-fill-mode: backwards;
 }
-
+ 
 div.quadrants &gt; * {
     animation-name: fade;
     animation-duration: calc(0.3s * var(--timeScale));
@@ -272,7 +277,7 @@ div.quadrants &gt; * {
     animation-timing-function: cubic-bezier(.12,.41,.27,.99);
     animation-fill-mode: backwards;
 }
-
+ 
 div.top-icon, div.right-icon, div.left-icon, div.bottom-icon {
     animation-name: nodegrow;
     animation-duration: calc(0.4s * var(--timeScale));
@@ -281,25 +286,27 @@ div.top-icon, div.right-icon, div.left-icon, div.bottom-icon {
     animation-timing-function: cubic-bezier(.12,.41,.27,.99);
     animation-fill-mode: backwards;
 }
-div.diamond-part {
-    clip-path: polygon( -10% 0.37%, 120% 0.37%, 120% 100%, -10% 100%);
+.bottom-box &gt; div.diamond-part {
+    box-shadow: none;
+}
+.bottom-box &gt; div.diamond-part::before {
+    content: &#34;&#34;;
+    position: absolute;
+    width: 0.5rem; height: 100%;
+    top: 0; right: 100%;
+    background-color: rgb(var(--swatch-menubg-black-color, 12, 12, 12));
     animation-name: diamondBorder;
-    animation-duration: calc(0.8s * var(--timeScale));
-    animation-delay: calc(0.5s * var(--timeScale) + var(--timeDelay));
+    animation-duration: calc(0.475s * var(--timeScale));
+    animation-delay: calc(0.775s * var(--timeScale) + var(--timeDelay));
     animation-iteration-count: 1;
-    animation-timing-function: cubic-bezier(.32,.38,.39,.94);
+    animation-timing-function: cubic-bezier(.28,.72,.55,.91);
     animation-fill-mode: backwards;
-    will-change: box-shadow;
 }
 
 /* MOBILE QUERY */
 @media (max-width: 480px ) {
-    .anom-bar &gt; .bottom-box::before {
-        display:none;
-    }
-    .anom-bar &gt; .bottom-box {
-        box-shadow: 0 -0.5rem 0 0 rgb(var(--black-monochrome, 12, 12, 12))!important;
-    }
+    .anom-bar &gt; div.bottom-box { position: initial; }
+    .anom-bar &gt; div.bottom-box::before { bottom: initial; top: 40vw; }
     div.top-center-box  &gt; * {
         animation-name: bar-mobile;
         animation-duration: calc(0.9s * var(--timeScale));
@@ -311,6 +318,11 @@ div.diamond-part {
     div.top-center-box &gt; :nth-child(5) { animation-delay: calc(0.5s * var(--timeScale) + var(--timeDelay)); }
     div.top-center-box &gt; :nth-child(6) { animation-delay: calc(0.6s * var(--timeScale) + var(--timeDelay)); }
  
+}
+ 
+/*--- Motion Accessibility ---*/
+@media screen and (prefers-reduced-motion: reduce) {
+    div.anom-bar-container { --timeScale: 0!important; }
 }
  
 /*-------------------------*/
@@ -335,28 +347,28 @@ div.diamond-part {
 }
  
 @keyframes expand1 {
-    from { opacity: 0; clip-path: inset(0 calc(100% - 0.75rem) 0 0);}
-    to { opacity: 1; clip-path: inset(0);}
+    from { opacity: 0; clip-path: inset(0 calc(100% - 0.75rem) 0 0); }
+    to { opacity: 1; clip-path: inset(0); }
 }
 @keyframes iconslide {
-    from { opacity: 0; transform: translateX(-5rem);}
-    to { opacity: 1; transform: translateX(0);}
+    from { opacity: 0; transform: translateX(-5rem); }
+    to { opacity: 1; transform: translateX(0); }
 }
-
+ 
 @keyframes expand2 {
-    from { opacity: 0; max-width: 1%;}
-    to { opacity: 1; max-width: 100%;}
+    from { opacity: 0; width: 1%; }
+    to { opacity: 1; width: calc(100% - 0.25rem); }
 }
 @keyframes fade {
-    from { opacity: 0;}
-    to { opacity: 1;}
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
-
+ 
 @keyframes flowIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
-
+ 
 @keyframes arrowspin {
     from { clip-path: circle(0%); transform: rotate(135deg); }
     to { clip-path: circle(75%); transform: rotate(0deg); }
@@ -366,19 +378,23 @@ div.diamond-part {
     to {  transform: scale(1);}
 }
 @keyframes diamondBorder {
-    from { box-shadow: -0.5rem -20rem 0 0 rgb(var(--black-monochrome, 12, 12, 12)); }
-    to { box-shadow: -0.5rem 0 0 0 rgb(var(--black-monochrome, 12, 12, 12)); }
+    from { height: 0; }
+    to { height: 100%; }
 }
 
-[[/module]]
-[[/div]]</textarea></pre>
+[[/code]]
+[[/iftags]]
+
+[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/component%3Aacs-animation/1&#39;);
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:30:30.509804.</em>
+    <em>Last updated 2024-02-07 18:34:36.139426.</em>
   
 </div>
 </body>

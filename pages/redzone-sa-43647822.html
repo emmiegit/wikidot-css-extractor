@@ -14,15 +14,15 @@
   <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
 <link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
 
-  <title>Zranitelnost v Procesu Asynchronní Kopie Redzone RedDB</title>
+  <title>Redzone RedDB Archive Asynchronous Copy Vulnerability</title>
 </head>
 <body>
 <div id="container">
   
   <div class="page">
-    <h1 class="title">Zranitelnost v Procesu Asynchronní Kopie Redzone RedDB</h1>
+    <h1 class="title">Redzone RedDB Archive Asynchronous Copy Vulnerability</h1>
     <p>
-      Link to article: <a href="https://scp-wiki.wikidot.com/redzone-sa-43647822" target="_blank">Zranitelnost v Procesu Asynchronní Kopie Redzone RedDB</a>.
+      Link to article: <a href="https://scp-wiki.wikidot.com/redzone-sa-43647822" target="_blank">Redzone RedDB Archive Asynchronous Copy Vulnerability</a>.
     </p>
 
     <h2 class="header">Module Styles</h2>
@@ -51,8 +51,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/info:start" target="_blank"><code>info:start</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -62,8 +68,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/info:end" target="_blank"><code>info:end</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -80,15 +92,12 @@
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include info:start]]
-**Název:** Zranitelnost v Procesu Asynchronní Kopie Redzone RedDB
-**Originál:** https://scp-wiki.wikidot.com/redzone-sa-43647822
-**Autor:** [[*user AJMansfield]]
-**Překladatel:** [[*user DrCheems]]
-[[include info:end]]
+    <pre><textarea class="page-source" readonly>[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
 
 [[include component:redzone-advisory
-|title=Zranitelnost v Procesu Asynchronní Kopie Redzone RedDB
+|title=Redzone RedDB Archive Asynchronous Copy Vulnerability
 |id=redzone-sa-43647822-async-copy
 |updated=2015-7-13
 |published=2015-7-10
@@ -102,56 +111,70 @@ RZux59902
 CWE-689
 ]]
 ----
-++ Souhrn
-V procesu asynchronní kopie používané Archivačním Aparátem Redzone[[footnote]]Redzone Security je firma poskytující řešení pro databázovou bezpečnost založená v roce 2001 několika zaměstnanci bývalých Prométheových Laboratoří[[/footnote]] RedDB série ASA-5500 umožňuje načtení a spuštění libovolných dat jako kódu pod procesem programu pomocí speciálně upraveného obsahu archivů.
+++ Summary
+A vulnerability in the asynchronous copy routine used by the Redzone[[footnote]]Redzone Security is a database security company formed in 2001 from part of the former Prometheus Labs.[[/footnote]] RedDB ASA-5500 Series Archival Storage Appliance allows certain malicious archive contents to cause arbitrary data to be loaded into protected memory segments and executed as program code when the archive media is read.
 
-Zranitelnost zahrnuje nekompletní ošetření komprimovaného obsahu, což dovoluje thaumaturgickou kontaminaci mezi daty v archivu a procesy operačního systému, které označují oblast paměti jako chráněnou.
+This vulnerability is due to incomplete sanitization of archive contents, allowing thaumatic contagion between the archive data and the operating system routines used to mark regions of memory as in use.
 
-Vnější útočník by této zranitelnosti mohl zneužít vložením speciálně vytvořeného, sebemodifikujícího infohazardu do zranitelné databáze, což by ho mohlo zmutovat do formy, která zranitelnost spustí.
+A remote attacker could exploit this vulnerability by inserting a specially-crafted self-modifying infohazard into an affected archive database, which could then mutate into a form that triggers this vulnerability.
 
-++ Ovlivněné produkty
-Touto zranitelností může být ovlivněný software Redzone RedDB běžící na následujících produktech:
+++ Affected Products
+Affected Redzone RedDB Software running on the following products may be affected by this vulnerability:
 
-||~ Zranitelný produkt ||~ Opraveno ve verzi: ||
-|| Archivační Aparát Redzone RedDB série ASA-5500 || 4.3.30 ||
-|| Archivační Aparát pro fyzické dokumenty Redzone RedDB série ASA-5500-P || 4.3.31 ||
-|| Systémy pro správu infohazardního obsahu (ICMS) Redzone || 2.14.10 ||
-|| Systémy Distribuované Nelokální Databáze (DND) Redzone || 1.19.11 ||
+||~ Vulnerable Product ||~ Fixed In: ||
+|| Redzone RedDB ASA-5500 Series Archival Storage Appliance || 4.3.30 ||
+|| Redzone RedDB ASA-5500-P Series Physical Document Storage Appliance || 4.3.31 ||
+|| Redzone Infohazard Content Management System (ICMS) || 2.14.10 ||
+|| Redzone Distributed Nonlocal Database System (DND) || 1.19.11 ||
 
-++ Indikátory útoku
-Bylo potvrzeno, že tuto zranitelnost zneužívá adware virus Adament[[footnote]][[[SCP-2234]]][[/footnote]] [sic]. Přítomnost tohoto exploitu je silným indikátorem toho, že bezpečnost vašeho systému byla narušena. Projevuje se následujícími způsoby:
+++ Indicators of Compromise
+This vulnerability is known to be exploited by the Adament [sic] adware virus[[footnote]][[[SCP-2234]]][[/footnote]]. The presence of this exploit is a strong indicator that your system is compromised, and can be detected from these symptoms:
 
-* Výskyt nechtěných reklamních letáků na položkách vyjmutých z archivu.
-* Výskyt animovaných reklam na papírových dokumentech.
-* Výskyt cílené reklamy referující na utajené informace o dané osobě.
-* Nevyžádaný tisk kuponů s anomálními memetickými prvky skrz síťové tiskárny.
+* Appearance of unwanted banner ads attached to items retrieved from compromised equipment.
+* Appearance of animated advertisements on paper archive media.
+* Appearance of targeted advertisements referencing confidential personnel history.
+* Networked printers printing coupons containing anomalous memetic elements.
 
-++ Dočasná řešení
-Pro minimalizaci rizika, které tato zranitelnost představuje, se zákazníkům doporučují následující kroky:
-* Ujistit se, že je síť vybavena aktuálním systémem pro aktivní detekci infohazardů.
-* Používat software pro blokování reklam na počítačích spojujících se s ovlivněným systémem.
-* Instalovat firewall s memetickým filtrem na veškeré síťové tiskárny.
-* Poučit uživatele ohledně rozpoznávání a nahlašování bezpečnostních rizik.
+++ Workarounds
+The following measures may be taken to reduce the potential for adverse consequences resulting from this vulnerability:
+* Ensure the network is equipped with an up-to-date active infohazard detection system.
+* Install Adblock software on any computer used to interact with affected systems.
+* Install memetic filter firewalls on all networked printers.
+* Train users of affected systems to recognise and report computer security issues.
 
-++ Aktuální software
-Při plánování aktualizací se zákazníkům doporučuje navštívit archiv Bezpečnostních Varování a Reakcí Redzone a zkontrolovat pozdější varování, aby bylo možné posoudit riziko a navrhnout kompletní řešení.
+++ Fixed Software
+When considering software upgrades, customers are advised to consult the Redzone Security Advisories and Responses archive and review subsequent advisories to determine exposure and a complete upgrade solution. 
 
-V každém případě by zákazníci měli zajistit, že jejich zařízení má dostatek paměti a že nová verze bude kompatibilní s aktuální softwarovou a hardwarovou konfigurací. V případě nejasností je zákazníkům doporučeno obrátit se na Centrum Technické Asistence Redzone (TAC) nebo jejich poskytovatele databázových služeb.
+In all cases, customers should ensure that the devices to upgrade contain sufficient memory and confirm that current hardware and software configurations will continue to be supported properly by the new release. If the information is not clear, customers are advised to contact the Redzone Technical Assistance Center (TAC) or their contracted maintenance providers.
 
-++ Známé exploity a veřejná vyjádření
-Tým pro bezpečnostní incidenty Redzone (RSIT) si je vědom skutečnosti, že tato zranitelnost byla využita adware virem Adament [sic]. RSIT není známo, že by tato zranitelnost byla odhalena veřejnosti.
+++ Exploitation and Public Announcements
+The Redzone Security Incident Team (RSIT) is aware that this vulnerability has been exploited in the Adament [sic] adware virus. RSIT is not aware of any prior public disclosure of this vulnerability.
 
-++ Zdroj
-**2015-07-07:** Zranitelnost byla nahlášena společnosti Redzone Glorií McDuffiovou a Walterem Sotomayorem z jednotky MTF Rho-9 Nadace SCP.
+++ Source
+**2015-07-07:** Gloria McDuffie and Walter Sotomayor of SCP Foundation MTF Rho-9 reported this vulnerability to Redzone.
 
-[[footnoteblock]]</textarea></pre>
+[[footnoteblock]]
+
+[[div]]
+[[=]]
+[[include :scp-wiki:component:license-box]]
+=====
+[[&lt;]]
+&gt; **Filename:** redzone3.png
+&gt; **Author:** [[*user AJMansfield]]
+&gt; **License:** CC BY-SA 3.0
+[[/&lt;]]
+=====
+[[include :scp-wiki:component:license-box-end]]
+[[/=]]
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:30:35.240832.</em>
+    <em>Last updated 2024-02-07 18:34:37.677516.</em>
   
 </div>
 </body>
