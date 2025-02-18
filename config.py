@@ -21,7 +21,11 @@ class Configuration:
 
     @cached_property
     def output_path(self):
-        return os.path.join('output', self.data['output-path'])
+        path = self.data['output-path']
+        if os.path.isabs(path):
+            return path
+        else:
+            return os.path.join('output', path)
 
     @cached_property
     def save_page_offset(self):
