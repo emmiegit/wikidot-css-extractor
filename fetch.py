@@ -9,6 +9,7 @@ import sqlite3
 import sys
 import time
 import traceback
+from asyncio.exceptions import CancelledError
 from functools import partial
 
 import aiohttp
@@ -312,7 +313,7 @@ class Crawler:
         for _ in range(CROM_RETRIES):
             try:
                 return await coro()
-            except (KeyboardInterrupt, GeneratorExit, SystemExit):
+            except (KeyboardInterrupt, GeneratorExit, SystemExit, CancelledError):
                 self.close()
                 sys.exit(1)
             except:
