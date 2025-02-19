@@ -69,32 +69,6 @@ CROM_QUERY = """
 }
 """
 
-SQLITE_SEED = """
-CREATE TABLE crawler_state (
-    cursor TEXT NOT NULL,
-    last_created_at TEXT NOT NULL
-)
-
-CREATE TABLE pages (
-    url TEXT PRIMARY KEY,
-    slug TEXT NOT NULL,
-    title TEXT NOT NULL,
-    category TEXT NOT NULL,
-    created_at TEXT NOT NULL,
-    wikidot_page_id INTEGER NOT NULL,
-    source TEXT NOT NULL
-)
-
-CREATE TABLE extracts (
-    page_url TEXT NOT NULL,
-    type TEXT NOT NULL,
-    index INTEGER NOT NULL,
-    source TEXT NOT NULL,
-
-    UNIQUE (page_url, type, index)
-)
-"""
-
 def format_date(iso_date):
     if iso_date is None:
         return 'None'
@@ -155,7 +129,7 @@ class Crawler:
             self.load(self)
 
             with self.conn as cur:
-                result = cur.execute("SELECT cursor, last_created_at FROM crawler_state")
+                result = cur.execute("SELECT cursor_state, last_created_at FROM crawler_state")
                 self.cursor, self.last_created_at = result.fetchone()
         else:
             print("No previous crawler state, starting fresh")
@@ -169,8 +143,14 @@ class Crawler:
 
     def close(self):
         with self.conn as cur:
+            cur.execute("DELETE FROM crawler_state")
             cur.execute(
-                "UPDATE crawler_state SET cursor = %s, last_created_at = %s",
+                """
+                INSERT INTO crawler_state
+                (cursor_state, last_created_at)
+                VALUES
+                (%s, %s)
+                """,
                 (self.cursor, self.last_created_at),
             )
 
