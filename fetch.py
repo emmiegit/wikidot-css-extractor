@@ -198,69 +198,27 @@ class Crawler:
 
             cur.execute("DELETE FROM extracts WHERE page_url = ?", (page['url'],))
 
-            for idx, module_style in enumerate(page['module_styles']):
-                cur.execute(
-                    """
-                    INSERT INTO extracts
-                    (page_url, extract_index, extract_type, source)
-                    VALUES
-                    (?, ?, ?, ?)
-                    """,
-                    (
-                        page['url'],
-                        idx,
-                        'module_style',
-                        module_style,
-                    ),
-                )
+            def add_extracts(extract_type, extracts):
+                for idx, extract in enumerate(extracts):
+                    cur.execute(
+                        """
+                        INSERT INTO extracts
+                        (page_url, extract_index, extract_type, source)
+                        VALUES
+                        (?, ?, ?, ?)
+                        """,
+                        (
+                            page['url'],
+                            idx,
+                            extract_type,
+                            extract,
+                        ),
+                    )
 
-            for idx, inline_style in enumerate(page['inline_styles']):
-                cur.execute(
-                    """
-                    INSERT INTO extracts
-                    (page_url, extract_index, extract_type, source)
-                    VALUES
-                    (?, ?, ?, ?)
-                    """,
-                    (
-                        page['url'],
-                        idx,
-                        'inline_style',
-                        inline_style
-                    ),
-                )
-
-            for idx, include in enumerate(page['includes']):
-                cur.execute(
-                    """
-                    INSERT INTO extracts
-                    (page_url, extract_index, extract_type, source)
-                    VALUES
-                    (?, ?, ?, ?)
-                    """,
-                    (
-                        page['url'],
-                        idx,
-                        'include',
-                        include,
-                    ),
-                )
-
-            for idx, klass in enumerate(page['classes']):
-                cur.execute(
-                    """
-                    INSERT INTO extracts
-                    (page_url, extract_index, extract_type, source)
-                    VALUES
-                    (?, ?, ?)
-                    """,
-                    (
-                        page['url'],
-                        idx,
-                        'class',
-                        klass,
-                    ),
-                )
+            add_extracts("module_style", page["module_styles"])
+            add_extracts("inline_style", page["inline_styles"])
+            add_extracts("include", page["includes"])
+            add_extracts("class", page["classes"])
 
     async def raw_request(self, session, query, variables):
         for key, value in variables.items():
