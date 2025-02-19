@@ -128,9 +128,9 @@ class Crawler:
         self.connect()
 
     def connect(self):
+        database_exists = os.path.exists(config.output_path)
         self.conn = sqlite3.connect(self.path)
-
-        if os.path.exists(config.output_path):
+        if database_exists:
             print("Loaded previous crawler state")
 
             with self.conn as cur:
