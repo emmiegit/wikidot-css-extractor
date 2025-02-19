@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 
 import hashlib
-import json
 import os
 import re
+import sqlite3
 from collections import defaultdict, namedtuple
 from datetime import datetime
 from functools import partial
@@ -156,6 +156,8 @@ def page_slug_key(slug):
         return f"scp-{number:07}{suffix}"
 
 def load_pages(path):
+    # TODO replace with SQLite implementation
+
     with open(path) as file:
         data = json.load(file)
 
