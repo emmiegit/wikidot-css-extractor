@@ -257,8 +257,8 @@ class Crawler:
                     (
                         page['url'],
                         idx,
-                        'include',
-                        include,
+                        'class',
+                        klass,
                     ),
                 )
 
