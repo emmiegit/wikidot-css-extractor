@@ -69,6 +69,12 @@ CROM_QUERY = """
 }
 """
 
+SQLITE_SEED_PATH = os.path.join(os.path.dirname(__file__), "schema.sql")
+
+with open(SQLITE_SEED_PATH) as file:
+    SQLITE_SEED = file.read()
+
+
 def format_date(iso_date):
     if iso_date is None:
         return 'None'
