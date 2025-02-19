@@ -24,7 +24,7 @@ REGEX_INCLUDES = re.compile(r'\[\[include +([a-z0-9:\-_]+?)(?: |\]\])', re.MULTI
 REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 
 CROM_ENDPOINT = "https://api.crom.avn.sh/graphql"
-CROM_RETRIES = 1
+CROM_RETRIES = 3
 CROM_HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
     "Content-Type": "application/json",
