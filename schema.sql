@@ -15,9 +15,9 @@ CREATE TABLE pages (
 
 CREATE TABLE extracts (
     page_url TEXT NOT NULL,
-    type TEXT NOT NULL,
-    index INTEGER NOT NULL,
+    extract_type TEXT NOT NULL,
+    extract_index INTEGER NOT NULL,
     source TEXT NOT NULL,
 
-    UNIQUE (page_url, type, index)
+    UNIQUE (page_url, extract_type, extract_index)
 );

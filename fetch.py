@@ -201,7 +201,7 @@ class Crawler:
                 cur.execute(
                     """
                     INSERT INTO extracts
-                    (page_url, index, type, source)
+                    (page_url, extract_index, extract_type, source)
                     VALUES
                     (%s, %s, %s, %s)
                     """,
@@ -217,7 +217,7 @@ class Crawler:
                 cur.execute(
                     """
                     INSERT INTO extracts
-                    (page_url, index, type, source)
+                    (page_url, extract_index, extract_type, source)
                     VALUES
                     (%s, %s, %s, %s)
                     """,
@@ -233,7 +233,7 @@ class Crawler:
                 cur.execute(
                     """
                     INSERT INTO extracts
-                    (page_url, index, type, source)
+                    (page_url, extract_index, extract_type, source)
                     VALUES
                     (%s, %s, %s, %s)
                     """,
@@ -249,7 +249,7 @@ class Crawler:
                 cur.execute(
                     """
                     INSERT INTO extracts
-                    (page_url, idx, type, source)
+                    (page_url, extract_index, extract_type, source)
                     VALUES
                     (%s, %s, %s)
                     """,
