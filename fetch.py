@@ -132,14 +132,12 @@ class Crawler:
 
         if os.path.exists(config.output_path):
             print("Loaded previous crawler state")
-            self.load(self)
 
             with self.conn as cur:
                 result = cur.execute("SELECT cursor_state, last_created_at FROM crawler_state")
                 self.cursor, self.last_created_at = result.fetchone()
         else:
             print("No previous crawler state, starting fresh")
-            self.connect(self)
 
             with self.conn as cur:
                 cur.executescript(SQLITE_SEED)
