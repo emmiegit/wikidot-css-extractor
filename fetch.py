@@ -5,6 +5,7 @@ import itertools
 import json
 import os
 import re
+import sqlite3
 import sys
 import time
 import traceback
@@ -68,6 +69,32 @@ CROM_QUERY = """
 }
 """
 
+SQLITE_SEED = """
+CREATE TABLE crawler_state (
+    cursor TEXT NOT NULL,
+    last_created_at TEXT NOT NULL
+)
+
+CREATE TABLE pages (
+    url TEXT PRIMARY KEY,
+    slug TEXT NOT NULL,
+    title TEXT NOT NULL,
+    category TEXT NOT NULL,
+    created_at TEXT NOT NULL,
+    wikidot_page_id INTEGER NOT NULL,
+    source TEXT NOT NULL
+)
+
+CREATE TABLE extracts (
+    page_url TEXT NOT NULL,
+    type TEXT NOT NULL,
+    index INTEGER NOT NULL,
+    source TEXT NOT NULL,
+
+    UNIQUE (page_url, type, index)
+)
+"""
+
 def format_date(iso_date):
     if iso_date is None:
         return 'None'
@@ -117,29 +144,144 @@ class CromError(RuntimeError):
 class Crawler:
     def __init__(self, config):
         self.config = config
-        self.cursor = None
-        self.last_created_at = None
-        self.pages = {}
         self.path = config.output_path
+        self.connect()
 
-    def load(self, path):
-        with open(path) as file:
-            data = json.load(file)
+    def connect(self):
+        self.conn = sqlite3.connect(self.path)
 
-        self.cursor = data['cursor']
-        self.last_created_at = data['last_created_at']
-        self.pages = data['pages']
+        if os.path.exists(config.output_path):
+            print("Loaded previous crawler state")
+            self.load(self)
 
-    def save(self):
-        data = {
-            'cursor': self.cursor,
-            'last_created_at': self.last_created_at,
-            'pages': self.pages,
-        }
+            with self.conn as cur:
+                result = cur.execute("SELECT cursor, last_created_at FROM crawler_state")
+                self.cursor, self.last_created_at = result.fetchone()
+        else:
+            print("No previous crawler state, starting fresh")
+            self.connect(self)
 
-        with open(self.path, 'w') as file:
-            json.dump(data, file, indent=4)
-            file.write('\n')
+            with self.conn as cur:
+                cur.executescript(SQLITE_SEED)
+
+            self.cursor = None
+            self.last_created_at = None
+
+    def close(self):
+        with self.conn as cur:
+            cur.execute(
+                "UPDATE crawler_state SET cursor = %s, last_created_at = %s",
+                (self.cursor, self.last_created_at),
+            )
+
+        self.conn.close()
+        self.conn = None
+
+    def write_page(self, page):
+        with self.conn as cur:
+            cur.execute(
+                """
+                INSERT INTO pages
+                (url, slug, title, category, created_at, wikidot_page_id, source)
+                VALUES
+                (%s, %s, %s, %s, %s, %s, %s)
+                ON CONFLICT (url)
+                DO UPDATE SET
+                    slug = %s,
+                    title = %s,
+                    category = %s,
+                    created_at = %s,
+                    wikidot_page_id = %s,
+                    source = %s
+                """,
+                (
+                    page['url'],
+                    page['slug'],
+                    page['title'],
+                    page['category'],
+                    page['created_at'],
+                    page['wikidot_page_id'],
+                    page['source'],
+                    page['slug'],
+                    page['title'],
+                    page['category'],
+                    page['created_at'],
+                    page['wikidot_page_id'],
+                    page['source'],
+                ),
+            )
+
+            cur.execute("DELETE FROM extracts WHERE page_url = %s", (page['url'],))
+
+            for idx, module_style in enumerate(page['module_styles']):
+                cur.execute(
+                    """
+                    INSERT INTO extracts
+                    (page_url, index, type, source)
+                    VALUES
+                    (%s, %s, %s, %s)
+                    """,
+                    (
+                        page['url'],
+                        idx,
+                        'module_style',
+                        module_style,
+                    ),
+                )
+
+            for idx, inline_style in enumerate(page['inline_styles']):
+                cur.execute(
+                    """
+                    INSERT INTO extracts
+                    (page_url, index, type, source)
+                    VALUES
+                    (%s, %s, %s, %s)
+                    """,
+                    (
+                        page['url'],
+                        idx,
+                        'inline_style',
+                        inline_style
+                    ),
+                )
+
+            for idx, include in enumerate(page['includes']):
+                cur.execute(
+                    """
+                    INSERT INTO extracts
+                    (page_url, index, type, source)
+                    VALUES
+                    (%s, %s, %s, %s)
+                    """,
+                    (
+                        page['url'],
+                        idx,
+                        'include',
+                        include,
+                    ),
+                )
+
+            for idx, klass in enumerate(page['classes']):
+                cur.execute(
+                    """
+                    INSERT INTO extracts
+                    (page_url, idx, type, source)
+                    VALUES
+                    (%s, %s, %s)
+                    """,
+                    (
+                        page['url'],
+                        idx,
+                        'include',
+                        include,
+                    ),
+                )
+
+    def page_count(self):
+        with self.conn as cur:
+            result = cur.execute("SELECT COUNT(*) FROM pages")
+            (count,) = result.fetchone()
+            return count
 
     async def raw_request(self, session, query, variables):
         for key, value in variables.items():
@@ -234,8 +376,6 @@ class Crawler:
             try:
                 return await coro()
             except (KeyboardInterrupt, GeneratorExit, SystemExit):
-                self.save()
-                raise
                 sys.exit(1)
             except:
                 print("Error fetching pages from Crom:")
@@ -264,35 +404,24 @@ class Crawler:
 
                     if page is not None:
                         self.last_created_at = page['created_at']
-                        self.pages[slug] = page
+                        self.write_page(page)
 
                 return has_next_page
 
             while has_next_page:
                 has_next_page = await self.retry(pull_pages)
 
-                # Save periodically
-                # We don't save after every hit, unlike in the scraper,
-                # because Crom is a lot faster and we don't want to thrash our disk.
-                total_pages = len(self.pages)
+                # Periodically print the page count
+                total_pages = self.page_count()
                 if total_pages - last_page_count >= self.config.save_page_offset:
-                    self.save()
                     print(f"Now at {total_pages:,} saved pages")
                     last_page_count = total_pages
 
             print("Hit the end, finished!")
 
-        self.save()
         return self.pages
 
 if __name__ == '__main__':
     config = Configuration()
     crawler = Crawler(config)
-
-    if os.path.exists(config.output_path):
-        crawler.load(config.output_path)
-        print("Loaded previous crawler state")
-    else:
-        print("No previous crawler state, starting fresh")
-
     asyncio.run(crawler.fetch_all())
