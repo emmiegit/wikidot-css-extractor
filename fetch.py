@@ -313,6 +313,7 @@ class Crawler:
             try:
                 return await coro()
             except (KeyboardInterrupt, GeneratorExit, SystemExit):
+                self.close()
                 sys.exit(1)
             except:
                 print("Error fetching pages from Crom:")
