@@ -24,7 +24,7 @@ REGEX_INCLUDES = re.compile(r'\[\[include +([a-z0-9:\-_]+?)(?: |\]\])', re.MULTI
 REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 
 CROM_ENDPOINT = "https://api.crom.avn.sh/graphql"
-CROM_RETRIES = 3
+CROM_RETRIES = 1
 CROM_HEADERS = {
     "Accept-Encoding": "gzip, deflate, br",
     "Content-Type": "application/json",
@@ -153,7 +153,7 @@ class Crawler:
                 INSERT INTO crawler_state
                 (cursor_state, last_created_at)
                 VALUES
-                (%s, %s)
+                (?, ?)
                 """,
                 (self.cursor, self.last_created_at),
             )
@@ -168,15 +168,16 @@ class Crawler:
                 INSERT INTO pages
                 (url, slug, title, category, created_at, wikidot_page_id, source)
                 VALUES
-                (%s, %s, %s, %s, %s, %s, %s)
+                (?, ?, ?, ?, ?, ?, ?)
                 ON CONFLICT (url)
-                DO UPDATE SET
-                    slug = %s,
-                    title = %s,
-                    category = %s,
-                    created_at = %s,
-                    wikidot_page_id = %s,
-                    source = %s
+                DO UPDATE
+                SET
+                    slug = ?,
+                    title = ?,
+                    category = ?,
+                    created_at = ?,
+                    wikidot_page_id = ?,
+                    source = ?
                 """,
                 (
                     page['url'],
@@ -195,7 +196,7 @@ class Crawler:
                 ),
             )
 
-            cur.execute("DELETE FROM extracts WHERE page_url = %s", (page['url'],))
+            cur.execute("DELETE FROM extracts WHERE page_url = ?", (page['url'],))
 
             for idx, module_style in enumerate(page['module_styles']):
                 cur.execute(
@@ -203,7 +204,7 @@ class Crawler:
                     INSERT INTO extracts
                     (page_url, extract_index, extract_type, source)
                     VALUES
-                    (%s, %s, %s, %s)
+                    (?, ?, ?, ?)
                     """,
                     (
                         page['url'],
@@ -219,7 +220,7 @@ class Crawler:
                     INSERT INTO extracts
                     (page_url, extract_index, extract_type, source)
                     VALUES
-                    (%s, %s, %s, %s)
+                    (?, ?, ?, ?)
                     """,
                     (
                         page['url'],
@@ -235,7 +236,7 @@ class Crawler:
                     INSERT INTO extracts
                     (page_url, extract_index, extract_type, source)
                     VALUES
-                    (%s, %s, %s, %s)
+                    (?, ?, ?, ?)
                     """,
                     (
                         page['url'],
@@ -251,7 +252,7 @@ class Crawler:
                     INSERT INTO extracts
                     (page_url, extract_index, extract_type, source)
                     VALUES
-                    (%s, %s, %s)
+                    (?, ?, ?)
                     """,
                     (
                         page['url'],
