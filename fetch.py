@@ -257,12 +257,6 @@ class Crawler:
                     ),
                 )
 
-    def page_count(self):
-        with self.conn as cur:
-            result = cur.execute("SELECT COUNT(*) FROM pages")
-            (count,) = result.fetchone()
-            return count
-
     async def raw_request(self, session, query, variables):
         for key, value in variables.items():
             query = query.replace(key, json.dumps(value))
@@ -365,9 +359,7 @@ class Crawler:
         print("Giving up...")
 
     async def fetch_all(self):
-        has_next_page = True
         last_slug = Container()
-        last_page_count = 0
 
         async with aiohttp.ClientSession() as session:
             async def pull_pages():
@@ -375,7 +367,7 @@ class Crawler:
                 print(f"+ Requesting next batch of pages (last page '{last_slug}', created {created_at})")
 
                 # Make request
-                edges, has_next_page = await self.next_pages(session)
+                edges = await self.next_pages(session)
 
                 # Parse out results
                 for edge in edges:
@@ -386,20 +378,7 @@ class Crawler:
                         self.last_created_at = page['created_at']
                         self.write_page(page)
 
-                return has_next_page
-
-            while has_next_page:
-                has_next_page = await self.retry(pull_pages)
-
-                # Periodically print the page count
-                total_pages = self.page_count()
-                if total_pages - last_page_count >= self.config.save_page_offset:
-                    print(f"Now at {total_pages:,} saved pages")
-                    last_page_count = total_pages
-
             print("Hit the end, finished!")
-
-        return self.pages
 
 if __name__ == '__main__':
     config = Configuration()
