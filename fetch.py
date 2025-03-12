@@ -21,7 +21,7 @@ REGEX_CROM_RATE_LIMIT = re.compile(r"(?:in|for) (\d+) seconds?")
 REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+)\.wikidot\.com/(.+)$')
 REGEX_MODULE_CSS = re.compile(r'\[\[module +css\]\]\n(.+?)\n\[\[/module\]\]', re.IGNORECASE | re.DOTALL)
 REGEX_INLINE_CSS = re.compile(r'style="(.+?)"[^\]]*?\]\]', re.MULTILINE | re.IGNORECASE)
-REGEX_INCLUDES = re.compile(r'\[\[include +([a-z0-9:\-_]+?)(?: |\]\])', re.MULTILINE | re.IGNORECASE)
+REGEX_INCLUDES = re.compile(r'^\[\[include[\s\n]+((?::[a-z0-9\-.]+:[\s\n]?)?[a-z0-9:\-.]+)', re.MULTILINE | re.IGNORECASE)
 REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
 
 CROM_ENDPOINT = "https://api.crom.avn.sh/graphql"
