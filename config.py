@@ -6,6 +6,7 @@ import tomllib
 
 DEFAULT_CONFIG_PATH = "config.toml"
 
+
 class Configuration:
     def __init__(self):
         if len(sys.argv) >= 2:
@@ -18,20 +19,20 @@ class Configuration:
 
     @cached_property
     def output_path(self):
-        path = self.data['output-path']
+        path = self.data["output-path"]
         if os.path.isabs(path):
             return path
         else:
-            return os.path.join('output', path)
+            return os.path.join("output", path)
 
     @cached_property
     def save_page_offset(self):
-        return int(self.data['save-page-offset'])
+        return int(self.data["save-page-offset"])
 
     @property
     def default_site(self):
-        return self.data['sites'][0]
+        return self.data["sites"][0]
 
     @cached_property
     def crom_base_urls(self):
-        return [f"http://{site}.wikidot.com/" for site in self.data['sites']]
+        return [f"http://{site}.wikidot.com/" for site in self.data["sites"]]

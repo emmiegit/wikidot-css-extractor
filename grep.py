@@ -12,21 +12,20 @@ from colorama import Fore, Style
 WIKIDOT_SITE_REGEX = re.compile(r"^https?://([^\.]+)\.wikidot\.com/.+")
 USE_COLOR = None
 
-RegexOptions = namedtuple('RegexOptions', ('invert', 'flags', 'sites'))
-Match = namedtuple('Match', ('line_number', 'line_content', 'spans'))
-
-# Always open files using UTF-8
-open = partial(open, encoding='utf-8')
+RegexOptions = namedtuple("RegexOptions", ("invert", "flags", "sites"))
+Match = namedtuple("Match", ("line_number", "line_content", "spans"))
 
 # Utility functions
 
+
 def get_color_use(option):
-    if option == 'always':
+    if option == "always":
         return True
-    elif option == 'never':
+    elif option == "never":
         return False
     else:
         return sys.stdout.isatty()
+
 
 def get_regex_options(args):
     flags = re.MULTILINE
@@ -45,34 +44,41 @@ def get_regex_options(args):
         sites=sites,
     )
 
+
 def eprint(message):
     if USE_COLOR:
         message = f"{Fore.RED}{message}{Fore.RESET}"
 
     print(message, file=sys.stderr)
 
+
 def load(path):
-    with open(path) as file:
+    with open(path, encoding="utf-8") as file:
         data = json.load(file)
 
-    return data['pages']
+    return data["pages"]
+
 
 # Search
 
+
 def grep(regex, pages, options):
     if options.invert:
+
         def line_matches(line):
             match = regex.search(line)
             return (0, 0) if match is None else ()
+
     else:
+
         def line_matches(line):
             return [match.span() for match in regex.finditer(line)]
 
     page_matches = {}
 
     for slug, page in pages.items():
-        lines = page['source'].split('\n')
-        site = WIKIDOT_SITE_REGEX.match(page['url'])[1]
+        lines = page["source"].split("\n")
+        site = WIKIDOT_SITE_REGEX.match(page["url"])[1]
 
         if options.sites:
             # Check site filter
@@ -83,30 +89,38 @@ def grep(regex, pages, options):
         for i, line in enumerate(lines):
             spans = line_matches(line)
             if spans:
-                matches.append(Match(
-                    line_number=i,
-                    line_content=line,
-                    spans=spans,
-                ))
+                matches.append(
+                    Match(
+                        line_number=i,
+                        line_content=line,
+                        spans=spans,
+                    )
+                )
 
         if matches:
             page_matches[(site, slug)] = matches
 
     return page_matches
 
+
 # Printing results
+
 
 def print_filename(site, slug):
     if USE_COLOR:
-        print(f"({Fore.BLUE}{site}{Fore.RESET}) {Fore.MAGENTA}{slug}{Fore.RESET}:", end='')
+        print(
+            f"({Fore.BLUE}{site}{Fore.RESET}) {Fore.MAGENTA}{slug}{Fore.RESET}:", end=""
+        )
     else:
-        print(f"({site}) {slug}:", end='')
+        print(f"({site}) {slug}:", end="")
+
 
 def print_line_no(line_number):
     if USE_COLOR:
-        print(f"{Fore.GREEN}{line_number}{Fore.RESET}:", end='')
+        print(f"{Fore.GREEN}{line_number}{Fore.RESET}:", end="")
     else:
-        print(f"{line_number}:", end='')
+        print(f"{line_number}:", end="")
+
 
 def print_line_matches(match):
     if USE_COLOR:
@@ -115,23 +129,24 @@ def print_line_matches(match):
         # Slice out matches
         index = 0
         for start, end in match.spans:
-            message = ''.join((
-                # Before
-                match.line_content[index:start],
+            message = "".join(
+                (
+                    # Before
+                    match.line_content[index:start],
+                    # Match
+                    Fore.CYAN,
+                    Style.BRIGHT,
+                    match.line_content[start:end],
+                    Style.RESET_ALL,
+                )
+            )
 
-                # Match
-                Fore.CYAN,
-                Style.BRIGHT,
-                match.line_content[start:end],
-                Style.RESET_ALL,
-            ))
-
-            print(message, end='')
+            print(message, end="")
 
         # After
-        print(match.line_content[end:], end='')
+        print(match.line_content[end:], end="")
     else:
-        print(match.line_content, end='')
+        print(match.line_content, end="")
 
 
 def print_match_compact(site, slug, matches):
@@ -140,6 +155,7 @@ def print_match_compact(site, slug, matches):
         print_line_no(match.line_number)
         print_line_matches(match)
         print()
+
 
 def print_match_page(site, slug, matches):
     print_filename(site, slug)
@@ -152,13 +168,15 @@ def print_match_page(site, slug, matches):
 
     print()
 
+
 def print_grep_results(page_matches, compact):
     print_match = print_match_compact if compact else print_match_page
 
     for (site, slug), matches in page_matches.items():
         print_match(site, slug, matches)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     argparser = ArgumentParser(description="grep for wikidot sites")
     argparser.add_argument(
         "-F",

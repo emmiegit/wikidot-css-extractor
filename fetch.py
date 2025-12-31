@@ -17,11 +17,23 @@ from dateutil.parser import isoparse
 from config import Configuration
 
 REGEX_CROM_RATE_LIMIT = re.compile(r"(?:in|for) (\d+) seconds?")
-REGEX_WIKIDOT_URL = re.compile(r'^https?://([\w\-]+)\.wikidot\.com/(.+)$')
-REGEX_MODULE_CSS = re.compile(r'\[\[module +css\]\]\n(.+?)\n\[\[/module\]\]', re.IGNORECASE | re.DOTALL)
-REGEX_INLINE_CSS = re.compile(r'style="(.+?)"[^\]]*?\]\]', re.MULTILINE | re.IGNORECASE)
-REGEX_INCLUDES = re.compile(r'^\[\[include[\s\n]+((?::[a-z0-9\-.]+:[\s\n]?)?[a-z0-9:\-.]+)', re.MULTILINE | re.IGNORECASE)
-REGEX_CLASSES = re.compile(r'class="([^\]]+?)"', re.MULTILINE | re.IGNORECASE)
+REGEX_WIKIDOT_URL = re.compile(r"^https?://([\w\-]+)\.wikidot\.com/(.+)$")
+REGEX_MODULE_CSS = re.compile(
+    r"\[\[module +css\]\]\n(.+?)\n\[\[/module\]\]",
+    re.IGNORECASE | re.DOTALL,
+)
+REGEX_INLINE_CSS = re.compile(
+    r'style="(.+?)"[^\]]*?\]\]',
+    re.MULTILINE | re.IGNORECASE,
+)
+REGEX_INCLUDES = re.compile(
+    r"^\[\[include[\s\n]+((?::[a-z0-9\-.]+:[\s\n]?)?[a-z0-9:\-.]+)",
+    re.MULTILINE | re.IGNORECASE,
+)
+REGEX_CLASSES = re.compile(
+    r'class="([^\]]+?)"',
+    re.MULTILINE | re.IGNORECASE,
+)
 
 CROM_ENDPOINT = "https://api.crom.avn.sh/graphql"
 CROM_RETRIES = 3
@@ -77,7 +89,7 @@ with open(SQLITE_SEED_PATH) as file:
 
 def format_date(iso_date):
     if iso_date is None:
-        return 'None'
+        return "None"
 
     date = isoparse(iso_date)
     return f"{date.year}/{date.month}/{date.day}"
@@ -97,6 +109,7 @@ class Container:
 
     def __str__(self):
         return str(self.value)
+
 
 class CromError(RuntimeError):
     def __init__(self, errors):
@@ -119,6 +132,7 @@ class CromError(RuntimeError):
 
         return None
 
+
 class Crawler:
     def __init__(self, config):
         self.config = config
@@ -132,7 +146,9 @@ class Crawler:
             print("Loaded previous crawler state")
 
             with self.conn as cur:
-                result = cur.execute("SELECT cursor_state, last_created_at FROM crawler_state")
+                result = cur.execute(
+                    "SELECT cursor_state, last_created_at FROM crawler_state"
+                )
                 self.cursor, self.last_created_at = result.fetchone()
         else:
             print("No previous crawler state, starting fresh")
@@ -178,23 +194,23 @@ class Crawler:
                     source = ?
                 """,
                 (
-                    page['url'],
-                    page['slug'],
-                    page['title'],
-                    page['category'],
-                    page['created_at'],
-                    page['wikidot_page_id'],
-                    page['source'],
-                    page['slug'],
-                    page['title'],
-                    page['category'],
-                    page['created_at'],
-                    page['wikidot_page_id'],
-                    page['source'],
+                    page["url"],
+                    page["slug"],
+                    page["title"],
+                    page["category"],
+                    page["created_at"],
+                    page["wikidot_page_id"],
+                    page["source"],
+                    page["slug"],
+                    page["title"],
+                    page["category"],
+                    page["created_at"],
+                    page["wikidot_page_id"],
+                    page["source"],
                 ),
             )
 
-            cur.execute("DELETE FROM extracts WHERE page_url = ?", (page['url'],))
+            cur.execute("DELETE FROM extracts WHERE page_url = ?", (page["url"],))
 
             def add_extracts(extract_type, extracts):
                 for idx, extract in enumerate(extracts):
@@ -206,7 +222,7 @@ class Crawler:
                         (?, ?, ?, ?)
                         """,
                         (
-                            page['url'],
+                            page["url"],
                             idx,
                             extract_type,
                             extract,
@@ -222,16 +238,20 @@ class Crawler:
         for key, value in variables.items():
             query = query.replace(key, json.dumps(value))
 
-        payload = json.dumps({ 'query': query }).encode('utf-8')
+        payload = json.dumps({"query": query}).encode("utf-8")
 
         try:
-            async with session.post(CROM_ENDPOINT, data=payload, headers=CROM_HEADERS) as r:
+            async with session.post(
+                CROM_ENDPOINT,
+                data=payload,
+                headers=CROM_HEADERS,
+            ) as r:
                 json_body = await r.json()
 
-                if 'errors' in json_body:
-                    raise CromError(json_body['errors'])
+                if "errors" in json_body:
+                    raise CromError(json_body["errors"])
 
-                return json_body['data']
+                return json_body["data"]
         except CromError as error:
             if error.ratelimit is None:
                 raise error
@@ -249,25 +269,25 @@ class Crawler:
         }
 
         json_body = await self.raw_request(session, CROM_QUERY, variables)
-        pages = json_body['pages']
-        page_info = pages['pageInfo']
+        pages = json_body["pages"]
+        page_info = pages["pageInfo"]
 
-        has_next_page = page_info['hasNextPage']
+        has_next_page = page_info["hasNextPage"]
         if has_next_page:
-            self.cursor = page_info['endCursor']
+            self.cursor = page_info["endCursor"]
 
-        return pages['edges'], has_next_page
+        return pages["edges"], has_next_page
 
     @staticmethod
     def process_edge(edge):
         # Extract fields
-        node = edge['node']
-        url = node['url']
+        node = edge["node"]
+        url = node["url"]
         slug = REGEX_WIKIDOT_URL.match(url)[2]
 
         # Scrape styling from page source
-        wikidot_info = node['wikidotInfo']
-        source = wikidot_info['source']
+        wikidot_info = node["wikidotInfo"]
+        source = wikidot_info["source"]
 
         if source is None:
             # This can happen sometimes, for some reason
@@ -281,17 +301,17 @@ class Crawler:
 
         # Build and page object
         page = {
-            'url': url,
-            'slug': slug,
-            'title': wikidot_info['title'],
-            'category': wikidot_info['category'],
-            'created_at': wikidot_info['createdAt'],
-            'wikidot_page_id': wikidot_info['wikidotId'],
-            'source': source,
-            'module_styles': module_styles,
-            'inline_styles': inline_styles,
-            'includes': includes,
-            'classes': classes,
+            "url": url,
+            "slug": slug,
+            "title": wikidot_info["title"],
+            "category": wikidot_info["category"],
+            "created_at": wikidot_info["createdAt"],
+            "wikidot_page_id": wikidot_info["wikidotId"],
+            "source": source,
+            "module_styles": module_styles,
+            "inline_styles": inline_styles,
+            "includes": includes,
+            "classes": classes,
         }
 
         return page, slug
@@ -301,7 +321,9 @@ class Crawler:
         # For each classes field, it splits along spaces to get each one separately.
         # It then uses itertools.chain() to effectively flatten this 'list of lists'.
         # We then explicitly remove any blank entries, and then cast to list.
-        classes_lists = [classes[1].split(' ') for classes in REGEX_CLASSES.finditer(source)]
+        classes_lists = [
+            classes[1].split(" ") for classes in REGEX_CLASSES.finditer(source)
+        ]
 
         return list(filter(None, itertools.chain(*classes_lists)))
 
@@ -325,9 +347,12 @@ class Crawler:
         last_slug = Container()
 
         async with aiohttp.ClientSession() as session:
+
             async def pull_pages():
                 created_at = format_date(self.last_created_at)
-                print(f"+ Requesting next batch of pages (last page '{last_slug}', created {created_at})")
+                print(
+                    f"+ Requesting next batch of pages (last page '{last_slug}', created {created_at})"
+                )
 
                 # Make request
                 edges, has_next_page = await self.next_pages(session)
@@ -338,7 +363,7 @@ class Crawler:
                     last_slug.set(slug)
 
                     if page is not None:
-                        self.last_created_at = page['created_at']
+                        self.last_created_at = page["created_at"]
                         self.write_page(page)
 
                 return has_next_page
@@ -348,7 +373,8 @@ class Crawler:
 
             print("Hit the end, finished!")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     config = Configuration()
     crawler = Crawler(config)
     asyncio.run(crawler.fetch_all())
