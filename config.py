@@ -1,13 +1,10 @@
 import os
 import sys
-from functools import cached_property, partial
+from functools import cached_property
 
-import toml
+import tomllib
 
 DEFAULT_CONFIG_PATH = "config.toml"
-
-# Always open files using UTF-8
-open = partial(open, encoding='utf-8')
 
 class Configuration:
     def __init__(self):
@@ -16,8 +13,8 @@ class Configuration:
         else:
             path = DEFAULT_CONFIG_PATH
 
-        with open(path) as file:
-            self.data = toml.load(file)
+        with open(path, "rb") as file:
+            self.data = tomllib.load(file)
 
     @cached_property
     def output_path(self):
