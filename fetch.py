@@ -10,7 +10,6 @@ import sys
 import time
 import traceback
 from asyncio.exceptions import CancelledError
-from functools import partial
 
 import aiohttp
 from dateutil.parser import isoparse
@@ -83,8 +82,6 @@ def format_date(iso_date):
     date = isoparse(iso_date)
     return f"{date.year}/{date.month}/{date.day}"
 
-# Always open files using UTF-8
-open = partial(open, encoding='utf-8')
 
 class Container:
     __slots__ = ("value",)
