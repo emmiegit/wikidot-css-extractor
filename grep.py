@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-import json
 import re
+import sqlite3
 import sys
 from argparse import ArgumentParser
 from collections import namedtuple
@@ -61,7 +61,7 @@ def load(path):
 # Search
 
 
-def grep(regex, pages, options):
+def grep(conn, regex, options):
     if options.invert:
 
         def line_matches(line):
@@ -75,29 +75,31 @@ def grep(regex, pages, options):
 
     page_matches = {}
 
-    for slug, page in pages.items():
-        lines = page["source"].split("\n")
-        site = WIKIDOT_SITE_REGEX.match(page["url"])[1]
+    with conn as cur:
+        result = cur.execute("SELECT url, slug, source FROM pages")
+        for url, slug, source in result:
+            site = WIKIDOT_SITE_REGEX.match(url)[1]
+            lines = source.split("\n")
 
-        if options.sites:
-            # Check site filter
-            if site not in options.sites:
-                continue
+            if options.sites:
+                # Check site filter
+                if site not in options.sites:
+                    continue
 
-        matches = []
-        for i, line in enumerate(lines):
-            spans = line_matches(line)
-            if spans:
-                matches.append(
-                    Match(
-                        line_number=i,
-                        line_content=line,
-                        spans=spans,
+            matches = []
+            for i, line in enumerate(lines):
+                spans = line_matches(line)
+                if spans:
+                    matches.append(
+                        Match(
+                            line_number=i,
+                            line_content=line,
+                            spans=spans,
+                        )
                     )
-                )
 
-        if matches:
-            page_matches[(site, slug)] = matches
+            if matches:
+                page_matches[(site, slug)] = matches
 
     return page_matches
 
@@ -245,11 +247,6 @@ if __name__ == "__main__":
         eprint(f"Invalid regular expression: {error}")
         sys.exit(1)
 
-    try:
-        pages = load(args.path)
-    except (FileNotFoundError, json.JSONDecodeError) as error:
-        eprint(f"Unable to load page data: {error}")
-        sys.exit(1)
-
-    results = grep(regex, pages, options)
-    print_grep_results(results, args.compact)
+    with sqlite3.connect(args.path) as conn:
+        results = grep(conn, regex, options)
+        print_grep_results(results, args.compact)
