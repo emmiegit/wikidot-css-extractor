@@ -5,7 +5,6 @@ import re
 import sys
 from argparse import ArgumentParser
 from collections import namedtuple
-from functools import partial
 
 from colorama import Fore, Style
 
