@@ -21,6 +21,7 @@ class Configuration:
     def output_path(self):
         path = self.data["output-path"]
         if os.path.isabs(path):
+            os.makedirs(os.path.dirname(path), exist_ok=True)
             return path
         else:
             return os.path.join("output", path)
