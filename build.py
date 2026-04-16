@@ -4,6 +4,7 @@ import hashlib
 import os
 import re
 import sqlite3
+from contextlib import ExitStack
 from collections import defaultdict, namedtuple
 from datetime import datetime
 
@@ -78,7 +79,7 @@ class MultiList(list):
             self.append(item)
 
 
-def build_html(pages, counts):
+def build_html(cur, page_count, counts):
     # Build jinja environment and helpers
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader("templates"),
@@ -105,8 +106,9 @@ def build_html(pages, counts):
 
     # Build HTML
     html_pages = {}
+    pages = cur.execute("SELECT * FROM pages ORDER BY slug")
 
-    print(f"Generating {len(pages)} individual pages...")
+    print(f"Generating {page_count} individual pages...")
     for page in pages:
         slug = page["slug"]
 
@@ -168,19 +170,7 @@ def page_slug_key(slug):
         return f"scp-{number:07}{suffix}"
 
 
-def load_pages(path):
-    # TODO replace with SQLite implementation
-
-    with open(path, encoding="utf-8") as file:
-        data = json.load(file)
-
-    pages = list(data["pages"].values())
-    pages.sort(key=lambda page: page_slug_key(page["slug"]))
-
-    return pages
-
-
-def deduplicate_items(pages):
+def deduplicate_items(cur, page_count):
     print("Processing data...")
 
     module_styles_count = defaultdict(MultiList)
@@ -188,6 +178,7 @@ def deduplicate_items(pages):
     classes_count = defaultdict(MultiList)
     includes_count = defaultdict(MultiList)
 
+    pages = cur.execute("SELECT * FROM pages ORDER BY slug")
     for page in pages:
         slug = page["slug"]
 
@@ -204,7 +195,7 @@ def deduplicate_items(pages):
             classes_count[klass].append(slug)
 
     def convert(counts):
-        items = [(item, pages, len(pages)) for item, pages in counts.items()]
+        items = [(item, pages, page_count) for item, pages in counts.items()]
         items.sort(key=lambda item: item[2])
         items.reverse()
         return items
@@ -287,7 +278,10 @@ def set_current_site(config):
 if __name__ == "__main__":
     config = Configuration()
     set_current_site(config)
-    pages = load_pages(config.output_path)
-    counts = deduplicate_items(pages)
-    generated_html = build_html(pages, counts)
+    conn = sqlite3.connect(config.output_path)
+    conn.row_factory = sqlite3.Row
+    with conn as cur:
+        (page_count,) = cur.execute("SELECT COUNT(*) FROM pages").fetchone()
+        counts = deduplicate_items(cur, page_count)
+        generated_html = build_html(cur, page_count, counts)
     write_html(generated_html)
