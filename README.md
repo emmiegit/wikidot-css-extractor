@@ -32,7 +32,7 @@ You pull this using `fetch.py`. This can take several minutes, depending on the 
 $ ./fetch.py
 ```
 
-There will now be a JSON file in `output/` with the filename specified in `config.toml` (default `output/results.json`).
+There will now be a SQLite file in `output/` with the filename specified in `config.toml` (default `output/results.sqlite`).
 
 #### Search
 
@@ -83,7 +83,7 @@ If this repository is a fork, and you can push to it, you can publish a [GitHub 
 $ ./publish.sh
 ```
 
-This may take some time due to the size of the files. The large JSON blob (`output/results.json`) is _not_ uploaded.
+This may take some time due to the size of the files. The large SQLite blob (`output/results.sqlite`) is _not_ uploaded.
 
 ### Composition
 
