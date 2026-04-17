@@ -64,7 +64,7 @@ def get_extracts(page, extract_type):
     return (
         row["source"]
         for row in cur.execute(
-        """
+            """
         SELECT source FROM extracts
         WHERE page_url = ?
         AND extract_type = ?
@@ -140,13 +140,14 @@ def build_html(cur, page_count, counts):
 
     print("Generating detail pages...")
     html_pages["module-css"] = module_styles_template.render(
-        styles=counts.module_styles
+        styles=counts.module_styles,
     )
     html_pages["inline-css"] = inline_styles_template.render(
-        styles=counts.inline_styles
+        styles=counts.inline_styles,
     )
     html_pages["includes"] = includes_template.render(
-        includes=counts.includes, site_includes=counts.site_includes
+        includes=counts.includes,
+        site_includes=counts.site_includes,
     )
     html_pages["classes"] = classes_template.render(classes=counts.classes)
     html_pages["pages/index"] = page_index_template.render(pages=pages)
