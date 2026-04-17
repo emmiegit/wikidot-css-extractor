@@ -178,20 +178,35 @@ def deduplicate_items(cur, page_count):
     classes_count = defaultdict(MultiList)
     includes_count = defaultdict(MultiList)
 
+    def get_extracts(page, extract_type):
+        return cur.execute(
+            """
+            SELECT source FROM extracts
+            WHERE page_url = ?
+            AND extract_type = ?
+            ORDER BY extract_index
+            """,
+            (page["url"], extract_type),
+        )
+
     pages = cur.execute("SELECT * FROM pages ORDER BY slug")
     for page in pages:
         slug = page["slug"]
 
-        for style in page["module_styles"]:
+        for row in get_extracts(page, "module_style"):
+            style = row["source"]
             module_styles_count[style].append(slug)
 
-        for style in page["inline_styles"]:
+        for row in get_extracts(page, "inline_style"):
+            style = row["source"]
             inline_styles_count[style].append(slug)
 
-        for include in page["includes"]:
+        for row in get_extracts(page, "include"):
+            include = row["source"]
             includes_count[include].append(slug)
 
-        for klass in page["classes"]:
+        for row in get_extracts(page, "class"):
+            klass = row["source"]
             classes_count[klass].append(slug)
 
     def convert(counts):
