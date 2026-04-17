@@ -94,7 +94,10 @@ class MultiList(list):
             self.append(item)
 
 
-def build_html(cur, page_count, counts):
+def build_html(cur, counts):
+    # Get page count
+    (page_count,) = cur.execute("SELECT COUNT(*) FROM pages").fetchone()
+
     # Build jinja environment and helpers
     env = jinja2.Environment(
         loader=jinja2.FileSystemLoader("templates"),
@@ -187,7 +190,7 @@ def page_slug_key(slug):
         return f"scp-{number:07}{suffix}"
 
 
-def deduplicate_items(cur, page_count):
+def deduplicate_items(cur):
     print("Processing data...")
 
     module_styles_count = defaultdict(MultiList)
@@ -212,7 +215,7 @@ def deduplicate_items(cur, page_count):
             classes_count[klass].append(slug)
 
     def convert(counts):
-        items = [(item, pages, page_count) for item, pages in counts.items()]
+        items = [(item, pages, len(pages)) for item, pages in counts.items()]
         items.sort(key=lambda item: item[2])
         items.reverse()
         return items
@@ -298,7 +301,6 @@ if __name__ == "__main__":
     conn = sqlite3.connect(config.output_path)
     conn.row_factory = sqlite3.Row
     with conn as cur:
-        (page_count,) = cur.execute("SELECT COUNT(*) FROM pages").fetchone()
-        counts = deduplicate_items(cur, page_count)
-        generated_html = build_html(cur, page_count, counts)
+        counts = deduplicate_items(cur)
+        generated_html = build_html(cur, counts)
     write_html(generated_html)
