@@ -94,13 +94,6 @@ This repository has a few scripts:
 * `publish.sh` takes the data created by `fetch.js` and `build.py` and pushes them to the `gh-pages` branch. You can do this manually, if you prefer.
 * `grep.py` permits searching over all pages, as if using `grep` over a Wikidot site.
 
-Previously it made use of these scripts:
-
-* `scraper.js` runs through pages and looks for any CSS. Any styles, as well as the entire page sources are written to `extracted-styles.json`.
-* `merge.js` is able to merge different JSON files into one. Because the scraper can continue off from incomplete jobs (anything remaining in `extracted-styles.json`), this can be used to take incomplete results and combine them.
-
-This was prior to the switch of using the Crom API to retrieve Wikidot page sources instead of relying on scraping.
-
 ### Licensing
 
 This code is available under the terms of the MIT License.
