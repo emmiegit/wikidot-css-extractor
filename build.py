@@ -61,15 +61,18 @@ def get_local_include_slug(include):
 
 
 def get_extracts(page, extract_type):
-    return (row["source"] for row in cur.execute(
+    return (
+        row["source"]
+        for row in cur.execute(
         """
         SELECT source FROM extracts
         WHERE page_url = ?
         AND extract_type = ?
         ORDER BY extract_index
         """,
-        (page["url"], extract_type),
-    ))
+            (page["url"], extract_type),
+        )
+    )
 
 
 class MultiList(list):
