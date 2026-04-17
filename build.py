@@ -129,6 +129,7 @@ def build_html(cur, page_count, counts):
 
         html_pages[f"pages/{slug}"] = page_template.render(
             slug=slug,
+            page_count=page_count,
             title=page["title"],
             source=page["source"],
             module_styles=list(get_extracts(page, "module_style")),
