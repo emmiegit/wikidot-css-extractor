@@ -18,8 +18,9 @@ set -x
 [[ -f output/pages/index.html ]]
 [[ -f output/pages/scp-001.html ]]
 
-# NOTE: we aren't copying the JSON file,
+# NOTE: we aren't copying the SQLite file,
 # it's too big and we don't want to use GitHub LFS
+# instead it is published via GitHub releases
 
 cp -a static output/*.html output/pages  "$temp_dir"
 git checkout gh-pages

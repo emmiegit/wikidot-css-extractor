@@ -36,7 +36,7 @@ There will now be a SQLite file in `output/` with the filename specified in `con
 
 #### Search
 
-If you are interested in searching through the gathered JSON data, you can use `grep.py`. (See also: [grep](https://en.wikipedia.org/wiki/Grep))  
+If you are interested in searching through the gathered SQLite data, you can use `grep.py`. (See also: [grep](https://en.wikipedia.org/wiki/Grep))  
 Here is its usage information:
 
 ```
