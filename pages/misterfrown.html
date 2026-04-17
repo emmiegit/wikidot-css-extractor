@@ -30,29 +30,475 @@
       
         <li>
           <pre><code>
+/* Fonts */
+ 
+@import url(&#34;https://fonts.googleapis.com/css2?family=Anta&amp;family=Electrolize&amp;family=Exo+2:ital,wght@0,100..900;1,100..900&amp;family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#34;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Jost&amp;display=swap&#39;);
+
+#page-title,
+.meta-title {
+    display: none;
+}
+
+#main-content hr {
+    height: .2rem;
+    border-top: .05rem solid rgb(65,105,225);
+    background-color: rgb(65,105,225);
+}
+
+/* Primary Root Block */
+
 :root {
+
+--header-title: &#39;MISTERFROWN&#39;;
+--header-subtitle: &#39;THE AUTHOR PAGE&#39;;
+
+--header-height-on-desktop: 11rem;
+--header-height-on-mobile: 11rem;
+
+--header-font: &#34;Anta&#34;, sans-serif;
+--title-font: var(--header-font);
+--UI-font: var(--header-font);
+
+--medium-accent: 100,149,237;
+--dark-accent: 25,25,112;
+--bright-accent: 65,105,225;
+--gray-monochrome: var(--dark-accent);
 
 --maincolor: 65,105,225;
 --medcolor: 100,149,237;
 --darkcolor: 0,0,139;
 --brightcolor: 0,191,255;
-
---medium-accent: 100,149,237;
---dark-accent: 0,0,139;
---bright-accent: 65,105,225;
-
---barColour: var(--maincolor);
---toggle-border-color: rgb(var(--maincolor));
---toggle-icon-color: rgb(var(--maincolor));
---barColour: var(--maincolor);
  
 --link-color: var(--maincolor);
 --visited-link-color: var(--darkcolor);
 --hover-link-color: var(--brightcolor);
 --newpage-color: var(--brightcolor);
 
-    --borderColor: #4169e1 !important;
-    --bgBadgeColor: #003153 !important;
+--rating-module-text-color: var(--bright-accent);
+--swatch-primary: var(--bright-accent);
+--swatch-secondary-color: var(--dark-accent);
+--swatch-tertiary-color: var(--bright-accent);
+
+--swatch-menutxt-light-color: var(--bright-accent);
+--swatch-menutxt-dark-color: var(--bright-accent);
+
+--hoverblock-bg: var(--white-monochrome);
+--hoverblock-txt: var(--black-monochrome);
+--hoverblock-header-bg: var(--dark-accent);
+--hoverblock-header-txt: var(--white-monochrome);
+
+--toggle-border-color: rgb(var(--bright-accent));
+--toggle-icon-color: rgb(var(--bright-accent));
+--toggle-roundness: 20%;
+--toggle-button-bg: rgb(var(--dark-accent));
+
+--swatch-important-text: var(--white-monochrome);
+
+--swatch-menutxt-light-color: var(--white-monochrome);
+
+--ui-wght: 700;
+--ui-hvr-wght: 900;
+
+--borderColor: #4169e1 !important;
+--bgBadgeColor: #003153 !important;
+
+--five-color: 51,2,196;
+--four-color: 0,109,255;
+--two-color: 189,135,0;
+
+--zero: 0;
+
+}
+
+/* UI Button Changes */
+
+a.btn {
+
+webkit-clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+
+text-transform: uppercase !important;
+
+}
+
+/* Main Content Block */
+
+#main-content {
+
+--ui-icon-hover-color: var(--dark-accent);
+--ui-button-hover-txt: var(--dark-accent);
+--ui-icon-color: var(--bright-accent);
+
+--toc-header-text-color: var(--bright-accent);
+--toc-header-text-hover-color: var(--white-monochrome);
+
+--tables-header-txt: var(--bright-accent);
+
+--tabs-txt: var(--bright-accent);
+--tabs-bg: var(--white-monochrome);
+--tabs-hover-bg: var(--bright-accent);
+--tabs-hover-txt: var(--white-monochrome);
+--tabs-content-bg-color: var(--white-monochrome);
+--tabs-content-border-color: var(--bright-accent);
+--tabs-selected-bg: var(--bright-accent);
+--tabs-selected-txt: var(--white-monochrome);
+--tabs-selected-outline: var(--bright-accent);
+
+}
+
+/* Top Bar Customization (Taken from Ouroborous Theme) */
+
+        #extra-div-1 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(to bottom,
+                    rgb(var(--white-monochrome)) 0%,
+                    rgb(var(--white-monochrome)) 30%,
+                    rgb(var(--white-monochrome)) 100%),
+                linear-gradient(to bottom,
+                    rgb(var(--bright-accent)) calc(var(--header-height-on-desktop) + 0.145rem),
+                    rgb(var(--dark-accent)) calc(var(--header-height-on-desktop) + 0.125rem),
+                    rgb(var(--dark-accent)) calc(100% - 0.125rem),
+                    rgb(var(--dark-accent)) calc(100% - 0.125rem),
+                    rgb(var(--bright-accent)) calc(100% - 0.125rem),
+                    rgb(var(--bright-accent)) 100%),
+                linear-gradient(to bottom,
+                    rgba(var(--white-monochrome), 0) 0,
+                    rgba(var(--white-monochrome), 0.5) 10rem,
+                    rgba(var(--white-monochrome), 1) 25rem,
+                    rgba(var(--white-monochrome), 1) 100%);
+            background-size:
+                var(--header-background-image-size),
+                100% var(--final-header-height-on-desktop),
+                100% var(--background-gradient-distance);
+            background-repeat: no-repeat;
+            background-blend-mode: darken;
+            pointer-events: none;
+        }
+
+/* Header */
+
+#header {
+
+--login-username-color: var(--white-monochrome);
+--login-myaccount-color: var(--white-monochrome);
+--search-icon-color: var(--white-monochrome);
+--login-dropdown-text-hover-color: var(--white-monochrome);
+--login-line-divider-color: var(--white-monochrome);
+
+}
+
+#extra-div-2 {
+height: var(--header-height-on-desktop);
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+pointer-events: none;
+background-color: black;
+background-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Aborealis-constant-theme/aurora-header&#34;);
+background-size: calc(var(--header-height-on-desktop) * 10);
+}
+
+#extra-div-3 {
+height: var(--header-height-on-desktop);
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+pointer-events: none;
+background-image: var(--tech-pattern);
+background-size: calc(var(--header-height-on-desktop) * 4);
+}
+
+/* Breadcrumbs */
+
+#breadcrumbs a:hover,
+.pseudocrumbs a:hover,
+#breadcrumbs a:active,
+.pseudocrumbs a:active {
+
+color: rgb(var(--white-monochrome));
+text-decoration: none;
+
+}
+ 
+#breadcrumbs a:focus-within,
+.pseudocrumbs a:focus-within {
+
+color: rgb(var(--white-monochrome));
+text-decoration: none;
+
+}
+
+/* Misc. Changes */
+
+#content-wrap {
+background-color: var(--white-monochrome);
+background-image: var(--tech-pattern);
+background-size: 17%;
+background-repeat: repeat;
+}
+
+.image-block,
+.scp-image-block {
+outline: solid 3px rgb(var(--bright-accent));
+}
+
+:is(div.image-block, div.scp-image-block) :is(.image-caption, .scp-image-caption) {
+color: rgb(var(--bright-accent));
+border-top: solid 3px rgb(var(--bright-accent));
+font-family: var(--header-font);
+}
+
+.page-rate-widget-box .rate-points {
+text-transform: uppercase !important;
+}
+
+#page-content .info-container .collapsible-block-folded,
+#page-content .info-container .collapsible-block-unfolded-link {
+display: grid;
+background: rgb(var(--dark-accent));
+}
+
+#u-author_block &gt; p &gt; a {
+    background: #FFFFFF;
+}
+
+.code, .page-source {
+
+background: rgb(var(--white-monochrome));
+
+}
+
+#top-bar {
+
+--dropdown-links-hover-color: var(--white-monochrome);
+--topmenu-category-hover-color: var(--white-monochrome);
+--topmenu-category-color: var(--bright-accent);
+--mobile-topmenu-sidebar-button-color: var(--bright-accent);
+
+}
+
+#side-bar,
+#interwiki {
+
+--sidebar-links-hover-text-color: var(--white-monochrome);
+
+}
+
+/* Footnote Changes */
+
+.bibitems,
+.footnotes-footer {
+
+background-color: rgb(var(--white-monochrome));
+border-top: solid 2px rgb(var(--dark-accent));
+border-right: solid 2px rgb(var(--dark-accent));
+border-bottom: solid 2px rgb(var(--dark-accent));
+
+}
+ 
+.bibitems .title,
+.footnotes-footer .title {
+
+background-color: rgb(var(--dark-accent));
+webkit-clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+width: 40%;
+text-align: center;
+color: rgb(var(--bright-accent));
+font-family: var(--header-font);
+text-transform: uppercase;
+
+}
+
+.bibitems .bibitem::after,
+.footnotes-footer a[href*=&#34;javascript&#34;]::before {
+
+background-color: rgb(var(--white-monochrome));
+
+}
+
+.hovertip .content {
+
+font-family: var(--body-font);
+
+}
+
+.info-container {
+
+--barColour: rgb(var(--white-monochrome));
+--linkColour: #FFF;
+
+}
+
+/* ACS Bar Alterations (Code from Anomaly Class Bar, Customizable ACS, and ACS Animation) */
+
+.anom-bar-container.clear-6 .top-right-box &gt; .clearance::before {
+    content: &#34;Omega Ultra-Secret&#34;;
+}
+
+.anom-bar-container.clear-5 .top-right-box &gt; .clearance::before {
+    content: &#34;Ultra-Secret&#34;;
+}
+
+
+body .bottom-box &gt; .diamond-part {
+    -webkit-box-shadow: -0.5rem 0 0 0 rgb(var(--dark-accent));
+       -moz-box-shadow: -0.5rem 0 0 0 rgb(var(--dark-accent));
+     box-shadow: -0.5rem 0 0 0 rgb(var(--dark-accent));
+}
+
+body .danger-diamond &gt; .arrows {
+    background-color: rgb(var(--dark-accent));
+}
+
+.anom-bar &gt; div.bottom-box { box-shadow: none; position: relative; }
+.anom-bar &gt; div.bottom-box::before {
+    position: absolute;
+    content: &#34; &#34;;
+    width: 100%;
+    height: 0.5rem;
+    bottom: 100%; left: 0;
+    background-color: rgb(var(--dark-accent));
+}
+
+/* Tech Pattern */
+
+:root {
+
+--tech-pattern: url(&#34;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 304 304&#39; width=&#39;304&#39; height=&#39;304&#39;%3E%3Cpath fill=&#39;%23aeaeb0&#39; fill-opacity=&#39;0.08&#39; d=&#39;M44.1 224a5 5 0 1 1 0 2H0v-2h44.1zm160 48a5 5 0 1 1 0 2H82v-2h122.1zm57.8-46a5 5 0 1 1 0-2H304v2h-42.1zm0 16a5 5 0 1 1 0-2H304v2h-42.1zm6.2-114a5 5 0 1 1 0 2h-86.2a5 5 0 1 1 0-2h86.2zm-256-48a5 5 0 1 1 0 2H0v-2h12.1zm185.8 34a5 5 0 1 1 0-2h86.2a5 5 0 1 1 0 2h-86.2zM258 12.1a5 5 0 1 1-2 0V0h2v12.1zm-64 208a5 5 0 1 1-2 0v-54.2a5 5 0 1 1 2 0v54.2zm48-198.2V80h62v2h-64V21.9a5 5 0 1 1 2 0zm16 16V64h46v2h-48V37.9a5 5 0 1 1 2 0zm-128 96V208h16v12.1a5 5 0 1 1-2 0V210h-16v-76.1a5 5 0 1 1 2 0zm-5.9-21.9a5 5 0 1 1 0 2H114v48H85.9a5 5 0 1 1 0-2H112v-48h12.1zm-6.2 130a5 5 0 1 1 0-2H176v-74.1a5 5 0 1 1 2 0V242h-60.1zm-16-64a5 5 0 1 1 0-2H114v48h10.1a5 5 0 1 1 0 2H112v-48h-10.1zM66 284.1a5 5 0 1 1-2 0V274H50v30h-2v-32h18v12.1zM236.1 176a5 5 0 1 1 0 2H226v94h48v32h-2v-30h-48v-98h12.1zm25.8-30a5 5 0 1 1 0-2H274v44.1a5 5 0 1 1-2 0V146h-10.1zm-64 96a5 5 0 1 1 0-2H208v-80h16v-14h-42.1a5 5 0 1 1 0-2H226v18h-16v80h-12.1zm86.2-210a5 5 0 1 1 0 2H272V0h2v32h10.1zM98 101.9V146H53.9a5 5 0 1 1 0-2H96v-42.1a5 5 0 1 1 2 0zM53.9 34a5 5 0 1 1 0-2H80V0h2v34H53.9zm60.1 3.9V66H82v64H69.9a5 5 0 1 1 0-2H80V64h32V37.9a5 5 0 1 1 2 0zM101.9 82a5 5 0 1 1 0-2H128V37.9a5 5 0 1 1 2 0V82h-28.1zm16-64a5 5 0 1 1 0-2H146v44.1a5 5 0 1 1-2 0V18h-26.1zm102.2 270a5 5 0 1 1 0 2H98v14h-2v-16h124.1zM242 149.9V160h16v34h-16v62h48v48h-2v-46h-48v-66h16v-30h-16v-12.1a5 5 0 1 1 2 0zM53.9 18a5 5 0 1 1 0-2H64V2H48V0h18v18H53.9zm112 32a5 5 0 1 1 0-2H192V0h50v2h-48v48h-28.1zm-48-48a5 5 0 0 1-9.8-2h2.07a3 3 0 1 0 5.66 0H178v34h-18V21.9a5 5 0 1 1 2 0V32h14V2h-58.1zm0 96a5 5 0 1 1 0-2H137l32-32h39V21.9a5 5 0 1 1 2 0V66h-40.17l-32 32H117.9zm28.1 90.1a5 5 0 1 1-2 0v-76.51L175.59 80H224V21.9a5 5 0 1 1 2 0V82h-49.59L146 112.41v75.69zm16 32a5 5 0 1 1-2 0v-99.51L184.59 96H300.1a5 5 0 0 1 3.9-3.9v2.07a3 3 0 0 0 0 5.66v2.07a5 5 0 0 1-3.9-3.9H185.41L162 121.41v98.69zm-144-64a5 5 0 1 1-2 0v-3.51l48-48V48h32V0h2v50H66v55.41l-48 48v2.69zM50 53.9v43.51l-48 48V208h26.1a5 5 0 1 1 0 2H0v-65.41l48-48V53.9a5 5 0 1 1 2 0zm-16 16V89.41l-34 34v-2.82l32-32V69.9a5 5 0 1 1 2 0zM12.1 32a5 5 0 1 1 0 2H9.41L0 43.41V40.6L8.59 32h3.51zm265.8 18a5 5 0 1 1 0-2h18.69l7.41-7.41v2.82L297.41 50H277.9zm-16 160a5 5 0 1 1 0-2H288v-71.41l16-16v2.82l-14 14V210h-28.1zm-208 32a5 5 0 1 1 0-2H64v-22.59L40.59 194H21.9a5 5 0 1 1 0-2H41.41L66 216.59V242H53.9zm150.2 14a5 5 0 1 1 0 2H96v-56.6L56.6 162H37.9a5 5 0 1 1 0-2h19.5L98 200.6V256h106.1zm-150.2 2a5 5 0 1 1 0-2H80v-46.59L48.59 178H21.9a5 5 0 1 1 0-2H49.41L82 208.59V258H53.9zM34 39.8v1.61L9.41 66H0v-2h8.59L32 40.59V0h2v39.8zM2 300.1a5 5 0 0 1 3.9 3.9H3.83A3 3 0 0 0 0 302.17V256h18v48h-2v-46H2v42.1zM34 241v63h-2v-62H0v-2h34v1zM17 18H0v-2h16V0h2v18h-1zm273-2h14v2h-16V0h2v16zm-32 273v15h-2v-14h-14v14h-2v-16h18v1zM0 92.1A5.02 5.02 0 0 1 6 97a5 5 0 0 1-6 4.9v-2.07a3 3 0 1 0 0-5.66V92.1zM80 272h2v32h-2v-32zm37.9 32h-2.07a3 3 0 0 0-5.66 0h-2.07a5 5 0 0 1 9.8 0zM5.9 0A5.02 5.02 0 0 1 0 5.9V3.83A3 3 0 0 0 3.83 0H5.9zm294.2 0h2.07A3 3 0 0 0 304 3.83V5.9a5 5 0 0 1-3.9-5.9zm3.9 300.1v2.07a3 3 0 0 0-1.83 1.83h-2.07a5 5 0 0 1 3.9-3.9zM97 100a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-48 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 96a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-144a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM49 36a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM33 68a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 240a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm80-176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm112 176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 180a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 84a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z&#39;%3E%3C/path%3E%3C/svg%3E&#34;);
+
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+div.graph {
+   display: grid;
+   grid-template-columns: repeat(2, 50fr);
+   grid-template-rows: auto;
+   grid-gap: 1rem;
+   grid-template-areas:
+     &#34;info new&#34;;
+}
+
+div.graphinfo{
+    grid-area: info;
+    color: black;
+    position: relative;
+    z-index: 1;
+}
+
+div.graphnew{
+    grid-area: new;
+    position: relative;
+    z-index: 1;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+.bigbox {
+
+background: rgb(255,255,255);
+border-left: solid 5.5px rgb(65,105,225);
+border-right: solid 5.5px rgb(65,105,225);
+margin-block: 1.4rem;
+padding-inline: 1.5rem;
+padding-block: 0.5rem;
+color: rgb(65,105,225);
+
+}
+
+.card {
+
+position: relative;
+width: 14rem;
+text-align: center;
+transition: transform .16s;
+display: inline-table;
+flex-wrap: wrap;
+z-index: 2;
+
+}
+
+.card:is(:hover,:focus-within) {
+transform: scale(1.3);
+z-index: 3;
+
+}
+
+.cardbody-exterior {
+
+background: rgb(65,105,225);
+padding: .4rem;
+margin: .2rem;
+clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+transition: translate .16s;
+z-index: 2;
+flex-flow: row wrap;
+
+}
+
+.cardbody-exterior:is(:hover,:focus-within) {
+translate: .8rem;
+}
+
+.cardbody-interior {
+
+background: rgb(255,255,255);
+padding: .7rem;
+clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+z-index: 2;
+
+}
+
+.cardbody-main {
+
+border-left: solid 3.5px rgb(65,105,225);
+border-right: solid 3.5px rgb(65,105,225);
+background-size: 60%;
+background-position: center;
+display: block;
+
+}
+
+.cardbody-title {
+
+color: white;
+background: rgb(65,105,225);
+width: 100%;
+float: center;
+margin-top: 10px;
+
+}
+
+.titlesection {
+
+height: 50px;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}
+
+.section {
+
+color: rgb(65,105,225);
+border-bottom: solid 5px rgb(65,105,225);
+margin-bottom: 10px;
+margin-top: 20px;
 
 }
 </code></pre>
@@ -64,7 +510,411 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: url(</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 10px</code></pre>
         </li>
       
     </ul>
@@ -94,8 +944,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-wiki:component:toggle-sidebar-bhl</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar-bhl.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -105,8 +961,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -116,8 +978,14 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -127,8 +995,201 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
   
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:wikimodule" target="_blank"><code>:scp-wiki:component:wikimodule</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:wikimodule.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
 
   
 </li>
@@ -139,123 +1200,2938 @@
     <ul class="css-classes">
       
         <li>
-          (none)
+          <pre><code>bigbox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graph</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graphinfo</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bigbox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>graphnew</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bigbox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>section</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>section</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>section</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>section</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>card</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-exterior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-interior</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>titlesection</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cardbody-main</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+
+[[=]]
+[[module Rate]]
+[[/=]]
+
+[[div class=&#34;bigbox&#34;]]
+
+[[=]]
+
+[[size 150%]]
++ MISTERFROWN
+[[/size]]
+
+[[/=]]
+
+[[/div]]
+
+----
+
+[[div class=&#34;graph&#34;]]
+
+[[div class=&#34;graphinfo&#34;]]
+
+[[div class=&#34;bigbox&#34;]]
+
+[[module Listpages created_by=&#34;MisterFrown&#34; order=&#34;rating desc&#34; limit=&#34;1&#34; separate=&#34;no&#34; wrapper=&#34;yes&#34;]]
+
+[[=]]
+++ TOP POST:
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++++ %%title_linked%%
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++++ +%%rating%% (+[[#expr (%%rating%%+((%%rating_votes%%-%%rating%%)/2))]], -[[#expr ((%%rating_votes%%-%%rating%%)/2)]])
+
+[[/=]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[div class=&#34;graphnew&#34;]]
+
+[[div class=&#34;bigbox&#34;]]
+
+[[module Listpages created_by=&#34;MisterFrown&#34; order=&#34;created_at desc&#34; limit=&#34;1&#34; separate=&#34;no&#34; wrapper=&#34;yes&#34;]]
+
+[[=]]
+++ LATEST POST:
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++++ %%title_linked%%
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++++ +%%rating%% (+[[#expr (%%rating%%+((%%rating_votes%%-%%rating%%)/2))]], -[[#expr ((%%rating_votes%%-%%rating%%)/2)]])
+
+[[/=]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+@@@@
+@@@@
+
+[[div class=&#34;section&#34;]]
+
++ Joke SCPs
+
+[[/div]]
+
+[[=]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-001-J
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Ol&#39; Reliable}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/misterfrown-s-proposal-j&#34; style=&#34;background: url(&#34;https://scp-wiki.wdfiles.com/local--files/scp-001/fractal-mka.jpeg&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;MisterFrown&#39;s Proposal-J&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-001-J
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Site-17 Deep Well}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/deepwell-proposal&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Old_well_in_Pagarusha.jpg/1200px-Old_well_in_Pagarusha.jpg?20180914151157&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;Deepwell Proposal&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-001-J
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{D-I-WHY?!}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/everyone-s-proposal&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/ETH-BIB-St._Gallen%2C_Hochschule_f%C3%BCr_Wirtschafts-_und_Sozialwissenschaften_%28HSG%29%2C_Hauptgeb%C3%A4ude-Com_LC0590-007-006.tif/lossy-page1-1199px-ETH-BIB-St._Gallen%2C_Hochschule_f%C3%BCr_Wirtschafts-_und_Sozialwissenschaften_%28HSG%29%2C_Hauptgeb%C3%A4ude-Com_LC0590-007-006.tif.jpg?20210804084705&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;Everyone&#39;s Proposal&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-001-D-J
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{The Way It Begins}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-001-d-j&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Vintage_Sparton_Cobalt_Blue_Mirrored_Table_Radio%2C_7_Sided_Mirror_with_Wood_Case%2C_Model_409GL%2C_AM_Band%2C_5_Vacuum_Tubes%2C_Made_In_USA%2C_Circa_1938_%2813941910893%29.jpg/1124px-Vintage_Sparton_Cobalt_Blue_Mirrored_Table_Radio%2C_7_Sided_Mirror_with_Wood_Case%2C_Model_409GL%2C_AM_Band%2C_5_Vacuum_Tubes%2C_Made_In_USA%2C_Circa_1938_%2813941910893%29.jpg?20200304142411&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-001-D-J&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-001½-J
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{The Big Blue Button}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-001-and-a-half-j&#34; style=&#34;background: url(&#34;https://scpsandboxcn.wdfiles.com/local--files/dingxiaoshu-file/%E8%93%9D%E8%89%B2%E6%8C%89%E9%92%AE&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-001-and-a-half-J&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-9000-J
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Hope You Can Read Braille}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-9000-j&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/IBM_1401_at_CHM.jpg/1200px-IBM_1401_at_CHM.jpg?20120207225423&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-9000-J&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ TABOO-J
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{[REDACTED DUE TO LACK OF NUMBER]}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/taboo-j&#34; style=&#34;background: url(&#34;https://testinggrounds.wdfiles.com/local--files/taboo-j/stump.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;Taboo-J&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[/=]]
+
+[[div class=&#34;section&#34;]]
+
++ SCPs
+
+[[/div]]
+
+[[=]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-666-EX
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Demon Core}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-666-ex&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/1/13/Partially-reflected-plutonium-sphere.jpeg?20171114232054&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-666-EX&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-6914
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Touch Grass}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-6914&#34; style=&#34;background: url(&#34;https://scp-sandbox-3.wdfiles.com/local--files/frowngrass/keepoffgrass.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-6914&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-6964
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Presidentio}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-6964&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Mount_Rushmore_National_Memorial_in_Keystone%2C_South_Dakota.jpg/1200px-Mount_Rushmore_National_Memorial_in_Keystone%2C_South_Dakota.jpg?20211019070149&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-6964&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-8069
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Pig Clock}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-8069&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Zegar-Shortta.JPG/600px-Zegar-Shortta.JPG?20130311132726&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-8069&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-8231
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{The Scarlet Thing}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-8231&#34; style=&#34;background: url(&#34;https://scp-sandbox-3.wdfiles.com/local--files/frownscp3/flower.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-8231&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-8338
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ [[size 70%]] **{{I&#39;m president of the United States. And I&#39;m not gonna eat any more broccoli!}}** [[/size]]
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-8338&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/1600_Pennsylvania_Avenue.jpg/1200px-1600_Pennsylvania_Avenue.jpg?20210621013011&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-8338&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-8399
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{INSURGENCE}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-8399&#34; style=&#34;background: url(&#34;https://testinggrounds.wdfiles.com/local--files/insurgence/controlroom.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-8399&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SCP-8820
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{To Kill a Bull Moose}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-8820&#34; style=&#34;background: url(&#34;https://scp-sandbox-3.wdfiles.com/local--files/frown8000/revolver.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-8820&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[/=]]
+
+[[div class=&#34;section&#34;]]
+
++ SPCs
+
+[[/div]]
+
+[[=]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-000
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{All These Empty Days}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/spc-000&#34; style=&#34;background: url(&#34;https://scp-sandbox-3.wdfiles.com/local--files/frownspc/grayedcomputer.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SPC-000&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-001-J
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{The Big Red Boxing Glove}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/spc-001-j&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/AltSpace_Community.jpg/1200px-AltSpace_Community.jpg?20150728164942&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SPC-001-J&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-001-EX
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{A Bad Boy}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/spc-001-ex&#34; style=&#34;background: url(&#34;https://scp-wiki.wdfiles.com/local--files/spc-001-ex/ersats2.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SPC-001-EX&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-001
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{The Sharkbody}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/misterfrown-s-dumb-proposal&#34; style=&#34;background: url(&#34;https://scp-wiki.wdfiles.com/local--files/misterfrown-s-dumb-proposal/01_solitubuler.jpg&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;MisterFrown&#39;s Dumb Proposal&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-001
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Formalcy}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/misterfrown-s-dumber-proposal&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Cosplayers_of_shark_and_Gawr_Gura_in_front_of_Entrance_North_3_20231007b.jpg/1200px-Cosplayers_of_shark_and_Gawr_Gura_in_front_of_Entrance_North_3_20231007b.jpg?20231007143959&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;MisterFrown&#39;s Dumber Proposal&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-001
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{The Wave That Bends}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/misterfrown-s-dumbest-proposal&#34; style=&#34;background: url(&#34;https://scp-sandbox-3.wdfiles.com/local--files/frownspc3/allthingsmustbegin.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;MisterFrown&#39;s Dumbest Proposal&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-001
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{The Disagreement}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/right-proposal&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Vel%C3%ADn_Strahovsk%C3%A9ho_tunelu.jpg/1200px-Vel%C3%ADn_Strahovsk%C3%A9ho_tunelu.jpg?20230319150316&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;Right Proposal&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-002
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{The Cog of God}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/spc-002&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/John_Jellicoe%2C_Admiral_of_the_Fleet.jpg/618px-John_Jellicoe%2C_Admiral_of_the_Fleet.jpg?20140815001222&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SPC-002&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ SPC-3000
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Anguillaanguilla}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/spc-3000&#34; style=&#34;background: url(&#34;https://scp-wiki.wdfiles.com/local--files/spc-3000/eel2.jpg&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SPC-3000&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+[[/=]]
+
+[[div class=&#34;section&#34;]]
+
++ Other Pages
+
+[[/div]]
+
+[[=]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ Tale
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Log of Deviant Appliances}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/log-of-deviant-appliances&#34; style=&#34;background: url(&#34;https://scp-wiki.wdfiles.com/local--files/the-appliance-war-hub/37NONUMBERSVG.svg&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;Log of Deviant Appliances&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ Tale
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{SCP-173 But it&#39;s the ADMONITION Hub}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-173-but-it-s-the-admonition-hub&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Population_sign%2C_Gross%2C_Nebraska%2C_USA.jpg/1200px-Population_sign%2C_Gross%2C_Nebraska%2C_USA.jpg?20070717023228&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-173 But it&#39;s the ADMONITION Hub&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ Tale
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ [[size 70%]] **{{Excerpts of Particular Interest From the Galileo Deep-Space Observatory Archives}}** [[/size]]
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/excerpts-from-the-galileo-deep-space-observatory&#34; style=&#34;background: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Alumina/moon.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;Excerpts From the Galileo Deep-Space Observatory&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ Author Page
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{MisterFrown}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/misterfrown&#34; style=&#34;background: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Aclock-tower/color-bg.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;MisterFrown&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ Hub
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Ouroborealis}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/ouroborealis&#34; style=&#34;background: url(&#34;https://scp-sandbox-3.wdfiles.com/local--files/frownspc2/ouroborealis3.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;Ouroborealis&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ Essay
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{This Essay Is No Joke}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/this-essay-is-no-joke&#34; style=&#34;background: url(&#34;https://scp-wiki.wikidot.com/local--files/theme:foxtrot/fxtrt-scp_logo_lightmode.svg&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;This Essay Is No Joke&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ GoI Format
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{SCP-001 -- Wikipedia}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/scp-001-wikipedia&#34; style=&#34;background: url(&#34;https://scp-wiki.wdfiles.com/local--files/twistedgears-kaktus-proposal/bg2.png&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;SCP-001 -- Wikipedia&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+
+[[div class=&#34;card&#34;]]
+
+[[div class=&#34;cardbody-exterior&#34;]]
+
+[[div class=&#34;cardbody-interior&#34;]]
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
++++ Tale
+
+----
+
+[[div class=&#34;titlesection&#34;]]
+
++++++ **{{Nx-05}}**
+
+[[/div]]
+
+----
+
+[[a class=&#34;cardbody-main&#34; href=&#34;/nx-05&#34; style=&#34;background: url(&#34;https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Path_through_Chedworth_Woods_-_geograph.org.uk_-_3083588.jpg/600px-Path_through_Chedworth_Woods_-_geograph.org.uk_-_3083588.jpg?20220118223704&#34;) center no-repeat; background-size: cover;&#34;]]
+
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+
+[[/a]]
+
+----
+
+[[div style=&#34;height: 10px&#34;]]
+[[/div]]
+
+[[module ListPages name=&#34;Nx-05&#34;]]
++++ (+%%rating%%)
+[[/module]]
+
+[[/div]]
+
+[[/div]]
+
+[[/div]]
+
+
+[[/=]]
+
+@@@@
+@@@@
+
+----
+
+[[=]]
+
+[[include :scp-wiki:component:sybadge code=egd]]
+[[include :scp-wiki:component:sybadge code=mww]]
+[[include :scp-wiki:component:sybadge code=clb]]
+[[include :scp-wiki:component:sybadge code=tsf]]
+[[include :scp-wiki:component:sybadge code=awb]]
+[[include :scp-wiki:component:sybadge code=gsa]]
+[[include :scp-wiki:component:sybadge code=pvr]]
+[[include :scp-wiki:component:sybadge code=scl]]
+[[include :scp-wiki:component:sybadge code=knl]]
+[[include :scp-wiki:component:sybadge code=sek]]
+[[include :scp-wiki:component:sybadge code=dado]]
+
+[[/=]]
+
+----
+
+[[=]]
+
+[[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Hearts.jpg]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Arrows.png]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Orange.png]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/1K.jpg]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Attendance.png]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/TV.png]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Cycle.jpg]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Art.png]]
+
+[[/=]]
+
+----
+
+[[include :scp-wiki:component:wikimodule |ratings= --]]]
+
+[[include :scp-wiki:component:license-box |author=MisterFrown]]
+[[include :scp-wiki:component:license-box-end]]
 
 [[module CSS]]
 
+/* Fonts */
+ 
+@import url(&#34;https://fonts.googleapis.com/css2?family=Anta&amp;family=Electrolize&amp;family=Exo+2:ital,wght@0,100..900;1,100..900&amp;family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#34;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Jost&amp;display=swap&#39;);
+
+#page-title,
+.meta-title {
+    display: none;
+}
+
+#main-content hr {
+    height: .2rem;
+    border-top: .05rem solid rgb(65,105,225);
+    background-color: rgb(65,105,225);
+}
+
+/* Primary Root Block */
+
 :root {
+
+--header-title: &#39;MISTERFROWN&#39;;
+--header-subtitle: &#39;THE AUTHOR PAGE&#39;;
+
+--header-height-on-desktop: 11rem;
+--header-height-on-mobile: 11rem;
+
+--header-font: &#34;Anta&#34;, sans-serif;
+--title-font: var(--header-font);
+--UI-font: var(--header-font);
+
+--medium-accent: 100,149,237;
+--dark-accent: 25,25,112;
+--bright-accent: 65,105,225;
+--gray-monochrome: var(--dark-accent);
 
 --maincolor: 65,105,225;
 --medcolor: 100,149,237;
 --darkcolor: 0,0,139;
 --brightcolor: 0,191,255;
-
---medium-accent: 100,149,237;
---dark-accent: 0,0,139;
---bright-accent: 65,105,225;
-
---barColour: var(--maincolor);
---toggle-border-color: rgb(var(--maincolor));
---toggle-icon-color: rgb(var(--maincolor));
---barColour: var(--maincolor);
  
 --link-color: var(--maincolor);
 --visited-link-color: var(--darkcolor);
 --hover-link-color: var(--brightcolor);
 --newpage-color: var(--brightcolor);
 
-    --borderColor: #4169e1 !important;
-    --bgBadgeColor: #003153 !important;
+--rating-module-text-color: var(--bright-accent);
+--swatch-primary: var(--bright-accent);
+--swatch-secondary-color: var(--dark-accent);
+--swatch-tertiary-color: var(--bright-accent);
+
+--swatch-menutxt-light-color: var(--bright-accent);
+--swatch-menutxt-dark-color: var(--bright-accent);
+
+--hoverblock-bg: var(--white-monochrome);
+--hoverblock-txt: var(--black-monochrome);
+--hoverblock-header-bg: var(--dark-accent);
+--hoverblock-header-txt: var(--white-monochrome);
+
+--toggle-border-color: rgb(var(--bright-accent));
+--toggle-icon-color: rgb(var(--bright-accent));
+--toggle-roundness: 20%;
+--toggle-button-bg: rgb(var(--dark-accent));
+
+--swatch-important-text: var(--white-monochrome);
+
+--swatch-menutxt-light-color: var(--white-monochrome);
+
+--ui-wght: 700;
+--ui-hvr-wght: 900;
+
+--borderColor: #4169e1 !important;
+--bgBadgeColor: #003153 !important;
+
+--five-color: 51,2,196;
+--four-color: 0,109,255;
+--two-color: 189,135,0;
+
+--zero: 0;
+
+}
+
+/* UI Button Changes */
+
+a.btn {
+
+webkit-clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+
+text-transform: uppercase !important;
+
+}
+
+/* Main Content Block */
+
+#main-content {
+
+--ui-icon-hover-color: var(--dark-accent);
+--ui-button-hover-txt: var(--dark-accent);
+--ui-icon-color: var(--bright-accent);
+
+--toc-header-text-color: var(--bright-accent);
+--toc-header-text-hover-color: var(--white-monochrome);
+
+--tables-header-txt: var(--bright-accent);
+
+--tabs-txt: var(--bright-accent);
+--tabs-bg: var(--white-monochrome);
+--tabs-hover-bg: var(--bright-accent);
+--tabs-hover-txt: var(--white-monochrome);
+--tabs-content-bg-color: var(--white-monochrome);
+--tabs-content-border-color: var(--bright-accent);
+--tabs-selected-bg: var(--bright-accent);
+--tabs-selected-txt: var(--white-monochrome);
+--tabs-selected-outline: var(--bright-accent);
+
+}
+
+/* Top Bar Customization (Taken from Ouroborous Theme) */
+
+        #extra-div-1 {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            background-image:
+                linear-gradient(to bottom,
+                    rgb(var(--white-monochrome)) 0%,
+                    rgb(var(--white-monochrome)) 30%,
+                    rgb(var(--white-monochrome)) 100%),
+                linear-gradient(to bottom,
+                    rgb(var(--bright-accent)) calc(var(--header-height-on-desktop) + 0.145rem),
+                    rgb(var(--dark-accent)) calc(var(--header-height-on-desktop) + 0.125rem),
+                    rgb(var(--dark-accent)) calc(100% - 0.125rem),
+                    rgb(var(--dark-accent)) calc(100% - 0.125rem),
+                    rgb(var(--bright-accent)) calc(100% - 0.125rem),
+                    rgb(var(--bright-accent)) 100%),
+                linear-gradient(to bottom,
+                    rgba(var(--white-monochrome), 0) 0,
+                    rgba(var(--white-monochrome), 0.5) 10rem,
+                    rgba(var(--white-monochrome), 1) 25rem,
+                    rgba(var(--white-monochrome), 1) 100%);
+            background-size:
+                var(--header-background-image-size),
+                100% var(--final-header-height-on-desktop),
+                100% var(--background-gradient-distance);
+            background-repeat: no-repeat;
+            background-blend-mode: darken;
+            pointer-events: none;
+        }
+
+/* Header */
+
+#header {
+
+--login-username-color: var(--white-monochrome);
+--login-myaccount-color: var(--white-monochrome);
+--search-icon-color: var(--white-monochrome);
+--login-dropdown-text-hover-color: var(--white-monochrome);
+--login-line-divider-color: var(--white-monochrome);
+
+}
+
+#extra-div-2 {
+height: var(--header-height-on-desktop);
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+pointer-events: none;
+background-color: black;
+background-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme%3Aborealis-constant-theme/aurora-header&#34;);
+background-size: calc(var(--header-height-on-desktop) * 10);
+}
+
+#extra-div-3 {
+height: var(--header-height-on-desktop);
+width: 100%;
+position: absolute;
+top: 0;
+left: 0;
+pointer-events: none;
+background-image: var(--tech-pattern);
+background-size: calc(var(--header-height-on-desktop) * 4);
+}
+
+/* Breadcrumbs */
+
+#breadcrumbs a:hover,
+.pseudocrumbs a:hover,
+#breadcrumbs a:active,
+.pseudocrumbs a:active {
+
+color: rgb(var(--white-monochrome));
+text-decoration: none;
+
+}
+ 
+#breadcrumbs a:focus-within,
+.pseudocrumbs a:focus-within {
+
+color: rgb(var(--white-monochrome));
+text-decoration: none;
+
+}
+
+/* Misc. Changes */
+
+#content-wrap {
+background-color: var(--white-monochrome);
+background-image: var(--tech-pattern);
+background-size: 17%;
+background-repeat: repeat;
+}
+
+.image-block,
+.scp-image-block {
+outline: solid 3px rgb(var(--bright-accent));
+}
+
+:is(div.image-block, div.scp-image-block) :is(.image-caption, .scp-image-caption) {
+color: rgb(var(--bright-accent));
+border-top: solid 3px rgb(var(--bright-accent));
+font-family: var(--header-font);
+}
+
+.page-rate-widget-box .rate-points {
+text-transform: uppercase !important;
+}
+
+#page-content .info-container .collapsible-block-folded,
+#page-content .info-container .collapsible-block-unfolded-link {
+display: grid;
+background: rgb(var(--dark-accent));
+}
+
+#u-author_block &gt; p &gt; a {
+    background: #FFFFFF;
+}
+
+.code, .page-source {
+
+background: rgb(var(--white-monochrome));
+
+}
+
+#top-bar {
+
+--dropdown-links-hover-color: var(--white-monochrome);
+--topmenu-category-hover-color: var(--white-monochrome);
+--topmenu-category-color: var(--bright-accent);
+--mobile-topmenu-sidebar-button-color: var(--bright-accent);
+
+}
+
+#side-bar,
+#interwiki {
+
+--sidebar-links-hover-text-color: var(--white-monochrome);
+
+}
+
+/* Footnote Changes */
+
+.bibitems,
+.footnotes-footer {
+
+background-color: rgb(var(--white-monochrome));
+border-top: solid 2px rgb(var(--dark-accent));
+border-right: solid 2px rgb(var(--dark-accent));
+border-bottom: solid 2px rgb(var(--dark-accent));
+
+}
+ 
+.bibitems .title,
+.footnotes-footer .title {
+
+background-color: rgb(var(--dark-accent));
+webkit-clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+clip-path: polygon(15% 0%, 85% 0%, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0% 85%, 0% 15%);
+width: 40%;
+text-align: center;
+color: rgb(var(--bright-accent));
+font-family: var(--header-font);
+text-transform: uppercase;
+
+}
+
+.bibitems .bibitem::after,
+.footnotes-footer a[href*=&#34;javascript&#34;]::before {
+
+background-color: rgb(var(--white-monochrome));
+
+}
+
+.hovertip .content {
+
+font-family: var(--body-font);
+
+}
+
+.info-container {
+
+--barColour: rgb(var(--white-monochrome));
+--linkColour: #FFF;
+
+}
+
+/* ACS Bar Alterations (Code from Anomaly Class Bar, Customizable ACS, and ACS Animation) */
+
+.anom-bar-container.clear-6 .top-right-box &gt; .clearance::before {
+    content: &#34;Omega Ultra-Secret&#34;;
+}
+
+.anom-bar-container.clear-5 .top-right-box &gt; .clearance::before {
+    content: &#34;Ultra-Secret&#34;;
+}
+
+
+body .bottom-box &gt; .diamond-part {
+    -webkit-box-shadow: -0.5rem 0 0 0 rgb(var(--dark-accent));
+       -moz-box-shadow: -0.5rem 0 0 0 rgb(var(--dark-accent));
+     box-shadow: -0.5rem 0 0 0 rgb(var(--dark-accent));
+}
+
+body .danger-diamond &gt; .arrows {
+    background-color: rgb(var(--dark-accent));
+}
+
+.anom-bar &gt; div.bottom-box { box-shadow: none; position: relative; }
+.anom-bar &gt; div.bottom-box::before {
+    position: absolute;
+    content: &#34; &#34;;
+    width: 100%;
+    height: 0.5rem;
+    bottom: 100%; left: 0;
+    background-color: rgb(var(--dark-accent));
+}
+
+/* Tech Pattern */
+
+:root {
+
+--tech-pattern: url(&#34;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 304 304&#39; width=&#39;304&#39; height=&#39;304&#39;%3E%3Cpath fill=&#39;%23aeaeb0&#39; fill-opacity=&#39;0.08&#39; d=&#39;M44.1 224a5 5 0 1 1 0 2H0v-2h44.1zm160 48a5 5 0 1 1 0 2H82v-2h122.1zm57.8-46a5 5 0 1 1 0-2H304v2h-42.1zm0 16a5 5 0 1 1 0-2H304v2h-42.1zm6.2-114a5 5 0 1 1 0 2h-86.2a5 5 0 1 1 0-2h86.2zm-256-48a5 5 0 1 1 0 2H0v-2h12.1zm185.8 34a5 5 0 1 1 0-2h86.2a5 5 0 1 1 0 2h-86.2zM258 12.1a5 5 0 1 1-2 0V0h2v12.1zm-64 208a5 5 0 1 1-2 0v-54.2a5 5 0 1 1 2 0v54.2zm48-198.2V80h62v2h-64V21.9a5 5 0 1 1 2 0zm16 16V64h46v2h-48V37.9a5 5 0 1 1 2 0zm-128 96V208h16v12.1a5 5 0 1 1-2 0V210h-16v-76.1a5 5 0 1 1 2 0zm-5.9-21.9a5 5 0 1 1 0 2H114v48H85.9a5 5 0 1 1 0-2H112v-48h12.1zm-6.2 130a5 5 0 1 1 0-2H176v-74.1a5 5 0 1 1 2 0V242h-60.1zm-16-64a5 5 0 1 1 0-2H114v48h10.1a5 5 0 1 1 0 2H112v-48h-10.1zM66 284.1a5 5 0 1 1-2 0V274H50v30h-2v-32h18v12.1zM236.1 176a5 5 0 1 1 0 2H226v94h48v32h-2v-30h-48v-98h12.1zm25.8-30a5 5 0 1 1 0-2H274v44.1a5 5 0 1 1-2 0V146h-10.1zm-64 96a5 5 0 1 1 0-2H208v-80h16v-14h-42.1a5 5 0 1 1 0-2H226v18h-16v80h-12.1zm86.2-210a5 5 0 1 1 0 2H272V0h2v32h10.1zM98 101.9V146H53.9a5 5 0 1 1 0-2H96v-42.1a5 5 0 1 1 2 0zM53.9 34a5 5 0 1 1 0-2H80V0h2v34H53.9zm60.1 3.9V66H82v64H69.9a5 5 0 1 1 0-2H80V64h32V37.9a5 5 0 1 1 2 0zM101.9 82a5 5 0 1 1 0-2H128V37.9a5 5 0 1 1 2 0V82h-28.1zm16-64a5 5 0 1 1 0-2H146v44.1a5 5 0 1 1-2 0V18h-26.1zm102.2 270a5 5 0 1 1 0 2H98v14h-2v-16h124.1zM242 149.9V160h16v34h-16v62h48v48h-2v-46h-48v-66h16v-30h-16v-12.1a5 5 0 1 1 2 0zM53.9 18a5 5 0 1 1 0-2H64V2H48V0h18v18H53.9zm112 32a5 5 0 1 1 0-2H192V0h50v2h-48v48h-28.1zm-48-48a5 5 0 0 1-9.8-2h2.07a3 3 0 1 0 5.66 0H178v34h-18V21.9a5 5 0 1 1 2 0V32h14V2h-58.1zm0 96a5 5 0 1 1 0-2H137l32-32h39V21.9a5 5 0 1 1 2 0V66h-40.17l-32 32H117.9zm28.1 90.1a5 5 0 1 1-2 0v-76.51L175.59 80H224V21.9a5 5 0 1 1 2 0V82h-49.59L146 112.41v75.69zm16 32a5 5 0 1 1-2 0v-99.51L184.59 96H300.1a5 5 0 0 1 3.9-3.9v2.07a3 3 0 0 0 0 5.66v2.07a5 5 0 0 1-3.9-3.9H185.41L162 121.41v98.69zm-144-64a5 5 0 1 1-2 0v-3.51l48-48V48h32V0h2v50H66v55.41l-48 48v2.69zM50 53.9v43.51l-48 48V208h26.1a5 5 0 1 1 0 2H0v-65.41l48-48V53.9a5 5 0 1 1 2 0zm-16 16V89.41l-34 34v-2.82l32-32V69.9a5 5 0 1 1 2 0zM12.1 32a5 5 0 1 1 0 2H9.41L0 43.41V40.6L8.59 32h3.51zm265.8 18a5 5 0 1 1 0-2h18.69l7.41-7.41v2.82L297.41 50H277.9zm-16 160a5 5 0 1 1 0-2H288v-71.41l16-16v2.82l-14 14V210h-28.1zm-208 32a5 5 0 1 1 0-2H64v-22.59L40.59 194H21.9a5 5 0 1 1 0-2H41.41L66 216.59V242H53.9zm150.2 14a5 5 0 1 1 0 2H96v-56.6L56.6 162H37.9a5 5 0 1 1 0-2h19.5L98 200.6V256h106.1zm-150.2 2a5 5 0 1 1 0-2H80v-46.59L48.59 178H21.9a5 5 0 1 1 0-2H49.41L82 208.59V258H53.9zM34 39.8v1.61L9.41 66H0v-2h8.59L32 40.59V0h2v39.8zM2 300.1a5 5 0 0 1 3.9 3.9H3.83A3 3 0 0 0 0 302.17V256h18v48h-2v-46H2v42.1zM34 241v63h-2v-62H0v-2h34v1zM17 18H0v-2h16V0h2v18h-1zm273-2h14v2h-16V0h2v16zm-32 273v15h-2v-14h-14v14h-2v-16h18v1zM0 92.1A5.02 5.02 0 0 1 6 97a5 5 0 0 1-6 4.9v-2.07a3 3 0 1 0 0-5.66V92.1zM80 272h2v32h-2v-32zm37.9 32h-2.07a3 3 0 0 0-5.66 0h-2.07a5 5 0 0 1 9.8 0zM5.9 0A5.02 5.02 0 0 1 0 5.9V3.83A3 3 0 0 0 3.83 0H5.9zm294.2 0h2.07A3 3 0 0 0 304 3.83V5.9a5 5 0 0 1-3.9-5.9zm3.9 300.1v2.07a3 3 0 0 0-1.83 1.83h-2.07a5 5 0 0 1 3.9-3.9zM97 100a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-48 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 96a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-144a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm96 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM49 36a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-32 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM33 68a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 240a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm80-176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 48a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm112 176a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-16 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 180a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 16a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0-32a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16 0a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM17 84a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm32 64a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm16-16a3 3 0 1 0 0-6 3 3 0 0 0 0 6z&#39;%3E%3C/path%3E%3C/svg%3E&#34;);
 
 }
 
 [[/module]]
 
-[[&gt;]]
-[[module Rate]]
-[[/&gt;]]
+[[module CSS]]
 
-----
+div.graph {
+   display: grid;
+   grid-template-columns: repeat(2, 50fr);
+   grid-template-rows: auto;
+   grid-gap: 1rem;
+   grid-template-areas:
+     &#34;info new&#34;;
+}
 
-[[tabview]]
+div.graphinfo{
+    grid-area: info;
+    color: black;
+    position: relative;
+    z-index: 1;
+}
 
-[[tab SCPs]]
+div.graphnew{
+    grid-area: new;
+    position: relative;
+    z-index: 1;
+}
 
-----
+[[/module]]
 
-[[[scp-001-and-a-half-j|SCP-001½-J]]] — The Big Blue Button
+[[module CSS]]
 
-&gt; //Upon approaching SCP-001½-J, a subject will receive a telepathic message informing them that they can press the button for a positive effect but will receive a negative effect in turn.//
+.bigbox {
 
-[[[SCP-9000-J]]] — ⠓⠕⠏⠑⠀⠽⠕⠥⠀⠉⠁⠝⠀⠗⠑⠁⠙⠀⠃⠗⠁⠊⠇⠇⠑
+background: rgb(255,255,255);
+border-left: solid 5.5px rgb(65,105,225);
+border-right: solid 5.5px rgb(65,105,225);
+margin-block: 1.4rem;
+padding-inline: 1.5rem;
+padding-block: 0.5rem;
+color: rgb(65,105,225);
 
-&gt; //In accordance with the recently-implemented program for the assistance of those monitoring the database who are considered legally blind, the following article has been automatically translated into Braille in order to allow for its proper viewing.//
+}
 
-[[[misterfrown-s-proposal-j|MisterFrown’s Proposal-J]]] — Ol’ Reliable
+.card {
 
-&gt; //Alternatives for SCP-001-J, such as the implementation of hired guns to shoot all personnel visibly scrolling past it in the leg, have been posited but were subsequently rejected for their general unfeasibility.//
+position: relative;
+width: 14rem;
+text-align: center;
+transition: transform .16s;
+display: inline-table;
+flex-wrap: wrap;
+z-index: 2;
 
-[[[SCP-001-D-J]]] — The Way It Begins
+}
 
-&gt; //This pistol can be used for both self-defense and opening beer bottles from far away, but it should not be used to open beer bottles in the event of an unauthorized individual gaining entry, as they may steal the beer.//
+.card:is(:hover,:focus-within) {
+transform: scale(1.3);
+z-index: 3;
 
-[[/tab]]
-[[tab Tales]]
+}
 
-----
+.cardbody-exterior {
 
-[[[Log of Deviant Appliances]]]
+background: rgb(65,105,225);
+padding: .4rem;
+margin: .2rem;
+clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+transition: translate .16s;
+z-index: 2;
+flex-flow: row wrap;
 
-&gt; //Notes: Occasionally, instead of loud noises, the item will produce messages in morse code. Once translated, these messages have all been slight variations of the phrase “Get pranked.”//
+}
 
-[[[SCP-173 But it&#39;s the ADMONITION Hub]]]
+.cardbody-exterior:is(:hover,:focus-within) {
+translate: .8rem;
+}
 
-&gt; //SCP-173 is a solo-driven singular story portraying a stupid and quite idiotic SCP Foundation attempting to contain a sculpture, achieve leaving it in a box, in the name of their mission and in the spirit of not having to deal with the thing.//
+.cardbody-interior {
 
-[[/tab]]
-[[tab GoI Formats]]
+background: rgb(255,255,255);
+padding: .7rem;
+clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+z-index: 2;
 
-----
+}
 
-[[[spc-001-ex|SPC-001-EX: A BAD BOY]]]
+.cardbody-main {
 
-&gt; //{{well i caught him making a yo mama joke in the break room yesterday. do you really think you can trust someone with that bad of a sense of humor}}//
+border-left: solid 3.5px rgb(65,105,225);
+border-right: solid 3.5px rgb(65,105,225);
+background-size: 60%;
+background-position: center;
+display: block;
 
-[[/tab]]
-[[tab Other Pages]]
+}
 
-----
+.cardbody-title {
 
-[[[misterfrown|MisterFrown&#39;s Author Page]]]
+color: white;
+background: rgb(65,105,225);
+width: 100%;
+float: center;
+margin-top: 10px;
 
-&gt; Hey, you&#39;re here now!
+}
 
-[[/tab]]
+.titlesection {
 
-[[/tabview]]
+height: 50px;
+text-align: center;
+display: flex;
+justify-content: center;
+align-items: center;
 
+}
 
-[[=]]
-[[include component:sybadge code=egd]]
-[[include component:sybadge code=mww]]
-[[include component:sybadge code=clb]]
-[[include component:sybadge code=dado]]
-[[/=]]
+.section {
 
-----</textarea></pre>
+color: rgb(65,105,225);
+border-bottom: solid 5px rgb(65,105,225);
+margin-bottom: 10px;
+margin-top: 20px;
+
+}
+
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:37.339451.</em>
+    <em>Last updated 2026-04-17 00:56:54.921162.</em>
   
 </div>
 </body>

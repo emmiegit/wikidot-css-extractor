@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Artist Directory Framework</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Artist Directory Framework</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/fragment:artist-directory-framework" target="_blank">Artist Directory Framework</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>@import url(&#39;https://api.fonts.coollabs.io/css2?family=Victor+Mono:ital,wght@0,100..700;1,100..700&amp;display=swap&#39;);
+
+#u-filter-structure {
+    --_c: 61 133 84;
+
+    container-name: structure;
+    container-type: inline-size;
+    margin-block: 1.5rem;
+}
+
+#u-filter-structure &gt; :not(div) { display: none; }
+
+/*---------------------------------*/
+
+#u-filter-nav {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding-right: 5rem;
+    font-family: &#39;Victor Mono&#39;, monospace;
+    font-weight: bold;
+}
+#u-filter-nav &gt; br { display: none; }
+
+#u-filter-nav a {
+    display: grid;
+    place-content: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    border-radius: .75lh;
+    padding: .175em .675em;
+    color: rgb(var(--_c));
+    background-color: rgb(var(--_c)/.1);
+     flex-grow: 1;
+    text-align: center;
+}
+#u-filter-nav a:is(:hover,:focus) {
+    color: white;
+    background-color: rgb(var(--_c));
+}
+
+#u-filter-nav a[href=&#34;##&#34;] {
+    --_c: 100 100 100;
+    position: absolute;
+    top: 0; right: 0;
+    height: 100%; width: 4.25rem;
+    font-weight: normal;
+}
+
+@container structure (max-width: 33.75rem) {
+    #u-filter-nav { padding: 0; }
+    #u-filter-nav a[href=&#34;##&#34;] { position: static; width: unset; flex-basis: 100%; }
+}
+
+/*---------------------------------*/
+
+#u-directory {
+    display: grid;
+}
+
+.artist-row {
+    display: grid;
+    grid-template-areas:
+        &#34;account link&#34;
+        &#34;info info&#34;;
+    grid-template-columns: 10.75rem minmax(0,1fr);
+    box-shadow: inset 0 -0.05rem 0 #cccc;
+    padding-block: .675rem;
+    gap: .325rem;
+}
+
+:where(.artist-row) &gt; .account {
+    text-align: start;
+    grid-area: account;
+}
+
+:where(.artist-row) &gt; .link {
+    grid-area: link;
+    text-align: center;
+}
+
+:where(.artist-row) &gt; .info {
+    grid-area: info;
+    display: flex;
+    gap: .5rem;
+}
+
+/*---------------------------------*/
+
+:where(.artist-row) &gt; .info &gt; .artist-description {
+    flex-grow: 1;
+    font-size: .9125em;
+    min-width: 50%;
+    align-self: self-start;
+}
+.artist-description p { margin-block: .625em; }
+.artist-description &gt; p:first-child { margin-block-start: .375em; }
+.artist-description &gt; p:last-child { margin-block-end: .375em; }
+
+/*---------------------------------*/
+
+.artist-row.heading {
+    grid-template-areas: &#34;account link&#34;;
+    font-weight: bold;
+    display: grid!important;
+}
+.artist-row.heading &gt; div {
+    font-size: 1em;
+    text-align: center;
+}
+.artist-row.heading &gt; div &gt; p { display: contents; }
+
+/*---------------------------------*/
+
+.info .tag {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75em;
+    justify-content: end;
+    font-family: &#39;Victor Mono&#39;, monospace;
+    font-size: .725em;
+    font-weight: bold;
+    align-self: end;
+}
+
+.tag &gt; :is(br,a) { display: none; }
+.tag &gt; a {
+    text-decoration: none;
+    border-radius: .75lh;
+    padding: .175em .675em;
+    color: rgb(var(--_c));
+    background-color: rgb(var(--_c)/.1);
+    min-width: max-content;
+}
+.tag &gt; a:is(:hover,:focus) {
+    color: white;
+    background-color: rgb(var(--_c));
+}
+
+
+/*---- LOGIC ----*/
+
+.digital-2d a[href=&#34;#u-digital-2d&#34;],
+.digital-3d a[href=&#34;#u-digital-3d&#34;],
+.animation a[href=&#34;#u-animation&#34;],
+.dry-media a[href=&#34;#u-dry-media&#34;],
+.traditional-paint a[href=&#34;#u-traditional-paint&#34;],
+.photoshop a[href=&#34;#u-photoshop&#34;],
+.pixel-art a[href=&#34;#u-pixel-art&#34;],
+.vector-art a[href=&#34;#u-vector-art&#34;],
+.alt-media a[href=&#34;#u-alt-media&#34;] {
+    display: block;
+}
+
+#u-digital-2d:target ~ #u-filter-nav a[href=&#34;#u-digital-2d&#34;],
+#u-digital-3d:target ~ #u-filter-nav a[href=&#34;#u-digital-3d&#34;],
+#u-animation:target ~ #u-filter-nav a[href=&#34;#u-animation&#34;],
+#u-dry-media:target ~ #u-filter-nav a[href=&#34;#u-dry-media&#34;],
+#u-traditional-paint:target ~ #u-filter-nav a[href=&#34;#u-traditional-paint&#34;],
+#u-photoshop:target ~ #u-filter-nav a[href=&#34;#u-photoshop&#34;],
+#u-pixel-art:target ~ #u-filter-nav a[href=&#34;#u-pixel-art&#34;],
+#u-vector-art:target ~ #u-filter-nav a[href=&#34;#u-vector-art&#34;],
+#u-alt-media:target ~ #u-filter-nav a[href=&#34;#u-alt-media&#34;] {
+    color: white;
+    background-color: rgb(var(--_c));
+    pointer-events: none;
+}
+
+#u-digital-2d:target ~ #u-directory &gt; div:not(.digital-2d),
+#u-digital-3d:target ~ #u-directory &gt; div:not(.digital-3d),
+#u-animation:target ~ #u-directory &gt; div:not(.animation),
+#u-dry-media:target ~ #u-directory &gt; div:not(.dry-media),
+#u-traditional-paint:target ~ #u-directory &gt; div:not(.traditional-paint),
+#u-photoshop:target ~ #u-directory &gt; div:not(.photoshop),
+#u-pixel-art:target ~ #u-directory &gt; div:not(.pixel-art),
+#u-vector-art:target ~ #u-directory &gt; div:not(.vector-art),
+#u-alt-media:target ~ #u-directory &gt; div:not(.alt-media) {
+   display: none;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module css]]
+@import url(&#39;https://api.fonts.coollabs.io/css2?family=Victor+Mono:ital,wght@0,100..700;1,100..700&amp;display=swap&#39;);
+
+#u-filter-structure {
+    --_c: 61 133 84;
+
+    container-name: structure;
+    container-type: inline-size;
+    margin-block: 1.5rem;
+}
+
+#u-filter-structure &gt; :not(div) { display: none; }
+
+/*---------------------------------*/
+
+#u-filter-nav {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    padding-right: 5rem;
+    font-family: &#39;Victor Mono&#39;, monospace;
+    font-weight: bold;
+}
+#u-filter-nav &gt; br { display: none; }
+
+#u-filter-nav a {
+    display: grid;
+    place-content: center;
+    box-sizing: border-box;
+    text-decoration: none;
+    border-radius: .75lh;
+    padding: .175em .675em;
+    color: rgb(var(--_c));
+    background-color: rgb(var(--_c)/.1);
+     flex-grow: 1;
+    text-align: center;
+}
+#u-filter-nav a:is(:hover,:focus) {
+    color: white;
+    background-color: rgb(var(--_c));
+}
+
+#u-filter-nav a[href=&#34;##&#34;] {
+    --_c: 100 100 100;
+    position: absolute;
+    top: 0; right: 0;
+    height: 100%; width: 4.25rem;
+    font-weight: normal;
+}
+
+@container structure (max-width: 33.75rem) {
+    #u-filter-nav { padding: 0; }
+    #u-filter-nav a[href=&#34;##&#34;] { position: static; width: unset; flex-basis: 100%; }
+}
+
+/*---------------------------------*/
+
+#u-directory {
+    display: grid;
+}
+
+.artist-row {
+    display: grid;
+    grid-template-areas:
+        &#34;account link&#34;
+        &#34;info info&#34;;
+    grid-template-columns: 10.75rem minmax(0,1fr);
+    box-shadow: inset 0 -0.05rem 0 #cccc;
+    padding-block: .675rem;
+    gap: .325rem;
+}
+
+:where(.artist-row) &gt; .account {
+    text-align: start;
+    grid-area: account;
+}
+
+:where(.artist-row) &gt; .link {
+    grid-area: link;
+    text-align: center;
+}
+
+:where(.artist-row) &gt; .info {
+    grid-area: info;
+    display: flex;
+    gap: .5rem;
+}
+
+/*---------------------------------*/
+
+:where(.artist-row) &gt; .info &gt; .artist-description {
+    flex-grow: 1;
+    font-size: .9125em;
+    min-width: 50%;
+    align-self: self-start;
+}
+.artist-description p { margin-block: .625em; }
+.artist-description &gt; p:first-child { margin-block-start: .375em; }
+.artist-description &gt; p:last-child { margin-block-end: .375em; }
+
+/*---------------------------------*/
+
+.artist-row.heading {
+    grid-template-areas: &#34;account link&#34;;
+    font-weight: bold;
+    display: grid!important;
+}
+.artist-row.heading &gt; div {
+    font-size: 1em;
+    text-align: center;
+}
+.artist-row.heading &gt; div &gt; p { display: contents; }
+
+/*---------------------------------*/
+
+.info .tag {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75em;
+    justify-content: end;
+    font-family: &#39;Victor Mono&#39;, monospace;
+    font-size: .725em;
+    font-weight: bold;
+    align-self: end;
+}
+
+.tag &gt; :is(br,a) { display: none; }
+.tag &gt; a {
+    text-decoration: none;
+    border-radius: .75lh;
+    padding: .175em .675em;
+    color: rgb(var(--_c));
+    background-color: rgb(var(--_c)/.1);
+    min-width: max-content;
+}
+.tag &gt; a:is(:hover,:focus) {
+    color: white;
+    background-color: rgb(var(--_c));
+}
+
+
+/*---- LOGIC ----*/
+
+.digital-2d a[href=&#34;#u-digital-2d&#34;],
+.digital-3d a[href=&#34;#u-digital-3d&#34;],
+.animation a[href=&#34;#u-animation&#34;],
+.dry-media a[href=&#34;#u-dry-media&#34;],
+.traditional-paint a[href=&#34;#u-traditional-paint&#34;],
+.photoshop a[href=&#34;#u-photoshop&#34;],
+.pixel-art a[href=&#34;#u-pixel-art&#34;],
+.vector-art a[href=&#34;#u-vector-art&#34;],
+.alt-media a[href=&#34;#u-alt-media&#34;] {
+    display: block;
+}
+
+#u-digital-2d:target ~ #u-filter-nav a[href=&#34;#u-digital-2d&#34;],
+#u-digital-3d:target ~ #u-filter-nav a[href=&#34;#u-digital-3d&#34;],
+#u-animation:target ~ #u-filter-nav a[href=&#34;#u-animation&#34;],
+#u-dry-media:target ~ #u-filter-nav a[href=&#34;#u-dry-media&#34;],
+#u-traditional-paint:target ~ #u-filter-nav a[href=&#34;#u-traditional-paint&#34;],
+#u-photoshop:target ~ #u-filter-nav a[href=&#34;#u-photoshop&#34;],
+#u-pixel-art:target ~ #u-filter-nav a[href=&#34;#u-pixel-art&#34;],
+#u-vector-art:target ~ #u-filter-nav a[href=&#34;#u-vector-art&#34;],
+#u-alt-media:target ~ #u-filter-nav a[href=&#34;#u-alt-media&#34;] {
+    color: white;
+    background-color: rgb(var(--_c));
+    pointer-events: none;
+}
+
+#u-digital-2d:target ~ #u-directory &gt; div:not(.digital-2d),
+#u-digital-3d:target ~ #u-directory &gt; div:not(.digital-3d),
+#u-animation:target ~ #u-directory &gt; div:not(.animation),
+#u-dry-media:target ~ #u-directory &gt; div:not(.dry-media),
+#u-traditional-paint:target ~ #u-directory &gt; div:not(.traditional-paint),
+#u-photoshop:target ~ #u-directory &gt; div:not(.photoshop),
+#u-pixel-art:target ~ #u-directory &gt; div:not(.pixel-art),
+#u-vector-art:target ~ #u-directory &gt; div:not(.vector-art),
+#u-alt-media:target ~ #u-directory &gt; div:not(.alt-media) {
+   display: none;
+}
+[[/module]]
+
+[[div_ id=&#34;filter-structure&#34;]]
+[[span id=&#34;digital-2d&#34;]][[/span]]
+[[span id=&#34;digital-3d&#34;]][[/span]]
+[[span id=&#34;animation&#34;]][[/span]]
+[[span id=&#34;dry-media&#34;]][[/span]]
+[[span id=&#34;traditional-paint&#34;]][[/span]]
+[[span id=&#34;photoshop&#34;]][[/span]]
+[[span id=&#34;pixel-art&#34;]][[/span]]
+[[span id=&#34;vector-art&#34;]][[/span]]
+[[span id=&#34;alt-media&#34;]][[/span]]
+
+[[div_ id=&#34;filter-nav&#34;]]
+[#u-digital-2d Digital 2D]
+[#u-digital-3d Digital 3D]
+[#u-animation Animation]
+[#u-dry-media Dry Media]
+[#u-traditional-paint Traditional Paint]
+[#u-photoshop Photoshop]
+[#u-pixel-art Pixel Art]
+[#u-vector-art Vector Art]
+[#u-alt-media Alternative Media]
+[[a href=&#34;##&#34;]]clear filter[[/a]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:53.602223.</em>
+  
+</div>
+</body>

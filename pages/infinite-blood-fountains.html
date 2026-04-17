@@ -1,0 +1,1139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>‘Infinite Blood Fountains’ (BL6CZ/G6133/IQ00X)</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">‘Infinite Blood Fountains’ (BL6CZ/G6133/IQ00X)</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/infinite-blood-fountains" target="_blank">‘Infinite Blood Fountains’ (BL6CZ/G6133/IQ00X)</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>
+@import url(&#39;https://fonts.googleapis.com/css2?family=Quintessential&amp;display=swap&#39;);
+
+.authorlink-wrapper,
+.authorlink-wrapper + div {
+  margin-right: 0 !important; /* needed to override inline styles */
+}
+
+.scp-image-block {
+  background-color: var(--royalblue);
+  border: 0.2em solid var(--yellow);
+}
+
+.scp-image-block .scp-image-caption {
+  background-color: var(--royalblue);
+  border-top: 0.2em solid var(--yellow);
+}
+
+.email {border: solid 2px #000000; width: 88%; padding: 1px 15px; margin: auto; box-shadow: 0 1px 3px rgba(0,0,0,.5); background-color: white; color: black; font-family: &#34;Helvetica&#34;;}
+.email-example a.collapsible-block-link {font-weight: bold;}
+.tofrom {margin-left: 10px; margin-top: 5px; padding: 1px 15px; border-left: solid 3px royalblue;font-family: &#34;Helvetica&#34;}
+.tofrom2 {margin-left: 10px; margin-top: 5px; padding: 1px 15px; border-left: solid 3px royalblue; font-family: &#34;Helvetica&#34;}
+
+a, a.newpage, a:visited, #interwiki a, #side-bar a {
+    color: royalblue;
+}
+
+.confidential {margin-left: 1px; font-size: 70%}
+
+
+.court-document {
+display: grid;
+border: 2px solid black;
+width: fit-content;
+counter-reset: lineno;
+grid-template-columns: repeat(2, auto);
+overflow: hidden;
+background-color: #ebdaf3;
+color: black;
+}
+
+.num::before {
+content: counter(lineno);
+counter-increment: lineno;
+}
+
+.monospace {
+font-family: &#39;Andale Mono&#39;, &#39;Courier New&#39;, Courier, monospace;
+line-height: 1;
+padding: 10px;
+font-size: 16px;
+}
+
+.monospace p {
+margin: 1lh 0;
+line-height: 1;
+}
+
+.lineno-container {
+height: 0;
+}
+
+.linenos {
+border-right: 1px solid black;
+}
+
+.nums::after {
+content: &#34;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330 331 332 333 334 335 336 337 338 339 340 341 342 343 344 345 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 419 420 421 422 423 424 425 426 427 428 429 430 431 432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449 450 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 466 467 468 469 470 471 472 473 474 475 476 477 478 479 480 481 482 483 484 485 486 487 488 489 490 491 492 493 494 495 496 497 498 499 500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 519 520 521 522 523 524 525 526 527 528 529 530 531 532 533 534 535 536 537 538 539 540 541 542 543 544 545 546 547 548 549 550 551 552 553 554 555 556 557 558 559 560 561 562 563 564 565 566 567 568 569 570 571 572 573 574 575 576 577 578 579 580 581 582 583 584 585 586 587 588 589 590 591 592 593 594 595 596 597 598 599 600 601 602 603 604 605 606 607 608 609 610 611 612 613 614 615 616 617 618 619 620 621 622 623 624 625 626 627 628 629 630 631 632 633 634 635 636 637 638 639 640 641 642 643 644 645 646 647 648 649 650 651 652 653 654 655 656 657 658 659 660 661 662 663 664 665 666 667 668 669 670 671 672 673 674 675 676 677 678 679 680 681 682 683 684 685 686 687 688 689 690 691 692 693 694 695 696 697 698 699 700 701 702 703 704 705 706 707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722 723 724 725 726 727 728 729 730 731 732 733 734 735 736 737 738 739 740 741 742 743 744 745 746 747 748 749 750 751 752 753 754 755 756 757 758 759 760 761 762 763 764 765 766 767 768 769 770 771 772 773 774 775 776 777 778 779 780 781 782 783 784 785 786 787 788 789 790 791 792 793 794 795 796 797 798 799 800 801 802 803 804 805 806 807 808 809 810 811 812 813 814 815 816 817 818 819 820 821 822 823 824 825 826 827 828 829 830 831 832 833 834 835 836 837 838 839 840 841 842 843 844 845 846 847 848 849 850 851 852 853 854 855 856 857&#34;;
+width: 0;
+display: block;
+overflow-wrap: initial;
+margin-right: 2em;
+}
+
+.court-document-content {
+margin-bottom: -1.5lh;
+}
+
+.page-content {
+  background: url(http://scp-sandbox-3.wikidot.com/local--files/collab:blood-magic/emerald.jpeg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+!important font-weight: 500rem;
+}
+
+h1:focus {
+  outline: none;
+}
+
+.prophecy {
+font-family:&#39;Quintessential&#39;;
+font-size: 15px;
+color: black:
+}
+
+.whitetext {
+color: white;
+}
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>text-align: right; margin-top: -1em; margin-right: 2em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double maroon;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#1F0202; font-size:11pt; background:#D6D3CB;font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double maroon;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#1F0202; font-size:11pt; background:#D6D3CB;font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#000000; font-size:11pt; background:#FFFFFF;font-family: Arial;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:2px solid #472706;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:#fffaf5;font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:2px solid #472706;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:#fffaf5;font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:solid 2px #112211; background:#DDEEDD; color: black; padding:25px; margin-bottom: 25px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:4px double white;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:preview" target="_blank"><code>component:preview</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:black-diamond" target="_blank"><code>:scp-wiki:theme:black-diamond</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-diamond.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:text-style" target="_blank"><code>:scp-wiki:component:text-style</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:text-style.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>email</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tofrom</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>confidential</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>prophecy</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>court-document</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lineno-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>monospace</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>linenos</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nums</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>monospace</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>court-document-content</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>====
+[[include component:preview
+text=
+It has always been a known fact that vampires consume blood faster than one human can replenish it.
+]]
+=====
+
+[[include :scp-wiki:theme:black-diamond]]
+[[include :scp-wiki:component:text-style]]
+
+
+[[module CSS]]
+
+@import url(&#39;https://fonts.googleapis.com/css2?family=Quintessential&amp;display=swap&#39;);
+
+.authorlink-wrapper,
+.authorlink-wrapper + div {
+  margin-right: 0 !important; /* needed to override inline styles */
+}
+
+.scp-image-block {
+  background-color: var(--royalblue);
+  border: 0.2em solid var(--yellow);
+}
+
+.scp-image-block .scp-image-caption {
+  background-color: var(--royalblue);
+  border-top: 0.2em solid var(--yellow);
+}
+
+.email {border: solid 2px #000000; width: 88%; padding: 1px 15px; margin: auto; box-shadow: 0 1px 3px rgba(0,0,0,.5); background-color: white; color: black; font-family: &#34;Helvetica&#34;;}
+.email-example a.collapsible-block-link {font-weight: bold;}
+.tofrom {margin-left: 10px; margin-top: 5px; padding: 1px 15px; border-left: solid 3px royalblue;font-family: &#34;Helvetica&#34;}
+.tofrom2 {margin-left: 10px; margin-top: 5px; padding: 1px 15px; border-left: solid 3px royalblue; font-family: &#34;Helvetica&#34;}
+
+a, a.newpage, a:visited, #interwiki a, #side-bar a {
+    color: royalblue;
+}
+
+.confidential {margin-left: 1px; font-size: 70%}
+
+
+.court-document {
+display: grid;
+border: 2px solid black;
+width: fit-content;
+counter-reset: lineno;
+grid-template-columns: repeat(2, auto);
+overflow: hidden;
+background-color: #ebdaf3;
+color: black;
+}
+
+.num::before {
+content: counter(lineno);
+counter-increment: lineno;
+}
+
+.monospace {
+font-family: &#39;Andale Mono&#39;, &#39;Courier New&#39;, Courier, monospace;
+line-height: 1;
+padding: 10px;
+font-size: 16px;
+}
+
+.monospace p {
+margin: 1lh 0;
+line-height: 1;
+}
+
+.lineno-container {
+height: 0;
+}
+
+.linenos {
+border-right: 1px solid black;
+}
+
+.nums::after {
+content: &#34;1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 151 152 153 154 155 156 157 158 159 160 161 162 163 164 165 166 167 168 169 170 171 172 173 174 175 176 177 178 179 180 181 182 183 184 185 186 187 188 189 190 191 192 193 194 195 196 197 198 199 200 201 202 203 204 205 206 207 208 209 210 211 212 213 214 215 216 217 218 219 220 221 222 223 224 225 226 227 228 229 230 231 232 233 234 235 236 237 238 239 240 241 242 243 244 245 246 247 248 249 250 251 252 253 254 255 256 257 258 259 260 261 262 263 264 265 266 267 268 269 270 271 272 273 274 275 276 277 278 279 280 281 282 283 284 285 286 287 288 289 290 291 292 293 294 295 296 297 298 299 300 301 302 303 304 305 306 307 308 309 310 311 312 313 314 315 316 317 318 319 320 321 322 323 324 325 326 327 328 329 330 331 332 333 334 335 336 337 338 339 340 341 342 343 344 345 346 347 348 349 350 351 352 353 354 355 356 357 358 359 360 361 362 363 364 365 366 367 368 369 370 371 372 373 374 375 376 377 378 379 380 381 382 383 384 385 386 387 388 389 390 391 392 393 394 395 396 397 398 399 400 401 402 403 404 405 406 407 408 409 410 411 412 413 414 415 416 417 418 419 420 421 422 423 424 425 426 427 428 429 430 431 432 433 434 435 436 437 438 439 440 441 442 443 444 445 446 447 448 449 450 451 452 453 454 455 456 457 458 459 460 461 462 463 464 465 466 467 468 469 470 471 472 473 474 475 476 477 478 479 480 481 482 483 484 485 486 487 488 489 490 491 492 493 494 495 496 497 498 499 500 501 502 503 504 505 506 507 508 509 510 511 512 513 514 515 516 517 518 519 520 521 522 523 524 525 526 527 528 529 530 531 532 533 534 535 536 537 538 539 540 541 542 543 544 545 546 547 548 549 550 551 552 553 554 555 556 557 558 559 560 561 562 563 564 565 566 567 568 569 570 571 572 573 574 575 576 577 578 579 580 581 582 583 584 585 586 587 588 589 590 591 592 593 594 595 596 597 598 599 600 601 602 603 604 605 606 607 608 609 610 611 612 613 614 615 616 617 618 619 620 621 622 623 624 625 626 627 628 629 630 631 632 633 634 635 636 637 638 639 640 641 642 643 644 645 646 647 648 649 650 651 652 653 654 655 656 657 658 659 660 661 662 663 664 665 666 667 668 669 670 671 672 673 674 675 676 677 678 679 680 681 682 683 684 685 686 687 688 689 690 691 692 693 694 695 696 697 698 699 700 701 702 703 704 705 706 707 708 709 710 711 712 713 714 715 716 717 718 719 720 721 722 723 724 725 726 727 728 729 730 731 732 733 734 735 736 737 738 739 740 741 742 743 744 745 746 747 748 749 750 751 752 753 754 755 756 757 758 759 760 761 762 763 764 765 766 767 768 769 770 771 772 773 774 775 776 777 778 779 780 781 782 783 784 785 786 787 788 789 790 791 792 793 794 795 796 797 798 799 800 801 802 803 804 805 806 807 808 809 810 811 812 813 814 815 816 817 818 819 820 821 822 823 824 825 826 827 828 829 830 831 832 833 834 835 836 837 838 839 840 841 842 843 844 845 846 847 848 849 850 851 852 853 854 855 856 857&#34;;
+width: 0;
+display: block;
+overflow-wrap: initial;
+margin-right: 2em;
+}
+
+.court-document-content {
+margin-bottom: -1.5lh;
+}
+
+.page-content {
+  background: url(http://scp-sandbox-3.wikidot.com/local--files/collab:blood-magic/emerald.jpeg);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+!important font-weight: 500rem;
+}
+
+h1:focus {
+  outline: none;
+}
+
+.prophecy {
+font-family:&#39;Quintessential&#39;;
+font-size: 15px;
+color: black:
+}
+
+.whitetext {
+color: white;
+}
+
+[[/module]]
+
+[[&gt;]]
+[[module rate]]
+[[/&gt;]]
+[[include :scp-wiki:component:author-label-source start=--
+|name=xexnoncores &amp; mxsinister]]
+**This article contains CWs for:** physical abuse and gore.
+‘Infinite Blood Fountains’ (BL6CZ/G6133/IQ00X) by [[*user xexnoncores]] and [[*user mxsinister]]
+[[include :scp-wiki:component:author-label-source end=--]]
+[[div style=&#34;text-align: right; margin-top: -1em; margin-right: 2em&#34;]]
+⚠️ content warning ↑
+[[/div]]
+
+@@ @@
+||||~ BL6CZ/G6133/IQ00X||||
+||~ Status || Selling||
+||~ Demand || Very High ||
+||~ Value || 3000000GBP/3984300USD per new contract, 100000GBP/132800USD per renewal||
+||~ Availability || Established Supply Chain ||
+||~ Estimated Supply Exhaustion || Never ||
+||~ Identifier|| Infinite Blood Fountains ||
+||~ Description || A sigil capable of instantaneously restoring a living person to their maximum blood availability when pressed against the chest. It is contractually carved on the palm and can be used for up to three months. Once this period of time is over, its power must be renewed or else it will fade from the body in two weeks.||
+
+@@ @@
+
+||||~ Initial Writeup||||
+||~ Penned by: || Iris Corax Darke ||
+||~ Date || May 17, 2014 ||
+||~ Interest|| Very High ||
+||~ Identifier|| Infinite Blood Fountains ||
+|||| Ah, blood magic. Where would we be without all the vile fantasies you conjure up in the uneducated mind? _
+ _
+It pains me to say those fanciful exaggerations are not without reason, unfortunately. Acquiring a reliable hemomancer these days is about as productive as herding cats. Most humanoid blood in the modern age is so polluted with microplastics that it fails to be a consistent medium for magical conduction, and that’s not even mentioning how most of the best hemomantic tools and the materials to craft them were destroyed by the Neo-Sarkites and fae kingdoms during those spats they had in WW1. _
+ _
+Lucky for everyone, I exist, and my well of talents are bountiful and endless. This sigil is the first major magical product I’m directly responsible for developing; I love seeing it on the hands of the vampires we sell it to. Watching it pulse with the power I imbibe it with makes me grin deeply, and knowing it answers only to my ambitions fills me with a great sense of pride as the Darke heir. Though Father has told me I’m not supposed to linger too much on my emotions in these writeups, so I shall not discuss that any more here. _
+ _
+Yes, you did not misread—the primary clientele this product exists to serve are vampires. Though the emergency medical applications are extremely salient, that market does not contain as much potential as the magnificently wealthy vampiric individuals scattered throughout the globe. They all possess such specific blood preferences that often it is only a single human that can satiate them; this creates major problems with how slow the human body heals and how often (and vigorously) they need to feed. I believe Lucas told me that the average meal is about one and a half liters every week? _
+ _
+Doing the math, it’s not hard to see how this will pay for itself.||
+||~ File Opened Under:|||| BL6CZ/G6133/IQ00X ||
+||||~ Marshall, Carter &amp; Dark Ltd.||
+@@ @@
+
+[[span style =&#34;color: white;&#34;]]
+[[include component:image-block name= http://scp-sandbox-3.wikidot.com/local--files/collab:blood-magic/sigil.png |align=center|caption= A vector replication of BL6CZ/G6133/IQ00X.|width=&#34;650px&#34;]]
+[[/span]]
+
+
+@@ @@
+
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+**INTERNAL MEMO No. 60779**
+
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-01
+
+**DATE:** 10/05/2014
+
+**TO:** IRIS C. DARKE
+
+**PENNED BY:** LUCAS A. MONACO
+
+It has always been a known fact that vampires consume blood faster than one human can replenish it. Humans are such fragile creatures after all, even though there are not many of us to consume them—I had my doubts, admittedly, that such a fundamental principle could be overcome, but I must say, Iris, this is incredibly impressive. You ought to be proud of your work here.
+
+I will say that the renewed blood has an aftertaste, though not an unpleasant one. Laboratory tests did not show any other side-effects, so I envision the marketing will not have to account for that very much. 
+ 
+[[/div]]
+[[/div]]
+
+@@ @@
+
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+**INTERNAL MEMO No. 60784**
+
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-02
+
+**DATE:** 10/05/2014
+
+**TO:** LUCAS A. MONACO
+
+**PENNED BY:** IRIS C. DARKE
+
+Aftertaste? What does that mean? Blood is quite the sharp foodstuff; it used to make my nose burn when Father was teaching me how to eat live meals as a child.
+
+You don’t anticipate this being a problem with the pickier vampires, do you? I don’t believe your kind have children, so we don’t need to factor for preferences there.
+[[/div]]
+[[/div]]
+
+@@ @@
+
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+**INTERNAL MEMO No. 60799**
+
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-03
+
+**DATE:** 10/05/2014
+
+**TO:** IRIS C. DARKE
+
+**PENNED BY:** LUCAS A. MONACO
+
+Speaking in my capacity as a sommelier: For negative blood types, I&#39;m noting higher acidity, and for positive types, there&#39;s a more prominent astringency. If allowed to &#39;rest&#39; for about a day or two before the next feeding, the taste of the blood returns pretty much to baseline. This is all somewhat subjective, of course, but I would still say this is non-issue when it comes to marketability.
+
+Although we can be particular, we are not generally picky eaters. Besides, at the end of the day, this service is simply too practical to be disputed over minor differences in palette. Still, I will ask the marketers about a disclaimer clause since this has caught your interest so much—I would hate to spoil your first big break over such a minute oversight.
+
+By the way, children (which we do, on occasion, have, mind you) are not a concern here whatsoever. They&#39;ve not yet learned preferences, and are aware merely of what satiates their hunger. I&#39;ll remind you that when you were a child intent on chewing the fingers off the meals I&#39;d bring into work, you never once bothered to ask where those hands had been. 
+
+[[/div]]
+[[/div]]
+
+@@ @@
+
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+**INTERNAL MEMO No.  60811**
+
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-04
+
+**DATE:** 11/05/2014
+
+**TO:** LUCAS A. MONACO
+
+**PENNED BY:** IRIS C. DARKE
+
+Well, knowing you, I&#39;m certain I assumed you&#39;d had them thoroughly disinfected. 
+
+Speaking of, you keep a human as your live-in maid, do you not? Amalina was her name? I remember how shocked I was by this bit of trivia. You struck a bargain with her [https://scp-wiki.wikidot.com/recruiting-season after your initiation], correct?
+
+Do you intend to use this on her? You always speak so impersonally about your meals—not that I have allowance to judge, but how common is your arrangement, anyway? Will it change if you are able to feed from her infinitely? My understanding is that much of our demand will come from the vampires who are tired of being limited in how much they can indulge in choice bites without killing good stock.
+
+I must say,  hematophagy sounds like a far more tedious cycle of violence than cannibalism. Barring Sarkic manipulation, you can only eat a human&#39;s heart once before you must go find yourself another. 
+
+[[/div]]
+[[/div]]
+
+@@ @@
+
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+**INTERNAL MEMO No. 60823**
+
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-05
+
+**DATE:** 11/05/2014
+
+**TO:** IRIS C. DARKE
+
+**PENNED BY:** LUCAS A. MONACO
+
+You’re certainly full of questions about this matter, aren’t you? Well, the most I can say is that I like a clean house, and I&#39;m hardly alone in that sentiment. It&#39;s not unheard of for live-in humans to serve as house staff, so what’s the difference here? She agreed to the arrangement, she’s well-compensated, and she can come and go as she pleases. Practicality and sentiment rarely agree, but it&#39;s nice when they do. 
+
+I enjoy her blood, of course, but I enjoy hunting just as much. Besides, part of me can&#39;t help but wonder if indulging in one&#39;s favorite meal without restraint shows poor character. I mean, I&#39;d kill for a properly-made cheesecake, but it would be an utter lack of abstinence on my part if I ate it for every meal. 
+
+Then again, if my kind were known for our temperance, we wouldn’t be here, nor would humans have dedicated so much art to depicting our debauchery with them.
+
+The bottom line is such: No matter the details of my and/or others’ particular arrangements, because you&#39;ve designed a subscription to infinite ease from an immortal consumer base, we’ll be looking at a lot of profit for a very long time.
+
+[[/div]]
+[[/div]]
+
+@@ @@
+
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+**INTERNAL MEMO No. 60854**
+
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-06
+
+**DATE:** 17/05/2014
+
+**TO:** UMBRA V. BLAKEFIRE
+
+**PENNED BY:** LUCAS A. MONACO
+
+The ratio of vampires to humans nowadays stands at around 1:900,000. ±2 standard deviation, considering that those of us able to cross running water without having an aneurysm enjoy frequent international travel.
+
+In any case, this puts around 100 vampires in London, most of whom I&#39;m familiar with. Umbra, I need you to focus on locking down a customer base here before I start leveraging my contacts throughout greater Europe. Everyone I&#39;ve told about this so far seems either ecstatic or morbidly curious about our offer; as far as I&#39;m concerned, either attitude is grounds for a sale.
+
+Once that is done, I’ll be leaving the bulk of B2C sales aspect of this to you and your closers. Saves me the burden of having to actually be personable with my kin. Don’t worry, I’m not Hogarth; I&#39;ll be in touch about when and where I need you within an appropriate timeframe.
+
+We already have a contract written up and attached here. You are to make sure our customers understand that this service comes at a fixed price with fixed terms. They&#39;re more than welcome to have their lawyers look it over, of course, but if any of them start to make a fuss or ask to negotiate, send them to Von Christophil (while making sure they’re aware they’re dealing with lawyers in Hell, because none of us want to find out if we have souls worth sending down there or not).
+
+One last bit of context I would be remiss to neglect: there is a demographic of vampires who I expect will not be happy with our offer&#39;s existence. Over the centuries, the Tisseyren family has made and multiplied its fortune by handling supply chains for food all across Europe. If I decided I was not inclined to hunt, I was one phone call away from having a fresh human delivered to my front door within a few hours. I suspect they&#39;ll see this as our encroaching on their business, slashing demand for fresh humans. I can&#39;t be sure when news of our operation will reach them, but it&#39;s a bridge we&#39;ll have to cross fairly soon. 
+
+Don&#39;t lose sleep over it—I&#39;m looking forward to making them come to terms with their new situation.
+
+{{🔗 bloodfountains_agreement.pdf}}
+
+[[/div]]
+[[/div]]
+
+@@ @@
+
+[[div class=&#34;email&#34;]]
+[[div class=&#34;tofrom&#34;]]
+**To:** ##royalblue|umbrabv@mcd_intmail.mcd##
+**From:** ##royalblue|.persephone@mcd_intmail.mcd##
+**Date Sent:** 18/05/2014 01:03 GMT
+**Subject:** Collaborative Calendar Invite
+[[/div]]
+
+UMBRA BLAKEFIRE,
+
+LUCAS MONACO has shared a collaborative calendar within SAPPHIRE SUITE. You have been requested to review and comment on it. The following document has been attached and transcribed.
+
+{{🔗 vampire_meetings.ical}}
+[[div class=&#34;confidential&#34;]]
+##purple|✬ .persephone says: This is not a human email. It was automagically generated by me! If you feel you have received this email accidentally, please file an error report and you will be assisted within 24 hours.##
+[[/div]]
+
+[[/div]]
+
+@@ @@
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+**INTERNAL MEMO No. 61007**
+
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-07
+
+**DATE:** 30/05/2014
+
+**TO:** LUCAS A. MONACO
+
+**PENNED BY:** UMBRA V. BLAKEFIRE
+
+Lucas, you bastard, you didn’t tell me these asshats were so stuffy and coiffed. 
+
+And don’t give me your shit about not swearing in company memos, these guys are ultra-mega weird, so they deserve it. They eat this up like dogs but turn their back on me because of my scales? I could vaporize them in an instant to the Void of space but they call me “lizard” and “drake” like I am not of the Void Dragon’s hearty pedigree.
+
+Whatever. Sales are bountiful, as expected. Madam Iris has been talking up a storm here in the office despite my complaints, insisting that I gather a larger sales team to send to Singapore. I hope that lot will be more manageable than the English ones, because if someone else screams upon seeing the Madonna, I’m going to lose my mind.
+[[/div]]
+[[/div]]
+
+@@ @@
+
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+**INTERNAL MEMO No. 61010**
+
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-08
+
+**DATE:** 30/05/2014
+
+**TO:** UMBRA V. BLAKE
+
+**PENNED BY:** LUCAS A. MONACO
+
+I did tell you I avoided socializing with them for a reason. 
+
+[[/div]]
+[[/div]]
+@@ @@
+||||||||~ Sales Records||
+||||||||~ BL6CZ/G6133/IQ00X||
+||~ Month ||~ Total Contracts In Force||~ Comments ||
+|| May 2014 || 105 || ||
+|| June 2014 || 412 ||   ||
+|| July 2014 || 780 || ||
+|| August 2014 || 1692 || Growth due to increased marketing in Brazil, Singapore, China, and Japan.||
+|| September 2014 || 2104 || Growth due to increased marketing in Australia, Croatia, Indonesia and Nigeria. ||
+|| October 2014 || 2299 || Current renewal rate standing at 91%. ||
+||||||||~ Marshall, Carter &amp; Dark, Ltd.||
+
+@@ @@
+The following letter is from the personal correspondence of Lucas A. Monaco, translated from French.
+[[div style=&#34;border:4px double maroon;&#34;]]
+[[div style=&#34;color:#1F0202; font-size:11pt; background:#D6D3CB;font-family: book;padding: 15px;&#34;]]
+//13 September, 2014//
+To Mr. Lucas Aurelio Monaco,
+
+We hope this finds you in good health. The Tisseyren family has been watching your endeavors with great interest, even partaking in it ourselves for a little bit. It’s quite the marvel, and makes us wonder what that little pet boss of yours is capable of if she can thread the needle of magic like this without hesitation.
+
+That being said, we are sending this letter to inform you that we have no intention of halting our delivery business, nor have our prospects diminished in the way you perhaps hoped. What you (and perhaps all of your customers) have failed to account for is a change in times, in their safety, of what it means to keep humans locked in a basement as modern livestock compared to one-thousand years ago when kidnapping the village idiot was something nobody noticed.
+
+We will always still have customers because there will always be vampires who know better. Killing a human is easy, and painless, even through exsanguination, but the moment you get their autonomy involved, their money will follow. And if that money is enough, it will reach a boiling point that follows thricefold what they see as their honor tarnished, and well—
+
+I don’t need to tell you who the current day vampire hunters are. Sell what you do at your own discretion, for we do not intend to stir those who wear flesh as robes, buoyed by their gluttonous violence and their poisonous carnomancy. 
+
+Jaspar Tisseyren
+
+[[/div]]
+[[/div]]
+
+@@ @@
+The following letter was reprinted from the personal correspondence of Lucas A. Monaco, translated from Italian.
+[[div style=&#34;border:4px double maroon;&#34;]]
+[[div style=&#34;color:#1F0202; font-size:11pt; background:#D6D3CB;font-family: book;padding: 15px;&#34;]]
+
+//02 October, 2014//
+Lucas,
+
+Salutations, Salve, and all those formalities you and I equally loathe. How is life treating you, assface? Don&#39;t bother answering that, or else we&#39;ll have nothing worth discussing when we next meet. 
+
+I&#39;m writing to you with an invitation passed on from the Bergamasco family. They&#39;ll write themselves to be polite, but knowing your temperament, they seemed concerned you would simply use the envelope as kindling. Perhaps my letter will meet the same fate.
+
+As it turns out, Edmond Bergamasco has become quite the epicure, and means to grace us all with a curated selection of some of his favorite humans. It&#39;s to be an all-day event on the 23rd of October at their family manor in Milan, to be a proper all-you-can-drink tasting for no cost of life. 
+
+To quote the host himself, it&#39;s to be &#34;a soirée of unfettered indulgence and carnal pleasures&#34;. Naturally, no expense will be spared on presentation—golden chains, silken tablecloths, the like. I’m rather impressed he’s pulling out all these stops since we thought him dead broke just a mere decade ago, but I suppose fortunes can always change.  
+
+Tell me, little brother: does this invitation make you recoil? It&#39;s amusing to imagine as I write, knowing how soft you are for your little human[[footnote]] I do not know how he learned about Amalina, but I deeply dislike the fact that he has. —Lucas [[/footnote]]. You and your queer tendencies! Here I swore that you, of all people, would know humans are food just like any other creature. 
+
+While Edmond might not meet your extraordinary standards of pet-caretaking luxury, it is not as if he treats them poorly. No, my understanding is that his humans are very acclimated to being shuffled between cages, tables, and rooms. Personally, I can&#39;t imagine he&#39;d not have at least one or two of his prettier ones fixed face-up on the dining table. Perhaps a handful strung up in the foyer, like somatic chandeliers. 
+
+Alright, I&#39;ll stop before you really do burn this letter. I promise, there are absolutely no demands in regards to your participation, simply a request for your appearance. 
+
+I&#39;ll end saying this: There isn&#39;t a vampire in the world who doesn&#39;t want to meet those responsible for emptying our pockets and filling our stomachs these past months. On that front, you can imagine how we&#39;d love to meet the Darke heir too, so rest assured, this invite is extended to her as well. I promise, we&#39;ll play nice enough, especially given her fangs are almost as sharp as ours. Almost.
+
+Regards,
+
+Arrigo Pier Monaco
+
+[[/div]]
+[[/div]]
+
+@@ @@
+The following is an excerpt from an SCP Foundation research paper titled “Vampire Evolution Through the Lens of Human Development” (citations removed for brevity).
+
+[[div style=&#34;color:#000000; font-size:11pt; background:#FFFFFF;font-family: Arial;padding: 15px;&#34;]] 
+As such, on the margins of acceptance due to the unsavory folklore surrounding them and the natural human fear of their predators, with the advent of the Industrial Revolution came the rapid decrease in most vampire populations. 
+
+Those once classified as “undesirables” were now seen as valuable sources of labor, too valuable to be hemophage victims. Able-bodied men were now expected to work, to give their life-times over to those who owned the land and the factories on said land, especially if they had been jailed, which meant the end of the vampire jailor and executioner, two roles which kept their numbers afloat in Qing Dynasty China, post-medieval Europe, and colonial America.
+
+This is where the role of the Neo-Sarkite comes in; powerful families across Eastern Europe who replaced the haphazard, vigilante work of vampire-slaying with sophisticated guilds of their own making. These landed gentry cults were eager to advance their social standing with colonial powers for a heavy price, especially with the rise of scientific secular philosophies from the French Revolution, nationalism after the Napoleonic Wars, and the Concert of Europe coming into full swing.
+
+Their price included not just money, but influence over Christian churches and their congregations, as well as large swathes of exported goods such as silk, sugar, cinnamon, cardamom, casu martzu, and blood lazuli, the last two being extremely prominent in Neo-Sarkite hemomantic rituals of the era.
+
+Naturally, this for-hire violence was eagerly exported to European colonies, especially in Eastern Asia. Though modern vampire populations in areas like Hong Kong, Singapore, and Beijing boast numbers higher than many culturally monotheistic areas, their numbers have not recovered to levels from before the First Opium War. 
+
+It is currently unknown how many modern Neo-Sarkites maintain vampire-hunting as a major part of their lifestyle, especially given the proliferation of modern normalcy agencies. What is known is that 67% of confirmed Neo-Sarkite cult members in Hungary, Poland, Lithuania, and Belarus share DNA with named vampire hunters of the era.
+
+[[/div]]
+
+@@ @@
+
+[[div style=&#34;border:2px solid #472706;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:#fffaf5;font-family: book;padding: 15px;&#34;]] 
+
+**INCIDENT REPORT BL6CZ/G6133/IQ00X-01**
+
+**DATE:** 23/10/2014
+
+**PENNED BY:** IRIS C. DARKE
+
+There&#39;s blood all over my office. Oh god, there’s blood all over my office as I write this. 
+
+According to Monaco&#39;s schedule, he wasn&#39;t supposed to be back from Milan until tomorrow morning, but he landed right in front of me this afternoon, eyes slashed and jaw broken. I called Father immediately as the leyline tether glowed, and we rushed him to his private doctor before we could make heads or tails of what just happened.
+
+There was so much silver I could smell it. Shards of the stuff all through his torso and chest, embedded in the backs of his arms where he&#39;d raised them to protect his face. This also wasn’t mentioning that his hands had been replaced with…chitin? And claws? His flesh felt like a liquid as I picked him up to steady him. Thinking about the image makes me so angry I want to vomit.
+
+Father keeps assuring me that we got him help in time, but how can he be so certain? Even after almost three hours in surgery, the doctors still weren&#39;t able to remove all the shrapnel. We can reverse whatever happened with his hands with some time, but am I supposed to be content with that? Am I supposed to be satisfied with allowing my employee to suffer from something that shouldn&#39;t have been allowed to happen?
+
+I will find out who did this to you, Lucas, and make them pay dearly. I have to. I don’t want to fail you.
+
+[[/div]]
+[[/div]]
+
+@@ @@
+
+[[div style=&#34;border:2px solid #472706;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:#fffaf5;font-family: book;padding: 15px;&#34;]] 
+
+**INCIDENT REPORT BL6CZ/G6133/IQ00X-02**
+
+**DATE:** 24/10/2014
+
+**PENNED BY:** PERCIVAL A. DARKE
+
+Monaco is in stable condition. There&#39;s still a good bit of silver and carnomancy impeding his healing, but his doctors insist on letting him rest a while before seeing if another surgery will be needed. 
+
+He&#39;s since woken up since the treatment, but it was in such a state of panic and delirium that it would have been cruel not to sedate him. He managed to get a few points across, despite his general incoherence: frantic warnings of red-masked individuals, rambling apologies to Iris and me, and desperate pleas to check on his residence.
+
+With regards to that last point, I did see his house phone listed among his emergency contacts (below my personal and office numbers, naturally). His maid picked up; after she confirmed that there had been no unusual activity at the estate, I sent a driver to escort her to the hospital. 
+
+I admit, I didn&#39;t expect the tears when she saw him, nor his when he woke up briefly this last time and realized her presence. The doctors have been feeding him Type O since he first went under, so it wasn&#39;t a matter of him simply being hungry. 
+
+I&#39;m sure Amalina and Iris would have sat at his bedside all day today, had I not sent the latter back to Monaco&#39;s manor. Whoever was sent to assassinate him is likely heading there to finish the job, unaware of the kind of manpower my heir possesses and just how itchy she is to prove herself and her powers. Her product development portfolio proves to me now that she is more than capable now to enact revenge as she sees fit.
+[[/div]]
+[[/div]]
+
+@@ @@
+The following is an excerpt from the Ionvāška, one of the five books of the //Ħilvasār//, an apocalyptic codex of Sarkic scripture considered highly heretical among Proto- and Neo-Sarkite groups.[[footnote]]Copy archived at the New York City office.[[/footnote]]
+
+[[div style=&#34;border:solid 2px #112211; background:#DDEEDD; color: black; padding:25px; margin-bottom: 25px;&#34;]]
+[[div class=&#34;prophecy&#34;]]
+[[=]]
+
+And so the [[span class =&#34;page-content&#34;]] **Serpent**[[/span]] cradled me
+
+Foretelling my life would not see its enemy for centuries
+
+But still I wept, I wept for the abominations 
+
+Those born from chaos, with a hatred of all things
+
+In that moment, apotheosis escaped me as I 
+
+Wept for Kiyullāl, Volräj, Yīan and Talläejak, wretched archons of dusk
+
+Torn to pieces by a Dark tongue, a Dark void
+
+So carelessly, so viciously as to make a fox cower
+
+For how could I not?
+
+In my patheticness, my weakness, how could their slaughter not move me to tears?
+
+I was watching mimicry take its ugliest course
+
+Its most hideous high form, clothed in greed and stomachs unsatisfied.
+
+If even the deathless Archons can fall, what about humanity? The blind lambs of Ion, his beloved flock?
+
+How would they escape this ultimate subjugation?
+
+I asked the [[span class =&#34;page-content&#34;]] **Serpent**[[/span]] how it could allow such grotesque power,
+
+How it could stand its stories being torn asunder
+
+Its masses being robbed
+
+And it simply replied to me with silence.
+
+It simply replied to me with nothingness.
+
+[[/=]]
+[[/div]]
+[[/div]]
+
+
+The following is a transcript of intercepted CCTV footage captured in the basement of the Ötkert Night Club in Budapest, Hungary. Various parts of this transcript have been translated from Hungarian and Carnyamana.[[footnote]]A constructed Neo-Sarkic language derived from modern Polish, intended to act as proof of cult membership.[[/footnote]]
+
+[[div class=&#34;court-document&#34;]]
+
+[[div class=&#34;lineno-container&#34;]]
+[[div class=&#34;monospace linenos&#34;]]
+[[div class=&#34;nums&#34;]]
+[[/div]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;monospace court-document-content&#34;]]
+
+//DATE: 27/10/2014//
+//TIME BEGIN: 21:27 GMT +2//
+
+[BEGIN TRANSCRIPT]
+
+**WOMAN:** Bence, we must leave, with haste, now—
+
+**MAN:** What?! I don’t smell that vampire on your clothes—where the hell is your arm—?!
+
+**WOMAN:** //Now!// Before that wretched thing finds us, finds—!
+
+ [A door slams. Both the MAN and the WOMAN cower as a dark figure looms at the top of a stairwell. Black shadow magic blends her clothes in with her silhouette.]
+
+[IRIS DARKE descends slowly, her footsteps squishing into pieces of skin which have been stitched to the floor.]
+
+[Both the MAN and the WOMAN begin whispering in Carnyamana to each other as they submerge themselves in the blanket-like epidermis.]
+
+**MAN:** You must travel through the vents as insects.
+
+**WOMAN:** But she—Bence, she will find us! She is marked too! I can smell it!
+
+**MAN:** Lies! We have no other choice—go! 
+
+[The lights flash on. The room is filled with electronics and sound systems rotting from metal into flesh. The MAN launches at IRIS as the WOMAN transforms her body into worms stitched together by a liquid-like emulsion of fat and hair that begins crawling up the walls.]
+
+[IRIS pushes the man down and snaps his neck. He trips her, and she falls to the floor, but soon she begins to wrestle with him. He attempts to fuse their bodies together.]
+
+**MAN:** O Baiz’humja, swallow me! 
+
+[A red circle begins to form under the struggling pair. It is swollen, pustules and pocked necrosis swimming like molten glass along the edges of its form.]
+
+**MAN:** Swallow us both, wretched Archon, so that Hanna may escape! Show her safe passage out of here, and we shall sacrifice utmost to your ugliness!
+
+**IRIS:** An Archon—?!
+
+[A large mouth with black teeth quickly bubbles up and clamps like a vice-grip. It descends just as fast as it emerges, and soon the room is silent.]
+
+[The room is silent until the sound of crunching bones fills the air. Something is screaming in pain as it is ripped to shreds; a large wound opens up on the floor as hoards of worms and
+maggots rise. The vent floods with blood, pushing everything in them out.]
+
+**WOMAN:** No—!
+
+[The screaming’s pitch overwhelms the audio. It rises to a level which begins to break the lens of the camera.]
+
+**WOMAN:** This can’t—be!
+
+[The WOMAN resumes her human form, stumbling for the stairs as the floor begins to bleed into a black that absorbs all light. She is now missing a leg, and its stump is tainted by that very same cursed hue. She struggles to regenerate it.]
+
+**WOMAN:** [[span class =&#34;page-content&#34;]]**Bastard Serpent child**[[/span]], a thousand of Ion’s toils upon your soul!
+
+[The black on the floor chases her. It forms a lipped mouth with white fangs that swallows her this time, gnashing and shredding her body to ribbons.]
+
+[More wailing again. This time, it is to a symphony of an orchestra playing over a meat grinder.]
+
+[There is one last high-pitched screech as the sound of shattering skulls fills the air. When it stops, the room begins to rot, and IRIS emerges from a quickly collapsing hole in the floor, bleeding from her forehead and shoulders. The sound of a snake hissing is faintly audible.]
+
+**IRIS:** Blegh. Baiz’humja tastes like rotten calamari.
+
+[END TRANSCRIPT] 
+
+//TIME CONCLUDED: 22:01 GMT +2//
+[[/div]]
+[[/div]]
+ @@ @@
+
+
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+
+**INTERNAL MEMO No. 64324**
+ 
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-09
+
+**DATE:** 30/10/2014
+
+**TO:** SILAS KING
+
+**PENNED BY:** PERCIVAL A. DARKE
+
+My, these recent events have certainly been keeping you busy, no?
+
+I need you to make a special note of what happened in Budapest with Iris, making sure the video is triple-secured and locked behind .merlin’s firewall in case of thieves. Local authorities are already collaborating with the G.O.C regarding on the incident, and there is no doubt in my mind they’ll eventually ask MI666 for help given their extensive case files on us. I don’t mind that she was caught on camera, I’m more so just perplexed at her boldness and that she accomplished a feat which took me years so casually (killing an Archon is no small feat). Her powers are manifesting at an exponential rate, but they really are no different from mine, so perhaps…
+
+Cross-reference this with other incidents and see how many patterns emerge, Silas. I have already made plans to investigate a few Serbian Neo-Sarkite cults when Monaco recovers. Perhaps there will not just be answers as to what this “serpent” is (I’ve heard that more than once over the years), but profit as well. 
+[[/div]]
+[[/div]]
+@@ @@
+[[div style=&#34;border:4px double white;&#34;]]
+[[div style=&#34;color:#032D38; font-size:11pt; background:rgb(232, 244, 250);font-family: book;padding: 15px;&#34;]]
+
+**INTERNAL MEMO No. 64385**
+ 
+**ATTACHMENT CODE:** BL6CZ/G6133/IQ00X-10
+
+**DATE:** 01/11/2014
+
+**TO:** LUCAS A. MONACO
+
+**PENNED BY:** PERCIVAL A. DARKE
+
+I hope this finds you while you are conscious. If not, I imagine Amalina will deliver the news when you stir—I didn’t realize even vampires needed to sleep this much when wounded.
+
+We made an investigation into the attackers. Unsurprisingly, they were members of the Prion Wallowers, a Neo-Sarkite cult out in Minsk. That noxious little group has long evaded my and the G.O.C’s attempts at extermination, especially over the past decade, and you have my deepest apologies that my ineptitude nearly resulted in the loss of your life. My word is thus: I will no longer be as lax as I once was with quashing them; if all goes according to the plans drawn up, they will be gone in six months. I do believe this will make for a sincere apology on my behalf.
+
+What //did// end up shocking me was the motive. Your cohort Edmond Bergamasco was quite the picky eater, an even crueler master, and the most stupid of connoisseurs. Do you know who you were feasting upon at that little soirée of yours? Who had been passed around like a charcuterie plate to you and his friends because of her Bombay blood type?[[footnote]]One of the rarest blood types, accounting for 0.0004% of the population.[[/footnote]]
+
+The youngest daughter of Fahd Hariri, Lebanon’s premier billionaire businessman.
+
+How you did not recognize her is not your problem anymore (even if it was a serious lapse in your senses we will discuss later). But needless to say we are going to put out a disclaimer to our clientele about the potential risk for retaliation by the relatives of their victims, as this has caused renewals to plummet and new contract numbers to stagnate, especially among the Asian markets. Hariri was also a good friend to many of our Chinese and Saudi contacts, and the Marshall team is currently working overtime to douse those fires, because we cannot have our supply lines collapse in those areas under any circumstances.
+
+Once this is over, it will be your job to recapture prospects and provide them with suitable contractor services with which to protect them, //reminding them that they are liable for damages done to our reputation if they decide to keep the wrong pets.// We can discuss when you are more ambulatory how that will be integrated into the new contract structure, because I will //not// have my beautiful daughter’s first project sullied by some buffoonish immortals and for-hire wannabes worshipping worthless trash gods.
+[[/div]]
+[[/div]]
+
+[[include :scp-wiki:component:license-box author=xexnoncores and mxsinister]]
+
+&gt; **Filename:** emerald.jpeg
+&gt; **Name:** Mim Emerald.jpg
+&gt; **Author:** Cacoush
+&gt; **License:** Creative Commons Attribution-Share Alike 4.0 International
+&gt; **Source Link:** [https://commons.wikimedia.org/wiki/File:Mim_emerald.jpg Wikimedia Commons]
+&gt; **Additional Notes:** Image edited by [[*user xexnoncores]]
+
+&gt; **Filename:** sigil.png
+&gt; **Name:** Shakuzu.svg
+&gt; **Author:** Firma Odin
+&gt; **License:** Creative Commons CC0 1.0 Universal Public Domain Dedication
+&gt; **Source Link:** [https://commons.wikimedia.org/wiki/File:Shakuzu.svg Wikimedia Commons]
+&gt; **Additional Notes:** Image edited by [[*user xexnoncores]]
+
+[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:54.592139.</em>
+  
+</div>
+</body>

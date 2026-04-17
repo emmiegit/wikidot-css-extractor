@@ -44,6 +44,25 @@
     column-rule: 1px solid #888;
     counter-reset: index;
 }
+
+.tag-list ol {
+    padding: 0;
+    margin-block: .25rem
+    margin-bottom: 2.25rem;
+    column-width: 12rem;
+    column-gap: 1.25rem;
+    column-rule: 1px solid #888;
+    counter-reset: index;
+}
+.tag-list li {
+    margin-left: 40px;
+}
+.tag-list ol li {
+    list-style-type: var(--index);
+    padding-inline-start: .5ch;
+    margin-inline-start: 3.5ch;
+}
+.tag-list ol li::marker { font-size: .75em; }
 .pages-list-item {
     margin-bottom: 0.675em;
     line-height: 1.125;
@@ -66,6 +85,11 @@
     grid-gap: 0.185rem;
     align-items: center;
     justify-content: space-between;
+    margin-block: 1.5rem;
+}
+
+#u-hidden .pages-tag-cloud-box a:not([href^=&#34;/system:page-tags/tag/_&#34;]) {
+    display: none;
 }</code></pre>
         </li>
       
@@ -75,7 +99,7 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>--index: &#39;%%index%%.&#39;</code></pre>
         </li>
       
     </ul>
@@ -102,6 +126,10 @@
           <pre><code>standalone</code></pre>
         </li>
       
+        <li>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
@@ -121,6 +149,25 @@
     column-rule: 1px solid #888;
     counter-reset: index;
 }
+
+.tag-list ol {
+    padding: 0;
+    margin-block: .25rem
+    margin-bottom: 2.25rem;
+    column-width: 12rem;
+    column-gap: 1.25rem;
+    column-rule: 1px solid #888;
+    counter-reset: index;
+}
+.tag-list li {
+    margin-left: 40px;
+}
+.tag-list ol li {
+    list-style-type: var(--index);
+    padding-inline-start: .5ch;
+    margin-inline-start: 3.5ch;
+}
+.tag-list ol li::marker { font-size: .75em; }
 .pages-list-item {
     margin-bottom: 0.675em;
     line-height: 1.125;
@@ -143,22 +190,38 @@
     grid-gap: 0.185rem;
     align-items: center;
     justify-content: space-between;
+    margin-block: 1.5rem;
+}
+
+#u-hidden .pages-tag-cloud-box a:not([href^=&#34;/system:page-tags/tag/_&#34;]) {
+    display: none;
 }
 [[/module]]
 
 [[div class=&#34;content-panel centered standalone&#34;]]
 Welcome to the tags page! What is a tag? Find out on our [[[a-laymen-s-guide-to-tagging|Tag Guide]]]!
 
-You can browse tags with the [#toc0 tag cloud] at the bottom, or see a [http://05command.wikidot.com/tech-hub-tag-list comprehensive list of tags]. If you want to search for more than one tag at a time, try our advanced [[[Tag Search]]].
+You can browse tags with the [#toc0 tag cloud] at the bottom, or see a [https://scp-wiki.wikidot.com/tag-list comprehensive list of tags]. If you want to search for more than one tag at a time, try our advanced [[[Tag Search]]].
 [[/div]]
 
-[[module PagesByTag]]
+[!-- [[module PagesByTag]] --]
 
-
+[[div class=&#34;tag-list&#34;]]
+[[module ListPages category=&#34;*&#34; order=&#34;title&#34; separate=&#34;false&#34; perPage=&#34;100&#34; tags=&#34;@URL|_&#34; prependLine=&#34;[[ol]]&#34; appendLine=&#34;[[/ol]]&#34; ]]
+[[li style=&#34;--index: &#39;%%index%%.&#39;&#34;]]
+%%title_linked%%
+[[/li]]
+[[/module]]
+[[/div]]
 
 ++ Tag Cloud:
-[[module TagCloud limit=&#34;2000&#34; target=&#34;system:page-tags&#34; showHidden=&#34;true&#34; minColor=&#34;128,128,192&#34; maxColor=&#34;153,0,17&#34;]]
+[[module TagCloud limit=&#34;2000&#34; target=&#34;system:page-tags&#34; minColor=&#34;128,128,192&#34; maxColor=&#34;153,0,17&#34;]]
 
+-----
+
+[[div id=&#34;hidden&#34;]]
+[[module TagCloud limit=&#34;2000&#34; target=&#34;system:page-tags&#34; showHidden=&#34;true&#34; minColor=&#34;128,128,192&#34; maxColor=&#34;153,0,17&#34;]]
+[[/div]]
 
 [!--
 You can edit parameters of the TagCloud module as described in http://www.wikidot.com/doc:tagcloud-module
@@ -170,7 +233,7 @@ But if you want to keep the tag functionality working - do not remove these modu
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:40.335682.</em>
+    <em>Last updated 2026-04-17 00:56:59.521050.</em>
   
 </div>
 </body>

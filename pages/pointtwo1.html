@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Initials</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Initials</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/pointtwo1" target="_blank">Initials</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>
+@import url(&#39;https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap&#39;);
+
+/* ROOT SETTINGS */
+:root {
+    --title: &#34;Site-02&#34;;
+    --subtitle: &#34;Shattered Crown&#34;;
+    --title-size: 1.2rem;
+    --subtitle-size: 2.5rem;
+    --logo: url(&#39;https://scpdsandbox.wdfiles.com/local--files/nostalgia-theme/primary_shcr_white.png&#39;);
+
+    --basalt-secondary-color: 34, 34, 35;
+    --top-bar-dropdown-background: var(--basalt-secondary-color);
+    --basalt-UI-dark-pallete: 89, 89, 89;
+
+    --header-UI-font-size: calc(var(--true-font-size) * .85);
+    --header-UI-font-size: calc(var(--true-font-size) * .95);
+    --basalt-bright-element-color: 224, 72, 73;
+    --basalt-main-text-color: 230, 230, 230;
+    
+    --base-header-height: calc((var(--title-size) + var(--subtitle-size)) * 1.275 + 1.5rem);
+
+    --search-button-width: 2.5rem;
+    --user-button-width: 3.5rem;
+
+    --blockquote-background-color: var(--basalt-UI-dark-palette);
+
+    --footnote-background-color: var(--basalt-UI-dark-palette);
+    --image-caption-background-color: var(--basalt-secondary-color);
+    --basalt-th-background-color: var(--basalt-secondary-color);
+    --hr-color: var(--basalt-UI-dark-palette);
+}
+
+/* HEADER MUMBO JUMBO */
+
+#header {
+    display: grid;
+    position: sticky;
+    contain: layout;
+}
+
+#header::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+    filter: brightness(1.1) contrast(1) saturate(0.9);
+    background-repeat: repeat;
+    background-size: auto;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#header-extra-div-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; /* ONLY this div clips - not the whole header */
+    pointer-events: none;
+    z-index: 1;
+}
+
+#header-extra-div-1 span {
+    position: absolute;
+    top: 50%;
+    right: calc(var(--search-button-width) + var(--user-button-width) + 250px);
+    width: clamp(925px, 20vw, 650px);
+    height: clamp(950px, 25vw, 550px);
+    transform: translateY(-50%) rotate(-15deg);
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/primary_shcr_white.png&#39;);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.25;
+    filter: hue-rotate(180deg) saturate(0.3) brightness(0.7);
+    display: block;
+}
+
+/* HIDE: Crown on mobile */
+@media (max-width: 1100px) {
+    #header-extra-div-1 {
+        display: none;
+    }
+}
+
+#header h1 a span {
+    margin-left: 0.65rem;
+}
+
+#header h1 a::before {
+    width: calc(var(--base-header-height) * 0.65);
+    min-width: calc(var(--base-header-height) * 0.70);
+}
+
+#header h1 a span {
+    text-align: center;
+    display: inline-block;
+    width: max-content;
+    min-width: max-content;
+    height: unset;
+}
+
+#header h1 a span::before,
+#header h1 a span::after {
+    display: block;
+    white-space: nowrap;
+    width: max-content;
+    margin: 0 auto;
+}
+
+#header h1 a span::before {
+    content: var(--title);
+    font-size: var(--title-size);
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+#header h1 a span::after {
+    content: var(--subtitle);
+    font-size: var(--subtitle-size);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0px;
+}
+
+/* TOPBAR */
+
+#top-bar div[class*=top-bar]&gt;ul&gt;li&gt;a {
+    padding: 0 calc(var(--header-UI-font-size) * 2.5);
+}
+
+#top-bar div[class*=top-bar] ul li ul li a {
+    background: rgb(var(--basalt-UI-dark-palette), var(--basalt-UI-opacity));
+}
+
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li {
+    margin: 0rem 0rem;
+    white-space: nowrap;
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a {
+    transition: background-color 0.15s ease;
+    padding: 0 calc(var(--header-UI-font-size) * 2.5);
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li:first-child {
+    margin-left: 0;
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li:last-child {
+    margin-right: 0;
+}
+
+/* LOGIN STATUS */
+#login-status span.printuser&gt;a {
+    padding: min(calc(var(--base-header-height) * .175), 0.325rem);
+}
+
+/* BODY */
+body {
+    color: rgb(var(--basalt-secondary-color));
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+
+/* BLOCKQUOTES */
+
+.blockquote hr {
+    background-color: rgb(var(--basalt-primary-color));
+}
+
+/* TABLES */
+table th,
+table tr:first-child td {
+    border: 0.15rem solid rgb(var(--basalt-secondary-color));
+}
+
+/* TABS */
+.yui-navset.yui-navset-top {
+    border: 1px solid rgb(var(--basalt-secondary-color));
+}
+
+:is(:where(#page-content) table:not(.form),table.wiki-content-table) td {
+   border: solid 0.15rem rgb(var(--basalt-UI-dark-palette));
+}
+
+/* PAGE TITLE */
+#page-title, .meta-title {
+    color: rgba(var(--basalt-secondary-color));
+    font-size: xxx-large;
+}
+
+/* HOVERTIPS COLORING */
+.bibitems, .footnotes-footer, .hovertip {
+    color: rgb(var(--basalt-primary-color));
+}
+
+/* EDIT AREA */
+#edit-page-textarea, #np-text {
+    color: rgb(var(--basalt-secondary-color));
+}
+
+/* BIBLITEMS */
+.bibitems .title, .footnotes-footer .title {
+    background-color: rgb(var(--basalt-secondary-color));
+}
+
+.bibitems::before, .footnotes-footer::before {
+    background-color: rgb(var(--basalt-secondary-color));
+}
+
+/* USER PROFILE WINDOW */
+.owindow .title {
+    opacity: 80%;
+    color: rgb(var(--basalt-secondary-color));
+}
+
+
+/* SCROLL */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--scrollbar-thumb-color)) rgb(89 89 89);
+}
+
+/* PAGE TAGS */
+#main-content&gt;.page-tags&gt;span a {
+    color: rgb(var(--basalt-primary-color));
+}
+
+/* TEXT AREA */
+input[type=text], textarea {
+    color: rgb(var(--basalt-secondary-color));
+}
+
+/* ACTION AREA (FILE UPLOAD) */
+#action-area input.text, textarea#file-comments {
+    color: rgba(var(--basalt-primary-color));
+}
+
+/* PREVIEW MESSAGE */
+.preview-message {
+    background-color: rgba(var(--basalt-primary-color));
+}
+
+/* DOCUMENT DIVS */
+div.document {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+}
+div:is(.document)::before, div:is(.document)::after {
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+}
+
+#page-content div:is(.document, .darkdocument) {
+    max-width: 60rem;
+}
+
+div.darkdocument {
+    background-color: rgb(var(--darkdocument-background-color), 0.25);
+    box-shadow: 0px 1px 1.9px -4px rgb(150 150 159 / 75%), 0px 6px 15px -4px rgb(0 0 0 / 76%);
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+}
+
+div:is(.darkdocument)::before, div:is(.darkdocument)::after {
+    background-color: rgb(var(--darkdocument-background-color));
+    opacity: 90%;
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+}
+
+/* HIGHLIGHTER SPAN */
+.shighlight {
+    position: relative;
+    background: linear-gradient(104deg,
+        rgb(255 255 0 / 28%) 0.9%,
+        rgba(255, 255, 0, 0.8) 2.4%,
+        rgba(255, 255, 0, 0.5) 5.8%,
+        rgb(255 255 0 / 52%) 93%,
+        rgba(255, 255, 0, 0.7) 96%,
+        rgb(255 255 0 / 29%) 98%);
+    );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+    );
+}
+
+.shighlight::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -3px;
+    left: -4px;
+    bottom: -4px;
+    background: rgba(255, 255, 0, 0.3);
+    border-radius: 0.8em 0.3em 0.9em 0.4em;
+    z-index: -1;
+    transform: rotate(-0.5deg) skew(-1deg);
+    clip-path: polygon(
+        0% 10%, 15% 16%, 25% 12%, 35% 18%, 45% 14%,
+        55% 10%, 65% 16%, 75% 12%, 85% 18%, 100% 14%,
+        100% 90%, 85% 86%, 75% 92%, 65% 88%, 55% 94%,
+        45% 90%, 35% 86%, 25% 92%, 15% 88%, 0% 92%
+    );
+}
+
+
+.shighlight::after {
+    content: &#39;&#39;;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    right: -4px;
+    bottom: -3px;
+    background: rgba(255, 255, 0, 0.15);
+    border-radius: 0.6em 0.7em 0.5em 0.8em;
+    z-index: -2;
+    transform: rotate(0.3deg) skew(0.5deg);
+    clip-path: polygon(
+            0% 14%, 12% 10%, 24% 16%, 36% 12%, 48% 18%,
+            60% 14%, 72% 10%, 84% 16%, 96% 12%, 100% 18%,
+            100% 88%, 96% 92%, 84% 86%, 72% 94%, 60% 90%,
+            48% 86%, 36% 92%, 24% 88%, 12% 94%, 0% 90%
+        );
+ }
+
+
+.shighlight-orange {
+    position: relative;
+    background: linear-gradient(102deg,
+    rgba(255, 165, 0, 0) 0.9%,
+    rgba(255, 165, 0, 0.8) 2.4%,
+    rgba(255, 165, 0, 0.5) 5.8%,
+    rgba(255, 165, 0, 0.45) 93%,
+    rgba(255, 165, 0, 0.7) 96%,
+    rgba(255, 165, 0, 0) 98%)
+       );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+        );
+}
+
+.shighlight-orange::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -2px;
+    left: -3px;
+    bottom: -2px;
+    background: rgba(255, 165, 0, 0.3);
+    border-radius: 0.7em 0.5em 0.8em 0.3em;
+    z-index: -1;
+    transform: rotate(0.4deg) skew(-0.8deg);
+    clip-path: polygon(
+        0% 16%, 15% 12%, 30% 18%, 45% 14%, 60% 10%,
+        75% 16%, 90% 12%, 100% 18%, 100% 88%, 90% 92%,
+        75% 86%, 60% 94%, 45% 90%, 30% 86%, 15% 92%, 0% 88%
+    );
+}
+
+.shighlight-pink {
+    position: relative;
+    background: linear-gradient(106deg, rgba(255, 20, 147, 0) 0.9%, rgba(255, 20, 147, 0.6) 2.4%, rgba(255, 20, 147, 0.4) 5.8%, rgba(255, 20, 147, 0.1) 93%, rgba(255, 20, 147, 0.6) 96%, rgba(255, 20, 147, 0) 98%);
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+}
+
+.shighlight-pink::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -1px;
+    left: -2px;
+    bottom: -3px;
+    background: rgba(255, 20, 147, 0.25);
+    border-radius: 0.5em 0.9em 0.4em 1.1em;
+    z-index: -1;
+    transform: rotate(-0.3deg) skew(1deg);
+    /* Pink subtle wavy background */
+    clip-path: polygon(
+        0% 12%, 20% 18%, 35% 14%, 50% 10%, 65% 16%,
+        80% 12%, 100% 18%, 100% 90%, 80% 86%, 65% 92%,
+        50% 88%, 35% 94%, 20% 90%, 0% 86%
+    );
+}
+
+.shighlight-blue {
+    position: relative;
+    background: linear-gradient(102deg,
+        rgba(0, 191, 255, 0) 0.9%,
+        rgba(0, 191, 255, 0.8) 2.4%,
+        rgba(0, 191, 255, 0.5) 5.8%,
+        rgba(0, 191, 255, 0.1) 93%,
+        rgba(0, 191, 255, 0.7) 96%,
+        rgba(0, 191, 255, 0) 98%
+    );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+}
+
+.shighlight-blue::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    right: -3px;
+    bottom: -2px;
+    background: rgba(0, 191, 255, 0.3);
+    border-radius: 0.7em 0.5em 0.8em 0.3em;
+    z-index: -1;
+    transform: rotate(0.4deg) skew(-0.8deg);
+    clip-path: polygon(
+        0% 16%, 15% 12%, 30% 18%, 45% 14%, 60% 10%,
+        75% 16%, 90% 12%, 100% 18%, 100% 88%, 90% 92%,
+        75% 86%, 60% 94%, 45% 90%, 30% 86%, 15% 92%, 0% 88%
+    );
+}
+
+
+/* STICKY NOTES */
+#page-content div.stickynote {
+   float: left;
+   max-width: calc(var(--main-content-width) / 2.15);
+   box-sizing: border-box;
+   margin: 0.25rem 1.25rem;
+   padding-inline: 1.2rem;
+   padding-block: 0.5rem;
+   font-size: 1.1525em;
+   border-radius: 7px;
+   position: relative;
+   font-family: &#39;Permanent Marker&#39;, cursive;
+   letter-spacing: 0.75px;
+   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+   transform: rotate(-1deg);
+   transition: transform 0.2s ease;
+}
+
+/* Hover effect for interactivity */
+#page-content div.stickynote:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow:
+        4px 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Position Controls */
+#page-content div.stickynote.left {
+    float: left;
+    margin-left: clamp(calc(var(--main-content-width) / -4.5), calc((87.5vw - 95%) / -2), 0rem);
+}
+
+#page-content div.stickynote.right {
+    float: right;
+    clamp(calc(var(--main-content-width) / -100), calc((87.5vw - 95%) / -2), -2rem)
+    margin-left: 1.25rem;
+}
+
+/* Tilt Controls */
+#page-content div.stickynote.tilt-none {
+    transform: rotate(0deg);
+}
+
+#page-content div.stickynote.tilt-light {
+    transform: rotate(-0.5deg);
+}
+
+#page-content div.stickynote.tilt-medium {
+    transform: rotate(-2deg);
+}
+
+#page-content div.stickynote.tilt-heavy {
+    transform: rotate(-3deg);
+}
+
+#page-content div.stickynote.tilt-right-light {
+    transform: rotate(0.5deg);
+}
+
+#page-content div.stickynote.tilt-right-medium {
+    transform: rotate(2deg);
+}
+
+#page-content div.stickynote.tilt-right-heavy {
+    transform: rotate(3deg);
+}
+
+#page-content div.stickynote.tilt-none:hover { transform: rotate(0deg) scale(1.02); }
+#page-content div.stickynote.tilt-light:hover { transform: rotate(-0.5deg) scale(1.02); }
+#page-content div.stickynote.tilt-normal:hover { transform: rotate(-1deg) scale(1.02); }
+#page-content div.stickynote.tilt-medium:hover { transform: rotate(-2deg) scale(1.02); }
+#page-content div.stickynote.tilt-heavy:hover { transform: rotate(-3deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-light:hover { transform: rotate(0.5deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-normal:hover { transform: rotate(1deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-medium:hover { transform: rotate(2deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-heavy:hover { transform: rotate(3deg) scale(1.02); }
+
+#page-content div.stickynote.yellow {
+    background-color: #ffeb3b;
+    border: solid 0.12rem #f9c74f;
+    color: #333;
+}
+
+#page-content div.stickynote.red {
+    background-color: #ff5252;
+    border: solid 0.12rem #e53935;
+}
+
+#page-content div.stickynote.blue {
+    background-color: #42a5f5;
+    border: solid 0.12rem #1976d2;
+}
+
+#page-content div.stickynote.green {
+    background-color: #66bb6a;
+    border: solid 0.12rem #388e3c;
+}
+
+#page-content div.stickynote.orange {
+    background-color: #ff9800;
+    border: solid 0.12rem #f57c00;
+}
+
+#page-content div.stickynote.pink {
+    background-color: #fb85ad;
+    border: solid 0.12rem #c2185b;
+}
+
+div.warning {
+    width: 80%;
+    margin: 0.625rem auto;
+    padding: 0.9375rem;
+    border: solid 0.125rem rgb(92, 149, 230);
+    background: #fff url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Agoc/goc-fade.png&#39;) center no-repeat;
+    color: black;
+    text-align: center;
+}
+
+div.warning hr {
+    border-color: rgb(92, 149, 230);
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* This is CSS that will not be part of theme, just for the page itself */
+
+/* SCP HEADER */
+.scp-header {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.scp-header .scp-logo {
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.scp-header .scp-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.scp-header .scp-text-stack {
+    position: absolute;
+    left: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+}
+
+.scp-header .scp-text-stack p {
+    line-height: 0;
+}
+
+.scp-header .scp-foundation {
+    font-size: 14.7px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+.scp-header .scp-site {
+    font-size: 33px;
+    font-weight: 900;
+    color: #333;
+    margin: 2px 0 0 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+.scp-header .scp-classification {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 300px;
+    padding-left: 18rem;
+    text-align: right;
+}
+
+.scp-header .redacted-highlight {
+    background: #000;
+    color: white;
+    padding: 3px 6px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+/* SCP File Table - Desktop */
+.scp-file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0px 0px 8px 0px;
+    font-size: 18px;
+}
+
+.scp-file-table td {
+    padding: 0px 0px 4px 0px;
+    border: none;
+}
+
+.scp-file-table .left-cell {
+    text-align: left;
+    font-weight: normal;
+    width: 50%;
+}
+
+.scp-file-table .right-cell {
+    text-align: right;
+    font-weight: 800;
+    width: 50%;
+}
+
+.scp-file-table .clearance-cell {
+    background: rgb(255, 18, 29);
+    color: rgb(var(--basalt-secondary-color));
+    text-align: center;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 21px;
+    letter-spacing: 2px;
+}
+
+/* Tablet and smaller laptops - 800px and below */
+@media screen and (max-width: 800px) {
+    .scp-header .scp-classification {
+        position: static;
+        padding-left: 0;
+        text-align: left;
+        max-width: none;
+        margin-top: 15px;
+        transform: none;
+    }
+    
+    .scp-header {
+        height: auto;
+        min-height: 120px;
+        padding: 15px 0 25px 0;
+    }
+    
+    .scp-file-table {
+        font-size: 16px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 18px;
+        padding: 6px;
+    }
+}
+
+/* Mobile Tablets - 768px and below */
+@media screen and (max-width: 768px) {
+    .scp-header {
+        height: auto;
+        min-height: 140px;
+        padding: 15px 0 30px 0;
+    }
+    
+    .scp-header .scp-logo {
+        left: 0;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 80px;
+        padding-left: 0;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 13px;
+        text-align: left;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 29px;
+        text-align: left;
+    }
+    
+    .scp-header .scp-classification {
+        position: static;
+        margin-top: 20px;
+        padding-left: 0;
+        text-align: left;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 12px;
+        padding: 4px 6px;
+        line-height: 1.4;
+    }
+    
+    .scp-file-table {
+        font-size: 15px;
+    }
+    
+    .scp-file-table td {
+        padding: 2px 0 6px 0;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 16px;
+        padding: 8px 4px;
+        letter-spacing: 1px;
+    }
+}
+
+/* Large phones - 600px and below */
+@media screen and (max-width: 600px) {
+    .scp-header {
+        min-height: 160px;
+        padding: 10px 0 35px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 70px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 12px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 26px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 11px;
+        padding: 3px 5px;
+    }
+    
+    .scp-file-table {
+        font-size: 14px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 15px;
+        padding: 8px 2px;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* Small phones - 480px and below */
+@media screen and (max-width: 480px) {
+    .scp-header {
+        min-height: 180px;
+        padding: 10px 0 40px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 60px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 11px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 22px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 10px;
+        padding: 3px 4px;
+        line-height: 1.5;
+    }
+    
+    .scp-file-table {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .scp-file-table td {
+        padding: 3px 0 8px 0;
+    }
+    
+    .scp-file-table .left-cell,
+    .scp-file-table .right-cell {
+        width: 50%;
+        word-wrap: break-word;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 14px;
+        padding: 10px 2px;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+}
+
+/* Very small phones - 360px and below */
+@media screen and (max-width: 360px) {
+    .scp-header {
+        min-height: 200px;
+        padding: 8px 0 45px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 55px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 10px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 20px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 9px;
+        padding: 2px 3px;
+    }
+    
+    .scp-file-table {
+        font-size: 12px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 13px;
+        padding: 12px 2px;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.danke {
+    padding: 5px;
+    margin-bottom:10px;
+    font-family: monospace;
+    font-size: 1.1em;
+}
+
+.agent {
+    background-color:#002200;
+    border: 3px solid #55AA55;
+    color: #77CC77;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: none;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:earthworm" target="_blank"><code>:scp-wiki:component:earthworm</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:earthworm.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[div id=&#34;cromthumbnail&#34; style=&#34;display: none;&#34;]]
+[[include component:image-block
+name=https://scp-sandbox-3.wdfiles.com/local--files/nicotest/crownblack.png
+|caption=BROKEN CROWN
+|width=100%
+|align=center]]
+[[/div]]
+
+[[include :scp-wiki:theme:basalt]]
+
+[[module CSS]]
+
+@import url(&#39;https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap&#39;);
+
+/* ROOT SETTINGS */
+:root {
+    --title: &#34;Site-02&#34;;
+    --subtitle: &#34;Shattered Crown&#34;;
+    --title-size: 1.2rem;
+    --subtitle-size: 2.5rem;
+    --logo: url(&#39;https://scpdsandbox.wdfiles.com/local--files/nostalgia-theme/primary_shcr_white.png&#39;);
+
+    --basalt-secondary-color: 34, 34, 35;
+    --top-bar-dropdown-background: var(--basalt-secondary-color);
+    --basalt-UI-dark-pallete: 89, 89, 89;
+
+    --header-UI-font-size: calc(var(--true-font-size) * .85);
+    --header-UI-font-size: calc(var(--true-font-size) * .95);
+    --basalt-bright-element-color: 224, 72, 73;
+    --basalt-main-text-color: 230, 230, 230;
+    
+    --base-header-height: calc((var(--title-size) + var(--subtitle-size)) * 1.275 + 1.5rem);
+
+    --search-button-width: 2.5rem;
+    --user-button-width: 3.5rem;
+
+    --blockquote-background-color: var(--basalt-UI-dark-palette);
+
+    --footnote-background-color: var(--basalt-UI-dark-palette);
+    --image-caption-background-color: var(--basalt-secondary-color);
+    --basalt-th-background-color: var(--basalt-secondary-color);
+    --hr-color: var(--basalt-UI-dark-palette);
+}
+
+/* HEADER MUMBO JUMBO */
+
+#header {
+    display: grid;
+    position: sticky;
+    contain: layout;
+}
+
+#header::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+    filter: brightness(1.1) contrast(1) saturate(0.9);
+    background-repeat: repeat;
+    background-size: auto;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#header-extra-div-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; /* ONLY this div clips - not the whole header */
+    pointer-events: none;
+    z-index: 1;
+}
+
+#header-extra-div-1 span {
+    position: absolute;
+    top: 50%;
+    right: calc(var(--search-button-width) + var(--user-button-width) + 250px);
+    width: clamp(925px, 20vw, 650px);
+    height: clamp(950px, 25vw, 550px);
+    transform: translateY(-50%) rotate(-15deg);
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/primary_shcr_white.png&#39;);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.25;
+    filter: hue-rotate(180deg) saturate(0.3) brightness(0.7);
+    display: block;
+}
+
+/* HIDE: Crown on mobile */
+@media (max-width: 1100px) {
+    #header-extra-div-1 {
+        display: none;
+    }
+}
+
+#header h1 a span {
+    margin-left: 0.65rem;
+}
+
+#header h1 a::before {
+    width: calc(var(--base-header-height) * 0.65);
+    min-width: calc(var(--base-header-height) * 0.70);
+}
+
+#header h1 a span {
+    text-align: center;
+    display: inline-block;
+    width: max-content;
+    min-width: max-content;
+    height: unset;
+}
+
+#header h1 a span::before,
+#header h1 a span::after {
+    display: block;
+    white-space: nowrap;
+    width: max-content;
+    margin: 0 auto;
+}
+
+#header h1 a span::before {
+    content: var(--title);
+    font-size: var(--title-size);
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+#header h1 a span::after {
+    content: var(--subtitle);
+    font-size: var(--subtitle-size);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0px;
+}
+
+/* TOPBAR */
+
+#top-bar div[class*=top-bar]&gt;ul&gt;li&gt;a {
+    padding: 0 calc(var(--header-UI-font-size) * 2.5);
+}
+
+#top-bar div[class*=top-bar] ul li ul li a {
+    background: rgb(var(--basalt-UI-dark-palette), var(--basalt-UI-opacity));
+}
+
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li {
+    margin: 0rem 0rem;
+    white-space: nowrap;
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a {
+    transition: background-color 0.15s ease;
+    padding: 0 calc(var(--header-UI-font-size) * 2.5);
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li:first-child {
+    margin-left: 0;
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li:last-child {
+    margin-right: 0;
+}
+
+/* LOGIN STATUS */
+#login-status span.printuser&gt;a {
+    padding: min(calc(var(--base-header-height) * .175), 0.325rem);
+}
+
+/* BODY */
+body {
+    color: rgb(var(--basalt-secondary-color));
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+
+/* BLOCKQUOTES */
+
+.blockquote hr {
+    background-color: rgb(var(--basalt-primary-color));
+}
+
+/* TABLES */
+table th,
+table tr:first-child td {
+    border: 0.15rem solid rgb(var(--basalt-secondary-color));
+}
+
+/* TABS */
+.yui-navset.yui-navset-top {
+    border: 1px solid rgb(var(--basalt-secondary-color));
+}
+
+:is(:where(#page-content) table:not(.form),table.wiki-content-table) td {
+   border: solid 0.15rem rgb(var(--basalt-UI-dark-palette));
+}
+
+/* PAGE TITLE */
+#page-title, .meta-title {
+    color: rgba(var(--basalt-secondary-color));
+    font-size: xxx-large;
+}
+
+/* HOVERTIPS COLORING */
+.bibitems, .footnotes-footer, .hovertip {
+    color: rgb(var(--basalt-primary-color));
+}
+
+/* EDIT AREA */
+#edit-page-textarea, #np-text {
+    color: rgb(var(--basalt-secondary-color));
+}
+
+/* BIBLITEMS */
+.bibitems .title, .footnotes-footer .title {
+    background-color: rgb(var(--basalt-secondary-color));
+}
+
+.bibitems::before, .footnotes-footer::before {
+    background-color: rgb(var(--basalt-secondary-color));
+}
+
+/* USER PROFILE WINDOW */
+.owindow .title {
+    opacity: 80%;
+    color: rgb(var(--basalt-secondary-color));
+}
+
+
+/* SCROLL */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--scrollbar-thumb-color)) rgb(89 89 89);
+}
+
+/* PAGE TAGS */
+#main-content&gt;.page-tags&gt;span a {
+    color: rgb(var(--basalt-primary-color));
+}
+
+/* TEXT AREA */
+input[type=text], textarea {
+    color: rgb(var(--basalt-secondary-color));
+}
+
+/* ACTION AREA (FILE UPLOAD) */
+#action-area input.text, textarea#file-comments {
+    color: rgba(var(--basalt-primary-color));
+}
+
+/* PREVIEW MESSAGE */
+.preview-message {
+    background-color: rgba(var(--basalt-primary-color));
+}
+
+/* DOCUMENT DIVS */
+div.document {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+}
+div:is(.document)::before, div:is(.document)::after {
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+}
+
+#page-content div:is(.document, .darkdocument) {
+    max-width: 60rem;
+}
+
+div.darkdocument {
+    background-color: rgb(var(--darkdocument-background-color), 0.25);
+    box-shadow: 0px 1px 1.9px -4px rgb(150 150 159 / 75%), 0px 6px 15px -4px rgb(0 0 0 / 76%);
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+}
+
+div:is(.darkdocument)::before, div:is(.darkdocument)::after {
+    background-color: rgb(var(--darkdocument-background-color));
+    opacity: 90%;
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+}
+
+/* HIGHLIGHTER SPAN */
+.shighlight {
+    position: relative;
+    background: linear-gradient(104deg,
+        rgb(255 255 0 / 28%) 0.9%,
+        rgba(255, 255, 0, 0.8) 2.4%,
+        rgba(255, 255, 0, 0.5) 5.8%,
+        rgb(255 255 0 / 52%) 93%,
+        rgba(255, 255, 0, 0.7) 96%,
+        rgb(255 255 0 / 29%) 98%);
+    );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+    );
+}
+
+.shighlight::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -3px;
+    left: -4px;
+    bottom: -4px;
+    background: rgba(255, 255, 0, 0.3);
+    border-radius: 0.8em 0.3em 0.9em 0.4em;
+    z-index: -1;
+    transform: rotate(-0.5deg) skew(-1deg);
+    clip-path: polygon(
+        0% 10%, 15% 16%, 25% 12%, 35% 18%, 45% 14%,
+        55% 10%, 65% 16%, 75% 12%, 85% 18%, 100% 14%,
+        100% 90%, 85% 86%, 75% 92%, 65% 88%, 55% 94%,
+        45% 90%, 35% 86%, 25% 92%, 15% 88%, 0% 92%
+    );
+}
+
+
+.shighlight::after {
+    content: &#39;&#39;;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    right: -4px;
+    bottom: -3px;
+    background: rgba(255, 255, 0, 0.15);
+    border-radius: 0.6em 0.7em 0.5em 0.8em;
+    z-index: -2;
+    transform: rotate(0.3deg) skew(0.5deg);
+    clip-path: polygon(
+            0% 14%, 12% 10%, 24% 16%, 36% 12%, 48% 18%,
+            60% 14%, 72% 10%, 84% 16%, 96% 12%, 100% 18%,
+            100% 88%, 96% 92%, 84% 86%, 72% 94%, 60% 90%,
+            48% 86%, 36% 92%, 24% 88%, 12% 94%, 0% 90%
+        );
+ }
+
+
+.shighlight-orange {
+    position: relative;
+    background: linear-gradient(102deg,
+    rgba(255, 165, 0, 0) 0.9%,
+    rgba(255, 165, 0, 0.8) 2.4%,
+    rgba(255, 165, 0, 0.5) 5.8%,
+    rgba(255, 165, 0, 0.45) 93%,
+    rgba(255, 165, 0, 0.7) 96%,
+    rgba(255, 165, 0, 0) 98%)
+       );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+        );
+}
+
+.shighlight-orange::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -2px;
+    left: -3px;
+    bottom: -2px;
+    background: rgba(255, 165, 0, 0.3);
+    border-radius: 0.7em 0.5em 0.8em 0.3em;
+    z-index: -1;
+    transform: rotate(0.4deg) skew(-0.8deg);
+    clip-path: polygon(
+        0% 16%, 15% 12%, 30% 18%, 45% 14%, 60% 10%,
+        75% 16%, 90% 12%, 100% 18%, 100% 88%, 90% 92%,
+        75% 86%, 60% 94%, 45% 90%, 30% 86%, 15% 92%, 0% 88%
+    );
+}
+
+.shighlight-pink {
+    position: relative;
+    background: linear-gradient(106deg, rgba(255, 20, 147, 0) 0.9%, rgba(255, 20, 147, 0.6) 2.4%, rgba(255, 20, 147, 0.4) 5.8%, rgba(255, 20, 147, 0.1) 93%, rgba(255, 20, 147, 0.6) 96%, rgba(255, 20, 147, 0) 98%);
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+}
+
+.shighlight-pink::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -1px;
+    left: -2px;
+    bottom: -3px;
+    background: rgba(255, 20, 147, 0.25);
+    border-radius: 0.5em 0.9em 0.4em 1.1em;
+    z-index: -1;
+    transform: rotate(-0.3deg) skew(1deg);
+    /* Pink subtle wavy background */
+    clip-path: polygon(
+        0% 12%, 20% 18%, 35% 14%, 50% 10%, 65% 16%,
+        80% 12%, 100% 18%, 100% 90%, 80% 86%, 65% 92%,
+        50% 88%, 35% 94%, 20% 90%, 0% 86%
+    );
+}
+
+.shighlight-blue {
+    position: relative;
+    background: linear-gradient(102deg,
+        rgba(0, 191, 255, 0) 0.9%,
+        rgba(0, 191, 255, 0.8) 2.4%,
+        rgba(0, 191, 255, 0.5) 5.8%,
+        rgba(0, 191, 255, 0.1) 93%,
+        rgba(0, 191, 255, 0.7) 96%,
+        rgba(0, 191, 255, 0) 98%
+    );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+}
+
+.shighlight-blue::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    right: -3px;
+    bottom: -2px;
+    background: rgba(0, 191, 255, 0.3);
+    border-radius: 0.7em 0.5em 0.8em 0.3em;
+    z-index: -1;
+    transform: rotate(0.4deg) skew(-0.8deg);
+    clip-path: polygon(
+        0% 16%, 15% 12%, 30% 18%, 45% 14%, 60% 10%,
+        75% 16%, 90% 12%, 100% 18%, 100% 88%, 90% 92%,
+        75% 86%, 60% 94%, 45% 90%, 30% 86%, 15% 92%, 0% 88%
+    );
+}
+
+
+/* STICKY NOTES */
+#page-content div.stickynote {
+   float: left;
+   max-width: calc(var(--main-content-width) / 2.15);
+   box-sizing: border-box;
+   margin: 0.25rem 1.25rem;
+   padding-inline: 1.2rem;
+   padding-block: 0.5rem;
+   font-size: 1.1525em;
+   border-radius: 7px;
+   position: relative;
+   font-family: &#39;Permanent Marker&#39;, cursive;
+   letter-spacing: 0.75px;
+   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+   transform: rotate(-1deg);
+   transition: transform 0.2s ease;
+}
+
+/* Hover effect for interactivity */
+#page-content div.stickynote:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow:
+        4px 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Position Controls */
+#page-content div.stickynote.left {
+    float: left;
+    margin-left: clamp(calc(var(--main-content-width) / -4.5), calc((87.5vw - 95%) / -2), 0rem);
+}
+
+#page-content div.stickynote.right {
+    float: right;
+    clamp(calc(var(--main-content-width) / -100), calc((87.5vw - 95%) / -2), -2rem)
+    margin-left: 1.25rem;
+}
+
+/* Tilt Controls */
+#page-content div.stickynote.tilt-none {
+    transform: rotate(0deg);
+}
+
+#page-content div.stickynote.tilt-light {
+    transform: rotate(-0.5deg);
+}
+
+#page-content div.stickynote.tilt-medium {
+    transform: rotate(-2deg);
+}
+
+#page-content div.stickynote.tilt-heavy {
+    transform: rotate(-3deg);
+}
+
+#page-content div.stickynote.tilt-right-light {
+    transform: rotate(0.5deg);
+}
+
+#page-content div.stickynote.tilt-right-medium {
+    transform: rotate(2deg);
+}
+
+#page-content div.stickynote.tilt-right-heavy {
+    transform: rotate(3deg);
+}
+
+#page-content div.stickynote.tilt-none:hover { transform: rotate(0deg) scale(1.02); }
+#page-content div.stickynote.tilt-light:hover { transform: rotate(-0.5deg) scale(1.02); }
+#page-content div.stickynote.tilt-normal:hover { transform: rotate(-1deg) scale(1.02); }
+#page-content div.stickynote.tilt-medium:hover { transform: rotate(-2deg) scale(1.02); }
+#page-content div.stickynote.tilt-heavy:hover { transform: rotate(-3deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-light:hover { transform: rotate(0.5deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-normal:hover { transform: rotate(1deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-medium:hover { transform: rotate(2deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-heavy:hover { transform: rotate(3deg) scale(1.02); }
+
+#page-content div.stickynote.yellow {
+    background-color: #ffeb3b;
+    border: solid 0.12rem #f9c74f;
+    color: #333;
+}
+
+#page-content div.stickynote.red {
+    background-color: #ff5252;
+    border: solid 0.12rem #e53935;
+}
+
+#page-content div.stickynote.blue {
+    background-color: #42a5f5;
+    border: solid 0.12rem #1976d2;
+}
+
+#page-content div.stickynote.green {
+    background-color: #66bb6a;
+    border: solid 0.12rem #388e3c;
+}
+
+#page-content div.stickynote.orange {
+    background-color: #ff9800;
+    border: solid 0.12rem #f57c00;
+}
+
+#page-content div.stickynote.pink {
+    background-color: #fb85ad;
+    border: solid 0.12rem #c2185b;
+}
+
+div.warning {
+    width: 80%;
+    margin: 0.625rem auto;
+    padding: 0.9375rem;
+    border: solid 0.125rem rgb(92, 149, 230);
+    background: #fff url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Agoc/goc-fade.png&#39;) center no-repeat;
+    color: black;
+    text-align: center;
+}
+
+div.warning hr {
+    border-color: rgb(92, 149, 230);
+}
+
+[[/module]]
+
+[[module CSS]]
+/* This is CSS that will not be part of theme, just for the page itself */
+
+/* SCP HEADER */
+.scp-header {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.scp-header .scp-logo {
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.scp-header .scp-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.scp-header .scp-text-stack {
+    position: absolute;
+    left: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+}
+
+.scp-header .scp-text-stack p {
+    line-height: 0;
+}
+
+.scp-header .scp-foundation {
+    font-size: 14.7px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+.scp-header .scp-site {
+    font-size: 33px;
+    font-weight: 900;
+    color: #333;
+    margin: 2px 0 0 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+.scp-header .scp-classification {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 300px;
+    padding-left: 18rem;
+    text-align: right;
+}
+
+.scp-header .redacted-highlight {
+    background: #000;
+    color: white;
+    padding: 3px 6px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+/* SCP File Table - Desktop */
+.scp-file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0px 0px 8px 0px;
+    font-size: 18px;
+}
+
+.scp-file-table td {
+    padding: 0px 0px 4px 0px;
+    border: none;
+}
+
+.scp-file-table .left-cell {
+    text-align: left;
+    font-weight: normal;
+    width: 50%;
+}
+
+.scp-file-table .right-cell {
+    text-align: right;
+    font-weight: 800;
+    width: 50%;
+}
+
+.scp-file-table .clearance-cell {
+    background: rgb(255, 18, 29);
+    color: rgb(var(--basalt-secondary-color));
+    text-align: center;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 21px;
+    letter-spacing: 2px;
+}
+
+/* Tablet and smaller laptops - 800px and below */
+@media screen and (max-width: 800px) {
+    .scp-header .scp-classification {
+        position: static;
+        padding-left: 0;
+        text-align: left;
+        max-width: none;
+        margin-top: 15px;
+        transform: none;
+    }
+    
+    .scp-header {
+        height: auto;
+        min-height: 120px;
+        padding: 15px 0 25px 0;
+    }
+    
+    .scp-file-table {
+        font-size: 16px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 18px;
+        padding: 6px;
+    }
+}
+
+/* Mobile Tablets - 768px and below */
+@media screen and (max-width: 768px) {
+    .scp-header {
+        height: auto;
+        min-height: 140px;
+        padding: 15px 0 30px 0;
+    }
+    
+    .scp-header .scp-logo {
+        left: 0;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 80px;
+        padding-left: 0;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 13px;
+        text-align: left;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 29px;
+        text-align: left;
+    }
+    
+    .scp-header .scp-classification {
+        position: static;
+        margin-top: 20px;
+        padding-left: 0;
+        text-align: left;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 12px;
+        padding: 4px 6px;
+        line-height: 1.4;
+    }
+    
+    .scp-file-table {
+        font-size: 15px;
+    }
+    
+    .scp-file-table td {
+        padding: 2px 0 6px 0;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 16px;
+        padding: 8px 4px;
+        letter-spacing: 1px;
+    }
+}
+
+/* Large phones - 600px and below */
+@media screen and (max-width: 600px) {
+    .scp-header {
+        min-height: 160px;
+        padding: 10px 0 35px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 70px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 12px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 26px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 11px;
+        padding: 3px 5px;
+    }
+    
+    .scp-file-table {
+        font-size: 14px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 15px;
+        padding: 8px 2px;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* Small phones - 480px and below */
+@media screen and (max-width: 480px) {
+    .scp-header {
+        min-height: 180px;
+        padding: 10px 0 40px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 60px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 11px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 22px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 10px;
+        padding: 3px 4px;
+        line-height: 1.5;
+    }
+    
+    .scp-file-table {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .scp-file-table td {
+        padding: 3px 0 8px 0;
+    }
+    
+    .scp-file-table .left-cell,
+    .scp-file-table .right-cell {
+        width: 50%;
+        word-wrap: break-word;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 14px;
+        padding: 10px 2px;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+}
+
+/* Very small phones - 360px and below */
+@media screen and (max-width: 360px) {
+    .scp-header {
+        min-height: 200px;
+        padding: 8px 0 45px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 55px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 10px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 20px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 9px;
+        padding: 2px 3px;
+    }
+    
+    .scp-file-table {
+        font-size: 12px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 13px;
+        padding: 12px 2px;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+}
+[[/module]]
+
+
+[[module css]]
+.danke {
+    padding: 5px;
+    margin-bottom:10px;
+    font-family: monospace;
+    font-size: 1.1em;
+}
+
+.agent {
+    background-color:#002200;
+    border: 3px solid #55AA55;
+    color: #77CC77;
+}
+[[/module]]
+[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
+[[div class=&#34;blockquote&#34;]]
+**STEP ███/███:** 
+Enter site from south; cf. coordinates C024.
+[[/div]]
+[[&lt;]]
+Ghosts roamed the halls.
+
+    Or, at least, that’s what they looked like.
+    
+    When Mark looked side to side, he saw just that; specters, with eyes dark and shaded, without an inch of skin showing, masks oozing mist as they stalked the corridors. He grasped his rifle tight as those shadows crept on, beams of light emanating from their weapons and methodically sweeping the walls. And he crept on with them.
+    
+    A voice, clouded in static, cut through the hissing silence. “Third on the right.”
+
+    Counting the corridors — one, two, three — they turned. Despite their outward air, they had dreadful little knowledge on the facilities they raided; and it didn’t help that so many of these drab, white corridors looked the same. Sometimes text above their heads indicated where they were, but the letters and numbers meant nothing to anyone. They were just gibberish. Hateful. Everyone looked down when they came up, rifles pointing straight ahead through the next door, the next turn, the next hall… Mark didn’t, though. It was just code. And code couldn’t mess with your head, not on its own.
+    
+    In case anything went wrong, he felt better keeping an eye on it. Memorizing it. The way in, the way back. The landmarks, if you could call them that — the distinctive turns, the double-backs, the doors… whether they opened them or not. Soldiers of the Insurgency would loudly complain that Foundation facilities were frustrating mazes, and that without the Sergeant’s guidance, they’d never find their way around. They’re just strange, the soldiers whispered. They do everything wrong. Unnaturally. The minds of the Insurgency knew the way forward. They had the plan, and all its mighty steps. In the end, they really didn’t need to trust in anything more than that.
+    
+But… still. Mark didn’t stop counting corridors and memorizing landmarks. Foundation facilities weren’t mazes, in the same way that their code wasn’t gibberish. The Foundation just wrote, spoke, and built in a language that he didn’t understand. And just because you don’t understand something doesn’t mean you should close your eyes when it’s around.
+
+He kept an eye out. Remembered. Just in case anything went wrong. Although, to be fair, nothing ever had gone wrong so far. As long as they followed everything they were told, exactly and perfectly.
+
+    They had the plan, after all. Step-by-step, moment by moment.
+    
+    “Fifth,” the voice came again, rising among them like fog. “Right side.”
+    
+They counted the doors as they walked. One, two, three, four, five. They stopped.
+
+When they did, all their beams of light turned outwards from the door. They shot through the dark and stayed still. Among those lights, three figures made their way through the ranks and reached for the door. Mark didn’t see exactly what they were doing; but after a few moments, they heard a soft chime, an electric whirring, and a sharp intake of breath.
+
+    “Shane, Shane, Dammon, and Dault,” came the voice again. “With me.” The Sergeant walked up and put a hand on the door.
+    
+    On hearing his last name twice, Mark readied himself. He gripped the rifle tighter and looked around until he found the eyes of another of the ghosts. The figure met his eyes too, and nodded.
+    
+    The door opened. 
+    
+    A light was on in the room, and for a moment it was blinding; the specters lost their luster and the mist they breathed was briefly burned away. The Sergeant strode into the white void and Mark followed, with three others close by. The door closed.
+    
+    Mark ducked into position, scanning the room. 
+    
+Lab. Tables. One, two, three men — only one being armed.
+
+    Before he’d even had the chance to get used to the light, another one of his companions shot a volley of silenced bullets that missed the armed guard by at least a foot. The guard cursed loudly and ducked, raising his rifle.
+    
+Keeping low, Mark rushed to a table for cover — but the guard didn’t fire back. No, instead he yelled something unintelligible to the two other men in the room and rushed to the side, to a lever embedded into the wall.
+
+    Mark lined up his shot, waited, and… cursed as bullets whizzed past his arm, just barely missing him. 
+    
+They’d come from behind. He shot a glance back. One of his companions met his gaze briefly. He seemed shocked. Or perhaps apologetic? Hard to tell from the other side of the mask.
+
+    Shots sped across the room. Every time the Insurgency took a shot, it was silenced, shadowed and difficult to tell from whom it came — but they all missed. When the one guard took his shots, they were obvious, visible, and he also missed. But they came closer. And his shots weren’t silenced. They bathed the room in thunder.
+    
+Bullets collided with the walls with sharp, stinging sounds. Another burst of shots from one of Mark’s detachment missed completely, spraying a table with holes and sending files flying onto the floor. The Sergeant yelled something, but outside of the darkness and the quietude of the corridors his voice lost its usual timbre and no-one seemed to hear him.
+
+    A mess, Mark thought. A fucking mess. All of them.
+    
+Someone else shot, and Mark heard a thud.
+
+But the guard was still standing, and so was every man in his detachment. One of the unarmed men — a scientist — in the room was on the floor, though. Clutching the wrong side of his chest.
+
+Cursing, Mark swung from behind his table and raised his weapon. He waited. He pulled the trigger. The guard’s blood splattered onto the fallen files and he collapsed, his head cracking against the floor. 
+[[/&lt;]]
+-----
+[[div class=&#34;blockquote&#34;]]
+**STEP ███/███:** 
+Sub-priority: ‘Charlie.’
+[[/div]]
+[[&lt;]]
+The firefight had been terribly loud, in a fairly quiet location. During a presumably stealthy mission.
+ 
+    But was that a problem? Apparently not. Because they’d done exactly what they’d been asked. The orders hadn’t been to be silent — the orders had been to make sure to come moments before night fell, to make sure the door was closed, and to make sure no one rang any alarms. And they followed those to the letter. One might infer from those orders that stealth was paramount — but apparently such an inference was not, itself, part of the plan. So the Sergeant walked into a room stained with the blood of two men and projected pure serenity. As though he’d predicted all of this all along. 
+    
+    Mark pursed his lips behind his mask and stood back up from behind his cover, smoothing out his camo with the back of a gloved hand. The Sergeant walked up to the two scientists — one still dying from a shot to the liver, the other struggling against the grip of one of their soldiers — and started whispering something. 
+    
+Without too long he gestured to the door and another soldier opened it, allowing two more figures inside. Two men in sleek white overcoats, which in the darkness outside had stood out like a sore thumb but now blended right in with the bloodied lab. They pulled their gas masks off with a sharp hiss, and without a look at the soldiers around them they strode forwards. Mark watched them with eyes narrowed behind his own mask, clutching his rifle.
+
+They stood over the two crouching scientists, softly speaking to them in a tone so nonchalant it was almost funny when put in the context of a man bleeding out on the floor.
+
+    They spoke too quietly for anyone to understand anything, but eventually, the dying man spat.
+    
+    “You tell me,” he said loudly. “What happened… You tell me.”
+    
+    After a few moments, the two men both took a step back, overcoats billowing in unison. They looked less like men, and more like… splotches of white, just figures matching the walls and the blinding lights above them. Where they stood, the tables and boards behind them looked like they vanished. The Sergeant grabbed his weapon and, ignoring the widening eyes of his prisoners, promptly ended the interrogation.
+    
+    “God,” breathed a voice next to Mark.
+    
+    Mark turned. Another soldier stood there, shorter than he was, more spindly. In the navy, he would’ve looked comically out of place. But here? Although in the dark they stalked as one, Mark’s new brethren were the most mismatched, misshapen group of killers he’d ever seen. This one’s gear was too large for him, and he’d had to roll up his sleeves slightly so he could even hold his rifle.
+    
+    Mark looked him up and down. “Oliver Dault, right?”
+    
+    Behind his mask, Dault nodded. 
+    
+    Mark returned the nod. “Do me a favor. Aim before you fucking shoot.”
+    
+    “Right. Sorry.”
+    
+    After the two corpses flopped to the floor, the white figures, which Mark referred to only by the names One and Two, began their routine inspection of the lab’s contents. That was going to take a little while.
+    
+    Next to him, Dault had begun observing the bullet holes in the walls. “Huh.”
+    
+    Mark looked at them — huh was right. Where Mark had expected a small hole, some cracks and drywall falling into little piles of white dust, he instead saw… gashes. Metal. These walls were metal.
+    
+    “Thin,” Dault said. “They’re very thin. Corten steel. Maritime-grade.”
+    
+    Mark glanced at Dault. “Where’s Philip?”
+    
+    Dault nodded to the other end of the room.
+    
+    Mark thanked him curtly and walked off, adopting the military gait that he could barely ever shake. The other soldiers walked about, trying — in vain — to stop themselves from looking over the papers strewn about the lab, or glancing at the posters and guides on the walls. It turns out, having the fanaticism of the perfect soldier doesn’t also grant you the effects of rigorous military training.
+     
+    Philip was holding his gun in one hand and using it to flip through pages on a clipboard.  When he saw Mark approach, he smiled through his mask. Most people wouldn’t have been able to tell, but Mark had learned to recognize the creases in the fabric. 
+    
+“You know,” Philip said quietly, “I don’t think they can actually read this stuff either. I think everyone’s just pretending.”
+
+    “Doubt it.”
+    
+    Philip shook his head. “I mean, look at this. Nonsense. Imagine how much more they’d get done if it was just plain English.”
+    
+    Mark didn’t answer, pursing his lips. 
+    
+    Philip glanced at him. “Nice shot, by the way.”
+    
+    Mark nodded slowly. Then, he turned his head towards his brother. “Was it you who did the other one?”
+    
+    “Who?”
+    
+    “The scientist,” Mark said. “The unarmed scientist.” He gestured to the corpse.
+    
+    Philip tensed up, looking away. “Yeah.”
+    
+    “Those weren’t our orders.”
+    
+    “I know,” Philip said. “It was bright, I got flustered. I just shot at whoever didn’t look like one of ours.” He looked at the corpses in the middle of the room. “But, hey. Not like it mattered anyway.”
+    
+    “It matters, Phil.”
+    
+    “I’ll get better,” Philip said, giving a smile. “I’m still new to this, hm? And hey, didn’t you say it took even you a few years to get the hang of it?” He shrugged. “We’ll say that runs in the family.”
+    
+    Mark pursed his lips. “Just be more careful. Be calm, always. Cover yourself. Aim. Then shoot. Got it?”
+    
+    “Aye aye, cap’n.” Philip resumed his inspection of the clipboard, but added: “Saw you met Oliver.”
+    
+    “Dault? Mhm. Your little pal.”
+    
+    “Don’t be too hard on the kid,” Philip said. “He’s new.”
+    
+“New?”
+
+“I mean, I think so,” Philip said. “Just look at him.”
+
+Mark looked at Dault. His armor didn’t fit, but…
+
+“Anyways, he’s a good man,” Philip continued. “And he knows all kinds of stuff. And he’s… he looks fragile.”
+
+    “Fragile,” Mark repeated. “God knows why he’s in this detachment at all.”
+    
+    “God does know,” Philip said.
+    
+    Mark didn’t reply. He just watched Philip continue to flip through the clipboard. Standing there, using his powerful, sleek black weapon like one would a random tree branch — he’d never looked more out of place. He looked like a puppy, wildly jumping to bypass a garden gate. 
+    
+    But he did lean in suddenly. “Holy shit,” he whispered. “Look.”
+    
+    “Phil.”
+    
+    “Seriously. Look.”
+    
+    Mark leaned in. “What am I looking at?”
+    
+    “Here,” Philip said. He rested the barrel of his rifle on two letters, handwritten among all the typed up text. “C.C.”
+    
+    “C.C.?”
+    
+    “Exactly.”
+    
+    Mark looked from the clipboard to his brother. “I’m not quite sure I get it.”
+    
+    “It’s her initials,” Philip said. “I can’t read most of this gibberish, but that — that says signature.”
+    
+    “That wasn’t her signature, though,” Mark said. “She always did a big cursive ‘C’ and wrote her last name in the loop, didn’t she?”
+    
+    “Doesn’t she,” Philip corrected. “But yes, you’re right. And it’s not her handwriting, either.”
+    
+    “So, then…” Mark said, looking at his brother to finish his sentence.
+    
+    “So it must be that they tried to forge her signature,” Philip concluded.
+    
+    “Phil, come on. You —”
+    
+    “Gentlemen,” came another voice.
+    
+    The Sergeant had joined them. He’d taken his mask off, and whereas the soldiers themselves were an odd-looking bunch beneath their armor, he wasn’t. He very much looked like an army officer — in fact, he looked so much like an army officer it was almost uncomfortable. He looked as though every part of him was contracted, clenched, impenetrable, standing by. Yet his eyes darted around the room too much. He glanced at One and Two too often. He couldn’t stay perfectly still.
+    
+    Mark nodded. “Sir.”
+    
+    The Sergeant looked right at him, then at Philip. “Is your investigation yielding fruit, Mr. Shane?”
+    
+    Philip looked up. “I’m sorry, sir?”
+    
+    “Is it yielding fruit?” he asked again. “Are you finding anything of note?”
+    
+    “I…” Philip looked down, pausing. “I’m not sure, sir. I can’t read the code.”
+    
+    “You can’t read the code.”
+    
+    “No, sir.”
+    
+    The Sergeant nodded. “Do you think you’re meant to know how to read the code?”
+    
+    Philip glanced at Mark. “Uh… no?”
+    
+    “Ah,” came the answer. “Very perceptive of you.” The Sergeant gave Mark a look, then walked off.
+    
+    Mark nodded his head, watching him leave.
+    
+    Philip gave a nervous chuckle. “That was odd.” He turned back to the clipboard he was flipping through.
+    
+    “Stop that,” Mark said.
+    
+    “Mm? Why?”
+    
+    “He just told you to stop that,” Mark said.
+    
+    Philip’s mouth twitched into a smile. He looked from Mark to the Sergeant. “That’s not what he said.”
+    
+    Mark sighed, grabbing Philip. “You need to get better at this, Phil.”
+    
+    Philip still frowned. He shrugged Mark’s hand off. “I don’t get it.”
+    
+    “Yeah. I know.”
+[[/&lt;]]
+-----
+[[div class=&#34;blockquote&#34;]]
+**STEP ███/███:** 
+Proceed to fourth marker.
+[[/div]]
+[[&lt;]]
+They didn’t bother moving the bodies. Blood pooled beneath them, but none of it was in the way of One and Two, so they did nothing.
+
+Mark watched as the Sergeant followed One and Two’s work, saying nothing and only ever approaching in tentative and uncertain ways. He followed where they went and stood never more than a few feet from them, but they never spoke to him — only to each other. They used words none of them understood, phrases that seemed nonsensical, and names that referred to nothing. Still, the Sergeant nodded along, hm-ing and huh-ing whenever a pause came up.
+
+Eventually, though, he paused, crossing his arms and looking down at a table. At that point, Mark steeled himself and walked up to him.
+
+“Sir,” Mark said. He stood at attention after saying that, his muscles moving almost on their own.
+
+“Mr. Shane.” He looked him up and down. “At ease. What do you want?”
+
+“Sergeant,” Mark said. “Permission to speak freely, sir?”
+
+    “If it&#39;s about you and your brother’s transfers, forget it,” the Sergeant said. “You can’t bully me like you did your instructor, Mr. Shane.”
+    
+    “Bully you, Sergeant?”
+    
+    “I happen to know Golmen well. He’s been very vocal about you two. You’ve been transferred to me for a reason, soldier, and I won’t have anything like that happen here. Understood?”
+    
+    “Understood, sir.”
+    
+    “Now. Dis —”
+    
+    “What are we doing here, sir?” Mark said.
+    
+    The Sergeant paused. “Spoken a tad too freely for my taste, Shane.”
+    
+    “Apologies, sir,” Mark said. “I’m making a request.”
+    
+    “And?”
+    
+    “I’m requesting to know the purpose of this mission.”
+    
+    “You know the mission. It’s a simple escort.”
+    
+    “Yes, sir.”
+    
+    “Because it’ll be another blow to their knees,” the Sergeant said. “And they deserve it.”
+    
+    “Yes, sir.”
+    
+    “It’ll hurt them, Mr. Shane.”
+    
+    “Yes, sir. Is that all you know, sir?”
+    
+“You’re dismissed.”	
+
+Mark nodded again, and walked away. Behind his mask he gritted his teeth. His probing had given him exactly the hint he expected: none whatsoever. Even he doesn’t have a clue. A fucking mess. Everyone. And now, he had to be in the middle of it.
+
+    It was his fault, though. If he’d just kept a better eye on Philip, maybe he wouldn’t be here now. And if he’d known, when the sisters disappeared, that it would all spiral to this… Well. Too late. Now all he could do was try and make up for it.	
+    
+    “What’s he looking for?” asked someone. Oliver Dault, who had somehow soundlessly snuck up behind Mark.
+    
+    Mark glanced at Philip, who — with a wary glance at the Sergeant every-so-often — was still continuing his ‘investigation.’
+    
+    “Trouble,” Mark said. 
+    
+    “Lots of that here,” Dault agreed, nodding as though it were the wisest thing he’d ever heard. “He’s very dedicated.”
+    
+    “Yeah.”
+    
+    “A lot of new recruits start off looking like him. But it goes away. They all bury their noses in it. All of it. But they don’t really know what they’re looking for, they don’t know what to see, so one day they give up.”
+    
+    Mark sighed, standing by. His eyes were on the Sergeant, on Philip, not on Dault. 
+    
+    “But he knows what he’s looking for,” Dault said. “I can tell.”
+    
+    Mark glanced at him. 
+    
+    “It’s a person. He’s been talking about her.”
+    
+    “Of course he has,” Mark muttered under his breath.
+    
+    “Not very much, mind you,” Dault said. “Just that she’s very brave, very loyal. She’s missing, I think.”
+    
+    Hell. Mark clenched his jaw. 
+    
+    “I think I could help.”
+    
+    “Fuck off.”
+    
+    “I will anyway,” Dault said. “That’s why I’m asking you questions. I’m investigating.”
+    
+    “Uh huh,” Mark said. “And you’ve been telling people this, I assume. Telling people all about this fun little mystery.”
+    
+    “Nope,” Dault said.
+    
+    Mark raised an eyebrow. “Really.”
+    
+    “Why would I? They don’t have any answers. You might.”
+    
+From across the room came a sigh. “Alright.” The Sergeant clapped his hands, turning to his troops. “Out.”
+
+    Back into the darkness they went, taking care not to sully their boots in blood. The corpses laid motionless across the room and watched them leave, silent.
+    
+    The door closed. 
+    
+    Twenty-five or so soldiers stood outside, with their flashlights facing the darkness of the surrounding corridors. But there had been no ambush to look out for. As always, everything went according to plan.
+    
+    Always according to plan.
+    
+    The Sergeant’s voice hummed into their comms channels. “Third on the right. Return to your positions.”
+    
+    Mark went to the far left of the detachment, in the back, as part of the unceremoniously named “flank team.”  Uncomfortably distanced from Philip, who stood nearest to One and Two, who walked in the center, who walked behind the Sergeant himself. Philip was on the center team. Occasionally the white-clad One and Two whispered something to him, in voices so hushed they turned to wind.
+    
+    Mostly, though, they continued to keep silent. They were R&amp;D, after all. Their department didn’t share things. It didn’t talk to anyone else, if it could help it. And when bullets grazed their faces and blood pooled on the floor, they didn’t say anything either; they just watched it all. Calm.
+     
+    The corridors between them and their next target location were thankfully barren. They were also oddly clean — no stains on the walls, no marks, nothing. Foundation facilities were usually a hotbed of activity; they were littered with used cork-boards, pinpricks in the drywall where nails had been stuck and removed, and a general — and characteristic — lack of cleanliness. But here? Not at all. 
+And now that he knew the walls were metal… he watched everything a little more carefully. The hallways were shorter, thinner, more claustrophobic than usual — and, though they’d been searching this place a while now, they hadn’t encountered any stairs, elevators, or pathways to any lower or upper levels — which was a tremendously common feature of the few sites Mark had seen. It was even more of a maze than usual, with random, unmarked turns under a terribly low, suffocating ceiling. 
+
+From the very brief glance they had gotten of the place upon entry, it had looked small — but Mark had just assumed most of it was hidden underground, or that he simply couldn’t see the rest of it. But no. This was miniscule, undermanned, and… just different.
+
+    Whatever this place was, it wasn’t being used like the other Foundation sites. If they even called it a ‘site.’ Its metal walls stared inwards — thin and quiet, shaking slightly as they stalked on.
+[[/&lt;]]
+
+[[=image http://scp-sandbox-3.wikidot.com/local--files/secret:fe42rtdsfsd/Newspaper]]
+
+
+[[include :scp-wiki:component:earthworm
+| previous-url = https://scp-wiki.wikidot.com/pointtwoprologue
+| previous-title = False Readings
+| next-url = https://scp-wiki.wikidot.com/pointtwo2
+| next-title = Nothing
+| hub-url = https://scp-wiki.wikidot.com/pointtwo
+| hub-title = Point Two
+]]
+
+[[include :scp-wiki:component:license-box]]
+&gt; **Filename:** Newspaper.png
+&gt; **Name:** Newspaper
+&gt; **Author:** [[*User Naveil]] [[*User x3j50]]
+&gt; **License:** CC-BY-SA 3.0
+
+&gt; **Filename:** inv_pate_black_v2_redux.png, nor_pate_white_v2_redux.png, and primary_shcr_white.png
+&gt; **Author:** [[*user AnAnomalousWriter]]
+&gt; **License:** Creative Commons Share-Alike 3.0
+
+[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:55.301583.</em>
+  
+</div>
+</body>

@@ -29,50 +29,134 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>#page-title { display: none; }
-#page-content h1 {
-    border-bottom: solid 0.125rem currentColor;
-    padding: 0 0 0.25em;
-}
-table.wiki-content-table {
-    margin: 0.5rem 0;
-    width: 100%;
-    overflow: auto;
-    max-height: 85vh;
-    display: block;
-}
-table.wiki-content-table tr &gt; * {
-    padding: 0.675em 0.5em;
-    border-top: 0;
-}
-table.wiki-content-table tr:first-child {
-    position: sticky;
-    top: 0;
-    text-align: center;
-}
-table.wiki-content-table tr &gt; *:first-child {
-    min-width: min(25rem, 50vw);
-}
-table.wiki-content-table tr &gt; *:nth-child(2) {
-    min-width: 4.15rem;
-    font-size: 85%;
-}
-table.wiki-content-table tr &gt; *:nth-child(3) {
-    width: 100%;
-    font-size: 92.5%;
+          <pre><code> #page-title {
+    display: none;
 }
 
-.tag-nav {
+@media not all and (max-width: 767px) {
+#main-content {
+    max-width: min(57.5rem,calc(100% - 3rem));
+}
+}
+
+:root { --box-accent: #3b5c97; }
+
+.tale-list {
+    display: grid;
+    gap: .75rem;
+    margin-block: 1.5rem;
+}
+.tale-list .pager { border-block-start: .225rem solid var(--box-accent); }
+
+.tale-block {
+    background-color: #fff;
+    box-shadow: 0 0 0.325rem rgb(0 0 0 / 0.25);
+    contain: paint;
+    display: grid;
+    grid-template-areas:
+        &#34;title date&#34;
+        &#34;meta meta&#34;;
+    grid-template-columns: 1fr max-content;
+    gap: .425rem;
+    padding: .625rem;
+    --box-accent: inherit;
+}
+.tale-block:not(.tale) { display: none; }
+
+.tale-block  .title {
+    grid-area: title;
+    display: flex;
+    gap: .325ex 0.75ex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.tale-block .title &gt; a {
     font-weight: bold;
+    font-size: 1.075em;
+}
+.tale-block .title &gt; .author { font-size: .775em; flex-grow: 1; }
+.author .printuser {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .325em;
+}
+.author .printuser img {
+    margin: 0;
+    padding: 0;
+    padding-left: .475rem;
+}
+
+.tale-block .date {
+    grid-area: date;
+    font-feature-settings: &#39;case&#39;,&#39;ss01&#39;,&#39;ss04&#39;,&#39;tnum&#39;;
+    font-size: .725em;
+}
+
+.tale-block .meta {
+    grid-area: meta;
+    display: flex;
+    font-size: .775em;
+    gap: .75rem;
+    justify-content: space-between;
+}
+.meta .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    align-items: flex-start;
+}
+.tag-list a {
+    display: block;
+    border-radius: 1.5rem;
+    padding: .125em .675em;
+    text-decoration: none;
+    font-weight: 550;
+    color: var(--box-accent);
+    background-color: #3b5c970f;
+}
+.tag-list a[href$=&#34;tale&#34;] { display: none; }
+.tag-list a:is(:hover,:focus) {
+    color: white;
+    background-color: var(--box-accent);
+}
+
+.meta .sec-info {
+    display: grid;
+    grid-template-columns: 3rem 3.5rem;
+    align-items: center;
+    text-align: end;
+    gap: .25rem;
+    min-width: max-content;
+    align-self: flex-end;
+}
+.sec-info &gt; br { display: none; }
+.sec-info .comments &gt; span { font-size: 0; }
+
+.tale-block .description {
+    grid-column: 1/-1;
+}
+.description &gt; :not(.preview) { display: none; }
+.description:not(:has(&gt; .preview)) { display: none; } /* progressive enhancement */
+.description &gt; .preview {
+    display: block;
+    font-size: .9125em;
+    padding-block-start: .425rem;
+    border-block-start: .05rem solid #ddd;
+}
+.description &gt; .preview &gt; p:first-child { margin-block-start: 0.25em; }
+.description &gt; .preview &gt; p:last-child { margin-block-end: 0.25em; }
+
+
+div.tag-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: .25rem;
+    font-size: .9125em;
+    margin-block: .5rem;
 }
-.tag-nav a {
-    padding: 0 0.45em;
-    border-right: solid 2px #333;
-}
-.tag-nav a:last-child { border-right: none; }</code></pre>
+div.tag-nav br { display: none; }
+div.tag-nav p { display: contents; }</code></pre>
         </li>
       
     </ul>
@@ -81,11 +165,7 @@ table.wiki-content-table tr &gt; *:nth-child(3) {
     <ul class="inline-styles">
       
         <li>
-          <pre><code>background-color: #fffff0;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>background-color: #fffff0;</code></pre>
+          <pre><code>display: block;</code></pre>
         </li>
       
     </ul>
@@ -93,7 +173,33 @@ table.wiki-content-table tr &gt; *:nth-child(3) {
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar" target="_blank"><code>:scp-wiki:component:toggle-sidebar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/fragment:nav-generic-css" target="_blank"><code>fragment:nav-generic-css</code></a>
+  
+
+  
+</li>
       
     </ul>
 
@@ -101,15 +207,11 @@ table.wiki-content-table tr &gt; *:nth-child(3) {
     <ul class="css-classes">
       
         <li>
-          <pre><code>content-panel</code></pre>
+          <pre><code>tag-nav</code></pre>
         </li>
       
         <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>series</code></pre>
+          <pre><code>tag-list</code></pre>
         </li>
       
         <li>
@@ -117,7 +219,7 @@ table.wiki-content-table tr &gt; *:nth-child(3) {
         </li>
       
         <li>
-          <pre><code>tag-nav</code></pre>
+          <pre><code>tag-list</code></pre>
         </li>
       
         <li>
@@ -125,191 +227,389 @@ table.wiki-content-table tr &gt; *:nth-child(3) {
         </li>
       
         <li>
-          <pre><code>content-panel</code></pre>
+          <pre><code>tag-list</code></pre>
         </li>
       
         <li>
-          <pre><code>standalone</code></pre>
+          <pre><code>tag-nav</code></pre>
         </li>
       
         <li>
-          <pre><code>series</code></pre>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tale-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-type-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tale-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>%%tags%%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>author</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>date</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sec-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rating</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>comments</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tale-block</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[=]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:toggle-sidebar]]
+[[include fragment:nav-generic-css]]
+
+[[=]]
 +* [[size 115%]]Welcome to the SCP Foundation Tale Hub[[/size]]
 
 ++* The contents of this page are currently [unclassified].
 
 **Personnel are reminded that certain files within this hub may be subject to various classifications, and that verified credentials may be necessary to access those files.**
 
-[[/=]]
+This page lists all tales and their tags, starting with the most recently created. The list can be filtered for a particular tag by selecting one of the ones listed below.  For definitions of these tags, see the [[[Genre Tagging Guide]]]. 
 
-[[div class=&#34;content-panel standalone series&#34; style=&#34;background-color: #fffff0;&#34;]]
-[[=]]
-++* Newest Tales
-[[/=]]
-[[module ListPages separate=&#34;no&#34; limit=&#34;5&#34; tags=&#34;tale&#34;]]
-* **%%title_linked%%** - by [[user %%created_by%%]]
+To sort tales by year, see [[[tales-by-year|]]]. For a list of tale series hubs, see the [[[series-archive|]]].
+
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/foundation-tales Reset filter]
+[/foundation-tales/tag/-scp,-goi-format,-artist,-artwork,-hub,audio Audio]
+[/foundation-tales/tag/-scp,-goi-format,-artist,-artwork,comic Comic]
+[/foundation-tales/tag/-scp,-goi-format,-hub,illustrated Illustrated]
+[/foundation-tales/tag/-scp,-goi-format,-hub,interactive Interactive]
+[/foundation-tales/tag/-scp,-goi-format,-hub,international International]
+[/foundation-tales/tag/-scp,-goi-format,-hub,joke Joke]
+[/foundation-tales/tag/-scp,-goi-format,poetry Poetry]
+[/foundation-tales/tag/-scp,-goi-format,-artist,-artwork,-hub,video Video]
+[[/div]]
+++* Genre
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/foundation-tales/tag/-scp,-goi-format,-hub,absurdism Absurdism]
+[/foundation-tales/tag/-scp,-goi-format,-hub,action Action]
+[/foundation-tales/tag/-scp,-goi-format,-hub,adventure  Adventure]
+[/foundation-tales/tag/-scp,-goi-format,-hub,bittersweet Bittersweet]
+[/foundation-tales/tag/-scp,-goi-format,-hub,bleak Bleak]
+[/foundation-tales/tag/-scp,-goi-format,-hub,breakout Breakout]
+[/foundation-tales/tag/-scp,-goi-format,-hub,comedy All Comedy]
+[/foundation-tales/tag/-scp,-goi-format,-hub,black-comedy Black Comedy]
+[/foundation-tales/tag/-scp,-goi-format,-hub,chase Chase]
+[/foundation-tales/tag/-scp,-goi-format,-hub,crime-fiction Crime Fiction]
+[/foundation-tales/tag/-scp,-goi-format,-hub,fantasy Fantasy]
+[/foundation-tales/tag/-scp,-goi-format,-hub,heartwarming Heartwarming]
+[/foundation-tales/tag/-scp,-goi-format,-hub,horror All Horror]
+[/foundation-tales/tag/-scp,-goi-format,-hub,body-horror Body Horror]
+[/foundation-tales/tag/-scp,-goi-format,-hub,cosmic-horror Cosmic Horror]
+[/foundation-tales/tag/-scp,-goi-format,-hub,psychological-horror Psychological Horror]
+[/foundation-tales/tag/-scp,-goi-format,-hub,metafiction Metafiction]
+[/foundation-tales/tag/-scp,-goi-format,-hub,military-fiction Military Fiction]
+[/foundation-tales/tag/-scp,-goi-format,-hub,mystery Mystery]
+[/foundation-tales/tag/-scp,-goi-format,-hub,religious-fiction Religious Fiction]
+[/foundation-tales/tag/-scp,-goi-format,-hub,romance Romance]
+[/foundation-tales/tag/-scp,-goi-format,-hub,science-fiction Science Fiction]
+[/foundation-tales/tag/-scp,-goi-format,-hub,slice-of-life Slice of Life]
+[/foundation-tales/tag/-scp,-goi-format,-hub,surrealism Surrealism]
+[/foundation-tales/tag/-scp,-goi-format,-hub,spy-fiction Spy Fiction]
+[/foundation-tales/tag/-scp,-goi-format,-hub,xenofiction Xenofiction]
+[/foundation-tales/tag/-scp,-goi-format,-hub,_genreless Undefined Genre]
+[[/div]]
+
+++* Themes
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/foundation-tales/tag/-scp,-goi-format,-hub,alien Alien]
+[/foundation-tales/tag/-scp,-goi-format,-hub,artificial-intelligence Artificial Intelligence]
+[/foundation-tales/tag/-scp,-goi-format,-hub,bureaucracy Bureaucracy]
+[/foundation-tales/tag/-scp,-goi-format,-hub,demon Demon]
+[/foundation-tales/tag/-scp,-goi-format,-hub,faerie Faerie]
+[/foundation-tales/tag/-scp,-goi-format,-hub,ghost Ghost]
+[/foundation-tales/tag/-scp,-goi-format,-hub,historical Historical]
+[/foundation-tales/tag/-scp,-goi-format,-hub,journalism Journalism]
+[/foundation-tales/tag/-scp,-goi-format,-hub,legal Legal]
+[/foundation-tales/tag/-scp,-goi-format,-hub,lgbtq LGBTQ+]
+[/foundation-tales/tag/-scp,-goi-format,-hub,murder-monster Murder Monster]
+[/foundation-tales/tag/-scp,-goi-format,-hub,mythological Mythological]
+[/foundation-tales/tag/-scp,-goi-format,-hub,political Political]
+[/foundation-tales/tag/-scp,-goi-format,-hub,superhero Superhero]
+[/foundation-tales/tag/-scp,-goi-format,-hub,time-travel Time Travel]
+[[/div]]
+
+++* Setting
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/foundation-tales/tag/-scp,-goi-format,-hub,afterlife Afterlife]
+[/foundation-tales/tag/-scp,-goi-format,-hub,alternate-history Alternate History]
+[/foundation-tales/tag/-scp,-goi-format,-hub,apocalyptic Apocalyptic]
+[/foundation-tales/tag/-scp,-goi-format,-hub,post-apocalyptic Post-Apocalyptic]
+[/foundation-tales/tag/-scp,-goi-format,-hub,christmas Christmas]
+[/foundation-tales/tag/-scp,-goi-format,-hub,corporate Corporate]
+[/foundation-tales/tag/-scp,-goi-format,-hub,dystopian Dystopian]
+[/foundation-tales/tag/-scp,-goi-format,-hub,halloween Halloween]
+[/foundation-tales/tag/-scp,-goi-format,-hub,otherworldly Otherworldly]
+[/foundation-tales/tag/-scp,-goi-format,-hub,period-piece  Period Piece]
+[/foundation-tales/tag/-scp,-goi-format,-hub,school School]
+[/foundation-tales/tag/-scp,-goi-format,-hub,space-opera Space Opera]
+[/foundation-tales/tag/-scp,-goi-format,-hub,utopian Utopian]
+[/foundation-tales/tag/-scp,-goi-format,-hub,western Western]
+[[/div]]
+
+++*  Style
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/foundation-tales/tag/first-person First Person]
+[/foundation-tales/tag/second-person Second Person]
+[/foundation-tales/tag/no-dialogue No Dialogue]
+[[/div]]
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/foundation-tales/tag/correspondence Correspondence]
+[/foundation-tales/tag/creepypasta Creepypasta]
+[/foundation-tales/tag/foundation-format Foundation Format]
+[/foundation-tales/tag/journal Journal]
+[/foundation-tales/tag/orientation Orientation]
+[/foundation-tales/tag/worldbuilding Worldbuilding]
+[[/div]]
+
+[[module CountPages category=&#34;_default&#34; order=&#34;@URL|date&#34; wrapper=&#34;no&#34; separate=&#34;false&#34; perPage=&#34;20&#34; tags=&#34;@URL|+tale&#34;]]
+Currently listing %%total%% tales.
 [[/module]]
-
-[[=]]
-++* Random
 [[/=]]
-[[module ListPages separate=&#34;no&#34; limit=&#34;1&#34; tags=&#34;tale&#34; order=&#34;random&#34;]]
-* **%%title_linked%%** - by [[user %%created_by%%]]
+
+[[div class=&#34;tale-list content-type-description&#34;]]
+[[module ListPages category=&#34;_default&#34; order=&#34;@URL|date&#34; wrapper=&#34;no&#34; separate=&#34;false&#34; perPage=&#34;20&#34; tags=&#34;@URL|+tale&#34;]]
+
+[[div class=&#34;tale-block %%tags%%&#34;]]
+[[div_ class=&#34;title&#34;]]
+%%linked_title%% [[span class=&#34;author&#34;]]by %%created_by_linked%%[[/span]]
+[[/div]]
+[[div_ class=&#34;date&#34;]]
+%%created_at|%Y %b %e|agohover%%
+[[/div]]
+
+[[div_ class=&#34;meta&#34;]]
+[[span class=&#34;tag-list&#34;]]%%tags_linked|foundation-tales/tag/-scp,-goi-format,-supplement,-hub,-site,%%[[/span]]
+[[div_ class=&#34;sec-info&#34;]]
+[[span class=&#34;rating&#34;]][[#ifexpr %%rating%% &gt; -1 | + | - ]][[#expr abs(%%rating%%)]][[/span]]
+[[span class=&#34;comments&#34;]]%%comments%% [[span]]Comments[[/span]]💬︎[[/span]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;description&#34;]]
+%%content{2}%%
+[[/div]]
+[[/div]]
+
 [[/module]]
 [[/div]]
 
 
-[[=]]
-+* Tales By Date
-[[/=]]
+------
 
-= **[[[tales-by-date-2022|2022]]] | [[[tales-by-date-2021|2021]]] | [[[tales-by-date-2020|2020]]] | [[[tales-by-date-2019|2019]]] | [[[tales-by-date-2018|2018]]] | [[[tales-by-date-2017|2017]]] | [[[tales-by-date-2016|2016]]] | [[[tales-by-date-2015|2015]]] | [[[tales-by-date-2014|2014]]] | [[[tales-by-date-2013|2013]]] | [[[tales-by-date-2012|2012]]] | [[[tales-by-date-2011|2011]]] | [[[tales-by-date-2010|2010]]] | [[[tales-by-date-2009|2009]]] | [[[tales-by-date-2008|2008]]]**
-
-
-[[=]]
-+* Tales By Genre and Theme
-[[/=]]
-
-[[div_ class=&#34;tag-nav&#34;]]
-[/tales-by-genre/tag/absurdist-fiction Absurdism]
-[/tales-by-genre/tag/action Action]
-[/tales-by-genre/tag/adventure  Adventure]
-[/tales-by-genre/tag/bittersweet Bittersweet]
-[/tales-by-genre/tag/bleak Bleak]
-[/tales-by-genre/tag/comedy All Comedy]
-[/tales-by-genre/tag/black-comedy Black Comedy]
-[/tales-by-genre/tag/chase Chase]
-[/tales-by-genre/tag/crime-fiction Crime]
-[/tales-by-genre/tag/fantasy Fantasy]
-[/tales-by-genre/tag/heartwarming Heartwarming]
-[/tales-by-genre/tag/horror  All Horror]
-[/tales-by-genre/tag/body-horror Body Horror]
-[/tales-by-genre/tag/cosmic-horror Cosmic Horror]
-[/tales-by-genre/tag/psychological-horror Psychological Horror]
-[/tales-by-genre/tag/lgbtq LGBTQ+]
-[/tales-by-genre/tag/military-fiction Military]
-[/tales-by-genre/tag/mystery Mystery]
-[/tales-by-genre/tag/mythological-fiction Mythological]
-[/tales-by-genre/tag/religious-fiction Religious]
-[/tales-by-genre/tag/romance Romance]
-[/tales-by-genre/tag/science-fiction Science Fiction]
-[/tales-by-genre/tag/slice-of-life Slice-of-Life]
-[/tales-by-genre/tag/spy-fiction Spy]
-[/tales-by-genre/tag/surrealist-fiction Surrealism]
-[/tales-by-genre/tag/_genreless Undefined Genre]
-[[/div]]
-
-[[=]]
-+* Tales By Setting
-[[/=]]
-[[div_ class=&#34;tag-nav&#34;]]
-[/tales-by-genre/tag/alternate-history Alternate History]
-[/tales-by-genre/tag/dystopian Dystopian]
-[/tales-by-genre/tag/otherworldly Otherworldly]
-[/tales-by-genre/tag/period-piece  Period Piece]
-[/tales-by-genre/tag/post-apocalyptic Post-Apocalyptic]
-[/tales-by-genre/tag/space-opera Space Opera]
-[/tales-by-genre/tag/utopian Utopian]
-[/tales-by-genre/tag/western Western]
-[[/div]]
-
-[[=]]
-+* Tales By Style
-[[/=]]
-[[div_ class=&#34;tag-nav&#34;]]
-[/tales-by-genre/tag/comic Comic]
-[/tales-by-genre/tag/creepypasta  Creepypasta]
-[/tales-by-genre/tag/poetry Poetry]
-[/tales-by-genre/tag/worldbuilding Worldbuilding]
-[/tales-by-genre/tag/first-person First Person]
-[/tales-by-genre/tag/second-person Second-Person]
-[/tales-by-genre/tag/no-dialogue No Dialogue]
-[[/div]]
-
-[[=]]
-+* Most Recent Tales
-[[/=]]
-
-[[module ListPages order=&#34;date desc&#34; separate=&#34;false&#34; limit=&#34;100&#34; perPage=&#34;255&#34; tags=&#34;tale&#34; prependLine=&#34;||~ Page ||~ Date Published ||~ Created By ||&#34;]]
-|| **%%linked_title%%** || %%created_at|%Y.%m.%e%% || %%created_by_linked%% ||
-[[/module]]
-
-@@ @@
------
-@@ @@
-
-[[div class=&#34;content-panel standalone series&#34; style=&#34;background-color: #fffff0;&#34;]]
+[[div class=&#34;tale-block&#34; style=&#34;display: block;&#34;]]
 ++* See also:
-* **[[[scp-series-1-tales-edition|SCP Series - Tale Edition I]]] | [[[scp-series-2-tales-edition|II]]] | [[[scp-series-3-tales-edition|III]]] | [[[scp-series-4-tales-edition|IV]]] | [[[scp-series-5-tales-edition|V]]] | [[[scp-series-6-tales-edition|VI]]] | [[[scp-series-7-tales-edition|VII]]]**
+* **[[[scp-series-1-tales-edition|SCP Series - Tale Edition I]]] | [[[scp-series-2-tales-edition|II]]] | [[[scp-series-3-tales-edition|III]]] | [[[scp-series-4-tales-edition|IV]]] | [[[scp-series-5-tales-edition|V]]] | [[[scp-series-6-tales-edition|VI]]] | [[[scp-series-7-tales-edition|VII]]] | [[[scp-series-8-tales-edition|VIII]]]**
 * **[[[explained-scps-tales-edition|Explained SCPs - Tale Edition]]]**
 * **[[[joke-scps-tales-edition|Joke SCPs - Tale Edition]]]**
 
 * **[[[foundation-tales-audio-edition|Foundation Tales - Audio Edition]]]:** Links to the best audio readings of Foundation Tales.
 
-* **[[[series-archive |Tale Series Archive]]]:** An archive for listing the various tale series hubs.
+* **[[[series-archive |Series Archive]]]:** An archive for listing the various series hubs.
 
 * **[[[canon-hub |Canon Hub]]]:** An hub for the various Foundation universe canons.
 
-* **[[[creepy-pasta |Creepypasta Archive]]]:** An archive for spooky standalone stories written on site. Not necessarily connected to the SCP Universe at large. 
+* **[[[creepy-pasta |Creepypasta Archive]]]:** An archive for spooky standalone stories written on site. Not necessarily connected to the SCP Universe at large.
 
-* **[[[incident-reports-eye-witness-interviews-and-personal-logs |Incident Report Archive]]]:**  An archive of incident reports, eyewitness interviews, and various other Foundation addenda. 
+* **[[[incident-reports-eye-witness-interviews-and-personal-logs |Incident Report Archive]]]:**  An archive of incident reports, eyewitness interviews, and various other Foundation addenda.
 
 * **[[[contest-archive |Contest Archive]]]:** An archive dedicated to the various contests the SCP Wiki has held over the years.
+
+* **[[[Top Rated Tales|]]]:** The most popular tales on the site.
+
+* **[[[tales-by-year|]]]:** Tales sorted by year of publication.
 
 * **[[[Tale Calendar|]]]:** Tales sorted by calendar dates.
 [[/div]]
 
 [[module css]]
-#page-title { display: none; }
-#page-content h1 {
-    border-bottom: solid 0.125rem currentColor;
-    padding: 0 0 0.25em;
-}
-table.wiki-content-table {
-    margin: 0.5rem 0;
-    width: 100%;
-    overflow: auto;
-    max-height: 85vh;
-    display: block;
-}
-table.wiki-content-table tr &gt; * {
-    padding: 0.675em 0.5em;
-    border-top: 0;
-}
-table.wiki-content-table tr:first-child {
-    position: sticky;
-    top: 0;
-    text-align: center;
-}
-table.wiki-content-table tr &gt; *:first-child {
-    min-width: min(25rem, 50vw);
-}
-table.wiki-content-table tr &gt; *:nth-child(2) {
-    min-width: 4.15rem;
-    font-size: 85%;
-}
-table.wiki-content-table tr &gt; *:nth-child(3) {
-    width: 100%;
-    font-size: 92.5%;
+ #page-title {
+    display: none;
 }
 
-.tag-nav {
+@media not all and (max-width: 767px) {
+#main-content {
+    max-width: min(57.5rem,calc(100% - 3rem));
+}
+}
+
+:root { --box-accent: #3b5c97; }
+
+.tale-list {
+    display: grid;
+    gap: .75rem;
+    margin-block: 1.5rem;
+}
+.tale-list .pager { border-block-start: .225rem solid var(--box-accent); }
+
+.tale-block {
+    background-color: #fff;
+    box-shadow: 0 0 0.325rem rgb(0 0 0 / 0.25);
+    contain: paint;
+    display: grid;
+    grid-template-areas:
+        &#34;title date&#34;
+        &#34;meta meta&#34;;
+    grid-template-columns: 1fr max-content;
+    gap: .425rem;
+    padding: .625rem;
+    --box-accent: inherit;
+}
+.tale-block:not(.tale) { display: none; }
+
+.tale-block  .title {
+    grid-area: title;
+    display: flex;
+    gap: .325ex 0.75ex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.tale-block .title &gt; a {
     font-weight: bold;
+    font-size: 1.075em;
+}
+.tale-block .title &gt; .author { font-size: .775em; flex-grow: 1; }
+.author .printuser {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .325em;
+}
+.author .printuser img {
+    margin: 0;
+    padding: 0;
+    padding-left: .475rem;
+}
+
+.tale-block .date {
+    grid-area: date;
+    font-feature-settings: &#39;case&#39;,&#39;ss01&#39;,&#39;ss04&#39;,&#39;tnum&#39;;
+    font-size: .725em;
+}
+
+.tale-block .meta {
+    grid-area: meta;
+    display: flex;
+    font-size: .775em;
+    gap: .75rem;
+    justify-content: space-between;
+}
+.meta .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    align-items: flex-start;
+}
+.tag-list a {
+    display: block;
+    border-radius: 1.5rem;
+    padding: .125em .675em;
+    text-decoration: none;
+    font-weight: 550;
+    color: var(--box-accent);
+    background-color: #3b5c970f;
+}
+.tag-list a[href$=&#34;tale&#34;] { display: none; }
+.tag-list a:is(:hover,:focus) {
+    color: white;
+    background-color: var(--box-accent);
+}
+
+.meta .sec-info {
+    display: grid;
+    grid-template-columns: 3rem 3.5rem;
+    align-items: center;
+    text-align: end;
+    gap: .25rem;
+    min-width: max-content;
+    align-self: flex-end;
+}
+.sec-info &gt; br { display: none; }
+.sec-info .comments &gt; span { font-size: 0; }
+
+.tale-block .description {
+    grid-column: 1/-1;
+}
+.description &gt; :not(.preview) { display: none; }
+.description:not(:has(&gt; .preview)) { display: none; } /* progressive enhancement */
+.description &gt; .preview {
+    display: block;
+    font-size: .9125em;
+    padding-block-start: .425rem;
+    border-block-start: .05rem solid #ddd;
+}
+.description &gt; .preview &gt; p:first-child { margin-block-start: 0.25em; }
+.description &gt; .preview &gt; p:last-child { margin-block-end: 0.25em; }
+
+
+div.tag-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: .25rem;
+    font-size: .9125em;
+    margin-block: .5rem;
 }
-.tag-nav a {
-    padding: 0 0.45em;
-    border-right: solid 2px #333;
-}
-.tag-nav a:last-child { border-right: none; }
+div.tag-nav br { display: none; }
+div.tag-nav p { display: contents; }
 [[/module]]</textarea></pre>
   </div>
 
@@ -317,7 +617,7 @@ table.wiki-content-table tr &gt; *:nth-child(3) {
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.491411.</em>
+    <em>Last updated 2026-04-17 00:56:53.467611.</em>
   
 </div>
 </body>

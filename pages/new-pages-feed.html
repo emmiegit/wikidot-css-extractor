@@ -35,16 +35,17 @@
     border-image: linear-gradient(186deg, #d2e2ec, #96acb7) 8;
 }
 .feature .content-type-description &gt; div {
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: 0.5rem;
-    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(min(16em,100%),1fr));
+    gap: .05rem;
+    background: #d7d7d7;
 }
 .feature .content-type-description &gt; div &gt; div {
-    flex-basis: max(30.5%, 8.25rem);
-    flex-grow: 1;
     text-align: center;
-    padding: 0.25rem;
+    padding: 0.625rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 #u-other .wiki-content-table td:nth-child(3) {
@@ -55,6 +56,15 @@
 
 #u-other .wiki-content-table td:nth-child(3) a:not([href$=admin],[href$=hub],[href$=contest],[href$=workbench],[href$=supplement],[href$=site],[href$=guide],[href$=essay],[href$=news],[href$=resource],[href$=author],[href$=component],[href$=component-backend],[href*=theme],[href$=more-by],[href$=splash],[href$=redirect]){
     display: none;
+}
+.description &gt; :not(.preview) { display: none!important; }
+.description &gt; .preview {
+    display: contents;
+    font-size: .825em;
+    text-align: start;
+}
+.preview &gt; p {
+    margin-block: .625em;
 }</code></pre>
         </li>
       
@@ -88,6 +98,40 @@
   
 
   
+    <a href="https://scp-wiki.wikidot.com/component:earthworm" target="_blank"><code>:scp-wiki:component:earthworm</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:earthworm.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
     <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
   
 
@@ -104,6 +148,38 @@
 
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes">
+      
+        <li>
+          <pre><code>content-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>feature</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-type-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-type-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>%%name%%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-type-footer</code></pre>
+        </li>
       
         <li>
           <pre><code>content-box</code></pre>
@@ -260,16 +336,17 @@
     border-image: linear-gradient(186deg, #d2e2ec, #96acb7) 8;
 }
 .feature .content-type-description &gt; div {
-    display: flex;
-    flex-wrap: wrap;
-    grid-gap: 0.5rem;
-    padding: 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(min(16em,100%),1fr));
+    gap: .05rem;
+    background: #d7d7d7;
 }
 .feature .content-type-description &gt; div &gt; div {
-    flex-basis: max(30.5%, 8.25rem);
-    flex-grow: 1;
     text-align: center;
-    padding: 0.25rem;
+    padding: 0.625rem;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 #u-other .wiki-content-table td:nth-child(3) {
@@ -281,6 +358,15 @@
 #u-other .wiki-content-table td:nth-child(3) a:not([href$=admin],[href$=hub],[href$=contest],[href$=workbench],[href$=supplement],[href$=site],[href$=guide],[href$=essay],[href$=news],[href$=resource],[href$=author],[href$=component],[href$=component-backend],[href*=theme],[href$=more-by],[href$=splash],[href$=redirect]){
     display: none;
 }
+.description &gt; :not(.preview) { display: none!important; }
+.description &gt; .preview {
+    display: contents;
+    font-size: .825em;
+    text-align: start;
+}
+.preview &gt; p {
+    margin-block: .625em;
+}
 [[/module]]
 
 [[include :scp-wiki:component:earthworm
@@ -291,6 +377,31 @@
 ]]
 
 = For a single list of all newly created pages, see [[[most-recently-created|]]].
+
+[!--
+[[div class=&#34;content-box feature&#34; id=&#34;alt&#34;]]
+[[div class=&#34;content-type-title&#34;]]
+Random 9000 Contest Entries
+[[/div]]
+[[div class=&#34;content-type-description&#34;]]
+
+[[module ListPages tags=&#34;+9000 -hub&#34; perPage=&#34;6&#34; limit=&#34;6&#34; order=&#34;random&#34; separate=&#34;false&#34;]]
+[[div class=&#34;%%name%%&#34;]]
+[[div_ class=&#34;title&#34;]]
+%%title_linked%%
+[[/div]]
+[[div class=&#34;description&#34;]]
+%%content{2}%%
+[[/div]]
+[[/div]]
+[[/module]]
+
+[[/div]]
+[[div class=&#34;content-type-footer&#34;]]
+[[[scp9000contesthub|]]]
+[[/div]]
+[[/div]]
+--]
 
 [!--
 [[div class=&#34;content-box feature&#34; id=&#34;rewrite&#34;]]
@@ -311,8 +422,9 @@ Recent Rewrite Entries
 [[/div]]
 [[/div]]
 
-------
 --]
+
+------
 
 [[div class=&#34;content-grid&#34;]]
 
@@ -328,6 +440,7 @@ Recent SCPs
 [[/module]]
 [[/div]]
 [[div class=&#34;content-type-footer&#34;]]
+[[[SCP Hub]]]
 [[/div]]
 [[/div]]
 
@@ -430,7 +543,7 @@ Untagged Pages
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:37.389508.</em>
+    <em>Last updated 2026-04-17 00:56:54.994349.</em>
   
 </div>
 </body>

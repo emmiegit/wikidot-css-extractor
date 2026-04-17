@@ -29,7 +29,46 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>/* BHL TOCs improvements */
+/* Makes TOCs wider and more legible */
+ 
+/* Reduce the space allocated to the fold button */
+#page-content div#toc {
+  grid-template-areas: &#34;fold title&#34; &#34;list list&#34;;
+  grid-template-columns: 1rem 1fr;
+}
+/* Hide the fold button */
+#toc #toc-action-bar &gt; a:nth-child(1) {
+  display: none !important; /* Override BHL important flex */
+}
+/* Recover the native TOC title; remove the BHL one */
+#toc #toc-action-bar a::after {
+  content: none;
+}
+#toc .title {
+  margin: 0;
+  color: rgb(var(--toc-header-text-color));
+}
+/* Thicken up the border */
+#toc {
+  border: thin solid rgb(var(--toc-header-bg-color));
+}
+/* Remove the width limit and maximum height */
+#toc, #toc-list {
+  max-width: inherit !important;
+  max-height: none !important;
+}
+/* Don&#39;t underline TOC links */
+#toc a {
+  text-decoration: none;
+  margin-right: 1rem;
+}
+/* Bold heading links */
+#toc-list [style$=&#34;2em;&#34;] &gt; a {
+  font-weight: bold;
+  --wght: 700; /* BHL compatibility hack */
+  text-decoration: underline;
+}</code></pre>
         </li>
       
     </ul>
@@ -67,6 +106,49 @@ Welcome to the Components Hub! This is a hub meant for all pages under the {{com
 + Table of Contents
 [[toc]]
 
+[[module css]]
+/* BHL TOCs improvements */
+/* Makes TOCs wider and more legible */
+ 
+/* Reduce the space allocated to the fold button */
+#page-content div#toc {
+  grid-template-areas: &#34;fold title&#34; &#34;list list&#34;;
+  grid-template-columns: 1rem 1fr;
+}
+/* Hide the fold button */
+#toc #toc-action-bar &gt; a:nth-child(1) {
+  display: none !important; /* Override BHL important flex */
+}
+/* Recover the native TOC title; remove the BHL one */
+#toc #toc-action-bar a::after {
+  content: none;
+}
+#toc .title {
+  margin: 0;
+  color: rgb(var(--toc-header-text-color));
+}
+/* Thicken up the border */
+#toc {
+  border: thin solid rgb(var(--toc-header-bg-color));
+}
+/* Remove the width limit and maximum height */
+#toc, #toc-list {
+  max-width: inherit !important;
+  max-height: none !important;
+}
+/* Don&#39;t underline TOC links */
+#toc a {
+  text-decoration: none;
+  margin-right: 1rem;
+}
+/* Bold heading links */
+#toc-list [style$=&#34;2em;&#34;] &gt; a {
+  font-weight: bold;
+  --wght: 700; /* BHL compatibility hack */
+  text-decoration: underline;
+}
+[[/module]]
+
 This page has been split into the four following categories:
 
 ------
@@ -88,10 +170,6 @@ These are components meant for use //only// on Black Highlighter pages, and woul
 
 These are components that are for more technical work or meant only for staff processes. It&#39;s unlikely you&#39;ll be using these in any articles.
 [[/=]]
-------
-
-A fifth category can be created if components are made that are exclusive to BASALT, which has yet to occur.
-
 ----</textarea></pre>
   </div>
 
@@ -99,7 +177,7 @@ A fifth category can be created if components are made that are exclusive to BAS
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.525004.</em>
+    <em>Last updated 2026-04-17 00:56:53.634489.</em>
   
 </div>
 </body>

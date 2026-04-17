@@ -29,8 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>.list-pages-box .preview { display: block; }
-.series .newpage[href^=&#34;/scp-&#34;] { text-transform: uppercase; }</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -39,7 +38,7 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>width: 800px; height: 400px;</code></pre>
         </li>
       
     </ul>
@@ -47,7 +46,39 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
       
     </ul>
 
@@ -55,42 +86,93 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>series</code></pre>
+          (none)
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[module CSS]]
-.list-pages-box .preview { display: block; }
-.series .newpage[href^=&#34;/scp-&#34;] { text-transform: uppercase; }
+    <pre><textarea class="page-source" readonly>This is a test page created to experiment with tag filters for Nala&#39;s parsing functionality. Please disregard.
+
+-----
+**Primary Filter**:
+
+[[module ListPages category=&#34;.,decomm&#34; separate=&#34;no&#34; tags=&#34;-scp -tale -guide -hub -project -author -orientation -creepypasta -supplement -contest -sandbox -orphaned -scp-fuel -splash -admin -template -essay&#34; perPage=&#34;200&#34;]]
+# %%title_linked%% - [[user %%created_by%%]] - %%created_at%% (%%rating%%)
+[[/module]]
+(These pages are in need of tags, as they lack any [[[Tag Guide|main tags]]] other than //orphaned//. Empty is good.)
+
+-----
+**UAC-2014 Contest Entries by Rating**:
+[[module ListPages separate=&#34;no&#34; tags=&#34;+uac2014 -hub&#34; category=&#34;uac2014&#34; perPage=&#34;100&#34; order=&#34;rating desc&#34;]]
+# **%%title_linked%%** //by// **%%created_by%%** (%%rating%%)
 [[/module]]
 
-[[module listpages separate=&#34;no&#34; limit=&#34;1&#34; name=&#34;scp-7719-ex&#34;]]
-%%title_linked%% - %%created_at%%
-%%content{2}%%
+-----
+**Improperly deleted pages**:
+
+[[module ListPages separate=&#34;no&#34; category=&#34;deleted&#34; perPage=&#34;100&#34;]]
+# %%title_linked%% - [[user %%created_by%%]] - %%created_at%%
+[[/module]]
+(Pages in the //deleted// category are ones that were &#34;soft-deleted&#34; by renaming them rather than being completely deleted. As this is contrary to site policy, these pages need to be properly deleted.)
+
+-----
+**Pages tagged as //orphaned//**:
+
+[[module ListPages separate=&#34;no&#34; tags=&#34;orphaned&#34; perPage=&#34;100&#34;]]
+# %%title_linked%% - [[user %%created_by%%]] - %%created_at%%
+[[/module]]
+(//orphaned// pages are usually pages that were attached to one or more articles that were subsequently deleted, or pages whose parents are locked and I can&#39;t change them myself. Very rarely an //orphaned// page can be cleaned up and made into a standalone tale, but usually they just need to be deleted.)
+
+-----
+**Pages tagged as //supplement// with no parent page**:
+
+[[module ListPages separate=&#34;no&#34; tags=&#34;supplement&#34; parent=&#34;-&#34; perPage=&#34;100&#34;]]
+# %%title_linked%% - [[user %%created_by%%]] - %%created_at%%
+[[/module]]
+(//supplement// pages should have their parent page set to the SCP from which they are linked. A missing parent page either indicates that the supplement is orphaned or simply needs to be updated.)
+
+-----
+**Pages tagged as both //safe// and //euclid//**:
+
+[[module ListPages separate=&#34;no&#34; tags=&#34;+safe +euclid -keter&#34; perPage=&#34;100&#34;]]
+# %%title_linked%% - [[user %%created_by%%]] - %%created_at%%
 [[/module]]
 
-[[div class=&#34;content-panel standalone series&#34;]]
+-----
+**Pages tagged as both //euclid// and //keter//**:
 
-[[[SCP-9988|]]]
+[[module ListPages separate=&#34;no&#34; tags=&#34;+euclid +keter -safe&#34; perPage=&#34;100&#34;]]
+# %%title_linked%% - [[user %%created_by%%]] - %%created_at%%
+[[/module]]
 
-[[/div]]</textarea></pre>
+-----
+**Pages tagged as both //safe// and //keter//**:
+
+[[module ListPages separate=&#34;no&#34; tags=&#34;+safe +keter -euclid&#34; perPage=&#34;100&#34;]]
+# %%title_linked%% - [[user %%created_by%%]] - %%created_at%%
+[[/module]]
+
+
+-----
+**Pages tagged as all three???**:
+
+[[module ListPages separate=&#34;no&#34; tags=&#34;+safe +euclid +keter&#34; perPage=&#34;100&#34;]]
+# %%title_linked%% - [[user %%created_by%%]] - %%created_at%%
+[[/module]]
+
+-----
+[[iframe http://aelanna.com/Tools/deletion-time.html style=&#34;width: 800px; height: 400px;&#34;]]
+@@ @@
+[[include :scp-wiki:component:license-box]]
+[[include :scp-wiki:component:license-box-end]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:37.286883.</em>
+    <em>Last updated 2026-04-17 00:56:54.841635.</em>
   
 </div>
 </body>

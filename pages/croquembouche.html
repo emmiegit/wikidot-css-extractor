@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Croquembouche&#39;s author page</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Croquembouche&#39;s author page</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/croquembouche" target="_blank">Croquembouche&#39;s author page</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>/* Header */
+#header h1 a::before { content: &#34;🍞&#34; }
+#header h2 span::before { content: &#34;Croquembouche&#39;s author page&#34; !important }
+#header { background-image: url(https://scp-wiki.wdfiles.com/local--files/croquembouche/delta.png) }
+#header::before { display: none } /* Hide AR logo */
+
+h1 { margin: 1em 0 }
+h1 + p { margin-top: -1.5em; padding-bottom: 1.5em }
+
+.page-rate-widget-box { margin-bottom: 0 }
+
+/* Easter eggs */
+
+/* Hide contest-contest for everyone except Placeholder McD */
+.ee-contest-contest:not(.user-id-6536693) { display: none }
+
+/* Hide collab name insult joke for everyone except people I&#39;ve collabed with */
+.ee-collab:not(
+  .user-id-2893766, /* Me */
+  .user-id-1888434, /* djkaktus */
+  .user-id-5588260, /* JakdragonX */
+  .user-id-3440103, /* Captain Kirby */
+  .user-id-3213383, /* OthellotheCat */
+  .user-id-3737554, /* Veiedhimaedhr */
+) { display: none }
+
+/* Switch 8822 image after the slider is opened */
+.image-8822-1 {
+  animation: hide 0s linear 0.6s 1 both;
+  animation-play-state: paused;
+}
+.image-8822-2 {
+  animation: show 0s linear 0.6s 1 both;
+  animation-play-state: paused;
+}
+.page-box:hover .page-box__cover:not(:hover) :is(.image-8822-1, .image-8822-2) { animation-play-state: running }
+@keyframes hide { from { opacity: 1 } to { opacity: 0 }}
+@keyframes show { from { opacity: 0 } to { opacity: 1 }}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* Page info slider thingies used on this page */
+
+.page-box {
+  --more-text: &#34;MORE INFO&#34;;
+  --triangle-url: url(http://topia.wdfiles.com/local--files/cqb%3Apage-info-slider-deep/slider.png);
+  position: relative;
+  width: 90%;
+  margin: 0 auto 2em auto;
+  z-index: 20;
+  overflow: hidden;
+  background-color: white;
+  container-type: inline-size;
+}
+.page-box::after {
+  content: &#34;&#34;;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: inset 0 0.5px 3px 1px rgba(0, 0, 0, 0.3);
+  z-index: 19;
+  pointer-events: none;
+}
+
+.page-box__table table {
+  margin: 0 -1px 0 0;
+  width: 100%;
+}
+.page-box__table table:nth-of-type(n + 2) {
+  margin-top: -1px;
+}
+.page-box__table td {
+  background-color: #fff;
+  border-color: var(--border-color, grey);
+}
+.page-box__table th {
+  background-color: #eee;
+  border-color: var(--border-color, grey);
+}
+
+.page-box .avatar-hover {
+  z-index: 30;
+}
+
+.page-box__table::after {
+  position: absolute;
+  content: &#34;&#34;;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  background-color: var(--shade-color, none);
+}
+.page-box__table ul {
+  padding-right: 1em;
+}
+
+.page-box__cover {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  inset: 0;
+  right: 93px;
+  z-index: 10;
+  background-color: white;
+  padding: 20px 0 20px 25px;
+  box-sizing: border-box;
+  transform: translate(0, 0);
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
+@container (min-width: 550px) {
+  .page-box__cover { display: flex !important }
+}
+.page-box__cover::after {
+  content: var(--more-text);
+  position: absolute;
+  top: 50%;
+  right: -70px;
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 0.8em;
+  transform: translate(0, -50%);
+  pointer-events: none;
+}
+.page-box__cover::before {
+  content: &#34;&#34;;
+  position: absolute;
+  top: 0;
+  right: -102px;
+  width: 103px;
+  height: 100%;
+  background-image: var(--triangle-url);
+  background-position: center;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .page-box__cover {
+    display: none;
+  }
+}
+
+.page-box__cover-title {
+  width: 100%;
+  font-size: 50px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.page-box__cover-title--length-medium {
+  font-size: 30px;
+}
+.page-box__cover-title--length-long {
+  font-size: 20px;
+}
+.page-box__cover-title a {
+  background-color: #fffa;
+  position: relative;
+  z-index: 1;
+}
+
+.page-box__cover-tagline {
+  color: #000c;
+  margin-bottom: 0;
+  flex: 0;
+}
+.page-box__cover-title--truncated {
+  flex: 1;
+  white-space: normal;
+}
+.page-box__cover-title--truncated + .page-box__cover-info .page-box__cover-tagline {
+  margin: 1em 0;
+}
+
+.page-box__cover-info-stats {
+  display: flex;
+}
+.page-box__cover-info-stats div {
+  color: #0008;
+  margin: 0 6em 0 0;
+}
+
+.page-box:hover .page-box__cover:not(:hover),
+.page-box:has(.page-box__table:focus-within) .page-box__cover {
+  transform: translate(calc(-100% - 70px), 0);
+}
+
+.page-box__cover &gt; img {
+  max-height: 70%;
+  max-width: 120px;
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  transform: translate(50%, -50%);
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>#u-misinformation:has([name=misinformation]:target) {
+  display: block !important;
+  font-size: 9rem;
+  line-height: 1;
+  margin: 0;
+  font-weight: bold;
+}
+:root:has([name=misinformation]:target) #page-content &gt; :not(#u-misinformation) {
+ display: none !important;
+}
+#u-thorley:has([name=thorley]:target) {
+  display: block !important;
+}
+:root:has([name=thorley]:target) #page-content &gt; :not(#u-thorley) {
+ display: none !important;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.blockquote.notifier-status {
+  background-color: rgb(250, 240, 202);
+  background-image: linear-gradient(to bottom, rgba(192, 179, 156, 0.5), transparent);
+  border: 0.25rem solid rgb(129, 67, 79);
+  margin-inline: 0;
+  font-family: Inter, sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 15px;
+}
+@media (max-width: 960px) and (min-width: 767px), (max-width: 650px) {
+  .blockquote.notifier-status { flex-direction: column; }
+}
+.blockquote.notifier-status a {
+  color: rgb(204, 51, 0);
+  text-decoration-line: underline;
+  text-decoration-color: rgb(192, 179, 156);
+  white-space: nowrap;
+}
+.blockquote.notifier-status a:hover {
+  color: rgb(255, 83, 31);
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgb(255, 83, 31);
+}
+.notifier-status-frame, .notifier-status-frame iframe {
+  border: none;
+  height: 6.125rem;
+  width: 15rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: grey</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: grey</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: grey</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: grey</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>padding-right: 4ch</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: grey</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: yellow</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: yellow</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none; background-image: url(https://scp-wiki.wikidot.com/local--files/scp-9001/thread.webp); background-position: -9% 0; background-size: auto 100%; background-repeat: no-repeat;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: orange</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: yellow</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--shade-color: yellow</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>max-width: 450px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>max-width: 430px</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:ar" target="_blank"><code>:scp-wiki:theme:ar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:ar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:croqstyle" target="_blank"><code>:scp-wiki:component:croqstyle</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:listusers-1" target="_blank"><code>:scp-wiki:component:listusers-1</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:listusers-1.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:listusers-2" target="_blank"><code>:scp-wiki:component:listusers-2</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:listusers-2.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:listusers-3" target="_blank"><code>:scp-wiki:component:listusers-3</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:listusers-3.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ee-contest-contest</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>user-id-%%number%%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notifier-status</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>notifier-status-frame</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-8822-1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image-8822-2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-short</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-short</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-short</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-short</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ee-collab</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>user-id-%%number%%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-short</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-medium</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-medium</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-long</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-medium</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--length-medium</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-title--truncated</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-tagline</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__cover-info-stats</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>page-box__table</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:ar]]
+[[include :scp-wiki:component:croqstyle]]
+
+[[module CSS]]
+/* Header */
+#header h1 a::before { content: &#34;🍞&#34; }
+#header h2 span::before { content: &#34;Croquembouche&#39;s author page&#34; !important }
+#header { background-image: url(https://scp-wiki.wdfiles.com/local--files/croquembouche/delta.png) }
+#header::before { display: none } /* Hide AR logo */
+
+h1 { margin: 1em 0 }
+h1 + p { margin-top: -1.5em; padding-bottom: 1.5em }
+
+.page-rate-widget-box { margin-bottom: 0 }
+
+/* Easter eggs */
+
+/* Hide contest-contest for everyone except Placeholder McD */
+.ee-contest-contest:not(.user-id-6536693) { display: none }
+
+/* Hide collab name insult joke for everyone except people I&#39;ve collabed with */
+.ee-collab:not(
+  .user-id-2893766, /* Me */
+  .user-id-1888434, /* djkaktus */
+  .user-id-5588260, /* JakdragonX */
+  .user-id-3440103, /* Captain Kirby */
+  .user-id-3213383, /* OthellotheCat */
+  .user-id-3737554, /* Veiedhimaedhr */
+) { display: none }
+
+/* Switch 8822 image after the slider is opened */
+.image-8822-1 {
+  animation: hide 0s linear 0.6s 1 both;
+  animation-play-state: paused;
+}
+.image-8822-2 {
+  animation: show 0s linear 0.6s 1 both;
+  animation-play-state: paused;
+}
+.page-box:hover .page-box__cover:not(:hover) :is(.image-8822-1, .image-8822-2) { animation-play-state: running }
+@keyframes hide { from { opacity: 1 } to { opacity: 0 }}
+@keyframes show { from { opacity: 0 } to { opacity: 1 }}
+[[/module]]
+
+[[module css]]
+/* Page info slider thingies used on this page */
+
+.page-box {
+  --more-text: &#34;MORE INFO&#34;;
+  --triangle-url: url(http://topia.wdfiles.com/local--files/cqb%3Apage-info-slider-deep/slider.png);
+  position: relative;
+  width: 90%;
+  margin: 0 auto 2em auto;
+  z-index: 20;
+  overflow: hidden;
+  background-color: white;
+  container-type: inline-size;
+}
+.page-box::after {
+  content: &#34;&#34;;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  box-shadow: inset 0 0.5px 3px 1px rgba(0, 0, 0, 0.3);
+  z-index: 19;
+  pointer-events: none;
+}
+
+.page-box__table table {
+  margin: 0 -1px 0 0;
+  width: 100%;
+}
+.page-box__table table:nth-of-type(n + 2) {
+  margin-top: -1px;
+}
+.page-box__table td {
+  background-color: #fff;
+  border-color: var(--border-color, grey);
+}
+.page-box__table th {
+  background-color: #eee;
+  border-color: var(--border-color, grey);
+}
+
+.page-box .avatar-hover {
+  z-index: 30;
+}
+
+.page-box__table::after {
+  position: absolute;
+  content: &#34;&#34;;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  background-color: var(--shade-color, none);
+}
+.page-box__table ul {
+  padding-right: 1em;
+}
+
+.page-box__cover {
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  inset: 0;
+  right: 93px;
+  z-index: 10;
+  background-color: white;
+  padding: 20px 0 20px 25px;
+  box-sizing: border-box;
+  transform: translate(0, 0);
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+}
+@container (min-width: 550px) {
+  .page-box__cover { display: flex !important }
+}
+.page-box__cover::after {
+  content: var(--more-text);
+  position: absolute;
+  top: 50%;
+  right: -70px;
+  color: rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  font-size: 0.8em;
+  transform: translate(0, -50%);
+  pointer-events: none;
+}
+.page-box__cover::before {
+  content: &#34;&#34;;
+  position: absolute;
+  top: 0;
+  right: -102px;
+  width: 103px;
+  height: 100%;
+  background-image: var(--triangle-url);
+  background-position: center;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) {
+  .page-box__cover {
+    display: none;
+  }
+}
+
+.page-box__cover-title {
+  width: 100%;
+  font-size: 50px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.page-box__cover-title--length-medium {
+  font-size: 30px;
+}
+.page-box__cover-title--length-long {
+  font-size: 20px;
+}
+.page-box__cover-title a {
+  background-color: #fffa;
+  position: relative;
+  z-index: 1;
+}
+
+.page-box__cover-tagline {
+  color: #000c;
+  margin-bottom: 0;
+  flex: 0;
+}
+.page-box__cover-title--truncated {
+  flex: 1;
+  white-space: normal;
+}
+.page-box__cover-title--truncated + .page-box__cover-info .page-box__cover-tagline {
+  margin: 1em 0;
+}
+
+.page-box__cover-info-stats {
+  display: flex;
+}
+.page-box__cover-info-stats div {
+  color: #0008;
+  margin: 0 6em 0 0;
+}
+
+.page-box:hover .page-box__cover:not(:hover),
+.page-box:has(.page-box__table:focus-within) .page-box__cover {
+  transform: translate(calc(-100% - 70px), 0);
+}
+
+.page-box__cover &gt; img {
+  max-height: 70%;
+  max-width: 120px;
+  position: absolute;
+  top: 50%;
+  right: 60px;
+  transform: translate(50%, -50%);
+}
+[[/module]]
+
+[[div style=&#34;display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center;&#34;]]
+[[div]]
+Get in touch: [https://www.wikidot.com/account/messages#/new/2893766 Wikidot PM] or find me in the Discord
+[[/div]]
+
+[[module Rate]]
+[[/div]]
+
+[[module listusers users=&#34;.&#34;]]
+[[div class=&#34;blockquote ee-contest-contest user-id-%%number%%&#34;]]
+I, **CROQUEMBOUCHE**, fully recognize that **//CONTEST CONTEST//** by Placeholder McD is a joke page, and was created without intent to hurt, harm, cause problems, or be unsportsmanlike. I acknowledge that Placeholder McD has heavily discouraged me from posting a Contest Hub without consulting the Community Outreach Team. I understand that the content of **//CONTEST CONTEST//** is purely satirical and should not be taken seriously or personally; its instructions should not be followed, and I know this because I am skilled in literary analysis. In copying this statement to the top of my page, I admit that what will follow is entirely my fault, and Placeholder McD is in no way responsible for my actions.
+
+Neololfoundation. Cheese Grater. Bottom Text.
+[[/div]]
+[[/module]]
+
+
+[[module css]]
+#u-misinformation:has([name=misinformation]:target) {
+  display: block !important;
+  font-size: 9rem;
+  line-height: 1;
+  margin: 0;
+  font-weight: bold;
+}
+:root:has([name=misinformation]:target) #page-content &gt; :not(#u-misinformation) {
+ display: none !important;
+}
+#u-thorley:has([name=thorley]:target) {
+  display: block !important;
+}
+:root:has([name=thorley]:target) #page-content &gt; :not(#u-thorley) {
+ display: none !important;
+}
+[[/module]]
+[[div_ id=&#34;u-misinformation&#34; style=&#34;display: none&#34;]]
+[[# misinformation]] Source: I made it up
+[[/div]]
+[[div_ id=&#34;u-thorley&#34; style=&#34;display: none&#34;]]
+[[# thorley]] Alex Thorley got a passport and pillow case and then they washed their clothes.
+[[/div]]
+
+-----
+[[module CSS]]
+.blockquote.notifier-status {
+  background-color: rgb(250, 240, 202);
+  background-image: linear-gradient(to bottom, rgba(192, 179, 156, 0.5), transparent);
+  border: 0.25rem solid rgb(129, 67, 79);
+  margin-inline: 0;
+  font-family: Inter, sans-serif;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 15px;
+}
+@media (max-width: 960px) and (min-width: 767px), (max-width: 650px) {
+  .blockquote.notifier-status { flex-direction: column; }
+}
+.blockquote.notifier-status a {
+  color: rgb(204, 51, 0);
+  text-decoration-line: underline;
+  text-decoration-color: rgb(192, 179, 156);
+  white-space: nowrap;
+}
+.blockquote.notifier-status a:hover {
+  color: rgb(255, 83, 31);
+  text-decoration-thickness: 2px;
+  text-decoration-color: rgb(255, 83, 31);
+}
+.notifier-status-frame, .notifier-status-frame iframe {
+  border: none;
+  height: 6.125rem;
+  width: 15rem;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+[[/module]]
+[[div class=&#34;blockquote notifier-status&#34;]]
+[[div]]
+**PSA!** Use the forum a lot? Get forum notifications: [http://notifications.wikidot.com/?utm_source=wikidot&amp;utm_medium=referral&amp;utm_campaign=scp-en-cone http://notifications.wikidot.com/]
+
+[https://scp-wiki.wikidot.com/forum/t-14209085/forum-notifications-service See the announcement thread]
+[[/div]]
+
+[[div_ class=&#34;notifier-status-frame&#34;]]
+[[embed]]
+&lt;iframe src=&#34;//notifier.rossjrw.com/status.html&#34; allowtransparency=&#34;true&#34;&gt;&lt;/iframe&gt;
+[[/embed]]
+[[/div]] [!-- .notifier-status-frame --]
+[[/div]] [!-- .notifier-status --]
+-----
+
+[[=]]
++ Articles
+
+Latest: [[[scp-9001|]]]
+[[/=]]
+
+[[tabview]]
+[[tab Originals]]
+
+[[=]]
++ Dynamic
+
+Articles that simulate their effects in the browser.
+These SCPs know you&#39;re reading them.
+[[/=]]
+
+[[module ListPages fullname=&#34;scp-8822&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: grey&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image https://scp-wiki.wikidot.com/local--files/scp-8822/sunnyclockwork-8822-02-frame-01.webp class=&#34;image-8822-1&#34;]]
+[[image https://scp-wiki.wikidot.com/local--files/scp-8822/sunnyclockwork-8822-02-frame-02.webp class=&#34;image-8822-2&#34;]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-short page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+They know. Art by [[[sunny-s-black-and-white-art | SunnyClockwork]]]
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[SCP-8822]]] -- Alethophobia: Headcanon
+* +%%rating%%, published %%created_at%%
+
+* Scroll-based article. Read slowly.
+
+* Part of [[[scp-anthology-2024 | Anthology 2024]]]. A narcissist&#39;s core is a heart of lies. 
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+[[module ListPages fullname=&#34;scp-3211&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: grey&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image :first]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-short page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+The true antimeme. Art by [[[sunny-s-black-and-white-art | SunnyClockwork]]]
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[SCP-3211]]] -- There Is No Canon
+* +%%rating%%, published %%created_at%%
+
+* Time-based article. Read quickly.
+
+* I&#39;m open to a rewrite collab -- let me know if you have a killer idea
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+[[=]]
++ Static
+
+These ones are more normal.
+[[/=]]
+
+[[module ListPages fullname=&#34;scp-3939&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: grey&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image :first]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-short page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+SCP-CYOA. Art by /u/VirtualKidAvenue
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[SCP-3939]]] -- [NUMBER RESERVED; AWAITING RESEARCHER]
+* +%%rating%%, published %%created_at%%. #2 article March 2018
+
+* Most offset pages of any SCP page (67)
+
+* I&#39;m open to a rewrite collab -- let me know if you have a killer idea
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+[[module ListPages fullname=&#34;scp-5251&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: grey&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image :first]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-short page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[a href=&#34;/scp-5251&#34; style=&#34;padding-right: 4ch&#34;]]SCP-[[/a]] -- Flax
+* +%%rating%%, published %%created_at%%
+
+* A twist on the &#39;invisible text&#39; gimmick of yesteryear. 90% of the article has actually been removed, letter by letter.
+
+* A study on how a competent Foundation, lovers of documentation, might react when knowledge is their downfall.
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+[[/tab]]
+[[tab Collaborations]]
+
++ Collaborations
+
+
+[[include :scp-wiki:component:listusers-1 users=&#34;.&#34;]]
+= Articles I&#39;ve worked on with my friends [[span class=&#34;ee-collab user-id-%%number%%&#34;]]and also %%name%%[[/span]] (other than contest collabs).
+[[include :scp-wiki:component:listusers-2]]
+= Articles I&#39;ve worked on with my friends (other than contest collabs).
+[[include :scp-wiki:component:listusers-3]]
+
+
+[[module ListPages fullname=&#34;scp-3790&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: grey&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image :first]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-short page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+With [[*user djkaktus]]
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[SCP-3790]]] -- Department of Abnormalities
+* +%%rating%%, published %%created_at%% with [[*user djkaktus]]
+
+* Zero relation to [[[/system:page-tags/tag/abnormalities | anything tagged &#39;abnormalities&#39;]]]
+
+* At the end of a corridor, an elevator takes you to you a quiet, dark place.
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+[[module ListPages fullname=&#34;theme:turbo-vision&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: yellow&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image :first]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-medium&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+With [[*user JakdragonX]]
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[theme:turbo-vision|]]]
+* +%%rating%%, published %%created_at%% with [[*user JakdragonX]]
+
+* A theme that looks like a DOS terminal.
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+[[/tab]]
+[[tab Contest Entries]]
+
+[[=]]
++ [[[scp9000contesthub|9kcon]]]
+[[/=]]
+
+[[module ListPages fullname=&#34;scp-9001&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: yellow&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none; background-image: url(https://scp-wiki.wikidot.com/local--files/scp-9001/thread.webp); background-position: -9% 0; background-size: auto 100%; background-repeat: no-repeat;&#34;]]
+[[image https://scp-wiki.wikidot.com/local--files/scp-9001/fractal-pentazoom-fallback.webp]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-medium page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+With [[*user S D Locke]] and [[*user PandoraNuker]]
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[scp-9001|]]] -- Fractal
+* +%%rating%%, published %%created_at%%
+
+* The origin and story of [[[SCP-001|Berryman-Langford Kill Agents]]].
+* Probably the article with the most detailed implied timeline I&#39;ve worked on.
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+[[=]]
++ [[[wrathcon | WRATHCON 2024]]]
+
+Written to try something totally new.
+[[/=]]
+
+[[module ListPages fullname=&#34;site-69&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: orange&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image :first]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-long page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+Everything is fine
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[site-69|]]]
+* +%%rating%%, published %%created_at%%
+
+* Originally published 2024-07-19, self-deleted 2024-08-01 at +161
+
+* No one takes Site-69 seriously, so it&#39;s the perfect place to hide.
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+= and also the sequel: [[[site-69-ii|]]]
+
+[[=]]
++ [[[canon-renaissance-contest | Canon Renaissance 2020]]]
+
+Written to inject new life into the [[[rat&#39;s nest hub | Rat&#39;s Nest]]] canon.
+[[/=]]
+
+[[module ListPages fullname=&#34;ambrose-vienna&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: yellow&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image :first]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-medium page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+Meaning of life found within
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[ambrose-vienna|]]]
+* +%%rating%%, published %%created_at%%
+
+* Written for [[[canon-renaissance-contest|]]] 2020
+
+* A typical restaurant review takes a dark turn when Eden Bumaro succumbs to a custom-made malicious force.
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+[[=]]
++ [[[doomsday-contest | Doomsday 2018]]]
+
+Written to jumpstart the newly-formed [[[end of death hub | End of Death]]] canon.
+[[/=]]
+
+[[module ListPages fullname=&#34;end-of-death-hub&#34; limit=&#34;1&#34; category=&#34;*&#34;]]
+[[div class=&#34;page-box&#34; style=&#34;--shade-color: yellow&#34;]]
+[[div class=&#34;page-box__cover&#34; style=&#34;display: none&#34;]]
+[[image :first]]
+[[div_ class=&#34;page-box__cover-title page-box__cover-title--length-medium page-box__cover-title--truncated&#34;]]
+%%title_linked%%
+[[/div]]
+[[div_ class=&#34;page-box__cover-info&#34;]]
+[[div_ class=&#34;page-box__cover-tagline&#34;]]
+**Scenario Designation:** ΩK-Class
+[[/div]]
+[[div_ class=&#34;page-box__cover-info-stats&#34;]]
+[[div_]]
++%%rating%% · %%comments%% [[#ifexpr %%comments%% == 1 | comment | comments]]
+[[/div]]
+[[div_]]
+%%created_at%%
+[[/div]]
+[[/div]] [!-- .page-box__cover-info-stats --]
+[[/div]] [!-- .page-box__cover-info --]
+[[/div]] [!-- .page-box__cover --]
+[[div class=&#34;page-box__table&#34;]]
+* [[[end-of-death-hub|]]]
+* +%%rating%%, published %%created_at%% with [[*user Captain Kirby]], [[*user OthellotheCat]] and [[*user Veiedhimaedhr]]
+
+* Written for [[[doomsday-contest|]]] 2018 -- 2nd place!
+
+* One day, people stopped dying. Joyce Michaels is pretty pissed off about it.
+
+||~ Last comment || #%%comments%% from %%commented_by_linked%% on %%commented_at%% ||
+[[/div]] [!-- .page-box__table --]
+[[/div]] [!-- .page-box --]
+[[/module]]
+
+See also:
+
+* [[[SCP-3984]]], wherein death broke
+* [[[omega-k|]]], wherein the world has ended but you&#39;ve still got to go to work in the morning
+* [[[the-foundation-wants-a-robot-army|]]], performed as a transcription of a real-time roleplay with [[*user Captain Kirby]], [[*user OthellotheCat]] and [[*user Veiedhimaedhr]], wherein three GoIs come together to hatch a plan
+
+[[/tab]]
+[[tab Themes and Components]]
+
++ CSS Themes
+
+= Custom themes to add a splash of visual flair to any page.
+
+* [[[theme:ar|]]], Sep 2018, the first overhaul-like theme that kicked off the wiki&#39;s CSS revolution
+* [[[theme:swirling-ashes|]]], Sep 2020
+* [[[theme:inkblot|]]], Oct 2020, and a fresh take on the Ambrose format
+
++ Components
+
+= Modular tools to add functionality to an article.
+
+* [[[component:earthworm|]]], a decorative multi-article navigation widget
+* [[[component:tz|]]], a tool to convert a time and timezone to the reader&#39;s native timezone
+* [[[component:theme-squares|]]], a componentised version of [[*user Woedenaz]]&#39;s theme colour squares
+* [[[component:pages|]]], a pagination generator that will display a wide range of formats
+* [[[component:carousel|]]], exactly what it says on the tin
+* [[[component:fade-in|]]], to make your article fade in slowly
+* [[[component:croqstyle|]]], some misc CSS utilities for drafting and documenting
+* [[[component:hoverlinks|]]]
+
+[[/tab]]
+[[tab Other]]
+
++ Other pages
+
+= These don&#39;t deserve a tab of their own.
+
+* [[[croquembouche|]]]
+* [[[listpages-magic-and-you|]]], the guide for ListPages
+
+[[/tab]]
+[[/tabview]]
+
+-----
+
+[[collapsible show=&#34;+ Other things I&#39;ve done not listed above&#34;]]
+* Suggested the [[[https://scp-wiki.wikidot.com/system:page-tags/tag/interactive|interactive]]] tag
+* Created [[[https://scp-wiki.wikidot.com/forum/t-6086502#post-3829009|the site logo]]] for Pride Month 2018 (the first time we did that)
+* Suggested the [[[http://www.scp-wiki.net/system:page-tags/tag/theme|theme]]] tag
+* Fixed the broken [[[usertools|Staff Identification userscript]]]
+* Created the [[[fragment:site-news-title-fetcher|]]]
+* Ported the [[[info:start|Info module]]] from JP/DE
+* Helped make [[[theme:black-highlighter-theme | Black Highlighter]]]
+* Wrote the [http://05command.wikidot.com/forum/t-12884000/proposal:amendment-to-css-policy-again CSS Policy] with a focus on accessibility
+* Made an [https://github.com/rossjrw/tars IRC bot], which is now discontinued
+* Was technical staff from June 2018 to Octoboer 2023, including a couple years as technical vice captain
+* Rewrote our tags list as programmatically-accessible TOML
+* I own https://parawatch.net (it&#39;s a redirect to the Parawatch hub), so feel free to use it in articles
+* Run a [[[https://notifications.wikidot.com | forum notification service]]]
+* Made a [[[usertools#delete-applications | userscript that deletes applications from your inbox]]]
+* Made the RedactRect font for the █ character
+[[/collapsible]]
+
+-----
+
+= [http://scp-sandbox-3.wikidot.com/cone Sandbox]
+
+= [http://topia.wikidot.com/conical-hub Topia]
+
+-----
+
+[[tabview]]
+[[tab Workbench]]
+
+= [[image image2.png]]
+= [[image image3.png]]
+= [[image image4.png]]
+= [[image image5.png]]
+= [[image image8.png]]
+= [[image image6.png]]
+= [[image image7.png]]
+= [[image image9.png]]
+= [[image image10.png]]
+= [[image image11.png style=&#34;max-width: 450px&#34;]]
+= [[image image12.png style=&#34;max-width: 430px&#34;]]
+= [[image image13.png]]
+= [[image image14.png]]
+
+[[/tab]]
+[[tab Opinions and shit]]
++ Croquembouche&#39;s Opinions
+
+I&#39;ve been in this community a long while and over that time I&#39;ve racked up a lot of opinions, about big things and inane shit alike. Might as well write down some of them so that you can benefit from my wisdom, or in case you disagree with them, lack of wisdom.
+
++++ On Leaving Feedback on Published Works
+
+I&#39;ve gone through a few different feedback strategies over the years, trying to work out what the healthiest approach is. Probably the most memorable are the months I spent leaving crit on //everything// I read. Later I&#39;d switch to leaving crit on everything I downvoted and on anything else if I felt like it. Neither approach was sustainable in the long term - I ended up reading less because I knew there was a good chance I was going to have write decent crit, but also because I was expecting to have to write crit, I went into every article expecting to crit it instead of expecting to enjoy it - and I found that meant I ended up enjoying very little.
+
+I //love// receiving constructive feedback, whether your opinion is positive or negative overall. I also love hearing about speculation, headcanons, puzzle solutions and the like. I don&#39;t love comments that have nothing to say, even if it&#39;s praise.
+
+So, currently, my strategy is very simple: if I have something to say, and I&#39;ve skimmed through the comments and nobody else has said it, I&#39;ll say it. If someone beat me to it, I&#39;ll let them have the glory. If I have nothing to say, I won&#39;t force it. And I totally will write an essay if I feel like it, but //only// if I feel like it, and it&#39;s up to you if you think that means your article worked on me, even if I ended up not liking it.
+
+Also, I&#39;m gonna treat page comments as comments, not as a list of reviews. Sometimes it&#39;s nice to just say something funny or whatever. Comments aren&#39;t sacred.
+
+**Don&#39;t mention the author:** Once a work is published, I try to strictly separate art from artist. Never imply that something you didn&#39;t like about a work is a failing of the author - only of the work. It should be a faux pas to even //refer// to the author if giving negative critique.
+
+ _
+
++++ On Critting Unpublished Works
+
+**Share your thoughts:** I&#39;ve heard that in video game testing, the best feedback you can give is a recording of your gameplay and your reactions - no nuanced feedback required. When giving crit, before I even think about summarising my thoughts, I like to note down the thoughts I have as I read the draft, both positive and negative, as detailed as line-by-line if need be, and give that to the receiver without modification.
+
+**Summarise the vibe:** When giving crit, even if you can&#39;t come up with anything profound to say overall, sum up the overall impression that you&#39;re left with. What do you remember most? Do you think you&#39;ll still remember it in a week?
+
+**Suggest fixes:** When giving crit I always try to make sure I suggest a way to resolve any problems I had with it. I&#39;ll normally try to do that by rearranging or recontextualising what&#39;s already there, adding as little as possible.
+
+**Ignore fixes:** When receiving crit, feel free to ignore any changes that are suggested. Learning the critter&#39;s opinion is always valuable, but they&#39;re working with less information than you. Only you know what you wanted their opinion to be, so only you know what to change to control it.
+
+**They might not have killed their darlings:** When giving crit, you have a fresh perspective - you&#39;re in the perfect position to objectively consider what could be cut to make the draft punchier. Don&#39;t assume the writer has already done this, or that they know better than you - if that were true, they wouldn&#39;t have asked your opinion. Add when you want to dilute, remove when you want to concentrate.
+
+**Have a good reason to disregard critique:** It can take a lot of effort to review something, so when receiving crit, do try to justify anything you choose to ignore. Maybe the thing they had an issue with was something you intended, or maybe the thing they want you to cut actually is important in your opinion. Even if it means that overall that critter didn&#39;t actually change anything, they&#39;ll be left with the impression that you heard them.
+
+**Avoid getting too much crit:** When you get lots of crit, say from 10+ people, you get lots of data from lots of perspectives. Sounds good, but now you&#39;ve got all of these opinions all conflicting with each other, even after discarding what wasn&#39;t useful. You&#39;ve got a choice: do you try to follow all the advice and risk making your story generic and lose your authorial voice? Or do you follow just the advice that matches your vision and piss off everyone who gave you their time but you&#39;ve ended up ignoring? It&#39;s tough to have that conversation with a critter, but it&#39;s worse if that critter ends up finding out themselves. Avoid the issue by just getting the crit that you need and nothing more. Relatedly:
+
+**Let critters know how much crit you&#39;re getting:** When receiving critique, give your critter a heads up as to how much crit you&#39;ve had / are planning on having. If you //only// want my opinion, or just mine and 1 or 2 others, I know that I should put more care and attention into my feedback. If you&#39;ve got 20 critters, I know that you&#39;re probably going to ignore most of what I say (because you&#39;ve got up to 19 other people giving conflicting advice), so I probably shouldn&#39;t bother.
+
+**Don&#39;t take it personally:** When receiving crit, assume the critter wants what&#39;s best for the draft. Engaging objectively frees everyone up to work more effectively. That being said, when giving crit, really try not to sound hurtful - if what you&#39;re saying could come across as particularly harsh, an &#39;IMO&#39; can go a long way.
+
+**Just say it:** When giving critique, unsure whether to say something or not? Maybe it&#39;s too harsh, too nitpicky, too fundamental? Just say it. The writer can choose whether they want to listen.
+
+ _
+
++++ On Formatting
+
+**Unbalanced formatting sucks:** Putting a lot of effort into formatting something on the page creates a promise that the rest of the article is going to also have interesting formatting. It&#39;s always disappointing to see, for example, a carefully-crafted intro component ([[[component:anomaly-class-bar|ACS]]], [[[component:advanced-information-methodology|AIM]]], etc) followed solely by barebones plain text and blockquotes.
+
+**ACS sucks:** Not only is it the easiest way to unbalance your formatting, but it&#39;s now so commonplace that it effectively doesn&#39;t even add visual flair anymore, which was the whole point. These days, it&#39;s just //noise//. It&#39;s pretty in isolation; but in context, I don&#39;t read it. I just scroll past.
+
+**Footnotes suck:** Clicking on desktop, or interacting at all on mobile, takes you directly to a list of spoilers for the article. That list is at the bottom, so the article&#39;s ending is also immediately spoiled. Plus footnotes are tiny and annoying to interact with. They have no place in narrative works.
+
+**Keep formatting focused:** Formatting should be used to elevate the core premise of your page, and any formatting that doesn&#39;t should be cut - just like how you&#39;d cut content that doesn&#39;t contribute to your story. Too much content is mentally exhausting; too much formatting is visually exhausting.
+
+//That being said: I do recognise that many articles use extensive formatting to great success, even though it&#39;s not how I would do it. I do need to dig into that and figure out what works overall and what doesn&#39;t. I expect it will be a balance between &#39;visual hook&#39; and &#39;good reading experience&#39;.//
+
+**Use contrast to your advantage:** If everything is formatted all the time, there can be no surprises. Your clever gimmick flies under the radar because the reader was distracted by whatever flashy theme you added. If you stick to what&#39;s standard as much as possible, when you //do// do something unusual, it stands out more.
+
+That being said, there&#39;s a very real counterargument in that if your fancy gimmick is a little hidden, and everything else is standard, it might never be noticed at all (or be overlooked by a reader who&#39;d otherwise be very interested). So there&#39;s a balance to be struck somewhere.
+
+**Don&#39;t rely on audio:** I&#39;m in a position to listen to Surprise Audio when reading an article maybe 20% of the time, and even then, I find the premise kinda invasive. If you provide a transcript it&#39;s fine, BUT, quite often I see that the transcript is just the driest plainest writing ever. If you&#39;re gonna put the work in to prepare audio, and make it relevant + interesting, then you can use the transcript to convince me that I&#39;m actually missing out by reading it. If you make the audio sound interesting by describing it, I&#39;m more inclined to actually listen, and be tricked into thinking it was my decision.
+
+**Blurbs:** Context is so important. I&#39;m 90% more likely to read something if I know a little about what it is at the time that I make the decision to read it. For all articles, the text you pick for the Crom preview is more important than you think, and I honestly believe that all tales specifically (which don&#39;t have the pre-existing notions that formatted works do) can benefit from having a blurb written, upfront and visible, at the top of the page. [[[do-not-go-gentle-into-that-shark-night|]]] is a masterclass in this: in one paragraph you know the intro plot, the tone, the genre, the scope, you have everything you need to decide whether you want to read.
+
+**Indicate [[[listpages-magic-and-you|ListPages]]] Upfront:** I&#39;m at the point where I get to what I thought was the end of the article and see a &#39;next page&#39; link, unless I&#39;m really invested I think fuck it I don&#39;t know how long this is going to be I&#39;m out. Tired of the trope, I think. Letting me know that there&#39;s listpages ahead of time and how many pages there are going to be would go a long way. Sticking a page navigation at the top seems like a good idea.
+
+**Don&#39;t fuck up [[[Taboo]]] formatting:** Green text doesn&#39;t mean fae! Fae doesn&#39;t mean you write in green text! Green text in Taboo is used to clearly indicate that different phrases refer to the same thing in the SCP-4000 document //specifically//. If you ever use green text to reference fae stuff outside of the literal SCP-4000 article You Are Doing It Wrong. The fae bit is that you have to describe it a different way every time and the green has NOTHING to do with that. 
+
+ _
+
++++ On When to Downvote
+
+Before I begin: I firmly believe that the net score of upvotes and downvotes is //less than worthless// as a measure of quality - they measure catchiness, clickbait, and coincidence. They can be good for tracking trends within a single author&#39;s repertoire or across the site in general in the long term, but as a snapshot value (which is the number you see at the top of the page) it really doesn&#39;t mean anything at all. However, I do think that individual votes have meaning as the aggregate of a single reader&#39;s opinion; and a novote doubly so: the mark of apathy. I like to know what my readers think of my work, and I also assume (until told otherwise!) that any given writer would like the same.
+
+There&#39;s a bunch of things that&#39;ll make me see your article in a negative light. These are guidelines that describe my opinions - they are not hard rules, and they **definitely** do not //define// my opinions.
+
+Note that my rule is if it&#39;s in your page source, I can vote based on it.
+
+= **The Golden Rule**
+
+**Want to read the article:** If I want to read the article, I should feel welcome to vote however I like and leave crit however I feel is appropriate. If I //don&#39;t// want to read the article, e.g. if my first priority is to vote/crit and //only then// read/enjoy, I SHOULD NOT read the article. That&#39;s going to mean I go in //wanting// it to be bad and that sucks for everyone.
+
+= **Guidelines for most articles**
+
+**Not enough formatting:** If you couldn&#39;t take the time to make your page visually interesting, why should I take the time to read it? Break the monotony - at least add an image.
+
+**Too much formatting:** The more formatting you add, the more you drag attention away from your content. Use out-of-universe themes and components with care and stop to consider what message they send. If you have a &#39;personal theme&#39; that doesn&#39;t mean anything other than the fact that you wrote this article, you&#39;re off to a very bad start.
+
+**Assuming the reader is like you:** When you make assumptions about the reader, you assert that anyone who doesn&#39;t match your assumption doesn&#39;t count. Try not to exclude anyone, even unintentionally. Don&#39;t use non-international date formats unless justified by the article, don&#39;t put your SCP in a US state without also mentioning that it&#39;s in the US, etc.
+
+**Lack of visual description:** Visual description is the single most important thing to me when it comes to enjoying your article: I personally have to be able to see it in my mind to understand it properly. If you don&#39;t describe it, I&#39;ll assume things; and when you break those assumptions (which you will, because you don&#39;t know what they are), I get confused.
+
+**No core:** I&#39;m noting this down in response to https://scp-wiki.wikidot.com/why-i-stopped-writing-for-the-wiki even though I&#39;m still thinking about it. Every story needs a strong core. A core is undefined, it&#39;s a know it when you see it situation, but I&#39;ll change this sentence once I&#39;ve thought about it some more. The core doesn&#39;t need to be plastered all over the article, it can be hidden or told through gaps, but it&#39;s the key insight that e.g. an elevator pitch during early crit should deliver. A story with no core is a husk with bones made of content and skin made of paper and it can be very very convincing especially when you&#39;re the one who wrote it. If I come away from a story wondering what the point was, even if it otherwise felt almost like it was good, I should interrogate that feeling. Excellent execution of a story with no core is absolutely a valid reason to downvote. 
+
+**A rating module at the end of the article:** I firmly believe that ratings are meaningless as a measure of quality. Any deviation from the standard - a single rating module at the top - is a big middle finger to that mindset and a big red flag that says &#34;I don&#39;t trust you to vote.&#34; You change the context of your article from &#39;here&#39;s a story you might enjoy&#39; to &#39;give me votes&#39;. If you think putting a rating module at the bottom of the page should be the standard, push to make it standard - don&#39;t simply &#39;fix it&#39; by giving an unfair advantage to your own articles. That&#39;s a dick move.
+
+**Invisible text:** Some very popular series 2s did this, and ever since then, you have to Ctrl+A every article you read just in case someone thought it would be a good idea to do it again. It&#39;s not fun. It fell out of vogue for a reason. Don&#39;t do it.
+
+**&#34;It&#39;s up to reader interpretation&#34;:** A story without meaning is a series of words and a waste of time. To perceive a story as potentially being meaningful, I need to believe that the author thinks that it does. I enjoy a well-crafted mystery as much as the next person but __**only**__ if I&#39;m convinced there&#39;s an answer at the end. Declare otherwise and my interest is lost. If you need to, lie.
+
+**You took a risk and it didn&#39;t pay off:** A lot of articles, format screws especially, have a certain core conceit that is very obvious. I&#39;d say the vast majority of my articles are like that. Sometimes it works, sometimes it doesn&#39;t. If it didn&#39;t work for me, I&#39;ll probably downvote, but there&#39;s not much point me leaving a comment to explain it - that downvote is about as surface-level as it gets.
+
+**Ego:** This is a community of creatives and we like recognition for our work, sure... but within reason, please. If the work is more about //you// than the work, with your name plastered in neon lights... that joint leaves a foul taste in my mouth. And, you know, if you get a chance to feature an article, maybe use it to build up someone else than hoard more of the spotlight for yourself. 
+
+**[[[qntm-s-author-page#toc12 | Finish your arcs]]]:** I loathe cliffhangers, and I no longer have any implicit faith that you&#39;ll finish your story. I&#39;ll consider your Part 1 to be unfinished, and my opinion of you as a writer is put on hold until you either finish or abandon it.
+
+**Use everything:** Make your stories efficient. When you introduce a concept or a theme, make it relevant - give it payoff, even if it&#39;s much later. Don&#39;t waste your and my time with writing that&#39;s no longer relevant as soon as it&#39;s not in front of me. Reward the reader for absorbing all the details. Everything else is filler. 
+
+= **Guidelines for SCPs**
+
+**Big headers telling me about a clearance level:** 99.9% of all SCPs have a clearance restriction, why does your SCP&#39;s clearance level need special attention? Use your visual opener to tell me about //literally// anything else - [[[SCP-3211|something I need to know immediately]]], [[[taboo|important containment procedures that affect me as a reader]]], or use it to [[[scp-3448|give context to your narrative]]].
+
+**SCP is an object:** If I feel //at all// that the origin of your SCP is &#34;what could I make anomalous?&#34; then your downvote is pretty much guaranteed. Don&#39;t tell me about an anomalous object but conveniently forget to integrate its origin into the story.
+
+**The word &#34;will&#34;:** Compulsion effects for the sake of them are lazy writing. SCP-XXXX will do this, the subject will then do this, then X happens, then the SCP will do this. You&#39;ve already lost my interest.
+
+**[headcanon] Too much testing:** The Foundation contains. We&#39;re not Aperture Science - once you&#39;ve done enough tests to establish the most effective way to contain something, stop.
+
+**Spooky notes at the end:** There are //so, so many// articles that conclude with //oooo a spooky note// or a corrupted-text collapsible or something. Come up with something more original.
+
+**This isn&#39;t an SCP:** The articles on the site that get the most attention are SCPs. We all know it. It&#39;s not necessarily a bad thing. However, it&#39;s tempting for an author to want to optimise their article&#39;s rating by cramming the story they want to write into an SCP when it really shouldn&#39;t be. Sometimes it works - often it doesn&#39;t. When your SCP article stops being about the SCP, I know that you&#39;ve tried to optimise my attention by posting your story to the most lucrative slot rather than where it should be. You can have written the most beautiful thing in the world, but if you&#39;re advertising that it&#39;s something that it&#39;s not, I will downvote it.
+
+**Breaking every unspoken rule:** There are some articles that I instantly hate, but when it comes to justify that in writing, I can&#39;t do it. Sometimes I&#39;ll read an article, downvote it for eschewing some meta format without justifying itself, then think &#34;well hang on... why is that a bad thing? Why shouldn&#39;t that article do that? Who says you need to stick to this unspoken standard?&#34; This happens frequently enough that I am codifying it as a guideline: an article that makes me go through that process **does not** deserve to be instantly downvoted because of it.
+
+**Anomalies that cancel themselves out:** It can be a fun thought experiment to come up with an idea that negates itself, or that can&#39;t be written itself by virtue of its own properties - for example an SCP with some negative effect that happens when it is documented, and therefore the corresponding SCP article must be extremely minimal. This works great as a thought experiment, but I&#39;d advise against publishing that - if you write something shitty because the core conceit demands that it must be shitty, you still wrote something shitty. Try a -J maybe.
+
+**[headcanon] Foundation incompetency:** There&#39;s no canon, but a Foundation made of stupid people is a branch too far from the tree for me. I often see it used as an excuse to involve the reader - &#34;We couldn&#39;t spot a pattern in these logs, can you?&#34; - no thank you, I&#39;d prefer to read about clever people doing clever things than an SCP that&#39;s the equivalent of a mobile game ad.
+
+**Forgot to involve the reader character:** An SCP comes with the implication that someone is reading it, and exploring who that might be is a great way to invest the reader - e.g. a note at the top explaining the context of the document, or an in-document login to imply specific privileged access. But it sucks if you subsequently forget about that context and don&#39;t use it to build your story.  If you&#39;re going to say &#34;you&#39;re reading from the perspective of character X&#34;, make sure that character matters. 
+
+= **Guidelines for 001 proposals**
+
+**Just don&#39;t:** Once, 001s were important and special and you could count on a given author putting their all into a single entry. They lost their lustre when someone posted their 2nd. Now we&#39;re seeing 001s churned out as coldposts. The legend is dead.
+
+I get a little more incensed about 001s whenever I think about them and what they were vs what they are now. It was always the ego slot, but now it&#39;s //only// the ego slot. I&#39;m sure there&#39;s a middle ground that I&#39;ll eventually settle at, but for now I&#39;m just not going to interact with or read them at all. Otherwise I&#39;d be breaking the Golden Rule (see above).
+
+Edit (March 2026): It&#39;s been about a year and a half since I wrote the above, and I still feel the same. I&#39;ve come to resent the taste of ego in a work, and 001s proudly declare that it&#39;s their main ingredient. I don&#39;t feel that I&#39;m losing anything by continuing to avoid them.
+
+= **Guidelines for joke articles**
+
+Joke articles have just one guideline. I ignore all the others - I&#39;m expecting subtropes and parodies, after all. This is the only one that matters:
+
+**It&#39;s not funny:** I upvote if I laughed and I downvote if I didn&#39;t. That&#39;s it. I&#39;ll leave a comment if I have anything more profound to say.
+
+= **Guidelines for hubs**
+
+**Not explaining what the hub is for:** If I read your hub and I don&#39;t have a good idea of what I would need to write to contribute to it, you get a downvote. Otherwise you get an upvote.
+
+= **Guidelines for themes**
+
+I haven&#39;t worked out my personal criteria for what makes a Good Theme yet. Should it be well-written, or does it only need to meet the expectations of the CSS policy? Should it work well for the purpose it says it works for, or does that mean that themes with no stated purpose have no merit? What if I just don&#39;t really like it? Is it ethical for me to have negative opinions on a theme without mentioning them when if I approved it back when I was on tech team? I&#39;ve got a bit of thinking to do there.
+[[/tab]]
+[[tab Tag Stuff]]
+
+
+**Recent themes**
+
+[[module ListPages created_at=&#34;last 1 month&#34; category=&#34;*&#34; tags=&#34;theme&#34; order=&#34;date desc&#34; separate=&#34;no&#34;]]
+# %%title_linked%% by [[*user %%created_by%%]] on %%created_at%%
+[[/module]]
+
+**Recent components**
+
+[[module ListPages created_at=&#34;last 1 month&#34; category=&#34;component&#34; order=&#34;date desc&#34; separate=&#34;no&#34;]]
+# %%title_linked%% by [[*user %%created_by%%]] on %%created_at%%
+[[/module]]
+
+**Recent &#39;more by&#39; pages**
+
+[[module ListPages created_at=&#34;last 1 month&#34; category=&#34;more-by&#34; order=&#34;date desc&#34; separate=&#34;no&#34;]]
+# %%title_linked%% by [[*user %%created_by%%]] on %%created_at%%
+[[/module]]
+
+[[/tab]]
+[[tab Who invited?]]
+[[module WhoInvited]]
+[[/tab]]
+
+[[/tabview]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:53.063697.</em>
+  
+</div>
+</body>

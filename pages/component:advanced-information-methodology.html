@@ -29,8 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/normalize.min.css&#34;);
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/black-highlighter.min.css&#34;);
+          <pre><code>@import url(https://scp-wiki.wdfiles.com/local--code/theme%3Abasalt/1);
 
 .box {
     position: relative;
@@ -39,18 +38,110 @@
     box-shadow: 2px 1.5px 1px lightgrey, 0 0 0px 1px lightgrey;
     overflow-wrap: break-word;
     color: black;
+}
+
+.nav-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: hidden;
+  margin: 0.1em auto;
+  padding-left: 0.4em;
+}
+
+.warning {
+    background: rgba(245, 215, 215, 1);
+    margin-inline: auto;
+    padding-inline: 20px;
+    border: solid 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Don&#39;t display the mobile TOC when the desktop one is present */
+@media (min-width: 1200px) {
+.mobiletoc {
+   display: none;
+}
+}
+
+.scp-image-caption {
+  width: 100% !important;
+}
+
+.collapsible-block-folded {
+  text-align: center;
+}
+
+.collapsible-block-unfolded-link {
+  text-align: center;
+}
+
+/* This following code has been taken near wholesale from SCP-5555 as I couldn&#39;t find a component that did the same thing. */
+.desktop-only {
+    height: 27rem;
+    width: 11rem;
+    background: #ffffff;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 15rem;
+    display: flex;
+    box-shadow: 2px 1.5px 1px lightgrey, 0 0 0px 1px lightgrey;
+    padding: 10px;
+    overflow: visible;
+    flex-direction: column;
+    transform: translateX(500%);
+}
+.article {
+    margin-top: -21rem!important;
+}
+@media (max-width: 1250px) {
+    .desktop-only {
+     display: none !important;
+     visibility:hidden
+    }
+    .article {
+     margin-top: 4rem!important;
+    }
+    #page-content &gt; div:nth-child(5) {
+     margin-top: 0;
+    }
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>@media (max-width: 740px) {
+.mobile-adjust {
+  width: 100% !important;
 }</code></pre>
         </li>
       
         <li>
           <pre><code>.w-container {
-  padding: 14px;
+  padding: 11px;
   margin-bottom: 16px;
   margin-top: 16px;
   border: 1px #bbbbbb solid;
   box-shadow: 1px 2px 2px 0 rgba(0,0,0,0.16);
   box-sizing: border-box;
 }
+
+@media (max-width: 490px) {
+.w-container {
+   padding: 10px;
+}
+}
+.w-cell {
+  flex-grow: 2;
+  max-width: 50%;
+  text-align: center;
+  font-size: 0.66rem;
+  border-left: 1px solid #ccc;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
 .cell-container {
   display: flex;
   align-items: center;
@@ -63,6 +154,7 @@
   margin-top: -8px;
   padding: 0px;
 }
+
 .cell-container-image {
   display: flex;
   align-items: center;
@@ -74,10 +166,10 @@
   margin-bottom: -8px;
   margin-top: -8px;
   padding: 0px;
-  background-size: var(--aim-cc-siz), var(--aim-lv-siz);
+  background-size: var(--aim-cc-siz), var(--aim-lv-siz), var(--aim-sc-siz);
   background-repeat: no-repeat;
-  background-position: 50%,50%;
-  background-image: var(--aim-cc-image), var(--aim-lv-image);
+  background-position: 50%,50%,50%;
+  background-image: var(--aim-cc-image), var(--aim-lv-image), var(--aim-sc-image);
 }
 .s-cell {
   width: 50%;
@@ -85,26 +177,21 @@
   margin-top: -0.4rem;
   margin-bottom: -0.8rem;
 }
+@media (max-width: 460px) {
+.s-cell {
+   margin-top: 1rem;
+}
+}
 @media (max-width: 350px) {
 .cell-container-image {
    font-size: 12px;
 }
-.s-cell{
+.s-cell {
    font-size: 12px;
 }
 }
-.w-cell {
-  flex-grow: 2;
-  max-width: 50%;
-  text-align: center;
-  font-size: 0.66rem;
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  margin-top: -1px;
-  margin-left: -1px;
-  padding: 2px;
-  box-sizing: border-box;
-}
+
+/* Only affects horizontal bar in w-cell */
 .w-cell &gt; hr {
   margin: -2px;
   margin-top: -0.6em;
@@ -122,178 +209,117 @@
 /*DESKTOP IMAGES*/
 /* CC images */
 
+.cell-container-image {
+  --aim-cc-image: url({$cc-link});
+  --aim-cc-siz: contain;
+}
 .cell-container-image.cc-SAFE {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccSAFE.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_SAFE.png&#34;);
    --aim-cc-siz: contain;
 }
 .cell-container-image.cc-EUCLID {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccEUCLID.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_EUCLID.png&#34;);
    --aim-cc-siz: contain;
 }
 .cell-container-image.cc-KETER {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccKETER.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_KETER.png&#34;);
    --aim-cc-siz: contain;
 }
 .cell-container-image.cc-NEUTRALIZED {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccNEUTRALIZED.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.cc-SKOLL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccSKOLL.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_NEUTRALIZED.png&#34;);
    --aim-cc-siz: contain;
 }
 .cell-container-image.cc-THAUMIEL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccTHAUMIEL.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.cc-HEIMAL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccHEIMAL.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.cc-AIDOS {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccAIDOS.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.cc-TICONDEROGA {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccTICONDEROGA.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_THAUMIEL.png&#34;);
    --aim-cc-siz: contain;
 }
 
 /* Darkmode CC images */
 
-.cell-container-image.darkmode-a.cc-SAFE {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccdSAFE.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.darkmode-a.cc-THAUMIEL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccTHAUMIELd.png&#34;);
-   --aim-cc-siz: contain;
-}
-
 /* Level images */
 
+.cell-container-image {
+  --aim-lv-image:  url({$lv-link});
+  --aim-lv-siz: contain;
+}
+
 .cell-container-image.lv-one {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlone.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_one.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-two {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvltwo.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_two.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-three {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlthree.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_three.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-four {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlfour.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_four.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-five {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlfive.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_five.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-six {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlsix.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_six.png&#34;);
    --aim-lv-siz: contain;
 }
 
 /* Darkmode level images */
 
 .cell-container-image.darkmode-a.lv-one {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvloned.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_one.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-two {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvltwod.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_two.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-three {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlthreed.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_three.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-four {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlfourd.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_four.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-five {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlfived.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_five.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-six {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlsixd.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_six.png&#34;);
    --aim-lv-siz: contain;
 }
 
-.one::after {
+.l-\{\$lv\}::after {
+  content: &#34;{$lv-name}&#34;;
+}
+.l-one::after {
   content: &#34;01/Unrestricted&#34;;
 }
-.two::after {
+.l-two::after {
   content: &#34;02/Restricted&#34;;
 }
-.three::after {
+.l-three::after {
   content: &#34;03/Confidential&#34;;
 }
-.four::after {
+.l-four::after {
   content: &#34;04/Secret&#34;;
 }
-.five::after {
+.l-five::after {
   content: &#34;05/Top Secret&#34;;
 }
-.six::after {
+.l-six::after {
   content: &#34;06/Cosmic Top Secret&#34;;
 }
+
 /*====================================================================================*/
 /*MOBILE IMAGES*/
 
-/* CC images */
-
-.cell-container-image.ccm-SAFE {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmSAFE.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-EUCLID {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmEUCLID.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-KETER {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmKETER.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-NEUTRALIZED {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmNEUTRALIZED.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-SKOLL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmSKOLL.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-THAUMIEL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmTHAUMIEL.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-HEIMAL {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmHeimal.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-AIDOS {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmAIDOS.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-TICONDEROGA {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmTiconderoga.png&#34;);
-   --aim-cc-siz: 45px;
-}
-
-/* Darkmode CC images */
-
-.cell-container-image.darkmode-a.ccm-SAFE {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmSAFEd.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.darkmode-a.ccm-THAUMIEL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmTHAUMIELd.png&#34;);
-   --aim-cc-siz: 45px;
-}
 @media (max-width: 350px) {
 .cell-container-image {
    --aim-cc-siz: 10px;
@@ -302,74 +328,76 @@
 /* Level images */
 
 .cell-container-image.lvm-one {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlone.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlone.svg&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-two {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvltwo.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvltwo.svg&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-three {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlthree.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlthree.svg&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-four {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfour.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfour.svg&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-five {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfive.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/m_lvlfive.png&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-six {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlsix.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/m_lvlsix.png&#34;);
+   --aim-lv-siz: 100px;
 }
 
 /* Darkmode level images */
 
 .cell-container-image.darkmode-a.lvm-one {
   --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvloned.png&#34;);
-   --aim-lv-siz: contain;
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-two {
   --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvltwod.png&#34;);
-   --aim-lv-siz: contain;
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-three {
   --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlthreed.png&#34;);
-   --aim-lv-siz: contain;
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-four {
   --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfourd.png&#34;);
-   --aim-lv-siz: contain;
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-five {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfived.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_m_lvlfive.png&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-six {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlsixd.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_m_lvlsix.png&#34;);
+   --aim-lv-siz: 100px;
 }
 
-
-.onem::after {
+.l-\{\$lv\}m::after {
+  content: &#34;{$lv-name}&#34;;
+}
+.l-onem::after {
   content: &#34;01/Un&#34;;
 }
-.twom::after {
+.l-twom::after {
   content: &#34;02/Re&#34;;
 }
-.threem::after {
+.l-threem::after {
   content: &#34;03/Co&#34;;
 }
-.fourm::after {
+.l-fourm::after {
   content: &#34;04/Se&#34;;
 }
-.fivem::after {
+.l-fivem::after {
   content: &#34;05/To&#34;;
 }
-.sixm::after {
+.l-sixm::after {
   content: &#34;06/XT&#34;;
 }
 .desktop-aim{
@@ -386,6 +414,42 @@
 .mobile-aim{
    display: none;
 }
+}
+
+/* Defaults for if the user doesn&#39;t use one of the variables */
+.display-\{\$sc\} {
+  display: none;
+}
+.cell-container-image {
+  --aim-sc-image:  url({$sc-link});
+  --aim-sc-siz: contain;
+}
+/* Default darkmode background */
+.cell-container-image.sc-\{\$sc\} {
+  --aim-sc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/scNONE.png&#34;);
+  --aim-sc-siz: contain;
+}
+.cell-container-image.darkmode-a.sc-\{\$sc\} {
+  --aim-sc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_scNONE.png&#34;);
+  --aim-sc-siz: contain;
+}
+
+.cell-container-image.mobile {
+  --aim-sc-image:  url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mobile_scNONE.png&#34;);
+  --aim-sc-siz: contain;
+  --aim-cc-siz: 670px;
+}
+
+/* Values for mobile where the user has added a custom lv image*/
+.cell-container-image.mobile.lvm-\{\$lv\} {
+  --aim-lv-image:  url({$lv-link});
+  --aim-lv-siz: 670px;
+  --aim-sc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/scNONE.png&#34;);
+  --aim-sc-siz: 670px;
+}
+/* if there is a secondary class it turns off text wrapping on mobile specifically to prevent weird clipping text */
+.s-cell.sc-wrapping-\{\$lv\} {
+  text-wrap: nowrap;
 }</code></pre>
         </li>
       
@@ -393,6 +457,234 @@
 
     <h2 class="header">Inline Styles</h2>
     <ul class="inline-styles">
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #96182B; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #96182B; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em; margin-left: 1em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #323233; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em; margin-left: 1em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #323233; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #96182B; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em; width: 90%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #96182B; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em; width: 90%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em; margin-left: 1em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #323233; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em; width: 90%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em; margin-left: 1em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #323233; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em; width: 90%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em; margin-left: 1em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #323233; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em; width: 90%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em; margin-left: 1em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #323233; width: 2%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em; width: 90%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-top: -5em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 40%; margin: auto;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #96182B; width: 4px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #96182B; width: 4px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em; width: 90%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-bottom: 0.4em</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background-color: #96182B; width: 4px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>margin-left: 0.4em; width: 90%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:solid 0px #444444; padding:10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:solid 0px #444444; padding:10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>justify-content: space-between; padding: 0px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 46%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 46%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:solid 0px #444444; padding:10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: #686868; font-style: italic;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: #686868; font-style: italic;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: #686868; font-style: italic;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:solid 0px #444444; padding:10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:solid 0px #444444; padding:10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>justify-content: space-between; padding: 0px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 46%; height: 100%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>width: 46%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:solid 0px #444444; padding:10px</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border:solid 0px #444444; padding:10px</code></pre>
+        </li>
       
         <li>
           <pre><code>text-align: right;</code></pre>
@@ -422,6 +714,10 @@
           <pre><code>text-align: right;</code></pre>
         </li>
       
+        <li>
+          <pre><code>max-width: 100%</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Includes</h2>
@@ -432,14 +728,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:advanced-information-methodology" target="_blank"><code>:scp-wiki:component:advanced-information-methodology</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:advanced-information-methodology.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -449,14 +739,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:advanced-information-methodology" target="_blank"><code>:scp-wiki:component:advanced-information-methodology</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:advanced-information-methodology.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -466,14 +750,74 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:advanced-information-methodology" target="_blank"><code>:scp-wiki:component:advanced-information-methodology</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
   
 
   
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:advanced-information-methodology.html" target="_blank">info</a>]
-  </span>
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
 
   
 </li>
@@ -484,7 +828,75 @@
     <ul class="css-classes">
       
         <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>desktop-only</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
           <pre><code>box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mobiletoc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
         </li>
       
         <li>
@@ -496,7 +908,39 @@
         </li>
       
         <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
           <pre><code>box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mobile-adjust</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mobile-adjust</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>warning</code></pre>
         </li>
       
         <li>
@@ -505,6 +949,42 @@
       
         <li>
           <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>warning</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>nav-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mobile-adjust</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mobile-adjust</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>warning</code></pre>
         </li>
       
         <li>
@@ -544,6 +1024,10 @@
         </li>
       
         <li>
+          <pre><code>sc-{$sc}</code></pre>
+        </li>
+      
+        <li>
           <pre><code>lv-{$lv}</code></pre>
         </li>
       
@@ -556,11 +1040,19 @@
         </li>
       
         <li>
-          <pre><code>{$lv}</code></pre>
+          <pre><code>l-{$lv}</code></pre>
         </li>
       
         <li>
           <pre><code>s-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$cc}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display-{$sc}</code></pre>
         </li>
       
         <li>
@@ -604,7 +1096,7 @@
         </li>
       
         <li>
-          <pre><code>ccm-{$cc}</code></pre>
+          <pre><code>cc-{$cc}</code></pre>
         </li>
       
         <li>
@@ -612,7 +1104,7 @@
         </li>
       
         <li>
-          <pre><code>s-cell</code></pre>
+          <pre><code>mobile</code></pre>
         </li>
       
         <li>
@@ -620,11 +1112,23 @@
         </li>
       
         <li>
-          <pre><code>{$lv}m</code></pre>
+          <pre><code>s-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>l-{$lv}m</code></pre>
         </li>
       
         <li>
           <pre><code>s-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sc-wrapping-{$lv}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display-{$sc}</code></pre>
         </li>
       
         <li>
@@ -664,8 +1168,7 @@
 [[/&gt;]]
 
 [[module CSS]]
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/normalize.min.css&#34;);
-@import url(&#34;https://nu-scptheme.github.io/Black-Highlighter/stable/styles/black-highlighter.min.css&#34;);
+@import url(https://scp-wiki.wdfiles.com/local--code/theme%3Abasalt/1);
 
 .box {
     position: relative;
@@ -675,9 +1178,168 @@
     overflow-wrap: break-word;
     color: black;
 }
+
+.nav-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  overflow: hidden;
+  margin: 0.1em auto;
+  padding-left: 0.4em;
+}
+
+.warning {
+    background: rgba(245, 215, 215, 1);
+    margin-inline: auto;
+    padding-inline: 20px;
+    border: solid 2px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Don&#39;t display the mobile TOC when the desktop one is present */
+@media (min-width: 1200px) {
+.mobiletoc {
+   display: none;
+}
+}
+
+.scp-image-caption {
+  width: 100% !important;
+}
+
+.collapsible-block-folded {
+  text-align: center;
+}
+
+.collapsible-block-unfolded-link {
+  text-align: center;
+}
+
+/* This following code has been taken near wholesale from SCP-5555 as I couldn&#39;t find a component that did the same thing. */
+.desktop-only {
+    height: 27rem;
+    width: 11rem;
+    background: #ffffff;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 15rem;
+    display: flex;
+    box-shadow: 2px 1.5px 1px lightgrey, 0 0 0px 1px lightgrey;
+    padding: 10px;
+    overflow: visible;
+    flex-direction: column;
+    transform: translateX(500%);
+}
+.article {
+    margin-top: -21rem!important;
+}
+@media (max-width: 1250px) {
+    .desktop-only {
+     display: none !important;
+     visibility:hidden
+    }
+    .article {
+     margin-top: 4rem!important;
+    }
+    #page-content &gt; div:nth-child(5) {
+     margin-top: 0;
+    }
+}
 [[/module]]
 
-[[div class=&#34;box&#34;]]
+
+[[size 0%]] Also taken from SCP-5555 [[/size]]
+[[div class=&#34;article&#34;]]
+[[div class=&#34;desktop-only&#34;]]
+[[=]]
+[[size 110%]]**Page Navigation**[[/size]]
+-----
+[[/=]]
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em&#34;]]
+[[div style=&#34;background-color: #96182B; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em;&#34;]]
+[#Part1 What is AIM]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em&#34;]]
+[[div style=&#34;background-color: #96182B; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em;&#34;]]
+[#Part2 Basic Usage]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em; margin-left: 1em;&#34;]]
+[[div style=&#34;background-color: #323233; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em;&#34;]]
+[#Part3 Top Section]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em; margin-left: 1em;&#34;]]
+[[div style=&#34;background-color: #323233; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em;&#34;]]
+[#Part3 Bottom Section]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em&#34;]]
+[[div style=&#34;background-color: #96182B; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em; width: 90%&#34;]]
+[#Part5 Basic Variable Explanations]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em&#34;]]
+[[div style=&#34;background-color: #96182B; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em; width: 90%&#34;]]
+[#Part6 Top Custom Additions]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em; margin-left: 1em;&#34;]]
+[[div style=&#34;background-color: #323233; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em; width: 90%&#34;]]
+[#Part7 Containment Class]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em; margin-left: 1em;&#34;]]
+[[div style=&#34;background-color: #323233; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em; width: 90%&#34;]]
+[#Part7 Secondary Class]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em; margin-left: 1em;&#34;]]
+[[div style=&#34;background-color: #323233; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em; width: 90%&#34;]]
+[#Part9 Access Levels]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em; margin-left: 1em;&#34;]]
+[[div style=&#34;background-color: #323233; width: 2%&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em; width: 90%&#34;]]
+[#Part10 Darkmode]
+[[/div]]
+[[/div]]
+
+[[/div]]
+
+
+[[# Part1]]
+[[div class=&#34;box&#34; style=&#34;margin-top: -5em;&#34;]]
 [[=]]
 ++++ What is AIM:
 [[/=]]
@@ -685,7 +1347,37 @@
 AIM is a new header and information system, taking inspiration from other similar classification systems. It is provided in order to lay out data in a clear and concise way that is easy for both readers and authors to use.
 
 &gt; If there are any issues, please contact me (Dr Moned) through IRC or wikidot pms.
-&gt; Furthermore, thanks to [[*user EstrellaYoshte]] for their initial help with this header and to [[*user Croquembouche]] for guiding me through the recode, and subsequent addition of darkmode! I couldn&#39;t have done it without either of them.
+&gt; Furthermore, thanks to [[*user EstrellaYoshte]] for their initial help with this header and to [[*user Croquembouche]] for helping me through the recode, customisation addon, and subsequent addition of darkmode! I couldn&#39;t have done it without either of them.
+
+[[div class=&#34;box mobiletoc&#34; style=&#34;width: 40%; margin: auto;&#34;]]
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em&#34;]]
+[[div style=&#34;background-color: #96182B; width: 4px&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em;&#34;]]
+[#Part2 Basic Usage]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em&#34;]]
+[[div style=&#34;background-color: #96182B; width: 4px&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em; width: 90%&#34;]]
+[#Part5 Basic Variable Explanations]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;nav-box&#34; style=&#34;margin-bottom: 0.4em&#34;]]
+[[div style=&#34;background-color: #96182B; width: 4px&#34;]]
+[[/div]]
+[[div_ style=&#34;margin-left: 0.4em; width: 90%&#34;]]
+[#Part6 Top Custom Additions]
+[[/div]]
+[[/div]]
+[[/div]]
+[[# Part2]]
+[[/div]]
+
+[[div style=&#34;border:solid 0px #444444; padding:10px&#34;]]
 [[/div]]
 
 
@@ -694,7 +1386,7 @@ AIM is a new header and information system, taking inspiration from other simila
 ++++ How to use:
 [[/=]]
 ----
-Using AIM is fairly simple; however, there are quite a few options to choose from. To import it, merely use the code below:
+Using default AIM is fairly simple; however, there are quite a few options and additions to choose from. To import it in the most basic form, simply use the code below:
 
 [[div class=&#34;blockquote&#34;]]
 @@[[include :scp-wiki:component:advanced-information-methodology@@
@@ -709,38 +1401,38 @@ Using AIM is fairly simple; however, there are quite a few options to choose fro
 @@]]@@
 [[/div]]
 
-This code produces the following header:
+If you&#39;re stuck on what each variable means, check out [#Part5 the variable section] just a little bit further down! The code written above produces the following header as an example.
 [[include component:image-block
-| name=AIMexample.png
-| caption=AIMexample
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample.png
+| caption=AIM example
 | align=center
-| width=100%
+| width=80%
 ]]
+
+Additionally, this basic setup can be split into two blocks as shown in the next section. This can be useful for using just one piece of AIM, or sandwiching an image between the two blocks as shown below. ##red|Using this alongside custom classes/levels is slightly strange, but the solution is detailed in warning blocks above each relevant section.##
+
+[[include component:image-block
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample5.png
+| caption=AIM sandwich example
+| align=center
+| width=80%
+]]
+
+If you wish to customise AIM even further with your own containment classes, secondary classes, levels or disruption classes check out the [#Part5 Basic Variable Explanations] section, or head directly to the related section via the floating nav box (desktop only) or just by scrolling to it down below.
+[[# Part3]]
 [[/div]]
 
-[[div class=&#34;box&#34;]]
-[[=]]
-++++ Variables:
-[[/=]]
-----
-&gt; **&#34;XXXX&#34;** merely refers to your SCP number, the second &#34;XXXX&#34; shown above can be replaced with something like &#34;5241&#34;.
-@@@@
-&gt; **&#34;lvl&#34;** refers to the clearance level an in-universe employee would need to access this document. The options are from &#34;one&#34; to &#34;six&#34; (not numbers, the actual words).
-@@@@
-&gt; **&#34;cc&#34;** refers to the containment class. The currently implemented ones are as follows: &#34;SAFE&#34;, &#34;EUCLID&#34;, &#34;KETER&#34;, &#34;NEUTRALIZED&#34;, and &#34;THAUMIEL&#34; (These do need to be capitalized). Though more can be added if requested.
-@@@@
-&gt; **&#34;dc&#34;** refers to the disruption class. This was introduced by [[[http://scp-wiki.wikidot.com/anomaly-classification-system-guide|ACS]]] and are listed here in ascending order of disruption level: &#34;DARK&#34;, &#34;VLAM&#34;, &#34;KENEQ&#34;, &#34;EKHI&#34;, and &#34;AMIDA&#34; (These do need to be capitalized). For more information visit the ACS guide linked above.
-@@@@
-&gt; **&#34;Site&#34;** is fairly self-explanatory, it is the site the SCP is contained at, or the site the researchers studying it are at. If this is not relevant. You can put &#34;N/A&#34;, but it will mean the following box will be &#34;N/A&#34; too.
-@@@@
-&gt; **&#34;dir&#34;** refers to the director of the site you used.
-@@@@
-&gt; **&#34;head&#34;** refers to the research head of the SCP.
-@@@@
-&gt; **&#34;MTF&#34;** refers to the MTF assigned to the SCP. As with the others, if there is no MTF needed, it can be left as &#34;N/A&#34;.
+[[div style=&#34;border:solid 0px #444444; padding:10px&#34;]]
 [[/div]]
 
-[[div class=&#34;box&#34;]]
+[[module CSS]]
+@media (max-width: 740px) {
+.mobile-adjust {
+  width: 100% !important;
+}
+[[/module]]
+[[div class=&#34;nav-box&#34; style=&#34;justify-content: space-between; padding: 0px;&#34;]]
+[[div class=&#34;box mobile-adjust&#34; style=&#34;width: 46%&#34;]]
 [[=]]
 ++++ AIM - Top section only:
 [[/=]]
@@ -757,19 +1449,19 @@ If you only want the top section of AIM, you can instead use the code below:
 
 This will look as so:
 [[include component:image-block
-| name=AIMexample2.png
-| caption=AIMexample top only.
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample2.png
+| caption=AIM example top only.
 | align=center
 | width=100%
 ]]
 [[/div]]
 
-[[div class=&#34;box&#34;]]
+[[div class=&#34;box mobile-adjust&#34; style=&#34;width: 46%&#34;]]
 [[=]]
 ++++ AIM - Bottom section only:
 [[/=]]
 ----
-If you only want the bottom section of AIM (alternatively, you can use this to place something such as an image between the top and bottom sections), you can instead use the code below:
+If you only want the bottom section of AIM, you can instead use the code below:
 [[div class=&#34;blockquote&#34;]]
 @@[[include :scp-wiki:component:advanced-information-methodology blocks=!@@
 @@|site=Site-0@@
@@ -781,19 +1473,212 @@ If you only want the bottom section of AIM (alternatively, you can use this to p
 
 This will look as so:
 [[include component:image-block
-| name=AIMexample3.png
-| caption=AIMexample bottom only.
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample3.png
+| caption=AIM example bottom only.
+| align=center
+| width=100%
+]]
+[[# Part5]]
+[[/div]]
+[[/div]]
+
+
+[[div style=&#34;border:solid 0px #444444; padding:10px&#34;]]
+[[/div]]
+
+[[div class=&#34;box&#34;]]
+[[=]]
+++++ Variables:
+[[/=]]
+----
+&gt; **&#34;XXXX&#34;** merely refers to your SCP number, the second &#34;XXXX&#34; in &#34;|XXXX=XXXX&#34; can be replaced with your SCP&#39;s number, for example: &#34;|XXXX=5241&#34;.
+@@@@
+&gt; **&#34;lvl&#34;** refers to the clearance level an in-universe employee would need to access this document. The existing options are from &#34;one&#34; to &#34;six&#34; (not numbers, the actual words). [[span style=&#34;color: #686868; font-style: italic;&#34;]] Custom options can be added, see [#Part9 Access Levels][[/span]]
+@@@@
+&gt; **&#34;cc&#34;** refers to the containment class. The currently implemented ones are as follows: &#34;SAFE&#34;, &#34;EUCLID&#34;, &#34;KETER&#34;, &#34;NEUTRALIZED&#34;, and &#34;THAUMIEL&#34; (These do need to be capitalized). If you find that your class clips into the bar&#39;s icons. You can use the following code to place it on a new line, below &#34;Containment class&#34;. &#34;.CLASS-NAME-IN-CAPS-HERE { display: block; }&#34; This code **must** be placed in a css module below the main AIM include to work.
+&gt; 
+&gt; [[span style=&#34;color: #686868; font-style: italic;&#34;]] Custom class options can be added, see [#Part7 Containment Class]. Additionally, see [#Part8 Secondary Class] if you wish to have dual classes shown.[[/span]]
+@@@@
+&gt; **&#34;dc&#34;** refers to the disruption class. This was introduced by [[[anomaly-classification-system-guide|ACS]]] and are listed here in ascending order of disruption level: &#34;DARK&#34;, &#34;VLAM&#34;, &#34;KENEQ&#34;, &#34;EKHI&#34;, and &#34;AMIDA&#34; (These do need to be capitalized). For more information visit the ACS guide linked above. [[span style=&#34;color: #686868; font-style: italic;&#34;]] Custom values can be entered here easily as no visuals depend on this variable.[[/span]]
+@@@@
+&gt; **&#34;Site&#34;** is fairly self-explanatory, it is the site the SCP is contained at, or the site the researchers studying it are at. If this is not relevant. You can put &#34;N/A&#34;, but it will mean the following box will be &#34;N/A&#34; too.
+@@@@
+&gt; **&#34;dir&#34;** refers to the director of the site you used.
+@@@@
+&gt; **&#34;head&#34;** refers to the research head of the SCP.
+@@@@
+&gt; **&#34;MTF&#34;** refers to the MTF assigned to the SCP. As with the others, if there is no MTF needed, it can be left as &#34;N/A&#34;.
+[[# Part6]]
+[[/div]]
+
+[[div style=&#34;border:solid 0px #444444; padding:10px&#34;]]
+[[/div]]
+
+[[div class=&#34;warning&#34;]]
+**WARNING**
+If you are using the split version of AIM, any newly introduced variables //must// be placed in the **lower** section with the site info (counterintuitively). This is due to how css cascades. Sorry for the inconvenience!
+[[/div]]
+[[div class=&#34;box&#34;]]
+[[=]]
+++++ AIM Top - Customisation and Tweaks:
+[[/=]]
+----
+As shown below, the top piece of AIM can be heavily customised with your own levels, containment classes, secondary classes, and their respective images. Examples showing the size and positioning for these custom images can be found by checking the files on this page[[footnote]]&#34;c_lvl&#34; files are examples of access levels, &#34;cc_&#34; is for containment class, and &#34;sc_&#34; is for secondary class.[[/footnote]]. Base templates for custom images are provided with the prefix &#34;_template_&#34;.
+
+[[include component:image-block
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample6.png
+| caption=AIM heavily customised example
+| align=center
+| width=80%
+]]
+
+Code for these tweaks is shown directly below in the code block. Additionally, sections detailing each tweak that can be made are a bit further down the page. These sections can be mixed and matched, eg: a custom level and secondary class, but just &#34;EUCLID&#34; as a containment class. ##red|Be aware, adding your own values will require editing images, primarily resizing them to a format suitable to this component.## I&#39;m happy to help with this process if contacted.
+
+[[div class=&#34;blockquote&#34;]]
+@@[[include :scp-wiki:component:advanced-information-methodology blocks=-@@
+@@|XXXX=XXXX@@
+@@|lv-name=00/Irrelevant@@
+@@|lv-link=http://timebox.wikidot.com/local--files/main-aim-testing/c_lvl_four_altered.png@@
+@@|cc=LUCIAN@@
+@@|cc-link=http://timebox.wikidot.com/local--files/main-aim-testing/cc_LUCIAN.png@@
+@@|sc=SKOLL@@
+@@|sc-link=http://timebox.wikidot.com/local--files/main-aim-testing/scSKOLL.png@@
+@@|dc=DARK@@
+]]
+[[/div]]
+[[# Part7]]
+[[/div]]
+
+
+[[div style=&#34;border:solid 0px #444444; padding:10px&#34;]]
+[[/div]]
+
+[[div class=&#34;warning&#34;]]
+**WARNING**
+If you are using the split version of aim, any newly introduced variables, such as &#34;|cc-link=&#34;, &#34;|sc=&#34;, and &#34;|sc-link=&#34;, //must// be placed in the **lower** section with the site info (counterintuitively). This is due to how css cascades. Sorry for the inconvenience!
+[[/div]]
+[[div class=&#34;nav-box&#34; style=&#34;justify-content: space-between; padding: 0px;&#34;]]
+[[div class=&#34;box mobile-adjust&#34; style=&#34;width: 46%; height: 100%;&#34;]]
+[[=]]
+++++ AIM - Custom Containment Class:
+[[/=]]
+----
+To add your own containment class to the component, all you need to do is fill out the component as normal and then add the &#34;|cc-link=&#34; variable. This is where you put the image link for the custom class you&#39;re adding. To make these images, custom icons can be added to the &#34;_template_cc.png&#34; file.
+
+[[collapsible show=&#34;&gt; Help Creating Your Own Image &lt;&#34; hide=&#34;&lt; Help Creating Your Own Image &gt;&#34;]]
+##red|To help with resizing: Any icon should ideally be no wider than 350px by 350px, excluding any empty padding around the edges. When adding to the template file, make sure your icon fits within the provided circle. Once positioned, remove the circle from the file. I am happy to help if asked!##
+[[/collapsible]]
+
+[[div class=&#34;blockquote&#34;]]
+@@[[include :scp-wiki:component:advanced-information-methodology blocks=-@@
+@@|XXXX=XXXX@@
+@@|lv=one@@
+@@|cc=LUCIAN@@
+@@|cc-link=http://timebox.wikidot.com/local--files/main-aim-testing/cc_LUCIAN.png@@
+@@|dc=DARK@@
+@@]]@@
+[[/div]]
+
+This will look as so:
+[[include component:image-block
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample7.png
+| caption=AIM Custom Containment Class.
 | align=center
 | width=100%
 ]]
 [[/div]]
 
-[[div class=&#34;box&#34;]]
+[[div class=&#34;box mobile-adjust&#34; style=&#34;width: 46%&#34;]]
 [[=]]
-++++ AIM - *NEW!* Darkmode:
+++++ AIM - Custom Secondary Class:
 [[/=]]
 ----
-If you wish to use AIM for dark mode themes such as [[[https://scp-wiki.wikidot.com/theme:extra-black-highlighter-theme|extra black highlighter]]] or [[[http://scp-wiki.wikidot.com/theme:basalt|basalt onyx]]] you now can easily. Just add |darkmode=a at the end of your include block as shown below:
+To add a secondary class to the component, all you need to do is fill out the component as normal and then add both the &#34;|sc=&#34; variable and the &#34;|sc-link=&#34; variable.
+
+&#34;|sc=&#34; is where you write your custom class in full capital letters, for example: &#34;LUCIAN&#34;. &#34;|sc-link=&#34; is where you put the image link for the custom class you&#39;re adding. To make these images, custom icons can be added to the &#34;_template_sc.png&#34; file.
+
+[[collapsible show=&#34;&gt; Help Creating Your Own Image &lt;&#34; hide=&#34;&lt; Help Creating Your Own Image &gt;&#34;]]
+##red|To help with image creation: Given the transparency of the image, it is recommended that when editing the file you create a new layer and fill it with another colour such as bright green to act as a background.##
+
+##red|Additionally, due to the transparency obscuring detail, the icon should ideally be no wider than 60px by 60px when using the template[[footnote]]The template can be scaled up to add more detail[[/footnote]], excluding any empty padding around the edges. When adding to the template file, make sure your icons (one icon on either side) fit in between the provided lines, and then turn down transparency from 255 to approximately 30. Placement is fairly flexible and depends on usage case. Once positioned and rotated, remove the bounding lines and background colour from the file. I am happy to help if asked!##
+[[/collapsible]]
+
+[[div class=&#34;blockquote&#34;]]
+@@[[include :scp-wiki:component:advanced-information-methodology blocks=-@@
+@@|XXXX=XXXX@@
+@@|lv=one@@
+@@|cc=LUCIAN@@
+@@|sc=SKOLL@@
+@@|sc-link=http://timebox.wikidot.com/local--files/main-aim-testing/scSKOLL.png@@
+@@|dc=DARK@@
+@@]]@@
+[[/div]]
+
+This will look as so:
+[[include component:image-block
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample8.png
+| caption=AIM Custom Secondary Class.
+| align=center
+| width=100%
+]]
+[[# Part9]]
+[[/div]]
+[[/div]]
+
+
+[[div style=&#34;border:solid 0px #444444; padding:10px&#34;]]
+[[/div]]
+
+[[div class=&#34;warning&#34;]]
+**WARNING**
+If you are using the split version of aim, any newly introduced variables, such as &#34;|lv-name=&#34; and &#34;|lv-link=&#34;, //must// be placed in the **lower** section with the site info (counterintuitively). This is due to how css cascades. Sorry for the inconvenience!
+[[/div]]
+[[div class=&#34;box&#34;]]
+[[=]]
+++++ AIM - Custom Access Level:
+[[/=]]
+----
+
+To add a level to the component, all you need to do is fill out the component as normal and then ##red|replace## the existing &#34;|lv=&#34; variable with both the &#34;|lv-name=&#34; variable and the &#34;|lv-link=&#34; variable.
+
+&#34;|lv-name=&#34; is where you write the level and its name, separated by a slash; for example: &#34;00/IRRELEVANT&#34;. &#34;|lv-link=&#34; is where you put the image link for the custom level you&#39;re adding. To make these images, custom icons can be added to the &#34;_template_lv.png&#34; file.
+
+
+##red|Instead of using the &#34;_template_lv.png&#34; file, you could alter one of the other existing level images found in this page&#39;s files.##
+
+[[div class=&#34;blockquote&#34;]]
+@@[[include :scp-wiki:component:advanced-information-methodology blocks=-@@
+@@|XXXX=XXXX@@
+@@|lv-name=00/IRRELEVANT@@
+@@|lv-link=http://timebox.wikidot.com/local--files/main-aim-testing/c_lvl_four_altered.png@@
+@@|cc=EUCLID@@
+@@|dc=DARK@@
+@@]]@@
+[[/div]]
+
+This will look as so:
+[[include component:image-block
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample9.png
+| caption=AIM Custom Access Level.
+| align=center
+| width=100%
+]]
+[[# Part10]]
+[[/div]]
+
+
+[[div style=&#34;border:solid 0px #444444; padding:10px&#34;]]
+[[/div]]
+
+
+[[div class=&#34;box&#34;]]
+[[=]]
+++++ AIM - Darkmode:
+[[/=]]
+----
+If you wish to use AIM for dark mode themes such as [[[theme:extra-black-highlighter-theme|extra black highlighter]]] or [[[theme:basalt|basalt onyx]]] you now can. All the basic levels and containment classes have been given dark-mode image counterparts. As the text colour is handled by the theme, only the background images require changing for this to work. To enable this feature, jus add |darkmode=a at the end of your include block as shown below:
+
+
 [[div class=&#34;blockquote&#34;]]
 @@[[include :scp-wiki:component:advanced-information-methodology blocks=-@@
 @@|XXXX=6032@@
@@ -805,26 +1690,54 @@ If you wish to use AIM for dark mode themes such as [[[https://scp-wiki.wikidot.
 [[/div]]
 
 This will look as so:
+
 [[include component:image-block
-| name=AIMexample4.png
-| caption=AIMexample dark mode.
+| name=http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/AIMexample4.png
+| caption=AIM example dark mode.
 | align=center
 | width=100%
 ]]
 [[/div]]
+[[/div]]
 
 [[/iftags]]
 
+
+
+
+
+
+
+
 [[iftags -component]]
+
 [[module CSS]]
 .w-container {
-  padding: 14px;
+  padding: 11px;
   margin-bottom: 16px;
   margin-top: 16px;
   border: 1px #bbbbbb solid;
   box-shadow: 1px 2px 2px 0 rgba(0,0,0,0.16);
   box-sizing: border-box;
 }
+
+@media (max-width: 490px) {
+.w-container {
+   padding: 10px;
+}
+}
+.w-cell {
+  flex-grow: 2;
+  max-width: 50%;
+  text-align: center;
+  font-size: 0.66rem;
+  border-left: 1px solid #ccc;
+  margin-top: -1px;
+  margin-left: -1px;
+  padding: 2px;
+  box-sizing: border-box;
+}
+
 .cell-container {
   display: flex;
   align-items: center;
@@ -837,6 +1750,7 @@ This will look as so:
   margin-top: -8px;
   padding: 0px;
 }
+
 .cell-container-image {
   display: flex;
   align-items: center;
@@ -848,10 +1762,10 @@ This will look as so:
   margin-bottom: -8px;
   margin-top: -8px;
   padding: 0px;
-  background-size: var(--aim-cc-siz), var(--aim-lv-siz);
+  background-size: var(--aim-cc-siz), var(--aim-lv-siz), var(--aim-sc-siz);
   background-repeat: no-repeat;
-  background-position: 50%,50%;
-  background-image: var(--aim-cc-image), var(--aim-lv-image);
+  background-position: 50%,50%,50%;
+  background-image: var(--aim-cc-image), var(--aim-lv-image), var(--aim-sc-image);
 }
 .s-cell {
   width: 50%;
@@ -859,26 +1773,21 @@ This will look as so:
   margin-top: -0.4rem;
   margin-bottom: -0.8rem;
 }
+@media (max-width: 460px) {
+.s-cell {
+   margin-top: 1rem;
+}
+}
 @media (max-width: 350px) {
 .cell-container-image {
    font-size: 12px;
 }
-.s-cell{
+.s-cell {
    font-size: 12px;
 }
 }
-.w-cell {
-  flex-grow: 2;
-  max-width: 50%;
-  text-align: center;
-  font-size: 0.66rem;
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  margin-top: -1px;
-  margin-left: -1px;
-  padding: 2px;
-  box-sizing: border-box;
-}
+
+/* Only affects horizontal bar in w-cell */
 .w-cell &gt; hr {
   margin: -2px;
   margin-top: -0.6em;
@@ -896,178 +1805,117 @@ This will look as so:
 /*DESKTOP IMAGES*/
 /* CC images */
 
+.cell-container-image {
+  --aim-cc-image: url({$cc-link});
+  --aim-cc-siz: contain;
+}
 .cell-container-image.cc-SAFE {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccSAFE.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_SAFE.png&#34;);
    --aim-cc-siz: contain;
 }
 .cell-container-image.cc-EUCLID {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccEUCLID.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_EUCLID.png&#34;);
    --aim-cc-siz: contain;
 }
 .cell-container-image.cc-KETER {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccKETER.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_KETER.png&#34;);
    --aim-cc-siz: contain;
 }
 .cell-container-image.cc-NEUTRALIZED {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccNEUTRALIZED.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.cc-SKOLL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccSKOLL.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_NEUTRALIZED.png&#34;);
    --aim-cc-siz: contain;
 }
 .cell-container-image.cc-THAUMIEL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccTHAUMIEL.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.cc-HEIMAL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccHEIMAL.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.cc-AIDOS {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccAIDOS.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.cc-TICONDEROGA {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccTICONDEROGA.png&#34;);
+  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/cc_THAUMIEL.png&#34;);
    --aim-cc-siz: contain;
 }
 
 /* Darkmode CC images */
 
-.cell-container-image.darkmode-a.cc-SAFE {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccdSAFE.png&#34;);
-   --aim-cc-siz: contain;
-}
-.cell-container-image.darkmode-a.cc-THAUMIEL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccTHAUMIELd.png&#34;);
-   --aim-cc-siz: contain;
-}
-
 /* Level images */
 
+.cell-container-image {
+  --aim-lv-image:  url({$lv-link});
+  --aim-lv-siz: contain;
+}
+
 .cell-container-image.lv-one {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlone.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_one.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-two {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvltwo.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_two.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-three {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlthree.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_three.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-four {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlfour.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_four.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-five {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlfive.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_five.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.lv-six {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlsix.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/c_lvl_six.png&#34;);
    --aim-lv-siz: contain;
 }
 
 /* Darkmode level images */
 
 .cell-container-image.darkmode-a.lv-one {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvloned.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_one.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-two {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvltwod.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_two.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-three {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlthreed.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_three.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-four {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlfourd.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_four.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-five {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlfived.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_five.png&#34;);
    --aim-lv-siz: contain;
 }
 .cell-container-image.darkmode-a.lv-six {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/xlvlsixd.png&#34;);
+  --aim-lv-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_c_lvl_six.png&#34;);
    --aim-lv-siz: contain;
 }
 
-.one::after {
+.l-\{\$lv\}::after {
+  content: &#34;{$lv-name}&#34;;
+}
+.l-one::after {
   content: &#34;01/Unrestricted&#34;;
 }
-.two::after {
+.l-two::after {
   content: &#34;02/Restricted&#34;;
 }
-.three::after {
+.l-three::after {
   content: &#34;03/Confidential&#34;;
 }
-.four::after {
+.l-four::after {
   content: &#34;04/Secret&#34;;
 }
-.five::after {
+.l-five::after {
   content: &#34;05/Top Secret&#34;;
 }
-.six::after {
+.l-six::after {
   content: &#34;06/Cosmic Top Secret&#34;;
 }
+
 /*====================================================================================*/
 /*MOBILE IMAGES*/
 
-/* CC images */
-
-.cell-container-image.ccm-SAFE {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmSAFE.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-EUCLID {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmEUCLID.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-KETER {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmKETER.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-NEUTRALIZED {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmNEUTRALIZED.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-SKOLL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmSKOLL.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-THAUMIEL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmTHAUMIEL.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-HEIMAL {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmHeimal.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-AIDOS {
-  --aim-cc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmAIDOS.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.ccm-TICONDEROGA {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmTiconderoga.png&#34;);
-   --aim-cc-siz: 45px;
-}
-
-/* Darkmode CC images */
-
-.cell-container-image.darkmode-a.ccm-SAFE {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmSAFEd.png&#34;);
-   --aim-cc-siz: 45px;
-}
-.cell-container-image.darkmode-a.ccm-THAUMIEL {
-  --aim-cc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/ccmTHAUMIELd.png&#34;);
-   --aim-cc-siz: 45px;
-}
 @media (max-width: 350px) {
 .cell-container-image {
    --aim-cc-siz: 10px;
@@ -1076,74 +1924,76 @@ This will look as so:
 /* Level images */
 
 .cell-container-image.lvm-one {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlone.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlone.svg&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-two {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvltwo.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvltwo.svg&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-three {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlthree.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlthree.svg&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-four {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfour.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfour.svg&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-five {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfive.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/m_lvlfive.png&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.lvm-six {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlsix.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/m_lvlsix.png&#34;);
+   --aim-lv-siz: 100px;
 }
 
 /* Darkmode level images */
 
 .cell-container-image.darkmode-a.lvm-one {
   --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvloned.png&#34;);
-   --aim-lv-siz: contain;
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-two {
   --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvltwod.png&#34;);
-   --aim-lv-siz: contain;
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-three {
   --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlthreed.png&#34;);
-   --aim-lv-siz: contain;
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-four {
   --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfourd.png&#34;);
-   --aim-lv-siz: contain;
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-five {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlfived.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_m_lvlfive.png&#34;);
+   --aim-lv-siz: 100px;
 }
 .cell-container-image.darkmode-a.lvm-six {
-  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mlvlsixd.png&#34;);
-   --aim-lv-siz: contain;
+  --aim-lv-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_m_lvlsix.png&#34;);
+   --aim-lv-siz: 100px;
 }
 
-
-.onem::after {
+.l-\{\$lv\}m::after {
+  content: &#34;{$lv-name}&#34;;
+}
+.l-onem::after {
   content: &#34;01/Un&#34;;
 }
-.twom::after {
+.l-twom::after {
   content: &#34;02/Re&#34;;
 }
-.threem::after {
+.l-threem::after {
   content: &#34;03/Co&#34;;
 }
-.fourm::after {
+.l-fourm::after {
   content: &#34;04/Se&#34;;
 }
-.fivem::after {
+.l-fivem::after {
   content: &#34;05/To&#34;;
 }
-.sixm::after {
+.l-sixm::after {
   content: &#34;06/XT&#34;;
 }
 .desktop-aim{
@@ -1161,20 +2011,56 @@ This will look as so:
    display: none;
 }
 }
+
+/* Defaults for if the user doesn&#39;t use one of the variables */
+.display-\{\$sc\} {
+  display: none;
+}
+.cell-container-image {
+  --aim-sc-image:  url({$sc-link});
+  --aim-sc-siz: contain;
+}
+/* Default darkmode background */
+.cell-container-image.sc-\{\$sc\} {
+  --aim-sc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/scNONE.png&#34;);
+  --aim-sc-siz: contain;
+}
+.cell-container-image.darkmode-a.sc-\{\$sc\} {
+  --aim-sc-image: url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/dark_scNONE.png&#34;);
+  --aim-sc-siz: contain;
+}
+
+.cell-container-image.mobile {
+  --aim-sc-image:  url(&#34;https://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/mobile_scNONE.png&#34;);
+  --aim-sc-siz: contain;
+  --aim-cc-siz: 670px;
+}
+
+/* Values for mobile where the user has added a custom lv image*/
+.cell-container-image.mobile.lvm-\{\$lv\} {
+  --aim-lv-image:  url({$lv-link});
+  --aim-lv-siz: 670px;
+  --aim-sc-image: url(&#34;http://scp-wiki.wikidot.com/local--files/component:advanced-information-methodology/scNONE.png&#34;);
+  --aim-sc-siz: 670px;
+}
+/* if there is a secondary class it turns off text wrapping on mobile specifically to prevent weird clipping text */
+.s-cell.sc-wrapping-\{\$lv\} {
+  text-wrap: nowrap;
+}
 [[/module]]
 
 [[div class=&#34;desktop-aim&#34;]]
 [[div class=&#34;w-container&#34;]]
 &gt;[{$blocks}--
-[[div class=&#34;cell-container-image darkmode-{$darkmode} cc-{$cc} lv-{$lv}&#34;]]
+[[div class=&#34;cell-container-image darkmode-{$darkmode} cc-{$cc} sc-{$sc} lv-{$lv}&#34;]]
 [[div class=&#34;s-cell&#34;]]
 **ITEM #:** SCP-{$XXXX}
 [[/div]]
 [[div class=&#34;s-cell&#34; style=&#34;text-align: right;&#34;]]
-**LEVEL-**[[span style=&#34; font-weight: bold; text-transform: uppercase;&#34;]][[span class=&#34;{$lv}&#34;]] [[/span]][[/span]]
+**LEVEL-**[[span style=&#34; font-weight: bold; text-transform: uppercase;&#34;]][[span class=&#34;l-{$lv}&#34;]] [[/span]][[/span]]
 [[/div]]
 [[div class=&#34;s-cell&#34;]]
-**CONTAINMENT CLASS:** {$cc}
+**CONTAINMENT CLASS:** [[span class=&#34;{$cc}&#34;]] {$cc} [[span class=&#34;display-{$sc}&#34;]] - {$sc}[[/span]][[/span]]
 [[/div]]
 [[div class=&#34;s-cell&#34; style=&#34;text-align: right;&#34;]]
 **DISRUPTION CLASS:** {$dc}
@@ -1216,16 +2102,16 @@ This will look as so:
 [[div class=&#34;mobile-aim&#34;]]
 [[div class=&#34;w-container&#34;]]
 &gt;[{$blocks}--
-[[div class=&#34;cell-container-image darkmode-{$darkmode} ccm-{$cc} lvm-{$lv}&#34;]]
+[[div class=&#34;cell-container-image darkmode-{$darkmode} cc-{$cc} lvm-{$lv} mobile&#34;]]
 [[div class=&#34;s-cell&#34; style=&#34;margin-top: -10px; padding-bottom: 20px&#34;]]
 **ITEM:** SCP-{$XXXX}
 [[/div]]
 [[div class=&#34;s-cell&#34; style=&#34;text-align: right; margin-top: -10px; padding-bottom: 20px&#34;]]
-**LEVEL-**[[span style=&#34; font-weight: bold; text-transform: uppercase;&#34;]][[span class=&#34;{$lv}m&#34;]] [[/span]][[/span]]
+**LEVEL-**[[span style=&#34; font-weight: bold; text-transform: uppercase;&#34;]][[span class=&#34;l-{$lv}m&#34;]] [[/span]][[/span]]
 [[/div]]
-[[div class=&#34;s-cell&#34;]]
+[[div class=&#34;s-cell sc-wrapping-{$lv}&#34;]]
 **CONTAINMENT
-CLASS:** {$cc}
+CLASS:** {$cc}[[span class=&#34;display-{$sc}&#34;]] - {$sc}[[/span]]
 [[/div]]
 [[div class=&#34;s-cell&#34; style=&#34;text-align: right;&#34;]]
 **DISRUPTION
@@ -1257,7 +2143,7 @@ CLASS:** {$dc}
 [[/div]]
 [[/div]]
 [[div class=&#34;cell-container&#34;]]
-[[div class=&#34;w-cell&#34;]]
+[[div class=&#34;w-cell&#34; style=&#34;max-width: 100%&#34;]]
 **Assigned MTF**
 ------
 {$mtf}
@@ -1274,7 +2160,7 @@ CLASS:** {$dc}
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.142878.</em>
+    <em>Last updated 2026-04-17 00:56:52.958430.</em>
   
 </div>
 </body>

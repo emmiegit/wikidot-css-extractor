@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>The Psipage</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">The Psipage</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/the-psipage" target="_blank">The Psipage</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>/* Only show the A/B test subject when the A/B test is active */
+.ab-test--active + .ab-test-subject { display: flex; }
+
+.ego-bar { display: none; flex-direction: column; justify-content: space-evenly; flex-wrap: wrap; align-items: center; margin-block: 1rem; }
+.ego-bar__link { font-size: smaller; margin-inline: 2rem; }
+.ego-bar .page-rate-widget-box { margin: 0; }</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>ab-test-subject</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ego-bar</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
+Welcome to my little world building corner. I do three things around here, proper noun free world building, writing site policy and attempts to improve site navigation.
+
+I am [[*user psychicprogrammer]], resident ubernerd. I am a PhD student in the field of computational biochemistry and like to bring that sort of thing onto the wiki. 
+
++ Stats!
+
+Dynamically updated with Crom.aic. All hail SMLT!
+
+[[html]]
+ &lt;div id=&#34;output&#34;&gt;Loading...&lt;/div&gt;
+
+&lt;script&gt;
+    const endpoint = &#39;https://apiv1.crom.avn.sh/graphql&#39;;
+
+    const query = &#34;query toAsk{user(name: \&#34;psychicprogrammer\&#34;){statistics(baseUrl: \&#34;http://scp-wiki.wikidot.com\&#34;){totalRating, rank, meanRating, pageCount}}}&#34;;
+
+    async function fetchData() {
+      try {
+        const response = await fetch(endpoint + &#34;?query=&#34; + encodeURIComponent(query), {
+          method: &#39;GET&#39;,
+          headers: {
+            &#39;Accept&#39;: &#39;application/json&#39;
+          },
+        });
+
+        const result = await response.json();
+        const upvotes = result.data.user.statistics.totalRating;
+        const avgvotes = result.data.user.statistics.meanRating;
+        const rank = result.data.user.statistics.rank;
+        const articlecount = result.data.user.statistics.pageCount;
+
+
+        const outputDiv = document.getElementById(&#39;output&#39;);
+        outputDiv.innerHTML = &#34;My current upvote count: &#34; + upvotes+&#34;&lt;p&gt; My mean upvote count: &#34;+avgvotes+&#34;&lt;p&gt;  My current rank: &#34; + rank+ &#34;&lt;p&gt;  My article count: &#34;+ articlecount;
+
+
+      } catch (error) {
+        document.getElementById(&#39;output&#39;).innerText = &#39;Error fetching data.&#39;;
+        console.error(error);
+      }
+    }
+
+    fetchData();
+  &lt;/script&gt;
+[[/html]] 
+
+
++ World building articles (what you are here for)
+
+**[https://scp-wiki.wikidot.com/unusual-news Veilfall]** , co authored with [[*user TheBoxOfFun]]
+
+//Headlines from the birth of a new unveiled world.//
+
+This was my second article on the site, my first crashed and burned, the core here is simple. Show the chaos of the fall of the veil from the perspective of the general public through the medium of newspaper headlines. 
+
+One of the core concepts I wanted to explore was the spaces where the old world is dying and the new world is struggling to be born. There is often a gap between when something big starts and when it really sets in, see COVID between November 2019 and March 2020. The world as the veil falls is one of the least explored parts of the Broken Masquerade canon, the perspective of the normal person is even less explored. 
+
+-------
+
+**[https://scp-wiki.wikidot.com/procurement-orders-hells-heart 1981 COLLATED PROCUREMENT ORDERS BY THE DOD IN REGARDS TO TOP SECRET PROJECT: HELL&#39;S HEART]** 
+
+//The PENTAGRAM asks Prometheus to steal some nuclear fire.//
+
+This was my next fictional work for the wiki. This article started as a discussion in the third law server about the best way to hide a submarine, and it was decided that a whale is a rea perfect to do so. 
+
+The tricky bit was figuring out exactly how to make this mostly biologically plausible and I think I mostly succeeded. This is at its most fun when you limit the amount of magic involved and focus on making it almost plausible.
+
+This was originally planned as a big multi-author series, but the project head got a 6-month ban, after a few months I decided to bring it back and actually write the article, Anorrack then added in a couple of other entries to the series [https://scp-wiki.wikidot.com/a-crooked-brow A Crooked Brow] and [https://scp-wiki.wikidot.com/scp-6756 DUMP YOUR PLASTIC IN THE OCEAN]. I was the guy behind the mechanism of action for 6756 and I am very happy with how it turned out. The problems of old being killed unceremoniously by the problems of modernity. 
+
+-------
+
+
+**[https://scp-wiki.wikidot.com/scp-7481 SCP-7481: Store Bought Evil May be Substituted]** 
+
+//SCP-7481-1 does not have any undue impact on protected sapients under the Garlic Control Act;//
+
+This is probably my current best work on the site. The article started with me being annoyed at three things, firstly readers that skip containment procedures, secondly, and to a lesser extent SCP-5790 annoyed me with how constructed the redactions feel and finally how abbreviated most containment procedures are. 
+
+The foundation is a bureaucratic hellhole and they don&#39;t have a very long list of instructions on what to do in every single circumstance, that does not jive. In addition unlike 5790 I wanted this article to not have any kinda of informational or meta effects, you just don&#39;t have the clearance to read the damn thing. More than that I wanted the article to be a safe class that would normally only get a &#34;store in a box&#34; containment procedure. 
+
+The MSDS format is great here because it can make water look scary 
+
+The challenge here was to write a story entirely in the containment of an anomaly. I think I did a good job building up some looming dread. Meanwhile, no one noticed the deeper twist of this stuff being harmless, though that only shows up if you know how to actually read an MSDS in a scientific way as opposed to reading it from a foundation-bad perspective.
+
+-------
+
+**[https://scp-wiki.wikidot.com/8000-dead-rats-hub 8000 dead rats]**  written by not me
+
+Ralliston&#39;s 8000 Dead Rats series did a lot to dragging me into writing more, being something with a lot of really fun perspectives on the world that none of the authors were looking at. As someone who spent far too much time in lockdown looking at exactly how it affected the rest of the world in so many weird ways,  I knew I had to join in. 
+
+-------
+
+**[https://scp-wiki.wikidot.com/one-more-tomorrow One More Tomorrow]** 
+
+//Snippets of a world under Pizzicato//
+
+I added a couple of fun things, mostly the coffee thing and the misuse of LLMs. As always the most fun ideas come from stealing bad ideas from actual people. Thanks to the Locallama subreddit for my AI bad ideas. 
+
+-------
+
+**[https://scp-wiki.wikidot.com/price-of-forty-days The Price of Forty Days — Economic Impacts of the Washington Viron]** 
+
+//The true horror. Economics.//
+
+This article started after I began rambling about the economics of the GOC plan to cut off America and how that is going to screw over everyone. This led to Ralliston writing the Carter Courier Channel and me writing this after I went on an extended rant about the value of containerized shipping and the insanely low costs of it, which staggered the hell out of him.
+
+So I grabbed a copy of the 2020 editions of The Economist and started writing up all of the nonsense that happened then. After that, it was mostly a case of looking at US exports and adding in a lot of nonsense. 
+
+Throw in some pirates and stealing a lot of other users worldbuilding was also fun. Combine some of Dino--Draws dragons with some Maori mythology to get the zombie vampire dragon pirates, dig into soviet history for the economic implosion of Druv&#39;tuul, and just push the plausible yet insane stuff. 
+
+-------
+
+**[https://scp-wiki.wikidot.com/scientia-potentia-est Icarus Unburned]** 
+//Icarus is not a story about the limitations of humanity.
+It is a story about the limitations of wax.//
+
+This is the first article I pitched to Ralliston for 8KDR. How the cure was developed. This article is a love letter to the work done by the thousands of scientists out there who managed to cure COVID-19 in record time with totally new forms of vaccines. Like seriously, the speed of development is insane for the many different shots.  
+
+The biggest struggle here was making something insane enough to be interesting. The old idea was to interfere with the Virus&#39;s ability to produce counter-magical material by dropping the body temperature of the target by 10C, however, that did go against the themes of the series, so the nanobot plan was developed instead.  I am still not entirely happy with that as a solution, but I was unable to think of something more insane, that would still work. 
+
+In any case, I wanted to write something where a totally insane project actually worked out. Because hubris leads us to do things like going to the moon and we need more stories of going passed what should be our limits.    
+
+The draft for this work was &#34;What goes on behind the scenes of an admonition&#34; article and I think I mostly did it. 
+
+-------
+
+**[https://scp-wiki.wikidot.com/scranton-encabulator A Recording of Prometheus Innovations&#39; Pitch for the Scranton Encabulator Mk VI, and the Ramifications of its Existence]**  coauthored with [[*user billith]]
+
+//Implemented to sufficiently subvert the Hume expectation factor instead of the Hume incredulity coefficient, formally generated by multiversal inflow of effluent Humes to produce significant modal symmetrization and desymmetrization of the Mill field//
+
+This one started with me watching the old turboencabulator videos and wanting to do an SCP spin on it. We have a lot of nonsense technical terms that we have built over the last 18 years of the wiki, and it would be fun to make some of the more established readers understand just what it feels like to a new user. 
+
+I had some initial problems with making the whole thing work out. Pedagon suggests I ask Billith for crit, he had so many edits I asked him on as a co-author. We then added more to the article until we got an entire story out of it. 
+
+The biggest struggle was making it not read like an average Placeholder article. I do hope that &#34;Cyprog was bullshitting to get the idiots who approved stuff&#34; as a concept came through. Followed up with Placeholder doing the whole Admo thing to scam the foundation out of money as opposed to some grand plan.  
+
+Billith was a lot of fun to work with and I do hope to work with him some more in the future. 
+
+----------
+
+**[https://scp-wiki.wikidot.com/grant-request-for-the-development-of-a-portable-type-blue-co GRANT REQUEST FOR THE DEVELOPMENT OF A PORTABLE TYPE BLUE CONTAINMENT UNIT BASED ON SUBMERGING IN SUSPENDED RAT BRAINS]**
+
+
+Like a few other articles this one started with a shitpost in CNX and led to Ralliston telling me to write it. The core started with my particular overly complex magic system that has been simmering in my brain for years, which will get written up at some point. Thanks to that I had some interesting ideas on how to make an interesting wizard containment system. The rest then fell into place. 
+
+I also decided to join the spook nico con and got second place, which is cool, losing only to 8980 which ya know is way way more popular. 
+
+
+-------
+
+**[https://scp-wiki.wikidot.com/parabox-interactive Tanksy reviews: Parabox Interactive DLC]** coauthored with [[*user ThisisNalkan]] and [[*user  Insanitz ]]
+ 
+//No matter the timeline one thing stays constant, werdios staring at maps.//
+
+This started with a discussion in the 120s archives channel on Discord, and a couple of people kinda were interested in writing this, so we got together and wrote this up. 
+
+This is probably my most esoteric work, but thankfully half of the wiki are weirdos that stare at maps too much.  I don&#39;t have too much to say on this one TBH. 
+
+----------
+
+**[https://scp-wiki.wikidot.com/lunar-city PROJECT GRANT: A Lunar City]**
+
+//In 1961, we escaped the bounds of gravity on a pillar of fire. In 1969, 1971, 1972, and 2026, we brought fire to the moon. Now, I propose that this time, we keep it there.//
+
+So this was my first artex story as a gift for the very wonderful [[*user ralliston]]. When I saw what he wanted I knew exactly what I needed to write. 120 is a canon with a lot of contrast between optimism and pessimism and I wanted to write something very hopeful. I was super excited when Ralliston opened the gift and loved it to bits, he did clock it was me near instantly. 
+
+There was mostly a bunch of research done here, based on the lovely &#34;a city on mars&#34; by the Weinersmiths, along with me poking a bunch of friends on religious practices around the world. 
+
+
+
+
+
+------------
+
+**[https://scp-wiki.wikidot.com/project-grant-transmutative-buoyancy PROJECT GRANT: Transmutative Buoyancy]**
+//Let the blimps soar again//
+Rallistion is an author I respect a lot, so when he reached out for a collab on an article I jumped at it. My contributions was mostly working out the mechanics of the system and the economics, while letting Rall supply the wonder. Its annoyingly hard to justify why airships are a good idea, so it took a ton of magic and a divine curse to make it work. I am still not happy about the nuclear doctrine implied, but that can be a scientist not understanding how nuclear deterrence works. 
+
+Also I got to imply that the B-52 would be used until 2100. 
+
+Fun trivia I could not fit into this draft. The main reason for our protagonist to plan this out this elaborate plan is due to spite at the government of Norway for not having any rail infrastructure in northern norway.
+
+-----------
+
+**[https://scp-wiki.wikidot.com/symmetry-breaking Symmetry Breaking]**
+//Tonight on the Eurtec thunderdome: Amy and Beatrice sort out their differences in a no holds barred magic duel!//
+Intercendent said he was interested in how I would write an action piece and this came out. I started with the climatic moment of the failure of the superconductors and tried to build it out based off of that. This was mostly an experiment in action prose writing that kinda worked out. 
+
+-------------
+
+**[https://scp-wiki.wikidot.com/unweaving-the-rainbow-an-introduction-to-quantum-thaumodynam Unweaving the Rainbow: An Introduction to Quantum Thaumodynamics ]**
+//Assume a spherical reality bender in a vacuum.//
+
+This is a weird one, again I was kinda bullied into writing this article by my friends after talking about some of the ideas in it. The actual background of this article was bouncing around in my head for years, taking on different forms until I figured out how I could nail down the math. After I had nailed down the math, it was still staying in my head because I was very unsure how to write it in a way that was A interesting and B comprehensible to the layman. 
+
+That took a while and a few youtube videos to nail down how I can explain it. The first draft was filled with far too much stuff that required already knowing what I was talking about, which then had to be cut. Then I could put in the actually interesting stuff, which was all the weird ass implications, like soul filled meat and estrogen giving you magic powers.
+
+Honestly it got a much better response than I thought, given that it is an exposition dump without much of a story. In any case I now have something I can backlink for when I need to explain something overly complicated and this system does act as a very fun springboard for future stories.
+
+Also it has a bad apple edit, so that is something: https://youtu.be/N_Ne1LOs8qg 
+
+
+-----------------------------
+
+**[https://scp-wiki.wikidot.com/why-ai Why AI]**
+
+This was an artex gift for Raiden that was a parody of his Y AI, its mostly me engaging in a primal scream about AI hype. 
+
++ Quotes 
+
+🫵 neeeeeeeeeeeerd [affectionate, revenge for kidnapping me onto the tag team] - [[*user Dino--draws]], who is one of many people I have kidnapped into being staff
+
+Psi is the man we all go to for help with getting our mothers to make wikidot accounts -  [[*user LittlePengwy]]
+
+He&#39;s the kind of nerd that other nerds shove into a locker - [[*user Jerden]] (another nerd)
+
+User I would most like to shove into a locker - Also [[*user Dino--draws]]
+
+I just ran the calculations, and I&#39;ve been able to empirically confirm you are a nerd. Unfortunately, the system of equations and entire field of science that uses them is one I created myself for a fiction writing platform, so make of that what you will.- [[*user Billith]]
+
+Actually kind of cool when he isn&#39;t talking about numbers - [[*user Luxaiko]]
+
+Begone, Robot! - [[*user Guaire]], do note that he has since been kidnapped and replaced with a robot.
+
+[REDACTED AS PER AI POLICY] - [[*user psychicprogrammer]]&#39;s home built Lillihammer bot. 
+
+I&#39;m sorry, as an AI language model I do not have the ability to access or analyze materials that would allow me to formulate an evaluative opinion on an individual&#39;s performance as an author. - [[*user oritiefling]], later banned for being an AI
+
+By turn five, you gotta have a &#34;ruin crab&#34;, a &#34;mill stone&#34;, a &#34;teferi&#39;s tutelage&#34; and a &#34;psychic corrosion&#34;. That way, when you drop the land that turn to &#34;cast&#34; an &#34;opt&#34; and an &#34;elite guardma... What do you mean you don&#39;t like playing mill decks? -  [[*user Diogene_s]], who does not understand that I prefer combo mill thank you very much 
+
+Hedvig - [[*user Miss Lapis]] as expected. 
+
+“Nah.” —  [[*user A Random Day]] 
+
+&#34;Who?&#39; - [[*user greenwolf]], who used different opening and closing quotes
+
+Probably the other guy I’d label as ‘the one who knows code’, besides smlt - [[*user Clysm31201]]
+
+if you need a sine to start reading SCPs, this is it -   [[*user subtletea]] 
+
+What the hell am I doing here - [[*user L200]], who should be translating more of my articles 
+
+Is this a Denny&#39;s - [[*user YardBirdMe]]
+
+How did I get here?! who are you? -some guy who walked in my house
+
+my gay dog keeps jumping over the fence out of the yard and mauling other animals and people so I took his legs away yuppp watching him hop around on his little stumps so cute &lt;33 now he needs me to lower live bunnies and kittens into his mouth so he can rip them apart lollll- [[*user Troutmaskreplica]] who deeply worries me.  
+
+Say hi to your mother - [[*user Guaire]], she appreciates it 
+
+Somehow the most scientifically rigorous author on the site, not that that&#39;s saying much. - [[*user Anorrack]]
+
+He is definitely a programmer but I have yet to be presented with any concrete evidence that he is psychic - [[*user Yossipossi ]]
+
+Have you tried rebooting him? Are you sure he&#39;s properly plugged in? No, the smug nasally tone is a feature, not a bug.  - [[*user FlyPurgatorio ]]
+
+Needs to have his policy license revoked, and actually read a textbook on how viruses work. And he&#39;s a freaking Neoliberal! Get this guy out of here - [[*user DrBleep]], who will be receiving a dozen more policy proposals over the next two weeks.  
+
+Neoliberalism has NEVER worked, except on THIS PLANET - [[*user Lt FLops]]
+
+Psychicprogrammer is like doom guy if the demons were ancom Wiki authors and he was a neoliberal - [[*user uncgriffin]] wat
+
+Ideologically it&#39;s reprehensible, but it&#39;s cinematic dynamite - [[*user J_V_G]] who will undergo their own end of history soon.
+
+He is neither psychic nor a programmer, but he is a damn good author - [[*user Intercedent]], yep, I am a biochemist  
+
+I swear this isn&#39;t personal but i genuinely just am historically awful at quotes - [[*user Ralliston]]
+
+Pretty cool dude, won&#39;t lie. Gotta be my favorite Australian - noted Brit [[*user lemonsense]]
+
+psy is not a robot. psy is not a robot. psy is not a - [[*user nebulousstar]], being replaced by a robot. 
+
+This motherfucker can keep his hands out of my magic - [[*user Corax D]], no, I will be shoving more math in magic! 
+
+He likes Paradox&#39;s games, so he&#39;s better than the rest of you - [[*user MasterTman2]] objectively incorrect 
+
+Funny paradox game article - [[*user doctorlilithsophia]] objectively correct
+
+Psi stares at the map too much - WAIT NO DON&#39;T FORCE ME TO TRANSLATE AHHHH - [[*user insanitz]] 
+
+if you love LLMs so much why don&#39;t you marry them - [[*user cive(creative name)]], who is unaware that meta-llama-3.1-8b-instruct-abliterated.Q4_K_M rejected me.
+
+Way better than mundaneProgrammer - [[*user ParallelPotatoes]]
+
+Weak to bug type - [[*user EstrellaYoshte]]
+
+Just had wine. My quote, which I will think about when I am soberer. Psi was still spelling his name wrong in high school. As his mom, I&#39;d love to know how the fuck he&#39;s become such an amazing writer. - [[*user RikkiTikkiTea]], love you mom. 
+
+
++ My navigation hubs
+
+[https://scp-wiki.wikidot.com/algorithm-curated-recommendations  Algorithm Curated Recommendations ]
+
+This was based on my Goodboy recommendation AI, I never could get it to work quite as I wanted for targeted recommendations to specific users, but the bot managed to show that there is zero correlation between user preferences and what they upvote vs downvote. I do think that this is a good cross-section of the best of the wiki when it was made though. 
+
+[https://scp-wiki.wikidot.com/revamped-underread-and-underrated Revamped Underread And Underrated]
+
+The same thing was done here, but with an upvote threshold, directing people to what the bot thinks more people should read that is under +30. The intent was to update it every month, but I eventually decided against it due to no one being interested. 
+
++ Essays and podcasts
+
+[https://scp-wiki.wikidot.com/writingclub-plotnarrative Writing Club: Plot vs. Narrative] also by FlyPurgatorio 
+
+I am going to be honest, Fly did 90% of the work here, I mostly helped with the worldbuilding section and hosting the actual club.
+
+[https://scp-wiki.wikidot.com/reading-and-writing-club Reading club!] by UnIVCubed
+
+SCP reading club, its fun and I have been hosting it for nearly 2 years at this point. 
+
++ Site policy!
+
+[https://scp-wiki.wikidot.com/tale-tagging-guide tale tagging]
+
+This is one of my better bits of staff work out there, genre tags for tales were in limbo you like a year until I brought it back, I think it is fairly well-liked and used. However, I don&#39;t think we are on track to ever finish it. 
+
+[https://scp-wiki.wikidot.com/translations-policy Translation policy]
+
+This was co-written with [[*user Jerden]] mostly due to us realizing that we lacked a translation policy and some discussions on authors&#39; rights WRT translations. INT didn&#39;t yell at us and no one complained about the policy after we put it up, so that was a success.
+
+
+Psi&#39;s ongoing crusade against AI on the wiki.
+
+So I am probably the author on the wiki who is most pro AI-generated content for artistic reasons. My thoughts are that there are a lot of actually interesting things you can do with the technology. The core problem is that there are more uninteresting things you can do with it. The first fully AI-generated SCP was interesting in of itself (SCP-6973), the rest deeply sucked. 
+
+This started my crusade on banning every uninteresting use of AI on the wiki, firstly banning AI artwork on art pages and then AI-generated text. I was hoping to allow the usage of AI-generated text in a purely supplemental measure (see quotes section for something I was hoping would be allowed).  
+
+Later we did want to ban all AI-generated content on the wiki. So I took it upon myself to write something that will not actually ban useful tools like image up-scaling, code compilers, translation software, and whatnot.  
+
+&gt; The use of generative[[footnote]]The model produces more meaningful information than was input into the model.[[/footnote]] machine learning[[footnote]]An algorithmic system designed to replicate a given set of training data.[[/footnote]] models to generate user facing content[[footnote]]All content directly viewable to the user (e.g, text, images, audio video, etc., excluding CSS, Javascript, and other parts that communicate to the browser and not the user).[[/footnote]] is banned.
+
+
+The wording here was very specific, to make sure that only places where the AI is being creative in an artistic capacity is banned while allowing for the many forms of CGI that don&#39;t involve AI. I was strongly tempted to change the wording very slightly to remove human-generated art as well (dropping algorithmic from the definition of ML would include how human neurons work), but I decided against it.
+
+The fact that this was worded to make sure that none of my AI stuff is affected is a nice help.
+
++ Obligatory AA bio 
+
+[[include component:image-block
+|name=cyprog.jpg
+|caption=Staff Picture, taken by [[*user fazaonzaza]].  
+|width=600]]
+
+Name: Dr Hugh Cyprog 
+
+Age as of 2025: 70 (chronological time),  60 (subjective time)
+
+Clearance: LV 3
+
+Position: Esoterics physics researcher 
+
+Gender: Yes 
+
+H-factor: 90 
+
+Number of times shoved into a locker: 24 
+
+Location: lighthouse-52, America 
+
+Response to the formation of vanguard: &#34;Called it&#34;
+
+Bio: Dr Cyprog was born a member of the Cyprog family in Wellington New Zealand.  As he is one-eighth vampire on his mother&#39;s side[[footnote]]A fact that he will bring up frequently, despite having no actual vampire powers or even any understanding of vampire culture outside of The Mouth[[/footnote]], he was exposed to the paranormal underbelly of Wellington, the local nexus of Te Waha o Te Oka a Māui AKA The Mouth. He studied at Te Herenga Waka University for his undergrad, before moving to Norway to do his PhD in esoteric physics at a university that was not massively underfunded[[footnote]]Due to the New Zealand National Normalcy Preservation Organization being under the Native Department, Te Herenga Waka university had significant funding issues until the 1980s Maori revival movement[[/footnote]].  He graduated at age 30 with his thesis in thaumodynamics, &#34;Formation of micro closed loop leylines in high temperature environments&#34; from ICSUT. 
+
+He was hired on by Prometheus Labs under their exploratory physics department.  He did his most well-known work there in the 1980s and early 90s, where he and his team pioneered the core of modern esoteric physics, the interactions between the Hume field, EVE field, and the Mill fields. The mathematics of which is incredibly complicated and very annoying to explain, being in the intersection of statistical thaumodynamics, nonconservational quantum mechanics, and thermodynamic phase change. Dr. Cyprog has been quoted as saying &#34;So you know when you freeze ice you get those fault lines, now imagine that but as a one-dimensional line embedded in a 52+ dimensional complex phase space&#34;, which he claims makes sense.  
+
+
+After the dissolution of Prometheus in 1998 Dr Cyprog was snatched up by the Foundation where he was engaged in research on what he was calling &#34;[https://scp-wiki.wikidot.com/scp-6500 A spontaneous and emerging total Mill Feild Symmetrization Event]&#34;. However in 2010, while working on something for Delta T, he was spontaneously transported 10 years into the future, right into the middle of 2020. He instantly starts making a stink about the whole Impasse thing going on and starts sending message after message to anyone who would listen about how he warned them about exactly this happening.
+
+As of 2025 he is considering a partial retirement and looking into working part time for vanguard.
+
++ Author will
+
+In the event of me disappearing for a year or getting banned, all of my hubs are to be assigned to staff. Anything under +50 is free for rewrite by the community as per the rewrite policy. Ralliston is to act as custodian over all other non coauthored articles 
+
+In case of emergency [[*user RikkiTikkiTea]] should have all of my contact info. [[*user aismallard]] has my email. 
+
+Also all of my works may be equally licensed under CC-BY-SA 4.0 as well. 
+
+
+[!-- A/B testing whether rate module at the bottom of the page actually affects anything - see http://scp-sandbox-3.wikidot.com/cqb-ab-test --]
+[[module css]]
+/* Only show the A/B test subject when the A/B test is active */
+.ab-test--active + .ab-test-subject { display: flex; }
+
+.ego-bar { display: none; flex-direction: column; justify-content: space-evenly; flex-wrap: wrap; align-items: center; margin-block: 1rem; }
+.ego-bar__link { font-size: smaller; margin-inline: 2rem; }
+.ego-bar .page-rate-widget-box { margin: 0; }
+[[/module]]
+[[module listusers users=&#34;.&#34;]]
+[[div class=&#34;ab-test ab-test--[[#ifexpr %%number%%%2==0 | active | inactive ]]&#34;]]
+[[/div]]
+[[/module]]
+[[div class=&#34;ab-test-subject ego-bar&#34;]]
+[[module Rate]]
+[[/div]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:59.789767.</em>
+  
+</div>
+</body>

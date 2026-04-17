@@ -1,0 +1,1313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Site-163 Dossier</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Site-163 Dossier</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/site-163-dossier" target="_blank">Site-163 Dossier</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>/* Hide the automatic page-title if present */
+#page-title {
+  visibility: hidden;
+}
+
+/* Root-level variables (theme custom properties) */
+:root {
+  --logo-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Amidnight-rush/midnight-rush-icon.png&#39;);
+  --color-text-main: #ffffff;
+  --color-bg-top: #191f22;
+  --color-bg-mid: #161111;
+  --color-bg-bottom: #0a0a0a;
+  --color-border: #888888;
+  --color-facility-bg: #111111;
+  --color-facility-border: #000000;
+  --color-caption-text: #cccccc;
+  --color-caption-border: #444444;
+  --color-gray: #999999;
+  --accent-color: #1a73e8;
+  --highlight-color: #ff5555;
+
+  --font-mono: &#39;Roboto Mono&#39;, monospace;
+  --font-sans: &#39;Rubik&#39;, sans-serif;
+  --font-dossier: &#39;IBM Plex Sans&#39;, sans-serif;
+  --font-default-size: 1rem;
+
+  --spacing-small: 0.5rem;
+  --spacing-base: 1rem;
+  --spacing-large: 2rem;
+
+  --gradient-header: linear-gradient(to top, var(--color-bg-mid), var(--color-bg-top));
+  --diagonal-stripes:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0) 0,
+      rgba(255,255,255,0) 0.25rem,
+      rgba(88,88,88,0.1) 0.35rem,
+      rgba(88,88,88,0.2) 0.5rem
+    );
+}
+
+/* --- Animation Keyframes --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0 red, -2px 0 cyan;
+  }
+  20% {
+    text-shadow: -2px 0 red, 2px 0 cyan;
+  }
+  40% {
+    text-shadow: 2px 0 cyan, -2px 0 red;
+  }
+  60% {
+    text-shadow: -2px 0 cyan, 2px 0 red;
+  }
+  80% {
+    text-shadow: 1px 0 red, -1px 0 cyan;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 85, 85, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 85, 85, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 85, 85, 0);
+  }
+}
+
+/* Input / console-style blocks */
+.inputField {
+  font-family: var(--font-mono);
+  border: 2px dashed var(--color-border);
+  text-align: left;
+  padding: var(--spacing-base);
+  margin: var(--spacing-base) auto;
+  max-width: 42rem;
+  width: 90%;
+  background: var(--color-bg-bottom);
+  color: #e6e6e6;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+
+  /* fade into view */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* The dossier container */
+.facilityDossier {
+  background: var(--color-facility-bg);
+  border: 2px solid var(--color-facility-border);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.6);
+  padding: var(--spacing-large);
+  margin: var(--spacing-large) auto;
+  max-width: 50rem;
+  width: 95%;
+  color: var(--color-text-main);
+  font-family: var(--font-dossier);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-radius: 0.25rem;
+
+  /* slide into view */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* Dossier headings */
+.facilityDossier h1,
+.facilityDossier h2,
+.facilityDossier h3,
+.facilityDossier h4 {
+  font-family: var(--font-sans);
+  color: var(--accent-color);
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+
+  /* small fade-in */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* Glitch / plaintext wrapping helpers */
+.style03-plaintext,
+.style03-plaintext.animation03,
+.style03-plaintext.animation03 span,
+.style03-plaintext.animation03::before,
+.style03-plaintext.animation03::after {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Apply glitch animation on those spans */
+.style03-plaintext.animation03 {
+  animation: glitch 3s infinite;
+}
+
+/* Images with captions */
+.imageWithCaption {
+  text-align: center;
+  margin: var(--spacing-large) auto;
+  max-width: 56.25rem; /* ~900px */
+  width: 90%;
+}
+.imageWithCaption img,
+.imageWithCaption [[image]] {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--color-caption-border);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.5);
+}
+.imageWithCaption .caption {
+  font-size: 0.9rem;
+  color: var(--color-caption-text);
+  border-top: 1px solid var(--color-caption-border);
+  padding-top: 0.25rem;
+  margin-top: 0.25rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Highlighted text in dossier — pulse effect */
+.facilityDossier .highlight {
+  color: var(--highlight-color);
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+/* Info blocks inside dossier */
+.facilityDossier .info {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid var(--accent-color);
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+}
+.facilityDossier .info .loc,
+.facilityDossier .info .purpose {
+  font-weight: bold;
+  color: var(--accent-color);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Collapsible / toggled sections */
+.collapsible-block {
+  background: #1b1b1b;
+  border: 1px solid #333;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+.collapsible-block .collapsible-block-link {
+  color: var(--accent-color);
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+.collapsible-block .collapsible-block-content[style*=&#34;display: block&#34;] {
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+}
+.collapsible-block .collapsible-block-content[style*=&#34;display: none&#34;] {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease-in, opacity 0.3s ease-in;
+}
+
+.collapsible-block .collapsible-block-link:hover {
+  color: var(--highlight-color);
+}
+
+/* Footnotes styling */
+.footnote {
+  font-size: 0.85rem;
+  color: var(--color-gray);
+}
+
+/* Transparent horizontal line inside dossier */
+.facilityDossier .transparent-line {
+  border: none;
+  height: 1px;
+  margin: 1rem 0;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+}
+
+/* Subtitle / header overrides */
+#header-title .subtitle,
+#page-title + h2 {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-caption-text);
+}
+
+/* Extra custom classes */
+.loc {
+  color: #780d8e;
+}
+.purpose {
+  color: #0096ff;
+}
+
+/* Adjust overall info and indentation */
+.info {
+  padding-left: 2em;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>color:#FFD21A</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#888888</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FFD21A</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FF4E4E</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FFD21A</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#40FF69</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FFD21A</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#888888</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FFD21A</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FF4E4E</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FFD21A</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#40FF69</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FFD21A</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#888888</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#FFD21A</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:#40FF69</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--content: </code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:var(--gray-monochrome);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--content: </code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:var(--gray-monochrome);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align:left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:var(--gray-monochrome);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align:left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color:var(--gray-monochrome);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text-align:left;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--content: </code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--content: </code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:glitch-elements" target="_blank"><code>:scp-wiki:component:glitch-elements</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:glitch-elements.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:glitch-elements" target="_blank"><code>:scp-wiki:component:glitch-elements</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:glitch-elements.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:advanced-navigation-toolbar-source" target="_blank"><code>:scp-wiki:component:advanced-navigation-toolbar-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:advanced-navigation-toolbar-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>inputField</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>facilityDossier</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>style03-plaintext</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>animation03</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>imageWithCaption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>style03-plaintext</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>animation05</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>loc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>purpose</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>loc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>purpose</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>loc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>purpose</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>loc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>purpose</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>loc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>purpose</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>loc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>purpose</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>loc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>purpose</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>loc</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>style03-plaintext</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>animation05</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>purpose</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>style03-plaintext</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>animation01</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module Rate]]
+
+[[include :scp-wiki:theme:basalt darkmode=a| hidetitle=a]]
+
+[[include :scp-wiki:component:glitch-elements]]
+
+[[include :scp-wiki:theme:basalt darkmode=a| hidetitle=a]]
+[[include :scp-wiki:component:glitch-elements]]
+
+[[module CSS]]
+/* Hide the automatic page-title if present */
+#page-title {
+  visibility: hidden;
+}
+
+/* Root-level variables (theme custom properties) */
+:root {
+  --logo-image: url(&#39;https://scp-wiki.wdfiles.com/local--files/theme%3Amidnight-rush/midnight-rush-icon.png&#39;);
+  --color-text-main: #ffffff;
+  --color-bg-top: #191f22;
+  --color-bg-mid: #161111;
+  --color-bg-bottom: #0a0a0a;
+  --color-border: #888888;
+  --color-facility-bg: #111111;
+  --color-facility-border: #000000;
+  --color-caption-text: #cccccc;
+  --color-caption-border: #444444;
+  --color-gray: #999999;
+  --accent-color: #1a73e8;
+  --highlight-color: #ff5555;
+
+  --font-mono: &#39;Roboto Mono&#39;, monospace;
+  --font-sans: &#39;Rubik&#39;, sans-serif;
+  --font-dossier: &#39;IBM Plex Sans&#39;, sans-serif;
+  --font-default-size: 1rem;
+
+  --spacing-small: 0.5rem;
+  --spacing-base: 1rem;
+  --spacing-large: 2rem;
+
+  --gradient-header: linear-gradient(to top, var(--color-bg-mid), var(--color-bg-top));
+  --diagonal-stripes:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0) 0,
+      rgba(255,255,255,0) 0.25rem,
+      rgba(88,88,88,0.1) 0.35rem,
+      rgba(88,88,88,0.2) 0.5rem
+    );
+}
+
+/* --- Animation Keyframes --- */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0 red, -2px 0 cyan;
+  }
+  20% {
+    text-shadow: -2px 0 red, 2px 0 cyan;
+  }
+  40% {
+    text-shadow: 2px 0 cyan, -2px 0 red;
+  }
+  60% {
+    text-shadow: -2px 0 cyan, 2px 0 red;
+  }
+  80% {
+    text-shadow: 1px 0 red, -1px 0 cyan;
+  }
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 rgba(255, 85, 85, 0);
+  }
+  50% {
+    box-shadow: 0 0 10px rgba(255, 85, 85, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(255, 85, 85, 0);
+  }
+}
+
+/* Input / console-style blocks */
+.inputField {
+  font-family: var(--font-mono);
+  border: 2px dashed var(--color-border);
+  text-align: left;
+  padding: var(--spacing-base);
+  margin: var(--spacing-base) auto;
+  max-width: 42rem;
+  width: 90%;
+  background: var(--color-bg-bottom);
+  color: #e6e6e6;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+
+  /* fade into view */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* The dossier container */
+.facilityDossier {
+  background: var(--color-facility-bg);
+  border: 2px solid var(--color-facility-border);
+  box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.6);
+  padding: var(--spacing-large);
+  margin: var(--spacing-large) auto;
+  max-width: 50rem;
+  width: 95%;
+  color: var(--color-text-main);
+  font-family: var(--font-dossier);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  border-radius: 0.25rem;
+
+  /* slide into view */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.8s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* Dossier headings */
+.facilityDossier h1,
+.facilityDossier h2,
+.facilityDossier h3,
+.facilityDossier h4 {
+  font-family: var(--font-sans);
+  color: var(--accent-color);
+  margin-top: 2rem;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.5rem;
+
+  /* small fade-in */
+  opacity: 0;
+  animation: fadeIn 0.8s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+/* Glitch / plaintext wrapping helpers */
+.style03-plaintext,
+.style03-plaintext.animation03,
+.style03-plaintext.animation03 span,
+.style03-plaintext.animation03::before,
+.style03-plaintext.animation03::after {
+  white-space: normal !important;
+  word-break: break-word !important;
+  overflow-wrap: break-word !important;
+  hyphens: auto !important;
+  display: inline-block;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Apply glitch animation on those spans */
+.style03-plaintext.animation03 {
+  animation: glitch 3s infinite;
+}
+
+/* Images with captions */
+.imageWithCaption {
+  text-align: center;
+  margin: var(--spacing-large) auto;
+  max-width: 56.25rem; /* ~900px */
+  width: 90%;
+}
+.imageWithCaption img,
+.imageWithCaption [[image]] {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--color-caption-border);
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.5);
+}
+.imageWithCaption .caption {
+  font-size: 0.9rem;
+  color: var(--color-caption-text);
+  border-top: 1px solid var(--color-caption-border);
+  padding-top: 0.25rem;
+  margin-top: 0.25rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Highlighted text in dossier — pulse effect */
+.facilityDossier .highlight {
+  color: var(--highlight-color);
+  font-weight: bold;
+  animation: pulse 2s infinite;
+}
+
+/* Info blocks inside dossier */
+.facilityDossier .info {
+  display: block;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-left: 4px solid var(--accent-color);
+  font-size: 0.95rem;
+  font-family: var(--font-sans);
+}
+.facilityDossier .info .loc,
+.facilityDossier .info .purpose {
+  font-weight: bold;
+  color: var(--accent-color);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+/* Collapsible / toggled sections */
+.collapsible-block {
+  background: #1b1b1b;
+  border: 1px solid #333;
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+.collapsible-block .collapsible-block-link {
+  color: var(--accent-color);
+  cursor: pointer;
+  font-weight: bold;
+  display: inline-block;
+  padding: 0.25rem 0;
+  transition: color 0.2s ease;
+}
+.collapsible-block .collapsible-block-content[style*=&#34;display: block&#34;] {
+  max-height: 500px;
+  opacity: 1;
+  transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
+}
+.collapsible-block .collapsible-block-content[style*=&#34;display: none&#34;] {
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.4s ease-in, opacity 0.3s ease-in;
+}
+
+.collapsible-block .collapsible-block-link:hover {
+  color: var(--highlight-color);
+}
+
+/* Footnotes styling */
+.footnote {
+  font-size: 0.85rem;
+  color: var(--color-gray);
+}
+
+/* Transparent horizontal line inside dossier */
+.facilityDossier .transparent-line {
+  border: none;
+  height: 1px;
+  margin: 1rem 0;
+  background: linear-gradient(to right, transparent, var(--color-border), transparent);
+}
+
+/* Subtitle / header overrides */
+#header-title .subtitle,
+#page-title + h2 {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--color-caption-text);
+}
+
+/* Extra custom classes */
+.loc {
+  color: #780d8e;
+}
+.purpose {
+  color: #0096ff;
+}
+
+/* Adjust overall info and indentation */
+.info {
+  padding-left: 2em;
+}
+[[/module]]
+
+
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FFD21A&#34;]]&gt; Query: site-retrieve 163[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#888888&#34;]][Retrieving...]  
+[Retrieving...]  
+[ERROR] Retrieval failed.[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FFD21A&#34;]]&gt; dmesg | grep &#34;error&#34;[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FF4E4E&#34;]][ERROR] file_pathway: No such file or directory[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FFD21A&#34;]]&gt; scpnet-access --update --level 5A --user -p[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#40FF69&#34;]][Authorizing...]  
+[Access Granted] Security Clearance: Level 5-A[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FFD21A&#34;]]&gt; Query: site-retrieve 163[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#888888&#34;]][Retrieving...]  
+[Retrieving...]  
+[ERROR] Retrieval failed.[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FFD21A&#34;]]&gt; dmesg | grep &#34;error&#34;[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FF4E4E&#34;]][ERROR] pathway_illegal: SCPinet connection refused[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FFD21A&#34;]]&gt; scpnet-access --update --class 𐤎 --user -p[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#40FF69&#34;]][Authorizing...]  
+[Access Granted] Security Clearance: Level 5A-𐤎[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FFD21A&#34;]]&gt; ssh ic@internal.93[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#888888&#34;]][Disconnecting from SCPinet...]  
+[Connecting to ICnet...]  
+[Connection Established][[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#FFD21A&#34;]]&gt; Query: site-retrieve 163[[/span]]
+[[/div]]
+
+[[div class=&#34;inputField&#34;]]
+[[span style=&#34;color:#40FF69&#34;]][Retrieving...]  
+[Data Preparation in Progress...]  
+[Transfer Complete]  
+[Site-163 Archive Uploaded][[/span]]
+[[/div]]
+
+
+[[div class=&#34;facilityDossier&#34;]]
+++ SCP Foundation Secure Facility Dossier
+**Official Designation:** Former Site — Decommissioned
+[[span class=&#34;style03-plaintext animation03&#34; style=&#34;--content: &#34;Unofficial Designation: SCP Covert Activities Research, Analysis, Management Facility&#34;;&#34;]] 
+Unofficial Designation: SCP Covert Activities Research, Analysis, Management Facility
+[[/span]]
+----
+[[span style=&#34;color:var(--gray-monochrome);&#34;]]
+++++ General Information
+[[/span]]
+----
+[[div class=&#34;imageWithCaption&#34;]]
+  [[image https://imgs.search.brave.com/69F5w2I9TZ81qnISR5huFRAIQGlrwQZypL-S3oMPXQY/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jZG4u/cGl4YWJheS5jb20v/cGhvdG8vMjAxMS8x/Mi8xMy8xNy8wNy9l/YXJ0aC0xMTA0OF82/NDAuanBn width=&#34;860px&#34;]]
+  
+  [[div class=&#34;caption&#34;]]
+    Complete Overhead Map of Site-163
+  [[/div]]
+[[/div]]
+##transparent|. ##
+**Founded:** April 1st 1823
+##transparent|. ##
+**Founding Director:** Aaron Siegel[[footnote]] Then O5-5 [[/footnote]]
+##transparent|. ##
+**Location:** [[span class=&#34;style03-plaintext animation05&#34; style=&#34;--content: &#34;Global&#34;;&#34;]]Global[[/span]]
+##transparent|. ##
+**Purpose:** Storage, Safehouse, Secure Communications Center
+##transparent|. ##
+**Size:** Fluctuating
+
+----
+[[span style=&#34;color:var(--gray-monochrome);&#34;]]
+++++ Staffing Information
+[[/span]]
+----
+[[div style=&#34;text-align:left&#34;]]
+**Oversight Director**[[footnote]]Due to the merger state of Site-163 with the Intelligence Agency, an Oversight Director is appointed by the Director of the Intelligence Agency instead of a Site Director.[[/footnote]]**:** Aliyah Barton
+##transparent|. ##
+**Asst. Oversight Director:** Elizabeth Geld
+##transparent|. ##
+**Asst. Dir. of Facilities:** Javaid Fionn
+##transparent|  ##
+**Asst. Dir. of Medicine:** Dr. Marwa
+##transparent|. ##
+**Asst. Dir. of Personnel:** Yelena Prozorov 
+##transparent|. ##
+**Asst. Dir. of Internal Technologies:** Dr. Malavis
+##transparent|. ##
+**Asst. Dir. of External Relations:** Johnathan Marqi
+##transparent|. ##
+**Autonomous Dir. of Parasitic Developments:** ██████ ███████
+##transparent|. ##
+**On-Site Personnel:** N/A[[footnote]] All Agency personnel are consider &#34;On-Site&#34;[[/footnote]]
+[[/div]]
+----
+[[span style=&#34;color:var(--gray-monochrome);&#34;]]
+++++ Site Overview &amp; History
+[[/span]]
+----
+[[div style=&#34;text-align:left&#34;]]
+##transparent|......##Site-163 is the last of its kind. Before the standardization of the Foundation Facilities across the world, a younger Foundation required something more radical. In days before, the Foundation was stripped for cash and couldn&#39;t keep more than a couple of fully-furnished facilities, a serious problem when considering anomalies can turn up anywhere and anytime. In response, the Foundation employed a doctrine of quick assembly and disassembly. With time, however, [https://scp-wiki.wikidot.com/pickman-blank-proposal as funds grew], the Foundation shifted toward a doctrine of permanent holdouts to better meet the growing needs of the world.
+
+##transparent|......##Although Site-163 is spread across dozens of Foundation facilities today, Site-163 was originally a rapid anomalous humanoid detainment and containment facility operating in and around Central Europe relying on the ability to quickly set up and demolish small facilities. Site-163 provided a wealth of information about reality-benders, most of it still dictating the basics of our understanding of reality bending and policy regarding reality-benders.
+
+##transparent|......##At the turn of the 20th century, multiple government-backed occult organizations were formed to combat, study, and eventually weaponize anomalies. Site-163, due to its more overt presence in comparison to its sister sites, became a target of raids by said organizations and expulsions by their benefactor governments. Around 63% of Site-163 onboard facilities either fell or became nonoperational. Most agree that the withering of Site-163 was due to its lax security and that Site-163 was spread too thin. On August 1923, Site-163 was officially dissolved.
+
+##transparent|......##Unofficially, however, Site-163 was reorganized. All research and military personnel were reassigned to more conventional facilities and Site-163 was temporarily placed under direct O5 Council command. Around this time, the Intelligence Agency had been commissioned from the defunct Intelligence Community&#39;s External Espionage Bureau. Given the Foundation had publicly decommissioned Site-163, the O5 Council decided to fold Site-163 into the Intelligence Agency as an independent facility.
+
+##transparent|......##For the inital 23 years, Site-163 was a roaming facility. Utilizing old contractors, abandoned buildings, front companies, Site-163 was a site of constantly shifting size and location. Under this model, the Agency rapidly grew and became extremely efficient in its efforts; however, data loss was common incident and on occasion failed to prevent circumstances that were entirely in their control.
+
+##transparent|......##This model was officially put out of use in light of the Insurgency&#39;s actions in 1948. During this defection, 30% of Site-163&#39;s facilities defected or were raided by the Chaos Insurgency and its various partners. This defection led to the emergency suspension of the Intelligence Agency, and by proxy Site-163. After a thorough investigation, the Intelligence Agency was allowed to regain its autonomy under the condition Site-163 could quickly be occupied by regular Foundation forces should the need arise, a means by the Council to keep the Agency in check.
+
+Secret Directive #7791 was passed by the O5 Council on March 23rd, 1949, a move to reestablish the Intelligence Agency as follows:
+* The Agency may not be stringent in standard Foundation administrative protocols.
+* The Agency may act of its own accord against GoIs so long as it cannot be traced back to the Foundation.
+* The Agency is wholly responsible for the safety of its operators and not the Foundation at large.
+* The Agency may not actively work against the Foundation itself; even if it will help the Foundation in the long term.
+* If deemed necessary by the O5 Council, all documentation is to be handed over to the Council without complaint.
+* Site-163 will be reestablished as a forwarding base of operations for the Agency.
+* Site-163 will follow the doctrine of covertly operating in other Foundation facilities.
+* The O5 Council and proxies will assist in the coverup of these facilities from Foundation Personnel.
+
+##transparent|......##Site-163 is the last of its kind and the first of another. Melded from necessity and distrust, Site-163 operates across the world hidden in plain sight. We act in places where people don&#39;t like to look, where they forget. Behind the shiny labs and opulent meeting rooms, tucked behind closets and storage rooms is where we protect our unknowing comrades.[[/div]]
+
+**//A dead site for a dead department, created by a dead man.//**
+
+----
+[[span style=&#34;color:var(--gray-monochrome);&#34;]]
+++++ Facilities
+[[/span]]
+----
+[[div style=&#34;text-align:left;&#34;]]
+**Oversight Director Office/O5 Liaison Office:** 
+[[span class=&#34;info&#34;]]
+[[span class=&#34;loc&#34;]]**Location:**[[/span]] Room 335 — Site 01
+[[span class=&#34;purpose&#34;]]**Purpose:**[[/span]] First of two official offices of the Intelligence Agency. Provides information and counsel to the O5 Council. Dictates all matters related to Site-163.
+[[/span]]
+
+**Asst. Oversight Director Office/North American Command/EC Liaison Office:** 
+[[span class=&#34;info&#34;]]
+[[span class=&#34;loc&#34;]]**Location:**[[/span]] Room 112 — Site 37
+[[span class=&#34;purpose&#34;]]**Purpose:**[[/span]] Second of two official offices of the Intelligence Agency. Handles all internal investigations. Manages all operations within North America. Provides internal documentation to the Ethics Committee for review.
+
+[[collapsible show=&#34;+ North American Facilities&#34; hide=&#34;- Close&#34;]]
+**Site 81** — Extra Supply Closet, Sector 3B, Wing A
+**Site 55** — Storage Depot 37 &#34;Non-important non anomalous Closet 3&#34;, R Wing
+**Site 201**  — Physical Documentation Room 21, Sub-level 3
+**Site 56** —  Sub-section 4, Sector D, Sub-level 2
+**Site 106** — Explained AO Storage Area 3B, Ground Level
+[[/collapsible]]
+
+[[/span]]
+
+**Office of Asst. Dir. of Medicine/South American Command:**
+[[span class=&#34;info&#34;]]
+[[span class=&#34;loc&#34;]]**Location:**[[/span]] Satellite Facility 2 - Section C — Site PT-17
+[[span class=&#34;purpose&#34;]]**Purpose:**[[/span]] Due to Site-17 of the Portuguese Foundation being home to some of the largest paramedical labs in the world, it was chosen as the home of the Agency&#39;s medical efforts, including research and experimentation. Manages all South American operations and agents.
+
+[[collapsible show=&#34;+ South American Facilities&#34; hide=&#34;- Close&#34;]]
+**Site PT33** — Underground IT office 12, Administrative Building
+**Site PT13** — External office room, Outpost 8
+**Site ES57** — Insurance Adjustment Office, E Wing
+**Site ES9** — Office 36 &amp; 37, Central Administrative Offices 
+[[/collapsible]]
+[[/span]]
+
+**Office of Asst. Dir. of Personnel/European Command:** 
+[[span class=&#34;info&#34;]]
+[[span class=&#34;loc&#34;]]**Location:**[[/span]] Level 3 Administrative Office 2 — Area 21 
+[[span class=&#34;purpose&#34;]]**Purpose:**[[/span]] Due to its //unique// history, Area 21 contains a myriad of administrative offices, a perfect cover for the Agency to create its European Branch. Manages all operations in Europe.
+
+[[collapsible show=&#34;+ European Facilities&#34; hide=&#34;- Close&#34;]]
+**Site FR-Site-Aleph** — Sector B, Outpost 2
+**Site DE2** — Server Room 38
+**Site DE16** — Spare medical office, Port 3
+**Site IT-Virtus** — External Liaison Offices Batch 37, Level 2
+**Site 228** — Storage Area 3, Satellite Facility A9
+[[/collapsible]]
+
+
+[[/span]]
+
+**Office of Asst. Dir. of Facilities/Asian Command:** 
+[[span class=&#34;info&#34;]]
+[[span class=&#34;loc&#34;]]**Location:**[[/span]] Explained Archived Documentation Section B, Area A-6 — Site-CN-3
+[[span class=&#34;purpose&#34;]]**Purpose:**[[/span]] As one of the largest sites on the Asian continent, Site-CN-3 is utilized to oversee all Asian operations for the Agency.
+
+[[collapsible show=&#34;+ Asian Facilities&#34; hide=&#34;- Close&#34;]]
+**Site 50** — Room 66, Administrative Office
+**Observation Post 373** — Wing A, Sub-level 2
+**Site CN-19** — Post 35
+**Site 36** — Dormitory Room 34
+**Site CN-51, Zone 2** — D-Class additional storage bay
+**Site CN-39** — Server Room 11B
+[[/collapsible]]
+
+
+[[/span]]
+
+**Office of Asst. Dir. of Internal Technologies/African Command:** 
+[[span class=&#34;info&#34;]]
+[[span class=&#34;loc&#34;]]**Location:**[[/span]] Maintenance Closet 36 — Site PT-19
+[[span class=&#34;purpose&#34;]]**Purpose:**[[/span]] Due to the Foundation&#39;s inability to operate efficiently in Africa, the Agency operates through a network of satellite facilities owned and operated by front companies. The Agency is granted the most autonomy here.
+
+[[/span]]
+
+**Office of Asst. Dir. of External Relations/Oceania Command:** 
+[[span class=&#34;info&#34;]]
+[[span class=&#34;loc&#34;]]**Location:**[[/span]] Research Lab 27, Sector B — Research Site 45
+[[span class=&#34;purpose&#34;]]**Purpose:**[[/span]] Manages all Agency operations within Oceania. Due to the insignificance of the region, efforts have switched to operating as the Agency&#39;s premiere external relations branch. By use of dead-drops, to prevent the Agency&#39;s discovery, intelligence is given to other Foundation divisions if deemed necessary. In times of extreme need, information is passed off or sold to other Groups of Interest.
+
+
+[[/span]]
+
+**Office of Autonomous Dir. of Parasitic Developments:** 
+[[span class=&#34;info&#34;]]
+[[span class=&#34;loc&#34;]]**Location:**[[/span]] [[span class=&#34;style03-plaintext animation05&#34; style=&#34;--content: &#34;ERROR&#34;;&#34;]]ERROR[[/span]]
+[[span class=&#34;purpose&#34;]]**Purpose:**[[/span]] [[span class=&#34;style03-plaintext animation01&#34; style=&#34;--content: &#34;REDACTED PER IA ORDER 37&#34;;&#34;]]REDACTED PER IA ORDER 37[[/span]]
+
+
+[[/span]]
+
+[[/div]]
+[[/div]]
+
+
+[[include :scp-wiki:component:advanced-navigation-toolbar-source dual= false
+|styleNum= one
+|prev= https://scp-wiki.wikidot.com/scp-8603 |prevtext= SCP-8603
+|prevImage= https://scp-wiki.wdfiles.com/local--files/dr-moned-s-icons-and-art/Damnum.png
+|hub= https://scp-wiki.wikidot.com/beneath-control-hub |hubtext= Beneath Control Hub
+|next= https://scp-wiki.wikidot.com/goc-intellog-d-5589 |nexttext= GOC INTELLOG-Δ-5589
+|nextImage= https://scp-wiki.wdfiles.com/local--files/dr-moned-s-icons-and-art/Yesod.png
+]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:59.355460.</em>
+  
+</div>
+</body>

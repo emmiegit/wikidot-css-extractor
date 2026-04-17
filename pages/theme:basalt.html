@@ -99,10 +99,6 @@
         </li>
       
         <li>
-          <pre><code>filter: drop-shadow(0px 33px 75px rgba(0, 0, 60, 0.4));</code></pre>
-        </li>
-      
-        <li>
           <pre><code>margin: auto; max-width: 30rem; opacity: 85%;</code></pre>
         </li>
       
@@ -176,6 +172,57 @@
   
 
   
+    <a href="https://scp-wiki.wikidot.com/component:interwiki-style" target="_blank"><code>:scp-wiki:component:interwiki-style</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:interwiki-style.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:interwiki-style" target="_blank"><code>:scp-wiki:component:interwiki-style</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:interwiki-style.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:interwiki-style" target="_blank"><code>:scp-wiki:component:interwiki-style</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:interwiki-style.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
     <a href="https://scp-wiki.wikidot.com/component:betterfootnotes" target="_blank"><code>:scp-wiki:component:betterfootnotes</code></a>
   
 
@@ -183,6 +230,23 @@
     
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/component:betterfootnotes.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:interwiki-style" target="_blank"><code>:scp-wiki:component:interwiki-style</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:interwiki-style.html" target="_blank">info</a>]
   </span>
 
   
@@ -678,7 +742,7 @@
 /* [2021 Wikidot Theme]           */
 /* Version 2.1.0                  */
 /*                                */
-/* by Liryn, Placeholder McD      */
+/* by Liryn &amp; Placeholder McD     */
 /* with thanks to EstrellaYoshte  */
 /*                                */
 /* Built on Bedrock               */
@@ -691,7 +755,7 @@
 @import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/normalize-min.css&#39;);
 @import url(&#39;https://cdn.scpwiki.com/theme/en/basalt/basalt-bedrock-min.css&#39;);
 
-@import url(&#39;https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
+@import url(&#39;https://fonts.bunny.net/css2?family=Sofia+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap&#39;);
 
 :root {
 
@@ -710,6 +774,7 @@
     --main-content-width: 60rem;
     --main-content-top-margin: 1.5rem;
     --base-font-size: .875rem;
+    --page-content-font-size: calc(var(--true-font-size) * 1.13);
     --bottom-area-padding: calc(var(--true-font-size)*2);
     --side-bar-width: 17rem;
     --basalt-page-content-font-weight: 440;
@@ -766,7 +831,6 @@
     --side-bar-link-color: var(--basalt-UI-text-color);
     --bottom-area-text-color: var(--basalt-UI-text-color);
     --edit-area-ancillary-text-color: var(--basalt-UI-text-color);
-    --edit-area-toolbar-icon-color: var(--basalt-UI-text-color);
     --button-text-color: var(--basalt-UI-text-color);
     --basalt-sub-text-color: var(--basalt-UI-text-color);
 
@@ -1153,7 +1217,7 @@ p {
 }
 
 #page-content {
-    font-size: calc(var(--true-font-size) * 1.13);
+    font-size: var(--page-content-font-size);
 }
 
 :where(#main-content) [id] {
@@ -1192,6 +1256,14 @@ p {
 
 #top-bar div[class*=&#34;top-bar&#34;] ul li ul li a {
     box-shadow: none;
+}
+
+#login-status a:is(.login-status-create-account, .login-status-sign-in) {
+    transition: color 0.4s;
+}
+
+#login-status a:is(.login-status-create-account, .login-status-sign-in):hover {
+    color: rgb(var(--login-status-text-color-hover));
 }
 
 #login-status span.printuser&gt;a img {
@@ -1233,6 +1305,7 @@ form#edit-page-form table.form td:nth-of-type(1) {
     border: solid var(--edit-area-border-width) rgb(var(--edit-area-border-color), 0.5) !important;
     border-top-right-radius: var(--window-border-radius);
     border-top-left-radius: var(--window-border-radius);
+    font-family: var(--UI-font);
     font-weight: 900;
     text-align: center;
 }
@@ -1243,11 +1316,8 @@ form#edit-page-form table.form td:nth-of-type(1) {
     height: 47vh;
 }
 
-.wd-editor-toolbar-panel ul li a::after,
-#edit-page-form .wd-editor-toolbar-panel a:is(:hover, :focus)::after,
-#edit-page-form .wd-editor-toolbar-panel div&gt;ul&gt;li.sfhover&gt;a:not(:hover, :focus)::after,
-#edit-page-form .wd-editor-toolbar-panel div&gt;ul&gt;li:focus-within&gt;a:not(:hover, :focus)::after {
-    background-color: rgb(var(--edit-area-toolbar-icon-color));
+#edit-page-comments {
+    font-family: var(--mono-font);
 }
 
 #edit-page-form .wd-editor-toolbar-panel a::after {
@@ -1272,6 +1342,10 @@ form#edit-page-form table.form td:nth-of-type(1) {
 
 #lock-info {
     border: solid 0.12rem rgba(var(--general-border-color), 0.4);
+}
+
+#lock-timer {
+    font-family: var(--mono-font);
 }
 
 #action-area div.buttons&gt; :is([name=&#34;save&#34;], [name=&#34;save-continue&#34;], [onclick*=&#34;PageTagsModule.listeners.save(event)&#34;]) {
@@ -1316,8 +1390,7 @@ form#edit-page-form&gt;table.form::before {
     padding-left: 15px;
     pointer-events: none;
     opacity: 50%;
-    font-family: var(--UI-font);
-    font-weight: 900 !important;
+    font-family: var(--mono-font);
     font-size: 11px;
     color: rgb(var(--edit-area-ancillary-text-color));
 }
@@ -1670,9 +1743,6 @@ sup {
     margin-left: 0.4em !important;
 }
 
-:is(#page-content table:not(.form), table.wiki-content-table) {
-    table-layout: fixed;
-}
 
 @supports (-webkit-touch-callout: none) /* Targets iOS only */ {
 
@@ -1701,14 +1771,6 @@ sup {
 
 .printuser a {
     font-weight: 600;
-}
-
-div.page-rate-widget-box span.btn&gt;a::before,
-div.rate-box-with-credit-button .creditButton&gt;p&gt;a::before,
-div.rate-box-with-credit-button .creditButton&gt;p&gt;a::after,
-div.creditButtonStandalone&gt;p&gt;a::before,
-div.creditButtonStandalone&gt;p&gt; a::after {
-    background-color: rgb(var(--rate-module-text-color));
 }
 
 /*-------------------------------------------------*/
@@ -1997,7 +2059,7 @@ div.miscomm_memo {
 [[module Rate]]
 [[/=]]
 
-[[div class=&#34;noclick&#34; style=&#34;filter: drop-shadow(0px 33px 75px rgba(0, 0, 60, 0.4));&#34;]]
+[[div class=&#34;noclick&#34;]]
 @@ @@
 [[=]]
 [[div style=&#34;margin: auto; max-width: 30rem; opacity: 85%;&#34;]]
@@ -2018,7 +2080,7 @@ div.miscomm_memo {
 
 +* Info
 
-**Basalt** is an aesthetic theme for the SCP Wiki by [[*user Liryn]] and [[*user Placeholder McD]] functioning as an extension of  **Bedrock**, a base theme created specifically for this project. Visit [[[https://scp-wiki.wikidot.com/theme:bedrock|Bedrock&#39;s wiki page]]] or its [https://basalt-team.github.io/Basalt home on GitHub] for more info, including all of the CSS variables it offers.
+**Basalt** is an aesthetic theme for the SCP Wiki by [[*user Liryn]] and [[*user Placeholder McD]] functioning as an extension of  **Bedrock**, a base theme created specifically for this project. Visit [[[https://scp-wiki.wikidot.com/theme:bedrock|Bedrock&#39;s wiki page]]] or [[[https://basalt-team.github.io/Basalt|its home on GitHub]]] for more info, including all of the CSS variables it offers.
 
 [[div style=&#34;margin-top: 6.5rem;&#34;]]
 [[/div]]
@@ -2248,18 +2310,11 @@ This system is designed to connect with the [[[https://scp-wiki.wikidot.com/anom
 [[div style=&#34;display: flex; flex-flow: row wrap; gap: 2.5rem;&#34;]]
 
 [[div class=&#34;table1&#34;]]
-||~ {{.table1}} ||
-||= Text here ||
-||= Text here ||
-||= Text here ||
-[[/div]]
-
-[[div class=&#34;table1&#34;]]
 [[include :scp-wiki:component:image-block name=https://cdn.scpwiki.com/theme/en/basalt/basaltlogo.svg|caption=**{{.table1}}**|width=100px]]
 [[/div]]
 
-[[div class=&#34;table2&#34;]]
-||~ {{.table2}} ||
+[[div class=&#34;table1&#34;]]
+||~ {{.table1}} ||
 ||= Text here ||
 ||= Text here ||
 ||= Text here ||
@@ -2269,8 +2324,8 @@ This system is designed to connect with the [[[https://scp-wiki.wikidot.com/anom
 [[include :scp-wiki:component:image-block name=https://cdn.scpwiki.com/theme/en/basalt/basaltlogo.svg|caption=**{{.table2}}**|width=100px]]
 [[/div]]
 
-[[div class=&#34;table3&#34;]]
-||~ {{.table3}} ||
+[[div class=&#34;table2&#34;]]
+||~ {{.table2}} ||
 ||= Text here ||
 ||= Text here ||
 ||= Text here ||
@@ -2280,8 +2335,8 @@ This system is designed to connect with the [[[https://scp-wiki.wikidot.com/anom
 [[include :scp-wiki:component:image-block name=https://cdn.scpwiki.com/theme/en/basalt/basaltlogo.svg|caption=**{{.table3}}**|width=100px]]
 [[/div]]
 
-[[div class=&#34;table4&#34;]]
-||~ {{.table4}} ||
+[[div class=&#34;table3&#34;]]
+||~ {{.table3}} ||
 ||= Text here ||
 ||= Text here ||
 ||= Text here ||
@@ -2291,8 +2346,8 @@ This system is designed to connect with the [[[https://scp-wiki.wikidot.com/anom
 [[include :scp-wiki:component:image-block name=https://cdn.scpwiki.com/theme/en/basalt/basaltlogo.svg|caption=**{{.table4}}**|width=100px]]
 [[/div]]
 
-[[div class=&#34;table5&#34;]]
-||~ {{.table5}} ||
+[[div class=&#34;table4&#34;]]
+||~ {{.table4}} ||
 ||= Text here ||
 ||= Text here ||
 ||= Text here ||
@@ -2302,8 +2357,8 @@ This system is designed to connect with the [[[https://scp-wiki.wikidot.com/anom
 [[include :scp-wiki:component:image-block name=https://cdn.scpwiki.com/theme/en/basalt/basaltlogo.svg|caption=**{{.table5}}**|width=100px]]
 [[/div]]
 
-[[div class=&#34;table6&#34;]]
-||~ {{.table6}} ||
+[[div class=&#34;table5&#34;]]
+||~ {{.table5}} ||
 ||= Text here ||
 ||= Text here ||
 ||= Text here ||
@@ -2311,6 +2366,13 @@ This system is designed to connect with the [[[https://scp-wiki.wikidot.com/anom
 
 [[div class=&#34;table6&#34;]]
 [[include :scp-wiki:component:image-block name=https://cdn.scpwiki.com/theme/en/basalt/basaltlogo.svg|caption=**{{.table6}}**|width=100px]]
+[[/div]]
+
+[[div class=&#34;table6&#34;]]
+||~ {{.table6}} ||
+||= Text here ||
+||= Text here ||
+||= Text here ||
 [[/div]]
 
 [[/div]]
@@ -2341,7 +2403,7 @@ Body font is **Inter**.
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:40.585250.</em>
+    <em>Last updated 2026-04-17 00:56:59.905876.</em>
   
 </div>
 </body>

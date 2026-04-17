@@ -30,87 +30,101 @@
       
         <li>
           <pre><code>.earthworm {
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    margin: 1em 0;
-    clear: both;
-    z-index: 0;
-    min-height: 36px;
-}
-.earthworm &gt; div {
-    display: flex;
-    align-items: center;
-}
-.earthworm p {
-    margin: 0 0.8em;
-    text-align: center;
-    position: relative;
-    z-index: 5;
-}
-.earthworm .first {
-    border-top: 2px rgba(150,150,150,0.5) solid;
-    border-bottom: 2px rgba(150,150,150,0.5) solid;
-    position: relative;
-}
-.earthworm .first:not(.true) img {
-    height: 100%;
-    width: auto;
-    display: block;
-    position: absolute;
-    left: 0;
-    top: -1.5px;
-    border: 2.8px rgba(150,150,150,0.5) solid;
-    transform: scale(0.707) rotate(-45deg);
-    border-width: 2.8px 0 0 2.8px;
-    transform-origin: 0% 100%;
-}
-.earthworm .hub {
-    margin: -3px 0;
-    border: 3px rgba(150,150,150,0.5) solid;
-    background: linear-gradient(10deg, rgba(150,150,150,0.1), rgba(150,150,150,0));
-    position: relative;
-    z-index: 5;
-}
-.earthworm .hub.no a,
-.earthworm a[href=&#34;/&#34;] {
-    color: #333;
-    text-decoration: none;
-    cursor: text;
-    pointer-events: none;
-}
-.earthworm .last {
-    border-top: 2px rgba(150,150,150,0.5) solid;
-    border-bottom: 2px rgba(150,150,150,0.5) solid;
-    position: relative;
-}
-.earthworm .last:not(.true) img {
-    height: 100%;
-    width: auto;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: -1.5px;
-    border: 2.8px rgba(150,150,150,0.5) solid;
-    transform: scale(0.707) rotate(45deg);
-    border-width: 2.8px 2.8px 0 0;
-    transform-origin: 100% 100%;
-}
-.earthworm div.true {
-    width: 0;
-}
-.earthworm div.true p {
-    display: none;
+  --earthworm-segment-border-color: rgba(150,150,150,0.5);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 1em 0;
+  clear: both;
+  min-height: 36px;
 }
 .earthworm a {
-    word-break: normal;
+  word-break: normal;
+}
+.earthworm__previous, .earthworm__hub, .earthworm__next {
+  display: flex;
+  align-items: center;
+}
+.earthworm p {
+  margin: 0 0.8em;
+  text-align: center;
+}
+.earthworm__previous, .earthworm__next {
+  border-top: 2px solid var(--earthworm-segment-border-color);
+  border-bottom: 2px solid var(--earthworm-segment-border-color);
+  position: relative;
+}
+.earthworm__hub {
+  margin: -3px 0;
+  border: 3px solid var(--earthworm-segment-border-color);
+  background: linear-gradient(10deg, rgba(150,150,150,0.1), rgba(150,150,150,0));
+  position: relative;
+}
+.earthworm__arrowhead {
+  width: auto;
+  height: calc(100% + 2px);
+  top: -2.5px;
+  display: block;
+  position: absolute;
+  border-style: solid;
+  border-color: var(--earthworm-segment-border-color);
+}
+.earthworm__arrowhead--left {
+  left: 0;
+  transform: scale(0.707) rotate(-45deg);
+  border-width: 2.8px 0 0 2.8px;
+  transform-origin: 0% 100%;
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
+.earthworm__arrowhead--right {
+  right: 0;
+  transform: scale(0.707) rotate(45deg);
+  border-width: 2.8px 2.8px 0 0;
+  transform-origin: 100% 100%;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+}
+
+/* Hide segments that have url=/ AND (title= OR title=/) */
+.earthworm__previous:has(a[href=&#34;/&#34;]):is([data-title=&#34;\{\$previous-title\}&#34;], [data-title=&#34;/&#34;]),
+.earthworm__next:has(a[href=&#34;/&#34;]):is([data-title=&#34;\{\$next-title\}&#34;], [data-title=&#34;/&#34;]),
+.earthworm__hub:is([data-title=&#34;\{\$next-title\}&#34;], [data-title=&#34;/&#34;]) a[href=&#34;/&#34;] {
+  display: none;
+}
+
+/* Style href=/ links to look like plain text */
+.earthworm a[href=&#34;/&#34;] {
+  color: #333;
+  text-decoration: none;
+  cursor: text;
+  pointer-events: none;
+}
+
+/* Backwards compatibility: support old syntax */
+.earthworm--old-syntax-first-true .earthworm__previous,
+.earthworm--old-syntax-last-true .earthworm__next,
+.earthworm--old-syntax-hub-no .earthworm__hub a {
+  display: none;
 }</code></pre>
         </li>
       
         <li>
-          <pre><code>td { vertical-align: top; }
-.options table.wiki-content-table td { border: none; padding: 0.7em 1em; }</code></pre>
+          <pre><code>.croqstyle__documentation :is(h1, h2) {
+  font-family: Inter, sans-serif;
+  font-weight: bold;
+}
+.croqstyle__documentation h1 ~ h1 { margin-top: 6rem }
+.croqstyle__documentation h1 ~ h2 { margin-top: 3rem }
+
+.croqstyle__documentation #toc,
+.croqstyle__description {
+  border: thin solid #ddd;
+  padding: 1em;
+  background-color: transparent;
+}
+
+/* Don&#39;t show it on this page to stop people clicking on the broken links */
+.earthworm { display: none }</code></pre>
         </li>
       
     </ul>
@@ -119,7 +133,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>border: 1px solid #ddd; padding: 1em;</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -154,11 +168,27 @@
         </li>
       
         <li>
+          <pre><code>earthworm--old-syntax-first-{$first}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>earthworm--old-syntax-last-{$last}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>earthworm--old-syntax-hub-{$hub}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>{$class}</code></pre>
+        </li>
+      
+        <li>
           <pre><code>first</code></pre>
         </li>
       
         <li>
-          <pre><code>{$first}</code></pre>
+          <pre><code>earthworm__previous</code></pre>
         </li>
       
         <li>
@@ -166,7 +196,27 @@
         </li>
       
         <li>
+          <pre><code>earthworm__inner</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>earthworm__arrowhead</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>earthworm__arrowhead--left</code></pre>
+        </li>
+      
+        <li>
           <pre><code>arrow</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>earthworm__arrow</code></pre>
         </li>
       
         <li>
@@ -174,7 +224,7 @@
         </li>
       
         <li>
-          <pre><code>{$hub}</code></pre>
+          <pre><code>earthworm__hub</code></pre>
         </li>
       
         <li>
@@ -182,7 +232,7 @@
         </li>
       
         <li>
-          <pre><code>{$last}</code></pre>
+          <pre><code>earthworm__next</code></pre>
         </li>
       
         <li>
@@ -190,193 +240,324 @@
         </li>
       
         <li>
+          <pre><code>earthworm__inner</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>image</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>earthworm__arrowhead</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>earthworm__arrowhead--right</code></pre>
+        </li>
+      
+        <li>
           <pre><code>arrow</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>earthworm__arrow</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>croqstyle__description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>croqstyle__documentation</code></pre>
         </li>
       
         <li>
           <pre><code>code</code></pre>
         </li>
       
+        <li>
+          <pre><code>terminal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>croqstyle__description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>terminal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>terminal</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>terminal</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div class=&#34;earthworm&#34;]]
-[[div class=&#34;first {$first}&#34;]]
-  [[div class=&#34;inner&#34;]]
-    [[image https://scp-wiki.wdfiles.com/local--files/component%3Aearthworm/Transparent.gif]]
+    <pre><textarea class="page-source" readonly>[[div class=&#34;earthworm earthworm--old-syntax-first-{$first} earthworm--old-syntax-last-{$last} earthworm--old-syntax-hub-{$hub} {$class}&#34;]]
+[[div class=&#34;first earthworm__previous&#34; data-title=&#34;{$previous-title}&#34;]]
+  [[div class=&#34;inner earthworm__inner&#34;]]
+    [[image https://scp-wiki.wdfiles.com/local--files/component%3Aearthworm/Transparent.gif class=&#34;image earthworm__arrowhead earthworm__arrowhead--left&#34;]]
 
-    [[div class=&#34;arrow&#34;]]
+    [[div class=&#34;arrow earthworm__arrow&#34;]]
     [[/div]]
 
   [[/div]]
 
-  [{$previous-url} {$previous-title}]
+  [[[{$previous-url} | {$previous-title}]]]
 [[/div]]
-[[div class=&#34;hub {$hub}&#34;]]
-  [{$hub-url} {$hub-title}]
+[[div class=&#34;hub earthworm__hub&#34; data-title=&#34;{$hub-title}&#34;]]
+  [[[{$hub-url} | {$hub-title}]]]
 [[/div]]
-[[div class=&#34;last {$last}&#34;]]
-  [[div class=&#34;inner&#34;]]
-    [[image https://scp-wiki.wdfiles.com/local--files/component%3Aearthworm/Transparent.gif]]
+[[div class=&#34;last earthworm__next&#34; data-title=&#34;{$next-title}&#34;]]
+  [[div class=&#34;inner earthworm__inner&#34;]]
+    [[image https://scp-wiki.wdfiles.com/local--files/component%3Aearthworm/Transparent.gif class=&#34;image earthworm__arrowhead earthworm__arrowhead--right&#34;]]
 
-    [[div class=&#34;arrow&#34;]]
+    [[div class=&#34;arrow earthworm__arrow&#34;]]
     [[/div]]
 
   [[/div]]
 
-  [{$next-url} {$next-title}]
+  [[[{$next-url} | {$next-title}]]]
 [[/div]]
 [[/div]]
 
 [[module CSS]]
 .earthworm {
-    font-weight: bold;
-    display: flex;
-    justify-content: center;
-    align-items: stretch;
-    margin: 1em 0;
-    clear: both;
-    z-index: 0;
-    min-height: 36px;
-}
-.earthworm &gt; div {
-    display: flex;
-    align-items: center;
-}
-.earthworm p {
-    margin: 0 0.8em;
-    text-align: center;
-    position: relative;
-    z-index: 5;
-}
-.earthworm .first {
-    border-top: 2px rgba(150,150,150,0.5) solid;
-    border-bottom: 2px rgba(150,150,150,0.5) solid;
-    position: relative;
-}
-.earthworm .first:not(.true) img {
-    height: 100%;
-    width: auto;
-    display: block;
-    position: absolute;
-    left: 0;
-    top: -1.5px;
-    border: 2.8px rgba(150,150,150,0.5) solid;
-    transform: scale(0.707) rotate(-45deg);
-    border-width: 2.8px 0 0 2.8px;
-    transform-origin: 0% 100%;
-}
-.earthworm .hub {
-    margin: -3px 0;
-    border: 3px rgba(150,150,150,0.5) solid;
-    background: linear-gradient(10deg, rgba(150,150,150,0.1), rgba(150,150,150,0));
-    position: relative;
-    z-index: 5;
-}
-.earthworm .hub.no a,
-.earthworm a[href=&#34;/&#34;] {
-    color: #333;
-    text-decoration: none;
-    cursor: text;
-    pointer-events: none;
-}
-.earthworm .last {
-    border-top: 2px rgba(150,150,150,0.5) solid;
-    border-bottom: 2px rgba(150,150,150,0.5) solid;
-    position: relative;
-}
-.earthworm .last:not(.true) img {
-    height: 100%;
-    width: auto;
-    display: block;
-    position: absolute;
-    right: 0;
-    top: -1.5px;
-    border: 2.8px rgba(150,150,150,0.5) solid;
-    transform: scale(0.707) rotate(45deg);
-    border-width: 2.8px 2.8px 0 0;
-    transform-origin: 100% 100%;
-}
-.earthworm div.true {
-    width: 0;
-}
-.earthworm div.true p {
-    display: none;
+  --earthworm-segment-border-color: rgba(150,150,150,0.5);
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  margin: 1em 0;
+  clear: both;
+  min-height: 36px;
 }
 .earthworm a {
-    word-break: normal;
+  word-break: normal;
+}
+.earthworm__previous, .earthworm__hub, .earthworm__next {
+  display: flex;
+  align-items: center;
+}
+.earthworm p {
+  margin: 0 0.8em;
+  text-align: center;
+}
+.earthworm__previous, .earthworm__next {
+  border-top: 2px solid var(--earthworm-segment-border-color);
+  border-bottom: 2px solid var(--earthworm-segment-border-color);
+  position: relative;
+}
+.earthworm__hub {
+  margin: -3px 0;
+  border: 3px solid var(--earthworm-segment-border-color);
+  background: linear-gradient(10deg, rgba(150,150,150,0.1), rgba(150,150,150,0));
+  position: relative;
+}
+.earthworm__arrowhead {
+  width: auto;
+  height: calc(100% + 2px);
+  top: -2.5px;
+  display: block;
+  position: absolute;
+  border-style: solid;
+  border-color: var(--earthworm-segment-border-color);
+}
+.earthworm__arrowhead--left {
+  left: 0;
+  transform: scale(0.707) rotate(-45deg);
+  border-width: 2.8px 0 0 2.8px;
+  transform-origin: 0% 100%;
+  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+}
+.earthworm__arrowhead--right {
+  right: 0;
+  transform: scale(0.707) rotate(45deg);
+  border-width: 2.8px 2.8px 0 0;
+  transform-origin: 100% 100%;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%);
+}
+
+/* Hide segments that have url=/ AND (title= OR title=/) */
+.earthworm__previous:has(a[href=&#34;/&#34;]):is([data-title=&#34;\{\$previous-title\}&#34;], [data-title=&#34;/&#34;]),
+.earthworm__next:has(a[href=&#34;/&#34;]):is([data-title=&#34;\{\$next-title\}&#34;], [data-title=&#34;/&#34;]),
+.earthworm__hub:is([data-title=&#34;\{\$next-title\}&#34;], [data-title=&#34;/&#34;]) a[href=&#34;/&#34;] {
+  display: none;
+}
+
+/* Style href=/ links to look like plain text */
+.earthworm a[href=&#34;/&#34;] {
+  color: #333;
+  text-decoration: none;
+  cursor: text;
+  pointer-events: none;
+}
+
+/* Backwards compatibility: support old syntax */
+.earthworm--old-syntax-first-true .earthworm__previous,
+.earthworm--old-syntax-last-true .earthworm__next,
+.earthworm--old-syntax-hub-no .earthworm__hub a {
+  display: none;
 }
 [[/module]]
 
 [[iftags +component]]
 
------
-
 [[include :scp-wiki:component:croqstyle -=- ]]
+[[module css]]
+.croqstyle__documentation :is(h1, h2) {
+  font-family: Inter, sans-serif;
+  font-weight: bold;
+}
+.croqstyle__documentation h1 ~ h1 { margin-top: 6rem }
+.croqstyle__documentation h1 ~ h2 { margin-top: 3rem }
 
-[[module CSS]]
-td { vertical-align: top; }
-.options table.wiki-content-table td { border: none; padding: 0.7em 1em; }
+.croqstyle__documentation #toc,
+.croqstyle__description {
+  border: thin solid #ddd;
+  padding: 1em;
+  background-color: transparent;
+}
+
+/* Don&#39;t show it on this page to stop people clicking on the broken links */
+.earthworm { display: none }
 [[/module]]
 
-[[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
-+ What this is
+[[div class=&#34;croqstyle__description&#34;]]
+Earthworm Series Navigator is a decent-looking navigator for any series of articles, originally created by [[*user Croquembouche]] for the 2018 Doomsday contest.
 
-A visually improved navigator for any series of articles.
+It looks like this:
 
-Created by [[*user Croquembouche]] for the purposes of the 2018 Doomsday contest, though of course anyone is free to use it.
+[[=image https://scp-wiki.wikidot.com/local--files/component:earthworm/ZVOFu08.webp]]
 
+Don&#39;t like worms? Check out the [[[component:advanced-navigation-toolbar|ANT Series Navigator]]]!
+[[/div]]
+
+[[div class=&#34;croqstyle__documentation&#34;]]
 + Usage
 
 On any wiki:
 
-[[div class=&#34;code&#34;]]
-##blue|**[[include :scp-wiki:component:earthworm**##
-##blue|**|**## ##green|first####blue|**=**##false ##blue|**|**## ##green|last####blue|**=**##false ##blue|**|**## ##green|hub####blue|**=**##yes
-##blue|**|**## ##green|previous-url####blue|**=**##URL_OF_PREVIOUS ##blue|**|**## ##green|previous-title####blue|**=**##TITLE OF PREVIOUS
-##blue|**|**## ##green|next-url####blue|**=**##URL_OF_NEXT ##blue|**|**## ##green|next-title####blue|**=**##TITLE OF NEXT
-##blue|**|**## ##green|hub-url####blue|**=**##URL_OF_HUB ##blue|**|**## ##green|hub-title####blue|**=**##TITLE OF HUB
-##blue|**]]**##
+[[div class=&#34;code terminal&#34;]]
+##var(--c-keyword)|[[####var(--c-operator)|include## ##var(--c-value)|:scp-wiki:component:earthworm##
+##var(--c-keyword)||## ##var(--c-builtin)|previous-url## ##var(--c-keyword)|=## ##var(--c-symbol)|URL_OF_PREVIOUS##
+##var(--c-keyword)||## ##var(--c-builtin)|previous-title## ##var(--c-keyword)|=## ##var(--c-string)|Title of previous page##
+##var(--c-keyword)||## ##var(--c-builtin)|next-url## ##var(--c-keyword)|=## ##var(--c-symbol)|URL_OF_NEXT##
+##var(--c-keyword)||## ##var(--c-builtin)|next-title## ##var(--c-keyword)|=## ##var(--c-string)|Title of text page##
+##var(--c-keyword)||## ##var(--c-builtin)|hub-url## ##var(--c-keyword)|=## ##var(--c-symbol)|URL_OF_HUB##
+##var(--c-keyword)||## ##var(--c-builtin)|hub-title## ##var(--c-keyword)|=## ##var(--c-string)|Title of hub page##
+##var(--c-keyword)|]]##
 [[/div]]
 
-**Don&#39;t remove any of the pipe symbols! (##blue||##)**
-
-You should have 3 articles that you need to link to:
+You should have up to 3 articles that you need to link to:
 # The previous article in the series.
 # The next article in the series.
 # The hub page for the series.
 
-++ Previous article
+(If you need more, e.g. splitting into 2 branches, [[[component:advanced-navigation-toolbar | ANT Series Navigator]]] might have you covered.)
 
-Replace {{URL_OF_PREVIOUS}} with the URL for the previous page in the series. For example, {{@@http://www.scp-wiki.net/scp-001@@}} or {{/scp-001}}.
-Replace {{TITLE OF PREVIOUS}} with the name of the previous page.
+For these examples, let&#39;s pretend you are adding Earthworm to SCP-002. Your previous page is SCP-001, then next page is SCP-003, and the hub page is SCP Series 1.
 
-If the current page is the first page in the series, then there is no previous page. Leave both of the above fields blank by setting them to {{/}} //(e.g. {{##green|previous-url####blue|**=**##/}})//, and set {{##green|first##}} to {{true}}.
+++ Previous page
 
-++ Next article
+**If there is a previous page:**
 
-Replace {{URL_OF_NEXT}} with the URL for the next page in the series. For example, {{@@http://www.scp-wiki.net/scp-003@@}} or {{/scp-003}}.
-Replace {{TITLE OF NEXT}} with the name of that page.
+Replace {{URL_OF_PREVIOUS}} with the URL for the previous page in the series. You can use the full URL, {{@@https://scp-wiki.wikidot.com/scp-001@@}}, or just the slug, {{scp-001}}.
 
-If the current page is the last page in the series, then there is no next page. Leave both of the above fields blank by setting them to {{/}} //(e.g. {{##green|next-url####blue|**=**##/}})//,  and set {{##green|last##}} to {{true}}.
+Replace {{Title of previous page}} with the title of the previous page.
+
+**If there isn&#39;t (i.e. this is the first page in the series):**
+
+Disable the previous page link by setting its URL to {{/}} //(i.e. {{previous-url=/}})//. The title will show as plain text. If you don&#39;t want any text, omit the {{previous-title}} field or leave it empty.
+
+++ Next page
+
+**If there is a next article:**
+
+Replace {{URL_OF_NEXT}} with the URL for the next page in the series. You can use the full URL, {{@@https://scp-wiki.wikidot.com/scp-003@@}}, or just the slug, {{scp-003}}.
+
+Replace {{Title of next page}} with the title of the next page.
+
+**If there isn&#39;t (i.e. this is the last page in the series):**
+
+Disable the next page link by setting its URL to {{/}} //(i.e. {{next-url=/}})//. The title will show as plain text (e.g. &#34;Coming soon...&#34;). If you don&#39;t want any text, omit the {{next-title}} field or leave it empty.
 
 ++ Hub page
 
-Replace {{URL_OF_HUB}} with the URL for the series&#39; hub page. For example, {{@@http://www.scp-wiki.net/scp-series@@}} or {{/scp-series}}.
-Replace {{TITLE OF HUB}} with the name of that page.
+**If there is a hub page:**
 
-If your series does not currently have a hub page, then set the parameter named {{##green|hub##}} to {{no}}. Replace {{TITLE OF HUB}} with whatever you want your series to be called, and set {{##green|hub-url##}} to {{/}}. If you make a hub page later, just change {{##green|hub##}} to {{yes}} and fill in the URL.
+Replace {{URL_OF_HUB}} with the URL for the hub of the series. You can use the full URL, {{@@https://scp-wiki.wikidot.com/scp-series-1@@}}, or just the slug, {{scp-series-1}}.
 
-[[collapsible show=&#34;+ What it looks like&#34;]]
-Chrome, ChromeOS:
-[[image https://i.imgur.com/ZVOFu08.png]]
-Firefox, Ubuntu:
-[[image https://i.imgur.com/xcvuQGZ.png]]
-Brave, Windows:
-[[image https://i.imgur.com/709odvg.png]]
-[[/collapsible]]
+Replace {{Title of hub page}} with the title of the hub page.
 
-To see what other pages use Earthworm, head to the bottom of the this page, open  &#34;+ Options&#34; and then &#34;Backlinks&#34;.
+**If there isn&#39;t a hub page:**
+
+Disable the hub page link by setting its URL to {{/}} //(i.e. {{hub-url=/}})//. The title will show as plain text. If you don&#39;t want any text, set the title to {{/}} as well, but the little box in the middle of the earthworm will still appear.
+
+[[div class=&#34;croqstyle__description&#34;]]
++ Examples
+
+++ Page in the middle of a series
+
+[[=image earthworm-example-middle.png]]
+
+[[div class=&#34;code terminal&#34;]]
+##var(--c-keyword)|[[####var(--c-operator)|include## ##var(--c-value)|:scp-wiki:component:earthworm##
+##var(--c-keyword)||## ##var(--c-builtin)|previous-url####var(--c-keyword)| = ####var(--c-symbol)|scp-001##
+##var(--c-keyword)||## ##var(--c-builtin)|previous-title####var(--c-keyword)| = ####var(--c-string)|SCP-001##
+##var(--c-keyword)||## ##var(--c-builtin)|next-url####var(--c-keyword)| = ####var(--c-symbol)|scp-003##
+##var(--c-keyword)||## ##var(--c-builtin)|next-title####var(--c-keyword)| = ####var(--c-string)|SCP-003##
+##var(--c-keyword)||## ##var(--c-builtin)|hub-url####var(--c-keyword)| = ####var(--c-symbol)|scp-series-1##
+##var(--c-keyword)||## ##var(--c-builtin)|hub-title####var(--c-keyword)| = ####var(--c-string)|SCP Series 1##
+##var(--c-keyword)|]]##
+[[/div]]
+
+++ Page at the start of a series
+
+[[=image earthworm-example-start.png]]
+
+[[div class=&#34;code terminal&#34;]]
+##var(--c-keyword)|[[####var(--c-operator)|include## ##var(--c-value)|:scp-wiki:component:earthworm##
+##var(--c-keyword)||## ##var(--c-builtin)|previous-url####var(--c-keyword)| = ####var(--c-symbol)|/##
+##var(--c-keyword)||## ##var(--c-builtin)|next-url####var(--c-keyword)| = ####var(--c-symbol)|introductory-antimemetics##
+##var(--c-keyword)||## ##var(--c-builtin)|next-title####var(--c-keyword)| = ####var(--c-string)|Introductory Antimemetics##
+##var(--c-keyword)||## ##var(--c-builtin)|hub-url####var(--c-keyword)| = ####var(--c-symbol)|antimemetics-division-hub##
+##var(--c-keyword)||## ##var(--c-builtin)|hub-title####var(--c-keyword)| = ####var(--c-string)|Antimemetics Division##
+##var(--c-keyword)|]]##
+[[/div]]
+
+++ Page at the end of a series, with a teaser for more
+
+[[=image earthworm-example-end-teaser.png]]
+
+[[div class=&#34;code terminal&#34;]]
+##var(--c-keyword)|[[####var(--c-operator)|include## ##var(--c-value)|:scp-wiki:component:earthworm##
+##var(--c-keyword)||## ##var(--c-builtin)|previous-url####var(--c-keyword)| = ####var(--c-symbol)|a-gullet-made-of-the-flesh-of-a-swan##
+##var(--c-keyword)||## ##var(--c-builtin)|previous-title####var(--c-keyword)| = ####var(--c-string)|A Gullet, Made of the Flesh of a Swan##
+##var(--c-keyword)||## ##var(--c-builtin)|next-url####var(--c-keyword)| = ####var(--c-symbol)|/##
+##var(--c-keyword)||## ##var(--c-builtin)|next-title####var(--c-keyword)| = ####var(--c-string)|Coming soon...##
+##var(--c-keyword)||## ##var(--c-builtin)|hub-url####var(--c-keyword)| = ####var(--c-symbol)|end-of-death-hub#lookout-281##
+##var(--c-keyword)||## ##var(--c-builtin)|hub-title####var(--c-keyword)| = ####var(--c-string)|LOOKOUT 281##
+##var(--c-keyword)|]]##
+[[/div]]
+[[/div]]
 [[/div]]
 
 [[/iftags]]</textarea></pre>
@@ -386,7 +567,7 @@ To see what other pages use Earthworm, head to the bottom of the this page, open
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.156727.</em>
+    <em>Last updated 2026-04-17 00:56:52.975111.</em>
   
 </div>
 </body>

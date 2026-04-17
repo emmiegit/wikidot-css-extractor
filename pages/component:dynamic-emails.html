@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Dynamic Emails Component</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Dynamic Emails Component</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/component:dynamic-emails" target="_blank">Dynamic Emails Component</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>
+.help {
+    display: flex;
+    align-content: stretch;
+    padding-top: 1em;
+}
+
+.help blockquote {
+    margin: 0;
+    font-size: 85%;
+}
+
+.help blockquote &gt; p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin-right: 0;
+    min-height: 2rem;
+    margin: 0;
+}
+
+.help blockquote &gt; p * {
+    margin: 0 0.1rem;
+    height: 100%;
+}
+
+.help blockquote:nth-of-type(1) {
+    background: transparent;
+    border: unset;
+    box-shadow: unset;
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
+}
+
+.help blockquote:nth-of-type(1) &gt; p {
+    justify-content: flex-end;
+}
+
+.help blockquote:nth-of-type(2) {
+    margin-left: 1em;
+    width: 60%;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+/* --- BASE CONTAINER CLASS --- */
+.dyna-email-container,
+.dyna-email-container *{
+   box-sizing: border-box;
+   margin: auto;
+   margin-top: 10px;
+   margin-bottom:10px;
+}
+
+.dyna-email-container{
+    width: 85%;
+    display: flex;
+    position: relative;
+}
+
+/* --- MAIN EMAIL CLASS --- */
+.dyna-email{
+   display: grid;
+   grid-template-areas:
+      &#34;header-box&#34;
+      &#34;content-box&#34;
+      &#34;bottom-box&#34;
+      &#34;attachment-box&#34;;
+   width: 100%;
+   border: solid 3px #444444;
+   position: relative;
+}
+
+/* --- EMAIL HEADER BOX &amp; CONTENTS --- */
+.dyna-email &gt; .header-box{
+   display: grid;
+   grid-template-areas:
+      &#34;top-left-box top-middle-box top-right-box&#34;;
+   width: 100%;
+   min-height: 100px;
+   grid-template-columns: 1fr 4fr 1fr;
+   grid-template-rows: 1fr;
+   justify-items: stretch;
+   margin: 0 0 0 0;
+}
+
+.header-box .top-left-box{
+   grid-area: top-left-box;
+   grid-template-areas:
+      &#34;from-box&#34;
+      &#34;to-box&#34;
+      &#34;cc-box&#34;
+      &#34;subject-box&#34;;
+   grid-template-rows: 1fr 1fr 1fr 1fr;
+   justify-items: end;
+   padding-left: 2em;
+   margin-bottom: 0px;
+}
+
+.top-left-box &gt; .from-box, .to-box, .cc-box, .subject-box{
+   display: block;
+   text-align: right;
+   font-weight: 700;
+   margin-bottom: 0px;
+   margin-top: 5px;
+}
+
+.top-left-box &gt; .from-box{
+   grid-area: from-box;
+}
+
+.top-left-box &gt;.to-box{
+   grid-area: to-box;
+}
+
+.top-left-box &gt; .cc-box{
+   grid-area: cc-box;
+}
+
+.top-left-box &gt; .subject-box{
+   grid-area: subject-box;
+}
+
+.header-box &gt; .top-middle-box{
+   grid-area: top-middle-box;
+      grid-template-areas:
+         &#34;from-name-box&#34;
+         &#34;to-name-box&#34;
+         &#34;cc-text-box&#34;
+         &#34;subject-text-box&#34;;
+   grid-template-rows: 1fr 1fr 1fr 1fr;
+   justify-items: start;
+   margin-left: 5px;
+   margin-bottom: 0px;
+}
+
+.top-middle-box &gt; .from-name-box, .to-name-box, .cc-text-box, .subject-text-box{
+   display: block;
+   text-align: left;
+   margin-top: 5px;
+   margin-bottom: 0px;
+   text-wrap: balance;
+}
+
+.top-middle-box &gt; .from-name-box, .to-name-box, .cc-text-box{
+   color: #b01;
+}
+
+.top-middle-box &gt; .from-name-box{
+   grid-area: from-name-box;
+}
+
+.top-middle-box &gt; .to-name-box{
+   grid-area: to-name-box;
+}
+
+.top-middle-box &gt; .cc-text-box{
+   grid-area: cc-text-box;
+}
+
+.top-middle-box &gt; .subject-text-box{
+   grid-area: subject-text-box;
+}
+
+.header-box &gt; .top-right-box{
+   width: 100%;
+   grid-area: top-right-box;
+   display: block;
+   background-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/the-great-hippo/SCP_icon%281%29.png&#34;);
+   background-size: 75px 75px;
+   background-position: right center;
+   background-repeat: no-repeat;
+   margin-top: 1em;
+   margin-right: 1em;
+   margin-left: -1em;
+}
+
+@media screen and (max-width: 800px){
+   .header-box &gt; .top-right-box{
+      min-width: 75px;
+      margin-left: -3em;
+}
+   .header-box &gt; .top-left-box{
+      padding-left: 1em;
+}
+}
+
+/* --- EMAIL CONTENT BOX --- */
+.dyna-email &gt; .content-box{
+   width: 100%;
+   display: block;
+   padding: 0em 1em;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   text-align: left;
+   line-height: 1.5;
+}
+
+.content-box &gt; hr{
+   margin: 1em 0em;
+   height: 2px;
+   background-color: black;
+}
+
+/* --- EMAIL FOOTER BOX &amp; CONTENTS --- */
+.dyna-email &gt; .footer-box{
+   display: grid;
+   grid-template-areas:
+      &#34;bottom-left-box bottom-right-box&#34;;
+   width: 100%;
+   grid-template-columns: 2fr 1fr;
+   grid-template-rows: 1fr;
+   margin: 2em 0 1.5em 0;
+}
+
+.footer-box &gt; .bottom-left-box{
+   display: grid;
+   grid-area: bottom-left-box;
+   grid-template-areas:
+      &#34;name-box&#34;
+      &#34;title-box&#34;
+      &#34;sign-off-box&#34;;
+   grid-template-rows: 1fr 1fr 1fr;
+   justify-items: start;
+   margin-left: 2em;
+   padding-left: 1em;
+   border-left: 2px solid black;
+}
+
+.bottom-left-box &gt; .name-box, .title-box, .sign-off-box{
+   display: block;
+   text-align: left;
+   width: 100%;
+   margin: 2px 0;
+}
+
+.bottom-left-box &gt; .name-box{
+   grid-area: name-box;
+   margin-top: 3px;
+}
+
+.bottom-left-box &gt; .title-box{
+   grid-area: title-box;
+}
+
+.bottom-left-box &gt; .sign-off-box{
+   grid-area: sign-off-box;
+}
+
+.footer-box &gt; .bottom-right-box{
+   width: 100%;
+   max-height: 100px;
+   grid-area: bottom-right-box;
+   display: block;
+   margin-top: 0;
+   margin-bottom: 0;
+   align-content: center;
+   justify-items: center;
+}
+
+.footer-box &gt; .bottom-right-box img{
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+   margin: 0;
+}
+
+/* --- EMAIL ATTACHMENT BOX --- */
+.dyna-email &gt; .attachment-box{
+   display: block;
+   grid-area: attachment-box;
+   width: 85%;
+   font-weight: 700;
+   text-align: center;
+   justify-self: center;
+   border-top: 3px solid black;
+   margin: 0 0 5px 0;
+}
+
+/* Hide CC Box if &#39;none&#39; */
+.cc-text-box.cc-none {
+    display: none;
+}
+.cc-box.cc-none {
+    display: none;
+}
+.top-left-box.cc-none {
+   margin-top: 20px;
+}
+.top-middle-box.cc-none {
+   margin-top: 20px;
+}
+
+/* Hide Title if &#39;none&#39; */
+.title-box.title-none {
+    display:none;
+    margin:0px;
+}
+
+.footer-box &gt; .bottom-left-box:has(.title-box.title-none) {
+       grid-template-areas:
+      &#34;name-box&#34;
+      &#34;sign-off-box&#34;;
+   grid-template-rows: 1fr 1fr;
+}
+
+.footer-box.name-noFooter {
+    display: none;
+}
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>background: #FFE36E;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-radius: 10px; margin: 10px 10px 0 10px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-radius: 10px; margin: 10px 10px 0 10px;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>(none)</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>help</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>help</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dyna-email-container</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dyna-email</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>header-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top-left-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cc-{$cc}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>from-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>to-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cc-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cc-{$cc}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>subject-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top-middle-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cc-{$cc}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>from-name-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>to-name-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cc-text-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>cc-{$cc}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>subject-text-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top-right-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>footer-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-{$name}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bottom-left-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title-{$title}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-{$name}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title-{$title}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sign-off-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bottom-right-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>footer-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bottom-left-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sign-off-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bottom-right-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>attachment-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>footer-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bottom-left-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>name-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sign-off-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>bottom-right-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>attachment-box</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[iftags +component]]
+
+[[module css]]
+
+.help {
+    display: flex;
+    align-content: stretch;
+    padding-top: 1em;
+}
+
+.help blockquote {
+    margin: 0;
+    font-size: 85%;
+}
+
+.help blockquote &gt; p {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+    margin-right: 0;
+    min-height: 2rem;
+    margin: 0;
+}
+
+.help blockquote &gt; p * {
+    margin: 0 0.1rem;
+    height: 100%;
+}
+
+.help blockquote:nth-of-type(1) {
+    background: transparent;
+    border: unset;
+    box-shadow: unset;
+    text-align: right;
+    margin-right: 0;
+    padding: 0;
+}
+
+.help blockquote:nth-of-type(1) &gt; p {
+    justify-content: flex-end;
+}
+
+.help blockquote:nth-of-type(2) {
+    margin-left: 1em;
+    width: 60%;
+}
+[[/module]]
+
+[[&gt;]]
+[[module Rate]]
+[[/&gt;]]
+
+[[=]]
++ What is This?
+[[/=]]
+
+[[div class=&#34;blockquote&#34;]]
+This is a component by [[*user Queerious]], that allows you to include emails within your article that dynamically format based on screen size. This also comes with branding for the Foundation and a place to include a profile picture for your characters.
+
+With this component, you get the joy of clean code to define your emails, all while avoiding having to interact with any tables!
+
+To use this component, follow the steps below!
+[[/div]]
+
+-----
+[[=]]
+++ **__Step 1 - The Code__**
+[[/=]]
+[[div class=&#34;blockquote&#34;]]
+At the top of your page, you will need to include the following line of code:
+
+[[div class=&#34;code&#34;]]
+@@[[include :scp-wiki:component:dynamic-emails code=--]]@@
+[[/div]]
+
+The above line only needs to be included **once** at the top of your article.
+[[/div]]
+
+-----
+[[=]]
+++ **__Step 2 - The Email__**
+[[/=]]
+[[div class=&#34;blockquote&#34;]]
+Wherever you would like to place an email in your work, you need to include the following code in total:
+
+[[div class=&#34;code&#34;]]
+@@[[include :scp-wiki:component:dynamic-emails start=--@@
+@@|from= sender@scp.int@@
+@@|to= receiver@scp.int@@
+@@|cc= copied@scp.int@@
+@@|subject= Email Subject@@
+@@]]@@
+@@This is where the raw text goes, the entire body of your email. You can just write this as desired, including custom **formatting** or ##red|color## changes, and there should be no issues. @@
+@@[[include :scp-wiki:component:dynamic-emails end=--@@
+@@|name= Sender&#39;s Name@@
+@@|title= Foundation Researcher@@
+@@|signoff= Secure, Contain, Protect@@
+@@|signoff-icon= https://scp-wiki.wikidot.com/local--files/component:dynamic-emails/Default_Profile_Icon.png@@
+@@]]@@
+[[/div]]
+
+There&#39;s a lot going on here, so let&#39;s break it down some more.
+
+[[/div]]
+
+[[=]]
+++ **__Step 2.1: The Start Include__**
+[[/=]]
+
+[[div_ class=&#34;help&#34;]]
+&gt; Include for the start of the email: ↦
+&gt; 
+&gt; Text that appears in the &#39;from&#39; field: ↦
+&gt; 
+&gt; Text that appears in the &#39;to&#39; field ↦
+&gt; 
+&gt; Text that appears in the &#39;CC&#39; field  ↦
+&gt; 
+&gt; Text that appears in the &#39;Subject&#39; field  ↦
+&gt; 
+&gt; The end for the start include. ↦
+
+&gt; @@[[include :scp-wiki:component:dynamic-emails start=--@@
+&gt; 
+&gt; |from= @@sender@scp.int@@
+&gt; 
+&gt; |to= @@receiver@scp.int@@
+&gt; 
+&gt; |cc= @@copied@scp.int@@
+&gt; 
+&gt; |subject= Email Subject
+&gt; 
+&gt; @@]]@@
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+You are able to put any text into the above fields, with the following restrictions:
+* You are unable to format the text in the from/to/cc field using CSS, due to it being parsed as plaintext, to prevent a hyperlink from being created.
+
+To modify the color of the text in those fields, use the following code within your CSS Module:
+[[div class=&#34;code&#34;]]
+@@.top-middle-box &gt; .from-name-box, .to-name-box, .cc-text-box{@@
+   @@color: #b01;@@
+@@}@@
+[[/div]]
+
+Any color can be used. To change a single field, delete the other &#39;name-box&#39; references.
+
+[[/div]]
+
+[[div class=&#34;blockquote&#34; style=&#34;background: #FFE36E;&#34;]]
+= **NOTE: If you do not want to have a CC field, simply enter:**
+[[div class=&#34;code&#34;]]
+@@|cc=none@@
+[[/div]]
+
+This will hide the fields.
+[[/div]]
+
+[[=]]
+++ **__Step 2.2: The Email Text__**
+[[/=]]
+
+[[div class=&#34;blockquote&#34;]]
+The email body itself goes here. This can take any formatting for the text, as well as hyperlinks and more. You can also include other divs and anything else you want! (Can&#39;t 100% promise it will work, but it should!
+
+This section should go right after the **@@]]@@** from the start include as such:
+
+[[div class=&#34;code&#34;]]
+This is where the raw text goes. You can write whatever you want here, and it should format it correctly! There&#39;s nothing else special you need to do, this will just go between the start and end includes!
+[[/div]]
+[[/div]]
+
+[[=]]
+++ **__Step 2.3: The End Include__**
+[[/=]]
+
+[[div_ class=&#34;help&#34;]]
+&gt; Include for the ending of the email: ↦
+&gt; 
+&gt; The sender&#39;s name in the signature: ↦
+&gt; 
+&gt; The sender&#39;s title in the signature: ↦
+&gt; 
+&gt; The sign-off in the signature  ↦
+&gt; 
+&gt; URL Link to the profile image ↦
+&gt; 
+&gt; The end for the include. ↦
+
+&gt; @@[[include :scp-wiki:component:dynamic-emails end=--@@
+&gt; 
+&gt; |name= Sender&#39;s Name
+&gt; 
+&gt; |title= Foundation Researcher
+&gt; 
+&gt; |signoff= Secure, Contain, Protect
+&gt; 
+&gt; |signoff-icon= @@https://URL.website@@
+&gt; 
+&gt; @@]]@@
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+You are able to put any text into the name, title and signoff fields, with standard CSS formatting.
+
+The &#39;signoff-icon&#39; specifically takes an image URL, and will resize it to fit in the given space. For convenience, a default blank profile icon is included here:
+
+[[div class=&#34;code&#34;]]
+@@https://scp-wiki.wikidot.com/local--files/component:dynamic-emails/Default_Profile_Icon.png@@
+[[/div]]
+
+If you do not want anything to appear, instead include this link, which is a transparent image, as leaving this field empty causes the module to display incorrectly.
+
+[[div class=&#34;code&#34;]]
+@@https://scp-wiki.wikidot.com/local--files/component:dynamic-emails/transparent.png@@
+[[/div]]
+
+[[/div]]
+[[=]]
+If you did everything right, you will have an email that looks something like this:
+[[div class=&#34;blockquote&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/component%3Adynamic-emails/ExampleEmail.PNG]]
+[[/div]]
+[[/=]]
+
+-----
+
+[[=]]
+++ **__Step Bonus: Attachment Variant__**
+[[/=]]
+
+[[div class=&#34;blockquote&#34;]]
+As an alternative option, this component also supports emails with image attachments! To give your email an attachment, instead of following &#39;Step 2.3: The End Include&#39;, use the following code block:
+
+[[div class=&#34;code&#34;]]
+**@@[[include :scp-wiki:component:dynamic-emails@@ attachment-end=@@--@@**
+@@|name= Name@@
+@@|title= Title@@
+@@|signoff= Secure, Contain, Protect@@
+@@|signoff-icon= https://scp-wiki.wikidot.com/local--files/component:dynamic-emails/Default_Profile_Icon.png@@
+**@@|attachment= https://scp-wiki.wikidot.com/local--files/component:dynamic-emails/Default_Profile_Icon.png@@**
+@@]]@@
+[[/div]]
+
+The main differences have been bolded in the example above, but the only element you need to pay attention to is the **&#34;|attachment=&#34;** field. This field takes any image URL, and will appear as below:
+
+[[image https://scp-wiki.wikidot.com/local--files/component:dynamic-emails/EmailAttachmentClosed.PNG]]
+
+The attachment is a collapsible, that when clicked, reveals the attached image:
+
+[[image https://scp-wiki.wikidot.com/local--files/component:dynamic-emails/EmailAttachmentOpen.PNG]]
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[=]]
++++ **__One Last Thing...__**
+[[/=]]
+This component is should be compatible with any Sigma, Basalt and BHL themes! If you run into technical issues, please let [[*user Queerious]] know!
+@@ @@
+[[/div]]
+[[=]]
++ ##black|Source Code in Page Source##
+[[/=]]
+@@ @@
+[[/iftags]]
+
+
+[[iftags -component]]
+
+[!-- {$code}]
+[[module css]]
+
+/* --- BASE CONTAINER CLASS --- */
+.dyna-email-container,
+.dyna-email-container *{
+   box-sizing: border-box;
+   margin: auto;
+   margin-top: 10px;
+   margin-bottom:10px;
+}
+
+.dyna-email-container{
+    width: 85%;
+    display: flex;
+    position: relative;
+}
+
+/* --- MAIN EMAIL CLASS --- */
+.dyna-email{
+   display: grid;
+   grid-template-areas:
+      &#34;header-box&#34;
+      &#34;content-box&#34;
+      &#34;bottom-box&#34;
+      &#34;attachment-box&#34;;
+   width: 100%;
+   border: solid 3px #444444;
+   position: relative;
+}
+
+/* --- EMAIL HEADER BOX &amp; CONTENTS --- */
+.dyna-email &gt; .header-box{
+   display: grid;
+   grid-template-areas:
+      &#34;top-left-box top-middle-box top-right-box&#34;;
+   width: 100%;
+   min-height: 100px;
+   grid-template-columns: 1fr 4fr 1fr;
+   grid-template-rows: 1fr;
+   justify-items: stretch;
+   margin: 0 0 0 0;
+}
+
+.header-box .top-left-box{
+   grid-area: top-left-box;
+   grid-template-areas:
+      &#34;from-box&#34;
+      &#34;to-box&#34;
+      &#34;cc-box&#34;
+      &#34;subject-box&#34;;
+   grid-template-rows: 1fr 1fr 1fr 1fr;
+   justify-items: end;
+   padding-left: 2em;
+   margin-bottom: 0px;
+}
+
+.top-left-box &gt; .from-box, .to-box, .cc-box, .subject-box{
+   display: block;
+   text-align: right;
+   font-weight: 700;
+   margin-bottom: 0px;
+   margin-top: 5px;
+}
+
+.top-left-box &gt; .from-box{
+   grid-area: from-box;
+}
+
+.top-left-box &gt;.to-box{
+   grid-area: to-box;
+}
+
+.top-left-box &gt; .cc-box{
+   grid-area: cc-box;
+}
+
+.top-left-box &gt; .subject-box{
+   grid-area: subject-box;
+}
+
+.header-box &gt; .top-middle-box{
+   grid-area: top-middle-box;
+      grid-template-areas:
+         &#34;from-name-box&#34;
+         &#34;to-name-box&#34;
+         &#34;cc-text-box&#34;
+         &#34;subject-text-box&#34;;
+   grid-template-rows: 1fr 1fr 1fr 1fr;
+   justify-items: start;
+   margin-left: 5px;
+   margin-bottom: 0px;
+}
+
+.top-middle-box &gt; .from-name-box, .to-name-box, .cc-text-box, .subject-text-box{
+   display: block;
+   text-align: left;
+   margin-top: 5px;
+   margin-bottom: 0px;
+   text-wrap: balance;
+}
+
+.top-middle-box &gt; .from-name-box, .to-name-box, .cc-text-box{
+   color: #b01;
+}
+
+.top-middle-box &gt; .from-name-box{
+   grid-area: from-name-box;
+}
+
+.top-middle-box &gt; .to-name-box{
+   grid-area: to-name-box;
+}
+
+.top-middle-box &gt; .cc-text-box{
+   grid-area: cc-text-box;
+}
+
+.top-middle-box &gt; .subject-text-box{
+   grid-area: subject-text-box;
+}
+
+.header-box &gt; .top-right-box{
+   width: 100%;
+   grid-area: top-right-box;
+   display: block;
+   background-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/the-great-hippo/SCP_icon%281%29.png&#34;);
+   background-size: 75px 75px;
+   background-position: right center;
+   background-repeat: no-repeat;
+   margin-top: 1em;
+   margin-right: 1em;
+   margin-left: -1em;
+}
+
+@media screen and (max-width: 800px){
+   .header-box &gt; .top-right-box{
+      min-width: 75px;
+      margin-left: -3em;
+}
+   .header-box &gt; .top-left-box{
+      padding-left: 1em;
+}
+}
+
+/* --- EMAIL CONTENT BOX --- */
+.dyna-email &gt; .content-box{
+   width: 100%;
+   display: block;
+   padding: 0em 1em;
+   margin-top: 0px;
+   margin-bottom: 0px;
+   text-align: left;
+   line-height: 1.5;
+}
+
+.content-box &gt; hr{
+   margin: 1em 0em;
+   height: 2px;
+   background-color: black;
+}
+
+/* --- EMAIL FOOTER BOX &amp; CONTENTS --- */
+.dyna-email &gt; .footer-box{
+   display: grid;
+   grid-template-areas:
+      &#34;bottom-left-box bottom-right-box&#34;;
+   width: 100%;
+   grid-template-columns: 2fr 1fr;
+   grid-template-rows: 1fr;
+   margin: 2em 0 1.5em 0;
+}
+
+.footer-box &gt; .bottom-left-box{
+   display: grid;
+   grid-area: bottom-left-box;
+   grid-template-areas:
+      &#34;name-box&#34;
+      &#34;title-box&#34;
+      &#34;sign-off-box&#34;;
+   grid-template-rows: 1fr 1fr 1fr;
+   justify-items: start;
+   margin-left: 2em;
+   padding-left: 1em;
+   border-left: 2px solid black;
+}
+
+.bottom-left-box &gt; .name-box, .title-box, .sign-off-box{
+   display: block;
+   text-align: left;
+   width: 100%;
+   margin: 2px 0;
+}
+
+.bottom-left-box &gt; .name-box{
+   grid-area: name-box;
+   margin-top: 3px;
+}
+
+.bottom-left-box &gt; .title-box{
+   grid-area: title-box;
+}
+
+.bottom-left-box &gt; .sign-off-box{
+   grid-area: sign-off-box;
+}
+
+.footer-box &gt; .bottom-right-box{
+   width: 100%;
+   max-height: 100px;
+   grid-area: bottom-right-box;
+   display: block;
+   margin-top: 0;
+   margin-bottom: 0;
+   align-content: center;
+   justify-items: center;
+}
+
+.footer-box &gt; .bottom-right-box img{
+   width: 100%;
+   height: 100%;
+   object-fit: contain;
+   margin: 0;
+}
+
+/* --- EMAIL ATTACHMENT BOX --- */
+.dyna-email &gt; .attachment-box{
+   display: block;
+   grid-area: attachment-box;
+   width: 85%;
+   font-weight: 700;
+   text-align: center;
+   justify-self: center;
+   border-top: 3px solid black;
+   margin: 0 0 5px 0;
+}
+
+/* Hide CC Box if &#39;none&#39; */
+.cc-text-box.cc-none {
+    display: none;
+}
+.cc-box.cc-none {
+    display: none;
+}
+.top-left-box.cc-none {
+   margin-top: 20px;
+}
+.top-middle-box.cc-none {
+   margin-top: 20px;
+}
+
+/* Hide Title if &#39;none&#39; */
+.title-box.title-none {
+    display:none;
+    margin:0px;
+}
+
+.footer-box &gt; .bottom-left-box:has(.title-box.title-none) {
+       grid-template-areas:
+      &#34;name-box&#34;
+      &#34;sign-off-box&#34;;
+   grid-template-rows: 1fr 1fr;
+}
+
+.footer-box.name-noFooter {
+    display: none;
+}
+
+[[/module]]
+[!-- --]
+
+[!-- {$start}]
+[[div_ class=&#34;dyna-email-container&#34;]]
+   [[div_ class=&#34;dyna-email&#34;]]
+      [[div_ class=&#34;header-box&#34;]]
+         [[div_ class=&#34;top-left-box cc-{$cc}&#34;]]
+            [[div_ class=&#34;from-box&#34;]]
+               From:
+            [[/div]]
+            [[div_ class=&#34;to-box&#34;]]
+               To:
+            [[/div]]
+            [[div_ class=&#34;cc-box cc-{$cc}&#34;]]
+               CC:
+            [[/div]]
+            [[div_ class=&#34;subject-box&#34;]]
+               Subject:
+            [[/div]]
+         [[/div]]
+         [[div_ class=&#34;top-middle-box cc-{$cc}&#34;]]
+            [[div_ class=&#34;from-name-box&#34;]]
+               @@{$from}@@
+            [[/div]]
+            [[div_ class=&#34;to-name-box&#34;]]
+               @@{$to}@@
+            [[/div]]
+            [[div_ class=&#34;cc-text-box cc-{$cc}&#34;]]
+               @@{$cc}@@
+            [[/div]]
+            [[div_ class=&#34;subject-text-box&#34;]]
+               {$subject}
+            [[/div]]
+         [[/div]]
+         [[div_ class=&#34;top-right-box&#34;]]
+         [[/div]]
+      [[/div]]
+      [[div_ class=&#34;content-box&#34;]]
+-----
+[!-- --]
+
+[!-- {$end}]
+      [[/div]]
+      [[div_ class=&#34;footer-box name-{$name}&#34;]]
+         [[div_ class=&#34;bottom-left-box title-{$title}&#34;]]
+            [[div_ class=&#34;name-box name-{$name}&#34;]]
+               {$name}
+            [[/div]]
+            [[div_ class=&#34;title-box title-{$title}&#34;]]
+               {$title}
+            [[/div]]
+            [[div_ class=&#34;sign-off-box&#34;]]
+               {$signoff}
+            [[/div]]
+         [[/div]]
+         [[div_ class=&#34;bottom-right-box&#34;]]
+            [[image {$signoff-icon}]]
+         [[/div]]
+      [[/div]]
+   [[/div]]
+[[/div]]
+[!-- --]
+
+[!-- {$attachment-end}]
+      [[/div]]
+      [[div_ class=&#34;footer-box&#34;]]
+         [[div_ class=&#34;bottom-left-box&#34;]]
+            [[div_ class=&#34;name-box&#34;]]
+               {$name}
+            [[/div]]
+            [[div_ class=&#34;title-box&#34;]]
+               {$title}
+            [[/div]]
+            [[div_ class=&#34;sign-off-box&#34;]]
+               {$signoff}
+            [[/div]]
+         [[/div]]
+         [[div_ class=&#34;bottom-right-box&#34;]]
+            [[image {$signoff-icon}]]
+         [[/div]]
+      [[/div]]
+      [[div_ class=&#34;attachment-box&#34;]]
+         [[collapsible show=&#34;*Open email attachment*&#34; hide=&#34;Close&#34;]]
+            [[div class=&#34;blockquote&#34; style=&#34;border-radius: 10px; margin: 10px 10px 0 10px;&#34;]]
+               [[image {$attachment}]]
+            [[/div]]
+          [[/collapsible]]
+      [[/div]]
+   [[/div]]
+[[/div]]
+[!-- --]
+
+[!-- {$attachment-flex-start}]
+      [[/div]]
+      [[div_ class=&#34;footer-box&#34;]]
+         [[div_ class=&#34;bottom-left-box&#34;]]
+            [[div_ class=&#34;name-box&#34;]]
+               {$name}
+            [[/div]]
+            [[div_ class=&#34;title-box&#34;]]
+               {$title}
+            [[/div]]
+            [[div_ class=&#34;sign-off-box&#34;]]
+               {$signoff}
+            [[/div]]
+         [[/div]]
+         [[div_ class=&#34;bottom-right-box&#34;]]
+            [[image {$signoff-icon}]]
+         [[/div]]
+      [[/div]]
+      [[div_ class=&#34;attachment-box&#34;]]
+         [[collapsible show=&#34;*Open email attachment*&#34; hide=&#34;Close&#34;]]
+            [[div class=&#34;blockquote&#34; style=&#34;border-radius: 10px; margin: 10px 10px 0 10px;&#34;]]
+[!-- --]
+
+[!-- {$attachment-flex-end}]
+            [[/div]]
+          [[/collapsible]]
+      [[/div]]
+   [[/div]]
+[[/div]]
+[!-- --]
+[[/iftags]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:52.974772.</em>
+  
+</div>
+</body>

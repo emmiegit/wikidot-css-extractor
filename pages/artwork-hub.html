@@ -29,7 +29,8 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>.content-panel .content-type-title &gt; p {
+          <pre><code>
+.content-panel .content-type-title &gt; p {
   margin: 0;
 }
 .content-panel .content-type-title {
@@ -54,12 +55,6 @@ padding: 5px 20px;
 padding: 0 20px;
 text-align: justify;
 }
-
-.artist-header a{
-    color: white;
-    text-shadow: #003 2px 2px;
-}
-
 .art-container {
     display: flex;
     flex-wrap: wrap;
@@ -75,12 +70,191 @@ text-align: justify;
     padding-left: 1rem;
     padding-right: 1rem;
 }
-
 .art-container .art .image-container {
     padding: 0;
     min-height: 100%;
     max-width: 100%;
-}</code></pre>
+}
+
+@media not all and (max-width: 767px) {
+#main-content {
+    max-width: min(57.5rem,calc(100% - 3rem));
+}
+}
+
+:root { --box-accent: #3d8554; }
+
+.tale-list {
+    display: grid;
+    gap: .75rem;
+    margin-block: 1.5rem;
+}
+.tale-list .pager { border-block-start: .225rem solid var(--box-accent); }
+
+.tale-block {
+    background-color: #fff;
+    box-shadow: 0 0 0.325rem rgb(0 0 0 / 0.25);
+    contain: paint;
+    display: grid;
+    grid-template-areas:
+        &#34;title date&#34;
+        &#34;meta meta&#34;;
+    grid-template-columns: 1fr max-content;
+    gap: .425rem;
+    padding: .625rem;
+    --box-accent: inherit;
+}
+
+.tale-block  .title {
+    grid-area: title;
+    display: flex;
+    gap: .325ex 0.75ex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.tale-block .title &gt; a {
+    font-weight: bold;
+    font-size: 1.075em;
+}
+.tale-block .title &gt; .author { font-size: .775em; flex-grow: 1; }
+.author .printuser {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .325em;
+}
+.author .printuser img {
+    margin: 0;
+    padding: 0;
+    padding-left: .475rem;
+}
+
+.tale-block .date {
+    grid-area: date;
+    font-feature-settings: &#39;case&#39;,&#39;ss01&#39;,&#39;ss04&#39;,&#39;tnum&#39;;
+    font-size: .725em;
+}
+
+.tale-block .meta {
+    grid-area: meta;
+    display: flex;
+    font-size: .775em;
+    gap: .75rem;
+    justify-content: space-between;
+}
+.meta .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    align-items: flex-start;
+}
+.tag-list a {
+    display: block;
+    border-radius: 1.5rem;
+    padding: .125em .675em;
+    text-decoration: none;
+    font-weight: 550;
+    color: var(--box-accent);
+    background-color: #3b5c970f;
+}
+.tag-list a:is(:hover,:focus) {
+    color: white;
+    background-color: var(--box-accent);
+}
+
+.meta .sec-info {
+    display: grid;
+    grid-template-columns: 3rem 3.5rem;
+    align-items: center;
+    text-align: end;
+    gap: .25rem;
+    min-width: max-content;
+    align-self: flex-end;
+}
+.sec-info &gt; br { display: none; }
+.sec-info .comments &gt; span { font-size: 0; }
+
+.tale-block .description {
+    grid-column: 1/-1;
+}
+.description &gt; :not(.preview) { display: none; }
+.description:not(:has(&gt; .preview)) { display: none; } /* progressive enhancement */
+.description &gt; .preview {
+    display: block;
+    font-size: .9125em;
+    padding-block-start: .425rem;
+    border-block-start: .05rem solid #ddd;
+}
+.description &gt; .preview &gt; p:first-child { margin-block-start: 0.25em; }
+.description &gt; .preview &gt; p:last-child { margin-block-end: 0.25em; }
+
+
+div.tag-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .25rem;
+    font-size: .9125em;
+    margin-block: .5rem;
+}
+div.tag-nav br { display: none; }
+div.tag-nav p { display: contents; }
+
+
+div.year {
+    font-weight: bold;
+    flex-flow: wrap-reverse row-reverse;
+}
+.year a {
+    padding-inline-end: .25rem;
+    border-inline-end: solid 2px #333;
+}
+
+.m-wrapper {
+}
+
+.m-wrapper .yui-navset .yui-content {
+    display: contents;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+.m-wrapper .yui-navset .yui-nav {
+    border: none;
+    text-align: center;
+    margin: 0.2rem;
+}
+#page-content .m-wrapper .yui-navset .yui-nav li {
+    margin: 0;
+    padding: 0;
+}
+
+#page-content .m-wrapper .yui-navset .yui-nav li a em {
+     margin: 0 0 0 auto;
+     padding: 0;
+     width: max-content;
+}
+.m-wrapper .yui-navset .yui-nav a,
+.m-wrapper .yui-navset .yui-nav a:hover,
+.m-wrapper .yui-navset .yui-nav a em {
+    border: none;
+    background: #FCFCFC !important;
+}
+#page-content .m-wrapper .yui-navset .yui-nav li a:hover,
+#page-content .m-wrapper .yui-navset .yui-nav li a:focus,
+#page-content .m- wrapper .yui-navset .yui-nav li a:active {
+    color: #000
+    text-decoration: underline;
+}
+
+#page-content .m-wrapper .yui-navset .yui-nav li a {
+    color: #a01;
+}
+
+.m-wrapper .yui-navset .yui-nav .selected {
+    display: none;
+}
+
+.m-wrapper .yui-navset .yui-content &gt; div:first-child &gt; p { display: contents; }</code></pre>
         </li>
       
     </ul>
@@ -89,51 +263,15 @@ text-align: justify;
     <ul class="inline-styles">
       
         <li>
-          <pre><code>height:200px;</code></pre>
+          <pre><code>height:300px;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height:300px;</code></pre>
         </li>
       
         <li>
           <pre><code>height:200px;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>height:200px;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>background-color: #2e4050; background: linear-gradient(to right, #666,#fff,#fff); padding: 0px 8px;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>width: 100%;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>font-weight: bold; color: #fff; background-color: #666;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 50%;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; width: 25%; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>padding: 0 2px; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; text-align: center;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>vertical-align: top; text-align: left;</code></pre>
         </li>
       
     </ul>
@@ -146,7 +284,7 @@ text-align: justify;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:listpages-table" target="_blank"><code>component:listpages-table</code></a>
+    <a href="https://scp-wiki.wikidot.com/fragment:nav-generic-css" target="_blank"><code>fragment:nav-generic-css</code></a>
   
 
   
@@ -174,11 +312,31 @@ text-align: justify;
         </li>
       
         <li>
-          <pre><code>artist-header</code></pre>
+          <pre><code>tag-nav</code></pre>
         </li>
       
         <li>
-          <pre><code>content-panel</code></pre>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-nav</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>m-wrapper</code></pre>
         </li>
       
         <li>
@@ -186,25 +344,245 @@ text-align: justify;
         </li>
       
         <li>
-          <pre><code>content-row</code></pre>
+          <pre><code>series</code></pre>
         </li>
       
         <li>
-          <pre><code>content-type-title</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>content-type-description-2</code></pre>
+          <pre><code>tale-list</code></pre>
         </li>
       
         <li>
           <pre><code>content-type-description</code></pre>
         </li>
       
+        <li>
+          <pre><code>tale-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>%%tags%%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>author</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>date</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sec-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rating</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>comments</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tale-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-type-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tale-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>%%tags%%</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>author</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>date</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tag-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sec-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rating</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>comments</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[module CSS]]
+    <pre><textarea class="page-source" readonly>[[# showcase]]
+
+= Featured Artists and Artwork are selected by [http://05command.wikidot.com/community-outreach-main Community Outreach] each month.
+[[div class=&#34;art-container&#34;]]  
+[[div class=&#34;art&#34;]]  
+[[image https://scp-wiki.wikidot.com/local--files/soicodoc/yoshihide1.webp link=&#34;https://scp-wiki.wikidot.com/soicodoc&#34; style=&#34;height:300px;&#34;]] 
+Artwork depicting [[[yoshihides-proposal|SCP-001: A Portrait Of Hell]]] by [[*user soidaudan.]]. Go to the [[[https://scp-wiki.wikidot.com/soicodoc|SIGMA ALPHA WOLF GALLERY]]] for more by this artist.
+[[/div]] 
+
+[[div class=&#34;art&#34;]]  
+[[image https://scp-wiki.wikidot.com/local--files/art:079gallery/6d24ed7da6daf5cc08cb85afb5b9dd73.webp link=&#34;https://scp-wiki.wikidot.com/art:079gallery&#34; style=&#34;height:300px;&#34;]] 
+[[[art:079gallery|Artwork]]] of [[[SCP-079]]] by [[*user Relliorca]]. Go to [[[art:relliorcaartwork|these]]] [[[art:relliorcarolledawaywithherart|pages]]] for more by this artist.
+[[/div]]
+
+[[div class=&#34;art&#34;]]  
+[[image https://scp-wiki.wikidot.com/local--files/o9-ppt/69808b564b846.webp link=&#34;https://scp-wiki.wikidot.com/o9-ppt&#34; style=&#34;height:200px;&#34;]] 
+A design created for the SCP Foundation Chinese Wiki 2026 Chinese New Year Gala by [[*user OxygenNine]]. Go to [[[o9-ppt| Foundation Related Logos]]] or [[[scp-cn-3969-art| SCP-CN-3969 Artwork collection]]] for more by this artist.
+[[/div]] 
+[[/div]]
+= [[[artist-showcase-archive| Go to the Artist Showcase Archive to see the art featured in previous months.]]]
+
+----
+[[# art]]
+
+= [[size 200%]]**Art Pages**[[/size]]
+
+By default, all artist pages, artworks and comics are shown on this page, starting with the most recently created, although a listing by date of last edit is also available. This list can be filtered by selecting one of the tags below. See the [[[Art Tagging Guide]]] for more information on how to use and apply these tags.
+
+A list of artists and their associated styles can also be found on the [[[Artist Directory]]].
+
+[[=]]
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/artwork-hub#art Reset filter]
+[/artwork-hub/tag/artist#art Artist Pages]
+[/artwork-hub/tag/artwork#art Artwork Pages]
+[/artwork-hub/tag/comic#art Comics]
+[/artwork-hub/tag/illustrated#art Illustrated Articles]
+[[/div]]
+
+++* Art Style
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/artwork-hub/tag/animated#art Animated]
+[/artwork-hub/tag/cel-shaded#art Cel Shaded]
+[/artwork-hub/tag/image-editing#art Image Editing]
+[/artwork-hub/tag/painted#art Painted]
+[/artwork-hub/tag/pixel-art#art Pixel Art]
+[/artwork-hub/tag/sketched#art Sketched]
+[/artwork-hub/tag/-scp,-goi-format,-supplement,-tale,-hub,-site,-resource,-guide,-essay,video#art Video]
+[[/div]]
+
+++* Art Content
+[[div_ class=&#34;tag-nav tag-list&#34;]]
+[/artwork-hub/tag/logo#art Logo]
+[/artwork-hub/tag/poster#art Poster]
+[/artwork-hub/tag/goi-art#art GoI Art]
+[/artwork-hub/tag/personnel-art#art Personnel Art]
+[/artwork-hub/tag/scp-art#art SCP Art]
+[/artwork-hub/tag/task-force-art#art Task Force Art]
+[[/div]]
+
+[[module CountPages order=&#34;created_at desc&#34; wrapper=&#34;no&#34; category=&#34;*&#34; separate=&#34;false&#34; perPage=&#34;20&#34; tags=&#34;@URL|artwork artist comic&#34;]]
+Currently listing %%total%% pages.
+[[/module]]
+[[/=]]
+
+[[div class=&#34;m-wrapper standalone series&#34;]]
+[[tabview]]
+
+[[tab Order by Date of Creation]]
+[[div class=&#34;tale-list content-type-description&#34;]]
+[[module ListPages order=&#34;created_at desc&#34; wrapper=&#34;no&#34; category=&#34;*&#34; separate=&#34;false&#34; perPage=&#34;20&#34; tags=&#34;@URL|artwork artist comic&#34;]]
+
+[[div class=&#34;tale-block %%tags%%&#34;]]
+[[div_ class=&#34;title&#34;]]
+%%linked_title%% [[span class=&#34;author&#34;]]by %%created_by_linked%%[[/span]]
+[[/div]]
+[[div_ class=&#34;date&#34;]]
+%%created_at|%Y %b %e|agohover%%
+[[/div]]
+
+[[div_ class=&#34;meta&#34;]]
+[[span class=&#34;tag-list&#34;]]%%tags_linked|artwork-hub/tag/-scp,-goi-format,-supplement,-tale,-hub,-site,-resource,-guide,-essay,%%[[/span]]
+[[div_ class=&#34;sec-info&#34;]]
+[[span class=&#34;rating&#34;]][[#ifexpr %%rating%% &gt; -1 | + | - ]][[#expr abs(%%rating%%)]][[/span]]
+[[span class=&#34;comments&#34;]]%%comments%% [[span]]Comments[[/span]]💬︎[[/span]]
+[[/div]]
+[[/div]]
+
+[[/div]]
+
+[[/module]]
+[[/div]]
+[[/tab]]
+
+[[tab Order by Recent Edits]]
+[[div class=&#34;tale-list content-type-description&#34;]]
+[[module ListPages category=&#34;_default&#34; order=&#34;updated_at desc&#34; wrapper=&#34;no&#34; category=&#34;*&#34; separate=&#34;false&#34; perPage=&#34;20&#34; tags=&#34;@URL|artwork artist comic&#34;]]
+
+[[div class=&#34;tale-block %%tags%%&#34;]]
+[[div_ class=&#34;title&#34;]]
+%%linked_title%% [[span class=&#34;author&#34;]]by %%created_by_linked%%[[/span]]
+[[/div]]
+[[div_ class=&#34;date&#34;]]
+%%created_at|%Y %b %e|agohover%%
+[[/div]]
+
+[[div_ class=&#34;meta&#34;]]
+[[span class=&#34;tag-list&#34;]]%%tags_linked|artwork-hub/tag/-scp,-goi-format,-supplement,-tale,-hub,-site,-resource,-guide,-essay,%%[[/span]]
+[[div_ class=&#34;sec-info&#34;]]
+[[span class=&#34;rating&#34;]][[#ifexpr %%rating%% &gt; -1 | + | - ]][[#expr abs(%%rating%%)]][[/span]]
+[[span class=&#34;comments&#34;]]%%comments%% [[span]]Comments[[/span]]💬︎[[/span]]
+[[/div]]
+[[/div]]
+
+[[/div]]
+
+[[/module]]
+[[/div]]
+[[/div]]
+[[/tab]]
+
+[[/tabview]]
+
+----
+
+[[# posting]]
+
+[[=]]
+++* Posting Your Own Art
+[[/=]]
+
+If you&#39;d like to post your own art to the site, please check out [[[how-to-post-your-art-to-the-scp-wiki |this guide first!]]] It goes over image hosting, basic CSS formatting, customization, and posting requirements. You&#39;re free to personalize the page however you like, but note that artwork and artist pages are subject to the [[[deletions-guide|Deletions process]]] like any other posted page.
+
+[[include fragment:nav-generic-css]]
+
+[[module css]]
+
 .content-panel .content-type-title &gt; p {
   margin: 0;
 }
@@ -230,12 +608,6 @@ padding: 5px 20px;
 padding: 0 20px;
 text-align: justify;
 }
-
-.artist-header a{
-    color: white;
-    text-shadow: #003 2px 2px;
-}
-
 .art-container {
     display: flex;
     flex-wrap: wrap;
@@ -251,106 +623,199 @@ text-align: justify;
     padding-left: 1rem;
     padding-right: 1rem;
 }
-
 .art-container .art .image-container {
     padding: 0;
     min-height: 100%;
     max-width: 100%;
 }
-[[/module]]
 
-= [[size 200%]]**Artist Showcase**[[/size]]
+@media not all and (max-width: 767px) {
+#main-content {
+    max-width: min(57.5rem,calc(100% - 3rem));
+}
+}
 
-----
-= Featured Artists and Artwork are selected by [http://05command.wikidot.com/community-outreach-main Community Outreach] each month. This month, we&#39;re showcasing three articles with sick-looking document mockups by their respective authors!
-[[div class=&#34;art-container&#34;]]  
+:root { --box-accent: #3d8554; }
 
-[[div class=&#34;art&#34; ]]  
-[[image https://scp-wiki.wdfiles.com/local--files/hippocampus-of-triton/hippocampus.png link=&#34;https://scp-wiki.wikidot.com/hippocampus-of-triton/comments/show&#34; style=&#34;height:200px;&#34;]]
-A Brief History Of Neptune Station by [[*user thd-glasses]]. Other articles featuring their mockups include [[[http://scpko.wikidot.com/circle-of-propaganda |Circle Of Propaganda (SCP-KO)]]].
-[[/div]]
+.tale-list {
+    display: grid;
+    gap: .75rem;
+    margin-block: 1.5rem;
+}
+.tale-list .pager { border-block-start: .225rem solid var(--box-accent); }
 
-[[div class=&#34;art&#34; ]]  
-[[image https://scp-wiki.wdfiles.com/local--files/scp-5859/fileface.png link=&#34;https://scp-wiki.wikidot.com/scp-5859&#34; style=&#34;height:200px;&#34;]]
-SCP-5859 by [[*user 
-Anorrack]]. Other articles featuring their mockups include [[[https://scp-wiki.wikidot.com/procurement-orders-hells-heart |1981 COLLATED PROCUREMENT ORDERS BY THE DOD IN REGARDS TO TOP SECRET PROJECT: HELL&#39;S HEART]]].
-[[/div]]
+.tale-block {
+    background-color: #fff;
+    box-shadow: 0 0 0.325rem rgb(0 0 0 / 0.25);
+    contain: paint;
+    display: grid;
+    grid-template-areas:
+        &#34;title date&#34;
+        &#34;meta meta&#34;;
+    grid-template-columns: 1fr max-content;
+    gap: .425rem;
+    padding: .625rem;
+    --box-accent: inherit;
+}
 
-[[div class=&#34;art&#34; ]]  
-[[image https://scp-wiki.wdfiles.com/local--files/fragment:scp-5050-0/rook-2.jpg link=&#34;https://scp-wiki.wikidot.com/scp-5050&#34; style=&#34;height:200px;&#34;]]
-SCP-5050 by [[*user JackalRelated]]. Other SCPs featuring their mockups include [[[SCP-6930]]].
-[[/div]]
+.tale-block  .title {
+    grid-area: title;
+    display: flex;
+    gap: .325ex 0.75ex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.tale-block .title &gt; a {
+    font-weight: bold;
+    font-size: 1.075em;
+}
+.tale-block .title &gt; .author { font-size: .775em; flex-grow: 1; }
+.author .printuser {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .325em;
+}
+.author .printuser img {
+    margin: 0;
+    padding: 0;
+    padding-left: .475rem;
+}
 
-[[/div]]
+.tale-block .date {
+    grid-area: date;
+    font-feature-settings: &#39;case&#39;,&#39;ss01&#39;,&#39;ss04&#39;,&#39;tnum&#39;;
+    font-size: .725em;
+}
+
+.tale-block .meta {
+    grid-area: meta;
+    display: flex;
+    font-size: .775em;
+    gap: .75rem;
+    justify-content: space-between;
+}
+.meta .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .25rem;
+    align-items: flex-start;
+}
+.tag-list a {
+    display: block;
+    border-radius: 1.5rem;
+    padding: .125em .675em;
+    text-decoration: none;
+    font-weight: 550;
+    color: var(--box-accent);
+    background-color: #3b5c970f;
+}
+.tag-list a:is(:hover,:focus) {
+    color: white;
+    background-color: var(--box-accent);
+}
+
+.meta .sec-info {
+    display: grid;
+    grid-template-columns: 3rem 3.5rem;
+    align-items: center;
+    text-align: end;
+    gap: .25rem;
+    min-width: max-content;
+    align-self: flex-end;
+}
+.sec-info &gt; br { display: none; }
+.sec-info .comments &gt; span { font-size: 0; }
+
+.tale-block .description {
+    grid-column: 1/-1;
+}
+.description &gt; :not(.preview) { display: none; }
+.description:not(:has(&gt; .preview)) { display: none; } /* progressive enhancement */
+.description &gt; .preview {
+    display: block;
+    font-size: .9125em;
+    padding-block-start: .425rem;
+    border-block-start: .05rem solid #ddd;
+}
+.description &gt; .preview &gt; p:first-child { margin-block-start: 0.25em; }
+.description &gt; .preview &gt; p:last-child { margin-block-end: 0.25em; }
 
 
-~~~~
-
-[[div style=&#34;background-color: #2e4050; background: linear-gradient(to right, #666,#fff,#fff); padding: 0px 8px;&#34;]]
-++ [[span class=&#34;artist-header&#34;]][[[artist-showcase-archive| Artist Showcase Archive]]][[/span]]
-[[/div]]
-~~~~
-----
-= [[size 200%]]**Recently Updated Art**[[/size]]
-
-[[div class=&#34;content-panel standalone content-row&#34;]]
-[[div class=&#34;content-type-title&#34;]]
-Artwork and Artist Pages
-[[/div]]
-
-[[div class=&#34;content-type-description-2&#34;]]
-
-[[table style=&#34;width: 100%;&#34;]]
-[[row style=&#34;font-weight: bold; color: #fff; background-color: #666;&#34;]]
-[[cell style=&#34;padding: 0 2px; width: 50%;&#34;]]
-Page
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; width: 25%; text-align: center;&#34;]]
-Last Update
-[[/cell]]
-[[cell style=&#34;padding: 0 2px; text-align: center;&#34;]]
-Created By
-[[/cell]]
-[[/row]]
-[[/table]]
-
-[[/div]]
-
-[[div class=&#34;content-type-description&#34;]]
-
-[[module ListPages order=&#34;updated_at desc&#34; tag=&#34;artwork artist&#34; category=&#34;*&#34; prependLine=&#34;[[include component:listpages-table]]&#34; perPage=&#34;20&#34; appendLine=&#34;[[/table]]&#34; separate=&#34;false&#34;]]
-[[row]]
-[[cell style=&#34;vertical-align: top;&#34;]]
-%%title_linked%%
-[[/cell]]
-[[cell style=&#34;vertical-align: top; text-align: center;&#34;]]
-%%updated_at%%
-[[/cell]]
-[[cell style=&#34;vertical-align: top; text-align: left;&#34;]]
-%%created_by_linked%%
-[[/cell]]
-[[/row]]
-[[/module]]
-
-[[/div]]
-[[/div]]
+div.tag-nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .25rem;
+    font-size: .9125em;
+    margin-block: .5rem;
+}
+div.tag-nav br { display: none; }
+div.tag-nav p { display: contents; }
 
 
-----
+div.year {
+    font-weight: bold;
+    flex-flow: wrap-reverse row-reverse;
+}
+.year a {
+    padding-inline-end: .25rem;
+    border-inline-end: solid 2px #333;
+}
 
+.m-wrapper {
+}
 
-[[=]]
-++* ENTRY REQUIREMENTS
-[[/=]]
+.m-wrapper .yui-navset .yui-content {
+    display: contents;
+    background-color: transparent;
+    padding: 0;
+    border: none;
+}
+.m-wrapper .yui-navset .yui-nav {
+    border: none;
+    text-align: center;
+    margin: 0.2rem;
+}
+#page-content .m-wrapper .yui-navset .yui-nav li {
+    margin: 0;
+    padding: 0;
+}
 
-If you&#39;d like to post your own art here to the site, please check out [[[how-to-post-your-art-to-the-scp-wiki |this guide first!]]] It goes over image hosting, basic CSS formatting, customization, and posting requirements. You&#39;re free to personalize the page however you like, but note that art pages are subject to the [[[deletions-guide|Deletions process]]] like any other posted page.</textarea></pre>
+#page-content .m-wrapper .yui-navset .yui-nav li a em {
+     margin: 0 0 0 auto;
+     padding: 0;
+     width: max-content;
+}
+.m-wrapper .yui-navset .yui-nav a,
+.m-wrapper .yui-navset .yui-nav a:hover,
+.m-wrapper .yui-navset .yui-nav a em {
+    border: none;
+    background: #FCFCFC !important;
+}
+#page-content .m-wrapper .yui-navset .yui-nav li a:hover,
+#page-content .m-wrapper .yui-navset .yui-nav li a:focus,
+#page-content .m- wrapper .yui-navset .yui-nav li a:active {
+    color: #000
+    text-decoration: underline;
+}
+
+#page-content .m-wrapper .yui-navset .yui-nav li a {
+    color: #a01;
+}
+
+.m-wrapper .yui-navset .yui-nav .selected {
+    display: none;
+}
+
+.m-wrapper .yui-navset .yui-content &gt; div:first-child &gt; p { display: contents; }
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:35.951116.</em>
+    <em>Last updated 2026-04-17 00:56:52.686724.</em>
   
 </div>
 </body>

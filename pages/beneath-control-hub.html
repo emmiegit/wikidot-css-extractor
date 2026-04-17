@@ -1,0 +1,1409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Beneath Control Hub</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Beneath Control Hub</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/beneath-control-hub" target="_blank">Beneath Control Hub</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>/* ===== Base / Theme Overrides ===== */
+#page-title {
+  display: none; /* fully removes instead of just hiding visually */
+}
+
+:root {
+  /* Logo + gradients */
+  --logo-image: url(https://scp-wiki.wdfiles.com/local--files/theme%3Amidnight-rush/midnight-rush-icon.png);
+  --gradient-header: linear-gradient(to top, var(--color-bg-mid), var(--color-bg-top));
+
+  /* Text + colors */
+  --color-text-main: #f5f5f5;
+  --color-bg-top: #1a1f22;
+  --color-bg-mid: #131111;
+  --color-bg-bottom: #0b0b0b;
+  --color-border: #777;
+  --color-caption-text: #aaa;
+  --accent-color: #1a73e8;
+  --highlight-color: #ff4a4a;
+
+  /* Fonts */
+  --font-sans: &#39;Rubik&#39;, &#39;Segoe UI&#39;, sans-serif;
+  --font-default-size: 1rem;
+
+  /* Story block spacing */
+  --story-block-padding-v: 2.5rem;
+  --story-block-padding-h-extra: 25px;
+  --story-block-padding-h-base: 0.5rem;
+  --story-block-border-width: 5px;
+
+  /* Timeline */
+  --vertical-line-width: 4px;
+  --vertical-line-color: var(--color-border);
+
+  /* Shadows &amp; transitions */
+  --shadow-base: 0 4px 12px rgba(0,0,0,0.25);
+  --shadow-hover: 0 6px 20px rgba(0,0,0,0.35);
+  --transition-speed: 0.25s;
+
+  /* Collapsibles */
+  --collapsible-header-bg: #181818;
+  --collapsible-header-hover: #242424;
+  --collapsible-header-text: #e0e0e0;
+  --collapsible-content-bg: var(--color-bg-bottom);
+  --collapsible-content-border: var(--color-border);
+}
+
+/* ===== Content Wrapper ===== */
+#content-wrap {
+  background: var(--color-bg-mid);
+  padding: 1.25rem;
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  font-size: var(--font-default-size);
+  line-height: 1.6;
+}
+
+/* ===== Collapsible Blocks ===== */
+div.collapsible-block {
+  margin: 2em auto;
+  width: min(95%, 800px);
+  border-radius: 8px;
+  border: 1.5px solid var(--collapsible-content-border);
+  box-shadow: var(--shadow-base);
+  background: var(--collapsible-content-bg);
+  overflow: hidden;
+  transition: box-shadow var(--transition-speed) ease;
+}
+
+div.collapsible-block:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+div.collapsible-block &gt; div.collapsible-block-folded,
+div.collapsible-block &gt; div.collapsible-block-unfolded {
+  background: var(--collapsible-header-bg);
+  font-family: var(--font-sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  padding: 0.8em 2.5em 0.8em 1.25em;
+  color: var(--collapsible-header-text);
+  transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+div.collapsible-block &gt; div.collapsible-block-folded:hover {
+  background: var(--collapsible-header-hover);
+  color: var(--highlight-color);
+}
+
+div.collapsible-block &gt; div.collapsible-block-folded::after,
+div.collapsible-block &gt; div.collapsible-block-unfolded::after {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  transition: transform var(--transition-speed), color var(--transition-speed);
+}
+
+div.collapsible-block &gt; div.collapsible-block-folded::after {
+  content: &#34;▼&#34;;
+  color: var(--highlight-color);
+}
+div.collapsible-block &gt; div.collapsible-block-unfolded::after {
+  visibility: hidden;
+  content: &#34;▲&#34;;
+  color: var(--accent-color);
+}
+
+div.collapsible-block &gt; div.collapsible-block-content {
+  border-top: 2px solid var(--accent-color);
+  background: radial-gradient(circle at top, #101010, #0a0a0a 85%);
+  padding: 2rem 2.25rem;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.55);
+  animation: fadeIn var(--transition-speed) ease-in;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Timeline / Story Blocks ===== */
+.center-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem auto;
+  gap: 6rem;
+  position: relative;
+}
+
+.center-wrapper::before {
+  content: &#34;&#34;;
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: var(--vertical-line-width);
+  transform: translateX(-50%);
+  background-color: var(--vertical-line-color);
+  z-index: 0;
+}
+
+.story-block {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  background-color: var(--color-bg-bottom);
+  border: var(--story-block-border-width) double var(--color-text-main);
+  padding: var(--story-block-padding-v)
+           calc(var(--story-block-padding-h-extra) + var(--story-block-padding-h-base))
+           1.5rem;
+  box-shadow: var(--shadow-base);
+  z-index: 1;
+  transition: all var(--transition-speed) ease;
+}
+
+.story-block:hover {
+  box-shadow: 0 0 18px rgba(255,74,74,0.5);
+  border-color: var(--highlight-color);
+  transform: translateY(-4px) scale(1.01);
+}
+
+.story-block a {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--accent-color);
+  text-shadow: 0 0 6px rgba(26,115,232,0.6);
+  transition: color var(--transition-speed), text-shadow var(--transition-speed);
+}
+.story-block a:hover {
+  color: var(--highlight-color);
+  text-shadow: 0 0 10px rgba(255,74,74,0.8);
+}
+
+.story-caption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-caption-text);
+  user-select: none;
+}
+
+.story-caption a{
+  font-size: 0.85rem;
+}
+
+/* ===== Tabview Styling ===== */
+.yui-navset .yui-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 1.25rem;
+  padding: 0.25rem 0;
+}
+
+.yui-navset .yui-nav li {
+  list-style: none;
+  margin: 0;
+}
+
+.yui-navset .yui-nav a {
+  display: inline-block;
+  padding: 0.6em 1.25em;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-main);
+  border-radius: 6px 6px 0 0;
+  border: 1px solid transparent;
+  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+  background: linear-gradient(180deg, #181818, #111);
+}
+
+.yui-navset .yui-nav a:hover {
+  color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 10px rgba(255,74,74,0.4);
+  background: linear-gradient(180deg, #1f1f1f, #151515);
+}
+
+.yui-navset .yui-nav .selected a {
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-bottom: 2px solid var(--color-bg-mid); /* blends with panel */
+  background: linear-gradient(180deg, #202020, #131313);
+  box-shadow: 0 0 12px rgba(26,115,232,0.6);
+  cursor: default;
+}
+
+/* ===== Tab Panel Content ===== */
+.yui-navset .yui-content {
+  background: var(--color-bg-bottom);
+  border: 1.5px solid var(--color-border);
+  border-radius: 0 8px 8px 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-base);
+  animation: fadeIn var(--transition-speed) ease;
+}
+
+.yui-navset .yui-content &gt; div {
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Indented Sections (Tabview Content) ===== */
+
+/* Base indent wrapper */
+.tab-indent {
+  margin-left: 1.75em;
+  padding-left: 0.75em;
+  border-left: 2px solid var(--color-border);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+/* Secondary (nested) indent */
+.tab-indent .tab-indent {
+  margin-left: 1.5em;
+  border-left: 2px dashed var(--color-border);
+  padding-left: 0.75em;
+  font-size: 0.95rem;
+  color: var(--color-caption-text);
+}
+
+/* Headings inside indents */
+.tab-indent strong {
+  color: var(--accent-color);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Hover accent for readability */
+.tab-indent:hover {
+  border-left-color: var(--highlight-color);
+  background: rgba(255,74,74,0.05);
+  transition: background var(--transition-speed), border-color var(--transition-speed);
+}
+
+/* ===== Intelligence Quotes 2.0 ===== */
+.intel-quotes {
+  max-width: 850px;
+  margin: 4rem auto 3rem;
+  font-family: &#34;Georgia&#34;, serif;
+  color: #f9f9f9;
+  text-align: center;
+  position: relative;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+/* Section header */
+.intel-quotes::before {
+  content: &#34;INTELLIGENCE MEMOS — CLASSIFIED&#34;;
+  display: block;
+  font-family: &#34;Rubik&#34;, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 180, 140, 0.3);
+  margin-bottom: 2.5rem;
+  user-select: none;
+  animation: flickerHeader 6s infinite ease-in-out;
+}
+
+/* Quote container */
+.intel-quotes .blockquote {
+  margin: 2.5rem auto 1rem;
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 700px;
+  color: #fff9f5;
+  text-shadow: 0 0 10px rgba(255, 120, 80, 0.1);
+  transition: all 0.5s ease;
+  transform: perspective(800px) rotateX(0deg);
+}
+
+/* Opening and closing quotes */
+.intel-quotes .blockquote::before,
+.intel-quotes .blockquote::after {
+  font-size: 2.5rem;
+  position: absolute;
+  color: rgba(255, 120, 80, 0.3);
+  opacity: 0.5;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.intel-quotes .blockquote::before {
+  content: &#34;“&#34;;
+  left: -1.25rem;
+  top: -0.5rem;
+}
+
+.intel-quotes .blockquote::after {
+  content: &#34;”&#34;;
+  right: -1.25rem;
+  bottom: -0.5rem;
+}
+
+/* Hover animation — cinematic focus */
+.intel-quotes .blockquote:hover {
+  color: #fffaf8;
+  transform: perspective(900px) rotateX(5deg) scale(1.04);
+  text-shadow: 0 0 18px rgba(255, 150, 120, 0.2), 0 0 24px rgba(255, 80, 50, 0.15);
+}
+.intel-quotes .blockquote:hover::before,
+.intel-quotes .blockquote:hover::after {
+  opacity: 0.8;
+  transform: scale(1.15);
+}
+
+/* Animated ember underline between quotes */
+.intel-quotes .attrib + .blockquote::before {
+  content: &#34;&#34;;
+  position: relative;
+  display: block;
+  width: 60%;
+  height: 1px;
+  margin: 3rem auto 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 120, 80, 0) 0%,
+    rgba(255, 120, 80, 0.6) 50%,
+    rgba(255, 120, 80, 0) 100%
+  );
+  animation: emberPulse 4s infinite ease-in-out;
+  border-radius: 2px;
+}
+
+/* Attribution text */
+.intel-quotes .attrib {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255, 210, 200, 0.8);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 6px rgba(255, 100, 60, 0.15);
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.intel-quotes .attrib:hover {
+  color: #fff2ec;
+  text-shadow: 0 0 8px rgba(255, 100, 60, 0.25);
+}
+
+/* Background ember particle effect (subtle) */
+.intel-quotes::after {
+  content: &#34;&#34;;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 120, 80, 0.08),
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 120, 80, 0.05),
+      transparent 60%
+    );
+  filter: blur(10px);
+  z-index: -1;
+  animation: emberDrift 15s infinite alternate ease-in-out;
+}
+
+/* === Keyframes === */
+@keyframes emberPulse {
+  0%, 100% { opacity: 0.35; filter: blur(0.5px); }
+  50% { opacity: 0.75; filter: blur(1.5px); }
+}
+
+@keyframes emberDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10px, -10px) scale(1.05); }
+  100% { transform: translate(-10px, 5px) scale(1); }
+}
+
+@keyframes flickerHeader {
+  0%, 100% { opacity: 0.6; text-shadow: 0 0 6px rgba(255, 100, 60, 0.1); }
+  50% { opacity: 0.9; text-shadow: 0 0 10px rgba(255, 120, 80, 0.25); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .intel-quotes .blockquote {
+    font-size: 1rem;
+    padding: 0 1.25rem;
+  }
+  .intel-quotes::before {
+    font-size: 0.7rem;
+  }
+}
+
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-wiki:component:toggle-sidebar-bhl</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar-bhl.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:glitch-elements" target="_blank"><code>:scp-wiki:component:glitch-elements</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:glitch-elements.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>intel-quotes</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>attrib</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>attrib</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>attrib</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>attrib</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>attrib</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>center-wrapper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>story-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tab-indent</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module Rate]]
+
+[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[include :scp-wiki:component:glitch-elements]]
+
+[[module CSS]]
+/* ===== Base / Theme Overrides ===== */
+#page-title {
+  display: none; /* fully removes instead of just hiding visually */
+}
+
+:root {
+  /* Logo + gradients */
+  --logo-image: url(https://scp-wiki.wdfiles.com/local--files/theme%3Amidnight-rush/midnight-rush-icon.png);
+  --gradient-header: linear-gradient(to top, var(--color-bg-mid), var(--color-bg-top));
+
+  /* Text + colors */
+  --color-text-main: #f5f5f5;
+  --color-bg-top: #1a1f22;
+  --color-bg-mid: #131111;
+  --color-bg-bottom: #0b0b0b;
+  --color-border: #777;
+  --color-caption-text: #aaa;
+  --accent-color: #1a73e8;
+  --highlight-color: #ff4a4a;
+
+  /* Fonts */
+  --font-sans: &#39;Rubik&#39;, &#39;Segoe UI&#39;, sans-serif;
+  --font-default-size: 1rem;
+
+  /* Story block spacing */
+  --story-block-padding-v: 2.5rem;
+  --story-block-padding-h-extra: 25px;
+  --story-block-padding-h-base: 0.5rem;
+  --story-block-border-width: 5px;
+
+  /* Timeline */
+  --vertical-line-width: 4px;
+  --vertical-line-color: var(--color-border);
+
+  /* Shadows &amp; transitions */
+  --shadow-base: 0 4px 12px rgba(0,0,0,0.25);
+  --shadow-hover: 0 6px 20px rgba(0,0,0,0.35);
+  --transition-speed: 0.25s;
+
+  /* Collapsibles */
+  --collapsible-header-bg: #181818;
+  --collapsible-header-hover: #242424;
+  --collapsible-header-text: #e0e0e0;
+  --collapsible-content-bg: var(--color-bg-bottom);
+  --collapsible-content-border: var(--color-border);
+}
+
+/* ===== Content Wrapper ===== */
+#content-wrap {
+  background: var(--color-bg-mid);
+  padding: 1.25rem;
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  font-size: var(--font-default-size);
+  line-height: 1.6;
+}
+
+/* ===== Collapsible Blocks ===== */
+div.collapsible-block {
+  margin: 2em auto;
+  width: min(95%, 800px);
+  border-radius: 8px;
+  border: 1.5px solid var(--collapsible-content-border);
+  box-shadow: var(--shadow-base);
+  background: var(--collapsible-content-bg);
+  overflow: hidden;
+  transition: box-shadow var(--transition-speed) ease;
+}
+
+div.collapsible-block:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+div.collapsible-block &gt; div.collapsible-block-folded,
+div.collapsible-block &gt; div.collapsible-block-unfolded {
+  background: var(--collapsible-header-bg);
+  font-family: var(--font-sans);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  text-align: center;
+  position: relative;
+  cursor: pointer;
+  padding: 0.8em 2.5em 0.8em 1.25em;
+  color: var(--collapsible-header-text);
+  transition: background var(--transition-speed), color var(--transition-speed);
+}
+
+div.collapsible-block &gt; div.collapsible-block-folded:hover {
+  background: var(--collapsible-header-hover);
+  color: var(--highlight-color);
+}
+
+div.collapsible-block &gt; div.collapsible-block-folded::after,
+div.collapsible-block &gt; div.collapsible-block-unfolded::after {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.25rem;
+  transition: transform var(--transition-speed), color var(--transition-speed);
+}
+
+div.collapsible-block &gt; div.collapsible-block-folded::after {
+  content: &#34;▼&#34;;
+  color: var(--highlight-color);
+}
+div.collapsible-block &gt; div.collapsible-block-unfolded::after {
+  visibility: hidden;
+  content: &#34;▲&#34;;
+  color: var(--accent-color);
+}
+
+div.collapsible-block &gt; div.collapsible-block-content {
+  border-top: 2px solid var(--accent-color);
+  background: radial-gradient(circle at top, #101010, #0a0a0a 85%);
+  padding: 2rem 2.25rem;
+  box-shadow: inset 0 0 15px rgba(0,0,0,0.55);
+  animation: fadeIn var(--transition-speed) ease-in;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Timeline / Story Blocks ===== */
+.center-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem auto;
+  gap: 6rem;
+  position: relative;
+}
+
+.center-wrapper::before {
+  content: &#34;&#34;;
+  position: absolute;
+  inset: 0 auto 0 50%;
+  width: var(--vertical-line-width);
+  transform: translateX(-50%);
+  background-color: var(--vertical-line-color);
+  z-index: 0;
+}
+
+.story-block {
+  position: relative;
+  display: inline-block;
+  width: fit-content;
+  background-color: var(--color-bg-bottom);
+  border: var(--story-block-border-width) double var(--color-text-main);
+  padding: var(--story-block-padding-v)
+           calc(var(--story-block-padding-h-extra) + var(--story-block-padding-h-base))
+           1.5rem;
+  box-shadow: var(--shadow-base);
+  z-index: 1;
+  transition: all var(--transition-speed) ease;
+}
+
+.story-block:hover {
+  box-shadow: 0 0 18px rgba(255,74,74,0.5);
+  border-color: var(--highlight-color);
+  transform: translateY(-4px) scale(1.01);
+}
+
+.story-block a {
+  font-size: 1.5rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: var(--accent-color);
+  text-shadow: 0 0 6px rgba(26,115,232,0.6);
+  transition: color var(--transition-speed), text-shadow var(--transition-speed);
+}
+.story-block a:hover {
+  color: var(--highlight-color);
+  text-shadow: 0 0 10px rgba(255,74,74,0.8);
+}
+
+.story-caption {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--color-caption-text);
+  user-select: none;
+}
+
+.story-caption a{
+  font-size: 0.85rem;
+}
+
+/* ===== Tabview Styling ===== */
+.yui-navset .yui-nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  border-bottom: 2px solid var(--color-border);
+  margin-bottom: 1.25rem;
+  padding: 0.25rem 0;
+}
+
+.yui-navset .yui-nav li {
+  list-style: none;
+  margin: 0;
+}
+
+.yui-navset .yui-nav a {
+  display: inline-block;
+  padding: 0.6em 1.25em;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-main);
+  border-radius: 6px 6px 0 0;
+  border: 1px solid transparent;
+  transition: all var(--transition-speed) ease;
+  text-decoration: none;
+  background: linear-gradient(180deg, #181818, #111);
+}
+
+.yui-navset .yui-nav a:hover {
+  color: var(--highlight-color);
+  border-color: var(--highlight-color);
+  box-shadow: 0 0 10px rgba(255,74,74,0.4);
+  background: linear-gradient(180deg, #1f1f1f, #151515);
+}
+
+.yui-navset .yui-nav .selected a {
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+  border-bottom: 2px solid var(--color-bg-mid); /* blends with panel */
+  background: linear-gradient(180deg, #202020, #131313);
+  box-shadow: 0 0 12px rgba(26,115,232,0.6);
+  cursor: default;
+}
+
+/* ===== Tab Panel Content ===== */
+.yui-navset .yui-content {
+  background: var(--color-bg-bottom);
+  border: 1.5px solid var(--color-border);
+  border-radius: 0 8px 8px 8px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-base);
+  animation: fadeIn var(--transition-speed) ease;
+}
+
+.yui-navset .yui-content &gt; div {
+  color: var(--color-text-main);
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Indented Sections (Tabview Content) ===== */
+
+/* Base indent wrapper */
+.tab-indent {
+  margin-left: 1.75em;
+  padding-left: 0.75em;
+  border-left: 2px solid var(--color-border);
+  font-size: 0.97rem;
+  line-height: 1.55;
+}
+
+/* Secondary (nested) indent */
+.tab-indent .tab-indent {
+  margin-left: 1.5em;
+  border-left: 2px dashed var(--color-border);
+  padding-left: 0.75em;
+  font-size: 0.95rem;
+  color: var(--color-caption-text);
+}
+
+/* Headings inside indents */
+.tab-indent strong {
+  color: var(--accent-color);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* Hover accent for readability */
+.tab-indent:hover {
+  border-left-color: var(--highlight-color);
+  background: rgba(255,74,74,0.05);
+  transition: background var(--transition-speed), border-color var(--transition-speed);
+}
+
+/* ===== Intelligence Quotes 2.0 ===== */
+.intel-quotes {
+  max-width: 850px;
+  margin: 4rem auto 3rem;
+  font-family: &#34;Georgia&#34;, serif;
+  color: #f9f9f9;
+  text-align: center;
+  position: relative;
+  padding: 2rem 0;
+  overflow: hidden;
+}
+
+/* Section header */
+.intel-quotes::before {
+  content: &#34;INTELLIGENCE MEMOS — CLASSIFIED&#34;;
+  display: block;
+  font-family: &#34;Rubik&#34;, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 180, 140, 0.3);
+  margin-bottom: 2.5rem;
+  user-select: none;
+  animation: flickerHeader 6s infinite ease-in-out;
+}
+
+/* Quote container */
+.intel-quotes .blockquote {
+  margin: 2.5rem auto 1rem;
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  max-width: 700px;
+  color: #fff9f5;
+  text-shadow: 0 0 10px rgba(255, 120, 80, 0.1);
+  transition: all 0.5s ease;
+  transform: perspective(800px) rotateX(0deg);
+}
+
+/* Opening and closing quotes */
+.intel-quotes .blockquote::before,
+.intel-quotes .blockquote::after {
+  font-size: 2.5rem;
+  position: absolute;
+  color: rgba(255, 120, 80, 0.3);
+  opacity: 0.5;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+
+.intel-quotes .blockquote::before {
+  content: &#34;“&#34;;
+  left: -1.25rem;
+  top: -0.5rem;
+}
+
+.intel-quotes .blockquote::after {
+  content: &#34;”&#34;;
+  right: -1.25rem;
+  bottom: -0.5rem;
+}
+
+/* Hover animation — cinematic focus */
+.intel-quotes .blockquote:hover {
+  color: #fffaf8;
+  transform: perspective(900px) rotateX(5deg) scale(1.04);
+  text-shadow: 0 0 18px rgba(255, 150, 120, 0.2), 0 0 24px rgba(255, 80, 50, 0.15);
+}
+.intel-quotes .blockquote:hover::before,
+.intel-quotes .blockquote:hover::after {
+  opacity: 0.8;
+  transform: scale(1.15);
+}
+
+/* Animated ember underline between quotes */
+.intel-quotes .attrib + .blockquote::before {
+  content: &#34;&#34;;
+  position: relative;
+  display: block;
+  width: 60%;
+  height: 1px;
+  margin: 3rem auto 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 120, 80, 0) 0%,
+    rgba(255, 120, 80, 0.6) 50%,
+    rgba(255, 120, 80, 0) 100%
+  );
+  animation: emberPulse 4s infinite ease-in-out;
+  border-radius: 2px;
+}
+
+/* Attribution text */
+.intel-quotes .attrib {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: rgba(255, 210, 200, 0.8);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 6px rgba(255, 100, 60, 0.15);
+  transition: color 0.4s ease, text-shadow 0.4s ease;
+}
+
+.intel-quotes .attrib:hover {
+  color: #fff2ec;
+  text-shadow: 0 0 8px rgba(255, 100, 60, 0.25);
+}
+
+/* Background ember particle effect (subtle) */
+.intel-quotes::after {
+  content: &#34;&#34;;
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 120, 80, 0.08),
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 120, 80, 0.05),
+      transparent 60%
+    );
+  filter: blur(10px);
+  z-index: -1;
+  animation: emberDrift 15s infinite alternate ease-in-out;
+}
+
+/* === Keyframes === */
+@keyframes emberPulse {
+  0%, 100% { opacity: 0.35; filter: blur(0.5px); }
+  50% { opacity: 0.75; filter: blur(1.5px); }
+}
+
+@keyframes emberDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(10px, -10px) scale(1.05); }
+  100% { transform: translate(-10px, 5px) scale(1); }
+}
+
+@keyframes flickerHeader {
+  0%, 100% { opacity: 0.6; text-shadow: 0 0 6px rgba(255, 100, 60, 0.1); }
+  50% { opacity: 0.9; text-shadow: 0 0 10px rgba(255, 120, 80, 0.25); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 700px) {
+  .intel-quotes .blockquote {
+    font-size: 1rem;
+    padding: 0 1.25rem;
+  }
+  .intel-quotes::before {
+    font-size: 0.7rem;
+  }
+}
+
+
+[[/module]]
+
+[[div class=&#34;intel-quotes&#34;]]
+  [[div class=&#34;blockquote&#34;]]
+  “In intelligence work, there are no rules—only results.”
+  [[/div]]
+  [[span class=&#34;attrib&#34;]]— //John le Carré//[[/span]]
+
+  [[div class=&#34;blockquote&#34;]]
+  “In the intelligence business, a reputation for truth is extremely important — and rarely deserved.”
+  [[/div]]
+  [[span class=&#34;attrib&#34;]]— Alan W. Dulles, first civilian Director of the CIA[[/span]]
+
+  [[div class=&#34;blockquote&#34;]]
+  “Trust is the currency of intelligence, and everyone’s broke.”
+  [[/div]]
+  [[span class=&#34;attrib&#34;]]— Anonymous intelligence officer quote[[/span]]
+
+  [[div class=&#34;blockquote&#34;]]
+  “There is no such thing as information — only degrees of deception.”
+  [[/div]]
+  [[span class=&#34;attrib&#34;]]— Anonymous SIS officer, quoted in //The Secret World: A History of Intelligence//[[/span]]
+
+  [[div class=&#34;blockquote&#34;]]
+  “We burn the truth to keep the world warm.”
+  [[/div]]
+  [[span class=&#34;attrib&#34;]]— Unofficial motto, Foundation Intelligence Services[[/span]]
+[[/div]]
+
+-----
+
+[[collapsible show=&#34;Friends on the Other Side&#34; hide=&#34;- Secrets Run Deep&#34;]]
+
+[[div class=&#34;center-wrapper&#34;]]
+
+[[div class=&#34;story-block&#34;]]
+  [https://scp-wiki.wikidot.com/ends-and-the-means Ends and the Means]
+  [[div class=&#34;story-caption&#34;]]
+    //Too far?//
+
+   By [[*user squareTheme]]
+  [[/div]]
+[[/div]]
+
+[[div class=&#34;story-block&#34;]]
+  [https://scp-wiki.wikidot.com/city-of-spies City of Spies]
+  [[div class=&#34;story-caption&#34;]]
+    //Choose wisely. Trust is the first gear to fail.//
+   By [[*user squareTheme]]
+  [[/div]]
+[[/div]]
+
+[[div class=&#34;story-block&#34;]]
+  [https://scp-wiki.wikidot.com/petition-for-the-creation-of-mtf-nu-15 Petition for the Creation of MTF Nu-15]
+  [[div class=&#34;story-caption&#34;]]
+     //Two sides of the same coin.//
+
+   By [[*user squareTheme]]
+  [[/div]]
+[[/div]]
+
+[[div class=&#34;story-block&#34;]]
+  [https://scp-wiki.wikidot.com/the-dagon-and-the-dragon The Dagon and the Dragon]
+  [[div class=&#34;story-caption&#34;]]
+   //Read between the spaces.//
+
+   By [[*user squareTheme]]
+  [[/div]]
+[[/div]]
+
+
+[[div class=&#34;story-block&#34;]]
+  [https://scp-wiki.wikidot.com/scp-8603 SCP-8603]
+  [[div class=&#34;story-caption&#34;]]
+    //Liar, liar, oath’s a pyre — loyalty sold to the highest buyer.//
+
+   By [[*user squareTheme]]
+  [[/div]]
+[[/div]]
+
+[[div class=&#34;story-block&#34;]]
+  [https://scp-wiki.wikidot.com/site-163-dossier Welcome to 163]
+  [[div class=&#34;story-caption&#34;]]
+   //A Dead Man&#39;s Dreaded Dream.//
+
+   By [[*user squareTheme]]
+  [[/div]]
+[[/div]]
+
+[[div class=&#34;story-block&#34;]]
+  [https://scp-wiki.wikidot.com/goc-intellog-d-5589 Nature of Lies]
+  [[div class=&#34;story-caption&#34;]]
+   //Betrayal hurts, doesn&#39;t it?//
+
+   By [[*user squareTheme]]
+  [[/div]]
+[[/div]]
+
+[[div class=&#34;story-block&#34;]]
+  [https://scp-wiki.wikidot.com/scp-9603 SCP-9603]
+  [[div class=&#34;story-caption&#34;]]
+   //Twinkle, twinkle, hidden scar — all is not what secrets are.//
+
+   By [[*user squareTheme]]
+  [[/div]]
+[[/div]]
+
+
+[[div class=&#34;story-block&#34;]]
+  COMING SOON
+  [[div class=&#34;story-caption&#34;]]
+   //Patience is a virtue.//
+  [[/div]]
+[[/div]]
+
+[[/div]] 
+
+[[/collapsible]]
+-----
+
+##transparent|. ##
+##transparent|. ##
+##transparent|. ##
+##transparent|. ##
+[[tabview]]
+[[tab PLAYERS]]
+**SCP Foundation:** Once a young, agile, and small collective, the Foundation has grown to be one of the two most powerful veiled organizations in history. For the benefit of control and experience came the expense of inefficiency and hatred. The enemies are at the gates, and the illusion of control is slipping. The war of the shadows — our hail Mary — has begun, and you are right in the middle of it.
+
+[[div class=&#34;tab-indent&#34;]]
+**The Departments**[[footnote]]Nickname: &#34;The Big Three&#34;[[/footnote]]:
+
+[[div class=&#34;tab-indent&#34;]]
+**RAISA:** Publicly facing — the Foundation&#39;s archival branch. In secret, the Foundation&#39;s signal intelligence agency. Operating PANOPTICON and home to several AI farms, RAISA works to dominate the digital landscape to gain the upper hand. **You never know who&#39;s looking from above.**
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**Intelligence Agency:** The true eyes of the Foundation. Long believed to be dead, their corpse never truly was buried. The Foundation requires //discretion// — a role the Agency fits well. They run a network of agents and informants across the world who operate outside regular command. A useful but dangerous agency, the O5s keep them at arm’s length at all times. **You never know what happens in the shadows.**
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**Internal Security Department:** The Foundation has grown too big to keep secrets. Once, the &#34;all-seeing O5s&#34; ran the show, but they know when they&#39;re out of their league. When, for every &#34;conspirator&#34; they caught, three more went unseen, the Internal Security Department was born. Men of extreme loyalty to the Foundation alone, paranoia runs wild. They will do whatever it takes to ensure personnel stay in line. Those who deviate are... quickly corrected. **You never know who you can trust.**
+[[/div]]
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**Primary Mobile Task Forces:**
+
+[[div class=&#34;tab-indent&#34;]]
+**MTF Beta-1 (“Cauterizers”):** Created at the behest of the three departments, they represent the lower-level grunts of the intelligence community. Almost incapable of conducting intel on their own, they serve by enforcing the whims of those higher up. Authorized to conduct raids and kidnappings, they provide a means for the Big Three to act on their respective intel without retribution.
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**MTF Delta-5 (“Front Runners”):** Although failing to live up to its original vision, Delta-5 provides the most accurate data out of any task force. They infiltrate GoIs and provide the Foundation with information on potential SCPs to ensure the smoother execution of containment procedures if said object is brought into containment. While more standard organizations are within reach, most GoIs fall into the category of cults, which the Ethics Committee has deemed too unsafe. It remains to be seen if Delta-5 can grow when it has one arm tied behind its back.
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**MTF Iota-10 (“Damn Feds”):** Responsible for the infiltration of law enforcement agencies around the world, Iota-10 has been the most active and useful task force in the intelligence community. Placed in strategic positions, the Foundation has a strong hand when it comes to Iota-10. If it&#39;s in government custody, it&#39;s Iota-10’s job to bring it into Foundation control. It remains to be seen how long they can remain undetected.
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**MTF Titan-1 (“Off the Books”):** A rather new but experienced task force, Titan-1 focuses on unconventional means to disarm GoIs. While not completely within the intelligence sphere, Titan-1 carries out heavy intelligence operations against the most threatening GoIs and monitors suspected members in order to better carry out their missions.
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**MTF Nu-15 (“Stormtroopers”):** Born of the pleas of Titan-1, Nu-15 is the newest and strangest addition to the Foundation&#39;s intelligence arm. While most task forces have multiple objectives, Nu-15 has one: **the obliteration of the Chaos Insurgency**. Masters of asymmetrical warfare, Nu-15 is the Insurgency&#39;s own &#34;Insurgency,&#34; using their own tactics against them. Both providing and acting on intel, they finally give the Foundation a means to defend itself from the Insurgency.
+[[/div]]
+[[/div]]
+
+**Global Occult Coalition:** The new and strong kid on the block. In the beginning, external intelligence circles ran rings around the GOC before the Coalition suddenly got on its feet. Now, the GOC carefully watches the shadows move on the wall. Overly cautious but with enough firepower to back it, the war can be played in its favor...
+
+[[div class=&#34;tab-indent&#34;]]
+**PNEUMA:** The GOC&#39;s main intelligence division. Their job is to provide the Coalition with accurate intelligence and support on-site strike teams in their efforts. Unlike other organizations, PNEUMA operates under heavy oversight to ensure complete loyalty to the Fivefold Mission. Mistakes have been made before.
+
+[[div class=&#34;tab-indent&#34;]]
+**INSEC:** The internal security division of PNEUMA. They serve as the backbone of the entire Coalition, ensuring officers are held to the highest standards. They also operate as a counterintelligence force, removing external elements that have become embedded.
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**EXSEC:** The external security division of PNEUMA. EXSEC operates in the shadows of world governments and rogue occult organizations. They go where it is considered too dangerous or too high-profile for Assessment Teams to go. Their reporting has allowed the Coalition to rapidly respond to any government that seeks to weaponize the occult.
+[[/div]]
+[[/div]]
+
+[[div class=&#34;tab-indent&#34;]]
+**Assessment Strike Teams:** Teams belonging to the PHYSICS Division. They are the bread and butter of the Coalition&#39;s intelligence work. Working in more standard environments, they perform surface-level intel operations rather than deep cover. Their efforts allow the more conventional strike teams to operate more efficiently and safely.
+[[/div]]
+
+**VUDCI:** A rather unique mystery in the intelligence world. Their inner workings are unknown — a rare feat in this line of work. What is known, however, is their reputation: mercenaries working for the highest bidder. For the right price, they can do anything — intel work, assassinations, black market dealings, raids — anything is on the table. Some say they have their roots in a __far larger organization__...
+[[/tab]]
+
+[[tab What is this?]]
+This series focuses on the espionage side of the world behind the veil. Many SCPs and articles refer to the existence of spies throughout varying Groups of Interest, particularly the Foundation. This hub explores the world of the unknown — what happens behind the scenes, and what secrets lie hidden.
+
+In terms of the larger Foundation lore, there are several state and non-state actors. You have your cults and churches. You&#39;ve got your capitalists and intellectuals. Governments and NGOs. The truth is, there are dozens of different entities, all working to advance themselves. It&#39;s up to you to determine who to trust.
+
+The truth of the matter is that there are no allies in this war. While their parent organizations may be on good terms, a rivalry always exists under the surface. The best example to make is the Foundation and the GOC. On paper, they might disagree with each other at times but can be considered situational allies. However, would either side really expect full trust from the other?
+
+In recent years, escalations have grown — more disagreements, more firefights. The **war of the shadows** is upon us. It is up to you to **win**.
+-----
+Currently this hub is closed until the completion of the first series. The first series only means to set up the starting groups and only the tiniest of a framework of a story. I hope that others can expand on this series in the future.
+-----
+**Important Note:** The articles in any series are not in order, instead it&#39;s up to you to determine who is at play here. Look for the clues and the motives. Have fun solving.
+[[/tab]]
+
+[[/tabview]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:52.757269.</em>
+  
+</div>
+</body>

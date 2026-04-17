@@ -33,7 +33,7 @@
 td strong { white-space: nowrap; }
 .options table.wiki-content-table td { border: none; padding: 0.7em 1em; }
 .previews { word-break: none; }
-.previews img { max-width: 10rem; max-height: 10rem; }</code></pre>
+.previews img, .previews span.img { max-width: 10rem; max-height: 10rem; }</code></pre>
         </li>
       
     </ul>
@@ -55,6 +55,10 @@ td strong { white-space: nowrap; }
       
         <li>
           <pre><code>border: 1px solid #ddd; padding: 1em;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: block; height: 100%; aspect-ratio: 0.7; border: thin solid grey; background: white;</code></pre>
         </li>
       
         <li>
@@ -161,6 +165,10 @@ td strong { white-space: nowrap; }
         </li>
       
         <li>
+          <pre><code>img</code></pre>
+        </li>
+      
+        <li>
           <pre><code>pages-container</code></pre>
         </li>
       
@@ -184,7 +192,7 @@ td { vertical-align: top; }
 td strong { white-space: nowrap; }
 .options table.wiki-content-table td { border: none; padding: 0.7em 1em; }
 .previews { word-break: none; }
-.previews img { max-width: 10rem; max-height: 10rem; }
+.previews img, .previews span.img { max-width: 10rem; max-height: 10rem; }
 [[/module]]
 
 [[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
@@ -192,7 +200,11 @@ td strong { white-space: nowrap; }
 
 A component that displays your text on separate pages, for example the pages of a book.
 
+More precisely: this component splits text across a series of fixed aspect-ratio containers. 
+
 Made by [[*user Croquembouche]].
+
+For an example of this component in action: see [[[worry-worry|]]] by [[*user faminepulse]]
 
 Other components that simulate pagination:
 
@@ -356,16 +368,17 @@ Please note that while you can include arbitrary Javascript, the OR operator ({{
 
 The following are your options for the &#39;{{medium}}&#39; parameter.
 
-I am actively soliciting requests for new medium options. I mean, the title of this component is //&#39;Papers, Pages and Post-it Notes&#39;//, but right now it can only do a vintage book. This component is designed to be as versatile as possible, but right now, it can only do one thing.
+I am actively soliciting requests for new medium options. I mean, the title of this component is //&#39;Papers, Pages and Post-it Notes&#39;//, it&#39;s designed to be as versatile as possible, but right now, it can only do a couple of things.
 
 If you have any requests for paginated formats, please let me know ([[user Croquembouche]]).
 
-Each medium has a fixed aspect ratio that determines its height for any browser width. 
+Each medium has a fixed aspect ratio that determines its height for any browser width.
 
 [[div class=&#34;previews&#34;]]
 ||~ Medium ||~ Background ||~ Font ||~ y:x ||~ Source ||
 || {{plain}} //(default)// || [[image plain-preview.png]] || //Browser default// || 4:7 || ||
 || {{vintage-book}} || [[image book.300px.png]] || Libre Baskerville || 10:9 || [https://commons.wikimedia.org/wiki/File:Powiedz_ty_muzyko_moia.jpg Public Domain] ||
+|| {{gdocs}} || [[span class=&#34;img&#34; style=&#34;display: block; height: 100%; aspect-ratio: 0.7; border: thin solid grey; background: white;&#34;]]@@ @@[[/span]] || sans-serif || sqrt(2):1 || ||
 [[/div]]
 
 [[/div]]
@@ -385,6 +398,7 @@ Check the bottom of the page source for the {{@@[[html]]@@}} module.
 ++ CSS
 
 [[code type=&#34;css&#34;]]
+@layer base {
 /* Imports */
 /* Note that fonts MUST be imported synchronously using the link element,
  * otherwise the page structure may not render properly */
@@ -419,6 +433,7 @@ Check the bottom of the page source for the {{@@[[html]]@@}} module.
   background-size: 100% 100%;
   background-repeat: no-repeat;
   z-index: -1;
+  box-sizing: border-box;
 }
 
 .content {
@@ -437,6 +452,8 @@ h1, h2, h3, h4, h5, h6 { line-height: 1em; }
 
 /* Each medium gets its own style. */
 
+/* Vintage book */
+
 .vintage-book {
   font-family: &#39;Libre Baskerville&#39;, serif;
   color: #514132;
@@ -451,7 +468,7 @@ h1, h2, h3, h4, h5, h6 { line-height: 1em; }
 }
 .vintage-book .page::before {
   background-image:
-    url(http://topia.wikidot.com/local--files/cqb:book/book.1000px.webp);
+    url(https://scp-wiki.wikidot.com/local--files/component:pages/book.1000px.webp);
 }
 .vintage-book &gt; :nth-child(2n+1) .page::before {
   transform: scaleX(-1);
@@ -469,7 +486,24 @@ h1, h2, h3, h4, h5, h6 { line-height: 1em; }
   text-indent: 2em;
 }
 
-.letter .page {}
+/* Gdocs */
+
+.gdocs {
+  font-family: sans-serif;
+  color: #15141A;
+  line-height: 1.25em;
+}
+.gdocs .aspect-ratio {
+  padding-top: calc(1.414 / 1 * 100%);
+}
+.gdocs .page {
+  padding: 10vw 10vw;
+}
+.gdocs .page::before {
+  background: white;
+  border: thin solid grey;
+}
+}
 [[/code]]
 
 ++ Javascript
@@ -536,6 +570,15 @@ $(window).on(&#34;load&#34;, () =&gt; {
         windowWidth = $(window).width()
         resetPage(thisDocument)
       }
+    }, 200)
+  )
+
+  // Rerender the pages when an image finishes loading
+  thisDocument.on(
+    &#34;load&#34;,
+    &#34;img&#34;,
+    debounce(() =&gt; {
+      resetPage(thisDocument)
     }, 200)
   )
 })
@@ -789,7 +832,7 @@ function checkPage(thisDocument) {
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.172759.</em>
+    <em>Last updated 2026-04-17 00:56:52.996414.</em>
   
 </div>
 </body>

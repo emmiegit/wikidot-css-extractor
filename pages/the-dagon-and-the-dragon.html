@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>The Dagon and The Dragon</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">The Dagon and The Dragon</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/the-dagon-and-the-dragon" target="_blank">The Dagon and The Dragon</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>:root {
+  /* === Agency Branding === */
+  --logo-image: url(https://static.wikia.nocookie.net/scp-db/images/d/d6/Intelligence_Agency.png);
+  --header-subtitle: &#34;In Umbris Surgimus&#34;;
+  --gradient-header: linear-gradient(to top, rgb(15, 20, 22) 0%, rgb(10, 10, 12) 90%, rgb(var(--header-gradient-color-top)) 100%);
+  --diagonal-stripes: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 0.25vh,
+    rgba(150, 150, 150, 0.08) 0.4vh,
+    rgba(150, 150, 150, 0.12) 0.5vh
+  );
+
+  /* === Accent Colors === */
+  --accent-color: #66b3ff;
+  --accent-glow: 0 0 20px rgba(102, 179, 255, 0.6);
+  --dragon-color: #ff66b2;
+  --dragon-glow: 0 0 10px rgba(255, 102, 178, 0.8);
+
+  /* === Typography === */
+  --body-font: &#39;Inter&#39;, &#39;Segoe UI&#39;, Roboto, sans-serif;
+  --mono-font: &#39;Roboto Mono&#39;, monospace;
+}
+
+body {
+  background: linear-gradient(180deg, #0b0d0f 0%, #15191c 100%);
+  background-attachment: fixed;
+  font-family: var(--body-font);
+  color: #e6e6e6;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+/* === Blockquote Terminal Styling === */
+.blockquote {
+  font-family: var(--mono-font);
+  background: rgba(20, 25, 28, 0.8);
+  border: 1px solid rgba(120, 130, 140, 0.3);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin: 1.25rem auto;
+  max-width: 850px;
+  color: #cbd2d9;
+  backdrop-filter: blur(4px);
+  transition: 0.4s ease-in-out;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.blockquote:hover {
+  border-left: 4px solid var(--dragon-color);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 102, 178, 0.3);
+}
+
+/* === Dragon Dialogue Glow === */
+.dragon {
+  color: var(--dragon-color);
+  text-shadow: var(--dragon-glow);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  animation: pulseDragon 2s infinite alternate;
+}
+
+@keyframes pulseDragon {
+  from { text-shadow: 0 0 6px rgba(255, 102, 178, 0.6); }
+  to { text-shadow: 0 0 16px rgba(255, 102, 178, 1); }
+}
+
+/* === Section Breaks === */
+hr {
+  border: none;
+  height: 1px;
+  margin: 2.5rem auto;
+  background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+  width: 80%;
+  opacity: 0.6;
+}
+
+/* === Subtle Header Glow === */
+.page-title, #page-title {
+  text-shadow: 0 0 10px rgba(102, 179, 255, 0.5);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+h1, h2, h3, h4 {
+  color: var(--accent-color);
+  text-shadow: 0 0 8px rgba(102, 179, 255, 0.4);
+}
+
+/* === Interactive Feel === */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: var(--dragon-color);
+  text-shadow: 0 0 6px rgba(255, 102, 178, 0.7);
+}
+
+/* === Terminal-style Animation for &#34;Booting&#34; lines === */
+.blockquote:has(span:contains(&#39;Booting&#39;)) {
+  font-style: italic;
+  color: #9adfff;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+  }
+}
+
+/* === Subtle Fade-in Effect for All Dialogues === */
+.blockquote {
+  opacity: 0;
+  animation: fadeInBlock 0.8s ease-in forwards;
+}
+
+@keyframes fadeInBlock {
+  to { opacity: 1; }
+}
+
+/* === Exit Scene Styling === */
+.exit-scene {
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  max-width: 850px;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(240, 240, 240, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  color: #dcdcdc;
+  font-style: italic;
+  font-family: &#39;Inter&#39;, sans-serif;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(200, 200, 200, 0.1);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  animation: fadeScene 2s ease-in-out forwards;
+  transition: all 0.5s ease;
+}
+
+.exit-scene:hover {
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+/* === Stylized quotes for inner monologue === */
+.exit-scene i,
+.exit-scene em {
+  color: #f2f2f2;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* === “Loading Dock” moment === */
+.exit-scene strong {
+  display: block;
+  text-align: center;
+  margin: 1.8rem 0;
+  font-weight: 700;
+  font-size: 1.3em;
+  letter-spacing: 0.1em;
+  color: #f5f5f5;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+               0 0 25px rgba(255, 255, 255, 0.15);
+  animation: shimmer 4s infinite linear;
+}
+
+/* === Subtle fade-in + desert-light shimmer === */
+@keyframes fadeScene {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+  50% { text-shadow: 0 0 25px rgba(255, 255, 255, 0.6); }
+  100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+}
+
+/* === Internal Lobby Scene Styling === */
+.lobby-scene {
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  max-width: 850px;
+  background: linear-gradient(180deg, rgba(40, 45, 50, 0.85), rgba(25, 28, 32, 0.9));
+  border: 1px solid rgba(120, 120, 130, 0.25);
+  border-left: 5px solid #7da1b5;
+  border-radius: 10px;
+  color: #d6d6d6;
+  font-family: &#39;Inter&#39;, sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  animation: fadeLobby 1.2s ease-in-out forwards;
+}
+
+/* === Scene Header === */
+.lobby-scene strong {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #aac3d2;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px rgba(170, 195, 210, 0.4);
+  border-bottom: 1px solid rgba(120, 150, 170, 0.25);
+  padding-bottom: 0.3rem;
+}
+
+/* === Dialogue Styling === */
+.lobby-scene p {
+  margin: 0.8rem 0;
+  text-indent: 1rem;
+}
+
+.lobby-scene p::before {
+  content: &#34;&#34;;
+  display: inline-block;
+  width: 0.4em;
+}
+
+/* === Spoken Dialogue Highlight === */
+.lobby-scene q,
+.lobby-scene .quote {
+  display: block;
+  margin: 0.6rem 0;
+  color: #f0f0f0;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border-left: 3px solid #7da1b5;
+  font-style: italic;
+  transition: 0.2s ease;
+}
+
+.lobby-scene q:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(2px);
+}
+
+/* === Subtle ambient flicker to simulate old lighting === */
+@keyframes fadeLobby {
+  0% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes lightFlicker {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 0.95; }
+  48% { opacity: 0.85; }
+  50% { opacity: 1; }
+  52% { opacity: 0.9; }
+  55% { opacity: 1; }
+}
+
+.lobby-scene {
+  animation: fadeLobby 1.2s ease-in-out forwards, lightFlicker 8s infinite;
+}
+
+
+/* === Subterranean Sector D Styling === */
+.subsector-d {
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  max-width: 850px;
+  background: linear-gradient(180deg, rgba(22, 23, 26, 0.9), rgba(15, 16, 18, 0.95));
+  border: 1px solid rgba(90, 60, 40, 0.3);
+  border-left: 5px solid #b85c3c;
+  border-radius: 10px;
+  color: #e2e2e2;
+  font-family: &#39;Inter&#39;, sans-serif;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  animation: fadeSectorD 1.2s ease-in-out forwards, flickerD 10s infinite;
+}
+
+/* === Header === */
+.subsector-d strong {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #e9a57b;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.07em;
+  text-shadow: 0 0 8px rgba(185, 100, 70, 0.4);
+  border-bottom: 1px solid rgba(150, 100, 70, 0.25);
+  padding-bottom: 0.3rem;
+}
+
+/* === Text === */
+.subsector-d p {
+  margin: 0.9rem 0;
+  text-indent: 1rem;
+}
+
+/* === Dialogue Highlight === */
+.subsector-d q,
+.subsector-d .quote {
+  display: block;
+  margin: 0.6rem 0;
+  color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.55rem 0.8rem;
+  border-radius: 6px;
+  border-left: 3px solid #b85c3c;
+  font-style: italic;
+  transition: 0.25s ease;
+}
+
+.subsector-d q:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(3px);
+}
+
+/* === Animations === */
+@keyframes fadeSectorD {
+  0% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes flickerD {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 0.95; }
+  48% { opacity: 0.8; }
+  50% { opacity: 1; }
+  52% { opacity: 0.85; }
+  55% { opacity: 1; }
+  75% { opacity: 0.9; }
+  78% { opacity: 1; }
+}
+
+/* === Sub-section 4 Styling === */
+.subsection-4 {
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  max-width: 850px;
+  background: linear-gradient(180deg, rgba(28, 32, 40, 0.88), rgba(20, 23, 28, 0.95));
+  border: 1px solid rgba(120, 140, 160, 0.25);
+  border-left: 5px solid #6b8ea8;
+  border-radius: 10px;
+  color: #e4e7ea;
+  font-family: &#39;Inter&#39;, sans-serif;
+  line-height: 1.75;
+  letter-spacing: 0.015em;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  animation: fadeSub4 1.4s ease-in-out forwards, subtlePulse 9s infinite;
+}
+
+/* === Header (if any) === */
+.subsection-4 strong {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #9eb8cc;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px rgba(155, 180, 200, 0.4);
+  border-bottom: 1px solid rgba(100, 130, 150, 0.25);
+  padding-bottom: 0.3rem;
+}
+
+/* === Paragraphs === */
+.subsection-4 p {
+  margin: 0.9rem 0;
+  text-indent: 1rem;
+}
+
+/* === Soft emphasis for important descriptions === */
+.subsection-4 em {
+  color: #b4cfe4;
+  font-style: italic;
+  text-shadow: 0 0 4px rgba(140, 170, 200, 0.25);
+}
+
+/* === Subtle glow on key elements (like labels or doors) === */
+.subsection-4 .label {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border-left: 3px solid #6b8ea8;
+  font-weight: 500;
+  color: #d8e3f0;
+  margin: 0 0.2rem;
+}
+
+/* === Animations === */
+@keyframes fadeSub4 {
+  0% { opacity: 0; filter: blur(6px); transform: translateY(12px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+/* Slow, almost imperceptible pulse to evoke stale air and tension */
+@keyframes subtlePulse {
+  0%, 100% { background-position: 0 0; opacity: 1; }
+  50% { background-position: 0 4px; opacity: 0.97; }
+}
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-wiki:component:toggle-sidebar-bhl</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar-bhl.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:advanced-navigation-toolbar-source" target="_blank"><code>:scp-wiki:component:advanced-navigation-toolbar-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:advanced-navigation-toolbar-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>lobby-scene</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>subsector-d</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>subsection-4</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>dragon</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>exit-scene</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[module Rate]]
+
+[[include :scp-wiki:theme:black-highlighter-theme]]
+
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+
+
+[[module CSS]]
+:root {
+  /* === Agency Branding === */
+  --logo-image: url(https://static.wikia.nocookie.net/scp-db/images/d/d6/Intelligence_Agency.png);
+  --header-subtitle: &#34;In Umbris Surgimus&#34;;
+  --gradient-header: linear-gradient(to top, rgb(15, 20, 22) 0%, rgb(10, 10, 12) 90%, rgb(var(--header-gradient-color-top)) 100%);
+  --diagonal-stripes: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 0.25vh,
+    rgba(150, 150, 150, 0.08) 0.4vh,
+    rgba(150, 150, 150, 0.12) 0.5vh
+  );
+
+  /* === Accent Colors === */
+  --accent-color: #66b3ff;
+  --accent-glow: 0 0 20px rgba(102, 179, 255, 0.6);
+  --dragon-color: #ff66b2;
+  --dragon-glow: 0 0 10px rgba(255, 102, 178, 0.8);
+
+  /* === Typography === */
+  --body-font: &#39;Inter&#39;, &#39;Segoe UI&#39;, Roboto, sans-serif;
+  --mono-font: &#39;Roboto Mono&#39;, monospace;
+}
+
+body {
+  background: linear-gradient(180deg, #0b0d0f 0%, #15191c 100%);
+  background-attachment: fixed;
+  font-family: var(--body-font);
+  color: #e6e6e6;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+/* === Blockquote Terminal Styling === */
+.blockquote {
+  font-family: var(--mono-font);
+  background: rgba(20, 25, 28, 0.8);
+  border: 1px solid rgba(120, 130, 140, 0.3);
+  border-left: 4px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin: 1.25rem auto;
+  max-width: 850px;
+  color: #cbd2d9;
+  backdrop-filter: blur(4px);
+  transition: 0.4s ease-in-out;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.blockquote:hover {
+  border-left: 4px solid var(--dragon-color);
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(255, 102, 178, 0.3);
+}
+
+/* === Dragon Dialogue Glow === */
+.dragon {
+  color: var(--dragon-color);
+  text-shadow: var(--dragon-glow);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  animation: pulseDragon 2s infinite alternate;
+}
+
+@keyframes pulseDragon {
+  from { text-shadow: 0 0 6px rgba(255, 102, 178, 0.6); }
+  to { text-shadow: 0 0 16px rgba(255, 102, 178, 1); }
+}
+
+/* === Section Breaks === */
+hr {
+  border: none;
+  height: 1px;
+  margin: 2.5rem auto;
+  background: linear-gradient(to right, transparent, var(--accent-color), transparent);
+  width: 80%;
+  opacity: 0.6;
+}
+
+/* === Subtle Header Glow === */
+.page-title, #page-title {
+  text-shadow: 0 0 10px rgba(102, 179, 255, 0.5);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+h1, h2, h3, h4 {
+  color: var(--accent-color);
+  text-shadow: 0 0 8px rgba(102, 179, 255, 0.4);
+}
+
+/* === Interactive Feel === */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: var(--dragon-color);
+  text-shadow: 0 0 6px rgba(255, 102, 178, 0.7);
+}
+
+/* === Terminal-style Animation for &#34;Booting&#34; lines === */
+.blockquote:has(span:contains(&#39;Booting&#39;)) {
+  font-style: italic;
+  color: #9adfff;
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0%, 18%, 22%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+  }
+  20%, 24%, 55% {
+    opacity: 0.4;
+  }
+}
+
+/* === Subtle Fade-in Effect for All Dialogues === */
+.blockquote {
+  opacity: 0;
+  animation: fadeInBlock 0.8s ease-in forwards;
+}
+
+@keyframes fadeInBlock {
+  to { opacity: 1; }
+}
+
+/* === Exit Scene Styling === */
+.exit-scene {
+  margin: 3rem auto;
+  padding: 2rem 2.5rem;
+  max-width: 850px;
+  border-radius: 10px;
+  background: linear-gradient(
+    180deg,
+    rgba(240, 240, 240, 0.08) 0%,
+    rgba(255, 255, 255, 0.03) 100%
+  );
+  color: #dcdcdc;
+  font-style: italic;
+  font-family: &#39;Inter&#39;, sans-serif;
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+  border: 1px solid rgba(200, 200, 200, 0.1);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(6px);
+  animation: fadeScene 2s ease-in-out forwards;
+  transition: all 0.5s ease;
+}
+
+.exit-scene:hover {
+  box-shadow: 0 0 35px rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+/* === Stylized quotes for inner monologue === */
+.exit-scene i,
+.exit-scene em {
+  color: #f2f2f2;
+  opacity: 0.9;
+  font-weight: 500;
+}
+
+/* === “Loading Dock” moment === */
+.exit-scene strong {
+  display: block;
+  text-align: center;
+  margin: 1.8rem 0;
+  font-weight: 700;
+  font-size: 1.3em;
+  letter-spacing: 0.1em;
+  color: #f5f5f5;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.4),
+               0 0 25px rgba(255, 255, 255, 0.15);
+  animation: shimmer 4s infinite linear;
+}
+
+/* === Subtle fade-in + desert-light shimmer === */
+@keyframes fadeScene {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+  50% { text-shadow: 0 0 25px rgba(255, 255, 255, 0.6); }
+  100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); }
+}
+
+/* === Internal Lobby Scene Styling === */
+.lobby-scene {
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  max-width: 850px;
+  background: linear-gradient(180deg, rgba(40, 45, 50, 0.85), rgba(25, 28, 32, 0.9));
+  border: 1px solid rgba(120, 120, 130, 0.25);
+  border-left: 5px solid #7da1b5;
+  border-radius: 10px;
+  color: #d6d6d6;
+  font-family: &#39;Inter&#39;, sans-serif;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(3px);
+  animation: fadeLobby 1.2s ease-in-out forwards;
+}
+
+/* === Scene Header === */
+.lobby-scene strong {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #aac3d2;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px rgba(170, 195, 210, 0.4);
+  border-bottom: 1px solid rgba(120, 150, 170, 0.25);
+  padding-bottom: 0.3rem;
+}
+
+/* === Dialogue Styling === */
+.lobby-scene p {
+  margin: 0.8rem 0;
+  text-indent: 1rem;
+}
+
+.lobby-scene p::before {
+  content: &#34;&#34;;
+  display: inline-block;
+  width: 0.4em;
+}
+
+/* === Spoken Dialogue Highlight === */
+.lobby-scene q,
+.lobby-scene .quote {
+  display: block;
+  margin: 0.6rem 0;
+  color: #f0f0f0;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.5rem 0.8rem;
+  border-radius: 6px;
+  border-left: 3px solid #7da1b5;
+  font-style: italic;
+  transition: 0.2s ease;
+}
+
+.lobby-scene q:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(2px);
+}
+
+/* === Subtle ambient flicker to simulate old lighting === */
+@keyframes fadeLobby {
+  0% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes lightFlicker {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 0.95; }
+  48% { opacity: 0.85; }
+  50% { opacity: 1; }
+  52% { opacity: 0.9; }
+  55% { opacity: 1; }
+}
+
+.lobby-scene {
+  animation: fadeLobby 1.2s ease-in-out forwards, lightFlicker 8s infinite;
+}
+
+
+/* === Subterranean Sector D Styling === */
+.subsector-d {
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  max-width: 850px;
+  background: linear-gradient(180deg, rgba(22, 23, 26, 0.9), rgba(15, 16, 18, 0.95));
+  border: 1px solid rgba(90, 60, 40, 0.3);
+  border-left: 5px solid #b85c3c;
+  border-radius: 10px;
+  color: #e2e2e2;
+  font-family: &#39;Inter&#39;, sans-serif;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  animation: fadeSectorD 1.2s ease-in-out forwards, flickerD 10s infinite;
+}
+
+/* === Header === */
+.subsector-d strong {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #e9a57b;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.07em;
+  text-shadow: 0 0 8px rgba(185, 100, 70, 0.4);
+  border-bottom: 1px solid rgba(150, 100, 70, 0.25);
+  padding-bottom: 0.3rem;
+}
+
+/* === Text === */
+.subsector-d p {
+  margin: 0.9rem 0;
+  text-indent: 1rem;
+}
+
+/* === Dialogue Highlight === */
+.subsector-d q,
+.subsector-d .quote {
+  display: block;
+  margin: 0.6rem 0;
+  color: #f5f5f5;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.55rem 0.8rem;
+  border-radius: 6px;
+  border-left: 3px solid #b85c3c;
+  font-style: italic;
+  transition: 0.25s ease;
+}
+
+.subsector-d q:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(3px);
+}
+
+/* === Animations === */
+@keyframes fadeSectorD {
+  0% { opacity: 0; filter: blur(6px); transform: translateY(10px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+@keyframes flickerD {
+  0%, 100% { opacity: 1; }
+  45% { opacity: 0.95; }
+  48% { opacity: 0.8; }
+  50% { opacity: 1; }
+  52% { opacity: 0.85; }
+  55% { opacity: 1; }
+  75% { opacity: 0.9; }
+  78% { opacity: 1; }
+}
+
+/* === Sub-section 4 Styling === */
+.subsection-4 {
+  margin: 2.5rem auto;
+  padding: 2rem 2.5rem;
+  max-width: 850px;
+  background: linear-gradient(180deg, rgba(28, 32, 40, 0.88), rgba(20, 23, 28, 0.95));
+  border: 1px solid rgba(120, 140, 160, 0.25);
+  border-left: 5px solid #6b8ea8;
+  border-radius: 10px;
+  color: #e4e7ea;
+  font-family: &#39;Inter&#39;, sans-serif;
+  line-height: 1.75;
+  letter-spacing: 0.015em;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  animation: fadeSub4 1.4s ease-in-out forwards, subtlePulse 9s infinite;
+}
+
+/* === Header (if any) === */
+.subsection-4 strong {
+  display: block;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #9eb8cc;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 8px rgba(155, 180, 200, 0.4);
+  border-bottom: 1px solid rgba(100, 130, 150, 0.25);
+  padding-bottom: 0.3rem;
+}
+
+/* === Paragraphs === */
+.subsection-4 p {
+  margin: 0.9rem 0;
+  text-indent: 1rem;
+}
+
+/* === Soft emphasis for important descriptions === */
+.subsection-4 em {
+  color: #b4cfe4;
+  font-style: italic;
+  text-shadow: 0 0 4px rgba(140, 170, 200, 0.25);
+}
+
+/* === Subtle glow on key elements (like labels or doors) === */
+.subsection-4 .label {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  border-left: 3px solid #6b8ea8;
+  font-weight: 500;
+  color: #d8e3f0;
+  margin: 0 0.2rem;
+}
+
+/* === Animations === */
+@keyframes fadeSub4 {
+  0% { opacity: 0; filter: blur(6px); transform: translateY(12px); }
+  100% { opacity: 1; filter: blur(0); transform: translateY(0); }
+}
+
+/* Slow, almost imperceptible pulse to evoke stale air and tension */
+@keyframes subtlePulse {
+  0%, 100% { background-position: 0 0; opacity: 1; }
+  50% { background-position: 0 4px; opacity: 0.97; }
+}
+
+[[/module]]
+
+
+[[div class=&#34;lobby-scene&#34;]]
+**Internal Lobby — Ground Floor, Site-56**
+
+&#34;First day?&#34;
+
+The man in front of her was impossibly large. From the looks of it, he was near 50, with multiple scars running down his neck and what appeared to be multiple burn marks on his left cheek.
+
+&#34;You could say that. I&#39;m Joana Dagon. Nice to meet you.&#34;
+
+&#34;Shaxs. What&#39;ya looking for?&#34;
+
+&#34;Conference Room 11-D.&#34;
+
+He pointed to the east wing.
+
+&#34;Oh, that&#39;s in Sector 2D, I believe. Down the hall, make a left at the second intersection, go down two floors, and take your first right. There should be a map from there.&#34;
+
+&#34;Thanks.&#34;
+
+&#34;Not going to write that down?&#34;
+
+&#34;Don&#39;t need to.&#34;
+[[/div]]
+----
+[[div class=&#34;subsector-d&#34;]]
+&#34;Why does this GODFORSAKEN site have no elevators?!&#34;
+
+The climb to the subterranean level was brutal—far worse than the crumbling infrastructure she was used to.
+
+She glanced up to see several arrows pointing across the stream of hallways in front of her. Sector D was to the far right.
+
+From what she could uncover, Sector D was ill-maintained. There was clearly rust along the seams of the ceiling and a couple of bloodstains that hadn&#39;t been cleaned up too well. In front of her were two large, imposing double doors and an overweight guard sitting on one of those dime-a-dozen plastic chairs.
+
+&#34;Name and ID number?&#34;
+
+&#34;Dagon, Joana. 335G99A2.&#34;
+
+&#34;Go on in.&#34;
+
+With a small click, the doors hissed before opening to a rather disgusting lobby area—or what she hoped was a lobby area. There was a small man hidden by the front desk, taking a nap.
+
+&#34;How do I get to Conference Room 11-D?&#34;
+
+The man stirred from his slumber, and from what she could see, his spirit had been broken long before she got there.
+
+&#34;11-D? You sure?&#34;
+
+Now she was pissed.
+
+&#34;Yes. I&#39;m sure.&#34;
+
+&#34;Well, that&#39;s a first. That&#39;s in Sub-section 4. Down the hall, take two lefts, then a right.&#34;
+
+She started moving before she punched the snob in the throat. Looking into several rooms, the corridors were filled with mostly IT workers and servers. Nothing really of interest to her.
+[[/div]]
+----
+[[div class=&#34;subsection-4&#34;]]
+It took her a minute at first. She had been so lost in her world that she hadn&#39;t even noticed the change.
+
+Sub-section 4 on the outside looked unassuming—hidden behind a small blue door with a faded four as the only method of identifying it. It could be mistaken for the supply closet if not for someone of her skills having encountered it.
+
+The inside, though, was... quaint. She noted the thick layer of dust covering the handles. //No one&#39;s been here in a long time.//
+
+She could count four rooms: one on the left, two on the right, and one dead-center.
+
+The one on the left was labeled &#34;Server Room,&#34; but she couldn&#39;t hear the hum of a server and noted the distinct lack of cables running the length of the floor like the remainder of the section.
+
+The exact opposite room was marked &#34;Medical Office.&#34; //Why would they need a med office here if they have a whole section dedicated to it on-site? Experimental procedures, maybe?//
+
+Her eyes fell upon the door beside it: &#34;EXIT.&#34; //This part of the site was closed off. There was no exit here. They were two floors underground. Maybe a construction error? Wrong label?//
+
+Lastly, &#34;Conference Room 11-D.&#34;
+[[/div]]
+-----
+
+Unlike the exterior, the room was remarkably clean. The small table sat in the direct center, surrounded by five chairs. The table bore a logo she was unfamiliar with—a single black-and-white eye.
+
+What interested her more was the small HP computer resting at the head of the table.
+
+//What kind of interview is this?//
+
+[[div class=&#34;blockquote&#34;]] 
+Begin Session? 
+[[/div]]
+
+She hit confirm.
+
+[[div class=&#34;blockquote&#34;]]
+Booting Connection . . . Loading Session . . . Preparing Application
+[[/div]]
+
+The screen blacked out.
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Good afternoon, Ms. Dagon.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** Nice to meet you, Ms. Dragon?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Alias name only here, Ms. Dagon. You know how it is, considering [https://scp-wiki.wikidot.com/task-forces#iota-10 your last assignment.] If all goes well, you get one too.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** Then why am I here?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] This is an interview, if you&#39;ve forgotten.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** Bullshit. It&#39;s a setup. And I know that you know that I __never forget__ anything.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Good. Good. You&#39;re even smarter than I anticipated. 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** So again I ask, why am I here?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Before I begin, tell me how you reached the conclusion that this was a setup?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** One, I&#39;m stuck in a remote site. Two, when I asked for this section from the guy at the IT desk, he didn&#39;t believe me—meaning that this sub-section is particularly unused. Three, none of the rooms here make any sense. Why would you need a med office when there&#39;s one on the first floor? A server room with no cables running to or out of it? The &#34;EXIT&#34; door that makes no sense.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] See, that&#39;s what I&#39;m looking for. The people who can piece everything together. 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] The truth is, this is not an interview—it&#39;s an __orientation__.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** For what?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] The Intelligence Agency, of course.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** The Agency? I thought you guys were dissolved years ago and pawned off to different departments. 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Right. That was a myth created by our friends from the Internal Security Department. 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** The ISD actually exists? 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Tale for another time. The Intelligence Agency has roots in one of the oldest departments of the Foundation. [https://scp-wiki.wikidot.com/internal-affairs Then it was called the Intelligence Community before it was split up.] 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** Split up?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Too much infighting. The close birth of the ISD, RAISA, and us is no coincidence. But that&#39;s not why you&#39;re here today. I wanted to personally welcome you to our little department.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** So how does this work?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** Do I remain an Iota-10 operative on paper? 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] No. Officially, you&#39;re an administrative consultant. You&#39;ll be able to run around the world without anyone being the wiser. Remember, even most Level 4s believe the Intelligence Agency&#39;s a ghost.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Now, a little perspective, history, and a rundown on our //unique// protocols.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Mobile Task Force Iota-10 &#34;Damn Feds&#34; and Delta-5 &#34;Front Runners&#34; serve as the Foundation&#39;s __interconnected__ intelligence arm. What good is intel if you can&#39;t share it and use it? They provide the most low-level information—your day-to-day stuff. You can attest to that. 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Then there are smaller task forces. Alpha-4 &#34;Pony Express,&#34; Mu-3 &#34;Highest Bidders,&#34; etc. These are more support staff than intel-gathering units. They are inconsequential.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Then there&#39;s the big three.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** RAISA, the ISD, and us.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] RAISA is the Foundation&#39;s __intelligence analysis__ wing. There are thousands of anomalies that require constant care and execution of containment procedures. RAISA is the juggernaut that manages that. They see things where others don&#39;t. They stitch the bits and pieces until it&#39;s a viable picture. 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** Do we share our information with them?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Sometimes. We&#39;re invited to watch, but it&#39;s our rule of thumb to dead-drop info only when necessary.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] The Internal Security Department is the Foundation&#39;s __heavy counterintelligence__ arm. They serve to purge the Foundation of traitors by any means necessary, and I mean **[https://scp-wiki.wikidot.com/ends-and-the-means any means]**. They are mostly unknown to those below Level 4 clearance, but above that, their existence is at least acknowledged. They are also our closest allies, helping cover up any traces of us.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] It&#39;s also worth mentioning Beta-1 &#34;Cauterizers.&#34; In the Foundation&#39;s Intelligence sector, they are the __overt action__ division. They can quickly be deployed to handle intelligence matters, but they have little capability of their own. Just a puppet on strings.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** And then there was one.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Yes. We act almost completely outside Foundation control. We&#39;re allowed to do __whatever__ it takes to gain the upper hand. We lie, cheat, steal, murder, and sabotage whoever we feel like. Due to that, we have our own in-house servers and medical equipment. The fewer questions, the better.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** No conditions?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Only two. One, we can&#39;t act within the Foundation. Anything relating to internal Foundation activity has to be pawned off to the ISD. Two, if you&#39;re caught, the Foundation will not save you. They will erase you from their databases and claim you&#39;re a CI pretending to be Foundation.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** Reassuring. 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] So, do you accept?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** Did I have a choice to begin with? When do I start?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Today. In the medical office, there is a file on a target.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** And where do I report back to?
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Report back to Site-163 when the objective is complete.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** There is no Site-163.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] Well, of course there is. You&#39;re standing in it.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+**Dagon:** This is Site-56. 
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+[[span class=&#34;dragon&#34;]] **Dragon:** [[/span]] I always forget. Just take the exit, and I&#39;ll have the Site Dossier sent over.
+[[/div]]
+
+[[div class=&#34;blockquote&#34;]]
+Session terminated. Ending Program. Goodbye.
+[[/div]]
+----
+
+[[div class=&#34;exit-scene&#34;]]
+The &#34;EXIT&#34; room was a 1 by 1 meter… room? Closet?
+
+//I guess everything else makes sense. Why the fuck not?//
+
+She closed the door behind her. It was dark and cold. Then she heard a whirring sound around her and felt a force beneath her feet.
+
+//It&#39;s fine. Everything&#39;s fine.//
+
+The door hissed open again, and she took the chance to break out. She could suddenly feel the desert sun beating against her.
+
+//FUCK, it&#39;s bright. Where the hell am I?//
+
+She looked back and saw only a giant rock in front of her. No openings. Not a thing out of place. She looked to her side and it hit her.
+
+**SITE 56 LOADING DOCK**
+
+//Sneaky bastards.//
+[[/div]]
+
+
+[[include :scp-wiki:component:advanced-navigation-toolbar-source dual= false
+|styleNum= one
+|prev= https://scp-wiki.wikidot.com/petition-for-the-creation-of-mtf-nu-15 |prevtext= » Petition for the Creation of MTF Nu-15
+|prevImage= https://scp-wiki.wdfiles.com/local--files/dr-moned-s-icons-and-art/Damnum.png
+|hub= https://scp-wiki.wikidot.com/beneath-control-hub |hubtext= Beneath Control Hub
+|next= https://scp-wiki.wikidot.com/scp-8603 |nexttext= SCP-8603
+|nextImage= https://scp-wiki.wdfiles.com/local--files/dr-moned-s-icons-and-art/Yesod.png
+]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:59.635400.</em>
+  
+</div>
+</body>

@@ -38,7 +38,10 @@ iframe.pass-check {
 }
 
 .pass-content { display: none; }
-.pass-check[style^=&#34;height: 1600&#34;] + .pass-content { display: block; }</code></pre>
+.pass-check[style^=&#34;height: 1600&#34;] + .pass-content { display: block; }
+
+/* fallback if iframe resizing rounds weirdly */
+.pass-check:is([style^=&#34;height: 1601&#34;],[style^=&#34;height: 1599&#34;]) + .pass-content { display: block; }</code></pre>
         </li>
       
     </ul>
@@ -76,6 +79,10 @@ iframe.pass-check {
       
         <li>
           <pre><code>pass-check</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>if-fail</code></pre>
         </li>
       
     </ul>
@@ -127,6 +134,9 @@ iframe.pass-check {
 
 .pass-content { display: none; }
 .pass-check[style^=&#34;height: 1600&#34;] + .pass-content { display: block; }
+
+/* fallback if iframe resizing rounds weirdly */
+.pass-check:is([style^=&#34;height: 1601&#34;],[style^=&#34;height: 1599&#34;]) + .pass-content { display: block; }
 [[/module]]
 
 [[div_ class=&#34;pass-wrapper&#34;]]
@@ -197,7 +207,7 @@ body {
     mask-size: 3.75rem;
 }
 
-#logic &gt; label {
+#logic &gt; .if-fail {
     text-align: center;
     width: 100%;
     font-size: .75em;
@@ -248,7 +258,7 @@ body {
 
 /*--------------------------------*/
 
-#logic.false &gt; label {
+#logic.false &gt; .if-fail {
     visibility: visible;
     animation: incorrect 0.175s;
     animation-fill-mode: forwards;
@@ -278,11 +288,11 @@ body {
 &lt;/style&gt;
 &lt;/head&gt;
 &lt;body&gt;
-&lt;div id=&#34;logic&#34;&gt;
-  &lt;label for=&#34;if-fail&#34;&gt;INCORRECT&lt;/label&gt;
-  &lt;input type=&#34;text&#34; id=&#34;pw-field&#34; name=&#34;password&#34;/&gt;
-  &lt;input type=&#34;submit&#34; id=&#34;enter-button&#34; value=&#34;SUBMIT&#34; onclick=&#34;verify()&#34;/&gt;
-&lt;/div&gt;
+&lt;form id=&#34;logic&#34; aria-label=&#34;In-universe password prompt&#34; onsubmit=&#34;verify(); return false&#34;&gt;
+  &lt;span class=&#34;if-fail&#34;&gt;INCORRECT&lt;/span&gt;
+  &lt;input type=&#34;text&#34; id=&#34;pw-field&#34; name=&#34;password&#34; aria-label=&#34;Password&#34;/&gt;
+  &lt;input type=&#34;submit&#34; id=&#34;enter-button&#34; value=&#34;SUBMIT&#34;/&gt;
+&lt;/form&gt;
 &lt;/body&gt;
 [[/html]]</textarea></pre>
   </div>
@@ -291,7 +301,7 @@ body {
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.173187.</em>
+    <em>Last updated 2026-04-17 00:56:52.996984.</em>
   
 </div>
 </body>

@@ -29,138 +29,411 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>:root {
-    --fnColor: #4b3366;
-}</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>/* HEADER */
- :root{
-   --header-title: &#34;‘PATAPHYSICS DEPARTMENT&#34;;
-   --header-subtitle: &#34;WRITING OUR OWN DESTINY&#34;;
-   --titleColor: hsl(0, 0%, 91%);
-   --subtitleColor: hsl(0, 0%, 91%);
-   --lgurl: url(https://scp-wiki.wikidot.com/local--files/theme:pataphysics/pataphysicslogo-ani.svg);
+          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Manufacturing+Consent&amp;display=swap&#39;);
+
+/* Page title */
+#page-title {
+    display: none;
 }
 
-@media (max-width: 830px) {
-    :root {
-         --header-title: &#34;‘PATAPHYS. DEPT.&#34;;
+/* Page background */
+html,
+body {
+    background-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/montagueetc/paper.png&#34;);
+    background-position: center top;
+    background-repeat: repeat;
+    background-size: contain;
+    background-size: 20%;
+    background-attachment: scroll;
+}
+
+/* Hover overlay over whole page */
+body::before {
+    content: &#34;&#34;;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.10);
+    opacity: 0;
+    transition: opacity 180ms ease;
+    pointer-events: none;
+    z-index: 50;
+}
+
+body:has(.basic:hover)::before {
+    opacity: 1;
+}
+
+/* Global image styles */
+img {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    filter: grayscale(100%);
+}
+
+/* Card image styles */
+.basic img {
+    max-height: 80px;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}
+
+/* Large title text */
+.bigguy {
+    font-size: 7em;
+    line-height: 0.7em;
+    letter-spacing: 0.5rem;
+    font-family: &#34;Manufacturing Consent&#34;, system-ui;
+}
+
+/* Main header bar */
+
+.header {
+    font-size: 5em;
+    text-align: center;
+    padding-bottom: 2px;
+    height: 1.5em;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1em;
+    position: relative;
+    border-bottom: 3px solid #000;
+    --gap: 8px;
+    --thick: 6px;
+    margin-bottom: 0.4em;
+}
+
+/* Extra line under header */
+.header::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: var(--thick);
+    background: #000;
+    bottom: calc(-1 * (var(--gap) + var(--thick)));
+}
+
+/* Extra info banner */
+.extra {
+    font-size: 155%;
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    border: none;
+    background: #9c1e1e;
+    color: white;
+    padding: 0.15em 2em;
+    line-height: 0.5;
+    text-transform: uppercase;
+    transition: all 200ms ease-in-out;
+}
+
+.extra a,
+.extra a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.extra::before,
+.extra::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 50%;
+    width: 1.4em;
+    height: 1.4em;
+    transform: translateY(-50%);
+    background-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/montagueetc/megaphone.png&#34;);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.extra::before {
+    left: 0.75em;
+}
+
+.extra::after {
+    right: 0.75em;
+}
+
+.extra:hover,
+.extra:focus,
+.extra:active {
+    transform: scale(1.05);
+    z-index: 9999;
+    transition: all 200ms;
+}
+
+.extralink {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: static;
+    text-decoration: none !important;
+}
+
+/* Card grid layout */
+.groot {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(10px, 1fr));
+    align-items: stretch;
+    column-gap: 0.75rem;
+    row-gap: 0.75rem;
+    grid-auto-flow: dense;
+    width: auto;
+    max-width: 100vw !important;
+}
+
+/* Base card styles */
+.basic {
+    position: relative;
+    padding: 5px;
+    background: none;
+    border: none;
+    transform: translateZ(0);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    box-sizing: border-box;
+    font-size: 90%;
+    color: black !important;
+    text-decoration: none !important;
+    line-height: 1.25;
+    z-index: 0;
+    place-self: stretch;
+    transition: all 200ms ease-in-out;
+    height: auto;
+}
+
+/* Reset inner margins */
+.basic * {
+    margin: 0;
+}
+
+.basic p {
+    margin: 0 0 4px;
+}
+
+/* Card headings */
+.basic h1,
+.basic h2,
+.basic h3 {
+    font-family: &#34;DM Serif Display&#34;, serif;
+    font-style: italic;
+}
+
+/* Clickable card content wrapper */
+.basiclink {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: static;
+    padding: 3%;
+    padding-top: 0;
+    color: black !important;
+    text-decoration: none !important;
+}
+
+/* Card hover effect */
+.basic:hover,
+.basic:focus,
+.basic:active {
+    transform: scale(1.05);
+    background-image: url(&#34;https://live.staticflickr.com/3183/2646553223_d59f63646f_b.jpg&#34;);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 9999;
+    transition: all 200ms;
+}
+
+/* Card border variants */
+.black {
+    border-bottom: 3px solid black;
+}
+
+.contest {
+    border: 3px dashed #d1d1d1;
+}
+
+.proposal {
+    border: 3px solid black;
+}
+
+/* Title block */
+.title {
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 150%;
+    width: 11rem;
+    height: 3rem;
+    margin-bottom: -0.01rem;
+}
+
+.title * {
+    margin: 0;
+    line-height: 1;
+}
+
+/* Feature label */
+.feature {
+    font-size: 75%;
+    text-align: center;
+}
+
+/* Pill-style feature title */
+.title.feature {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #b8b8b8;
+    border-radius: 50px;
+    padding: 0.35rem 1.8rem;
+    line-height: 1;
+    width: auto;
+    height: auto;
+    margin: 0 0 0.5rem;
+}
+
+/* Mobile Parity */
+@media (max-width: 768px) {
+    .bigguy {
+        font-size: 5em;
+    }
+
+    .groot {
+        grid-template-columns: repeat(2, minmax(10px, 1fr));
+        align-items: stretch;
+        column-gap: 0.75rem;
+        row-gap: 0.75rem;
+        grid-auto-flow: dense;
+        width: auto;
+        max-width: 100vw !important;
+    }
+
+    .header {
+        font-size: 3em;
+    }
+
+    .extra {
+        line-height: 1;
     }
 }
-
- #page-title{
-     display: none;
-}
-
- #header::before{
-     opacity: .7;
-}
-
- #header h1 a::before{
-     text-shadow:
-          -1.75px -1.75px hsl(0, 0%, 5%),
-          0       -1.75px hsl(0, 0%, 5%),
-          1.75px  -1.75px hsl(0, 0%, 5%),
-          1.75px   0   hsl(0, 0%, 5%),
-          1.75px   1.75px hsl(0, 0%, 5%),
-          0        1.75px hsl(0, 0%, 5%),
-          -1.75px  1.75px hsl(0, 0%, 5%),
-          -1.75px  0   hsl(0, 0%, 5%);
-}
-
- #header h2::before{
-     text-shadow:
-          -1px -1px hsl(0, 0%, 5%),
-          0    -1px hsl(0, 0%, 5%),
-          1px  -1px hsl(0, 0%, 5%),
-          1px   0   hsl(0, 0%, 5%),
-          1px   1px hsl(0, 0%, 5%),
-          0     1px hsl(0, 0%, 5%),
-          -1px  1px hsl(0, 0%, 5%),
-          -1px  0   hsl(0, 0%, 5%);
-}
-
- #header-extra-div-1::before{
-     display: none;
-}
 </code></pre>
         </li>
       
         <li>
-          <pre><code>
-.etc-table {
-  background: #321f47;
-  width: 100%;
-  border-spacing: 2px;
-  margin: 50px 0;
+          <pre><code>/* BHL */
+/* Root variables */
+:root {
+    --black-monochrome: 23, 23, 23;
+    --medium-accent: 156, 30, 30;
+    --white-monochrome: 227, 227, 227;
+    --gray-monochrome: var(--white-monochrome);
+    --dark-gray-monochrome: 201, 201, 201;
+    --bright-accent: 156, 30, 30;
+    --dark-accent: 245, 233, 233;
+    --pale-gray-monochrome: 201, 201, 201;
+    --pale-accent: 156, 30, 30;
+    --light-pale-gray-monochrome: 128, 0, 255;
+    --very-light-gray-monochrome: 255, 0, 247;
+    --light-gray-monochrome: 156, 30, 30;
+    --light-red: 176, 75, 75;
+    --lighter-red: 196, 120, 120;
+
+    --header-title: &#34;Ellipsis Gazette&#34;;
+    --header-subtitle: &#34; &#34;;
+    --logo-image: mone;
+
+    --body-font: &#34;Noticia Text&#34;, serif;
+    --header-font: var(--body-font);
+    --title-font: var(--body-font);
+    --UI-font: var(--body-font);
+
+     --main-content-width: 80rem;
+
+    /* Header font override + size */
+    --header-font: &#34;Manufacturing Consent&#34;, system-ui;
+    --header-h1-font-size: calc(var(--base-font-size) * (100 / 15));
+
+    --link-color: var(--medium-accent);
+    --visited-link-color: var(--lighter-red);
+    --hover-link-color: var(--light-red);
 }
 
-.entry-cell {
-  text-align: center;
-  padding: 0 10px;
-  background: #fafafa;
-}
-.entry-cell.dark {
-  background: #fafafa;
-}
-.entry-cell.entry-number {
-  font-size: 200%;
-  width: 25%;
-}
-</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>
-.tcontainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: space-between;
+/* Login dropdown + account options */
+#login-status #account-options ul li &gt; a,
+#login-status #account-options ul li &gt; a:visited {
+    color: #000000;
 }
 
-.caser {
-    background-color: transparent;
-    width: calc(11rem + 1.5vw);
-    padding: 0px;
-    margin: 6px;
-    box-sizing: border-box;
-    border: solid 0px #000000;
-    display: block;
-    text-align: center;
-    transition: transform .16s;
-    line-height: 1.1;
-    position: relative;
+/* Top bar base links */
+#top-bar a,
+#top-bar a:link,
+#top-bar a:visited {
+    color: #000000 !important;
 }
 
-.caser:hover {
-    transform: scale(1.52);
-    z-index: 2;
-}
-.caser:focus-within {
-    transform: scale(1.52);
-    z-index: 2;
+/* Top bar hover/selected states */
+#top-bar li:hover &gt; a,
+#top-bar .selected &gt; a,
+#top-bar .open &gt; a {
+    color: #000000 !important;
 }
 
-.caser:hover .hoverdesc,
-.caser .hoverdesc:hover {
-    margin-top: 0;
-    opacity: 1;
-    pointer-events: all;
-}
-.caser:focus-within .hoverdesc{
-    margin-top: 0;
-    opacity: 1;
-    pointer-events: all;
+/* Remove default site background */
+div#container-wrap {
+    background-image: none;
 }
 
-.anchor {
-    position: sticky;
-    height:0;
-    top: 0;
+/* Header-level color variables */
+#header {
+    --swatch-headerh1-color: var(--black-monochrome);
+    --search-icon-color: var(--black-monochrome);
+    --search-icon-hover-color: var(--medium-accent);
+    --login-line-divider-color: var(--black-monochrome);
+    --login-username-color: var(--black-monochrome);
+    --login-myaccount-color: var(--black-monochrome);
+    --login-myaccount-hover-color: var(--medium-accent);
+    --login-myaccount-hover-bg-color: var(--white-monochrome);
+    --login-dropdown-bg-color: var(--dark-gray-monochrome);
+    --login-dropdown-bg-image: var(--dark-gray-monochrome);
+    --login-dropdown-text-color: var(--white-monochrome);
+    --login-dropdown-text-hover-color: var(--white-monochrome);
+    --login-dropdown-bg-hover-color: var(--medium-accent);
+}
+
+/* Top bar dropdown variables */
+#top-bar {
+    --dropdown-links-hover-color: var(--medium-accent);
+    --dropdown-links-hover-bg-color: var(--white-monochrome);
+    --mobile-topmenu-sidebar-button-color: var(--black-monochrome);
+}
+
+/* Main content UI color */
+#main-content {
+    --ui-icon-color: var(--medium-accent);
+}
+
+/* Header title stroke override */
+#header h1 a::before {
+    content: none;
+    -webkit-text-stroke: 0;
+}
+
+@media (max-width: 900px) {
+    :root {
+     --header-title: &#34;Ellipsis&#34;;
+    }
 }
 </code></pre>
         </li>
@@ -171,11 +444,15 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: none;</code></pre>
+          <pre><code>display: none</code></pre>
         </li>
       
         <li>
-          <pre><code>color:green</code></pre>
+          <pre><code>height: 1.5rem;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>height: 1.5rem;</code></pre>
         </li>
       
     </ul>
@@ -188,13 +465,24 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:flopstyle" target="_blank"><code>:scp-wiki:theme:flopstyle</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:preview" target="_blank"><code>component:preview</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:flopstyle.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
   </span>
 
   
@@ -205,13 +493,13 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:pataphysics" target="_blank"><code>:scp-wiki:theme:pataphysics</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:centered-header-bhl" target="_blank"><code>:scp-wiki:component:centered-header-bhl</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:pataphysics.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:centered-header-bhl.html" target="_blank">info</a>]
   </span>
 
   
@@ -222,13 +510,13 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:centered-header-sigma-9" target="_blank"><code>:scp-wiki:component:centered-header-sigma-9</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-wiki:component:toggle-sidebar-bhl</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:centered-header-sigma-9.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar-bhl.html" target="_blank">info</a>]
   </span>
 
   
@@ -239,13 +527,13 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:betterfootnotes" target="_blank"><code>:scp-wiki:component:betterfootnotes</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>:scp-wiki:component:fade-in</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:betterfootnotes.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
   </span>
 
   
@@ -267,398 +555,200 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>component:sybadge</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:wikimodule" target="_blank"><code>:scp-wiki:component:wikimodule</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:wikimodule.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:sybadge" target="_blank"><code>:scp-wiki:component:sybadge</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:sybadge.html" target="_blank">info</a>]
   </span>
 
   
@@ -704,916 +794,916 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>blockquote</code></pre>
+          <pre><code>crom-thumbnail</code></pre>
         </li>
       
         <li>
-          <pre><code>fnnum</code></pre>
+          <pre><code>extra</code></pre>
         </li>
       
         <li>
-          <pre><code>fncon</code></pre>
+          <pre><code>extralink</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>bigguy</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>header</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>groot</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>proposal</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>feature</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>header</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>groot</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>contest</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>header</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>groot</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>dark</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>quarter</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>caser</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basic</code></pre>
         </li>
       
         <li>
-          <pre><code>etc-table</code></pre>
+          <pre><code>black</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-cell</code></pre>
+          <pre><code>basiclink</code></pre>
         </li>
       
         <li>
-          <pre><code>entry-number</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>dark</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>quarter</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>caser</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>etc-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-number</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>dark</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>quarter</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>caser</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>etc-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-number</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>dark</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>quarter</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>caser</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>etc-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-number</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>dark</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>quarter</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>caser</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>etc-table</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-number</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>dark</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>quarter</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>caser</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>entry-cell</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fnnum</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>fncon</code></pre>
+          <pre><code>header</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[div style=&#34;display: none;&#34;]]
-[[include :scp-wiki:theme:flopstyle]]
-[[/div]]
-[[include :scp-wiki:theme:pataphysics]]
-[[include :scp-wiki:component:centered-header-sigma-9]]
-[[include :scp-wiki:component:betterfootnotes]]
+    <pre><textarea class="page-source" readonly>=====
+[[include component:preview
+text=Extra! Extra! Read all about it!
+]]
+=====
+
+[[image EE-Thumbnail.jpg class=&#34;crom-thumbnail&#34; style=&#34;display: none&#34;]]
+
+[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:centered-header-bhl]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[include :scp-wiki:component:fade-in speed=4]]
 
 [[module css]]
-:root {
-    --fnColor: #4b3366;
-}
-[[/module]]
+@import url(&#39;https://fonts.googleapis.com/css2?family=Noticia+Text:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap&#39;);
+@import url(&#39;https://fonts.googleapis.com/css2?family=Manufacturing+Consent&amp;display=swap&#39;);
 
-[[module css]]
-/* HEADER */
- :root{
-   --header-title: &#34;‘PATAPHYSICS DEPARTMENT&#34;;
-   --header-subtitle: &#34;WRITING OUR OWN DESTINY&#34;;
-   --titleColor: hsl(0, 0%, 91%);
-   --subtitleColor: hsl(0, 0%, 91%);
-   --lgurl: url(https://scp-wiki.wikidot.com/local--files/theme:pataphysics/pataphysicslogo-ani.svg);
+/* Page title */
+#page-title {
+    display: none;
 }
 
-@media (max-width: 830px) {
-    :root {
-         --header-title: &#34;‘PATAPHYS. DEPT.&#34;;
-    }
+/* Page background */
+html,
+body {
+    background-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/montagueetc/paper.png&#34;);
+    background-position: center top;
+    background-repeat: repeat;
+    background-size: contain;
+    background-size: 20%;
+    background-attachment: scroll;
 }
 
- #page-title{
-     display: none;
+/* Hover overlay over whole page */
+body::before {
+    content: &#34;&#34;;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.10);
+    opacity: 0;
+    transition: opacity 180ms ease;
+    pointer-events: none;
+    z-index: 50;
 }
 
- #header::before{
-     opacity: .7;
+body:has(.basic:hover)::before {
+    opacity: 1;
 }
 
- #header h1 a::before{
-     text-shadow:
-          -1.75px -1.75px hsl(0, 0%, 5%),
-          0       -1.75px hsl(0, 0%, 5%),
-          1.75px  -1.75px hsl(0, 0%, 5%),
-          1.75px   0   hsl(0, 0%, 5%),
-          1.75px   1.75px hsl(0, 0%, 5%),
-          0        1.75px hsl(0, 0%, 5%),
-          -1.75px  1.75px hsl(0, 0%, 5%),
-          -1.75px  0   hsl(0, 0%, 5%);
+/* Global image styles */
+img {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    filter: grayscale(100%);
 }
 
- #header h2::before{
-     text-shadow:
-          -1px -1px hsl(0, 0%, 5%),
-          0    -1px hsl(0, 0%, 5%),
-          1px  -1px hsl(0, 0%, 5%),
-          1px   0   hsl(0, 0%, 5%),
-          1px   1px hsl(0, 0%, 5%),
-          0     1px hsl(0, 0%, 5%),
-          -1px  1px hsl(0, 0%, 5%),
-          -1px  0   hsl(0, 0%, 5%);
+/* Card image styles */
+.basic img {
+    max-height: 80px;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
 }
 
- #header-extra-div-1::before{
-     display: none;
+/* Large title text */
+.bigguy {
+    font-size: 7em;
+    line-height: 0.7em;
+    letter-spacing: 0.5rem;
+    font-family: &#34;Manufacturing Consent&#34;, system-ui;
 }
 
-[[/module]]
+/* Main header bar */
 
-[[module CSS]]
-
-.etc-table {
-  background: #321f47;
-  width: 100%;
-  border-spacing: 2px;
-  margin: 50px 0;
-}
-
-.entry-cell {
-  text-align: center;
-  padding: 0 10px;
-  background: #fafafa;
-}
-.entry-cell.dark {
-  background: #fafafa;
-}
-.entry-cell.entry-number {
-  font-size: 200%;
-  width: 25%;
-}
-
-[[/module]]
-
-[[module css]]
-
-.tcontainer {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: flex-start;
-    align-content: space-between;
-}
-
-.caser {
-    background-color: transparent;
-    width: calc(11rem + 1.5vw);
-    padding: 0px;
-    margin: 6px;
-    box-sizing: border-box;
-    border: solid 0px #000000;
-    display: block;
+.header {
+    font-size: 5em;
     text-align: center;
-    transition: transform .16s;
-    line-height: 1.1;
+    padding-bottom: 2px;
+    height: 1.5em;
+    align-items: center;
+    justify-content: center;
+    margin-top: -1em;
     position: relative;
+    border-bottom: 3px solid #000;
+    --gap: 8px;
+    --thick: 6px;
+    margin-bottom: 0.4em;
 }
 
-.caser:hover {
-    transform: scale(1.52);
-    z-index: 2;
-}
-.caser:focus-within {
-    transform: scale(1.52);
-    z-index: 2;
-}
-
-.caser:hover .hoverdesc,
-.caser .hoverdesc:hover {
-    margin-top: 0;
-    opacity: 1;
-    pointer-events: all;
-}
-.caser:focus-within .hoverdesc{
-    margin-top: 0;
-    opacity: 1;
-    pointer-events: all;
+/* Extra line under header */
+.header::after {
+    content: &#34;&#34;;
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: var(--thick);
+    background: #000;
+    bottom: calc(-1 * (var(--gap) + var(--thick)));
 }
 
-.anchor {
-    position: sticky;
-    height:0;
-    top: 0;
+/* Extra info banner */
+.extra {
+    font-size: 155%;
+    position: relative;
+    text-align: center;
+    margin-top: 5px;
+    border: none;
+    background: #9c1e1e;
+    color: white;
+    padding: 0.15em 2em;
+    line-height: 0.5;
+    text-transform: uppercase;
+    transition: all 200ms ease-in-out;
+}
+
+.extra a,
+.extra a:visited {
+    color: white;
+    text-decoration: none;
+}
+
+.extra::before,
+.extra::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 50%;
+    width: 1.4em;
+    height: 1.4em;
+    transform: translateY(-50%);
+    background-image: url(&#34;https://scp-wiki.wdfiles.com/local--files/montagueetc/megaphone.png&#34;);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.extra::before {
+    left: 0.75em;
+}
+
+.extra::after {
+    right: 0.75em;
+}
+
+.extra:hover,
+.extra:focus,
+.extra:active {
+    transform: scale(1.05);
+    z-index: 9999;
+    transition: all 200ms;
+}
+
+.extralink {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: static;
+    text-decoration: none !important;
+}
+
+/* Card grid layout */
+.groot {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(10px, 1fr));
+    align-items: stretch;
+    column-gap: 0.75rem;
+    row-gap: 0.75rem;
+    grid-auto-flow: dense;
+    width: auto;
+    max-width: 100vw !important;
+}
+
+/* Base card styles */
+.basic {
+    position: relative;
+    padding: 5px;
+    background: none;
+    border: none;
+    transform: translateZ(0);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
+    box-sizing: border-box;
+    font-size: 90%;
+    color: black !important;
+    text-decoration: none !important;
+    line-height: 1.25;
+    z-index: 0;
+    place-self: stretch;
+    transition: all 200ms ease-in-out;
+    height: auto;
+}
+
+/* Reset inner margins */
+.basic * {
+    margin: 0;
+}
+
+.basic p {
+    margin: 0 0 4px;
+}
+
+/* Card headings */
+.basic h1,
+.basic h2,
+.basic h3 {
+    font-family: &#34;DM Serif Display&#34;, serif;
+    font-style: italic;
+}
+
+/* Clickable card content wrapper */
+.basiclink {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    position: static;
+    padding: 3%;
+    padding-top: 0;
+    color: black !important;
+    text-decoration: none !important;
+}
+
+/* Card hover effect */
+.basic:hover,
+.basic:focus,
+.basic:active {
+    transform: scale(1.05);
+    background-image: url(&#34;https://live.staticflickr.com/3183/2646553223_d59f63646f_b.jpg&#34;);
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    z-index: 9999;
+    transition: all 200ms;
+}
+
+/* Card border variants */
+.black {
+    border-bottom: 3px solid black;
+}
+
+.contest {
+    border: 3px dashed #d1d1d1;
+}
+
+.proposal {
+    border: 3px solid black;
+}
+
+/* Title block */
+.title {
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 150%;
+    width: 11rem;
+    height: 3rem;
+    margin-bottom: -0.01rem;
+}
+
+.title * {
+    margin: 0;
+    line-height: 1;
+}
+
+/* Feature label */
+.feature {
+    font-size: 75%;
+    text-align: center;
+}
+
+/* Pill-style feature title */
+.title.feature {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: #b8b8b8;
+    border-radius: 50px;
+    padding: 0.35rem 1.8rem;
+    line-height: 1;
+    width: auto;
+    height: auto;
+    margin: 0 0 0.5rem;
+}
+
+/* Mobile Parity */
+@media (max-width: 768px) {
+    .bigguy {
+        font-size: 5em;
+    }
+
+    .groot {
+        grid-template-columns: repeat(2, minmax(10px, 1fr));
+        align-items: stretch;
+        column-gap: 0.75rem;
+        row-gap: 0.75rem;
+        grid-auto-flow: dense;
+        width: auto;
+        max-width: 100vw !important;
+    }
+
+    .header {
+        font-size: 3em;
+    }
+
+    .extra {
+        line-height: 1;
+    }
 }
 
 [[/module]]
@@ -1622,1253 +1712,692 @@
 [[module Rate]]
 [[/&gt;]]
 
-[[div class=&#34;blockquote&#34;]]
-
-Howdy! I&#39;m Montague Etcetera,[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]He/Him &amp; They/Them[[/span]] a writer, digital artist, and game designer with a deep, abiding love for sci-fi &amp; fantasy.
-
-I can be found on [https://montagues.carrd.co/ various social media sites].
-
+[[div class=&#34;extra&#34;]]
+[[module Listpages created_by=&#34;MontagueETC&#34; order=&#34;created_at desc&#34; limit=&#34;1&#34; separate=&#34;no&#34; wrapper=&#34;yes&#34; category=&#34;_default art component theme adult&#34;]]
+[[a class=&#34;extralink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-3776&#34;]]
+**Extra! Extra! Read all about it! 
+@@ @@
+@@ @@
+//%%title%%//, rated +%%rating%%!**
+[[/a]]
+[[/module]]
 [[/div]]
 
-@@ @@
+[[div style=&#34;height: 1.5rem;&#34;]]
+[[/div]]
 
-[[tabview]]
+[[include component:image-block
+|name=bigfoot.jpg
+|caption=MontagueETC exiting his apartment.
+|width=260px
+|align=right]]
 
-[[tab SCPs]]
+= [[span class=&#34;bigguy&#34;]]**Etcetera, Etcetera**[[/span]]
 
+Local D-list web author Montague Etcetera experienced scandal today, when private investigators discovered that he does not know how to read or write.
+
+&#34;Yeah,&#34; said Etcetera. &#34;I just randomly hit keys on my keyboard and they only form coherent sentences by pure coincidence. I&#39;ve never thought about what I post even once. What&#39;s an SCP?&#34; When asked by a reporter if he&#39;d consider using generative AI instead, Etcetera proceed to savagely beat the offending questioner to death with a typewriter, in a gruesome act of violence that witnesses are calling &#34;ridiculous overkill&#34; and &#34;incredibly based.&#34;
+
+Experts are still divided on the matter of Montague&#39;s true nature, theorizing that he might secretly be an island in Alaska, a township in eastern Ontario, a minor planet orbiting the sun, one of the two rival families in //Romeo &amp; Juliet//, or the fourth Earl of Sandwich.
+
+If you want to be notified when I post articles, [[[https://montagueetc.substack.com/ | click here]]]!
+
+[[div class=&#34;header&#34;]]
+SCP ARTICLES
+[[/div]]
+
+[[div class=&#34;groot&#34;]]
+
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;SCP-6462&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-6462&#34;]]
+**SCP-6462**
+**The Implicit Door [+%%rating%%]**
+There is naught but dust. Not even blood remains.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 6462-Thumbnail.png link=&#34;scp-6462&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-6462 | SCP-6462 - The Implicit Door]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //&#34;There is naught but dust. Not even blood remains.&#34;//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/scp-6462/6462-Thumbnail.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic contest&#34;]]
 [[module ListPages name=&#34;SCP-6445&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;3&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 6445-Thumbnail.png link=&#34;scp-6445&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-6445 | SCP-⌘ - Beneath the Shivering Kingdom]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //Everything in this document is absolutely true. Authorized access is expressly forbidden.//
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* [[[department-contest | Department-Con]]] Entry
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[span class=&#34;title feature&#34;]]**DEPARTMENT-CON ENTRY**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-6445&#34;]]
+**SCP-4**
+**Beneath the Shivering Kingdom [+%%rating%%]**
+WARNING: THE FOLLOWING LIE IS A TRUTH. PLEASE INSERT DISC 2 INTO YOUR CONSOLE.
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic contest&#34;]]
 [[module ListPages name=&#34;SCP-6454&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;3&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 6454-Thumbnail.png link=&#34;scp-6454&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-6454 | SCP-6454 - The Painting That Ate Paris, Texas]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //The air tilts at a sickening angle. The streets are crowded, yet empty. Cold, yet sharp. Up, yet left.//
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* [[[department-contest | Department-Con]]] Entry
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[span class=&#34;title feature&#34;]]**DEPARTMENT-CON ENTRY**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-6454&#34;]]
+**SCP-6454**
+**The Painting That Ate Paris, Texas [+%%rating%%]**
+The air tilts at a sickening angle. The streets are crowded, yet empty. Cold, yet sharp. Up, yet left.
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;SCP-6751&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-6751&#34;]]
+**SCP-6751**
+**The House That Wasn&#39;t There [+%%rating%%]**
+As SCP-6751 does not exist, containment is unnecessary.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 6751-Thumbnail.png link=&#34;scp-6751&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-6751 | SCP-6751 - The House That Wasn&#39;t There]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //As SCP-6751 does not exist, containment is unnecessary.//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/scp-6751/SCP-6751.jpg]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;SCP-6607&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-6607&#34;]]
+**SCP-6607**
+**Infernal Revenue Service [+%%rating%%]**
+Bottoms up and the devil laughs.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image IRS_Red.png link=&#34;scp-6607&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[scp-6607 | SCP-6607 - Infernal Revenue Service]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //Bottoms up and the devil laughs.//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/scp-6607/IRS_Red.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic contest&#34;]]
 [[module ListPages name=&#34;SCP-7009&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;3&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 7009-Thumbnail.png link=&#34;scp-7009&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-7009 | SCP-7009 - All Roads Lead To Rome]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //SCP-7009 is a universal probabilistic phenomenon associated with Ancient Rome.//
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* [[[scp7000contesthub | SCP-7000 Contest]]] Entry
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[span class=&#34;title feature&#34;]]**SCP-7000 CONTEST ENTRY**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-7009&#34;]]
+**SCP-7009**
+**All Roads Lead To Rome [+%%rating%%]**
+The Foundation discovers a fundamental law of reality. Rome is involved.
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;SCP-7701&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-7701&#34;]]
+**SCP-7701**
+**The Conqueror Worm [+%%rating%%]**
+Why does it end here?
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 7701-Thumbnail.png link=&#34;scp-7701&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-7701 | SCP-7701 - The Conqueror Worm]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //“Why does it end here?”//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/scp-7701/Actor.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;SCP-7408&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-7408&#34;]]
+**SCP-7408**
+**Metamorphosis [+%%rating%%]**
+It fucks me up, thinking about what happens to caterpillars.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 7408-Thumbnail.png link=&#34;scp-7408&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-7408 | SCP-7408 - Metamorphosis]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //SCP-7408-B is Dr. ████████ Kondraki.//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/scp-7408/Butterfly.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic contest&#34;]]
 [[module ListPages name=&#34;SCP-6183&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;4&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image https://scp-wiki.wdfiles.com/local--files/admonition/blackbox.png link=&#34;scp-6183&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-6183 | SCP-6183 - B L A C K B O X]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* {{object reference not set to instance of object ; description_6.rtf does not exist}}
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* [[[GoblinCon]]] Entry (1st Place Winner)
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* feat. [[*user Billith]] &amp; [[*user Liryn]]
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[span class=&#34;title feature&#34;]]**GOBLIN-CON WINNER**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-6183&#34;]]
+**SCP-6183**
+**B L A C K B O X [+%%rating%%]**
+object reference not set to instance of object ; description_6.rtf does not exist
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;SCP-744&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-744&#34;]]
+**SCP-744**
+**Greater Purpose [+%%rating%%]**
+Are you a company man?
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 744-Thumbnail.png link=&#34;scp-744&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-744 | SCP-744 - Greater Purpose]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //&#34;Whatever you say, Mr. Newman.&#34;//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/scp-744/744-Thumbnail.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;SCP-7376&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-7376&#34;]]
+**SCP-7376**
+**Qayin and Hevel [+%%rating%%]**
+Everyone knows how this story ends.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 7376-Thumbnail.png link=&#34;scp-7376&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-7376 | SCP-7376 - Qayin and Hevel]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //&#34;Everyone knows how this story ends.&#34;//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/scp-7376/7376-Thumbnail.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic contest&#34;]]
 [[module ListPages name=&#34;SCP-7354&#34;]]
+[[span class=&#34;title feature&#34;]]**REMIX-CON ENTRY**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-7354&#34;]]
+**SCP-7354**
+**The Cruor Pool [+%%rating%%]**
+All the flowers bloomed, the day wretched Važjuma descended upon our world.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;3&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 7354-Thumbnail.png link=&#34;scp-7354&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-7354 | SCP-7354 - The Cruor Pool]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //&#34;All the flowers bloomed, the day wretched Važjuma descended upon our world.&#34;//
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* [[[remixcon2023 | RemixCon]]] Entry
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;SCP-1908&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-1908&#34;]]
+**SCP-1908**
+**Mr. Soap [+%%rating%%]**
+Little Misters, big and small. Find them, bind them, collect them all.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 1908-Thumbnail.png link=&#34;scp-1908&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[SCP-1908 | SCP-1908 - Mr. Soap]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //Little Misters, big and small. Find them, bind them, collect them all.//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/scp-1908/Soap-1.png]]
+[[/a]]
 [[/module]]
-
-[[/tab]]
-
-[[tab Tales/GOI/Misc.]]
-
-[[module ListPages name=&#34;montagueetc&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image https://scp-wiki.wdfiles.com/local--files/jerden-insignia/pataphysics-department.png link=&#34;montagueetc&#34;]]
 [[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[montagueetc | MontagueETC&#39;s Author Page]]] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //Recursion.//
-[[/cell]]
-[[/row]]
-[[/table]]
 
+[[div class=&#34;basic contest&#34;]]
+[[module ListPages name=&#34;SCP-8200&#34;]]
+[[span class=&#34;title feature&#34;]]**SCP-8000 CONTEST ENTRY**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-8200&#34;]]
+**SCP-8200**
+**The Phantom Sea [+%%rating%%]**
+A ghost is a memory and a memory is a ghost. What happens when the dead forget even themselves?
+[[/a]]
 [[/module]]
-
-[[module ListPages name=&#34;unremembered-oceans&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image UO-Thumbnail.png link=&#34;unremembered-oceans&#34;]]
 [[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [%%link%% %%title%%] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //In Ivy’s dream, the world had been consumed by twin oceans.//
-[[/cell]]
-[[/row]]
-[[/table]]
 
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;SCP-8190&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-8190&#34;]]
+**SCP-8190**
+**DEPARTMENTALIZED [+%%rating%%]**
+[QUERY:DENIED]
+
+[[image https://scp-wiki.wdfiles.com/local--files/montagueetc/navi.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;SCP-8408&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-8408&#34;]]
+**SCP-8408**
+**The Cuckoo&#39;s Egg [+%%rating%%]**
+Don&#39;t be sorry. Just be better.
+
+[[image https://scp-wiki.wdfiles.com/local--files/scp-8408/egg.png]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic contest&#34;]]
+[[module ListPages name=&#34;SCP-8066&#34;]]
+[[span class=&#34;title feature&#34;]]**ANTHOLOGY 2024 ENTRY**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-8066&#34;]]
+**SCP-8066**
+**Phobophobia: The Only Thing to Fear [+%%rating%%]**
+Are you scared, SCP-2006?
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic proposal&#34;]]
+[[module ListPages name=&#34;etc-proposal&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/etc-proposal&#34;]]
+**E. T. Cetera&#39;s Proposal**
+**The Conspiracy [+%%rating%%]**
+WHO SHOT JFK?
+
+[[image https://scp-wiki.wdfiles.com/local--files/etc-proposal/umbrella-man.png]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic contest&#34;]]
+[[module ListPages name=&#34;SCP-8204&#34;]]
+[[span class=&#34;title feature&#34;]]**CLASSIC-CON ENTRY**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-8204&#34;]]
+**SCP-8204**
+**Department Recovered From The Marianas Trench [+%%rating%%]**
+Nothing lasts forever.
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;SCP-7586&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-7586&#34;]]
+**SCP-7586**
+**&amp; PASTE [+%%rating%%]**
+In which Ruiz Duchamp dies, dies, and dies again.
+
+[[image https://scp-wiki.wdfiles.com/local--files/fragment:scp-7586-2/dashA.jpg]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;SCP-9923&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-9923&#34;]]
+**SCP-9923**
+**MEDIUM &amp; MESSENGER [+%%rating%%]**
+It&#39;s now safe to turn off your computer.
+
+[[image https://scp-wiki.wdfiles.com/local--files/scp-9923/cloud-gate.jpg]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic contest&#34;]]
+[[module ListPages name=&#34;SCP-9998&#34;]]
+[[span class=&#34;title feature&#34;]]**SCP-9000 CONTEST ENTRY**[[/span]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-9998&#34;]]
+**SCP-9998**
+**A Prince Among Men [+%%rating%%]**
+It was impossible. But how I wish it was not.
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;SCP-3084&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-3084&#34;]]
+**SCP-3084**
+**{{[DATA EXORCISED]}} [+%%rating%%]**
+SCP-3084 is the collective designation for the 62,748,517 curses, hexes, jinxes, and anathemas created by MC&amp;D business practices.
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;SCP-1498&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-1498&#34;]]
+**SCP-1498**
+**DIAL TONE DREAMER [+%%rating%%]**
+Entering a deep sleep. Please wait…
+
+[[image https://scp-wiki.wdfiles.com/local--files/scp-1498/spiraldial.png]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;SCP-9255&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-9255&#34;]]
+**SCP-9255**
+**Nature Abhors, Memory Abates [+%%rating%%]**
+Don&#39;t forget. Or do. It&#39;ll wind up here either way.
+
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;SCP-3776&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://scp-wiki.wikidot.com/scp-3776&#34;]]
+**SCP-3776**
+**Camp Nimrod [+%%rating%%]**
+Nothing better than a good campfire story.
+
+[[image https://scp-wiki.wdfiles.com/local--files/scp-3776/3776-thumbnail.jpg]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[/div]]
+
+[[div class=&#34;header&#34;]]
+TALES
+[[/div]]
+
+[[div class=&#34;groot&#34;]]
+
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;omnigenesis-and-the-law-of-blades&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/omnigenesis-and-the-law-of-blades&#34;]]
+**Omnigenesis and the Law of Blades [+%%rating%%]**
+I am not that I am.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image Omnigenesis-Thumbnail.png link=&#34;omnigenesis-and-the-law-of-blades&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [%%link%% %%title%%] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //Then came Omnigenesis.//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/omnigenesis-and-the-law-of-blades/Omnigenesis-Thumbnail.png]]
+[[/a]]
 [[/module]]
-
-[[module ListPages name=&#34;esterberg-city-wikipedia&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;3&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image https://scp-wiki.wdfiles.com/local--files/MontagueETC/Esterberg-Thumbnail.png link=&#34;esterberg-city-wikipedia&#34;]]
 [[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [%%link%% %%title%%] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //&#34;Tysiąclecie Górne&#34;, &#34;SCP-5373&#34;, &#34;VNP-5373&#34;, and &#34;FP-120&#34; redirect here.//
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* feat. [[*user Jasiu06]], [[*user Jerden]], [[*user Ralliston]], &amp; [[*user Zygard]]
-[[/cell]]
-[[/row]]
-[[/table]]
 
-[[/module]]
-
-[[module ListPages name=&#34;scp-6607-instance-log&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image 6607IL-Thumbnail.png link=&#34;scp-6607-instance-log&#34;]]
+[[div class=&#34;basic contest&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;https://wanderers-library.wikidot.com/clusterminds&#34;]]
+**Four Misconceptions Regarding the Transcendental Clusterminds of the Uppermost Datasphere [+??]**
+In a system of absolute honesty, understanding is inevitable.
+[[/a]]
 [[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [%%link%% %%title%%] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //The processing lines of 181 slaughterhouses were affixed with demonic sigils disguised as health and safety signage.//
-[[/cell]]
-[[/row]]
-[[/table]]
 
-[[/module]]
-
-[[module ListPages category=&#34;art&#34; name=&#34;montagueetc-sciptember-2022&#34;]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image SCiPTEMBER-2022-Thumbnail.png link=&#34;art:montagueetc-sciptember-2022&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [%%link%% %%title%%] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //Thirty days of art.//
-[[/cell]]
-[[/row]]
-[[/table]]
-
-[[/module]]
-
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;4&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image https://wanderers-library.wdfiles.com/local--files/clusterminds/FMRTTCOTUD-Thumbail.png link=&#34;https://wanderers-library.wikidot.com/clusterminds&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [[[https://wanderers-library.wikidot.com/clusterminds | Four Misconceptions Regarding the Transcendental Clusterminds of the Uppermost Datasphere]]] - [+??]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //In a system of absolute honesty, understanding is inevitable.//
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* [[[https://wanderers-library.wikidot.com/picturepalooza-contest | Picturepalooza]]] Entry (3rd Place Winner)
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++++* [[image wl_logo.png width=&#34;15px&#34;]] [[span style=&#34;color:green&#34;]]From the Wanderer&#39;s Library[[/span]] [[image wl_logo.png width=&#34;15px&#34;]]
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;who-made-you&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/who-made-you&#34;]]
+**Who Made You? [+%%rating%%]**
+Who are you really, Charles Gears?
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image Who-Made-You-Thumbnail.png link=&#34;who-made-you&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [%%link%% %%title%%] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //Who are you really, Charles Gears?//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/who-made-you/Who-Made-You-Thumbnail.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
+[[div class=&#34;basic black&#34;]]
 [[module ListPages name=&#34;dr-kondraki-cut-up-while-thinking&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/dr-kondraki-cut-up-while-thinking&#34;]]
+**DR. KONDRAKI CUT UP WHILE THINKING [+%%rating%%]**
+An interval of time passes—an eon, maybe, or a few minutes.
 
-[[table class=&#34;etc-table&#34;]]
-[[row]]
-[[cell rowspan=&#34;2&#34; class=&#34;entry-cell entry-number dark quarter&#34;]]
-[[div class=&#34;caser&#34;]]
-[[image DKCUWT-Thumbnail.png link=&#34;dr-kondraki-cut-up-while-thinking&#34;]]
-[[/div]]
-[[/cell]]
-[[cell class=&#34;entry-cell&#34;]]
-+* [%%link%% %%title%%] - [+%%rating%%]
-[[/cell]]
-[[/row]]
-[[row]]
-[[cell class=&#34;entry-cell&#34;]]
-+++* //An interval of time passes—an eon, maybe, or a few minutes.//
-[[/cell]]
-[[/row]]
-[[/table]]
-
+[[image https://scp-wiki.wdfiles.com/local--files/dr-kondraki-cut-up-while-thinking/DKCUWT-Thumbnail.png]]
+[[/a]]
 [[/module]]
+[[/div]]
 
-[[/tab]]
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;did-it-hurt-when-you-fell-from-heaven&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/did-it-hurt-when-you-fell-from-heaven&#34;]]
+**Did It Hurt When You Fell From Heaven? [+%%rating%%]**
+Be not afraid, my love.
 
-[[tab Fan Art]]
+[[image https://scp-wiki.wdfiles.com/local--files/did-it-hurt-when-you-fell-from-heaven/DIHWYFFH-Thumbnail.png]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;six-codas&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/six-codas&#34;]]
+**Six Codas [+%%rating%%]**
+&#34;You have no idea what I can believe.&#34;
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;a-betamax-suicide-note&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/a-betamax-suicide-note&#34;]]
+**A Betamax Suicide Note [+%%rating%%]**
+&#34;SOMMES-NOUS DEVENUS MAGNIFIQUES?&#34;
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;without-refuge&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/without-refuge&#34;]]
+**Without Refuge [+%%rating%%]**
+SCP-8980-EX, in situ.
+
+[[image https://scp-wiki.wdfiles.com/local--files/without-refuge/WR-Thumbnail.jpg]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;exquisite-blast&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/exquisite-blast&#34;]]
+**Exquisite Blast [+%%rating%%]**
+A man on a street corner, detonating.
+
+[[image https://scp-wiki.wdfiles.com/local--files/exquisite-blast/EB-thumbnail.jpg]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[/div]]
+
+[[div class=&#34;header&#34;]]
+MISCELLANEOUS
+[[/div]]
+
+[[div class=&#34;groot&#34;]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;esterberg-city-wikipedia&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/esterberg-city-wikipedia&#34;]]
+**Esterberg (city) — Wikipedia [+%%rating%%]**
+&#34;Tysiąclecie Górne&#34;, &#34;SCP-5373&#34;, &#34;VNP-5373&#34;, and &#34;FP-120&#34; redirect here.
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;scp-6607-instance-log&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/scp-6607-instance-log&#34;]]
+**SCP-6607 Instance Log [+%%rating%%]**
+The processing lines of 181 slaughterhouses were affixed with demonic sigils disguised as health and safety signage.
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages category=&#34;art&#34; name=&#34;montagueetc-sciptember-2022&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/art:montagueetc-sciptember-2022&#34;]]
+**MontagueETC&#39;s SCiPTEMBER 2022 Art [+%%rating%%]**
+Thirty days of art.
+
+[[image https://scp-wiki.wdfiles.com/local--files/art:montagueetc-sciptember-2022/SCiPTEMBER-2022-Thumbnail.png]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;monarchs-and-maestros&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/monarchs-and-maestros&#34;]]
+**Monarchs and Maestros Hub [+%%rating%%]**
+From one death to another.
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[div class=&#34;basic black&#34;]]
+[[module ListPages name=&#34;scp-8066-fear-logs&#34;]]
+[[a class=&#34;basiclink&#34; href=&#34;/scp-8066-fear-logs&#34;]]
+**SCP-8066 Fear Logs [+%%rating%%]**
+The horror has only just begun.
+
+[[image https://scp-wiki.wdfiles.com/local--files/scp-8066/8066-thumbnail.png]]
+[[/a]]
+[[/module]]
+[[/div]]
+
+[[/div]]
+
+[[div class=&#34;header&#34;]]
+ACHIEVEMENTS
+[[/div]]
 
 [[=]]
-
-[[size 20px]] **__SCPs__** [[/size]][[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]Links to the sources and artists are in the License Box.[[/span]]
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-6183 - B L A C K B O X&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-ZalCryptid-2.jpg
-|align=center
-|width=500px
-|caption=[[*user Zal Cryptid]]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-⌘ - Beneath the Shivering Kingdom&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-WifiFailure-1.jpg
-|align=center
-|width=500px
-|caption=//On my way to site-⌘// by [https://twitter.com/Wifi_Failure Wifi Failure]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-WifiFailure-2.jpg
-|align=center
-|width=500px
-|caption=//I placed them all around my room, for ease of access, of course.// by [https://twitter.com/Wifi_Failure Wifi Failure]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-WifiFailure-3.jpg
-|align=center
-|width=500px
-|caption=//I placed them all around my room, for ease of access, of course.// by [https://twitter.com/Wifi_Failure Wifi Failure]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-SunnyClockwork-1.jpg
-|align=center
-|width=500px
-|caption=[[*user SunnyClockwork]]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-ZalCryptid-1.jpg
-|align=center
-|width=500px
-|caption=[[*user Zal Cryptid]]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-6454 - The Painting That Ate Paris, Texas&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-SunnyClockwork-2.jpg
-|align=center
-|width=500px
-|caption=[[*user SunnyClockwork]]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-6462 - The Implicit Door&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-ZalCryptid-6.jpg
-|align=center
-|width=500px
-|caption=[[*user Zal Cryptid]]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-7009 - All Roads Lead To Rome&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-DodoDevil.jpg
-|align=center
-|width=500px
-|caption=[[*user DodoDevil]]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-SouthofAsia3.png
-|align=center
-|width=500px
-|caption=[https://reddit.com/user/SouthofAsia3/ SouthofAsia3]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-7354 - The Cruor Pool&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-ZalCryptid-4.jpg
-|align=center
-|width=500px
-|caption=[[*user Zal Cryptid]]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-7376 - Qayin and Hevel&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-Dobek_k.jpg
-|align=center
-|width=500px
-|caption=[[*user Drdobermann]]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-RuraScarlet.jpg
-|align=center
-|width=500px
-|caption=[[*user RuraScarlet]]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-Simple_Mortal64.jpg
-|align=center
-|width=500px
-|caption=[https://twitter.com/Simple_Mortal64 Simple_Mortal64]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-Robisnotadeer.jpg
-|align=center
-|width=500px
-|caption=//7376-A abel// by [https://twitter.com/Robisnotadeer Robisnotadeer]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-Salllllty_water.jpg
-|align=center
-|width=500px
-|caption=//if he has eyeball replacement, i prefer he has the perfect death stare, like a doll// by [[*user saltywater]]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-ZalCryptid-3.jpg
-|align=center
-|width=500px
-|caption=[[*user Zal Cryptid]]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-7408 - Metamorphosis&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-rottingraisins.jpg
-|align=center
-|width=500px
-|caption=[https://www.tumblr.com/rottingraisins rottingraisins]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-amones.jpg
-|align=center
-|width=500px
-|caption=//Metamorphosis// by [https://www.tumblr.com/amones Amones]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-SunnyClockwork-3.jpg
-|align=center
-|width=500px
-|caption=[[*user SunnyClockwork]]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-ZalCryptid-5.jpg
-|align=center
-|width=500px
-|caption=[[*user Zal Cryptid]]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-systemaltoclef.jpg
-|align=center
-|width=500px
-|caption=//Doctor Kondraki wakes up.// by [https://www.tumblr.com/systemaltoclef systemaltoclef]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-arturite2.jpg
-|align=center
-|width=500px
-|caption=//Doctors will literally become a bunch of insects instead of going to therapy.// by [https://arturite2.tumblr.com arturite2]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-the-land-of-dreams.jpg
-|align=center
-|width=500px
-|caption=//breaking news local disaster of a man is way prettier than he has any right to be more at 8// by [https://www.tumblr.com/the-land-of-dreams the-land-of-dreams]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;SCP-7701 - The Conqueror Worm&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-Jadeitor.jpg
-|align=center
-|width=500px
-|caption=[[*user Jadeitor]]]]
-
-[[/collapsible]]
-
-@@ @@
-
-[[size 20px]] **__Tales/GOIs__** [[/size]]
-
-[[collapsible hideLocation=&#34;both&#34; show=&#34;Esterberg (City) — Wikipedia&#34; hide=&#34;- Close&#34;]]
-
-[[include component:image-block 
-|name=Fanart-IDMNS-1.jpg
-|align=center
-|width=400px
-|caption=IDMNS]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-Rhineriver.jpg
-|align=center
-|width=400px
-|caption=[[*user Rhineriver]]]]
-
-@@ @@
-
-[[include component:image-block 
-|name=Fanart-IDMNS-2.jpg
-|align=center
-|width=400px
-|caption=IDMNS]]
-
-[[/collapsible]]
-
+[[include :scp-wiki:component:sybadge code=tsf]]
+[[include :scp-wiki:component:sybadge code=mww]]
+[[include :scp-wiki:component:sybadge code=clb]]
+[[include :scp-wiki:component:sybadge code=gsa]]
+[[include :scp-wiki:component:sybadge code=pbs]]
+[[include :scp-wiki:component:sybadge code=apf]]
+[[include :scp-wiki:component:sybadge code=srs]]
+[[include :scp-wiki:component:sybadge code=pvr]]
+[[include :scp-wiki:component:sybadge code=cda]]
+[[include :scp-wiki:component:sybadge code=rfa]]
+[[include :scp-wiki:component:sybadge code=egd]]
+[[include :scp-wiki:component:sybadge code=lgbt]]
+
+[[div style=&#34;height: 1.5rem;&#34;]]
+[[/div]]
+
+[[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Attendance.png link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Art.png link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Orange.png link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Media.jpg link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/TV.png link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Cycle.jpg link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Apple.png link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Purple.png link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/1K.jpg link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Ribbon.png link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/calibri-s-mega-cool-art-page-it-s-mostly-just-icons-but-what/Extra%21%20Extra%21 link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]] [[image https://scp-wiki.wdfiles.com/local--files/ralliston-s-authorpage/gift.png link=&#34;https://scp-wiki.wikidot.com/scp-achievement-badges&#34;]]
 [[/=]]
 
-[[/tab]]
+@@ @@
 
-[[tab Fan Audio]]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[[module css]]
+/* BHL */
+/* Root variables */
+:root {
+    --black-monochrome: 23, 23, 23;
+    --medium-accent: 156, 30, 30;
+    --white-monochrome: 227, 227, 227;
+    --gray-monochrome: var(--white-monochrome);
+    --dark-gray-monochrome: 201, 201, 201;
+    --bright-accent: 156, 30, 30;
+    --dark-accent: 245, 233, 233;
+    --pale-gray-monochrome: 201, 201, 201;
+    --pale-accent: 156, 30, 30;
+    --light-pale-gray-monochrome: 128, 0, 255;
+    --very-light-gray-monochrome: 255, 0, 247;
+    --light-gray-monochrome: 156, 30, 30;
+    --light-red: 176, 75, 75;
+    --lighter-red: 196, 120, 120;
+
+    --header-title: &#34;Ellipsis Gazette&#34;;
+    --header-subtitle: &#34; &#34;;
+    --logo-image: mone;
+
+    --body-font: &#34;Noticia Text&#34;, serif;
+    --header-font: var(--body-font);
+    --title-font: var(--body-font);
+    --UI-font: var(--body-font);
+
+     --main-content-width: 80rem;
+
+    /* Header font override + size */
+    --header-font: &#34;Manufacturing Consent&#34;, system-ui;
+    --header-h1-font-size: calc(var(--base-font-size) * (100 / 15));
+
+    --link-color: var(--medium-accent);
+    --visited-link-color: var(--lighter-red);
+    --hover-link-color: var(--light-red);
+}
+
+/* Login dropdown + account options */
+#login-status #account-options ul li &gt; a,
+#login-status #account-options ul li &gt; a:visited {
+    color: #000000;
+}
+
+/* Top bar base links */
+#top-bar a,
+#top-bar a:link,
+#top-bar a:visited {
+    color: #000000 !important;
+}
+
+/* Top bar hover/selected states */
+#top-bar li:hover &gt; a,
+#top-bar .selected &gt; a,
+#top-bar .open &gt; a {
+    color: #000000 !important;
+}
+
+/* Remove default site background */
+div#container-wrap {
+    background-image: none;
+}
+
+/* Header-level color variables */
+#header {
+    --swatch-headerh1-color: var(--black-monochrome);
+    --search-icon-color: var(--black-monochrome);
+    --search-icon-hover-color: var(--medium-accent);
+    --login-line-divider-color: var(--black-monochrome);
+    --login-username-color: var(--black-monochrome);
+    --login-myaccount-color: var(--black-monochrome);
+    --login-myaccount-hover-color: var(--medium-accent);
+    --login-myaccount-hover-bg-color: var(--white-monochrome);
+    --login-dropdown-bg-color: var(--dark-gray-monochrome);
+    --login-dropdown-bg-image: var(--dark-gray-monochrome);
+    --login-dropdown-text-color: var(--white-monochrome);
+    --login-dropdown-text-hover-color: var(--white-monochrome);
+    --login-dropdown-bg-hover-color: var(--medium-accent);
+}
+
+/* Top bar dropdown variables */
+#top-bar {
+    --dropdown-links-hover-color: var(--medium-accent);
+    --dropdown-links-hover-bg-color: var(--white-monochrome);
+    --mobile-topmenu-sidebar-button-color: var(--black-monochrome);
+}
+
+/* Main content UI color */
+#main-content {
+    --ui-icon-color: var(--medium-accent);
+}
+
+/* Header title stroke override */
+#header h1 a::before {
+    content: none;
+    -webkit-text-stroke: 0;
+}
+
+@media (max-width: 900px) {
+    :root {
+     --header-title: &#34;Ellipsis&#34;;
+    }
+}
+
+[[/module]] 
 
 [[=]]
-
-[[[https://www.youtube.com/watch?v=hDIWC6zGkJw | The Church of the Scarlet King]]] by [[*user Doctor Cimmerian]]
-
-[[[https://www.youtube.com/watch?v=TKHbj2ofZmg | Crowning the Shivering Kingdom]]] by [[[https://www.youtube.com/@free-toilet-paper | Free toilet paper]]]
-
-[[[https://www.youtube.com/watch?v=XwR5KJosK3A | Exploring the SCP Foundation: SCP-6183 - Blackbox]]] by [[[https://www.youtube.com/@TheExploringSeries | The Exploring Series]]]
-
-[[[https://www.youtube.com/watch?v=zA9MggouHQE | Exploring the SCP Foundation: SCP-7376 - Qayin and Hevel]]] by [[[https://www.youtube.com/@TheExploringSeries | The Exploring Series]]]
-
-[[[https://nurkram.de/scp-6445 | SCP-6445 (German)]]] by [[[https://nurkram.de/author/pesti | Pesti]]]
-
-[[[https://www.youtube.com/watch?v=IvLgzax2Cn4 | SCP-6462 - The Implicit Door]]] by [[[https://www.youtube.com/@scpunredacted | SCP UnREDACTED]]]
-
-[[[https://www.youtube.com/watch?v=M79dltVkfAo | SCP-7009 - All Roads Lead To Rome]]] by [[[https://www.youtube.com/@scpunredacted | SCP UnREDACTED]]]
-
-[[/=]]
-
-[[/tab]]
-
-[[tab Achievements]]
-
-[[=]]
-[[include component:sybadge code=tsf]]
-[[include component:sybadge code=mww]]
-[[include component:sybadge code=pbs]]
-[[include component:sybadge code=apf]]
-[[include component:sybadge code=pvr]]
-[[include component:sybadge code=cda]]
-[[include component:sybadge code=rfa]]
-[[include component:sybadge code=lgbt]]
-[[/=]]
-
-||~ ||~ [[[scp-achievement-badges | Achievement]]] ||~ Description ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Attendance.png width=&#34;100px&#34;]] ||= Certificate Of Attendance || Post an Author Page, add to a Collaborative Log, and participate in an Official SCP Wiki Contest. ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Art.png]] ||= Draw Me Like One Of Your [REDACTED] || Create an artwork page with a rating of at least +30. ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Orange.png]] ||= Participation Trophy || Write an article rated at least +100 ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Media.jpg]] ||= The Medium Is The Message || Author of at least 10 media files (images, audio, videos, etc.) that are used on the wiki. Must be original works released under a version CC-by-SA license compatible with the SCP Wiki. ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/TV.png]] ||= Look Ma! I&#39;m On TV! || Have one of your works be featured on an off-site video, podcast, video game, etc. ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Cycle.jpg]] ||= Level Up! || You&#39;ve been a member of the SCP Wiki for one calendar year. ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Apple.png]] ||= Skip Tutoring || Have an SCP draft thread you gave feedback on succeed on the main list.[[span class=&#34;fnnum&#34;]].[[/span]][[span class=&#34;fncon&#34;]]It was a Discord thread, but close enough.[[/span]] ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/Purple.png]] ||= Winning! || Win an SCP Wiki contest as an individual or part of a team, without being disqualified or otherwise having your entry invalidated. ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/scp-achievement-badges/1K.jpg]] ||= Thousandaire || Entered into any of the X000 contests (i.e. SCP-1000, SCP-2000, SCP-3000, etc.) ||
-||= [[image https://scp-wiki.wdfiles.com/local--files/calibri-s-mega-cool-art-page-it-s-mostly-just-icons-but-what/Extra%21%20Extra%21]] ||= Extra! Extra! || One of your articles has been featured on the front page. ||
-
-[[/tab]]
-
-[[/tabview]]
-
-@@ @@
-
------
-[[include :scp-wiki:component:wikimodule |normal= --]]]
------
-
 [[include :scp-wiki:component:license-box]]
+[[/=]]
+[[&lt;]]
 =====
-&gt; **Filename:** 6445-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Sweden road sign: Information signs - Sevärdhet (place of interest).
-&gt; **Author:** Transportstyrelsen
+&gt; **Filename:** megaphone.png
+&gt; **Name:** Megaphone silhouette clipart, object illustration
+&gt; **Author:** rawpixel
+&gt; **License:** CC0 1.0
+&gt; **Source Link:** [[[https://www.rawpixel.com/image/6756601/psd-public-domain-black-illustrations | rawpixel]]]
+=====
+&gt; **Filename:** paper.png
+&gt; **Name:** Ivory Off White Paper Texture
+&gt; **Author:** N/A
 &gt; **License:** Public Domain
-&gt; **Source Link:** [[[https://en.wikipedia.org/wiki/File:Sweden_road_sign_H22.svg | Wikipedia]]]
+&gt; **Source Link:** [[[https://www.photos-public-domain.com/2012/05/24/ivory-off-white-paper-texture/ | Photos Public Domain]]]
 =====
-&gt; **Filename:** 6454-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Filename:** Lemonade.jpg
-&gt; **Name:** Lemonade, anyone?
-&gt; **Author:** Larry W. Lo
-&gt; **License:** CC BY-SA 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/trippinlarry/5987691227/ | Flickr]]]
-=====
-&gt; **Filename:** 6462-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Baños de Maria
-&gt; **Author:** Hernán Piñera
-&gt; **License:** CC BY-SA 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/hernanpc/24967414934/in/gallery-156862694@N04-72157720376885758/ | Flickr]]]
-=====
-&gt; **Filename:** IRS_Red.png
-&gt; **Author:** [[*user Fantem]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** 6607IL-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Une illustration pour l’article Aguarès dans le Dictionnaire infernal par Collin de Plancy.
-&gt; **Author:** Louis Le Breton
+&gt; **Filename:** EE-Thumbnail.jpg, bigfoot.jpg
+&gt; **Name:** Patterson Gimlin Bigfoot (cropped)
+&gt; **Author:** Roger Patterson and Robert Gimlin
 &gt; **License:** Public Domain
-&gt; **Source Link:** [[[https://en.wikipedia.org/wiki/File:Aguar%C3%A8s.png | Wikipedia]]]
-=====
-&gt; **Filename:** 6751-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** House with big windows
-&gt; **Author:** [[[https://www.flickr.com/people/pnwra/ | pnwra]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/pnwra/2319950001 | Flickr]]]
-=====
-&gt; **Filename:** Esterberg-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:** [[[esterberg-city-wikipedia | Esterberg (City) — Wikipedia]]]
-=====
-&gt; **Filename:** Omnigenesis-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Sword
-&gt; **Author:** Louvre Museum
-&gt; **License:** CC BY-SA 3.0 FR
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Sword-AO_21069-P5280877-gradient.jpg | Wikimedia Commons]]]
-&gt; -----
-&gt; **Name:**  Sombrero galaxy
-&gt; **Author:** [[[https://www.flickr.com/photos/poor-yorick/ | Porter Hall]]]
-&gt; **License:** CC BY-SA 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/43903192@N00/99034081 | Flickr]]]
-=====
-&gt; **Filename:** 7009-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Dougga Roman Theater
-&gt; **Author:** [[[https://www.flickr.com/people/davidstanleytravel/ | David Stanley]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/79721788@N00/25901468768 | Flickr]]]
-&gt; -----
-&gt; **Name:** Mars sky at noon PIA01546.jpg
-&gt; **Author:** NASA/JPL-Caltech
-&gt; **License:** Public Domain
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Mars_sky_at_noon_PIA01546.jpg | Wikimedia Commons]]]
-=====
-&gt; **Filename:** UO-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:**  Ocean sunset
-&gt; **Author:** [[[https://www.flickr.com/photos/magnusbrath/ | Magnus Bråth]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/38867588@N05/5328505062 | Flickr]]]
-=====
-&gt; **Filename:** SCiPTEMBER-2022-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** Zipper Closure Zip To
-&gt; **Author:** [[[https://pixabay.com/users/momentmal-5324081/ | Momentmal]]]
-&gt; **License:** CC0
-&gt; **Source Link:** [[[https://pixabay.com/photos/zipper-closure-zip-to-open-2952852/ | Pixabay]]]
-&gt; -----
-&gt; **Name:** scream
-&gt; **Author:** [[[https://www.flickr.com/photos/migueltowers/ | Miguel Torres]]]
-&gt; **License:** (CC BY 2.0)
-&gt; **Source Link:** [[[https://www.flickr.com/photos/migueltowers/6904316654/ | Flickr]]]
+&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Patterson_Gimlin_Bigfoot_(cropped).jpg | Wikimedia Commons]]]
 =====
 &gt; **Filename:** FMRTTCOTUD-Thumbail.png
 &gt; **Name:**  i know you are watching me 
-&gt; **Author:** [https://www.flickr.com/people/r00s/ Roͬͬ͠͠͡͠͠͠͠͠͠͠͠sͬͬ͠͠͠͠͠͠͠͠͠aͬͬ͠͠͠͠͠͠͠ Menkman]
+&gt; **Author:** [[[https://www.flickr.com/people/r00s/ | Rosa Menkman]]]
 &gt; **License:** CC BY 2.0
-&gt; **Source Link:** [https://www.flickr.com/photos/r00s/9235780228 Flickr]
+&gt; **Source Link:** [[[https://www.flickr.com/photos/r00s/9235780228 | Flickr]]]
 =====
-&gt; **Filename:** 7701-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Name:** 070920111017
-&gt; **Author:** [[[https://www.flickr.com/people/67732373@N07/ | Col Ben]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/67732373@N07/6165361513/ | Flickr]]]
-&gt; -----
-&gt; **Name:** Carnival venice 2015 135
-&gt; **Author:** [[[https://commons.wikimedia.org/wiki/User:Abxbay | Abxbay]]]
-&gt; **License:** CC BY-SA 4.0
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Carnival_venice_2015_135.JPG | Wikimedia Commons]]]
-=====
-&gt; **Filename:** 7408-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; -----
-&gt; **Filename:** Graphium agamemnon 20131222.jpg
-&gt; **Author:** [[[https://commons.wikimedia.org/wiki/User:Peellden | Peellden]]]
-&gt; **License:** CC BY-SA 4.0
-&gt; **Source Link:** [[[https://commons.wikimedia.org/wiki/File:Graphium_agamemnon_20131222.jpg | Wikimedia Commons]]]
-&gt; -----
-&gt; **Name:** Profile
-&gt; **Author:** [[[https://www.flickr.com/people/28208534@N07/ | Michael Mol]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/28208534@N07/3988211755/ | Flickr]]]
-&gt; -----
-&gt; **Name:** Baseball cap from the Memphis Red Sox
-&gt; **Author:** [[[https://nmaahc.si.edu/ | Collection of the Smithsonian National Museum of African American History and Culture]]]
-&gt; **License:** Public Domain
-&gt; **Source Link:** [[[https://nmaahc.si.edu/object/nmaahc_2015.206.2.1 | NMAAHC]]]
-&gt; -----
-&gt; **Name:** Forest
-&gt; **Author:** [[[https://www.flickr.com/people/paszczak000/ | Kamil Porembiński]]]
-&gt; **License:** CC BY-SA 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/22178197@N00/8712445359 | Flickr]]]
-=====
-&gt; **Filename:** blackbox.png
-&gt; **Author:** [[*user Liryn]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** 744-Thumbnail.png
-&gt; **Name:** Factory
-&gt; **Author:** [[[https://www.flickr.com/photos/decafinata/ | Thomas Berg]]]
-&gt; **License:** CC BY-SA 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/decafinata/1989725289/ | Flickr]]]
-=====
-&gt; **Filename:** 7376-Thumbnail.png
-&gt; **Name:** Victorian Prosthetic Arm
-&gt; **Author:** [[[https://www.flickr.com/people/pathfinderlinden/ | John Lester]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/pathfinderlinden/4946436900 | Flickr]]]
-=====
-&gt; **Filename:** 7354-Thumbnail.png
-&gt; **Name:** Mask with two heads
-&gt; **Author:** [[[https://www.flickr.com/people/hutchike/ | Kevin Hutchinson]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/hutchike/2130568 | Flickr]]]
-=====
-&gt; **Filename:** 1908-Thumbnail.png
-&gt; **Name:** N/A
-&gt; **Author:** [[[https://www.flickr.com/people/dangerous-dan/ | Dangerous...Dan]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/dangerous-dan/26793369795/ | Flickr]]]
-=====
-&gt; **Filename:** DKCUWT-Thumbnail.png
-&gt; **Author:** [[*user MontagueETC]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Derivative of:**
-&gt; ----
-&gt; **Name:** Scissors
-&gt; **Author:** [[[https://www.flickr.com/people/kmdoncaster/ | Kevin Doncaster]]]
-&gt; **License:** CC BY 2.0
-&gt; **Source Link:** [[[https://www.flickr.com/photos/kmdoncaster/27100082856/ | Flickr]]]
-=====
+[[/&lt;]]
 [[=]]
-**Fan Art**
-[[/=]]
-=====
-&gt; **Filename:** Fanart-ZalCryptid-1.jpg
-&gt; **Name:** SCP-⌘ - Beneath the Shivering Kingdom
-&gt; **Author:** [[*user Zal Cryptid]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[zal-cryptid-s-artwork-hub | Zal Cryptid&#39;s Art Hub]]]
-=====
-&gt; **Filename:** Fanart-DodoDevil.jpg
-&gt; **Name:** All Roads Lead to Rome
-&gt; **Author:** [[*user DodoDevil]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[dodos-7kollages | DODO&#39;S 7KOLLAGES]]]
-=====
-&gt; **Filename:** Fanart-WifiFailure-1.jpg
-&gt; **Name:** On my way to site-⌘
-&gt; **Author:** [https://twitter.com/Wifi_Failure Wifi Failure]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://twitter.com/Wifi_Failure/status/1564880166299602946 | Twitter]]]
-=====
-&gt; **Filename:** Fanart-WifiFailure-2.jpg &amp; Fanart-WifiFailure-3.jpg
-&gt; **Name:** I placed them all around my room, for ease of access, of course.
-&gt; **Author:** [https://twitter.com/Wifi_Failure Wifi Failure]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://twitter.com/Wifi_Failure/status/1566903246626619402 | Twitter]]]
-=====
-&gt; **Filename:** Fanart-Sunnyclockwork-1.jpg
-&gt; **Name:** SCP-⌘ - Beneath the Shivering Kingdom
-&gt; **Author:** [[*user SunnyClockwork]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[sunny-art-series-5 | SunnyClockwork&#39;s Artwork - Series V - VIII]]]
-=====
-&gt; **Filename:** Fanart-IDMNS-1.jpg
-&gt; **Author:** IDMNS
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** N/A
-=====
-&gt; **Filename:** Fanart-Sunnyclockwork-2.jpg
-&gt; **Name:** SCP-6454 - The Painting That Ate Paris, Texas
-&gt; **Author:** [[*user SunnyClockwork]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[sunny-art-series-5 | SunnyClockwork&#39;s Artwork - Series V - VIII]]]
-=====
-&gt; **Filename:** Fanart-Rhineriver.jpg
-&gt; **Name:** Esterberg (City) — Wikipedia
-&gt; **Author:** [[*user Rhineriver]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[2-rhine-2-river | Rhineriver&#39;s Art Page (Now In Full-Color!)]]]
-=====
-&gt; **Filename:** Fanart-Jadeitor.jpg
-&gt; **Name:** Day 22 - SCP-7701
-&gt; **Author:** [[*user Jadeitor]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://twitter.com/Jade_png/status/1583787699923988483 | Twitter]]]
-=====
-&gt; **Filename:** Fanart-IDMNS-2.jpg
-&gt; **Author:** IDMNS
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** N/A
-=====
-&gt; **Filename:** Fanart-SouthofAsia3.jpg
-&gt; **Name:** SCP-7009 - All Roads Lead to Rome.
-&gt; **Author:** [[[https://reddit.com/user/SouthofAsia3/ | SouthofAsia3]]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.reddit.com/r/SCP/comments/12bgyw6/scp7009_all_roads_lead_to_rome/ | Reddit]]]
-=====
-&gt; **Filename:** Fanart-rottingraisins.jpg
-&gt; **Name:** SCP-7408
-&gt; **Author:** [[[https://www.tumblr.com/rottingraisins | rottingraisins]]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.tumblr.com/rottingraisins/717588964568170498/it-fucks-me-up-thinking-about-what-happens-to | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-systemaltoclef.jpg
-&gt; **Name:** Doctor Kondraki wakes up.
-&gt; **Author:** [[[https://www.tumblr.com/systemaltoclef | systemaltoclef]]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.tumblr.com/systemaltoclef/717132205076381696/doctor-kondraki-wakes-up | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-ZalCryptid-2.jpg
-&gt; **Name:** SCP-6183 - B L A C K B O X
-&gt; **Author:** [[*user Zal Cryptid]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[zal-cryptid-s-artwork-hub | Zal Cryptid&#39;s Art Hub]]]
-=====
-&gt; **Filename:** Fanart-arturite2.jpg
-&gt; **Name:** Doctors will literally become a bunch of insects instead of going to therapy.
-&gt; **Author:** [[[https://arturite2.tumblr.com | arturite2]]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://arturite2.tumblr.com/post/719610107600764928/doctors-will-literally-become-a-bunch-of-insects | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-the-land-of-dreams.jpg
-&gt; **Name:** breaking news local disaster of a man is way prettier than he has any right to be more at 8
-&gt; **Author:** [[[https://www.tumblr.com/the-land-of-dreams | the-land-of-dreams]]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.tumblr.com/the-land-of-dreams/720129009962385408/breaking-news-local-disaster-of-a-man-is-way | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-Sunnyclockwork-3.jpg
-&gt; **Name:** SCP-7408 - Metamorphosis
-&gt; **Author:** [[*user SunnyClockwork]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[sunny-art-series-5 | SunnyClockwork&#39;s Artwork - Series V - VIII]]]
-=====
-&gt; **Filename:** Fanart-Salllllty_water.jpg
-&gt; **Name:** if he has eyeball replacement, i prefer he has the perfect death stare, like a doll
-&gt; **Author:** [[*user saltywater]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://twitter.com/Salllllty_water/status/1686776926093168640 | Twitter]]]
-=====
-&gt; **Filename:** Fanart-amones.jpg
-&gt; **Name:** Metamorphosis
-&gt; **Author:** [[[https://www.tumblr.com/amones | Amones]]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.tumblr.com/amones/725016628435255296/metamorphosis | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-Dobek_k.jpg
-&gt; **Name:** Qayin and Hevel
-&gt; **Author:** [[*user Drdobermann]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[drdobermann-artworks | Drdobermann&#39;s Artworks]]]
-=====
-&gt; **Filename:** Fanart-RuraScarlet.jpg
-&gt; **Author:** [[*user RuraScarlet]]
-&gt; **License:** CC BY-SA 3.0
-=====
-&gt; **Filename:** Fanart-ZalCryptid-3.jpg
-&gt; **Name:** SCP-7376
-&gt; **Author:** [[*user Zal Cryptid]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.tumblr.com/zal-cryptid/727772897523924992/scp-7354-and-scp-7376 | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-ZalCryptid-4.jpg
-&gt; **Name:** SCP-7354
-&gt; **Author:** [[*user Zal Cryptid]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.tumblr.com/zal-cryptid/727772897523924992/scp-7354-and-scp-7376 | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-ZalCryptid-5.jpg
-&gt; **Name:** SCP-7408
-&gt; **Author:** [[*user Zal Cryptid]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.tumblr.com/zal-cryptid/728534269477224448/scp-408-and-scp-7408 | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-ZalCryptid-6.jpg
-&gt; **Name:** SCP-6462
-&gt; **Author:** [[*user Zal Cryptid]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://www.tumblr.com/zal-cryptid/728932335395979264/scp-6462-and-scp-012 | Tumblr]]]
-=====
-&gt; **Filename:** Fanart-Robisnotadeer.jpg
-&gt; **Name:** 7376-A abel
-&gt; **Author:** [[[https://twitter.com/Robisnotadeer | Robisnotadeer]]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://twitter.com/Robisnotadeer/status/1712688007659282586 | Twitter]]]
-=====
-&gt; **Filename:** Fanart-Simple_Mortal64.jpg
-&gt; **Name:** :&#34;D
-&gt; **Author:** [[[https://twitter.com/Simple_Mortal64 | Simple_Mortal64]]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [[[https://twitter.com/Simple_Mortal64/status/1716354034800443717 | Twitter]]]
-=====
-[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+[[include :scp-wiki:component:license-box-end]]
+[[/=]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:37.345348.</em>
+    <em>Last updated 2026-04-17 00:56:54.930454.</em>
   
 </div>
 </body>

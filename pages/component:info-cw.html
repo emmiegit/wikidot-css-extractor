@@ -34,19 +34,9 @@ table.wiki-content-table td img { padding: 4px; }</code></pre>
         </li>
       
         <li>
-          <pre><code>.content-warning {
-  /* Shift the content warning into position beneath the info button
-   *
-   * The var --base-font-size is set to 0.9375rem (15px) in BHL, so using the
-   * fallback parameter of the var() function, I can detect if it or Sigma-9
-   * is being used. I can use this to get the perfect positioning.
-   */
-  transform: translate(
-    /* Horizontal: 5px for BHL and 12px for Sigma-9 */
-    calc(var(--base-font-size, 21px) - 9px),
-    /* Vertical: -8px for BHL and -5px for Sigma-9 */
-    calc(var(--base-font-size, 19px) - 24px)
-  );
+          <pre><code>/* Shift the content warning into position beneath the info button */
+.content-warning {
+  transform: translate(12px, -5px);
 }
 
 .content-warning-arrow {
@@ -56,6 +46,7 @@ table.wiki-content-table td img { padding: 4px; }</code></pre>
   display: inline-block;
   width: 32px;
   transform: translateY(-3px);
+  margin-left: 0.3ch;
 
   background-color: currentColor;
   -webkit-mask-size: 16px;
@@ -66,6 +57,22 @@ table.wiki-content-table td img { padding: 4px; }</code></pre>
   mask-position: top left;
   -webkit-mask-image: var(--arrow);
   mask-image: var(--arrow);
+}
+
+/* Theme compatibility */
+
+:where(:root:has(iframe[src*=&#39;black-highlighter&#39;])) .content-warning {
+  transform: translate(0.7em, -0.5em);
+}
+:where(:root:has(iframe[src*=&#39;black-highlighter&#39;])) .content-warning-arrow {
+  transform: translateY(-1px);
+}
+
+:where(:root:has(iframe[src*=&#39;basalt/basalt-bedrock&#39;])) #page-content .content-warning {
+  transform: translate(0.3em, -0.1em);
+}
+:where(:root:has(iframe[src*=&#39;basalt/basalt-bedrock&#39;])) .content-warning-arrow {
+  transform: translateY(-1px);
 }</code></pre>
         </li>
       
@@ -95,57 +102,6 @@ table.wiki-content-table td img { padding: 4px; }</code></pre>
     
   <span class="page-info">
     [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/info:start" target="_blank"><code>:scp-wiki:info:start</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/info:start.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/info:end" target="_blank"><code>:scp-wiki:info:end</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/info:end.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:info-cw" target="_blank"><code>:scp-wiki:component:info-cw</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:info-cw.html" target="_blank">info</a>]
   </span>
 
   
@@ -194,12 +150,15 @@ table.wiki-content-table td { text-align: center; border-color: #ddd; padding: 0
 table.wiki-content-table td img { padding: 4px; }
 [[/module]]
 
-|| [[image cw-s9-light.png]] _
-[[[component:theme | Sigma-9]]] || [[image cw-s9-dark.png]] _
-[[[theme:night-rush-theme|]]] ||
-|| [[image cw-bhl-light.png]] _
-[[[theme:black-highlighter-theme|]]] || [[image cw-bhl-dark.png]] _
+|| [[image info-cw-sigma-light.png]] _
+[[[component:theme | Sigma-10]]] || [[image info-cw-sigma-dark.png]] _
+[[[theme:dark|]]] ||
+|| [[image info-cw-bhl-light.png]] _
+[[[theme:black-highlighter-theme|]]] || [[image info-cw-bhl-dark.png]] _
 [[[theme:extra-black-highlighter-theme|]]] ||
+|| [[image info-cw-basalt-light.png]] _
+[[[theme:basalt|]]] || [[image info-cw-basalt-dark.png]] _
+[[[theme:basalt|]]] dark mode ||
 
 This is a component that adds a little unobtrusive content warning notification. It is designed to sit underneath the [[[info:start | Info module]]] in such a way that the little arrow points to the little info button.
 
@@ -238,19 +197,9 @@ If you&#39;d like to use this with the [[[component:info-ayers|]]] by [[*user Ay
 [[/iftags]]
 
 [[module CSS]]
+/* Shift the content warning into position beneath the info button */
 .content-warning {
-  /* Shift the content warning into position beneath the info button
-   *
-   * The var --base-font-size is set to 0.9375rem (15px) in BHL, so using the
-   * fallback parameter of the var() function, I can detect if it or Sigma-9
-   * is being used. I can use this to get the perfect positioning.
-   */
-  transform: translate(
-    /* Horizontal: 5px for BHL and 12px for Sigma-9 */
-    calc(var(--base-font-size, 21px) - 9px),
-    /* Vertical: -8px for BHL and -5px for Sigma-9 */
-    calc(var(--base-font-size, 19px) - 24px)
-  );
+  transform: translate(12px, -5px);
 }
 
 .content-warning-arrow {
@@ -260,6 +209,7 @@ If you&#39;d like to use this with the [[[component:info-ayers|]]] by [[*user Ay
   display: inline-block;
   width: 32px;
   transform: translateY(-3px);
+  margin-left: 0.3ch;
 
   background-color: currentColor;
   -webkit-mask-size: 16px;
@@ -270,6 +220,22 @@ If you&#39;d like to use this with the [[[component:info-ayers|]]] by [[*user Ay
   mask-position: top left;
   -webkit-mask-image: var(--arrow);
   mask-image: var(--arrow);
+}
+
+/* Theme compatibility */
+
+:where(:root:has(iframe[src*=&#39;black-highlighter&#39;])) .content-warning {
+  transform: translate(0.7em, -0.5em);
+}
+:where(:root:has(iframe[src*=&#39;black-highlighter&#39;])) .content-warning-arrow {
+  transform: translateY(-1px);
+}
+
+:where(:root:has(iframe[src*=&#39;basalt/basalt-bedrock&#39;])) #page-content .content-warning {
+  transform: translate(0.3em, -0.1em);
+}
+:where(:root:has(iframe[src*=&#39;basalt/basalt-bedrock&#39;])) .content-warning-arrow {
+  transform: translateY(-1px);
 }
 [[/module]]
 
@@ -282,7 +248,7 @@ If you&#39;d like to use this with the [[[component:info-ayers|]]] by [[*user Ay
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.167684.</em>
+    <em>Last updated 2026-04-17 00:56:52.989538.</em>
   
 </div>
 </body>

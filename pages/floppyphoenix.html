@@ -29,7 +29,8 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>/* ==== SITE BANNER ==== */
+          <pre><code>/* == SITE BANNER == */
+
  :root {
     --header-subtitle: &#34;NO VEIL CAN HOLD THE HEAVENS&#34;;
 
@@ -38,17 +39,18 @@
     --hue: 180deg;
 
     --bgColor: hsl(220, 59%, 27%);
-    --mgColor: hsl(222, 22%, 9%);
-    --fgColor: hsla(0, 0%, 0%, .4);
+    --mgColor: hsl(220, 22%, 9%);
+    --fgColor: hsl(220, 60%, 15%);
 
-     --borderColor: var(--accentColor);
-     --bgBadgeColor: var(--fgColor);
+    --borderColor: var(--accentColor);
+    --bgBadgeColor: var(--fgColor);
 }
 
  body {
-    background-attachment: fixed;
-    background-color: var(--mgColor);
-    background-image: url(https://scp-wiki.wikidot.com/local--files/floppyphoenix/bg-grad.png);
+    background-image:
+       linear-gradient(
+    	var(--mgColor) 0 180px,
+    	var(--bgColor) 720px 100%);
 }
 
  @media (min-width: 768px) {
@@ -99,7 +101,8 @@
     font-size: 2.95rem;
 }
 
-/* ==== BOOKSHELF ==== */
+/* == BOOKSHELF == */
+
  div.bookshelf {
     display: flex;
     flex-flow: wrap;
@@ -124,9 +127,12 @@
     margin: 0;
 }
 
-/* ==== TABS ==== */
+/* == TABS == */
+
  .yui-navset .yui-content {
     padding-top: 2rem;
+
+    background: hsla(220, 60%, 21%);
 }
 
  .yui-navset .yui-nav .selected a,
@@ -142,7 +148,8 @@
     content: &#34;&#34;;
 }
 
-/* ==== MEGA COOL AUTHOR PAGE TOOL ==== */
+/* == MEGA COOL AUTHOR PAGE TOOL == */
+
  .content-box {
     margin-bottom: 1rem !important;
 }
@@ -166,12 +173,11 @@
     border-bottom: 0;
 }
 
-/* ==== FLOPSTYLE: DARK MODS ==== */
+/* == FLOPSTYLE: DARK MODS == */
+
  .image-box {
     border: 0 !important;
 }
-
-/* ======== */
 
  .blockquote.artpreciation &gt; p {
     margin-top: -.4rem;
@@ -189,30 +195,13 @@
 
      .blockquote.lightweight.exhibit {
     	width: 500px;
-    	height: 360px;
+    	min-height: 240px;
+    	margin: auto;
     }
 }
 
-/* ======== */
+/* == CURRICULUM VITAE == */
 
- .footing {
-    /* == Page Footing == */
-    padding-top: 1.6rem;
-}
-
- .footing::before {
-    bottom: .27rem;
-
-    border-bottom: 4px solid var(--accentColor);
-}
-
- .footing::after {
-    top: .13rem;
-
-    border-bottom: 2px solid var(--accentColorLite);
-}
-
-/* ==== CURRICULUM VITAE ==== */
  .cv {
     --accentColor: hsl(360, 71%, 70%);
     --accentColorLite: hsla(360, 71%, 80%, .5);
@@ -232,7 +221,7 @@
 
  .cv strong {
     color: var(--textColorMid);
-    font-size: .95rem;
+    font-size: .9rem;
 }
 
  .cv strong::after {
@@ -303,30 +292,48 @@
     font-size: .85rem;
 }
 
-/* ==== X-SMALL BREAKPOINT ==== */
- @media (max-width: 575px) {
+/* == DIVS == */
+
+ .blockquote {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+ .blockquote .blockquote {
+    margin-right: 1rem;
+    margin-left: 1rem;
+
+    border-left-width: medium;
+}
+
+/* == X-SMALL BREAKPOINT == */
+
+ @media (max-width: 575.9px) {
      #header h1 a { font-size: calc(.75em + 3.5vw); }
      #header h2 { font-size: calc(.75em + 1.75vw); }
 }
 
-/* ==== SMALL BREAKPOINT ====*/
- @media (min-width: 576px) and (max-width: 767px) {
+/* == SMALL BREAKPOINT == */
+
+ @media (min-width: 576px) and (max-width: 767.9px) {
      #header h1 a { font-size: calc(.75em + 3vw); }
      #header h2 { font-size: calc(.75em + 1.5vw); }
 }
 
- @media (max-width: 767px) {
+ @media (max-width: 767.9px) {
      #header h2 { margin-top: .5em; }
 }
 
-/* ==== MEDIUM BREAKPOINT ==== */
- @media (min-width: 768px) and (max-width: 991px) {
+/* == MEDIUM BREAKPOINT == */
+
+ @media (min-width: 768px) and (max-width: 983.9px) {
      #header h1 a { font-size: calc(.75em + 2.5vw); }
      #header h2 { margin-top: 0; font-size: calc(.75em + 1.25vw); }
 }
 
-/* ==== LARGE BREAKPOINT ==== */
- @media (min-width: 992px) and (max-width: 1199px) {
+/* == LARGE BREAKPOINT == */
+
+ @media (min-width: 984px) and (max-width: 1199.9px) {
      #header h1 a { font-size: calc(.75em + 2vw); }
      #header h2 { font-size: calc(.75em + 1vw); }
      #header h1 a::before { font-size: unset; }
@@ -356,10 +363,6 @@
         </li>
       
         <li>
-          <pre><code>font-weight: bold</code></pre>
-        </li>
-      
-        <li>
           <pre><code>color: hsl(136, 71%, 69%); font-weight: bold</code></pre>
         </li>
       
@@ -369,6 +372,10 @@
       
         <li>
           <pre><code>color: hsl(212, 71%, 73%); font-weight: bold</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>font-weight: bold</code></pre>
         </li>
       
         <li>
@@ -389,13 +396,13 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:flopstyle-dark" target="_blank"><code>:scp-wiki:theme:flopstyle-dark</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/theme:flopstyle-dark.html" target="_blank">info</a>]
   </span>
 
   
@@ -406,14 +413,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -423,14 +424,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -440,14 +435,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -457,14 +446,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -474,14 +457,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -491,14 +468,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -508,14 +479,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -525,14 +490,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -542,14 +501,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -559,14 +512,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -576,14 +523,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -593,14 +534,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -610,14 +545,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -627,14 +556,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -644,14 +567,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -661,14 +578,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -678,14 +589,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -695,14 +600,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -712,14 +611,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -729,14 +622,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -746,14 +633,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -763,14 +644,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -780,14 +655,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -797,14 +666,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -814,14 +677,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -831,14 +688,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -848,14 +699,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -865,14 +710,8 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
 
   
 </li>
@@ -882,14 +721,118 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:mega-cool-author-page-tool" target="_blank"><code>:scp-wiki:component:mega-cool-author-page-tool</code></a>
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
   
 
   
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:mega-cool-author-page-tool.html" target="_blank">info</a>]
-  </span>
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://snippets.wikidot.com/bs-image" target="_blank"><code>:snippets:bs-image</code></a>
+  
 
   
 </li>
@@ -1264,47 +1207,7 @@
         </li>
       
         <li>
-          <pre><code>offset-left</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>left-3</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>tb</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>lightweight</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>exhibit</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>offset-right</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>right-3</code></pre>
-        </li>
-      
-        <li>
           <pre><code>bookshelf</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>book</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>book</code></pre>
         </li>
       
         <li>
@@ -1344,19 +1247,11 @@
         </li>
       
         <li>
-          <pre><code>idle</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>idle</code></pre>
+          <pre><code>report-box</code></pre>
         </li>
       
         <li>
           <pre><code>cv</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>report-box</code></pre>
         </li>
       
         <li>
@@ -1580,63 +1475,11 @@
         </li>
       
         <li>
-          <pre><code>report-box</code></pre>
+          <pre><code>idle</code></pre>
         </li>
       
         <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>solid</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>solid</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>solid</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>solid</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>solid</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>solid</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>blockquote</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>solid</code></pre>
+          <pre><code>idle</code></pre>
         </li>
       
         <li>
@@ -1648,7 +1491,59 @@
         </li>
       
         <li>
-          <pre><code>lightweight</code></pre>
+          <pre><code>solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>solid</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>report-box</code></pre>
         </li>
       
         <li>
@@ -1689,6 +1584,26 @@
       
         <li>
           <pre><code>lightweight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lightweight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>lightweight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
@@ -1805,10 +1720,6 @@
       
         <li>
           <pre><code>solid</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>top-border</code></pre>
         </li>
       
         <li>
@@ -1828,8 +1739,6 @@
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:flopstyle-dark
 |witch=a]]
-[[include :scp-wiki:theme:turbo-vision
-|blocks=-]]
 
 [!-- CSS is located at the bottom. --]
 
@@ -1838,25 +1747,13 @@
 [[div class=&#34;lite-heading extra-wide&#34;]]
 ----
 + __Flops’ Author Page__
-[[div class=&#34;pseudocrumbs&#34;]]
+  [[div class=&#34;pseudocrumbs&#34;]]
 [[[Authors’ Pages]]] &gt;&gt; Flops’ Author Page
-[[/div]]
+  [[/div]]
 ----
 [[/div]]
 ~~~~
-[[div class=&#34;blockquote lightweight exhibit offset-left left-3&#34;]]
-++++ NEW PAGES
-----
-1. **[JOKE SCP]** 🧙‍♂️🎭 [*/abraka-davids-proposal CODENAME: Abraka David&#39;s Proposal: A Peak Behind the Curtain]
-* Collab with [[user Metaphysician]], [[user Uncle Nicolini]], [[user LORDXVNV]], [[user Calibold]], [[user Sherf]], [[user Jack Ike]], [[user Guezma]], [[user Ralliston]], [[user Yossipossi]], [[user Placeholder McD]], [[user Guaire]], [[user Grigori Karpin]], and [[user Dr Balthazaar]]!
-2. **[TALE]** 🕸️🕷️ [*/samara-be-the-itsy-bitsy-spider Samara: Be the Itsy Bitsy Spider.]
-* For [*/romcon RomCon: an SCP OCT].
-3. **[TALE TRILOGY]** 🏞️👻 [[span class=&#34;tb&#34;]]Pursuing Ghosts [[size 80%]][To Be Continued][[/size]][[/span]]
-* [*/an-old-familiar-dream A Prologue: An Old, Familiar Dream]
-* [*/pursuing-ghosts-part-1 Part I]
-[[/div]]
-
-[[div class=&#34;blockquote lightweight exhibit offset-right right-3&#34;]]
+[[div class=&#34;blockquote lightweight exhibit&#34;]]
 ++++ SOCIALS
 ----
   [[div class=&#34;bookshelf&#34;]]
@@ -1864,18 +1761,6 @@
 
 ++++++ Bluesky
 [*https://bsky.app/profile/flops.bsky.social @flops.bsky.social]
-
-    [[/div]]
-    [[div class=&#34;book&#34;]]
-
-++++++ Mastodon
-[*https://kolektiva.social/@Flops @Flops@kolektiva.social]
-
-    [[/div]]
-    [[div class=&#34;book&#34;]]
-
-++++++ Tumblr
-[*https://flopslandia.tumblr.com/ Flopslandia]
 
     [[/div]]
     [[div class=&#34;book&#34;]]
@@ -1899,36 +1784,29 @@
 
 [[div class=&#34;lite-heading&#34;]]
 ----
-+ Things I&#39;ve Done
++ Things I Did
 ----
 [[/div]]
 
 [[div class=&#34;report-box&#34; style=&#34;width: fit-content; margin: 1rem auto&#34;]]
 = [[span class=&#34;tb&#34;]]The following tabs contain:[[/span]]
-# List of My Works [[span class=&#34;idle&#34;]](Article Showcase)[[/span]]
-# Page Commentary Archive [[span class=&#34;idle&#34;]](Apr 2017–Jun 2018)[[/span]]
+# My Works
 # Translations [[span class=&#34;idle&#34;]](By the SCP International Community)[[/span]]
 # Fan Art [[span class=&#34;idle&#34;]](By the SCP Artist Community)[[/span]]
-# SCP/WL Reading Recommendations [[span class=&#34;idle&#34;]](SCP Foundation &amp; Wanderers’ Library)[[/span]]
+# Reading Recommendations [[span class=&#34;idle&#34;]](SCP Foundation &amp; Wanderers’ Library)[[/span]]
 [[/div]]
 
 [[tabview]]
 
-  [[tab List of My Works]]
+  [[tab My Works]]
 
-[[div class=&#34;cv&#34;]]
   [[div class=&#34;report-box&#34;]]
-+++ A Comprehensive List of My Works
++++ Comprehensive List of My Works
 ----
-The definitive list of articles I have written, on both the SCP Foundation and the Wanderers&#39; Library, in the order each was published (oldest to newest).
-
-,,(Open each link in a new browser page, or you may lose your place.),,
-----
-[[span style=&#34;font-weight: bold&#34;]]Flops Says:[[/span]] In the spirit of collaboration: I grant any writer, artist, declassifier, or otherwise, full permission to use or depict the SCPs, concepts, characters, task forces, locations, or events created by me in your own SCP Foundation/Wanderers&#39; Library work.
-
-Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to execute it best.
+= ,,**N.B.:** Open each link in a new browser tab or you may lose your place.,,
 [[/div]]
 
+[[div class=&#34;cv&#34;]]
   [[div class=&#34;FL_parent&#34;]]
     [[div class=&#34;narration centered FL_child&#34;]]
 ++++++ __WORKS BY YEAR__
@@ -1966,68 +1844,68 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 +++++ April
 * [[[SCP-3309]]]: Where We Go When We Fade, Fade Away [[span class=&#34;idle&#34;]](with [[user PhamtomGuy]])[[/span]]
 +++++ May
-* [[[SCP-3464]]]: Olive Garden regularly communes with DEMONIC ENTITIES to summon their SATANIC sempiternal garlic bread
-* **The Sharkest Timeline** [[[bird|Team Bird Hub]]] (Series Hub) [[span class=&#34;idle&#34;]](with [[user notgull]])[[/span]]
-* **The Sharkest Timeline** **Team Bird** [[[SPC-507]]]: EAGER NETHERENDER
+* **Site-201** [[[SCP-3464]]]: Olive Garden regularly communes with DEMONIC ENTITIES to summon their SATANIC sempiternal garlic bread
+* **[[[The Sharkest Timeline]]]** [[[bird|Team Bird]]] (Series Hub) [[span class=&#34;idle&#34;]](with [[user notgull]])[[/span]]
+* **[[[The Sharkest Timeline]]]** **[[[bird|Team Bird]]]** [[[SPC-507]]]: EAGER NETHERENDER
 +++++ June
-* **The Sharkest Timeline** **Team Bird** [[[scp-3570|EE-3570]]]: Umbral Ultimatum
-* **The Sharkest Timeline** **Team Bird** [[[The Sacred Djehuti]]] [[span class=&#34;idle&#34;]](with [[user Ayers]])[[/span]]
-* **The Sharkest Timeline** **Team Bird** [[[Avian Anthology I]]] [[span class=&#34;idle&#34;]](with [[user notgull]], [[user Ayers]], &amp; [[user Quantum Physician]])[[/span]]
-* **The Sharkest Timeline** **Team Bird** [[[umbral-migratory-sequence|UMBRAL_MIGRATORY_SEQUENCE.txt]]]
-* **The Sharkest Timeline** **Team Bird** [[[Avian Anthology II]]] [[span class=&#34;idle&#34;]](with [[user notgull]], [[user Ayers]], &amp; [[user Quantum Physician]])[[/span]]
+* **[[[The Sharkest Timeline]]]** **[[[bird|Team Bird]]]** [[[scp-3570|EE-3570]]]: Umbral Ultimatum
+* **[[[The Sharkest Timeline]]]** **[[[bird|Team Bird]]]** [[[The Sacred Djehuti]]] [[span class=&#34;idle&#34;]](with [[user Ayers]])[[/span]]
+* **[[[The Sharkest Timeline]]]** **[[[bird|Team Bird]]]** [[[Avian Anthology I]]] [[span class=&#34;idle&#34;]](with [[user notgull]], [[user Ayers]], &amp; [[user Quantum Physician]])[[/span]]
+* **[[[The Sharkest Timeline]]]** **[[[bird|Team Bird]]]** [[[umbral-migratory-sequence|UMBRAL_MIGRATORY_SEQUENCE.txt]]]
+* **[[[The Sharkest Timeline]]]** **[[[bird|Team Bird]]]** [[[Avian Anthology II]]] [[span class=&#34;idle&#34;]](with [[user notgull]], [[user Ayers]], &amp; [[user Quantum Physician]])[[/span]]
 +++++ August
 * **[[[apotheosis-hub|Apotheosis]]]** [[[SCP-4420]]]: A Potato Thirst
 +++++ September
-* **WITCH** **Void Dancer** [[[the-abyss-gazes-back|The Abyss Gazes Back]]] (and It&#39;s ASCII on a CRT Screen)
-* **WITCH** **Void Dancer** [[[buggy-hardware|Buggy Hardware]]] (or Why I Don&#39;t Play Violent Video Games)
+* **WITCH** **[[[void-dancer-hub|Void Dancer]]]** [[[the-abyss-gazes-back|The Abyss Gazes Back]]] (and It&#39;s ASCII on a CRT Screen)
+* **WITCH** **[[[void-dancer-hub|Void Dancer]]]** [[[buggy-hardware|Buggy Hardware]]] (or Why I Don&#39;t Play Violent Video Games)
 +++++ October
 * **[[[rat-s-nest-hub|Rat&#39;s Nest]]]** [[[what-lurks|What Lurks in the Dark?]]]
 +++++ November
-* **The Sharkest Timeline** [[[SCP-4416]]]: Tails of Site-42: Why The Foundation Punches Sharks
+* **[[[The Sharkest Timeline]]]** [[[SCP-4416]]]: Tails of Site-42: Why The Foundation Punches Sharks
 +++++ December
-* **WITCH / [[[aiad-homescreen|AIAD]]]** **Void Dancer** [[[SCP-2]]]: A Eulogy for 2wo
+* **WITCH / [[[aiad-homescreen|AIAD]]]** **[[[void-dancer-hub|Void Dancer]]]** [[[SCP-2]]]: A Eulogy for 2wo
 * [[[SCP-4031]]]: The Amnesiac Redemption
 * **[[[end-of-death-hub|End of Death]]]** [[[The Doctor&#39;s Dilemma]]]
 [[# 2019]]
 + 2019
 ----
 +++++ January
-* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-3739]]]: [[span class=&#34;moo&#34;]]Mind-Milk™ by Moosphere, Inc.[[/span]] [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]KindlyTurtleClem[[/span]])[[/span]]
+* **WITCH** [[[SCP-3739]]]: [[span class=&#34;moo&#34;]]Mind-Milk™ by Moosphere, Inc.[[/span]] [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]KindlyTurtleClem[[/span]])[[/span]]
 +++++ March
-* **The Sharkest Timeline** [[[crispy-sex-pirates|A Surprise Encounter with Crispy Sex Pirates]]]
-* **The Sharkest Timeline** [[[SPC-993]]]: BOBBLE THE CLOWN SHARK
-* **The Sharkest Timeline** [[[SCP-4190]]]: A Twenty Thousand League Delay
+* **[[[The Sharkest Timeline]]]** [[[crispy-sex-pirates|A Surprise Encounter with Crispy Sex Pirates]]]
+* **[[[The Sharkest Timeline]]]** [[[SPC-993]]]: BOBBLE THE CLOWN SHARK
+* **[[[The Sharkest Timeline]]]** [[[SCP-4190]]]: A Twenty Thousand League Delay
 +++++ April
-* [[[non-prophet-organization-hub|A Non-Prophet Organization Hub]]] (Series Hub) [[span class=&#34;idle&#34;]](with [[user Uncle Nicolini]])[[/span]]
-* **A Non-Prophet Organization** [[[SCP-4519]]]: Carl Sagan, Godhead [[span class=&#34;idle&#34;]](with [[user NatVoltaic]])[[/span]]
-* **A Non-Prophet Organization** **SCP-4519** [[[log-of-anomalous-items-vol-ii#toc13|Anomalous Item #4519-373]]]
-* **A Non-Prophet Organization** [[[grant-request-post-mortem-neural-preservation|GRANT REQUEST FOR THE RE-CREATION OF AN ADVANCED POSTMORTEM NEURAL PRESERVATION SYSTEM]]] [[span class=&#34;idle&#34;]](with [[user Uncle Nicolini]])[[/span]]
+* [[[non-prophet-organization-hub|A Non-Prophet Organization]]] (Series Hub) [[span class=&#34;idle&#34;]](with [[user Uncle Nicolini]])[[/span]]
+* **[[[non-prophet-organization-hub|A Non-Prophet Organization]]]** [[[SCP-4519]]]: Carl Sagan, Godhead [[span class=&#34;idle&#34;]](with [[user NatVoltaic]])[[/span]]
+* **[[[non-prophet-organization-hub|A Non-Prophet Organization]]]** **SCP-4519** [[[log-of-anomalous-items-vol-ii#toc13|Anomalous Item #4519-373]]]
+* **[[[non-prophet-organization-hub|A Non-Prophet Organization]]]** [[[grant-request-post-mortem-neural-preservation|GRANT REQUEST FOR THE RE-CREATION OF AN ADVANCED POSTMORTEM NEURAL PRESERVATION SYSTEM]]] [[span class=&#34;idle&#34;]](with [[user Uncle Nicolini]])[[/span]]
 +++++ June
 * [[[critter-profile-bartholomew|Critter Profile: Bartholomew!]]] [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]KindlyTurtleClem[[/span]])[[/span]]
 * [[[Land Of Honey]]] [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]KindlyTurtleClem[[/span]])[[/span]] ⁂ [[span style=&#34;color: hsl(136, 71%, 69%); font-weight: bold&#34;]]2019 //Collaboration Contest//, First Place[[/span]]
 * **[[[ad-astra-per-aspera-hub|Ad Astra Per Aspera]]]** [[[SCP-4475]]]: So Long, and Thanks for All the Milk [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]KindlyTurtleClem[[/span]])[[/span]] ⁂ [[span style=&#34;color: hsl(136, 71%, 69%); font-weight: bold&#34;]]2019 //Collaboration Contest//, First Place[[/span]]
 +++++ July
 [[div class=&#34;translator&#34;]]
-* [[[SCP-281-FR]]]: The Day The Earth Stopped ,,Being Flat,, -- Written by [[user DrGemini]]. Translated into English by [[user macro_au_micro]] and I.
+* [[[SCP-281-FR]]]: The Day The Earth Stopped ,,Being Flat,, -- Written by [[user DrGemini]]. Translated into English by [[user macro_au_micro]] &amp; I.
 [[/div]]
 +++++ August
 * **[[[ad-astra-per-aspera-hub|Ad Astra Per Aspera]]] / [[[aiad-homescreen|AIAD]]]** [[[SCP-4790]]]: Do not go gentle into that good night.
 +++++ September
-* **Team Bird** [[[SCP-4795]]]: Feathered F(r)iends [[span class=&#34;idle&#34;]](with [[user Mew-ltiverse]])[[/span]]
+* **[[[bird|Team Bird]]]** [[[SCP-4795]]]: Feathered F(r)iends [[span class=&#34;idle&#34;]](with [[user Mew-ltiverse]])[[/span]]
 +++++ October
 * --SCP-4428-- [[a href=&#34;*/scp-4428&#34; class=&#34;lie&#34;]]Dr. Michaels is not in danger.[[/a]] [[span class=&#34;idle&#34;]](with [[user Henzoid]])[[/span]]
-* **The Sharkest Timeline** [[[A Necromantic Prelude]]]
+* **[[[The Sharkest Timeline]]]** [[[A Necromantic Prelude]]]
 [[# 2020]]
 + 2020
 ----
 +++++ January
-* **WITCH** **Void Dancer** [[[a-scene-from-a-meme|A Scene From a Meme]]](-ory)
+* **WITCH** **[[[void-dancer-hub|Void Dancer]]]** [[[a-scene-from-a-meme|A Scene From a Meme]]](-ory)
 +++++ February
 * **[[[broken-masquerade-hub|Broken Masquerade]]]** [[[broken-masquerade-epistolary|Snippets of an Unveiled World]]] (Collaboration) [[span class=&#34;idle&#34;]](with [[span class=&#34;tb&#34;]]newnykacolaquantum[[/span]])[[/span]]
 +++++ March
-* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-5990]]]: Out of my head, out of my mind
-* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** [[[no-sense-crying|Spilled Milk]]]
-* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** **The Lost Glade** “[[[Scattersomnia]]]”: A Disease of the Wise and Drowsy Wanderers
+* **WITCH** [[[SCP-5990]]]: Out of my head, out of my mind
+* **WITCH** [[[no-sense-crying|Spilled Milk]]]
+* **WITCH** **The Lost Glade** “[[[Scattersomnia]]]”: A Disease of the Wise and Drowsy Wanderers
 +++++ April
 * [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/cave-story Cave Story][[/span]] ⁂ [[span style=&#34;color: hsl(212, 71%, 73%); font-weight: bold&#34;]]2020 //Wanderers&#39; Depths Contest//, First Place[[/span]]
 +++++ August
@@ -2037,9 +1915,9 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 ----
 +++++ January
 [[div class=&#34;translator&#34;]]
-* [[[SCP-101-FR]]]: Y@u aɹe hëre -- Written by [[user DrGemini]]. Translated into English by [[user macro_au_micro]] and I.
+* [[[SCP-101-FR]]]: Y@u aɹe hëre -- Written by [[user DrGemini]]. Translated into English by [[user macro_au_micro]] &amp; I.
 [[/div]]
-* **WITCH** [[[Void Dancer Hub]]] (Series Hub)
+* **WITCH** [[[void-dancer-hub|Void Dancer]]] (Series Hub)
 * [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/interplanetary-colonization Interplanetary Colonization][[/span]]
 * **WITCH** **The Lost Glade** [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/take-you-to-the-parashops I&#39;ll Take You to the Parashops][[/span]]
 * **WITCH** **The Lost Glade** [[span class=&#34;library&#34;]][*https://wanderers-library.wikidot.com/lampyra-the-watcher Lampyra, the Watcher][[/span]] (Author Page)
@@ -2047,10 +1925,10 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 * [[[SCP-5810]]]: Of Guilt, Fear, and Hollowness of Heart
 +++++ March
 * [[span class=&#34;library&#34;]]**[*https://wanderers-library.wikidot.com/last-light-hub Last Light]** [*https://wanderers-library.wikidot.com/talk-of-the-town Talk of the Town][[/span]] (Collaboration)
-* [[[saturn-s-corner|Introducing: April Protocol, 2021]]] / [[[saturn-s-corner|SATURN&#39;S CORNER]]]
+* [[[saturn-s-corner|SATURN&#39;S CORNER]]]
 +++++ April
 * **[[[I, Hub]]]** [[span class=&#34;tb&#34;]]I, Thread[[/span]] (One-Day Collaboration) (April Fools)
-* **[[[Cack Hub]]]** [[[fifthist family picnic]]] (April Fools)
+* **[[[Cack Hard]]]** [[[fifthist family picnic]]] (April Fools)
 +++++ May
 * [[[departments-complete-list|A Semi-Comprehensive List of Foundation Departments]]] (Collaboration) (Resource)
 +++++ August
@@ -2074,7 +1952,7 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 * [[[SCP-6881]]]: Project: SERAPIS -- Written by Ben Counter in twelve installments for the podcast //SCP Archives//. Ben Counter is an author and regular contributor to the //Warhammer 40K// franchise. Together with the efforts of [[user LordStonefish]], we provided editing and formatting services to help port all twelve installments to the SCP Wiki.
   [[/div]]
 +++++ April
-* **WITCH / [[[broken-masquerade-hub|Broken Masquerade]]]** [[[SCP-6705]]]: The Bicameral Milk [[span class=&#34;idle&#34;]](with [[user LordStonefish]])[[/span]]
+* **WITCH** [[[SCP-6705]]]: The Bicameral Milk [[span class=&#34;idle&#34;]](with [[user LordStonefish]])[[/span]]
 +++++ May
 * [[[SCP-6481]]]: Nipple Centipedes [[span class=&#34;idle&#34;]](with [[user Ellie3]])[[/span]]
 +++++ July
@@ -2092,29 +1970,37 @@ Drop a link my way; maybe I&#39;ll like it, or give you some pointers on how to 
 * **WITCH** **The Lost Glade** [[[pursuing-ghosts-part-1|Pursuing Ghosts, Part I]]]
 +++++ May
 * **WITCH** [[[samara-be-the-itsy-bitsy-spider|Samara: Be the Itsy Bitsy Spider.]]]
-+++++ June
-* [[[SCP-6830]]]: Oops! All Atens! [[span class=&#34;idle&#34;]](with [[user AriadnesThread]])[[/span]]
 +++++ November
-* [[[abraka-davids-proposal|CODENAME: Abraka David&#39;s Proposal]]]: A Peak Behind the Curtain (Joke Article) [[span class=&#34;idle&#34;]](with [[user Metaphysician]], [[user Uncle Nicolini]], [[user LORDXVNV]], [[user Calibold]], [[user Sherf]], [[user Jack Ike]], [[user Guezma]], [[user Ralliston]], [[user Yossipossi]], [[user Placeholder McD]], [[user Guaire]], [[user Grigori Karpin]], and [[user Dr Balthazaar]])[[/span]]
+* [[[abraka-davids-proposal|CODENAME: Abraka David&#39;s Proposal]]]: A Peak Behind the Curtain (Joke Article) [[span class=&#34;idle&#34;]](with [[user Metaphysician]], [[user Uncle Nicolini]], [[user LORDXVNV]], [[user Calibold]], [[user Sherf]], [[user Jack Ike]], [[user Guezma]], [[user Ralliston]], [[user Yossipossi]], [[user Placeholder McD]], [[user Guaire]], [[user Grigori Karpin]], &amp; [[user Dr Balthazaar]])[[/span]]
 [[# 2024]]
 + 2024
 ----
++++++ April
+* [[[SCP-8988-J]]]: Twitch Writes an SCP (April Fools) [[span class=&#34;idle&#34;]](with smlt, stormbreath, aismallard, Aethris, A Random Treestump, Woedenaz, Luxaiko, leo60228, Pedagon, CompleteIndie, MasterTman2, Prismal, Rhineriver, CALorStuff, JorgeMtzb, IvanNavi, fairydoctor, aerbag, Caesar-Kuznetsov, MontagueETC, Insanitz, Polaris_Writes, Naepic, calhutcherson, FlamingAustralia, slurppp, Dino@@--@@Draws, TealQuacks, Felixou, PeppersGhost, IAMCRAB174, Diogene_s, syuzhet, &amp; LizardWizard)[[/span]]
+* **WITCH** [[[SCP-8299]]]: TRUE NORTH STRONG AND FREE [[span class=&#34;idle&#34;]](with [[user Spacestealth]])[[/span]]
+ * Draft donated for the [*/deer-college-spring-cleaning-event 2024 Deer College Spring Cleaning Event].
++++++ May
+* **WITCH** **The Lost Glade** [[[pursuing-ghosts-part-2|Pursuing Ghosts, Part II]]]
++++++ July
+* [[[The Sharkest Timeline]]] (Canon Hub) [[span class=&#34;idle&#34;]](with [[user LORDXVNV]], [[user Crow-Cat]], &amp; [[user ThisisNalkan]])[[/span]]
+[!--
 [[module ListPages limit=&#34;1&#34; category=&#34;*&#34; order=&#34;updated_at desc&#34;]]
 +++++ %%updated_at|%B%%
 [[/module]]
 * //UPCOMING//
+--]
 ----
 +++ &lt;&lt; [#BTT BACK TO TOP] &gt;&gt;
 [[/div]]
 
   [[/tab]]
-  [[tab Page Commentary Archive]]
+[!--  [[tab Page Commentary Archive]]
 
 [[div class=&#34;report-box&#34;]]
 +++ PAGE COMMENTARY (ARCHIVED)
 ++++ Last updated: June 2018.
 ----
-**Flops Says:** This commentary covers only one-fifth of my written work on the Wiki. I won&#39;t update this again, if only because there&#39;s too much work to make commentary on, and I would rather let my work speak for itself.
+[[span style=&#34;font-weight: bold&#34;]]Flops Says:[[/span]] This commentary covers only one-fifth of my written work on the Wiki. I won&#39;t update this again, if only because there&#39;s too much work to make commentary on, and I would rather let my work speak for itself.
 
 If you&#39;re curious, I do include some writing/background information in the author posts for all my individual works.
 [[/div]]
@@ -2289,324 +2175,361 @@ Until we return to The Nest, I will forever be proud of this page.
 ----
 +++ &lt;&lt; [#BTT BACK TO TOP] &gt;&gt;
 
-  [[/tab]]
+  [[/tab]] --]
   [[tab Translations]]
 
 [[div class=&#34;report-box&#34;]]
-+++ PAGE TRANSLATIONS
++++ List of Translations of My Works
 ----
-**Flops Says:** These are works of mine that have been translated by members of other SCP Foundation branches. I&#39;m //super// thankful to anyone who has shared my works with the International SCP community by taking the time to translate them.
-
-**Aside:** I am a perfectionist and will go back to make revisions to my old articles all the time. I&#39;m deeply sorry if this makes translating and maintaining my pages more difficult!
+= ,,**N.B.:** Credit for each translation goes to its respective translator(s).,,
 [[/div]]
 
 [[div class=&#34;blockquote lightweight&#34;]]
 ++ SCP Articles
 ----
-* [[[scp-3309|SCP-3309]]]
- * [*https://scp-wiki-cn.wikidot.com/scp-3309 Simplified Chinese (CN) Translation] by [[user Sraosha]]
- * [*http://scp-zh-tr.wikidot.com/scp-3309 Traditional Chinese (ZH-TR) Translation] by [[user Frederica Bernkastel]]
- * [*http://lafundacionscp.wikidot.com/scp-3309 Spanish Translation] by [[user morhadow]]
- * [*http://fondationscp.wikidot.com/scp-3309 French Translation] by [[user Reyas]]
- * [*http://fondazionescp.wikidot.com/scp-3309 Italian Translation] by [[user TheBoxOfFun]] &amp; [[user Dgctt]]
- * [*http://ja.scp-wiki.net/scp-3309 Japanese Translation] by [[user evilplant]]
- * [*http://scp-kr.wikidot.com/scp-3309 Korean Translation] by [[user Kaestine]]
- * [*http://scp-pt-br.wikidot.com/scp-3309 Portuguese Translation] by **AthosNetwork** (account deleted)
- * [*http://scp-vn.wikidot.com/scp-3309 Vietnamese Translation] by [[user BaDang]]
+* [[[SCP-3787]]]
+ # [*http://lafundacionscp.wikidot.com/scp-3787 Spanish Translation] by [[user Riyer P]]
 
 
-* [[[scp-3464|SCP-3464]]] | **[[*https://youtu.be/jRJM6ozgKJ8 Illustrated Version]]**
- * [*http://scp-wiki-cn.wikidot.com/scp-3464 Simplified Chinese (CN) Translation] by [[user ashausesall]]
- * [*http://lafundacionscp.wikidot.com/scp-3464 Spanish Translation] by [[user Hammeriano]]
- * [*http://scp-jp.wikidot.com/scp-3464 Japanese Translation] by [[user Extra3002]]
- * [*http://ko.scp-wiki.net/scp-3464 Korean Translation] by [[user Nareum]]
+* [[[SCP-3719]]]
+ # [*http://lafundacionscp.wikidot.com/scp-3719 Spanish Translation] by [[user Riyer P]]
 
 
-* [[[scp-3719|SCP-3719]]]
- * [*http://lafundacionscp.wikidot.com/scp-3719 Spanish Translation] by [[user Riyer P]]
+* [[[SCP-3309]]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-3309 Simplified Chinese (CN) Translation] by [[user Sraosha]]
+ # [*http://scp-zh-tr.wikidot.com/scp-3309 Traditional Chinese (ZH-TR) Translation] by [[user Frederica Bernkastel]]
+ # [*http://scp-cs.wikidot.com/scp-3309 Czech Translation] by [[user Utylike]]
+ # [*http://scp-wiki-de.wikidot.com/scp-3309 German Translation] by [[user Dr Alice]]
+ # [*http://lafundacionscp.wikidot.com/scp-3309 Spanish Translation] by [[user morhadow]]
+ # [*http://fondationscp.wikidot.com/scp-3309 French Translation] by [[user Reyas]]
+ # [*http://fondazionescp.wikidot.com/scp-3309 Italian Translation] by [[user TheBoxOfFun]] &amp; [[user Dgctt]]
+ # [*http://ja.scp-wiki.net/scp-3309 Japanese Translation] by [[user evilplant]]
+ # [*http://scp-kr.wikidot.com/scp-3309 Korean Translation] by [[user Kaestine]]
+ # [*http://scp-pt-br.wikidot.com/scp-3309 Portuguese Translation] by **AthosNetwork** (account deleted)
+ # [*http://scp-vn.wikidot.com/scp-3309 Vietnamese Translation] by [[user BaDang]]
 
 
-* [[[scp-3739|SCP-3739]]]
- * [*https://scp-wiki-cn.wikidot.com/scp-3739 Simplified Chinese (CN) Translation] by [[user ashausesall]]
- * [*http://lafundacionscp.wikidot.com/scp-3739 Spanish Translation] by [[user morhadow]]
- * [*http://fondazionescp.wikidot.com/scp-3739 Italian Translation] by [[user Dgctt]]
- * [*http://ja.scp-wiki.net/scp-3739 Japanese Translation] by [[user C-Dives]]
- * [*http://scp-pt-br.wikidot.com/scp-3739 Portuguese Translation] by [[user L200]]
+* [[[SCP-3464]]] | **[[*https://youtu.be/jRJM6ozgKJ8 Illustrated Version]]**
+ # [*http://scp-wiki-cn.wikidot.com/scp-3464 Simplified Chinese (CN) Translation] by [[user ashausesall]]
+ # [*http://lafundacionscp.wikidot.com/scp-3464 Spanish Translation] by [[user Hammeriano]]
+ # [*http://scp-jp.wikidot.com/scp-3464 Japanese Translation] by [[user Extra3002]]
+ # [*http://ko.scp-wiki.net/scp-3464 Korean Translation] by [[user Nareum]]
+ # [*http://scp-pl.wikidot.com/scp-3464 Polish Translation] by [[user BlazingPie]]
 
 
-* [[[scp-3787|SCP-3787]]]
- * [*http://lafundacionscp.wikidot.com/scp-3787 Spanish Translation] by [[user Riyer P]]
+* [[[SCP-4420]]] | **[[*https://youtu.be/zaW6ApXbHq4 Audio Version]]**
+ # [*https://scp-wiki-cn.wikidot.com/scp-4420 Simplified Chinese (CN) Translation] by [[user W Asriel]]
+ # [*http://scp-cs.wikidot.com/scp-4420 Czech Translation] by [[user Utylike]]
+ # [*http://lafundacionscp.wikidot.com/scp-4420 Spanish Translation] by [[user Riyer P]]
+ # [*http://fondationscp.wikidot.com/scp-4420 French Translation] by [[user Lyrthill]]
+ # [*http://ja.scp-wiki.net/scp-4420 Japanese Translation] by **SOYSOY_Kusagawa** (account deleted)
+ # [*http://scp-pl.wikidot.com/scp-4420 Polish Translation] by [[user KubKac]]
+ # [*http://scp-pt-br.wikidot.com/scp-4420 Portuguese Translation] by **cauazinlindaum** (account deleted)
+ # [*http://scpfoundation.net/scp-4420 Russian Translation] by [[user CTapbIu_XyJIuraH]]
+ # [*http://scp-vn.wikidot.com/scp-4420 Vietnamese Translation] by [[user SCPFoundationVietnam]]
 
 
-* [[[scp-4031|SCP-4031]]] | **[[*https://youtu.be/d4pltuR8QPc Audio Version]]**
- * [*https://scp-wiki-cn.wikidot.com/scp-4031 Simplified Chinese (CN) Translation] by [[user feitag]]
- * [*http://scp-zh-tr.wikidot.com/scp-4031 Traditional Chinese (ZH-TR) Translation] by [[user feitag]]
- * [*http://lafundacionscp.wikidot.com/scp-4031 Spanish Translation] by [[user Riyer P]]
- * [*http://fondationscp.wikidot.com/scp-4031 French Translation] by [[user macro_au_micro]]
- * [*http://fondazionescp.wikidot.com/scp-4031 Italian Translation] by [[user Siddartha Alonne]]
- * [*http://ja.scp-wiki.net/scp-4031 Japanese Translation] by [[user evilplant]]
- * [*http://ko.scp-wiki.net/scp-4031 Korean Translation] by **MysteryInc** (account deleted)
- * [*http://scp-pl.wikidot.com/scp-4031 Polish Translation] by [[user KubKac]]
- * [*http://scp-ukrainian.wikidot.com/scp-4031 Ukrainian Translation] by [[user Comrade Xander]]
- * [*http://scp-vn.wikidot.com/scp-4031 Vietnamese Translation] by [[user King of Chronicle]]
+* [[[SCP-4031]]] | **[[*https://youtu.be/d4pltuR8QPc Audio Version]]**
+ # [*https://scp-wiki-cn.wikidot.com/scp-4031 Simplified Chinese (CN) Translation] by [[user feitag]]
+ # [*http://scp-zh-tr.wikidot.com/scp-4031 Traditional Chinese (ZH-TR) Translation] by [[user feitag]]
+ # [*http://lafundacionscp.wikidot.com/scp-4031 Spanish Translation] by [[user Riyer P]]
+ # [*http://fondationscp.wikidot.com/scp-4031 French Translation] by [[user macro_au_micro]]
+ # [*http://fondazionescp.wikidot.com/scp-4031 Italian Translation] by [[user Siddartha Alonne]]
+ # [*http://ja.scp-wiki.net/scp-4031 Japanese Translation] by [[user evilplant]]
+ # [*http://ko.scp-wiki.net/scp-4031 Korean Translation] by **MysteryInc** (account deleted)
+ # [*http://scp-pl.wikidot.com/scp-4031 Polish Translation] by [[user KubKac]]
+ # [*http://scp-ukrainian.wikidot.com/scp-4031 Ukrainian Translation] by [[user Comrade Xander]]
+ # [*http://scp-vn.wikidot.com/scp-4031 Vietnamese Translation] by [[user King of Chronicle]]
 
 
-* [[[scp-4190|SCP-4190]]]
- * [*https://scp-wiki-cn.wikidot.com/scp-4190 Simplified Chinese (CN) Translation] by [[user feitag]]
- * [*http://scp-zh-tr.wikidot.com/scp-4190 Traditional Chinese (ZH-TR) Translation] by [[user feitag]]
- * [*http://scp-jp.wikidot.com/scp-4190 Japanese Translation] by [[user Extra3002]]
- * [*http://scpfoundation.net/scp-4190 Russian Translation] by [[user Revik]]
+* [[[SCP-4475]]]
+ # [*http://scp-wiki-cn.wikidot.com/scp-4475 Simplified Chinese (CN) Translation] by [[user Toramaru Syou]]
+ # [*http://scp-pt-br.wikidot.com/scp-4475 Portuguese Translation] by [[user L200]]
 
 
-* [[[scp-4416|SCP-4416]]]
- * [*https://scp-wiki-cn.wikidot.com/scp-4416 Simplified Chinese (CN) Translation] by [[user C Mebius]]
- * [*http://lafundacionscp.wikidot.com/scp-4416 Spanish Translation] by [[user morhadow]]
- * [*http://ja.scp-wiki.net/scp-4416 Japanese Translation] by [[user Extra3002]]
+* [[[SCP-4790]]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-4790 Simplified Chinese (CN) Translation] by [[user ZhongZh]]
+ # [*http://lafundacionscp.wikidot.com/scp-4790 Spanish Translation] by [[user Detective Marw]]
+ # [*http://fondationscp.wikidot.com/scp-4790 French Translation] by [[user macro_au_micro]]
+ # [*http://fondazionescp.wikidot.com/scp-4790 Italian Translation] by [[user TheBoxOfFun]]
+ # [*http://scp-jp.wikidot.com/scp-4790 Japanese Translation] by [[user Voila]]
+ # [*http://ko.scp-wiki.net/scp-4790 Korean Translation] by [[user Salamander724]]
+ # [*http://scp-pl.wikidot.com/scp-4790 Polish Translation] by [[user Jasiu06]]
+ # [*http://scp-pt-br.wikidot.com/scp-4790 Portuguese Translation] by [[user L200]]
 
 
-* [[[scp-4420|SCP-4420]]] | **[[*https://youtu.be/zaW6ApXbHq4 Audio Version]]**
- * [*https://scp-wiki-cn.wikidot.com/scp-4420 Simplified Chinese (CN) Translation] by [[user W Asriel]]
- * [*http://scp-cs.wikidot.com/scp-4420 Czech Translation] by [[user Utylike]]
- * [*http://lafundacionscp.wikidot.com/scp-4420 Spanish Translation] by [[user Riyer P]]
- * [*http://fondationscp.wikidot.com/scp-4420 French Translation] by [[user Lyrthill]]
- * [*http://ja.scp-wiki.net/scp-4420 Japanese Translation] by [[user SOYSOY_Kusagawa]]
- * [*http://scp-pt-br.wikidot.com/scp-4420 Portuguese Translation] by **cauazinlindaum** (account deleted)
- * [*http://scpfoundation.net/scp-4420 Russian Translation] by [[user CTapbIu_XyJIuraH]]
- * [*http://scp-vn.wikidot.com/scp-4420 Vietnamese Translation] by **Macrosis**
+* [[[SCP-4795]]]
+ # [*http://scp-wiki-cn.wikidot.com/scp-4795 Simplified Chinese (CN) Translation] by [[user vxeov]]
+ # [*http://lafundacionscp.wikidot.com/scp-4795 Spanish Translation] by [[user morhadow]]
 
 
 * [[[scp-4428|Dr. Michaels]]]
- * [*https://scp-wiki-cn.wikidot.com/scp-4428 Simplified Chinese (CN) Translation] by [[user feitag]]
- * [*http://scp-zh-tr.wikidot.com/scp-4428 Traditional Chinese (ZH-TR) Translation] by [[user feitag]]
- * [*http://scp-cs.wikidot.com/scp-4428 Czech Translation] by [[user chamik]]
- * [*http://lafundacionscp.wikidot.com/scp-4428 Spanish Translation] by [[user Nolitte]]
- * [*http://fondationscp.wikidot.com/scp-4428 French Translation] by [[user macro_au_micro]]
- * [*http://fondazionescp.wikidot.com/scp-4428 Italian Translation] by [[user Siddartha Alonne]]
- * [*http://scp-jp.wikidot.com/scp-4428 Japanese Translation] by [[user C-Dives]]
- * [*http://scp-pl.wikidot.com/scp-4428 Polish Translation] by [[user KubKac]]
- * [*http://scpfoundation.net/scp-4428 Russian Translation] by [[user underbylka]]
- * [*http://scp-vn.wikidot.com/scp-4428 Vietnamese Translation] by [[user Irina Bougainvillea]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-4428 Simplified Chinese (CN) Translation] by [[user feitag]]
+ # [*http://scp-zh-tr.wikidot.com/scp-4428 Traditional Chinese (ZH-TR) Translation] by [[user feitag]]
+ # [*http://scp-cs.wikidot.com/scp-4428 Czech Translation] by [[user chamik]]
+ # [*http://lafundacionscp.wikidot.com/scp-4428 Spanish Translation] by [[user Nolitte]]
+ # [*http://fondationscp.wikidot.com/scp-4428 French Translation] by [[user macro_au_micro]]
+ # [*http://fondazionescp.wikidot.com/scp-4428 Italian Translation] by [[user Siddartha Alonne]]
+ # [*http://scp-jp.wikidot.com/scp-4428 Japanese Translation] by [[user C-Dives]]
+ # [*http://scpko.wikidot.com/scp-4428 Korean Translation] by [[user Cubic72]]
+ # [*http://scp-pl.wikidot.com/scp-4428 Polish Translation] by [[user KubKac]]
+ # [*http://scpfoundation.net/scp-4428 Russian Translation] by [[user underbylka]]
+ # [*http://scp-vn.wikidot.com/scp-4428 Vietnamese Translation] by [[user Irina Bougainvillea]]
 
 
-* [[[scp-4475|SCP-4475]]]
- * [*http://scp-wiki-cn.wikidot.com/scp-4475 Simplified Chinese (CN) Translation] by [[user Toramaru Syou]]
- * [*http://scp-pt-br.wikidot.com/scp-4475 Portuguese Translation] by [[user L200]]
+* [[[SCP-5810]]]
+ # [*http://scp-wiki-cn.wikidot.com/scp-5810 Simplified Chinese (CN) Translation] by [[user Esperanza_Cai]]
+ # [*http://scp-zh-tr.wikidot.com/scp-5810 Traditional Chinese (ZH-TR) Translation] by [[user Frederica Bernkastel]]
 
 
-* [[[scp-4790|SCP-4790]]]
- * [*https://scp-wiki-cn.wikidot.com/scp-4790 Simplified Chinese (CN) Translation] by [[user ZhongZh]]
- * [*http://lafundacionscp.wikidot.com/scp-4790 Spanish Translation] by [[user Detective Marw]]
- * [*http://fondationscp.wikidot.com/scp-4790 French Translation] by [[user macro_au_micro]]
- * [*http://fondazionescp.wikidot.com/scp-4790 Italian Translation] by [[user TheBoxOfFun]]
- * [*http://scp-jp.wikidot.com/scp-4790 Japanese Translation] by [[user Voila]]
- * [*http://ko.scp-wiki.net/scp-4790 Korean Translation] by [[user Salamander724]]
- * [*http://scp-pl.wikidot.com/scp-4790 Polish Translation] by [[user Jasiu06]]
- * [*http://scp-pt-br.wikidot.com/scp-4790 Portuguese Translation] by [[user L200]]
+* [[[SCP-6481]]]
+ # [*http://scp-jp.wikidot.com/scp-6481 Japanese Translation] by [[user C-Dives]]
 
 
-* [[[scp-5810|SCP-5810]]]
- * [*http://scp-wiki-cn.wikidot.com/scp-5810 Simplified Chinese (CN) Translation] by [[user Esperanza_Cai]]
-
-
-* [[[scp-5990|SCP-5990]]] | **[[*https://youtu.be/Ugajy7IfHJw Audio version]]**
- * [*https://scp-wiki-cn.wikidot.com/scp-5990 Simplified Chinese (CN) Translation] by [[user ashausesall]]
- * [*http://lafundacionscp.wikidot.com/scp-5990 Spanish Translation] by [[user Hammeriano]]
- * [*http://fondationscp.wikidot.com/scp-5990 French Translation] by [[user Dr Ysha]]
- * [*http://fondazionescp.wikidot.com/scp-5990 Italian Translation] by [[user TheBoxOfFun]]
- * [*http://scp-pt-br.wikidot.com/scp-5990 Portuguese Translation] by [[user L200]]
-
-
-* [[[scp-6327|SCP-6327]]]
- * [*http://scp-wiki-cn.wikidot.com/scp-6327 Simplified Chinese (CN) Translation] by [[user hoah2333]]
-
+* [[[SCP-7010]]]
+ # [*http://scp-wiki-cn.wikidot.com/scp-7010 Simplified Chinese (CN) Translation] by [[user VincentSalamander]]
+ # [*http://lafundacionscp.wikidot.com/scp-7010 Spanish Translation] by [[user EthanHanson]]
+ # [*http://scp-pt-br.wikidot.com/scp-7010 Portuguese Translation] by [[user DrGM]]
 [[/div]]
+
 
 [[div class=&#34;blockquote lightweight&#34;]]
 ++ Tales
 ----
 * [[[what-lurks|What Lurks in the Dark?]]]
- * [*https://scp-wiki-cn.wikidot.com/what-lurks Simplified Chinese (CN) Translation] by [[user The Obsidian Shard]]
-
-
-* [[[scp-2|SCP-2]]]
- * [*https://scp-wiki-cn.wikidot.com/scp-2 Simplified Chinese (CN) Translation] by [[user feitag]]
- * [*http://scp-zh-tr.wikidot.com/scp-2 Traditional Chinese (ZH-TR) Translation] by [[user feitag]]
- * [*http://ja.scp-wiki.net/scp-2 Japanese Translation] by [[user Hasuma_S]]
- * [*http://scp-pt-br.wikidot.com/scp-2 Portuguese Translation] by [[user L200]]
- * [*http://scp-vn.wikidot.com/scp-2 Vietnamese Translation] by [[user StupifPotato]]
+ # [*https://scp-wiki-cn.wikidot.com/what-lurks Simplified Chinese (CN) Translation] by [[user The Obsidian Shard]]
+ # [*http://scp-pt-br.wikidot.com/what-lurks Portuguese Translation] by [[user L200]]
 
 
 * [[[the-doctor-s-dilemma|The Doctor&#39;s Dilemma]]]
- * [*https://scp-wiki-cn.wikidot.com/the-doctor-s-dilemma Simplified Chinese (CN) Translation] by [[user tERaNCarol]]
- * [*http://scp-jp.wikidot.com/the-doctor-s-dilemma Japanese Translation] by [[user Aoicha]]
- * [*http://scp-pt-br.wikidot.com/the-doctor-s-dilemma Portuguese Translation] by [[user L200]]
- * [*http://scpfoundation.net/the-doctor-s-dilemma Russian Translation] by [[user DonnyTheWriter]]
-
-
-* [[[crispy-sex-pirates|A Surprise Encounter with Crispy Sex Pirates]]]
- * [*https://scp-wiki-cn.wikidot.com/crispy-sex-pirates Simplified Chinese (CN) Translation] by [[user miumeat]]
- * [*http://lafundacionscp.wikidot.com/crispy-sex-pirates Spanish Translation] by [[user EthanHanson]]
-
-
-* [[[a-necromantic-prelude|A Necromantic Prelude]]]
- * [*http://scp-cs.wikidot.com/a-necromantic-prelude Czech Translation] by [[user Lyppiatt]]
+ # [*https://scp-wiki-cn.wikidot.com/the-doctor-s-dilemma Simplified Chinese (CN) Translation] by [[user tERaNCarol]]
+ # [*http://lafundacionscp.wikidot.com/the-doctor-s-dilemma Spanish Translation] by [[user morhadow]]
+ # [*http://scp-jp.wikidot.com/the-doctor-s-dilemma Japanese Translation] by [[user Aoicha]]
+ # [*http://scp-pt-br.wikidot.com/the-doctor-s-dilemma Portuguese Translation] by [[user L200]]
+ # [*http://scpfoundation.net/the-doctor-s-dilemma Russian Translation] by [[user DonnyTheWriter]]
 
 
 * [[[broken-masquerade-epistolary|Snippets of an Unveiled World]]]
- * [*https://scp-wiki-cn.wikidot.com/broken-masquerade-epistolary Simplified Chinese (CN) Translation] by [[user Eurya]]
- * [*http://lafundacionscp.wikidot.com/broken-masquerade-epistolary Spanish Translation] by [[user morhadow]]
- * [*http://fondazionescp.wikidot.com/broken-masquerade-epistolary Italian Translation] by [[user TheBoxOfFun]]
- * [*http://scp-jp.wikidot.com/broken-masquerade-epistolary Japanese Translation] by [[user C-Dives]]
- * [*http://scp-pt-br.wikidot.com/broken-masquerade-epistolary Portuguese Translation] by [[user L200]]
-
-
-* [[[no-sense-crying|Spilled Milk]]]
- * [*http://scp-pt-br.wikidot.com/no-sense-crying Portuguese Translation] by [[user L200]]
- * [*http://scp-vn.wikidot.com/no-sense-crying Vietnamese Translation] by [[user Rigball]]
+ # [*https://scp-wiki-cn.wikidot.com/broken-masquerade-epistolary Simplified Chinese (CN) Translation] by [[user Eurya]]
+ # [*http://lafundacionscp.wikidot.com/broken-masquerade-epistolary Spanish Translation] by [[user morhadow]]
+ # [*http://fondazionescp.wikidot.com/broken-masquerade-epistolary Italian Translation] by [[user TheBoxOfFun]]
+ # [*http://scp-jp.wikidot.com/broken-masquerade-epistolary Japanese Translation] by [[user C-Dives]]
+ # [*http://scp-pt-br.wikidot.com/broken-masquerade-epistolary Portuguese Translation] by [[user L200]]
 
 
 * [[[illac|Illac]]]
- * [*http://scp-vn.wikidot.com/illac Vietnamese Translation] by [[user Nya Piece]]
+ # [*http://scp-wiki-cn.wikidot.com/illac Simplified Chinese (CN) Translation] by [[user LeeBr]]
+ # [*http://scp-jp.wikidot.com/illac Japanese Translation] by [[user DirStarFish]]
+ # [*http://scp-vn.wikidot.com/illac Vietnamese Translation] by [[user Nya Piece]]
 
 
 * [[[saturn-s-corner|SATURN&#39;S CORNER]]]
- * [*http://scp-wiki-cn.wikidot.com/saturn-s-corner Simplified Chinese (CN) Translation] by [[user Eurya]]
- * [*http://scp-jp.wikidot.com/saturn-s-corner Japanese Translation] by [[user Miracle Miki]]
+ # [*http://scp-wiki-cn.wikidot.com/saturn-s-corner Simplified Chinese (CN) Translation] by [[user Eurya]]
+ # [*http://scp-jp.wikidot.com/saturn-s-corner Japanese Translation] by [[user Miracle Miki]]
 
 
 * [[[fifthist-family-picnic|fifthist family picnic]]]
- * [*http://scp-wiki-cn.wikidot.com/fifthist-family-picnic Simplified Chinese (CN) Translation] by [[user Tunardine777]]
- * [*http://scp-vn.wikidot.com/fifthist-family-picnic Vietnamese Translation] by [[user Irina Bougainvillea]]
-
+ # [*http://scp-wiki-cn.wikidot.com/fifthist-family-picnic Simplified Chinese (CN) Translation] by [[user Tunardine777]]
+ # [*http://scp-vn.wikidot.com/fifthist-family-picnic Vietnamese Translation] by [[user Irina Bougainvillea]]
 [[/div]]
+
 
 [[div class=&#34;blockquote lightweight&#34;]]
 ++ GOI Formats
 ----
 * [[[critter-profile-bartholomew|Critter Profile: Bartholomew!]]]
- * [*http://scp-es.com/critter-profile-bartholomew Spanish Translation] by [[user Riyer P]]
- * [*http://ko.scp-wiki.net/critter-profile-bartholomew Korean Translation] by [[user TocoT0ucan_98]]
-
-
-* [[[spc-993|SPC-993: BOBBLE THE CLOWN SHARK]]]
- * [*http://lafundacionscp.wikidot.com/spc-993 Spanish Translation] by [[user agente alan]]
-
-
-* [[[scattersomnia|&#34;Scattersomnia&#34;: A Disease of the Wise and Drowsy Wanderers]]]
- * [*http://scp-pt-br.wikidot.com/scattersomnia Portuguese Translation] by [[user L200]]
-
+ # [*http://scp-es.com/critter-profile-bartholomew Spanish Translation] by [[user Riyer P]]
+ # [*http://scp-jp.wikidot.com/critter-profile-bartholomew Japanese Translation] by [[user thor_taisho]]
+ # [*http://ko.scp-wiki.net/critter-profile-bartholomew Korean Translation] by [[user TocoT0ucan_98]]
 [[/div]]
+
 
 [[div class=&#34;blockquote lightweight&#34;]]
 ++ Resources
 ----
 * [[[departments-complete-list|A Semi-Comprehensive List of Foundation Departments]]]
- * [*http://scp-wiki-cn.wikidot.com/departments-complete-list Simplified Chinese (CN) Translation] by [[user Esperanza_Cai]]
- * [*http://scp-zh-tr.wikidot.com/departments-complete-list Traditional Chinese (ZH-TR) Translation] by [[user Frederica Bernkastel]]
- * [*http://fondationscp.wikidot.com/departments-complete-list French Translation] by [[user macro_au_micro]]
- * [*http://scp-jp.wikidot.com/departments-complete-list Japanese Translation] by [[user G and B Channel]]
- * [*http://ko.scp-wiki.net/departments-complete-list Korean Translation] by [[user Salamander724]]
- * [*http://scp-wiki.net.pl/departments-complete-list Polish Translation] by [[user Draven Addams]]
- * [*http://scp-vn.wikidot.com/departments-complete-list Vietnamese Translation] by [[user StupifPotato]], [[user KirQ]], [[user Irina Bougainvillea]], [[user King Pigeon]], [[user Nya Piece]], [[user PieceOfNyan]], [[user DamonGallagher]]
-
-
+ # [*http://scp-wiki-cn.wikidot.com/departments-complete-list Simplified Chinese (CN) Translation] by [[user Esperanza_Cai]]
+ # [*http://scp-zh-tr.wikidot.com/departments-complete-list Traditional Chinese (ZH-TR) Translation] by [[user Frederica Bernkastel]]
+ # [*http://fondationscp.wikidot.com/departments-complete-list French Translation] by [[user macro_au_micro]]
+ # [*http://scp-jp.wikidot.com/departments-complete-list Japanese Translation] by [[user G and B Channel]]
+ # [*http://ko.scp-wiki.net/departments-complete-list Korean Translation] by [[user Salamander724]]
+ # [*http://scp-wiki.net.pl/departments-complete-list Polish Translation] by [[user Draven Addams]]
+ # [*http://scp-vn.wikidot.com/departments-complete-list Vietnamese Translation] by [[user StupifPotato]], [[user KirQ]], [[user Irina Bougainvillea]], [[user King Pigeon]], [[user Nya Piece]], [[user PieceOfNyan]], [[user DamonGallagher]]
 [[/div]]
 
+
 [[div class=&#34;blockquote lightweight&#34;]]
-++ Series Hub -- Team Bird
+++ Continuity -- WITCH
+----
+[[div class=&#34;blockquote lightweight&#34;]]
+++++ Series -- Void Dancer
+----
+* [[[void-dancer-hub|Void Dancer Hub]]]
+ # [*http://scp-wiki-cn.wikidot.com/void-dancer-hub Simplified Chinese (CN) Translation] by [[user Twilit]]
+
+
+* [[[the-abyss-gazes-back|The Abyss Gazes Back (and It&#39;s ASCII on a CRT Screen)]]]
+ # [*http://scp-wiki-cn.wikidot.com/the-abyss-gazes-back Simplified Chinese (CN) Translation] by [[user Olicus]]
+
+
+* [[[buggy-hardware|Buggy Hardware (or Why I Don&#39;t Play Violent Video Games)]]]
+ # [*http://scp-wiki-cn.wikidot.com/buggy-hardware Simplified Chinese (CN) Translation] by [[user Olicus]]
+
+
+* [[[scp-2|SCP-2]]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-2 Simplified Chinese (CN) Translation] by [[user feitag]]
+ # [*http://scp-zh-tr.wikidot.com/scp-2 Traditional Chinese (ZH-TR) Translation] by [[user feitag]]
+ # [*http://ja.scp-wiki.net/scp-2 Japanese Translation] by [[user Hasuma_S]]
+ # [*http://scp-pt-br.wikidot.com/scp-2 Portuguese Translation] by [[user L200]]
+ # [*http://scp-vn.wikidot.com/scp-2 Vietnamese Translation] by [[user StupifPotato]]
+[[/div]]
+
+
+* [[[scp-3739|SCP-3739]]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-3739 Simplified Chinese (CN) Translation] by [[user ashausesall]]
+ # [*http://lafundacionscp.wikidot.com/scp-3739 Spanish Translation] by [[user morhadow]]
+ # [*http://fondazionescp.wikidot.com/scp-3739 Italian Translation] by [[user Dgctt]]
+ # [*http://ja.scp-wiki.net/scp-3739 Japanese Translation] by [[user C-Dives]]
+ # [*http://scp-pt-br.wikidot.com/scp-3739 Portuguese Translation] by [[user L200]]
+
+
+* [[[scp-5990|SCP-5990]]] | **[[*https://youtu.be/Ugajy7IfHJw Audio version]]**
+ # [*https://scp-wiki-cn.wikidot.com/scp-5990 Simplified Chinese (CN) Translation] by [[user ashausesall]]
+ # [*http://lafundacionscp.wikidot.com/scp-5990 Spanish Translation] by [[user Hammeriano]]
+ # [*http://fondationscp.wikidot.com/scp-5990 French Translation] by [[user Dr Ysha]]
+ # [*http://fondazionescp.wikidot.com/scp-5990 Italian Translation] by [[user TheBoxOfFun]]
+ # [*http://scp-pt-br.wikidot.com/scp-5990 Portuguese Translation] by [[user L200]]
+
+
+* [[[no-sense-crying|Spilled Milk]]]
+ # [*http://scp-pt-br.wikidot.com/no-sense-crying Portuguese Translation] by [[user L200]]
+ # [*http://scp-vn.wikidot.com/no-sense-crying Vietnamese Translation] by [[user Rigball]]
+
+
+* [[[scattersomnia|&#34;Scattersomnia&#34;: A Disease of the Wise and Drowsy Wanderers]]]
+ # [*http://scp-pt-br.wikidot.com/scattersomnia Portuguese Translation] by [[user L200]]
+
+
+* [[[scp-6327|SCP-6327]]]
+ # [*http://scp-wiki-cn.wikidot.com/scp-6327 Simplified Chinese (CN) Translation] by [[user hoah2333]]
+
+
+* [[[scp-6705|SCP-6705]]]
+ # [*http://scp-wiki-cn.wikidot.com/scp-6705 Simplified Chinese (CN) Translation] by [[user Aegnus]]
+ # [*http://scp-pt-br.wikidot.com/scp-6705 Portuguese Translation] by [[user L200]]
+[[/div]]
+
+
+[[div class=&#34;blockquote lightweight&#34;]]
+++ Continuity -- The Sharkest Timeline
+----
+  [[div class=&#34;blockquote&#34;]]
+++++ Series -- Team Bird
 ----
 * [[[bird|Team Bird Hub]]]
- * [*https://scp-wiki-cn.wikidot.com/bird Simplified Chinese (CN) Translation] by [[user Sraosha]]
- * [*http://lafundacionscp.wikidot.com/bird Spanish Translation] by [[user morhadow]]
- * [*http://fondationscp.wikidot.com/bird French Translation] by [[user Dr Attano]]
- * [*http://scp-jp.wikidot.com/bird Japanese Translation] by [[user Dr_Kasugai]]
- * [*http://ko.scp-wiki.net/bird Korean Translation] by [[user TocoT0ucan_98]]
- * [*http://scpfoundation.net/bird Russian Translation] by **Dresden7** (account deleted)
+ # [*https://scp-wiki-cn.wikidot.com/bird Simplified Chinese (CN) Translation] by [[user Sraosha]]
+ # [*http://lafundacionscp.wikidot.com/bird Spanish Translation] by [[user morhadow]]
+ # [*http://fondationscp.wikidot.com/bird French Translation] by [[user Dr Attano]]
+ # [*http://scp-jp.wikidot.com/bird Japanese Translation] by [[user Dr_Kasugai]]
+ # [*http://ko.scp-wiki.net/bird Korean Translation] by [[user TocoT0ucan_98]]
+ # [*http://scpfoundation.net/bird Russian Translation] by **Dresden7** (account deleted)
 
 
 * [[[spc-507|SPC-507]]]
- * [*https://scp-wiki-cn.wikidot.com/spc-507 Simplified Chinese (CN) Translation] by [[user vxeov]]
- * [*http://lafundacionscp.wikidot.com/spc-507 Spanish Translation] by [[user morhadow]]
+ # [*https://scp-wiki-cn.wikidot.com/spc-507 Simplified Chinese (CN) Translation] by [[user vxeov]]
+ # [*http://lafundacionscp.wikidot.com/spc-507 Spanish Translation] by [[user morhadow]]
+ # [*http://scp-jp.wikidot.com/spc-507 Japanese Translation] by [[user kagayoh]]
 
 
 * [[[scp-3570|EE-3570]]]
- * [*https://scp-wiki-cn.wikidot.com/scp-3570 Simplified Chinese (CN) Translation] by [[user vxeov]]
- * [*http://lafundacionscp.wikidot.com/scp-3570 Spanish Translation] by [[user berstager]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-3570 Simplified Chinese (CN) Translation] by [[user vxeov]]
+ # [*http://lafundacionscp.wikidot.com/scp-3570 Spanish Translation] by [[user berstager]]
+ # [*http://scp-jp.wikidot.com/scp-3570 Japanese Translation] by [[user kagayoh]]
 
 
 * [[[the-sacred-djehuti|The Sacred Djehuti]]]
- * [*https://scp-wiki-cn.wikidot.com/the-sacred-djehuti Simplified Chinese (CN) Translation] by [[user vxeov]]
- * [*http://lafundacionscp.wikidot.com/the-sacred-djehuti Spanish Translation] by [[user morhadow]]
+ # [*https://scp-wiki-cn.wikidot.com/the-sacred-djehuti Simplified Chinese (CN) Translation] by [[user vxeov]]
+ # [*http://lafundacionscp.wikidot.com/the-sacred-djehuti Spanish Translation] by [[user morhadow]]
 
 
 * [[[Avian Anthology I]]]
- * [*https://scp-wiki-cn.wikidot.com/avian-anthology-i Simplified Chinese (CN) Translation] by [[user vxeov]]
- * [*http://lafundacionscp.wikidot.com/avian-anthology-i Spanish Translation] by [[user morhadow]]
+ # [*https://scp-wiki-cn.wikidot.com/avian-anthology-i Simplified Chinese (CN) Translation] by [[user vxeov]]
+ # [*http://lafundacionscp.wikidot.com/avian-anthology-i Spanish Translation] by [[user morhadow]]
+
 
 * [[[umbral-migratory-sequence|UMBRAL_​MIGRATORY_​SEQUENCE.txt]]]
- * [*http://lafundacionscp.wikidot.com/umbral-migratory-sequence Spanish Translation] by [[user morhadow]]
+ # [*http://scp-wiki-cn.wikidot.com/umbral-migratory-sequence Simplified Chinese (CN) Translation] by [[user UltraIndigo]]
+ # [*http://lafundacionscp.wikidot.com/umbral-migratory-sequence Spanish Translation] by [[user morhadow]]
 
 
 * [[[Avian Anthology II]]]
- * [*https://scp-wiki-cn.wikidot.com/avian-anthology-ii Simplified Chinese (CN) Translation] by [[user vxeov]]
- * [*http://lafundacionscp.wikidot.com/avian-anthology-ii Spanish Translation] by [[user morhadow]]
+ # [*https://scp-wiki-cn.wikidot.com/avian-anthology-ii Simplified Chinese (CN) Translation] by [[user vxeov]]
+ # [*http://lafundacionscp.wikidot.com/avian-anthology-ii Spanish Translation] by [[user morhadow]]
+  [[/div]]
 
 
-* [[[scp-4795|SCP-4795]]]
- * [*http://scp-wiki-cn.wikidot.com/scp-4795 Simplified Chinese (CN) Translation] by [[user vxeov]]
+* [[[scp-4416|SCP-4416]]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-4416 Simplified Chinese (CN) Translation] by [[user C Mebius]]
+ # [*http://lafundacionscp.wikidot.com/scp-4416 Spanish Translation] by [[user morhadow]]
+ # [*http://ja.scp-wiki.net/scp-4416 Japanese Translation] by [[user Extra3002]]
 
+
+* [[[crispy-sex-pirates|A Surprise Encounter with Crispy Sex Pirates]]]
+ # [*https://scp-wiki-cn.wikidot.com/crispy-sex-pirates Simplified Chinese (CN) Translation] by [[user miumeat]]
+ # [*http://lafundacionscp.wikidot.com/crispy-sex-pirates Spanish Translation] by [[user EthanHanson]]
+ # [*http://scp-jp.wikidot.com/crispy-sex-pirates Japanese Translation] by [[user DirStarFish]]
+
+
+* [[[spc-993|SPC-993: BOBBLE THE CLOWN SHARK]]]
+ # [*http://scp-wiki-cn.wikidot.com/spc-993 Simplified Chinese (CN) Translation] by [[user Blinder4]]
+ # [*http://lafundacionscp.wikidot.com/spc-993 Spanish Translation] by [[user agente alan]]
+
+
+* [[[scp-4190|SCP-4190]]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-4190 Simplified Chinese (CN) Translation] by [[user feitag]]
+ # [*http://scp-zh-tr.wikidot.com/scp-4190 Traditional Chinese (ZH-TR) Translation] by [[user feitag]]
+ # [*http://scp-jp.wikidot.com/scp-4190 Japanese Translation] by [[user Extra3002]]
+ # [*http://scpfoundation.net/scp-4190 Russian Translation] by [[user Revik]]
+
+
+* [[[a-necromantic-prelude|A Necromantic Prelude]]]
+ # [*http://scp-cs.wikidot.com/a-necromantic-prelude Czech Translation] by [[user Lyppiatt]]
 [[/div]]
 
+
 [[div class=&#34;blockquote lightweight&#34;]]
-++ Series Hub -- A Non-Prophet Organization
+++ Series -- A Non-Prophet Organization
 ----
 * [[[non-prophet-organization-hub|A Non-Prophet Organization Hub]]]
- * [*http://scp-int.wikidot.com/non-prophet-organization-hub International Version]
- * [*https://scp-wiki-cn.wikidot.com/non-prophet-organization-hub Simplified Chinese (CN) Translation] by [[user Etinjat]]
- * [*http://scp-zh-tr.wikidot.com/non-prophet-organization-hub Traditional Chinese (ZH-TR) Translation] by [[user Etinjat]]
- * [*http://ja.scp-wiki.net/non-prophet-organization-hub Japanese Translation] by [[user C-Dives]]
- * [*http://ko.scp-wiki.net/non-prophet-organization-hub Korean Translation] by [[user Salamander724]]
+ # [*https://scp-wiki-cn.wikidot.com/non-prophet-organization-hub Simplified Chinese (CN) Translation] by [[user Etinjat]]
+ # [*http://scp-zh-tr.wikidot.com/non-prophet-organization-hub Traditional Chinese (ZH-TR) Translation] by [[user Etinjat]]
+ # [*http://ja.scp-wiki.net/non-prophet-organization-hub Japanese Translation] by [[user C-Dives]]
+ # [*http://ko.scp-wiki.net/non-prophet-organization-hub Korean Translation] by [[user Salamander724]]
+
 
 * [[[scp-4519|SCP-4519]]]
- * [*http://scp-int.wikidot.com/scp-4519 International Version]
- * [*https://scp-wiki-cn.wikidot.com/scp-4519 Simplified Chinese (CN) Translation] by [[user Rachud]]
- * [*http://lafundacionscp.wikidot.com/scp-4519 Spanish Translation] by [[user Hammeriano]]
- * [*http://fondationscp.wikidot.com/scp-4519 French Translation] by [[user DrGemini]]
- * [*http://ja.scp-wiki.net/scp-4519 Japanese Translation] by [[user C-Dives]]
+ # [*https://scp-wiki-cn.wikidot.com/scp-4519 Simplified Chinese (CN) Translation] by [[user Rachud]]
+ # [*http://lafundacionscp.wikidot.com/scp-4519 Spanish Translation] by [[user Hammeriano]]
+ # [*http://fondationscp.wikidot.com/scp-4519 French Translation] by [[user DrGemini]]
+ # [*http://ja.scp-wiki.net/scp-4519 Japanese Translation] by [[user C-Dives]]
+
 
 * [[[grant-request-post-mortem-neural-preservation|GRANT REQUEST FOR THE RE-CREATION OF AN ADVANCED POSTMORTEM NEURAL PRESERVATION SYSTEM]]]
- * [*http://lafundacionscp.wikidot.com/grant-request-post-mortem-neural-preservation Spanish Translation] by [[user Jakuwoski]]
- * [*http://fondationscp.wikidot.com/grant-request-post-mortem-neural-preservation French Translation] by [[user DrGemini]]
-
-[[/div]]
-
-[[div class=&#34;blockquote lightweight&#34;]]
-++ Series Hub -- Void Dancer
-----
-* [[[void-dancer-hub|Void Dancer Hub]]]
- * [*http://scp-wiki-cn.wikidot.com/void-dancer-hub Simplified Chinese (CN) Translation] by [[user Twilit]]
-
-* [[[the-abyss-gazes-back|The Abyss Gazes Back (and It&#39;s ASCII on a CRT Screen)]]]
- * [*http://scp-wiki-cn.wikidot.com/the-abyss-gazes-back Simplified Chinese (CN) Translation] by [[user Olicus]]
-
-* [[[buggy-hardware|Buggy Hardware (or Why I Don&#39;t Play Violent Video Games)]]]
- * [*http://scp-wiki-cn.wikidot.com/buggy-hardware Simplified Chinese (CN) Translation] by [[user Olicus]]
-
+ # [*http://lafundacionscp.wikidot.com/grant-request-post-mortem-neural-preservation Spanish Translation] by [[user Jakuwoski]]
+ # [*http://fondationscp.wikidot.com/grant-request-post-mortem-neural-preservation French Translation] by [[user DrGemini]]
 [[/div]]
 ----
 +++ &lt;&lt; [#BTT BACK TO TOP] &gt;&gt;
 
   [[/tab]]
-  [[tab Fan Art Gallery]]
+  [[tab Fan Art]]
 
 [[=]]
 
 [[div class=&#34;report-box&#34;]]
-+++ FAN ART GALLERY
++++ Fan Art Gallery
 ----
-[[size 85%]]Warning: Large images, and many of them.[[/size]]
-
-All credit goes to the artists.
+= ,,**N.B.:** Credit for each artwork goes to its respective artist(s).,,
 [[/div]]
 
 [[div class=&#34;blockquote lightweight artpreciation&#34;]]
@@ -2615,7 +2538,7 @@ All credit goes to the artists.
 [[include :snippets:bs-image
 |heading=SCP-3309
 by SunnyClockwork
-|image=https://i.postimg.cc/kDrV3f17/SCP-3309-by-Sunny-Clockwork.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-3309-by-Sunny-Clockwork.webp
 |width=400px
 |kind=none
 ]]
@@ -2639,7 +2562,7 @@ by DianaBerry
 [[include :snippets:bs-image
 |heading=SCP-3309
 by BIRANG
-|image=https://i.postimg.cc/zDkW9r5Q/SCP-3309-By-BIRANG.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-3309-By-BIRANG.webp
 |width=400px
 |kind=none
 ]]
@@ -2649,7 +2572,7 @@ by BIRANG
 [[include :snippets:bs-image
 |heading=SCP-3309
 by Olicus
-|image=https://i.postimg.cc/L4k7wnJM/SCP-3309-By-Olicus.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-3309-By-Olicus.webp
 |width=400px
 |kind=none
 ]]
@@ -2661,7 +2584,7 @@ by Olicus
 [[include :snippets:bs-image
 |heading=SCP-3309
 by Zal Cryptid
-|image=https://i.postimg.cc/rccLCk0L/SCP-3309-By-Zal-Cryptid.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-3309-By-Zal-Cryptid.webp
 |width=400px
 |kind=none
 ]]
@@ -2673,13 +2596,13 @@ by Zal Cryptid
 [[include :snippets:bs-image
 |heading=EE-3570
 by CelesteKara
-|image=https://i.postimg.cc/kGtxrVcP/EE-3570-by-Celeste-Kara.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/EE-3570-by-Celeste-Kara.webp
 |width=400px
 |kind=none
 ]]
 
 [[include :snippets:bs-image
-|image=https://i.postimg.cc/Y9P1yNQx/EE-3570-x2-by-Celeste-Kara.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/EE-3570-x2-by-Celeste-Kara.webp
 |width=400px
 |kind=none
 ]]
@@ -2703,7 +2626,7 @@ by Ofirgdraw
 [[include :snippets:bs-image
 |heading=SCP-3739
 by ratking666
-|image=https://i.postimg.cc/JMz0xJDm/SCP-3739-by-ratking666.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-3739-by-ratking666.webp
 |width=400px
 |kind=none
 ]]
@@ -2715,7 +2638,7 @@ by ratking666
 [[include :snippets:bs-image
 |heading=SCP-3739
 by SunnyClockwork
-|image=https://i.postimg.cc/cJ2zf36V/SCP-3739-by-Sunny-Clockwork.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-3739-by-Sunny-Clockwork.webp
 |width=400px
 |kind=none
 ]]
@@ -2739,7 +2662,7 @@ by MontagueETC
 [[include :snippets:bs-image
 |heading=SCP-3739
 by Zal Cryptid
-|image=https://i.postimg.cc/VkTgh81t/SCP-3739-by-Zal-Cryptid.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-3739-by-Zal-Cryptid.webp
 |width=400px
 |kind=none
 ]]
@@ -2751,7 +2674,7 @@ by Zal Cryptid
 [[include :snippets:bs-image
 |heading=SCP-3787
 by SunnyClockwork
-|image=https://i.postimg.cc/br3H9X3s/SCP-3787-by-Sunny-Clockwork.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-3787-by-Sunny-Clockwork.webp
 |width=400px
 |kind=none
 ]]
@@ -2763,7 +2686,7 @@ by SunnyClockwork
 [[include :snippets:bs-image
 |heading=SCP-4031
 by Zevaxtians
-|image=https://i.postimg.cc/3RhXMrqk/SCP-4031-by-Zevaxtians.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4031-by-Zevaxtians.webp
 |width=400px
 |kind=none
 ]]
@@ -2773,7 +2696,7 @@ by Zevaxtians
 [[include :snippets:bs-image
 |heading=SCP-4420
 by Scary Lemon
-|image=https://i.postimg.cc/Jh5ykNTh/SCP-4420-by-Scary-Lemon.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4420-by-Scary-Lemon.webp
 |width=400px
 |kind=none
 ]]
@@ -2783,13 +2706,13 @@ by Scary Lemon
 [[include :snippets:bs-image
 |heading=SCP-4420
 by Olicus
-|image=https://i.postimg.cc/PT7D8K60/SCP-4420-by-Olicus.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4420-by-Olicus.webp
 |width=400px
 |kind=none
 ]]
 
 [[include :snippets:bs-image
-|image=https://i.postimg.cc/qvfgDbSR/SCP-4420-Sad-by-Olicus.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4420-Sad-by-Olicus.webp
 |width=400px
 |kind=none
 ]]
@@ -2801,7 +2724,7 @@ by Olicus
 [[include :snippets:bs-image
 |heading=Dr. Michaels (SCP-4428)
 by hawkguyy
-|image=https://i.postimg.cc/MXJx54HJ/Dr-Michaels-SCP-4428-by-hawkguyy.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Dr-Michaels-SCP-4428-by-hawkguyy.webp
 |width=400px
 |kind=none
 ]]
@@ -2811,7 +2734,7 @@ by hawkguyy
 [[include :snippets:bs-image
 |heading=Dr. Michaels (SCP-4428)
 by ratking666
-|image=https://i.postimg.cc/fWG01R0D/Dr-Michaels-SCP-4428-by-ratking666.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Dr-Michaels-SCP-4428-by-ratking666.webp
 |width=400px
 |kind=none
 ]]
@@ -2823,7 +2746,7 @@ by ratking666
 [[include :snippets:bs-image
 |heading=Dr. Michaels (SCP-4428)
 by Slime Bunny
-|image=https://i.postimg.cc/DfJXCX0x/Dr-Michaels-SCP-4428-by-Slime-Bunny-AKA-Toasty-Doodles.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Dr-Michaels-SCP-4428-by-Slime-Bunny-AKA-Toasty-Doodles.webp
 |width=400px
 |kind=none
 ]]
@@ -2833,7 +2756,7 @@ by Slime Bunny
 [[include :snippets:bs-image
 |heading=Dr. Michaels (SCP-4428)
 by Z-ComiX
-|image=https://i.postimg.cc/KzVmk4yz/Dr-Michaels-SCP-4428-by-Z-Comi-X.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Dr-Michaels-SCP-4428-by-Z-Comi-X.webp
 |width=400px
 |kind=none
 ]]
@@ -2846,7 +2769,16 @@ by Z-ComiX
 |heading=SCP-4475
 SCP Tarot Card - Queen of Cups
 by SunnyClockwork
-|image=https://i.postimg.cc/Y9pNmy8j/SCP-4475-SCP-Tarot-Card-Queen-of-Cups-by-Sunny-Clockwork.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4475-SCP-Tarot-Card-Queen-of-Cups-by-Sunny-Clockwork.webp
+|width=400px
+|kind=none
+]]
+
+[[include :snippets:bs-image
+|heading=SCP-4475
+Layered Design - Moosphere
+by SunnyClockwork
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4475-Layered-Design-Moosphere-by-Sunny-Clockwork.webp
 |width=400px
 |kind=none
 ]]
@@ -2858,7 +2790,7 @@ by SunnyClockwork
 [[include :snippets:bs-image
 |heading=SCP-4519
 by fairydoctor
-|image=https://i.postimg.cc/mkf2phpn/SCP-4519-by-fairydoctor.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4519-by-fairydoctor.webp
 |width=400px
 |kind=none
 ]]
@@ -2870,7 +2802,7 @@ by fairydoctor
 [[include :snippets:bs-image
 |heading=SCP-4795
 by Jakob17
-|image=https://i.postimg.cc/VNJfYX3T/SCP-4795-by-Jakob17.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4795-by-Jakob17.webp
 |width=400px
 |kind=none
 ]]
@@ -2882,12 +2814,22 @@ by Jakob17
 [[include :snippets:bs-image
 |heading=SCP-4795
 by Aethris
-|image=https://i.postimg.cc/YCn2KdyY/SCP-4795-by-Aethris.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-4795-by-Aethris.webp
 |width=400px
 |kind=none
 ]]
 
 » [[[*https://scp-wiki.wikidot.com/aethris-art|Artist&#39;s Page]]] «
+
+[[include :snippets:bs-image
+|heading=SCP-8299
+by Guaire
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-8299-by-Guaire.webp
+|width=384px
+|kind=none
+]]
+
+» [[[*https://scp-wiki.wikidot.com/art:guaire-s-2024-sciptember-pixelart|Artist&#39;s Page]]] «
 
 @@ @@
 [[/div]]
@@ -2911,7 +2853,7 @@ by CaimanChameleon
 [[include :snippets:bs-image
 |heading=Void Dancer Hub
 by Olicus
-|image=https://i.postimg.cc/0QCHFBVq/Void-Dancer-Hub-by-Olicus.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Void-Dancer-Hub-by-Olicus.webp
 |width=400px
 |kind=none
 ]]
@@ -2923,7 +2865,7 @@ by Olicus
 [[include :snippets:bs-image
 |heading=fifthist family picnic
 by Rob is not a deer
-|image=https://i.postimg.cc/02zc0j1v/fifthist-family-picnic-by-Rob-is-not-a-deer.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/fifthist-family-picnic-by-Rob-is-not-a-deer.webp
 |width=400px
 |kind=none
 ]]
@@ -2947,7 +2889,7 @@ by DrGooday
 [[include :snippets:bs-image
 |heading=SCP-2
 by Zal Cryptid
-|image=https://i.postimg.cc/ry3HD3KQ/SCP-2-by-Zal-Cryptid.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/SCP-2-by-Zal-Cryptid.webp
 |width=400px
 |kind=none
 ]]
@@ -2964,7 +2906,7 @@ by Zal Cryptid
 |heading=Mobile Task Force Eta-4
 “Begone Thoth”
 by UncertaintyCrossing
-|image=https://i.postimg.cc/YCkbgHkf/Mobile-Task-Force-Eta-4-Begone-Thoth-by-Uncertainty-Crossing.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Mobile-Task-Force-Eta-4-Begone-Thoth-by-Uncertainty-Crossing.webp
 |caption=Trans Rights!
 |width=400px
 |kind=none
@@ -2977,7 +2919,7 @@ by UncertaintyCrossing
 [[include :snippets:bs-image
 |heading=The Watchers of The Lost Glade
 by EstrellaYoshte
-|image=https://i.postimg.cc/65x0JX7J/The-Watchers-of-The-Lost-Glade-by-Estrella-Yoshte.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/The-Watchers-of-The-Lost-Glade-by-Estrella-Yoshte.webp
 |width=400px
 |kind=none
 ]]
@@ -2989,7 +2931,7 @@ by EstrellaYoshte
 [[include :snippets:bs-image
 |heading=Heather Mason &amp; Adamo Smalls
 by Olicus
-|image=https://i.postimg.cc/tCm4nXF8/Heather-Mason-Adamo-Smalls-by-Olicus.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Heather-Mason-Adamo-Smalls-by-Olicus.webp
 |width=400px
 |kind=none
 ]]
@@ -3002,13 +2944,13 @@ by Olicus
 |heading=Heather Mason &amp; Adamo Smalls
 on Christmas Eve
 by Olicus
-|image=https://i.postimg.cc/1549QLbB/Heather-Mason-Adamo-Smalls-Christmas-Eve-by-Olicus.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Heather-Mason-Adamo-Smalls-Christmas-Eve-by-Olicus.webp
 |width=400px
 |kind=none
 ]]
 
 [[include :snippets:bs-image
-|image=https://i.postimg.cc/BQyJQm00/Heather-Mason-Adamo-Smalls-Christmas-Eve-x2-by-Olicus.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Heather-Mason-Adamo-Smalls-Christmas-Eve-x2-by-Olicus.webp
 |width=400px
 |kind=none
 ]]
@@ -3021,7 +2963,7 @@ by Olicus
 |heading=Heather Mason &amp; Adamo Smalls
 on Halloween
 by Olicus
-|image=https://i.postimg.cc/fWCLZ7yz/Heather-Mason-Adamo-Smalls-Halloween-by-Olicus.jpg
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Heather-Mason-Adamo-Smalls-Halloween-by-Olicus.webp
 |width=400px
 |kind=none
 ]]
@@ -3033,7 +2975,7 @@ by Olicus
 [[include :snippets:bs-image
 |heading=Flops the Phoenix
 by Phoenixfire003
-|image=https://i.postimg.cc/4NwBz03D/Flops-the-Phoenix-by-Phoenixfire003.png
+|image=https://scp-wiki.wikidot.com/local--files/floppyphoenix/Flops-the-Phoenix-by-Phoenixfire003.webp
 |width=400px
 |kind=none
 ]]
@@ -3048,13 +2990,33 @@ by Phoenixfire003
 +++ &lt;&lt; [#BTT BACK TO TOP] &gt;&gt;
 
   [[/tab]]
-  [[tab SCP/WL Reading Recommendations]]
+  [[tab Reading Recommendations]]
 
 [[div class=&#34;report-box&#34;]]
-+++ SCP FOUNDATION &amp; WANDERERS&#39; LIBRARY
-+++ READING RECOMMENDATIONS
++++ Wiki Reading Recommendations
 ----
-**Flops Says:** This is a dynamic list of some of my favourite works on the Wiki. This includes stories that are memorable, resonated with me personally, or are plain //good// and deserve more attention. I&#39;ll update this as I come across stories that I think others should read.
+= ,,**N.B.:** Last updated 5 November 2025.,,
+[[/div]]
+
+[[div class=&#34;blockquote solid&#34;]]
+++ Wanderers&#39; Library Entries
+----
+[*https://wanderers-library.wikidot.com/shikuan-misiwe shikuan-misiwe] by [[user SimpleCadence]]
+[*https://wanderers-library.wikidot.com/all-hallows All Hallows] by [[user Zyn]]
+[*https://wanderers-library.wikidot.com/what-is-love What is Love?] by [[user Zyn]]
+[*https://wanderers-library.wikidot.com/sedna-v-arnaaluk-the-qaqulluk Sedna V. Ataciara the Qaqulluk] by [[user Vivax]]
+[*https://wanderers-library.wikidot.com/a-prayer-to-futility A Prayer to Futility] by [[user Vivax]]
+[*https://wanderers-library.wikidot.com/every-story-someday Every Story, Someday] by [[user Jack Manganese]]
+[!--[*http://wanderers-library.wikidot.com/overdue Overdue] by [[user Silberescher]]--]
+[!--[*http://wanderers-library.wikidot.com/the-amphiptere-and-the-fruit The Amphiptere and the Fruit] by [[user Zyn]]--]
+[*https://wanderers-library.wikidot.com/excerpt-from-a-journal-found-in-a-brightly-lit-city Excerpt from a journal found in a brightly lit city] by [[user minmin]]
+[!--[*http://wanderers-library.wikidot.com/of-the-archives Of the Archives] by [[user DrEverettMann]]--]
+[!--[*http://wanderers-library.wikidot.com/the-last-will-and-testament The Last Will and Testament of Lyle Alan Burnley, Heresiographer] by [[user Gaffsey]]--]
+[*https://wanderers-library.wikidot.com/memocide Memocide] by [[user MaliceAforethought]]
+[*https://wanderers-library.wikidot.com/sleepless-walkers Sleepless Walkers] by [[user Din-Bidor]]
+[*https://wanderers-library.wikidot.com/long-shed-and-shade-filled-skins Long-Shed and Shade-Filled Skins] by [[user Pedantique]]
+[*http://wanderers-library.wikidot.com/glass-apartments-for-janelle Glass Apartments (For Janelle)] by [[user carolynn w]]
+[*https://wanderers-library.wikidot.com/snail-philosophy Snail Philosophy] by [[user A Machine for Sloths]]
 [[/div]]
 
 [[div class=&#34;blockquote solid&#34;]]
@@ -3073,6 +3035,7 @@ by Phoenixfire003
 [[[SCP-4058]]] -- We Become Stories That Are Dying To Be Told by ghosthorses
 [[[SCP-4246]]] -- Thalassomania, or The Dreams of the Firstborn by [[user Metaphysician]]
 [[[SCP-4405]]] -- Time Ends on a Fridays by [[user OthellotheCat]] &amp; [[user DolphinSlugchugger]]
+[[[SCP-4472]]] -- Auger by [[user Pedantique]]
 [[[SCP-4857]]] -- [DESIGNATION AVAILABLE] by [[user Pr10r]]
 [[[SCP-4922]]] -- The Rainbow Connection by [[user daveyoufool]]
 [[[SCP-4982]]] -- Heavy lies the crown. by [[user Uncle Nicolini]]
@@ -3080,9 +3043,11 @@ by Phoenixfire003
 [[[SCP-5038]]] -- La Rue Macabre is CLOSED by [[user MalyceGraves]] &amp; [[user plaidypus]]
 [[[SCP-5059]]] -- Roll Out! by [[user HammerMaiden]]
 [[[SCP-5312]]] -- @@AskSCP.com@@ by [[user Azmoeth Jikandia]]
+[[[SCP-5370]]] -- Chessland by [[user Taffeta]]
 [[[SCP-5616]]] -- The Woman in the Incinerator by [[user HarryBlank]]
 [[[SCP-5900]]] -- PITCHBLACK by [[user aismallard]]
 [[[SCP-6113]]] -- Temporary Reflections by [[user Dr Asteria]]
+[[[SCP-6121]]] -- The Capslock Crew by [[user HarryBlank]]
 [[[SCP-6519]]] -- The Spirit in the Sky by [[user HarryBlank]]
 [[[SCP-7003]]] -- Three White Horses by [[user TheyCallMeTim]]
 [[[SCP-7800]]] -- Samsara by [[user Aftokrator]]
@@ -3118,6 +3083,8 @@ by Phoenixfire003
 [[[A Terrible Thing]]] by [[user Riemann]]
 [[[The Good Work]]] by [[user HarryBlank]]
 [[[gamers-against-kaiju|On The Internet, Nobody Knows You&#39;re A Kaiju]]] by [[user stormbreath]]
+[[[Seething at the Stars]]] by [[user Pedantique]]
+[[[Red Right Hand Orientation]]] by [[user Pedantique]]
 [[/div]]
 
 [[div class=&#34;blockquote solid&#34;]]
@@ -3155,241 +3122,10 @@ by Phoenixfire003
 [[/div]]
 
 [[div class=&#34;blockquote solid&#34;]]
-++ Wanderers&#39; Library Entries
-----
-[[[*http://wanderers-library.wikidot.com/voyage|Voyage to the Deep]]] by [[user Plilt]]
-[[[*http://wanderers-library.wikidot.com/overdue|Overdue]]] by [[user Silberescher]]
-[[[*http://wanderers-library.wikidot.com/the-amphiptere-and-the-fruit|The Amphiptere and the Fruit]]] by [[user Zyn]]
-[[[*http://wanderers-library.wikidot.com/of-the-archives|Of the Archives]]] by [[user DrEverettMann]]
-[[[*http://wanderers-library.wikidot.com/the-last-will-and-testament|The Last Will and Testament of Lyle Alan Burnley, Heresiographer]]] by Gaffsey
-[[[*https://wanderers-library.wikidot.com/memocide|Memocide]]] by [[user MaliceAforethought]]
-[[[*https://wanderers-library.wikidot.com/sleepless-walkers|Sleepless Walkers]]] by [[user Din-Bidor]]
-[[[*http://wanderers-library.wikidot.com/glass-apartments-for-janelle|Glass Apartments (For Janelle)]]] by [[user carolynn w]]
-[[[*http://wanderers-library.wikidot.com/sludge-thompkins-in-the-lair-of-the-mutant-bubblegum-lizards|Sludge Thompkins in: The Lair of the Mutant Bubblegum Lizards!]]] by [[user CadaverCommander]]
-[[/div]]
-
-[[div class=&#34;blockquote solid&#34;]]
 ++ Other
 ----
 [[[poetry-as-distillation|Poetry As Distillation: An Essay on Good Poems]]] by [[user carolynn w]]
 [[/div]]
-----
-+++ &lt;&lt; [#BTT BACK TO TOP] &gt;&gt;
-
-  [[/tab]]
-  [[tab Wiki Stats]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-custom-list= --]
-|language=en
-|order=created_at desc
-|perpage=20
-|category=SCP Articles
-|tags=+scp -co-authored -international -temporal
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-custom-list= --]
-|language=en
-|order=created_at desc
-|perpage=20
-|category=Tales
-|tags=+tale -co-authored
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-custom-list= --]
-|language=en
-|order=created_at desc
-|perpage=20
-|category=GOI Formats
-|tags=+goi-format -co-authored
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-custom-list= --]
-|language=en
-|order=created_at desc
-|perpage=20
-|category=Others
-|tags=+author
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-custom-list= --]
-|language=en
-|order=created_at desc
-|perpage=20
-|category=Hubs
-|tags=+hub
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored-header= --]]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=abraka-davids-proposal
-|feat=Metaphysician, Uncle Nicolini, LORDXVNV, Calibold, Sherf, Jack Ike, Guezma, Ralliston, Yossipossi, Placeholder McD, Guaire, Grigori Karpin, and Dr Balthazaar
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-7010
-|feat=stormbreath
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-6481
-|feat=Ellie3
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-6705
-|feat=LordStonefish
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-6447
-|feat=Cole 13, Elunerazim, GreenGolem, Jack Waltz, JakdragonX, LORDXVNV, MoreMuffins, Sidewindered, &amp; MetalRavioli
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=departments-complete-list
-|feat=Dr Moned, TopDownUnder
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=i-hub
-|feat=Elenee FishTruck, Azamo, basirskipreader, Calibold, CelesteKara, Dysadron, Ellie3, Esperanza_Cai, gee0765, Hexick, Ihnaaimc, JackalRelated, JakdragonX, Joreth, Limeyy, Lt Flops, Machen2, newnykacolaquantum, Oboebandgeek99, PeppersGhost, Placeholder McD, pr0m37h3um, Ralliston, Rounderhouse, Sherf, Snapdragon133, UnnaHuz, Vincent Van Gone, &amp; Westrin
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=sigma-9-themes
-|feat=EstrellaYoshte &amp; Ralliston
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=broken-masquerade-epistolary
-|feat=newnykacolaquantum, IFBench, Westrin, &amp; Deadly Bread
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-4428
-|feat=Henzoid
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-4795
-|feat=Mew-ltiverse
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-4475
-|feat=KindlyTurtleClem
-|language=en
-]]
-
-= //Mother&#39;s resting place.// / //Right here, at the end of space.// / //Cast out unto the light//
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=land-of-honey
-|feat=KindlyTurtleClem
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=critter-profile-bartholomew
-|feat=KindlyTurtleClem
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=grant-request-post-mortem-neural-preservation
-|feat=Uncle Nicolini
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-4519
-|feat=NatVoltaic
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-3739
-|feat=KindlyTurtleClem
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=avian-anthology-ii
-|feat=notgull, Ayers, &amp; Quantum Physician
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=avian-anthology-i
-|feat=notgull, Ayers, &amp; Quantum Physician
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=the-sacred-djehuti
-|feat=Ayers
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-coauthored= --]
-|name=scp-3309
-|feat=PhamtomGuy
-|language=en
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-custom-list= --]
-|language=en
-|order=created_at desc
-|perpage=20
-|category=CSS Themes
-|tags=+theme
-]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-custom-list= --]
-|language=en
-|order=created_at desc
-|perpage=20
-|category=CSS Components
-|tags=+component
-]]
-
-[[div class=&#34;top-border&#34;]]
-[[/div]]
-
-+ Tags
-+++++ Tags I&#39;ve requested, created, or contributed to.
-----
-[[=]]
-[[[*https://scp-wiki.wikidot.com/system:page-tags/tag/researcher-smalls#pages|researcher-smalls]]]
-[[[*https://scp-wiki.wikidot.com/system:page-tags/tag/bobble-the-clown#pages|bobble-the-clown]]]
-[[[*https://scp-wiki.wikidot.com/system:page-tags/tag/director-moose#pages|director-moose]]]
-[[[*https://scp-wiki.wikidot.com/system:page-tags/tag/agent-yoric#pages|agent-yoric]]]
-
-[[[*https://scp-wiki.wikidot.com/system:page-tags/tag/sapphire#pages|sapphire]]]
-[[[*https://scp-wiki.wikidot.com/system:page-tags/tag/three-moons-initiative#pages|three-moons-initiative]]]
-
-[[[*https://scp-wiki.wikidot.com/system:page-tags/tag/team-bird#pages|team-bird]]]
-[[/=]]
-
-[[include :scp-wiki:component:mega-cool-author-page-tool |inc-custom-list= --]
-|language=en
-|order=created_at desc
-|perpage=20
-|category=Other
-|tags=+workbench
-]]
 ----
 +++ &lt;&lt; [#BTT BACK TO TOP] &gt;&gt;
 
@@ -3452,18 +3188,17 @@ by Phoenixfire003
 [[/div]]
 
 [[include :scp-wiki:component:license-box]]
-=====
 [[div class=&#34;blockquote&#34;]]
 **Filename(s):** postgender-pride-flag.png, bg-grad.png
 **Author:** [[*user Lt Flops]]
 **License:** [*https://creativecommons.org/licenses/by-sa/3.0/ Attribution-ShareAlike 3.0 Unported (CC BY-SA 3.0)]
 **Source Link(s):** Self 
 [[/div]]
-=====
 [[include :scp-wiki:component:license-box-end]]
 
 [[module CSS]]
-/* ==== SITE BANNER ==== */
+/* == SITE BANNER == */
+
  :root {
     --header-subtitle: &#34;NO VEIL CAN HOLD THE HEAVENS&#34;;
 
@@ -3472,17 +3207,18 @@ by Phoenixfire003
     --hue: 180deg;
 
     --bgColor: hsl(220, 59%, 27%);
-    --mgColor: hsl(222, 22%, 9%);
-    --fgColor: hsla(0, 0%, 0%, .4);
+    --mgColor: hsl(220, 22%, 9%);
+    --fgColor: hsl(220, 60%, 15%);
 
-     --borderColor: var(--accentColor);
-     --bgBadgeColor: var(--fgColor);
+    --borderColor: var(--accentColor);
+    --bgBadgeColor: var(--fgColor);
 }
 
  body {
-    background-attachment: fixed;
-    background-color: var(--mgColor);
-    background-image: url(https://scp-wiki.wikidot.com/local--files/floppyphoenix/bg-grad.png);
+    background-image:
+       linear-gradient(
+    	var(--mgColor) 0 180px,
+    	var(--bgColor) 720px 100%);
 }
 
  @media (min-width: 768px) {
@@ -3533,7 +3269,8 @@ by Phoenixfire003
     font-size: 2.95rem;
 }
 
-/* ==== BOOKSHELF ==== */
+/* == BOOKSHELF == */
+
  div.bookshelf {
     display: flex;
     flex-flow: wrap;
@@ -3558,9 +3295,12 @@ by Phoenixfire003
     margin: 0;
 }
 
-/* ==== TABS ==== */
+/* == TABS == */
+
  .yui-navset .yui-content {
     padding-top: 2rem;
+
+    background: hsla(220, 60%, 21%);
 }
 
  .yui-navset .yui-nav .selected a,
@@ -3576,7 +3316,8 @@ by Phoenixfire003
     content: &#34;&#34;;
 }
 
-/* ==== MEGA COOL AUTHOR PAGE TOOL ==== */
+/* == MEGA COOL AUTHOR PAGE TOOL == */
+
  .content-box {
     margin-bottom: 1rem !important;
 }
@@ -3600,12 +3341,11 @@ by Phoenixfire003
     border-bottom: 0;
 }
 
-/* ==== FLOPSTYLE: DARK MODS ==== */
+/* == FLOPSTYLE: DARK MODS == */
+
  .image-box {
     border: 0 !important;
 }
-
-/* ======== */
 
  .blockquote.artpreciation &gt; p {
     margin-top: -.4rem;
@@ -3623,30 +3363,13 @@ by Phoenixfire003
 
      .blockquote.lightweight.exhibit {
     	width: 500px;
-    	height: 360px;
+    	min-height: 240px;
+    	margin: auto;
     }
 }
 
-/* ======== */
+/* == CURRICULUM VITAE == */
 
- .footing {
-    /* == Page Footing == */
-    padding-top: 1.6rem;
-}
-
- .footing::before {
-    bottom: .27rem;
-
-    border-bottom: 4px solid var(--accentColor);
-}
-
- .footing::after {
-    top: .13rem;
-
-    border-bottom: 2px solid var(--accentColorLite);
-}
-
-/* ==== CURRICULUM VITAE ==== */
  .cv {
     --accentColor: hsl(360, 71%, 70%);
     --accentColorLite: hsla(360, 71%, 80%, .5);
@@ -3666,7 +3389,7 @@ by Phoenixfire003
 
  .cv strong {
     color: var(--textColorMid);
-    font-size: .95rem;
+    font-size: .9rem;
 }
 
  .cv strong::after {
@@ -3737,30 +3460,48 @@ by Phoenixfire003
     font-size: .85rem;
 }
 
-/* ==== X-SMALL BREAKPOINT ==== */
- @media (max-width: 575px) {
+/* == DIVS == */
+
+ .blockquote {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+ .blockquote .blockquote {
+    margin-right: 1rem;
+    margin-left: 1rem;
+
+    border-left-width: medium;
+}
+
+/* == X-SMALL BREAKPOINT == */
+
+ @media (max-width: 575.9px) {
      #header h1 a { font-size: calc(.75em + 3.5vw); }
      #header h2 { font-size: calc(.75em + 1.75vw); }
 }
 
-/* ==== SMALL BREAKPOINT ====*/
- @media (min-width: 576px) and (max-width: 767px) {
+/* == SMALL BREAKPOINT == */
+
+ @media (min-width: 576px) and (max-width: 767.9px) {
      #header h1 a { font-size: calc(.75em + 3vw); }
      #header h2 { font-size: calc(.75em + 1.5vw); }
 }
 
- @media (max-width: 767px) {
+ @media (max-width: 767.9px) {
      #header h2 { margin-top: .5em; }
 }
 
-/* ==== MEDIUM BREAKPOINT ==== */
- @media (min-width: 768px) and (max-width: 991px) {
+/* == MEDIUM BREAKPOINT == */
+
+ @media (min-width: 768px) and (max-width: 983.9px) {
      #header h1 a { font-size: calc(.75em + 2.5vw); }
      #header h2 { margin-top: 0; font-size: calc(.75em + 1.25vw); }
 }
 
-/* ==== LARGE BREAKPOINT ==== */
- @media (min-width: 992px) and (max-width: 1199px) {
+/* == LARGE BREAKPOINT == */
+
+ @media (min-width: 984px) and (max-width: 1199.9px) {
      #header h1 a { font-size: calc(.75em + 2vw); }
      #header h2 { font-size: calc(.75em + 1vw); }
      #header h1 a::before { font-size: unset; }
@@ -3773,7 +3514,7 @@ by Phoenixfire003
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.474372.</em>
+    <em>Last updated 2026-04-17 00:56:53.441197.</em>
   
 </div>
 </body>

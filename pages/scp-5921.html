@@ -149,10 +149,6 @@
         </li>
       
         <li>
-          <pre><code>footnote</code></pre>
-        </li>
-      
-        <li>
           <pre><code>tt</code></pre>
         </li>
       
@@ -475,11 +471,15 @@ If necessary, round all answers to the nearest thousandth.
 [[HTML]]
 &lt;html lang=&#34;en&#34;&gt;
 &lt;head&gt;
-&lt;script type=&#34;text/x-mathjax-config&#34;&gt;
-  MathJax.Hub.Config({tex2jax: {inlineMath: [[&#39;$&#39;,&#39;$&#39;], [&#39;\\(&#39;,&#39;\\)&#39;]]}});
+&lt;script&gt;
+MathJax = {
+  tex: {
+    inlineMath: [[&#39;$&#39;, &#39;$&#39;], [&#39;\\(&#39;, &#39;\\)&#39;]]
+  }
+};
 &lt;/script&gt;
-&lt;script type=&#34;text/javascript&#34;
-  src=&#34;http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML&#34;&gt;
+&lt;script id=&#34;MathJax-script&#34; async
+  src=&#34;https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js&#34;&gt;
 &lt;/script&gt;
 &lt;script src=&#34;https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js&#34;&gt;&lt;/script&gt;
 &lt;meta charset=&#34;utf-8&#34;&gt;
@@ -492,7 +492,8 @@ If necessary, round all answers to the nearest thousandth.
 
 .invisible {
     /* visibility: hidden; */
-    position: absolute;
+    position: relative;
+display: none;
     top: -9999px;
     opacity: 0;
     margin-top: 40px; 
@@ -667,7 +668,7 @@ var disp1 = &#34;When $ \\Omega_c = \\pi/&#34; + num0 + &#34;$, what is the lowe
 document.write(disp1);
 &lt;/script&gt;
     &lt;input type=&#34;text&#34; placeholder=&#34;Input answer...&#34; id=&#34;myInput4&#34;&gt; &lt;br&gt;
-    &lt;button type=&#34;button&#34; onclick=&#34;getInputValue();&#34;&gt;Submit&lt;/button&gt;
+    &lt;button type=&#34;button&#34; onmousedown=&#34;getInputValue();&#34;&gt;Submit&lt;/button&gt;
     &lt;p id=&#34;demo&#34;&gt; &lt;/p&gt;
 &lt;p id=&#34;deno&#34;&gt; &lt;/p&gt;
     &lt;script&gt;
@@ -680,6 +681,8 @@ document.getElementById(&#34;deno&#34;).innerHTML = &#39;5921 Clearance confirme
 //document.getElementById(&#34;invisible&#34;).style.visibility = &#34;visible&#34;;
 document.getElementById(&#34;invisible&#34;).style.position= &#34;relative&#34;;
 document.getElementById(&#34;invisible&#34;).style.top= &#34;initial&#34;;
+//THANKS CROQ
+document.getElementById(&#34;invisible&#34;).style.display= &#34;initial&#34;;
 //document.getElementById(&#34;invisible&#34;).style.opacity= &#34;1&#34;;
 
 //query to make content fade in hopefully
@@ -696,11 +699,11 @@ var inputVal4 = document.getElementById(&#34;myInput4&#34;).value;
             // Displaying the value, 3=((7-(5(9/8)))/6)
             if( inputVal == num1 + num2 &amp;&amp; inputVal2 == num3 * num4 &amp;&amp; inputVal3 == nummer &amp;&amp; inputVal4 == num0 &amp;&amp; clik == 0) {
  clik = 1;
- document.getElementById(&#34;demo&#34;).innerHTML = &#39;&lt;hr&gt; &lt;b&gt; LOGIN:&lt;/b&gt; &lt;br&gt; Correct answers flagged. While this case is under review, please type your ID, including any classification or security clearance portions. If you have SCP-5921 related clearances, please use your G.I.T. ID. &lt;br&gt; &lt;input type=&#34;password&#34; placeholder=&#34;Input password...&#34; maxlength=&#34;10&#34; value=&#34;iamO5-1duh&#34; id=&#34;myInput5&#34;&gt; &lt;br&gt; &lt;button type=&#34;button&#34; onclick=&#34;aaa();&#34;&gt;Submit&lt;/button&gt; &lt;hr&gt;&#39;;
+ document.getElementById(&#34;demo&#34;).innerHTML = &#39;&lt;hr&gt; &lt;b&gt; LOGIN:&lt;/b&gt; &lt;br&gt; Correct answers flagged. While this case is under review, please type your ID, including any classification or security clearance portions. If you have SCP-5921 related clearances, please use your G.I.T. ID. &lt;br&gt; &lt;input type=&#34;password&#34; placeholder=&#34;Input password...&#34; maxlength=&#34;10&#34; value=&#34;iamO5-1duh&#34; id=&#34;myInput5&#34;&gt; &lt;br&gt; &lt;button type=&#34;button&#34; onmousedown=&#34;aaa();&#34;&gt;Submit&lt;/button&gt; &lt;hr&gt;&#39;;
 
 }else if(clik ==0){
 clik = 1;
- document.getElementById(&#34;demo&#34;).innerHTML = &#39;&lt;hr&gt; &lt;b&gt; LOGIN:&lt;/b&gt; &lt;br&gt; Please type your ID, including any classification or security clearance portions. If you have SCP-5921 related clearances, please use your G.I.T. ID. &lt;br&gt; &lt;input type=&#34;password&#34; placeholder=&#34;Input password...&#34; maxlength=&#34;10&#34; value=&#34;iamO5-1duh&#34; id=&#34;myInput5&#34;&gt; &lt;br&gt; &lt;button type=&#34;button&#34; onclick=&#34;aaa();&#34;&gt;Submit&lt;/button&gt; &lt;hr&gt;&#39;;
+ document.getElementById(&#34;demo&#34;).innerHTML = &#39;&lt;hr&gt; &lt;b&gt; LOGIN:&lt;/b&gt; &lt;br&gt; Please type your ID, including any classification or security clearance portions. If you have SCP-5921 related clearances, please use your G.I.T. ID. &lt;br&gt; &lt;input type=&#34;password&#34; placeholder=&#34;Input password...&#34; maxlength=&#34;10&#34; value=&#34;iamO5-1duh&#34; id=&#34;myInput5&#34;&gt; &lt;br&gt; &lt;button type=&#34;button&#34; onmousedown=&#34;aaa();&#34;&gt;Submit&lt;/button&gt; &lt;hr&gt;&#39;;
 
 }
         }
@@ -767,7 +770,7 @@ Dr. Oscar. &lt;/br&gt;
 &lt;div class=&#34;tt&#34;&gt; &lt;strong&gt; MANIFESTATION — 9:03&lt;/strong&gt; &lt;/div&gt;&lt;/br&gt;&lt;/br&gt;
 &lt;div class=&#34;tt&#34;&gt; DR. OSCAR ANSWERS PHONE — 10:29 &lt;/div&gt;&lt;/br&gt;&lt;/br&gt;
 &lt;b&gt; Dr. Oscar: &lt;/b&gt; Uh... Hello? &lt;/br&gt; &lt;/br&gt;
-&lt;b&gt; POI-792&lt;/b&gt;&lt;span class=&#34;footnote&#34;&gt;Martin Greaze, Earth&#39;s Greazeburger Representative&lt;/span&gt;&lt;b&gt;: &lt;/b&gt; Welcome to the 24/7 Greazeburger Hotline, where yesterday’s meat is now suddenly neat! How can I help you, skin sack? &lt;/br&gt; &lt;/br&gt;
+&lt;b&gt; POI-792 (Martin Greaze, Earth&#39;s Greazeburger Representative): &lt;/b&gt; Welcome to the 24/7 Greazeburger Hotline, where yesterday’s meat is now suddenly neat! How can I help you, skin sack? &lt;/br&gt; &lt;/br&gt;
 &lt;b&gt; Dr. Oscar: &lt;/b&gt; Well, I&#39;d like to uh, speak to a represe— &lt;/br&gt; &lt;/br&gt;
 &lt;b&gt; POI-792: &lt;/b&gt; I&#39;ve got some business that needs getting down to. How long has it been, Oscar? Can you check for me? &lt;/br&gt; &lt;/br&gt;
 &lt;div class=&#34;tt&#34; style=&#34;padding: 0px 0px 0px 5px&#34;;&gt; &lt;I&gt; Dr. Oscar flips a few papers and mutters inaudibly. &lt;/i&gt;&lt;/div&gt; &lt;/br&gt;
@@ -1519,7 +1522,7 @@ footnotes.forEach(function (footnote, index) {
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:39.333672.</em>
+    <em>Last updated 2026-04-17 00:56:57.308570.</em>
   
 </div>
 </body>

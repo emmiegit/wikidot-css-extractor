@@ -29,7 +29,7 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap&#39;);
+          <pre><code>@import url(&#39;https://scp-wiki.wikidot.com/local--files/curated-tale-series/css2&#39;);
 :root {
     --basalt-overtone: 40,40,40;
     --basalt-undertone: 248,60,55;
@@ -90,7 +90,7 @@ body {
     font-size: 105%;
 }
 .tale-desc h4 {
-    text-align: right;
+    text-align: end;
     font-weight: normal;
     font-style: italic;
 }
@@ -107,26 +107,26 @@ body {
     box-shadow: 0px 0px 7px rgba(0,0,0,0.3);
     transition: 0.34s ease-in-out transform, 0.38s ease-in-out box-shadow;
 }
-.tale-cover img:hover {
+.tale-cover img:is(:hover,:focus-within) {
   transform:
     perspective(75em)
     rotateY(25deg);
   box-shadow: -2px 0px 8px rgba(0,0,0,0.2);
 }
-.display-container.second .tale-cover img:hover {
+.display-container.second .tale-cover img:is(:hover,:focus-within) {
   transform:
     perspective(75em)
     rotateY(-25deg);
   box-shadow: 2px 0px 8px rgba(0,0,0,0.2);
 }
 
-.tale-desc h1, .multi-grid div h1, .multi-grid-small div h1 {
+:is(.tale-desc, .multi-grid div, .multi-grid-small div) h3 {
     font-size: 2em;
     text-align: center;
     letter-spacing: -0.045em;
 }
-.multi-grid div h1 { font-size: 1.25em; }
-.multi-grid-small div h1 { font-size: 1.15em; }
+.multi-grid div h3 { font-size: 1.25em; }
+.multi-grid-small div h3 { font-size: 1.15em; }
 
 @media (max-width: 700px) {
     .display-container, .display-container.second {
@@ -140,7 +140,7 @@ body {
         border-top: solid 0.1rem #333;
         margin: 0; margin-top: 1rem;
     }
-    .tale-cover img:hover, .display-container.second .tale-cover img:hover {
+    .tale-cover img::is(:hover,:focus-within), .display-container.second .tale-cover img:is(:hover,:focus-within) {
         transform: none;
     }
 }
@@ -161,9 +161,8 @@ body {
     box-sizing: border-box;
 }
 
-#page-content h2 {
-    text-align: right;
-}
+#page-content h2 { text-align: end; }
+#page-content .sep-h2 h2 { text-align: start; font-size: 2.25em; }
 
 .multi-grid-small {
     display: grid;
@@ -195,8 +194,8 @@ body {
 }
 .multi-grid-small &gt; div a { margin-top: -0.4rem; }
 
-.multi-grid &gt; div a::before, .multi-grid &gt; div a::after,
-.multi-grid-small &gt; div a::before, .multi-grid-small &gt; div a::after {
+:is(.multi-grid, .multi-grid-small) &gt; div a::before,
+:is(.multi-grid, .multi-grid-small) &gt; div a::after {
     content: &#34; &#34;;
     display: block;
     width: 100%;
@@ -204,8 +203,8 @@ body {
     background-color: #fff;
     mix-blend-mode: difference;
 }
-.multi-grid &gt; div a::before, .multi-grid-small &gt; div a::before { margin-bottom: 0.4rem; }
-.multi-grid &gt; div a::after, .multi-grid-small &gt; div a::after { margin-top: 0.45rem; }
+:is(.multi-grid, .multi-grid-small) &gt; div a::before { margin-bottom: 0.4rem; }
+:is(.multi-grid, .multi-grid-small) &gt; div a::after { margin-top: 0.45rem; }
 
 div.standalone::before {
     content: &#34;Standalone&#34;;
@@ -214,7 +213,7 @@ div.standalone::before {
     background-color: rgb(var(--basalt-undertone));
     padding: 4px; padding-left: 6px; padding-right: 7px;
     position: absolute;
-    top: -0.55rem; left: -0.3rem;
+    bottom: calc(100% - .875rem); left: -0.3rem;
     border-radius: 0 4px 4px 0;
 }
 div.standalone::after {
@@ -224,7 +223,7 @@ div.standalone::after {
     display: block;
     width: 2rem; height: 2rem;
     position: absolute;
-    top: 1.05rem; left: -0.3rem;
+    top: .875rem; left: -0.3rem;
     border-radius: 0 4px 4px 0;
     filter: brightness(0.625);
     z-index: -2;
@@ -296,14 +295,6 @@ div.standalone::after {
     <ul class="inline-styles">
       
         <li>
-          <pre><code>border: solid 0.25rem #97ce8e;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>background-color: #2F333C; color: #EDEDED; border-bottom: solid 0.25rem #bb88ff</code></pre>
-        </li>
-      
-        <li>
           <pre><code>background-color:#21252E; color: #ededed;</code></pre>
         </li>
       
@@ -360,10 +351,6 @@ div.standalone::after {
         </li>
       
         <li>
-          <pre><code>background: linear-gradient(#1A1B28, #242D35); color: #f4f4f4;</code></pre>
-        </li>
-      
-        <li>
           <pre><code>background-color: #DCF2B0; color: #3B5C0A;</code></pre>
         </li>
       
@@ -373,10 +360,6 @@ div.standalone::after {
       
         <li>
           <pre><code>margin-bottom: -70px;</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>border-radius: 2.5rem</code></pre>
         </li>
       
         <li>
@@ -392,7 +375,11 @@ div.standalone::after {
         </li>
       
         <li>
-          <pre><code>background: linear-gradient(180deg, rgba(255,131,204,1) 10%, rgba(92,97,168,1) 90%); background-clip: text;-webkit-background-clip: text;color: transparent; padding: 0 1em;</code></pre>
+          <pre><code>border-radius: 2.5rem</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>background: linear-gradient(#1A1B28, #242D35); color: #f4f4f4;</code></pre>
         </li>
       
     </ul>
@@ -456,6 +443,23 @@ div.standalone::after {
   
 
   
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
     <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
   
 
@@ -478,6 +482,10 @@ div.standalone::after {
         </li>
       
         <li>
+          <pre><code>sep-h2</code></pre>
+        </li>
+      
+        <li>
           <pre><code>display-container</code></pre>
         </li>
       
@@ -487,10 +495,6 @@ div.standalone::after {
       
         <li>
           <pre><code>tale-desc</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>complete</code></pre>
         </li>
       
         <li>
@@ -510,7 +514,7 @@ div.standalone::after {
         </li>
       
         <li>
-          <pre><code>multi-grid</code></pre>
+          <pre><code>sep-h2</code></pre>
         </li>
       
         <li>
@@ -530,27 +534,15 @@ div.standalone::after {
         </li>
       
         <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
           <pre><code>multi-grid-small</code></pre>
         </li>
       
         <li>
           <pre><code>multi-grid-small</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
         </li>
       
         <li>
           <pre><code>content-warning</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
         </li>
       
         <li>
@@ -563,10 +555,6 @@ div.standalone::after {
       
         <li>
           <pre><code>multi-grid-small</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
         </li>
       
         <li>
@@ -590,18 +578,6 @@ div.standalone::after {
         </li>
       
         <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
           <pre><code>multi-grid-small</code></pre>
         </li>
       
@@ -611,6 +587,22 @@ div.standalone::after {
       
         <li>
           <pre><code>standalone</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>standalone</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>standalone</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>standalone</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sep-h2</code></pre>
         </li>
       
     </ul>
@@ -626,33 +618,35 @@ Written by [[*user EstrellaYoshte]], with the inputs of [[*user Oboebandgeek99]]
 = CURATED TALE SERIES
 [[/div]]
 
-+ Pick of the Month
+[[div class=&#34;sep-h2&#34;]]
+++ Pick of the Pride Month
+[[/div]]
 
 [[div class=&#34;display-container&#34;]]
 [[div class=&#34;tale-cover&#34;]]
-[[image https://i.imgur.com/nF6vPir.png link=&#34;https://scp-wiki.wikidot.com/hecatoncheires-cycle-hub&#34;]]
+[[image https://scp-wiki.wikidot.com/local--files/art:curated-tale-series-archive/mxtape.png link=&#34;https://scp-wiki.wikidot.com/the-eternal-mxtape&#34;]]
 [[/div]]
 [[div class=&#34;tale-desc&#34;]]
-+ Hecatoncheires Cycle
-++++ Written by [[[grigori-karpin-s-author-page|Grigori Karpin]]]
++++ The Eternal MxTape
+++++ Written by [[[tsercele-s-author-page|Tsercele]]]
 
-A touch telepath and a master planner fight a losing war against an otherworldly thaumaturge, an ex-Soviet carnomancer and a long-dormant death cult. They&#39;re going to need more hands on deck.
+//&#34;Happens sometimes. Brain problems. Hate myself, don&#39;t believe I exist. So I don&#39;t.&#34;//
 
-From the ancient world to the technocratic 1990s, this sprawling epic weaves a thrilling mystery full of faith, betrayal, courage and pride. The hand of the past is very much alive, and even dead gods have power in the time of Project Hecatoncheires.
+The act of surviving takes an enormous amount of strength, and the act of being even more so - To do it in a world hostile to your existence? Borderline impossible.
 
-[[span class=&#34;complete&#34;]]Completed 2023/11/19[[/span]]
+Wren Masterson tries regardless, and finds themselves in tune with an unlikely counterpart.
 [[/div]]
 [[/div]]
 
 [!--
-+ Conwell&#39;s Choice
+++ Conwell&#39;s Choice
 
 [[div class=&#34;display-container second&#34;]]
 [[div class=&#34;tale-cover&#34;]]
 [[image /florence-thorne-hub/PNM_3.png link=&#34;https://scp-wiki.wikidot.com/florence-thorne-hub&#34;]]
 [[/div]]
 [[div class=&#34;tale-desc&#34;]]
-+ The Phoenix, The Nightingale, and The Magpies
++++ The Phoenix, The Nightingale, and The Magpies
 ++++ Written by [[[greenwolf-s-author-page|GreenWolf]]]
 
 //The SCP Foundation has captured one of the most powerful mages ever born. The question remains: What will they do to ensure she remains on their side?//
@@ -666,64 +660,44 @@ Filled with arson, magic, geese, and betrayals, //The Phoenix, The Nightingale, 
 [[/div]]
 --]
 
-+ Up &#39;n&#39; Coming
-[[div class=&#34;multi-grid&#34;]]
-
-[[div style=&#34;border: solid 0.25rem #97ce8e;&#34;]]
-+ ##97ce8e|THE APPLIANCE WAR##
-But those toilets sparked something new, and now it&#39;s everywhere. They are everywhere. It&#39;s a terrifying thought, really, that the luxury goods sitting in your house or facility might be spying on you, or planning to attack at any given moment, or just ready to explode.
-
-[[[the-appliance-war-hub|I can&#39;t say I&#39;m glad to have you, seeing as the circumstances are so dire, but welcome to the team.]]]
-[[/div]]
-
-[[div style=&#34;background-color: #2F333C; color: #EDEDED; border-bottom: solid 0.25rem #bb88ff&#34;]]
-+ ##bb88ff|Chronicles of the Irreal##
-To all available and willing Delta-T personnel out there: during our universe&#39;s test of multiverse-traversing technology, a critical failure has occurred, resulting in drastic damage to local and multiversal reality.
-
-Consequently, a total of three of our local personnel — two biological and one digital — have become stranded across the Multiversal Compass.
-
-[[[chronicles-of-the-irreal-hub|May the Irreal forgive us for our mistakes.]]]
-[[/div]]
-
-[[/div]]
-
 -----
-
-+ Community Curation
+[[div class=&#34;sep-h2&#34;]]
+++ Community Curation
+[[/div]]
 
 ++ Top Picks
 [[div class=&#34;multi-grid-small&#34;]]
 [[div]]
 [[=image atmm.png height=&#34;70px&#34;]]
-+ Antimemetics Division
++++ Antimemetics Division
 [[[antimemetics-division-hub|No, this is not your first day.]]]
 Memories are a fickle thing, but this series is anything but forgettable. A quintessential Foundation reading experience by qntm.
 [[/div]]
 
 [[div style=&#34;background-color:#21252E; color: #ededed;&#34;]]
 [[=image https://scp-wiki.wdfiles.com/local--files/black-autumn-hub/scp-halloween-alone.png height=&#34;70px&#34;]]
-+ ##EB6123|Black Autumn II: Rise Of the Pit Sloth##
++++ ##EB6123|Black Autumn II: Rise Of the Pit Sloth##
 [[[rise-of-the-pit-sloth-hub|Soon, the lights dim, and the movie begins.]]]
 Stories become real in Sloth&#39;s Pit, Wisconsin, and there&#39;s a new tale in town. Site-87&#39;s second-darkest October is a brilliant bright spot of character-driven horror and humour.
 [[/div]]
 
 [[div class=&#34;standalone&#34;]]
 [[=image starswait.png height=&#34;70px&#34;]]
-+ The Stars Do Not Wait For You
++++ The Stars Do Not Wait For You
 [[[the-stars-do-not-wait-for-you|It&#39;s quiet out here.]]]
 A hauntingly beautiful exploration of a world at the end of nothing, by Dmatix.
 [[/div]]
 
 [[div]]
 [[=image https://scp-wiki.wdfiles.com/local--files/horizon-initiative-hub/sun.jpg height=&#34;70px&#34;]]
-+ Et Tam Deum Petivi
++++ Et Tam Deum Petivi
 [[[etdp-hub-page|Alone, the light was too weak to face the darkness.]]]
 Mary-Ann and Salah learn more about the anomalous world and each other in this heartwarming series about love in the time of religious conflicts, both external and internal.
 [[/div]]
 
 [[div]]
 [[=image http://scp-wiki.wdfiles.com/local--files/scp-3448/dammerung-logo100.png height=&#34;70px&#34;]]
-+ End of Death Season 1
++++ End of Death Season 1
 [[[end-of-death-hub|Life&#39;s a bitch.]]]
 Nobody dies at the end of the world, which is why the world is ending. And Joyce Michaels is stuck in the middle of it.
 
@@ -731,7 +705,7 @@ This first season follows her struggles in navigating her new life of immortalit
 [[/div]]
 
 [[div style=&#34;background-color: #212121;  border-top: 0.2rem solid red; border-bottom: 0.2rem solid red; border-radius: 5% 10%; color: #FF3300;&#34;]]
-+ **##red|THE MAN IN THE## ###fff|WHITE## ##red|SUIT##**
++++ **##red|THE MAN IN THE## ###fff|WHITE## ##red|SUIT##**
 [[[the-man-in-the-white-suit-hub|He knows me almost as well as I know myself.]]]
 Someone wants revenge on Nobody, and he&#39;ll travel to the ends of the earth to personally enact it. On one hand, his tracking skills are rivaled only by his sheer determination; on the other hand, he may hold the answer to the biggest question on Nobody&#39;s mind:
 
@@ -743,44 +717,45 @@ Someone wants revenge on Nobody, and he&#39;ll travel to the ends of the earth t
 [[div class=&#34;multi-grid-small&#34;]]
 [[div style=&#34;border: solid 0.3rem #C1930B; background-color: #FFFBF0;&#34;]]
 [[=image bird.png height=&#34;70px&#34;]]
-+ ##C1930B|Team Bird##
++++ ##C1930B|Team Bird##
 [[[bird|Medila help us all.]]]
 The birds have won. Wacky, thrilling and occasionally off their rockers, the adventures of the Avian Division will take you to heights unseen.
 [[/div]]
 
 [[div style=&#34;border: solid 0.3rem #F7E3D6&#34;]]
 [[=image http://scp-wiki.wdfiles.com/local--files/this-page-intentionally-left-blank/43pride.png height=&#34;70px&#34;]]
-+ The Time After Time Password
++++ The Time After Time Password
 [[[the-time-after-time-password-hub|Your plan is authorized.]]]
 Site-43’s counterespionage shenanigans deliver them round the globe. Well-written, engaging and humorous, this colorful cast of characters will surely take the world by storm.
 [[/div]]
 
 [[div style=&#34;background: linear-gradient(180deg, rgba(6,0,96,1) 0%, rgba(0,0,2,1) 132px, rgba(238,238,238,1) 132px) padding-box, linear-gradient(0deg, #020006, #09005E) border-box; border: 0.4rem solid transparent;&#34;]]
 [[=image anast.png height=&#34;70px&#34;]]
-+ ##EEEEEE|ANASTASIS##
++++ ##EEEEEE|ANASTASIS##
 [[[anastasis-hub|I never thought I&#39;d see that beast again.]]]
 The Crocosquid has returned, bigger and badder than ever before. The Foundation goes all out on the gigantic battlefront for the fate of the world.
 [[/div]]
 
 [[div style=&#34;color: #EDEDED; background-color: #2F333C;&#34;]]
-+ ##1EB5E8|The Adventures of Siggy and RoboMonkey##
++++ ##1EB5E8|The Adventures of Siggy and RoboMonkey##
 [[[the-adventures-of-siggy-and-robomonkey-hub|&#34;Let&#39;s uh… start at the beginning, shall we?&#34;]]]
 //A story of a witch and a shapeshifter growing up in a hostile world together, meeting perils both monstrous and familiar along the way.//
 [[/div]]
 
 [[div style=&#34;color: #EDEDED; background-color: #2F333C; background-image: url(https://scp-wiki.wikidot.com/local--files/curated-tale-series/archebg.png);&#34;]]
 [[=image archeico.png height=&#34;70px&#34;]]
-+ ##99bbff|Archetypicals##
++++ ##99bbff|Archetypicals##
 [[[placeholder|&#34;Hello, Doctor McDoctorate. Your meeting is in seventy-three minutes.&#34;]]]
 Life is just one big story, and they are the archetypal side-characters. A must-read for fans of adventures, high concepts, and deus ex machina.
 [[/div]]
 
 [[div style=&#34;background-color: #fffbfe; border: solid .25rem #999; border-radius: 0;&#34;]]
-+ ##315B7D|The Phoenix, The Nightingale, and The Magpies##
+[[=image https://scp-wiki.wdfiles.com/local--files/florence-thorne-hub/2grey.png height=&#34;70px&#34;]]
++++ ##315B7D|The Phoenix, The Nightingale, and The Magpies##
 [[[florence-thorne-hub|Let us hope that is the largest price for our mistake.]]]
-As the fallout of the Seventh Occult War weighs on humanity, the Foundation tries its best to ensure old enemies don&#39;t rise again.
+As the fallout of the Seventh Occult War weighs on humanity, the Foundation has captured one of the most powerful mages ever born. The question remains: What will they do to ensure she remains on their side?
 
-The only way to achieve this is to do the unthinkable — recruit its new enemies as allies.
+Filled with arson, magic, geese, and betrayals, //The Phoenix, The Nightingale, and The Magpies// follows the life and times of Florence Elsinger, the Foundation&#39;s newest weapon against this ever-changing reality.
 [[/div]]
 
 [[/div]]
@@ -789,29 +764,23 @@ The only way to achieve this is to do the unthinkable — recruit its new enemie
 [[div class=&#34;multi-grid-small&#34;]]
 [[div style=&#34;background-color: #1D1F20; color: #C5C9C6;&#34;]]
 [[=image drkstff.png height=&#34;70px&#34;]]
-+ ##C5C9C6|Dark Stuff for Sleepless Nights##
++++ ##C5C9C6|Dark Stuff for Sleepless Nights##
 [[[dark-stuff-for-sleepless-nights|It&#39;s giving me a great reason to write weekly spooOOOOoooky stories.]]]
 An anthology of creepypastas, written by the titular DarkStuff.
 [[/div]]
 
 [[div]]
 [[=image https://scp-wiki.wdfiles.com/local--files/slipping-away/breaker height=&#34;70px&#34;]]
-+ white space
++++ white space
 [[[white-space-hub|would you trust us then?]]]
-A strange mix of surreal and fantastical, white space explores what it means to live and die a person, and the dissonance inbetween.
+A strange mix of surreal and fantastical, white space explores what it means to live and die a person, and the dissonance in between.
 [[/div]]
 
 [[div]]
 [[=image thaumiel.png height=&#34;70px&#34;]]
-+ Project Thaumiel
++++ Project Thaumiel
 [[[thaumiel|Security Will Assist You Shortly.]]]
-What happens when SCP-001 takes a turn for the worse? The Foundation brace themselves.
-[[/div]]
-
-[[div class=&#34;standalone&#34;]]
-+ Síobhra
-[[[siobhra|This war isn&#39;t glorious.]]]
-This tense mystery by Ihp will have you on the edge of your seat until the very end.
+What happens when SCP-001 takes a turn for the worse? The Foundation braces themselves.
 [[/div]]
 
 [[/div]]
@@ -820,28 +789,28 @@ This tense mystery by Ihp will have you on the edge of your seat until the very 
 [[div class=&#34;multi-grid-small&#34;]]
 [[div style=&#34;border: 2px solid black; border-radius: 0;&#34;]]
 [[=image https://scp-wiki.wdfiles.com/local--files/grigori-karpin-s-author-page/ProjectHeca height=&#34;70px&#34;]]
-+ Hecatoncheires Cycle
++++ Hecatoncheires Cycle
 [[[hecatoncheires-cycle-hub|What can we learn from our enemies?]]]
 A long-dead visitor from another world, an arrogant puppet master, inhuman cults and monsters and magic and very human heroes collide in this epic action/horror drama.
 [[/div]]
 
 [[div style=&#34;background-image: url(&#34;/local--files/curated-tale-series/background-conspiracy.jpg&#34;);  background-size: cover; font-family: &#39;Special Elite&#39;, serif;&#34;]]
 [[=image headericon-conspiracy.png height=&#34;70px&#34;]]
-+ Conspiracy
++++ Conspiracy
 [[[conspiracy|McDonnell cracked the first of his stack of novels. It would be a long flight to JFK, and the pouch meant he couldn&#39;t sleep through it.]]]
 A Tom Clancy/Ian Fleming/Robert Ludlum style espionage and intrigue story set in the SCP Foundation in the late 80s.
 [[/div]]
 
 [[div]]
 [[=image pvice.png height=&#34;70px&#34;]]
-+ Portland Vice
++++ Portland Vice
 [[[portland-vice|You want to put a contract out on skippers? Are you insane?]]]
 MTF Tau-51 has been on the trail of an anomalous narcotics manufacturer in Three Portlands for months, but their target is always one step ahead of them.
 With little help from the UIU, MTF Commander Damian Creed and Thaumatologist Beatrice Ross take matters into their own hands, only to find the trail leads close to home.
 [[/div]]
 
-[[div style=&#34;background-image: url(&#34;/local--files/curated-tale-series/background-new-age.svg&#34;); background-size: cover; border: 3rem #1c4156; border-style: none double; border-radius: 2rem; padding: 1rem 2rem; color: #1c4156;&#34;]]
-+ New Age
+[[div style=&#34;background-image: url(&#34;/local--files/curated-tale-series/background-new-age.svg&#34;); background-size: cover; border: 3rem #1c4156; border-style: none double; border-radius: 2rem; padding: .875rem 1.25rem; color: #1c4156;&#34;]]
++++ New Age
 [[a href=&#34;new-age-hub&#34;]]&#34;They said the D means Disposable.&#34; _
  _
 &#34;Really? Is that what they said it stands for? Heh.&#34;[[/a]]
@@ -849,7 +818,7 @@ A 100,000 word prison thriller which gets hijacked by a supernatural conspiracy.
 [[/div]]
 
 [[div style=&#34;color: #ffeeee; background-color: #25171e; border: solid 0.25em #b94d7b;&#34;]]
-+ ##fc0000|Misfire##
++++ ##fc0000|Misfire##
 [[[misfire-hub|No one said anything. No one moved.]]]
 After two Foundation personnel are found murdered, a confrontation occurs in a Site-19 elevator, resulting in the death of Dr. Carlson.
 
@@ -857,9 +826,15 @@ Foundation investigators piece together the events leading up to this deadly occ
 [[/div]]
 
 [[div]]
-+ Hartliss Detective Agency
-[[[https://scp-wiki.wikidot.com/hartliss-detective-agency|Not much to work with. But I&#39;ve done more with less.]]]
++++ Hartliss Detective Agency
+[[[hartliss-detective-agency|Not much to work with. But I&#39;ve done more with less.]]]
 In the mafia-run streets of 1920s Chicago, a private investigator with a knack for the paranormal gets a case that&#39;ll bring him to the dark underbelly of the city in more ways than one.
+[[/div]]
+
+[[div]]
++++ I Didn’t Forget
+[[[https://scp-wiki.wikidot.com/i-didn-t-forget-hub|“Of course I’m in over my head. I’m not going to let that stop me.”]]]
+Jerry lost his brother Evan when he was only a child. The world wants him to believe that Evan died in a natural disaster. Jerry knows better. He knows his brother was taken from him, and he will stop at nothing to uncover the truth.
 [[/div]]
 
 [[/div]]
@@ -868,42 +843,30 @@ In the mafia-run streets of 1920s Chicago, a private investigator with a knack f
 [[div class=&#34;multi-grid-small&#34;]]
 [[div]]
 [[=image https://scp-wiki.wdfiles.com/local--resized-images/ascension-hub/thedance/medium.jpg height=&#34;70px&#34;]]
-+ Dancing with Rachael
++++ Dancing with Rachael
 [[[ascension-hub|This, for obvious reasons, is a last resort.]]]
 Rachael messes with things beyond herself. This may or may not have worked out for all parties involved.
 [[/div]]
 
 [[div style=&#34;background-color: #EEFFCC; color: #66574F&#34;]]
 [[=image tiamd.png height=&#34;70px&#34;]]
-+ ##66574F|Take It Away, My Darling##
++++ ##66574F|Take It Away, My Darling##
 [[[take-it-away-my-darling|My sweetheart, my… daughter.]]]
 Faeowynn Wilson endeavors to tell the story of her father, their family, herself and all the other legacy that he left behind.
 [[/div]]
 
-[[div class=&#34;standalone&#34;]]
-+ Kyoufu-0
-[[[kyoufu-0|The 10th Seraph of Noise has caught its prey.]]]
-A gripping start gives way to a heartwarming finish in this breathtaking tale by NatVoltaic.
-[[/div]]
-
 [[div]]
 [[=image wwyddicon.png height=&#34;70px&#34;]]
-+ ##662E63|When Will You Die for the Last Time in My Dreams##
++++ ##662E63|When Will You Die for the Last Time in My Dreams##
 [[[wwydftltimd-hub|FOUNDER VERONICA FITZROY DEAD AT 32]]]
 In a fucked-up world, people do bad shit, fuck up, do some soul-searching and then more bad shit, with appropriate background music.
 
 [[span class=&#34;content-warning&#34;]]Abuse, gore, slurs, suicide, self image issues, homo/transphobia[[/span]]
 [[/div]]
 
-[[div class=&#34;standalone&#34; style=&#34;background: linear-gradient(#1A1B28, #242D35); color: #f4f4f4;&#34;]]
-+ ##FF8826|Death Perception##
-[[[death-perception|&#34;It felt like a memory of our mother.&#34;]]]
-Join MTF Tau-5 &#34;Samsara&#34; on this Halloween adventure, as they set out to write bad fanfiction, join a seance, summon terrible angry spirits, and maybe find out a bit more about themselves.
-[[/div]]
-
 [[div]]
 [[=image likeclockwork.png height=&#34;70px&#34;]]
-+ ##DD6BE5|...Like Clockwork##
++++ ##DD6BE5|...Like Clockwork##
 [[[like-clockwork-hub|Eventually, the answer will come for why things are the way they are.]]]
 Follow Researcher Talloran as they navigate the thin line between the real and --unreal--, chaos and order, internal and eternal, and just maybe, claw their way into reconciliation.
 
@@ -918,30 +881,37 @@ Follow Researcher Talloran as they navigate the thin line between the real and -
 [[div class=&#34;multi-grid-small&#34;]]
 [[div style=&#34;background-color: #DCF2B0; color: #3B5C0A;&#34;]]
 [[=image https://scp-wiki.wdfiles.com/local--files/theme:kiryu-labs-theme/kiryulabs.png height=&#34;70px&#34;]]
-+ ##6C7F41|Kiryu Labs##
++++ ##6C7F41|Kiryu Labs##
 [[[kiryu-labs-hub|There are 18 rooms total that make up Kiryu Labs.]]]
 Slice of life tales centered around an eccentric psychologist Lab Director, his Lancer-trope animal behavior specialist Head Assistant, and an Agent who likes knives. Featuring cameos from a butterfly biologist and a grumpy bearded dragon who lives in the break room.
 [[/div]]
 
 [[div style=&#34;background-color: #F1F5F9; color: #0E0A06; border-radius: 0; background-image: linear-gradient(to left, black, black 3px, transparent 3px), linear-gradient(to bottom, black, black 3px, transparent 3px), url(&#34;/local--files/curated-tale-series/background-flow.png&#34;), linear-gradient(to right, black, black 3px, transparent 3px); background-position: left bottom, left bottom, left bottom, left bottom; background-repeat: no-repeat, no-repeat, no-repeat, no-repeat; background-size: cover, cover, cover, cover;&#34;]]
 [[=image headericon-flow.png height=&#34;140px&#34; style=&#34;margin-bottom: -70px;&#34;]]
-+ Flow
++++ Flow
 [[[flow-hub|Most often repeated notion during creation process is a sentiment of being out of control, artists noting that their activities are guided or even straight out directed by some uncontrollable force, described very often with a term of &#34;Flow&#34;.]]]
 Stories of anartists trying to understand their own abilities and grappling with the fickleness of inspiration.
 [[/div]]
+
+[[div style=&#34;background: linear-gradient(34.77deg, #011018 -10.49%, #132934 56.89%, #011018 117.83%);
+    color: white;
+    box-shadow: 0px 1px 1.9px -4px rgba(0, 0, 0, 0.1), 0px 6px 15px -4px rgba(0, 0, 0, 0.2);
+    border-bottom: #f0a475 4px solid;
+    border-radius: 8px;&#34;]]
++++ Tales of the Mosaic
+
+[[[tales-of-the-mosaic| Our city is a picture of a thousand little worlds – a thousand little stories, each one truer than the last.]]]
+
+A series of self-contained stories, all 350-words or less, focused on a strange, otherworldly city. Beautiful and grotesque, whimsical and horrific, the tales use a lyrical prose style inspired by the oral storytelling tradition, with an emphasis on prosody and cadence.
+[[/div]]
+
 [[/div]]
 
 ++ LGBT+
 [[div class=&#34;multi-grid-small&#34;]]
-[[div style=&#34;border-radius: 2.5rem&#34; class=&#34;standalone&#34;]]
-[[=image https://scp-wiki.wdfiles.com/local--files/curated-tale-series/pfytico.png height=&#34;70px&#34;]]
-+ Penny for Your Thoughts?
-[[[penny-for-your-thoughts|And plus you know it&#39;s my lucky penny]]]
-Quirky and adorable, //Penny for Your Thoughts?// takes the format of text messaging to convey the appropriate sense of familiarity and comfort.
-[[/div]]
 
 [[div class=&#34;standalone&#34;]]
-+ Content Warning: This Is Still A Foundation Story, After All
++++ Content Warning: This Is Still A Foundation Story, After All
 [[[content-warning-this-is-still-a-foundation-story-after-all|— and it was all a matter of which corner of the Foundation you happened to find yourself in.]]]
 A story about the trans experience within the veil of the Foundation, by Athenodora.
 [[span class=&#34;content-warning&#34;]]Discussion of transphobia[[/span]]
@@ -952,87 +922,103 @@ A story about the trans experience within the veil of the Foundation, by Athenod
 [[div class=&#34;multi-grid-small&#34;]]
 [[div style=&#34;background-color: #f5f5f5; border: solid 1px black;&#34;]]
 [[=image https://scp-wiki.wdfiles.com/local--files/muckscape-megagrid-mayhem-hub/MuMeMa.png height=&#34;70px&#34;]]
-+ MUCKSCAPE / MEGAGRID / MAYHEM
++++ MUCKSCAPE / MEGAGRID / MAYHEM
 [[[muckscape-megagrid-mayhem-hub|Full of sludge, and muck, and scum.]]]
 A gripping depiction of a world gone under and the people within it, by Pedantique.
 [[/div]]
 
 [[div style=&#34;border-radius: 0; border: double 0.4rem #9F0A08; background-color: #EBDBC2; color: #262017;&#34;]]
-+ ##9F0A08|Matryoshka##
++++ ##9F0A08|Matryoshka##
 [[[matryoshka|NEUTRALIZE SCP-1041.]]]
 All the big players in the Cold  War make their move. Everyone&#39;s one wrong step away from revealing their hands.
 [[/div]]
 
 [[div style=&#34;background-color: #F4E8E8; border: solid 3px #AD275A;&#34;]]
 [[=image saffsands.png height=&#34;70px&#34;]]
-+ ##C70039|In Saffron Sands##
++++ ##C70039|In Saffron Sands##
 [[[saffronsands-hub|Humor is needed to make the drab worth getting through.]]]
 Taking the stage of a developing power, In Saffron Sands delves into the nitty gritty of how the anomalous and regular world can reflect, pull on, and intertwine with each other, in the rapidly shifting landscape of India.
+[[/div]]
+
+[[div]]
++++ Swords unto Scramjets
+[[[swords-unto-scramjets|We&#39;re real bastards. They always told us about the Coalition&#39;s bloodthirsty ways too.]]]
+The land of Cherinmark reeks of war, even as it enters an uneasy calm, held in precarious balance between the powers that be.
 [[/div]]
 [[/div]]
 
 ++ Funny
 [[div class=&#34;multi-grid-small&#34;]]
 [[div]]
-+ Joey Fucknuts
++++ Joey Fucknuts
 [[[joey-fucknuts-builds-a-flying-machine|Joey liked learning, which is why he was mayor.]]]
 This oddly touching tale series from CadaverCommander will have you smiling the whole way through.
 [[/div]]
 
 [[div]]
-+ Cack Hard
++++ Cack Hard
 [[[cack-hub |If anyone has to suffer, it&#39;s Mr. Fish.]]]
 A stunning piece of cinema and literature, told solely through cackfiction.
-[[/div]]
-[[/div]]
-
-++ Tearjerker
-[[div class=&#34;multi-grid-small&#34;]]
-[[div class=&#34;standalone&#34;]]
-+ Sometimes It&#39;s Not Funny
-[[[sometimes-it-s-not-funny|this isn&#39;t a time to calm down.]]]
-An unforgettable tale of loss, grief, anger, and the price of action by Kinchtheknifeblade.
-[[/div]]
-
-[[div class=&#34;standalone&#34;]]
-+ My Mother&#39;s Roses
-[[[my-mothers-roses|Mom was a florist, and she loved many flowers.]]]
-A simple, thought-provoking journey of a boy and his father surprising Mom for Valentine&#39;s Day, by JakdragonX.
-[[/div]]
-
-[[div class=&#34;standalone&#34;]]
-+ [[span style=&#34;background: linear-gradient(180deg, rgba(255,131,204,1) 10%, rgba(92,97,168,1) 90%); background-clip: text;-webkit-background-clip: text;color: transparent; padding: 0 1em;&#34;]]Progressive Retrograde[[/span]]
-[[[progressive-retrograde|She screamed as they pulled us into the van.]]]
-This tale tugs on the heartstrings, no doubt because of its CupidCon origins, and manages to successfully squeeze emotion from a subject that&#39;s less touched upon on the SCP wiki - romance.
 [[/div]]
 [[/div]]
 
 ++ Misc./Other
 [[div class=&#34;multi-grid-small&#34;]]
 [[div]]
-+ Tales of Anomalous Items
++++ Tales of Anomalous Items
 [[[ao-hub|Pick a single item from the log and make a tale about it.]]]
 There&#39;s more than meets the eye, even for the little things.
 [[/div]]
 
+[[/div]]
+
+++ Glimpses into the World 
+
+The following entries are not necessarily part of a series (though they may be part of a [[[canon-hub|Canon]]]), but nevertheless offer a closer look at the SCP Foundation&#39;s interconnected paradigm.
+
+@@ @@
+
+[[div class=&#34;multi-grid-small&#34;]]
 [[div class=&#34;standalone&#34;]]
-+ A Memorandum
-[[[a-memorandum|I don&#39;t think I&#39;ve told him to change the dose.]]]
-One of the best examples of subtle storytelling on the site, a must-read by Taffeta.
++++ Sometimes It&#39;s Not Funny
+[[[sometimes-it-s-not-funny|this isn&#39;t a time to calm down.]]]
+An unforgettable tale of loss, grief, anger, and the price of action by Kinchtheknifeblade.
+[[/div]]
+
+[[div style=&#34;border-radius: 2.5rem&#34; class=&#34;standalone&#34;]]
+[[=image https://scp-wiki.wdfiles.com/local--files/curated-tale-series/pfytico.png height=&#34;70px&#34;]]
++++ Penny for Your Thoughts?
+[[[penny-for-your-thoughts|And plus you know it&#39;s my lucky penny]]]
+Quirky and adorable, //Penny for Your Thoughts?// takes the format of text messaging to convey the appropriate sense of familiarity and comfort.
+[[/div]]
+
+[[div class=&#34;standalone&#34; style=&#34;background: linear-gradient(#1A1B28, #242D35); color: #f4f4f4;&#34;]]
++++ ##FF8826|Death Perception##
+[[[death-perception|&#34;It felt like a memory of our mother.&#34;]]]
+Join MTF Tau-5 &#34;Samsara&#34; on this Halloween adventure, as they set out to write bad fanfiction, join a seance, summon terrible angry spirits, and maybe find out a bit more about themselves.
 [[/div]]
 
 [[div class=&#34;standalone&#34;]]
-+ Breaching Boredom
-[[[breaching-boredom|When was the last time I felt?]]]
-Short, tense, impactful, Doctor Fullham packs a punch with this tale.
++++ The Curse of Mount Abraxas
+[[[The Curse of Mount Abraxas|&#34;You know, when they told me this joint was cursed, I didn&#39;t believe it.&#34;]]]
+Many things are buried beneath Area-14, and Mount Abraxas has witnessed them all.
 [[/div]]
+
+[[div class=&#34;standalone&#34;]]
++++ it is in your spirit or it is nowhere
+[[[spirit-or-nowhere|This isn’t why I’m in the Serpent’s Hand now. But it isn’t not why, either.]]]
+A short story about community networks, and what leads a person to join a revolution.
+[[/div]]
+
 [[/div]]
 
 -----
 
-+ See also
-* [https://scp-wiki.wikidot.com/series-archive Series Archive]
-* [https://scp-wiki.wikidot.com/user-curated-lists User-Curated Lists]
+[[div class=&#34;sep-h2&#34;]]
+++ See also
+[[/div]]
+* [[[series-archive|Series Archive]]]
+* [[[user-curated-lists|User-Curated Lists]]]
 * [[[art:curated-tale-series-archive|]]]
 
 [!-- Notice: CSS below.
@@ -1100,7 +1086,7 @@ You have been warned. --]
 
 [[include :scp-wiki:theme:bedrock]]
 [[module css]]
-@import url(&#39;https://fonts.googleapis.com/css2?family=Special+Elite&amp;display=swap&#39;);
+@import url(&#39;https://scp-wiki.wikidot.com/local--files/curated-tale-series/css2&#39;);
 :root {
     --basalt-overtone: 40,40,40;
     --basalt-undertone: 248,60,55;
@@ -1161,7 +1147,7 @@ body {
     font-size: 105%;
 }
 .tale-desc h4 {
-    text-align: right;
+    text-align: end;
     font-weight: normal;
     font-style: italic;
 }
@@ -1178,26 +1164,26 @@ body {
     box-shadow: 0px 0px 7px rgba(0,0,0,0.3);
     transition: 0.34s ease-in-out transform, 0.38s ease-in-out box-shadow;
 }
-.tale-cover img:hover {
+.tale-cover img:is(:hover,:focus-within) {
   transform:
     perspective(75em)
     rotateY(25deg);
   box-shadow: -2px 0px 8px rgba(0,0,0,0.2);
 }
-.display-container.second .tale-cover img:hover {
+.display-container.second .tale-cover img:is(:hover,:focus-within) {
   transform:
     perspective(75em)
     rotateY(-25deg);
   box-shadow: 2px 0px 8px rgba(0,0,0,0.2);
 }
 
-.tale-desc h1, .multi-grid div h1, .multi-grid-small div h1 {
+:is(.tale-desc, .multi-grid div, .multi-grid-small div) h3 {
     font-size: 2em;
     text-align: center;
     letter-spacing: -0.045em;
 }
-.multi-grid div h1 { font-size: 1.25em; }
-.multi-grid-small div h1 { font-size: 1.15em; }
+.multi-grid div h3 { font-size: 1.25em; }
+.multi-grid-small div h3 { font-size: 1.15em; }
 
 @media (max-width: 700px) {
     .display-container, .display-container.second {
@@ -1211,7 +1197,7 @@ body {
         border-top: solid 0.1rem #333;
         margin: 0; margin-top: 1rem;
     }
-    .tale-cover img:hover, .display-container.second .tale-cover img:hover {
+    .tale-cover img::is(:hover,:focus-within), .display-container.second .tale-cover img:is(:hover,:focus-within) {
         transform: none;
     }
 }
@@ -1232,9 +1218,8 @@ body {
     box-sizing: border-box;
 }
 
-#page-content h2 {
-    text-align: right;
-}
+#page-content h2 { text-align: end; }
+#page-content .sep-h2 h2 { text-align: start; font-size: 2.25em; }
 
 .multi-grid-small {
     display: grid;
@@ -1266,8 +1251,8 @@ body {
 }
 .multi-grid-small &gt; div a { margin-top: -0.4rem; }
 
-.multi-grid &gt; div a::before, .multi-grid &gt; div a::after,
-.multi-grid-small &gt; div a::before, .multi-grid-small &gt; div a::after {
+:is(.multi-grid, .multi-grid-small) &gt; div a::before,
+:is(.multi-grid, .multi-grid-small) &gt; div a::after {
     content: &#34; &#34;;
     display: block;
     width: 100%;
@@ -1275,8 +1260,8 @@ body {
     background-color: #fff;
     mix-blend-mode: difference;
 }
-.multi-grid &gt; div a::before, .multi-grid-small &gt; div a::before { margin-bottom: 0.4rem; }
-.multi-grid &gt; div a::after, .multi-grid-small &gt; div a::after { margin-top: 0.45rem; }
+:is(.multi-grid, .multi-grid-small) &gt; div a::before { margin-bottom: 0.4rem; }
+:is(.multi-grid, .multi-grid-small) &gt; div a::after { margin-top: 0.45rem; }
 
 div.standalone::before {
     content: &#34;Standalone&#34;;
@@ -1285,7 +1270,7 @@ div.standalone::before {
     background-color: rgb(var(--basalt-undertone));
     padding: 4px; padding-left: 6px; padding-right: 7px;
     position: absolute;
-    top: -0.55rem; left: -0.3rem;
+    bottom: calc(100% - .875rem); left: -0.3rem;
     border-radius: 0 4px 4px 0;
 }
 div.standalone::after {
@@ -1295,7 +1280,7 @@ div.standalone::after {
     display: block;
     width: 2rem; height: 2rem;
     position: absolute;
-    top: 1.05rem; left: -0.3rem;
+    top: .875rem; left: -0.3rem;
     border-radius: 0 4px 4px 0;
     filter: brightness(0.625);
     z-index: -2;
@@ -1364,7 +1349,7 @@ div.standalone::after {
 
 [[include :scp-wiki:component:license-box
 author=EstrellaYoshte, HarryBlank, JakdragonX, Oboebandgeek99, TopDownUnder, and Yossipossi]]
-=====
+
 &gt; **Filename:** background-conspiracy.jpg
 &gt; **Author:** Ekaterina Sysoeva
 &gt; **License:** CC0 1.0
@@ -1395,7 +1380,7 @@ author=EstrellaYoshte, HarryBlank, JakdragonX, Oboebandgeek99, TopDownUnder, and
 &gt; **AUTHOR:** NASA, Hui Yang University of Illinois ODNursery of New Stars
 &gt; **LICENSE:** Public Domain
 &gt; **SOURCE:** https://commons.wikimedia.org/wiki/File:Nursery_of_New_Stars_-_GPN-2000-000972.jpg
-=====
+
 [[include :scp-wiki:component:license-box-end]]</textarea></pre>
   </div>
 
@@ -1403,7 +1388,7 @@ author=EstrellaYoshte, HarryBlank, JakdragonX, Oboebandgeek99, TopDownUnder, and
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.231701.</em>
+    <em>Last updated 2026-04-17 00:56:53.074960.</em>
   
 </div>
 </body>

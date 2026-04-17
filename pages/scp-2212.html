@@ -86,7 +86,27 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>image</code></pre>
+          <pre><code>scp-image-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>block-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-image-caption</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-image-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>block-right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-image-caption</code></pre>
         </li>
       
         <li>
@@ -103,29 +123,18 @@
 [[html]]
 &lt;script src=&#34;https://cdn.jsdelivr.net/npm/jquery@1.11.3/dist/jquery.min.js&#34;&gt;&lt;/script&gt;
 &lt;style&gt;
-body{
-    font-family: Verdana, Arial, sans-serif;
-    font-size: 0.80em;
-    line-height: 141%;
-}
-
-blockquote{
-    background-color: rgb(241,241,241);
-    border-width: 1px;
-    border-color: rgb(135,135,135);
-    border-style: dashed;
-    padding: 3px 10px 10px;
-}
+@import url(https://d3g0gp89917ko0.cloudfront.net/v--edac79f846ba/common--theme/base/css/style.css);
+@import url(https://cdn.scpwiki.com/theme/en/sigma/css/sigma.css);
 &lt;/style&gt;
 
 &lt;blockquote&gt;
     &lt;span id=&#34;Instructions&#34;&gt;&lt;/span&gt;
     &lt;input type=&#34;text&#34; id=&#34;password&#34; /&gt; &lt;br&gt;
     &lt;button type=&#34;submit&#34; id=&#34;submit&#34;&gt;Check password&lt;/button&gt;
-    &lt;input type=button id=button value=&#34;Reset&#34; /&gt;
+    &lt;input type=button id=button value=&#34;Reset&#34; /&gt;&lt;br&gt;&lt;br&gt;
 &lt;/blockquote&gt;
 
-&lt;div id=&#34;PageImage&#34; style=&#34;float:right; margin:0 2em 1em 2em; width:300px; border:0;&#34;&gt;&lt;/div&gt;
+&lt;div id=&#34;PageImage&#34;&gt;&lt;/div&gt;
 &lt;p&gt;&lt;b&gt;Item #:&lt;/b&gt; SCP-2212&lt;/p&gt;
 &lt;span id=&#34;Class&#34;&gt;&lt;/span&gt;
 &lt;span id=&#34;Containment&#34;&gt;&lt;/span&gt;
@@ -209,8 +218,8 @@ function adjustOverview(){
     $(&#34;#Instructions&#34;).html(solStrings[numSolved]);
 }
 
-var imagePuzzleUnsolved = &#39;&lt;table style=&#34;table-layout:fixed; width: 300px; height:300px; border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; border-collapse: collapse;&#34;&gt;&lt;tr style=&#34;height: 300px&#34;&gt;&lt;td colspan=&#34;2&#34; style=&#34;background-color: rgb(100,0,0);&#34;&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th colspan=&#34;2&#34; style=&#34;border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; background-color: rgb(234,234,234);&#34;&gt;&lt;sup&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-image&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/sup&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/table&gt;&#39;;
-var imagePuzzleSolved = &#39;&lt;table style=&#34;border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; border-collapse: collapse;&#34;&gt;&lt;tr&gt;&lt;td colspan=&#34;2&#34;&gt;&lt;img src=&#34;https://scp-wiki.wdfiles.com/local--files/scp-2212/2212.png&#34; width=&#34;300px&#34; alt=&#34;SCP-2212.png&#34; class=&#34;image&#34; /&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;th colspan=&#34;2&#34; style=&#34;border-width: 1px; border-color: rgb(117, 117, 117); border-style: solid; background-color: rgb(234,234,234);&#34;&gt;&lt;sup&gt;Attempted reconstruction of image of SCP-2212, in containment&lt;/sup&gt;&lt;/th&gt;&lt;/tr&gt;&lt;/table&gt;&#39;;
+var imagePuzzleUnsolved = &#39;&lt;div class=&#34;scp-image-block block-right&#34;style=&#34;width:300px&#34;&gt;&lt;div style=&#34;background:#640000;height:300px&#34;&gt;&lt;/div&gt;&lt;div class=&#34;scp-image-caption&#34;&gt;&lt;p&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-image&#34;target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
+var imagePuzzleSolved = &#39;&lt;div class=&#34;scp-image-block block-right&#34;style=&#34;width:300px&#34;&gt;&lt;img src=&#34;https://scp-wiki.wdfiles.com/local--files/scp-2212/2212.png&#34;alt=&#34;SCP-2212.png&#34;&gt;&lt;div class=&#34;scp-image-caption&#34;&gt;&lt;p&gt;Attempted reconstruction of image of SCP-2212, in containment&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&#39;;
 function handleImagePuzzle(){
     if(docCookies.getItem(&#34;image&#34;) == &#34;solved&#34;){
         $(&#34;#PageImage&#34;).html(imagePuzzleSolved);
@@ -264,8 +273,8 @@ function handleInterviewPuzzle(){
     }
 }
 
-var crossPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Cross-Tests:&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-cross-test-log&#34; target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/blockquote&gt;&#39;
-var crossPuzzleSolved = &#39;&lt;p&gt;&lt;b&gt;Cross-Tests:&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;b&gt;Experiment 2212-1220&lt;/b&gt;&lt;br&gt;&lt;b&gt;Date: &lt;/b&gt;September 5, 2016&lt;br&gt;&lt;b&gt;Head Researchers: &lt;/b&gt;Dr. Luis Ricardo&lt;/blockquote&gt;&#39;
+var crossPuzzleUnsolved = &#39;&lt;p&gt;&lt;b&gt;Cross-Tests:&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;a href=&#34;https://scp-wiki.wikidot.com/2212-archival-cross-test-log&#34;target=&#34;_blank&#34;&gt;[MASSIVE DATABASE CORRUPTION]&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&#39;
+var crossPuzzleSolved = &#39;&lt;p&gt;&lt;b&gt;Cross-Tests:&lt;/b&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;&lt;b&gt;Experiment 2212-1220&lt;/b&gt;&lt;/p&gt;&lt;p&gt;&lt;b&gt;Date:&lt;/b&gt; September 5, 2016&lt;/p&gt;&lt;p&gt;&lt;b&gt;Head Researchers:&lt;/b&gt; Dr. Luis Ricardo&lt;/p&gt;&lt;/blockquote&gt;&#39;
 function handleCrossPuzzle(){
     if(docCookies.getItem(&#34;cross&#34;) == &#34;solved&#34;){
         $(&#34;#CrossTest&#34;).html(crossPuzzleSolved);
@@ -345,8 +354,6 @@ $(document).ready(function(){
 &lt;/script&gt;
 [[/html]]
 
-[[footnoteblock]]
-
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
 [[=]]
 &lt;&lt; [[[SCP-2211]]] | SCP-2212 | [[[SCP-2213]]] &gt;&gt;
@@ -354,7 +361,6 @@ $(document).ready(function(){
 [[/div]]
 
 [[include :scp-wiki:component:license-box]]
-=====
 &gt; **Filename:** 2212.png
 &gt; **Author:** Anaxagoras
 &gt; **License:** CC BY-SA 3.0
@@ -371,8 +377,6 @@ $(document).ready(function(){
 &gt; **Author:** [[*user Anaxagoras]]
 &gt; **License:** CC BY-SA 3.0
 &gt; **Source Link:** [[[http://scp-wiki.wikidot.com/2212-archival-image|SCP Wiki]]]
-
-=====
 [[include :scp-wiki:component:license-box-end]]</textarea></pre>
   </div>
 
@@ -380,7 +384,7 @@ $(document).ready(function(){
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:38.304465.</em>
+    <em>Last updated 2026-04-17 00:56:55.987238.</em>
   
 </div>
 </body>

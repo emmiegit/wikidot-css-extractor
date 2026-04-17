@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>SCP-9240</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">SCP-9240</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/scp-9240" target="_blank">SCP-9240</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>#page-content {
+  padding-block: 0;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+.hover-opacity-div {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hover-opacity-div:hover {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+
+.hover-text {
+  display: inline-block;
+  position: relative;
+  width: max-content;
+}
+
+.hover-text .text-default,
+.hover-text .text-hover {
+  display: block;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.hover-text .text-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center; /* Center the shorter text */
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hover-text:hover .text-default {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hover-text:hover .text-hover {
+  opacity: 1;
+  visibility: visible;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>#page-title {
+display: none;
+}
+
+.meta-title::after {
+  display: none;
+}
+
+.meta-title &gt; p {  
+  margin: 0;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+h1 { font-size: 1.5rem; }
+
+h2 { font-size: 1.25rem; }
+
+h3 { font-size: 1rem; }
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+.bar {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  white-space: nowrap; /* prevents wrapping, just in case */
+  margin-right: auto;  /* pushes everything else away to the right */
+}
+
+.right {
+  margin: 0 auto;       /* centers this in the remaining space */
+}
+
+.header-trigger {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.target {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.header-trigger:hover + .target {
+  opacity: 1;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+/* Hide all by default */
+.text-small-pc,
+.text-large-pc,
+.text-mobile-landscape,
+.text-mobile-portrait {
+  display: none;
+}
+
+/* Small PC: max 650px, desktop pointer */
+@media only screen and (max-width: 650px) and (pointer: fine) and (hover: hover) {
+  .text-small-pc {
+    display: block;
+  }
+}
+
+/* Large PC: above 651px, desktop pointer */
+@media only screen and (min-width: 651px) and (pointer: fine) and (hover: hover) {
+  .text-large-pc {
+    display: block;
+  }
+}
+
+/* Mobile Portrait */
+@media only screen and (max-device-width: 767px) and (orientation: portrait) and (pointer: coarse) {
+  .text-mobile-portrait {
+    display: block;
+  }
+}
+
+/* Mobile Landscape */
+@media only screen and (max-device-height: 767px) and (orientation: landscape) and (pointer: coarse) {
+  .text-mobile-landscape {
+    display: block;
+  }
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+.trigger:hover {
+  text-shadow:
+    0 0 5px rgb(255,48,48), /* First shadow layer (subtle glow) */
+    0 0 10px rgb(255,48,48) /* Second shadow layer (medium glow) */
+}
+
+.trigger:hover ~ .basic {
+  visibility: visible;
+  opacity: 1;
+}
+
+.basic {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  z-index: 20; /* Higher than the trigger&#39;s z-index */
+  
+  --margin-tb: 0px;
+  --margin-rl: 0px;
+  --bubble-width: 100%;
+  --transition-time: 1s;
+    
+  background: #f0f0f0;
+  color: #333;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+
+
+.trigger &gt; p {
+  margin: 0;
+  padding: 0;
+}
+
+.dialogue-box {
+  width: 100%;
+  position: relative;
+  
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+  grid-template-rows: repeat(3, min-content);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-areas:
+    &#34;tl tc tr&#34;
+    &#34;. trigger .&#34;
+    &#34;bl bc br&#34;;
+}
+
+.tl {
+  grid-area: tl;
+  position: absolute;
+  bottom:0;
+  right:0;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+.tc {
+  grid-area: tc;
+  position: absolute;
+  bottom:0;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+.tr {
+  grid-area: tr;
+  position: absolute;
+  bottom:0;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+
+.trigger {
+  padding: 1vh 0;
+
+  grid-area: trigger;
+  text-align: center;
+  cursor: pointer;  
+  z-index: 10;
+}
+
+.bl {
+  grid-area: bl;
+  position: absolute;
+  right:0;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+.bc {
+  grid-area: bc;
+  position: absolute;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+.br {
+  grid-area: br;
+  position: absolute;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+
+.tc, .bc {
+  left: 50%;
+  transform: translateX(-50%);
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>.image-bubble {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+  z-index: 20;
+}
+
+.image-bubble img {
+  max-width: 60%;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.image-bubble.mx-image img {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.trigger:hover ~ .image-bubble {
+  visibility: visible;
+  opacity: 1;
+}</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+.trigger:hover ~ .amelia {
+  visibility: visible;
+  opacity: 1;
+}
+
+.amelia {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  z-index: 20; /* Higher than the trigger&#39;s z-index */
+  
+  --margin-tb: 0px;
+  --margin-rl: 0px;
+  --bubble-width: 100%;
+  --transition-time: 1s;
+  
+  background-color: rgba(11, 57, 84);
+  color: rgb(199, 255, 252);
+  border-radius: 2px;  
+  text-align: center;
+}
+
+.trigger:hover ~ .rosenaic {
+  visibility: visible;
+  opacity: 1;
+}
+
+.rosenaic {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  z-index: 20; /* Higher than the trigger&#39;s z-index */
+  
+  --margin-tb: -1rem;
+  --margin-rl: 0px;
+  --bubble-width: 100%;
+  --transition-time: 1s;
+  
+  background-color: rgba(0, 0, 0);
+  color: rgb(78, 154, 6);
+  border-radius: 2px;  
+  text-align: center;
+  
+  padding: 1.5rem 0px;
+  
+  clip-path: polygon(
+    20px 1rem,
+    100% 1rem,
+    100% calc(100% - 1rem),
+    calc(50% + 20px) calc(100% - 1rem),
+    50% 100%,
+    0% 100%,
+    0 30px
+  );
+}
+
+.trigger:hover ~ .mother  {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mother {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  z-index: 20; /* Higher than the trigger&#39;s z-index */
+  
+  --margin-tb: 0px;
+  --margin-rl: 0px;
+  --bubble-width: 100%;
+  --transition-time: 1s;
+  
+  background-color: rgba(46, 24, 52);
+  color: rgb(204, 153, 1);
+  border-radius: 6px;  
+  text-align: center;
+  
+  animation: ge-anim03-paths 5s step-end infinite;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+:root {
+    --linkColour: #FFF;
+    --barColour: #0C2436;
+}
+
+.info-container {
+  content: &#34; &#34;;
+  width: 100%;
+  text-align: center;
+  bottom: 2em;
+  margin-bottom: 1em;
+}
+
+.info-container h1 {
+  text-align: center;
+}
+
+.info-container .collapsible-block-folded,
+.info-container .collapsible-block-unfolded-link {
+  -webkit-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3C!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 628 18&#39; xml:space=&#39;preserve&#39;%3E%3Cpolygon fill=&#39;%23B2B2B2&#39; points=&#39;628.3,0 0,0 0,5.3 243.6,5.3 268.1,18.2 360,18.3 384.7,5.3 628.3,5.3 &#39;/%3E%3C/svg%3E%0A&#34;);
+  
+  mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3C!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 628 18&#39; xml:space=&#39;preserve&#39;%3E%3Cpolygon fill=&#39;%23B2B2B2&#39; points=&#39;628.3,0 0,0 0,5.3 243.6,5.3 268.1,18.2 360,18.3 384.7,5.3 628.3,5.3 &#39;/%3E%3C/svg%3E%0A&#34;);
+  
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: top center;
+  mask-position: top center;
+  background: var(--barColour);
+}
+
+.info-container .collapsible-block-folded {
+    display: block;
+    margin: 0 auto;
+    height: 1.5em;
+    width: 100%;
+}
+
+.translation_block &gt; p {
+    margin: 1em 2em 0 2em;
+}
+
+.info-container .collapsible-block-folded .collapsible-block-link, .info-container .collapsible-block-link {
+  -webkit-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3C!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 103 205.3&#39; xml:space=&#39;preserve&#39;%3E%3Cg%3E%3Cg%3E%3Cpath fill=&#39;%23FFFFFF&#39; d=&#39;M4.2,75.6c24.1-2.6,48.2-5.2,74.9-8.1c0,15.6,0,29.4,0,43.3c0,20.8,0.4,41.6-0.2,62.3 c-0.3,10.5,4,16.3,13.4,20c4,1.5,7.1,5.3,10.6,8c-0.8,1.4-1.6,2.8-2.4,4.3c-32.4,0-64.8,0-97.3,0c-0.9-1.1-1.7-2.3-2.6-3.4 c3.3-2.7,6.2-7,9.9-7.8c11.4-2.3,15.3-9,15.2-19.9c-0.2-20.3-0.6-40.5,0.1-60.8c0.4-11.8-4.4-18.1-15-22.3c-4.4-1.8-7.4-7.2-11-11 C1.4,78.6,2.8,77.1,4.2,75.6z&#39;/%3E%3Cpath fill=&#39;%23FFFFFF&#39; d=&#39;M79.6,27c0,16.3-11,26.9-27.5,26.7c-16.5-0.2-26.2-9.9-26.2-26c0-17,10.1-27.7,26.5-27.7 C68.6-0.1,79.6,10.8,79.6,27z&#39;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A&#34;);
+    
+  mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3C!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 103 205.3&#39; xml:space=&#39;preserve&#39;%3E%3Cg%3E%3Cg%3E%3Cpath fill=&#39;%23FFFFFF&#39; d=&#39;M4.2,75.6c24.1-2.6,48.2-5.2,74.9-8.1c0,15.6,0,29.4,0,43.3c0,20.8,0.4,41.6-0.2,62.3 c-0.3,10.5,4,16.3,13.4,20c4,1.5,7.1,5.3,10.6,8c-0.8,1.4-1.6,2.8-2.4,4.3c-32.4,0-64.8,0-97.3,0c-0.9-1.1-1.7-2.3-2.6-3.4 c3.3-2.7,6.2-7,9.9-7.8c11.4-2.3,15.3-9,15.2-19.9c-0.2-20.3-0.6-40.5,0.1-60.8c0.4-11.8-4.4-18.1-15-22.3c-4.4-1.8-7.4-7.2-11-11 C1.4,78.6,2.8,77.1,4.2,75.6z&#39;/%3E%3Cpath fill=&#39;%23FFFFFF&#39; d=&#39;M79.6,27c0,16.3-11,26.9-27.5,26.7c-16.5-0.2-26.2-9.9-26.2-26c0-17,10.1-27.7,26.5-27.7 C68.6-0.1,79.6,10.8,79.6,27z&#39;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A&#34;);
+  
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-size: 0.5em;
+  mask-size: 0.5em;
+  -webkit-mask-position: top center;
+  mask-position: top center;
+  mask-position-y: 3px;
+  -webkit-mask-position-y: 3px;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  background: var(--linkColour);
+  text-decoration: none;
+}
+
+.info-container .collapsible-block-unfolded-link {
+  display: block;
+  margin: 0 auto;
+  height: 1.5em;
+  width: 100%;
+}
+
+.info-container .collapsible-block-unfolded {
+  border: 1px solid #BBB;
+  border-top: none;
+  background: #8495a0;
+}
+
+.info-container .collapsible-block-content {
+  text-align: left;
+  padding-bottom: 0px;
+}
+
+.info-container .collapsible-block-content div {
+  margin: 0em;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>:root {
+    --linkColour: #FFF;
+    --barColour: #0C2436;
+}
+
+#breadcrumbs{
+  margin: auto;
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+#page-title {
+  position: relative;
+  text-align: center;
+  border-bottom: none;
+  margin-bottom: 0;
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: none</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>flex-wrap: wrap; display: flex; justify-content: space-between;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>align-self: center;</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:preview" target="_blank"><code>:scp-wiki:component:preview</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:preview.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:croqstyle" target="_blank"><code>:scp-wiki:component:croqstyle</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:croqstyle.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:betterfootnotes" target="_blank"><code>:scp-wiki:component:betterfootnotes</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:betterfootnotes.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:glitch-elements" target="_blank"><code>:scp-wiki:component:glitch-elements</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:glitch-elements.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>:scp-wiki:component:ratio-bar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:ratio-bar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/info:start" target="_blank"><code>:scp-wiki:info:start</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/info:start.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:ratio-bar" target="_blank"><code>:scp-wiki:component:ratio-bar</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:ratio-bar.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/info:end" target="_blank"><code>:scp-wiki:info:end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/info:end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>crom-thumbnail</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>meta-title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>footer-wikiwalk-nav</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>=====
+[[include :scp-wiki:component:preview text=Hacking Into an Overwatch File Directory... Who Could Go Wrong?]]
+=====
+
+[!--
+Direct links to all fragment pages:
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-00  - &#34;Device Test&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-01  - &#34;Exclusionary Warning&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-02  - &#34;File Directory&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-03  - &#34;Preliminary ADA&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-04  - &#34;Level-3 ADA&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-05  - &#34;Personnel File&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-06  - &#34;Corrupted Directory&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-07  - &#34;Mother&#39;s Test&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-08  - &#34;Mother&#39;s Goal&#34; (Easter Egg Page)
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-09  - &#34;Full-Access Directory&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-10  - &#34;Level-4 ADA&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-11  - &#34;Full-Access ADA &amp; Personnel File&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-12  - &#34;Level-6 Council Records&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-13  - &#34;First Boss&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-14  - &#34;Through the Way&#34;
+https://scp-wiki.wikidot.com/fragment:9000contestfiretamer-15  - &#34;Full Research Notes&#34;
+
+The numbers below are approximate values, and should in no way be used as a benchmark when translating. Additionally, due to the custom formatting and html elements, it is advised to double check the full document on both a PC and Phone.
+
+Offset 0 - Device Test - 350 words
+Offset 1 - Exclusionary Warning - 515 Words
+Offset 2 - File Directory - 1,059 Words
+Offset 3 - Preliminary ADA - 3,665 Words
+Offset 4 - Level-3 ADA - 3,080 Words
+Offset 5 - Personnel File - 2,2060 Words
+Offset 6 - Corrupted Directory - 560 Words
+Offset 7 - Mother&#39;s Test - Difficult to Count up
+Offset 8 - Mother&#39;s Goal - 560 Words
+Offset 9 - Full-Access File Directory - 570 Words
+Offset 10 - Level-4 ADA - 1,920 Words
+Offset 11 - Full-Access ADA - 2,315 Words
+Offset 12 - Level-6 Council Records - 0 Words
+Offset 13 - First Boss - 360 Words
+Offset 14 - Through the Way - 220 Words
+Offset 15 - Full-Research Notes - 4,340 Words
+--]
+
+[[include :scp-wiki:theme:basalt wide=a|hidetitle=a|acs-itemnum=a]]
+
+[[include :scp-wiki:component:croqstyle]]
+
+[[include :scp-wiki:component:betterfootnotes]]
+
+[[include :scp-wiki:component:glitch-elements]]
+
+[[include :scp-wiki:component:ratio-bar base=-- |ex=--]]
+
+
+
+[[image https://scp-wiki.wikidot.com/local--files/9000contestfiretamer/Mother_Mad.jpg class=&#34;crom-thumbnail&#34; style=&#34;display: none&#34;]]
+
+
+
+[[module css]]
+#page-content {
+  padding-block: 0;
+}
+[[/module]]
+
+
+
+[[module css]]
+
+.hover-opacity-div {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.hover-opacity-div:hover {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+
+.hover-text {
+  display: inline-block;
+  position: relative;
+  width: max-content;
+}
+
+.hover-text .text-default,
+.hover-text .text-hover {
+  display: block;
+  white-space: nowrap;
+  transition: opacity 0.3s ease;
+}
+
+.hover-text .text-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  text-align: center; /* Center the shorter text */
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hover-text:hover .text-default {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hover-text:hover .text-hover {
+  opacity: 1;
+  visibility: visible;
+}
+
+[[/module]]
+
+
+
+[[module css]]
+#page-title {
+display: none;
+}
+
+.meta-title::after {
+  display: none;
+}
+
+.meta-title &gt; p {  
+  margin: 0;
+}
+[[/module]]
+
+[[div style=&#34;flex-wrap: wrap; display: flex; justify-content: space-between;&#34;]]
+
+[[div class=&#34;meta-title&#34;]]
+SCP-XXXX File Directory
+[[/div]]
+
+[[div style=&#34;align-self: center;&#34;]]
+[[include :scp-wiki:info:start]]
+**SCP-XXXX:** The Server Screams
+**Author:** [[*user FireTamer]]
+
+**Word Count:** This article has an approximate word count of 22-24K words. Fair warning as so many offsets can hide the length quite well.
+
+**Content Warning:** Emotional &amp; psychological abuse, Sadistic behavior, Manipulative Antagonist, Light Gore (Passing Comment), Strong Language (Expletives).
+
+**Epilepsy Warning:** If you as the reader have a condition such as photosensitive epilepsy or are reading this work around individuals with such a condition, it is highly advised to turn off animation effects for Windows, or turn on the &#34;Reduced Motion&#34; setting for Mac. Fast changing, flickering, and flashing visuals are present in this work.
+
+**Credits:**
+* Forked Version of the &#34;Info Bar&#34; component for the &#34;Directory Menu&#34;. https://www.wikidot.com/user:info/ayers
+
+[[include :scp-wiki:component:ratio-bar pie=--]]
+
+[[include :scp-wiki:info:end]]
+[[/div]]
+
+[[/div]]
+
+
+
+[[module css]]
+
+h1 { font-size: 1.5rem; }
+
+h2 { font-size: 1.25rem; }
+
+h3 { font-size: 1rem; }
+
+[[/module]]
+
+
+
+
+
+
+
+[[module css]]
+
+.bar {
+  display: flex;
+  align-items: center;
+}
+
+.left {
+  white-space: nowrap; /* prevents wrapping, just in case */
+  margin-right: auto;  /* pushes everything else away to the right */
+}
+
+.right {
+  margin: 0 auto;       /* centers this in the remaining space */
+}
+
+.header-trigger {
+  display: inline-block;
+  margin-right: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.target {
+  display: inline-block;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.header-trigger:hover + .target {
+  opacity: 1;
+}
+
+[[/module]]
+
+
+
+
+
+
+
+[[module css]]
+
+/* Hide all by default */
+.text-small-pc,
+.text-large-pc,
+.text-mobile-landscape,
+.text-mobile-portrait {
+  display: none;
+}
+
+/* Small PC: max 650px, desktop pointer */
+@media only screen and (max-width: 650px) and (pointer: fine) and (hover: hover) {
+  .text-small-pc {
+    display: block;
+  }
+}
+
+/* Large PC: above 651px, desktop pointer */
+@media only screen and (min-width: 651px) and (pointer: fine) and (hover: hover) {
+  .text-large-pc {
+    display: block;
+  }
+}
+
+/* Mobile Portrait */
+@media only screen and (max-device-width: 767px) and (orientation: portrait) and (pointer: coarse) {
+  .text-mobile-portrait {
+    display: block;
+  }
+}
+
+/* Mobile Landscape */
+@media only screen and (max-device-height: 767px) and (orientation: landscape) and (pointer: coarse) {
+  .text-mobile-landscape {
+    display: block;
+  }
+}
+
+[[/module]]
+
+
+
+
+
+[[module css]]
+
+.trigger:hover {
+  text-shadow:
+    0 0 5px rgb(255,48,48), /* First shadow layer (subtle glow) */
+    0 0 10px rgb(255,48,48) /* Second shadow layer (medium glow) */
+}
+
+.trigger:hover ~ .basic {
+  visibility: visible;
+  opacity: 1;
+}
+
+.basic {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  z-index: 20; /* Higher than the trigger&#39;s z-index */
+  
+  --margin-tb: 0px;
+  --margin-rl: 0px;
+  --bubble-width: 100%;
+  --transition-time: 1s;
+    
+  background: #f0f0f0;
+  color: #333;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  text-align: left;
+}
+
+
+
+.trigger &gt; p {
+  margin: 0;
+  padding: 0;
+}
+
+.dialogue-box {
+  width: 100%;
+  position: relative;
+  
+  display: grid;
+  grid-template-columns: 35% 30% 35%;
+  grid-template-rows: repeat(3, min-content);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  grid-template-areas:
+    &#34;tl tc tr&#34;
+    &#34;. trigger .&#34;
+    &#34;bl bc br&#34;;
+}
+
+.tl {
+  grid-area: tl;
+  position: absolute;
+  bottom:0;
+  right:0;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+.tc {
+  grid-area: tc;
+  position: absolute;
+  bottom:0;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+.tr {
+  grid-area: tr;
+  position: absolute;
+  bottom:0;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+
+.trigger {
+  padding: 1vh 0;
+
+  grid-area: trigger;
+  text-align: center;
+  cursor: pointer;  
+  z-index: 10;
+}
+
+.bl {
+  grid-area: bl;
+  position: absolute;
+  right:0;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+.bc {
+  grid-area: bc;
+  position: absolute;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+.br {
+  grid-area: br;
+  position: absolute;
+  
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+}
+
+.tc, .bc {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+[[/module]]
+
+
+
+
+
+[[module css]]
+.image-bubble {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: opacity var(--transition-time);
+  width: var(--bubble-width);
+  margin: var(--margin-tb) var(--margin-rl);
+  z-index: 20;
+}
+
+.image-bubble img {
+  max-width: 60%;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.image-bubble.mx-image img {
+  max-width: 100%;
+  width: 100%;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+.trigger:hover ~ .image-bubble {
+  visibility: visible;
+  opacity: 1;
+}
+[[/module]]
+
+
+
+
+
+
+[[module css]]
+
+.trigger:hover ~ .amelia {
+  visibility: visible;
+  opacity: 1;
+}
+
+.amelia {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  z-index: 20; /* Higher than the trigger&#39;s z-index */
+  
+  --margin-tb: 0px;
+  --margin-rl: 0px;
+  --bubble-width: 100%;
+  --transition-time: 1s;
+  
+  background-color: rgba(11, 57, 84);
+  color: rgb(199, 255, 252);
+  border-radius: 2px;  
+  text-align: center;
+}
+
+.trigger:hover ~ .rosenaic {
+  visibility: visible;
+  opacity: 1;
+}
+
+.rosenaic {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  z-index: 20; /* Higher than the trigger&#39;s z-index */
+  
+  --margin-tb: -1rem;
+  --margin-rl: 0px;
+  --bubble-width: 100%;
+  --transition-time: 1s;
+  
+  background-color: rgba(0, 0, 0);
+  color: rgb(78, 154, 6);
+  border-radius: 2px;  
+  text-align: center;
+  
+  padding: 1.5rem 0px;
+  
+  clip-path: polygon(
+    20px 1rem,
+    100% 1rem,
+    100% calc(100% - 1rem),
+    calc(50% + 20px) calc(100% - 1rem),
+    50% 100%,
+    0% 100%,
+    0 30px
+  );
+}
+
+.trigger:hover ~ .mother  {
+  visibility: visible;
+  opacity: 1;
+}
+
+.mother {
+  visibility: hidden;
+  opacity: 0;
+  max-width: 100%;
+  word-wrap: break-word;
+  z-index: 20; /* Higher than the trigger&#39;s z-index */
+  
+  --margin-tb: 0px;
+  --margin-rl: 0px;
+  --bubble-width: 100%;
+  --transition-time: 1s;
+  
+  background-color: rgba(46, 24, 52);
+  color: rgb(204, 153, 1);
+  border-radius: 6px;  
+  text-align: center;
+  
+  animation: ge-anim03-paths 5s step-end infinite;
+}
+
+[[/module]]
+
+
+
+
+
+
+[[module css]]
+
+:root {
+    --linkColour: #FFF;
+    --barColour: #0C2436;
+}
+
+.info-container {
+  content: &#34; &#34;;
+  width: 100%;
+  text-align: center;
+  bottom: 2em;
+  margin-bottom: 1em;
+}
+
+.info-container h1 {
+  text-align: center;
+}
+
+.info-container .collapsible-block-folded,
+.info-container .collapsible-block-unfolded-link {
+  -webkit-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3C!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 628 18&#39; xml:space=&#39;preserve&#39;%3E%3Cpolygon fill=&#39;%23B2B2B2&#39; points=&#39;628.3,0 0,0 0,5.3 243.6,5.3 268.1,18.2 360,18.3 384.7,5.3 628.3,5.3 &#39;/%3E%3C/svg%3E%0A&#34;);
+  
+  mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3C!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 628 18&#39; xml:space=&#39;preserve&#39;%3E%3Cpolygon fill=&#39;%23B2B2B2&#39; points=&#39;628.3,0 0,0 0,5.3 243.6,5.3 268.1,18.2 360,18.3 384.7,5.3 628.3,5.3 &#39;/%3E%3C/svg%3E%0A&#34;);
+  
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: top center;
+  mask-position: top center;
+  background: var(--barColour);
+}
+
+.info-container .collapsible-block-folded {
+    display: block;
+    margin: 0 auto;
+    height: 1.5em;
+    width: 100%;
+}
+
+.translation_block &gt; p {
+    margin: 1em 2em 0 2em;
+}
+
+.info-container .collapsible-block-folded .collapsible-block-link, .info-container .collapsible-block-link {
+  -webkit-mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3C!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 103 205.3&#39; xml:space=&#39;preserve&#39;%3E%3Cg%3E%3Cg%3E%3Cpath fill=&#39;%23FFFFFF&#39; d=&#39;M4.2,75.6c24.1-2.6,48.2-5.2,74.9-8.1c0,15.6,0,29.4,0,43.3c0,20.8,0.4,41.6-0.2,62.3 c-0.3,10.5,4,16.3,13.4,20c4,1.5,7.1,5.3,10.6,8c-0.8,1.4-1.6,2.8-2.4,4.3c-32.4,0-64.8,0-97.3,0c-0.9-1.1-1.7-2.3-2.6-3.4 c3.3-2.7,6.2-7,9.9-7.8c11.4-2.3,15.3-9,15.2-19.9c-0.2-20.3-0.6-40.5,0.1-60.8c0.4-11.8-4.4-18.1-15-22.3c-4.4-1.8-7.4-7.2-11-11 C1.4,78.6,2.8,77.1,4.2,75.6z&#39;/%3E%3Cpath fill=&#39;%23FFFFFF&#39; d=&#39;M79.6,27c0,16.3-11,26.9-27.5,26.7c-16.5-0.2-26.2-9.9-26.2-26c0-17,10.1-27.7,26.5-27.7 C68.6-0.1,79.6,10.8,79.6,27z&#39;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A&#34;);
+    
+  mask: url(&#34;data:image/svg+xml,%3C%3Fxml version=&#39;1.0&#39; encoding=&#39;utf-8&#39;%3F%3E%3C!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0) --%3E%3Csvg version=&#39;1.2&#39; baseProfile=&#39;tiny&#39; id=&#39;Layer_1&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39; xmlns:xlink=&#39;http://www.w3.org/1999/xlink&#39; x=&#39;0px&#39; y=&#39;0px&#39; viewBox=&#39;0 0 103 205.3&#39; xml:space=&#39;preserve&#39;%3E%3Cg%3E%3Cg%3E%3Cpath fill=&#39;%23FFFFFF&#39; d=&#39;M4.2,75.6c24.1-2.6,48.2-5.2,74.9-8.1c0,15.6,0,29.4,0,43.3c0,20.8,0.4,41.6-0.2,62.3 c-0.3,10.5,4,16.3,13.4,20c4,1.5,7.1,5.3,10.6,8c-0.8,1.4-1.6,2.8-2.4,4.3c-32.4,0-64.8,0-97.3,0c-0.9-1.1-1.7-2.3-2.6-3.4 c3.3-2.7,6.2-7,9.9-7.8c11.4-2.3,15.3-9,15.2-19.9c-0.2-20.3-0.6-40.5,0.1-60.8c0.4-11.8-4.4-18.1-15-22.3c-4.4-1.8-7.4-7.2-11-11 C1.4,78.6,2.8,77.1,4.2,75.6z&#39;/%3E%3Cpath fill=&#39;%23FFFFFF&#39; d=&#39;M79.6,27c0,16.3-11,26.9-27.5,26.7c-16.5-0.2-26.2-9.9-26.2-26c0-17,10.1-27.7,26.5-27.7 C68.6-0.1,79.6,10.8,79.6,27z&#39;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E%0A&#34;);
+  
+  display: block;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-size: 0.5em;
+  mask-size: 0.5em;
+  -webkit-mask-position: top center;
+  mask-position: top center;
+  mask-position-y: 3px;
+  -webkit-mask-position-y: 3px;
+  mask-repeat: no-repeat;
+  -webkit-mask-repeat: no-repeat;
+  background: var(--linkColour);
+  text-decoration: none;
+}
+
+.info-container .collapsible-block-unfolded-link {
+  display: block;
+  margin: 0 auto;
+  height: 1.5em;
+  width: 100%;
+}
+
+.info-container .collapsible-block-unfolded {
+  border: 1px solid #BBB;
+  border-top: none;
+  background: #8495a0;
+}
+
+.info-container .collapsible-block-content {
+  text-align: left;
+  padding-bottom: 0px;
+}
+
+.info-container .collapsible-block-content div {
+  margin: 0em;
+}
+
+[[/module]]
+
+
+
+
+
+
+
+[[module CSS]]
+:root {
+    --linkColour: #FFF;
+    --barColour: #0C2436;
+}
+
+#breadcrumbs{
+  margin: auto;
+  text-align: center;
+  padding-bottom: 4px;
+}
+
+#page-title {
+  position: relative;
+  text-align: center;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+[[/module]]
+
+
+------
+
+[[module ListPages category=&#34;fragment&#34; parent=&#34;.&#34; order=&#34;created_at&#34; limit=&#34;1&#34; offset=&#34;@URL|0&#34;]]
+%%content%%
+[[/module]]
+
+
+
+
+
+
+
+
+
+[[div class=&#34;footer-wikiwalk-nav&#34;]]
+[[=]]
+&lt;&lt; [[[SCP-9239]]] | SCP-9240 | [[[SCP-9241]]] &gt;&gt;
+[[/=]]
+[[/div]]
+
+
+
+[[include :scp-wiki:component:license-box]]
+
+------
+
+&gt; **Filename:** &#34;Amelia_Original.jpg&#34;
+&gt; **License:** CC BY-SA 2.0
+
+This image was not edited; sourced from:
+
+&gt; **Name:** girl-book-glasses-678700
+&gt; **Author:** Diem
+&gt; **License:** Public Domain (uploaded 17 March 2015)
+&gt; **Source:** [https://pixabay.com/photos/girl-book-glasses-678700 pixabay]
+
+------
+
+&gt; **Filename:** &#34;Amy_gun.jpg&#34;
+&gt; **License:** CC BY-SA 2.0
+
+This image was edited by FireTamer; sourced from:
+
+&gt; **Name:** killer-mercenary-assassin-mafia-3803886
+&gt; **Author:** Vika_Glitter
+&gt; **License:** Public Domain (uploaded 11 November 2018)
+&gt; **Source:** [https://pixabay.com/photos/killer-mercenary-assassin-mafia-3803886 pixabay]
+
+------
+
+&gt; **Filename:** &#34;Amy_profile.jpg&#34;
+&gt; **License:** CC BY-SA 2.0
+
+This image was edited by FireTamer; sourced from:
+
+&gt; **Name:** killer-mercenary-assassin-mafia-3803886
+&gt; **Author:** Vika_Glitter
+&gt; **License:** Public Domain (uploaded 11 November 2018)
+&gt; **Source:** [https://pixabay.com/photos/killer-mercenary-assassin-mafia-3803886 pixabay]
+
+------
+
+&gt; **Filename:** &#34;Amy_Sunset-Walk.jpg&#34;
+&gt; **License:** CC BY-SA 2.0
+
+This image was edited by FireTamer; sourced from:
+
+&gt; **Name:** adult-back-view-blonde-hair-1867694
+&gt; **Author:** Pexels
+&gt; **License:** Public Domain (uploaded 28 November 2016)
+&gt; **Source:** [https://pixabay.com/photos/adult-back-view-blonde-hair-1867694 pixabay]
+
+------
+
+&gt; **Filename:** &#34;Mother_eh.jpg&#34;, &#34;Mother_Mad.jpg&#34;, &#34;Mother_Mid.jpg&#34;, &amp; &#34;Mother_Nice.jpg&#34;
+&gt; **License:** CC BY-SA 2.0
+
+These images were derived from the same source, edited by FireTamer:
+
+&gt; **Name:** eye-blue-eye-woman-eye-lashes-3805227
+&gt; **Author:** AlexanderGrey
+&gt; **License:** Public Domain (uploaded 12 November 2018)
+&gt; **Source:** [https://pixabay.com/photos/eye-blue-eye-woman-eye-lashes-3805227 pixabay]
+
+------
+
+&gt; **Filename:** &#34;Ros_Angry.jpg&#34;, &#34;Ros_calm.jpg&#34;, &#34;Ros_mid.jpg&#34;, &amp; &#34;Ros_normal.jpg&#34;
+&gt; **License:** CC BY-SA 2.0
+
+These images were derived from the same source, edited by FireTamer:
+
+&gt; **Name:** girl-book-glasses-678700
+&gt; **Author:** Diem
+&gt; **License:** Public Domain (uploaded 17 March 2015)
+&gt; **Source:** [https://pixabay.com/photos/girl-book-glasses-678700 pixabay]
+
+
+[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:58.963983.</em>
+  
+</div>
+</body>

@@ -29,7 +29,129 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>:root {
+  --war-vignette-strength: 0.38;   /* 0 → none, 0.5 → strong */
+  --war-grain-strength: 0.06;      /* 0 → none, ~0.08 max before it looks noisy */
+  --war-image-desat: 0.4;          /* grayscale amount for images */
+  --war-image-sat: 0.6;            /* residual saturation */
+  --war-image-contrast: 0.95;      /* slightly flatter contrast */
+}
+
+:root {
+  --white-monochrome: 10, 11, 12;           /* page bg */
+  --pale-gray-monochrome: 18, 20, 21;       /* UI panels / code blocks */
+  --very-light-gray-monochrome: 26, 28, 30; /* soft surfaces */
+
+  --light-gray-monochrome: 179, 175, 168;
+  --gray-monochrome: 205, 200, 191;
+  --dark-gray-monochrome: 222, 217, 206;
+  --black-monochrome: 232, 227, 216;        /* body text (bone‑white) */
+
+  --accentColor: 92, 23, 20; /* #5C1714 */
+
+  --background-gradient-color: var(--light-gray-monochrome);
+  --swatch-menubg-dark-color: var(--very-light-gray-monochrome);
+  --swatch-text-tertiary-color: var(--accentColor);
+  --ui-button-hover-txt: var(--black-monochrome);
+
+/*  --body-font: &#34;IBM Plex Serif&#34;, &#34;Source Serif 4&#34;, Georgia, &#34;Times New Roman&#34;, Times, serif; */
+
+  --modal-header-txt: var(--black-monochrome);
+  --modal-header-bg: var(--white-monochrome);
+  --hoverblock-header-txt: var(--black-monochrome);
+  --hoverblock-bg: var(--black-monochrome);
+}
+
+html::before {
+  content: &#34;&#34;;
+  position: fixed; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 100% at 50% 25%, rgba(0,0,0,0) 40%, rgba(0,0,0,var(--war-vignette-strength)) 100%);
+  mix-blend-mode: multiply;
+  z-index: 0; /* behind most stacked site chrome */
+}
+html::after {
+  content: &#34;&#34;;
+  position: fixed; inset: 0; pointer-events: none;
+  /* soft cross‑grain */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 2px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.012) 0, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 2px);
+  opacity: var(--war-grain-strength);
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+body, #skrollr-body, #content-wrap, #container, #main-content { position: relative; z-index: 1; }
+
+#page-content h1, #page-content h2, #page-content h3, #page-content h4 {
+  color: rgb(var(--gray-monochrome));
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+#page-title, .meta-title {
+  color: rgb(var(--dark-gray-monochrome));
+}
+
+/* #page-content a:link, #page-content a:visited {
+  color: rgb(var(--accentColor));
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(var(--accentColor), 0.5);
+}
+*/
+/* #page-content a:hover, #page-content a:focus {
+  color: rgb(var(--black-monochrome));
+  background-image: linear-gradient(to bottom, transparent 85%, rgba(var(--accentColor),0.22) 85%);
+  outline: 2px dotted rgba(var(--accentColor), 0.9);
+  outline-offset: 2px;
+} */
+
+#page-content blockquote {
+  border-left: 0.25rem solid rgba(var(--accentColor), 0.35);
+  background: rgba(255,255,255,0.02);
+}
+#page-content hr { border: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(var(--accentColor),0.35), transparent); }
+
+#page-content table, #page-content th, #page-content td {
+  border-color: rgba(var(--light-gray-monochrome), 0.35);
+}
+#page-content thead th { color: rgb(var(--black-monochrome)); background: rgba(255,255,255,0.02); }
+
+.scp-image-block { border-color: rgb(var(--pale-gray-monochrome)); box-shadow: 0 0.26rem 0 0 rgba(var(--accentColor), 0.5);}
+.scp-image-block img {
+  filter: grayscale(var(--war-image-desat)) saturate(var(--war-image-sat)) contrast(var(--war-image-contrast));
+}
+.scp-image-block .scp-image-caption {
+  background-color: rgb(var(--pale-gray-monochrome));
+  color: rgb(var(--black-monochrome));
+}
+
+.code, .code pre, .code p {
+  background-color: rgb(var(--pale-gray-monochrome));
+  color: rgb(var(--black-monochrome));
+}
+
+#header { background: none; }
+#top-bar { --dropdown-bg-color: var(--dark-gray-monochrome), 0.9; }
+#side-bar, #interwiki { --sidebar-links-hover-text-color: var(--black-monochrome); }
+
+.anom-bar-container {
+  --five-color: var(--accentColor);
+  --four-color: var(--accentColor);
+  --three-color: var(--accentColor);
+  --two-color: var(--accentColor);
+  --one-color: var(--accentColor);
+}
+
+#footer, #license-area {
+  --hover-link-color: rgb(var(--accentColor));
+  --swatch-text-secondary-color: var(--black-monochrome);
+  --white-monochrome: var(--white-monochrome);
+}
+
+#page-content { filter: saturate(0.9); }
+
+#page-content sup { color: rgb(var(--dark-gray-monochrome)); }</code></pre>
         </li>
       
     </ul>
@@ -51,6 +173,134 @@
   
 
   
+    <a href="https://scp-wiki.wikidot.com/component:info-ayers" target="_blank"><code>:scp-wiki:component:info-ayers</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:info-ayers.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:anomaly-class-bar-source" target="_blank"><code>:scp-wiki:component:anomaly-class-bar-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:anomaly-class-bar-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
     <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
   
 
@@ -63,168 +313,559 @@
   
 </li>
       
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:djk" target="_blank"><code>:scp-wiki:component:djk</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:djk.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
     </ul>
 
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes">
       
         <li>
-          <pre><code>footer-wikiwalk-nav</code></pre>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[&gt;]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:component:info-ayers
+|lang=en[!-- EN/RU/KO/CN/FR/PL/ES/TH/JP/DE/IT/UA/PTBR --]
+|page=scp-0000[!-- url of your page on the scp wiki --]
+|authorPage=http://www.scp-wiki.net/djkaktus[!-- link to your author page --]
+|comments=
+= **SCP-186** - //To End All Wars//
+
+-----
+Based on SCP-186 by Kalinin.
+
+-----
+]]
+
+[[&gt;]]
 [[module Rate]]
 [[/&gt;]]
 
-**Item #:** SCP-186
+[[include :scp-wiki:component:anomaly-class-bar-source
+|item-number= 186
+|clearance= 5
+|container-class= euclid
+|secondary-class= 
+|secondary-icon= 
+|disruption-class= amida
+|risk-class= critical
+]]
 
-**Object Class:** Euclid
+-----
 
-**Special Containment Procedures:** The site of SCP-186, comprising an approximately 300 km^^2^^ area, is to be closed to the public under the auspices of a habitat restoration initiative for the European bison. An automated security perimeter is to be established, monitored by staff at Remote Site-355. Security personnel must patrol SCP-186 every two weeks; any anomalous phenomena observed within the security perimeter must be documented and reported to the Research Director. 
+[[include component:image-block name=toendallwars.jpg|width=100%|align=center|caption=SCP-186-A in its location of discovery.]]
 
-All known primary sources documenting the events of SCP-186 have been secured by the Foundation. These materials are to be stored in the Site-23 Archives. Due to the age of the materials and the potential for deterioration, all access to these documents must be approved by the Site-23 Archivist and handled per their instructions. 
+-----
 
-All instances of SCP-186-1 are to be secured in the munitions wing of Site-23.  
+**Special Containment Procedures:** SCP-186-A is contained within a high-security controlled containment vault at DEEPWELL 5. Access to SCP-186 is restricted to persons with Level 5/186 credentials only. SCP-186-A is to be monitored at all times. Any changes in its status or configuration are to be reported to the DEEPWELL 5 site supervisor immediately. 
 
-**Description:** SCP-186 is the site of an unrecorded military engagement occurring from 7/24/1917 to 8/13/1917 between elements of the Imperial German Army and forces of the Russian provisional government as part of the larger conflict of World War I, and the continuing effects resulting from its aftermath. This conflict came to be known to its participants as the Battle of Husiatyn Woods in surviving accounts. 
+Suspected uncontrolled activation of SCP-186-A requires immediate intervention by on-site personnel with Level 14 memetic resistance rating. Should these persons be insufficient to neutralize SCP-186-A, liquidation of DEEPWELL 5 has been authorized.
 
-In July of 1917, an armed engagement between a detachment of approximately 500 German soldiers and the remnants of a Russian division scattered during the German counterattack to the Kerensky Offensive took place at the location of SCP-186. The forces met in heavily forested terrain outside the town of Husiatyn in what is currently Ternopil Oblast, Ukraine. On both sides of the conflict, combatants deployed anomalous weaponry utilizing technology that has yet to be duplicated or understood at present. This battle eventually resulted in the deaths or permanent incapacitation of all forces involved, and approximately 300 civilians in its general vicinity. 
+A perimeter has been established around SCP-186-B and is closed to the public under the cover story of unexploded ordinance being present in the area. Security patrols from Site-171 are to maintain strict observation of the established perimeter, and any anomalous activity observed by the perimeter guard is to be reported to the Site-171 supervisor.
 
-SCP-186-1 consists of recovered weaponry dating from the initial containment of SCP-186 in 1917, and includes the following:
+843 instances of SCP-186-C are stored within secure containment vaults at Site-171. Additional instances collected by research teams or perimeter patrols are to be remanded to the SCP-186 research team for analysis. Transport of these items is restricted to approved logistics teams only.
 
-* A highly modified weapon resembling the Skoda M1909 machine gun, capable of causing extremely rapid tumor-like growths to appear within the body of any organism larger than a common lab rat 
-* Mortar shells specially designed to be fired from a Mortier de 58mm type 2, containing a gas that causes animal cells to become unable to cease life function
-* Concertina wire coated with an unknown hallucinogenic compound that permanently affects human test subjects upon entering the bloodstream
-* Remnants of an unknown incendiary device believed to have been detonated at the close of the conflict, accounting for what is estimated to be 34% of total casualties
-* British Empire-issue No. 27 type grenades, containing a gas capable of passing through all tested gas-mask filtration systems, and causing humans to constantly experience the sensation of being on fire
-* 8x50mmR French rifle cartridges containing powdered human bone instead of gunpowder; purpose unknown   
+**Description:** SCP-186 is the group designation for a collection of anomalous phenomenon related to Dr. Jean Durand, an early 20th century French anatomist and WWI field doctor:
 
-Historical records indicate that the German detachment involved in the Battle of Husiatyn Woods, at the behest of a Hungarian military advisor named Mátyás Nemeş, specifically pursued the group of Russian forces in retreat, which at the time included French scientist Dr. Jean Durand. Based on documents of the era since suppressed by the Foundation, it is believed that these two individuals are responsible for the development and limited manufacture of SCP-186-1, and had attached themselves to opposing sides of the Eastern Front for the express purpose of deployment of these weapons in a combat setting. 
+**SCP-186-A** is a wooden coffin, roughly 3.9m in height and made from oak, within which is contained a series of mechanisms designed to alter human perception. A small brass placard is attached to the front of the coffin, upon which reads:
 
-[[collapsible show=&#34;+ Research Log 186-7&#34; hide=&#34;- ACCESS GRANTED&#34;]]
-
-**Research Log 186-7:** Notable Anomalies Documented at SCP-186
-
-**04/11/1923:** A 3 km^^2^^ area in the southwestern portion of SCP-186 experiences a spontaneous die-off of trees. Decomposition occurs on an extremely accelerated time scale, and area is completely cleared of trees and other plant life within two weeks. 
-
-**01/13/1927:** Despite temperatures consistently at -15°C, no snow is visible throughout central portion of site. Temperatures measured at site are consistent with surroundings. 
-
-**09/02/1932:** The sounds of sporadic gunfire are recorded throughout the site, despite lack of observed presence of any civilians. Sounds persist for three days. 
-
-**05/30/1936:** Agents Chekhov and  ██████████ fail to return from routine patrol of SCP-186. No subsequent traces of either person are ever recovered. 
-
-**05/15/1941:** Acting in accordance with intelligence sources embedded in the Third Reich, Foundation personnel evacuate SCP-186 in advance of Operation Barbarossa. Subsequent to decommissioning observation posts, faint glow visible from 150 m documented by staff to move through site. Definitive visual contact unestablished prior to evacuation.
-
-**10/29/1945:** Containment of SCP-186 reestablished after discussions with Soviet Union officials. Upon initial patrol after reestablishment of containment, thirteen corpses dressed in uniforms and insignia of the German 4th Panzer Army and twenty-seven corpses in Soviet 22nd Army uniforms are discovered in advanced state of decay. No identifications of personnel are successful, as all identifying documents and insignia had been removed prior to Foundation containment. 
-
-**02/19/1959:** Following the formation of a large sinkhole in the northeastern portion of SCP-186, four men are observed wandering the immediate area in a state of extreme disorientation, dressed in what are later identified to be severely decomposed and degraded World War I-era military uniforms of both German Empire and Russian issue. Subjects detained and routed to Site-23 for subsequent research. 
-
-**04/02/1959:** After an extensive excavation of the site of the northeastern sinkhole, 23 persons are discovered buried at a depth of 15 m in a mass grave, alive despite decades of interment and various wounds and injuries. As with subjects discovered earlier, most are dressed in remnants of military uniforms of the World War I era and are presumed to be participants in the original SCP-186 event. Extensive research at Site-23 yields little information, as subjects are unable to provide any meaningful information or communication to Foundation staff due to extensive psychological trauma and profound mental disorders. Foundation staff attempt to euthanize subjects after 3 weeks of research, but fail in all attempts. Subjects subsequently tranquilized, anesthetized and incinerated. 
-
-**07/29/1962:** Prior to upgrades to containment facilities, security perimeter of SCP-186 found to be almost 85 m longer than originally documented. Inquiry later rules out clerical error as source of discrepancy. 
-
-**12/13/1975:** Localized weather phenomena documented as occurring entirely and exclusively within SCP-186. These include sustained winds up to 120 kph, 20 cm of rainfall and temperatures temporarily reaching 48°C.
-
-**08/12/1987:** Packs of wolves, numbering an estimated 200 total individuals, travel to SCP-186, mass at a point in the central region of the site, and immediately disperse. 
-
-**03/03/2009:** A stand of three spruce trees is observed in the southwestern deforested area, the first documented plant life since 1923 event. Estimated age of trees is fifty years. 
-[[/collapsible]]
-
-[[collapsible show=&#34;+ Transcripts of Selected SCP-186 Documents&#34; hide=&#34;- ACCESS GRANTED&#34;]]
-
-**Document 186-3:** //A flyer advertising a May 1911 lecture given by Dr. Durand to the Royal Institute of Chemistry//
-
-&gt; TO END ALL WARS
-&gt; 
-&gt; A presentation by visiting scholar DR. JEAN DURAND, formerly of the Académie des sciences, on the promise of modern science to create weapons of such terrible deterrent power so as to render future wars obsolete!
-&gt; 
-&gt; Dr. Durand shall explain the convergence of chemistry, ballistics, alienism and other emerging scientific fields of endeavor that will enable Mankind to usher in a new age of PEACE and MODERNITY.
-&gt; 
-&gt; To be given on the 19th of May, Derbyshire Lecture Hall
-
-**Document 186-11:** //Opinion piece published in the January 2, 1912 edition of the Hungarian newspaper Népszava, authored by Mátyás Nemeş//
-
-&gt; To my fellow subjects of His Highness Emperor Franz Joseph,
-&gt; 
-&gt; Truly, the greatest of human glories is the unification of a numerous and disparate people into a single, unstoppable purpose. That our marvelous Kingdom should embody this inescapable principle should go without saying from Vienna to Budapest. 
-&gt; 
-&gt; But there are those, both within our territories and elsewhere on the Continent, that would see us splintered into a thousand shards and stand in the way of our destiny. What is to be done with such agitators and malcontents? While traitors and radicals are hung properly in the manner of the dogs that they are, there is no execution sufficient to quell the embers of treachery that burn in the hearts of the Balkanites. How are we to demonstrate our unity of purpose, our power, our God-given place at the head of the European procession?
-&gt; 
-&gt; By force of arms! The hangman can only strike fear into the heart of dozens. A proper army can strike it into the souls of millions. Perhaps we have the numbers, but in this we are not alone. The Russian and the Moslem can rally hordes to their banners, but for all of their masses are mere unruly nuisances. What sets man apart from the animals is not his numerical superiority, no, but his superiority of mind, demonstrated through quick wit and artifice!
-&gt; 
-&gt; My fellow subjects, I have dedicated my life to the construction of such demonstrations of artifice that none may stand against my weapons save the Almighty! It is through the force of superior arms that we will achieve our grand design, both within our borders and without! Give me the factories, give me the manpower, give me the chance to serve our Empire through my industries, and I will deliver to the people the flaming sword that will light the way to a civilized Europe! It is through these means, and only these means, that we will solve the questions that plague us today!
-
-**Document 186-32:** //Telegram sent by Jean Durand to Mátyás Nemeş from Paris, April 28, 1912//
-
-&gt; HAVE CONSIDERED YOUR PROPOSAL
-&gt; 
-&gt; MUST DECLINE. METHODS INFERIOR AND DERIVATIVE OF OWN RESEARCH
-&gt; 
-&gt; YOUR AIMS ARE OF CONQUEST. MINE ARE OF PEACE. 
-&gt; 
-&gt; REGARDS, J. DURAND
-
-**Document 186-39:** //Undated memorandum from General Felix Graf von Bothmer of the Imperial German Army to unnamed subordinates//
-
-&gt; Effective immediately, Lt. Nemeş is assigned to your unit as an advisor. Experimental armaments are only to be deployed on Lt. Nemeş&#39; orders. Despite potential for a breakthrough on the Romanian Front, unwise to use these ungodly things until more is known of their efficacy. Rumors of similar developments among the Tsarists remain unsubstantiated.
-
-**Document 186-52:** //Letter from Pvt. Pyotr Avtukhov, participant in the Battle of Husiatyn Woods//
-
-&gt; Dearest Nadya, 
-&gt; 
-&gt; I have heard rumors of the madness happening at home. Be comforted that it is nothing like the madness that is happening here. We thought that four years of war had taught us everything we had to know and then more. We learned nothing. 
-&gt; 
-&gt; The damnable Frenchman that the men elected to lead them spoke of peace. He spoke of weapons so terrible that we could make the enemy surrender on the spot. We were fools. We had run at trenches with dead men&#39;s rifles and sticks in our hands. We believed him the way we believed anyone that has supplies. 
-&gt; 
-&gt; We never thought where this man came from. We didn&#39;t wonder why he had the weapons he did. We didn&#39;t care. We wanted to live. 
-&gt; 
-&gt; We never considered that the enemy had the same things we did. I do not think the Frenchman did either. Or at least I hope he did not. I cannot imagine any man who would walk into this knowing what would happen. Maybe the Frenchman is not a man. Maybe he is something else. 
-&gt; 
-&gt; I am sitting now in a hole I have dug in a forest somewhere. I should have run the second I saw the German take aim at Gilyov. That was no bullet fired at him. I could not look anymore after his face came apart and he was still screaming. I thought I saw hands pulling his head apart. 
-&gt; 
-&gt; Somewhere in the distance Volikov is screaming that he can see devils roasting his children. He has been screaming about the same thing for five days. 
-&gt; 
-&gt; I should have run away so many times. The Frenchman gave us a new gas weapon. We refused at first, remembering what had happened in Romania. But he promised us that this was different, that this would put our enemies down without harming them. Who wants any more bloodshed, he asked us. We could not argue with that. We fired mortars at a position ahead of us. A strange blue gas seeped from behind the trees, but the Frenchman cautioned us against advancing. One more thing, he said. He took one of our rifles, and taking aim took a single shot. Before we could ask what a scientist could know of shooting, we heard a scream. He had hit one of the Germans. 
-&gt; 
-&gt; He handed me a pair of field glasses. Take a look, he said. I saw the German missing half of his head, still screaming. I have seen everything in this war, but I have never seen faces like those of that German&#39;s fellows as they watched their comrade. The Frenchman, in his terrible calm voice, explained that his shot had to have destroyed at least a quarter of the soldier&#39;s brain tissue. Enough to cause instant death, he said. But watch. 
-&gt; 
-&gt; I kept watching through the field glasses. The German didn&#39;t stop screaming. At least ten minutes I watched, unable to move away. The Frenchman smiled. He smiled at this scene. The gas, he said, ensured that death would not come, regardless of injury. The Germans were too horrified by their comrade to notice that they were not behind cover, and the Frenchman lined up another shot. The rest of the soldier&#39;s head was now gone, and the screaming was replaced by some sort of low grunting, the likes of which I have never heard from men. 
-&gt; 
-&gt; No, the Frenchman said, no harm at all. I have bestowed the gift of life on your opponents. Who could possibly stand against that, he asked. 
-&gt; 
-&gt; I had to leave and vomit behind some bushes. I had not done that since the first trenches. Who indeed could keep fighting after such a thing? But fight they did. Once a group of us were ambushed and chased to a meadow. The first men through the trees were hit with something that took their skin. I cannot describe why seeing men blown apart is not as frightening as seeing a neatly flayed corpse on a battlefield, but our group scattered. 
-&gt; 
-&gt; We are no longer armies. Not any more. We are animals, trapped in a forest together, uncomprehending. Sometimes, when Volikov sleeps, I hear the Frenchman in the woods, yelling in Hungarian, yelling and laughing. I would almost rather listen to Volikov. 
-&gt; 
-&gt; I am going to die in this hole. I am too scared of what is outside of it to do otherwise. Minkin is going to try to brave the horrors in the woods to escape. I am sending this letter with him in the hopes that he does. As I gave it to him, he joked that he will get a civil service commission after the war for delivering a letter from Hell. I am not certain he is wrong.
-&gt; 
-&gt; Goodbye,
-&gt; 
-&gt; Pyotr   
-[[/collapsible]]
-
-[[footnoteblock]]
-
-[[div class=&#34;footer-wikiwalk-nav&#34;]]
+[[div class=&#34;blockquote&#34;]]
 [[=]]
-&lt;&lt; [[[SCP-185]]] | SCP-186 | [[[SCP-187]]] &gt;&gt;
+Ouvrir à minuit.
+
+- Durand
 [[/=]]
 [[/div]]
 
+The means by which SCP-186-A is able to achieve its function is currently unknown. Very little has been determined about the internal makeup of SCP-186-A, due in large part to the complexity of the systems therein. SCP-186-A cannot be radiographically visualized in any way - excessive radiographic interference is capable of triggering SCP-186-A&#39;s activation mechanisms, and the internal components of SCP-186-A are so densely arranged that accessing the deeper sections of the machine has proven impossible. Those sections that are visible through the cracked lid of SCP-186-A reveal an exceptionally intricate network of steel gears, copper tubes, glass vials filled with liquids of unknown composition, wood and canvas bellows, pulleys, pistons, and other components of unknown purpose.
+
+When activated SCP-186-A causes all persons nearby to suffer immediate and acute catatonic shock. In 7% of recorded cases, this effect is immediately fatal. The range within which persons are affected by SCP-186 steadily grows in size so long as it remains active. 
+
+It is currently unknown exactly what effect SCP-186-A has on human perception, as no affected persons have been capable of any form of communication post-exposure.
+
+[[include component:image-block name=forest.jpg|align=right|caption=SCP-186-B.]]
+
+**SCP-186-B** is the site of an unrecorded military engagement roughly 90km northeast of the city of Königsberg (modern day Kaliningrad) near the border between modern day Russia and Lithuania. The engagement, which took place between July and August of 1917, saw the Imperial German Army pursuing a retreating and disorganized Russian battalion in their march towards Petrograd (modern day St. Petersburg). Contemporaneous records of this event call it the Battle of Königsberg Forest.
+
+A German army detachment of over 500 soldiers from Armee-Abteilung D under Generaloberst Günther von Kirchbach engaged the scattered remnants of the Russian army in a wooded area outside of the city of Königsberg. Both sides of the conflict utilized anomalous weaponry (classified as SCP-186-C) during the battle, the unrestricted use of which resulted in the near-total annihilation or incapacitation of all military and civilian personnel involved. Despite this, the battle did little to stop the progress of the Imperial German Army north towards Petrograd.
+
+**SCP-186-C** are anomalous weapons, munitions, and other technologies of war used in the Battle of Königsberg Forest. Collected instances of SCP-186-C include:
+
+[[include component:image-block name=howitzer.jpg|align=left|caption=An instance of SCP-186-C.]]
+
+* Razor trench wire capable of autonomous movement, which seeks out and coils around living creatures to slowly constrict and flay them
+* Two different forms of gas weapons - one that causes living tissue to be incapable of ceasing life functions, and another that dramatically heightens all human sensory inputs
+* Incendiary devices that burn all living tissue aside from elements of the nervous system
+* Fragmentation grenades that, upon contacting living tissue after explosion, cause the sudden and rapid growth of eyes across all affected surfaces
+* Artillery shells that, upon exploding, create no sound - but cause nearby affected persons to experience vivid and unending auditory hallucinations
+
+Correspondence gathered from the site of SCP-186-B indicate that the engagement was spurred by the recommendation of a Hungarian military attaché to the Imperial German Army named Mátyás Nemeş. This was in spite of the fact that engaging the retreating Russian resistance forces - which included the aforementioned Dr. Jean Durand - required significant deviation from the German battalion and would have put them well behind the rest of the advancing line. It is believed that both Durand and Nemeş supplied the weapons used during the battle, and had positioned themselves on opposite side of the engagement to test the efficacy of those weapons.
+
+**Addendum 186.1:** Recovered Correspondence between Mátyás Nemeş and Dr. Jean Durand.
+
+The following letters were recovered from the estate of Baron Leopold von Hohenberg, a mid-20th century Austrian nobleman and occultist who became obsessed with the idea of developing a &#34;perfect weapon&#34; to bring victory to the Axis Powers during the second world war. A number of different pieces of correspondence between Nemeş and Durand were included in his collection, all of which were seized by the Foundation at the conclusion of the war.
+
+[[collapsible show=&#34;Letter to Dr. Jean Durand - 11 October 1916&#34; hide=&#34;CLOSE LOG&#34;]]
+[[include component:image-block name=nemes.jpg|align=right|caption=Military portrait of Mátyás Nemeş.]]
+
+Monsieur le Docteur Jean Durand,
+
+Permit me, in the spirit of professional candour, to resume our conversation begun at the hospital tent two weeks past. You will recall my argument: conflict ceases only when one side is rendered unable - politically, materially, morally - to take up arms again. History teaches that mercy is heeded only where fear is absolute and demonstrated. If science grants us means to impose that condition swiftly and without protracted attrition, then it is our duty as men of statecraft to examine those means. Better one decisive, terrible instrument than ten years of blood and starvation.
+
+You have my respect; you will have my continued advocacy for decisive options. War is a language only those who still believe in its efficacy understand. Let it be our aim to make that language useless.
+
+Avec estime,
+Mátyás Nemeş
+Conseiller militaire
+[[/collapsible]]
+
+[[collapsible show=&#34;Letter to Mátyás Nemeş - 17 October 1916&#34; hide=&#34;CLOSE LOG&#34;]]
+[[include component:image-block name=durandphoto.png|align=right|caption=Only known image of Dr. Jean Durand.]]
+
+Monsieur Nemeş,
+
+I received your letter and appreciate its directness. I shall be equally direct in reply. I do not deny the utilitarian attractiveness of a single act that ends a conflict; the intellect delights in economy. Nor do I deny that men in government will always prefer instruments that promise swifter conclusion. But I fear we differ in what we consider an acceptable ledger of cost.
+
+You speak of rendering a people unable to resist. I speak of rendering resistance unthinkable. Therein lies a moral distinction, however small it may appear on a map, that changes everything. Should we, as you assert, seek to terrify a populace into submission, I fear all we would achieve is to build a peace dependent on fear, silence and shame. Instead, I hope to make the cost of war manifest to all - it is in this that we change the ethical grammar of politics. Knowledge, in my design, will achieve a far greater peace than any simple weapon of war. 
+
+I will pursue the latter for reasons both scientific and humane. I do not seek to design agony, monsieur; I seek to render the notion of mass slaughter self-defeating in human minds.
+
+Respectueusement,
+Jean Durand, M.D.
+[[/collapsible]]
+
+**Addendum 186.2:** SCP-186-B Research Log
+
+[[collapsible show=&#34;ACCESS FILE&#34; hide=&#34;CLOSE FILE&#34;]]
+
+**11.04.1923:** A 3km² area in the southwestern sector exhibits rapid growth of cervine biological matter from beneath the earth in the form of crude humanoid approximations. Growth ceases after 19 hours. They spontaneously desiccate into particulate rust after 14 days. No fauna observed crossing into the area during their persistence.
+
+**13.01.1927:** The ambient temperature at which humans are comfortable dramatically falls to below -30°C, causing all persons within the affected area to experience the sensation of burning. The effect persists for a period of seventy-three minutes.
+
+**02.09.1932:** Wideband receivers placed throughout the site capture intermittent keyed transmissions every 23 - 41 minutes. Signal analysis shows simultaneous adherence to period Russian and German field-signaling conventions, with mutually exclusive timing solutions. Decoded groups resolve to coordinate pairs that plot to unmarked points within the site boundaries. No transmitters located; EM survey negative. Transmissions cease after 72 hours.
+
+[[include component:image-block name=soldiers.jpg|align=right|caption=An unknown individual pausing to inspect the still-living remains of a German soldier within SCP-186-B.]]
+
+**30.05.1936:** Reports of a severely disfigured soldier in Russian army dress searching for firearms amidst the wreckage of the German Army outposts. Upon finding a pistol, fires several shots into the side of his head, destroying much of his skull and ejecting brain matter. Moments after collapsing onto the ground, stands up again, with the previously damaged parts of his skull having regrown in misshapen ways. Continues searching for firearms to repeat the process. This continues for several hours until the supply of available firearms at the outpost are exhausted, at which point the figure disappears into the forest.
+
+**15.05.1941:** During Foundation evacuation of SCP-186-B in advance of Operation Barbarossa, observers note persistent secondary silhouettes trailing personnel by 3-5 seconds at distances up to 150m. Silhouettes match height and gait but fail to occlude light and do not register when photographed. Phenomenon observed until last team exits perimeter; silhouettes remain stationary for roughly 12 minutes following evacuation, then dissipate.
+
+**29.10.1945:** Upon reestablishing control of the area, Foundation patrols report seeing a large humanoid entity composed entirely of numerous rotting human bodies moving through the forest at night. The creature collects the remnants of still-living human body fragments and attaches them to its own before fleeing from spotlights.
+
+**19.02.1959:** Following formation of a large sinkhole in the northeastern quadrant, low-frequency exhalations (0.2–0.5 Hz) emanate from the void at 11-14 minute intervals. Spectral analysis reveals formant structures consistent with human phonation but no intelligible language. Rope probes descend freely to 30m before being abruptly dragged wholly into the sinkhole. No additional probe tests are conducted.
+
+**02.04.1959:** Excavation adjacent to the above void yields 23 sealed wooden caskets at 14-16m depth. Within these caskets are still-living human bodies in various states of structural decay, each holding strings of human teeth (32 per string) pierced and knotted in rosary-like configurations with aged sinew. Dental morphology spans adolescent to elderly; comparative databases produce no matches. All photographic attempts of contents result in undeveloped frames or black negatives. Notably, one casket appears to be missing.
+
+**29.07.1962:** Patrols report seeing a man in fine dress walking across one of the battlefields, occasionally pausing to inspect the bodies of humans and other fauna affected by SCP-186-C. Upon being addressed by patrols, turns and acknowledges them. Much of the man&#39;s face above the mouth has been destroyed. Moments later, the figure fades away and disappears.
+
+**13.12.1975:** Research teams returning from SCP-186-B indicate they had been lost within the space for three weeks, having lost or abandoned six members of their team in the process. Externally, the team had only been inside SCP-186-B for two hours.
+
+**12.08.1987:** Multiple observers report 216 parachute canopies at roughly 900-1100m altitude drifting over the central zone on a north-south course. No aircraft contrails or engine noise detected. Canopies exhibit WWI-era patterns and rigging but remain semi-translucent and cast no shadows. Radar returns negative. After 19 minutes, all canopies simultaneously drop towards the earth and vanish. No material recovered.
+
+**03.03.2009:** Patrols report seeing what appears to be a woman and child walking near a stream. Both figures are ablaze, and their features cannot be determined. 
+
+[[/collapsible]]
+
+**Addendum 186.3:** Recovered Letter from the von Hohenberg Estate
+
+The following letter was similarly collected from the estate of the Baron von Hohenberg. Within the collection it is described as having been recovered from the &#34;shambling remains of a thing that was once a man&#34; within SCP-186-B, having never reached its intended destination.
+
+[[collapsible show=&#34;ACCESS FILE&#34; hide=&#34;CLOSE FILE&#34;]]
+[[include component:image-block name=youngwoman.png|align=right|caption=Photograph of a young woman, identity unknown.]]
+
+//Near the Pregel River, east of Königsberg//
+//August 1917//
+
+My dearest Anya,
+
+I write by a light that cannot choose between evening and dawn. If this finds you, know my hand was steady even if it no longer feels entirely mine. I want you to have my voice before it becomes only the echo that has been moving through the field all day.
+
+Three days hence we moved to a wooded outcrop near Königsberg, where your Aunt Tanya lived. Little remains here now of those villages, and I do fear for her. The officers told us we would make a stand here, that the Germans were coming up behind and that we needed to protect Petrograd. Perhaps they were mistaken - this clutch of trees is not Petrograd, yet they compel us to defend it all the same. They gave us new weapons to defend these trees - weapons I had never glimpsed before. Rifles that hissed and moaned. Cannon stock that glowed red in the dark of night. Other horrors we did not know. 
+
+&#34;They will help you hold the line,&#34; the officers said, and then by the next dawn&#39;s light they were gone. 
+
+//They knew.//
+
+The mud here fights better than men; it keeps what it takes. Birches stand like candles and bow when the wind prays. Today our line folded - first the edge, then the crease, then the crumbs shaken from a cloth. The enemy arrived early and quietly, with little of the standard issue of war. Our guns answered, and then other things responded - new things ordained not by God above or the Devil below, but by something altogether more terrible. 
+
+The ground reaches for soldiers as if it had learned to hunt. A gas attack came and created a foul fog that would not let bodies rest, even after they had been turned to mince by bullet and bayonets. Here and there spark fires that create nightmares where men once stood. I am trying to be plain.
+
+You remember the French doctor I once wrote of - the one with the neat beard and thin gloves who traded cigarettes for stories. It was he who distributed these new weapons. While we held our breath or lost it, he held a lens. He arranged the fallen as if they were sentences and touched them with the back of his hand like a mother testing a sleeping child. When he stood, his coat was clean. &#34;This is very interesting,&#34; he told me in careful Russian. 
+
+If he appears in our village during peacetime, run. Take nothing with you. I have learned on this smoldering field that there are depths of darkness beyond anything I had ever dreamed there to be, and that within these depths are creatures that masquerade as men but are not. This doctor is such a creature. Where our eyes glimpse horror, he sees something altogether different. Our suffering is a curiosity.
+
+One of his new things found me as simply as a man walking into a glass door. A taste of metal, sweet heavy air. My chest decided to continue without me. My hands are too full of touch; paper scratches like snow, snow burns like nettles. Small bright wells have opened on my arms - they notice even when my eyes close. I am changing.
+
+Do not be afraid. I am afraid enough for both of us and still myself where it counts. I will not go back the usual way; the cart is far and my legs have other ideas. If someone brings a parcel that pretends to be me, do not meet it at the station. Tell Father I kept the little icon in my pocket, its varnish cracked like river ice but the face still kind. Tell Mother I learned to make tea without wasting wood. Tell my brother to trade for boots one size larger. Tell yourself there was a day on a ruined field when a man thought only of your hands, and that it contained everything he wanted.
+
+Your ribbon is in my left boot. Another promise, then: I will carry you wherever I am going.
+
+The birches are tugged by the wind. My chest persists; perhaps it learned stubbornness from you. Someone hums a tune that might be a hymn or a march, but the notes walk home in their own order. I will end before the light changes me. Eat the bread you like, open the window when the street smells of horses. If another life comes to you, let it. You have been my whole argument.
+
+I sign with the name you whisper when you think I am not listening.
+
+Your Misha
+
+P.S. If they find enough of me to bury, tell them to plant me under a birch. Those trees know how to be both white and black and still one thing. They will understand.
+[[/collapsible]]
+
+**Addendum 186.4:** Recovered Correspondence between Mátyás Nemeş and Dr. Jean Durand, con&#39;t.
+
+[[collapsible show=&#34;Letter to Dr. Jean Durand - 4 May 1917&#34; hide=&#34;CLOSE FILE&#34;]]
+Monsieur Durand,
+
+Your proposition is academically sound, but I fear it is lacking in practicality. In either case, rhetoric will not test resolve. I propose a controlled demonstration - a limited engagement where each side employs armaments so monstrously persuasive in their effect that the very sight of them will irreversibly compel men’s wills. If these instruments&#39; presence causes combatants to lay down arms rather than face them, we shall have empirical proof that substantial enough power, no matter how horrible, can compel peace.
+
+I ask you to consent to supplying such armaments for a single, supervised trial. If you will not provide the object, name one you will accept as proxy. I will arrange observers and a neutral ground. The current state of von Kirchbach&#39;s northwardly march will provide ample opportunity to test the limits of these new miracles. 
+
+We are men of science, who strive above all else to identify the great questions of the world and seek answers for them. In this case the question is simple: will men, when confronted with an unambiguous prospect of what awaits them, refuse to fight? Let us find out.
+
+Avec gravité,
+Mátyás Nemeş
+[[/collapsible]]
+
+[[collapsible show=&#34;Letter to Dr. Jean Durand - 9 September 1917&#34; hide=&#34;CLOSE FILE&#34;]]
+Docteur,
+
+Report from the field: the demonstration was executed under the terms agreed. The terrible effect upon the host unit achieved immediate cessation of hostilities in that sector. I tell you with delight that the weapons exceeded what even I had imagined them capable of - they brought forth a destruction of such remarkable malice as has never been seen on this earth, and all those who carried them wept for the horrors they carried out. Truly, there are no greater tools of devastation than these.
+
+However, what I did not anticipate - and convey now in frankness - is the reaction of certain external observers. Generaloberst von Kirchbach, who has been an attendant on these proceedings in a supervisory capacity, did not recoil. He studied the happenings with professional curiosity, then praised its efficiency and requested further units for his forces. He framed his request not as a moral appeal but as a tactical advantage.
+
+I thought you should know at once. The instrument you supplied may, in the eyes of some, be not a deterrent but a force-multiplier. Political appetite for such advantage grows fast. For my own part, I will review my findings and stay in your correspondence. 
+
+Sincèrement,
+Mátyás Nemeş
+[[/collapsible]]
+
+[[collapsible show=&#34;Letter to Mátyás Nemeş - 23 October 1917&#34; hide=&#34;CLOSE FILE&#34;]]
+Nemeş,
+
+I expected as much. The mind that seeks to dominate will admire any means that consolidates domination. If von Kirchbach sees only tactical utility, then the apparatus has been misunderstood by him and misappropriated by the times.
+
+I had once dreamt as you have, of a weapon with which to win all wars. A perfect weapon to make both the bullet and the sabre obsolete, one that conducts its business with such finality that no force would dare rise against its terrible authority. Yet, this confirms what I feared and what I have said in quieter moments: a weapon that horrifies in a single instance will be turned by men into a tool of power unless the agony of its implementation is experienced not just by men on a battlefield, but also by those who would authorize its use. Therefore, a far greater, more terrible instrument is necessary - not in physical capacity but in ethical binding: something that cannot be ignored.
+
+I will consider what that might mean. For now: recover what tools you can, destroy any operational replication von Kirchbach requests. If he persists you must refuse him, or destroy him. I leave the matter to you.
+
+— J. D.
+[[/collapsible]]
+
+**Addendum 186.5:** SCP-186-A Initial Containment Memorandum
+
+[[div class=&#34;blockquote&#34;]]
+[[=]]
+**INTERNAL MEMORANDUM**
+Site-17
+-----
+[[/=]]
+
+Supervisor Lyons,
+
+Per your request, the device has been shuttered and moved into containment staging. Attached you&#39;ll find the processing documentation as well as the initial evaluation. 
+
+Had it not been for Jurickson being a Type Grey we&#39;d have lost the whole detachment before we ever got close enough to shut it down. I went to see him after we wrapped up the transport. They say he&#39;s still able to see and speak, but there&#39;s nothing left in there. He was a Level 15, too. Fewer than 20 of them in the whole Foundation. One less after today.
+
+We found the poor bastard who opened it in the first place. Just some junkie looking for something he could salvage - was practically fused to the floor. Took out half the town with him, too. We&#39;ve got crews in place now moving the affected to cold storage, but unless you&#39;re able to read minds you&#39;re not going to get anything out of them - and I&#39;m not sure you&#39;d want to if you could. Moment it would hit them they&#39;d scream once, not like any scream I&#39;ve ever heard, and then go completely silent. Just staring at nothing. I&#39;ve never seen anything like it. 
+
+Word of advice; if you have to be near them, avoid looking in their eyes. You&#39;ll thank me later.
+
+Salvador Adrietti
+MTF L-45 &#34;Taskmasters&#34;
+[[/div]]
+
+**Addendum 186.6:** SCP-186-A Discovery
+
+SCP-186-A was discovered in an abandoned warehouse in the town of Tiszavár, Hungary in 1988. At the time of discovery the population of Tiszavár was roughly 3500, of which nearly half lived within 5km of the warehouse. The Foundation became alerted to SCP-186-A&#39;s activation after intercepting an anonymous phone message to regional authorities[[footnote]]The original call included several oblique references to the Foundation, enough to trigger automatic information control protocols and alert Foundation assets to the ongoing situation in Tiszavár. The identity of this caller has never been verified.[[/footnote]]. 
+
+Several boxes of loose documents and journals were also recovered from the site, along with a length of chain that appeared to have previously been wrapped around SCP-186-A before it was cut off just prior to its activation. A metal tag was found attached to the chain that read //&#34;SCP Foundation Department of Abnormalities&#34;//.
+
+**Addendum 186.7:** Summary of Collected Texts
+
+The following is a collection of excerpts from the documents and journals recovered at SCP-186-A&#39;s location of discovery. The bulk of these documents were identified as having been penned by Dr. Jean Durand.
+
+[[collapsible show=&#34;Journal entry - 25 December 1921&#34; hide=&#34;CLOSE FILE&#34;]]
+The writings of Jean Durand, anatomist and field surgeon of meager reknown, a student of what may break and mend a man. I keep this journal first to arrange my own observations, and second for those who will come after me, that they may judge my methods and motives without rumor. I do not claim importance - yet if the work proves consequential, it should have a clear record in my hand.
+
+-----
+
+It has been years, and the trenches have not once stopped talking to me. I wake with mud in my mouth and the names of boys I once treated running like a ledger behind my eyes. For months I have been trying to translate that ledger into something useful: not medicine this time, but an instrument of prevention. If a single contrivance could make one side so invincible that no general would dare order a charge, if all the world knew exact the terrible power at the call of those who could summon it, would we not have made war obsolete by force of certainty? 
+
+I once believed so. I convinced myself that a superior instrument of violence - absolute, terrifying, final - could be the cure. Build the thing that wins every war, I told myself, and the rest would follow: treaties would bind, armies would wither from disuse, children would not learn the taste of petrol and iron. In this, I found common kinship with the man Nemeş.
+
+I have sketched endlessly, argued in smoky rooms, and listened to men whose mouths are full of maps and victory. There is a narcotic comfort to their language: statistics, logistics, range. When I close my eyes I do not see ranges; I see faces. I have not yet confessed that to them. 
+
+There is a part missing from the arithmetic we once pursued. Nemeş, though he likely did not see it for what it was, revealed that to me in 1917. The element most lacking from our display was, as I now believe, __understanding__. Not for those soldiers who withered under the fires we imposed upon them, but for the men in their high castles moving armies from afar. If they cannot be made to understand the nightmare of war, then what hope have we to see it brought to end?
+
+For now I will begin where a man who knows anatomy ought to begin - by studying the limits of force, both material and will.
+[[/collapsible]]
+
+[[collapsible show=&#34;Journal entry - 17 September 1922&#34; hide=&#34;CLOSE FILE&#34;]]
+I walked the battlefields again, this time without tally books or diagrams, only an unwillingness to look away. Graves are honest in a way that governments are not. A rusted helmet half-buried in a furrow refuses euphemism. I tried to imagine a deterrent that truly deters, and a different cruelty disclosed itself: not the cruelty of killing en masse, but the cruelty of making people immune to the sight of it. If populations can be made to tolerate slaughter as an abstraction - numbers on a report - then no weapon, however absolute, will prevent it. Fear of annihilation is instrumentally potent only while it is abstract and distant; up close, grief becomes a political problem to be managed, not a moral veto.
+
+What if, instead of inventing a new method of killing, one could make killing undeniable in a way that prevents abstraction? Not by words or photographs - those are always folded into argument - but by forcing the experience of it into the mind inescapably. I am haunted by the image of a leader tallying lives while his people sleep without knowing what has been taken from them. To prevent that, one must remove the buffer: the lie that a war’s suffering is someone else’s business. Make every human a witness; make denial impossible.
+
+This idea terrifies me more than any diagram of destruction. It is monstrous in its ambition. It would not wipe a battlefield; it would fold the battlefield into consciousness. I do not yet know whether such a fold is salvation or a new kind of violence. I write it down now because I must confront it honestly, not to devise its mechanism but to admit that I am thinking along these lines. There are very dark doors down which empathy can be forced. I feel their frames beneath my hand.
+[[/collapsible]]
+
+[[collapsible show=&#34;Journal entry - 2 February 1924&#34; hide=&#34;CLOSE FILE&#34;]]
+I have counted every broken body, every drop of blood, every wide eye and open, screaming mouth. I have made the tally of the great suffering of man. I know the weight of the imposition I am creating - I have felt every blistering inch of it. To force memory upon a world is to create new horrors, yes: madness, paralysis, a global skein of sorrow so dense that life itself is constricted. I weigh that against the alternative: endless seasons of conscription, countless mothers bending over beds of sons who do not return. Women, children, ground into festering meat in a hole that is not a grave. Carrion birds turning men into pocked things with empty eyes. Horrors beyond horrors, and more. 
+
+I have imagined the world&#39;s assemblies, the oaths, the guardians. I have imagined safeguards - legal, civic, ritual - to prevent monopolization. I once dreamed of a world where every hand held the final weapon. I know now they will simply reason that weapon into obsolecense - or trivialize it - and find new fronts for their carnage. In time, they may forget the perfect weapon exists at all, and turn a blind eye to the conventional horrors. I return now to the same dark hypothesis: that to end war we must remove their capacity to look away. 
+
+I think of the men in the trenches who whispered their last apologies to strangers and wonder if that intimacy, spread outward, would render war unfeasible.
+
+And now the apparatus stands complete. It is not an engine in the old sense - it has no barrels, no shells - but it is an engine all the same. It does not kill - killing is far too pedestrian, and would leave it as little more than simply a more sophisticated gun. No, it forces __understanding__. Once activated, it will take the final moments of every life lost to war - every torn breath, every blind reaching for help, every last pleading word drowned under the grinding noise of uncaring annihilation - and braid them into an unending stream of witness. Not pictures, nor newsreels - they are too readily fictionalized. What they see will be //real//, stripped of distance, laid bare across the mind’s floorboards. No more empty updates from faraway fronts. No more red streaks in a general&#39;s tally. The world will carry the trench inside its own skull, and the trench will never empty.
+
+What they witness shall be truly unspeakable. It is not horror as in a book; there is no turning the page to look away from the nightmares. It is the drowning of every private partition in your mind. A stranger’s last heartbeat becomes your own; the smell of fetid soil and burning iron fills your lungs until you choke; a widow’s desperate keening stretches behind your eyes like wire. And it does not fade. It becomes a companion at breakfast, at prayer, in the hush before sleep. You cannot comfort yourself that you were only a witness. You are the dying for as long as it lasts - and it lasts forever.
+
+It is an act of forced compassion. I will show them all wars, and by doing so, I shall end all wars.
+[[/collapsible]]
+
+[[collapsible show=&#34;Letter to Dr. Ansel Cairns - undated&#34; hide=&#34;CLOSE FILE&#34;]]
+Ansel, 
+
+You will forgive, I hope, the tremor in my script. There is much to say and little time to say it.
+
+I have done the thing you feared I might do. 
+
+This thing I have built for the world - this is the cure I imagined. I speak to you truly and without a modicum of doubt remaining in my mind - this machine shall put an end to the suffering of war. It is pure. It is perfect. It is absolute.
+
+And yet - here is my shame, naked: I cannot bring myself to open the final circuit. I cannot submit my whole self to the full current of what I have prepared. I have given slivers to my own mind, enough to know its depth, but not enough to drown in it. Each time I approach the switch, I feel my pulse stutter. I tell myself that it is simply caution, of passing uncertainty. The momentary pause before the drop. The truth is simpler. I am afraid. Afraid of my own creation, afraid of inhabiting the war I thought I could force others to inhabit. Afraid, perhaps, that even this will not end it.
+
+You once called me brave, Ansel. Do not. I am not brave. I am an anatomist who mistook knowledge for remedy, and now trembles before the medicine he has brewed. I cannot be the one to decide if it is administered. I cannot live under the shadow of what I have made. I do not have the will to press the world’s eyelids open and watch.
+
+So I leave it to you. The machine is yours now. Its mechanisms are sealed but simple to awaken; the instructions are enclosed with this letter. You, who have seen what I have seen but never yielded to despair, may yet possess the clarity I lost. If you judge it a monstrosity, destroy it. If you judge it a necessary horror, then - God forgive us - let it do its work. I pray you never need to choose.
+
+By the time you read this, I will be gone. I am taking the coward’s door, or the honest one; I no longer know the difference. My life is a ledger of wounds I could not close. Perhaps my absence will keep you from inheriting my illusions. Perhaps it will only add another name to the archive of needless loss. Either way, it is my last act of control.
+
+May whatever grace still lingers in this century, if there is any at all, guide your hand better than it guided mine.
+
+Avec respect,
+
+[[image durand.png]]
+[[/collapsible]]
+
+-----
+
 [[include :scp-wiki:component:license-box
-|author=Kalinin]]
-[!-- N/A (No Images)  --]
-[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+|author= djkaktus]]
+&gt; **Based on:** SCP-186, &#34;To End All Wars&#34;
+&gt; **Author:** Kalinin
+&gt; **License:** CC-BY-SA 2.0
+&gt; **Source Link:** https://web.archive.org/web/20241217204132/https://scp-wiki.wikidot.com/scp-186
+
+=====
+&gt; **Filename:** toendallwars.jpg
+&gt; **Author:** Museo Egizio
+&gt; **License:** CC0 1.0 Universal Public Domain Dedication
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:Coffin_box_of_Khonsumes,_wood_-_Museo_Egizio,_Turin_C_2238_02_p03.jpg
+
+=====
+&gt; **Filename:** toendallwars.jpg
+&gt; **Author:** Sergej Majboroda
+&gt; **License:** CC0 1.0 Universal Public Domain Dedication
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:Backplate_%E2%80%93_Abandoned_Workshop_DSC_7145_RAW-Export_(Sergej_Majboroda_via_Poly_Haven).png
+
+=====
+&gt; **Filename:** forest.jpg
+&gt; **Author:** Unknown author
+&gt; **License:** Public Domain
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:View_from_the_summit_of_Mt_Constitution_facing_forest_fire_area,_Orcas_Island,_ca_1910s_(WASTATE_2656).jpeg
+
+=====
+&gt; **Filename:** soldiers.jpg
+&gt; **Author:** Harriett Chalmers Adams
+&gt; **License:** Public Domain
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:French_soldiers_by_a_campfire_during_the_First_World_War.jpg
+
+=====
+&gt; **Filename:** soldiers.jpg
+&gt; **Author:** Unknown author
+&gt; **License:** Public Domain
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:German_soldier_beyond_human_aid_at_Vimy_Ridge_-_April_1917_-_MIKAN_3194788.jpg
+
+=====
+&gt; **Filename:** howitzer.jpg
+&gt; **Author:** John Warwick Brooke
+&gt; **License:** Public Domain
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:NLS_Haig_-_Captured_German_trench_Howitzer_at_Beaucourt-_sur-_Ancre.jpg
+
+=====
+&gt; **Filename:** nemes.jpg
+&gt; **Author:** Carl Pietzner
+&gt; **License:** Public Domain
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:Austro-Hungarian_cavalry_general_Moritz_von_Auffenberg_WWI_(48500911581).jpg
+
+=====
+&gt; **Filename:** durandphoto.png
+&gt; **Author:**  Baltimore and Ohio employees magazine
+&gt; **License:** Public Domain
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:Baltimore_and_Ohio_employees_magazine_(1912)_(14761328855).jpg
+
+=====
+&gt; **Filename:** youngwoman.png
+&gt; **Author:**  Unknown author
+&gt; **License:** Public Domain
+&gt; **Source Link:** https://commons.wikimedia.org/wiki/File:StateLibQld_1_139513_Young_woman_posing_for_a_studio_portrait,_1910-1920.jpg
+
+=====
+
+[[include :scp-wiki:component:license-box-end]]
+
+[[include :scp-wiki:component:djk]]
+[[module CSS]]
+:root {
+  --war-vignette-strength: 0.38;   /* 0 → none, 0.5 → strong */
+  --war-grain-strength: 0.06;      /* 0 → none, ~0.08 max before it looks noisy */
+  --war-image-desat: 0.4;          /* grayscale amount for images */
+  --war-image-sat: 0.6;            /* residual saturation */
+  --war-image-contrast: 0.95;      /* slightly flatter contrast */
+}
+
+:root {
+  --white-monochrome: 10, 11, 12;           /* page bg */
+  --pale-gray-monochrome: 18, 20, 21;       /* UI panels / code blocks */
+  --very-light-gray-monochrome: 26, 28, 30; /* soft surfaces */
+
+  --light-gray-monochrome: 179, 175, 168;
+  --gray-monochrome: 205, 200, 191;
+  --dark-gray-monochrome: 222, 217, 206;
+  --black-monochrome: 232, 227, 216;        /* body text (bone‑white) */
+
+  --accentColor: 92, 23, 20; /* #5C1714 */
+
+  --background-gradient-color: var(--light-gray-monochrome);
+  --swatch-menubg-dark-color: var(--very-light-gray-monochrome);
+  --swatch-text-tertiary-color: var(--accentColor);
+  --ui-button-hover-txt: var(--black-monochrome);
+
+/*  --body-font: &#34;IBM Plex Serif&#34;, &#34;Source Serif 4&#34;, Georgia, &#34;Times New Roman&#34;, Times, serif; */
+
+  --modal-header-txt: var(--black-monochrome);
+  --modal-header-bg: var(--white-monochrome);
+  --hoverblock-header-txt: var(--black-monochrome);
+  --hoverblock-bg: var(--black-monochrome);
+}
+
+html::before {
+  content: &#34;&#34;;
+  position: fixed; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 100% at 50% 25%, rgba(0,0,0,0) 40%, rgba(0,0,0,var(--war-vignette-strength)) 100%);
+  mix-blend-mode: multiply;
+  z-index: 0; /* behind most stacked site chrome */
+}
+html::after {
+  content: &#34;&#34;;
+  position: fixed; inset: 0; pointer-events: none;
+  /* soft cross‑grain */
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 2px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,0.012) 0, rgba(0,0,0,0.012) 1px, transparent 1px, transparent 2px);
+  opacity: var(--war-grain-strength);
+  mix-blend-mode: overlay;
+  z-index: 0;
+}
+
+body, #skrollr-body, #content-wrap, #container, #main-content { position: relative; z-index: 1; }
+
+#page-content h1, #page-content h2, #page-content h3, #page-content h4 {
+  color: rgb(var(--gray-monochrome));
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+#page-title, .meta-title {
+  color: rgb(var(--dark-gray-monochrome));
+}
+
+/* #page-content a:link, #page-content a:visited {
+  color: rgb(var(--accentColor));
+  text-decoration-thickness: 0.06em;
+  text-underline-offset: 0.18em;
+  text-decoration-color: rgba(var(--accentColor), 0.5);
+}
+*/
+/* #page-content a:hover, #page-content a:focus {
+  color: rgb(var(--black-monochrome));
+  background-image: linear-gradient(to bottom, transparent 85%, rgba(var(--accentColor),0.22) 85%);
+  outline: 2px dotted rgba(var(--accentColor), 0.9);
+  outline-offset: 2px;
+} */
+
+#page-content blockquote {
+  border-left: 0.25rem solid rgba(var(--accentColor), 0.35);
+  background: rgba(255,255,255,0.02);
+}
+#page-content hr { border: 0; height: 1px; background: linear-gradient(to right, transparent, rgba(var(--accentColor),0.35), transparent); }
+
+#page-content table, #page-content th, #page-content td {
+  border-color: rgba(var(--light-gray-monochrome), 0.35);
+}
+#page-content thead th { color: rgb(var(--black-monochrome)); background: rgba(255,255,255,0.02); }
+
+.scp-image-block { border-color: rgb(var(--pale-gray-monochrome)); box-shadow: 0 0.26rem 0 0 rgba(var(--accentColor), 0.5);}
+.scp-image-block img {
+  filter: grayscale(var(--war-image-desat)) saturate(var(--war-image-sat)) contrast(var(--war-image-contrast));
+}
+.scp-image-block .scp-image-caption {
+  background-color: rgb(var(--pale-gray-monochrome));
+  color: rgb(var(--black-monochrome));
+}
+
+.code, .code pre, .code p {
+  background-color: rgb(var(--pale-gray-monochrome));
+  color: rgb(var(--black-monochrome));
+}
+
+#header { background: none; }
+#top-bar { --dropdown-bg-color: var(--dark-gray-monochrome), 0.9; }
+#side-bar, #interwiki { --sidebar-links-hover-text-color: var(--black-monochrome); }
+
+.anom-bar-container {
+  --five-color: var(--accentColor);
+  --four-color: var(--accentColor);
+  --three-color: var(--accentColor);
+  --two-color: var(--accentColor);
+  --one-color: var(--accentColor);
+}
+
+#footer, #license-area {
+  --hover-link-color: rgb(var(--accentColor));
+  --swatch-text-secondary-color: var(--black-monochrome);
+  --white-monochrome: var(--white-monochrome);
+}
+
+#page-content { filter: saturate(0.9); }
+
+#page-content sup { color: rgb(var(--dark-gray-monochrome)); }
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:37.828889.</em>
+    <em>Last updated 2026-04-17 00:56:55.871837.</em>
   
 </div>
 </body>

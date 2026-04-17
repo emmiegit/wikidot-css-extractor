@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Event Calendar</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Event Calendar</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/event-calendar" target="_blank">Event Calendar</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>:root {
+  --main-content-width: 100vw;
+  --main-content-side-margin: 0;
+  --basalt-background-color: 255, 255, 255
+}
+
+.calendar {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: 100vw !important;
+  height: max(100dvh, 900px) !important;
+}
+
+@media (min-width: 1024px) {
+  .calendar {
+    top: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .calendar {
+    height: calc(100dvh - 95px) !important;
+    overflow: scroll;
+    top: 90px;
+  }
+}
+
+.fill {
+  height: 100vh;
+}
+
+#page-title {
+  display: none !important;
+}
+
+#header
+{
+  box-shadow: 0px 5px 5px #0002;
+  background: #eee;
+}
+
+.calendar-loading {
+  font-size: 250%;
+  font-style: italic;
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          (none)
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/fragment:event-calendar-events" target="_blank"><code>fragment:event-calendar-events</code></a>
+  
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>fill</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>calendar-loading</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>calendar</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[!--devops:http://localhost:9876/static/manifest.json--]
+
+[!--
+Fragments:
+https://scp-wiki.wikidot.com/fragment:event-calendar-single-event
+https://scp-wiki.wikidot.com/fragment:event-calendar-events
+--]
+
+[[include :scp-wiki:theme:basalt]]
+
+[[module css]]
+:root {
+  --main-content-width: 100vw;
+  --main-content-side-margin: 0;
+  --basalt-background-color: 255, 255, 255
+}
+
+.calendar {
+  position: absolute;
+  top: 120px;
+  left: 0;
+  width: 100vw !important;
+  height: max(100dvh, 900px) !important;
+}
+
+@media (min-width: 1024px) {
+  .calendar {
+    top: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .calendar {
+    height: calc(100dvh - 95px) !important;
+    overflow: scroll;
+    top: 90px;
+  }
+}
+
+.fill {
+  height: 100vh;
+}
+
+#page-title {
+  display: none !important;
+}
+
+#header
+{
+  box-shadow: 0px 5px 5px #0002;
+  background: #eee;
+}
+
+.calendar-loading {
+  font-size: 250%;
+  font-style: italic;
+  position: absolute;
+  top: 50vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+}
+
+[[/module]]
+
+[[div_ class=&#34;fill&#34;]]
+@@ @@
+[[/div]]
+
+[[div_ class=&#34;calendar-loading&#34;]]
+Loading...
+[[/div]]
+
+[[html class=&#34;calendar&#34;]]
+&lt;link rel=&#34;stylesheet&#34; type=&#34;text/css&#34; href=&#34;https://scp-wiki.wdfiles.com/local--files/event-calendar/main.css&#34;/ &gt;
+&lt;script&gt;
+let eventId = 999;
+window.CALENDAR_EVENT_LIST = [];
+
+function optional(str, fallback) {
+  if (str.startsWith(&#34;{\$&#34;) &amp;&amp; str.endsWith(&#34;}&#34;)) {
+    return fallback ?? undefined;
+  }
+  return str;
+}
+
+[[include fragment:event-calendar-events]]
+
+&lt;/script&gt;
+&lt;script src=&#34;https://scp-wiki.wdfiles.com/local--files/event-calendar/main.js&#34;&gt;&lt;/script&gt;
+[[/html]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:53.323426.</em>
+  
+</div>
+</body>

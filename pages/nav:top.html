@@ -29,7 +29,52 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>.hide-ios-cache-issue-notification {
+  width: fit-content;
+  margin-left: 2em;
+}
+
+.ios-cache-issue-notification:has(.hide-ios-cache-issue-notification .collapsible-block-unfolded:not([style*=&#34;none&#34;])) {
+  display: none;
+}
+
+.ios-cache-issue-notification a:not(.collapsible-block-link) {
+  text-decoration: underline;
+}
+
+.ios-cache-issue-notification .code {
+  background-color: #fffafa;
+  border-radius: 10px;
+  border: 1px solid #f00;
+}
+
+.ios-cache-issue-notification {
+  line-height: 1.5;
+  position: fixed;
+  top: 65px;
+  left: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
+  border: 1px solid red;
+  font-size: 125%;
+  color: black;
+  background-color: #fee;
+  z-index: 999999999;
+  width: calc(100vw - 70px);
+  clear: none;
+  max-height: calc(100vh - 130px);
+  overflow: auto;
+  animation: ios-cache-issue-notification-fadein 0.5s;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  max-width: 40em;
+}
+
+@keyframes ios-cache-issue-notification-fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}</code></pre>
         </li>
       
     </ul>
@@ -38,7 +83,7 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>float: right; clear: both; position: relative; z-index: 999999;</code></pre>
         </li>
       
     </ul>
@@ -65,6 +110,22 @@
           <pre><code>open-menu</code></pre>
         </li>
       
+        <li>
+          <pre><code>side-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>ios-cache-issue-notification</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>hide-ios-cache-issue-notification</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
@@ -80,6 +141,7 @@
  * [[[news | Site News]]]
  * [[[chat-guide | IRC Chat]]]
  * [[[authors-pages | Authors&#39; Pages]]]
+ * [[[artist-directory|]]]
  * [[[Contest Archive]]]
  * [[[http://05command.wikidot.com/staff-list | Staff List]]]
 * Resources
@@ -88,9 +150,6 @@
  * [[[Wiki Syntax]]]
  * [[[Sandbox]]]
  * [[[Usertools]]]
-* Sister Sites
- * [[[http://scp-int.wikidot.com/ | SCP International]]]
- * [[[https://wanderers-library.wikidot.com/ | Wanderer&#39;s Library]]]
 * [[[contact-staff | Contact Us]]]
 [[/div]]
 
@@ -112,6 +171,7 @@
  * [[[news | Site News]]]
  * [[[chat-guide | IRC Chat]]]
  * [[[authors-pages | Authors&#39; Pages]]]
+ * [[[artist-directory|]]]
  * [[[Contest Archive]]]
  * [[[http://05command.wikidot.com/staff-list | Staff List]]]
 * Resources
@@ -120,17 +180,88 @@
  * [[[Wiki Syntax]]]
  * [[[Sandbox]]]
  * [[[Usertools]]]
-* Sister Sites
- * [[[http://scp-int.wikidot.com/ | SCP International]]]
- * [[[https://wanderers-library.wikidot.com/ | Wanderer&#39;s Library]]]
-[[/div]]</textarea></pre>
+[[/div]]
+
+[!-- Stylesheet load pop-up. For questions or support, reach out to the Technical Team --]
+[[div_ class=&#34;side-block ios-cache-issue-notification&#34;]]
+[[div style=&#34;float: right; clear: both; position: relative; z-index: 999999;&#34; class=&#34;hide-ios-cache-issue-notification&#34;]]
+[[collapsible show=&#34;✖&#34;]]
+[[/collapsible]]
+[[/div]]
+[[div_]]
+The SCP Wiki&#39;s default theme failed to load. If you see this error and are experiencing graphical issues, you may be able to resolve it by refreshing the page. If you are on iOS, you may also need to [https://support.apple.com/en-us/105082 clear your cache].
+@@ @@
+[[collapsible show=&#34;Seeing this error by mistake?&#34;]]
+If the page you are on &#34;looks fine,&#34; it is most likely (but not certainly) because its theme is overriding the SCP Wiki&#39;s default Sigma-10 theme. If you were to then navigate to a Sigma-10 page, such as the [https://scp-wiki.wikidot.com/ Front Page], it would likely appear broken.
+
+Alternatively, if you know for sure that Sigma-10 //is// loading, the error is most likely mistakenly appearing because you switched the Sigma-10 theme to a different theme using the [https://www.wikidot.com/doc-modules:themepreviewer-module ThemePreviewer] module or another similar feature. If this is the case, and you are the author of the page, add the following code to it to remove the warning:
+[[div class=&#34;code&#34;]]
+@@[[module css]]@@
+@@#top-bar .ios-cache-issue-notification {@@
+@@  display: none !important;@@
+@@}@@
+@@[[/module]]@@
+[[/div]]
+If you are //not// the author of this page, please contact the author or a member of the [https://05command.wikidot.com/technical-staff-main SCP Wiki Technical Team] so that they may fix it. If possible, in your report, please include the browser and operating system of your device, along with the full URL to the offending page.
+[[/collapsible]]
+[[/div]]
+[[/div]]
+
+[[module css]]
+.hide-ios-cache-issue-notification {
+  width: fit-content;
+  margin-left: 2em;
+}
+
+.ios-cache-issue-notification:has(.hide-ios-cache-issue-notification .collapsible-block-unfolded:not([style*=&#34;none&#34;])) {
+  display: none;
+}
+
+.ios-cache-issue-notification a:not(.collapsible-block-link) {
+  text-decoration: underline;
+}
+
+.ios-cache-issue-notification .code {
+  background-color: #fffafa;
+  border-radius: 10px;
+  border: 1px solid #f00;
+}
+
+.ios-cache-issue-notification {
+  line-height: 1.5;
+  position: fixed;
+  top: 65px;
+  left: 10px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px black;
+  border: 1px solid red;
+  font-size: 125%;
+  color: black;
+  background-color: #fee;
+  z-index: 999999999;
+  width: calc(100vw - 70px);
+  clear: none;
+  max-height: calc(100vh - 130px);
+  overflow: auto;
+  animation: ios-cache-issue-notification-fadein 0.5s;
+  animation-delay: 2s;
+  animation-fill-mode: both;
+  max-width: 40em;
+}
+
+@keyframes ios-cache-issue-notification-fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+[[/module]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:37.378470.</em>
+    <em>Last updated 2026-04-17 00:56:54.979157.</em>
   
 </div>
 </body>

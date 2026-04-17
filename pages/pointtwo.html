@@ -1,0 +1,2223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html">
+  <meta name="description" content="Compilation of extracted CSS styles on the SCP Wiki">
+  <meta name="keywords" content="scp,wiki,styles,wikidot">
+  <meta name="author" content="SCP Wiki">
+  <meta name="generator" content="wikidot-css-extractor">
+
+  <script src="https://tristen.ca/tablesort/dist/tablesort.min.js"></script>
+<script src="https://tristen.ca/tablesort/dist/sorts/tablesort.number.min.js"></script>
+<script src="https://emmiegit.github.io/wikidot-css-extractor/static/script.js" async></script>
+  <link rel="stylesheet" href="https://tristen.ca/tablesort/tablesort.css">
+<link rel="stylesheet" href="https://emmiegit.github.io/wikidot-css-extractor/static/style.css">
+
+  <title>Point Two Hub</title>
+</head>
+<body>
+<div id="container">
+  
+  <div class="page">
+    <h1 class="title">Point Two Hub</h1>
+    <p>
+      Link to article: <a href="https://scp-wiki.wikidot.com/pointtwo" target="_blank">Point Two Hub</a>.
+    </p>
+
+    <h2 class="header">Module Styles</h2>
+    <ul class="module-styles">
+      
+        <li>
+          <pre><code>
+@import url(&#39;https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap&#39;);
+
+/* ROOT SETTINGS */
+:root {
+    --title: &#34;Have you ever heard of&#34;;
+    --subtitle: &#34;SITE-19?&#34;;
+    --title-size: 1.2rem;
+    --subtitle-size: 2.5rem;
+    --logo: url(&#39;https://scpdsandbox.wdfiles.com/local--files/nostalgia-theme/primary_shcr_white.png&#39;);
+
+    --basalt-secondary-color: 34, 34, 35;
+    --top-bar-dropdown-background: var(--basalt-secondary-color);
+    --basalt-UI-dark-pallete: 89, 89, 89;
+
+    --header-UI-font-size: calc(var(--true-font-size) * .85);
+    --header-UI-font-size: calc(var(--true-font-size) * .95);
+    --basalt-bright-element-color: 224, 72, 73;
+    --basalt-main-text-color: 230, 230, 230;
+    
+    --base-header-height: calc((var(--title-size) + var(--subtitle-size)) * 1.275 + 1.5rem);
+
+    --search-button-width: 2.5rem;
+    --user-button-width: 3.5rem;
+
+    --blockquote-background-color: var(--basalt-UI-dark-palette);
+
+    --footnote-background-color: var(--basalt-UI-dark-palette);
+    --image-caption-background-color: var(--basalt-secondary-color);
+    --basalt-th-background-color: var(--basalt-secondary-color);
+    --hr-color: var(--basalt-UI-dark-palette);
+}
+
+/* HEADER MUMBO JUMBO */
+
+#header {
+    display: grid;
+    position: sticky;
+    contain: layout;
+}
+
+#header::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+    filter: brightness(1.1) contrast(1) saturate(0.9);
+    background-repeat: repeat;
+    background-size: auto;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#header-extra-div-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; /* ONLY this div clips - not the whole header */
+    pointer-events: none;
+    z-index: 1;
+}
+
+#header-extra-div-1 span {
+    position: absolute;
+    top: 50%;
+    right: calc(var(--search-button-width) + var(--user-button-width) + 250px);
+    width: clamp(925px, 20vw, 650px);
+    height: clamp(950px, 25vw, 550px);
+    transform: translateY(-50%) rotate(-15deg);
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/primary_shcr_white.png&#39;);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.25;
+    filter: hue-rotate(180deg) saturate(0.3) brightness(0.7);
+    display: block;
+}
+
+/* HIDE: Crown on mobile */
+@media (max-width: 1100px) {
+    #header-extra-div-1 {
+        display: none;
+    }
+}
+
+#header h1 a span {
+    margin-left: 0.65rem;
+}
+
+#header h1 a::before {
+    width: calc(var(--base-header-height) * 0.65);
+    min-width: calc(var(--base-header-height) * 0.70);
+}
+
+#header h1 a span {
+    text-align: center;
+    display: inline-block;
+    width: max-content;
+    min-width: max-content;
+    height: unset;
+}
+
+#header h1 a span::before,
+#header h1 a span::after {
+    display: block;
+    white-space: nowrap;
+    width: max-content;
+    margin: 0 auto;
+}
+
+#header h1 a span::before {
+    content: var(--title);
+    font-size: var(--title-size);
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+#header h1 a span::after {
+    content: var(--subtitle);
+    font-size: var(--subtitle-size);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0px;
+}
+
+/* TOPBAR */
+
+#top-bar div[class*=top-bar]&gt;ul&gt;li&gt;a {
+    padding: 0 calc(var(--header-UI-font-size) * 2.5);
+}
+
+#top-bar div[class*=top-bar] ul li ul li a {
+    background: rgb(var(--basalt-UI-dark-palette), var(--basalt-UI-opacity));
+}
+
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li {
+    margin: 0rem 0rem;
+    white-space: nowrap;
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a {
+    transition: background-color 0.15s ease;
+    padding: 0 calc(var(--header-UI-font-size) * 2.5);
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li:first-child {
+    margin-left: 0;
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li:last-child {
+    margin-right: 0;
+}
+
+/* LOGIN STATUS */
+#login-status span.printuser&gt;a {
+    padding: min(calc(var(--base-header-height) * .175), 0.325rem);
+}
+
+/* BODY */
+body {
+    color: rgb(var(--basalt-secondary-color));
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+
+/* BLOCKQUOTES */
+
+.blockquote hr {
+    background-color: rgb(var(--basalt-primary-color));
+}
+
+/* TABLES */
+table th,
+table tr:first-child td {
+    border: 0.15rem solid rgb(var(--basalt-secondary-color));
+}
+
+/* TABS */
+.yui-navset.yui-navset-top {
+    border: 1px solid rgb(var(--basalt-secondary-color));
+}
+
+:is(:where(#page-content) table:not(.form),table.wiki-content-table) td {
+   border: solid 0.15rem rgb(var(--basalt-UI-dark-palette));
+}
+
+/* PAGE TITLE */
+#page-title, .meta-title {
+    color: rgba(var(--basalt-secondary-color));
+    font-size: xxx-large;
+}
+
+/* HOVERTIPS COLORING */
+.bibitems, .footnotes-footer, .hovertip {
+    color: rgb(var(--basalt-primary-color));
+}
+
+/* EDIT AREA */
+#edit-page-textarea, #np-text {
+    color: rgb(var(--basalt-secondary-color));
+}
+
+/* BIBLITEMS */
+.bibitems .title, .footnotes-footer .title {
+    background-color: rgb(var(--basalt-secondary-color));
+}
+
+.bibitems::before, .footnotes-footer::before {
+    background-color: rgb(var(--basalt-secondary-color));
+}
+
+/* USER PROFILE WINDOW */
+.owindow .title {
+    opacity: 80%;
+    color: rgb(var(--basalt-secondary-color));
+}
+
+
+/* SCROLL */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--scrollbar-thumb-color)) rgb(89 89 89);
+}
+
+/* PAGE TAGS */
+#main-content&gt;.page-tags&gt;span a {
+    color: rgb(var(--basalt-primary-color));
+}
+
+/* TEXT AREA */
+input[type=text], textarea {
+    color: rgb(var(--basalt-secondary-color));
+}
+
+/* ACTION AREA (FILE UPLOAD) */
+#action-area input.text, textarea#file-comments {
+    color: rgba(var(--basalt-primary-color));
+}
+
+/* PREVIEW MESSAGE */
+.preview-message {
+    background-color: rgba(var(--basalt-primary-color));
+}
+
+/* DOCUMENT DIVS */
+div.document {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+}
+div:is(.document)::before, div:is(.document)::after {
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+}
+
+#page-content div:is(.document, .darkdocument) {
+    max-width: 60rem;
+}
+
+div.darkdocument {
+    background-color: rgb(var(--darkdocument-background-color), 0.25);
+    box-shadow: 0px 1px 1.9px -4px rgb(150 150 159 / 75%), 0px 6px 15px -4px rgb(0 0 0 / 76%);
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+}
+
+div:is(.darkdocument)::before, div:is(.darkdocument)::after {
+    background-color: rgb(var(--darkdocument-background-color));
+    opacity: 90%;
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+}
+
+/* HIGHLIGHTER SPAN */
+.shighlight {
+    position: relative;
+    background: linear-gradient(104deg,
+        rgb(255 255 0 / 28%) 0.9%,
+        rgba(255, 255, 0, 0.8) 2.4%,
+        rgba(255, 255, 0, 0.5) 5.8%,
+        rgb(255 255 0 / 52%) 93%,
+        rgba(255, 255, 0, 0.7) 96%,
+        rgb(255 255 0 / 29%) 98%);
+    );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+    );
+}
+
+.shighlight::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -3px;
+    left: -4px;
+    bottom: -4px;
+    background: rgba(255, 255, 0, 0.3);
+    border-radius: 0.8em 0.3em 0.9em 0.4em;
+    z-index: -1;
+    transform: rotate(-0.5deg) skew(-1deg);
+    clip-path: polygon(
+        0% 10%, 15% 16%, 25% 12%, 35% 18%, 45% 14%,
+        55% 10%, 65% 16%, 75% 12%, 85% 18%, 100% 14%,
+        100% 90%, 85% 86%, 75% 92%, 65% 88%, 55% 94%,
+        45% 90%, 35% 86%, 25% 92%, 15% 88%, 0% 92%
+    );
+}
+
+
+.shighlight::after {
+    content: &#39;&#39;;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    right: -4px;
+    bottom: -3px;
+    background: rgba(255, 255, 0, 0.15);
+    border-radius: 0.6em 0.7em 0.5em 0.8em;
+    z-index: -2;
+    transform: rotate(0.3deg) skew(0.5deg);
+    clip-path: polygon(
+            0% 14%, 12% 10%, 24% 16%, 36% 12%, 48% 18%,
+            60% 14%, 72% 10%, 84% 16%, 96% 12%, 100% 18%,
+            100% 88%, 96% 92%, 84% 86%, 72% 94%, 60% 90%,
+            48% 86%, 36% 92%, 24% 88%, 12% 94%, 0% 90%
+        );
+ }
+
+
+.shighlight-orange {
+    position: relative;
+    background: linear-gradient(102deg,
+    rgba(255, 165, 0, 0) 0.9%,
+    rgba(255, 165, 0, 0.8) 2.4%,
+    rgba(255, 165, 0, 0.5) 5.8%,
+    rgba(255, 165, 0, 0.45) 93%,
+    rgba(255, 165, 0, 0.7) 96%,
+    rgba(255, 165, 0, 0) 98%)
+       );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+        );
+}
+
+.shighlight-orange::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -2px;
+    left: -3px;
+    bottom: -2px;
+    background: rgba(255, 165, 0, 0.3);
+    border-radius: 0.7em 0.5em 0.8em 0.3em;
+    z-index: -1;
+    transform: rotate(0.4deg) skew(-0.8deg);
+    clip-path: polygon(
+        0% 16%, 15% 12%, 30% 18%, 45% 14%, 60% 10%,
+        75% 16%, 90% 12%, 100% 18%, 100% 88%, 90% 92%,
+        75% 86%, 60% 94%, 45% 90%, 30% 86%, 15% 92%, 0% 88%
+    );
+}
+
+.shighlight-pink {
+    position: relative;
+    background: linear-gradient(106deg, rgba(255, 20, 147, 0) 0.9%, rgba(255, 20, 147, 0.6) 2.4%, rgba(255, 20, 147, 0.4) 5.8%, rgba(255, 20, 147, 0.1) 93%, rgba(255, 20, 147, 0.6) 96%, rgba(255, 20, 147, 0) 98%);
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+}
+
+.shighlight-pink::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -1px;
+    left: -2px;
+    bottom: -3px;
+    background: rgba(255, 20, 147, 0.25);
+    border-radius: 0.5em 0.9em 0.4em 1.1em;
+    z-index: -1;
+    transform: rotate(-0.3deg) skew(1deg);
+    /* Pink subtle wavy background */
+    clip-path: polygon(
+        0% 12%, 20% 18%, 35% 14%, 50% 10%, 65% 16%,
+        80% 12%, 100% 18%, 100% 90%, 80% 86%, 65% 92%,
+        50% 88%, 35% 94%, 20% 90%, 0% 86%
+    );
+}
+
+.shighlight-blue {
+    position: relative;
+    background: linear-gradient(102deg,
+        rgba(0, 191, 255, 0) 0.9%,
+        rgba(0, 191, 255, 0.8) 2.4%,
+        rgba(0, 191, 255, 0.5) 5.8%,
+        rgba(0, 191, 255, 0.1) 93%,
+        rgba(0, 191, 255, 0.7) 96%,
+        rgba(0, 191, 255, 0) 98%
+    );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+}
+
+.shighlight-blue::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    right: -3px;
+    bottom: -2px;
+    background: rgba(0, 191, 255, 0.3);
+    border-radius: 0.7em 0.5em 0.8em 0.3em;
+    z-index: -1;
+    transform: rotate(0.4deg) skew(-0.8deg);
+    clip-path: polygon(
+        0% 16%, 15% 12%, 30% 18%, 45% 14%, 60% 10%,
+        75% 16%, 90% 12%, 100% 18%, 100% 88%, 90% 92%,
+        75% 86%, 60% 94%, 45% 90%, 30% 86%, 15% 92%, 0% 88%
+    );
+}
+
+
+/* STICKY NOTES */
+#page-content div.stickynote {
+   float: left;
+   max-width: calc(var(--main-content-width) / 2.15);
+   box-sizing: border-box;
+   margin: 0.25rem 1.25rem;
+   padding-inline: 1.2rem;
+   padding-block: 0.5rem;
+   font-size: 1.1525em;
+   border-radius: 7px;
+   position: relative;
+   font-family: &#39;Permanent Marker&#39;, cursive;
+   letter-spacing: 0.75px;
+   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+   transform: rotate(-1deg);
+   transition: transform 0.2s ease;
+}
+
+/* Hover effect for interactivity */
+#page-content div.stickynote:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow:
+        4px 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Position Controls */
+#page-content div.stickynote.left {
+    float: left;
+    margin-left: clamp(calc(var(--main-content-width) / -4.5), calc((87.5vw - 95%) / -2), 0rem);
+}
+
+#page-content div.stickynote.right {
+    float: right;
+    clamp(calc(var(--main-content-width) / -100), calc((87.5vw - 95%) / -2), -2rem)
+    margin-left: 1.25rem;
+}
+
+/* Tilt Controls */
+#page-content div.stickynote.tilt-none {
+    transform: rotate(0deg);
+}
+
+#page-content div.stickynote.tilt-light {
+    transform: rotate(-0.5deg);
+}
+
+#page-content div.stickynote.tilt-medium {
+    transform: rotate(-2deg);
+}
+
+#page-content div.stickynote.tilt-heavy {
+    transform: rotate(-3deg);
+}
+
+#page-content div.stickynote.tilt-right-light {
+    transform: rotate(0.5deg);
+}
+
+#page-content div.stickynote.tilt-right-medium {
+    transform: rotate(2deg);
+}
+
+#page-content div.stickynote.tilt-right-heavy {
+    transform: rotate(3deg);
+}
+
+#page-content div.stickynote.tilt-none:hover { transform: rotate(0deg) scale(1.02); }
+#page-content div.stickynote.tilt-light:hover { transform: rotate(-0.5deg) scale(1.02); }
+#page-content div.stickynote.tilt-normal:hover { transform: rotate(-1deg) scale(1.02); }
+#page-content div.stickynote.tilt-medium:hover { transform: rotate(-2deg) scale(1.02); }
+#page-content div.stickynote.tilt-heavy:hover { transform: rotate(-3deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-light:hover { transform: rotate(0.5deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-normal:hover { transform: rotate(1deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-medium:hover { transform: rotate(2deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-heavy:hover { transform: rotate(3deg) scale(1.02); }
+
+#page-content div.stickynote.yellow {
+    background-color: #ffeb3b;
+    border: solid 0.12rem #f9c74f;
+    color: #333;
+}
+
+#page-content div.stickynote.red {
+    background-color: #ff5252;
+    border: solid 0.12rem #e53935;
+}
+
+#page-content div.stickynote.blue {
+    background-color: #42a5f5;
+    border: solid 0.12rem #1976d2;
+}
+
+#page-content div.stickynote.green {
+    background-color: #66bb6a;
+    border: solid 0.12rem #388e3c;
+}
+
+#page-content div.stickynote.orange {
+    background-color: #ff9800;
+    border: solid 0.12rem #f57c00;
+}
+
+#page-content div.stickynote.pink {
+    background-color: #fb85ad;
+    border: solid 0.12rem #c2185b;
+}
+</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>/* This is CSS that will not be part of theme, just for the page itself */
+
+/* SCP HEADER */
+.scp-header {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.scp-header .scp-logo {
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.scp-header .scp-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.scp-header .scp-text-stack {
+    position: absolute;
+    left: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+}
+
+.scp-header .scp-text-stack p {
+    line-height: 0;
+}
+
+.scp-header .scp-foundation {
+    font-size: 14.7px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+.scp-header .scp-site {
+    font-size: 33px;
+    font-weight: 900;
+    color: #333;
+    margin: 2px 0 0 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+.scp-header .scp-classification {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 300px;
+    padding-left: 18rem;
+    text-align: right;
+}
+
+.scp-header .redacted-highlight {
+    background: #000;
+    color: white;
+    padding: 3px 6px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+/* SCP File Table - Desktop */
+.scp-file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0px 0px 8px 0px;
+    font-size: 18px;
+}
+
+.scp-file-table td {
+    padding: 0px 0px 4px 0px;
+    border: none;
+}
+
+.scp-file-table .left-cell {
+    text-align: left;
+    font-weight: normal;
+    width: 50%;
+}
+
+.scp-file-table .right-cell {
+    text-align: right;
+    font-weight: 800;
+    width: 50%;
+}
+
+.scp-file-table .clearance-cell {
+    background: rgb(255, 18, 29);
+    color: rgb(var(--basalt-secondary-color));
+    text-align: center;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 21px;
+    letter-spacing: 2px;
+}
+
+/* Tablet and smaller laptops - 800px and below */
+@media screen and (max-width: 800px) {
+    .scp-header .scp-classification {
+        position: static;
+        padding-left: 0;
+        text-align: left;
+        max-width: none;
+        margin-top: 15px;
+        transform: none;
+    }
+    
+    .scp-header {
+        height: auto;
+        min-height: 120px;
+        padding: 15px 0 25px 0;
+    }
+    
+    .scp-file-table {
+        font-size: 16px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 18px;
+        padding: 6px;
+    }
+}
+
+/* Mobile Tablets - 768px and below */
+@media screen and (max-width: 768px) {
+    .scp-header {
+        height: auto;
+        min-height: 140px;
+        padding: 15px 0 30px 0;
+    }
+    
+    .scp-header .scp-logo {
+        left: 0;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 80px;
+        padding-left: 0;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 13px;
+        text-align: left;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 29px;
+        text-align: left;
+    }
+    
+    .scp-header .scp-classification {
+        position: static;
+        margin-top: 20px;
+        padding-left: 0;
+        text-align: left;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 12px;
+        padding: 4px 6px;
+        line-height: 1.4;
+    }
+    
+    .scp-file-table {
+        font-size: 15px;
+    }
+    
+    .scp-file-table td {
+        padding: 2px 0 6px 0;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 16px;
+        padding: 8px 4px;
+        letter-spacing: 1px;
+    }
+}
+
+/* Large phones - 600px and below */
+@media screen and (max-width: 600px) {
+    .scp-header {
+        min-height: 160px;
+        padding: 10px 0 35px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 70px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 12px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 26px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 11px;
+        padding: 3px 5px;
+    }
+    
+    .scp-file-table {
+        font-size: 14px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 15px;
+        padding: 8px 2px;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* Small phones - 480px and below */
+@media screen and (max-width: 480px) {
+    .scp-header {
+        min-height: 180px;
+        padding: 10px 0 40px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 60px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 11px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 22px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 10px;
+        padding: 3px 4px;
+        line-height: 1.5;
+    }
+    
+    .scp-file-table {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .scp-file-table td {
+        padding: 3px 0 8px 0;
+    }
+    
+    .scp-file-table .left-cell,
+    .scp-file-table .right-cell {
+        width: 50%;
+        word-wrap: break-word;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 14px;
+        padding: 10px 2px;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+}
+
+/* Very small phones - 360px and below */
+@media screen and (max-width: 360px) {
+    .scp-header {
+        min-height: 200px;
+        padding: 8px 0 45px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 55px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 10px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 20px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 9px;
+        padding: 2px 3px;
+    }
+    
+    .scp-file-table {
+        font-size: 12px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 13px;
+        padding: 12px 2px;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+}</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Inline Styles</h2>
+    <ul class="inline-styles">
+      
+        <li>
+          <pre><code>display: none;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-color: transparent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-color: transparent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-color: transparent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-color: transparent</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>border-color: transparent</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Includes</h2>
+    <ul class="includes">
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/theme:basalt" target="_blank"><code>:scp-wiki:theme:basalt</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/theme:basalt.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+    </ul>
+
+    <h2 class="header">CSS Classes</h2>
+    <ul class="css-classes">
+      
+        <li>
+          <pre><code>document</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-header</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-logo</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-text-stack</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-foundation</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-site</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-classification</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>redacted-highlight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>scp-file-table</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>right-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>left-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>right-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>clearance-cell</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>document</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>document</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shighlight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shighlight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shighlight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>shighlight</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>document</code></pre>
+        </li>
+      
+    </ul>
+
+    <h2 class="header">Page Source</h2>
+    <pre><textarea class="page-source" readonly>[[div style=&#34;display: none;&#34;]]
+[[include component:image-block
+name=CoverPointTwo.png
+|caption=BROKEN CROWN
+|width=100%
+|align=center]]
+[[/div]]
+
+[[include :scp-wiki:theme:basalt]]
+
+[[module CSS]]
+
+@import url(&#39;https://fonts.googleapis.com/css2?family=Permanent+Marker&amp;display=swap&#39;);
+
+/* ROOT SETTINGS */
+:root {
+    --title: &#34;Have you ever heard of&#34;;
+    --subtitle: &#34;SITE-19?&#34;;
+    --title-size: 1.2rem;
+    --subtitle-size: 2.5rem;
+    --logo: url(&#39;https://scpdsandbox.wdfiles.com/local--files/nostalgia-theme/primary_shcr_white.png&#39;);
+
+    --basalt-secondary-color: 34, 34, 35;
+    --top-bar-dropdown-background: var(--basalt-secondary-color);
+    --basalt-UI-dark-pallete: 89, 89, 89;
+
+    --header-UI-font-size: calc(var(--true-font-size) * .85);
+    --header-UI-font-size: calc(var(--true-font-size) * .95);
+    --basalt-bright-element-color: 224, 72, 73;
+    --basalt-main-text-color: 230, 230, 230;
+    
+    --base-header-height: calc((var(--title-size) + var(--subtitle-size)) * 1.275 + 1.5rem);
+
+    --search-button-width: 2.5rem;
+    --user-button-width: 3.5rem;
+
+    --blockquote-background-color: var(--basalt-UI-dark-palette);
+
+    --footnote-background-color: var(--basalt-UI-dark-palette);
+    --image-caption-background-color: var(--basalt-secondary-color);
+    --basalt-th-background-color: var(--basalt-secondary-color);
+    --hr-color: var(--basalt-UI-dark-palette);
+}
+
+/* HEADER MUMBO JUMBO */
+
+#header {
+    display: grid;
+    position: sticky;
+    contain: layout;
+}
+
+#header::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+    filter: brightness(1.1) contrast(1) saturate(0.9);
+    background-repeat: repeat;
+    background-size: auto;
+    z-index: -1;
+    pointer-events: none;
+}
+
+#header-extra-div-1 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden; /* ONLY this div clips - not the whole header */
+    pointer-events: none;
+    z-index: 1;
+}
+
+#header-extra-div-1 span {
+    position: absolute;
+    top: 50%;
+    right: calc(var(--search-button-width) + var(--user-button-width) + 250px);
+    width: clamp(925px, 20vw, 650px);
+    height: clamp(950px, 25vw, 550px);
+    transform: translateY(-50%) rotate(-15deg);
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/primary_shcr_white.png&#39;);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.25;
+    filter: hue-rotate(180deg) saturate(0.3) brightness(0.7);
+    display: block;
+}
+
+/* HIDE: Crown on mobile */
+@media (max-width: 1100px) {
+    #header-extra-div-1 {
+        display: none;
+    }
+}
+
+#header h1 a span {
+    margin-left: 0.65rem;
+}
+
+#header h1 a::before {
+    width: calc(var(--base-header-height) * 0.65);
+    min-width: calc(var(--base-header-height) * 0.70);
+}
+
+#header h1 a span {
+    text-align: center;
+    display: inline-block;
+    width: max-content;
+    min-width: max-content;
+    height: unset;
+}
+
+#header h1 a span::before,
+#header h1 a span::after {
+    display: block;
+    white-space: nowrap;
+    width: max-content;
+    margin: 0 auto;
+}
+
+#header h1 a span::before {
+    content: var(--title);
+    font-size: var(--title-size);
+    font-weight: bold;
+    line-height: 1.1;
+}
+
+#header h1 a span::after {
+    content: var(--subtitle);
+    font-size: var(--subtitle-size);
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 0px;
+}
+
+/* TOPBAR */
+
+#top-bar div[class*=top-bar]&gt;ul&gt;li&gt;a {
+    padding: 0 calc(var(--header-UI-font-size) * 2.5);
+}
+
+#top-bar div[class*=top-bar] ul li ul li a {
+    background: rgb(var(--basalt-UI-dark-palette), var(--basalt-UI-opacity));
+}
+
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li {
+    margin: 0rem 0rem;
+    white-space: nowrap;
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li &gt; a {
+    transition: background-color 0.15s ease;
+    padding: 0 calc(var(--header-UI-font-size) * 2.5);
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li:first-child {
+    margin-left: 0;
+}
+
+#top-bar div[class*=top-bar] &gt; ul &gt; li:last-child {
+    margin-right: 0;
+}
+
+/* LOGIN STATUS */
+#login-status span.printuser&gt;a {
+    padding: min(calc(var(--base-header-height) * .175), 0.325rem);
+}
+
+/* BODY */
+body {
+    color: rgb(var(--basalt-secondary-color));
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+
+/* BLOCKQUOTES */
+
+.blockquote hr {
+    background-color: rgb(var(--basalt-primary-color));
+}
+
+/* TABLES */
+table th,
+table tr:first-child td {
+    border: 0.15rem solid rgb(var(--basalt-secondary-color));
+}
+
+/* TABS */
+.yui-navset.yui-navset-top {
+    border: 1px solid rgb(var(--basalt-secondary-color));
+}
+
+:is(:where(#page-content) table:not(.form),table.wiki-content-table) td {
+   border: solid 0.15rem rgb(var(--basalt-UI-dark-palette));
+}
+
+/* PAGE TITLE */
+#page-title, .meta-title {
+    color: rgba(var(--basalt-secondary-color));
+    font-size: xxx-large;
+}
+
+/* HOVERTIPS COLORING */
+.bibitems, .footnotes-footer, .hovertip {
+    color: rgb(var(--basalt-primary-color));
+}
+
+/* EDIT AREA */
+#edit-page-textarea, #np-text {
+    color: rgb(var(--basalt-secondary-color));
+}
+
+/* BIBLITEMS */
+.bibitems .title, .footnotes-footer .title {
+    background-color: rgb(var(--basalt-secondary-color));
+}
+
+.bibitems::before, .footnotes-footer::before {
+    background-color: rgb(var(--basalt-secondary-color));
+}
+
+/* USER PROFILE WINDOW */
+.owindow .title {
+    opacity: 80%;
+    color: rgb(var(--basalt-secondary-color));
+}
+
+
+/* SCROLL */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--scrollbar-thumb-color)) rgb(89 89 89);
+}
+
+/* PAGE TAGS */
+#main-content&gt;.page-tags&gt;span a {
+    color: rgb(var(--basalt-primary-color));
+}
+
+/* TEXT AREA */
+input[type=text], textarea {
+    color: rgb(var(--basalt-secondary-color));
+}
+
+/* ACTION AREA (FILE UPLOAD) */
+#action-area input.text, textarea#file-comments {
+    color: rgba(var(--basalt-primary-color));
+}
+
+/* PREVIEW MESSAGE */
+.preview-message {
+    background-color: rgba(var(--basalt-primary-color));
+}
+
+/* DOCUMENT DIVS */
+div.document {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+}
+
+div.document::before {
+    box-shadow: 0px 1px 1.9px -4px rgb(0 0 0 / 50%), 0px 6px 15px -4px rgb(0 0 0 / 64%);
+}
+div:is(.document)::before, div:is(.document)::after {
+    background-image: url(http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/nor_pate_white_v2_redux.png);
+}
+
+#page-content div:is(.document, .darkdocument) {
+    max-width: 60rem;
+}
+
+div.darkdocument {
+    background-color: rgb(var(--darkdocument-background-color), 0.25);
+    box-shadow: 0px 1px 1.9px -4px rgb(150 150 159 / 75%), 0px 6px 15px -4px rgb(0 0 0 / 76%);
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+}
+
+div:is(.darkdocument)::before, div:is(.darkdocument)::after {
+    background-color: rgb(var(--darkdocument-background-color));
+    opacity: 90%;
+    background-image: url(&#39;http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/inv_pate_black_v2_redux.png&#39;);
+}
+
+/* HIGHLIGHTER SPAN */
+.shighlight {
+    position: relative;
+    background: linear-gradient(104deg,
+        rgb(255 255 0 / 28%) 0.9%,
+        rgba(255, 255, 0, 0.8) 2.4%,
+        rgba(255, 255, 0, 0.5) 5.8%,
+        rgb(255 255 0 / 52%) 93%,
+        rgba(255, 255, 0, 0.7) 96%,
+        rgb(255 255 0 / 29%) 98%);
+    );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+    );
+}
+
+.shighlight::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -3px;
+    left: -4px;
+    bottom: -4px;
+    background: rgba(255, 255, 0, 0.3);
+    border-radius: 0.8em 0.3em 0.9em 0.4em;
+    z-index: -1;
+    transform: rotate(-0.5deg) skew(-1deg);
+    clip-path: polygon(
+        0% 10%, 15% 16%, 25% 12%, 35% 18%, 45% 14%,
+        55% 10%, 65% 16%, 75% 12%, 85% 18%, 100% 14%,
+        100% 90%, 85% 86%, 75% 92%, 65% 88%, 55% 94%,
+        45% 90%, 35% 86%, 25% 92%, 15% 88%, 0% 92%
+    );
+}
+
+
+.shighlight::after {
+    content: &#39;&#39;;
+    position: relative;
+    top: -2px;
+    left: -2px;
+    right: -4px;
+    bottom: -3px;
+    background: rgba(255, 255, 0, 0.15);
+    border-radius: 0.6em 0.7em 0.5em 0.8em;
+    z-index: -2;
+    transform: rotate(0.3deg) skew(0.5deg);
+    clip-path: polygon(
+            0% 14%, 12% 10%, 24% 16%, 36% 12%, 48% 18%,
+            60% 14%, 72% 10%, 84% 16%, 96% 12%, 100% 18%,
+            100% 88%, 96% 92%, 84% 86%, 72% 94%, 60% 90%,
+            48% 86%, 36% 92%, 24% 88%, 12% 94%, 0% 90%
+        );
+ }
+
+
+.shighlight-orange {
+    position: relative;
+    background: linear-gradient(102deg,
+    rgba(255, 165, 0, 0) 0.9%,
+    rgba(255, 165, 0, 0.8) 2.4%,
+    rgba(255, 165, 0, 0.5) 5.8%,
+    rgba(255, 165, 0, 0.45) 93%,
+    rgba(255, 165, 0, 0.7) 96%,
+    rgba(255, 165, 0, 0) 98%)
+       );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+        );
+}
+
+.shighlight-orange::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -2px;
+    left: -3px;
+    bottom: -2px;
+    background: rgba(255, 165, 0, 0.3);
+    border-radius: 0.7em 0.5em 0.8em 0.3em;
+    z-index: -1;
+    transform: rotate(0.4deg) skew(-0.8deg);
+    clip-path: polygon(
+        0% 16%, 15% 12%, 30% 18%, 45% 14%, 60% 10%,
+        75% 16%, 90% 12%, 100% 18%, 100% 88%, 90% 92%,
+        75% 86%, 60% 94%, 45% 90%, 30% 86%, 15% 92%, 0% 88%
+    );
+}
+
+.shighlight-pink {
+    position: relative;
+    background: linear-gradient(106deg, rgba(255, 20, 147, 0) 0.9%, rgba(255, 20, 147, 0.6) 2.4%, rgba(255, 20, 147, 0.4) 5.8%, rgba(255, 20, 147, 0.1) 93%, rgba(255, 20, 147, 0.6) 96%, rgba(255, 20, 147, 0) 98%);
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+}
+
+.shighlight-pink::before {
+    content: &#39;&#39;;
+    position: relative;
+    top: -1px;
+    left: -2px;
+    bottom: -3px;
+    background: rgba(255, 20, 147, 0.25);
+    border-radius: 0.5em 0.9em 0.4em 1.1em;
+    z-index: -1;
+    transform: rotate(-0.3deg) skew(1deg);
+    /* Pink subtle wavy background */
+    clip-path: polygon(
+        0% 12%, 20% 18%, 35% 14%, 50% 10%, 65% 16%,
+        80% 12%, 100% 18%, 100% 90%, 80% 86%, 65% 92%,
+        50% 88%, 35% 94%, 20% 90%, 0% 86%
+    );
+}
+
+.shighlight-blue {
+    position: relative;
+    background: linear-gradient(102deg,
+        rgba(0, 191, 255, 0) 0.9%,
+        rgba(0, 191, 255, 0.8) 2.4%,
+        rgba(0, 191, 255, 0.5) 5.8%,
+        rgba(0, 191, 255, 0.1) 93%,
+        rgba(0, 191, 255, 0.7) 96%,
+        rgba(0, 191, 255, 0) 98%
+    );
+    border-radius: 1.2em 0.3em 0.8em 0.7em;
+    padding: 0.1em 0.2em;
+    background-size: 100% 60%;
+    background-position: 0 40%;
+    background-repeat: no-repeat;
+}
+
+.shighlight-blue::before {
+    content: &#39;&#39;;
+    position: absolute;
+    top: -2px;
+    left: -3px;
+    right: -3px;
+    bottom: -2px;
+    background: rgba(0, 191, 255, 0.3);
+    border-radius: 0.7em 0.5em 0.8em 0.3em;
+    z-index: -1;
+    transform: rotate(0.4deg) skew(-0.8deg);
+    clip-path: polygon(
+        0% 16%, 15% 12%, 30% 18%, 45% 14%, 60% 10%,
+        75% 16%, 90% 12%, 100% 18%, 100% 88%, 90% 92%,
+        75% 86%, 60% 94%, 45% 90%, 30% 86%, 15% 92%, 0% 88%
+    );
+}
+
+
+/* STICKY NOTES */
+#page-content div.stickynote {
+   float: left;
+   max-width: calc(var(--main-content-width) / 2.15);
+   box-sizing: border-box;
+   margin: 0.25rem 1.25rem;
+   padding-inline: 1.2rem;
+   padding-block: 0.5rem;
+   font-size: 1.1525em;
+   border-radius: 7px;
+   position: relative;
+   font-family: &#39;Permanent Marker&#39;, cursive;
+   letter-spacing: 0.75px;
+   box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.4), inset 0 -2px 4px rgba(0, 0, 0, 0.05);
+   transform: rotate(-1deg);
+   transition: transform 0.2s ease;
+}
+
+/* Hover effect for interactivity */
+#page-content div.stickynote:hover {
+    transform: rotate(0deg) scale(1.02);
+    box-shadow:
+        4px 4px 12px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+        inset 0 -3px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Position Controls */
+#page-content div.stickynote.left {
+    float: left;
+    margin-left: clamp(calc(var(--main-content-width) / -4.5), calc((87.5vw - 95%) / -2), 0rem);
+}
+
+#page-content div.stickynote.right {
+    float: right;
+    clamp(calc(var(--main-content-width) / -100), calc((87.5vw - 95%) / -2), -2rem)
+    margin-left: 1.25rem;
+}
+
+/* Tilt Controls */
+#page-content div.stickynote.tilt-none {
+    transform: rotate(0deg);
+}
+
+#page-content div.stickynote.tilt-light {
+    transform: rotate(-0.5deg);
+}
+
+#page-content div.stickynote.tilt-medium {
+    transform: rotate(-2deg);
+}
+
+#page-content div.stickynote.tilt-heavy {
+    transform: rotate(-3deg);
+}
+
+#page-content div.stickynote.tilt-right-light {
+    transform: rotate(0.5deg);
+}
+
+#page-content div.stickynote.tilt-right-medium {
+    transform: rotate(2deg);
+}
+
+#page-content div.stickynote.tilt-right-heavy {
+    transform: rotate(3deg);
+}
+
+#page-content div.stickynote.tilt-none:hover { transform: rotate(0deg) scale(1.02); }
+#page-content div.stickynote.tilt-light:hover { transform: rotate(-0.5deg) scale(1.02); }
+#page-content div.stickynote.tilt-normal:hover { transform: rotate(-1deg) scale(1.02); }
+#page-content div.stickynote.tilt-medium:hover { transform: rotate(-2deg) scale(1.02); }
+#page-content div.stickynote.tilt-heavy:hover { transform: rotate(-3deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-light:hover { transform: rotate(0.5deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-normal:hover { transform: rotate(1deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-medium:hover { transform: rotate(2deg) scale(1.02); }
+#page-content div.stickynote.tilt-right-heavy:hover { transform: rotate(3deg) scale(1.02); }
+
+#page-content div.stickynote.yellow {
+    background-color: #ffeb3b;
+    border: solid 0.12rem #f9c74f;
+    color: #333;
+}
+
+#page-content div.stickynote.red {
+    background-color: #ff5252;
+    border: solid 0.12rem #e53935;
+}
+
+#page-content div.stickynote.blue {
+    background-color: #42a5f5;
+    border: solid 0.12rem #1976d2;
+}
+
+#page-content div.stickynote.green {
+    background-color: #66bb6a;
+    border: solid 0.12rem #388e3c;
+}
+
+#page-content div.stickynote.orange {
+    background-color: #ff9800;
+    border: solid 0.12rem #f57c00;
+}
+
+#page-content div.stickynote.pink {
+    background-color: #fb85ad;
+    border: solid 0.12rem #c2185b;
+}
+
+[[/module]]
+
+[[module CSS]]
+/* This is CSS that will not be part of theme, just for the page itself */
+
+/* SCP HEADER */
+.scp-header {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.scp-header .scp-logo {
+    position: absolute;
+    left: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.scp-header .scp-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.scp-header .scp-text-stack {
+    position: absolute;
+    left: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 0;
+    padding-left: 6px;
+}
+
+.scp-header .scp-text-stack p {
+    line-height: 0;
+}
+
+.scp-header .scp-foundation {
+    font-size: 14.7px;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+.scp-header .scp-site {
+    font-size: 33px;
+    font-weight: 900;
+    color: #333;
+    margin: 2px 0 0 0;
+    padding: 0;
+    line-height: 1;
+    text-align: center;
+}
+
+.scp-header .scp-classification {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 300px;
+    padding-left: 18rem;
+    text-align: right;
+}
+
+.scp-header .redacted-highlight {
+    background: #000;
+    color: white;
+    padding: 3px 6px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+}
+
+/* SCP File Table - Desktop */
+.scp-file-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0px 0px 8px 0px;
+    font-size: 18px;
+}
+
+.scp-file-table td {
+    padding: 0px 0px 4px 0px;
+    border: none;
+}
+
+.scp-file-table .left-cell {
+    text-align: left;
+    font-weight: normal;
+    width: 50%;
+}
+
+.scp-file-table .right-cell {
+    text-align: right;
+    font-weight: 800;
+    width: 50%;
+}
+
+.scp-file-table .clearance-cell {
+    background: rgb(255, 18, 29);
+    color: rgb(var(--basalt-secondary-color));
+    text-align: center;
+    padding: 4px;
+    font-weight: bold;
+    font-size: 21px;
+    letter-spacing: 2px;
+}
+
+/* Tablet and smaller laptops - 800px and below */
+@media screen and (max-width: 800px) {
+    .scp-header .scp-classification {
+        position: static;
+        padding-left: 0;
+        text-align: left;
+        max-width: none;
+        margin-top: 15px;
+        transform: none;
+    }
+    
+    .scp-header {
+        height: auto;
+        min-height: 120px;
+        padding: 15px 0 25px 0;
+    }
+    
+    .scp-file-table {
+        font-size: 16px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 18px;
+        padding: 6px;
+    }
+}
+
+/* Mobile Tablets - 768px and below */
+@media screen and (max-width: 768px) {
+    .scp-header {
+        height: auto;
+        min-height: 140px;
+        padding: 15px 0 30px 0;
+    }
+    
+    .scp-header .scp-logo {
+        left: 0;
+        width: 70px;
+        height: 70px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 80px;
+        padding-left: 0;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 13px;
+        text-align: left;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 29px;
+        text-align: left;
+    }
+    
+    .scp-header .scp-classification {
+        position: static;
+        margin-top: 20px;
+        padding-left: 0;
+        text-align: left;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 12px;
+        padding: 4px 6px;
+        line-height: 1.4;
+    }
+    
+    .scp-file-table {
+        font-size: 15px;
+    }
+    
+    .scp-file-table td {
+        padding: 2px 0 6px 0;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 16px;
+        padding: 8px 4px;
+        letter-spacing: 1px;
+    }
+}
+
+/* Large phones - 600px and below */
+@media screen and (max-width: 600px) {
+    .scp-header {
+        min-height: 160px;
+        padding: 10px 0 35px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 70px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 12px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 26px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 11px;
+        padding: 3px 5px;
+    }
+    
+    .scp-file-table {
+        font-size: 14px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 15px;
+        padding: 8px 2px;
+        letter-spacing: 0.5px;
+    }
+}
+
+/* Small phones - 480px and below */
+@media screen and (max-width: 480px) {
+    .scp-header {
+        min-height: 180px;
+        padding: 10px 0 40px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 60px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 11px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 22px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 10px;
+        padding: 3px 4px;
+        line-height: 1.5;
+    }
+    
+    .scp-file-table {
+        font-size: 13px;
+        margin-bottom: 12px;
+    }
+    
+    .scp-file-table td {
+        padding: 3px 0 8px 0;
+    }
+    
+    .scp-file-table .left-cell,
+    .scp-file-table .right-cell {
+        width: 50%;
+        word-wrap: break-word;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 14px;
+        padding: 10px 2px;
+        letter-spacing: 0.5px;
+        line-height: 1.2;
+    }
+}
+
+/* Very small phones - 360px and below */
+@media screen and (max-width: 360px) {
+    .scp-header {
+        min-height: 200px;
+        padding: 8px 0 45px 0;
+    }
+    
+    .scp-header .scp-logo {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .scp-header .scp-text-stack {
+        left: 55px;
+    }
+    
+    .scp-header .scp-foundation {
+        font-size: 10px;
+    }
+    
+    .scp-header .scp-site {
+        font-size: 20px;
+    }
+    
+    .scp-header .redacted-highlight {
+        font-size: 9px;
+        padding: 2px 3px;
+    }
+    
+    .scp-file-table {
+        font-size: 12px;
+    }
+    
+    .scp-file-table .clearance-cell {
+        font-size: 13px;
+        padding: 12px 2px;
+        word-wrap: break-word;
+        hyphens: auto;
+    }
+}
+[[/module]]
+
+[[=]]
+[[module Rate]]
+[[/=]]
+
+[[div class=&#34;document&#34;]]
+
+[[div class=&#34;scp-header&#34;]]
+[[div class=&#34;scp-logo&#34;]]
+[[image http://scpdsandbox.wikidot.com/local--files/nostalgia-theme/site02_plain_black.png]]
+[[/div]]
+
+[[div class=&#34;scp-text-stack&#34;]]
+[[div class=&#34;scp-foundation&#34;]]
+SCP FOUNDATION
+[[/div]]
+[[div class=&#34;scp-site&#34;]]
+SITE-02
+[[/div]]
+[[/div]]
+
+[[div class=&#34;scp-classification&#34;]]
+[[span class=&#34;redacted-highlight&#34;]]{{THE INFORMATION YOU ARE ABOUT TO VIEW IS HIGHLY CLASSIFIED}}[[/span]]
+[[/div]]
+[[/div]]
+
+[[table class=&#34;scp-file-table&#34;]]
+[[row]]
+[[cell class=&#34;left-cell&#34; style=&#34;border-color: transparent&#34;]]
+FILE SUBJECT:
+[[/cell]]
+[[cell class=&#34;right-cell&#34; style=&#34;border-color: transparent&#34;]]
+RECOVERED CHAOS INSURGENCY DOCUMENT
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell class=&#34;left-cell&#34; style=&#34;border-color: transparent&#34;]]
+DATE RELEASED:
+[[/cell]]
+[[cell class=&#34;right-cell&#34; style=&#34;border-color: transparent&#34;]]
+5 OCT 2024
+[[/cell]]
+[[/row]]
+[[row]]
+[[cell colspan=&#34;2&#34; class=&#34;clearance-cell&#34; style=&#34;border-color: transparent&#34;]]
+{{LEVEL 5 CLEARANCE REQUIRED}}
+[[/cell]]
+[[/row]]
+[[/table]]
+
+++ Preamble
+Attached is a document recovered from the aftermath of a raid on [https://scp-wiki.wikidot.com/secure-facility-dossier-site-44 Site-44] by GoI-002 //(&#34;Chaos Insurgency&#34;)//. During the Site-recovery operation done by Mobile Task Force Gamma-4 //(&#34;Green Stags&#34;)//, operatives located the document inside of a sealed manila envelope pinned to the corpse of the late Site Director Carter C. Carter. Following inspection, the document has been deemed sterile and safe to read.
+
+The recovered document details the Insurgency&#39;s recollection of the //Silent Night at Site-19//. It is in the format of a list of instructions (referred to as &#34;Step Compilations&#34;), recognised to be a consistent part of the group&#39;s //modus operandi//. The content itself is written in a cryptic manner, requiring a level of literary analysis to fully decipher. Alongside the instruction set, a detailed after action report from the perspective of the Insurgency&#39;s personnel can also be found.
+[[/div]]
+[[=]]
+[[collapsible show=&#34;+ Artwork&#34; hide=&#34;- Enjoy the Tale&#34; hideLocation=&#34;both&#34;]]
+[[include component:image-block
+|name=https://scp-sandbox-3.wdfiles.com/local--files/secret%3Afe42rtdsfsd/CoverPointTwo
+|caption=Awesome Cover Image 
+|width=100%
+|align=center]]
+[[/collapsible]]
+[[/=]]
+[[div class=&#34;document&#34;]]
+++ Attachment
+[[=]]
+[[div class=&#34;document&#34;]]
+++ Step Compilation: Carrion
+@@ @@ 
+++++ [[span class=&#34;shighlight&#34;]]**DeCIRO Catalogue Number:**[[/span]]
+&gt; SC-011/21-024/15
+
+++++ [[span class=&#34;shighlight&#34;]]**Dates Received:**[[/span]]
+&gt; 2011-07-29 through 2024-09-20
+
+++++ [[span class=&#34;shighlight&#34;]]**Operation Status:**[[/span]]
+&gt; Closed
+
+++++ [[span class=&#34;shighlight&#34;]]**Foreword:**[[/span]]
+&gt; Our Engine writhes in misery at the unnatural abuse allowed to persist by our enemies. The Foundation feigns ignorance, yet their trespasses have never been more clear. So wicked they are, as the day we first understood them — an organisation of sycophants who thrive in their own arrogant malfeasance, casting blame to those without and never within.
+&gt; 
+&gt; Their spirits shall falter due to a wound which they cannot hide. Soon the rest of our world shall flock upon them like [https://scp-wiki.wikidot.com/the-arlington-summit feasting carrion birds]. We will be there once the final bones are picked clean. But until then, we must learn the extent of their narcissistic ignorance. 
+&gt; 
+&gt; Our preparations begin, and our patience shall be rewarded. Heed the Engine’s will. Listen to its eternal hum and follow in its Steps.
+-----
+++ 0. STEP 011/21
+
+Analyse the sudden sink of the Hume coefficient in the U.S. state of Michigan. Determine exact coordinates.
+
+[[div class=&#34;blockquote&#34;]]
+++ __[https://scp-wiki.wikidot.com/pointtwoprologue Prologue]__
+-----
+“The anchor gives false readings, sometimes,” Will said. “I’ll run a diagnostic.”
+[[/div]]			
+-----
+++ 1. STEP 011/22
+
+Dispatch a Military Cell force of Alpha Personnel led by a Beta Agent. Beta Agent must be especially understanding of the cause.
+
+Alongside them, two agents of an R&amp;D Cell must accompany. They are to be given their own set of Steps. I need them to return alive. 
+
+[[div class=&#34;blockquote&#34;]]
+++ __[https://scp-wiki.wikidot.com/pointtwo1 Chapter 1]__
+-----
+“It’s her initials,” Philip said. “I can’t read most of this gibberish, but that — that says signature.”
+[[/div]]
+-----
+++ 2. STEP 011/23
+
+Search the interior area. Extract information through any means necessary.
+
+[[div class=&#34;blockquote&#34;]]
+++ __[https://scp-wiki.wikidot.com/pointtwo2 Chapter 2]__
+-----
+“You idiot,” the Sergeant said. “I said touch nothing.”
+[[/div]]
+-----
+++ 3. STEP 011/24
+
+They will be made aware of the flock&#39;s presence. The Military Cell must prioritise the immediate extraction of R&amp;D personnel. Cull at necessity. 
+
+[[div class=&#34;blockquote&#34;]]
+++ __[https://scp-wiki.wikidot.com/pointtwo3 Chapter 3]__
+-----
+“We’re all… s—so turned around,” the man mumbled. “So much loss, so much pain… and you just walk in while the fire’s burning and do what you want. I guess that’s why… they call you that, hm?”
+
+&#34;Do you think they could’ve predicted all of this? Every level of it, everything, written out in their little Step compilations? Turn left, turn right, walk ten paces and die.&#34;
+[[/div]]
+-----
+++ 4. STEP 011/25
+
+Exit the facility. Avoid the escaped anomaly. Engage only if necessary.
+
+[[div class=&#34;blockquote&#34;]]
+++ __[https://scp-wiki.wikidot.com/pointtwo4 Chapter 4]__
+-----
+The other parts of it were locked away — behind metal walls and lab coats.
+
+But Mark knew of one more thing. All the soldiers of the CI knew of one more part of it all — the light above the anglerfish.
+[[/div]]
+-----
+++ 5. STEP 024/15
+
+A cell in the British Isles will breach two of the Foundation&#39;s facilities simultaneously. 
+
+Amidst the pandemonium, a separate force will enter the facility in Essex during the aftermath. Plant our findings in a folder on the body of the man in dusk blue tweed located in Subterranean Sector 1.
+
+It will make its way to the source of this world&#39;s constant defilement. 
+[[/div]]
+[[/=]]
+[[/div]]
+
+
+[[div class=&#34;document&#34;]]
+
+++ Review
+
+The legitimacy of the attached document&#39;s contents can partially be confirmed by members of Mobile Task Force Nu-7 //(&#34;Hammer Down&#34;)//, who were present during the recovery operations at Site-19&#39;s previous position. While the Insurgency were in fact present for a brief period and engaged in combat with Foundation personnel, the extent of their forces as written in their accounts does not match with that of ours. 
+
+That being said, there is a myriad of discrepancies when comparing our official records to what is written by the Insurgency; dates do not align, casualties are inflated, certain persons-of-interest do not exist in our records (such as Philip Shane), and an encounter with a hostile anomaly in the forest around Site-19 has never been recorded.
+
+The Insurgency&#39;s findings, if one can even call it that, consist of pseudoscientific gibberish attempting to draw conclusions from random, disconnected data retrieved from our labs. Their analysis displays so little sense of scientific order, that they erroneously conclude by stating that the Foundation is at fault. 
+
+All that to say, this document is unreliable. The Insurgency most likely left this copy in an attempt to control the narrative, spread fear, and distract us.
+
+We know the truth, though. The Chaos Insurgency destroyed Site-19. 
+
+[[/div]]
+@@ @@
+@@ @@
+
+[[include :scp-wiki:component:license-box]]
+&gt; **Filename:** pointtwocover.png
+&gt; **Name:** Point Two Cover
+&gt; **Author:** Northwood Studios
+&gt; **License:** CC-BY-SA 3.0
+
+&gt; **Filename:** inv_pate_black_v2_redux.png, nor_pate_white_v2_redux.png, and primary_shcr_white.png
+&gt; **Author:** [[*user AnAnomalousWriter]]
+&gt; **License:** Creative Commons Share-Alike 3.0
+
+[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+  </div>
+
+</div>
+
+<div id="footer">
+  
+    <em>Last updated 2026-04-17 00:56:55.300840.</em>
+  
+</div>
+</body>

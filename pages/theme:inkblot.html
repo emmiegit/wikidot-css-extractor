@@ -29,21 +29,64 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>:root {
-  --inkblot-accent: coral;
-  --header-title: &#34;WALDON STUDIO&#34;;
-  --header-subtitle: &#34;connoisseurs of the unknown&#34;;
+          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ainkblot/1&#39;);
 
-  --debug-colour: blue;
-}
-
-.terminal {
-  border-color: var(--inkblot-accent);
+:root {
+  --inkblot-accent: {$accent};
 }</code></pre>
         </li>
       
         <li>
-          <pre><code>@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ainkblot/1&#39;);</code></pre>
+          <pre><code>:root {
+  --inkblot-accent: coral;
+  --header-title: &#34;WALDON STUDIO&#34;;
+  --header-subtitle: &#34;connoisseurs of the unknown&#34;;
+  --debug-colour: blue;
+}
+:root:has(.picker li:nth-child(1).selected), .picker li:nth-child(1) em {
+  --inkblot-accent: coral;
+}
+:root:has(.picker li:nth-child(2).selected), .picker li:nth-child(2) em {
+  --inkblot-accent: rgb(203, 136, 154);
+}
+:root:has(.picker li:nth-child(3).selected), .picker li:nth-child(3) em {
+  --inkblot-accent: royalblue;
+}
+:root:has(.picker li:nth-child(4).selected), .picker li:nth-child(4) em {
+  --inkblot-accent: yellowgreen;
+}
+:root:has(.picker li:nth-child(5).selected), .picker li:nth-child(5) em {
+  --inkblot-accent: red;
+}
+:root:has(.picker li:nth-child(6).selected), .picker li:nth-child(6) em {
+  --inkblot-accent: magenta;
+}
+:root:has(.picker li:nth-child(7).selected), .picker li:nth-child(7) em {
+  --inkblot-accent: teal;
+}
+:root:has(.picker li:nth-child(8).selected), .picker li:nth-child(8) em {
+  --inkblot-accent: gold;
+}
+
+.picker .yui-navset * {
+  display: contents !important;
+}
+.picker .yui-navset em {
+  display: inline-block !important;
+  color: color-mix(in srgb, black 25%, var(--inkblot-accent, red)) !important;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.25rem;
+  border: none !important;
+}
+.picker .yui-navset .selected em {
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.terminal {
+  border-color: var(--inkblot-accent, grey);
+}</code></pre>
         </li>
       
     </ul>
@@ -114,13 +157,30 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:inkblot" target="_blank"><code>:scp-wiki:theme:inkblot</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:interwiki-style" target="_blank"><code>:scp-wiki:component:interwiki-style</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:inkblot.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:interwiki-style.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:interwiki-style" target="_blank"><code>:scp-wiki:component:interwiki-style</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:interwiki-style.html" target="_blank">info</a>]
   </span>
 
   
@@ -201,6 +261,10 @@
       
         <li>
           <pre><code>code</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>picker</code></pre>
         </li>
       
         <li>
@@ -307,20 +371,83 @@
 
     <h2 class="header">Page Source</h2>
     <pre><textarea class="page-source" readonly>[[iftags +theme]]
-
 [[include :scp-wiki:component:croqstyle]]
+[[/iftags]]
+
+[[module CSS]]
+@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ainkblot/1&#39;);
+
+:root {
+  --inkblot-accent: {$accent};
+}
+[[/module]]
+
+[[iftags -theme]]
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Ainkblot/1
+| css=%3Aroot%7B--inkblot-accent%3A{$accent}%7D
+]]
+[[/iftags]]
+
+[[iftags +theme]]
+
+[[include :scp-wiki:component:interwiki-style
+| priority=1
+| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Ainkblot/1
+| css=%3Aroot%7B--inkblot-accent%3Acoral%7D
+]]
 
 [[module CSS]]
 :root {
   --inkblot-accent: coral;
   --header-title: &#34;WALDON STUDIO&#34;;
   --header-subtitle: &#34;connoisseurs of the unknown&#34;;
-
   --debug-colour: blue;
+}
+:root:has(.picker li:nth-child(1).selected), .picker li:nth-child(1) em {
+  --inkblot-accent: coral;
+}
+:root:has(.picker li:nth-child(2).selected), .picker li:nth-child(2) em {
+  --inkblot-accent: rgb(203, 136, 154);
+}
+:root:has(.picker li:nth-child(3).selected), .picker li:nth-child(3) em {
+  --inkblot-accent: royalblue;
+}
+:root:has(.picker li:nth-child(4).selected), .picker li:nth-child(4) em {
+  --inkblot-accent: yellowgreen;
+}
+:root:has(.picker li:nth-child(5).selected), .picker li:nth-child(5) em {
+  --inkblot-accent: red;
+}
+:root:has(.picker li:nth-child(6).selected), .picker li:nth-child(6) em {
+  --inkblot-accent: magenta;
+}
+:root:has(.picker li:nth-child(7).selected), .picker li:nth-child(7) em {
+  --inkblot-accent: teal;
+}
+:root:has(.picker li:nth-child(8).selected), .picker li:nth-child(8) em {
+  --inkblot-accent: gold;
+}
+
+.picker .yui-navset * {
+  display: contents !important;
+}
+.picker .yui-navset em {
+  display: inline-block !important;
+  color: color-mix(in srgb, black 25%, var(--inkblot-accent, red)) !important;
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.25rem;
+  border: none !important;
+}
+.picker .yui-navset .selected em {
+  font-weight: 900;
+  text-decoration: none;
 }
 
 .terminal {
-  border-color: var(--inkblot-accent);
+  border-color: var(--inkblot-accent, grey);
 }
 [[/module]]
 
@@ -367,11 +494,10 @@ Usage instructions are below the preamble.
 [[collapsible show=&#34;+ Quick copy paste&#34;]]
 
 [[div class=&#34;code terminal&#34; style=&#34;font-size: 0.6rem;&#34;]]
-@@[[include :scp-wiki:theme:inkblot]]@@
+@@[[include :scp-wiki:theme:inkblot accent=transparent]]@@
 
 @@[[module CSS]]@@
 :root {
-@@  --@@inkblot-accent: transparent;
 @@  --@@header-title: &#34;WALDON STUDIO&#34;;
 @@  --@@header-subtitle: &#34;connoisseurs of the unknown&#34;;
 }
@@ -429,6 +555,31 @@ Add this bit of compatibility CSS to the page:
 
 -----
 
+Preview this theme with a few different accent colours:
+
+[[div class=&#34;picker&#34;]]
+[[tabview]]
+[[tab Coral]]
+[[/tab]]
+[[tab Puce]]
+[[/tab]]
+[[tab RoyalBlue]]
+[[/tab]]
+[[tab YellowGreen]]
+[[/tab]]
+[[tab Red]]
+[[/tab]]
+[[tab Magenta]]
+[[/tab]]
+[[tab Teal]]
+[[/tab]]
+[[tab Gold]]
+[[/tab]]
+[[/tabview]]
+[[/div]]
+
+-----
+
 + Preamble
 
 In-universe, Waldon Studio replaces //`Michelin Guide Online, powered by the [[[the-dark-web-dke79-o2rg5-4jlw6 | Dark Web]]]&#39;//[[footnote]]Ambrose-format articles that use this at the time of writing: [[[Ambrose Thorn Valley]]], [[[Ambrose Makiling]]], [[[Ambrose Backdoor Soho]]].[[/footnote]] in my headcanon because I don&#39;t much like the thought of being sued by the real Michelin Guide for IP infringement.
@@ -458,11 +609,10 @@ There&#39;s a few steps to using this theme:
 To add this theme to a page, copy the following code into it, ideally near the top of the page along with any other CSS.
 
 [[div class=&#34;code terminal inksplot&#34;]]
-**##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki:theme:inkblot##**##var(--c-keyword)|]]##**
+**##var(--c-keyword)|[[include##** ##var(--c-symbol)|:scp-wiki:theme:inkblot## ##var(--c-builtin)|accent##**##var(--c-keyword)|=##**##var(--c-string)|transparent##**##var(--c-keyword)|]]##**
 
 **##var(--c-keyword)|[[module##** ##var(--c-builtin)|CSS##**##var(--c-keyword)|]]##**
 ##var(--c-symbol)|:root## {
-@@  @@##var(--c-builtin)|@@--@@inkblot-accent##: ##var(--c-value)|transparent##;
 @@  @@##var(--c-builtin)|@@--@@header-title##: ##var(--c-string)|&#34;WALDON STUDIO&#34;##;
 @@  @@##var(--c-builtin)|@@--@@header-subtitle##: ##var(--c-string)|&#34;connoisseurs of the unknown&#34;##;
 }
@@ -473,17 +623,15 @@ To add this theme to a page, copy the following code into it, ideally near the t
 
 ++ Configuring the theme
 
-To configure the theme, change the values of the three CSS variables.
+To set the page heading and subheading, change the two CSS variables (or leave them as-is for the OG Waldon Studio vibe).
 
-The {{--inkblot-accent}} determines the colour of the little bubbles and stuff around the page. If you leave it out, or don&#39;t change it from the code above, the default colour is &#39;transparent&#39;, meaning those little bubbles and stuff are invisible.
+The {{accent}} parameter in the include determines the colour of the little bubbles and stuff around the page, and also a darkened variant is used for links. If you leave it out, or don&#39;t change it from the code above, the default colour is &#39;transparent&#39;, meaning those little bubbles and stuff are invisible (and the links will just be standard Sigma-10 red).
 
 I have a request: **please don&#39;t use the same accent colour as another Inkblot article.** This theme page uses the colour &#39;**##coral|coral##**&#39;, so that&#39;s taken. [https://htmlcolorcodes.com/color-names/ Pick a new colour.] There&#39;s not going to be that many pages using this theme so it shouldn&#39;t be a hard choice.
 
 (You can see which pages use this theme by going to the bottom of the page, opening &#39;+ Options&#39;, then clicking &#39;Backlinks&#39;.)
 
-Try to pick a colour that you could see black text over. If you must choose a dark colour, be sure to adjust the font colour of the rating buttons so that they&#39;re visible, and you can work out how to make the Inkblot header work with it yourself.
-
-The other two variables change the text in the header.
+Try to pick a colour that you could see black text over. If you must choose a dark colour, be sure to adjust the font colour of the rating buttons so that they&#39;re visible, and you can work out how to make the Inkblot header work with it yourself. If you pick a really light colour you might also need to tweak the links so that they have enough contrast.
 
 ++ Making the Inkblot header
 
@@ -622,9 +770,9 @@ Okay, that&#39;s all I have to say. Here&#39;s the source code.
 
 [[code type=&#34;css&#34;]]
 /* Import fonts */
-@import url(&#39;https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Prata&amp;display=swap&#39;);
-@import url(&#39;https://fonts.googleapis.com/css2?family=Montserrat:wght@300;600&amp;display=swap&#39;);
+@import url(&#39;https://fonts.bunny.net/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&amp;display=swap&#39;);
+@import url(&#39;https://fonts.bunny.net/css2?family=Prata&amp;display=swap&#39;);
+@import url(&#39;https://fonts.bunny.net/css2?family=Montserrat:wght@300;600&amp;display=swap&#39;);
 
 /* Set the font size back to normal */
 #page-content { font-size: 1rem; }
@@ -815,8 +963,7 @@ body { font-family: &#39;Libre Baskerville&#39;, serif; }
  *   * 0.866 (scale offset)
  *   * radius
  *   / 2
- * Triangles have an order of symmetry around 120deg, so any angles above that
- * are pointless.
+ * Triangles have an order of symmetry around 120deg, so any angles above that are pointless.
  */
 #extra-div-1,
 #extra-div-3,
@@ -926,6 +1073,23 @@ div#container-wrap { background: url(https://scp-wiki.wdfiles.com/local--files/t
 #login-status a { color: #b01a; }
 
 
+/* - == === LINKS === == - */
+
+/* Make links be a darkened version of the accent colour. If not set, the accent colour is assumed to be red because that ends up looking similar to baseline Sigma links. */
+a, a:visited, #side-bar a, #interwiki a {
+  color: color-mix(in srgb, black 25%, var(--inkblot-accent, red));
+
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 0.25rem;
+}
+:is(#side-bar a, #interwiki a):not(:hover) {
+  text-decoration: none;
+}
+:is(a, a:visited, #side-bar a, #interwiki a):hover {
+  text-decoration-style: solid;
+}
+
 /* - == === TOPBAR === == - */
 
 #top-bar { display: flex; justify-content: center; right: 0; }
@@ -980,6 +1144,7 @@ div#container-wrap { background: url(https://scp-wiki.wdfiles.com/local--files/t
   border: none;
   border-left: 0.25rem solid var(--inkblot-accent, #333);
   border-right: 1px dotted #333;
+  text-decoration: none;
 }
 @media (max-width: 767px) {
   #side-bar {
@@ -1018,8 +1183,7 @@ div.page-rate-widget-box .rate-points,
   color: #333;
 }
 .page-rate-widget-box .rateup,
-.page-rate-widget-box .ratedown,
-.page-rate-widget-box .cancel {
+.page-rate-widget-box .ratedown {
   background-color: var(--inkblot-accent, transparent);
   border-radius: 50%;
   border: none;
@@ -1027,6 +1191,11 @@ div.page-rate-widget-box .rate-points,
   height: 1.5rem; width: 1.5rem;
   position: relative;
   margin-left: 0.25rem;
+}
+.page-rate-widget-box .cancel {
+  color: #333;
+  height: 1.5rem; width: 1.5rem;
+  position: relative;
 }
 .page-rate-widget-box .rateup a,
 .page-rate-widget-box .ratedown a,
@@ -1042,7 +1211,7 @@ div.page-rate-widget-box .rate-points,
 }
 .page-rate-widget-box .cancel a { color: transparent; }
 .page-rate-widget-box .cancel a::after {
-  content: &#34;✖&#34;;
+  content: &#34;⤬&#34;;
   position: absolute;
   color: #333;
   top: 0; left: 0; height: 100%; width: 100%;
@@ -1128,7 +1297,10 @@ div.page-rate-widget-box .rate-points,
 
 /* - == === OTHER STUFF === == - */
 
-li, p { line-height: 1.5em; }
+li, p {
+  line-height: 1.6em;
+  letter-spacing: 0.01em;
+}
 
 #page-content h1, #page-content h2, #page-content h3,
 #page-content h4, #page-content h5, #page-content h6 {
@@ -1212,23 +1384,14 @@ blockquote, div.blockquote {
 
 [[/collapsible]]
 
-[[/iftags]]
-
-[[module CSS]]
-@import url(&#39;https://scp-wiki.wdfiles.com/local--code/theme%3Ainkblot/1&#39;);
-[[/module]]
-
-[[include :scp-wiki:component:interwiki-style
-| priority=1
-| theme=https://scp-wiki.wdfiles.com/local--code/theme%3Ainkblot/1
-]]</textarea></pre>
+[[/iftags]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:40.608954.</em>
+    <em>Last updated 2026-04-17 00:56:59.941874.</em>
   
 </div>
 </body>

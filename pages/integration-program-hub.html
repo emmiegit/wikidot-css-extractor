@@ -29,237 +29,407 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>body{
-    --barColour: #3648a3;
+          <pre><code>@import url(&#39;https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap&#39;);
+
+:root {
+    --timeScale: 6;
+    --timeDelay: 6s;
+    --white-monochrome: 252, 252, 252;
+    --pale-gray-monochrome: 244, 244, 244;
+    --light-pale-gray-monochrome: 244, 244, 244;
+    --very-light-gray-monochrome: 215, 215, 215;
+    --light-gray-monochrome: 160, 160, 160;
+    --gray-monochrome: 147, 178, 197;
+    --dark-gray-monochrome: 118, 142, 157;
+    --black-monochrome: 12, 12, 12;
+    --pale-accent: 176, 216, 247;
+    --bright-accent: 103, 143, 172;
+    --medium-accent: 41, 84, 110;
+    --dark-accent: 0, 46, 69;
+    --alt-accent: 156, 173, 188;
+    --mono-font: &#39;IBM Plex Mono&#39;, monospace;
 }
 
-
-:root{
-  --header-title: &#34;SITE-322 AND AREA-179&#34;;
-  --header-subtitle: &#34;Slowly Changing Perspectives&#34;;
+#page-title{
+    display:none
 }
 
-@media only screen and (max-width: 26.5625rem) {
-    :root {
-        --header-title: &#34;INTEGRATION&#34;;
-    }
-    #header::before {
-        top: -1rem;
-        left: -2rem;
-    }
-}
-
-a {
-    color: #115AAC;
-}
- 
-a.newpage {
-    color: #8dbef4;
-}
- 
-a:visited {
-    color: #0a3666;
-}
- 
-/* ---- YUI TAB CUSTOMIZATION ----*/
- 
- .yui-navset .yui-nav,
- .yui-navset .yui-navset-top .yui-nav{
-     display: flex;
-     flex-wrap: wrap;
-     width: calc(100% - .125rem);
-     margin: 0 auto;
-     border-color: #115AAC;
-     box-shadow: none;
-}
- .yui-navset .yui-nav a, /* ---- Link Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav a{
-     color: #115AAC;
-    /* ---- Tab Background Colour | [UNSELECTED] ---- */
-     background-color: #efefef;
-     border: unset;
-     box-shadow: none;
-     box-shadow: none;
-}
- .yui-navset .yui-nav a:hover,
- .yui-navset .yui-nav a:focus{
-     color: #ffffff;
-    /* ---- Tab Background Colour | [HOVER] ---- */
-     background-color: #115AAC;
-}
- .yui-navset .yui-nav li, /* ---- Listitem Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav li{
-     position: relative;
-     display: flex;
-     flex-grow: 2;
-     max-width: 100%;
-     margin: 0;
-     padding: 0;
-     color: #ffffff;
-     background-color: #ffffff;
-     border-color: transparent;
-     box-shadow: none;
-}
- .yui-navset .yui-nav li a,
- .yui-navset-top .yui-nav li a,
- .yui-navset-bottom .yui-nav li a{
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 100%;
-}
- .yui-navset .yui-nav li em{
-     border: unset;
-}
- .yui-navset .yui-nav a em,
- .yui-navset .yui-navset-top .yui-nav a em{
-     padding: .35em .75em;
- 
-     text-overflow: ellipsis;
-     overflow: hidden;
-     white-space: nowrap;
-}
- .yui-navset .yui-nav .selected, /* ---- Selection Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav .selected{
-     flex-grow: 2;
-     margin: 0;
-     padding: 0;
-    /* ---- Tab Background Colour | [SELECTED] ---- */
-     background-color: #115AAC;
-}
- .yui-navset .yui-nav .selected a,
- .yui-navset .yui-nav .selected a em{
-     border: none;
-}
- .yui-navset .yui-nav .selected a{
-     width: 100%;
-     color: #ffffff;
-}
- .yui-navset .yui-nav .selected a:focus,
- .yui-navset .yui-nav .selected a:active{
-     color: #ffffff;
-     background-color: #115AAC;
-}
- .yui-navset .yui-content {
+#content-wrap {
     background-color: #ffffff;
-    box-shadow: none;
+    background-image: url(&#34;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 56 28&#39; width=&#39;56&#39; height=&#39;28&#39;%3E%3Cpath fill=&#39;%23CFE8FA&#39; fill-opacity=&#39;0.54&#39; d=&#39;M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z&#39;%3E%3C/path%3E%3C/svg%3E&#34;);
 }
- .yui-navset .yui-content,
- .yui-navset .yui-navset-top .yui-content{
-    padding: .5em;
-    border: 1px solid #333;
+
+#main-content {
+    --tabs-content-bg-color: rgba(255, 0, 0, 0);
+    --tabs-bg: rgba(255, 0, 0, 0);
+    --tabs-hover-bg: rgba(255, 0, 0, 0);
+    --tabs-selected-bg: rgba(255, 0, 0, 0);
+    --tabs-selected-outline: rgba(255, 0, 0, 0);
+    --tabs-bottom-border-color: rgba(255, 0, 0, 0);
+    --tabs-hover-txt: var(--red);
+}
+
+.top {
+    width: 90%;
+    backdrop-filter: blur(2px);
+    padding: 10px 20px;
+    margin: 15px auto;
+    box-shadow: 2px 2px 10px rgba(0,46,69,0.4);
+    font-family: &#34;Lexend&#34;, sans-serif;
+    font-weight: 300;
+    font-size: 110%;
+    border-radius: 10px;
+}
+
+.head { 
+    font-weight: 600; 
+    font-size: 150%; 
+}
+
+.head2 { 
+    font-weight: 600; 
+    font-size: 200%; 
+}
+
+.sub {
+    text-align: center;
+    margin-top:-2.6em;
+    padding-bottom: 1.3em;
+    font-size: 105%;
+    font-weight: 200; 
+}
+
+.title {
+    font-weight: 500;
+    font-size: 115%;
+    color: #26568c;
+}
+
+.article {
+    --art: none;
+    --art-width: 33.333%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 85%;
+    margin: 15px auto;
+    padding: 20px;
+    padding-right: var(--art-width);
+    border-radius: 10px;
+    color: black !important;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     box-sizing: border-box;
+    font-weight: 300;
+    font-size: 95%;
 }
 
-div#extra-div-1 {
-    background-image: url(https://scptestwiki.wdfiles.com/local--files/sigma%3Aintegration/logos3.svg);
-    filter: opacity(20%);
+.article:hover {
+    transform: scale(1.015);
+    box-shadow: 2px 2px 10px rgba(0,46,69,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.meta-title {
-  border-bottom: solid 1px #bbbbbb;
-  color: #990011;
-  font-weight: normal;
-  margin: 0 0 0.6em;
-  padding: 0 0 0.25em;
-  font-size: 200%;
-}
-
-.meta-title p {
-  margin: 0;
-}
-
-.body-text {
-    margin: 2% 5% 2% 5%;
-    padding: 5px 20px 5px 20px;
-    background-color: #f2f2f2;
-    color: #111;
-}
-
-.addendum{
-    border-top:solid 2px #115AAC;
-    border-bottom:solid 2px #115AAC;
-    background:#f1f1e6;
-    width:90%;
-    padding:1px 15px;
-    margin: 10px auto;
-}
-
-.addendum2{
-    border-top:solid 2px #115AAC;
-    border-bottom:solid 2px #115AAC;
-    background:#ffffff;
-    width:90%;
-    padding:1px;
-    margin: 10px auto;
-}
-
-.addendum3{
-    border-bottom:solid 2px #115AAC;
-    background:#ffffff;
-    width:90%;
-    padding:1px;
-    margin: 10px auto;
-}
-
-.article{
-    border-left:solid 2px #115AAC;
-    border-right:solid 2px #115AAC;
-    background:#f5f5f5;
-    width:90%;
-    padding:1px 15px;
-    margin: 10px auto;
-}
-.quote-text {
-    display: inline-block;
-    border:dashed 1px #999999;
-    background:#F5F5F5;
-    float:center;
-    width:84%;
-    padding:1px 15px;
-    margin: 10px 10px 10px 30px;
-}
-
-@media only screen and (max-width: 600px) {
-
-    .body-text {
-        margin: 0% 4% 0% 4%;
-    }
-
-    .quote-text {
-        margin: 10px 20px 10px 20px;
-    }
-
-}
-
-#page-content .info-container {
-    --link-color: rgb(var(--swatch-text-general));
-}
-
-#page-content .info-container .translation_block {
-    display: none;
-}
-
-#page-content .info-container .collapsible-block-link,
-#page-content .info-container:hover .collapsible-block-link {
-    line-height: 1.6em;
-}
-
-#page-content .info-container .collapsible-block-folded,
-#page-content .info-container .collapsible-block-unfolded-link {
-    display: grid;
-}
-
-#page-content .info-container .collapsible-block-folded .collapsible-block-link,
-#page-content .info-container .collapsible-block-link {
-    -webkit-mask: unset;
-            mask: unset;
-    background: transparent;
-    grid-column: 1;
-    grid-row: 1;
+.article::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: var(--art-width);
+    background-image: var(--art);
+    background-size: cover;
+    background-position: center;
     opacity: 0;
+    transform: translateX(100%);
+    transition: transform .35s ease, opacity .35s ease;
+    pointer-events: none;
 }
-</code></pre>
+
+.article:hover::after {
+    transform: translateX(0%);
+    opacity: 1;
+}
+
+.header-pair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    margin: 0 auto;
+    font-family: &#34;Lexend&#34;, sans-serif;
+    max-width: 1100px;
+}
+
+.header-pair--right { 
+    flex-direction: row-reverse; 
+}
+
+.badge { 
+    width: 100px; 
+    height: auto; 
+    flex-shrink: 0; 
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: .05rem;
+    line-height: 1;
+}
+
+.text &gt; span { 
+    white-space: nowrap; 
+}
+
+.site322-line1 { 
+    font-weight: 600; 
+    font-size: 1.05rem; 
+    letter-spacing: .06em; 
+}
+
+.site322-line2 { 
+    font-weight: 600; 
+    font-size: 2.3rem; 
+    color: #26568c; 
+}
+
+.site322-line3 { 
+    font-weight: 200; 
+    font-size: 0.72rem; 
+    color: black; 
+}
+
+.area179-line1 { 
+    font-weight: 600; 
+    font-size: 1.03rem; 
+    letter-spacing: .06em; 
+}
+
+.area179-line2 { 
+    font-weight: 600; 
+    font-size: 2.3rem; 
+    color: #076a21; 
+}
+
+.area179-line3 { 
+    font-weight: 200; 
+    font-size: 0.71rem; 
+    color: black; 
+}
+
+.yui-navset,
+.yui-navset .yui-nav { 
+    overflow: visible; 
+}
+
+.yui-navset .yui-nav {
+    position: relative;
+    z-index: 0;
+    border: none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.2em 0.8em;
+    gap: 0.6em;
+}
+
+.yui-navset .yui-nav li {
+    flex: 1 1 0;
+    margin: 0;
+    padding: 0;
+}
+
+.yui-navset .yui-nav li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    font-family: &#34;Lexend&#34;, sans-serif;
+    font-weight: 600;
+    font-size: 1.7em;
+    letter-spacing: -1px;
+    color: black;
+    box-shadow: none;
+    text-shadow: none;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.yui-navset .yui-nav li a:hover { 
+    color: #26568c; 
+}
+
+.yui-navset .yui-nav .selected a,
+.yui-navset .yui-nav .selected a:link,
+.yui-navset .yui-nav .selected a:visited,
+.yui-navset .yui-nav .selected a:focus,
+.yui-navset .yui-nav .selected a:hover {
+    font-weight: 900;
+    color: #26568c !important;
+    box-shadow: 2px 2px 10px rgba(0,46,69,0.4);
+    text-shadow: none;
+}
+
+.yui-navset .yui-nav li a em,
+.yui-navset .yui-nav .selected em {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: inherit !important;
+}
+
+.yui-navset .yui-content {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    position: relative;
+    margin-top: 0.2em;
+    margin: 15px auto;
+    width: 90%;
+    transform-origin: 0 0;
+}
+
+.yui-navset .yui-content &gt; div {
+    border: none;
+    border-left: none;
+    padding: 0.25em 0.5em;
+    display: block;
+    top: 0;
+    overflow: hidden;
+    transform-origin: 0 0;
+}
+
+#page-content .yui-navset .yui-content &gt; div &gt; * { 
+    transform-origin: 0 0; 
+}
+
+#page-content .yui-navset .yui-content &gt; div[style*=&#34;none&#34;] {
+    display: block !important;
+    flex: 0;
+    max-height: 0;
+    padding: 0 0.5em;
+    border-width: 0;
+    transition: padding 0s linear 0.5s,
+    border-width 0s linear 0.5s,
+    flex 0.5s cubic-bezier(.0,1.27,.0,.89) 0s;
+    animation: tab-disappear 0.5s ease-in-out 0s 1 both;
+}
+
+#page-content .yui-navset .yui-content &gt; div[style*=&#34;block&#34;] {
+    display: block !important;
+    flex: 1;
+    max-height: 9999rem;
+    transition: padding 0s linear 0.5s,
+    border-width 0s linear 0.5s,
+    flex 0.5s cubic-bezier(.99,.0,.99,.0) 0.5s;
+    animation: tab-appear 0.5s ease-in-out 0.5s 1 both;
+}
+
+@keyframes tab-disappear {
+    0% { 
+        max-height: 9999rem; 
+    }
+
+    1% { 
+        max-height: 100vh;
+    }
+
+    100% { 
+        max-height: 0; 
+    }
+}
+
+@keyframes tab-appear {
+    0% { 
+        max-height: 0; 
+    }
+
+    99% { 
+        max-height: 100vh; 
+    }
+
+    100% { 
+        max-height: 9999rem; 
+    }
+}
+
+@media (max-width: 600px) {
+    .head2 { 
+        font-weight: 600; 
+        font-size: 110%; 
+    }
+
+    .sub {
+        text-align: center;
+        margin-top: -3.5em;
+        padding-bottom: 1.3em;
+        font-size: 75%;
+    }
+
+    .badge { 
+        width: 60px; 
+    }
+
+    .yui-navset { 
+        overflow: visible !important; 
+    }
+
+    .yui-navset .yui-nav {
+        flex-wrap: wrap;
+        width: 100% !important;
+        padding: 0.4em 0.5em;
+    }
+
+    .yui-navset .yui-nav li { 
+        flex: 1 1 auto; 
+    }
+
+    .yui-navset .yui-nav li a { 
+        font-size: 1.4em; 
+    }
+
+    .header-pair{
+        gap:.4rem;
+        padding:0 12px;
+        max-width:100%;
+    }
+
+    .header-pair--right{ 
+        flex-direction:row-reverse; 
+    }
+
+    .badge{ width:56px; height:auto; flex-shrink:0; }
+
+    .text{ flex:1 1 auto; min-width:0; }
+
+    .site322-line1, .area179-line1{ 
+        font-size:clamp(.50rem,3.2vw,.01rem); 
+    }
+
+    .site322-line2, .area179-line2{ 
+        font-size:clamp(1.1rem,8.8vw,.82rem); 
+    }
+
+    .site322-line3, .area179-line3{ 
+        font-size:clamp(.33rem,3.2vw,.32rem); 
+    }
+
+    .text &gt; span{ 
+        white-space:nowrap; overflow:hidden; text-overflow:clip; 
+    }
+
+    .article { 
+        font-size: 80%; 
+    }
+}</code></pre>
         </li>
       
     </ul>
@@ -268,39 +438,127 @@ div#extra-div-1 {
     <ul class="inline-styles">
       
         <li>
-          <pre><code>text-align: center; margin-top: -15px;</code></pre>
+          <pre><code>display: flex; align-items: center; justify-content: center; gap: 8px; padding: 5px; text-align:center; margin-top: 1.2em;</code></pre>
         </li>
       
         <li>
-          <pre><code>margin-left: 10%;</code></pre>
+          <pre><code>height: 5em;</code></pre>
         </li>
       
         <li>
-          <pre><code>border: 1px solid #115AAC; margin: auto; width: 90%;</code></pre>
+          <pre><code>height: 5em;</code></pre>
         </li>
       
         <li>
-          <pre><code>border: 1px solid #115AAC; margin: auto; width: 90%;</code></pre>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-5595/fittyfininnyni.png);</code></pre>
         </li>
       
         <li>
-          <pre><code>border: 1px solid #115AAC; margin: auto; width: 90%;</code></pre>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-5104/Kite.jpg);</code></pre>
         </li>
       
         <li>
-          <pre><code>border: 1px solid #115AAC; margin: auto; width: 90%;</code></pre>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-7597/moff.png);</code></pre>
         </li>
       
         <li>
-          <pre><code>border: 1px solid #115AAC; margin: auto; width: 90%;</code></pre>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-5175/damien.jpg);</code></pre>
         </li>
       
         <li>
-          <pre><code>border: 1px solid #115AAC; margin: auto; width: 90%;</code></pre>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-5591/snook45.png);</code></pre>
         </li>
       
         <li>
-          <pre><code>border: 1px solid #115AAC; margin: auto; width: 90%;</code></pre>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6597/scrimshaw.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6599/SLICE.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(http://scp-sandbox-3.wikidot.com/local--files/integration-program-art/6599_maddie.JPG);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-3837/corn_man.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lovenbreen_Ice_cave_8.JPG/640px-Lovenbreen_Ice_cave_8.JPG);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6593/vendingmachine.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-7595/frog.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-7596/killme.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-8596/church2.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/plague-s-proposal/322.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-8000/seal.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/protected:scp-2721/scpbest.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(http://scp-sandbox-3.wdfiles.com/local--files/harry-blank-7/Instances.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/fragment:scp-6483-1/site.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6912/cmaclaurin.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6984/restroom18.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-7999/WallPainting.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6458/localized%20penguin%20image.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(http://scp-wiki.wikidot.com/local--files/scp-7522/space%20gumball.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(http://scp-wiki.wikidot.com/local--files/scp-6459/dreamscape1.jpg);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wikidot.com/local--files/scp-8350/staff);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://scp-wiki.wdfiles.com/local--files/scp-1046/tweet3.png);</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>--art: url(https://live.staticflickr.com/3402/3210909387_32af4e8c91_b.jpg);</code></pre>
         </li>
       
     </ul>
@@ -313,13 +571,13 @@ div#extra-div-1 {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:blankstyle" target="_blank"><code>:scp-wiki:theme:blankstyle</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:black-highlighter-theme" target="_blank"><code>:scp-wiki:theme:black-highlighter-theme</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:blankstyle.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/theme:black-highlighter-theme.html" target="_blank">info</a>]
   </span>
 
   
@@ -330,13 +588,30 @@ div#extra-div-1 {
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar-bhl" target="_blank"><code>:scp-wiki:component:toggle-sidebar-bhl</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:toggle-sidebar-bhl.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:centered-header-bhl" target="_blank"><code>:scp-wiki:component:centered-header-bhl</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:centered-header-bhl.html" target="_blank">info</a>]
   </span>
 
   
@@ -348,7 +623,83 @@ div#extra-div-1 {
     <ul class="css-classes">
       
         <li>
-          <pre><code>addendum</code></pre>
+          <pre><code>top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>head2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>head2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sub</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>header-pair</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>badge</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>site322-line1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>site322-line2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>site322-line3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>header-pair</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>header-pair--right</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>badge</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>text</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>area179-line1</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>area179-line2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>area179-line3</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>head2</code></pre>
         </li>
       
         <li>
@@ -356,7 +707,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -364,7 +715,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>addendum2</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -372,7 +723,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>addendum3</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -380,7 +731,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -388,7 +739,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -396,7 +747,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -404,7 +755,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -412,7 +763,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -420,11 +771,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>addendum3</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -432,7 +779,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -440,7 +787,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -448,7 +795,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -456,7 +803,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -464,7 +811,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -472,7 +819,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -480,7 +827,15 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>addendum3</code></pre>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>head2</code></pre>
         </li>
       
         <li>
@@ -488,7 +843,7 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
@@ -496,657 +851,765 @@ div#extra-div-1 {
         </li>
       
         <li>
-          <pre><code>article</code></pre>
+          <pre><code>title</code></pre>
         </li>
       
         <li>
           <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>article</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>top</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>head2</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>head</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>head</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>head</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:blankstyle]]
-[[module css]]
-body{
-    --barColour: #3648a3;
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:black-highlighter-theme]]
+[[include :scp-wiki:component:toggle-sidebar-bhl]]
+[[include :scp-wiki:component:centered-header-bhl]]
+
+[[module CSS]]
+@import url(&#39;https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap&#39;);
+
+:root {
+    --timeScale: 6;
+    --timeDelay: 6s;
+    --white-monochrome: 252, 252, 252;
+    --pale-gray-monochrome: 244, 244, 244;
+    --light-pale-gray-monochrome: 244, 244, 244;
+    --very-light-gray-monochrome: 215, 215, 215;
+    --light-gray-monochrome: 160, 160, 160;
+    --gray-monochrome: 147, 178, 197;
+    --dark-gray-monochrome: 118, 142, 157;
+    --black-monochrome: 12, 12, 12;
+    --pale-accent: 176, 216, 247;
+    --bright-accent: 103, 143, 172;
+    --medium-accent: 41, 84, 110;
+    --dark-accent: 0, 46, 69;
+    --alt-accent: 156, 173, 188;
+    --mono-font: &#39;IBM Plex Mono&#39;, monospace;
 }
 
-
-:root{
-  --header-title: &#34;SITE-322 AND AREA-179&#34;;
-  --header-subtitle: &#34;Slowly Changing Perspectives&#34;;
+#page-title{
+    display:none
 }
 
-@media only screen and (max-width: 26.5625rem) {
-    :root {
-        --header-title: &#34;INTEGRATION&#34;;
-    }
-    #header::before {
-        top: -1rem;
-        left: -2rem;
-    }
-}
-
-a {
-    color: #115AAC;
-}
- 
-a.newpage {
-    color: #8dbef4;
-}
- 
-a:visited {
-    color: #0a3666;
-}
- 
-/* ---- YUI TAB CUSTOMIZATION ----*/
- 
- .yui-navset .yui-nav,
- .yui-navset .yui-navset-top .yui-nav{
-     display: flex;
-     flex-wrap: wrap;
-     width: calc(100% - .125rem);
-     margin: 0 auto;
-     border-color: #115AAC;
-     box-shadow: none;
-}
- .yui-navset .yui-nav a, /* ---- Link Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav a{
-     color: #115AAC;
-    /* ---- Tab Background Colour | [UNSELECTED] ---- */
-     background-color: #efefef;
-     border: unset;
-     box-shadow: none;
-     box-shadow: none;
-}
- .yui-navset .yui-nav a:hover,
- .yui-navset .yui-nav a:focus{
-     color: #ffffff;
-    /* ---- Tab Background Colour | [HOVER] ---- */
-     background-color: #115AAC;
-}
- .yui-navset .yui-nav li, /* ---- Listitem Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav li{
-     position: relative;
-     display: flex;
-     flex-grow: 2;
-     max-width: 100%;
-     margin: 0;
-     padding: 0;
-     color: #ffffff;
-     background-color: #ffffff;
-     border-color: transparent;
-     box-shadow: none;
-}
- .yui-navset .yui-nav li a,
- .yui-navset-top .yui-nav li a,
- .yui-navset-bottom .yui-nav li a{
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     width: 100%;
-}
- .yui-navset .yui-nav li em{
-     border: unset;
-}
- .yui-navset .yui-nav a em,
- .yui-navset .yui-navset-top .yui-nav a em{
-     padding: .35em .75em;
- 
-     text-overflow: ellipsis;
-     overflow: hidden;
-     white-space: nowrap;
-}
- .yui-navset .yui-nav .selected, /* ---- Selection Modifier ---- */
- .yui-navset .yui-navset-top .yui-nav .selected{
-     flex-grow: 2;
-     margin: 0;
-     padding: 0;
-    /* ---- Tab Background Colour | [SELECTED] ---- */
-     background-color: #115AAC;
-}
- .yui-navset .yui-nav .selected a,
- .yui-navset .yui-nav .selected a em{
-     border: none;
-}
- .yui-navset .yui-nav .selected a{
-     width: 100%;
-     color: #ffffff;
-}
- .yui-navset .yui-nav .selected a:focus,
- .yui-navset .yui-nav .selected a:active{
-     color: #ffffff;
-     background-color: #115AAC;
-}
- .yui-navset .yui-content {
+#content-wrap {
     background-color: #ffffff;
-    box-shadow: none;
+    background-image: url(&#34;data:image/svg+xml,%3Csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 56 28&#39; width=&#39;56&#39; height=&#39;28&#39;%3E%3Cpath fill=&#39;%23CFE8FA&#39; fill-opacity=&#39;0.54&#39; d=&#39;M56 26v2h-7.75c2.3-1.27 4.94-2 7.75-2zm-26 2a2 2 0 1 0-4 0h-4.09A25.98 25.98 0 0 0 0 16v-2c.67 0 1.34.02 2 .07V14a2 2 0 0 0-2-2v-2a4 4 0 0 1 3.98 3.6 28.09 28.09 0 0 1 2.8-3.86A8 8 0 0 0 0 6V4a9.99 9.99 0 0 1 8.17 4.23c.94-.95 1.96-1.83 3.03-2.63A13.98 13.98 0 0 0 0 0h7.75c2 1.1 3.73 2.63 5.1 4.45 1.12-.72 2.3-1.37 3.53-1.93A20.1 20.1 0 0 0 14.28 0h2.7c.45.56.88 1.14 1.29 1.74 1.3-.48 2.63-.87 4-1.15-.11-.2-.23-.4-.36-.59H26v.07a28.4 28.4 0 0 1 4 0V0h4.09l-.37.59c1.38.28 2.72.67 4.01 1.15.4-.6.84-1.18 1.3-1.74h2.69a20.1 20.1 0 0 0-2.1 2.52c1.23.56 2.41 1.2 3.54 1.93A16.08 16.08 0 0 1 48.25 0H56c-4.58 0-8.65 2.2-11.2 5.6 1.07.8 2.09 1.68 3.03 2.63A9.99 9.99 0 0 1 56 4v2a8 8 0 0 0-6.77 3.74c1.03 1.2 1.97 2.5 2.79 3.86A4 4 0 0 1 56 10v2a2 2 0 0 0-2 2.07 28.4 28.4 0 0 1 2-.07v2c-9.2 0-17.3 4.78-21.91 12H30zM7.75 28H0v-2c2.81 0 5.46.73 7.75 2zM56 20v2c-5.6 0-10.65 2.3-14.28 6h-2.7c4.04-4.89 10.15-8 16.98-8zm-39.03 8h-2.69C10.65 24.3 5.6 22 0 22v-2c6.83 0 12.94 3.11 16.97 8zm15.01-.4a28.09 28.09 0 0 1 2.8-3.86 8 8 0 0 0-13.55 0c1.03 1.2 1.97 2.5 2.79 3.86a4 4 0 0 1 7.96 0zm14.29-11.86c1.3-.48 2.63-.87 4-1.15a25.99 25.99 0 0 0-44.55 0c1.38.28 2.72.67 4.01 1.15a21.98 21.98 0 0 1 36.54 0zm-5.43 2.71c1.13-.72 2.3-1.37 3.54-1.93a19.98 19.98 0 0 0-32.76 0c1.23.56 2.41 1.2 3.54 1.93a15.98 15.98 0 0 1 25.68 0zm-4.67 3.78c.94-.95 1.96-1.83 3.03-2.63a13.98 13.98 0 0 0-22.4 0c1.07.8 2.09 1.68 3.03 2.63a9.99 9.99 0 0 1 16.34 0z&#39;%3E%3C/path%3E%3C/svg%3E&#34;);
 }
- .yui-navset .yui-content,
- .yui-navset .yui-navset-top .yui-content{
-    padding: .5em;
-    border: 1px solid #333;
+
+#main-content {
+    --tabs-content-bg-color: rgba(255, 0, 0, 0);
+    --tabs-bg: rgba(255, 0, 0, 0);
+    --tabs-hover-bg: rgba(255, 0, 0, 0);
+    --tabs-selected-bg: rgba(255, 0, 0, 0);
+    --tabs-selected-outline: rgba(255, 0, 0, 0);
+    --tabs-bottom-border-color: rgba(255, 0, 0, 0);
+    --tabs-hover-txt: var(--red);
+}
+
+.top {
+    width: 90%;
+    backdrop-filter: blur(2px);
+    padding: 10px 20px;
+    margin: 15px auto;
+    box-shadow: 2px 2px 10px rgba(0,46,69,0.4);
+    font-family: &#34;Lexend&#34;, sans-serif;
+    font-weight: 300;
+    font-size: 110%;
+    border-radius: 10px;
+}
+
+.head { 
+    font-weight: 600; 
+    font-size: 150%; 
+}
+
+.head2 { 
+    font-weight: 600; 
+    font-size: 200%; 
+}
+
+.sub {
+    text-align: center;
+    margin-top:-2.6em;
+    padding-bottom: 1.3em;
+    font-size: 105%;
+    font-weight: 200; 
+}
+
+.title {
+    font-weight: 500;
+    font-size: 115%;
+    color: #26568c;
+}
+
+.article {
+    --art: none;
+    --art-width: 33.333%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    width: 85%;
+    margin: 15px auto;
+    padding: 20px;
+    padding-right: var(--art-width);
+    border-radius: 10px;
+    color: black !important;
+    text-decoration: none !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
     box-sizing: border-box;
+    font-weight: 300;
+    font-size: 95%;
 }
 
-div#extra-div-1 {
-    background-image: url(https://scptestwiki.wdfiles.com/local--files/sigma%3Aintegration/logos3.svg);
-    filter: opacity(20%);
+.article:hover {
+    transform: scale(1.015);
+    box-shadow: 2px 2px 10px rgba(0,46,69,0.4);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.meta-title {
-  border-bottom: solid 1px #bbbbbb;
-  color: #990011;
-  font-weight: normal;
-  margin: 0 0 0.6em;
-  padding: 0 0 0.25em;
-  font-size: 200%;
-}
-
-.meta-title p {
-  margin: 0;
-}
-
-.body-text {
-    margin: 2% 5% 2% 5%;
-    padding: 5px 20px 5px 20px;
-    background-color: #f2f2f2;
-    color: #111;
-}
-
-.addendum{
-    border-top:solid 2px #115AAC;
-    border-bottom:solid 2px #115AAC;
-    background:#f1f1e6;
-    width:90%;
-    padding:1px 15px;
-    margin: 10px auto;
-}
-
-.addendum2{
-    border-top:solid 2px #115AAC;
-    border-bottom:solid 2px #115AAC;
-    background:#ffffff;
-    width:90%;
-    padding:1px;
-    margin: 10px auto;
-}
-
-.addendum3{
-    border-bottom:solid 2px #115AAC;
-    background:#ffffff;
-    width:90%;
-    padding:1px;
-    margin: 10px auto;
-}
-
-.article{
-    border-left:solid 2px #115AAC;
-    border-right:solid 2px #115AAC;
-    background:#f5f5f5;
-    width:90%;
-    padding:1px 15px;
-    margin: 10px auto;
-}
-.quote-text {
-    display: inline-block;
-    border:dashed 1px #999999;
-    background:#F5F5F5;
-    float:center;
-    width:84%;
-    padding:1px 15px;
-    margin: 10px 10px 10px 30px;
-}
-
-@media only screen and (max-width: 600px) {
-
-    .body-text {
-        margin: 0% 4% 0% 4%;
-    }
-
-    .quote-text {
-        margin: 10px 20px 10px 20px;
-    }
-
-}
-
-#page-content .info-container {
-    --link-color: rgb(var(--swatch-text-general));
-}
-
-#page-content .info-container .translation_block {
-    display: none;
-}
-
-#page-content .info-container .collapsible-block-link,
-#page-content .info-container:hover .collapsible-block-link {
-    line-height: 1.6em;
-}
-
-#page-content .info-container .collapsible-block-folded,
-#page-content .info-container .collapsible-block-unfolded-link {
-    display: grid;
-}
-
-#page-content .info-container .collapsible-block-folded .collapsible-block-link,
-#page-content .info-container .collapsible-block-link {
-    -webkit-mask: unset;
-            mask: unset;
-    background: transparent;
-    grid-column: 1;
-    grid-row: 1;
+.article::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: var(--art-width);
+    background-image: var(--art);
+    background-size: cover;
+    background-position: center;
     opacity: 0;
+    transform: translateX(100%);
+    transition: transform .35s ease, opacity .35s ease;
+    pointer-events: none;
 }
 
-[[/module]]
+.article:hover::after {
+    transform: translateX(0%);
+    opacity: 1;
+}
 
-@@ @@
+.header-pair {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    margin: 0 auto;
+    font-family: &#34;Lexend&#34;, sans-serif;
+    max-width: 1100px;
+}
+
+.header-pair--right { 
+    flex-direction: row-reverse; 
+}
+
+.badge { 
+    width: 100px; 
+    height: auto; 
+    flex-shrink: 0; 
+}
+
+.text {
+    display: flex;
+    flex-direction: column;
+    gap: .05rem;
+    line-height: 1;
+}
+
+.text &gt; span { 
+    white-space: nowrap; 
+}
+
+.site322-line1 { 
+    font-weight: 600; 
+    font-size: 1.05rem; 
+    letter-spacing: .06em; 
+}
+
+.site322-line2 { 
+    font-weight: 600; 
+    font-size: 2.3rem; 
+    color: #26568c; 
+}
+
+.site322-line3 { 
+    font-weight: 200; 
+    font-size: 0.72rem; 
+    color: black; 
+}
+
+.area179-line1 { 
+    font-weight: 600; 
+    font-size: 1.03rem; 
+    letter-spacing: .06em; 
+}
+
+.area179-line2 { 
+    font-weight: 600; 
+    font-size: 2.3rem; 
+    color: #076a21; 
+}
+
+.area179-line3 { 
+    font-weight: 200; 
+    font-size: 0.71rem; 
+    color: black; 
+}
+
+.yui-navset,
+.yui-navset .yui-nav { 
+    overflow: visible; 
+}
+
+.yui-navset .yui-nav {
+    position: relative;
+    z-index: 0;
+    border: none;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.2em 0.8em;
+    gap: 0.6em;
+}
+
+.yui-navset .yui-nav li {
+    flex: 1 1 0;
+    margin: 0;
+    padding: 0;
+}
+
+.yui-navset .yui-nav li a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 20px;
+    border: none;
+    border-radius: 10px;
+    font-family: &#34;Lexend&#34;, sans-serif;
+    font-weight: 600;
+    font-size: 1.7em;
+    letter-spacing: -1px;
+    color: black;
+    box-shadow: none;
+    text-shadow: none;
+    transition: transform 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+.yui-navset .yui-nav li a:hover { 
+    color: #26568c; 
+}
+
+.yui-navset .yui-nav .selected a,
+.yui-navset .yui-nav .selected a:link,
+.yui-navset .yui-nav .selected a:visited,
+.yui-navset .yui-nav .selected a:focus,
+.yui-navset .yui-nav .selected a:hover {
+    font-weight: 900;
+    color: #26568c !important;
+    box-shadow: 2px 2px 10px rgba(0,46,69,0.4);
+    text-shadow: none;
+}
+
+.yui-navset .yui-nav li a em,
+.yui-navset .yui-nav .selected em {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: inherit !important;
+}
+
+.yui-navset .yui-content {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    padding: 0;
+    position: relative;
+    margin-top: 0.2em;
+    margin: 15px auto;
+    width: 90%;
+    transform-origin: 0 0;
+}
+
+.yui-navset .yui-content &gt; div {
+    border: none;
+    border-left: none;
+    padding: 0.25em 0.5em;
+    display: block;
+    top: 0;
+    overflow: hidden;
+    transform-origin: 0 0;
+}
+
+#page-content .yui-navset .yui-content &gt; div &gt; * { 
+    transform-origin: 0 0; 
+}
+
+#page-content .yui-navset .yui-content &gt; div[style*=&#34;none&#34;] {
+    display: block !important;
+    flex: 0;
+    max-height: 0;
+    padding: 0 0.5em;
+    border-width: 0;
+    transition: padding 0s linear 0.5s,
+    border-width 0s linear 0.5s,
+    flex 0.5s cubic-bezier(.0,1.27,.0,.89) 0s;
+    animation: tab-disappear 0.5s ease-in-out 0s 1 both;
+}
+
+#page-content .yui-navset .yui-content &gt; div[style*=&#34;block&#34;] {
+    display: block !important;
+    flex: 1;
+    max-height: 9999rem;
+    transition: padding 0s linear 0.5s,
+    border-width 0s linear 0.5s,
+    flex 0.5s cubic-bezier(.99,.0,.99,.0) 0.5s;
+    animation: tab-appear 0.5s ease-in-out 0.5s 1 both;
+}
+
+@keyframes tab-disappear {
+    0% { 
+        max-height: 9999rem; 
+    }
+
+    1% { 
+        max-height: 100vh;
+    }
+
+    100% { 
+        max-height: 0; 
+    }
+}
+
+@keyframes tab-appear {
+    0% { 
+        max-height: 0; 
+    }
+
+    99% { 
+        max-height: 100vh; 
+    }
+
+    100% { 
+        max-height: 9999rem; 
+    }
+}
+
+@media (max-width: 600px) {
+    .head2 { 
+        font-weight: 600; 
+        font-size: 110%; 
+    }
+
+    .sub {
+        text-align: center;
+        margin-top: -3.5em;
+        padding-bottom: 1.3em;
+        font-size: 75%;
+    }
+
+    .badge { 
+        width: 60px; 
+    }
+
+    .yui-navset { 
+        overflow: visible !important; 
+    }
+
+    .yui-navset .yui-nav {
+        flex-wrap: wrap;
+        width: 100% !important;
+        padding: 0.4em 0.5em;
+    }
+
+    .yui-navset .yui-nav li { 
+        flex: 1 1 auto; 
+    }
+
+    .yui-navset .yui-nav li a { 
+        font-size: 1.4em; 
+    }
+
+    .header-pair{
+        gap:.4rem;
+        padding:0 12px;
+        max-width:100%;
+    }
+
+    .header-pair--right{ 
+        flex-direction:row-reverse; 
+    }
+
+    .badge{ width:56px; height:auto; flex-shrink:0; }
+
+    .text{ flex:1 1 auto; min-width:0; }
+
+    .site322-line1, .area179-line1{ 
+        font-size:clamp(.50rem,3.2vw,.01rem); 
+    }
+
+    .site322-line2, .area179-line2{ 
+        font-size:clamp(1.1rem,8.8vw,.82rem); 
+    }
+
+    .site322-line3, .area179-line3{ 
+        font-size:clamp(.33rem,3.2vw,.32rem); 
+    }
+
+    .text &gt; span{ 
+        white-space:nowrap; overflow:hidden; text-overflow:clip; 
+    }
+
+    .article { 
+        font-size: 80%; 
+    }
+}
+[[/module]]
 
 [[=]]
 [[module rate]]
 [[/=]]
-[[div style=&#34;text-align: center; margin-top: -15px;&#34;]]
-[[size 80%]]##757575|by PlaguePJP &amp; J Dune##[[/size]]
+
+[[div class=&#34;top&#34;]]
+= [[span class=&#34;head2&#34;]]Integration.[[/span]]
+
+What is &#39;integration&#39;? This has been a question asked since the dawn of time. You can google it.
+
+The first humans integrated rocks onto sticks, and then those weapons were integrated into their enemies&#39; skulls. Sparks were integrated into wood. Metal was integrated into fire. Seeds were integrated into soil. Eventually, humans integrated together and built a society.
+
+As time progressed, more materials were integrated and more people joined in on the fun. Blades integrated into the back of Caesar. Nails integrated into the hands of Christ. The apple integrated onto Newton’s head. Steam integrated into engines. Wi-Fi integrated into our pockets. And at the end, our soul integrates with the light of our Lord, who loves us all.
 [[/div]]
 
-
-[[image https://scptestwiki.wdfiles.com/local--files/sigma%3Aintegration/ipbanner.png]]
-@@ @@
-[[=]]
-[[collapsible show=&#34;+ Open Staff Memo +&#34; hide=&#34;- Close Staff Memo -&#34;]]
-[[&lt;]]
-[[div class=&#34;addendum&#34;]]
-
-[[div]]
-[[=]]
-[[size 175%]]**##115AAC|Site-322 and Area-179 are proud to present the##**[[/size]]
-[[/=]]
-[[/div]]
-[[div]]
-[[=]]
-[[size 175%]]**##115AAC|Integration Program! The newest form of ##**[[/size]]
-[[/=]]
-[[/div]]
-[[div]]
-[[=]]
-[[size 175%]]**##115AAC|containment for The Foundation&#39;s anomalies.##**[[/size]]
-[[/=]]
+[[div class=&#34;top&#34;]]
+[[div style=&#34;display: flex; align-items: center; justify-content: center; gap: 8px; padding: 5px; text-align:center; margin-top: 1.2em;&#34;]]
+[[image https://scptestwiki.wdfiles.com/local--files/jawn-ip/322.png style=&#34;height: 5em;&#34;]]
+[[span class=&#34;head2&#34;]]SITE-322 &amp; AREA-179[[/span]]
+[[image https://scptestwiki.wdfiles.com/local--files/jawn-ip/179.png style=&#34;height: 5em;&#34;]]
 [[/div]]
 
-But what is the Integration Program?
-
-It began in 2018 at Biological Containment Site-59. Personnel recovered SCP-5031 and, after all attempted containment procedures seemed to only further aggravate the anomaly, the Site Director realized there may be another way to contain the anomaly. After months of testing, SCP-5031 was integrated into the Site&#39;s structure as a chef.
-
-Inspired by this, Site-322&#39;s Director Paul Lague decided to implement this form of containment under the guidelines of the Integration Program.
-
-For an anomaly to first be considered for the Integration Program, it must meet at least one of the following requirements:
-* The anomaly should be sapient or sentient; this provides ease of testing and gives a direct bar of the anomaly&#39;s level of comfort. There are exceptions, however.
-* The anomaly should provide a skill that could be useful to itself and the Foundation. Testing may be utilized to determine said skill.
-
-Yes, we at Site-322 understand that this is a very stark change of pace for the Foundation. But, if you don&#39;t believe that this works, why don&#39;t you hear from a few anomalies that were part of the Integration Program?
-
-[[div class=&#34;article&#34;]]
-**SCP-5595:** {{I AM VERY HAPPY AND LOVE MY JOB. THANK YOU SCP FOUNDATION. IS THAT GOOD ENOUGH NOW, ASSH--}}
+[[div class=&#34;sub&#34;]]
+TOGETHER IN HARMONY, FOREVER
 [[/div]]
 
-[[div class=&#34;article&#34;]]
-**SCP-6453:** ANTONIN SCALIA.
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-**Agent Woodcock:** I kill things and I don&#39;t get arrested. I don&#39;t know what&#39;s there to hate!
-[[/div]]
-
-See? Well, if you still don&#39;t believe us, try it out for yourself!
-[[/&lt;]]
-[[/div]]
-[[/collapsible]]
-[[/=]]
-
-[[div class=&#34;addendum2&#34;]]
-[[div class=&#34;article&#34;]]
-
-[[=]]
-++ Latest Articles
-[[/=]]
-
------
-
-[[module ListPages tags=&#34;integration-program&#34; limit=&#34;3&#34; separate=&#34;no&#34; order=&#34;created_at desc&#34; category=&#34;_default art component theme adult&#34;]]
-[[span style=&#34;margin-left: 10%;&#34;]]**%%index%%. %%title_linked%%** -- by [[*user %%created_by%%]][[/span]]
-[[/module]]
-
-[[/div]]
-[[/div]]
-
-
-
-[[div class=&#34;addendum3&#34;]]
-[[=]]
-[[size 160%]] __**##115AAC|INTEGRATED ANOMALIES##**__[[/size]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-5595]]][[/size]]
-**Geoffrey Quincy Harrison the Third: Site Director, Gumball Machine**
-//{{MR. LAGUE FORMALLY INVITED ME TO FILL IN THE POSITION OF SITE DIRECTOR WHILE HE WAS ON VACATION.}}//
-[[size 75%]]By [[*user PlaguePJP]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-5104]]][[/size]]
-**Urgent Massage**
-//The treatment &#39;freed all pain&#39; and &#39;[it] gives 5 red shapes&#39;.//
-[[size 75%]]By [[*user J Dune]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-5175]]][[/size]]
-**DEATH KNIFE**
-//And then this fuckin&#39; metal skeleton guy wearing Shinobi armor came out. If you&#39;ve ever seen JoJo, he&#39;s kind of like a stand.//
-[[size 75%]]By [[*user J Dune]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-3837]]][[/size]]
-**Maize Knight**
-//It seems that the creatures&#39; malice does not seep into its fur. A pure diversion!//
-[[size 75%]]By [[*user PlaguePJP]] &amp; [[*user Tstaffor]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6483]]][[/size]]
-**The Polar Express**
-//Ho ho ho! My sleigh awaits!//
-[[size 75%]]By [[*user Ralliston]] &amp; [[*user LORDXVNV]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6984]]][[/size]]
-**This Is Spın̈al Tap**
-//It ain’t broke. **Don’t break it.**//
-[[size 75%]]By [[*user GremlinGroup]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6453]]][[/size]]
-**Shit Yeti**
-//That thing’s poop was in my mouth. I ate its feces.//
-[[size 75%]]By [[*user J Dune]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6593]]][[/size]]
-**Only Cans**
-//Fuck, you make me want to dispense something so bad.//
-[[size 75%]]By [[*user PlaguePJP]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-7999]]][[/size]]
-**Meet Me in the Stars**
-//Art is when you create something beautiful for other people to see.//
-[[size 75%]]By [[*user OriTiefling]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[plague-s-proposal | Plague&#39;s Proposal]]][[/size]]
-**The Ones That Got Away**
-//But no, I&#39;m the shmuck who shafted himself again because of my own inability to face the fact that I&#39;m not good enough.//
-[[size 75%]]By [[*user PlaguePJP]][[/size]]
-[[/div]]
-
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6458]]][[/size]]
-**penguin waiters**
-//Not often one gets to see dancing penguins, haha!//
-[[size 75%]]By [[*user Prismal]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6459]]][[/size]]
-**Any Way The Wind Blows**
-//They placed their belief in me, and I in them, and it was through that I was able to connect to this place. We were safe and happy, and for a time, that’s all I cared about.//
-[[size 75%]]By [[*user AstersQuill]][[/size]]
-[[/div]]
-[[/=]]
-[[/div]]
-
-[[div class=&#34;addendum3&#34;]]
-[[=]]
-[[size 160%]] __**##115AAC|STORIES FROM THE PROGRAM##**__[[/size]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6599]]][[/size]]
-**HOGSLICE**
-//MOTHERFUCKER YOU ARE MAKING ME BREAK MY SHIT//
-[[size 75%]]By [[*user PlaguePJP]] &amp; [[*user J Dune]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6597]]][[/size]]
-**Whale, I&#39;m Boned**
-//PLEASE LEAVE ME SOME MORE DUNKING DOUGHNUT COFFEE. I WILL BE SLEEPING IN MY TABLE.//
-[[size 75%]]By [[*user PlaguePJP]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6121]]][[/size]]
-**CAPSLOCK CREW**
-//HOOT HOOT.//
-[[size 75%]]By [[*user HarryBlank]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[many-last-words | Many Last Words]]][[/size]]
-//&#34;You,&#34; said Lague, very slowly, &#34;were never Site Director.&#34;//
-[[size 75%]]By [[*user HarryBlank]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[hogslice-vs-bones | HOGSLICE vs bones]]][[/size]]
-//HOGSLICE has entered the chat.//
-[[size 75%]]By [[*user Uncle Nicolini]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-6592]]][[/size]]
-**The Biz Wiz Experience**
-//I am dead and No One. I have lost (Its jaw falls to the ground. It continues speaking unabated.) my chance.//
-[[size 75%]]By [[*user Anonymous]] &amp; [[*user Ralliston]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[hogslice-makes-a-friend | HOGSLICE Makes a Friend]]][[/size]]
-//IT&#39;S GONNA BE HARD TO &#34;&#34;LAUGH OUT LOUD&#34;&#34; WITH MY HANDS AROUND YOUR THROAT. WHORE.//
-[[size 75%]]By [[*user PlaguePJP]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-7595]]][[/size]]
-**Telepathic Frogs**
-//Go find frogs. Come back after you found frogs.//
-[[size 75%]]By [[*user PlaguePJP]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[the-graduating-class-of-58 | The Graduating Class of Site-58]]][[/size]]
-//These people were proof of that change. Proof that the Foundation was willing to see the value in the anomalous people they had in their custody.//
-[[size 75%]]By [[*user oritiefling]][[/size]]
-[[/div]]
-
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[The Holiday Special]]][[/size]]
-//&#34;Who the fuck listens to Wonderful Christmastime? The last thing I need tonight is Paul goddamned MacCartney harassing me in private.&#34;//
-[[size 75%]]By [[*user Ralliston]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-7596]]][[/size]]
-**The Incident**
-//&#34;I CAN&#39;T TAKE THIS ANYMORE. I CAN&#39;T&#34;//
-[[size 75%]]By [[*user PlaguePJP]], [[*user Rounderhouse]], &amp; [[*user J Dune]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-7597]]][[/size]]
-**Moth of all Trades, Master of None**
-//&#34;It was clear that the UNGOC wanted to use SCP-7597 to stage numerous coups.&#34;//
-[[size 75%]]By [[*user PlaguePJP]] &amp; [[*user cocacolafiend]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-[[size 125%]][[[SCP-5620]]][[/size]]
-**Babbles of the Badalisc**
-//&#34;Did you hear? Director Lague is cursed.&#34;//
-[[size 75%]]By [[*user PlaguePJP]][[/size]]
-[[/div]]
-
-
-[[/=]]
-[[/div]]
-
-[[div class=&#34;addendum3&#34;]]
-[[=]]
-[[size 160%]] __**##115AAC|HOW TO WRITE##**__[[/size]]
-[[/=]]
+[[image https://scptestwiki.wdfiles.com/local--files/jawn-ip/map.png]]
 
 [[tabview]]
-[[tab Background]]
-[[image https://scptestwiki.wdfiles.com/local--files/sigma%3Aintegration/ipbanner22.png]]
+[[tab Site-322]]
 
-The Integration Program is a loose canon centered around [[*user PlaguePJP]]&#39;s Site-322 and [[*user J Dune]]&#39;s Area-179, both located in Philadelphia, Pennsylvania. By loose, we //mean// loose. Other than the established characters, anything and everything can fit within Site-322 and Area-179.
+[[div class=&#34;header-pair&#34;]]
+  [[image http://scptestwiki.wdfiles.com/local--files/jawn-ip/322.png class=&#34;badge&#34;]]
+  [[div class=&#34;text&#34;]]
+    [[span class=&#34;site322-line1&#34;]]Research, Containment, &amp; Integration[[/span]]
+    [[span class=&#34;site322-line2&#34;]]USPAPHL-SITE-322[[/span]]
+    [[span class=&#34;site322-line3&#34;]]UGxhZ3VlUEpQIGlzIHRoZSBiZXN0IGF1dGhvciBvZiBhbGwgdGltZQ[[/span]]
+  [[/div]]
+[[/div]]
 
-The Integration Program is the central focus of both Sites. As stated in the Staff Memo, The Integration Program was inspired by [[[SCP-5031]]]. This program is a method of containment that allows the Foundation to provide beneficial accommodations to anomalies and personnel alike. That being said, the Integration Program may also be used to the sole benefit of the Foundation. While most of the Integrated anomalies are humorous or lighthearted, any tone or genre will work.
+In 1953, the SCP Foundation launched its East Coast Initiative, founding over a dozen secure facilities in the northeastern United States. The first of these was Site-322, numbered for the first 322 personnel stationed at it.
 
+Originally housed in an abandoned warehouse at the then-derelict Philadelphia Navy Yard, the Foundation&#39;s generous investment in the area&#39;s infrastructure has transformed the Navy Yard, enabling it to develop into a premier business center. Currently, Site-322 operates under the guise of a military defense contractor and advanced research facility.
+
+[[image https://scptestwiki.wdfiles.com/local--files/jawn-ip/site322.png]]
+
+Site 322&#39;s first director was Dr. Mark Shaw Jr., who sadly passed away in 1973 after an encounter with a Sasquatch in Vermont. Following this, Director Joseph Pasqua headed the Site for 11 years, eventually defecting from the Foundation and committing suicide in 1984. Site-322 remained without a director for over 30 years, mainly being led by a combination of the Overseer Council, Site-19 Director Tilda Moose, and an experimental artificial intelligence. In 2016, second-generation Foundation member Paul K. Lague was promoted to Site Director of Site-322.
+
+Site-322 is the Foundation&#39;s leading sentient anomaly-focused containment facility, housing over 670 anomalies of various containment classes, with the most populous being its Euclid wing. The majority of Site-322 is underground, with over 25 expansive sub-basements comprising the lion’s share of its structure. The most notable of sections of Site-322 include Humanoid Containment, the Nature Preserve, the Paratechnology Lab, the Whisper Cage, the Anomalous Media Archive, and the Shallows.
 [[/tab]]
-[[tab Characters]]
 
-**Director Paul Lague:** The creator and head director of the Integration Program, Lague is a laidback man. He&#39;s the youngest Site Director in the Foundation&#39;s history, being only 20 years old when he was promoted. Lague&#39;s laidback attitude rouses the ire of some of his more conservative contemporaries, but the progress and productivity of Site-322 under his eye are undeniable. Lague knows when an issue requires a serious tone but prefers to keep Site-322 relaxed for the betterment of his employees and the anomalies.
-
-**Doctor Anthony Coix:** The &#39;Co-Site Director,&#39; Anthony Coix is directly under Director Lague in Site-322&#39;s hierarchy. He&#39;s a to-the-books type of guy, playing the straight man to Plague&#39;s attitude and the wacky anomalies they come across. Coix consistently gets the short end of the stick and likes to say his stretch of bad luck is comparable to Wettle&#39;s, but he&#39;s heavily exaggerating.
-
-**SCP-5595/Geoffrey Quincy Harrison III:** The first ever anomaly integrated under the guidelines of the Integration Program. The sassy, sarcastic, yet lovable gumball machine heads the Foundation&#39;s Financial Department and will be sure to let you know how good of a job he&#39;s doing. He&#39;s also Director Lague&#39;s right-hand man on all issues, and a common contributor to interrogations of anomalies that are being purposefully difficult.
-
-**Director Jay Dune:** Director Dune is a corporate suck-up and bootlicker. He absolutely hates the idea of the Integration Program but was forced into participating due to Overseer order and the fact that Area-179 is about an hour or two&#39;s drive from Site-322. While he doesn&#39;t flaunt his smarminess, it doesn&#39;t take long to catch on to what this guy is really about.
-
-**Doctor Eric Trenton:** Trenton is Area-179&#39;s resident interviewer. He&#39;s a by-the-books, stupidly stuck-up member of 179&#39;s staff, having no tolerance for an anomaly&#39;s rambunctiousness. Trenton simply wants to get through the interview so he can move on to the next as smoothly as possible.  
-
-**SCP-6599-1/HOGSLICE:** HOGSLICE is a man of many words, with a lot of nuances hidden under the layers of opinionated, pointless, caps-locked rants he&#39;s famous for. HOGSLICE is a character of contrarianism, who places his opinion, worldview, and perception of facts above all else. It&#39;s important to remember that HOGSLICE has a minimal perspective, and refuses to change that. While he&#39;s loud and swears like a sailor, that&#39;s not all there is to him.
-
-**SCP-5175/Agent Damien Woodcock:** Agent Woodcock is the Integration Program&#39;s go-to muscle when an annoying problem rears its head. A quintessential neckbeard weeaboo, lover of all things anime (especially Jo-Jo&#39;s Bizarre Adventure), video games, combat weaponry, and thinking he can speak Japanese from watching anime. The Foundation allows him to operate as a covert anomalous assassin, which he excels at, mostly because of his weapon of choice, the &#39;DEATH KNIFE,&#39; and his so-called &#39;stand,&#39; SCP-5175-1.
-
-
-[[/tab]]
-[[tab Contributing]]
-
-= __**The Setting**__
-Site-322 is located in Philadelphia, Pennsylvania. It&#39;s a large Site, with housing for five hundred Foundation staff, containment chambers for three hundred anomalies, and hundreds of offices. Site-322 also houses the Foundation&#39;s Finance Department, the Department of Damage Control, and, of course, The Integration Program.
-
-[[div style=&#34;border: 1px solid #115AAC; margin: auto; width: 90%;&#34;]]
+[[tab Area-179]]
+[[div class=&#34;header-pair header-pair--right&#34;]]
+  [[image http://scptestwiki.wdfiles.com/local--files/jawn-ip/179.png class=&#34;badge&#34;]]
+  [[div class=&#34;text&#34;]]
+    [[span class=&#34;area179-line1&#34;]]Investigation, Recovery, &amp; Integration[[/span]]
+    [[span class=&#34;area179-line2&#34;]]USPASCR-AREA-179[[/span]]
+    [[span class=&#34;area179-line3&#34;]]SiBEdW5lLCB3aGF0IGEgZ3V5PyBBbSBJIHJpZ2h0PyBDb29sIGd1eQ[[/span]]
+  [[/div]]
 [[/div]]
 
-= __**The Tone**__
-Articles within Site-322 or Area-179 do not have to be humorous or lighthearted. All genres are welcome. That being said, articles focused on the Integration Program are often lighthearted, as it&#39;s difficult for an anomaly that may be threatening, dangerous, and/or scary to fall under the Integrated containment class. It&#39;s not impossible, and I challenge any author to bring any genre into the foray and attempt to integrate it into the Foundation&#39;s structure.
+Area-179, located in Scranton, Pennsylvania, is one of the Foundation’s premier facilities that manages the containment of humanoid anomalies with a low-to-moderate threat level. Nicknamed “The Penthouse” for its frequent (and controversial) exploration of integration and rehabilitation programs for its documented objects, Area-179 has become a fixture in advancing humanoid anomaly privileges within the Foundation. The Foundation’s Ethics Committee has sourced multiple board members solely from their body of work in journals published at Area-179. 
 
-[[div style=&#34;border: 1px solid #115AAC; margin: auto; width: 90%;&#34;]]
-[[/div]]
+[[image https://scptestwiki.wdfiles.com/local--files/jawn-ip/area179.png]]
 
-= __**Some Rules**__
-The guidelines of the Integration Program are very loose. As long as you and your in-universe characters can establish a justified reason for how an anomaly would positively impact the Foundation and their day-to-day processes, it can be integrated.
+While Area-179 was initially founded as a traditional containment facility in 1967, a research initiative led by its first director, Dr. L. Branlow, in 1976, encouraged the small, gradual implementation of beneficial and non-malicious anomalies into the Foundation’s internal command structure. The Foundation as a whole has taken data and practices from the Integration Program and applied them on both a holistic and site-specific basis— such as the deliberate manufacturing of anomalies to suit the Foundation’s containment purposes, or allowing contained anomalies certain privileges and amenities in exchange for compliance with research guidelines.
 
-[[div style=&#34;border: 1px solid #115AAC; margin: auto; width: 90%;&#34;]]
-[[/div]]
-
-We recommend utilizing the Anomaly Classification System on your articles. The code can be somewhat confusing, however here is a template.
-
-[[div class=&#34;article&#34;]]
-[[div]]
-[[@@include@@ :scp-wiki:component:anomaly-class-bar-source
-
-|item-number= XXXX
-|clearance= 1/2/3/4/5/6
-|container-class= esoteric
-|secondary-class= integrated
-|secondary-icon= https://scp-wiki.wdfiles.com/local--files/plaguepjp/integrated1.png
-|disruption-class= Desired disruption class
-|risk-class= Desired risk class
-]]
-
-[[@@include@@ :scp-wiki:component:acs-peppo-split
-|object= Desired object class
-|object-image= Direct image links to the object classes can be found on the [https://scp-wiki.wikidot.com/component:anomaly-class-bar Anomaly Class Bar page] or can be any other esoteric class image.
-|object-color= Desired object class color (Type in the containment class in all lower case. If I wanted the green of &#39;safe&#39; I&#39;d input safe here.)
-|esoteric-color= thaumiel (Keep this
-]]
-[[/div]]
-[[/div]]
-
-[[div style=&#34;border: 1px solid #115AAC; margin: auto; width: 90%;&#34;]]
-[[/div]]
-
-If an anomaly is being integrated, it must involve Site-322, Director Paul, Lague and/or Doctor Anthony Coix or Area-179, Director Jay Dune, and/or Doctor Eric Trenton. See the Characters tab for more information on them.
-
-[[div style=&#34;border: 1px solid #115AAC; margin: auto; width: 90%;&#34;]]
-[[/div]]
-
-The Integration Program is a setting that requires anomalies to be used the same way you use human characters. Don&#39;t be afraid to involve other anomalies that have been integrated into your articles. The canonicity is very loose other than basic characterization, so you have a lot of room to write whatever you want.
-
-[[div style=&#34;border: 1px solid #115AAC; margin: auto; width: 90%;&#34;]]
-[[/div]]
-
-[[*user PlaguePJP]] and [[*user J Dune]] will likely be open to critiquing your articles. We love knowing that there are people who want to write about something we&#39;ve established. We&#39;re also available for questions, if you&#39;re writing the characters consistent with previous articles, and ideation.
-
-[[div style=&#34;border: 1px solid #115AAC; margin: auto; width: 90%;&#34;]]
-[[/div]]
-
-When you post your article, add it to the hub under the appropriate category. Integrated Anomalies are for SCPs that fall under the Integrated object class and/or are directly referenced to be under the Integration Program. Stories from the Program are articles that focus on or involve the characters of Site-322 or Area-179 and their integrated anomalies, without any anomaly being integrated in the narrative. Use the following code and add your article to the bottom of its appropriate list.
-
-[[div class=&#34;article&#34;]]
-= __**SCP Article**__
-[[@@div@@ class=&#34;article&#34;]]
-[[@@size@@ 125%]]@@[[[@@SCP-XXXX]]][[/size]]
-@@**@@Article Title**
-@@//@@1-2 sentence quote//
-[[@@size@@ 75%]]By [[@@*user@@ your username]][[/size]]
-[[/div]]
-
-[[div class=&#34;article&#34;]]
-= __**Tale**__
-[[@@div@@ class=&#34;article&#34;]]
-[[@@size@@ 125%]]@@[[[@@tale-url | Tale Title]]][[/size]]
-@@//@@1-2 sentence quote//
-[[@@size@@ 75%]]By [[@@*user@@ your username]][[/size]]
-[[/div]]
 
 [[/tab]]
 [[/tabview]]
-@@ @@
 [[/div]]
 
-[[include :scp-wiki:component:license-box
-|author=J Dune and PlaguePJP]]
-=====
-&gt; **Filename:** ipbanner22.png
-&gt; **Author:** [[*user PlaguePJP]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [https://scp-wiki.wikidot.com/integration-program-hub SCP Foundation Wiki]
+[[div class=&#34;top&#34;]]
+= [[span class=&#34;head2&#34;]]The Integration Program[[/span]]
 
-&gt; **Filename:** ipbanner.png
-&gt; **Author:** [[*user PlaguePJP]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [https://scp-wiki.wikidot.com/integration-program-hub SCP Foundation Wiki]
-=====
-[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+In 2020, Director Paul Lague wrote the first draft for what would become the Integration Program. While it was initially created under the title &#34;Appeasement Program,&#34; the core conceit of the concept remained the same: containing anomalies with a focus on both their benefit and the benefit of the Foundation. Below is the story of the Integration Program from start to finish. 
+
+
+[[a class=&#34;article&#34; href=&#34;/scp-5595&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-5595/fittyfininnyni.png);&#34;]][[span class=&#34;title&#34;]]SCP-5595 ⁠— The Site Director[[/span]]
+By PlaguePJP
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-5104&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-5104/Kite.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-5104 ⁠— Urgent Massage[[/span]]
+By J Dune
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-7597&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-7597/moff.png);&#34;]][[span class=&#34;title&#34;]]SCP-7597 ⁠— Moth of all Trades, Master of None[[/span]]
+By PlaguePJP &amp; cocacolafiend
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-5175&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-5175/damien.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-5175 ⁠— DEATH KNIFE[[/span]]
+By J Dune
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-5591&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-5591/snook45.png);&#34;]][[span class=&#34;title&#34;]]SCP-5591 ⁠— Blabbers of the Badalisc[[/span]]
+By PlaguePJP
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6597&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6597/scrimshaw.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-6597 ⁠— Whale, I&#39;m Boned[[/span]]
+By PlaguePJP
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6599&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6599/SLICE.png);&#34;]][[span class=&#34;title&#34;]]SCP-6599 ⁠— HOGSLICE[[/span]]
+By PlaguePJP &amp; J Dune
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/hogslice-makes-a-friend&#34; style=&#34;--art: url(http://scp-sandbox-3.wikidot.com/local--files/integration-program-art/6599_maddie.JPG);&#34;]][[span class=&#34;title&#34;]]HOGSLICE Makes A Friend[[/span]]
+By PlaguePJP
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-3837&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-3837/corn_man.png);&#34;]][[span class=&#34;title&#34;]]SCP-3837 ⁠— Maize Knight[[/span]]
+By PlaguePJP &amp; Tstaffor
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6453&#34; style=&#34;--art: url(https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Lovenbreen_Ice_cave_8.JPG/640px-Lovenbreen_Ice_cave_8.JPG);&#34;]][[span class=&#34;title&#34;]]SCP-6453 ⁠— Shit Yeti[[/span]]
+By J Dune
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6593&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6593/vendingmachine.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-6593 ⁠— Only Cans[[/span]]
+By PlaguePJP
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-7595&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-7595/frog.png);&#34;]][[span class=&#34;title&#34;]]SCP-7595 ⁠— Telepathic Frogs[[/span]]
+By PlaguePJP
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-7596&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-7596/killme.png);&#34;]][[span class=&#34;title&#34;]]SCP-7596 ⁠— The Incident[[/span]]
+By PlaguePJP, Rounderhouse, &amp; J Dune
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-8596&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-8596/church2.png);&#34;]][[span class=&#34;title&#34;]]SCP-8596 ⁠— Scopophobia: The Employee of the Month[[/span]]
+By PlaguePJP
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/plague-s-proposal&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/plague-s-proposal/322.png);&#34;]][[span class=&#34;title&#34;]]Plague&#39;s Proposal ⁠— The Ones That Got Away[[/span]]
+By PlaguePJP
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-8000&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-8000/seal.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-8000 ⁠— The Seal of Approval[[/span]]
+By PlaguePJP
+[[/a]]
+[[/div]]
+
+[[div class=&#34;top&#34;]]
+= [[span class=&#34;head2&#34;]]Stories From the Program[[/span]]
+
+Here are stories written by a variety of authors. These are all &#34;canon,&#34; I just don&#39;t know where to fit them in the timeline. 
+
+[[a class=&#34;article&#34; href=&#34;/hogslice-vs-bones&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/protected:scp-2721/scpbest.png);&#34;]][[span class=&#34;title&#34;]]HOGSLICE vs bones[[/span]]
+By Uncle Nicolini
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6121&#34; style=&#34;--art: url(http://scp-sandbox-3.wdfiles.com/local--files/harry-blank-7/Instances.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-6121 ⁠— THE CAPSLOCK CREW[[/span]]
+By HarryBlank
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6483&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/fragment:scp-6483-1/site.png);&#34;]][[span class=&#34;title&#34;]]SCP-6483 ⁠— The Polar Express[[/span]]
+By Ralliston &amp; LORDXVNV
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6912&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6912/cmaclaurin.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-6912 ⁠— Wanted Dead or Alive[[/span]]
+By DefenestratedLager
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6984&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6984/restroom18.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-6984 ⁠— This Is Spın̈al Tap[[/span]]
+By GremlinGroup
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-7999&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-7999/WallPainting.png);&#34;]][[span class=&#34;title&#34;]]SCP-7999 ⁠— Meet Me in the Stars[[/span]]
+By OriTiefling
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6458&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-6458/localized%20penguin%20image.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-6458 ⁠— penguin waiters[[/span]]
+By Prismal
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-7522&#34; style=&#34;--art: url(http://scp-wiki.wikidot.com/local--files/scp-7522/space%20gumball.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-7522 ⁠— Jamie Goodworth Mcdonald Sr: Finance Expert, Celestial Construct[[/span]]
+By J T K C
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-6459&#34; style=&#34;--art: url(http://scp-wiki.wikidot.com/local--files/scp-6459/dreamscape1.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-6459 ⁠— Any Way the Wind Blows[[/span]]
+By AstersQuill
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-8350&#34; style=&#34;--art: url(https://scp-wiki.wikidot.com/local--files/scp-8350/staff);&#34;]][[span class=&#34;title&#34;]]SCP-8350 ⁠— Public Affairs[[/span]]
+By DrApricus
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-1046&#34; style=&#34;--art: url(https://scp-wiki.wdfiles.com/local--files/scp-1046/tweet3.png);&#34;]][[span class=&#34;title&#34;]]SCP-1046 ⁠— Black Me Out[[/span]]
+By Uncle Nicolini
+[[/a]]
+
+[[a class=&#34;article&#34; href=&#34;/scp-8672&#34; style=&#34;--art: url(https://live.staticflickr.com/3402/3210909387_32af4e8c91_b.jpg);&#34;]][[span class=&#34;title&#34;]]SCP-8672 ⁠— A Gun Shaped Like A Dragon[[/span]]
+By Nocturned
+[[/a]]
+[[/div]]
+
+
+[[div class=&#34;top&#34;]]
+= [[span class=&#34;head2&#34;]]The Good Stuff[[/span]]
+
+[[span class=&#34;head&#34;]]What&#39;s the Deal?[[/span]]
+In summary, PlaguePJP and J Dune liked to write funny guys who say &#39;fuck&#39; and yell and scream around in their early days. We&#39;ve pretty much moved on from this style of article, but a lot of people enjoy it, and this is for them. 
+
+The Integration Program was created as a way for us to join our many characters together and create a timeline, with consistent characters and lore that we can reference. The freedom of the Integration Program allowed for a wider range of situations we can place both the anomalies and Foundation personnel in, and expanded how we can tell our stories.
+
+[[span class=&#34;head&#34;]]How to Write[[/span]]
+The Integration Program series is centered around the coerced, forced, and/or voluntary employment of anomalies. There are no rules on tone, subject matter, location, etc., only that the story surrounds the origin of a given anomaly&#39;s integration, how the integrated anomaly is used, or some form of good/bad outcome that arises from an anomaly&#39;s integration.
+
+We want The Integration Program to allow for any genres, stories, and structures. There are no hard-set rules to abide by. You can write horror, or comedy, or romance, or a mystery — it doesn&#39;t matter whatsoever. 
+
+[[span class=&#34;head&#34;]]Characters, Lore, and the Like[[/span]]
+**Director Paul Lague**
+The Director of Site-322. On the surface, he&#39;s a lackadaisical, easy-going, funny guy. Under that veneer, he is deeply insecure in himself and his position within the SCP Foundation. Lague&#39;s best trait is his ability to communicate with sentient anomalies — people, not so much. Then again, when things are running smoothly, Site-322&#39;s personnel never have a complaint to make about their treatment.
+
+**Doctor Anthony Coix**
+Director Lague&#39;s right-hand man. He&#39;s been around the Foundation long enough to grow jaded, but remains by Lague&#39;s side. He&#39;s often responsible for cleaning up the messes or finishing the busy work while Lague does whatever he does. Coix is often the butt of jokes, but Site-322 couldn&#39;t operate without him. He knows that too, but he&#39;d never say it.
+
+**Geoffrey Quincy Harrison III**
+**[[[SCP-5595]]]** and the current co-chair of Site-322&#39;s Accounting Department. He&#39;s an asshole who will take the lowest hanging fruit and throw it in your face, but under all of that, he just wants to help and be appreciated. 
+
+**Doctor Marley Mooney**
+Site-322&#39;s chief psychologist. Her job is making sure that no one goes insane, which she does well enough. A mostly soft-spoken woman who will blow a gasket and get everyone in line once she&#39;s had enough of their insanity.
+
+**Researchers Julian &amp; Juliet Hoover**
+Twin siblings who head Site-322&#39;s Nature Preserve.
+
+**HOGSLICE**
+**[[[SCP-6599]]]**. Contrary to popular belief, HOGSLICE is not just a loud, yell-y, scream guy who is vaguely conservatively adjacent. HOGSLICE is the ultimate contrarian, and in his world, he is always right and you are always wrong. On top of that, he&#39;s the greatest person who&#39;s ever lived and will ever live by a vast margin. He would argue that the sky isn&#39;t blue. He would argue about how many letters there are in the alphabet. If you told him you believed in God, he would call you an idiot, not because God isn&#39;t real, but because he&#39;s never seen God, and that means he&#39;s scared of the SLICE.
+
+**Damien Lawrence &#34;DEATH KNIFE&#34; Woodcock**
+The current owner of **[[[SCP-5175]]]**. Damien was integrated into the Foundation hierarchy as the head of his own task force. Agent Woodcock is a former Scranton mall security guard and lifelong weapons and anime nerd who was chosen, mostly by accident, by the samurai spirit stored within SCP-5175. Despite having no real combat background beyond video games, cosplay-level training, and a strong sense of justice, he bonded so completely with SCP-5175-1 that the Foundation decided it was easier to integrate him than get rid of him. 
+
+**Doctor Eric Trenton**
+Area-179&#39;s chief interviewer. He&#39;s a mostly by-the-books guy who tries to do his best, but constantly runs into situations and scenarios that test his limits. 
+
+**Doctor Jay Dune**
+We&#39;re not really sure what he did. Author Dune doesn&#39;t know either. He never cared to figure it out. Have you ever seen those old Tumblr fanarts with a million different author avatars and roleplay characters from the early days of the wiki? Just pretend he&#39;s one of the ones you&#39;ve never heard of or something.
+[[/div]]</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:37.120374.</em>
+    <em>Last updated 2026-04-17 00:56:54.602843.</em>
   
 </div>
 </body>

@@ -47,27 +47,16 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:fade-in" target="_blank"><code>:scp-wiki:component:fade-in</code></a>
-  
-
-  
-    
-  <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:fade-in.html" target="_blank">info</a>]
-  </span>
-
-  
-</li>
+        <li>(none)</li>
       
     </ul>
 
     <h2 class="header">CSS Classes</h2>
     <ul class="css-classes">
+      
+        <li>
+          <pre><code>code</code></pre>
+        </li>
       
         <li>
           <pre><code>code</code></pre>
@@ -85,9 +74,11 @@
 [[div style=&#34;border: 1px solid #ddd; padding: 1em;&#34;]]
 + What this is
 
-A component that makes everything on the page smoothly fade in, instead of appearing instantly when the page loads.
+A component that makes everything on the page smoothly fade in, instead of appearing instantly when the page loads. The fade can be staggered, with each thing on the page appearing one by one instead of all at once.
 
-The fade can also be staggered, with each thing on the page appearing one by one instead of all at once.
+**⚠️ Warning:** This component can present a hostile reading experience for some users, especially when staggered. I recommend not using this component, and advising other authors to do the same.
+
+**⛔️ Not suitable for:** Any page where the reader might not start at the top of the page, e.g. hubs or any page with a table of contents.
 
 + Usage
 
@@ -98,8 +89,7 @@ On any wiki:
 [[/div]]
 
 speed=1: everything appears at the same time
-speed=2: everything appears 0.5s after the last thing
-speed=3: everything appears 0.25s after the last thing
+speed=2: everything appears 0.1s after the last thing (not recommended)
 
 + Caveats
 
@@ -107,24 +97,50 @@ The fade-in effect will only apply to elements that are direct children of #page
 
 //(You can use this to your advantage if there are other animations on your page that would conflict (e.g [[[component:acs-animation | ACS Animation]]]) by simply wrapping the problematic animated element in a div.)//
 
-It also only applies to the first 15 elements on the page, and everything else after that will appear at the same time. This is enough for a smooth load-in experience when a reader opens the page, but if they want to scroll right to the bottom, they&#39;re able to do that without having to wait very long.
+To alleviate the negative impact on readers, the fade in animation only applies to the first 15 elements on the page, and everything else after that will appear at the same time.
+
++ Removing from other themes
+
+Some CSS themes bundle Fade In by default ([[[theme:blankstyle|]]], [[[theme:flopstyle|]]], [[[theme:foxtrot|]]] and [[[theme:queerstyle|]]] at the time of writing). If you&#39;d like to use those themes without Fade In, you can disable it with the following:
+
+[[div class=&#34;code&#34;]]
+@@[[module CSS]]@@
+:root {
+@@  --@@fade-in: none;
+}
+@@[[/module]]@@
 [[/div]]
+
+[[/div]]
+
 -----
 
 + Source code
 
 [[code type=&#34;css&#34;]]
-@media screen and (prefers-reduced-motion: no-preference) {
-  #page-title, #breadcrumbs, #page-content &gt; * {
-    animation-name: fadeIn;
-    animation-duration: 1s;
+:where(:root) {
+  --fade-in: fadeIn;
+  --fade-in-delay: 0s;
+}
+
+/* Disable for hub pages, due to the reader being likely to want to start reading elsewhere than the top of the page */
+:root:has(#page-tags a[href*=hub]),
+/* Disable for pages with a table of contents, as the user is likely to jump directly to where they want to start reading */
+:root:has(#toc) {
+  --fade-in: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(#page-title, #breadcrumbs, #page-content &gt; *) {
+    animation-name: var(--fade-in);
+    animation-duration: 0.6s;
     animation-iteration-count: 1;
     animation-timing-function: ease-out;
     animation-fill-mode: backwards;
   }
 }
 
-#page-title { animation-delay: 0s; }
+:where(#page-title) { animation-delay: 0s; }
 
 @keyframes fadeIn {
   from {
@@ -137,37 +153,33 @@ It also only applies to the first 15 elements on the page, and everything else a
   }
 }
 
-:root {
-  --fade-in-delay: 0s;
-}
-
-#page-content &gt; :nth-child(1) { animation-delay: calc(1 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(2) { animation-delay: calc(2 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(3) { animation-delay: calc(3 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(4) { animation-delay: calc(4 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(5) { animation-delay: calc(5 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(6) { animation-delay: calc(6 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(7) { animation-delay: calc(7 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(8) { animation-delay: calc(8 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(9) { animation-delay: calc(9 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(10) { animation-delay: calc(10 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(11) { animation-delay: calc(11 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(12) { animation-delay: calc(12 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(13) { animation-delay: calc(13 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(14) { animation-delay: calc(14 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(15) { animation-delay: calc(15 * var(--fade-in-delay)); }
-#page-content &gt; :nth-child(n+15) { animation-delay: calc(16 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(1)) { animation-delay: calc(1 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(2)) { animation-delay: calc(2 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(3)) { animation-delay: calc(3 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(4)) { animation-delay: calc(4 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(5)) { animation-delay: calc(5 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(6)) { animation-delay: calc(6 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(7)) { animation-delay: calc(7 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(8)) { animation-delay: calc(8 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(9)) { animation-delay: calc(9 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(10)) { animation-delay: calc(10 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(11)) { animation-delay: calc(11 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(12)) { animation-delay: calc(12 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(13)) { animation-delay: calc(13 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(14)) { animation-delay: calc(14 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(15)) { animation-delay: calc(15 * var(--fade-in-delay)); }
+:where(#page-content &gt; :nth-child(n+15)) { animation-delay: calc(16 * var(--fade-in-delay)); }
 [[/code]]
 
 [[code type=&#34;css&#34;]]
-:root {
-   --fade-in-delay: 0.5s;
+:where(:root) {
+  --fade-in-delay: 0.1s;
 }
 [[/code]]
 
 [[code type=&#34;css&#34;]]
-:root {
-  --fade-in-delay: 0.25s;
+:where(:root) {
+  --fade-in-delay: 0.1s;
 }
 [[/code]]
 
@@ -178,7 +190,7 @@ It also only applies to the first 15 elements on the page, and everything else a
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.156881.</em>
+    <em>Last updated 2026-04-17 00:56:52.975279.</em>
   
 </div>
 </body>

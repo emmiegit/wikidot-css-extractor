@@ -253,6 +253,38 @@ h1, #page-options-container, .licensebox .collapsible-block-folded a, .page-watc
     visibility: visible;
 }
 
+/* blurb related crap */
+
+.entry .description {
+    display: none;
+    position: absolute;
+    background: black;
+    max-width: calc(100% - 5rem) !important;
+}
+
+.entry .description .preview {
+    margin-left: 0;
+    margin: 0.5rem 1rem;
+}
+
+.entry:is(:hover,:focus-within) .description {
+    display: block;
+    animation-name: desc-bounce;
+    animation-duration: 0.1s;
+}
+
+@keyframes desc-bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 /* Piece of shit sidebar */
 
 #top-bar div.mobile-top-bar&gt;.open-menu {
@@ -354,18 +386,50 @@ h1, #page-options-container, .licensebox .collapsible-block-folded a, .page-watc
 </code></pre>
         </li>
       
+        <li>
+          <pre><code>.entry-list {
+    display: grid;
+    margin-block: .75rem;
+    padding-inline-start: 1rem;
+}
+
+.entry {
+    display: list-item;
+    padding: .1rem;
+    transition: background-color .175s ease-out;
+}
+.entry:is(:hover,:focus-within) { background-color: rgb(var(--basalt-undertone),.175); }
+
+.entry .title {
+    font-size: 1.125em;
+    font-style: italic;
+}
+.entry .title &gt; p { margin: 0; }
+.entry .title :is(a,span) { font-weight: bold; font-style: normal; }
+
+.description &gt; :not(.preview) { display: none!important; }
+.description &gt; .preview {
+    display: block;
+    padding-block: .125rem;
+    font-size: .875em;
+    text-align: start;
+    margin-inline-start: 1.5rem;
+}
+.preview &gt; p {
+    margin-block: .55em;
+}
+.preview &gt; p:first-child { margin-block-start: .25em; }
+.preview &gt; p:last-child { margin-block-end: .25em; }
+
+.entry-list li {
+font-size: 1.125em;
+}</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Inline Styles</h2>
     <ul class="inline-styles">
-      
-        <li>
-          <pre><code>font-weight: bold</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>font-weight: bold</code></pre>
-        </li>
       
         <li>
           <pre><code>font-weight: bold</code></pre>
@@ -458,6 +522,10 @@ h1, #page-options-container, .licensebox .collapsible-block-folded a, .page-watc
       
         <li>
           <pre><code>darkdocument</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry-list</code></pre>
         </li>
       
         <li>
@@ -693,6 +761,38 @@ h1, #page-options-container, .licensebox .collapsible-block-folded a, .page-watc
     visibility: visible;
 }
 
+/* blurb related crap */
+
+.entry .description {
+    display: none;
+    position: absolute;
+    background: black;
+    max-width: calc(100% - 5rem) !important;
+}
+
+.entry .description .preview {
+    margin-left: 0;
+    margin: 0.5rem 1rem;
+}
+
+.entry:is(:hover,:focus-within) .description {
+    display: block;
+    animation-name: desc-bounce;
+    animation-duration: 0.1s;
+}
+
+@keyframes desc-bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 /* Piece of shit sidebar */
 
 #top-bar div.mobile-top-bar&gt;.open-menu {
@@ -816,34 +916,265 @@ Image: Logo in ornate text that says &#34;SCP-8000 CONTEST: Fantasy&#34;
 [[div class=&#34;darkdocument&#34;]]
 + Important Dates:
 
-**Writing:** Now!
+**Writing:** Concluded! Thank you for all the submissions!
 **Posting Opens:** February 12^^th^^, 2024, 12:01 AM Eastern Time
 **Posting Closes:** February 19^^th^^, 2024, 12:01 AM Eastern Time
-**Results Decided:** March 11^^th^^, 2024, 12:01 AM Eastern Time
+**Results Decided:** March 11^^th^^, 2024, 1:01 AM Eastern Time
 
 + Entries:
 
 [[=]]
-Entries will appear here after the posting period begins on February 12^^th^^, 2024, 12:01 AM Eastern Time.
++++ Congratulations to PlaguePJP for winning the SCP-8000 contest with [[[SCP-8000 |SCP-8000 - The Seal of Approval]]]!
+
+We are all very proud of you!
+
+Thank you to everyone who entered!
 [[/=]]
 
-[[module ListPages category=&#34;_default adult&#34; separate=&#34;no&#34; tags=&#34;+8000 -hub -donotshowupinmodule&#34; perPage=&#34;100&#34; order=&#34;random&#34;]]
-* [[size 120%]][[span style=&#34;font-weight: bold&#34;]]%%title_linked%%[[/span]][[/size]] [[size 105%]]//by// [[span style=&#34;font-weight: bold&#34;]]%%created_by%%[[/span]][[/size]]
+[[module css]]
+.entry-list {
+    display: grid;
+    margin-block: .75rem;
+    padding-inline-start: 1rem;
+}
+
+.entry {
+    display: list-item;
+    padding: .1rem;
+    transition: background-color .175s ease-out;
+}
+.entry:is(:hover,:focus-within) { background-color: rgb(var(--basalt-undertone),.175); }
+
+.entry .title {
+    font-size: 1.125em;
+    font-style: italic;
+}
+.entry .title &gt; p { margin: 0; }
+.entry .title :is(a,span) { font-weight: bold; font-style: normal; }
+
+.description &gt; :not(.preview) { display: none!important; }
+.description &gt; .preview {
+    display: block;
+    padding-block: .125rem;
+    font-size: .875em;
+    text-align: start;
+    margin-inline-start: 1.5rem;
+}
+.preview &gt; p {
+    margin-block: .55em;
+}
+.preview &gt; p:first-child { margin-block-start: .25em; }
+.preview &gt; p:last-child { margin-block-end: .25em; }
+
+.entry-list li {
+font-size: 1.125em;
+}
 [[/module]]
+
+[[div class=&#34;entry-list&#34;]]
+# [[[SCP-8000]]] - **The Seal of Approval** by PlaguePJP at 427
+# [[[SCP-8999]]] - **Feeding the Trolls** by J Dune at 406
+# [[[SCP-8001]]] - **The Edge of the World** by djkaktus at 392
+# [[[SCP-8320]]] - **Seven Hundred Million Wizards** by Raddagher at 274
+# [[[SCP-8500]]] - **WITH_LUV_FRM_ADA.zip** by IronShears and Guaire at 264
+# [[[SCP-8140]]] - **Burial Goods** by Grigori Karpin at 251
+# [[[SCP-8002]]] - **Maslov&#39;s Fire** by bigslothonmyface at 236
+# [[[SCP-8005]]] - **The Fool** by daveyoufool at 218
+# [[[SCP-8888]]] - **Eight-Ball** by Billith, Doctor Cimmerian, HarryBlank, and Placeholder McD at 210
+# [[[SCP-8003]]] - **THE GEARS OF TIME** by Rounderhouse at 183
+# [[[SCP-8008]]] - **TIME PERVERT** by LORDXVNV at 177
+# [[[SCP-8400]]] - **The Birch Knight and the Game of Three Chestnuts** by PeppersGhost and Uncle Nicolini at 161
+# [[[Oris-Proposal|]]] - **Touching Eternity** by OriTiefling at 154
+# [[[SCP-8799]]] - **A Book of Kings** by Tufto at 147
+# [[[SCP-8333]]] - **Wishweavers** by Zyn at 137
+# [[[SCP-8060]]] - **Toontown** by ratking666 and Monkeysky at 134
+# [[[SCP-8787]]] - **The Roast Not Taken** by Ihp at 128
+# [[[SCP-8800]]] - **Reception** by Aftokrator at 125
+# [[[SCP-8166]]] - **Eastward of Eden** by AstersQuill, FlyPurgatorio, sailorenoch at 125
+# [[[SCP-8889]]] - **The Wondrous Wedding of William Wallace Wettle** by LizardWizard at 124
+# [[[SCP-8100]]] - **TURTLE TIME** by Harmacy at 122
+# [[[SCP-8765]]] - **Desiderium** by Yossipossi at 121
+# [[[SCP-8666]]] - **Roig&#39;s Red Death** by stormbreath at 120
+# [[[SCP-8004]]] - **The Life and Death of Vincent Bohart** by DodoDevil at 120
+# [[[SCP-8007]]] - **THE PYROCLASM PROTOCOL** by Dino—Draws at 116
+# [[[SCP-8817]]] - **To You, The World** by EstrellaYoshte at 113
+# [[[SCP-8006]]] - **Debris on the Tracks** by TheChunk at 112
+# [[[SCP-8009]]] - **Her Red Right Hand Protects Us** by DrClef at 111
+# [[[SCP-8200]]] - **The Phantom Sea** by MontagueETC at 105
+# [[[SCP-8404]]] - **That One Time The Foundation Attempted To Use SIMULACRUM Technology To Contain A Keter-Class Entity In Another World** by J T K C at 96
+# [[[SCP-8120]]] - **Bloodbound** by Ralliston at 92
+# [[[SCP-8998]]] - **Her Owner** by aismallard at 91
+# [[[SCP-8300]]] - **The Farewell, The Frame** by ThatGuyThatTime at 89
+# [[[SCP-8010]]] - **Mom and Dad** by PoufyPoufson at 88
+# [[[SCP-8900]]] - **The Hecatomb** by Its a Bad Idea at 87
+# [[[SCP-8028]]] - **Into The Woods** by AriadnesThread at 87
+# [[[SCP-8600]]] - **The Hall of the Empresses** by Miss Lapis and PiNKpePpER at 82
+# [[[SCP-8118]]] - **everything is fine.** by Fishish at 73
+# [[[SCP-8992]]] - **Body of Evidence** by Dysadron at 71
+# [[[SCP-8457]]] - **That time I , a Foundation Agent, was abducted into another world at war with mine.** by Guezma at 71
+# [[[SCP-8700]]] - **In the Court of the Dragon** by Dr Balthazar at 69
+# [[[SCP-8080]]] - **Eleanor Ellory Goes To Therapy** by Uncannyon at 68
+# --SCP-8225 - **The House of All Our Gods**-- by Djoric at 63
+# [[[SCP-8011]]] - **In Flesh, Tasted** by Ecronak at 63
+# [[[SCP-8699]]] - **Everyday I See You Still** by Trintavon at 62
+# [[[SCP-8235]]] - **Magic, Unchained** by Plilt and Anorrack at 59
+# [[[SCP-8012]]] - **The Hero&#39;s Journey (Ft. Wigglebert the Great)** by IndustryStandard and ParallelPotatoes at 58
+# [[[SCP-8997]]] - **Infinite Impossibilities** by TheyCallMeTim at 58
+# [[[SCP-8228]]] - **Here&#39;s To You, Mrs. Robinson** by Calibold at 49
+# [/scp-8050 VNP-8050] - **One to Rule Them All** by Damian Thorne, Diogene_s, UNCGriffin and WarriorofChaos at 48
+# [[[SCP-8111]]] - **Magic for Liars** by Felixou at 47
+# [[[SCP-8245]]] - **Anywhere, Anytime, You and Me** by winkwonkboi at 45
+# [[[SCP-8996]]] - **We Three Kings (Of What?)** by Blue Foot at 43
+# [[[SCP-8142]]] - **A Passing Chimera** by Anky swallow at 43
+# [[[SCP-8249]]] - **Of Agents, Archons, and Adam of the Transient** by Jack Ike at 42
+# [[[SCP-8682]]] - **Catastromancy** by faminepulse at 40
+# [[[SCP-8995]]] - **Surf&#39;s Up** by Sound Chaser at 40
+# [[[SCP-8899]]] - **There is a Tide** by arthcymro at 38
+# [[[SCP-8777]]] - **Snipping the Light Fantastic** by humanoid_human at 38
+# [[[SCP-8015]]] - **A Fighting Chance** by FluffyDog00 at 37
+# [[[SCP-8703]]] - **The Caretaker** by Kilerpoyo at 35
+# [[[SCP-8901]]] - **Colours of Magic** by Ethagon at 34
+# [[[SCP-8880]]] - **Isaac Seder: Son, Warrior, Foe** by Sonderance at 33
+# [[[SCP-8020]]] - **FALSE IDOL** by CelestialTophat and Anakes at 33
+# [[[SCP-8420]]] - **THE WIZARD II (Also Known as Wizard Reborn 2, Swann Fever, Ballad of the Swann Lake, Electric Avenue, the Reckoning)** by DrowningDutchman, DtheAussie, Rhineriver, TroutMaskReplica, and Twibz at 33
+# [[[SCP-8023]]] - **Secrets in the Dark and City of the Accursed** by Utylike at 31
+# [[[SCP-8013]]] - **The Dragon is not a Metaphor for Capitalism** by Mooagain at 31
+# [[[SCP-8327]]] - **I Dream Of The Sea** by TboneBerryhill at 31
+# [[[SCP-8280]]] - **Slipping Through The Cracks** by MasterTman2 at 30
+# [[[SCP-8016]]] - **Gods You Be** by Arclund at 30
+# [[[SCP-8025]]] - **COSMIC COMMANDMENTS** by Sinagsikap at 30
+# [[[SCP-8451]]] - **To Break the Pots and Sink the Ships** by basirskipreader at 29
+# [[[SCP-8014]]] - **Roma Addenda Est** by ManyMeats at 29
+# [[[SCP-8079]]] - **Rejected Reality** by Logarithmika at 28
+# [[[SCP-8017]]] - **Sentience** by Dr Leche at 28
+# [[[SCP-8778]]] - **The Writing on the Wall** by swordlover87 at 27
+# [[[SCP-8282]]] - **You Are Now Entering** by OliverMemphis at 26
+# [[[SCP-8308]]] - **To Bite One&#39;s Thumb** by Ellie3 at 26
+# [[[SCP-8914]]] - **Our Four Elemental Dragons** by Luis GM at 26
+# [[[SCP-8501]]] - **Truck-Kun** by Coldsmith at 26
+# [[[SCP-8222]]] - **SCP: Panorama** by Dr Talcite at 25
+# [[[SCP-8035]]] - **I Have Seen What The Darkness Does** by Merehrab at 25
+# [[[SCP-8701]]] - **Jackie and Wilson** by Sushimi at 24
+# [[[the-lord-of-the-redacted |The Lord of the ██████]]] by Kothardarastrix at 23
+# [[[SCP-8410]]] - **When Dreams Come True** by XHAWK77X at 23
+# [[[SCP-8125]]] - **Narrativic Fragments** by Dr Moned at 22
+# [[[SCP-8018]]] - **While You Were Dreaming I Was Turning The Sky** by ItsDenali at 21
+# [[[SCP-8089]]] - **No one in the world ever gets what they want, and that is Beautiful** by Mister_Toasty at 20
+# [[[SCP-8132]]] - **ViKarious ToMe™** by Alzin Cdag at 20
+# [[[SCP-8181]]] - **The Real World** by Ampyrsand at 20
+# [[[SCP-8444]]] - **I&#39;ll Be There With You** by cubeflix at 19
+# [[[SCP-8030]]] - **Our Holy Magic** by Jakuwoski at 19
+# [[[SCP-8945]]] - **One Thousand Temples** by sledge115 at 18
+# [[[SCP-8090]]] - **PROFANITY / PROVIDENCE / PURGATORY** by Roufhous at 18
+# [[[SCP-8747]]] - **Rectification** by Rose the Changeling at 17
+# [[[SCP-8994]]] - **&#34;Spellsteal&#34;** by redredred at 16
+# [[[SCP-8484]]] - **Acheron** by calico_mp3 at 15
+# [[[SCP-8173]]] - **Ms. Harrier Is Not Anomalous** by P0rcelain at 15
+# [[[SCP-8041]]] - **Supreme Nothing** by Termiteee at 14
+# [[[SCP-8076]]] - **Awan** by IvanNavi at 13
+# [[[SCP-8910]]] - **My Happy Place** by Some Reference at 12
+# --SCP-8019 - **The Devourer of Wonders**-- by Dr Ore, slashannemoo at 12
+# [[[SCP-8555]]] - **Kaleidoscope** by Resolver at 11
+# [[[SCP-8021]]] - **Life in a Snapshot** by Penton at 10
+# --SCP-8762 - **Once Upon A Time...**-- by SYTYCFanon, GregJChudley, Anonymous, MisterFrown, and Elunerazim at 6
+# --SCP-8022 - **Build Your Dreams, One Brick at a Time**-- by JorgeMtzb at 5
+# [[[SCP-8440]]] - **Clear as White** by Strange Matter at 5
+# [[[SCP-8024]]] - **Typhon** by Baronjoe at 4
+# --SCP-8192 - **Happily Ever After**-- by Perdoh at 4
+# --SCP-8330 - **One for the history books**-- by Karpfisch at 4
+# [[[SCP-8993]]] - **Embody** by SynthPanda at 4
+# [[[SCP-8088]]] - **Still Within Bounds** by RuraScarlet at 3
+# [[[SCP-8099]]] - **Fantasi** by Nils Severin at 3
+# [[[SCP-8082]]] - **The Wild Hunt** by Nonaggress at 3
+# [[[SCP-8722]]] - **Death, Decay, and Ignorance** by Nostellae at 2
+# [[[SCP-8026]]] - **And I&#39;m No Dreamer** by CowscantgoMoo at 2
+# [[[SCP-8108]]] - **Foundation Fantasy League** by Malvarik1 at 2
+# [[[SCP-8343]]] - **Slaying the Demiurge** by Comrade Waldo at 2
+# [[[SCP-8101]]] - **The Dream Machine** by DrYossarian at 0
+# [[[SCP-8199]]] - **Dreamcrumbs** by Sr Bolainas at 0
+# --SCP-8678 - **Ruined Haven**-- by ArmenBow at -4
+# --SCP-8202 - **Of Fire and Ice, War and Loss**-- by lilybugg at -5
+# --SCP-8121 - **Portable Borders**-- by andeyebed at -9
+[[/div]]
 
 [[=]]
 [[collapsible show=&#34;+ Click here to see the entries in order of posting +&#34; hide=&#34;- Click here to minimize -&#34;]]
 
-[[module ListPages category=&#34;_default adult&#34; separate=&#34;no&#34; tags=&#34;+8000 -hub -donotshowupinmodule&#34; perPage=&#34;100&#34; order=&#34;created_at desc&#34;]]
-* [[size 120%]][[span style=&#34;font-weight: bold&#34;]]%%title_linked%%[[/span]][[/size]] [[size 105%]]//by// [[span style=&#34;font-weight: bold&#34;]]%%created_by%%[[/span]][[/size]]
+[[module ListPages category=&#34;_default adult&#34; separate=&#34;no&#34; tags=&#34;+8000 -hub -donotshowupinmodule&#34; perPage=&#34;500&#34; order=&#34;created_at&#34;]]
+* [[size 112.5%]][[span style=&#34;font-weight: bold&#34;]]%%title_linked%%[[/span]][[/size]] [[size 105%]]//by// [[span style=&#34;font-weight: bold&#34;]]%%created_by%%[[/span]][[/size]]
 [[/module]]
 
 [[/collapsible]]
 [[/=]]
 
++ Trivia &amp; Awards
+
++++ Contest Marshal Awards
+
+**Most Dragons:** [[[SCP-8007]]] - &#34;THE PYROCLASM PROTOCOL&#34; by Dino--Draws
+**Biggest Dungeon:** [[[SCP-8028]]] - &#34;Into The Woods&#34; by AriadnesThread
+**Reread The Prompt[[footnote]]The most science-fiction article[[/footnote]]:** [[[SCP-8800]]] - &#34;Reception&#34; by Aftokrator
+**Most Overexplained Magic System:** [[[SCP-8235]]] - &#34;Magic, Unchained&#34; by Anorrack and Plilt
+**Most Tolkien-like[[footnote]]Article most symptomatic of a Conlang Andy[[/footnote]]:** SCP-8225 - &#34;The House of All Our Gods&#34; by Djoric
+**Biggest Offense to Good Taste[[footnote]]Judged heinous by qualified moral authorities.[[/footnote]]:** [[[SCP-8008]]] - &#34;TIME PERVERT&#34; by LORDXVNV
+**Most Liked By psychicProgrammer&#39;s Mom[[footnote]]???[[/footnote]]:** [[[SCP-8320]]] - &#34;Seven Hundred Million Wizards&#34; by Raddagher
+
++++ Vote-Based Awards
+
+**Most Discussed[[footnote]]Most discussion page posts[[/footnote]]:** [[[SCP-8000]]] - &#34;The Seal of Approval&#34; by PlaguePJP
+**Best Grade[[footnote]]Best upvote to downvote ratio.[[/footnote]]:** [[[SCP-8400]]] - &#34;The Birch Knight and the Game of Three Chestnuts&#34; by PeppersGhost and Uncle Nicolini
+**I&#39;m So Meta Even This Article[[footnote]]Most successful meta article.[[/footnote]]:** [[[SCP-8005]]] - &#34;The Fool&#34; by daveyoufool
+**Break-Out Performance[[footnote]]Most successful article that&#39;s also the author&#39;s first.[[/footnote]]:** [[[SCP-8777]]] - &#34;Snipping the Light Fantastic&#34; by humanoid_human
+**Unsung Hero[[footnote]]Most under-appreciated, best grade under +50.[[/footnote]]:** [[[SCP-8245]]] - &#34;Anywhere, Anytime, You and Me&#34; by winkwonkboi
+**Most Interactive[[footnote]]Most popular interactive article.[[/footnote]]:** [[[SCP-8500]]] - &#34;WTH_LUV_FRM_ADA.zip&#34; by IronShears and Guaire
+**Most Media[[footnote]]Most popular article that uses audio and video.[[/footnote]]:** [[[SCP-8320]]] - &#34;Seven Hundred Million Wizards&#34; by Raddagher
+**Contestant&#39;s Choice[[footnote]]Most liked by contributors.[[/footnote]]:** [[[SCP-8999]]] - &#34;Feeding the Trolls&#34; by J Dune
+
++++ Best In Class
+
+**Safe:** [[[SCP-8000]]] - &#34;The Seal of Approval&#34; by PlaguePJP
+**Euclid:** [[[SCP-8999]]] - &#34;Feeding the Trolls&#34; by J Dune
+**Keter:** [[[SCP-8320]]] - &#34;Seven Hundred Million Wizards&#34; by Raddagher
+**Thaumiel:** [[[SCP-8002]]] - &#34;Maslov&#39;s Fire&#34; by bigslothonmyface
+**Neutralized:** [[[SCP-8800]]] - &#34;Reception&#34; by aftokrator
+**Apollyon:** [[[Oris-Proposal|]]] - &#34;Touching Eternity&#34; by OriTiefling
+**Archon:** [[[SCP-8006]]] - &#34;Debris on the Tracks&#34; by TheChunk
+**Decommissioned:** [[[SCP-8420]]] - &#34;THE WIZARD II (Also Known as Wizard Reborn 2, Swann Fever, Ballad of the Swann Lake, Electric Avenue, the Reckoning)&#34; by DrowningDutchman, DtheAussie, Rhineriver, TroutMaskReplica, and Twibz
+
++++ Trivia
+
+**Longest:** “[[[the-lord-of-the-redacted |The Lord of the ██████]]]&#34; by Kothardarastrix at __65,033 words__
+**Shortest:** [[[SCP-8993]]] - &#34;Embody&#34; by SynthPanda_ at __159 words__
+**First Posted:** [[[SCP-8002]]] - &#34;Maslov&#39;s Fire&#34; by bigslothonmyface
+**Last Posted:** [[[SCP-8001]]] - &#34;The Edge of the World&#34; by djkaktus
+**MAST&#39;s Nightmare[[footnote]]Most tags[[/footnote]]:** [[[SCP-8008]]] - &#34;TIME PERVERT&#34; by LORDXVNV
+**Tagless[[footnote]]Least tags.[[/footnote]]:** [[[SCP-8026]]] - &#34;And I&#39;m No Dreamer&#34; by CowscantgoMoo and [[[SCP-8010]]] - &#34;Mom and Dad&#34; by PoufyPoufson
+
++++ Outstanding Voters
+
+[[user senor-peludo]]: 122
+[[user maxyfran73]]: 112
+[[user stealth000]]: 110
+[[user ko-saurusrex]]: 108
+[[user oritiefling]]: 108
+[[user ethagon]]: 106
+[[user space-diamond]]: 92
+[[user pabloaxolotl]]: 86
+[[user cicada3301fan]]: 84
+[[user lightlesslantern]]: 82
+
++++ Special Mentions
+
+**DMFS19 Offsite Engagement Award:** [[user Dr Shoulder]] and [[user Harmacy]]
+**Artist Award:** [[user IronShears]]
+
+------
+
+[[collapsible show=&#34;+ Archived Rules&#34; hide=&#34;- Archived Rules&#34;]]
+
 + Entry Instructions:
 
-**1.** Post your entry to the site with the url {{&#39;8000contest&lt;yourusername&gt;}}&#39; with your site user name in place of {{&lt;yourusername.&gt;}} For example, if a user named TroyL were to post an entry it would have the url {{8000contesttroyl}}. This page must be posted by you (or, if it is a collaboration, one of the collaborators).
+**1.** Post your entry to the site with the url {{&#39;8000contest&lt;yourusername&gt;}}&#39; with your site user name in place of {{&lt;yourusername.&gt;}} For example, if a user named TroyL were to post an entry it would have the url {{8000contesttroyl}}. This page must be posted by you (or, if it is a collaboration, one of the collaborators). Give your entry a title with the format &#34;SCP-8000 — &lt;Your Title&gt;&#34;.
 
 **2.** Add the tag &#34;{{8000}}&#34; to your entry so it shows up on this page.
 
@@ -877,11 +1208,13 @@ If you have any questions, feel free to ask anyone in the [https://05command.wik
 
 * You are permitted to edit your article, but not wholly replace it. Although you are allowed to add and remove sections to your article, ultimately the central idea of your article should remain the same. This also means that any edits that would comprehensively replace or overwrite your original work will be prohibited. In the case of having an article with planned updates or something similar that we have seen in prior contests, **contestants need to provide the finished product to contest marshals first. Any delayed posting updates should occur within the posting period.** This is to help ensure that contestants are given the freedom to be creative with their works while at the same time preventing the possibility of some contestants being able to obtain &#34;additional time&#34; to work on their entry after the end of the posting period. The only edits allowed after the posting period are minor ones. If unsure over whether an edit would violate these terms, please consult a contest marshal.
 
+* Blurbs added to your entry for display on this hub can not exceed 240 characters in length, or otherwise take up excessive amount of space.
+
 * Contest entries will undergo normal deletion processes.
 
 * &#39;Fantasy&#39; shall be interpreted very broadly. So long as you can explain how your work relates to Fantasy as a concept, in any interpretation, it&#39;ll likely be accepted. The theme is here to inspire, not constrain. If you&#39;re not sure if it&#39;ll count, feel free to ask one of the contest marshals listed below.
 
-* Articles can be anonymously submitted to the contest, as per the [[[anonymous-articles|Guide to Anonymous Articles]]]. For the contest, please allow a 48-hour period between submission and posting. This means that the Rewrite Team will not accept articles past February 17th, 12:01 AM EST. Anonymously-posted articles will be put into a queue and posted at regular intervals by the Rewrite Team.
+* Articles can be anonymously submitted to the contest, as per the [[[anonymous-articles|Guide to Anonymous Articles]]]. For the contest, please allow a 48-hour period between submission and posting. This means that the Curation Team will not accept articles past February 17th, 12:01 AM EST. Anonymously-posted articles will be put into a queue and posted at regular intervals by the Curation Team.
 
 * If your contest submission includes images, we strongly encourage you to have [[*user Naepic]] review them, either on Wikidot or on the official Discord. This is to ensure a quick review of their usability and ensure that no user wastes time working with copyrighted images. It also saves time having to track down authors after the posting period.
 
@@ -895,6 +1228,7 @@ If you have any questions, feel free to ask anyone in the [https://05command.wik
  * Spurring Malicious Upvoting/Downvoting, whether on your work or anyone else&#39;s.
 
 * The contest marshals for the SCP-8000 contest are [[*user Modulum]], [[*user Naepic]], [[*user psychicprogrammer]], and [[*user WhiteGuard]]. As stated above, if you have questions concerning the contest, feel free to reach out to them or another [[[https://05command.wikidot.com/community-outreach-main|Community Outreach team member]]]. The contest marshals will have the ability to disqualify entries for violations of the above-listed rules, egregiously poor sportsmanship not otherwise enumerated, or failure to fit the theme. All decisions are appealable to the contest marshals.
+[[/collapsible]]
 
 ------
 
@@ -985,7 +1319,7 @@ Thank you for reading. ✌️
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:40.154190.</em>
+    <em>Last updated 2026-04-17 00:56:59.267129.</em>
   
 </div>
 </body>

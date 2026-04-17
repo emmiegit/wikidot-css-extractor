@@ -29,7 +29,215 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>#breadcrumbs {display:none;}
+
+body {overflow-x:hidden;}
+
+.desktop-topper {display:initial;}
+.mobile-topper {display:none;}
+
+.desktop-topper a {color:#fff;}
+
+.mobile-topper .scp-image-block img {
+  border: 0;
+  width: 100vw;
+  max-width: none;
+  left: calc(-50vw + 50%);
+  position: relative;
+}
+
+
+/* Penumbra tweaks */
+
+:root {
+  --header-title: SCP Foundation&#34;;
+  --lgurl: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme:penumbra/tb.png&#34;);
+  --accentColor:#f73636;
+  --author-top-adjust:0.2rem;
+}
+
+body {
+background-image: linear-gradient( to bottom, var(--darkerColor), var(--darkerColor) 90px, var(--darkerColor) 90px, var(--darkColor) 200px, var(--darkColor) 200px, #393634 100%);
+}
+
+.page-rate-widget-box {
+  box-shadow: 0px 3px 0px 0px var(--accentColor);
+  position: relative;
+  z-index: 2;
+}
+
+#page-content .authorlink-wrapper {
+  margin-top: 0.2rem;
+  z-index:3
+}
+
+.authorlink-wrapper &gt; a {
+  width:inherit !important;
+  text-align:center !important;
+  margin:auto;
+  color: #000;
+}
+
+
+.authorlink-wrapper &gt; a::before {color: #f00 !important;}
+
+.scp-image-block.block-fullwidth {
+  width: 100vw !important;
+  max-width: none !important;
+  position: relative;
+  left: calc(-50vw + 50%);
+  margin-top:-5.5rem;
+}
+
+/* ACS tweaks */
+
+.anom-bar {
+margin-top:1.2rem !important;
+}
+
+.text-part .contain-class &gt; div, .text-part .second-class &gt; div, .text-part .disrupt-class &gt; div, .text-part .risk-class &gt; div {
+    width: 100%;
+    font-size: 0.75em;
+    padding-top: 2px;
+}
+
+.top-right-box &gt; .level {
+  font-size: 1.6em !important;
+  line-height: 0.2 !important;
+}
+
+hr + .anom-bar-container, .anom-bar-container:not(first-child) {
+  padding-top: 0em !important;}
+
+.contain-class .class-text::before {color: white !important;}
+
+.danger-diamond &gt; .bottom-icon {background-color: white;}
+
+/* Embiggening text for accessibility */
+
+#main-content {font-size:1.1rem;}
+
+/* Susa, OK header */
+
+.susaHeader {
+  width: 100vw;
+  max-width: none !important;
+  position: relative;
+  left: calc(-50vw + 50%);
+  color:#f73636;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+  border-top: #f73636 8px solid;
+  border-bottom: #f73636 8px solid;
+  text-transform: uppercase;
+  letter-spacing: 10pt;
+  margin: 3rem 0rem;
+}
+
+.susaHeader p {
+  line-height: 0.7rem;
+  font-family: &#39;Sans Normalcy&#39;,&#39;Nanum Gothic&#39;,Arial,sans-serif;
+}
+
+/* Addendum boxes */
+
+.addendumBox {
+    margin: 25px 4% 25px 2%;
+    padding: 4% 6% 4% 6%;
+    background-color: #f9f9f9;
+    color: #3e3434;
+    box-shadow: 10px 10px 3px rgba(0,0,0,0.25);
+    border-left: 5px solid #f73636;
+}
+
+.addendumBox tt {
+  color: #595553;
+}
+
+.timeStampSCP {
+  letter-spacing:0.2rem;
+  font-family:sans-serif;
+  font-weight:900;
+  font-size: 80%;
+  margin: -0.5rem;
+  color: #b93030;
+  line-height:1.5rem;
+  text-decoration:underline;
+}
+
+.characterTag {
+  letter-spacing:0.2rem;
+  font-family:sans-serif;
+  font-weight:bold;
+  text-decoration:underline;
+  line-height:2.3rem;
+  text-transform:uppercase;
+  font-size: 80%;
+  margin: -0.5rem;
+  color: #b93030;
+}
+
+/* Creates desaturation layer that covers entire window. */
+
+/*
+#skrollr-body::after {
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:300;
+content: &#34; &#34;;
+mix-blend-mode:saturation;
+pointer-events:none;
+background-repeat: no-repeat;
+background-color: #504d47;
+animation: s-fadein 600s forwards;
+}
+
+@keyframes s-fadein {
+    from { background-color: transparent;}
+    to   { background-color: #504d47;}
+}
+@keyframes s-fadein-fallback {
+    from { filter: saturate(1) sepia(0) grayscale(0);}
+    to   { filter: saturate(.5) sepia(.35) grayscale(.75);}
+}
+*/
+
+/*Safari does not support arbitrary blending of HTML elements for saturation (as well as hue, color, luminosity), so need to fallback on filter hack*/
+
+/*
+@supports (-webkit-hyphens:none) {
+#skrollr-body::after { all: unset; animation: unset; }
+#skrollr-body {
+    filter: saturate(.5) sepia(.35) grayscale(.75);
+    animation: s-fadein-fallback 600s forwards;
+}
+}
+*/
+
+@media (max-width: 600px) {
+
+  .desktop-topper {display:none;}
+  .mobile-topper {display:block;}
+
+  .susaHeader {
+  font-size:2.5rem;  
+  letter-spacing: 5pt;
+  }
+
+  .addendumBox { margin: 25px 0 }
+
+  .scp-image-block.block-right {margin: 2.5rem auto !important;}
+
+  #header h1 a::before { font-size:1em; }
+
+  #header h2::before { font-size:0.7em; }
+
+}
+</code></pre>
         </li>
       
     </ul>
@@ -38,7 +246,59 @@
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>font-size:90%;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:left</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>float:right;</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>color: rgba(255, 0, 0, 0);</code></pre>
         </li>
       
     </ul>
@@ -51,7 +311,7 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:preview" target="_blank"><code>component:preview</code></a>
   
 
   
@@ -62,35 +322,200 @@
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>component:image-block</code></a>
-  
-
-  
-</li>
-      
-        <li>
-  
-  
-
-  
-    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:penumbra" target="_blank"><code>:scp-wiki:theme:penumbra</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/theme:penumbra.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:author-label-source" target="_blank"><code>:scp-wiki:component:author-label-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:author-label-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>:scp-wiki:component:image-block</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:image-block.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>:scp-wiki:component:image-block</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:image-block.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:anomaly-class-bar-source" target="_blank"><code>:scp-wiki:component:anomaly-class-bar-source</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:anomaly-class-bar-source.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:acs-peppo-split" target="_blank"><code>:scp-wiki:component:acs-peppo-split</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:acs-peppo-split.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block-peppo" target="_blank"><code>:scp-wiki:component:image-block-peppo</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:image-block-peppo.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block-peppo" target="_blank"><code>:scp-wiki:component:image-block-peppo</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:image-block-peppo.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>:scp-wiki:component:image-block</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:image-block.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>:scp-wiki:component:image-block</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:image-block.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>:scp-wiki:component:image-block</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/component:image-block.html" target="_blank">info</a>]
   </span>
 
   
@@ -102,150 +527,1356 @@
     <ul class="css-classes">
       
         <li>
+          <pre><code>overlord</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>desktop-topper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mobile-topper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>susaHeader</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>susaHeader</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>addendumBox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>addendumBox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>susaHeader</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>addendumBox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>timeStampSCP</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>susaHeader</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>addendumBox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>addendumBox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>addendumBox</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>characterTag</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>desktop-topper</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>mobile-topper</code></pre>
+        </li>
+      
+        <li>
           <pre><code>footer-wikiwalk-nav</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[&gt;]]
+    <pre><textarea class="page-source" readonly>=====
+[[include component:preview
+text=
+&#34;Your sight is there, but your eyes are dust. Your teeth are there, but your mouth is dust. Your mind is there, but your thoughts are dust. You wait for the end, but time is dust.&#34;
+]]
+=====
+[[include :scp-wiki:theme:penumbra]]
+[[module CSS]]
+#breadcrumbs {display:none;}
+
+body {overflow-x:hidden;}
+
+.desktop-topper {display:initial;}
+.mobile-topper {display:none;}
+
+.desktop-topper a {color:#fff;}
+
+.mobile-topper .scp-image-block img {
+  border: 0;
+  width: 100vw;
+  max-width: none;
+  left: calc(-50vw + 50%);
+  position: relative;
+}
+
+
+/* Penumbra tweaks */
+
+:root {
+  --header-title: SCP Foundation&#34;;
+  --lgurl: url(&#34;https://scp-wiki.wdfiles.com/local--files/theme:penumbra/tb.png&#34;);
+  --accentColor:#f73636;
+  --author-top-adjust:0.2rem;
+}
+
+body {
+background-image: linear-gradient( to bottom, var(--darkerColor), var(--darkerColor) 90px, var(--darkerColor) 90px, var(--darkColor) 200px, var(--darkColor) 200px, #393634 100%);
+}
+
+.page-rate-widget-box {
+  box-shadow: 0px 3px 0px 0px var(--accentColor);
+  position: relative;
+  z-index: 2;
+}
+
+#page-content .authorlink-wrapper {
+  margin-top: 0.2rem;
+  z-index:3
+}
+
+.authorlink-wrapper &gt; a {
+  width:inherit !important;
+  text-align:center !important;
+  margin:auto;
+  color: #000;
+}
+
+
+.authorlink-wrapper &gt; a::before {color: #f00 !important;}
+
+.scp-image-block.block-fullwidth {
+  width: 100vw !important;
+  max-width: none !important;
+  position: relative;
+  left: calc(-50vw + 50%);
+  margin-top:-5.5rem;
+}
+
+/* ACS tweaks */
+
+.anom-bar {
+margin-top:1.2rem !important;
+}
+
+.text-part .contain-class &gt; div, .text-part .second-class &gt; div, .text-part .disrupt-class &gt; div, .text-part .risk-class &gt; div {
+    width: 100%;
+    font-size: 0.75em;
+    padding-top: 2px;
+}
+
+.top-right-box &gt; .level {
+  font-size: 1.6em !important;
+  line-height: 0.2 !important;
+}
+
+hr + .anom-bar-container, .anom-bar-container:not(first-child) {
+  padding-top: 0em !important;}
+
+.contain-class .class-text::before {color: white !important;}
+
+.danger-diamond &gt; .bottom-icon {background-color: white;}
+
+/* Embiggening text for accessibility */
+
+#main-content {font-size:1.1rem;}
+
+/* Susa, OK header */
+
+.susaHeader {
+  width: 100vw;
+  max-width: none !important;
+  position: relative;
+  left: calc(-50vw + 50%);
+  color:#f73636;
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+  border-top: #f73636 8px solid;
+  border-bottom: #f73636 8px solid;
+  text-transform: uppercase;
+  letter-spacing: 10pt;
+  margin: 3rem 0rem;
+}
+
+.susaHeader p {
+  line-height: 0.7rem;
+  font-family: &#39;Sans Normalcy&#39;,&#39;Nanum Gothic&#39;,Arial,sans-serif;
+}
+
+/* Addendum boxes */
+
+.addendumBox {
+    margin: 25px 4% 25px 2%;
+    padding: 4% 6% 4% 6%;
+    background-color: #f9f9f9;
+    color: #3e3434;
+    box-shadow: 10px 10px 3px rgba(0,0,0,0.25);
+    border-left: 5px solid #f73636;
+}
+
+.addendumBox tt {
+  color: #595553;
+}
+
+.timeStampSCP {
+  letter-spacing:0.2rem;
+  font-family:sans-serif;
+  font-weight:900;
+  font-size: 80%;
+  margin: -0.5rem;
+  color: #b93030;
+  line-height:1.5rem;
+  text-decoration:underline;
+}
+
+.characterTag {
+  letter-spacing:0.2rem;
+  font-family:sans-serif;
+  font-weight:bold;
+  text-decoration:underline;
+  line-height:2.3rem;
+  text-transform:uppercase;
+  font-size: 80%;
+  margin: -0.5rem;
+  color: #b93030;
+}
+
+/* Creates desaturation layer that covers entire window. */
+
+/*
+#skrollr-body::after {
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:300;
+content: &#34; &#34;;
+mix-blend-mode:saturation;
+pointer-events:none;
+background-repeat: no-repeat;
+background-color: #504d47;
+animation: s-fadein 600s forwards;
+}
+
+@keyframes s-fadein {
+    from { background-color: transparent;}
+    to   { background-color: #504d47;}
+}
+@keyframes s-fadein-fallback {
+    from { filter: saturate(1) sepia(0) grayscale(0);}
+    to   { filter: saturate(.5) sepia(.35) grayscale(.75);}
+}
+*/
+
+/*Safari does not support arbitrary blending of HTML elements for saturation (as well as hue, color, luminosity), so need to fallback on filter hack*/
+
+/*
+@supports (-webkit-hyphens:none) {
+#skrollr-body::after { all: unset; animation: unset; }
+#skrollr-body {
+    filter: saturate(.5) sepia(.35) grayscale(.75);
+    animation: s-fadein-fallback 600s forwards;
+}
+}
+*/
+
+@media (max-width: 600px) {
+
+  .desktop-topper {display:none;}
+  .mobile-topper {display:block;}
+
+  .susaHeader {
+  font-size:2.5rem;  
+  letter-spacing: 5pt;
+  }
+
+  .addendumBox { margin: 25px 0 }
+
+  .scp-image-block.block-right {margin: 2.5rem auto !important;}
+
+  #header h1 a::before { font-size:1em; }
+
+  #header h2::before { font-size:0.7em; }
+
+}
+
+[[/module]]
+[[div class=&#34;overlord&#34;]]
+[[/div]]
+[[=]]
 [[module Rate]]
-[[/&gt;]]
+[[/=]]
+[[include :scp-wiki:component:author-label-source start=--
+|name=PeppersGhost]]
+= **SCP-1929** - Discoherence by [[*user PeppersGhost]]
 
-[[include component:image-block name=1929-new.jpg|caption=Footage of SCP-1929-1 instance, taken from civilian &#34;Oresmus Film&#34;.]]
+Based on //SCP-1929: Down To Earth// by an author who wishes to remain anonymous.
 
+-----
 
-**Item #:** SCP-1929
-
-**Object Class:** Euclid
-
-**Special Containment Procedures:**  All non-human instances of SCP-1929-1 should be held in storage containment units, located in Site-56, Site-66, and Site-76, which are all located in the Midwestern United States. Containment teams made up of three or more agents should be sent into the field whenever a possible report of an SCP-1929 instance is received. Research has determined that instances of SCP-1929 most commonly appear in the area identified as the &#34;Dust Bowl&#34;, and as such agents have been dispatched there to form permanent research and containment stations. Anomalous specimens encountered in the field should be brought to one of these stations.
-
-All towns that have been affected by SCP-1929 have been quarantined by SCP Foundation personnel. Nobody is to be allowed entry without proper authorization, and any human instances of SCP-1929-1 are to be terminated by bombardment with water. Townsfolk are not to be informed of this, as it may cause them to goad perimeter guards into destroying them.
-
-**Description:** SCP-1929 was an event that occurred on 3/16/1934, in the US states of Oklahoma, Kansas, Texas, New Mexico and Colorado, creating the SCP-1929 area of effect. Its initial event manifested as a large, violent dust storm, which isolated several communities for long periods of time. Currently, over 60 artifacts generated or altered by SCP-1929, classified as SCP-1929-1, are held by the SCP Foundation. Three towns were eradicated with four others being severely damaged. These areas constitute SCP-1929&#39;s current radius of effect.
-
-All humans living within these towns have had their bodies altered to be similar to domesticated animals, or to be composed of dust. Local residents reported that their bodies have a constant feeling of &#34;itching&#34; in the affected appendages. Residents are not able to eat or drink, but have continued to feel hunger and thirst pains while in containment. Those who have portions of their bodies break off will report still feeling pain from the missing limbs, even if they have dissolved. In addition, several missing residents appear to have been killed during the storm, with portions of their body integrated into local wildlife and fauna. No rain has fallen within 2 km of these towns since 2/11/1934.
-
-[[include component:image-block name=1929-2-new.jpg|caption=Subject&#39;s lungs were found to be filled with dust during autopsy.|width=200px]]
+[[=]]
+**[[[peppersghost|More by this author]]]**
+[[/=]]
+[[include :scp-wiki:component:author-label-source end=--]]
 
 
-Any foods or drinks brought within areas affected by SCP-1929 will have their outer layer coated with dust, and become dry when contacted by humans. Locusts will grow from the food if no human contacts it for 3 hours after entry, and will consume the food. These locusts will then attempt to consume people and structures within the town until killed. Swarms of locusts are known to roam underpopulated portions of the area affected SCP-1929, and will occasionally harass SCP Foundation personnel.
-
-Residents composed entirely out of dust, sand, and soil have been found to combine with similarly affected objects in contact. Combinations of humans, canines, felines, and farming equipment have been discovered. Personnel are to note that no water is to be provided to these creatures, as it will destroy them. Agents may request sound dampening earplugs if they are harassed by humanoid instances of SCP-1929-1.
-
-Residents have been noted as becoming significantly more withdrawn, keeping to their property and venturing to Foundation stations only for requested interviews. Examinations of these people has shown that their skin was completely coated in dust, in addition to dust coating the interior of their bodies. Some residents, primarily the very elderly and the very young, are unable to speak, due to the presence of large amounts of dust in the esophagus and the lungs. In addition, 12 instances of SCP-1929-1 have had portions of their body replaced with a mixture of blood, dust, and water. All persons who were affected by SCP-1929 will bleed sand instead of blood, with expected damage caused to their bodies.
-
-Other events have been known to occur, usually accompanied by small, localized dust storms. Houses may appear to become dilapidated overnight, or to be shifted randomly throughout the towns. Residents have been known to have the dust portions of their bodies suddenly dissolve, and re-appear in one of the other SCP-1929 affected towns. Buildings may displace themselves to other SCP-1929 affected areas, or disappear for extended periods of time. Residential buildings will appear and disappear without warning, with agents inside displaced buildings to be assumed lost. Persons found within these buildings will not report memory of where they were prior to manifestation. In addition, the voices of people local residents claim to have gone missing have been heard. For a full log of anomalous activity taking place in SCP-1929 towns, see the Addendum 1929-C.
-
-SCP-1929&#39;s effect was first noted by Foundation personnel after reports of it reached personnel embedded in the local weather stations. Concerns were initially raised over apparent similarity with infestations of [http://www.scp-wiki.net/scp-165 SCP-165], although further examination of the anomaly would later show no connection. When personnel were sent to investigate, they discovered several persons who had been altered by SCP-1929. When asked to testify, residents gave contradictory reports ranging from seeing a person standing outside in the storm, to some other non-humanoid organism obscured by dust.
-
-**Addendum 1929-A:** Telephone conversation transcribed by SCP Foundation operatives, call was placed by a person within the SCP-1929 affected zone during the initial event:
-
-&gt; **&lt;Begin Log&gt;**
-&gt;  
-&gt; **Operator:** Hello, this is-
-&gt;  
-&gt; **Person:** Hey, please just listen! There&#39;s a storm incoming, but that ain&#39;t-
-&gt;  
-&gt; **Operator:** Frank, that you? What&#39;s going on out there?
-&gt;  
-&gt; **Person:** There&#39;s a person! Outside my house!
-&gt;  
-&gt; **Operator:** Who is it, someone local? Maybe Jacob?
-&gt; 
-&gt; **Person:** &lt;//Unknown garbled sounds, due to interference//&gt;
-&gt;  
-&gt; **Operator:** Frank? 
-&gt;  
-&gt; **Person:** He&#39;s...&lt;static&gt; don&#39;t... &lt;static&gt; ...coming closer.
-&gt;  
-&gt; **Operator:** Can you make out who it is, Frank?
-&gt;  
-&gt; **Person:** No! He looks... bad, off. I think he&#39;s hurt. He&#39;s limping, or stuttering, or something.
-&gt;  
-&gt; **Operator:** Let him in then, nobody should be in a storm like that with a bum leg.
-&gt; 
-&gt; &lt;Noise can be heard over the line, in addition to at least three muffled voices&gt;
-&gt; 
-&gt; **Operator:** Frank, are you there?
-&gt;  
-&gt; **Person:** &lt;At a distance&gt; [He&#39;s] supposed to look that way.
-&gt; 
-&gt; **Operator:** Frank?
-&gt; 
-&gt; //10 minutes and 14 seconds pass, during which the sound of rising winds can be heard. The operator occasionally attempts to inquire into the persons current status, with no response//
-&gt;  
-&gt; **Unknown:** ... just breathe, Frank. It&#39;s all okay now. We don&#39;t have to fight.
-&gt;  
-&gt; **&lt;End Log&gt;**
-
-**Addendum 1929-B:** Interview with local resident D████ ██████.
-
-&gt; **Interviewed:** D████ ██████
-&gt;  
-&gt; **Interviewer:** Dr. Boyd
-&gt;  
-&gt; **&lt;Begin Log&gt;**
-&gt;  
-&gt; **Dr. Boyd:** Can you tell me your take on the incident?
-&gt;  
-&gt; **D████ ██████:** Well... I&#39;d just come home from town, been trying to get some more work. Mary and Albert were asleep, but I wasn&#39;t really... I was too worried to sleep. So, I was walking around outside.
-&gt;  
-&gt; **Dr. Boyd:** That was when it happened?
-&gt;  
-&gt; **D████ ██████:** (Nods) I was just leaning on the door when I heard it. Another dust storm, coming in from the east. But... it was different. Just... darker than pitch black, and the howling sounded like the hounds of hell brayin&#39;. I got inside quick, locked the doors, and hunkered down with Mary and Albert in the bedroom. We waited for it to pass.
-&gt;  
-&gt; **Dr. Boyd:** Did it pass?
-&gt;  
-&gt; **D████ ██████:** ... No. It just kept going, on and on... for days. It didn&#39;t feel right. The dust caught on your arm hair and stuck, clumpin&#39; and crystilatin&#39; like nothin&#39; I&#39;d seen before that storm. Albert... Christ, it got in his eyes. Couldn&#39;t see, but he told us they were still lookin&#39;, but they took his eyes. Lord help him, they took his eyes.
-&gt; 
-&gt; **Dr. Boyd:** They?
-&gt; 
-&gt; **D████ ██████:** The geeks out there... they take the eyes. Skin, voice... they want them. When we itch, they catch it in their baskets, and leave us to dry out in the dust. We&#39;re not sharp anymore, but we still know what it does.
-&gt;  
-&gt; **Dr. Boyd:** Alright, thank you for-
-&gt;  
-&gt; **D████ ██████:** So, when are you helping us?
-&gt;  
-&gt; **Dr. Boyd:** Excuse me?
-&gt;  
-&gt; **D████ ██████:** When are you going to put things back the way they were, before it happened?
-&gt;  
-&gt; **Dr. Boyd:** It&#39;s being-
-&gt;  
-&gt; **D████ ██████:** You think we like living like this? There&#39;s the god forsaken dust eroding everybody into soil! Do you know what it feels like to have one of your arms scatter like so much soil, but still able to feel every little bit floatin&#39; in the wastes? You don&#39;t! So help us! Aren&#39;t we still human beings, or what?
-&gt; 
-&gt; **&lt;End Log&gt;**
-
-**Addendum 1929-C:**
-
-[[collapsible show=&#34;Anomalous Events Noted to have been caused by SCP-1929&#34; hide=&#34;Access Granted&#34;]]
-
-Several pairs of scissors become animate within a drugstore, causing significant harm to several patrons as well as SCP Foundation agents. After 3 hours, they become inert. Confiscated by agents and classified as instances of SCP-1929-1. When examined, it is determined that the scissors were lifted into the air by currents of air and dust particles.
-----
-Several spigots within the town begin to produce large quantities of dust, which townsfolk interpret as water. Several people consume enough sand to completely coat the inside of their throat and mute themselves, while others have large portions of their bodies embedded with dust. After 3 days, none of the involved persons claimed any memory of the event.
-----
-A feline creature with humanoid facial features and fingers in place of paws breaches an SCP Foundation observation site, killing Agent J██████ and wounding two others before being hosed and dissolved. Analysis of the remains showed a mixture of at least 4 different human remains, in addition to the remains of one rabbit. Agent J██████&#39;s body dissolved into dust 2 hours after the incident.
-
-[[include component:image-block name=1929-3-new.jpg|caption=Documentation of organism which fatally injured Agent J██████.|width=250px]]
+[[div class=&#34;desktop-topper&#34;]]
+[[include :scp-wiki:component:image-block name=https://scp-wiki.wikidot.com/local--files/scp-1929/1929large.jpg
+|align=fullwidth
+|caption=SCP-1929 approaching from the north.
+]]
+[[/div]]
 
 
-----
-A canid creature with human-like arms was seen running at high speeds through several abandoned farms. After agents began to pursue it, the creature began increasing its speed dramatically and escaped sight. Several townspeople have reported seeing this creature as well.
+[[div class=&#34;mobile-topper&#34;]]
+[[include :scp-wiki:component:image-block name=https://scp-wiki.wikidot.com/local--files/scp-1929/1929taller.jpg
+|align=fullwidth
+|caption=SCP-1929 approaching from the north.
+]]
+[[/div]]
 
-----
-Subjects within SCP-1929 have also repeatedly reported several repeated types of anomalous phenomenon, such as:
+[[include :scp-wiki:component:anomaly-class-bar-source
 
-* The sounds of glass shattering loudly, occurring randomly and without any type of warning. The sound have been compared to sheet glass impacting a wall, dropping a wine glass onto tile floor, a series of glass objects breaking in succession. This sound has not been reported by subjects deafened due to SCP-1929&#39;s effect, and is assumed to be a non-cognitohazard.
-* Several townspeople in Kansas reported hearing something pressing on their doors at night. SCP Foundation personnel deemed these claims to be accurate, but no further action has been taken.
-* Several town residents reported that a masked woman had been watching them sleep. No such figure is witnessed by agents.
-* Feelings of dread or anxiety at random times, which seems to precipitate the arrival of additional dust storms to the area. Residents are occasionally seized with the urge to leave their homes, and attempt to enter these storms as they pass. Subjects will claim to hear deceased family members or friends urging them to join the cloud, and to abandon their lives. In addition, a humanoid male has been spotted within these dust clouds, knocking on each door under storm conditions. No agent has reported hearing these knocks, even when they are within the buildings.
-----
+|item-number= 1929
 
-[[/collapsible]]
+|clearance= 4
 
-[[footnoteblock]]
+|container-class= esoteric
+
+|secondary-class= pausa
+
+|secondary-icon= https://scp-wiki.wdfiles.com/local--files/component%3Aacs-peppo-split/pausea2.svg
+
+|disruption-class= keneq
+
+|risk-class= critical
+
+]]
+
+[[include :scp-wiki:component:acs-peppo-split
+|object= keter
+|object-image= http://scp-wiki.wikidot.com/local--files/component:anomaly-class-bar/keter-icon.svg
+|object-color= keter
+|esoteric-color= esoteric
+]]
+
+------
+
+**[[span style=&#34;font-size:90%;&#34;]]SPECIAL CONTAINMENT PROCEDURES:[[/span]]** Particulate remains of affected matter are stored in discrete containers labelled with the SCP-1929 prefix and sub-designated in ascending numerical order. Remains of SCP-1929 victims may be periodically evaluated for cessation of consciousness; all other testing has been suspended.
+
+In the event SCP-1929 resumes activity, affected areas are to be immediately quarantined and publicly reported as destroyed by a natural disaster.
+
+[[div class=&#34;susaHeader&#34;]]
+description
+[[/div]]
+
+
+[[include :scp-wiki:component:image-block-peppo name=http://topia.wdfiles.com/local--files/peppo-oppep/dustjar.jfif
+|align=right
+|width=250px
+|caption=SCP-1929-00122, retrieved for digital archival.
+]]
+SCP-1929 was a meteorological phenomenon which occurred throughout the lower Great Plains of America between 1930 and 1938. SCP-1929 events were similar in appearance to non-anomalous dust storms common to the region at the time, but would manifest exclusively in the vicinity of small townships and remain in place for days or weeks at a time, unaffected by wind conditions and other meteorological factors in the surrounding area.
+
+Physical substances and immaterial concepts within the active area of an SCP-1929 occurrence became prone to spontaneous bouts of mutability between their original form and a loose collection of particulate matter resembling dust. The nature of this process varied between subjects; observed disintegrations have ranged from whole to partial, could affect subjects uniformly or irregularly, and might progress gradually, incrementally, or in rare cases, instantaneously. Subjects might eventually reconstitute to their original form at various intervals, but repeated cycles of disintegration and reconstitution are believed to have proportionally reduced the likelihood of reconstituting correctly, leading to the mutation and/or amalgamation of destabilized subjects.
+
+Egress from an active SCP-1929 manifestation was possible, though rarely successful. Subjects affected by SCP-1929 were unlikely to maintain physical integrity when removed from its active area and would often disintegrate entirely within 48 hours of egress with no chance of reconstitution. 
+
+[[include :scp-wiki:component:image-block-peppo name=https://scp-wiki.wikidot.com/local--files/scp-1929/1929woman.jpg
+|align=right
+|width=300px
+|caption=Irene Thomas undergoing partial disintegration. She reportedly retained the ability to converse despite the collapse of her head and vocal cords, but was too disoriented to stand.
+]]
+
+Both wholly and partially disintegrated subjects have been noted to retain function of certain biological, mechanical, and/or intangible apparatuses regardless of whether the components necessary to achieve that function had disintegrated.[[footnote]]This phenomenon could be seen most commonly in cases of human limbs and mechanical devices continuing to function in the absence of a visible source of blood or fuel, respectively.[[/footnote]] Furthermore, human subjects affected by SCP-1929 have reported experiencing stimuli from disconnected and/or disintegrated sensory organs. 
+
+Although the extent to which SCP-1929 affects consciousness is still poorly understood, a 1943 study determined that samples of particulate remains from previously living subjects scored an average of 12 to 22 on the Rhine-Fort Psionic Resonance Scale, notably overlapping the 20-to-23 scoring range associated with awareness and the capacity for intelligent thought.[[footnote]]This does not necessarily preclude an inability to form intelligent thought due to duress; however, the capacity to experience duress is predicated on an ongoing awareness of external stimuli (or lack thereof).[[/footnote]] This test was repeated in 2011 using the same samples, and the results suggested there has been negligible diminishment in conscious energy since the 1943 study.
+
+[[div class=&#34;susaHeader&#34;]]
+Susa, OK
+[[/div]]
+
+The largest and most well-documented SCP-1929 manifestation occurred in Susa, Oklahoma on March 14th, 1935. The entirety of the town&#39;s residents and properties lost physical coherence as a result of the storm, as did the Class-D response team dispatched to Susa from Site-31.
+
+[[div class=&#34;addendumBox&#34;]]
+[[span style=&#34;float:left&#34;]]{{**SCP-1929** DOC#613}}[[/span]] [[span style=&#34;float:right;&#34;]]{{03/14/1935}}[[/span]]
+@@@@
+= **INCIDENT LOG -- INITIAL BREACH**
+
+= {{Composite timeline per eyewitness accounts}}
+
+------
+
+[[span class=&#34;timeStampSCP&#34;]]0300[[/span]]
+SCP-1929 manifestation begins to form around the town of Susa, OK. 
+
+[[span class=&#34;timeStampSCP&#34;]]0730[[/span]]@@  @@[[footnote]]Approximation.[[/footnote]]
+Susa resident Ray Cote leaves the active area of SCP-1929 in his truck.
+
+[[span class=&#34;timeStampSCP&#34;]]0850[[/span]] 
+Cote&#39;s truck is seen traveling westbound towards Enid, OK at great speed.
+
+[[span class=&#34;timeStampSCP&#34;]]0858[[/span]]
+Cote enters the lobby of Enid Springs Hospital[[footnote]]Now St. Mary&#39;s Regional Medical Center. As of 2022, residual conscious energy can still be detected in the vicinity of the former lobby.[[/footnote]] in extreme distress, carrying a set of bedsheets knotted into a bundle. He claims that the bundle contains his wife, who has been reduced to dust, and he begs the hospital staff to reassemble her. Witnesses believe Cote to be having a psychiatric crisis and an orderly is called. 
+
+[[span class=&#34;timeStampSCP&#34;]]0901[[/span]]
+Orderly Randall Wyatt arrives on the scene. After unsuccessfully attempting to calm Cote, the orderly attempts to forcefully detain him for medical evaluation. 
+
+[[span class=&#34;timeStampSCP&#34;]]0905[[/span]]
+The altercation causes Cote to drop the bundle, spilling his wife&#39;s remains across the tile floor. He falls to his knees and attempts to gather his wife&#39;s remains back into a pile using his hands.
+
+The orderly moves to grab Cote by the waist, but his hands simply pass through Cote&#39;s abdomen and clothing as they collapse into dry granules on contact. Cote weeps, but does not display any direct awareness of his condition.
+
+[[span class=&#34;timeStampSCP&#34;]]0906[[/span]]
+Cote&#39;s partial disintegration provokes a panicked response from immediate bystanders, alerting him to his condition and drawing the attention of additional hospital staff. A state of pandemonium ensues and Cote&#39;s body is further damaged by human contact. At some point in the chaos, Cote mentions that his child is still in his truck outside.
+
+[[span class=&#34;timeStampSCP&#34;]]0911[[/span]]
+One bystander, identified by witnesses only as a member of staff, attempts to provide Cote a swift death by stomping his head repeatedly. Upon seeing the fingers of Cote&#39;s remaining hand continue to gesticulate, the staff member frantically crushes every remaining piece of Cote&#39;s body until it is fully granulated.
+
+[[span class=&#34;timeStampSCP&#34;]]0919[[/span]]
+A Foundation informant embedded in the local telephone service learns of the SCP-1929 manifestation and promptly submits both an incident alert and dispatch request to Site-31 in Tulsa.
+
+[[span class=&#34;timeStampSCP&#34;]]0923[[/span]]
+Onlookers gathered outside the hospital report hearing a child&#39;s voice emanating from the tailpipe of Cote&#39;s truck, but find the vehicle otherwise unoccupied. 
+
+[[span class=&#34;timeStampSCP&#34;]]1003[[/span]]
+The truck disintegrates. 
+
+------
+
+**Afterword:** The vehicle&#39;s engine continued to be audible until the following morning; the child&#39;s voice, while infrequent, has persisted to the present day.
+
+------
+
+[[/div]]
+
+------
+
+[[div class=&#34;addendumBox&#34;]]
+[[span style=&#34;float:left&#34;]]{{**SCP-1929** DOC#614}}[[/span]] [[span style=&#34;float:right;&#34;]]{{03/14/1935}}[[/span]]
+@@@@
+= **TRANSCRIPT LOG -- FIRST CONTACT**
+
+**{{BEA ROSS:  }}**
+@@  @@{{— FOUNDATION SITE-31, TULSA}}
+@@  @@{{— COMMUNICATIONS SPECIALIST}}
+
+**{{UMA PRISTIN:  }}**
+@@  @@{{— HARPER &amp; SONS HARDWARE STORE,[[footnote]]The local telephone exchange was housed on the establishment&#39;s second story.[[/footnote]]  SUSA}}
+@@  @@{{— SWITCHBOARD OPERATOR}}
+
+**{{ARTHUR HASTINGS: }}**
+@@  @@{{— SHERIFF&#39;S OFFICE, SUSA}}
+@@  @@{{— DEPUTY}}
+
+------
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Hello, I--
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+[ //Nonverbal exclamation.// ]
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+[ //Overlapping.// ] Christ! Christ! You&#39;re the first voice, first call that&#39;s made it either way. You&#39;ve got to send help. 
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+For the love of God, help us!
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Help is on the way. What do you need? What&#39;s happening there?
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+I don&#39;t-- I don&#39;t know what to tell you. Storm whipped up in the dead of night, hit just after sunrise. We could tell it was bad just seeing it coming, but— I was here, folks saying all kinds of things on the telephone, whole party line screaming the damnedest things, asking me for help, and— what do I do? What can I do after what I seen?
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Stay inside. Stay safe. What did you see?
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+I swear on God&#39;s own name, call it the work of the devil, but I stepped out and there was a woman&#39;s face, just the face, up on a fence. Caught on a nail, flapping in the wind like a piece of cloth, and God&#39;s truth--it was screaming. Lord help me, she was still screaming as she blew away. 
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+Please don&#39;t go. He&#39;s telling the truth. We&#39;ve all been seeing these things. People are dying, and worse. Please help.
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Don&#39;t worry. We believe you. Our people will help you. We deal with these things, but you have to tell us what we&#39;re dealing with.
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+Listen, I— I can&#39;t... I don&#39;t know what else to say. It&#39;s all too much. I&#39;m just the deputy.
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Where is the Sheriff? 
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+He... [ //Unintelligible.// ]
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+He&#39;s gone.
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+No! He&#39;s— He went out, all wrapped up. He had goggles on. He seemed fine. But when he took them off, he kept rubbing his eyes, kept saying they got dust in them. I told him to stop.
+
+[[span class=&#34;characterTag&#34;]][ //SILENCE// ][[/span]]
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Sir? Sir, are you there?
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+I told him to stop, but he wouldn&#39;t. He kept rubbing his eyes, and I tell you, it&#39;s like he ground them all up, right out of his skull, and he didn&#39;t even notice. Dug two deep holes in his face and didn&#39;t even notice! And then he went right back outside. He said— 
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+Don&#39;t tell her, Art.
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+He said they took his eyes. Said he had to get &#39;em back, because he didn&#39;t like what they were making him see. 
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+&#34;They?&#34; Do you know who he was talking about? 
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+You said there&#39;s help. When&#39;s it getting here? When are you going to help us?
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Help is on the way. Who took the Sheriff&#39;s eyes, Art? 
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+I... Listen, we cover up the windows around here. Wet sheets, sometimes, to catch the dust. But when the sun hits it just right—
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+Don&#39;t.
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+We keep seeing these shapes outside. Shadows against the sheets. Sometimes they&#39;re shaped like people. And sometimes they talk like people, too. They&#39;ve been coming here every day.
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Every day? You mean before the storm?
+
+[[span class=&#34;characterTag&#34;]]HASTINGS:[[/span]]
+What? 
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+[ //Unintelligible.// ]
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Ma&#39;am? I&#39;m hearing a lot of noise. You&#39;ll have to speak up.
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+[ //Screaming.// ]
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Ma&#39;am? Is that the wind? 
+
+[[span class=&#34;characterTag&#34;]]Pristin:[[/span]]
+[ //Screaming continues.// ]
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+[ //Overlapping.// ] Ma&#39;am, are you hurt? Sir?
+
+[[span class=&#34;characterTag&#34;]][ //Indistinguishable noise// ][[/span]]
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Hello? Is anyone still there?
+
+[[span class=&#34;characterTag&#34;]][ //Strong winds and creaking wood.// ][[/span]]
+
+[[span class=&#34;characterTag&#34;]]ROSS:[[/span]]
+Hello! Hello!
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN MALE:[[/span]]
+[ //Intermittent.// ] I&#39;m sorry. That wasn&#39;t the deputy. It just thought it was. 
+
+
+------
+
+**Afterword:** No further responses were received. Connection was lost after several minutes of wind and indistinguishable noise. 
+
+------
+
+[[/div]]
+
+[!-- Exploration log --]
+
+[[div class=&#34;susaHeader&#34;]]
+EXPEDITION
+[[/div]]
+
+A field team comprised of 12 Class-D personnel was deployed to Susa, OK from Site-31 to document SCP-1929 in action.[[footnote]]Per current consensus of Foundation historians. Most official documents from the time listed the intended purpose of the expedition as civilian recovery; however, the vehicles used by the field team were only built to seat four crew members each and therefore had no room for additional passengers, meaning it is likely that the administrators of Site-31 either did not intend or did not anticipate the rescue of survivors.[[/footnote]] Of the three and a half team members who returned, only two still possessed sufficient physical and conceptual cohesion to communicate their experiences. Their testimonies were compiled into the following report, along with sundry memories inadvertently inhaled by the presiding clinician while examining the partially deconstructed team members.
+
+[[div class=&#34;addendumBox&#34;]]
+[[span style=&#34;float:left&#34;]]{{**SCP-1929** DOC#410}}[[/span]] [[span style=&#34;float:right;&#34;]]{{03/14/1935}}[[/span]]
+@@@@
+= **EXPEDITION LOG**
+
+{{**FIELD TEAM LEADER:**}} 
+@@    @@{{**D-10944 —** Edward D. Mulligan}}
+
+{{**SUPPORTING OPERATIVES:**}} 
+@@    @@{{**D-20501 —** Tristan Tiernan}}
+@@    @@{{**D-21928 —** Philip N. Fitzgerald}}
+@@    @@{{**D-30910 —** Geoffrey Walsh}}
+@@    @@{{**D-33035 —** Ethan R. Crandle}}
+@@    @@{{**D-39521 —** David K. Byrne}}
+@@    @@{{**D-41004 —** James Lamarr}}
+@@    @@{{**D-49438 —** Hollis Getz}}
+@@    @@{{**D-52391 —** Mason W. Keating}}
+@@    @@{{**D-54485 —** Cillian D. Butler}}
+@@    @@{{**D-79014 —** Nicholas D. O&#39;Mara}}
+@@    @@{{**D-80290 —** Lloyd Solomon}}
+
+------
+
+[[span class=&#34;timeStampSCP&#34;]]0915[[/span]]
+The team departs Site-31 in a convoy of three AAZs[[footnote]]Foundation vehicle based on the M1 Scout Car.[[/footnote]] driven by Byrne, Walsh, and Lamarr.
+
+
+[[span class=&#34;timeStampSCP&#34;]]1018[[/span]]
+Field team convoy arrives at Susa outskirts. There is a stark delineation between SCP-1929&#39;s active area and the relative stillness of the environment immediately surrounding it. O&#39;Mara likens the appearance of the storm&#39;s edge to that of a solid wall. The team don goggles and handkerchiefs on their faces before going further.
+
+[[span class=&#34;timeStampSCP&#34;]]1031[[/span]]
+Convoy breaches SCP-1929&#39;s border. Timekeeping devices immediately stop functioning. Field members are initially disoriented by the loud winds and dense clouds of dust, but gradually come to feel an innate awareness of each other and their surroundings in spite of the storm obstructing their natural senses. This persists for the entirety of the expedition.
+
+The amount of time spent until reaching Susa proper is a matter of disagreement between team members, ranging from two to twelve hours, whereas the expected travel time given the convoy&#39;s speed would be roughly 9 minutes. No residents or fauna are observed during this time.
+
+When the convoy approaches a homestead with an open front door, Tiernan, Crandle, and Butler are sent inside to investigate. Crandle emerges sometime later, describing the interior of the building as being &#34;just more outside.&#34; He is accompanied by Butler, whose left arm has disintegrated below the elbow. Tiernan does not return; despite this, his teammates report feeling his presence.
+
+The deterioration of Butler&#39;s arm continues over the following minutes, ending just below the shoulder. He is distressed, but claims the injury is not painful. His condition alarms the other field team members; Solomon and Lamarr discuss the possibility of deserting the mission, but are overheard and chastised.
+
+An argument ensues between Mulligan and Lamarr which quickly escalates into a physical altercation. Walsh tries to intervene, but backs aways when Mulligan draws his firearm. In spite of protests from the other members of the team, Mulligan shoots Lamarr for insubordination, as per protocol. The bullet strikes Lamarr&#39;s lower abdomen. Lamarr, confused by the subsequent lack of blood or pain, attempts to examine the wound, but this causes the surrounding flesh to disintegrate on contact. He laughs, bids the convoy goodbye, and disappears into the storm on foot. Control of Lamarr&#39;s AAZ is subsequently passed to Solomon. 
+
+Walsh attempts to return to his vehicle, but his hand becomes inexplicably stuck to the handle of the door. Solomon inspects Walsh&#39;s hand and finds it rigid and brittle; he extricates it from the door with force, snapping off several of Walsh&#39;s fingers in the process. Walsh apparently enters a state of shock, appearing disoriented and expressing less displeasure at the loss of his digits than the fact that the tattoos on his remaining knuckles no longer spell out a complete word. He briefly attempts to resume his duties driving the AAZ, but Mulligan orders Getz to take his place. 
+
+As the convoy moves further into town, structures encountered are found to be in various stages of disintegration, are often spaced unusually distant from one another or very close, and occasionally intersect at odd angles. Team members frequently report shadows resembling groups of people in the distance. Attempts to investigate these sightings are consistently ineffective, with the shadows appearing to move further away from the convoy at the same speed that they are approached.
+
+After some time, Butler remarks that it is almost noon. When questioned, he insists this is the time displayed on his watch, despite the watch having disintegrated with the rest of his left arm. Whilst the others are initially dismissive of Butler&#39;s statements, O&#39;Mara notices that his own watch, though still non-functional, is now fixed at 11:55; all other timepieces are found to show the same. The team unanimously agrees that more than two hours should have passed, but are unable to place the direction of the sun in the sky. 
+
+Once again, Walsh offers to resume control of his vehicle. Getz finds that Walsh has regained possession of all ten fingers, and that Walsh has no memory of losing them. Getz refuses to travel in the same vehicle as Walsh or Butler due to SCP-1929&#39;s effects on their minds and bodies; when other team members express similar sentiments, Mulligan allows Walsh to drive an AAZ with Butler as his sole passenger, and all other operatives are made to fit in the remaining two vehicles driven by Getz and Byrne. 
+
+Crandle and Fitzgerald, after sitting next to each other in close quarters for much of the journey, discover they have fused at their shoulders. The two are removed from Byrne&#39;s vehicle (albeit with some difficulty) and made to ride with Walsh and Butler. Keating objects to the treatment of his teammates, but he is reprimanded by Mulligan. As Crandle and Fitzgerald are moved, Tiernan is found in Walsh&#39;s AAZ sitting next to Butler. Tiernan claims he has been with them the entire time, and has no memory of his prior disappearance inside the homestead. He attempts to get Butler to corroborate his version of events, but Butler is too distressed by his own deteriorating lower body to communicate rationally. Walsh only smiles, ignoring any questions posed to him. 
+
+The convoy hesitantly resumes, but encounters no structures, living beings, or vegetation for an extended period of time. The team express unanimous confusion as to why the sun has not yet set. Butler&#39;s disintegration progresses upward along his body until finally halting halfway along his lower jaw, with only the upper portion of his head left whole. He remains conscious, but his speech is impeded by the exposed underside of his mouth. The other occupants of the vehicle are disturbed by his condition, but he is not removed as no one is willing to touch him. 
+
+Crandle grows increasingly distressed by his proximity to Butler, his fusion to Fitzgerald, and the limited space inside the AAZ. He attempts to leave the vehicle, but is held back by Fitzgerald, who loudly protests. The two continue to pull themselves in opposite directions. Tiernan yells for them to stop, but he is ignored. 
+
+Fitzgerald&#39;s body splits. The uppermost portion of his torso is broken off below the collarbone. Crandle exits the AAZ, Fitzgerald&#39;s head and shoulder still affixed to his side; the rest of Fitzgerald&#39;s body convulses on the seat of the AAZ until it is ejected by Tiernan. Crandle attempts to remove the remaining pieces of Fitzgerald from his body, but to no success. He struggles with increasing desperation, striking Fitzgerald&#39;s head repeatedly, but only manages to instigate a disintegration of the epidermis with no further damage. Finally, Crandle takes his own head in his hands, twists, and casts it into the storm. Crandle and Fitzgerald&#39;s headless bodies thrash in the dust.
+
+Tiernan covers his eyes, inadvertently causing his goggles to crumble to dust. His eyelids follow. He opens his mouth to scream, but makes no sound.
+
+Walsh, who has continued to smile for the duration of the incident, signals for the convoy to move on. Crandle and Fitzgerald are left behind.
+
+Travel continues uninterrupted until Getz makes an unauthorized break from the convoy, announcing that he needs to urinate. As Getz exits his vehicle, other team members witness a humanoid silhouette emerging from the storm. The figure is unusually large, with a number of sharp protrusions jutting from its head. As the shape becomes more distinct, the winds grow quiet, yet increase in intensity. The other team members call out to Getz, yet despite his close proximity to his AAZ he does not appear to hear them. 
+
+A noise like thunder reverberates through the storm. The convoy suddenly comes under heavy fire, though the assault lasts less than five seconds.[[footnote]]Subsequent inspection would later reveal that several dozen pairs of ornate embroidery scissors had been driven into the sides of the field team&#39;s AAZs at high speed. Fortunately, no tires or other critical components were damaged, and it is presumed that only the human occupants were targeted.[[/footnote]] Getz&#39;s head, neck, and torso are heavily damaged by the attack, exposing mixed quantities of dust and viscera. The damaged pieces of his body remain in place for a few moments before falling and bursting on the ground; his arms, however, are left suspended in their original positions. Getz&#39;s hands grasp about frenetically, then stop, turn, and reach for the door of the AAZ. Holding the door shut from inside, Mulligan takes control of the vehicle and orders the convoy to depart. The wind and its sound return to their previous state, and the humanoid silhouette is no longer visible.
+
+Mulligan directs the field team to seek shelter. After searching for a period described as lasting hours, they finally encounter a farmhouse; however, it has been completely bisected, leaving the interior of the home exposed to the storm. Nevertheless, Byrne volunteers to investigate. He notices a woman moving about the second floor of the structure. At one point, she steps off the edge where the floor visibly ends, but remains suspended in the air, apparently interacting with a section of the building not visible to Byrne and the other team members.
+
+Byrne calls out to the woman. She does not respond, and she is too high for him to physically reach. He walks the area until he discovers a nearby barn which had either gone unnoticed or had not existed in the preceding minutes. Byrne asks Mulligan to help him find a ladder so he can come to the woman&#39;s aid. Mulligan initially refuses, exasperated by the absurdity of the situation, but eventually relents as the barn appears relatively intact compared to most structures encountered thus far. 
+
+It takes the combined strength of both men to pull the front of the barn open. The interior is initially too dark to see, but is quickly illuminated by a surge of light that momentarily blinds Byrne and Mulligan. The source is a motorized wheat thresher, heavily rusted, with the nude upper half of a man fused at his waist to the front of the machine, just above and behind the rotary blades. The man&#39;s eyes are closed and his muscles are slack. 
+
+Against Mulligan&#39;s orders, Byrne approaches the machine and observes large quantities of human teeth strewn over the length of the feeding belt. As he moves to examine the interior of the mechanism, the man fused to the thresher jolts awake and grabs Byrne&#39;s arm, throwing him off balance. The rotary blade array activates, but does not start at full speed, allowing Byrne time to move out of the way. 
+
+Byrne and Mulligan rush toward the convoy. Byrne stumbles, and his left foot breaks apart into chunks of grit. Undeterred, he continues to flee, first by jumping on his remaining leg until it snaps off, then by crawling along the ground by his arms. Despite his efforts, he is not quick enough to outpace the harvester. He calls out to Mulligan, but is ignored. What remains of Byrne&#39;s body is subsequently caught in the threshing mechanism and completely torn apart. When it is over, he is still screaming. There is no blood.
+
+Mulligan reconvenes with his remaining teammates, declares the mission over, and orders the convoy to move out. No response is heard from Walsh&#39;s vehicle. Keating, concerned, calls out to Walsh&#39;s group, but keeps several yards from the AAZ. Tiernan steps out, murmuring unintelligibly. Despite orders to stay back, Tiernan continues to approach. Eventually he is close enough for Keating to see fingers grasping out from inside Tiernan&#39;s mouth, Walsh&#39;s tattoos visible on the knuckles. Keating hurriedly assumes control of Byrne&#39;s AAZ and drives away at full speed. Mulligan follows suit, and Walsh&#39;s group is abandoned. 
+
+Once they have put sufficient distance between themselves and Walsh&#39;s group, the remaining survivors of Mulligan, Keating, O&#39;Mara and Solomon make the decision to travel in a single vehicle in order to conserve fuel, and agree to take turns manually siphoning fuel from the tank of the AAZ they intend to abandon. To their confusion, they find the tanks of both vehicles to be full of dust. As the engines continue to operate regardless, the four decide to continue using both vehicles, with Solomon passenger to Keating and O&#39;Mara passenger to Mulligan. 
+
+Rather than return the way they came, it is agreed that the best course of action is to continue forward in hopes of emerging from SCP-1929 on the opposite side. Not long afterward, Keating confesses to the others that his right leg has disintegrated to the extent that he cannot reach the gas pedal, and he suggests the others continue without him. Solomon and Mulligan agree without hesitation, but O&#39;Mara instead offers to drive Keating&#39;s vehicle for him. Though Mulligan expresses some discomfort with this suggestion, as the new arrangement would require him to share his AAZ with Solomon, he acquiesces. 
+
+The remainder of their journey is largely uneventful, but seems to last the length of three full days. The sun remains fixed at an indeterminate point in the sky. Very little is seen of the landscape besides a flat, dusty expanse. As they travel, Solomon hears intermittent scratching from beneath Mulligan&#39;s AAZ, but he does not mention it for fear of reprisal. Mulligan apparently undergoes a gradual form of conceptual stability collapse, leaving only a rudimentary facsimile of his mind and body. It does not relinquish control of the vehicle.
+
+[[span class=&#34;timeStampSCP&#34;]]1032[[/span]]
+The AAZs carrying the remaining members of the field team are seen emerging from SCP-1929 at their initial point of entry.
+
+------
+
+**Afterword:** Upon return to Site-31, Lamarr was discovered beneath Mulligan&#39;s AAZ, fused face-first to the underside of the chassis. The back half of his body had been completely shorn off during travel, and his hands had been destroyed in his attempts to extricate himself. It is believed he had hidden beneath the AAZ in an attempt to remain with the convoy undetected, fearing further violence from Mulligan after their altercation, and became trapped as his body lost cohesion. This theory was not verified by Lamarr himself, as his face could not be removed from the machinery.
+
+------
+
+[!-- 
+
+Tracking fates:
+
+Lamarr wanders off and disappears. 
+
+Tiernan disappears in the house and then gets fingers in his mouth. 
+Butler has semi-dissolved arm.
+Getz and Fitzgerald fuse together.
+Walsh loses several fingers.
+This group gets abandoned.
+
+
+Byrne is eaten by a combine. 
+Solomon drove, then didn&#39;t drive.
+Getz takes over Walsh&#39;s driving, then Mulligan takes over for Getz.
+
+Mulligan is okay. Solomon is okay. Keating gets half crumbled and O&#39;Mara drives him like a bro.
+
+--]
+
+[[/div]]
+
+[!-- Radio broadcast --]
+
+[[div class=&#34;susaHeader&#34;]]
+KLPN
+[[/div]]
+[[include :scp-wiki:component:image-block name=https://scp-wiki.wikidot.com/local--files/scp-1929/KLPN.jpg
+|width=700px
+|caption=Originally broadcast from a private residence, KLPN constructed its own dedicated facility in 1934, pictured above. It was lost in the destruction of Susa in 1935. 
+]]
+KLPN was a 100-watt daytime AM radio station based in Susa, Oklahoma. It operated from 1932 to 1935 and was known to broadcast regional news, local talent, and licensed entertainment. The station remained intermittently operational over the course of the SCP-1929 manifestation in Susa, during which local host Zeus Urthos[[footnote]]Due to the destruction of Susa and poor documentation practices of the then-newly established FCC, no records have been found to confirm whether &#34;Zeus Urthos&#34; was the performer&#39;s real name or merely a broadcasting alias.[[/footnote]] made several broadcasts, transcribed below.
+
+[[div class=&#34;addendumBox&#34;]]
+[[span style=&#34;float:left&#34;]]{{**SCP-1929** DOC#622}}[[/span]] [[span style=&#34;float:right;&#34;]]{{03/14/1935}}[[/span]]
+@@@@
+= **MEDIA LOG - #1**
+
+= {{**TIME OF BROADCAST:** 08:56 AM}}
+------
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Do you believe in prophecy, ladies and gentlemen? Now, I don&#39;t mean to cast doubt on whether you all believe the Good Book. Of course you do, folks. Of course you do. But I&#39;m not talking about the Bible. I mean the here and now. Do you believe that God speaks to the ordinary people of today, like you and me? I believe he does. 
+
+Let me tell you a story. A true story. I have to get up for work real early most days. Earlier than you, so you have something to listen to on your way to your own jobs. My girl Ann, she&#39;s about nine years old. She should have been asleep, but she caught me heading out the door. I mean she literally caught me by the leg, tears in her eyes, begging me not to go.
+
+&#34;Daddy,&#34; she said, &#34;please don&#39;t go to work today. Inky told me the world&#39;s gonna end.&#34; 
+
+Inky is her imaginary friend, you see. Just a dark stain shaped like a smile on her bedroom wall that she talks to. I told her it was a bad dream and I sent her back to bed. Haven&#39;t seen her since. Not for lack of trying, of course. When my truck fell apart and got stuck in a cow, you goddamn better believe I made the trip home on my own two feet! I would walk through Hell itself to see my little girl again, and ladies and gentlemen, I just about did. 
+
+I made it home, and listen: Ann wasn&#39;t there. You can stick your prick in an anthill before you tell me I didn&#39;t look hard enough. She&#39;s gone, folks. They got her. She&#39;s one of the ones outside now. But never mind; I didn&#39;t come all the way back to the station just to tell you what I lost. I&#39;m here &#39;cause of what I //found.// 
+
+I&#39;ve spoken to Inky, ladies and gentlemen. And he&#39;s got the answers. 
+
+Strange? Perhaps. Hardly stranger than a burning bush if you ask me. And if you&#39;ve so much as peeked out your window the past few days,[[footnote]]SCP-1929 had only manifested in Susa six hours prior.[[/footnote]] why, you probably don&#39;t find much of anything strange anymore.
+
+Naturally, the first thing I asked ol&#39; Inky is how we make it stop. You know what he told me? Go ahead and guess, folks. Come on! Play along.
+
+It&#39;s the obvious answer. //Blood!// The cost is blood, ladies and gentlemen. Always has been, always will be. If we work together, we can end this today.
+
+You folks just got to help me find a fucker out here who still bleeds.
+
+------
+
+[[/div]]
+
+[[div class=&#34;addendumBox&#34;]]
+[[span style=&#34;float:left&#34;]]{{**SCP-1929** DOC#623}}[[/span]] [[span style=&#34;float:right;&#34;]]{{03/14/1935}}[[/span]]
+@@@@
+= **MEDIA LOG - #2**
+
+= {{**TIME OF BROADCAST:** 12:55 PM}}
+------
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Look out your window. Go on. Look. Now cover your eyes. Now look again. It&#39;s different, isn&#39;t it? It&#39;s changed. Where&#39;s your house? You&#39;re someplace different now. How long were your eyes closed? You were gone. Where were you? Don&#39;t act like you know.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN MALE:[[/span]]
+Amen.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Wish I knew where we go when we close our eyes. Some of you, I don&#39;t think you ever closed them. You let it all wash over you in an instant and never felt a thing. Some of us, we feel every moment, every part of it. We don&#39;t stop seeing when we close our eyes. I think mine might be closed right now. There&#39;s no telling anymore.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN FEMALE:[[/span]]
+Where did the kids go?
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Your sight is there, but your eyes are dust. Your teeth are there, but your mouth is dust. Your mind is there, but your thoughts are dust. You wait for the end, but time is dust.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN FEMALE:[[/span]]
+You&#39;re not my husband.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Don&#39;t worry about her, folks. That&#39;s just Ma Duke. She&#39;s in the floor. Mostly.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN FEMALE:[[/span]]
+Get out of my house.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Thinks she owns the place. I&#39;d box her ears if I knew where to find them. But look at me ramble! None of that matters. That&#39;s not why I&#39;m on the air, and //in// the air, letting you breathe up my every little word. 
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN MALE:[[/span]]
+Jesus, Dougie. I keep thinking you&#39;re the cat. 
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN CHILD:[[/span]]
+Can you get it out of me, Dad? I was trying to get its blood and I got stuck.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN MALE:[[/span]]
+Forget the blood. God was only joking.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN FEMALE:[[/span]]
+You&#39;d think he&#39;d have gotten the hint after the first few years.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Ladies and gentlemen, there&#39;s only one instruction I have left to give, and it doesn&#39;t come from a dark little smear on a dead girl&#39;s bedroom wall. Fuck that lyin&#39; bastard. No, my message to you today comes straight from me, or what&#39;s left of me: I&#39;m telling you all to shut the hell up. Shut up. Everyone, just //shut up//.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN FEMALE:[[/span]]
+[ //Laughter.// ]
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+To every jackass still clinging to my skin: get off. To every whore clogging up my windpipe: get out. I evict you from me. You all got that? I know you&#39;re listening. I don&#39;t care if you&#39;re scattered across town in a million tiny pieces, you still have //goddamn radio!// 
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN CHILD:[[/span]]
+Dad? Dad?
+
+[[span class=&#34;characterTag&#34;]][ //FELINE SCREECHING.// ][[/span]]
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN MALE:[[/span]]
+You&#39;re not my son anymore. You&#39;ve just got his parts. 
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Get out of my body. Get out of my mind. Get out of my soul. Can&#39;t a man have a lick of privacy? I mean, George Caldwell, we grew up together, but he&#39;s standing on my tongue right now, somewhere—not to mention all those memories of mine he&#39;s got buried under his skin. That&#39;s too much for any man to take. Don&#39;t deny it, George. I can see you with my good eye. 
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN MALE:[[/span]]
+Your eyes are closed.  
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+I want you out of me, George. Every last bit of you. And that goes double for everyone else.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN MALE:[[/span]]
+[[[SCP-1861|He&#39;ll]]] watch your eyes. He&#39;ll bite your teeth.
+
+[[span class=&#34;characterTag&#34;]]UNKNOWN FEMALE:[[/span]]
+Please turn off the radio. I&#39;m frightened. 
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+This is your final warning, people. I mean it.
+------
+
+[[/div]]
+
+
+[[div class=&#34;addendumBox&#34;]]
+[[span style=&#34;float:left&#34;]]{{**SCP-1929** DOC#624}}[[/span]] [[span style=&#34;float:right;&#34;]]{{05/28/1935}}[[/span]]
+@@@@
+= **MEDIA LOG - #3**
+
+= {{**TIME OF BROADCAST:** 09:27 PM}}
+------
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+In the beginning, the hand of God took the dust to form man, and it was good. He took the man&#39;s rib to make woman, and it was good. He took the woman&#39;s pain to make the serpent, and it was good. He took the serpent&#39;s advice to flood the Earth, and it was good. On the seventh day, God tried to close his eyes to sleep, but they were already shut.
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again. 
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+In the beginning all was mud, formed into hills and valleys by the beating of the Buzzard&#39;s wings. Every living thing gathered together for a contest to stay awake for seven days and seven nights. The owl, the panther and the bat succeeded, and it blinded them. Unable to hunt, the three soon perished, and the Buzzard cleaned the flesh from their bones. 
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+In the beginning all was earth, but there came a great flood. The creatures of the world lashed together rafts to escape, but selfish beasts gnawed at the bindings and tore the rafts asunder. Every living thing drowned except one family of men and one pair of every animal. When the floodwaters receded, the creatures of the earth looked to the sky for a promise, but all it held was a bird the color of death. 
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+In the beginning a man bedded his sister and she gave birth to a son. The son bedded his mother and she gave birth to every living thing. But the son could not sleep at night from the noise of every living thing, so he sent a flood that lasted seven days and seven nights. When the floodwaters receded, the son tried to close his eyes to sleep, but they were already shut. 
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+In the beginning there is the dust, and the dust brings life. In the end there is the flood, and the flood brings death. 
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Flood&#39;s gone dry. 
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Just put me back together. Just part of me. I can feel them. All of them. It hurts. They itch.
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+Please, just let me see her.
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+How many centuries, Inky?
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]][ //Gagging. Dust hits the floor.// ][[/span]]
+
+[[span class=&#34;characterTag&#34;]]unknown voice:[[/span]]
+Again.
+
+[[span class=&#34;characterTag&#34;]]Urthos:[[/span]]
+In the beginning, a serpent told the dust that it was man. And the dust believed it. 
+
+------
+
+[[/div]]
+
+[[span style=&#34;color: rgba(255, 0, 0, 0);&#34;]]
+= Flood, sister of beginnings
+= Drought, sister of endings
+= The effigy of my enemy is my enemy
+= And you are far from blameless
+= What you gave to the land
+= Will be repaid in kind
+= When you are no longer deaf to yourself
+= You will know what sleeplessness means
+[[/span]]
+@@@@
+@@@@
+@@@@
+
+[[div class=&#34;desktop-topper&#34;]]
+[[include :scp-wiki:component:image-block name=https://scp-wiki.wikidot.com/local--files/scp-1929/1929man.jpg
+|align=fullwidth
+|caption=Sole remaining photograph taken by the Class-D field team deployed to Susa, OK. __[https://scp-wiki.wikidot.com/dust-in-the-wind &lt;&lt;Figure unidentified.&gt;&gt;]__
+]]
+[[/div]]
+
+[[div class=&#34;mobile-topper&#34;]]
+[[include :scp-wiki:component:image-block name=https://scp-wiki.wikidot.com/local--files/scp-1929/1929mantall.jpg
+|align=fullwidth
+|caption=Sole remaining photograph taken by the Susa field team. __[https://scp-wiki.wikidot.com/dust-in-the-wind &lt;&lt;Figure unidentified.&gt;&gt;]__
+]]
+[[/div]]
+
+@@@@
+@@@@
+@@@@
+[[=]]
+[[module Rate]]
+[[/=]]
+@@@@
+@@@@
 
 [[div class=&#34;footer-wikiwalk-nav&#34;]]
 [[=]]
@@ -253,36 +1884,20 @@ Subjects within SCP-1929 have also repeatedly reported several repeated types of
 [[/=]]
 [[/div]]
 
-
-[[include :scp-wiki:component:license-box
-|author=Anonymous]]
-=====
-&gt; **Filename:** 1929-new.jpg
-&gt; **Author:** Het Nieuwe Instituut - Architecture Collection, [[*user Elenee FishTruck]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [https://www.flickr.com/photos/47154409@N06/10209031093/ Flickr]
-&gt; **Derivative of:** Family dog and Gispen chair by Het Nieuwe Instituut - Architecture Collection, Public Domain
-
-&gt; **Filename:** 1929-2-new.jpg
-&gt; **Author:** N/A, [[*user Elenee FishTruck]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [https://pxhere.com/en/photo/901603 pxhere]
-&gt; **Derivative of:** untitled, CC0
-
-&gt; **Filename:** 1929-3-new.jpg
-&gt; **Author:** Joy ndr, Rocky Sun, [[*user Elenee FishTruck]]
-&gt; **License:** CC BY-SA 3.0
-&gt; **Source Link:** [https://commons.wikimedia.org/wiki/File:Ugly_cat.jpg Wikimedia Commons], [https://www.flickr.com/photos/harlequin_colors/4788934215 Flickr]
-&gt; **Derivative of:** //Ugly cat.jpg// by Joy ndr, CC BY-SA 4.0; //Lips - 364 day 23// by Rocky Sun, CC BY 2.0
-=====
-[[include :scp-wiki:component:license-box-end]]</textarea></pre>
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@
+@@@@</textarea></pre>
   </div>
 
 </div>
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:38.231467.</em>
+    <em>Last updated 2026-04-17 00:56:55.896537.</em>
   
 </div>
 </body>

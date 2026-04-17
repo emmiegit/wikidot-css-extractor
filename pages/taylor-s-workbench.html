@@ -29,7 +29,229 @@
     <ul class="module-styles">
       
         <li>
-          (none)
+          <pre><code>
+.box {
+    position: relative;
+    isolation: isolate;
+    contain: paint layout;
+
+    .title {
+        font-weight: 500;
+        font-size: .875em;
+        z-index: 3;
+        transition: all var(--_duration) var(--_timing) var(--_delay);
+    }
+    .title p, .title::after { transition: inherit; }
+
+}
+
+.feature {
+    padding: .5rem .625rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: min-content auto min-content;
+    column-gap: .75rem;
+    &gt; * { grid-column: 1/2; }
+}
+.feature::after {
+    content: &#34;-&gt;&#34;;
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    display: grid;
+    place-items: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.feature .feature-article {
+    display: flex;
+    align-items: baseline;
+    column-gap: .75ch;
+    row-gap: .5ex;
+    flex-wrap: wrap;
+    h2 { margin: 0; line-height: 1; }
+}
+
+.feature-subtitle {
+    font-size: .875em;
+    font-weight: 550;
+    flex-grow: 1;
+}
+
+.feature-blurb {
+    flex-grow: 1;
+}
+
+/*
+.feature-blurb::after {
+    content: &#34;-&gt;&#34;;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: 500;
+    grid-column: 2 / 3;
+    grid-row-start: 1;
+    grid-row-end: span all;
+    display: grid;
+    place-items: center;
+}*/
+
+.feature-select {
+    grid-column: 1 / -1;
+    font-size: .75em;
+    font-style: italic;
+    text-align: end;
+}
+
+
+.feature1box, .feature2box, .feature3box, .feature4box {
+    --_duration: .625s;
+    transition: color var(--_duration) var(--_timing) var(--_delay);
+    h2 a { text-decoration: none; transition: color var(--_duration) var(--_timing) var(--_delay); }
+}
+
+.feature h2 a::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 3;
+}
+
+
+:is(.feature1box, .feature2box, .feature3box, .feature4box):is(:hover,:focus-within) {
+    color: black;
+    h2 a { color: inherit; transition-delay: 0s; transition-duration: calc(var(--_duration) * 1.5); }
+    h2 a::before { width: 100%; }
+    .title { --box-accent: var(--active); }
+}
+
+:is(.feature1box, .feature2box, .feature3box, .feature4box)::before,
+:is(.feature1box, .feature2box, .feature3box, .feature4box)::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 100%;
+    pointer-events: none;
+    transition: width var(--_duration) var(--_timing) var(--_delay);
+}
+:is(.feature1box, .feature2box, .feature3box, .feature4box)::before {
+    backdrop-filter: invert(1) grayscale(1);
+    z-index: 1;
+}
+:is(.feature1box, .feature2box, .feature3box, .feature4box)::after {
+    background-color: var(--active);
+    mix-blend-mode: screen;
+    z-index: 2;
+}
+:is(.feature1box, .feature2box, .feature3box, .feature4box):is(:hover,:focus-within)::before,
+:is(.feature1box, .feature2box, .feature3box, .feature4box):is(:hover,:focus-within)::after {
+    width: 100%;
+}
+
+/*---------------------------*/
+
+.box.art {
+    justify-content: end;
+
+    .box-link-container {
+        display: contents;
+        &gt; a {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            font-size: 0.01em;
+            opacity: 0.01;
+            z-index: 2;
+        }
+    }
+
+}
+
+.caption {
+    display: flex;
+    gap: .75rem;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+    padding: .375rem 0.625rem;
+    margin: 0.5rem;
+    background-color: #0009;
+    color: var(--light);
+    font-size: .875em;
+    font-weight: 500;
+    text-align: center;
+    &gt; p { margin: 0; flex-grow: 1; }
+}
+.caption::after { content: &#34;-&gt;&#34;; }
+.caption::before {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 100%;
+    z-index: -1;
+    background-color: var(--active);
+    transition: width var(--_duration) var(--_timing) var(--_delay);
+}
+.box.art:is(:hover, :focus-within) .caption::before {
+    width: 100%;
+}
+
+.art-slider {
+    position: absolute;
+    overflow: hidden;
+    isolation: isolate;
+
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    display: grid;
+    grid-template-areas: &#34;stack&#34;;
+    --slide-persistence: 5s;
+}
+
+.art-slide {
+    grid-area: stack;
+    background-color: var(--light);
+    background-image: var(--artwork);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    visibility: visible;
+
+    animation-duration: calc(var(--slide-persistence)*3);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.s1 {
+    z-index: -1;
+    animation-name: art-slide1;
+}
+.s2 {
+    z-index: -2;
+    animation-name: art-slide2;
+}
+.s3 {
+    z-index: -3;
+    animation-name: art-slide3;
+}
+
+.s1re { z-index: -99; animation: none;}
+
+
+@keyframes art-slide1 {
+0% { visibility: visible; }
+33.33%, 100% { visibility: hidden; }
+}
+@keyframes art-slide2 {
+0% { visibility: visible; }
+66.66%, 100% { visibility: hidden;; }
+}
+@keyframes art-slide3 {
+0% { visibility: visible; }
+100% { visibility: hidden; }
+}</code></pre>
         </li>
       
     </ul>
@@ -38,7 +260,7 @@
     <ul class="inline-styles">
       
         <li>
-          <pre><code>text-align: center; width: 100%; font-size:1.25em; font-weight: bold;</code></pre>
+          (none)
         </li>
       
     </ul>
@@ -46,7 +268,77 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/component:toggle-sidebar" target="_blank"><code>component:toggle-sidebar</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/fragment:front-page-gridcode" target="_blank"><code>fragment:front-page-gridcode</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/fragment:front-page-header" target="_blank"><code>:scp-wiki:fragment:front-page-header</code></a>
+  
+
+  
+    
+  <span class="page-info">
+    [<a href="/wikidot-css-extractor/pages/fragment:front-page-header.html" target="_blank">info</a>]
+  </span>
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/quikngruvn-sandbox" target="_blank"><code>quikngruvn-sandbox</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/taylor-workbench-2" target="_blank"><code>taylor-workbench-2</code></a>
+  
+
+  
+</li>
+      
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/fragment:front-page-news-bulletin" target="_blank"><code>fragment:front-page-news-bulletin</code></a>
+  
+
+  
+</li>
       
     </ul>
 
@@ -54,43 +346,306 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>content-panel</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>standalone</code></pre>
-        </li>
-      
-        <li>
-          <pre><code>series</code></pre>
+          (none)
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[=]]
+    <pre><textarea class="page-source" readonly>[[include component:toggle-sidebar]]
+[[include fragment:front-page-gridcode]]
 
-+ [[size 125%]]Top Rated Pages by Year[[/size]]
+[!-- THIS IS THE HEADER: IT HAS THE CLASSIFIED HEADER, AND THE SURVEY LINK. PLEASE USE THE APPROPRIATE TOGGLES: survey, survey-link, survey-text. --]
+[[include :scp-wiki:fragment:front-page-header
+]]
 
-++ This page is currently [unclassified].
+[[div id=&#34;fp-features&#34;]]
+[[include quikngruvn-sandbox
+[!-- SCP FEATURE --]
+|scpslug=https://scp-wiki.wikidot.com/scp-9000
+|scptitle=SCP-9000: The Trench
+[!-- ADD A SPACE AT THE END OF THE AUTHOR(S) --]
+|scpby=J Dune
+|scpselector=J Dune
+|scpblurb=SCP-9000 is the collective designation for an extradimensional space and the facility it was built to house — Detention Center Tri-1, a penal complex maintained by the SCP Foundation.  
 
-------
+[!-- TALE FEATURE --]
+|taleslug=https://scp-wiki.wikidot.com/scp-9100
+|taletitle=SCP-9100: DAYDREAM
+[!-- ADD A SPACE AT THE END OF THE AUTHOR(S) --]
+|taleby=Jezixo
+|taleselector=Croquembouche, PandoraNuker, and S D Locke
+|taleblurb=The committee requests you determine how actions at the Minor Anomalies Unit at Site-86 led to the expenditure of $890 million in Foundation emergency funds and $1.9 billion in estimated losses.
 
-[[/=]]
+[!-- GOI FORMAT FEATURE --]
+|goislug=https://scp-wiki.wikidot.com/scp-821  
+|goititle=SCP-821: Dixie Fun Faire
+[!-- ADD A SPACE AT THE END OF THE AUTHOR(S) --]
+|goiby=Queerious and Uncle Nicolini
+|goiselector=Queerious
+|goiblurb=Throughout the fairground&#39;s later years of operation, maintenance and daily tasks were performed by automatons, both humanoid and non-humanoid, designated SCP-821-1.    
 
-[[div class=&#34;content-panel standalone series&#34;]]
-[[=]]
-++ Click on a year to find the top rated pages during that time!
-[[/=]]
-[[div style=&#34;text-align: center; width: 100%; font-size:1.25em; font-weight: bold;&#34;]]
-[/fragment:top-rated-by-year-08 2008] | [/fragment:top-rated-by-year-09 2009] | [/fragment:top-rated-by-year-10 2010] | [/fragment:top-rated-by-year-11 2011] | [/fragment:top-rated-by-year-12 2012] | [/fragment:top-rated-by-year-13 2013] | [/fragment:top-rated-by-year-14 2014] | [/fragment:top-rated-by-year-15 2015] | [/fragment:top-rated-by-year-16 2016] | [/fragment:top-rated-by-year-17 2017] | [/fragment:top-rated-by-year-18 2018]
+[!-- REVIEWER&#39;S SPOTLIGHT --]
+|rsslug=https://scp-wiki.wikidot.com/scp-9153
+|rstitle=SCP-9153: The Missing Infinity
+[!-- ADD A SPACE AT THE END OF THE AUTHOR(S) --]
+|rsby=badooga
+|rsselector=Miss Lovecraft
+|rsblurb=If you&#39;re reading this, this file is in the process of being quarantined, and you&#39;re one of the ones quarantining it…   
+]]
+
+[[include taylor-workbench-2
+|artblurb=IronShears, Parenthesis, KatyaStrangelove
+
+[!-- SLIDESHOW IMAGE URLS. IF IT&#39;S ONLY ONE IMAGE STICK IT IN ALL THREE--]
+
+|art1url= https://scp-wiki.wdfiles.com/local--files/art%3Aart-mycotherapy-suzerain/suzerain.png
+
+|art2url=  http://scp-wiki.wikidot.com/local--files/art:manifesto-of-an-anomalous-terrorist-poster-bonus-art/posterflattenedcomplete.png
+
+|art3url= https://scp-wiki.wikidot.com/local--files/artist-showcase-archive/KatyaStrangelove ]]
+
+[[include fragment:front-page-news-bulletin
+|date1=November 1st
+|blurb1=This month&#39;s site news features an interview with SCP-9000 contest winner J Dune! Check it out [https://scp-wiki.wikidot.com/news-11-2025 here!]
+]]
+
 [[/div]]
-[[/div]]
 
-[[module ListPages category=&#34;fragment&#34; parent=&#34;.&#34; order=&#34;fullname desc&#34; limit=&#34;1&#34;]]
 
-%%content%%
 
+
+
+
+
+
+
+
+
+[[module css]]
+
+.box {
+    position: relative;
+    isolation: isolate;
+    contain: paint layout;
+
+    .title {
+        font-weight: 500;
+        font-size: .875em;
+        z-index: 3;
+        transition: all var(--_duration) var(--_timing) var(--_delay);
+    }
+    .title p, .title::after { transition: inherit; }
+
+}
+
+.feature {
+    padding: .5rem .625rem;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: min-content auto min-content;
+    column-gap: .75rem;
+    &gt; * { grid-column: 1/2; }
+}
+.feature::after {
+    content: &#34;-&gt;&#34;;
+    grid-row: 1 / 3;
+    grid-column: 2 / 3;
+    display: grid;
+    place-items: center;
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.feature .feature-article {
+    display: flex;
+    align-items: baseline;
+    column-gap: .75ch;
+    row-gap: .5ex;
+    flex-wrap: wrap;
+    h2 { margin: 0; line-height: 1; }
+}
+
+.feature-subtitle {
+    font-size: .875em;
+    font-weight: 550;
+    flex-grow: 1;
+}
+
+.feature-blurb {
+    flex-grow: 1;
+}
+
+/*
+.feature-blurb::after {
+    content: &#34;-&gt;&#34;;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: 500;
+    grid-column: 2 / 3;
+    grid-row-start: 1;
+    grid-row-end: span all;
+    display: grid;
+    place-items: center;
+}*/
+
+.feature-select {
+    grid-column: 1 / -1;
+    font-size: .75em;
+    font-style: italic;
+    text-align: end;
+}
+
+
+.feature1box, .feature2box, .feature3box, .feature4box {
+    --_duration: .625s;
+    transition: color var(--_duration) var(--_timing) var(--_delay);
+    h2 a { text-decoration: none; transition: color var(--_duration) var(--_timing) var(--_delay); }
+}
+
+.feature h2 a::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 3;
+}
+
+
+:is(.feature1box, .feature2box, .feature3box, .feature4box):is(:hover,:focus-within) {
+    color: black;
+    h2 a { color: inherit; transition-delay: 0s; transition-duration: calc(var(--_duration) * 1.5); }
+    h2 a::before { width: 100%; }
+    .title { --box-accent: var(--active); }
+}
+
+:is(.feature1box, .feature2box, .feature3box, .feature4box)::before,
+:is(.feature1box, .feature2box, .feature3box, .feature4box)::after {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 100%;
+    pointer-events: none;
+    transition: width var(--_duration) var(--_timing) var(--_delay);
+}
+:is(.feature1box, .feature2box, .feature3box, .feature4box)::before {
+    backdrop-filter: invert(1) grayscale(1);
+    z-index: 1;
+}
+:is(.feature1box, .feature2box, .feature3box, .feature4box)::after {
+    background-color: var(--active);
+    mix-blend-mode: screen;
+    z-index: 2;
+}
+:is(.feature1box, .feature2box, .feature3box, .feature4box):is(:hover,:focus-within)::before,
+:is(.feature1box, .feature2box, .feature3box, .feature4box):is(:hover,:focus-within)::after {
+    width: 100%;
+}
+
+/*---------------------------*/
+
+.box.art {
+    justify-content: end;
+
+    .box-link-container {
+        display: contents;
+        &gt; a {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            font-size: 0.01em;
+            opacity: 0.01;
+            z-index: 2;
+        }
+    }
+
+}
+
+.caption {
+    display: flex;
+    gap: .75rem;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+    padding: .375rem 0.625rem;
+    margin: 0.5rem;
+    background-color: #0009;
+    color: var(--light);
+    font-size: .875em;
+    font-weight: 500;
+    text-align: center;
+    &gt; p { margin: 0; flex-grow: 1; }
+}
+.caption::after { content: &#34;-&gt;&#34;; }
+.caption::before {
+    content: &#34;&#34;;
+    position: absolute;
+    top: 0; left: 0;
+    width: 0; height: 100%;
+    z-index: -1;
+    background-color: var(--active);
+    transition: width var(--_duration) var(--_timing) var(--_delay);
+}
+.box.art:is(:hover, :focus-within) .caption::before {
+    width: 100%;
+}
+
+.art-slider {
+    position: absolute;
+    overflow: hidden;
+    isolation: isolate;
+
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    pointer-events: none;
+    display: grid;
+    grid-template-areas: &#34;stack&#34;;
+    --slide-persistence: 5s;
+}
+
+.art-slide {
+    grid-area: stack;
+    background-color: var(--light);
+    background-image: var(--artwork);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    visibility: visible;
+
+    animation-duration: calc(var(--slide-persistence)*3);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+.s1 {
+    z-index: -1;
+    animation-name: art-slide1;
+}
+.s2 {
+    z-index: -2;
+    animation-name: art-slide2;
+}
+.s3 {
+    z-index: -3;
+    animation-name: art-slide3;
+}
+
+.s1re { z-index: -99; animation: none;}
+
+
+@keyframes art-slide1 {
+0% { visibility: visible; }
+33.33%, 100% { visibility: hidden; }
+}
+@keyframes art-slide2 {
+0% { visibility: visible; }
+66.66%, 100% { visibility: hidden;; }
+}
+@keyframes art-slide3 {
+0% { visibility: visible; }
+100% { visibility: hidden; }
+}
 [[/module]]</textarea></pre>
   </div>
 
@@ -98,7 +653,7 @@
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:40.358938.</em>
+    <em>Last updated 2026-04-17 00:56:59.551337.</em>
   
 </div>
 </body>

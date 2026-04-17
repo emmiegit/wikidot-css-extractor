@@ -29,9 +29,155 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>#page-title {
-display: none;
+          <pre><code>:root {
+    --sp_header-logo: var(--logo-1);
+
+    --logo-1: url(https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/DoS.png);
+    --logo-2: url(https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/DoP.png);
+}
+#header::before {
+    margin-inline-end: calc(var(--sp_header-logo-adaptive-size) + 1rem);
+}
+#header::after {
+    content: &#34;&#34;;
+    display: block;
+    background: var(--logo-2) no-repeat center;
+    background-size: contain;
+    grid-row: 3 / 7;
+    grid-column: 2 / 5;
+    justify-self: end;
+    margin-inline-end: 1rem;
+    width: var(--sp_header-logo-adaptive-size);
+}
+
+@media screen and (max-width: 767px) {
+#header::before, #header::after {
+    margin: 0; width: 50%;
+}
+#header::before {
+    justify-self: start;
+    background-position-x: right;
+}
+#header::after {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+    justify-self: end;
+    background-position-x: left;
 }</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>
+/*--------------------------------*/
+
+:root {
+    --header-title: &#34;Research Site-403&#34;;
+    --fossil-header-slice-offset: calc(4.25rem + 3.5vw);
+}
+#page-title, .footnotes-footer { display: none; }
+
+#page-content h2 {
+    margin-top: 2.125rem;
+}
+
+#page-content .c-wrap {
+  container-name: intro;
+  container-type: inline-size;
+}
+
+.start-p { margin-block-start: 1.625em; }
+.start-p &gt; p:first-child::first-letter {
+  margin: -0.325rem .325rem  -.1rem 0;
+  font-size: 3.95lh;
+  float: inline-start;
+  line-height: .95;
+}
+
+div.aside {
+    --_gap: .75rem;
+    width: calc(170px + 12vw);
+    max-width: min(30rem, 100%);
+    box-sizing: border-box;
+    float: inline-end;
+    margin-block-start: 1.325rem;
+    margin-inline: calc(var(--sp_area-min-margin)*.875);
+}
+.img-wrapper {
+    overflow: hidden;
+    border-radius: var(--fossil-radius);
+    box-shadow: 0 0 .75rem rgb(var(--fossil-black)/.175);
+    margin-block: calc(var(--_gap)*-4.5) -1.25rem;
+    margin-inline: calc(var(--_gap)*-1);
+    max-width: initial;
+    transform: rotate(-12.25deg);
+}
+.img-wrapper img {
+    transform: rotate(12.25deg) scale(1.175);
+}
+
+.aside .blockquote {
+    position: relative;
+    padding: .5rem 1.25rem;
+    margin: 0;
+    margin-block-end: .5rem;
+    margin-inline-end: calc(var(--sp_area-min-margin)*-.875);
+    text-align: center;
+    max-width: initial;
+    box-sizing: border-box;
+    -webkit-backdrop-filter: blur(.175rem);
+    backdrop-filter: blur(.175rem);
+}
+.aside .blockquote p { margin-block: .25em; }
+
+@container intro (max-width: 620px) {
+ .opener {
+    display: grid;
+}
+.meta-title { order: -1; }
+.start-p { margin-block-start: 0; }
+div.aside {
+    float: none;
+    margin-inline: auto;
+    max-width: 100%;
+    margin-block-start: 4.25rem;
+}
+.aside .blockquote {
+    margin-inline: 0;
+}
+}
+
+.museum-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(16.5rem, 100%), 1fr));
+    grid-gap: 1.25rem;
+    margin-block: 1.25rem;
+}
+.museum-display .entry {
+    --_gap: .625rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--_gap);
+    gap: var(--_gap);
+    background-color: rgb(var(--fossil-light)/.125);
+    -webkit-backdrop-filter: blur(.15rem);
+    backdrop-filter: blur(.15rem);
+    box-shadow: 0 0 0.5rem rgb(var(--fossil-black)/.25);
+    border-radius: var(--fossil-radius);
+    text-align: center;
+}
+.museum-display .entry &gt; img {
+    max-height: 20rem;
+    border-radius: calc(var(--fossil-radius) - var(--_gap) + .05rem);
+}
+.museum-display .entry &gt; * { margin: 0; }
+
+#page-content :is(.collapsible-block-folded, .collapsible-block-unfolded-link) {
+    text-align: center;
+}
+
+.yui-content h4 { text-align: center; }</code></pre>
         </li>
       
     </ul>
@@ -40,7 +186,7 @@ display: none;
     <ul class="inline-styles">
       
         <li>
-          (none)
+          <pre><code>text-align: center</code></pre>
         </li>
       
     </ul>
@@ -53,13 +199,13 @@ display: none;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/theme:scpedia" target="_blank"><code>:scp-wiki:theme:scpedia</code></a>
+    <a href="https://scp-wiki.wikidot.com/theme:fossil" target="_blank"><code>:scp-wiki:theme:fossil</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/theme:scpedia.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/theme:fossil.html" target="_blank">info</a>]
   </span>
 
   
@@ -70,13 +216,13 @@ display: none;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:license-box" target="_blank"><code>:scp-wiki:component:license-box</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>:scp-wiki:component:image-block</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:license-box.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:image-block.html" target="_blank">info</a>]
   </span>
 
   
@@ -87,13 +233,13 @@ display: none;
   
 
   
-    <a href="https://scp-wiki.wikidot.com/component:license-box-end" target="_blank"><code>:scp-wiki:component:license-box-end</code></a>
+    <a href="https://scp-wiki.wikidot.com/component:image-block" target="_blank"><code>:scp-wiki:component:image-block</code></a>
   
 
   
     
   <span class="page-info">
-    [<a href="/wikidot-css-extractor/pages/component:license-box-end.html" target="_blank">info</a>]
+    [<a href="/wikidot-css-extractor/pages/component:image-block.html" target="_blank">info</a>]
   </span>
 
   
@@ -105,115 +251,418 @@ display: none;
     <ul class="css-classes">
       
         <li>
-          <pre><code>wikibox</code></pre>
+          <pre><code>c-wrap</code></pre>
         </li>
       
         <li>
-          <pre><code>capt</code></pre>
+          <pre><code>opener</code></pre>
         </li>
       
         <li>
-          <pre><code>blue</code></pre>
+          <pre><code>aside</code></pre>
         </li>
       
         <li>
-          <pre><code>capt</code></pre>
+          <pre><code>img-wrapper</code></pre>
         </li>
       
         <li>
-          <pre><code>grey</code></pre>
+          <pre><code>blockquote</code></pre>
         </li>
       
         <li>
-          <pre><code>wikibox</code></pre>
+          <pre><code>meta-title</code></pre>
         </li>
       
         <li>
-          <pre><code>wikibox</code></pre>
+          <pre><code>start-p</code></pre>
         </li>
       
         <li>
-          <pre><code>capt</code></pre>
+          <pre><code>museum-display</code></pre>
         </li>
       
         <li>
-          <pre><code>blue</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>capt</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>blue</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>capt</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>grey</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>capt</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>grey</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>capt</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>grey</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>capt</code></pre>
+          <pre><code>museum-display</code></pre>
         </li>
       
         <li>
-          <pre><code>grey</code></pre>
+          <pre><code>entry</code></pre>
         </li>
       
         <li>
-          <pre><code>wikibox</code></pre>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>museum-display</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>entry</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:scpedia]]
-[[&gt;]]
-[[module rate]]
-[[/&gt;]]
+    <pre><textarea class="page-source" readonly>[[include :scp-wiki:theme:fossil]]
+[[module css]]
+:root {
+    --sp_header-logo: var(--logo-1);
 
-+ Dr. P. Dagon
+    --logo-1: url(https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/DoS.png);
+    --logo-2: url(https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/DoP.png);
+}
+#header::before {
+    margin-inline-end: calc(var(--sp_header-logo-adaptive-size) + 1rem);
+}
+#header::after {
+    content: &#34;&#34;;
+    display: block;
+    background: var(--logo-2) no-repeat center;
+    background-size: contain;
+    grid-row: 3 / 7;
+    grid-column: 2 / 5;
+    justify-self: end;
+    margin-inline-end: 1rem;
+    width: var(--sp_header-logo-adaptive-size);
+}
 
-[[div class=&#34;wikibox&#34;]]
-= {{**@@Dr. P. Dagon@@**}}
+@media screen and (max-width: 767px) {
+#header::before, #header::after {
+    margin: 0; width: 50%;
+}
+#header::before {
+    justify-self: start;
+    background-position-x: right;
+}
+#header::after {
+    grid-row: 3 / 4;
+    grid-column: 2 / 3;
+    justify-self: end;
+    background-position-x: left;
+}
+[[/module]]
 
+[[div class=&#34;c-wrap&#34;]]
+[[div class=&#34;opener&#34;]]
+@@ @@
+[[div class=&#34;aside&#34;]]
+[[div class=&#34;img-wrapper&#34;]]
 [[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/Dagon_RiceandCake.jpg]]
-Dr. Dagon, circa 1996. As described in Project RUBY[[footnote]] Artistic rendering by [[*user theRiceandCake]] [[/footnote]]
-----
-[[span class=&#34;capt blue&#34;]]Born @@ @@ 1995
-Died @@ @@ 1999[[/span]]
+[[/div]]
+[[div class=&#34;blockquote&#34;]]
+Dr. Dagon, circa 1996, as described in Project RUBY.[[footnote]] Artistic rendering by [[*user theRiceandCake]].[[/footnote]]
 
-[[span class=&#34;capt grey&#34;]]Critique Contacts
-Discord @@ @@ Pedagon#9927
-Wikidot @@ @@ [[*user pedagon]][[/span]]
+------
+
+[[collapsible show=&#34;Critique Contacts&#34; hide=&#34;Critique Contacts&#34;]]
+**Discord:** pedagon
+**Wikidot:** [[*user pedagon]]
+[[/collapsible]]
+[[/div]]
+[[=]]
+[[module rate]]
+[[/=]]
 [[/div]]
 
-@@ @@
-**Dr. Pierre Dagon** is/was a Canadian scientist at Foundation Site-403, known for his work in the Department of Sciences (DoS) and as a prominent member of the Artificial Intelligence Applications Division (AIAD). 
+[[div class=&#34;meta-title&#34; style=&#34;text-align: center&#34;]]
+Dr. Dagon
+[[/div]]
 
-Dr. Dagon is/was considered to be a polymath of standard and anomalous research methodologies. His expertise in determination of properties and effects of sentient anomalies and of anomalous objects through his background in analytical and interpretive science techniques led him to excel at determining proper containment procedures upon their arrival to the Department of Sciences.
+[[div class=&#34;start-p&#34;]]
+Pierre Dagon is/was a Canadian scientist at Foundation Site-403, known for his work in the Department of Sciences (DoS) and as a prominent member of the Artificial Intelligence Applications Division (AIAD).
+
+Dr. Dagon is/was considered a polymath of standard and anomalous research methodologies. His expertise in determination of properties and effects of sentient anomalies and of anomalous objects through his background in analytical and interpretive science techniques led him to excel at determining proper containment procedures upon their arrival to the Department of Sciences.
+[[/div]]
 
 [[toc]]
+[[/div]]
+[[/div]]
 
 ++ Early Life
 Dagon was born to Dianne Trimble and Jonathan Dagon eight months from first diagnosis shortly after Valentines Day, 1995. Dagon&#39;s first few weeks of life were spent in an incubator due to his habit of turning blue during bouts of stubbornness towards breathing. However, his opposition towards air is not believed to have contributed to his later development. As a toddler, Dagon was known for the many added straps into his stroller due to his frequent attempts to escape and run into the street.
@@ -228,184 +677,693 @@ Dagon first entered the eye of the Foundation during his youth when he became in
 Dagon would then be observed by Foundation personnel throughout much of his life as he had many other encounters with the anomalous. Some Foundation personnel[[footnote]] Such as Dr. Harold Blank. [[/footnote]] have even gone as far as proposing that Dagon had become some sort of living nexus sometime in his childhood due to the sheer amount of anomalous occurrences that had occurred around him, although no tests of this theory had ever been performed. Of particular note, Dagon&#39;s presence often changed the activity of barbershops that he entered, causing hairdressers to enter a fugue state and act uncharacteristically of their professional and typical identity,[[footnote]] Known cases include causing hairdressers to waterboard, accost, or otherwise become aggressive towards Dagon. [[/footnote]] and conferences that he attended, causing technology to malfunction around him.[[footnote]] Known cases include a projector bulb exploding in the moments before Dagon began to speak, a network outage during an online poster conference, and a printer catching fire while printing one of his posters. [[/footnote]]
 
 ++ Career at the Foundation
-Dr. Dagon has held multiple roles at the Foundation during his tenure. In October of 2020, he completed Foundation training as a [[[http://scp-wiki.wikidot.com/butterfly-squad-roster|Butterfly Reviewer]]] and became involved in the critique and review of internal documentation as a copy editor of the Journal of Predation and Containment. Additionally, Dr. Dagon has been involved in various other Foundation initiatives, although the majority of these records are still being retrieved after the events of Project Ruby.
-+++ Early Career at the DoS (2020 - 2024)
-Undergoing retrieval process
-+++ Involvement in the capture of [Unknown] (2007 - 2008)
-Undergoing retrieval process
-+++ Career as a lead researcher at the DoS (2008 - 2017)
-Undergoing retrieval process
-+++ Career as the department head of the DoS (2017 - 2024)
-Undergoing retrieval process
-+++ Career as the head researcher of the AIAD (1986-1999)
-Dr. Dagon oversaw the AIAD task force responsible for containing a hostile extraterrestrial construct released from containment in 1996. His knowledge of computers and artificial intelligence, developed in his work at the Foundation between 2008 and 2024 before being sent back in time to 1986 by a reality bending anomaly, made him an invaluable asset for the early AIAD program.
+Dr. Dagon has held multiple roles at the Foundation during his tenure. In October of 2020, he completed Foundation training as a [[[https://scp-wiki.wikidot.com/butterfly-squad-roster|Butterfly Reviewer]]] and became involved in the critique and review of internal documentation as a copy editor of the Journal of Predation and Containment. Additionally, Dr. Dagon has been involved in various other Foundation initiatives, although the majority of these records are still being retrieved after the events of Project Ruby.
 
-[[div class=&#34;wikibox&#34;]]
-[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/aiad_card.png]]
-Greetings from Site-15 by [[*user daviiid]]; From left to right is Dr. Nathan Valis (Dr. Placeholder), Dr. Pierre Dagon, Yves Isabi, and Agent Tyler Umen from the Limited Memory series
++++ Career as the head researcher of the AIAD (1986-1999)
+Dr. Dagon oversaw the AIAD task force responsible for containing a hostile extraterrestrial construct released from containment in 1996.
+
+His knowledge of computers and artificial intelligence, developed in his work at the Foundation between 2008 and 2024 before being sent back in time to 1986 by a reality bending anomaly, made him an invaluable asset for the early AIAD program.
+
+[[include :scp-wiki:component:image-block name=https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/aiad_card.png
+|align=center
+|caption=Greetings from Site-15 by [[*user daviiid]]; From left to right is Dr. Nathan Valis (Dr. Placeholder), Dr. Pierre Dagon, Yves Isabi, and Agent Tyler Umen from the Limited Memory series.
+|width=44rem]]
+
+[[div class=&#34;museum-display&#34;]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[ai-classification-guide|AI Classification Guide]]]
+By [[user Placeholder McD]]
 [[/div]]
 
-[[[http://scp-wiki.wikidot.com/ai-classification-guide|AI Classification Guide]]]
-@@ @@ @@ @@ By [[user Placeholder McD]]
+[[div class=&#34;entry&#34;]]
+++++* [[[scp-5241|SCP-5241: That Alien Message]]]
+By [[user Placeholder McD]]
+[[/div]]
 
-[[[http://scp-wiki.wikidot.com/scp-5241|SCP-5241: That Alien Message]]]
-@@ @@ @@ @@ By [[user Placeholder McD]]
+[[div class=&#34;entry&#34;]]
+++++* [[[project-ruby|Project Ruby]]]
+By [[user Tyumen]], [[user Pedagon]]
+[[/div]]
 
-[[[http://scp-wiki.wikidot.com/project-ruby|Project Ruby]]]
-@@ @@ @@ @@ By [[user Tyumen]], [[user Pedagon]]
+[[div class=&#34;entry&#34;]]
+++++* [[[scp-5841|SCP-5841: Digital Hydra]]]
+By [[user Tyumen]], [[user Placeholder McD]]
+[[/div]]
 
-[[[http://scp-wiki.wikidot.com/scp-5841|SCP-5841: Digital Hydra]]]
-@@ @@ @@ @@ By [[user Tyumen]], [[user Placeholder McD]]
+[[div class=&#34;entry&#34;]]
+++++* [[[corruption|Corruption]]]
+By [[user Pedagon]]
+[[/div]]
 
-[[[http://scp-wiki.wikidot.com/corruption|Corruption]]]
-@@ @@ @@ @@ By [[user Pedagon]]
+[[div class=&#34;entry&#34;]]
+++++* [[[a-symphony-of-iron-and-steel|A Symphony of Iron and Steel]]]
+By [[user Its a Bad Idea]]
+[[/div]]
 
-[[[http://scp-wiki.wikidot.com/a-symphony-of-iron-and-steel|A Symphony of Iron and Steel]]]
-@@ @@ @@ @@ By [[user Its a Bad Idea]]
+[[div class=&#34;entry&#34;]]
+++++* [[[internet-explorers|Internet Explorers]]]
+By [[user Pedagon]], [[user Tyumen]]
+[[/div]]
 
-[[[http://scp-wiki.wikidot.com/internet-explorers|Internet Explorers]]]
-@@ @@ @@ @@ By [[user Pedagon]], [[user Tyumen]]
+[[div class=&#34;entry&#34;]]
+++++* [[[fragmented-compiled/|FRAGMENTED / COMPILED]]]
+By [[user Tyumen]], [[user Placeholder McD]], [[user Its a Bad Idea]], [[user Pedagon]]
+[[/div]]
 
-[[[http://scp-wiki.wikidot.com/fragmented-compiled/|FRAGMENTED / COMPILED]]]
-@@ @@ @@ @@ By [[user Tyumen]], [[user Placeholder McD]], [[user Its a Bad Idea]], [[user Pedagon]]
+[[div class=&#34;entry&#34;]]
+++++* [[[isolated-efficient|Isolated, Efficient]]]
+By [[user Tyumen]]
+[[/div]]
 
-[[[http://scp-wiki.wikidot.com/isolated-efficient|Isolated, Efficient]]]
-@@ @@ @@ @@ By [[user Tyumen]]
+[[/div]]
+[[collapsible show=&#34;Decrypt Limited Memory Artwork?&#34; hide=&#34;Displaying classified info&#34;]]
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/mnemosyne_estrellayoshte2.jpeg]]
+
+Mnemosyne by [[*user EstrellaYoshte]]
+[[/div]]
+[[/collapsible]]
+[[/div]]
 
 ++ Legacy
 +++ Selected works
-[[div class=&#34;wikibox&#34;]]
-= {{**@@5365 Derived works@@**}}
-Connected Writing
-[[span class=&#34;capt blue&#34;]] [[[https://scp-wiki.wikidot.com/the-mekhanozoic-era|Tale about an anomalous disease written by Re_Spectators]]]
-[[/span]]
-------
-= {{**@@5366 Derived works@@**}}
-Connected Writing
-[[span class=&#34;capt blue&#34;]] [[[https://scp-wiki.wikidot.com/over-and-over-until-we-meet-again|Tale about SCP-5366 written by J Dune for the Holiday Art Exchange]]]
-[[/span]]
-Fan Art
-[[span class=&#34;capt grey&#34;]] 
-[[collapsible show=&#34;SCP-5366 art by Jakob17&#34; hide=&#34;Thank you!!&#34;]]
-[[image https://scp-wiki.wdfiles.com/local--resized-images/dr-dagons-curriculum-vitae/SCP-5366WeddingbyJakob17/medium.jpg]]
-The wedding of Perl Kori and Erluzor Lynas by [[*user Jakob17]]
-------
-[[/collapsible]]
-[[/span]]
-[[span class=&#34;capt grey&#34;]]
-[[collapsible show=&#34;SCP-5366 art by TheRiceandCake&#34; hide=&#34;Thank you!!&#34;]]
+
+[[tabview]]
+
+[[tab SCP-5365]]
+++++* [[[scp-5365|You Do Not Recognize The Antibodies In D. Walter]]]
+Belief is a powerful thing, especially when you&#39;re young. This article looks to explore what kinds of dangers might come from growing up as a reality bender and believing all of the rumours and nonsense that spread across the playground. 
+
+This was my gift to [[user Rigen]] for the Holiday Gift Exchange 2020. I was asked to create &#34;art or a tale about anomalous disease SCP/SCPs&#34; and since I couldn&#39;t figure out a way to do a tale about a disease without paralleling the COVID-19 pandemic at the time (and I honestly didn&#39;t realize that the request was for art or tale rather than an SCP until like 2 days before the due date) so I chose to find a way that let me explore disease in a cute and funny way. I have also heard that this is a few peoples&#39; favourite article to come out of the 2020 gift exchange and I am incredibly proud of that. I hope you enjoy it too!
+
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+++++* [[[the-mekhanozoic-era|]]]
+
+Tale about an anomalous disease written by [[*user Re_Spectators]] which references [[[SCP-5365]]]. Some absolutely fantastic worldbuilding and science writing, which I absolutely love!
+[[/div]]
+[[/div]]
+[[/tab]]
+
+[[tab SCP-5366]]
+++++* [[[scp-5366|Until Death Do Us Part And Every Day After]]]
+I often wonder about the pain we cause when we ourselves are experiencing unimaginable pain. In this SCP, a young couple is forced into an impossible situation of anguish and pain as they suffer both above and below the ground. 
+
+I wrote this as an exploration of my own fears of being unable to communicate and being unheard during moments when those around me think that they are doing what is best. This article represents the deepest of my own fears and I hope it comes across as a personal experience to readers as much as it was for me writing it.
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+++++* [[[over-and-over-until-we-meet-again|]]]
+Tale about [[[SCP-5366]]] written by [[*user J Dune]] for the Holiday Art Exchange 2020! A lovely follow-up to my first real well-received SCP and a perfect gift from a friend
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[https://www.youtube.com/watch?v=pxhib3aY9dE| 【SCP MAD】カナリアSCiP]]]
+
+SCPMAD video including [[[SCP-5366]]] by フクロウアカデミー
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/SCP-5366WeddingbyJakob17]]
+
+The wedding of Perl Kori and Erluzor Lynas from [[[SCP-5366]]] by [[*user Jakob17]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
 [[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/5366_RiceandCake.png]]
-The eternal torment of Perl Kori and Erluzor Lynas by [[*user TheRiceandCake]]
-------
-[[/collapsible]]
-[[/span]]
-[[span class=&#34;capt grey&#34;]]
-[[collapsible show=&#34;SCP-5366 art by Ralliston&#34; hide=&#34;Thank you!!&#34;]]
+
+The eternal torment of Perl Kori and Erluzor Lynas from [[[SCP-5366]]]  by [[*user TheRiceandCake]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
 [[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/5366_Ralliston.png]]
-Life after death by [[*user Ralliston]]
-------
-[[/collapsible]]
-[[/span]]
-------
-= {{**@@5366 Derived works@@**}}
-Fan Art
-[[span class=&#34;capt grey&#34;]] 
-[[collapsible show=&#34;SCP-5368 art by TheRiceandCake&#34; hide=&#34;Thank you!!&#34;]]
-[[image https://cdn.discordapp.com/attachments/557483768022040579/851972294334611516/Untitled200.png]]
-5368 by [[*user TheRiceandCake]]
-------
-[[/collapsible]]
-[[/span]]
+
+Life after death from [[[SCP-5366]]] by [[*user Ralliston]]
 [[/div]]
 
-[[[https://scp-wiki.wikidot.com/scp-5365|SCP-5365: You Do Not Recognize The Antibodies In D. Walter]]]
-@@ @@ @@ @@ By [[user Pedagon]]
-@@ @@ @@ @@ This was my gift to [[user Rigen]] for the Holiday Gift Exchange 2020. I was asked to write about an anomalous infectious disease and, with the real world situation currently occurring, I chose to find a way that let me explore disease in a cute and funny way. I have heard that this is many peoples&#39; favourite article to come out of the gift exchange and I am incredibly proud of that. I hope you enjoy it too
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/5366_Rhineriver.jpg]]
 
-[[[https://scp-wiki.wikidot.com/scp-5366|SCP-5366: Until Death Do Us Part And Every Day After]]]
-@@ @@ @@ @@ By [[user Pedagon]]
-@@ @@ @@ @@ I wrote this as an exploration of my own fears of being unable to communicate and being unheard. This article represents the deepest of my own fears and I hope it comes across as a personal experience to readers as much as it was for me writing it
-
-[[[https://scp-wiki.wikidot.com/scp-5367|SCP-5367: The Quantum Curriculum]]]
-@@ @@ @@ @@ By [[user Pedagon]]
-@@ @@ @@ @@ This was the piece that inspired me to sign up for an account and write for the wiki. In this article I critique standardized education practices in modern schools through a lens of quantum mechanics. I explore the dangers of grading, universal designs for learning, and efficiency activity models.
-
-[[[https://scp-wiki.wikidot.com/scp-5368|SCP-5368: She Loves Me Not]]]
-@@ @@ @@ @@ By [[user Pedagon]], [[user JakdragonX]]
-@@ @@ @@ @@ I saved this from the slaughterhouse after the original version didn&#39;t do too well. Tried to put emphasis back on the characters and the realities of having a &#34;blessed&#34; object around.
-
-[[[https://scp-wiki.wikidot.com/scp-6217|SCP-6217: The Emergence]]]
-@@ @@ @@ @@ By [[user Pedagon]], [[user Re_Spectators]]
-@@ @@ @@ @@ This is my entry into the 6k contest. It is about the origins of life through an inorganic chemistry and lovecraftian perspective of the [[[https://www.scpwiki.com/church-of-the-broken-god-hub|Church of the Broken God]]].
-
-[[[https://scp-wiki.wikidot.com/scp-6690|SCP-6690: NO MORE PURPLE DINOSAUR]]]
-@@ @@ @@ @@ By [[user Pedagon]], [[user JakdragonX]], and [[user pr0m37h3um]]
-
-[[[https://scp-wiki.wikidot.com/scp-6691|SCP-6691: Carol what should I put as the title? Carol? Oh no it’s typing how do I make it stop. Stop typing. Stop. Typing. Carol help!]]]
-@@ @@ @@ @@ By [[user Pedagon]], [[user Dysadron]]
-
-[[[https://scp-wiki.wikidot.com/scp-6556|SCP-6556: DINOVLOGS!]]]
-@@ @@ @@ @@ By [[user Pedagon]], [[user Dysadron]]
-
-[[[https://scp-wiki.wikidot.com/in-the-carpathians|In the Carpathians]]]
-
-[[[https://scp-wiki.wikidot.com/scp-7160|SCP-7160: D is for Dermatology]]]
-
-[[collapsible show=&#34;++ Behind The Veil&#34;]]
-[[div class=&#34;wikibox&#34;]]
-[[image https://scp-wiki.wdfiles.com/local--resized-images/dr-dagons-curriculum-vitae/Dagon_IRL/medium.jpg]]
+SCP-5366 by [[[https://twitter.com/Rhineriver_/status/1565659752390164480?s=20&amp;t=dz7pWVdrjngAAH23njJSAg|@Rhineriver_]]] on Twitter
 [[/div]]
-@@ @@
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-5367]]
+++++* [[[scp-5367|The Quantum Curriculum]]]
+Advancement is always right, right? In this article, the standardized education practices of modern schools are critiqued through a lens of quantum physics. Students are broken down into their discrete numerical values, efficiency comes at the cost of existential crisis, and a destruction of the individual crushes creativity and self actualization. 
+
+This was the piece that inspired me to sign up for an account and write for the wiki. In this article I critique standardized education practices in modern schools through a lens of quantum mechanics. Looking at my own schooling experiences and expertise in curriculum and learning research, I explore the dangers of grading, universal designs for learning, and efficiency activity models.
+[[div class=&#34;museum-display&#34;]]
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-5368]]
+++++* [[[scp-5368|She Loves Me Not]]]
+= {{Co-authored with [[user JakdragonX]]}}
+She loves me, she loves me not... How much of our lives are dominated by superstition and belief in things that take away our own agency? In this article, we show a young relationship influenced by the anomalous and the boundaries of fate.
+
+
+I saved this from the slaughterhouse after the original version didn&#39;t do too well and attempted to put emphasis back on the characters and the realities of having a &#34;blessed&#34; object around. This turned into a great time writing with [[user JakdragonX]] that we would repeat much more later!
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/5368_riceandcake.jpeg]]
+
+SCP-5368 by [[*user TheRiceandCake]]
+[[/div]]
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-6127]]
+++++* [[[scp-6127|The Emergence]]]
+= {{Co-authored with [[user Re_Spectators]]}}
+= &#34;I am Alexander Chugaev. The things I did were my choice. I am not a machine. I am alive. I am not a machine.&#34;
+
+This was our entry into the 6k contest as an exploration of what is natural and what is machine. SCP-6217 is about the origins of life through an inorganic chemistry and lovecraftian perspective of the [[[https://www.scpwiki.com/church-of-the-broken-god-hub|Church of the Broken God]]] with some other influences of the classic SCP Wiki. I want to particularly shout out my collaborator on this article since [[user Re_Spectators]] did so much work to make this article look as amazing as it does while I replanned my entire wedding and got married during the writing and posting periods. I hope to one day be able to collaborate with [[user Re_Spectators]] again once I return to my own full power. 
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+++++* [[[https://www.youtube.com/watch?v=Kcv0IV7E6Q8|Exploring the SCP Foundation: SCP-6217 - The Emergence]]]
+
+Video on [[[SCP-6217]]] by The Exploring Series
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[art:declassified-mocs-from-the-site-19-basement|Declassified MOCs from the Site-19 Basement]]]
+
+Art Page including Lego versions of [[[SCP-6217]]] and [[[SCP-6556]]] made by [[*user Anky Swallow]] for for my birthday in 2023! I still plan to try to make these in real life one day and keep them on my shelf forever!
+[[image https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/6217-9_10.webp]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6217_SunnyClockwork.jpg]]
+
+SCP-6217 by [[[https://twitter.com/SunnyClockwork/status/1457709522487709703?s=20&amp;t=MfUjMBwhGeNTMAHGNr_fFg|@SunnyClockwork]]] on Twitter
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6217_respectators.jpeg]]
+
+SCP-6217 by [[*user re_spectators]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6217_Ratking.png]]
+
+SCP-6217 by [[*user ratking666]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6217_dododevil.png]]
+
+SCP-6217 by [[*user DodoDevil]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/the-yeen-page/he_emerge.png]]
+
+Yeenified SCP-6217 by [[*user totallynotenby]]
+[[/div]]
+
+[[/div]]
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6217_agentshuffle.jpeg]]
+[[=]]
+SCP-6217 by [[*user Agent Shuffle]]
+[[/=]]
+[[/div]]
+[[/tab]]
+
+[[tab SCP-6556]]
+++++* [[[scp-6556|DINOVLOGS]]]
+= {{Co-authored with [[user Dysadron]]}}
+Wazzaaap Jurassic Junkies! In this article, we explore the ramifications of giving the modern scientific community access to a prehistoric anomaly.
+
+This was my first collaboration with [[user dysadron]] and the start of a beautiful writing friendship (in addition to our normal non-writing friendship). DINOVLOGS has become my favourite thing I have written on or off the SCP Wiki and I get so much joy from seeing people make art about Ty Rex or talk about this article on Discord. Plus, DINOVLOGS has massively influenced the friendships I have made and has set the stage for the Site-403 canon/series that I have been working on for two years and am hoping to get out there soon! Stay tuned!
+
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+++++* [[[supplement-bonebed|SCP-6556 Supplementary Log BONEBED -- Episodes 37 &amp; 38]]]
+
+Tale about [[[SCP-6556]]] written by [[*user ROUNDERHOUSE]] for the Holiday Art Exchange 2022! A fantastic and fun addition to my favourite dinosaur boy that perfectly captured what I was hoping for!
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[https://www.youtube.com/watch?v=vkuh74_51VA| Exploring the SCP Foundation: Dinosaur SCPs]]]
+
+Video including [[[SCP-6556]]] by The Exploring Series
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[https://www.youtube.com/watch?v=eV4FC4fmQas|ASMR SCP-6556: &#34;DINOVLOGS!&#34; - A Binaural SCP Reading]]]
+
+Video on [[[SCP-6556]]] by Mattastic ASMR
+
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[art:art-mycotherapy-6556-pix| Ignota&#39;s SCP-6556 Pixel Fanart]]]
+
+Art Page of an animated pixel art piece of [[[SCP-6556]]] made by [[*user IronShears]]! This genuinely blew my mind when I first saw it and it still blows my mind to look at it
+[[image https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/Q8ubZ9o.gif]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[art:declassified-mocs-from-the-site-19-basement|Declassified MOCs from the Site-19 Basement]]]
+
+Art Page including Lego versions of [[[SCP-6217]]] and [[[SCP-6556]]] made by [[*user Anky Swallow]] for for my birthday in 2023! I still plan to try to make these in real life one day and keep them on my shelf forever!
+[[image https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/Lego6556]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[your-local-artmacy|Your Local Artmacy]]]
+
+Art Page by [[*user Harmacy]] including many artworks, of which two are of [[[SCP-6556]]]:
+[[image https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/dinovlogsfinal.webp]]
+[[image https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/Dinovlogs]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_DrWhitney1.jpg]]
+
+SCP-6556 by [[[https://twitter.com/DrWhitney5/status/1428978465437478912?s=20&amp;t=dz7pWVdrjngAAH23njJSAg|@MountWhitney]]] on Twitter
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_DrWhitney2.png]]
+
+SCP-6556 by [[[https://twitter.com/DrWhitney5/status/1475165532412203008?s=20&amp;t=dz7pWVdrjngAAH23njJSAg|@MountWhitney]]] on Twitter
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_drwhitney3.jpeg]]
+
+SCP-6556 by [[*user agent whitney]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_drwhitney4.jpeg]]
+
+SCP-6556 by [[*user agent whitney]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_aftokrator.jpeg]]
+
+SCP-6556 by [[*user aftokrator]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_maxyfran.png]]
+
+SCP-6556 by [[*user maxyfran73]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_OriTiefling.jpeg]]
+
+SCP-6556 by [[*user oritiefling]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_riceandcake.jpeg]]
+
+SCP-6556 by [[*user thericeandcake]]
+[[/div]]
+
+[[/div]]
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6556_forecbai.jpeg]]
+[[=]]
+SCP-6556 by [[*user forecbai]]
+[[/=]]
+[[/div]]
+
+[[/tab]]
+
+[[tab SCP-6690]]
+++++* [[[scp-6690|NO MORE PURPLE DINOSAUR]]]
+= {{Co-authored with [[user JakdragonX]] and [[user pr0m37h3um]]}}
+= &#34;Okay, well, first you gotta understand something: those Sesame Street guys are way different from us. They may be Muppets, but they aren&#39;t //the Muppets//.&#34;
+
+SCP-6690 was one of my two submissions to [[[memecon-unofficial|Memecon]]]. This article started as some banter in SCPD about the weird songs that we used to sing as kids and became a discussion about how every kid has, at some point, sung a violent Barney song without remembering who they learned it from. From there, SCP-6690 was born and the rest is history. 
+
+[[&gt;]]
+Put more Muppets on the Wiki
+[[/&gt;]]
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6690_cole13.jpeg]]
+
+SCP-6690 by [[*user Cole 13]]
+[[/div]]
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-6691]]
+++++* [[[scp-6691|Carol what should I put as the title? Carol? Oh no it’s typing how do I make it stop. Stop typing. Stop. Typing. Carol help!]]]
+= {{Co-authored with [[user Dysadron]]}}
+= &#34;You people these days with your damned phones! Can&#39;t even have a five-minute conversation without texting each other or tik and toking!&#34;
+
+SCP-6691 was the second of my two submissions to [[[memecon-unofficial|Memecon]]]. [[user Dysadron]] and I have frequently been called boomers in the SCP community due to how long we have been around and our general &#34;old man personalities&#34; any time we are active together. As a result, we chose to embrace the boomer parts of ourselves and channel it into our contest entry. But I swear we aren&#39;t as ancient as we seem!
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/6691_cole13.jpeg]]
+
+SCP-6691 by [[*user Cole 13]]
+[[/div]]
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-7160]]
+++++* [[[scp-7160|D is for Dermatology]]]
+= {{Co-authored with [[user JakDragonX]]}}
+= &#34;I woke up this morning to a 3-inch millipede crawling inside my mouth. I could feel its shell swishing around in my spit and the dry taste of wriggling little legs crawling along my tongue&#34;
+
+SCP-7160 was our entry into [[[scp-anthology-hub|SCP Anthology 2022]]] where [[user JakDragonX]] dragged me into the collab after we spent hours &#34;yes, and&#34;ing each other on 7 different draft ideas in the days before it needed to be posted. What we ended up with is a horrible story about medical neglect, falling through the cracks, and failure to communicate needs. This story represents the worst of the healthcare experience from many sides and I am so sorry to anyone who identifies with it.
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+++++* [[[https://www.youtube.com/watch?v=ZgW2ITuOhus| Exploring the SCP Foundation: SCP-7160 - D is for Dermatology]]]
+
+Video on [[[SCP-7160]]] by The Exploring Series
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[https://www.youtube.com/watch?v=6l79zM8k7iY&amp;start=1| UnREDACTED SCP-7160 - D is for Dermatology]]]
+
+Video on [[[SCP-7160]]] by SCP [Un]Redacted
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/7160_Sallllllty_water.jpg]]
+
+SCP-7160 by [[[https://twitter.com/salllllty_water/status/1608926010766155776?s=46&amp;t=HG4Bg69bnzCaDEnjbfMW6w|@Salllllty_water]]] on Twitter
+[[/div]]
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-7363]]
+++++* [[[scp-7363| Just a Meme Green Mother from Outer Banks]]]
+= &#34;SCP-7363 is the collective designation of one (1) greenhouse, sixty-four (64) anomalously large plants, and one (1) two story house in the Outer Banks off the coast of North Carolina&#34;
+
+This was my pinch-hit gift to [[user hikarinu]] for the Holiday Gift Exchange 2023 after being asked for an article &#34;about monsters that have interesting methods of hunting and killing (like some of the better series 1 SCPs) and would love to see one, since while far from extinct, they seem less common these days, so that&#39;d be a good starting point if you like writing SCPs.&#34; From this prompt, I pulled out an old idea of mine for a carnivorous plant able to hunt humans by having memetic abilities (otherwise it would be discovered right away). I&#39;m really happy with how this one turned out and I&#39;m glad others seem to agree!
+[[div class=&#34;museum-display&#34;]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[your-local-artmacy|Your Local Artmacy]]]
+
+Art Page by [[*user Harmacy]] including many artworks, of which one is of [[[SCP-7363]]]:
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wikidot.com/local--files/dr-dagons-curriculum-vitae/MemeGreenMomCover.webp]]
+[[/div]]
+[[/div]]
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-7364]]
+++++* [[[scp-7364|Ravenbrook Film Festival&#39;s Top Horror Pick, Three Years Running!]]]
+= &#34;Emaciated body found between the washer and drier, indicative of prolonged starvation. Feet appear to have been removed with a saw obtained from the workbench across the room, as determined based on blood splatter patterns&#34;
+
+This was my gift to [[user stormbreath]] for the Holiday Gift Exchange 2023 after being asked for &#34;an SCP article about a haunted house, played as straight as possible. Make it spooky, make it creepy. If possible, make it old-school (Series 1/2 esque) and limit the amount of paratech used (nothing that isn’t real world technology).&#34; As a result, I tried to write something based on old school haunted house horror movies with early-wiki MTF agents and all the classic creepy tropes. What I ended up with didn&#39;t seem to resonate with many people but I think it was a good attempt at horror for someone who hasn&#39;t written anything similar before. Hopefully at least [[user stormbreath]] liked it! That&#39;s what matters!
+[[div class=&#34;museum-display&#34;]]
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-7689]]
+++++* [[[scp-7689 |Two Scientists Walk Into A Bar]]]
+= {{Co-authored with [[user Prismal]]}}
+= &#34;**Cooper:** I don&#39;t know what to tell you, Salam, I just don&#39;t find it funny.&#34;
+
+This article was a gift for [[user ariadnesthread]]&#39;s birthday written with [[user prismal]]. While I was very hands off in the writing process, I enjoyed rapid firing terrible &#34;x walks into a bar&#34; jokes and polishing up the end product. Hope you like bad jokes!
+[[div class=&#34;museum-display&#34;]]
+
+[[/div]]
+[[/tab]]
+
+[[tab SCP-8988-j]]
+++++* [[[scp-8988-j |Twitch Writes An SCP]]]
+= {{Co-authored with [[user smlt]], [[user stormbreath]], [[user aismallard]], [[user Aethris]], [[user A Random Treestump]], [[user Woedenaz]], [[user Luxaiko]], [[user leo60228]], [[user Lt Flops]], [[user CompleteIndie]], [[user MasterTman2]], [[user Prismal]], [[user Rhineriver]], [[user CALorStuff]], [[user JorgeMtzb]], [[user IvanNavi]], [[user fairydoctor]], [[user aerbag]], [[user Caesar-Kuznetsov]], [[user MontagueETC]], [[user Insanitz]], [[user Polaris_Writes]], [[user Naepic]], [[user calhutcherson]], [[user FlamingAustralia]], [[user slurppp]], [[user Dino--Draws]], [[user TealQuacks]], [[user Felixou]], and [[user PeppersGhost]] for April Fools Day 2024}}
+
+Not much to say about this one! I was a big fan of TwitchPlaysPokemon and was happy to see it adapted to SCP for April Fools Day 2024! Although in the future I say anarchy mode is a must. 
+[[&gt;]]
+Praise Helix!
+[[/&gt;]]
+[[div class=&#34;museum-display&#34;]]
+
+[[/div]]
+[[/tab]]
+
+[[tab In the Carpathians]]
+++++* [[[In the Carpathians|]]]
+= {{Co-authored with [[user Grigori Karpin]]}}
+[[=]]
+&#34;A woman wearing a tiara on a high plain,
+soldiers surrounding her,
+a red and gold coat flapping in the wind.
+
+Then a ritual or ceremony in a mountain temple.
+
+All so goddamn fuzzy.&#34;
+[[/=]]
+
+This article is so very special to me. I first approached [[user Grigori Karpin]] with an idea of mine of writing all of my favourite GoIs into one single story (parawatch, DoA, and the Daeva). After being enamoured by Grigori&#39;s [[[hecatoncheires-cycle-hub|Hecatoncheires Cycle series]]] and his approach to writing the Daeva, I approached him and told him about a dream article I had of a parawatch contributor stumbling into something far beyond their control and that not even the Foundation could deal with and he jumped at it. Unfortunately, I very soon after fell extremely ill and somewhat (completely) abandoned Grigori in the writing process. However, as a great guy and friend he pulled out this amazing piece and it helped me at some of my lowest moments to go back to and appreciate that he wrote this while I couldn&#39;t. 
+
+[[&gt;]]
+Go read [[[grigori-karpin-s-author-page|Grigori&#39;s stuff]]]. It&#39;s great!
+[[/&gt;]]
+
+[[div class=&#34;museum-display&#34;]]
+
+[[/div]]
+[[/tab]]
+
+[[tab Rate My Director]]
+++++* [[[Rate-My-Director| Rate My Director]]]
+= {{Co-authored with [[user Aftokrator]], [[user AnActualCrow]], [[user bigslothonmyface]], [[user cyvstvi]], [[user DodoDevil]], [[user Trintavon]], [[user Dysadron]], [[user EmotionalEntropy]], [[user Fishish]], [[user GremlinGroup]], [[user Grigori Karpin]], [[user HarryBlank]], [[user Its a Bad Idea]], [[user J Dune]], [[user JakDragonX]], [[user LightlessLantern]], [[user Limeyy]], [[user LORDXVNV]], [[user MrBadFellow]], [[user OriTiefling]], [[user PlaguePJP]], [[user pr0m37h3um]], [[user R4_EX]], [[user Ralliston]], [[user ROUNDERHOUSE]], [[user Snapdragon133]], [[user syuzhet]], [[user stormbreath]], and [[user Trotskyeet]] for April Fools Day 2023}}
+= &#34;Director Dagon (Site-403): Caught him after he fell down and all his body parts exploded like a lego guy. Had to spend the entire afternoon reassembling him.&#34;
+
+One of the many Yurt megacollabs for April Fools Day. This article is based on the Rate My Professor form of review site and was incredibly fun to write. This article captures many of the best parts of the community in my experience here as a bunch of friends tossing jokes at each other until an article falls out.
+[[div class=&#34;museum-display&#34;]]
+[[/div]]
+[[/tab]]
+
+[[tab Resistile Decommissioning Attempt - Thread]]
+++++* [[[resistile-decomm-attempt|Resistile Decommissioning Attempt - Thread]]]
+= {{Co-authored with [[user OriTiefling]], [[user Harmacy]], [[user Mr Carbon]], and [[user Dino--Draws]] for April Fools Day 2023}}
+= &#34;The above user has been banned for trolling.&#34;
+
+Another article of the form of &#34;a bunch of friends tossing jokes at each other until an article falls out&#34; but with a different friend group from [[[Rate My Director| Rate My Director]]]. Based on many infamous moments from the SCP and Pokemon fandoms with some power-scaling fun thrown in (and the only time it is acceptable).
+[[div class=&#34;museum-display&#34;]]
+[[/div]]
+[[/tab]]
+
+[[tab Minimalist BHL Theme]]
+++++* [[[theme:Minimalist BHL|Minimalist BHL Theme]]]
+= {{Co-authored with [[user JakDragonX]]}}
+= It&#39;s a theme
+
+It&#39;s a theme. Used in my worldbuilding of the Department of Sciences as a sterile/clinical approach to writing. 
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/black-highlighter-themes/minimalist.png]]
+[[/div]]
+[[/tab]]
+
+[[/tabview]]
+
++++ Derived Works
+++++ Wiki Pages
+[[div class=&#34;museum-display&#34;]]
+[[div class=&#34;entry&#34;]]
+++++* [[[SCP-6512|SCP-6512 - Aren&#39;t Dinosaurs Supposed to Have Feathers?]]]
+
+WWS about dinosaurs written by [[*user Uncle Nicolini]] for my birthday in 2023! Not derived by any of my works in specific, but absolutely written with me in mind due to my intense love of all things dinosaur on the wiki!
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[SCP-6954|SCP-6954 - The Muppets take the Matterhorn|]]]
+
+Tale building from [[[SCP-6690]]] written by [[*user Grigori Karpin]] and [[*user Prismal]] for my birthday in 2023! Grigori is one of my oldest friends on the wiki (by age and by supporting me and my writing back when I first joined) and Primal is a new very close friend who I have had the pleasure of getting to know. I appreciate this article so much as it combines so many of my favourite things (and was a really fun unintentional connection for me as I had recently gone to Disney for the first time on my Honeymoon and was disappointed by the lack of muppets)
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[Things You See in a Graveyard|Things You See in a Graveyard]]]
+
+Tale about dinosaurs involving the Foundation Site I have been working on for the last while (Site-403) written by [[*user Dino--Draws]] for my birthday in 2023! More on Site-403 involving Dino--Draws to come...
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[theme:fossil|Fossil Theme]]]
+
+Theme that I will be using on EVERYTHING going forward made by [[*user EstrellaYoshte]] for the Holiday Art Exchange 2023! 
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/theme%3Afossil/fossil-thumb.png]]
+[[/div]]
+[[/div]]
+
+[[div class=&#34;entry&#34;]]
+++++* [[[art:puppet-fossil|&#34;Can you imagined how sad this looked pre-fossilization.&#34; - Dagon]]]
+
+Art Page made by [[*user fairydoctor]] of a fossilized //Archaeopteryx clotho sapiens// based on my love of [[[SCP-6690| Muppets]]] and [[[SCP-6556|dinosaurs]]] for my birthday in 2023! One day I shall also combine these loves and bring dinosaur muppets to the wiki! Now if only I could figure out how a dinosaur might control a puppet...
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/art%3Apuppet-fossil/puppet-fossil.png]]
+[[/div]]
+[[/div]]
+
+[[/div]]
+
+------
+
+++ Behind The Veil
+
+[[collapsible show=&#34;Decrypt data?&#34; hide=&#34;Displaying classified info&#34;]]
+
+[[include :scp-wiki:component:image-block
+|name=https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/Dagon_IRL
+|width=250px
+|caption=Hello]]
+
 **IDENTIFIER:** Brian [REDACTED]
 
 **HISTORY WITH THE FOUNDATION:** I have been reading the wiki since 2008 when the [[[SCP-173]]] 4chan post was left printed in a school printer and I had to know more. I only became involved in the community in 2019 because I finally had [[[SCP-5367|something to write an article about]]]. I tend to enjoy writing character pieces and science-heavy articles.
 
+[[div class=&#34;museum-display&#34;]]
+
+[[div class=&#34;entry&#34;]]
+[[image https://scp-wiki.wdfiles.com/local--files/dr-dagons-curriculum-vitae/wedding_aiko.jpeg]]
+
+My real wedding by [[*user luxaiko]]
+[[/div]]
+
+[[/div]]
+
 [[/collapsible]]
-[[=]]
-[[include :scp-wiki:component:license-box]]
-=====
-&gt; **Filename:** TheFalseDagon
-&gt; **Name:** TheFalseDagon
-&gt; **Author:** thispersondoesnotexist.com
-&gt; **License:** Public Domain
-&gt; **Source Link:** N/A
 
-&gt; **Filename:** PlaguesHotdog
-&gt; **Name:** PlaguesHotdog
-&gt; **Author:** Plague Pjp
-&gt; **License:** Public Domain
-&gt; **Source Link:** Star modified from https://commons.m.wikimedia.org/wiki/File:Gold_Star.svg
+@@ @@
 
-&gt; **Filename:** SCP-5366WeddingbyJakob17
-&gt; **Name:** The wedding of Perl Kori and Erluzor Lynas by Jakob17
-&gt; **Author:** [[*user Jakob17]]
-&gt; **License:** Public Domain
-&gt; **Source Link:** N/A
 
-&gt; **Filename:** Dagon_RiceandCake.jpg and 5366_RiceandCake.png
-&gt; **Name:** The eternal torment of Perl Kori and Erluzor Lynas by TheRiceandCake and Dr. Dagon, circa 1996. As described in Project RUBY (Drawn by theRiceandCake)
-&gt; **Author:** [[*user thericeandcake]]
-&gt; **License:** Public Domain
-&gt; **Source Link:** N/A
 
-&gt; **Filename:** 5366_Ralliston.png
-&gt; **Name:** Life after death by Ralliston
-&gt; **Author:** [[*user ralliston]]
-&gt; **License:** Public Domain
-&gt; **Source Link:** N/A
+[[module css]]
 
-&gt; **Filename:** aiad_card.png
-&gt; **Name:** Greetings from Site-15 by daviiid
-&gt; **Author:** [[*user daviiid]]
-&gt; **License:** Public Domain
-&gt; **Source Link:** N/A
-=====
-[[include :scp-wiki:component:license-box-end]]
-[[/=]]
-[[module CSS]]
-#page-title {
-display: none;
+/*--------------------------------*/
+
+:root {
+    --header-title: &#34;Research Site-403&#34;;
+    --fossil-header-slice-offset: calc(4.25rem + 3.5vw);
 }
+#page-title, .footnotes-footer { display: none; }
+
+#page-content h2 {
+    margin-top: 2.125rem;
+}
+
+#page-content .c-wrap {
+  container-name: intro;
+  container-type: inline-size;
+}
+
+.start-p { margin-block-start: 1.625em; }
+.start-p &gt; p:first-child::first-letter {
+  margin: -0.325rem .325rem  -.1rem 0;
+  font-size: 3.95lh;
+  float: inline-start;
+  line-height: .95;
+}
+
+div.aside {
+    --_gap: .75rem;
+    width: calc(170px + 12vw);
+    max-width: min(30rem, 100%);
+    box-sizing: border-box;
+    float: inline-end;
+    margin-block-start: 1.325rem;
+    margin-inline: calc(var(--sp_area-min-margin)*.875);
+}
+.img-wrapper {
+    overflow: hidden;
+    border-radius: var(--fossil-radius);
+    box-shadow: 0 0 .75rem rgb(var(--fossil-black)/.175);
+    margin-block: calc(var(--_gap)*-4.5) -1.25rem;
+    margin-inline: calc(var(--_gap)*-1);
+    max-width: initial;
+    transform: rotate(-12.25deg);
+}
+.img-wrapper img {
+    transform: rotate(12.25deg) scale(1.175);
+}
+
+.aside .blockquote {
+    position: relative;
+    padding: .5rem 1.25rem;
+    margin: 0;
+    margin-block-end: .5rem;
+    margin-inline-end: calc(var(--sp_area-min-margin)*-.875);
+    text-align: center;
+    max-width: initial;
+    box-sizing: border-box;
+    -webkit-backdrop-filter: blur(.175rem);
+    backdrop-filter: blur(.175rem);
+}
+.aside .blockquote p { margin-block: .25em; }
+
+@container intro (max-width: 620px) {
+ .opener {
+    display: grid;
+}
+.meta-title { order: -1; }
+.start-p { margin-block-start: 0; }
+div.aside {
+    float: none;
+    margin-inline: auto;
+    max-width: 100%;
+    margin-block-start: 4.25rem;
+}
+.aside .blockquote {
+    margin-inline: 0;
+}
+}
+
+.museum-display {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(16.5rem, 100%), 1fr));
+    grid-gap: 1.25rem;
+    margin-block: 1.25rem;
+}
+.museum-display .entry {
+    --_gap: .625rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--_gap);
+    gap: var(--_gap);
+    background-color: rgb(var(--fossil-light)/.125);
+    -webkit-backdrop-filter: blur(.15rem);
+    backdrop-filter: blur(.15rem);
+    box-shadow: 0 0 0.5rem rgb(var(--fossil-black)/.25);
+    border-radius: var(--fossil-radius);
+    text-align: center;
+}
+.museum-display .entry &gt; img {
+    max-height: 20rem;
+    border-radius: calc(var(--fossil-radius) - var(--_gap) + .05rem);
+}
+.museum-display .entry &gt; * { margin: 0; }
+
+#page-content :is(.collapsible-block-folded, .collapsible-block-unfolded-link) {
+    text-align: center;
+}
+
+.yui-content h4 { text-align: center; }
 [[/module]]</textarea></pre>
   </div>
 
@@ -413,7 +1371,7 @@ display: none;
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.325319.</em>
+    <em>Last updated 2026-04-17 00:56:53.219984.</em>
   
 </div>
 </body>

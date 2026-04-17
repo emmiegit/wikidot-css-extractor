@@ -29,22 +29,149 @@
     <ul class="module-styles">
       
         <li>
-          <pre><code>#page-content h1 {
-    border-bottom: solid 0.125rem currentColor;
-    padding: 0 0 0.25em;
+          <pre><code>:root { --box-accent: #823f3f; }
+
+.page-calendar-box &gt; ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(4.75rem, 100%), 1fr));
+    font-feature-settings: &#39;case&#39;, &#39;ss01&#39;, &#39;ss04&#39;, &#39;tnum&#39;;
 }
 
-.year-nav {
-    font-weight: bold;
+
+.page-calendar-box &gt; ul &gt; li {
+    position: relative;
     display: flex;
+    place-items: center;
+    box-shadow: inset 0  -.05rem 0 #ccc;
+}
+.page-calendar-box &gt; ul &gt; li &gt; a {
+    display: block;
+    flex-grow: 1;
+    padding: .25rem;
+    text-align: center;
+    font-size: 0;
+    text-underline-offset: 0.1rem;
+}
+.page-calendar-box &gt; ul &gt; li &gt; a::first-line {
+    font-size: 1.05rem;
+}
+.page-calendar-box &gt; ul &gt; li:is(:hover,:focus-within) &gt; a {
+    background-color: #fff0f0dd;
+}
+
+.page-calendar-box &gt; ul &gt; li &gt; ul {
+    position: absolute;
+    display: grid;
+    gap: .05rem;
+    top: 100%; left: 0;
+    width: 100%;
+    background: #fffa;
+    -webkit-backdrop-filter: blur(.25rem);
+    backdrop-filter: blur(.25rem);
+    padding: 0;
+    font-size: 1em;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.page-calendar-box &gt; ul &gt; li:is(:hover, :focus-within) &gt; ul {
+    opacity: 1;
+    pointer-events: auto;
+}
+.page-calendar-box &gt; ul li ul li {
+    display: none;
+}
+
+.page-calendar-box ul li.selected &gt; a {
+    color: inherit;
+    pointer-events: none;
+    font-weight: bold;
+} 
+
+
+.tale-list {
+    display: grid;
+    gap: .75rem;
+    margin-block: 1.5rem;
+}
+
+.tale-block {
+    background-color: #fff;
+    box-shadow: 0 0 0.325rem rgb(0 0 0 / 0.25);
+    contain: paint;
+    padding: .625rem;
+    --box-accent: inherit;
+
+    display: grid;
+    grid-template-areas:
+        &#34;title index&#34;
+        &#34;info date&#34;;
+    grid-template-columns: 1fr max-content;
+    gap: .425rem;
+}
+
+.tale-block .index {
+    grid-area: index;
+    display: flex;
+    text-align: end;
+    justify-content: end;
+    align-items: baseline;
+    gap: .25ex;
+    color: #b7b7b7;
+}
+.tale-block .index span:first-child {
+    font-size: .575em;
+}
+.tale-block .index .numbering {
+    font-feature-settings: &#39;case&#39;, &#39;ss01&#39;, &#39;ss04&#39;, &#39;tnum&#39;;
+    font-size: .95em;
+}
+
+.tale-block  .title {
+    grid-area: title;
+    display: flex;
+    gap: .325ex 0.75ex;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
 }
-.year-nav a {
-    padding: 0 0.45em;
-    border-right: solid 2px #333;
+.tale-block .title &gt; a {
+    font-weight: bold;
+    font-size: 1.075em;
 }
-.year-nav a:last-child { border-right: none; }</code></pre>
+.tale-block .title &gt; .author { font-size: .775em; flex-grow: 1; }
+.author .printuser {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .325em;
+}
+.author .printuser img {
+    margin: 0;
+    padding: 0;
+    padding-left: .475rem;
+}
+
+.tale-block .date {
+    grid-area: date;
+    font-feature-settings: &#39;case&#39;, &#39;ss01&#39;, &#39;ss04&#39;, &#39;tnum&#39;;
+    font-size: .75em;
+}
+
+.sec-info {
+    grid-area: info;
+    display: grid;
+    grid-template-columns: 6.25rem 3.25rem;
+    align-items: center;
+    gap: .5rem;
+    min-width: max-content;
+    font-size: .825em;
+}
+.sec-info &gt; br { display: none; }
+.sec-info .comments { text-align: end; }
+.sec-info .comments &gt; span { font-size: 0; }
+
+.tale-list .pager {
+    border-block-start: .225rem solid var(--box-accent);
+}</code></pre>
         </li>
       
     </ul>
@@ -61,7 +188,16 @@
     <h2 class="header">Includes</h2>
     <ul class="includes">
       
-        <li>(none)</li>
+        <li>
+  
+  
+
+  
+    <a href="https://scp-wiki.wikidot.com/fragment:nav-generic-css" target="_blank"><code>fragment:nav-generic-css</code></a>
+  
+
+  
+</li>
       
     </ul>
 
@@ -69,57 +205,227 @@
     <ul class="css-classes">
       
         <li>
-          <pre><code>year-nav</code></pre>
+          <pre><code>tale-list</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>content-type-description</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>tale-block</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>index</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>numbering</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>title</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>author</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>date</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>sec-info</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>rating</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>comments</code></pre>
         </li>
       
     </ul>
 
     <h2 class="header">Page Source</h2>
-    <pre><textarea class="page-source" readonly>[[=]]
-+* -Year-
-[[/=]]
-[[div_ class=&#34;year-nav&#34;]][!-- ADD CURRENT YEAR --]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2023 2023]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2022 2022]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2021 2021]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2020 2020]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2019 2019]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2018 2018]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2017 2017]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2016 2016]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2015 2015]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2014 2014]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2013 2013]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2012 2012]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2011 2011]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2010 2010]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2009 2009]
-[https://scp-wiki.wikidot.com/top-rated-pages-by-year/date/2008 2008]
+    <pre><textarea class="page-source" readonly>[[include fragment:nav-generic-css]]
+
+[[module PageCalendar category=&#34;_default&#34;]]
+
+[[div class=&#34;tale-list content-type-description&#34;]]
+[[module ListPages category=&#34;*&#34; order=&#34;rating desc&#34; wrapper=&#34;no&#34; separate=&#34;false&#34; perPage=&#34;50&#34; limit=&#34;200&#34; date=&#34;@URL|last 12 month&#34;]]
+
+[[div class=&#34;tale-block&#34;]]
+[[div_ class=&#34;index&#34;]]
+[[span]]Rank No.[[/span]][[span class=&#34;numbering&#34;]]%%index%%[[/span]]
+[[/div]]
+[[div_ class=&#34;title&#34;]]
+%%linked_title%% [[span class=&#34;author&#34;]]by %%created_by_linked%%[[/span]]
+[[/div]]
+[[div_ class=&#34;date&#34;]]
+%%created_at|%Y %b %e|agohover%%
 [[/div]]
 
-[[module ListPages rating=&#34;&gt;60&#34; order=&#34;rating desc&#34; category=&#34;*&#34; separate=&#34;false&#34; limit=&#34;200&#34; perPage=&#34;35&#34; date=&#34;@URL|2023&#34;[!-- UPDATE THIS TO CURRENT YEAR --] prependLine=&#34;||~ Title||~ Rating||~ Author||~ Written On||&#34;]]
-|| %%title_linked%% || %%rating%% || %%created_by_linked%% || %%created_at%% ||
+[[div_ class=&#34;sec-info&#34;]]
+[[span class=&#34;rating&#34;]]Rating: [[#ifexpr %%rating%% &gt; -1 | + | - ]][[#expr abs(%%rating%%)]][[/span]]
+[[span class=&#34;comments&#34;]]%%comments%% [[span]]Comments[[/span]]💬︎[[/span]]
+[[/div]]
+
+[[/div]]
+
 [[/module]]
+[[/div]]
 
 
-[!-- CSS, don&#39;t touch --]
-[[module CSS]]
-#page-content h1 {
-    border-bottom: solid 0.125rem currentColor;
-    padding: 0 0 0.25em;
+
+
+[[module css]]
+:root { --box-accent: #823f3f; }
+
+.page-calendar-box &gt; ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(4.75rem, 100%), 1fr));
+    font-feature-settings: &#39;case&#39;, &#39;ss01&#39;, &#39;ss04&#39;, &#39;tnum&#39;;
 }
 
-.year-nav {
-    font-weight: bold;
+
+.page-calendar-box &gt; ul &gt; li {
+    position: relative;
     display: flex;
+    place-items: center;
+    box-shadow: inset 0  -.05rem 0 #ccc;
+}
+.page-calendar-box &gt; ul &gt; li &gt; a {
+    display: block;
+    flex-grow: 1;
+    padding: .25rem;
+    text-align: center;
+    font-size: 0;
+    text-underline-offset: 0.1rem;
+}
+.page-calendar-box &gt; ul &gt; li &gt; a::first-line {
+    font-size: 1.05rem;
+}
+.page-calendar-box &gt; ul &gt; li:is(:hover,:focus-within) &gt; a {
+    background-color: #fff0f0dd;
+}
+
+.page-calendar-box &gt; ul &gt; li &gt; ul {
+    position: absolute;
+    display: grid;
+    gap: .05rem;
+    top: 100%; left: 0;
+    width: 100%;
+    background: #fffa;
+    -webkit-backdrop-filter: blur(.25rem);
+    backdrop-filter: blur(.25rem);
+    padding: 0;
+    font-size: 1em;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+.page-calendar-box &gt; ul &gt; li:is(:hover, :focus-within) &gt; ul {
+    opacity: 1;
+    pointer-events: auto;
+}
+.page-calendar-box &gt; ul li ul li {
+    display: none;
+}
+
+.page-calendar-box ul li.selected &gt; a {
+    color: inherit;
+    pointer-events: none;
+    font-weight: bold;
+} 
+
+
+.tale-list {
+    display: grid;
+    gap: .75rem;
+    margin-block: 1.5rem;
+}
+
+.tale-block {
+    background-color: #fff;
+    box-shadow: 0 0 0.325rem rgb(0 0 0 / 0.25);
+    contain: paint;
+    padding: .625rem;
+    --box-accent: inherit;
+
+    display: grid;
+    grid-template-areas:
+        &#34;title index&#34;
+        &#34;info date&#34;;
+    grid-template-columns: 1fr max-content;
+    gap: .425rem;
+}
+
+.tale-block .index {
+    grid-area: index;
+    display: flex;
+    text-align: end;
+    justify-content: end;
+    align-items: baseline;
+    gap: .25ex;
+    color: #b7b7b7;
+}
+.tale-block .index span:first-child {
+    font-size: .575em;
+}
+.tale-block .index .numbering {
+    font-feature-settings: &#39;case&#39;, &#39;ss01&#39;, &#39;ss04&#39;, &#39;tnum&#39;;
+    font-size: .95em;
+}
+
+.tale-block  .title {
+    grid-area: title;
+    display: flex;
+    gap: .325ex 0.75ex;
+    align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
 }
-.year-nav a {
-    padding: 0 0.45em;
-    border-right: solid 2px #333;
+.tale-block .title &gt; a {
+    font-weight: bold;
+    font-size: 1.075em;
 }
-.year-nav a:last-child { border-right: none; }
+.tale-block .title &gt; .author { font-size: .775em; flex-grow: 1; }
+.author .printuser {
+    display: inline-flex;
+    align-items: baseline;
+    gap: .325em;
+}
+.author .printuser img {
+    margin: 0;
+    padding: 0;
+    padding-left: .475rem;
+}
+
+.tale-block .date {
+    grid-area: date;
+    font-feature-settings: &#39;case&#39;, &#39;ss01&#39;, &#39;ss04&#39;, &#39;tnum&#39;;
+    font-size: .75em;
+}
+
+.sec-info {
+    grid-area: info;
+    display: grid;
+    grid-template-columns: 6.25rem 3.25rem;
+    align-items: center;
+    gap: .5rem;
+    min-width: max-content;
+    font-size: .825em;
+}
+.sec-info &gt; br { display: none; }
+.sec-info .comments { text-align: end; }
+.sec-info .comments &gt; span { font-size: 0; }
+
+.tale-list .pager {
+    border-block-start: .225rem solid var(--box-accent);
+}
 [[/module]]
 
 [!--
@@ -142,7 +448,7 @@ https://scp-wiki.wikidot.com/fragment:top-rated-by-year-22
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:40.690576.</em>
+    <em>Last updated 2026-04-17 00:57:00.059577.</em>
   
 </div>
 </body>

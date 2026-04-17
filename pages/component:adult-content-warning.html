@@ -67,23 +67,27 @@ ul.modal-wrapper &gt; li.folded {
 div#u-adult-warning {
     width: 100%;
     height: 100%;
-    overflow: auto;
     box-sizing: border-box;
     color: black;
     text-shadow: none;
 }
-div#u-adult-warning &gt; div#u-adult-header,
-div#u-adult-warning &gt; div#u-adult-header p { font-weight: bold; }
+div#u-adult-warning-content {
+    position: sticky;
+    top: 1rem;
+}
+
+div#u-adult-warning div#u-adult-header,
+div#u-adult-warning  div#u-adult-header p { font-weight: bold; }
 #page-content div#u-adult-warning a { color: #b01; }
 #page-content div#u-adult-warning a.newpage { color: #d61; }
 #page-content div#u-adult-warning a:not(.newpage):visited { color: #824; }
 
 #u-adult-warning .content-descriptor {
-    text-align: left;
-    width: calc(100% - 3em);
+    text-align: start;
     max-width: max-content;
     margin: 0 auto;
-    text-indent: -1.2em;
+    max-height: 45svh;
+    overflow-y: auto;
 }
 #u-adult-warning .content-descriptor br { display: none; }
 #u-adult-warning .content-descriptor span {
@@ -114,10 +118,6 @@ div#u-adult-warning &gt; div#u-adult-header p { font-weight: bold; }
     <ul class="inline-styles">
       
         <li>
-          <pre><code>display: [[#ifexpr {$gore} == 1 | block | none ]]</code></pre>
-        </li>
-      
-        <li>
           <pre><code>display: [[#ifexpr {$sexual-references} == 1 | block | none ]]</code></pre>
         </li>
       
@@ -127,6 +127,10 @@ div#u-adult-warning &gt; div#u-adult-header p { font-weight: bold; }
       
         <li>
           <pre><code>display: [[#ifexpr {$sexual-assault} == 1 | block | none ]]</code></pre>
+        </li>
+      
+        <li>
+          <pre><code>display: [[#ifexpr {$gore} == 1 | block | none ]]</code></pre>
         </li>
       
         <li>
@@ -209,6 +213,10 @@ div#u-adult-warning &gt; div#u-adult-header p { font-weight: bold; }
           <pre><code>blockquote</code></pre>
         </li>
       
+        <li>
+          <pre><code>blockquote</code></pre>
+        </li>
+      
     </ul>
 
     <h2 class="header">Page Source</h2>
@@ -251,23 +259,27 @@ ul.modal-wrapper &gt; li.folded {
 div#u-adult-warning {
     width: 100%;
     height: 100%;
-    overflow: auto;
     box-sizing: border-box;
     color: black;
     text-shadow: none;
 }
-div#u-adult-warning &gt; div#u-adult-header,
-div#u-adult-warning &gt; div#u-adult-header p { font-weight: bold; }
+div#u-adult-warning-content {
+    position: sticky;
+    top: 1rem;
+}
+
+div#u-adult-warning div#u-adult-header,
+div#u-adult-warning  div#u-adult-header p { font-weight: bold; }
 #page-content div#u-adult-warning a { color: #b01; }
 #page-content div#u-adult-warning a.newpage { color: #d61; }
 #page-content div#u-adult-warning a:not(.newpage):visited { color: #824; }
 
 #u-adult-warning .content-descriptor {
-    text-align: left;
-    width: calc(100% - 3em);
+    text-align: start;
     max-width: max-content;
     margin: 0 auto;
-    text-indent: -1.2em;
+    max-height: 45svh;
+    overflow-y: auto;
 }
 #u-adult-warning .content-descriptor br { display: none; }
 #u-adult-warning .content-descriptor span {
@@ -296,23 +308,27 @@ div#u-adult-warning &gt; div#u-adult-header p { font-weight: bold; }
 [[ul class=&#34;modal-wrapper&#34;]]
 [[li class=&#34;unfolded&#34;]]
 [[div id=&#34;adult-warning&#34;]]
+
 [[div id=&#34;adult-header&#34;]]
 ADULT CONTENT
 [[/div]]
+
+[[div id=&#34;adult-warning-content&#34;]]
+
 This article contains adult content that may not be suitable for all readers.
 [[div_ class=&#34;content-descriptor&#34;]]
-[[span style=&#34;display: [[#ifexpr {$gore} == 1 | block | none ]]&#34;]]Graphic depiction of blood, gore or mutilation of body parts[[/span]]
-[[span style=&#34;display: [[#ifexpr {$sexual-references} == 1 | block | none ]]&#34;]]Features sexual themes or language, but does not depict sexual acts.[[/span]]
-[[span style=&#34;display: [[#ifexpr {$sexually-explicit} == 1 | block | none ]]&#34;]]Explicit depiction of sexual acts.[[/span]]
-[[span style=&#34;display: [[#ifexpr {$sexual-assault} == 1 | block | none ]]&#34;]]Features non-consensual sexual acts.[[/span]]
-[[span style=&#34;display: [[#ifexpr {$child-abuse} == 1 | block | none ]]&#34;]]Depiction of severe mistreatment of children[[/span]] 
-[[span style=&#34;display: [[#ifexpr {$self-harm} == 1 | block | none ]]&#34;]]Depiction of self-harm[[/span]]
-[[span style=&#34;display: [[#ifexpr {$suicide} == 1 | block | none ]]&#34;]]Depiction of suicide[[/span]]
-[[span style=&#34;display: [[#ifexpr {$torture} == 1 | block | none ]]&#34;]]Depiction of torture[[/span]]
+[[span style=&#34;display: [[#ifexpr {$sexual-references} == 1 | block | none ]]&#34;]]Sexual References: Features sexual themes or language, without the depiction of sexual acts.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$sexually-explicit} == 1 | block | none ]]&#34;]]Sexually Explicit: Description of sexual acts.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$sexual-assault} == 1 | block | none ]]&#34;]]Sexual Assault: Features non-consensual sexual acts.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$gore} == 1 | block | none ]]&#34;]]Gore: Depiction of blood, gore or mutilation of body parts.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$child-abuse} == 1 | block | none ]]&#34;]]Child Abuse: Features severe mistreatment of children.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$self-harm} == 1 | block | none ]]&#34;]]Self-Harm: Description of self-harm.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$suicide} == 1 | block | none ]]&#34;]]Suicide: Description of suicide.[[/span]]
+[[span style=&#34;display: [[#ifexpr {$torture} == 1 | block | none ]]&#34;]]Torture: Description of torture.[[/span]]
 [[span style=&#34;display: [[#ifexpr {$custom} == 1 | block | none ]]&#34;]]{$custom-content}[[/span]]
 [[/div]]
 
-If you are above the age of 18+ and wish to read such content, then you may click Continue to view said content.
+If you are age 18 or above and wish to read such content, then you may click Continue to view said content.
 [[div_ class=&#34;foldable-list-container choice&#34;]]
 [# Continue]
 [[/div]]
@@ -322,6 +338,8 @@ If you are above the age of 18+ and wish to read such content, then you may clic
 
 [[div_ class=&#34;footer-wikiwalk-nav&#34;]]
 [[span class=&#34;ww-{$prev}&#34;]]&lt;&lt; [[[{$prev}|]]] |[[/span]][[span class=&#34;ww-{$current}&#34;]]{$current}[[/span]][[span class=&#34;ww-{$next}&#34;]]| [[[{$next}|]]] &gt;&gt;[[/span]]
+[[/div]]
+
 [[/div]]
 
 [[/div]]
@@ -336,10 +354,10 @@ To use, put the following at the top of the page:
 
 [[div class=&#34;blockquote&#34;]]
 @@[[include :scp-wiki:component:adult-content-warning@@
-|gore=1
 |sexual-references=1
 |sexually-explicit=1
 |sexual-assault=1
+|gore=1
 |child-abuse=1
 |self-harm=1
 |suicide=1
@@ -352,7 +370,20 @@ To use, put the following at the top of the page:
 ]]
 [[/div]]
 
-Omit any warning that doesn&#39;t apply. Only use approved custom content warnings. The Wikiwalk footer will not appear if no input is specified. Refer to the [[[Adult Content Warning Guide]]] or contact a member of the [http://05command.wikidot.com/maintenance-and-ancillary-staff-team-main Adult Content Curation team] for further information.
+Omit any warning that doesn&#39;t apply by deleting that line of code. Addditionally, the Wikiwalk footer will not appear if no input is specified. If an SCP article (&#34;SCP-XXX&#34;) needs to have content warnings for a description of sex and self-harm, the component should be changed to the following:
+
+[[div class=&#34;blockquote&#34;]]
+@@[[include :scp-wiki:component:adult-content-warning@@
+|sexually-explicit=1
+|self-harm=1
+
+|prev=SCP-XXW
+|current=SCP-XXX
+|next=SCP-XXY
+]]
+[[/div]]
+
+Only use approved custom content warnings. Refer to the [[[Adult Content Warning Guide]]] or contact a member of the [http://05command.wikidot.com/maintenance-and-ancillary-staff-team-main Adult Content Curation team] for further information.
 
 For an article using listpages to display a series of fragment pages (LPT), put this component on the first fragment page.
 
@@ -364,7 +395,7 @@ For an article using listpages to display a series of fragment pages (LPT), put 
 
 <div id="footer">
   
-    <em>Last updated 2024-02-07 18:34:36.142358.</em>
+    <em>Last updated 2026-04-17 00:56:52.957566.</em>
   
 </div>
 </body>
