@@ -106,6 +106,7 @@ def build_html(cur, page_count, counts):
     env.globals["get_local_include_slug"] = get_local_include_slug
     env.globals["page_key"] = page_slug_key
     env.globals["now"] = datetime.utcnow
+    env.globals["page_count"] = page_count
     env.filters["commaify"] = lambda number: format(number, ",d")
     env.filters["reverse"] = reversed
     env.filters["sha1"] = lambda data: hashlib.sha1(data.encode("utf-8")).hexdigest()
@@ -129,7 +130,6 @@ def build_html(cur, page_count, counts):
 
         html_pages[f"pages/{slug}"] = page_template.render(
             slug=slug,
-            page_count=page_count,
             title=page["title"],
             source=page["source"],
             module_styles=list(get_extracts(page, "module_style")),
